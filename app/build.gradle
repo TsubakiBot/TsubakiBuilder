@@ -21,6 +21,9 @@ android {
         versionName "3.0.0"
         versionCode 300000000
         signingConfig signingConfigs.debug
+        
+        buildConfigField "String", "COMMIT", "\""+gitCommitHash+"\""
+        project.archivesBaseName = "${rootProject.name}-${gitCommitHash}"
     }
 
     flavorDimensions += "store"
@@ -40,13 +43,35 @@ android {
     }
 
     buildTypes {
+        matagi {
+            applicationIdSuffix ".beta"
+            versionNameSuffix "-matagi"
+            manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"
+            manifestPlaceholders.icon_placeholder_round = "@mipmap/ic_launcher_alpha_round"
+            debuggable true
+            isDefault true
+
+            try {
+                def keystoreProps = new Properties()
+                keystoreProps.load(new FileInputStream(rootProject.file("keystore.properties")))
+                signingConfigs {
+                    document {
+                        keyAlias keystoreProps['keyAlias']
+                        keyPassword keystoreProps['keyPassword']
+                        storeFile file(keystoreProps['storeFile'])
+                        storePassword keystoreProps['storePassword']
+                    }
+                }
+                buildTypes.debug.signingConfig signingConfigs.document
+                buildTypes.matagi.signingConfig signingConfigs.document
+            } catch (FileNotFoundException ignored) { }
+        }
         alpha {
             applicationIdSuffix ".beta" // keep as beta by popular request
             versionNameSuffix "-alpha01-" + gitCommitHash
             manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"
             manifestPlaceholders.icon_placeholder_round = "@mipmap/ic_launcher_alpha_round"
             debuggable System.getenv("CI") == null
-            isDefault true
         }
         debug {
             applicationIdSuffix ".beta"
@@ -75,6 +100,12 @@ android {
         freeCompilerArgs = ["-Xcontext-receivers", "-Xmulti-platform"]
     }
     namespace 'ani.dantotsu'
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName = project.archivesBaseName + "-${output.baseName}.apk"
+        }
+    }
 }
 
 dependencies {

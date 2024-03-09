@@ -3,15 +3,20 @@ package ani.dantotsu.others
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DownloadManager
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageInstaller
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
+import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.FragmentActivity
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.Mapper
@@ -26,6 +31,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import eu.kanade.tachiyomi.util.system.getParcelableExtraCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -33,32 +39,67 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.decodeFromJsonElement
+import java.io.File
+import java.io.IOException
+import java.net.URISyntaxException
 import java.text.SimpleDateFormat
 import java.util.Locale
+import kotlin.random.Random
 
 object AppUpdater {
+
+    private val packageActionReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            when (intent.getIntExtra(
+                PackageInstaller.EXTRA_STATUS,
+                PackageInstaller.STATUS_FAILURE
+            )) {
+                PackageInstaller.STATUS_PENDING_USER_ACTION -> {
+                    intent.getParcelableExtraCompat<Intent>(Intent.EXTRA_INTENT)?.let {
+                        try {
+                            startLauncherActivity(context, Intent.parseUri(
+                                it.toUri(0),
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1)
+                                    Intent.URI_ALLOW_UNSAFE else 0
+                            ))
+                        } catch (ignored: URISyntaxException) { }
+                    }
+                }
+
+                PackageInstaller.STATUS_FAILURE_ABORTED -> { }
+                PackageInstaller.STATUS_SUCCESS -> {
+                    File(Environment.DIRECTORY_DOWNLOADS).listFiles()?.filter { file ->
+                        file.name.startsWith("Dantotsu-") && file.extension == "apk"
+                    }?.forEach { it.delete() }
+                }
+                else -> {
+                    val error = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+                    if (error?.contains("Session was abandoned") != true)
+                        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun startLauncherActivity(context: Context, intent: Intent?) {
+        context.startActivity(intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    }
+
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
         if (post) snackString(currContext()?.getString(R.string.checking_for_update))
         val repo = activity.getString(R.string.repo)
         tryWithSuspend {
-            val (md, version) = if (BuildConfig.DEBUG) {
-                val res = client.get("https://api.github.com/repos/$repo/releases")
-                    .parsed<JsonArray>().map {
-                        Mapper.json.decodeFromJsonElement<GithubResponse>(it)
-                    }
-                val r = res.filter { it.prerelease }.filter { !it.tagName.contains("fdroid") }
-                    .maxByOrNull {
-                        it.timeStamp()
-                    } ?: throw Exception("No Pre Release Found")
-                val v = r.tagName.substringAfter("v", "")
-                (r.body ?: "") to v.ifEmpty { throw Exception("Weird Version : ${r.tagName}") }
-            } else {
-                val res =
-                    client.get("https://raw.githubusercontent.com/$repo/main/stable.md").text
-                res to res.substringAfter("# ").substringBefore("\n")
-            }
+            val res = client.get("https://api.github.com/repos/$repo/releases")
+                .parsed<JsonArray>().map {
+                    Mapper.json.decodeFromJsonElement<GithubResponse>(it)
+                }
+            val r = res.filter { it.prerelease }.maxByOrNull {
+                it.timeStamp()
+            } ?: throw Exception("No Prerelease Found")
+            val v = r.tagName
+            val (md, version) = (r.body ?: "") to v.ifEmpty { throw Exception("Unexpected Tag : ${r.tagName}") }
 
-            Logger.log("Git Version : $version")
+            Logger.log("Release Hash : $version")
             val dontShow = PrefManager.getCustomVal("dont_ask_for_update_$version", false)
             if (compareVersion(version) && !dontShow && !activity.isDestroyed) activity.runOnUiThread {
                 CustomBottomDialog.newInstance().apply {
@@ -85,12 +126,12 @@ object AppUpdater {
                     setPositiveButton(currContext()!!.getString(R.string.lets_go)) {
                         MainScope().launch(Dispatchers.IO) {
                             try {
-                                client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
+                                client.get("https://api.github.com/repos/$repo/releases/tags/$version")
                                     .parsed<GithubResponse>().assets?.find {
                                         it.browserDownloadURL.endsWith("apk")
                                     }?.browserDownloadURL.apply {
                                         if (this != null) activity.downloadUpdate(version, this)
-                                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/v$version")
+                                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
                                     }
                             } catch (e: Exception) {
                                 logError(e)
@@ -111,30 +152,12 @@ object AppUpdater {
     }
 
     private fun compareVersion(version: String): Boolean {
-
-        if (BuildConfig.DEBUG) {
-            return BuildConfig.VERSION_NAME != version
-        } else {
-            fun toDouble(list: List<String>): Double {
-                return list.mapIndexed { i: Int, s: String ->
-                    when (i) {
-                        0 -> s.toDouble() * 100
-                        1 -> s.toDouble() * 10
-                        2 -> s.toDouble()
-                        else -> s.toDoubleOrNull() ?: 0.0
-                    }
-                }.sum()
-            }
-
-            val new = toDouble(version.split("."))
-            val curr = toDouble(BuildConfig.VERSION_NAME.split("."))
-            return new > curr
-        }
+        return BuildConfig.COMMIT != version
     }
 
 
-    //Blatantly kanged from https://github.com/LagradOst/CloudStream-3/blob/master/app/src/main/java/com/lagradost/cloudstream3/utils/InAppUpdater.kt
-    private fun Activity.downloadUpdate(version: String, url: String): Boolean {
+    // https://github.com/LagradOst/CloudStream-3/blob/master/app/src/main/java/com/lagradost/cloudstream3/utils/InAppUpdater.kt
+    private fun Activity.downloadUpdate(version: String, url: String) {
 
         toast(getString(R.string.downloading_update, version))
 
@@ -145,11 +168,11 @@ object AppUpdater {
             .setTitle("Downloading Dantotsu $version")
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
-                "Dantotsu $version.apk"
+                "Dantotsu-$version.apk"
             )
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
 
         val id = try {
             downloadManager.enqueue(request)
@@ -157,7 +180,7 @@ object AppUpdater {
             logError(e)
             -1
         }
-        if (id == -1L) return true
+        if (id == -1L) return
         ContextCompat.registerReceiver(
             this,
             object : BroadcastReceiver() {
@@ -178,19 +201,46 @@ object AppUpdater {
             }, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
             ContextCompat.RECEIVER_EXPORTED
         )
-        return true
     }
 
     private fun openApk(context: Context, uri: Uri) {
+        ContextCompat.registerReceiver(
+            context, packageActionReceiver, IntentFilter(INSTALL_ACTION), ContextCompat.RECEIVER_EXPORTED
+        )
+
         try {
             uri.path?.let {
-                val installIntent = Intent(Intent.ACTION_VIEW).apply {
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-                    data = uri
+                context.contentResolver.openInputStream(uri).use { apkStream ->
+                    val session = with (context.packageManager.packageInstaller) {
+                        val params = PackageInstaller.SessionParams(
+                            PackageInstaller.SessionParams.MODE_FULL_INSTALL
+                        )
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            params.setRequireUserAction(
+                                PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
+                            )
+                        }
+                        openSession(createSession(params))
+                    }
+                    val document = DocumentFile.fromSingleUri(context, uri)
+                        ?: throw IOException("Invalid document file size!")
+                    session.openWrite("NAME", 0, document.length()).use { sessionStream ->
+                        apkStream?.copyTo(sessionStream)
+                        session.fsync(sessionStream)
+                    }
+                    val pi = PendingIntent.getBroadcast(
+                        context, Random.nextInt(),
+                        Intent(INSTALL_ACTION),
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+                            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+                                    or PendingIntent.FLAG_ALLOW_UNSAFE_IMPLICIT_INTENT
+                        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+                        else
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                    )
+                    session.commit(pi.intentSender)
                 }
-                context.startActivity(installIntent)
             }
         } catch (e: Exception) {
             logError(e)
@@ -221,4 +271,6 @@ object AppUpdater {
             return dateFormat.parse(createdAt)!!.time
         }
     }
+
+    private const val INSTALL_ACTION = "AppUpdater.INSTALL_ACTION"
 }

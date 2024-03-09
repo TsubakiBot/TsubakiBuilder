@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LayoutAnimationController
+import android.view.animation.TranslateAnimation
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -21,6 +22,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.blurImage
@@ -35,6 +37,8 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -44,12 +48,15 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
+import com.eightbit.view.AnimatedLinearLayout
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
@@ -141,7 +148,7 @@ class HomeFragment : Fragment() {
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
 
         var reached = false
-        val duration = ((PrefManager.getVal(PrefName.AnimationSpeed) as Float) * 200).toLong()
+        var duration = ((PrefManager.getVal(PrefName.AnimationSpeed) as Float) * 200).toLong()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.homeScroll.setOnScrollChangeListener { _, _, _, _, _ ->
@@ -374,6 +381,84 @@ class HomeFragment : Fragment() {
                     _binding?.homeRefresh?.isRefreshing = false
                 }
             }
+        }
+
+        if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) {
+            binding.donationButton.setOnClickListener {
+                lifecycleScope.launch {
+                    it.pop()
+                }
+                openLinkInBrowser(getString(R.string.coffee))
+                if (binding.donationReminder.isVisible) animateDonationView()
+            }
+            lifecycleScope.launch {
+                binding.donationButton.pop()
+            }
+
+            binding.donationClose.setOnClickListener {
+                if (binding.donationReminder.isVisible) animateDonationView()
+            }
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                delay(2000)
+                if (Random.nextInt(0, 100) > 50) {
+                    binding.donationReminder.post {
+                        animateDonationView()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun animateDonationView() {
+        if (binding.donationReminder.isVisible) {
+            val animate = TranslateAnimation(
+                0f, 0f, 0f, -binding.donationReminder.height.toFloat()
+            ).apply {
+                duration = 1000
+                fillAfter = false
+            }
+            binding.donationReminder.setAnimationListener(object : AnimatedLinearLayout.AnimationListener {
+                override fun onAnimationStart(layout: AnimatedLinearLayout) {
+                    binding.donationClose.visibility = View.GONE
+                    binding.donationText.postDelayed({
+                        binding.donationText.visibility = View.INVISIBLE
+                    }, 295)
+                    binding.donationButton.postDelayed({
+                        binding.donationButton.visibility = View.INVISIBLE
+                    }, 545)
+                }
+                override fun onAnimationEnd(layout: AnimatedLinearLayout) {
+                    binding.donationReminder.clearAnimation()
+                    layout.setAnimationListener(null)
+                    binding.donationReminder.visibility = View.GONE
+                }
+            })
+            binding.donationReminder.startAnimation(animate)
+        } else {
+            binding.donationReminder.visibility = View.VISIBLE
+            val animate = TranslateAnimation(
+                0f, 0f, -binding.donationReminder.height.toFloat(), 0f
+            ).apply {
+                duration = 1000
+                fillAfter = false
+            }
+            binding.donationReminder.setAnimationListener(object : AnimatedLinearLayout.AnimationListener {
+                override fun onAnimationStart(layout: AnimatedLinearLayout) {
+                    binding.donationText.postDelayed({
+                        binding.donationText.visibility = View.VISIBLE
+                    }, 250)
+                    binding.donationButton.postDelayed({
+                        binding.donationButton.visibility = View.VISIBLE
+                    }, 500)
+                }
+                override fun onAnimationEnd(layout: AnimatedLinearLayout) {
+                    binding.donationClose.visibility = View.VISIBLE
+                    binding.donationReminder.clearAnimation()
+                    layout.setAnimationListener(null)
+                }
+            })
+            binding.donationReminder.startAnimation(animate)
         }
     }
     override fun onResume() {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="repo">RepoDevil/Dantotsu</string>
+
+    <string name="app_name">Mr ∞ Matagi</string>
+
+    <string name="discord">https://discord.gg/vnrhgrt</string>
+    <string name="github">https://github.com/RepoDevil/Dantotsu</string>
+    <string name="coffee">https://www.buymeacoffee.com/abandonedcart</string>
+
+    <string name="show_skip_time_stamp_button">Show Skip OP / ED Button</string>
+    <string name="auto_hide_time_stamps">Auto Hide OP / ED Skip Button</string>
+
+    <string name="donate_desc">Want to support Mr ∞ Matagi?\nConsider Donating</string>
+
+    <string name="setting_progress">Progress: %1$d</string>
+</resources>

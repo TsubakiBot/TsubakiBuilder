@@ -89,6 +89,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE
@@ -1203,6 +1204,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
         }
 
+        if (!BuildConfig.BUILD_TYPE.contentEquals("matagi"))
         lifecycleScope.launch(Dispatchers.IO) {
             delay(2000)
             runOnUiThread {
