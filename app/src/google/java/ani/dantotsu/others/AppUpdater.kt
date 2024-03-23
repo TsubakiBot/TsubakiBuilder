@@ -68,9 +68,10 @@ object AppUpdater {
 
                 PackageInstaller.STATUS_FAILURE_ABORTED -> { }
                 PackageInstaller.STATUS_SUCCESS -> {
-                    File(Environment.DIRECTORY_DOWNLOADS).listFiles()?.filter { file ->
-                        file.name.startsWith("Dantotsu-") && file.extension == "apk"
-                    }?.forEach { it.delete() }
+                    deletePackages(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS
+                    ))
+                    deletePackages(File(Environment.DIRECTORY_DOWNLOADS))
                 }
                 else -> {
                     val error = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
@@ -79,6 +80,12 @@ object AppUpdater {
                 }
             }
         }
+    }
+
+    private fun deletePackages(directory: File) {
+        directory.listFiles()?.filter { file ->
+            file.name.startsWith("Dantotsu-") && file.extension == "apk"
+        }?.forEach { it.delete() }
     }
 
     private fun startLauncherActivity(context: Context, intent: Intent?) {
