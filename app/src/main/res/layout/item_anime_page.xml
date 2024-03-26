@@ -199,7 +199,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="250dp">
+            android:minHeight="242dp">
 
             <ProgressBar
                 android:id="@+id/animeUpdatedProgressBar"
@@ -211,7 +211,7 @@
             <ani.dantotsu.FadingEdgeRecyclerView
                 android:id="@+id/animeUpdatedRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="242dp"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="true"
                 android:paddingStart="20dp"

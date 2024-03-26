@@ -192,9 +192,9 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                 binding.profileUserName.text = userLevelText
                 val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
 
-                blurImage(if (bannerAnimations) binding.profileBannerImage else binding.profileBannerImageNoKen as ImageView, user.bannerImage ?: user.avatar?.medium)
+                blurImage(if (bannerAnimations) binding.profileBannerImage else binding.profileBannerImageNoKen, user.bannerImage ?: user.avatar?.medium)
                 binding.profileBannerImage.updateLayoutParams { height += statusBarHeight }
-                binding.profileBannerImageNoKen?.updateLayoutParams { height += statusBarHeight }
+                binding.profileBannerImageNoKen.updateLayoutParams { height += statusBarHeight }
                 binding.profileBannerGradient.updateLayoutParams { height += statusBarHeight }
                 binding.profileCloseButton.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
                 binding.profileMenuButton.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }

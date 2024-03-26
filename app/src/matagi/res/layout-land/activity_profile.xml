@@ -53,6 +53,14 @@
                         tools:src="@tools:sample/backgrounds/scenic" />
 
                     <ImageView
+                        android:id="@+id/profileBannerImageNoKen"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"
+                        tools:src="@tools:sample/backgrounds/scenic" />
+
+                    <ImageView
                         android:id="@+id/profileBannerGradient"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
@@ -166,13 +174,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginTop="210dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="200dp"
                     android:layout_marginBottom="2dp"
                     android:backgroundTint="?attr/colorSurfaceVariant"
                     android:baselineAligned="false"
-                    app:cardCornerRadius="12dp">
+                    app:cardCornerRadius="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

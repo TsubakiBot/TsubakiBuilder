@@ -390,12 +390,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homeWatchingEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -467,12 +467,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homeFavAnimeEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone"
@@ -540,12 +540,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homePlannedAnimeEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -616,12 +616,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homeReadingEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -693,12 +693,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homeFavMangaEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone"
@@ -766,12 +766,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homePlannedMangaEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -842,12 +842,12 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="242dp">
+                    android:minHeight="250dp">
 
                     <LinearLayout
                         android:id="@+id/homeRecommendedEmpty"
                         android:layout_width="match_parent"
-                        android:layout_height="242dp"
+                        android:layout_height="250dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone"
