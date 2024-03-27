@@ -49,6 +49,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import com.eightbit.view.AnimatedLinearLayout
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -384,33 +385,28 @@ class HomeFragment : Fragment() {
         }
 
         if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) {
-            binding.donationButton.setOnClickListener {
-                lifecycleScope.launch {
-                    it.pop()
-                }
-                openLinkInBrowser(getString(R.string.coffee))
-                if (binding.donationReminder.isVisible) animateDonationView()
-            }
-            lifecycleScope.launch {
-                binding.donationButton.pop()
-            }
-
-            binding.donationClose.setOnClickListener {
-                if (binding.donationReminder.isVisible) animateDonationView()
-            }
-
-            lifecycleScope.launch(Dispatchers.IO) {
+            CoroutineScope(Dispatchers.IO).launch {
                 delay(2000)
-                if (Random.nextInt(0, 100) > 50) {
-                    binding.donationReminder.post {
-                        animateDonationView()
+                if (Random.nextInt(0, 100) > 75) {
+                    binding.donationButton.setOnClickListener {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            it.pop()
+                            openLinkInBrowser(getString(R.string.coffee))
+                            if (binding.donationReminder.isVisible) animateDonationView()
+                        }
                     }
+                    binding.donationClose.setOnClickListener {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            if (binding.donationReminder.isVisible) animateDonationView()
+                        }
+                    }
+                    animateDonationView()
                 }
             }
         }
     }
 
-    private fun animateDonationView() {
+    private suspend fun animateDonationView() = withContext(Dispatchers.Main) {
         if (binding.donationReminder.isVisible) {
             val animate = TranslateAnimation(
                 0f, 0f, 0f, -binding.donationReminder.height.toFloat()
@@ -456,6 +452,9 @@ class HomeFragment : Fragment() {
                     binding.donationClose.visibility = View.VISIBLE
                     binding.donationReminder.clearAnimation()
                     layout.setAnimationListener(null)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        binding.donationButton.pop()
+                    }
                 }
             })
             binding.donationReminder.startAnimation(animate)

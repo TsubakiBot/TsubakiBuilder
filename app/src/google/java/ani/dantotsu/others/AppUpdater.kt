@@ -48,50 +48,6 @@ import kotlin.random.Random
 
 object AppUpdater {
 
-    private val packageActionReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            when (intent.getIntExtra(
-                PackageInstaller.EXTRA_STATUS,
-                PackageInstaller.STATUS_FAILURE
-            )) {
-                PackageInstaller.STATUS_PENDING_USER_ACTION -> {
-                    intent.getParcelableExtraCompat<Intent>(Intent.EXTRA_INTENT)?.let {
-                        try {
-                            startLauncherActivity(context, Intent.parseUri(
-                                it.toUri(0),
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1)
-                                    Intent.URI_ALLOW_UNSAFE else 0
-                            ))
-                        } catch (ignored: URISyntaxException) { }
-                    }
-                }
-
-                PackageInstaller.STATUS_FAILURE_ABORTED -> { }
-                PackageInstaller.STATUS_SUCCESS -> {
-                    deletePackages(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS
-                    ))
-                    deletePackages(File(Environment.DIRECTORY_DOWNLOADS))
-                }
-                else -> {
-                    val error = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
-                    if (error?.contains("Session was abandoned") != true)
-                        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-    }
-
-    private fun deletePackages(directory: File) {
-        directory.listFiles()?.filter { file ->
-            file.name.startsWith("Dantotsu-") && file.extension == "apk"
-        }?.forEach { it.delete() }
-    }
-
-    private fun startLauncherActivity(context: Context, intent: Intent?) {
-        context.startActivity(intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-    }
-
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
         if (post) snackString(currContext()?.getString(R.string.checking_for_update))
         val repo = activity.getString(R.string.repo)
@@ -211,10 +167,6 @@ object AppUpdater {
     }
 
     private fun openApk(context: Context, uri: Uri) {
-        ContextCompat.registerReceiver(
-            context, packageActionReceiver, IntentFilter(INSTALL_ACTION), ContextCompat.RECEIVER_EXPORTED
-        )
-
         try {
             uri.path?.let {
                 context.contentResolver.openInputStream(uri).use { apkStream ->

@@ -8,6 +8,8 @@
    <a href="https://discord.gg/4HPZ5nAWwM"><img src="https://img.shields.io/discord/358599430502481920.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 
+### Note: I am not a collaborator or member of the upstream Discord. Contributions are submitted as a courtesy.
+
 # **Dantotsu** 🌟
 
 Dantotsu is an [Anilist](https://anilist.co/) only client.

@@ -63,6 +63,14 @@
         tools:targetApi="tiramisu">
 
         <receiver
+            android:name=".update.UpdateReceiver"
+            android:exported="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
             android:name=".widgets.upcoming.UpcomingWidget"
             android:exported="true">
             <intent-filter>

@@ -1,5 +1,6 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.content.Context
@@ -1204,6 +1205,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
         }
 
+        @SuppressLint("SuspiciousIndentation")
         if (!BuildConfig.BUILD_TYPE.contentEquals("matagi"))
         lifecycleScope.launch(Dispatchers.IO) {
             delay(2000)

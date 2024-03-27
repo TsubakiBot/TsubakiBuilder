@@ -14,4 +14,9 @@
     <string name="donate_desc">Want to support Mr ∞ Matagi?\nConsider Donating</string>
 
     <string name="setting_progress">Progress: %1$d</string>
+
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Chapters</string>
+    <string name="episodes_watched_n">Episodes</string>
 </resources>

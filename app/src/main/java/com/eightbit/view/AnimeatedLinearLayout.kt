@@ -2,7 +2,7 @@
  * ====================================================================
  * Copyright (c) 2021-2023 AbandonedCart.  All rights reserved.
  *
- * See https://github.com/SamSprung/.github/blob/main/LICENSE#L5
+ * https://github.com/AbandonedCart/AbandonedCart/blob/main/LICENSE#L4
  * ====================================================================
  *
  * The license and distribution terms for any publicly available version or

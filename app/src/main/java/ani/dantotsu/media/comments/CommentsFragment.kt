@@ -75,8 +75,6 @@ class CommentsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity = requireActivity() as MediaDetailsActivity
 
-        binding.commentsListContainer.setBaseline(activity.navBar, activity.binding.commentInputLayout)
-
         //get the media id from the intent
         val mediaId = arguments?.getInt("mediaId") ?: -1
         mediaName = arguments?.getString("mediaName") ?: "unknown"
@@ -107,6 +105,8 @@ class CommentsFragment : Fragment() {
 
         binding.commentsList.adapter = adapter
         binding.commentsList.layoutManager = LinearLayoutManager(activity)
+
+        binding.commentsList.setBaseline(activity.navBar, activity.binding.commentInputLayout)
 
         if (CommentsAPI.authToken != null) {
             lifecycleScope.launch {
