@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +19,14 @@ import eltos.simpledialogfragment.color.SimpleColorDialog
 /**
  * The configuration screen for the [ResumableWidget] AppWidget.
  */
-class ResumableWidgetConfigureActivity : AppCompatActivity(),
+class ResumableWidgetConfigure : AppCompatActivity(),
     SimpleDialog.OnDialogResultListener {
     private var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID
 
+    private var isMonetEnabled = false
+
     private var onClickListener = View.OnClickListener {
-        val context = this@ResumableWidgetConfigureActivity
+        val context = this@ResumableWidgetConfigure
         val appWidgetManager = AppWidgetManager.getInstance(context)
 
         updateAppWidget(
@@ -48,6 +51,21 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
         setContentView(binding.root)
         val prefs = getSharedPreferences(ResumableWidget.PREFS_NAME, Context.MODE_PRIVATE)
 
+        binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
+            isMonetEnabled = isChecked
+            if (isChecked) {
+                binding.topBackgroundButton.visibility = View.GONE
+                binding.bottomBackgroundButton.visibility = View.GONE
+                binding.titleColorButton.visibility = View.GONE
+                themeColors()
+
+            } else {
+                binding.topBackgroundButton.visibility = View.VISIBLE
+                binding.bottomBackgroundButton.visibility = View.VISIBLE
+                binding.titleColorButton.visibility = View.VISIBLE
+            }
+        }
+
         binding.topBackgroundButton.setOnClickListener {
             val tag = ResumableWidget.PREF_BACKGROUND_COLOR
             SimpleColorDialog().title(R.string.custom_theme)
@@ -58,7 +76,7 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
                     )
                 )
                 .colors(
-                    this@ResumableWidgetConfigureActivity,
+                    this@ResumableWidgetConfigure,
                     SimpleColorDialog.MATERIAL_COLOR_PALLET
                 )
                 .setupColorWheelAlpha(true)
@@ -67,14 +85,14 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
                 .gridNumColumn(5)
                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
                 .neg()
-                .show(this@ResumableWidgetConfigureActivity, tag)
+                .show(this@ResumableWidgetConfigure, tag)
         }
         binding.bottomBackgroundButton.setOnClickListener {
             val tag = ResumableWidget.PREF_BACKGROUND_FADE
             SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(prefs.getInt(ResumableWidget.PREF_BACKGROUND_FADE, Color.GRAY))
+                .colorPreset(prefs.getInt(ResumableWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000")))
                 .colors(
-                    this@ResumableWidgetConfigureActivity,
+                    this@ResumableWidgetConfigure,
                     SimpleColorDialog.MATERIAL_COLOR_PALLET
                 )
                 .setupColorWheelAlpha(true)
@@ -83,14 +101,14 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
                 .gridNumColumn(5)
                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
                 .neg()
-                .show(this@ResumableWidgetConfigureActivity, tag)
+                .show(this@ResumableWidgetConfigure, tag)
         }
         binding.titleColorButton.setOnClickListener {
             val tag = ResumableWidget.PREF_TITLE_TEXT_COLOR
             SimpleColorDialog().title(R.string.custom_theme)
                 .colorPreset(prefs.getInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE))
                 .colors(
-                    this@ResumableWidgetConfigureActivity,
+                    this@ResumableWidgetConfigure,
                     SimpleColorDialog.MATERIAL_COLOR_PALLET
                 )
                 .allowCustom(true)
@@ -98,7 +116,16 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
                 .gridNumColumn(5)
                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
                 .neg()
-                .show(this@ResumableWidgetConfigureActivity, tag)
+                .show(this@ResumableWidgetConfigure, tag)
+        }
+
+        binding.useStackView.run {
+            isChecked = prefs.getBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
+        }
+        binding.useStackView.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit()
+                .putBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
+                .apply()
         }
 
         binding.widgetType.setText(ResumableType.entries[
@@ -117,15 +144,6 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
                 .putInt(ResumableWidget.PREF_WIDGET_TYPE, i)
                 .apply()
             binding.widgetType.clearFocus()
-        }
-
-        binding.useStackView.run {
-            isChecked = prefs.getBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
-        }
-        binding.useStackView.setOnCheckedChangeListener { _, isChecked ->
-            prefs.edit()
-                .putBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
-                .apply()
         }
 
         binding.addButton.setOnClickListener(onClickListener)
@@ -187,4 +205,20 @@ class ResumableWidgetConfigureActivity : AppCompatActivity(),
         return true
     }
 
+    private fun themeColors() {
+        val typedValueSurface = TypedValue()
+        theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, typedValueSurface, true)
+        val backgroundColor = typedValueSurface.data
+
+        val typedValuePrimary = TypedValue()
+        theme.resolveAttribute(com.google.android.material.R.attr.colorPrimary, typedValuePrimary, true)
+        val textColor = typedValuePrimary.data
+
+        getSharedPreferences(ResumableWidget.PREFS_NAME, Context.MODE_PRIVATE).edit().apply {
+            putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)
+            putInt(ResumableWidget.PREF_BACKGROUND_FADE, backgroundColor)
+            putInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, textColor)
+            apply()
+        }
+    }
 }

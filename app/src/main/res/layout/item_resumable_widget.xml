@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/widget_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="2dp"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_show_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:fontFamily="@font/poppins_bold"
-            android:text=""
+            android:text="@string/loading"
             android:textColor="@color/bg_white"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textSize="14sp" />
+            android:ellipsize="marquee"
+            android:textSize="14sp"
+            android:singleLine="true" />
 
         <ImageView
             android:id="@+id/image_show_icon"

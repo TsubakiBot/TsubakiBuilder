@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/gradient_background"
+        android:src="@drawable/linear_gradient_black"
         tools:ignore="ContentDescription"/>
 
     <RelativeLayout
@@ -66,7 +66,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
             android:autoStart="true"
-            android:flipInterval="120000"
+            android:flipInterval="30000"
             android:visibility="gone" />
 
         <StackView

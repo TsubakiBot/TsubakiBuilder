@@ -86,9 +86,6 @@ class ResumableRemoteViewsFactory(private val context: Context) :
         return bitmap?.let { roundCorners(it) }
     }
 
-
-
-
     override fun getLoadingView(): RemoteViews {
         return RemoteViews(context.packageName, R.layout.item_resumable_widget)
     }
@@ -97,8 +94,8 @@ class ResumableRemoteViewsFactory(private val context: Context) :
         return 1
     }
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
+    override fun getItemId(id: Int): Long {
+        return id.toLong()
     }
 
     override fun hasStableIds(): Boolean {
