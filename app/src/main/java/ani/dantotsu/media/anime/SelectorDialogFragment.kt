@@ -15,8 +15,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
@@ -29,7 +27,6 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.databinding.ItemStreamBinding
 import ani.dantotsu.databinding.ItemUrlBinding
@@ -53,13 +50,12 @@ import ani.dantotsu.snackString
 import ani.dantotsu.tryWith
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
-import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import tachiyomi.core.util.lang.launchIO
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.text.DecimalFormat
@@ -273,33 +269,27 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     @androidx.annotation.OptIn(UnstableApi::class)
-    private fun launchWithTorrentServer(video: Video, media: Media) {
-        launchIO {
-            TorrentServerService.start()
-            TorrentServerService.wait(10)
-            TorrentServerUtils.setTrackersList()
+    private suspend fun launchWithTorrentServer(video: Video) = withContext(Dispatchers.IO) {
+            ExoplayerView.torrentHash?.let { TorrentServerApi.remTorrent(it) }
             val index = if (video.file.url.contains("index=")) {
-                 try {
+                try {
                     video.file.url.substringAfter("index=").toInt()
-                } catch (e: NumberFormatException) { 0 }
-            } else 0
+                } catch (ignored: NumberFormatException) { 0 }
+            } else { 0 }
             val currentTorrent = TorrentServerApi.addTorrent(
                 video.file.url, video.quality.toString(), "", "", false
             )
-            video.file.url = TorrentServerUtils.getTorrentPlayLink(currentTorrent, index)
-            val intent = Intent(currContext(), ExoplayerView::class.java)
-            ExoplayerView.media = media
-            ExoplayerView.initialized = true
-            startActivity(intent)
-            dismiss()
-        }
+            ExoplayerView.torrentHash = currentTorrent.hash
+            video.file.url =
+                TorrentServerUtils.getTorrentPlayLink(currentTorrent, index)
     }
 
     @SuppressLint("UnsafeOptInUsageError")
     fun startExoplayer(media: Media) {
         prevEpisode = null
+
+        dismiss()
 
         episode?.let { ep ->
             val video = ep.extractors?.find {
@@ -307,21 +297,17 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             }?.videos?.getOrNull(ep.selectedVideo)
             video?.file?.url?.let { videoUrl ->
                 if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
-                    stopAddingToList()
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.selectorRecyclerView.visibility = View.GONE
-                        binding.selectorProgressBar.visibility = View.VISIBLE
-                        launchWithTorrentServer(video, media)
+                        runBlocking(Dispatchers.IO) {
+                            launchWithTorrentServer(video)
+                        }
                     } else {
-                        dismiss()
                         launchWithExternalPlayer(ep, video)
+                        return
                     }
-                    return
                 }
             }
         }
-
-        dismiss()
 
         if (launch!! || model.watchSources!!.isDownloadedSource(media.selected!!.sourceIndex)) {
             stopAddingToList()
