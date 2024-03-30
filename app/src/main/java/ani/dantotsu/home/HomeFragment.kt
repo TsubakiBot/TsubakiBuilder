@@ -149,7 +149,7 @@ class HomeFragment : Fragment() {
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
 
         var reached = false
-        var duration = ((PrefManager.getVal(PrefName.AnimationSpeed) as Float) * 200).toLong()
+        val duration = ((PrefManager.getVal(PrefName.AnimationSpeed) as Float) * 200).toLong()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.homeScroll.setOnScrollChangeListener { _, _, _, _, _ ->

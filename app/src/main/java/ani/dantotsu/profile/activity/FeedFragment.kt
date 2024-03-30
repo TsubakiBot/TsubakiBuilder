@@ -57,7 +57,7 @@ class FeedFragment : Fragment() {
 
         val navBar = if (userId != null) {
             (activity as ProfileActivity).navBar
-        }else{
+        } else {
             (activity as FeedActivity).navBar
         }
         binding.listRecyclerView.setBaseline(navBar)
@@ -74,7 +74,7 @@ class FeedFragment : Fragment() {
             binding.root.requestLayout()
             val navBar = if (userId != null) {
                 (activity as ProfileActivity).navBar
-            }else{
+            } else {
                 (activity as FeedActivity).navBar
             }
             binding.listRecyclerView.setBaseline(navBar)
