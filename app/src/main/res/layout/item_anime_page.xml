@@ -240,7 +240,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="250dp">
+        android:minHeight="242dp">
 
         <ProgressBar
             android:id="@+id/animeMoviesProgressBar"
@@ -252,7 +252,7 @@
         <ani.dantotsu.FadingEdgeRecyclerView
             android:id="@+id/animeMoviesRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="242dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="true"
             android:paddingStart="20dp"
@@ -280,7 +280,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="250dp">
+        android:minHeight="242dp">
 
         <ProgressBar
             android:id="@+id/animeTopRatedProgressBar"
@@ -292,7 +292,7 @@
         <ani.dantotsu.FadingEdgeRecyclerView
             android:id="@+id/animeTopRatedRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="242dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="true"
             android:paddingStart="20dp"
@@ -320,7 +320,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="250dp">
+        android:minHeight="242dp">
 
         <ProgressBar
             android:id="@+id/animeMostFavProgressBar"
@@ -332,7 +332,7 @@
         <ani.dantotsu.FadingEdgeRecyclerView
             android:id="@+id/animeMostFavRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="242dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="true"
             android:paddingStart="20dp"
