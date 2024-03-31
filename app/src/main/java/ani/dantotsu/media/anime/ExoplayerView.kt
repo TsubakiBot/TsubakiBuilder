@@ -60,7 +60,10 @@ import androidx.media3.cast.CastPlayer
 import androidx.media3.cast.SessionAvailabilityListener
 import androidx.media3.common.C
 import androidx.media3.common.C.AUDIO_CONTENT_TYPE_MOVIE
+import androidx.media3.common.C.TRACK_TYPE_AUDIO
 import androidx.media3.common.C.TRACK_TYPE_VIDEO
+import androidx.media3.common.C.TrackType
+import androidx.media3.common.Format
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
@@ -151,7 +154,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import tachiyomi.core.util.lang.launchIO
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.util.Calendar
@@ -191,6 +193,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var exoSettings: ImageButton
     private lateinit var exoSubtitle: ImageButton
     private lateinit var exoSubtitleView: SubtitleView
+    private lateinit var exoAudioTrack: ImageButton
     private lateinit var exoRotate: ImageButton
     private lateinit var exoSpeed: ImageButton
     private lateinit var exoScreen: ImageButton
@@ -423,6 +426,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoSource = playerView.findViewById(R.id.exo_source)
         exoSettings = playerView.findViewById(R.id.exo_settings)
         exoSubtitle = playerView.findViewById(R.id.exo_sub)
+        exoAudioTrack = playerView.findViewById(R.id.exo_audio)
         exoSubtitleView = playerView.findViewById(androidx.media3.ui.R.id.exo_subtitles)
         exoRotate = playerView.findViewById(R.id.exo_rotate)
         exoSpeed = playerView.findViewById(androidx.media3.ui.R.id.exo_playback_speed)
@@ -488,9 +492,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         it.visibility = View.GONE
     }
 }
-
         setupSubFormatting(playerView)
-
 
         playerView.subtitleView?.alpha = when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
             true -> PrefManager.getVal(PrefName.SubAlpha)
@@ -1860,13 +1862,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     override fun onTracksChanged(tracks: Tracks) {
+        val audioTracks: ArrayList<Tracks.Group> = arrayListOf()
         tracks.groups.forEach {
             println("Track__: $it")
             println("Track__: ${it.length}")
             println("Track__: ${it.isSelected}")
             println("Track__: ${it.type}")
             println("Track__: ${it.mediaTrackGroup.id}")
-            if (it.type == 3 && it.mediaTrackGroup.id == "1:") {
+            if (it.type == TRACK_TYPE_AUDIO) {
+                audioTracks.add(it)
+            } else if (it.type == 3 && it.mediaTrackGroup.id == "1:") {
                 playerView.player?.trackSelectionParameters =
                     playerView.player?.trackSelectionParameters?.buildUpon()
                         ?.setOverrideForType(
@@ -1883,6 +1888,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
         println("Track: ${tracks.groups.size}")
+        exoAudioTrack.isVisible = audioTracks.size > 1
+        exoAudioTrack.setOnClickListener {
+            AudioTrackDialogFragment(exoPlayer, audioTracks)
+                .show(supportFragmentManager, "dialog")
+        }
     }
 
     override fun onPlayerError(error: PlaybackException) {
