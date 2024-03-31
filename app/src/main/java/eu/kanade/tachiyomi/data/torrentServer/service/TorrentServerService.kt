@@ -111,8 +111,8 @@ class TorrentServerService : Service() {
         const val ACTION_STOP = "stop_torrent_server"
         val applicationContext = Injekt.get<Application>()
 
-        fun isRunning(): Boolean {
-            with ( currContext()?.getSystemService(ACTIVITY_SERVICE) as ActivityManager) {
+        fun isRunning(context: Context): Boolean {
+            with ( context.getSystemService(ACTIVITY_SERVICE) as ActivityManager) {
                 @Suppress("DEPRECATION") // We only need our services
                 getRunningServices(Int.MAX_VALUE).forEach {
                     if (TorrentServerService::class.java.name.equals(it.service.className)) {

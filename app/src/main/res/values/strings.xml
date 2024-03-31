@@ -260,6 +260,7 @@
     <string name="sub_text_example">Example Sub</string>
     <string name="sub_font_select">Subtitle Font</string>
     <string name="subtitle_font_size">Subtitle Size</string>
+    <string name="no_subs_available">No Subtitles Available</string>
 
     <string name="audio_tracks">Audio Tracks</string>
 

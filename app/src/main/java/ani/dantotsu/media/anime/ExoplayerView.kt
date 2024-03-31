@@ -48,6 +48,8 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.addCallback
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -61,9 +63,8 @@ import androidx.media3.cast.SessionAvailabilityListener
 import androidx.media3.common.C
 import androidx.media3.common.C.AUDIO_CONTENT_TYPE_MOVIE
 import androidx.media3.common.C.TRACK_TYPE_AUDIO
+import androidx.media3.common.C.TRACK_TYPE_TEXT
 import androidx.media3.common.C.TRACK_TYPE_VIDEO
-import androidx.media3.common.C.TrackType
-import androidx.media3.common.Format
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
@@ -154,13 +155,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.util.Calendar
+import java.util.Locale
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.collections.set
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -378,6 +379,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             6 -> ResourcesCompat.getFont(this, R.font.blocky)
             else -> ResourcesCompat.getFont(this, R.font.poppins_semi_bold)
         }
+
+        playerView.subtitleView?.setApplyEmbeddedStyles(false)
+        playerView.subtitleView?.setApplyEmbeddedFontSizes(false)
+
         playerView.subtitleView?.setStyle(
             CaptionStyleCompat(
                 primaryColor,
@@ -388,6 +393,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 font
             )
         )
+
+        playerView.subtitleView?.alpha = when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+            true -> PrefManager.getVal(PrefName.SubAlpha)
+            false -> 0f
+        }
+        val fontSize = PrefManager.getVal<Int>(PrefName.FontSize).toFloat()
+        playerView.subtitleView?.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
     }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -457,49 +469,42 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }, AUDIO_CONTENT_TYPE_MOVIE, AUDIOFOCUS_GAIN)
 
         if (System.getInt(contentResolver, System.ACCELEROMETER_ROTATION, 0) != 1) {
-    if (PrefManager.getVal(PrefName.RotationPlayer)) {
-        orientationListener =
-            object : OrientationEventListener(this, SensorManager.SENSOR_DELAY_UI) {
-                override fun onOrientationChanged(orientation: Int) {
-                    when (orientation) {
-                        in 45..135 -> {
-                            if (rotation != ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE) {
-                                exoRotate.visibility = View.VISIBLE
+            if (PrefManager.getVal(PrefName.RotationPlayer)) {
+                orientationListener =
+                    object : OrientationEventListener(this, SensorManager.SENSOR_DELAY_UI) {
+                        override fun onOrientationChanged(orientation: Int) {
+                            when (orientation) {
+                                in 45..135 -> {
+                                    if (rotation != ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE) {
+                                        exoRotate.visibility = View.VISIBLE
+                                    }
+                                    rotation = ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE
+                                }
+                                in 225..315 -> {
+                                    if (rotation != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                                        exoRotate.visibility = View.VISIBLE
+                                    }
+                                    rotation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                                }
+                                in 315..360, in 0..45 -> {
+                                    if (rotation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                                        exoRotate.visibility = View.VISIBLE
+                                    }
+                                    rotation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                                }
                             }
-                            rotation = ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE
-                        }
-                        in 225..315 -> {
-                            if (rotation != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-                                exoRotate.visibility = View.VISIBLE
-                            }
-                            rotation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                        }
-                        in 315..360, in 0..45 -> {
-                            if (rotation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                                exoRotate.visibility = View.VISIBLE
-                            }
-                            rotation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                         }
                     }
-                }
+                orientationListener?.enable()
             }
-        orientationListener?.enable()
-    }
 
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-    exoRotate.setOnClickListener {
-        requestedOrientation = rotation
-        it.visibility = View.GONE
-    }
-}
-        setupSubFormatting(playerView)
-
-        playerView.subtitleView?.alpha = when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
-            true -> PrefManager.getVal(PrefName.SubAlpha)
-            false -> 0f
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            exoRotate.setOnClickListener {
+                requestedOrientation = rotation
+                it.visibility = View.GONE
+            }
         }
-        val fontSize = PrefManager.getVal<Int>(PrefName.FontSize).toFloat()
-        playerView.subtitleView?.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
+        setupSubFormatting(playerView)
 
         if (savedInstanceState != null) {
             currentWindow = savedInstanceState.getInt(resumeWindow)
@@ -1198,7 +1203,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 putExtra("subtitle", subtitle)
             }
             exoPlayer.pause()
-            startActivity(intent)
+            onChangeSettings.launch(intent)
         }
 
         //Speed
@@ -1367,17 +1372,20 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
 
         //Subtitles
-        exoSubtitle.isVisible = ext.subtitles.isNotEmpty()
-        exoSubtitle.setOnClickListener {
-            subClick()
+        if (torrentHash == null) {
+            exoSubtitle.isVisible = ext.subtitles.isNotEmpty()
+            exoSubtitle.setOnClickListener {
+                subClick()
+            }
         }
         var sub: MediaItem.SubtitleConfiguration? = null
         if (subtitle != null) {
+            val subtitleUrl = torrentHash?.let { video!!.file.url } ?: subtitle!!.file.url
             //var localFile: String? = null
             if (subtitle?.type == SubtitleType.UNKNOWN) {
                 runBlocking {
-                    val type = SubtitleDownloader.loadSubtitleType(subtitle!!.file.url)
-                    val fileUri = Uri.parse(subtitle!!.file.url)
+                    val type = SubtitleDownloader.loadSubtitleType(subtitleUrl)
+                    val fileUri = Uri.parse(subtitleUrl)
                     sub = MediaItem.SubtitleConfiguration
                         .Builder(fileUri)
                         .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
@@ -1394,7 +1402,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
                 println("sub: $sub")
             } else {
-                val subUri = Uri.parse(subtitle!!.file.url)
+                val subUri = Uri.parse(subtitleUrl)
                 sub = MediaItem.SubtitleConfiguration
                     .Builder(subUri)
                     .setSelectionFlags(C.SELECTION_FLAG_FORCED)
@@ -1489,22 +1497,23 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         //Quality Track
         trackSelector = DefaultTrackSelector(this)
-        trackSelector.setParameters(
-            trackSelector.buildUponParameters()
-                .setAllowVideoMixedMimeTypeAdaptiveness(true)
-                .setAllowVideoNonSeamlessAdaptiveness(true)
-                .setSelectUndeterminedTextLanguage(true)
-                .setAllowAudioMixedMimeTypeAdaptiveness(true)
-                .setAllowMultipleAdaptiveSelections(true)
-                .setPreferredTextLanguage(subtitle?.language ?: "en")
-                .setPreferredTextRoleFlags(C.ROLE_FLAG_SUBTITLE)
-                .setRendererDisabled(TRACK_TYPE_VIDEO, false)
-                .setRendererDisabled(C.TRACK_TYPE_AUDIO, false)
-                .setRendererDisabled(C.TRACK_TYPE_TEXT, false)
-                .setMaxVideoSize(1, 1)
-            //.setOverrideForType(
-            //     TrackSelectionOverride(trackSelector, 2))
-        )
+        val parameters = trackSelector.buildUponParameters()
+            .setAllowVideoMixedMimeTypeAdaptiveness(true)
+            .setAllowVideoNonSeamlessAdaptiveness(true)
+            .setSelectUndeterminedTextLanguage(true)
+            .setAllowAudioMixedMimeTypeAdaptiveness(true)
+            .setAllowMultipleAdaptiveSelections(true)
+            // Set preferred language to the user's locale
+            .setPreferredTextLanguage(subtitle?.language ?: "en")
+            .setPreferredTextRoleFlags(C.ROLE_FLAG_SUBTITLE)
+            .setRendererDisabled(TRACK_TYPE_VIDEO, false)
+            .setRendererDisabled(TRACK_TYPE_AUDIO, false)
+            .setRendererDisabled(TRACK_TYPE_TEXT, false)
+            .setMaxVideoSize(1, 1)
+        // .setOverrideForType(TrackSelectionOverride(trackSelector, TRACK_TYPE_VIDEO))
+        if (PrefManager.getVal(PrefName.SettingsPreferDub))
+            parameters.setPreferredAudioLanguage(Locale.getDefault().language)
+        trackSelector.setParameters(parameters)
 
         if (playbackPosition != 0L && !changingServer && !PrefManager.getVal<Boolean>(PrefName.AlwaysContinue)) {
             val time = String.format(
@@ -1539,18 +1548,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private fun buildExoplayer() {
         //Player
-        val DEFAULT_MIN_BUFFER_MS = 600000
-        val DEFAULT_MAX_BUFFER_MS = 600000
-        val BUFFER_FOR_PLAYBACK_MS = 2500
-        val BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS = 5000
-
         val loadControl = DefaultLoadControl.Builder()
             .setBackBuffer(1000 * 60 * 2, true)
             .setBufferDurationsMs(
-                DEFAULT_MIN_BUFFER_MS,
-                DEFAULT_MAX_BUFFER_MS,
-                BUFFER_FOR_PLAYBACK_MS,
-                BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
+                600000,
+                600000,
+                2500,
+                5000,
             )
             .build()
 
@@ -1787,7 +1791,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         if (isInitialized) {
             val playerCurrentTime = exoPlayer.currentPosition / 1000
             currentTimeStamp = model.timeStamps.value?.find { timestamp ->
-                timestamp.interval.startTime < playerCurrentTime && playerCurrentTime < (timestamp.interval.endTime - 1)
+                timestamp.interval.startTime < playerCurrentTime
+                        && playerCurrentTime < (timestamp.interval.endTime - 1)
             }
 
             val new = currentTimeStamp
@@ -1861,51 +1866,103 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }, 500)
     }
 
+    fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int) {
+        if (type == TRACK_TYPE_TEXT) PrefManager.setVal(PrefName.Subtitles, true)
+        exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
+            .buildUpon()
+            .setOverrideForType(
+                TrackSelectionOverride(trackGroup.mediaTrackGroup, 0)
+            )
+            .build()
+        if (type == TRACK_TYPE_TEXT) setupSubFormatting(playerView)
+    }
+
     override fun onTracksChanged(tracks: Tracks) {
         val audioTracks: ArrayList<Tracks.Group> = arrayListOf()
+        val subTracks: ArrayList<Tracks.Group> = arrayListOf()
         tracks.groups.forEach {
-            println("Track__: $it")
-            println("Track__: ${it.length}")
-            println("Track__: ${it.isSelected}")
-            println("Track__: ${it.type}")
-            println("Track__: ${it.mediaTrackGroup.id}")
-            if (it.type == TRACK_TYPE_AUDIO) {
-                audioTracks.add(it)
-            } else if (it.type == 3 && it.mediaTrackGroup.id == "1:") {
-                playerView.player?.trackSelectionParameters =
-                    playerView.player?.trackSelectionParameters?.buildUpon()
-                        ?.setOverrideForType(
-                            TrackSelectionOverride(it.mediaTrackGroup, it.length - 1)
-                        )
-                        ?.build()!!
-            } else if (it.type == 3) {
-                playerView.player?.trackSelectionParameters =
-                    playerView.player?.trackSelectionParameters?.buildUpon()
-                        ?.addOverride(
-                            TrackSelectionOverride(it.mediaTrackGroup, listOf())
-                        )
-                        ?.build()!!
+            when (it.type) {
+                TRACK_TYPE_AUDIO -> {
+                    if (it.isSupported(true)) audioTracks.add(it)
+                }
+                TRACK_TYPE_TEXT -> {
+                    when {
+                        it.mediaTrackGroup.id == "1:" -> {
+                            playerView.player?.trackSelectionParameters =
+                                playerView.player?.trackSelectionParameters?.buildUpon()
+                                    ?.setOverrideForType(
+                                        TrackSelectionOverride(it.mediaTrackGroup, it.length - 1)
+                                    )
+                                    ?.build()!!
+                        }
+                        else -> {
+                            if (torrentHash != null) {
+                                if (it.isSupported(true)) subTracks.add(it)
+                                if (PrefManager.getVal(PrefName.Subtitles)) return@forEach
+                            }
+                            playerView.player?.trackSelectionParameters =
+                                playerView.player?.trackSelectionParameters?.buildUpon()
+                                    ?.addOverride(
+                                        TrackSelectionOverride(it.mediaTrackGroup, listOf())
+                                    )
+                                    ?.build()!!
+                        }
+                    }
+                }
             }
         }
         println("Track: ${tracks.groups.size}")
         exoAudioTrack.isVisible = audioTracks.size > 1
         exoAudioTrack.setOnClickListener {
-            AudioTrackDialogFragment(exoPlayer, audioTracks)
+            TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
                 .show(supportFragmentManager, "dialog")
         }
+        if (torrentHash != null) {
+            exoSubtitle.isVisible = subTracks.size > 1
+            exoSubtitle.setOnClickListener {
+                TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
+                    .show(supportFragmentManager, "dialog")
+            }
+        }
+    }
+
+    private val onChangeSettings = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { _: ActivityResult ->
+        if (torrentHash != null) {
+            exoPlayer.currentTracks.groups.forEach { trackGroup ->
+                when (trackGroup.type) {
+                    TRACK_TYPE_TEXT -> {
+                        if (PrefManager.getVal(PrefName.Subtitles)) {
+                            onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
+                        } else {
+                            playerView.player?.let {
+                                it.trackSelectionParameters = it.trackSelectionParameters
+                                    .buildUpon()
+                                    .addOverride(
+                                        TrackSelectionOverride(trackGroup.mediaTrackGroup, listOf())
+                                    )
+                                    .build()
+                            }
+
+                        }
+                    }
+                    else -> { }
+                }
+            }
+        }
+        if (isInitialized) exoPlayer.play()
     }
 
     override fun onPlayerError(error: PlaybackException) {
         when (error.errorCode) {
-            PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS, PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED
-            -> {
+            PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
+            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> {
                 toast("Source Exception : ${error.message}")
                 isPlayerPlaying = true
                 sourceClick()
             }
-
-            else
-            -> {
+            else -> {
                 toast("Player Error ${error.errorCode} (${error.errorCodeName}) : ${error.message}")
                 Injekt.get<CrashlyticsInterface>().logException(error)
             }
@@ -1915,7 +1972,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private var isBuffering = true
     override fun onPlaybackStateChanged(playbackState: Int) {
         if (playbackState == ExoPlayer.STATE_READY) {
-
             exoPlayer.play()
             if (episodeLength == 0f) {
                 episodeLength = exoPlayer.duration.toFloat()
@@ -1970,6 +2026,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
+    @SuppressLint("UnsafeIntentLaunch")
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         finishAndRemoveTask()
@@ -2007,10 +2064,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     // Cast
     private fun cast() {
         val videoURL = video?.file?.url ?: return
+        val subtitleUrl = torrentHash?.let { video!!.file.url } ?: subtitle!!.file.url
         val shareVideo = Intent(Intent.ACTION_VIEW)
         shareVideo.setDataAndType(Uri.parse(videoURL), "video/*")
         shareVideo.setPackage("com.instantbits.cast.webvideo")
-        if (subtitle != null) shareVideo.putExtra("subtitle", subtitle!!.file.url)
+        if (subtitle != null) shareVideo.putExtra("subtitle", subtitleUrl)
         shareVideo.putExtra(
             "title",
             media.userPreferredName + " : Ep " + episodeTitleArr[currentEpisodeIndex]

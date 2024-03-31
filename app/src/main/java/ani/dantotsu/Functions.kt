@@ -1412,19 +1412,18 @@ fun buildMarkwon(
     return markwon
 }
 
-suspend fun torrServerStart() {
-    if (!TorrentServerService.isRunning()) {
+suspend fun torrServerStart(context: Context) {
+    if (!TorrentServerService.isRunning(context)) {
         TorrentServerService.start()
         TorrentServerService.wait(10)
         TorrentServerUtils.setTrackersList()
     }
 }
 
-suspend fun torrServerStop() {
-    if (TorrentServerService.isRunning()) {
+suspend fun torrServerStop(context: Context) {
+    if (TorrentServerService.isRunning(context)) {
         try {
             TorrentServerService.stop()
-        } catch (ignored: Exception) {
-        }
+        } catch (ignored: Exception) { }
     }
 }

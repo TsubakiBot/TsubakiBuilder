@@ -416,14 +416,14 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     val subtitleNames = subtitles.map { it.language }
                     var subtitleToDownload: Subtitle? = null
                     val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                        .setTitle("Download Subtitle")
+                        .setTitle(getString(R.string.download_subtitle))
                         .setSingleChoiceItems(
                             subtitleNames.toTypedArray(),
                             -1
                         ) { _, which ->
                             subtitleToDownload = subtitles[which]
                         }
-                        .setPositiveButton("Download") { dialog, _ ->
+                        .setPositiveButton(R.string.download) { dialog, _ ->
                             scope.launch {
                                 if (subtitleToDownload != null) {
                                     SubtitleDownloader.downloadSubtitle(
@@ -435,13 +435,13 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             }
                             dialog.dismiss()
                         }
-                        .setNegativeButton("Cancel") { dialog, _ ->
+                        .setNegativeButton(R.string.cancel) { dialog, _ ->
                             dialog.dismiss()
                         }
                         .show()
                     alertDialog.window?.setDimAmount(0.8f)
                 } else {
-                    snackString("No Subtitles Available")
+                    snackString(R.string.no_subs_available)
                 }
             }
             binding.urlDownload.setSafeOnClickListener {

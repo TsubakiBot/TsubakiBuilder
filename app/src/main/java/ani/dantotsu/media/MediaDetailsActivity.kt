@@ -108,7 +108,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         // Ui init
 
         initActivity(this)
-        if (media.anime != null) launchIO { torrServerStart() }
+        if (media.anime != null) launchIO { torrServerStart(this@MediaDetailsActivity) }
         binding.mediaViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = navBarHeight }
         val oldMargin = binding.mediaViewPager.marginBottom
         AndroidBug5497Workaround.assistActivity(this) {
