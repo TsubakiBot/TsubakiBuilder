@@ -5,7 +5,7 @@
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
    <a href="https://github.com/RepoDevil/Dantotsu/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Dantotsu/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
    <a href="https://www.codefactor.io/repository/github/RepoDevil/dantotsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Dantotsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
-   <a href="https://discord.gg/4HPZ5nAWwM"><img src="https://img.shields.io/discord/358599430502481920.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
+   <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 
 ### Note: I am not a collaborator or member of the upstream Discord. Contributions are submitted as a courtesy.
