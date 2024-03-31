@@ -42,7 +42,6 @@ import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.discord.DiscordService
 import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
@@ -83,6 +82,7 @@ import ani.dantotsu.showSystemBarsRetractView
 import ani.dantotsu.snackString
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.tryWith
+import ani.dantotsu.util.Logger
 import com.alexvasilkov.gestures.views.GestureFrameLayout
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
@@ -265,7 +265,6 @@ class MangaReaderActivity : AppCompatActivity() {
                 }
                 model.mangaReadSources = mangaSources
             } catch (e: Exception) {
-                Injekt.get<CrashlyticsInterface>().logException(e)
                 logError(e)
             }
         }
@@ -1029,8 +1028,8 @@ class MangaReaderActivity : AppCompatActivity() {
             try {
                 a?.deleteFile(fileName)
             } catch (e: Exception) {
-                Injekt.get<CrashlyticsInterface>().log("Failed to delete file $fileName")
-                Injekt.get<CrashlyticsInterface>().logException(e)
+                Logger.log("Failed to delete file $fileName")
+                Logger.log(e)
             }
             e.printStackTrace()
         }

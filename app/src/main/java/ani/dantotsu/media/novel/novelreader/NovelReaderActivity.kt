@@ -29,7 +29,6 @@ import androidx.webkit.WebViewCompat
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityNovelReaderBinding
 import ani.dantotsu.hideSystemBars
@@ -42,6 +41,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.tryWith
+import ani.dantotsu.util.Logger
 import com.google.android.material.slider.Slider
 import com.vipulog.ebookreader.Book
 import com.vipulog.ebookreader.EbookReaderEventListener
@@ -510,8 +510,8 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
             try {
                 a?.deleteFile(fileName)
             } catch (e: Exception) {
-                Injekt.get<CrashlyticsInterface>().log("Failed to delete file $fileName")
-                Injekt.get<CrashlyticsInterface>().logException(e)
+                Logger.log("Failed to delete file $fileName")
+                Logger.log(e)
             }
             e.printStackTrace()
         }

@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                     toast("Invalid file type")
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
                 toast("Error importing settings")
             }
         }

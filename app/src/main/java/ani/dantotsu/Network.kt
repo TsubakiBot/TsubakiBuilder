@@ -103,7 +103,6 @@ fun logError(e: Throwable, post: Boolean = true, snackbar: Boolean = true) {
         else
             toast(e.localizedMessage)
     }
-    e.printStackTrace()
     Logger.log(e)
 }
 

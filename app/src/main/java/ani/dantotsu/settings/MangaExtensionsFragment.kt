@@ -12,13 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.settings.paging.MangaExtensionAdapter
 import ani.dantotsu.settings.paging.MangaExtensionsViewModel
 import ani.dantotsu.settings.paging.MangaExtensionsViewModelFactory
 import ani.dantotsu.settings.paging.OnMangaInstallClickListener
 import ani.dantotsu.snackString
+import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
@@ -98,7 +98,7 @@ class MangaExtensionsFragment : Fragment(),
                         notificationManager.notify(1, builder.build())
                     },
                     { error ->
-                        Injekt.get<CrashlyticsInterface>().logException(error)
+                        Logger.log(error)
                         val builder = NotificationCompat.Builder(
                             context,
                             Notifications.CHANNEL_DOWNLOADER_ERROR

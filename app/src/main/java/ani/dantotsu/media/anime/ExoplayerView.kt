@@ -100,7 +100,6 @@ import ani.dantotsu.R
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal
 import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.discord.DiscordService
 import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
@@ -1964,7 +1963,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
             else -> {
                 toast("Player Error ${error.errorCode} (${error.errorCodeName}) : ${error.message}")
-                Injekt.get<CrashlyticsInterface>().logException(error)
+                Logger.log(error)
             }
         }
     }

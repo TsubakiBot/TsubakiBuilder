@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
 import ani.dantotsu.others.LanguageMapper
@@ -70,7 +69,6 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
                                 notificationManager.notify(1, builder.build())
                             },
                             { error ->
-                                Injekt.get<CrashlyticsInterface>().logException(error)
                                 Logger.log(error)  // Log the error
                                 val builder = NotificationCompat.Builder(
                                     context,

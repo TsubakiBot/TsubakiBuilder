@@ -5,14 +5,11 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.os.Build
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.parsers.NovelInterface
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
 import dalvik.system.PathClassLoader
 import eu.kanade.tachiyomi.util.lang.Hash
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.util.Locale
 
@@ -141,8 +138,7 @@ internal object NovelExtensionLoader {
             val novelInterfaceInstance = instance as? NovelInterface
             listOfNotNull(novelInterfaceInstance)
         } catch (e: Exception) {
-            e.printStackTrace()
-            Injekt.get<CrashlyticsInterface>().logException(e)
+            Logger.log(e)
             emptyList()
         }
     }

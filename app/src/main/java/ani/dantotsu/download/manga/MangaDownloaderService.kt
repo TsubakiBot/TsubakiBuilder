@@ -18,7 +18,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.media.Media
@@ -252,9 +251,8 @@ class MangaDownloaderService : Service() {
                 snackString("${task.title} - ${task.chapter} Download finished")
             }
         } catch (e: Exception) {
-            Logger.log("Exception while downloading file: ${e.message}")
             snackString("Exception while downloading file: ${e.message}")
-            Injekt.get<CrashlyticsInterface>().logException(e)
+            Logger.log(e)
             broadcastDownloadFailed(task.chapter)
         }
     }
@@ -282,9 +280,8 @@ class MangaDownloaderService : Service() {
 
 
         } catch (e: Exception) {
-            println("Exception while saving image: ${e.message}")
             snackString("Exception while saving image: ${e.message}")
-            Injekt.get<CrashlyticsInterface>().logException(e)
+            Logger.log(e)
         }
     }
 

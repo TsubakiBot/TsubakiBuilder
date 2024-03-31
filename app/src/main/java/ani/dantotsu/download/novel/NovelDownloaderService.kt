@@ -17,7 +17,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.media.Media
@@ -344,7 +343,7 @@ class NovelDownloaderService : Service() {
         } catch (e: Exception) {
             Logger.log("Exception while downloading .epub: ${e.message}")
             snackString("Exception while downloading .epub: ${e.message}")
-            Injekt.get<CrashlyticsInterface>().logException(e)
+            Logger.log(e)
             broadcastDownloadFailed(task.originalLink)
         }
     }

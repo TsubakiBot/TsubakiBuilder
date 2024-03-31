@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
@@ -48,6 +47,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWith
+import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
 import kotlinx.coroutines.CoroutineScope
@@ -376,7 +376,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                 media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]?.selectedVideo = 0
                 startExoplayer(media!!)
             } catch (e: Exception) {
-                Injekt.get<CrashlyticsInterface>().logException(e)
+                Logger.log(e)
             }
         }
 

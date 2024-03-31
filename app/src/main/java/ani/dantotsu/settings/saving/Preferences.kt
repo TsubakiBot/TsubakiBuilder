@@ -9,7 +9,7 @@ import ani.dantotsu.settings.saving.internal.Pref
 
 enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     //General
-    SharedUserID(Pref(Location.General, Boolean::class, true)),
+    SharedUserID(Pref(Location.General, Boolean::class, false)),
     OfflineView(Pref(Location.General, Int::class, 0)),
     DownloadManager(Pref(Location.General, Int::class, 0)),
     NSFWExtension(Pref(Location.General, Boolean::class, true)),

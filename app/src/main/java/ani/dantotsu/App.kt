@@ -9,18 +9,16 @@ import androidx.multidex.MultiDexApplication
 import ani.dantotsu.aniyomi.anime.custom.AppModule
 import ani.dantotsu.aniyomi.anime.custom.PreferenceModule
 import ani.dantotsu.connections.comments.CommentsAPI
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.notifications.TaskScheduler
-import ani.dantotsu.others.DisabledReports
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtensionManager
-import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.FinalExceptionHandler
 import ani.dantotsu.util.Logger
+import com.eightbit.io.Debug
 import com.google.android.material.color.DynamicColors
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
@@ -34,6 +32,9 @@ import logcat.LogPriority
 import logcat.LogcatLogger
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
+import java.io.PrintWriter
+import java.io.StringWriter
+import kotlin.system.exitProcess
 
 
 @SuppressLint("StaticFieldLeak")
@@ -59,32 +60,22 @@ class App : MultiDexApplication() {
         Injekt.importModule(AppModule(this))
         Injekt.importModule(PreferenceModule(this))
 
-        val crashlytics = Injekt.get<CrashlyticsInterface>()
-        crashlytics.initialize(this)
-
         val useMaterialYou: Boolean = PrefManager.getVal(PrefName.UseMaterialYou)
         if (useMaterialYou) {
             DynamicColors.applyToActivitiesIfAvailable(this)
         }
         registerActivityLifecycleCallbacks(mFTActivityLifecycleCallbacks)
 
-        crashlytics.setCrashlyticsCollectionEnabled(!DisabledReports)
-        (PrefManager.getVal(PrefName.SharedUserID) as Boolean).let {
-            if (!it) return@let
-            val dUsername = PrefManager.getVal(PrefName.DiscordUserName, null as String?)
-            val aUsername = PrefManager.getVal(PrefName.AnilistUserName, null as String?)
-            if (dUsername != null) {
-                crashlytics.setCustomKey("dUsername", dUsername)
-            }
-            if (aUsername != null) {
-                crashlytics.setCustomKey("aUsername", aUsername)
-            }
-        }
-        crashlytics.setCustomKey("device Info", SettingsActivity.getDeviceInfo())
-
         Logger.init(this)
-        Thread.setDefaultUncaughtExceptionHandler(FinalExceptionHandler())
-        Logger.log("App: Logging started")
+        Thread.setDefaultUncaughtExceptionHandler { _: Thread?, error: Throwable ->
+            Logger.log(error)
+            val exception = StringWriter().apply {
+                error.printStackTrace(PrintWriter(this))
+            }
+            try {
+                Debug.sendException(this, exception.toString())
+            } catch (ignored: Exception) { }
+        }
 
         initializeNetwork()
 

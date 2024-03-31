@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.AnimeSources
@@ -143,7 +142,6 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
                                 notificationManager.notify(1, builder.build())
                             },
                             { error ->
-                                Injekt.get<CrashlyticsInterface>().logException(error)
                                 Logger.log(error)  // Log the error
                                 val builder = NotificationCompat.Builder(
                                     context,

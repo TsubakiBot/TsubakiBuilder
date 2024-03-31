@@ -28,7 +28,6 @@ import androidx.fragment.app.Fragment
 import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.R
 import ani.dantotsu.bottomBar
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.download.DownloadedType
@@ -317,7 +316,6 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
         } catch (e: Exception) {
             Logger.log("Error loading media.json: ${e.message}")
             Logger.log(e)
-            Injekt.get<CrashlyticsInterface>().logException(e)
             null
         }
     }
@@ -369,7 +367,6 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
         } catch (e: Exception) {
             Logger.log("Error loading media.json: ${e.message}")
             Logger.log(e)
-            Injekt.get<CrashlyticsInterface>().logException(e)
             return OfflineAnimeModel(
                 "unknown",
                 "0",

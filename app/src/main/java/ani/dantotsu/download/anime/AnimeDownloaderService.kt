@@ -21,7 +21,6 @@ import androidx.media3.exoplayer.offline.DownloadManager
 import androidx.media3.exoplayer.offline.DownloadService
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currActivity
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
@@ -275,7 +274,7 @@ class AnimeDownloaderService : Service() {
                                     MediaType.ANIME,
                                 )
                             )
-                            Injekt.get<CrashlyticsInterface>().logException(
+                            Logger.log(
                                 Exception(
                                     "Anime Download failed:" +
                                             " ${download.failureReason}" +
@@ -327,11 +326,10 @@ class AnimeDownloaderService : Service() {
                 }
             }
         } catch (e: Exception) {
-            if (e.message?.contains("Coroutine was cancelled") == false) {  //wut
+            if (e.message?.contains("Coroutine was cancelled") == false) { // wut
                 Logger.log("Exception while downloading file: ${e.message}")
                 snackString("Exception while downloading file: ${e.message}")
-                e.printStackTrace()
-                Injekt.get<CrashlyticsInterface>().logException(e)
+                Logger.log(e)
             }
             broadcastDownloadFailed(task.episode)
         }

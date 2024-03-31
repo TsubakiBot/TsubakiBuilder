@@ -25,7 +25,6 @@ import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import ani.dantotsu.R
 import ani.dantotsu.bottomBar
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.download.DownloadedType
@@ -308,7 +307,6 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         } catch (e: Exception) {
             Logger.log("Error loading media.json: ${e.message}")
             Logger.log(e)
-            Injekt.get<CrashlyticsInterface>().logException(e)
             null
         }
     }
@@ -354,7 +352,6 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         } catch (e: Exception) {
             Logger.log("Error loading media.json: ${e.message}")
             Logger.log(e)
-            Injekt.get<CrashlyticsInterface>().logException(e)
             return OfflineMangaModel(
                 "unknown",
                 "0",

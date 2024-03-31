@@ -13,6 +13,7 @@ import android.util.Log
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.currContext
+import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.util.system.cancelNotification
@@ -132,7 +133,7 @@ class TorrentServerService : Service() {
                 applicationContext.startService(intent)
             } catch (e: Exception) {
                 if (BuildConfig.DEBUG) Log.d("TorrentService", "start() error: ${e.message}")
-                e.printStackTrace()
+                Logger.log(e)
             }
         }
 
@@ -145,7 +146,7 @@ class TorrentServerService : Service() {
                 applicationContext.startService(intent)
             } catch (e: Exception) {
                 if (BuildConfig.DEBUG) Log.d("TorrentService", "stop() error: ${e.message}")
-                e.printStackTrace()
+                Logger.log(e)
             }
         }
 
