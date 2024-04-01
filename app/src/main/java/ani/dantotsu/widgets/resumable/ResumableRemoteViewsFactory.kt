@@ -8,13 +8,10 @@ import android.graphics.Color
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import ani.dantotsu.R
-import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
 import ani.dantotsu.widgets.resumable.ResumableWidget.Companion.widgetItems
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL

@@ -9,7 +9,7 @@
     android:minResizeWidth="130dp"
     android:minResizeHeight="220dp"
     android:previewImage="@drawable/resumable_widget_preview"
-    android:previewLayout="@layout/upcoming_widget"
+    android:previewLayout="@layout/resumable_widget"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="14400000"
+    android:updatePeriodMillis="28800000"
     android:widgetCategory="home_screen"/>

@@ -6,8 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
@@ -23,11 +21,13 @@ import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.convertDrawableToBitmap
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 
 /**
@@ -93,58 +93,43 @@ class ResumableWidget : AppWidgetProvider() {
         var widgetItems = mutableListOf<WidgetItem>()
         private var refreshing = false
 
-        private suspend fun getContinueItems(type: String) {
-            Anilist.query.continueMedia(type).forEach {
-                widgetItems.add(
-                    WidgetItem(
-                        it.userPreferredName,
-                        it.cover ?: "",
-                        it.id
-                    )
-                )
-            }
+        private suspend fun getContinueItems(type: String): MutableList<WidgetItem> {
+            val mediaItems = mutableListOf<WidgetItem>()
+            coroutineScope {
+                Anilist.query.continueMedia(type).map { media ->
+                    async(Dispatchers.IO) {
+                        mediaItems.add(
+                            WidgetItem(
+                                media.userPreferredName,
+                                media.cover ?: "",
+                                media.id
+                            )
+                        )
+                    }
+                }
+            }.awaitAll()
+            return mediaItems
         }
 
         fun fillWidgetItems(prefs: SharedPreferences) : MutableList<WidgetItem> {
             refreshing = true
             runBlocking(Dispatchers.IO) {
                 when (prefs.getInt(PREF_WIDGET_TYPE, 0)) {
-                    ResumableType.CONTINUE_ANIME.ordinal ->  getContinueItems("ANIME")
-                    ResumableType.CONTINUE_MANGA.ordinal -> getContinueItems("MANGA")
+                    ResumableType.CONTINUE_ANIME.ordinal -> {
+                        widgetItems.addAll(getContinueItems("ANIME"))
+                    }
+                    ResumableType.CONTINUE_MANGA.ordinal -> {
+                        widgetItems.addAll(getContinueItems("MANGA"))
+                    }
                     else -> {
-                        getContinueItems("ANIME")
-                        getContinueItems("MANGA")
+                        widgetItems.addAll(getContinueItems("ANIME"))
+                        widgetItems.addAll(getContinueItems("MANGA"))
+
                     }
                 }
                 refreshing = false
             }
             return widgetItems
-        }
-
-        private fun downloadImageAsBitmap(imageUrl: String): Bitmap? {
-            var bitmap: Bitmap? = null
-
-            runBlocking(Dispatchers.IO) {
-                var inputStream: InputStream? = null
-                var urlConnection: HttpURLConnection? = null
-                try {
-                    val url = URL(imageUrl)
-                    urlConnection = url.openConnection() as HttpURLConnection
-                    urlConnection.requestMethod = "GET"
-                    urlConnection.connect()
-
-                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                        inputStream = urlConnection.inputStream
-                        bitmap = BitmapFactory.decodeStream(inputStream)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    inputStream?.close()
-                    urlConnection?.disconnect()
-                }
-            }
-            return bitmap?.let { BitmapUtil.roundCorners(it) }
         }
 
         private fun getPendingSelfIntent(context: Context, appWidgetId: Int, action: String): PendingIntent {
@@ -166,12 +151,11 @@ class ResumableWidget : AppWidgetProvider() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 val builder = RemoteViews.RemoteCollectionItems.Builder()
                 widgetItems.clear()
-                val items = fillWidgetItems(prefs)
-                items.forEach {item ->
+                fillWidgetItems(prefs).forEach {item ->
                     val rv = RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
                         setTextViewText(R.id.text_show_title, item.title)
                         setTextColor(R.id.text_show_title, titleTextColor)
-                        val bitmap = downloadImageAsBitmap(item.image)
+                        val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
                         setImageViewBitmap(R.id.image_show_icon, bitmap)
                         val fillInIntent = Intent().apply {
                             putExtra("mediaId", item.id)
