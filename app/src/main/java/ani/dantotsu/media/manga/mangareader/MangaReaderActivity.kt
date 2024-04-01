@@ -49,7 +49,6 @@ import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityMangaReaderBinding
-import ani.dantotsu.dp
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
@@ -63,7 +62,6 @@ import ani.dantotsu.others.ImageViewDialog
 import ani.dantotsu.parsers.HMangaSources
 import ani.dantotsu.parsers.MangaImage
 import ani.dantotsu.parsers.MangaSources
-import ani.dantotsu.px
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.CurrentReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings.Companion.applyWebtoon
@@ -81,6 +79,8 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.showSystemBarsRetractView
 import ani.dantotsu.snackString
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toDp
+import ani.dantotsu.toPx
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import com.alexvasilkov.gestures.views.GestureFrameLayout
@@ -520,13 +520,13 @@ class MangaReaderActivity : AppCompatActivity() {
             binding.mangaReaderSwipy.topBeingSwiped = { value ->
                 binding.TopSwipeContainer.apply {
                     alpha = value
-                    translationY = -height.dp * (1 - min(value, 1f))
+                    translationY = -height.toDp * (1 - min(value, 1f))
                 }
             }
             binding.mangaReaderSwipy.bottomBeingSwiped = { value ->
                 binding.BottomSwipeContainer.apply {
                     alpha = value
-                    translationY = height.dp * (1 - min(value, 1f))
+                    translationY = height.toDp * (1 - min(value, 1f))
                 }
             }
         } else {
@@ -556,7 +556,7 @@ class MangaReaderActivity : AppCompatActivity() {
             binding.mangaReaderSwipy.leftBeingSwiped = { value ->
                 binding.LeftSwipeContainer.apply {
                     alpha = value
-                    translationX = -width.dp * (1 - min(value, 1f))
+                    translationX = -width.toDp * (1 - min(value, 1f))
                 }
             }
             binding.mangaReaderSwipy.onRightSwiped = {
@@ -565,7 +565,7 @@ class MangaReaderActivity : AppCompatActivity() {
             binding.mangaReaderSwipy.rightBeingSwiped = { value ->
                 binding.RightSwipeContainer.apply {
                     alpha = value
-                    translationX = width.dp * (1 - min(value, 1f))
+                    translationX = width.toDp * (1 - min(value, 1f))
                 }
             }
         }
@@ -662,9 +662,9 @@ class MangaReaderActivity : AppCompatActivity() {
                     }
                 })
                 if ((defaultSettings.direction == TOP_TO_BOTTOM || defaultSettings.direction == BOTTOM_TO_TOP))
-                    updatePadding(0, 128f.px, 0, 128f.px)
+                    updatePadding(0, 128.toPx, 0, 128.toPx)
                 else
-                    updatePadding(128f.px, 0, 128f.px, 0)
+                    updatePadding(128.toPx, 0, 128.toPx, 0)
 
                 snapHelper.attachToRecyclerView(
                     if (defaultSettings.layout == CONTINUOUS_PAGED) this
@@ -849,12 +849,12 @@ class MangaReaderActivity : AppCompatActivity() {
                 } else {
                     binding.mangaReaderSliderContainer.updateLayoutParams {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
-                        width = 48f.px
+                        width = 48.toPx
                     }
 
                     binding.mangaReaderSlider.apply {
                         updateLayoutParams {
-                            width = binding.mangaReaderSliderContainer.height - 16f.px
+                            width = binding.mangaReaderSliderContainer.height - 16.toPx
                         }
                         rotation = 90f
                     }
@@ -878,12 +878,12 @@ class MangaReaderActivity : AppCompatActivity() {
             } else {
                 binding.mangaReaderSliderContainer.updateLayoutParams {
                     height = ViewGroup.LayoutParams.MATCH_PARENT
-                    width = 48f.px
+                    width = 48.toPx
                 }
 
                 binding.mangaReaderSlider.apply {
                     updateLayoutParams {
-                        width = binding.mangaReaderSliderContainer.height - 16f.px
+                        width = binding.mangaReaderSliderContainer.height - 16.toPx
                     }
                     rotation = 90f
                 }

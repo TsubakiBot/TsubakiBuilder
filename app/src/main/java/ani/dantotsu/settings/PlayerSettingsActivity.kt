@@ -39,10 +39,6 @@ class PlayerSettingsActivity : AppCompatActivity() {
     var media: Media? = null
     var subtitle: Subtitle? = null
 
-    private val Int.toSP get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -486,6 +482,10 @@ class PlayerSettingsActivity : AppCompatActivity() {
         updateSubPreview()
     }
 
+    private val Int.toPx get() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics
+    )
+
     private fun updateSubPreview() {
         binding.subtitleTestWindow.run {
             alpha = PrefManager.getVal(PrefName.SubAlpha)
@@ -506,7 +506,7 @@ class PlayerSettingsActivity : AppCompatActivity() {
             })
         }
         binding.subtitleTestText.run {
-            textSize =  PrefManager.getVal<Int>(PrefName.FontSize).toSP
+            textSize =  PrefManager.getVal<Int>(PrefName.FontSize).toPx
             typeface = when (PrefManager.getVal<Int>(PrefName.Font)) {
                 0 -> ResourcesCompat.getFont(this.context, R.font.poppins_semi_bold)
                 1 -> ResourcesCompat.getFont(this.context, R.font.poppins_bold)

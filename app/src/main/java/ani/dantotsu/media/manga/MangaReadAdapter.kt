@@ -35,10 +35,10 @@ import ani.dantotsu.others.webview.CookieCatcher
 import ani.dantotsu.parsers.DynamicMangaParser
 import ani.dantotsu.parsers.MangaReadSources
 import ani.dantotsu.parsers.MangaSources
-import ani.dantotsu.px
 import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
@@ -367,7 +367,7 @@ class MangaReadAdapter(
     fun updateChips(limit: Int, names: Array<String>, arr: Array<Int>, selected: Int = 0) {
         val binding = _binding
         if (binding != null) {
-            val screenWidth = fragment.screenWidth.px
+            val screenWidth = fragment.screenWidth.toPx
             var select: Chip? = null
             for (position in arr.indices) {
                 val last = if (position + 1 == arr.size) names.size else (limit * (position + 1))

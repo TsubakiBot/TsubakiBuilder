@@ -12,7 +12,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemGenreBinding
 import ani.dantotsu.loadImage
-import ani.dantotsu.px
+import ani.dantotsu.toPx
 
 class GenreAdapter(
     private val type: String,
@@ -23,7 +23,7 @@ class GenreAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
         val binding = ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        if (big) binding.genreCard.updateLayoutParams { height = 72f.px }
+        if (big) binding.genreCard.updateLayoutParams { height = 72.toPx }
         return GenreViewHolder(binding)
     }
 

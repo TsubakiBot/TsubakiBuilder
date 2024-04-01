@@ -31,11 +31,11 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.px
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
+import ani.dantotsu.toPx
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -91,7 +91,8 @@ class AnimeFragment : Fragment() {
             Refresh.activity[this.hashCode()]!!.postValue(true)
         }
 
-        binding.animePageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160f.px)
+        // TODO: Investigate hardcoded values
+        binding.animePageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160.toPx)
 
         animePageAdapter = AnimePageAdapter()
 

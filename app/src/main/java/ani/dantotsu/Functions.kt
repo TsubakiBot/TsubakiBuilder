@@ -17,7 +17,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.content.res.Resources.getSystem
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -141,8 +140,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -160,8 +157,28 @@ import kotlin.math.pow
 
 var statusBarHeight = 0
 var navBarHeight = 0
-val Int.dp: Float get() = (this / getSystem().displayMetrics.density)
-val Float.px: Int get() = (this * getSystem().displayMetrics.density).toInt()
+
+/**
+ * The value of a number divided by density.
+ *
+ * WARNING: Not a valid px to dp conversion
+ * */
+val Int.dp: Float get() = (this / Resources.getSystem().displayMetrics.density)
+
+/**
+ * The value of a number multiplied by density.
+ *
+ * WARNING: Not a valid dp to px conversion
+ * */
+val Float.px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+val Number.toPx get() = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
+).toInt()
+
+val Number.toDp get() = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_PX, this.toFloat(), Resources.getSystem().displayMetrics
+)
 
 lateinit var bottomBar: AnimatedBottomBar
 var selectedOption = 1
@@ -186,10 +203,6 @@ fun currActivity(): Activity? {
 
 var loadMedia: Int? = null
 var loadIsMAL = false
-
-val Int.toPx get() = TypedValue.applyDimension(
-    TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
-).toInt()
 
 fun initActivity(a: Activity) {
     val window = a.window
@@ -1109,9 +1122,9 @@ fun snackString(s: String?, activity: Activity? = null, clipboard: String? = nul
                             gravity = (Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
                             width = WRAP_CONTENT
                         }
-                        translationY = -(navBarHeight.dp + 32f)
+                        translationY = -(navBarHeight.toDp + 32f)
                         translationZ = 32f
-                        updatePadding(16f.px, right = 16f.px)
+                        updatePadding(16f.toPx, right = 16f.toPx)
                         setOnClickListener {
                             snackBar.dismiss()
                         }

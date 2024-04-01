@@ -19,11 +19,11 @@ import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.ActivitySearchBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.px
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -54,9 +54,10 @@ class SearchActivity : AppCompatActivity() {
         initActivity(this)
         screenWidth = resources.displayMetrics.run { widthPixels / density }
 
+        // TODO: Investigate hardcoded values
         binding.searchRecyclerView.updatePaddingRelative(
             top = statusBarHeight,
-            bottom = navBarHeight + 80f.px
+            bottom = navBarHeight + 80f.toPx
         )
 
         style = PrefManager.getVal(PrefName.SearchStyle)

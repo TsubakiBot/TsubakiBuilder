@@ -19,9 +19,9 @@ import ani.dantotsu.databinding.ActivityAuthorBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.getSerialized
-import ani.dantotsu.px
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -46,7 +46,8 @@ class AuthorActivity : AppCompatActivity() {
         val screenWidth = resources.displayMetrics.run { widthPixels / density }
 
         binding.root.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
-        binding.studioRecycler.updatePadding(bottom = 64f.px + navBarHeight)
+        // TODO: Investigate hardcoded values
+        binding.studioRecycler.updatePadding(bottom = 64.toPx + navBarHeight)
         binding.studioTitle.isSelected = true
 
         author = intent.getSerialized("author")

@@ -17,8 +17,8 @@ import ani.dantotsu.GesturesListener
 import ani.dantotsu.R
 import ani.dantotsu.media.manga.MangaCache
 import ani.dantotsu.media.manga.MangaChapter
-import ani.dantotsu.px
 import ani.dantotsu.settings.CurrentReaderSettings
+import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import com.alexvasilkov.gestures.views.GestureFrameLayout
 import com.bumptech.glide.Glide
@@ -54,25 +54,25 @@ abstract class BaseImageAdapter(
                         0,
                         0,
                         0,
-                        16f.px
+                        16.toPx
                     )
 
                     CurrentReaderSettings.Directions.LEFT_TO_RIGHT -> view.setPadding(
                         0,
                         0,
-                        16f.px,
+                        16.toPx,
                         0
                     )
 
                     CurrentReaderSettings.Directions.BOTTOM_TO_TOP -> view.setPadding(
                         0,
-                        16f.px,
+                        16.toPx,
                         0,
                         0
                     )
 
                     CurrentReaderSettings.Directions.RIGHT_TO_LEFT -> view.setPadding(
-                        16f.px,
+                        16.toPx,
                         0,
                         0,
                         0
@@ -82,9 +82,9 @@ abstract class BaseImageAdapter(
             view.updateLayoutParams {
                 if (settings.direction != CurrentReaderSettings.Directions.LEFT_TO_RIGHT && settings.direction != CurrentReaderSettings.Directions.RIGHT_TO_LEFT) {
                     width = ViewGroup.LayoutParams.MATCH_PARENT
-                    height = 480f.px
+                    height = 480.toPx
                 } else {
-                    width = 480f.px
+                    width = 480.toPx
                     height = ViewGroup.LayoutParams.MATCH_PARENT
                 }
             }

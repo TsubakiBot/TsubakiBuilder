@@ -26,12 +26,12 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.ImageViewDialog
 import ani.dantotsu.others.getSerialized
-import ani.dantotsu.px
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,7 +64,8 @@ class CharacterDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChang
         binding.characterClose.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         binding.characterCollapsing.minimumHeight = statusBarHeight
         binding.characterCover.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
-        binding.characterRecyclerView.updatePadding(bottom = 64f.px + navBarHeight)
+        // TODO: Investigate hardcoded values
+        binding.characterRecyclerView.updatePadding(bottom = 64.toPx + navBarHeight)
         binding.characterTitle.isSelected = true
         binding.characterAppBar.addOnOffsetChangedListener(this)
 

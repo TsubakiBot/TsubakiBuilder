@@ -21,7 +21,7 @@ import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.HAnimeSources
 import ani.dantotsu.parsers.HMangaSources
 import ani.dantotsu.parsers.MangaSources
-import ani.dantotsu.px
+import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -109,7 +109,7 @@ class SourceSearchDialogFragment : BottomSheetDialogFragment() {
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(
-                                requireActivity().resources.displayMetrics.widthPixels / 124f.px,
+                                requireActivity().resources.displayMetrics.widthPixels / 124.toPx,
                                 1,
                                 4
                             )

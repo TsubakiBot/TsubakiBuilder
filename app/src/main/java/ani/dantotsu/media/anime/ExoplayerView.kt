@@ -108,7 +108,6 @@ import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.databinding.ActivityExoplayerBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.video.Helper
-import ani.dantotsu.dp
 import ani.dantotsu.getCurrentBrightnessValue
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.hideSystemBarsExtendView
@@ -130,13 +129,14 @@ import ani.dantotsu.parsers.SubtitleType
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.parsers.VideoExtractor
 import ani.dantotsu.parsers.VideoType
-import ani.dantotsu.px
 import ani.dantotsu.settings.PlayerSettingsActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.startMainActivity
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toDp
+import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
@@ -288,7 +288,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
                 }
             playerView.findViewById<View>(androidx.media3.ui.R.id.exo_buffering).translationY =
-                (if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else (notchHeight + 8f.px)).dp
+                (if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else (notchHeight + 8.toPx)).toDp
             exoBrightnessCont.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 marginEnd =
                     if (orientation == Configuration.ORIENTATION_LANDSCAPE) notchHeight else 0

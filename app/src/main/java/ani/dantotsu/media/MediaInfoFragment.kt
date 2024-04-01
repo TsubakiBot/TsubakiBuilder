@@ -40,10 +40,11 @@ import ani.dantotsu.databinding.ItemTitleTextBinding
 import ani.dantotsu.databinding.ItemTitleTrailerBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.px
+import ani.dantotsu.setBaseline
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.toPx
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.Dispatchers
@@ -82,7 +83,10 @@ class MediaInfoFragment : Fragment() {
         val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         binding.mediaInfoProgressBar.isGone = loaded
         binding.mediaInfoContainer.isVisible = loaded
-        binding.mediaInfoContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin += 128f.px + navBarHeight }
+        // TODO: Investigate hardcoded values
+        binding.mediaInfoContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin += 128.toPx + navBarHeight
+        }
 
         model.scrolledToTop.observe(viewLifecycleOwner) {
             if (it) binding.mediaInfoScroll.scrollTo(0, 0)
