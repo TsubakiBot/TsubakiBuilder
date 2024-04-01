@@ -23,8 +23,6 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -32,7 +30,6 @@ import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import android.view.HapticFeedbackConstants
 import androidx.core.view.ViewCompat.performHapticFeedback
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
@@ -43,6 +40,7 @@ import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.NotificationType
+import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.copyToClipboard
@@ -89,8 +87,6 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE
@@ -200,6 +196,16 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
         }
 
         bindingAccounts = ActivitySettingsAccountsBinding.bind(binding.root).apply {
+
+            settingsCommentsApi.isChecked = PrefManager.getVal(PrefName.CommentsOptIn)
+            settingsCommentsApi.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.CommentsOptIn, isChecked)
+                if (isChecked)
+                    CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken() }
+                else
+                    CommentsAPI.logout()
+            }
+
             settingsAccountHelp.setOnClickListener {
                 val title = getString(R.string.account_help)
                 val full = getString(R.string.full_account_help)

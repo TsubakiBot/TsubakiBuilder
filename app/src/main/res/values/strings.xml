@@ -340,6 +340,11 @@
     <string name="spaced_pages">Spaced Pages</string>
     <string name="direction">Direction</string>
 
+    <string name="comments_api">Comments API</string>
+    <string name="comments_api_desc">This API is privately maintained</string>
+
+    <string name="disable_mitm">Disable Pranks</string>
+
     <string name="general">General</string>
     <string name="show_system_bars">Show Status &amp; Navigation Bars</string>
     <string name="auto_detect_webtoon">Auto Detect Webtoon</string>

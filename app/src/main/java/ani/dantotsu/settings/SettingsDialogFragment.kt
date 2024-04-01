@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +29,16 @@ import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
+import ani.dantotsu.reloadActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.startMainActivity
+import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule
 
@@ -111,6 +117,21 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             incognitoNotification(requireContext())
         }
 
+        binding.settingsDisableMitM.isChecked = PrefManager.getVal(PrefName.DisableMitM)
+        binding.settingsDisableMitM.setOnCheckedChangeListener { _, isChecked ->
+            PrefManager.setVal(PrefName.DisableMitM, isChecked)
+            if (isChecked) {
+                PrefManager.removeVal(PrefName.ImageUrl)
+                activity?.let {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        Glide.get(it).clearDiskCache()
+                    }
+                    Glide.get(it).clearMemory()
+                }
+            }
+            activity?.reloadActivity()
+        }
+
         binding.settingsExtensionSettings.setSafeOnClickListener {
             startActivity(Intent(activity, ExtensionsActivity::class.java))
             dismiss()
@@ -130,6 +151,12 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             startActivity(Intent(activity, NotificationActivity::class.java))
             dismiss()
         }
+        binding.settingsNotification.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            binding.settingsDisableMitM.isVisible = true
+            true
+        }
+
         binding.settingsDownloads.isChecked = PrefManager.getVal(PrefName.OfflineMode)
         binding.settingsDownloads.setOnCheckedChangeListener { _, isChecked ->
             Timer().schedule(300) {

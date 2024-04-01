@@ -368,10 +368,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         } else {
             navBar.createTab(R.drawable.ic_round_import_contacts_24, R.string.read, R.id.read)
         }
-        val commentTab = navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
         navBar.addTab(infoTab)
         navBar.addTab(watchTab)
-        navBar.addTab(commentTab)
+        if (PrefManager.getVal(PrefName.CommentsOptIn)) {
+            val commentTab = navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
+            navBar.addTab(commentTab)
+        }
         if (model.continueMedia == null && media.cameFromContinue) {
             model.continueMedia = PrefManager.getVal(PrefName.ContinueMedia)
             selected = 1

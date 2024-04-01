@@ -28,7 +28,8 @@ class CommentNotificationTask : Task {
     override suspend fun execute(context: Context): Boolean {
         try {
             withContext(Dispatchers.IO) {
-                PrefManager.init(context) //make sure prefs are initialized
+                PrefManager.init(context) // make sure prefs are initialized
+                if (!PrefManager.getVal<Boolean>(PrefName.CommentsOptIn)) return@withContext
                 val client = OkHttpClient()
                 CommentsAPI.fetchAuthToken(client)
                 val notificationResponse = CommentsAPI.getNotifications(client)

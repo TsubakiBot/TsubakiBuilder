@@ -73,7 +73,7 @@ class App : MultiDexApplication() {
                 error.printStackTrace(PrintWriter(this))
             }
             try {
-                Debug.sendException(this, exception.toString())
+                Debug.clipException(this, exception.toString())
             } catch (ignored: Exception) { }
         }
 
@@ -106,9 +106,11 @@ class App : MultiDexApplication() {
             Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
             NovelSources.init(novelExtensionManager.installedExtensionsFlow)
         }
-        val commentsScope = CoroutineScope(Dispatchers.Default)
-        commentsScope.launch {
-            CommentsAPI.fetchAuthToken()
+        if (PrefManager.getVal(PrefName.CommentsOptIn)) {
+            val commentsScope = CoroutineScope(Dispatchers.Default)
+            commentsScope.launch {
+                CommentsAPI.fetchAuthToken()
+            }
         }
 
         val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)

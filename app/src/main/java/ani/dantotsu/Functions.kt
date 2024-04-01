@@ -632,7 +632,8 @@ fun ImageView.loadImage(url: String?, size: Int = 0) {
 }
 
 fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
-    file?.url = PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { file?.url ?: "" }
+    file?.url = if (PrefManager.getVal(PrefName.DisableMitM)) file?.url ?: "" else
+        PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { file?.url ?: "" }
     if (file?.url?.isNotEmpty() == true) {
         tryWith {
             val glideUrl = GlideUrl(file.url) { file.headers }
@@ -1333,11 +1334,16 @@ fun blurImage(imageView: ImageView, banner: String?) {
         if (PrefManager.getVal(PrefName.BlurBanners)) {
             val context = imageView.context
             if (!(context as Activity).isDestroyed) {
-                val url = PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { banner }
+                val url = if (PrefManager.getVal(PrefName.DisableMitM)) banner else
+                    PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { banner }
                 Glide.with(context as Context)
                     .load(GlideUrl(url))
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
-                    .apply(RequestOptions.bitmapTransform(BlurTransformation(radius, sampling)))
+                    .apply(if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
+                        RequestOptions.noTransformation()
+                    } else {
+                        RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
+                    })
                     .into(imageView)
             }
         } else {

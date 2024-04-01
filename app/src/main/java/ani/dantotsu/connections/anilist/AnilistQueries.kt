@@ -54,8 +54,10 @@ class AnilistQueries {
         Anilist.chapterRead = user.statistics?.manga?.chaptersRead
         Anilist.adult = user.options?.displayAdultContent ?: false
         Anilist.unreadNotificationCount = user.unreadNotificationCount ?: 0
-        val unread = PrefManager.getVal<Int>(PrefName.UnreadCommentNotifications)
-        Anilist.unreadNotificationCount += unread
+        if (PrefManager.getVal(PrefName.CommentsOptIn)) {
+            val unread = PrefManager.getVal<Int>(PrefName.UnreadCommentNotifications)
+            Anilist.unreadNotificationCount += unread
+        }
         return true
     }
 
