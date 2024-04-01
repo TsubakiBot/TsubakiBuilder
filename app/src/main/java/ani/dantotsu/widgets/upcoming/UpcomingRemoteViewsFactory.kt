@@ -11,6 +11,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
 import kotlinx.coroutines.Dispatchers
@@ -84,7 +85,7 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
             setTextViewText(R.id.text_show_countdown, item.countdown)
             setTextColor(R.id.text_show_title, titleTextColor)
             setTextColor(R.id.text_show_countdown, countdownTextColor)
-            val bitmap = downloadImageAsBitmap(item.image)
+            val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
             setImageViewBitmap(R.id.image_show_icon, bitmap)
             val fillInIntent = Intent().apply {
                 putExtra("mediaId", item.id)
@@ -94,33 +95,6 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
 
         return rv
     }
-
-    private fun downloadImageAsBitmap(imageUrl: String): Bitmap? {
-        var bitmap: Bitmap? = null
-        var inputStream: InputStream? = null
-        var urlConnection: HttpURLConnection? = null
-
-        try {
-            val url = URL(imageUrl)
-            urlConnection = url.openConnection() as HttpURLConnection
-            urlConnection.requestMethod = "GET"
-            urlConnection.connect()
-
-            if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                inputStream = urlConnection.inputStream
-                bitmap = BitmapFactory.decodeStream(inputStream)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            inputStream?.close()
-            urlConnection?.disconnect()
-        }
-        return bitmap?.let { roundCorners(it) }
-    }
-
-
-
 
     override fun getLoadingView(): RemoteViews {
         return RemoteViews(context.packageName, R.layout.item_upcoming_widget)

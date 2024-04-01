@@ -9,6 +9,7 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
 import ani.dantotsu.widgets.resumable.ResumableWidget.Companion.widgetItems
@@ -50,7 +51,7 @@ class ResumableRemoteViewsFactory(private val context: Context) :
         val rv = RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
             setTextViewText(R.id.text_show_title, item.title)
             setTextColor(R.id.text_show_title, titleTextColor)
-            val bitmap = downloadImageAsBitmap(item.image)
+            val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
             setImageViewBitmap(R.id.image_show_icon, bitmap)
             val fillInIntent = Intent().apply {
                 putExtra("mediaId", item.id)

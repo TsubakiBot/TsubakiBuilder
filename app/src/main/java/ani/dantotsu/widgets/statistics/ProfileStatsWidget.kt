@@ -56,31 +56,6 @@ class ProfileStatsWidget : AppWidgetProvider() {
     }
 
     companion object {
-        private fun downloadImageAsBitmap(imageUrl: String): Bitmap? {
-            var bitmap: Bitmap? = null
-
-            runBlocking(Dispatchers.IO) {
-                var inputStream: InputStream? = null
-                var urlConnection: HttpURLConnection? = null
-                try {
-                    val url = URL(imageUrl)
-                    urlConnection = url.openConnection() as HttpURLConnection
-                    urlConnection.requestMethod = "GET"
-                    urlConnection.connect()
-
-                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                        inputStream = urlConnection.inputStream
-                        bitmap = BitmapFactory.decodeStream(inputStream)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    inputStream?.close()
-                    urlConnection?.disconnect()
-                }
-            }
-            return bitmap?.let { BitmapUtil.roundCorners(it) }
-        }
 
         @OptIn(DelicateCoroutinesApi::class)
         fun updateAppWidget(
@@ -149,7 +124,9 @@ class ProfileStatsWidget : AppWidgetProvider() {
 
                                 setImageViewBitmap(
                                     R.id.userAvatar,
-                                    user.avatar?.medium?.let { it1 -> downloadImageAsBitmap(it1) }
+                                    user.avatar?.medium?.let { it1 ->
+                                        BitmapUtil.downloadImageAsBitmap(it1)
+                                    }
                                 )
                                 setTextViewText(
                                     R.id.userLabel,
