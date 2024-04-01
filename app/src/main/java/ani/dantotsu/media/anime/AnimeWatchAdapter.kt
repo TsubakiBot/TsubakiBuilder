@@ -487,8 +487,7 @@ class AnimeWatchAdapter(
                 )
                 val items = adapter.count
 
-                binding?.animeSourceLanguageContainer?.visibility =
-                    if (items > 1) View.VISIBLE else View.GONE
+                binding?.animeSourceLanguageContainer?.isVisible = items > 1
                 binding?.animeSourceLanguage?.setAdapter(adapter)
 
             }

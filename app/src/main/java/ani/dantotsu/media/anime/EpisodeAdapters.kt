@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import androidx.annotation.OptIn
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.coroutineScope
 import androidx.media3.common.util.UnstableApi
@@ -387,8 +388,7 @@ class EpisodeAdapter(
                 }, 1000)
             } else {
                 binding.itemDownloadStatus.visibility = View.GONE
-                binding.itemEpisodeDesc.visibility =
-                    if (desc != null && desc.trim(' ') != "") View.VISIBLE else View.GONE
+                binding.itemEpisodeDesc.isGone = desc.isNullOrBlank()
                 // Show download icon
                 binding.itemDownload.setImageResource(R.drawable.ic_download_24)
                 binding.itemDownload.rotation = 0f

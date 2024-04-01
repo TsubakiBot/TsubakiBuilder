@@ -323,7 +323,7 @@ class HomeFragment : Fragment() {
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
 
         model.empty.observe(viewLifecycleOwner) {
-            binding.homeDantotsuContainer.visibility = if (it == true) View.VISIBLE else View.GONE
+            binding.homeDantotsuContainer.isVisible = it == true
             (binding.homeDantotsuIcon.drawable as Animatable).start()
             binding.homeDantotsuContainer.startAnimation(setSlideUp())
             binding.homeDantotsuIcon.setSafeOnClickListener {

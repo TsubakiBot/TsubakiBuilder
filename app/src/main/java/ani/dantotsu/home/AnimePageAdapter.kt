@@ -76,9 +76,10 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
 
         trendingBinding.titleContainer.updatePadding(top = statusBarHeight)
 
-        if (PrefManager.getVal(PrefName.SmallView)) trendingBinding.trendingContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = (-108f).toPx
-        }
+        if (PrefManager.getVal(PrefName.SmallView))
+            trendingBinding.trendingContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = (-108f).toPx
+            }
 
         updateAvatar()
 
@@ -110,7 +111,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             trendingBinding.searchBar.performClick()
         }
 
-        trendingBinding.notificationCount.visibility = if (Anilist.unreadNotificationCount > 0) View.VISIBLE else View.GONE
+        trendingBinding.notificationCount.isVisible = Anilist.unreadNotificationCount > 0
         trendingBinding.notificationCount.text = Anilist.unreadNotificationCount.toString()
 
         listOf(
@@ -265,8 +266,8 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
 
     fun updateNotificationCount() {
         if (this::binding.isInitialized) {
-            trendingBinding.notificationCount.visibility =
-                if (Anilist.unreadNotificationCount > 0) View.VISIBLE else View.GONE
+            trendingBinding.notificationCount.isVisible =
+                Anilist.unreadNotificationCount > 0
             trendingBinding.notificationCount.text = Anilist.unreadNotificationCount.toString()
         }
     }
