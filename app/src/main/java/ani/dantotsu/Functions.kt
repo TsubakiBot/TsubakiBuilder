@@ -19,6 +19,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.media.MediaScannerConnection
 import android.net.ConnectivityManager
@@ -44,6 +45,7 @@ import android.telephony.TelephonyManager
 import android.text.InputFilter
 import android.text.Spanned
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.Gravity
@@ -53,6 +55,7 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -179,6 +182,22 @@ val Number.toPx get() = TypedValue.applyDimension(
 val Number.toDp get() = TypedValue.applyDimension(
     TypedValue.COMPLEX_UNIT_PX, this.toFloat(), Resources.getSystem().displayMetrics
 )
+
+val Number.dpToColumns: Int get() {
+    val columns = currContext()?.run {
+        val metrics = DisplayMetrics()
+        with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val bounds: Rect = currentWindowMetrics.bounds
+                ((bounds.width() / (resources.configuration.densityDpi / 160)) + 0.5)/ this@dpToColumns.toInt()
+            } else @Suppress("deprecation") {
+                defaultDisplay.getRealMetrics(metrics)
+                metrics.widthPixels.toDp / this@dpToColumns.toInt()
+            }
+        }
+    } ?: 1
+    return columns.toInt()
+}
 
 lateinit var bottomBar: AnimatedBottomBar
 var selectedOption = 1

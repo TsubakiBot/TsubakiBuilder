@@ -17,6 +17,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
+import ani.dantotsu.sinceWhen
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.DialogLayoutBinding
@@ -367,7 +368,7 @@ class MangaReadAdapter(
     fun updateChips(limit: Int, names: Array<String>, arr: Array<Int>, selected: Int = 0) {
         val binding = _binding
         if (binding != null) {
-            val screenWidth = fragment.screenWidth.toPx
+            val screenWidth = fragment.resources.displayMetrics.widthPixels
             var select: Chip? = null
             for (position in arr.indices) {
                 val last = if (position + 1 == arr.size) names.size else (limit * (position + 1))
@@ -546,7 +547,12 @@ class MangaReadAdapter(
     override fun getItemCount(): Int = 1
 
     inner class ViewHolder(val binding: ItemAnimeWatchBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            // Manga Timer
+            sinceWhen(media, binding.animeSourceContainer)
+        }
+    }
 }
 
 interface ScanlatorSelectionListener {

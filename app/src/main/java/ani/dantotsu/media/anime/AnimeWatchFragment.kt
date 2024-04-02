@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.dpToColumns
 import ani.dantotsu.databinding.FragmentAnimeWatchBinding
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
@@ -65,7 +66,6 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import kotlin.math.ceil
 import kotlin.math.max
-import kotlin.math.roundToInt
 
 class AnimeWatchFragment : Fragment() {
     private var _binding: FragmentAnimeWatchBinding? = null
@@ -84,7 +84,6 @@ class AnimeWatchFragment : Fragment() {
 
     val downloadManager = Injekt.get<DownloadsManager>()
 
-    var screenWidth = 0f
     private var progress = View.VISIBLE
 
     var continueEp: Boolean = false
@@ -117,9 +116,8 @@ class AnimeWatchFragment : Fragment() {
 
 
         binding.animeSourceRecycler.updatePadding(bottom = binding.animeSourceRecycler.paddingBottom + navBarHeight)
-        screenWidth = resources.displayMetrics.widthPixels.toDp
 
-        var maxGridSize = (screenWidth / 100f).roundToInt()
+        var maxGridSize = 100.dpToColumns
         maxGridSize = max(4, maxGridSize - (maxGridSize % 2))
 
         val gridLayoutManager = GridLayoutManager(requireContext(), maxGridSize)

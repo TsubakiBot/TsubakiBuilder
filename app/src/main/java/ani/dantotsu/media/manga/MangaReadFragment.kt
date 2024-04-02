@@ -36,6 +36,7 @@ import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.manga.MangaDownloaderService
 import ani.dantotsu.download.manga.MangaServiceDataSingleton
+import ani.dantotsu.dpToColumns
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaDetailsViewModel
@@ -67,7 +68,6 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import kotlin.math.ceil
 import kotlin.math.max
-import kotlin.math.roundToInt
 
 open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
     private var _binding: FragmentAnimeWatchBinding? = null
@@ -86,7 +86,6 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
 
     val downloadManager = Injekt.get<DownloadsManager>()
 
-    var screenWidth = 0f
     private var progress = View.VISIBLE
 
     var continueEp: Boolean = false
@@ -118,9 +117,8 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
         )
 
         binding.animeSourceRecycler.updatePadding(bottom = binding.animeSourceRecycler.paddingBottom + navBarHeight)
-        screenWidth = resources.displayMetrics.widthPixels.toDp
 
-        var maxGridSize = (screenWidth / 100f).roundToInt()
+        var maxGridSize = 100.dpToColumns
         maxGridSize = max(4, maxGridSize - (maxGridSize % 2))
 
         val gridLayoutManager = GridLayoutManager(requireContext(), maxGridSize)
