@@ -71,13 +71,6 @@ object AppUpdater {
                             R.string.available
                         )
                     )
-                    addView(
-                        TextView(activity).apply {
-                            val markWon = buildMarkwon(activity, false)
-                            markWon.setMarkdown(this, md)
-                        }
-                    )
-
                     setCheck(
                         currContext()!!.getString(R.string.dont_show_again, version),
                         false
