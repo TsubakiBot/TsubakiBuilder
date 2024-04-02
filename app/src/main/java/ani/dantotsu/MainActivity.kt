@@ -277,11 +277,17 @@ class MainActivity : AppCompatActivity() {
             if (preferences.animeExtensionUpdatesCount()
                     .get() > 0 || preferences.mangaExtensionUpdatesCount().get() > 0
             ) {
-                snackString(R.string.extension_updates_available)
-                    ?.setDuration(Snackbar.LENGTH_LONG)
-                    ?.setAction(R.string.review) {
-                        startActivity(Intent(this, ExtensionsActivity::class.java))
+                Snackbar.make(
+                    window.decorView.findViewById(android.R.id.content),
+                    R.string.extension_updates_available,
+                    Snackbar.LENGTH_LONG
+                ).apply {
+                    setAction(R.string.review) {
+                        this.dismiss()
+                        startActivity(Intent(this@MainActivity, ExtensionsActivity::class.java))
                     }
+                    show()
+                }
             }
             window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
             selectedOption = if (fragment != null) {
