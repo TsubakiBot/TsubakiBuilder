@@ -59,6 +59,12 @@ android {
             debuggable true
             isDefault true
 
+            splits {
+                abi {
+                    enable false
+                }
+            }
+
             try {
                 def keystoreProps = new Properties()
                 keystoreProps.load(new FileInputStream(rootProject.file("keystore.properties")))
