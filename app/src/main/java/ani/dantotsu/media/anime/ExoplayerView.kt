@@ -65,11 +65,13 @@ import androidx.media3.common.C.AUDIO_CONTENT_TYPE_MOVIE
 import androidx.media3.common.C.TRACK_TYPE_AUDIO
 import androidx.media3.common.C.TRACK_TYPE_TEXT
 import androidx.media3.common.C.TRACK_TYPE_VIDEO
+import androidx.media3.common.Format
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
+import androidx.media3.common.TrackGroup
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
@@ -141,6 +143,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toDp
 import ani.dantotsu.toPx
 import ani.dantotsu.toast
+import ani.dantotsu.torrServerClear
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
 import com.bumptech.glide.Glide
@@ -151,6 +154,7 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.slider.Slider
 import com.lagradost.nicehttp.ignoreAllSSLErrors
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
+import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -223,7 +227,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     companion object {
         var initialized = false
         lateinit var media: Media
-        var torrentHash: String? = null
+        var torrent: Torrent? = null
+        val isTorrent: Boolean get() = torrent != null
     }
 
     private lateinit var episode: Episode
@@ -427,12 +432,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         hideSystemBarsExtendView()
 
         onBackPressedDispatcher.addCallback(this) {
-            runBlocking(Dispatchers.IO) {
-                torrentHash?.let {
-                    TorrentServerApi.remTorrent(it)
-                }
-                torrentHash = null
-            }
+            torrServerClear(this@ExoplayerView)
             finishAndRemoveTask()
         }
 
@@ -1387,7 +1387,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
 
         //Subtitles
-        if (torrentHash == null) {
+        if (!isTorrent) {
             exoSubtitle.isVisible = ext.subtitles.isNotEmpty()
             exoSubtitle.setOnClickListener {
                 subClick()
@@ -1395,7 +1395,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
         var sub: MediaItem.SubtitleConfiguration? = null
         if (subtitle != null) {
-            val subtitleUrl = torrentHash?.let { video!!.file.url } ?: subtitle!!.file.url
+            val subtitleUrl = if (isTorrent) video!!.file.url else subtitle!!.file.url
             //var localFile: String? = null
             if (subtitle?.type == SubtitleType.UNKNOWN) {
                 runBlocking {
@@ -1531,7 +1531,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .setSelectUndeterminedTextLanguage(true)
             .setAllowAudioMixedMimeTypeAdaptiveness(true)
             .setAllowMultipleAdaptiveSelections(true)
-            // Set preferred language to the user's locale
             .setPreferredTextLanguage(subtitle?.language ?: "en")
             .setPreferredTextRoleFlags(C.ROLE_FLAG_SUBTITLE)
             .setRendererDisabled(TRACK_TYPE_VIDEO, false)
@@ -1606,7 +1605,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         playerView.player = exoPlayer
 
-
         try {
             val rightNow = Calendar.getInstance()
             mediaSession = MediaSession.Builder(this, exoPlayer)
@@ -1619,32 +1617,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoPlayer.addListener(this)
         exoPlayer.addAnalyticsListener(EventLogger())
         isInitialized = true
-    }
-    /*private fun selectSubtitleTrack() { saving this for later
-        // Get the current track groups
-        val trackGroups = exoPlayer.currentTrackGroups
 
-        // Prepare a track selector parameters builder
-        val parametersBuilder = DefaultTrackSelector.ParametersBuilder(this)
-
-        // Iterate through the track groups to find the subtitle tracks
-        for (i in 0 until trackGroups.length) {
-            val trackGroup = trackGroups[i]
-            for (j in 0 until trackGroup.length) {
-                val trackMetadata = trackGroup.getFormat(j)
-
-                // Check if the track is a subtitle track
-                if (MimeTypes.isText(trackMetadata.sampleMimeType)) {
-                    parametersBuilder.setRendererDisabled(i, false) // Enable the renderer for this track group
-                    parametersBuilder.setSelectionOverride(i, trackGroups, DefaultTrackSelector.SelectionOverride(j, 0)) // Override to select this track
-                    break
-                }
-            }
+        if (isTorrent && !PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+            onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         }
-
-        // Apply the track selector parameters to select the subtitle
-        trackSelector.setParameters(parametersBuilder)
-    }*/
+    }
 
     private fun releasePlayer() {
         isPlayerPlaying = exoPlayer.playWhenReady
@@ -1895,19 +1872,31 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int) {
-        if (type == TRACK_TYPE_TEXT) PrefManager.setVal(PrefName.Subtitles, true)
+        val isDisabled = trackGroup.getTrackFormat(0).language == "none"
         exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
             .buildUpon()
+            .setTrackTypeDisabled(TRACK_TYPE_TEXT, isDisabled)
             .setOverrideForType(
                 TrackSelectionOverride(trackGroup.mediaTrackGroup, 0)
             )
             .build()
         if (type == TRACK_TYPE_TEXT) setupSubFormatting(playerView)
+        playerView.subtitleView?.alpha = when (isDisabled) {
+            false -> PrefManager.getVal(PrefName.SubAlpha)
+            true -> 0f
+        }
     }
+
+    private val dummyTrack = Tracks.Group(
+        TrackGroup("Dummy Track", Format.Builder().apply { setLanguage("none") }.build()),
+        true,
+        intArrayOf(1),
+        booleanArrayOf(false)
+    )
 
     override fun onTracksChanged(tracks: Tracks) {
         val audioTracks: ArrayList<Tracks.Group> = arrayListOf()
-        val subTracks: ArrayList<Tracks.Group> = arrayListOf()
+        val subTracks: ArrayList<Tracks.Group> = arrayListOf(dummyTrack)
         tracks.groups.forEach {
             when (it.type) {
                 TRACK_TYPE_AUDIO -> {
@@ -1924,9 +1913,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                     ?.build()!!
                         }
                         else -> {
-                            if (torrentHash != null) {
+                            if (isTorrent) {
                                 if (it.isSupported(true)) subTracks.add(it)
-                                if (PrefManager.getVal(PrefName.Subtitles)) return@forEach
+                                return@forEach
                             }
                             playerView.player?.trackSelectionParameters =
                                 playerView.player?.trackSelectionParameters?.buildUpon()
@@ -1945,7 +1934,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
                 .show(supportFragmentManager, "dialog")
         }
-        if (torrentHash != null) {
+        if (isTorrent) {
             exoSubtitle.isVisible = subTracks.size > 1
             exoSubtitle.setOnClickListener {
                 TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
@@ -1957,22 +1946,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
-        if (torrentHash != null) {
+        if (isTorrent) {
             exoPlayer.currentTracks.groups.forEach { trackGroup ->
                 when (trackGroup.type) {
                     TRACK_TYPE_TEXT -> {
                         if (PrefManager.getVal(PrefName.Subtitles)) {
                             onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
                         } else {
-                            playerView.player?.let {
-                                it.trackSelectionParameters = it.trackSelectionParameters
-                                    .buildUpon()
-                                    .addOverride(
-                                        TrackSelectionOverride(trackGroup.mediaTrackGroup, listOf())
-                                    )
-                                    .build()
-                            }
-
+                            onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                         }
                     }
                     else -> { }
@@ -2078,12 +2059,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             releasePlayer()
         }
 
-        runBlocking(Dispatchers.IO) {
-            torrentHash?.let {
-                TorrentServerApi.remTorrent(it)
-            }
-            torrentHash = null
-        }
+        torrServerClear(this@ExoplayerView)
 
         super.onDestroy()
         finishAndRemoveTask()
@@ -2092,7 +2068,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     // Cast
     private fun cast() {
         val videoURL = video?.file?.url ?: return
-        val subtitleUrl = torrentHash?.let { video!!.file.url } ?: subtitle!!.file.url
+        val subtitleUrl = if (isTorrent) video!!.file.url else subtitle!!.file.url
         val shareVideo = Intent(Intent.ACTION_VIEW)
         shareVideo.setDataAndType(Uri.parse(videoURL), "video/*")
         shareVideo.setPackage("com.instantbits.cast.webvideo")

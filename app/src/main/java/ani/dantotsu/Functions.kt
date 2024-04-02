@@ -86,6 +86,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
+import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
@@ -94,6 +95,7 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
+import ani.dantotsu.media.anime.ExoplayerView
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse
@@ -122,6 +124,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.internal.ViewUtils
 import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
+import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
 import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import io.noties.markwon.AbstractMarkwonPlugin
@@ -137,12 +140,17 @@ import io.noties.markwon.image.AsyncDrawable
 import io.noties.markwon.image.glide.GlideImagesPlugin
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import tachiyomi.core.util.lang.launchIO
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -1477,18 +1485,44 @@ fun buildMarkwon(
     return markwon
 }
 
-suspend fun torrServerStart(context: Context) {
-    if (!TorrentServerService.isRunning(context)) {
-        TorrentServerService.start()
-        TorrentServerService.wait(10)
-        TorrentServerUtils.setTrackersList()
+@OptIn(DelicateCoroutinesApi::class)
+fun torrServerStart(context: Context) {
+    launchIO {
+        if (!TorrentServerService.isRunning(context)) {
+            TorrentServerService.start()
+            TorrentServerService.wait(10)
+            TorrentServerUtils.setTrackersList()
+        }
     }
 }
 
-suspend fun torrServerStop(context: Context) {
+@androidx.annotation.OptIn(UnstableApi::class)
+fun torrServerClear(context: Context) {
+    ExoplayerView.torrent = null
     if (TorrentServerService.isRunning(context)) {
-        try {
-            TorrentServerService.stop()
-        } catch (ignored: Exception) { }
+        runBlocking(Dispatchers.IO) {
+            TorrentServerApi.listTorrent().map { torrent ->
+                async(Dispatchers.IO) {
+                    torrent.hash?.let { TorrentServerApi.remTorrent(it) }
+                }
+            }.awaitAll()
+        }
+    }
+}
+
+@androidx.annotation.OptIn(UnstableApi::class)
+fun torrServerStop(context: Context) {
+    ExoplayerView.torrent = null
+    if (TorrentServerService.isRunning(context)) {
+        runBlocking(Dispatchers.IO) {
+            TorrentServerApi.listTorrent().map { torrent ->
+                async(Dispatchers.IO) {
+                    torrent.hash?.let { TorrentServerApi.remTorrent(it) }
+                }
+            }.awaitAll()
+            try {
+                TorrentServerService.stop()
+            } catch (ignored: Exception) { }
+        }
     }
 }

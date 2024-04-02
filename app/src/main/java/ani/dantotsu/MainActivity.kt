@@ -68,6 +68,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import eu.kanade.domain.source.service.SourcePreferences
+import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -475,7 +476,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        runBlocking(Dispatchers.IO) { torrServerStop(this@MainActivity) }
+        torrServerStop(this@MainActivity)
         super.onDestroy()
     }
 

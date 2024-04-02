@@ -46,6 +46,7 @@ import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
+import ani.dantotsu.torrServerClear
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
@@ -271,18 +272,19 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
 
     @androidx.annotation.OptIn(UnstableApi::class)
     private suspend fun launchWithTorrentServer(video: Video) = withContext(Dispatchers.IO) {
-            ExoplayerView.torrentHash?.let { TorrentServerApi.remTorrent(it) }
-            val index = if (video.file.url.contains("index=")) {
-                try {
-                    video.file.url.substringAfter("index=").toInt()
-                } catch (ignored: NumberFormatException) { 0 }
-            } else { 0 }
-            val currentTorrent = TorrentServerApi.addTorrent(
-                video.file.url, video.quality.toString(), "", "", false
-            )
-            ExoplayerView.torrentHash = currentTorrent.hash
-            video.file.url =
-                TorrentServerUtils.getTorrentPlayLink(currentTorrent, index)
+        ExoplayerView.torrent?.hash?.let {
+            runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+        }
+        val index = if (video.file.url.contains("index=")) {
+            try {
+                video.file.url.substringAfter("index=").toInt()
+            } catch (ignored: NumberFormatException) { 0 }
+        } else { 0 }
+        ExoplayerView.torrent = TorrentServerApi.addTorrent(
+            video.file.url, video.quality.toString(), "", "", false
+        ).apply {
+            video.file.url = TorrentServerUtils.getTorrentPlayLink(this, index)
+        }
     }
 
     @SuppressLint("UnsafeOptInUsageError")

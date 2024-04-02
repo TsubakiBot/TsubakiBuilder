@@ -67,6 +67,7 @@ class TrackGroupDialogFragment(
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
                 binding.subtitleTitle.text = when (trackGroup.getTrackFormat(0).language) {
+                    "none" -> "[X] Disabled"
                     "ja" -> "[ja] Japanese"
                     "en" -> "[en] English"
                     "de" -> "[de] German"
@@ -83,7 +84,7 @@ class TrackGroupDialogFragment(
                     "pl" -> "[pl] Polish"
                     "ro" -> "[ro] Romanian"
                     "sv" -> "[sv] Swedish"
-                    "und" -> "[??] Unknown"
+                    "und" -> "[?] Unknown"
                     else -> trackGroup.getTrackFormat(0).language
                 }
                 binding.root.setOnClickListener {
