@@ -3,6 +3,7 @@ package ani.dantotsu
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
@@ -19,6 +20,7 @@ import android.view.ViewGroup
 import android.view.animation.AnticipateInterpolator
 import android.widget.TextView
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
@@ -455,7 +457,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        lifecycleScope.launch(Dispatchers.IO) {  //simple cleanup
+        /*lifecycleScope.launch(Dispatchers.IO) {  //simple cleanup
             val index = Helper.downloadManager(this@MainActivity).downloadIndex
             val downloadCursor = index.getDownloads()
             while (downloadCursor.moveToNext()) {
@@ -464,7 +466,7 @@ class MainActivity : AppCompatActivity() {
                     Helper.downloadManager(this@MainActivity).removeDownload(download.request.id)
                 }
             }
-        }
+        }*/ //TODO: remove this
     }
 
     override fun onRestart() {
