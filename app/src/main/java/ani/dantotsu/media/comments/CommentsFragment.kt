@@ -108,6 +108,11 @@ class CommentsFragment : Fragment() {
 
         binding.commentsList.setBaseline(activity.navBar, activity.binding.commentInputLayout)
 
+        if (PrefManager.getVal(PrefName.CommentsOptIn)) {
+            activity.binding.commentMessageContainer.visibility = View.GONE
+            return
+        }
+
         if (CommentsAPI.authToken != null) {
             lifecycleScope.launch {
                 val commentId = arguments?.getInt("commentId")
