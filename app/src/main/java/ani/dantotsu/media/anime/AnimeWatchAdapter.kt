@@ -17,11 +17,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import ani.dantotsu.countDown
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.DialogLayoutBinding
 import ani.dantotsu.databinding.ItemAnimeWatchBinding
 import ani.dantotsu.databinding.ItemChipBinding
+import ani.dantotsu.displayTimer
 import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
@@ -37,7 +37,6 @@ import ani.dantotsu.parsers.WatchSources
 import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
@@ -499,8 +498,7 @@ class AnimeWatchAdapter(
     inner class ViewHolder(val binding: ItemAnimeWatchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            //Timer
-            countDown(media, binding.animeSourceContainer)
+            displayTimer(media, binding.animeSourceContainer)
         }
     }
 }
