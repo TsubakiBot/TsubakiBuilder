@@ -54,8 +54,8 @@ import ani.dantotsu.isOnline
 import ani.dantotsu.logError
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsViewModel
-import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.MediaNameAdapter
+import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.manga.MangaCache
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.others.ImageViewDialog
@@ -135,7 +135,7 @@ class MangaReaderActivity : AppCompatActivity() {
             && defaultSettings.direction == CurrentReaderSettings.Directions.BOTTOM_TO_TOP
 
     override fun onAttachedToWindow() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && !PrefManager.getVal<Boolean>(PrefName.ShowSystemBars)) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val displayCutout = window.decorView.rootWindowInsets.displayCutout
             if (displayCutout != null) {
                 if (displayCutout.boundingRects.size > 0) {
@@ -143,24 +143,29 @@ class MangaReaderActivity : AppCompatActivity() {
                         displayCutout.boundingRects[0].width(),
                         displayCutout.boundingRects[0].height()
                     )
-                    checkNotch()
                 }
             }
         }
+        setSystemBarVisibility()
         super.onAttachedToWindow()
     }
 
-    private fun checkNotch() {
-        binding.mangaReaderTopLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = notchHeight ?: return
+    private fun setSystemBarVisibility() {
+        if (PrefManager.getVal(PrefName.ShowSystemBars))
+            showSystemBarsRetractView()
+        else {
+            hideSystemBarsExtendView()
+            binding.mangaReaderTopLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+                    notchHeight ?: return
+                else 0
+            }
         }
     }
 
-    private fun hideSystemBars() {
-        if (PrefManager.getVal(PrefName.ShowSystemBars))
-            showSystemBarsRetractView()
-        else
-            hideSystemBarsExtendView()
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        setSystemBarVisibility()
+        super.onConfigurationChanged(newConfig)
     }
 
     override fun onDestroy() {
@@ -204,7 +209,7 @@ class MangaReaderActivity : AppCompatActivity() {
 
         controllerDuration = (PrefManager.getVal<Float>(PrefName.AnimationSpeed) * 200).toLong()
 
-        hideSystemBars()
+        setSystemBarVisibility()
 
         var pageSliderTimer = Timer()
         fun pageSliderHide() {
@@ -452,7 +457,7 @@ class MangaReaderActivity : AppCompatActivity() {
     fun applySettings() {
 
         saveReaderSettings("${media.id}_current_settings", defaultSettings)
-        hideSystemBars()
+        setSystemBarVisibility()
 
         //true colors
         SubsamplingScaleImageView.setPreferredBitmapConfig(
@@ -843,10 +848,6 @@ class MangaReaderActivity : AppCompatActivity() {
                 }
             }
 
-            if (!PrefManager.getVal<Boolean>(PrefName.ShowSystemBars)) {
-                hideSystemBars()
-                checkNotch()
-            }
             // Hide the scrollbar completely
             if (defaultSettings.hideScrollBar) {
                 binding.mangaReaderSliderContainer.visibility = View.GONE
@@ -1001,7 +1002,7 @@ class MangaReaderActivity : AppCompatActivity() {
                         dialog.dismiss()
                         runnable.run()
                     }
-                    .setOnCancelListener { hideSystemBars() }
+                    .setOnCancelListener { setSystemBarVisibility() }
                     .create()
                     .show()
             } else {
