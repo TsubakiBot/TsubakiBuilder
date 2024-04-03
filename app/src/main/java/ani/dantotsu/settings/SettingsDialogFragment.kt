@@ -117,8 +117,8 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             incognitoNotification(requireContext())
         }
 
-        binding.settingsDisableMitM.isChecked = PrefManager.getVal(PrefName.DisableMitM)
-        binding.settingsDisableMitM.setOnCheckedChangeListener { _, isChecked ->
+        binding.hidePreventInjection.isChecked = PrefManager.getVal(PrefName.DisableMitM)
+        binding.hidePreventInjection.setOnCheckedChangeListener { _, isChecked ->
             PrefManager.setVal(PrefName.DisableMitM, isChecked)
             if (isChecked) {
                 PrefManager.removeVal(PrefName.ImageUrl)
@@ -153,7 +153,8 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.settingsDisableMitM.isVisible = true
+            binding.hidePreventInjection.isVisible = true
+            binding.hidePreventInjectionText.isVisible = true
             true
         }
 

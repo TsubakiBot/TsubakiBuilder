@@ -162,7 +162,7 @@
                 app:thumbTint="@color/button_switch_track" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/settingsDisableMitM"
+                android:id="@+id/hidePreventInjection"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
@@ -174,15 +174,28 @@
                 android:fontFamily="@font/poppins_bold"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
+                android:paddingHorizontal="32dp"
                 android:text="@string/disable_mitm"
                 android:textAlignment="viewStart"
                 android:textColor="?attr/colorOnBackground"
                 app:cornerRadius="0dp"
                 app:drawableTint="?attr/colorPrimary"
                 app:showText="false"
-                app:thumbTint="@color/button_switch_track" />
+                app:thumbTint="@color/button_switch_track"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/hidePreventInjectionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="-26dp"
+                android:layout_marginEnd="96dp"
+                android:visibility="gone"
+                android:alpha="0.58"
+                android:fontFamily="@font/poppins_family"
+                android:text="@string/disable_mitm_desc"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout

@@ -2,6 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <ani.dantotsu.others.Xpandable
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -224,8 +225,8 @@
                 android:id="@+id/settingsImageSwitcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/discord_status_idle"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:src="@drawable/discord_status_idle" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/settingsDiscordAvatarContainer"
@@ -268,8 +269,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-26dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="-26dp"
             android:layout_marginEnd="64dp"
             android:alpha="0.58"
             android:fontFamily="@font/poppins_family"
