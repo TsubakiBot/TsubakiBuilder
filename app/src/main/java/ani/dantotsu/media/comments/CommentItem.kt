@@ -65,7 +65,7 @@ class CommentItem(
         val isUserComment = CommentsAPI.userId == comment.userId
         val levelColor = getAvatarColor(comment.totalVotes, backgroundColor)
         markwon.setMarkdown(viewBinding.commentText, comment.content)
-        viewBinding.commentEdit.visibility = if (isUserComment) View.VISIBLE else View.GONE
+        viewBinding.commentEdit.isVisible = isUserComment
         if (comment.tag == null) {
             viewBinding.commentUserTagLayout.visibility = View.GONE
         } else {
@@ -138,8 +138,8 @@ class CommentItem(
             commentsFragment.replyTo(this, comment.username)
             commentsFragment.replyCallback(this)
         }
-        viewBinding.modBadge.visibility = if (comment.isMod == true) View.VISIBLE else View.GONE
-        viewBinding.adminBadge.visibility = if (comment.isAdmin == true) View.VISIBLE else View.GONE
+        viewBinding.modBadge.isVisible = comment.isMod == true
+        viewBinding.adminBadge.isVisible = comment.isAdmin == true
         viewBinding.commentInfo.setOnClickListener {
             val popup = PopupMenu(commentsFragment.requireContext(), viewBinding.commentInfo)
             popup.menuInflater.inflate(R.menu.profile_details_menu, popup.menu)
