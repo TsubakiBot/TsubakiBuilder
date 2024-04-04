@@ -6,6 +6,8 @@ import ani.dantotsu.client
 import ani.dantotsu.getAppString
 import ani.dantotsu.settings.Developer
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -57,16 +59,18 @@ class Contributors {
                     )
                 ))
             }
-            res.filter {it.login != "rebelonion"}.forEach {
-                developers = developers.plus(
-                    Developer(
-                        it.login,
-                        it.avatarUrl,
-                        "Contributor",
-                        it.htmlUrl
+            res.filter {it.login != "rebelonion"}.map {
+                async(Dispatchers.IO) {
+                    developers = developers.plus(
+                        Developer(
+                            it.login,
+                            it.avatarUrl,
+                            "Contributor",
+                            it.htmlUrl
+                        )
                     )
-                )
-            }
+                }
+            }.awaitAll()
         }
         return developers
     }

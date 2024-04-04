@@ -6,6 +6,8 @@ import ani.dantotsu.client
 import ani.dantotsu.getAppString
 import ani.dantotsu.settings.Developer
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -21,16 +23,18 @@ class Forks {
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
-            res.forEach {
-                forks = forks.plus(
-                    Developer(
-                        it.name,
-                        it.owner.avatarUrl,
-                        it.owner.login,
-                        it.htmlUrl
+            res.map {
+                async(Dispatchers.IO) {
+                    forks = forks.plus(
+                        Developer(
+                            it.name,
+                            it.owner.avatarUrl,
+                            it.owner.login,
+                            it.htmlUrl
+                        )
                     )
-                )
-            }
+                }
+            }.awaitAll()
         }
         return forks
     }

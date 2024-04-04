@@ -25,8 +25,10 @@ import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
 import logcat.LogcatLogger
@@ -88,35 +90,37 @@ class App : MultiDexApplication() {
         mangaExtensionManager = Injekt.get()
         novelExtensionManager = Injekt.get()
 
-        val animeScope = CoroutineScope(Dispatchers.Default)
-        animeScope.launch {
-            animeExtensionManager.findAvailableExtensions()
-            Logger.log("Anime Extensions: ${animeExtensionManager.installedExtensionsFlow.first()}")
-            AnimeSources.init(animeExtensionManager.installedExtensionsFlow)
-        }
-        val mangaScope = CoroutineScope(Dispatchers.Default)
-        mangaScope.launch {
-            mangaExtensionManager.findAvailableExtensions()
-            Logger.log("Manga Extensions: ${mangaExtensionManager.installedExtensionsFlow.first()}")
-            MangaSources.init(mangaExtensionManager.installedExtensionsFlow)
-        }
-        val novelScope = CoroutineScope(Dispatchers.Default)
-        novelScope.launch {
-            novelExtensionManager.findAvailableExtensions()
-            Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
-            NovelSources.init(novelExtensionManager.installedExtensionsFlow)
+        CoroutineScope(Dispatchers.IO).launch {
+            loadAnimeExtensions()
+            loadMangaExtensions()
+            loadNovelExtensions()
         }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            val commentsScope = CoroutineScope(Dispatchers.Default)
-            commentsScope.launch {
-                CommentsAPI.fetchAuthToken()
-            }
+            CoroutineScope(Dispatchers.Default).launch { CommentsAPI.fetchAuthToken() }
         }
 
         val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
         val scheduler = TaskScheduler.create(this, useAlarmManager)
         scheduler.scheduleAllTasks(this)
         scheduler.scheduleSingleWork(this)
+    }
+
+    private suspend fun loadAnimeExtensions() = withContext(Dispatchers.IO) {
+        animeExtensionManager.findAvailableExtensions()
+        Logger.log("Anime Extensions: ${animeExtensionManager.installedExtensionsFlow.first()}")
+        AnimeSources.init(animeExtensionManager.installedExtensionsFlow)
+    }
+
+    private suspend fun loadMangaExtensions() = withContext(Dispatchers.IO) {
+        mangaExtensionManager.findAvailableExtensions()
+        Logger.log("Manga Extensions: ${mangaExtensionManager.installedExtensionsFlow.first()}")
+        MangaSources.init(mangaExtensionManager.installedExtensionsFlow)
+    }
+
+    private suspend fun loadNovelExtensions() = withContext(Dispatchers.IO) {
+        novelExtensionManager.findAvailableExtensions()
+        Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
+        NovelSources.init(novelExtensionManager.installedExtensionsFlow)
     }
 
     private fun setupNotificationChannels() {
