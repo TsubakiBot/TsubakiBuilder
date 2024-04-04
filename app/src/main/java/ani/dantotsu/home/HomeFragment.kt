@@ -386,6 +386,7 @@ class HomeFragment : Fragment() {
 
         if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) {
             CoroutineScope(Dispatchers.IO).launch {
+                while(live.value == true) delay(1000)
                 delay(2000)
                 if (Random.nextInt(0, 100) > 75) {
                     binding.donationButton.setOnClickListener {
