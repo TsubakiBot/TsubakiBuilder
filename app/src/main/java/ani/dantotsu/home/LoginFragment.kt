@@ -1,7 +1,11 @@
 package ani.dantotsu.home
 
 import android.app.AlertDialog
+import android.content.ComponentName
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +14,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
+import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.FragmentLoginBinding
@@ -88,6 +93,27 @@ class LoginFragment : Fragment() {
         binding.importSettingsButton.setOnClickListener {
             openDocumentLauncher.launch(arrayOf("*/*"))
         }
+
+        if (!BuildConfig.BUILD_TYPE.contentEquals("matagi")) return
+        try {
+            with (requireActivity().packageManager) {
+                getPackageInfo("ani.dantotsu.beta", PackageManager.GET_META_DATA)
+                    .versionName.endsWith("-matagi")
+            }
+            AlertDialog.Builder(requireContext())
+                .setCancelable(false)
+                .setTitle(R.string.conversion_title)
+                .setMessage(R.string.conversion_message)
+                .setPositiveButton(R.string.backup) { _: DialogInterface?, _: Int ->
+                    startActivity(Intent().setComponent(
+                        ComponentName("ani.dantotsu.beta", "ani.dantotsu.MainActivity")
+                    ))
+                    requireActivity().finish()
+                }
+                .setNegativeButton(R.string.close)  { _: DialogInterface?, _: Int ->
+
+                }.show()
+        } catch (ignored: PackageManager.NameNotFoundException) { }
     }
 
     private fun passwordAlertDialog(callback: (CharArray?) -> Unit) {

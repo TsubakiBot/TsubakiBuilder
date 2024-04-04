@@ -12,12 +12,15 @@ import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.provider.Settings
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.FragmentActivity
+import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
@@ -81,6 +84,9 @@ object AppUpdater {
                     }
                     setPositiveButton(currContext()!!.getString(R.string.lets_go)) {
                         MainScope().launch(Dispatchers.IO) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                requestPackageInstalls(activity)
+                            }
                             try {
                                 client.get("https://api.github.com/repos/$repo/releases/tags/$version")
                                     .parsed<GithubResponse>().assets?.find {
@@ -109,6 +115,15 @@ object AppUpdater {
 
     private fun compareVersion(version: String): Boolean {
         return BuildConfig.COMMIT != version
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun requestPackageInstalls(activity: FragmentActivity) {
+        if (!activity.packageManager.canRequestPackageInstalls()) {
+            activity.startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+                data = Uri.parse(String.format("package:%s", activity.packageName))
+            })
+        }
     }
 
 

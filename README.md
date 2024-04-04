@@ -16,7 +16,7 @@ Dantotsu is an [Anilist](https://anilist.co/) only client.
 
 > **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese. Try it out for yourself and be the judge!
 
-# **Mr ∞ Matagi** 💦
+# **Mr. Matagi** 💦
 
 > **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. A copy of a project is a fork and a collection of changes is a branch.
 
