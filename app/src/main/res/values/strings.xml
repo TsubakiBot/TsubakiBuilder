@@ -910,4 +910,6 @@ Non quae tempore quo provident laudantium qui illo dolor vel quia dolor et exerc
     <string name="download_subtitle">Download Subtitle</string>
     <string name="change_download_location">Change Download Location</string>
     <string name="download_location_msg">Are you sure you want to change the download location?\nOld downloads may no longer be accessible.</string>
+
+    <string name="voice_actors">Voice Actors</string>
 </resources>
