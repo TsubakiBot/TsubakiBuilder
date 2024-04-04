@@ -15,6 +15,9 @@ import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -51,17 +54,19 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
         refreshing = true
         val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
         runBlocking(Dispatchers.IO) {
-            val upcoming = Anilist.query.getUpcomingAnime(userId)
-            upcoming.forEach {
-                widgetItems.add(
-                    WidgetItem(
-                        it.userPreferredName,
-                        timeUntil(it.timeUntilAiring ?: 0),
-                        it.cover ?: "",
-                        it.id
+            Anilist.query.getUpcomingAnime(userId).map {
+                async(Dispatchers.IO) {
+                    widgetItems.add(
+                        WidgetItem(
+                            it.userPreferredName,
+                            timeUntil(it.timeUntilAiring ?: 0),
+                            it.cover ?: "",
+                            it.banner ?: "",
+                            it.id
+                        )
                     )
-                )
-            }
+                }
+            }.awaitAll()
             refreshing = false
         }
     }
@@ -87,6 +92,8 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
             setTextColor(R.id.text_show_countdown, countdownTextColor)
             val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
             setImageViewBitmap(R.id.image_show_icon, bitmap)
+            val banner = BitmapUtil.downloadImageAsBitmap(item.banner)
+            setImageViewBitmap(R.id.image_show_banner, banner)
             val fillInIntent = Intent().apply {
                 putExtra("mediaId", item.id)
             }
@@ -113,4 +120,4 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
     }
 }
 
-data class WidgetItem(val title: String, val countdown: String, val image: String, val id: Int)
+data class WidgetItem(val title: String, val countdown: String, val image: String, val banner: String, val id: Int)

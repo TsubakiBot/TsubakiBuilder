@@ -16,7 +16,7 @@
         android:id="@+id/widgetContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/logoView"
