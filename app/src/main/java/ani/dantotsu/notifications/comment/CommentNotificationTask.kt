@@ -47,11 +47,11 @@ class CommentNotificationTask : Task {
                 )
 
                 notifications =
-                    notifications?.filter { it.type != 3 || it.notificationId > recentGlobal }
+                    notifications?.filter { !it.type.isGlobal() || it.notificationId > recentGlobal }
                         ?.toMutableList()
 
                 val newRecentGlobal =
-                    notifications?.filter { it.type == 3 }?.maxOfOrNull { it.notificationId }
+                    notifications?.filter { it.type.isGlobal() }?.maxOfOrNull { it.notificationId }
                 if (newRecentGlobal != null) {
                     PrefManager.setVal(PrefName.RecentGlobalNotification, newRecentGlobal)
                 }
@@ -314,4 +314,6 @@ class CommentNotificationTask : Task {
             null
         }
     }
+
+    private fun Int?.isGlobal() = this == 3 || this == 420
 }
