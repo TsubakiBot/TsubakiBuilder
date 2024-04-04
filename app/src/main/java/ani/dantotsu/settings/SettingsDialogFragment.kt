@@ -154,7 +154,6 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             binding.hidePreventInjection.isVisible = true
-            binding.hidePreventInjectionText.isVisible = true
             true
         }
 

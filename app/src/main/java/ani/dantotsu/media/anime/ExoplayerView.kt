@@ -110,8 +110,6 @@ import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.databinding.ActivityExoplayerBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
-import ani.dantotsu.dp
-import ani.dantotsu.download.video.Helper
 import ani.dantotsu.getCurrentBrightnessValue
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.hideSystemBarsExtendView
@@ -143,7 +141,6 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toDp
 import ani.dantotsu.toPx
 import ani.dantotsu.toast
-import ani.dantotsu.torrServerClear
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
 import com.bumptech.glide.Glide
@@ -432,7 +429,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         hideSystemBarsExtendView()
 
         onBackPressedDispatcher.addCallback(this) {
-            torrServerClear(this@ExoplayerView)
+            torrent?.hash?.let {
+                runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+                torrent = null
+            }
             finishAndRemoveTask()
         }
 
@@ -2059,7 +2059,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             releasePlayer()
         }
 
-        torrServerClear(this@ExoplayerView)
+        torrent?.hash?.let {
+            runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+            torrent = null
+        }
 
         super.onDestroy()
         finishAndRemoveTask()

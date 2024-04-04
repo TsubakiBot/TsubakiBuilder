@@ -80,6 +80,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
@@ -126,6 +127,7 @@ import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
+import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
 import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
@@ -1492,20 +1494,6 @@ fun torrServerStart(context: Context) {
             TorrentServerService.start()
             TorrentServerService.wait(10)
             TorrentServerUtils.setTrackersList()
-        }
-    }
-}
-
-@androidx.annotation.OptIn(UnstableApi::class)
-fun torrServerClear(context: Context) {
-    ExoplayerView.torrent = null
-    if (TorrentServerService.isRunning(context)) {
-        runBlocking(Dispatchers.IO) {
-            TorrentServerApi.listTorrent().map { torrent ->
-                async(Dispatchers.IO) {
-                    torrent.hash?.let { TorrentServerApi.remTorrent(it) }
-                }
-            }.awaitAll()
         }
     }
 }

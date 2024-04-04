@@ -5,8 +5,6 @@ import tachiyomi.core.preference.PreferenceStore
 class TorrentServerPreferences(
     private val preferenceStore: PreferenceStore,
 ) {
-    fun port() = preferenceStore.getString("pref_torrent_port", "8090")
-
     fun trackers() = preferenceStore.getString(
         "pref_torrent_trackers",
         """http://nyaa.tracker.wf:7777/announce,

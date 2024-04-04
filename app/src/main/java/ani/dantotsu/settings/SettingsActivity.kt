@@ -1,6 +1,5 @@
 package ani.dantotsu.settings
 
-import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.content.Context
@@ -25,13 +24,12 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.TextView.OnEditorActionListener
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.core.view.ViewCompat.performHapticFeedback
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.lifecycleScope
@@ -84,6 +82,8 @@ import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
+import ani.dantotsu.torrServerStart
+import ani.dantotsu.torrServerStop
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
@@ -92,6 +92,8 @@ import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE
 import eltos.simpledialogfragment.color.SimpleColorDialog
 import eu.kanade.domain.base.BasePreferences
+import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
+import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import io.noties.markwon.Markwon
@@ -245,7 +247,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                             PrefManager.getVal<String>(PrefName.AnilistUserName)
                         )
                         openLinkInBrowser(anilistLink)
-                        true
                     }
 
                     settingsMALLoginRequired.visibility = View.GONE
@@ -266,7 +267,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             val myanilistLink = getString(R.string.myanilist_link, MAL.username)
                             openLinkInBrowser(myanilistLink)
-                            true
                         }
                     } else {
                         settingsMALAvatar.setImageResource(R.drawable.ic_round_person_24)
@@ -298,7 +298,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             val discordLink = getString(R.string.discord_link, id)
                             openLinkInBrowser(discordLink)
-                            true
                         }
                     }
                     settingsDiscordUsername.visibility = View.VISIBLE
@@ -537,6 +536,36 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             settingsEpCompact.setOnClickListener {
                 uiEp(2, it)
             }
+
+            settingsTorrServer.isChecked = TorrentServerService.isRunning(this@SettingsActivity)
+            settingsTorrServer.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked)
+                    torrServerStart(this@SettingsActivity)
+                else
+                    torrServerStop(this@SettingsActivity)
+                PrefManager.setVal(PrefName.TorrServerEnabled, isChecked)
+            }
+
+            torrentPortNumber.setText(TorrentServerUtils.port)
+            torrentPortNumber.setOnEditorActionListener(
+                OnEditorActionListener { view, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_DONE ||
+                        (event != null && event.action == KeyEvent.ACTION_DOWN
+                                && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        if (event == null || !event.isShiftPressed) {
+                            if (view.text.toString().toInt() < 0
+                                || view.text.toString().toInt() > 65535) {
+                                snackString(R.string.invalid_port)
+                            }
+                            torrServerStop(this@SettingsActivity)
+                            TorrentServerUtils.port = view.text.toString()
+                            torrServerStart(this@SettingsActivity)
+                            return@OnEditorActionListener true
+                        }
+                    }
+                    false
+                }
+            )
         }
 
         bindingManga = ActivitySettingsMangaBinding.bind(binding.root).apply {
@@ -637,7 +666,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     view.repositoryItem.setOnLongClickListener {
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                         copyToClipboard(item, true)
-                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S)
+                        if (SDK_INT <= Build.VERSION_CODES.S)
                             snackString(R.string.clipboard_copy)
                         true
                     }
@@ -671,7 +700,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     view.repositoryItem.setOnLongClickListener {
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                         copyToClipboard(item, true)
-                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S)
+                        if (SDK_INT <= Build.VERSION_CODES.S)
                             snackString(R.string.clipboard_copy)
                         true
                     }

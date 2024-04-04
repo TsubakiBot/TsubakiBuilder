@@ -66,7 +66,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
-import tachiyomi.core.util.lang.launchIO
 import kotlin.math.abs
 
 
@@ -348,7 +347,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
         adult = media.isAdult
         if (media.anime != null) {
-            torrServerStart(this@MediaDetailsActivity)
+            if (PrefManager.getVal(PrefName.TorrServerEnabled))
+                torrServerStart(this@MediaDetailsActivity)
             viewPager.adapter =
                 ViewPagerAdapter(supportFragmentManager, lifecycle, SupportedMedia.ANIME, media, intent.getIntExtra("commentId", -1))
         } else if (media.manga != null) {
