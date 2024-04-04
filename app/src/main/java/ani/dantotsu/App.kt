@@ -90,11 +90,9 @@ class App : MultiDexApplication() {
         mangaExtensionManager = Injekt.get()
         novelExtensionManager = Injekt.get()
 
-        CoroutineScope(Dispatchers.IO).launch {
-            loadAnimeExtensions()
-            loadMangaExtensions()
-            loadNovelExtensions()
-        }
+        CoroutineScope(Dispatchers.IO).launch { loadAnimeExtensions() }
+        CoroutineScope(Dispatchers.IO).launch { loadMangaExtensions() }
+        CoroutineScope(Dispatchers.IO).launch { loadNovelExtensions() }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
             CoroutineScope(Dispatchers.Default).launch { CommentsAPI.fetchAuthToken() }
         }
