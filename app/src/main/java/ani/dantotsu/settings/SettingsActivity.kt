@@ -36,7 +36,6 @@ import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.offline.DownloadService
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
@@ -87,9 +86,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
-import ani.dantotsu.util.StoragePermissions.Companion.accessAlertDialog
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE
@@ -243,7 +240,10 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     settingsAnilistAvatar.loadImage(Anilist.avatar)
                     settingsAnilistAvatar.setOnClickListener {
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                        val anilistLink = getString(R.string.anilist_link, PrefManager.getVal<String>(PrefName.AnilistUserName))
+                        val anilistLink = getString(
+                            R.string.anilist_link,
+                            PrefManager.getVal<String>(PrefName.AnilistUserName)
+                        )
                         openLinkInBrowser(anilistLink)
                         true
                     }
@@ -659,14 +659,16 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 val entry = if (input.endsWith("/") || input.endsWith("index.min.json"))
                     input.substring(0, input.lastIndexOf("/")) else input
                 if (mediaType == MediaType.ANIME) {
-                    val anime = PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
+                    val anime =
+                        PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
                     PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
                     CoroutineScope(Dispatchers.IO).launch {
                         animeExtensionManager.findAvailableExtensions()
                     }
                 }
                 if (mediaType == MediaType.MANGA) {
-                    val manga = PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
+                    val manga =
+                        PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
                     PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
                     CoroutineScope(Dispatchers.IO).launch {
                         mangaExtensionManager.findAvailableExtensions()
@@ -679,7 +681,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 editText.setOnEditorActionListener { textView, action, keyEvent ->
                     if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE ||
                         (keyEvent?.action == KeyEvent.ACTION_UP
-                                && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                                && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)
+                    ) {
                         processUserInput(textView.text.toString(), mediaType)
                         dialog.dismiss()
                         return@setOnEditorActionListener true
@@ -691,9 +694,10 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             setExtensionOutput()
             animeAddRepository.setOnClickListener {
                 val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
-                val editText = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
-                    hint = getString(R.string.anime_add_repository)
-                }
+                val editText =
+                    dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
+                        hint = getString(R.string.anime_add_repository)
+                    }
                 val alertDialog = AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
                     .setTitle(R.string.anime_add_repository)
                     .setView(dialogView)
@@ -718,9 +722,10 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
             mangaAddRepository.setOnClickListener {
                 val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
-                val editText = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
-                    hint = getString(R.string.manga_add_repository)
-                }
+                val editText =
+                    dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
+                        hint = getString(R.string.manga_add_repository)
+                    }
                 val alertDialog = AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
                     .setTitle(R.string.manga_add_repository)
                     .setView(dialogView)
@@ -877,7 +882,13 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             }
 
             settingsExtensionDns.setText(exDns[PrefManager.getVal(PrefName.DohProvider)])
-            settingsExtensionDns.setAdapter(ArrayAdapter(this@SettingsActivity, R.layout.item_dropdown, exDns))
+            settingsExtensionDns.setAdapter(
+                ArrayAdapter(
+                    this@SettingsActivity,
+                    R.layout.item_dropdown,
+                    exDns
+                )
+            )
             settingsExtensionDns.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.DohProvider, i)
                 settingsExtensionDns.clearFocus()
@@ -969,7 +980,12 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             }
 
             settingsUi.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, UserInterfaceSettingsActivity::class.java))
+                startActivity(
+                    Intent(
+                        this@SettingsActivity,
+                        UserInterfaceSettingsActivity::class.java
+                    )
+                )
             }
         }
 
@@ -993,7 +1009,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                         getString(R.string.subscriptions_checking_time_s, timeNames[i])
                     PrefManager.setVal(PrefName.SubscriptionNotificationInterval, curTime)
                     dialog.dismiss()
-                    TaskScheduler.create(this@SettingsActivity,
+                    TaskScheduler.create(
+                        this@SettingsActivity,
                         PrefManager.getVal(PrefName.UseAlarmManager)
                     ).scheduleAllTasks(this@SettingsActivity)
                 }.show()
@@ -1001,7 +1018,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             }
 
             settingsSubscriptionsTime.setOnLongClickListener {
-                TaskScheduler.create(this@SettingsActivity,
+                TaskScheduler.create(
+                    this@SettingsActivity,
                     PrefManager.getVal(PrefName.UseAlarmManager)
                 ).scheduleAllTasks(this@SettingsActivity)
                 true
@@ -1015,7 +1033,10 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 else getString(R.string.do_not_update)
             }
             settingsAnilistSubscriptionsTime.text =
-                getString(R.string.anilist_notifications_checking_time, aItems[PrefManager.getVal(PrefName.AnilistNotificationInterval)])
+                getString(
+                    R.string.anilist_notifications_checking_time,
+                    aItems[PrefManager.getVal(PrefName.AnilistNotificationInterval)]
+                )
             settingsAnilistSubscriptionsTime.setOnClickListener {
 
                 val selected = PrefManager.getVal<Int>(PrefName.AnilistNotificationInterval)
@@ -1026,7 +1047,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                         settingsAnilistSubscriptionsTime.text =
                             getString(R.string.anilist_notifications_checking_time, aItems[i])
                         dialog.dismiss()
-                        TaskScheduler.create(this@SettingsActivity,
+                        TaskScheduler.create(
+                            this@SettingsActivity,
                             PrefManager.getVal(PrefName.UseAlarmManager)
                         ).scheduleAllTasks(this@SettingsActivity)
                     }
@@ -1037,7 +1059,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
             settingsAnilistNotifications.setOnClickListener {
                 val types = NotificationType.entries.map { it.name }
-                val filteredTypes = PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes).toMutableSet()
+                val filteredTypes =
+                    PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes).toMutableSet()
                 val selected = types.map { filteredTypes.contains(it) }.toBooleanArray()
                 val dialog = AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
                     .setTitle(R.string.anilist_notification_filters)
@@ -1064,7 +1087,10 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             }
 
             settingsCommentSubscriptionsTime.text =
-                getString(R.string.comment_notification_checking_time, cItems[PrefManager.getVal(PrefName.CommentNotificationInterval)])
+                getString(
+                    R.string.comment_notification_checking_time,
+                    cItems[PrefManager.getVal(PrefName.CommentNotificationInterval)]
+                )
             settingsCommentSubscriptionsTime.setOnClickListener {
                 val selected = PrefManager.getVal<Int>(PrefName.CommentNotificationInterval)
                 val dialog = AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
@@ -1074,7 +1100,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                         settingsCommentSubscriptionsTime.text =
                             getString(R.string.comment_notification_checking_time, cItems[i])
                         dialog.dismiss()
-                        TaskScheduler.create(this@SettingsActivity,
+                        TaskScheduler.create(
+                            this@SettingsActivity,
                             PrefManager.getVal(PrefName.UseAlarmManager)
                         ).scheduleAllTasks(this@SettingsActivity)
                     }
@@ -1105,7 +1132,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                             PrefManager.setVal(PrefName.UseAlarmManager, true)
                             if (SDK_INT >= Build.VERSION_CODES.S) {
                                 if (!(getSystemService(Context.ALARM_SERVICE) as AlarmManager).canScheduleExactAlarms()) {
-                                    val intent = Intent("android.settings.REQUEST_SCHEDULE_EXACT_ALARM")
+                                    val intent =
+                                        Intent("android.settings.REQUEST_SCHEDULE_EXACT_ALARM")
                                     startActivity(intent)
                                     settingsNotificationsCheckingSubscriptions.isChecked = true
                                 }
@@ -1123,7 +1151,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 } else {
                     PrefManager.setVal(PrefName.UseAlarmManager, false)
                     TaskScheduler.create(this@SettingsActivity, true).cancelAllTasks()
-                    TaskScheduler.create(this@SettingsActivity, false).scheduleAllTasks(this@SettingsActivity)
+                    TaskScheduler.create(this@SettingsActivity, false)
+                        .scheduleAllTasks(this@SettingsActivity)
                 }
             }
         }
@@ -1297,6 +1326,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 callback(null)
             }
             .create()
+
         fun handleOkAction() {
             val editText = dialog.findViewById<TextInputEditText>(R.id.userAgentTextBox)
             if (editText?.text?.isNotBlank() == true) {
