@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Animatable
+import android.net.Uri
 import android.os.Build
 import android.os.Build.BRAND
 import android.os.Build.DEVICE
@@ -84,7 +85,9 @@ import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
+import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
+import ani.dantotsu.util.StoragePermissions.Companion.accessAlertDialog
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
@@ -97,7 +100,9 @@ import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import uy.kohesive.injekt.Injekt
@@ -111,6 +116,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
         override fun handleOnBackPressed() = startMainActivity(this@SettingsActivity)
     }
     lateinit var binding: ActivitySettingsBinding
+    lateinit var launcher: LauncherWrapper
     private lateinit var bindingAccounts: ActivitySettingsAccountsBinding
     private lateinit var bindingTheme: ActivitySettingsThemeBinding
     private lateinit var bindingExtensions: ActivitySettingsExtensionsBinding
@@ -125,6 +131,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
     private val animeExtensionManager: AnimeExtensionManager by injectLazy()
     private val mangaExtensionManager: MangaExtensionManager by injectLazy()
 
+    @kotlin.OptIn(DelicateCoroutinesApi::class)
     @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,6 +183,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     }
                 }
             }
+        val contract = ActivityResultContracts.OpenDocumentTree()
+        launcher = LauncherWrapper(this, contract)
 
         binding.settingsVersion.text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
         binding.settingsVersion.setOnLongClickListener {
@@ -875,20 +884,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 restartApp(binding.root)
             }
 
-            settingsDownloadInSd.isChecked = PrefManager.getVal(PrefName.SdDl)
-            settingsDownloadInSd.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    val arrayOfFiles = ContextCompat.getExternalFilesDirs(this@SettingsActivity, null)
-                    if (arrayOfFiles.size > 1 && arrayOfFiles[1] != null) {
-                        PrefManager.setVal(PrefName.SdDl, true)
-                    } else {
-                        settingsDownloadInSd.isChecked = false
-                        PrefManager.setVal(PrefName.SdDl, true)
-                        snackString(getString(R.string.noSdFound))
-                    }
-                } else PrefManager.setVal(PrefName.SdDl, true)
-            }
-
             settingsContinueMedia.isChecked = PrefManager.getVal(PrefName.ContinueMedia)
             settingsContinueMedia.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.ContinueMedia, isChecked)
@@ -908,6 +903,44 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 PrefManager.setVal(PrefName.AdultOnly, isChecked)
                 restartApp(binding.root)
             }
+
+            settingsDownloadLocation.setOnClickListener {
+                val dialog = AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
+                    .setTitle(R.string.change_download_location)
+                    .setMessage(R.string.download_location_msg)
+                    .setPositiveButton(R.string.ok) { dialog, _ ->
+                        val oldUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
+                        launcher.registerForCallback { success ->
+                            if (success) {
+                                toast(getString(R.string.please_wait))
+                                val newUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
+                                GlobalScope.launch(Dispatchers.IO) {
+                                    Injekt.get<DownloadsManager>().moveDownloadsDir(
+                                        this@SettingsActivity,
+                                        Uri.parse(oldUri), Uri.parse(newUri)
+                                    ) { finished, message ->
+                                        if (finished) {
+                                            toast(getString(R.string.success))
+                                        } else {
+                                            toast(message)
+                                        }
+                                    }
+                                }
+                            } else {
+                                toast(getString(R.string.error))
+                            }
+                        }
+                        launcher.launch()
+                        dialog.dismiss()
+                    }
+                    .setNeutralButton(R.string.cancel) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                dialog.window?.setDimAmount(0.8f)
+                dialog.show()
+            }
+
             var previousStart: View = when (PrefManager.getVal<Int>(PrefName.DefaultStartUpTab)) {
                 0 -> uiSettingsAnime
                 1 -> uiSettingsHome
