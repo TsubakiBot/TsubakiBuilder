@@ -614,19 +614,31 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     val view = ItemRepositoryBinding.inflate(
                         LayoutInflater.from(animeRepoInventory.context), animeRepoInventory, true
                     )
-                    view.repositoryItem.text = item
+                    view.repositoryItem.text = item.removePrefix("https://raw.githubusercontent.com")
                     view.repositoryItem.setOnClickListener {
-                        snackString(getString(R.string.long_click_delete))
+                        AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
+                            .setTitle(R.string.anime_rem_repository)
+                            .setMessage(item)
+                            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                val anime = PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).minus(item)
+                                PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
+                                setExtensionOutput()
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    animeExtensionManager.findAvailableExtensions()
+                                }
+                                dialog.dismiss()
+                            }
+                            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .create()
+                            .show()
                     }
                     view.repositoryItem.setOnLongClickListener {
-                        val anime = PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos)
-                            .minus(item)
-                        PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                        setExtensionOutput()
-                        CoroutineScope(Dispatchers.IO).launch {
-                            animeExtensionManager.findAvailableExtensions()
-                        }
+                        copyToClipboard(item, true)
+                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S)
+                            snackString(R.string.clipboard_copy)
                         true
                     }
                 }
@@ -636,19 +648,31 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     val view = ItemRepositoryBinding.inflate(
                         LayoutInflater.from(mangaRepoInventory.context), mangaRepoInventory, true
                     )
-                    view.repositoryItem.text = item
+                    view.repositoryItem.text = item.removePrefix("https://raw.githubusercontent.com")
                     view.repositoryItem.setOnClickListener {
-                        snackString(getString(R.string.long_click_delete))
+                        AlertDialog.Builder(this@SettingsActivity, R.style.MyPopup)
+                            .setTitle(R.string.manga_rem_repository)
+                            .setMessage(item)
+                            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                val manga = PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).minus(item)
+                                PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
+                                setExtensionOutput()
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    mangaExtensionManager.findAvailableExtensions()
+                                }
+                                dialog.dismiss()
+                            }
+                            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .create()
+                            .show()
                     }
                     view.repositoryItem.setOnLongClickListener {
-                        val anime = PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos)
-                            .minus(item)
-                        PrefManager.setVal(PrefName.MangaExtensionRepos, anime)
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                        setExtensionOutput()
-                        CoroutineScope(Dispatchers.IO).launch {
-                            mangaExtensionManager.findAvailableExtensions()
-                        }
+                        copyToClipboard(item, true)
+                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S)
+                            snackString(R.string.clipboard_copy)
                         true
                     }
                 }
