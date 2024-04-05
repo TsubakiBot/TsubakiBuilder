@@ -1039,7 +1039,7 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                     chapter.split("-")[1].trim()
                 else
                     chapter
-            }?.toInt()
+            }?.toIntOrNull() ?: return@launch
             val timeSince = (System.currentTimeMillis() -
                     (it.metadata.series.lastUpdated!!.timestamp * 1000)) / 1000
 
