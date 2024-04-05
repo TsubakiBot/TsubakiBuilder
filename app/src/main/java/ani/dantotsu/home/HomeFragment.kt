@@ -49,6 +49,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
+import ani.dantotsu.widgets.resumable.ResumableWidget
 import com.eightbit.view.AnimatedLinearLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -370,6 +371,11 @@ class HomeFragment : Fragment() {
                             PrefManager.getVal(PrefName.HomeLayoutShow)
                         runBlocking {
                             model.initHomePage()
+                            ResumableWidget.injectUpdate(
+                                context,
+                                model.getAnimeContinue().value,
+                                model.getMangaContinue().value
+                            )
                         }
                         (array.indices).forEach { i ->
                             if (homeLayoutShow.elementAt(i)) {

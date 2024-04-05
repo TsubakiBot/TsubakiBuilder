@@ -129,7 +129,7 @@ class ResumableWidgetConfigure : AppCompatActivity(),
         }
 
         binding.widgetType.setText(ResumableType.entries[
-            prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 0)
+            prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)
         ].type)
         binding.widgetType.setAdapter(
             ArrayAdapter(

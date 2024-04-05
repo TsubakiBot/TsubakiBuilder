@@ -3,6 +3,7 @@ package ani.dantotsu.widgets.resumable
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -17,16 +18,15 @@ import androidx.core.content.res.ResourcesCompat
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.media.Media
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.Companion.convertDrawableToBitmap
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
@@ -92,11 +92,30 @@ class ResumableWidget : AppWidgetProvider() {
     companion object {
         var widgetItems = mutableListOf<WidgetItem>()
         private var refreshing = false
+        private var continueMedia: ArrayList<Media> = arrayListOf()
+
+        fun injectUpdate(context: Context?, continueAnime: ArrayList<Media>?, continueManga: ArrayList<Media>?) {
+            if (null == context) return
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
+                ResumableType.CONTINUE_ANIME.ordinal -> continueAnime?.let { continueMedia.addAll(it) }
+                ResumableType.CONTINUE_MANGA.ordinal -> continueManga?.let { continueMedia.addAll(it) }
+                else -> {
+                    continueAnime?.let { continueMedia.addAll(it) }
+                    continueManga?.let { continueMedia.addAll(it) }
+                }
+            }
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java)).forEach {
+                val rv = UpcomingWidget.updateAppWidget(context, it)
+                appWidgetManager.updateAppWidget(it, rv)
+            }
+        }
 
         private suspend fun getContinueItems(type: String): MutableList<WidgetItem> {
             val mediaItems = mutableListOf<WidgetItem>()
             coroutineScope {
-                Anilist.query.continueMedia(type).map { media ->
+                continueMedia.ifEmpty { Anilist.query.continueMedia(type) }.map { media ->
                     async(Dispatchers.IO) {
                         mediaItems.add(
                             WidgetItem(
@@ -108,13 +127,14 @@ class ResumableWidget : AppWidgetProvider() {
                     }
                 }
             }.awaitAll()
+            continueMedia.clear()
             return mediaItems
         }
 
         fun fillWidgetItems(prefs: SharedPreferences) : MutableList<WidgetItem> {
             refreshing = true
             runBlocking(Dispatchers.IO) {
-                when (prefs.getInt(PREF_WIDGET_TYPE, 0)) {
+                when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
                     ResumableType.CONTINUE_ANIME.ordinal -> {
                         widgetItems.addAll(getContinueItems("ANIME"))
                     }
@@ -124,7 +144,6 @@ class ResumableWidget : AppWidgetProvider() {
                     else -> {
                         widgetItems.addAll(getContinueItems("ANIME"))
                         widgetItems.addAll(getContinueItems("MANGA"))
-
                     }
                 }
                 refreshing = false
