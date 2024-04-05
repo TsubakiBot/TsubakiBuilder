@@ -24,6 +24,41 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Download last SHA artifact
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      uses: dawidd6/action-download-artifact@v3
+      with:
+        workflow: android.yml
+        name: last-sha
+        path: .
+
+      continue-on-error: true
+
+    - name: Cache commits since last run
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      run: |
+        if [ -f last_sha.txt ]; then
+          LAST_SHA=$(cat last_sha.txt)
+        else
+          # Fallback to first commit if no previous SHA available
+          LAST_SHA=$(git rev-list --max-parents=0 HEAD)
+        fi
+        echo "Commits since $LAST_SHA:"
+        # Accumulate commit logs in a shell variable
+        COMMIT_LOGS=$(git log $LAST_SHA..HEAD --pretty=format:"● %s ~%an")
+        # URL-encode the newline characters for GitHub Actions
+        COMMIT_LOGS="${COMMIT_LOGS//'%'/'%25'}"
+        COMMIT_LOGS="${COMMIT_LOGS//$'\n'/'%0A'}"
+        COMMIT_LOGS="${COMMIT_LOGS//$'\r'/'%0D'}"
+        # Append the encoded commit logs to the COMMIT_LOG environment variable
+        echo "COMMIT_LOG=${COMMIT_LOGS}" >> $GITHUB_ENV
+        # Debugging: Print the variable to check its content
+        echo "$COMMIT_LOGS"
+        echo ${{ github.sha }} > last_sha.txt
+      shell: /usr/bin/bash -e {0}
+      env:
+        CI: true
+
     - name: Retrieve commit identification
       run: |
         GIT_HASH=$(git rev-parse --short HEAD)
@@ -77,11 +112,37 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
           name: Dantotsu-${{ env.GIT_HASH }}
-          path: "app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-matagi.apk"
+          path: "app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-universal-matagi.apk"
 
     - uses: keyfactor/action-delete-prereleases@main
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Announce on Discord
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') && github.repository == 'RepoDevil/Dantotsu' }}
+      shell: bash
+      run: |
+        #Discord
+        commit_messages=$(echo "$COMMIT_LOG" | sed 's/%0A/\n/g; s/^/\n/')
+        #  Truncate commit messages if they are too long
+        max_length=1900 # Adjust this value as needed
+        if [ ${#commit_messages} -gt $max_length ]; then
+          commit_messages="${commit_messages:0:$max_length}... (truncated)"
+        fi
+        contentbody=$( jq -nc --arg msg "[Mr. Matagi **$GIT_HASH**](https://github.com/RepoDevil/Dantotsu/releases/$GIT_HASH)" --arg commits "$commit_messages" '{"content": ($msg + "\n" + $commits)}' )
+        curl -F "payload_json=${contentbody}" ${{ secrets.DISCORD_WEBHOOK }}
+
+      env:
+        COMMIT_LOG: ${{ env.COMMIT_LOG }}
+        VERSION: ${{ env.VERSION }}
+
+    - name: Upload SHA artifact
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: last-sha
+        path: last_sha.txt
 
     - uses: 8bitDream/action-github-releases@v1.0.0
       with:
@@ -90,4 +151,8 @@ jobs:
         prerelease: true
         title: Dantotsu-${{ env.GIT_HASH }}
         files: |
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-matagi.apk
+          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-universal-matagi.apk
+          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk
+          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
+          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
+          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86-matagi.apk

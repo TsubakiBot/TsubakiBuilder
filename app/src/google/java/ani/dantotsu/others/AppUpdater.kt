@@ -13,18 +13,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.Settings
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.FragmentActivity
-import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
-import ani.dantotsu.buildMarkwon
 import ani.dantotsu.client
 import ani.dantotsu.currContext
 import ani.dantotsu.logError
@@ -34,7 +30,6 @@ import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
-import eu.kanade.tachiyomi.util.system.getParcelableExtraCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -42,9 +37,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.decodeFromJsonElement
-import java.io.File
 import java.io.IOException
-import java.net.URISyntaxException
 import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.random.Random
@@ -90,6 +83,7 @@ object AppUpdater {
                             try {
                                 client.get("https://api.github.com/repos/$repo/releases/tags/$version")
                                     .parsed<GithubResponse>().assets?.find {
+                                        it.browserDownloadURL.contains("-${Build.SUPPORTED_ABIS[0]}-", true)
                                         it.browserDownloadURL.endsWith("apk")
                                     }?.browserDownloadURL.apply {
                                         if (this != null) activity.downloadUpdate(version, this)
@@ -136,10 +130,10 @@ object AppUpdater {
 
         val request = DownloadManager.Request(Uri.parse(url))
             .setMimeType("application/vnd.android.package-archive")
-            .setTitle("Downloading Dantotsu $version")
+            .setTitle("Downloading Mr. Matagi $version")
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
-                "Dantotsu-$version.apk"
+                "Mr.Matagi-$version.apk"
             )
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
