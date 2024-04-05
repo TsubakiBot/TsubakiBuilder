@@ -1292,8 +1292,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
         }
 
-        @SuppressLint("SuspiciousIndentation")
-        if (!BuildConfig.BUILD_TYPE.contentEquals("matagi"))
+        if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) return
         lifecycleScope.launch(Dispatchers.IO) {
             delay(2000)
             runOnUiThread {
