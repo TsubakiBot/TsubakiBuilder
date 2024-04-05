@@ -26,16 +26,16 @@ jobs:
 
     - name: Download last SHA artifact
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      continue-on-error: true
       uses: dawidd6/action-download-artifact@v3
       with:
         workflow: android.yml
         name: last-sha
         path: .
 
-      continue-on-error: true
-
     - name: Cache commits since last run
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      continue-on-error: true
       run: |
         if [ -f last_sha.txt ]; then
           LAST_SHA=$(cat last_sha.txt)
@@ -112,6 +112,7 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
           name: Dantotsu-${{ env.GIT_HASH }}
+          retention-days: 1
           path: "app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-universal-matagi.apk"
 
     - uses: keyfactor/action-delete-prereleases@main
@@ -121,6 +122,7 @@ jobs:
 
     - name: Announce on Discord
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') && github.repository == 'RepoDevil/Dantotsu' }}
+      continue-on-error: true
       shell: bash
       run: |
         #Discord
@@ -139,6 +141,7 @@ jobs:
 
     - name: Upload SHA artifact
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      continue-on-error: true
       uses: actions/upload-artifact@v2
       with:
         name: last-sha
@@ -156,3 +159,10 @@ jobs:
           app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
           app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
           app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86-matagi.apk
+
+    - name: Purge cache
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      continue-on-error: true
+      uses: MyAlbum/purge-cache@v1
+      with:
+        max-age: 172800 # 2 days, default: 7 days since last use

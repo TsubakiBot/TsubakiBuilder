@@ -38,6 +38,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.others.AppUpdater
 import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -91,8 +92,9 @@ class HomeFragment : Fragment() {
                 val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                 blurImage(if (bannerAnimations) binding.homeUserBg else binding.homeUserBgNoKen, Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
-                binding.homeNotificationCount.isVisible = Anilist.unreadNotificationCount > 0
-                binding.homeNotificationCount.text = Anilist.unreadNotificationCount.toString()
+                val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+                binding.homeNotificationCount.isVisible = count > 0
+                binding.homeNotificationCount.text = count.toString()
 
                 binding.homeAnimeList.setOnClickListener {
                     ContextCompat.startActivity(

@@ -43,6 +43,8 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     LastAnilistNotificationId(Pref(Location.General, Int::class, 0)),
     AnilistFilteredTypes(Pref(Location.General, Set::class, setOf<String>())),
     UseAlarmManager(Pref(Location.General, Boolean::class, false)),
+    CommentsOptIn(Pref(Location.General, Boolean::class, true)),
+    DisableMitM(Pref(Location.General, Boolean::class, false)),
     IncludeAnimeList(Pref(Location.General, Boolean::class, true)),
     IncludeMangaList(Pref(Location.General, Boolean::class, true)),
     AdultOnly(Pref(Location.General, Boolean::class, false)),
@@ -164,8 +166,6 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     VolumeButtonsNovel(Pref(Location.NovelReader, Boolean::class, false)),
 
     //Irrelevant
-    CommentsOptIn(Pref(Location.Irrelevant, Boolean::class, true)),
-    DisableMitM(Pref(Location.Irrelevant, Boolean::class, false)),
     Incognito(Pref(Location.Irrelevant, Boolean::class, false)),
     OfflineMode(Pref(Location.Irrelevant, Boolean::class, false)),
     DiscordStatus(Pref(Location.Irrelevant, String::class, "online")),

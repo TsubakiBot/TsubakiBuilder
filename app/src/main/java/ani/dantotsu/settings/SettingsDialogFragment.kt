@@ -26,6 +26,7 @@ import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
 import ani.dantotsu.offline.OfflineFragment
+import ani.dantotsu.others.AppUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -102,8 +103,10 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                 Anilist.loginIntent(requireActivity())
             }
         }
-        binding.settingsNotificationCount.isVisible = Anilist.unreadNotificationCount > 0
-        binding.settingsNotificationCount.text = Anilist.unreadNotificationCount.toString()
+
+        val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+        binding.settingsNotificationCount.isVisible = count > 0
+        binding.settingsNotificationCount.text = count.toString()
         binding.settingsUserAvatar.setOnClickListener{
             ContextCompat.startActivity(
                 requireContext(), Intent(requireContext(), ProfileActivity::class.java)

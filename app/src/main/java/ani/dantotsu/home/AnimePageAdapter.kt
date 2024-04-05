@@ -29,6 +29,7 @@ import ani.dantotsu.media.CalendarActivity
 import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.SearchActivity
+import ani.dantotsu.others.AppUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -111,8 +112,9 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             trendingBinding.searchBar.performClick()
         }
 
-        trendingBinding.notificationCount.isVisible = Anilist.unreadNotificationCount > 0
-        trendingBinding.notificationCount.text = Anilist.unreadNotificationCount.toString()
+        val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+        trendingBinding.notificationCount.isVisible = count > 0
+        trendingBinding.notificationCount.text = count.toString()
 
         listOf(
             binding.animePreviousSeason,

@@ -450,6 +450,12 @@
     <string name="install_step">Step: %1$s</string>
     <string name="review">Review</string>
 
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="update_banner"> </string>
+    <string name="update_icon"> </string>
+    <string name="install_update">Install update %1$s?</string>
+
+
     <string name="discord_nothing_button">Display only the first button</string>
     <string name="discord_dantotsu_button">Display dantotsu in the second button</string>
     <string name="discord_anilist_button">Display your AniList profile instead</string>
@@ -507,9 +513,9 @@
     <string name="deleted_from_list">Deleted from List</string>
     <string name="no_list_id">No List ID found…</string>
     <string name="checking_for_update">Checking for Update</string>
-    <string name="dont_show_again">Don\'t show again for version %1$s</string>
+    <string name="dont_show_again">Don\'t notify again for version %1$s</string>
     <string name="no_update_found">No Update Found</string>
-    <string name="downloading_update">Downloading Update %1$s</string>
+    <string name="downloading_update">Downloading Dantotsu %1$s</string>
     <string name="permission_required">Please give permission to access Files &amp; Folders from Settings, &amp; Try again.</string>
     <string name="started_downloading">Started Downloading\n%1$s</string>
     <string name="install_1dm">Please install 1DM</string>
