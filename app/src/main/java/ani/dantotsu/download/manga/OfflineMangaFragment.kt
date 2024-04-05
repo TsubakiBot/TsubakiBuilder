@@ -162,7 +162,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             // Get the OfflineMangaModel that was clicked
             val item = adapter.getItem(position) as OfflineMangaModel
             val media =
-                downloadManager.mangaDownloadedTypes.firstOrNull { it.title == item.title }
+                downloadManager.mangaDownloadedTypes.firstOrNull { it.title.contains(item.title) }
                     ?: downloadManager.novelDownloadedTypes.firstOrNull { it.title == item.title }
             media?.let {
 

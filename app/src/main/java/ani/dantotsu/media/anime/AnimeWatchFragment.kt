@@ -33,7 +33,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentAnimeWatchBinding
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
-import ani.dantotsu.download.DownloadsManager.Companion.findValidName
+import ani.dantotsu.download.DownloadsManager.Companion.compareName
 import ani.dantotsu.download.anime.AnimeDownloaderService
 import ani.dantotsu.dpToColumns
 import ani.dantotsu.media.Media
@@ -420,17 +420,27 @@ class AnimeWatchFragment : Fragment() {
     }
 
     fun onAnimeEpisodeDownloadClick(i: String) {
-        activity?.let{
+        activity?.let {
             if (!hasDirAccess(it)) {
                 (it as MediaDetailsActivity).accessAlertDialog(it.launcher) { success ->
                     if (success) {
-                        model.onEpisodeClick(media, i, requireActivity().supportFragmentManager, isDownload = true)
+                        model.onEpisodeClick(
+                            media,
+                            i,
+                            requireActivity().supportFragmentManager,
+                            isDownload = true
+                        )
                     } else {
                         snackString("Permission is required to download")
                     }
                 }
             } else {
-                model.onEpisodeClick(media, i, requireActivity().supportFragmentManager, isDownload = true)
+                model.onEpisodeClick(
+                    media,
+                    i,
+                    requireActivity().supportFragmentManager,
+                    isDownload = true
+                )
             }
         }
     }
@@ -467,10 +477,6 @@ class AnimeWatchFragment : Fragment() {
             )
         ) {
             val taskName = AnimeDownloaderService.AnimeDownloadTask.getTaskName(media.mainName(), i)
-            val id = PrefManager.getAnimeDownloadPreferences().getString(
-                taskName,
-                ""
-            ) ?: ""
             PrefManager.getAnimeDownloadPreferences().edit().remove(taskName).apply()
             episodeAdapter.deleteDownload(i)
         }
@@ -537,7 +543,7 @@ class AnimeWatchFragment : Fragment() {
         episodeAdapter.updateType(style ?: PrefManager.getVal(PrefName.AnimeDefaultView))
         episodeAdapter.notifyItemRangeInserted(0, arr.size)
         for (download in downloadManager.animeDownloadedTypes) {
-            if (download.title == media.mainName().findValidName()) {
+            if (media.compareName(download.title)) {
                 episodeAdapter.stopDownload(download.chapter)
             }
         }
