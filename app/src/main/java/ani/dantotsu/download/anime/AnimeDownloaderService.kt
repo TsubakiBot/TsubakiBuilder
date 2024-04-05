@@ -19,6 +19,7 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
@@ -31,6 +32,7 @@ import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
+import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import com.anggrayudi.storage.file.forceDelete
 import com.anggrayudi.storage.file.openOutputStream
@@ -197,7 +199,6 @@ class AnimeDownloaderService : Service() {
     @androidx.annotation.OptIn(UnstableApi::class)
     suspend fun download(task: AnimeDownloadTask) {
         try {
-            //val downloadManager = Helper.downloadManager(this@AnimeDownloaderService)
             withContext(Dispatchers.Main) {
                 val notifi = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     ContextCompat.checkSelfPermission(
@@ -231,13 +232,17 @@ class AnimeDownloaderService : Service() {
                     this@AnimeDownloaderService,
                     outputFile.uri
                 )
-                val headersStringBuilder = StringBuilder().append(" ")
+                val headersStringBuilder = StringBuilder()
                 task.video.file.headers.forEach {
                     headersStringBuilder.append("\"${it.key}: ${it.value}\"\'\r\n\'")
                 }
-                headersStringBuilder.append(" ")
+                if (!task.video.file.headers.containsKey("User-Agent")) { //headers should never be empty now
+                    headersStringBuilder.append("\"").append("User-Agent: ")
+                        .append(defaultHeaders["User-Agent"]).append("\"\'\r\n\'")
+                }
+                val probeRequest = "-headers $headersStringBuilder -i ${task.video.file.url} -show_entries format=duration -v quiet -of csv=\"p=0\""
                 FFprobeKit.executeAsync(
-                    "-headers $headersStringBuilder -i ${task.video.file.url} -show_entries format=duration -v quiet -of csv=\"p=0\"",
+                    probeRequest,
                     {
                         Logger.log("FFprobeKit: $it")
                     }, {
@@ -246,13 +251,10 @@ class AnimeDownloaderService : Service() {
                         }
                     })
 
-                var request = "-headers"
                 val headers = headersStringBuilder.toString()
-                if (task.video.file.headers.isNotEmpty()) {
-                    request += headers
-                }
+                var request = "-headers $headers "
                 request += "-i ${task.video.file.url} -c copy -bsf:a aac_adtstoasc -tls_verify 0 $path -v trace"
-                println("Request: $request")
+                Logger.log("Request: $request")
                 val ffTask =
                     FFmpegKit.executeAsync(request,
                         { session ->
@@ -309,14 +311,15 @@ class AnimeDownloaderService : Service() {
                             } Download failed"
                         )
                         notificationManager.notify(NOTIFICATION_ID, builder.build())
-                        snackString("${getTaskName(task.title, task.episode)} Download failed")
+                        toast("${getTaskName(task.title, task.episode)} Download failed")
                         Logger.log("Download failed: ${ffTask.failStackTrace}")
                         downloadsManager.removeDownload(
                             DownloadedType(
                                 task.title,
                                 task.episode,
                                 MediaType.ANIME,
-                            )
+                            ),
+                            false
                         ) {}
                         Logger.log(
                             Exception(
