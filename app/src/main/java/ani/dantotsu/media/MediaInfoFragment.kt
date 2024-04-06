@@ -573,21 +573,23 @@ class MediaInfoFragment : Fragment() {
                         parent.addView(root)
                     }
                 }
-                if(!media.users.isNullOrEmpty() && !offline){
-                    ItemTitleRecyclerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        itemTitle.setText(R.string.social)
-                        itemRecycler.adapter =
-                            MediaSocialAdapter(media.users!!)
-                        itemRecycler.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
+                if (PrefManager.getVal<Boolean>(PrefName.SocialInMedia)) {
+                    if (!media.users.isNullOrEmpty() && !offline) {
+                        ItemTitleRecyclerBinding.inflate(
+                            LayoutInflater.from(context),
+                            parent,
                             false
-                        )
-                        parent.addView(root)
+                        ).apply {
+                            itemTitle.setText(R.string.social)
+                            itemRecycler.adapter =
+                                MediaSocialAdapter(media.users!!)
+                            itemRecycler.layoutManager = LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                            parent.addView(root)
+                        }
                     }
                 }
             }

@@ -935,6 +935,12 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             settingsRecentlyListOnly.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.RecentlyListOnly, isChecked)
             }
+
+            settingsSocialInMedia.isChecked = PrefManager.getVal(PrefName.SocialInMedia)
+            settingsSocialInMedia.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.SocialInMedia, isChecked)
+            }
+
             settingsAdultAnimeOnly.isChecked = PrefManager.getVal(PrefName.AdultOnly)
             settingsAdultAnimeOnly.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.AdultOnly, isChecked)
