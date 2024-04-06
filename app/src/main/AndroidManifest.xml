@@ -72,7 +72,11 @@
         android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/full_backup_content"
         android:dataExtractionRules="@xml/extraction_content"
+        android:backupAgent=".backup.AniBackupAgent"
         tools:targetApi="tiramisu">
+
+        <!-- No key is required, but older Android versions may attempt to load one -->
+        <meta-data android:name="com.google.android.backup.api_key" android:value="unused" />
 
         <receiver
             android:name="com.eightbit.update.UpdateReceiver"
