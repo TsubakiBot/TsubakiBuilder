@@ -25,7 +25,6 @@ jobs:
         fetch-depth: 0
 
     - name: Download last SHA artifact
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       continue-on-error: true
       uses: dawidd6/action-download-artifact@v3
       with:
@@ -140,7 +139,6 @@ jobs:
         VERSION: ${{ env.VERSION }}
 
     - name: Upload SHA artifact
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       continue-on-error: true
       uses: actions/upload-artifact@v2
       with:
