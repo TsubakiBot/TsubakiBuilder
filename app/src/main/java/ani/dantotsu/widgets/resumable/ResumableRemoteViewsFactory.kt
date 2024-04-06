@@ -1,5 +1,6 @@
 package ani.dantotsu.widgets.resumable
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -16,11 +17,12 @@ import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ResumableRemoteViewsFactory(private val context: Context) :
+class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int) :
     RemoteViewsService.RemoteViewsFactory {
     private var refreshing = false
+
     private val prefs =
-        context.getSharedPreferences(ResumableWidget.PREFS_NAME, Context.MODE_PRIVATE)
+        context.getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
 
     override fun onCreate() {
         Logger.log("ResumableRemoteViewsFactory onCreate")
@@ -58,30 +60,6 @@ class ResumableRemoteViewsFactory(private val context: Context) :
         }
 
         return rv
-    }
-
-    private fun downloadImageAsBitmap(imageUrl: String): Bitmap? {
-        var bitmap: Bitmap? = null
-        var inputStream: InputStream? = null
-        var urlConnection: HttpURLConnection? = null
-
-        try {
-            val url = URL(imageUrl)
-            urlConnection = url.openConnection() as HttpURLConnection
-            urlConnection.requestMethod = "GET"
-            urlConnection.connect()
-
-            if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                inputStream = urlConnection.inputStream
-                bitmap = BitmapFactory.decodeStream(inputStream)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            inputStream?.close()
-            urlConnection?.disconnect()
-        }
-        return bitmap?.let { roundCorners(it) }
     }
 
     override fun getLoadingView(): RemoteViews {

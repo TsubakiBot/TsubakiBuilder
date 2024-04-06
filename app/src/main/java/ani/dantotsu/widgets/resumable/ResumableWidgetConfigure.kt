@@ -49,7 +49,11 @@ class ResumableWidgetConfigure : AppCompatActivity(),
 
         binding = ResumableWidgetConfigureBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val prefs = getSharedPreferences(ResumableWidget.PREFS_NAME, Context.MODE_PRIVATE)
+        appWidgetId = intent.getIntExtra(
+            AppWidgetManager.EXTRA_APPWIDGET_ID,
+            AppWidgetManager.INVALID_APPWIDGET_ID
+        )
+        val prefs = getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
 
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
@@ -164,12 +168,13 @@ class ResumableWidgetConfigure : AppCompatActivity(),
 
     override fun onResult(dialogTag: String, which: Int, extras: Bundle): Boolean {
         if (which == SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE) {
+            val prefs = getSharedPreferences(
+                ResumableWidget.getPrefsName(appWidgetId),
+                Context.MODE_PRIVATE
+            )
             when (dialogTag) {
                 ResumableWidget.PREF_BACKGROUND_COLOR -> {
-                    getSharedPreferences(
-                        ResumableWidget.PREFS_NAME,
-                        Context.MODE_PRIVATE
-                    ).edit()
+                    prefs.edit()
                         .putInt(
                             ResumableWidget.PREF_BACKGROUND_COLOR,
                             extras.getInt(SimpleColorDialog.COLOR)
@@ -178,10 +183,7 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                 }
 
                 ResumableWidget.PREF_BACKGROUND_FADE -> {
-                    getSharedPreferences(
-                        ResumableWidget.PREFS_NAME,
-                        Context.MODE_PRIVATE
-                    ).edit()
+                    prefs.edit()
                         .putInt(
                             ResumableWidget.PREF_BACKGROUND_FADE,
                             extras.getInt(SimpleColorDialog.COLOR)
@@ -190,10 +192,7 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                 }
 
                 ResumableWidget.PREF_TITLE_TEXT_COLOR -> {
-                    getSharedPreferences(
-                        ResumableWidget.PREFS_NAME,
-                        Context.MODE_PRIVATE
-                    ).edit()
+                    prefs.edit()
                         .putInt(
                             ResumableWidget.PREF_TITLE_TEXT_COLOR,
                             extras.getInt(SimpleColorDialog.COLOR)
@@ -214,7 +213,7 @@ class ResumableWidgetConfigure : AppCompatActivity(),
         theme.resolveAttribute(com.google.android.material.R.attr.colorPrimary, typedValuePrimary, true)
         val textColor = typedValuePrimary.data
 
-        getSharedPreferences(ResumableWidget.PREFS_NAME, Context.MODE_PRIVATE).edit().apply {
+        getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)
             putInt(ResumableWidget.PREF_BACKGROUND_FADE, backgroundColor)
             putInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, textColor)

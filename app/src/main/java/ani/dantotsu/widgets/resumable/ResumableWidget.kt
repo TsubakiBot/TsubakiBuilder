@@ -49,7 +49,7 @@ class ResumableWidget : AppWidgetProvider() {
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
         for (appWidgetId in appWidgetIds) {
-            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit().clear().apply()
+            context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().clear().apply()
         }
         super.onDeleted(context, appWidgetIds)
     }
@@ -64,7 +64,10 @@ class ResumableWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
-        val appWidgetId = intent.getIntExtra("appWidgetId", -1)
+        val appWidgetId: Int = intent.getIntExtra(
+            AppWidgetManager.EXTRA_APPWIDGET_ID,
+            AppWidgetManager.INVALID_APPWIDGET_ID
+        )
         val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
             if (VIEWFLIPPER_NEXT == intent.action) {
                 showNext(R.id.widgetViewFlipper)
@@ -96,17 +99,17 @@ class ResumableWidget : AppWidgetProvider() {
 
         fun injectUpdate(context: Context?, continueAnime: ArrayList<Media>?, continueManga: ArrayList<Media>?) {
             if (null == context) return
-            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
-                ResumableType.CONTINUE_ANIME.ordinal -> continueAnime?.let { continueMedia.addAll(it) }
-                ResumableType.CONTINUE_MANGA.ordinal -> continueManga?.let { continueMedia.addAll(it) }
-                else -> {
-                    continueAnime?.let { continueMedia.addAll(it) }
-                    continueManga?.let { continueMedia.addAll(it) }
-                }
-            }
             val appWidgetManager = AppWidgetManager.getInstance(context)
             appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java)).forEach {
+                val prefs = context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE)
+                when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
+                    ResumableType.CONTINUE_ANIME.ordinal -> continueAnime?.let { continueMedia.addAll(it) }
+                    ResumableType.CONTINUE_MANGA.ordinal -> continueManga?.let { continueMedia.addAll(it) }
+                    else -> {
+                        continueAnime?.let { continueMedia.addAll(it) }
+                        continueManga?.let { continueMedia.addAll(it) }
+                    }
+                }
                 val rv = UpcomingWidget.updateAppWidget(context, it)
                 appWidgetManager.updateAppWidget(it, rv)
             }
@@ -152,15 +155,17 @@ class ResumableWidget : AppWidgetProvider() {
         }
 
         private fun getPendingSelfIntent(context: Context, appWidgetId: Int, action: String): PendingIntent {
-            val intent = Intent(context, ResumableWidget::class.java)
-            intent.setAction(action).putExtra("appWidgetId", appWidgetId)
+            val intent = Intent(context, ResumableWidget::class.java).setAction(action).apply{
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
+            }
             return PendingIntent.getBroadcast(
                 context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
             )
         }
 
         private fun RemoteViews.setLocalAdapter(context: Context, appWidgetId: Int, view: Int) {
-            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
             val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
             val intent = Intent(context, ResumableRemoteViewsService::class.java).apply {
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -194,7 +199,7 @@ class ResumableWidget : AppWidgetProvider() {
             context: Context,
             appWidgetId: Int,
         ): RemoteViews {
-            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
             val backgroundColor =
                 prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
             val backgroundFade = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
@@ -270,6 +275,7 @@ class ResumableWidget : AppWidgetProvider() {
                         1,
                         Intent(context, ResumableWidgetConfigure::class.java).apply {
                             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                            data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
                         },
                         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                     )
@@ -278,7 +284,9 @@ class ResumableWidget : AppWidgetProvider() {
             return views
         }
 
-        const val PREFS_NAME = "ani.dantotsu.widgets.ResumableWidget"
+        fun getPrefsName(appWidgetId: Int): String {
+            return "ani.dantotsu.widgets.ResumableWidget.${appWidgetId}"
+        }
         const val PREF_BACKGROUND_COLOR = "background_color"
         const val PREF_BACKGROUND_FADE = "background_fade"
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"
