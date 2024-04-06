@@ -2,26 +2,28 @@ package ani.dantotsu.widgets.upcoming
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.media.Media
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.BitmapUtil
-import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
+import com.google.gson.GsonBuilder
+import com.google.gson.InstanceCreator
+import eu.kanade.tachiyomi.animesource.model.SAnime
+import eu.kanade.tachiyomi.animesource.model.SAnimeImpl
+import eu.kanade.tachiyomi.animesource.model.SEpisode
+import eu.kanade.tachiyomi.animesource.model.SEpisodeImpl
+import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.SChapterImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 class UpcomingRemoteViewsFactory(private val context: Context) :
     RemoteViewsService.RemoteViewsFactory {
@@ -53,21 +55,102 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
     private fun fillWidgetItems() {
         refreshing = true
         val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
-        runBlocking(Dispatchers.IO) {
-            Anilist.query.getUpcomingAnime(userId).map {
-                async(Dispatchers.IO) {
+        val prefs = context.getSharedPreferences(UpcomingWidget.PREFS_NAME, Context.MODE_PRIVATE)
+        val lastUpdated = prefs.getLong(UpcomingWidget.LAST_UPDATE, 0)
+        val serializedMedia = prefs.getString(UpcomingWidget.PREF_SERIALIZED_MEDIA, "")
+        if (System.currentTimeMillis() - lastUpdated > 1000 * 60 * 60 * 4 || serializedMedia.isNullOrEmpty()) {
+            runBlocking(Dispatchers.IO) {
+                val upcoming = Anilist.query.getUpcomingAnime(userId)
+                upcoming.map {
+                    async(Dispatchers.IO) {
+                        widgetItems.add(
+                            WidgetItem(
+                                it.userPreferredName,
+                                timeUntil(it.timeUntilAiring ?: 0),
+                                it.cover ?: "",
+                                it.banner ?: "",
+                                it.id
+                            )
+                        )
+                    }
+                }.awaitAll()
+                prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis()).apply()
+                val serialized = serializeMedia(upcoming)
+                if (serialized != null) {
+                    prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, serialized).apply()
+                } else {
+                    prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, "").apply()
+                    Logger.log("Error serializing media")
+                }
+                refreshing = false
+            }
+        } else {
+            refreshing = false
+            val timeSinceLastUpdate = System.currentTimeMillis() - lastUpdated
+            val media = deserializeMedia(serializedMedia)
+            if (media != null) {
+                media.map {
                     widgetItems.add(
                         WidgetItem(
                             it.userPreferredName,
-                            timeUntil(it.timeUntilAiring ?: 0),
+                            timeUntil(it.timeUntilAiring?.minus(timeSinceLastUpdate) ?: 0),
                             it.cover ?: "",
                             it.banner ?: "",
                             it.id
                         )
                     )
                 }
-            }.awaitAll()
-            refreshing = false
+            } else {
+                prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, "").apply()
+                prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, 0).apply()
+                Logger.log("Error deserializing media")
+                fillWidgetItems()
+            }
+        }
+
+    }
+
+    private fun serializeMedia(media: List<Media>): String? {
+        return try {
+            val gson = GsonBuilder()
+                .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
+                    SChapterImpl() // Provide an instance of SChapterImpl
+                })
+                .registerTypeAdapter(SAnime::class.java, InstanceCreator<SAnime> {
+                    SAnimeImpl() // Provide an instance of SAnimeImpl
+                })
+                .registerTypeAdapter(SEpisode::class.java, InstanceCreator<SEpisode> {
+                    SEpisodeImpl() // Provide an instance of SEpisodeImpl
+                })
+                .create()
+            val json = gson.toJson(media)
+            json
+        } catch (e: Exception) {
+            Logger.log("Error serializing media: $e")
+            Logger.log(e)
+            null
+        }
+    }
+
+    private fun deserializeMedia(json: String): List<Media>? {
+        return try {
+            val gson = GsonBuilder()
+                .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
+                    SChapterImpl() // Provide an instance of SChapterImpl
+                })
+                .registerTypeAdapter(SAnime::class.java, InstanceCreator<SAnime> {
+                    SAnimeImpl() // Provide an instance of SAnimeImpl
+                })
+                .registerTypeAdapter(SEpisode::class.java, InstanceCreator<SEpisode> {
+                    SEpisodeImpl() // Provide an instance of SEpisodeImpl
+                })
+                .create()
+            val media = gson.fromJson(json, Array<Media>::class.java).toList()
+            media
+        } catch (e: Exception) {
+            Logger.log("Error deserializing media: $e")
+            Logger.log(e)
+            null
         }
     }
 
