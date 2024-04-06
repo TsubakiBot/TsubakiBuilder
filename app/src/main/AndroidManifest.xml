@@ -70,7 +70,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dantotsu"
         android:usesCleartextTraffic="true"
-        tools:ignore="AllowBackup"
+        android:fullBackupContent="@xml/full_backup_content"
+        android:dataExtractionRules="@xml/extraction_content"
         tools:targetApi="tiramisu">
 
         <receiver
