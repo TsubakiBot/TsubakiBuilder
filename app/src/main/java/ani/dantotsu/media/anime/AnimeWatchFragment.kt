@@ -431,7 +431,7 @@ class AnimeWatchFragment : Fragment() {
                             isDownload = true
                         )
                     } else {
-                        snackString("Permission is required to download")
+                        snackString(getString(R.string.download_permission_required))
                     }
                 }
             } else {
