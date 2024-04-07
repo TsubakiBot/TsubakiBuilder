@@ -372,11 +372,6 @@ class HomeFragment : Fragment() {
                             PrefManager.getVal(PrefName.HomeLayoutShow)
                         runBlocking {
                             model.initHomePage()
-                            ResumableWidget.injectUpdate(
-                                context,
-                                model.getAnimeContinue().value,
-                                model.getMangaContinue().value
-                            )
                         }
                         (array.indices).forEach { i ->
                             if (homeLayoutShow.elementAt(i)) {
@@ -386,6 +381,11 @@ class HomeFragment : Fragment() {
                             }
                         }
                         ResumableShortcuts.updateShortcuts(
+                            context,
+                            model.getAnimeContinue().value,
+                            model.getMangaContinue().value
+                        )
+                        ResumableWidget.injectUpdate(
                             context,
                             model.getAnimeContinue().value,
                             model.getMangaContinue().value
