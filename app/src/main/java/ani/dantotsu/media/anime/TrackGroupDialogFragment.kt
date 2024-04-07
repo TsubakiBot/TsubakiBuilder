@@ -15,6 +15,7 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
+import java.util.Locale
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
@@ -66,26 +67,30 @@ class TrackGroupDialogFragment(
         override fun onBindViewHolder(holder: StreamViewHolder, position: Int) {
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
-                binding.subtitleTitle.text = when (trackGroup.getTrackFormat(0).language) {
-                    "none" -> "[X] Disabled"
-                    "ja" -> "[ja] Japanese"
-                    "en" -> "[en] English"
-                    "de" -> "[de] German"
-                    "es" -> "[es] Spanish"
-                    "fr" -> "[fr] French"
-                    "it" -> "[it] Italian"
-                    "pt" -> "[pt] Portuguese"
-                    "ru" -> "[ru] Russian"
-                    "zh" -> "[zh] Chinese (Simplified)"
-                    "tr" -> "[tr] Turkish"
-                    "ar" -> "[ar] Arabic"
-                    "uk" -> "[uk] Ukrainian"
-                    "he" -> "[he] Hebrew"
-                    "pl" -> "[pl] Polish"
-                    "ro" -> "[ro] Romanian"
-                    "sv" -> "[sv] Swedish"
-                    "und" -> "[?] Unknown"
-                    else -> trackGroup.getTrackFormat(0).language
+
+                when (val language = trackGroup.getTrackFormat(0).language) {
+                    null -> {
+                        binding.subtitleTitle.text = getString(R.string.invalid_track)
+                    }
+                    "none" -> {
+                        binding.subtitleTitle.text = getString(R.string.disabled_track)
+                    }
+                    else -> {
+                        val locale = if (language.contains("-")) {
+                            val parts = language.split("-")
+                            try {
+                                Locale(parts[0], parts[1])
+                            } catch (ignored: Exception) { null }
+                        } else {
+                            try {
+                                Locale(language)
+                            } catch (ignored: Exception) { null }
+                        }
+                        binding.subtitleTitle.text = locale?.let {
+                            "[${it.language}] ${it.displayName}"
+
+                        } ?: getString(R.string.unknown_track, language)
+                    }
                 }
                 binding.root.setOnClickListener {
                     dismiss()

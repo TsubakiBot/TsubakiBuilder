@@ -220,12 +220,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private var orientationListener: OrientationEventListener? = null
 
     private var downloadId: String? = null
+    private var hasExtSubtitles = false
 
     companion object {
         var initialized = false
         lateinit var media: Media
         var torrent: Torrent? = null
-        val isTorrent: Boolean get() = torrent != null
 
         private const val DEFAULT_MIN_BUFFER_MS = 600000
         private const val DEFAULT_MAX_BUFFER_MS = 600000
@@ -265,6 +265,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private var isFastForwarding = false
 
     var rotation = 0
+
+    val isTorrent: Boolean get() = torrent != null
 
     override fun onAttachedToWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -1396,8 +1398,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
 
         //Subtitles
+        hasExtSubtitles = ext.subtitles.isNotEmpty()
         if (!isTorrent) {
-            exoSubtitle.isVisible = ext.subtitles.isNotEmpty()
+            exoSubtitle.isVisible = hasExtSubtitles
             exoSubtitle.setOnClickListener {
                 subClick()
             }
@@ -1540,7 +1543,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .setSelectUndeterminedTextLanguage(true)
             .setAllowAudioMixedMimeTypeAdaptiveness(true)
             .setAllowMultipleAdaptiveSelections(true)
-            .setPreferredTextLanguage(subtitle?.language ?: "en")
+            .setPreferredTextLanguage(subtitle?.language ?: Locale.getDefault().language)
             .setPreferredTextRoleFlags(C.ROLE_FLAG_SUBTITLE)
             .setRendererDisabled(TRACK_TYPE_VIDEO, false)
             .setRendererDisabled(TRACK_TYPE_AUDIO, false)
@@ -1927,7 +1930,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                     ?.build()!!
                         }
                         else -> {
-                            if (isTorrent) {
+                            if (isTorrent || !hasExtSubtitles) {
                                 if (it.isSupported(true)) subTracks.add(it)
                                 return@forEach
                             }
@@ -1947,7 +1950,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
                 .show(supportFragmentManager, "dialog")
         }
-        if (isTorrent) {
+        if (isTorrent || !hasExtSubtitles) {
             exoSubtitle.isVisible = subTracks.size > 1
             exoSubtitle.setOnClickListener {
                 TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
@@ -1959,7 +1962,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
-        if (isTorrent) {
+        if (isTorrent || !hasExtSubtitles) {
             exoPlayer.currentTracks.groups.forEach { trackGroup ->
                 when (trackGroup.type) {
                     TRACK_TYPE_TEXT -> {
