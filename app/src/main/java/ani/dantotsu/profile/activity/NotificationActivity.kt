@@ -19,7 +19,7 @@ import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.comment.CommentStore
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -92,7 +92,7 @@ class NotificationActivity : AppCompatActivity() {
                         binding.followSwipeRefresh.isRefreshing = false
                     }
                 }
-                AppUpdater.notifyOnUpdate(this@NotificationActivity, binding.appUpdateLayout)
+                MatagiUpdater.notifyOnUpdate(this@NotificationActivity, binding.appUpdateLayout)
             }
         }
     }

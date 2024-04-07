@@ -38,7 +38,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -49,9 +49,9 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
-import ani.dantotsu.widgets.resumable.ResumableWidget
-import com.eightbit.view.AnimatedLinearLayout
-import eu.kanade.tachiyomi.util.launcher.ResumableShortcuts
+import ani.matagi.widgets.resumable.ResumableWidget
+import ani.matagi.view.AnimatedLinearLayout
+import ani.matagi.launcher.ResumableShortcuts
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -61,7 +61,6 @@ import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
-
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -94,7 +93,7 @@ class HomeFragment : Fragment() {
                 val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                 blurImage(if (bannerAnimations) binding.homeUserBg else binding.homeUserBgNoKen, Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
-                val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+                val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
                 binding.homeNotificationCount.isVisible = count > 0
                 binding.homeNotificationCount.text = count.toString()
 

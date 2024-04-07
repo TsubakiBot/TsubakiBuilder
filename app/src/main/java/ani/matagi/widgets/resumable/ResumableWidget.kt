@@ -1,4 +1,4 @@
-package ani.dantotsu.widgets.resumable
+package ani.matagi.widgets.resumable
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -175,7 +175,7 @@ class ResumableWidget : AppWidgetProvider() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 val builder = RemoteViews.RemoteCollectionItems.Builder()
                 widgetItems.clear()
-                fillWidgetItems(prefs).forEach {item ->
+                fillWidgetItems(prefs).forEach { item ->
                     val rv = RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
                         setTextViewText(R.id.text_show_title, item.title)
                         setTextColor(R.id.text_show_title, titleTextColor)

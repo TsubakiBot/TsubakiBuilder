@@ -26,7 +26,7 @@ import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
 import ani.dantotsu.offline.OfflineFragment
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -104,7 +104,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
-        val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
         binding.settingsNotificationCount.isVisible = count > 0
         binding.settingsNotificationCount.text = count.toString()
         binding.settingsUserAvatar.setOnClickListener{

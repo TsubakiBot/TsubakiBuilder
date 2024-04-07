@@ -316,7 +316,7 @@
 
             </FrameLayout>
 
-            <com.eightbit.view.AnimatedLinearLayout
+            <ani.matagi.view.AnimatedLinearLayout
                 android:id="@+id/donationReminder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -374,7 +374,7 @@
                         tools:visibility="visible"
                         tools:ignore="ContentDescription" />
                 </LinearLayout>
-            </com.eightbit.view.AnimatedLinearLayout>
+            </ani.matagi.view.AnimatedLinearLayout>
 
             <LinearLayout
                 android:id="@+id/homeContinueWatchingContainer"

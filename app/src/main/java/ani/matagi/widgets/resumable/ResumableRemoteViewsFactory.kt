@@ -1,21 +1,14 @@
-package ani.dantotsu.widgets.resumable
+package ani.matagi.widgets.resumable
 
-import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import ani.dantotsu.R
 import ani.dantotsu.util.BitmapUtil
-import ani.dantotsu.util.BitmapUtil.Companion.roundCorners
 import ani.dantotsu.util.Logger
-import ani.dantotsu.widgets.resumable.ResumableWidget.Companion.widgetItems
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
+import ani.matagi.widgets.resumable.ResumableWidget.Companion.widgetItems
 
 class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int) :
     RemoteViewsService.RemoteViewsFactory {

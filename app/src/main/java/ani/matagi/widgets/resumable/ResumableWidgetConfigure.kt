@@ -1,4 +1,4 @@
-package ani.dantotsu.widgets.resumable
+package ani.matagi.widgets.resumable
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
@@ -132,7 +132,8 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                 .apply()
         }
 
-        binding.widgetType.setText(ResumableType.entries[
+        binding.widgetType.setText(
+            ResumableType.entries[
             prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)
         ].type)
         binding.widgetType.setAdapter(

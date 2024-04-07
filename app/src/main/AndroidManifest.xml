@@ -79,7 +79,7 @@
         <meta-data android:name="com.google.android.backup.api_key" android:value="unused" />
 
         <receiver
-            android:name="com.eightbit.update.UpdateReceiver"
+            android:name="ani.matagi.update.UpdateReceiver"
             android:exported="true">
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
@@ -106,7 +106,7 @@
         </activity>
 
         <receiver
-            android:name=".widgets.resumable.ResumableWidget"
+            android:name="ani.matagi.widgets.resumable.ResumableWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -117,7 +117,7 @@
                 android:resource="@xml/resumable_widget_info" />
         </receiver>
         <activity
-            android:name=".widgets.resumable.ResumableWidgetConfigure"
+            android:name="ani.matagi.widgets.resumable.ResumableWidgetConfigure"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -415,7 +415,7 @@
             android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service
-            android:name=".widgets.resumable.ResumableRemoteViewsService"
+            android:name="ani.matagi.widgets.resumable.ResumableRemoteViewsService"
             android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service

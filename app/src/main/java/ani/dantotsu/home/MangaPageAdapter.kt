@@ -28,7 +28,7 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.SearchActivity
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -81,7 +81,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         }
 
         updateAvatar()
-        val count = Anilist.unreadNotificationCount + AppUpdater.hasUpdate
+        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
         trendingBinding.notificationCount.isVisible = count > 0
         trendingBinding.notificationCount.text = count.toString()
         trendingBinding.searchBar.hint = "MANGA"

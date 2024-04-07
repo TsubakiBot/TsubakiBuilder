@@ -1,4 +1,4 @@
-package ani.dantotsu.widgets.resumable
+package ani.matagi.widgets.resumable
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent

@@ -65,7 +65,7 @@ import ani.dantotsu.notifications.subscription.SubscriptionNotificationWorker.Co
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.pop
 import ani.dantotsu.reloadActivity
@@ -1218,7 +1218,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             if (!BuildConfig.FLAVOR.contains("fdroid")) {
                 binding.settingsLogo.setOnLongClickListener {
                     lifecycleScope.launch(Dispatchers.IO) {
-                        AppUpdater.check(this@SettingsActivity, true)
+                        MatagiUpdater.check(this@SettingsActivity, true)
                     }
                     true
                 }
@@ -1233,7 +1233,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
                 settingsCheckUpdate.setOnLongClickListener {
                     lifecycleScope.launch(Dispatchers.IO) {
-                        AppUpdater.check(this@SettingsActivity, true)
+                        MatagiUpdater.check(this@SettingsActivity, true)
                     }
                     true
                 }

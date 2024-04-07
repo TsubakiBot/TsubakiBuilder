@@ -18,7 +18,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.FinalExceptionHandler
 import ani.dantotsu.util.Logger
-import com.eightbit.io.Debug
+import ani.matagi.io.Debug
 import com.google.android.material.color.DynamicColors
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager

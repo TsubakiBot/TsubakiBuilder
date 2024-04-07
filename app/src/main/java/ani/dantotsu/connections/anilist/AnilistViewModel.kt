@@ -5,15 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.webkit.internal.ApiFeature.M
-import androidx.webkit.internal.ApiFeature.P
-import androidx.webkit.internal.StartupApiFeature
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.media.Media
-import ani.dantotsu.others.AppUpdater
+import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -109,7 +106,7 @@ class AnilistHomeViewModel : ViewModel() {
         MAL.getSavedToken()
         Discord.getSavedToken()
         if (!BuildConfig.FLAVOR.contains("fdroid")) {
-            if (PrefManager.getVal(PrefName.CheckUpdate)) AppUpdater.check(context)
+            if (PrefManager.getVal(PrefName.CheckUpdate)) MatagiUpdater.check(context)
         }
         genres.postValue(Anilist.query.getGenresAndTags())
     }
