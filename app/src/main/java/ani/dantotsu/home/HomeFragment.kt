@@ -51,6 +51,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.widgets.resumable.ResumableWidget
 import com.eightbit.view.AnimatedLinearLayout
+import eu.kanade.tachiyomi.util.launcher.ResumableShortcuts
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -384,6 +385,11 @@ class HomeFragment : Fragment() {
                                 containers[i].visibility = View.GONE
                             }
                         }
+                        ResumableShortcuts.updateShortcuts(
+                            context,
+                            model.getAnimeContinue().value,
+                            model.getMangaContinue().value
+                        )
                         model.empty.postValue(empty)
                     }
                     live.postValue(false)
