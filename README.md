@@ -8,7 +8,10 @@
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 
-### Note: I am not a collaborator or member of the upstream Discord. Contributions are submitted as a courtesy.
+### Note: I am not a Dantotsu collaborator, nor member of its Discord. 
+This fork is dedicated to improving functionality. Many of the changes are provided  
+to the upstream project. I claim no liability for alterations, misuse, or code inherited  
+from the upstream project through submission. No content sources are provided.
 
 # **Dantotsu** 🌟
 
