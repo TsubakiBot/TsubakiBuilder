@@ -455,7 +455,7 @@
     <string name="update_banner"> </string>
     <string name="update_icon"> </string>
     <string name="install_update">Install update %1$s?</string>
-
+    <string name="update_blocked">Update permission denied!</string>
 
     <string name="discord_nothing_button">Display only the first button</string>
     <string name="discord_dantotsu_button">Display dantotsu in the second button</string>

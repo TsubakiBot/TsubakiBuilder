@@ -15,8 +15,8 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
@@ -30,10 +30,8 @@ import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemAppUpdateBinding
 import ani.dantotsu.logError
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.others.AppUpdater.downloadUpdate
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
-import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
@@ -41,6 +39,7 @@ import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
@@ -53,7 +52,7 @@ import kotlin.random.Random
 
 object AppUpdater {
 
-    var buildHash: String? = null
+    private var buildHash: String? = null
     var hasUpdate = 0
 
     private fun getUpdateDialog(activity: FragmentActivity, version: String): CustomBottomDialog {
@@ -85,7 +84,7 @@ object AppUpdater {
                 if (post) {
                     getUpdateDialog(activity, version).apply {
                         setPositiveButton(activity.getString(R.string.lets_go)) {
-                            installUpdate(activity, version)
+                            requestUpdate(activity, version)
                             dismiss()
                         }
                         setNegativeButton(activity.getString(R.string.cope)) {
@@ -104,28 +103,44 @@ object AppUpdater {
         }
     }
 
-    private fun installUpdate(activity: FragmentActivity, version: String) {
-        MainScope().launch(Dispatchers.IO) {
-            val repo = activity.getString(R.string.repo)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (!activity.packageManager.canRequestPackageInstalls()) {
-                    activity.startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
-                        data = Uri.parse(String.format("package:%s", activity.packageName))
-                    })
+    private suspend fun installUpdate(activity: FragmentActivity, version: String) = withContext(Dispatchers.IO) {
+        val repo = activity.getString(R.string.repo)
+        try {
+            client.get("https://api.github.com/repos/$repo/releases/tags/$version")
+                .parsed<GithubResponse>().assets?.find {
+                    it.browserDownloadURL.contains(
+                        "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
+                    )
+                }?.browserDownloadURL.apply {
+                    if (this != null) activity.downloadUpdate(version, this)
+                    else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
                 }
-            }
-            try {
-                client.get("https://api.github.com/repos/$repo/releases/tags/$version")
-                    .parsed<GithubResponse>().assets?.find {
-                        it.browserDownloadURL.contains(
-                            "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
-                        )
-                    }?.browserDownloadURL.apply {
-                        if (this != null) activity.downloadUpdate(version, this)
-                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
+        } catch (e: Exception) {
+            logError(e)
+        }
+    }
+
+    private fun requestUpdate(activity: FragmentActivity, version: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (!activity.packageManager.canRequestPackageInstalls()) {
+                val onInstallResult = activity.registerForActivityResult(
+                    ActivityResultContracts.StartActivityForResult()
+                ) { _: ActivityResult ->
+                    if (activity.packageManager.canRequestPackageInstalls()) {
+                        MainScope().launch(Dispatchers.IO) {
+                            installUpdate(activity, version)
+                        }
+                    } else {
+                        snackString(R.string.update_blocked)
                     }
-            } catch (e: Exception) {
-                logError(e)
+                }
+                onInstallResult.launch(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+                    data = Uri.parse(String.format("package:%s", activity.packageName))
+                })
+            } else {
+                MainScope().launch(Dispatchers.IO) {
+                    installUpdate(activity, version)
+                }
             }
         }
     }
@@ -149,7 +164,7 @@ object AppUpdater {
                 getUpdateDialog(activity, version).apply {
                     setPositiveButton(activity.getString(R.string.lets_go)) {
                         buildHash = null
-                        installUpdate(activity, version)
+                        requestUpdate(activity, version)
                         dismiss()
                         parent.removeView(view.root)
                     }
