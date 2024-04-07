@@ -226,6 +226,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         lateinit var media: Media
         var torrent: Torrent? = null
         val isTorrent: Boolean get() = torrent != null
+
+        private const val DEFAULT_MIN_BUFFER_MS = 600000
+        private const val DEFAULT_MAX_BUFFER_MS = 600000
+        private const val BUFFER_FOR_PLAYBACK_MS = 2500
+        private const val BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS = 5000
     }
 
     private lateinit var episode: Episode
@@ -383,27 +388,31 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             6 -> ResourcesCompat.getFont(this, R.font.blocky)
             else -> ResourcesCompat.getFont(this, R.font.poppins_semi_bold)
         }
-
-        playerView.subtitleView?.setApplyEmbeddedStyles(false)
-        playerView.subtitleView?.setApplyEmbeddedFontSizes(false)
-
-        playerView.subtitleView?.setStyle(
-            CaptionStyleCompat(
-                primaryColor,
-                subBackground,
-                subWindow,
-                outline,
-                secondaryColor,
-                font
-            )
-        )
-
-        playerView.subtitleView?.alpha = when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
-            true -> PrefManager.getVal(PrefName.SubAlpha)
-            false -> 0f
-        }
         val fontSize = PrefManager.getVal<Int>(PrefName.FontSize).toFloat()
-        playerView.subtitleView?.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
+
+        playerView.subtitleView?.let { subtitles ->
+            subtitles.setApplyEmbeddedStyles(false)
+            subtitles.setApplyEmbeddedFontSizes(false)
+
+            subtitles.setStyle(
+                CaptionStyleCompat(
+                    primaryColor,
+                    subBackground,
+                    subWindow,
+                    outline,
+                    secondaryColor,
+                    font
+                )
+            )
+
+            subtitles.alpha =
+                when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+                    true -> PrefManager.getVal(PrefName.SubAlpha)
+                    false -> 0f
+                }
+
+            subtitles.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
+        }
     }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -1578,10 +1587,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val loadControl = DefaultLoadControl.Builder()
             .setBackBuffer(1000 * 60 * 2, true)
             .setBufferDurationsMs(
-                600000,
-                600000,
-                2500,
-                5000,
+                DEFAULT_MIN_BUFFER_MS,
+                DEFAULT_MAX_BUFFER_MS,
+                BUFFER_FOR_PLAYBACK_MS,
+                BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
             )
             .build()
 
@@ -1928,7 +1937,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
         }
-        println("Track: ${tracks.groups.size}")
         exoAudioTrack.isVisible = audioTracks.size > 1
         exoAudioTrack.setOnClickListener {
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
@@ -2042,7 +2050,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         startActivity(intent)
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onDestroy() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
