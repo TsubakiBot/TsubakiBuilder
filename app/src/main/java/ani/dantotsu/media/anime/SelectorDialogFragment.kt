@@ -26,10 +26,12 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.databinding.ItemStreamBinding
 import ani.dantotsu.databinding.ItemUrlBinding
 import ani.dantotsu.download.DownloadedType
+import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.media.Media
@@ -46,15 +48,20 @@ import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
+import ani.dantotsu.toast
+import ani.dantotsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
+import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 import java.text.DecimalFormat
 
 
@@ -296,6 +303,24 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             video?.file?.url?.let { videoUrl ->
                 if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (!PrefManager.getVal<Boolean>(PrefName.TorrServerEnabled)
+                            && !TorrentServerService.isRunning(requireContext())) {
+                            val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
+                                .setTitle(R.string.server_disabled)
+                                .setMessage(R.string.enable_server)
+                                .setPositiveButton(R.string.yes) { dialog, _ ->
+                                    currContext()?.let { torrServerStart(it) }
+                                    toast(R.string.server_enabled)
+                                    dialog.dismiss()
+                                }
+                                .setNegativeButton(R.string.no) { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .create()
+                            dialog.window?.setDimAmount(0.8f)
+                            dialog.show()
+                            return
+                        }
                         runBlocking(Dispatchers.IO) {
                             launchWithTorrentServer(video)
                         }

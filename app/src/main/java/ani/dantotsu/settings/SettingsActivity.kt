@@ -65,7 +65,6 @@ import ani.dantotsu.notifications.subscription.SubscriptionNotificationWorker.Co
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
-import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.pop
 import ani.dantotsu.reloadActivity
@@ -87,13 +86,13 @@ import ani.dantotsu.torrServerStop
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
+import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE
 import eltos.simpledialogfragment.color.SimpleColorDialog
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
-import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import io.noties.markwon.Markwon
@@ -537,7 +536,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 uiEp(2, it)
             }
 
-            settingsTorrServer.isChecked = TorrentServerService.isRunning(this@SettingsActivity)
+            settingsTorrServer.isChecked = PrefManager.getVal(PrefName.TorrServerEnabled)
             settingsTorrServer.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked)
                     torrServerStart(this@SettingsActivity)

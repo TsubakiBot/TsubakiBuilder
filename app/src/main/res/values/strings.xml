@@ -190,6 +190,9 @@
     <string name="remove_torrent">Remove this torrent?</string>
     <string name="invalid_port">Invalid port entered!</string>
     <string name="port_range">Port must be a valid TCP port (0 – 65535)</string>
+    <string name="server_disabled">TorrServer in disabled!</string>
+    <string name="server_enabled">Starting TorrServer</string>
+    <string name="enable_server">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
 
     <string name="anilist_settings">Anilist Settings</string>
     <string name="extension_settings">Extensions</string>
