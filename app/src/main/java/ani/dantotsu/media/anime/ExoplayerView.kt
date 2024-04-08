@@ -1920,17 +1920,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     if (it.isSupported(true)) audioTracks.add(it)
                 }
                 TRACK_TYPE_TEXT -> {
-                    when {
-                        it.mediaTrackGroup.id == "1:" -> {
-                            onSetTrackGroupOverride(it, TRACK_TYPE_TEXT, it.length - 1)
-                        }
-                        else -> {
-                            if (isTorrent || !hasExtSubtitles) {
-                                if (it.isSupported(true)) subTracks.add(it)
-                                return@forEach
-                            }
-                            onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
-                        }
+                    if (isTorrent || !hasExtSubtitles) {
+                        if (it.isSupported(true)) subTracks.add(it)
+                        return@forEach
+                    }
+                    if (it.mediaTrackGroup.id == "1:") {
+                        onSetTrackGroupOverride(it, TRACK_TYPE_TEXT, it.length - 1)
+                    } else {
+                        onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                     }
                 }
             }
