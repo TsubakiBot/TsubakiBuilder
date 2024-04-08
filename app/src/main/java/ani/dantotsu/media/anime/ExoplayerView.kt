@@ -1888,13 +1888,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }, 500)
     }
 
-    fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int) {
+    fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int, index: Int = 0) {
         val isDisabled = trackGroup.getTrackFormat(0).language == "none"
         exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
             .buildUpon()
             .setTrackTypeDisabled(TRACK_TYPE_TEXT, isDisabled)
             .setOverrideForType(
-                TrackSelectionOverride(trackGroup.mediaTrackGroup, 0)
+                TrackSelectionOverride(trackGroup.mediaTrackGroup, index)
             )
             .build()
         if (type == TRACK_TYPE_TEXT) setupSubFormatting(playerView)
@@ -1922,24 +1922,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 TRACK_TYPE_TEXT -> {
                     when {
                         it.mediaTrackGroup.id == "1:" -> {
-                            playerView.player?.trackSelectionParameters =
-                                playerView.player?.trackSelectionParameters?.buildUpon()
-                                    ?.setOverrideForType(
-                                        TrackSelectionOverride(it.mediaTrackGroup, it.length - 1)
-                                    )
-                                    ?.build()!!
+                            onSetTrackGroupOverride(it, TRACK_TYPE_TEXT, it.length - 1)
                         }
                         else -> {
                             if (isTorrent || !hasExtSubtitles) {
                                 if (it.isSupported(true)) subTracks.add(it)
                                 return@forEach
                             }
-                            playerView.player?.trackSelectionParameters =
-                                playerView.player?.trackSelectionParameters?.buildUpon()
-                                    ?.addOverride(
-                                        TrackSelectionOverride(it.mediaTrackGroup, listOf())
-                                    )
-                                    ?.build()!!
+                            onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                         }
                     }
                 }
