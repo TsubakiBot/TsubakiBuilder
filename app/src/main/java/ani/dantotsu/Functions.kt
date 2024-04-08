@@ -661,9 +661,13 @@ fun ImageView.loadImage(url: String?, size: Int = 0) {
     }
 }
 
+fun getStringOrTrolled(url: String?) : String {
+    return if (PrefManager.getVal(PrefName.DisableMitM)) url ?: "" else
+        PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { url ?: "" }
+}
+
 fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
-    file?.url = if (PrefManager.getVal(PrefName.DisableMitM)) file?.url ?: "" else
-        PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { file?.url ?: "" }
+    file?.url = getStringOrTrolled(file?.url)
     if (file?.url?.isNotEmpty() == true) {
         tryWith {
             if (file.url.startsWith("content://")) {
@@ -1388,8 +1392,7 @@ fun blurImage(imageView: ImageView, banner: String?) {
         if (PrefManager.getVal(PrefName.BlurBanners)) {
             val context = imageView.context
             if (!(context as Activity).isDestroyed) {
-                val url = if (PrefManager.getVal(PrefName.DisableMitM)) banner else
-                    PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { banner }
+                val url = getStringOrTrolled(banner)
                 Glide.with(context as Context)
                     .load(GlideUrl(url))
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)

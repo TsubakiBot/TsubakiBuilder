@@ -44,7 +44,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     LastAnilistNotificationId(Pref(Location.General, Int::class, 0)),
     AnilistFilteredTypes(Pref(Location.General, Set::class, setOf<String>())),
     UseAlarmManager(Pref(Location.General, Boolean::class, false)),
-    CommentsOptIn(Pref(Location.General, Boolean::class, true)),
+    CommentsOptIn(Pref(Location.General, Boolean::class, false)),
     DisableMitM(Pref(Location.General, Boolean::class, false)),
     IncludeAnimeList(Pref(Location.General, Boolean::class, true)),
     IncludeMangaList(Pref(Location.General, Boolean::class, true)),

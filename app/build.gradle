@@ -46,7 +46,6 @@ android {
             dimension "store"
             isDefault true
             apply plugin: 'com.google.gms.google-services'
-            apply plugin: 'com.google.firebase.crashlytics'
         }
     }
 
