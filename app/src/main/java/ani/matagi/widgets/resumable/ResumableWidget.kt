@@ -22,7 +22,6 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.Media
 import ani.dantotsu.util.BitmapUtil
-import ani.dantotsu.util.BitmapUtil.Companion.convertDrawableToBitmap
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
 import kotlinx.coroutines.Dispatchers
