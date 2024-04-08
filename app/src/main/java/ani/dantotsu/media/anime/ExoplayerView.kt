@@ -266,7 +266,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     var rotation = 0
 
-    val isTorrent: Boolean get() = torrent != null
+    private val isTorrent: Boolean get() = torrent != null
+    private val subsEmbedded: Boolean get() = isTorrent || !hasExtSubtitles
 
     override fun onAttachedToWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -1399,7 +1400,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         //Subtitles
         hasExtSubtitles = ext.subtitles.isNotEmpty()
-        if (!isTorrent) {
+        if (hasExtSubtitles && !isTorrent) {
             exoSubtitle.isVisible = hasExtSubtitles
             exoSubtitle.setOnClickListener {
                 subClick()
@@ -1407,7 +1408,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
         var sub: MediaItem.SubtitleConfiguration? = null
         if (subtitle != null) {
-            val subtitleUrl = if (isTorrent) video!!.file.url else subtitle!!.file.url
+            val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle!!.file.url
             //var localFile: String? = null
             if (subtitle?.type == SubtitleType.UNKNOWN) {
                 runBlocking {
@@ -1630,7 +1631,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoPlayer.addAnalyticsListener(EventLogger())
         isInitialized = true
 
-        if (isTorrent && !PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+        if (subsEmbedded && !PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         }
     }
@@ -1920,7 +1921,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     if (it.isSupported(true)) audioTracks.add(it)
                 }
                 TRACK_TYPE_TEXT -> {
-                    if (isTorrent || !hasExtSubtitles) {
+                    if (subsEmbedded) {
                         if (it.isSupported(true)) subTracks.add(it)
                         return@forEach
                     }
@@ -1937,7 +1938,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
                 .show(supportFragmentManager, "dialog")
         }
-        if (isTorrent || !hasExtSubtitles) {
+        if (subsEmbedded) {
             exoSubtitle.isVisible = subTracks.size > 1
             exoSubtitle.setOnClickListener {
                 TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
@@ -1949,7 +1950,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
-        if (isTorrent || !hasExtSubtitles) {
+        if (subsEmbedded) {
             exoPlayer.currentTracks.groups.forEach { trackGroup ->
                 when (trackGroup.type) {
                     TRACK_TYPE_TEXT -> {
@@ -2073,7 +2074,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     // Cast
     private fun cast() {
         val videoURL = video?.file?.url ?: return
-        val subtitleUrl = if (isTorrent) video!!.file.url else subtitle!!.file.url
+        val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle!!.file.url
         val shareVideo = Intent(Intent.ACTION_VIEW)
         shareVideo.setDataAndType(Uri.parse(videoURL), "video/*")
         shareVideo.setPackage("com.instantbits.cast.webvideo")
