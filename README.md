@@ -8,43 +8,30 @@
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 
-### Note: I am not a Dantotsu collaborator, nor member of its Discord. 
-This fork is dedicated to improving functionality. Many of the changes are provided  
-to the upstream project. I claim no liability for alterations, misuse, or code inherited  
-from the upstream project through submission. No content sources are provided.
+### Note: I am not a Dantotsu collaborator, nor member of its Discord.
+This fork began after reading multiple reviews of the promising UI, but excessive number of bugs. I cleared a decent chunk of the backlog before deciding that the condescending attitude of the project owner, lack of collaboration by an unskilled developer with push access, and sheer volume of copied code were red flags. After explaining my reasoning, I excused myself from further involvement.
 
 # **Dantotsu** 🌟
 
-Dantotsu is an [Anilist](https://anilist.co/) only client.
+Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
 
 > **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese. Try it out for yourself and be the judge!
 
 # **Mr. Matagi** 💦
 
+Mr. Matagi is aimed at improving upon it.
+
 > **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. A copy of a project is a fork and a collection of changes is a branch.
-
-<a href="https://www.buymeacoffee.com/abandonedcart"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=abandonedcart&button_colour=FFDD00&font_colour=030201&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
-
-### 🚀 STAR THIS REPOSITORY TO SUPPORT THE DEVELOPER AND ENCOURAGE THE DEVELOPMENT OF THE APPLICATION!
 
 ## WANT TO CONTRIBUTE? 🤝
 
 All contributions are welcome, from code to documentation to graphics to design suggestions to bug reports. Please use GitHub to its fullest; contribute Pull Requests, contribute tutorials or other content - whatever you have to offer, we can use!
 
-You can come hang out with our awesome community, request new features, and report any bugs or issues at our Discord server too. 📣
-
-### OFFICIAL DISCORD SERVER 🚀
-
-<p align="center">
-   <a href="https://discord.gg/4HPZ5nAWwM">
-      <img src="https://invidget.switchblade.xyz/4HPZ5nAWwM">
-   </a>
-</p>
-
 ## VISITORS
 
-<img src="https://count.getloli.com/get/@:rebeloniondantotsu" alt=":rebeloniondantotsu" />
+<img src="https://count.getloli.com/get/@:repodevildantotsu" alt=":repodevildantotsu" />
 
 ## LICENSE 📜
 
 Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)
+
