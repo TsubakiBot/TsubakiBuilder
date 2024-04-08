@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_message">%1$s sent you a message</string>
+    <string name="notification_reply">%1$s replied to your activity</string>
+    <string name="notification_followed">%1$s followed you</string>
+    <string name="notification_mention">%1$s mentioned you in their activity</string>
+    <string name="notification_mention_forum">%1$s mentioned you in a forum comment</string>
+    <string name="notification_forum_comment">%1$s commented in one of your subscribed forum threads</string>
+    <string name="notification_reply_forum">%1$s replied to your forum comment</string>
+    <string name="notification_episode_aired">Episode %1$s of %1$s aired</string>
+    <string name="notification_like">%1$s liked your activity</string>
+    <string name="notification_reply_like">%1$s liked your reply</string>
+    <string name="notification_like_thread">%1$s liked your forum thread</string>
+    <string name="notification_forum_comment_like">%1$s liked your forum comment</string>
+    <string name="notification_reply_shared_activity">%1$s replied to activity you have also replied to</string>
+    <string name="notification_media_added">%1$s has been added to the site</string>
+    <string name="notification_media_changed">%1$s has had a data change: %2$s</string>
+    <string name="notification_media_merge">%1$s have merged into %2$s</string>
+    <string name="notification_media_deleted">%1$s has been deleted from the site</string>
+    <string name="notification_test">You should not see this</string>
+</resources>

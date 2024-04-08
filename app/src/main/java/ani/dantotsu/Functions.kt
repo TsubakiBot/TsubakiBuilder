@@ -1152,6 +1152,14 @@ fun getAppString(res: Int): String {
     return currContext()?.getString(res) ?: ""
 }
 
+fun getAppString(res: Int, value: String?): String {
+    return currContext()?.getString(res, value) ?: ""
+}
+
+fun getAppString(res: Int, value: String?, other: String?): String {
+    return currContext()?.getString(res, value, other) ?: ""
+}
+
 fun toast(string: String?) {
     if (string != null) {
         Logger.log(string)
