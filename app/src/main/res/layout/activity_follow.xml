@@ -97,6 +97,7 @@
         android:id="@+id/appUpdateLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
         android:animateLayoutChanges="true"
         android:orientation="vertical" />
 
@@ -109,8 +110,7 @@
             android:id="@+id/followSwipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginHorizontal="12dp"
             android:clipChildren="false"
             android:clipToPadding="false">
 
@@ -119,8 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="true"
-                tools:listitem="@layout/item_follower"
-                android:requiresFadingEdge="vertical" />
+                android:requiresFadingEdge="vertical"
+                tools:listitem="@layout/item_follower" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

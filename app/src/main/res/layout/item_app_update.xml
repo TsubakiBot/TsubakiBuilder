@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/notificationBannerImage"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="120dp"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/notificationGradiant"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="120dp"
             app:srcCompat="@drawable/linear_gradient_nav"
             tools:ignore="ContentDescription" />
 
@@ -43,8 +43,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/notificationCover"
-                android:layout_width="81dp"
-                android:layout_height="120dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/roundedImageView"
                 tools:ignore="ContentDescription,ImageContrastCheck"
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="120dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:padding="8dp"
