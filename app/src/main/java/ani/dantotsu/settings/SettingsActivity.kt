@@ -114,7 +114,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
         override fun handleOnBackPressed() = startMainActivity(this@SettingsActivity)
     }
     lateinit var binding: ActivitySettingsBinding
-    lateinit var launcher: LauncherWrapper
+    private lateinit var launcher: LauncherWrapper
     private lateinit var bindingAccounts: ActivitySettingsAccountsBinding
     private lateinit var bindingTheme: ActivitySettingsThemeBinding
     private lateinit var bindingExtensions: ActivitySettingsExtensionsBinding
