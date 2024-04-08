@@ -24,22 +24,23 @@ class Contributors {
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
-            res.forEach {
-                val role = when (it.login) {
-                    "rebelonion" -> "Owner & Maintainer"
-                    "sneazy-ibo" -> "Contributor & Comment Moderator"
-                    "WaiWhat" -> "Icon Designer"
-                    else -> "Contributor"
-                }
-                developers = developers.plus(
-                    Developer(
-                        it.login,
-                        it.avatarUrl,
-                        role,
-                        it.htmlUrl
+            res.map {
+                async(Dispatchers.IO) {
+                    developers = developers.plus(
+                        Developer(
+                            it.login,
+                            it.avatarUrl,
+                            when (it.login) {
+                                "rebelonion" -> "Owner & Maintainer"
+                                "sneazy-ibo" -> "Contributor & Comment Moderator"
+                                "WaiWhat" -> "Icon Designer"
+                                else -> "Contributor"
+                            },
+                            it.htmlUrl
+                        )
                     )
-                )
-            }
+                }
+            }.awaitAll()
             developers = developers.plus(
                 arrayOf(
                     Developer(
