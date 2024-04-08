@@ -91,7 +91,7 @@
 
     <string name="no_notifications">No more notifications</string>
     <string name="followers">Followers</string>
-    <string name="social_in_media">Display social info in media</string>
+    <string name="social_in_media">Show social stats in media</string>
 
     <string name="status">STATUS</string>
     <string-array name="status" translatable="false">
