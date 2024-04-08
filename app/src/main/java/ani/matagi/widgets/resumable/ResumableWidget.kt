@@ -233,8 +233,9 @@ class ResumableWidget : AppWidgetProvider() {
 
             val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
                 setImageViewBitmap(R.id.backgroundView, gradientDrawable.toBitmap(width, height))
-                setTextColor(R.id.text_show_title, titleTextColor)
                 setTextColor(R.id.widgetTitle, titleTextColor)
+                setTextColor(R.id.text_show_title, titleTextColor)
+                setTextColor(R.id.empty_view, titleTextColor)
                 setImageViewBitmap(R.id.leftFlipper, flipperDrawable.toBitmap())
                 setImageViewBitmap(R.id.rightFlipper, flipperDrawable.toBitmap())
 
