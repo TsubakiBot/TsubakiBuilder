@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
@@ -15,6 +16,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
@@ -199,10 +201,13 @@ class ResumableWidget : AppWidgetProvider() {
             context: Context,
             appWidgetId: Int,
         ): RemoteViews {
+            val intentTemplate = Intent(context, MainActivity::class.java)
+            intentTemplate.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intentTemplate.putExtra("fromWidget", true)
+
             val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
-            val backgroundColor =
-                prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
-            val backgroundFade = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
+            val backgroundColor = prefs.getInt(PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
+            val backgroundFade = prefs.getInt(PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
             val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
 
             val gradientDrawable = ResourcesCompat.getDrawable(
@@ -220,15 +225,19 @@ class ResumableWidget : AppWidgetProvider() {
                 height = 300
             }
 
-            val intentTemplate = Intent(context, MainActivity::class.java)
-            intentTemplate.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            intentTemplate.putExtra("fromWidget", true)
+            val flipperDrawable = ResourcesCompat.getDrawable(
+                context.resources,
+                R.drawable.ic_round_arrow_back_ios_new_24,
+                null
+            ) as Drawable
+            flipperDrawable.setTint(titleTextColor)
 
             val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
-
-                setImageViewBitmap(R.id.backgroundView, convertDrawableToBitmap(gradientDrawable, width, height))
+                setImageViewBitmap(R.id.backgroundView, gradientDrawable.toBitmap(width, height))
                 setTextColor(R.id.text_show_title, titleTextColor)
                 setTextColor(R.id.widgetTitle, titleTextColor)
+                setImageViewBitmap(R.id.leftFlipper, flipperDrawable.toBitmap())
+                setImageViewBitmap(R.id.rightFlipper, flipperDrawable.toBitmap())
 
                 if (prefs.getBoolean(PREF_USE_STACKVIEW, false)) {
                     setViewVisibility(R.id.widgetViewFlipper, View.GONE)
