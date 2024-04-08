@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.util.LruCache
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import ani.matagi.io.Memory
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.online.HttpSource
 import kotlinx.coroutines.Dispatchers
@@ -97,7 +98,7 @@ fun saveImage(
 }
 
 class MangaCache {
-    private val maxMemory = (Runtime.getRuntime().maxMemory() / 1024 / 2).toInt()
+    private val maxMemory = (Memory.maxMemory() / 1024 / 2).toInt()
     private val cache = LruCache<String, ImageData>(maxMemory)
 
     @Synchronized
