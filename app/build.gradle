@@ -52,12 +52,12 @@ android {
 
     buildTypes {
         matagi {
+            isDefault true
             applicationIdSuffix ".matagi"
             versionNameSuffix "-matagi"
             manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"
             manifestPlaceholders.icon_placeholder_round = "@mipmap/ic_launcher_alpha_round"
             debuggable true
-            isDefault true
 
             try {
                 def keystoreProps = new Properties()
