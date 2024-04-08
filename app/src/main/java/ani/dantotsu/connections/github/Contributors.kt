@@ -13,6 +13,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.decodeFromJsonElement
+import java.util.Collections
 
 class Contributors {
 
@@ -24,6 +25,8 @@ class Contributors {
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
+            val owner = res.first { it.login == "rebelonion" }
+            Collections.swap(res, res.indexOf(owner), 0)
             res.map {
                 async(Dispatchers.IO) {
                     developers = developers.plus(
