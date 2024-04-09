@@ -6,7 +6,7 @@
     <string name="app_name" translatable="false">Dantotsu</string>
     <string name="slogan">The NEW Best Anime &amp; Manga app for Android.</string>
 
-    <string name="login">Login</string>
+    <string name="sign_in">Sign In</string>
     <string name="logout">Logout</string>
 
     <string name="conversion_title">Welcome back!</string>
@@ -217,6 +217,7 @@
     <string name="common">Common</string>
     <string name="theme">Theme</string>
     <string name="ui_settings">UI Settings</string>
+    <string name="system">System</string>
     <string name="about">About</string>
     <string name="desc">"    Dantotsu is crafted from the ashes of Saikou and based on simplistic yet state-of-the-art elegance. It is an Anilist only client, which also lets you stream-download Anime through extensions &amp; Manga.\nDantotsu literally means the \"best of the best\" in japanese. Well, we would like to say this is the best open source app for anime and manga on Android, what would you say?"</string>
     <string name="devs">Contributors</string>
@@ -410,7 +411,7 @@
     <string name="faq">FAQ</string>
     <string name="accounts">Accounts</string>
     <string name="myanimelist">MyAnimeList</string>
-    <string name="login_with_anilist">Login with Anilist!</string>
+    <string name="login_with_anilist">Log in with Anilist!</string>
     <string name="anilist">Anilist</string>
     <string name="account_help">How does this work\?</string>
     <string name="full_account_help">
@@ -475,7 +476,7 @@
     <string name="long_click_to_check_update">Long click to check for app updates</string>
     <string name="saved_to_path">Saved to:\n%s</string>
     <string name="setting_progress">Sync: %1$s: %2$d</string>
-    <string name="login_anilist_account">Please Login into AniList account!</string>
+    <string name="login_anilist_account">Please log into AniList account!</string>
     <string name="congrats_vro">Congrats Vro</string>
     <string name="please_reload">Please Reload.</string>
     <string name="copied_text">Copied "%1$s"</string>
@@ -501,7 +502,7 @@
     <string name="getting_user_data">Getting User Data</string>
     <string name="no_next_episode">No next episode found!</string>
     <string name="enable_banner_animations">Try enabling \"Banner Animations\" in settings</string>
-    <string name="please_login_anilist">Please Login with Anilist!</string>
+    <string name="please_login_anilist">Please log in with Anilist!</string>
     <string name="auto_update_reset">Auto Update progress has now been reset-ed</string>
     <string name="cant_wait">Can\'t wait, huh? fine X(</string>
     <string name="downloading">Downloading…</string>

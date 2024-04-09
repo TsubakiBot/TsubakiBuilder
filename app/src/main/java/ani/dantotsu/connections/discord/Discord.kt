@@ -57,7 +57,7 @@ object Discord {
             dismiss()
         }
 
-        setPositiveButton(context.getString(R.string.login)) {
+        setPositiveButton(context.getString(R.string.sign_in)) {
             dismiss()
             loginIntent(context)
         }

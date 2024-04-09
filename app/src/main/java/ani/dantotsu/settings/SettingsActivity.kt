@@ -270,7 +270,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     } else {
                         settingsMALAvatar.setImageResource(R.drawable.ic_round_person_32)
                         settingsMALUsername.visibility = View.GONE
-                        settingsMALLogin.setText(R.string.login)
+                        settingsMALLogin.setText(R.string.sign_in)
                         settingsMALLogin.setOnClickListener {
                             MAL.loginIntent(this@SettingsActivity)
                         }
@@ -278,7 +278,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 } else {
                     settingsAnilistAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsAnilistUsername.visibility = View.GONE
-                    settingsAnilistLogin.setText(R.string.login)
+                    settingsAnilistLogin.setText(R.string.sign_in)
                     settingsAnilistLogin.setOnClickListener {
                         Anilist.loginIntent(this@SettingsActivity)
                     }
@@ -354,7 +354,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     settingsImageSwitcher.visibility = View.GONE
                     settingsDiscordAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsDiscordUsername.visibility = View.GONE
-                    settingsDiscordLogin.setText(R.string.login)
+                    settingsDiscordLogin.setText(R.string.sign_in)
                     settingsDiscordLogin.setOnClickListener {
                         Discord.warning(this@SettingsActivity)
                             .show(supportFragmentManager, "dialog")
