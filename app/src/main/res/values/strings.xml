@@ -399,8 +399,8 @@
     <string name="release_calendar">Calendar</string>
     <string name="planned_anime">Planned Anime</string>
     <string name="planned_manga">Planned Manga</string>
-    <string name="image_long_clicking">Open image by Long Clicking</string>
-    <string name="always_continue_content">Continue previously opened media</string>
+    <string name="image_long_clicking">Long click to open image</string>
+    <string name="always_continue_content">Continue previously opened items</string>
     <string name="search_source_list">Search next available source</string>
     <string name="timestamp_proxy_desc">Useful if you are getting Handshake Fails</string>
     <string name="timestamp_proxy">Use Proxy for Timestamps</string>
@@ -429,15 +429,15 @@
 
         \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
-    <string name="notification_for_checking_subscriptions">Show notification for Checking Subscriptions</string>
+    <string name="notification_for_checking_subscriptions">Show notification for checking subscriptions</string>
     <string name="use_alarm_manager">Use Alarm Manager</string>
-    <string name="use_alarm_manager_reliable">Use Alarm Manager for reliable Notifications</string>
+    <string name="use_alarm_manager_reliable">Use Alarm Manager (Reliable Notifications)</string>
     <string name="use_alarm_manager_confirm">Using Alarm Manger can help fight against battery optimization, but may consume more battery. It also requires the Alarm Manager permission.</string>
     <string name="use">Use</string>
-    <string name="checking_subscriptions">Notification for Checking Subscriptions</string>
+    <string name="checking_subscriptions">Subscription Check Notifications</string>
     <string name="subscriptions_checking_time_s">Subscriptions Update Frequency : %1$s</string>
     <string name="subscriptions_checking_time">Subscriptions Update Frequency</string>
-    <string name="subscriptions_info">Amount of time for Dantotsu to periodically check for new Episodes/Chapters\n(Less time will cause more battery consumption)</string>
+    <string name="subscriptions_info">Amount of time for Dantotsu to check for new episodes / chapters\n(Less time consumes more battery)</string>
     <string name="do_not_update">Don\'t Update</string>
     <string name="loading_chap_number">Loading Chapter %1$s</string>
     <string name="sort_by_release_date">Sort by Release Date</string>
@@ -453,6 +453,8 @@
     <string name="error_message">Error: %1$s</string>
     <string name="install_step">Step: %1$s</string>
     <string name="review">Review</string>
+
+    <string name="select_source">Select a Source</string>
 
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="update_banner"> </string>

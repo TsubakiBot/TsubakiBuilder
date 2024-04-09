@@ -15,7 +15,7 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import java.util.Locale
+import ani.dantotsu.others.LanguageMapper.getLanguageListItem
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
@@ -75,20 +75,8 @@ class TrackGroupDialogFragment(
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
                     else -> {
-                        val locale = if (language.contains("-")) {
-                            val parts = language.split("-")
-                            try {
-                                Locale(parts[0], parts[1])
-                            } catch (ignored: Exception) { null }
-                        } else {
-                            try {
-                                Locale(language)
-                            } catch (ignored: Exception) { null }
-                        }
-                        binding.subtitleTitle.text = locale?.let {
-                            "[${it.language}] ${it.displayName}"
-
-                        } ?: getString(R.string.unknown_track, language)
+                        binding.subtitleTitle.text = getLanguageListItem(language)
+                            ?: getString(R.string.unknown_track, language)
                     }
                 }
                 if (trackGroup.isSelected) {

@@ -164,16 +164,16 @@ class ExtensionsActivity : AppCompatActivity() {
         initActivity(this)
         binding.languageselect.setOnClickListener {
             val languageOptions =
-                LanguageMapper.Companion.Language.entries.map { it.name }.toTypedArray()
+                LanguageMapper.Language.entries.map { it.name }.toTypedArray()
             val builder = AlertDialog.Builder(currContext(), R.style.MyPopup)
             val listOrder: String = PrefManager.getVal(PrefName.LangSort)
-            val index = LanguageMapper.Companion.Language.entries.toTypedArray()
+            val index = LanguageMapper.Language.entries.toTypedArray()
                 .indexOfFirst { it.code == listOrder }
             builder.setTitle("Language")
             builder.setSingleChoiceItems(languageOptions, index) { dialog, i ->
                 PrefManager.setVal(
                     PrefName.LangSort,
-                    LanguageMapper.Companion.Language.entries[i].code
+                    LanguageMapper.Language.entries[i].code
                 )
                 val currentFragment =
                     supportFragmentManager.findFragmentByTag("f${viewPager.currentItem}")

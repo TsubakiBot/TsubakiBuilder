@@ -86,7 +86,6 @@ import ani.dantotsu.torrServerStop
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
-import ani.matagi.launcher.ResumableShortcuts.updateShortcuts
 import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog

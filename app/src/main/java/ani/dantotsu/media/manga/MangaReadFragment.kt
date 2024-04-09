@@ -57,7 +57,6 @@ import ani.dantotsu.settings.extensionprefs.MangaSourcePreferencesFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.toDp
 import ani.dantotsu.util.StoragePermissions.Companion.accessAlertDialog
 import ani.dantotsu.util.StoragePermissions.Companion.hasDirAccess
 import com.google.android.material.appbar.AppBarLayout
@@ -379,7 +378,7 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                 val names =
                     allSettings.map { LanguageMapper.mapLanguageCodeToName(it.lang) }.toTypedArray()
                 val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
-                    .setTitle("Select a Source")
+                    .setTitle(R.string.select_source)
                     .setSingleChoiceItems(names, -1) { dialog, which ->
                         selectedSetting = allSettings[which]
                         itemSelected = true

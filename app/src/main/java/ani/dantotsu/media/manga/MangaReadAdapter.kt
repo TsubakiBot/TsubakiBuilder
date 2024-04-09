@@ -39,7 +39,6 @@ import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
