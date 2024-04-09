@@ -86,6 +86,7 @@ import ani.dantotsu.torrServerStop
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
+import ani.matagi.launcher.ResumableShortcuts.updateShortcuts
 import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
@@ -268,7 +269,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                             openLinkInBrowser(myanilistLink)
                         }
                     } else {
-                        settingsMALAvatar.setImageResource(R.drawable.ic_round_person_24)
+                        settingsMALAvatar.setImageResource(R.drawable.ic_round_person_32)
                         settingsMALUsername.visibility = View.GONE
                         settingsMALLogin.setText(R.string.login)
                         settingsMALLogin.setOnClickListener {
@@ -276,7 +277,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                         }
                     }
                 } else {
-                    settingsAnilistAvatar.setImageResource(R.drawable.ic_round_person_24)
+                    settingsAnilistAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsAnilistUsername.visibility = View.GONE
                     settingsAnilistLogin.setText(R.string.login)
                     settingsAnilistLogin.setOnClickListener {
@@ -352,7 +353,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     }
                 } else {
                     settingsImageSwitcher.visibility = View.GONE
-                    settingsDiscordAvatar.setImageResource(R.drawable.ic_round_person_24)
+                    settingsDiscordAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsDiscordUsername.visibility = View.GONE
                     settingsDiscordLogin.setText(R.string.login)
                     settingsDiscordLogin.setOnClickListener {
@@ -938,6 +939,12 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             settingsSocialInMedia.isChecked = PrefManager.getVal(PrefName.SocialInMedia)
             settingsSocialInMedia.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.SocialInMedia, isChecked)
+            }
+
+            settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
+            settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.UseShortcuts, isChecked)
+                restartApp(binding.root)
             }
 
             settingsAdultAnimeOnly.isChecked = PrefManager.getVal(PrefName.AdultOnly)

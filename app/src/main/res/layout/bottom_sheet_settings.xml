@@ -36,7 +36,7 @@
                         android:layout_width="52dp"
                         android:layout_height="52dp"
                         android:scaleType="center"
-                        app:srcCompat="@drawable/ic_round_person_24"
+                        app:srcCompat="@drawable/ic_round_person_32"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 </com.google.android.material.card.MaterialCardView>

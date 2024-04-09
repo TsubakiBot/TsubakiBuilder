@@ -89,6 +89,8 @@
         <item>All</item>
     </string-array>
 
+    <string name="use_shortcuts">Add shortcuts to launcher icon</string>
+
     <string name="no_notifications">No more notifications</string>
     <string name="followers">Followers</string>
     <string name="social_in_media">Show social stats in media</string>
@@ -202,7 +204,7 @@
     <string name="extensions">Extensions</string>
     <string name="extension_updates_available">Extension updates available</string>
     <string name="player_settings">Player Settings</string>
-    <string name="recentlyListOnly">Only show my content in \"Recently Updated\"</string>
+    <string name="recentlyListOnly">Only my content in \"Recently Updated\"</string>
     <string name="download_manager_select">Download Manager</string>
     <string name="downloadInSd">Download in SD card</string>
     <string name="noSdFound">No SD card was Found.</string>
@@ -297,7 +299,7 @@
     <string name="watch_complete_percentage_info">The percentage at which your Anilist progress should be updated after watching an episode. \nThis also sets the \% for when to preload links for the next episode.</string>
 
     <string name="behaviour">Behaviour</string>
-    <string name="always_continue">Always Continue from where you left off</string>
+    <string name="always_continue">Always resume from timestamp</string>
     <string name="pause_video_focus">Pause when not in Focus</string>
     <string name="gestures">Volume &amp; Brightness Gestures</string>
     <string name="double_tap">Double tap to Seek</string>
@@ -398,7 +400,7 @@
     <string name="planned_anime">Planned Anime</string>
     <string name="planned_manga">Planned Manga</string>
     <string name="image_long_clicking">Open image by Long Clicking</string>
-    <string name="always_continue_content">Always continue previous items</string>
+    <string name="always_continue_content">Continue previously opened media</string>
     <string name="search_source_list">Search next available source</string>
     <string name="timestamp_proxy_desc">Useful if you are getting Handshake Fails</string>
     <string name="timestamp_proxy">Use Proxy for Timestamps</string>

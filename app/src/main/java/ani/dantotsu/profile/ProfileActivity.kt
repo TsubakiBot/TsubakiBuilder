@@ -67,7 +67,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
             bottomMargin = navBarBottomMargin
         }
         val feedTab = navBar.createTab(R.drawable.ic_round_filter_24, "Feed")
-        val profileTab = navBar.createTab(R.drawable.ic_round_person_24, "Profile")
+        val profileTab = navBar.createTab(R.drawable.ic_round_person_32, "Profile")
         val statsTab = navBar.createTab(R.drawable.ic_stats_24, "Stats")
         navBar.addTab(profileTab)
         navBar.addTab(feedTab)

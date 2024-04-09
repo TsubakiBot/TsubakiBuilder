@@ -33,7 +33,7 @@ class FeedActivity : AppCompatActivity() {
         val navBarMargin = if (resources.configuration.orientation ==
             Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
         navBar.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = navBarMargin }
-        val personalTab = navBar.createTab(R.drawable.ic_round_person_24, "Following")
+        val personalTab = navBar.createTab(R.drawable.ic_round_person_32, "Following")
         val globalTab = navBar.createTab(R.drawable.ic_globe_24, "Global")
         navBar.addTab(personalTab)
         navBar.addTab(globalTab)
