@@ -87,6 +87,7 @@ import ani.dantotsu.torrServerStop
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions.Companion.downloadsPermission
+import ani.matagi.os.Version
 import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
 import eltos.simpledialogfragment.SimpleDialog
@@ -367,12 +368,40 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
         }
 
         bindingTheme = ActivitySettingsThemeBinding.bind(binding.root).apply {
-            settingsUseMaterialYou.isChecked =
-                PrefManager.getVal(PrefName.UseMaterialYou)
-            settingsUseMaterialYou.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
-                if (isChecked) settingsUseCustomTheme.isChecked = false
+
+            settingsUi.setOnClickListener {
+                startActivity(
+                    Intent(
+                        this@SettingsActivity,
+                        UserInterfaceSettingsActivity::class.java
+                    )
+                )
+            }
+
+            settingsUseOLED.isChecked = PrefManager.getVal(PrefName.UseOLED)
+            settingsUseOLED.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.UseOLED, isChecked)
                 restartApp(binding.root)
+            }
+
+            if (Version.isSnowCone) {
+                settingsUseMaterialYou.isChecked =
+                    PrefManager.getVal(PrefName.UseMaterialYou)
+                settingsUseMaterialYou.setOnCheckedChangeListener { _, isChecked ->
+                    PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
+                    if (isChecked) settingsUseCustomTheme.isChecked = false
+                    restartApp(binding.root)
+                }
+
+                settingsUseSourceTheme.isChecked =
+                    PrefManager.getVal(PrefName.UseSourceTheme)
+                settingsUseSourceTheme.setOnCheckedChangeListener { _, isChecked ->
+                    PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
+                    restartApp(binding.root)
+                }
+            } else {
+                settingsUseMaterialYou.isEnabled = false
+                settingsUseSourceTheme.isEnabled = false
             }
 
             settingsUseCustomTheme.isChecked =
@@ -382,20 +411,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 if (isChecked) {
                     settingsUseMaterialYou.isChecked = false
                 }
-
-                restartApp(binding.root)
-            }
-
-            settingsUseSourceTheme.isChecked =
-                PrefManager.getVal(PrefName.UseSourceTheme)
-            settingsUseSourceTheme.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
-                restartApp(binding.root)
-            }
-
-            settingsUseOLED.isChecked = PrefManager.getVal(PrefName.UseOLED)
-            settingsUseOLED.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseOLED, isChecked)
                 restartApp(binding.root)
             }
 
@@ -942,12 +957,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                 PrefManager.setVal(PrefName.SocialInMedia, isChecked)
             }
 
-            settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
-            settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                restartApp(binding.root)
-            }
-
             settingsAdultAnimeOnly.isChecked = PrefManager.getVal(PrefName.AdultOnly)
             settingsAdultAnimeOnly.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.AdultOnly, isChecked)
@@ -1017,18 +1026,66 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             uiSettingsManga.setOnClickListener {
                 uiDefault(2, it)
             }
+        }
 
-            settingsUi.setOnClickListener {
-                startActivity(
-                    Intent(
-                        this@SettingsActivity,
-                        UserInterfaceSettingsActivity::class.java
-                    )
-                )
+        bindingSystem = ActivitySettingsSystemBinding.bind(binding.root).apply {
+
+            settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
+            settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.UseShortcuts, isChecked)
+                restartApp(binding.root)
+            }
+
+            if (!BuildConfig.FLAVOR.contains("fdroid")) {
+                binding.settingsLogo.setOnLongClickListener {
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        MatagiUpdater.check(this@SettingsActivity, true)
+                    }
+                    true
+                }
+
+                settingsCheckUpdate.isChecked = PrefManager.getVal(PrefName.CheckUpdate)
+                settingsCheckUpdate.setOnCheckedChangeListener { _, isChecked ->
+                    PrefManager.setVal(PrefName.CheckUpdate, isChecked)
+                    if (!isChecked) {
+                        snackString(getString(R.string.long_click_to_check_update))
+                    }
+                }
+
+                settingsCheckUpdate.setOnLongClickListener {
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        MatagiUpdater.check(this@SettingsActivity, true)
+                    }
+                    true
+                }
+
+                settingsShareUsername.isChecked = PrefManager.getVal(PrefName.SharedUserID)
+                settingsShareUsername.setOnCheckedChangeListener { _, isChecked ->
+                    PrefManager.setVal(PrefName.SharedUserID, isChecked)
+                }
+
+            } else {
+                settingsCheckUpdate.visibility = View.GONE
+                settingsShareUsername.visibility = View.GONE
+                settingsCheckUpdate.isEnabled = false
+                settingsShareUsername.isEnabled = false
+                settingsCheckUpdate.isChecked = false
+                settingsShareUsername.isChecked = false
+            }
+
+            settingsLogToFile.isChecked = PrefManager.getVal(PrefName.LogToFile)
+            settingsLogToFile.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.LogToFile, isChecked)
+                restartApp(binding.root)
+            }
+
+            settingsShareLog.setOnClickListener {
+                Logger.shareLog(this@SettingsActivity)
             }
         }
 
         bindingNotifications = ActivitySettingsNotificationsBinding.bind(binding.root).apply {
+
             var curTime = PrefManager.getVal<Int>(PrefName.SubscriptionNotificationInterval)
             val timeNames = checkIntervals.map {
                 val mins = it % 60
@@ -1193,56 +1250,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
                     TaskScheduler.create(this@SettingsActivity, false)
                         .scheduleAllTasks(this@SettingsActivity)
                 }
-            }
-        }
-
-        bindingSystem = ActivitySettingsSystemBinding.bind(binding.root).apply {
-            
-            if (!BuildConfig.FLAVOR.contains("fdroid")) {
-                binding.settingsLogo.setOnLongClickListener {
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        MatagiUpdater.check(this@SettingsActivity, true)
-                    }
-                    true
-                }
-
-                settingsCheckUpdate.isChecked = PrefManager.getVal(PrefName.CheckUpdate)
-                settingsCheckUpdate.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.CheckUpdate, isChecked)
-                    if (!isChecked) {
-                        snackString(getString(R.string.long_click_to_check_update))
-                    }
-                }
-
-                settingsCheckUpdate.setOnLongClickListener {
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        MatagiUpdater.check(this@SettingsActivity, true)
-                    }
-                    true
-                }
-
-                settingsShareUsername.isChecked = PrefManager.getVal(PrefName.SharedUserID)
-                settingsShareUsername.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.SharedUserID, isChecked)
-                }
-
-            } else {
-                settingsCheckUpdate.visibility = View.GONE
-                settingsShareUsername.visibility = View.GONE
-                settingsCheckUpdate.isEnabled = false
-                settingsShareUsername.isEnabled = false
-                settingsCheckUpdate.isChecked = false
-                settingsShareUsername.isChecked = false
-            }
-
-            settingsLogToFile.isChecked = PrefManager.getVal(PrefName.LogToFile)
-            settingsLogToFile.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.LogToFile, isChecked)
-                restartApp(binding.root)
-            }
-
-            settingsShareLog.setOnClickListener {
-                Logger.shareLog(this@SettingsActivity)
             }
         }
 

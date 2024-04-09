@@ -26,6 +26,8 @@
             android:layout_marginEnd="-16dp"
             android:background="?android:attr/listDivider" />
 
+        <!-- beginning of layout contents -->
+
         <Button
             android:id="@+id/settingsFAQ"
             android:layout_width="match_parent"

@@ -25,6 +25,8 @@
             android:layout_marginEnd="-16dp"
             android:background="?android:attr/listDivider" />
 
+        <!-- beginning of layout contents -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,7 +40,7 @@
                 android:layout_weight="1"
                 android:alpha="0.58"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/theme" />
+                android:text="@string/day_night" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -97,6 +99,29 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/settingsUi"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="-31dp"
+            android:layout_marginEnd="-31dp"
+            android:background="@drawable/ui_bg"
+            android:fontFamily="@font/poppins_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingStart="31dp"
+            android:paddingEnd="31dp"
+            android:text="@string/ui_settings"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnBackground"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_round_auto_awesome_24"
+            app:iconPadding="16dp"
+            app:iconSize="24dp"
+            app:iconTint="?attr/colorPrimary" />
+
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
@@ -144,11 +169,11 @@
             app:thumbTint="@color/button_switch_track" />
 
         <View
-            android:id="@+id/themeDivider1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="-16dp"
+            android:layout_marginTop=8dp""
             android:background="?android:attr/listDivider" />
 
         <TextView
@@ -199,11 +224,20 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-11dp"
-            android:alpha="0.58"
+            android:layout_height="64dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/custom_theme" />
+            android:gravity="center_vertical"
+            android:text="@string/use_custom_theme"
+            android:textColor="?attr/colorSecondary"
+            tools:ignore="TextContrastCheck" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="-16dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider" />
 
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/settingsUseCustomTheme"
@@ -248,12 +282,12 @@
             app:iconTint="?attr/colorPrimary" />
 
         <View
-            android:id="@+id/themeDivider2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="-16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:background="?android:attr/listDivider" />
 
     </ani.dantotsu.others.Xpandable>

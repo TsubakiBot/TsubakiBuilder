@@ -216,6 +216,7 @@
     <string name="ui">User Interface</string>
     <string name="common">Common</string>
     <string name="theme">Theme</string>
+    <string name="day_night">Light / Dark Theme</string>
     <string name="ui_settings">UI Settings</string>
     <string name="system">System</string>
     <string name="about">About</string>
@@ -732,7 +733,7 @@
     <string name="theme_">Theme:</string>
     <string name="user_agent">User Agent</string>
     <string name="custom_theme">Custom Theme:</string>
-    <string name="use_custom_theme">Custom theme</string>
+    <string name="use_custom_theme">Custom Theme</string>
     <string name="use_unique_theme_for_each_item">Theme as Anime/Manga </string>
     <string name="oled_theme_variant">OLED theme variant</string>
     <string name="installed_anime">Installed Anime</string>
