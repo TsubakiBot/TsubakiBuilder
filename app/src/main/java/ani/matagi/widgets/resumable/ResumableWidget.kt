@@ -24,6 +24,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
+import ani.matagi.collections.Collections.mix
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -141,8 +142,9 @@ class ResumableWidget : AppWidgetProvider() {
                         widgetItems.addAll(getContinueItems("MANGA"))
                     }
                     else -> {
-                        widgetItems.addAll(getContinueItems("ANIME"))
-                        widgetItems.addAll(getContinueItems("MANGA"))
+                        widgetItems.addAll(
+                            getContinueItems("ANIME").mix(getContinueItems("MANGA"))
+                        )
                     }
                 }
                 refreshing = false
