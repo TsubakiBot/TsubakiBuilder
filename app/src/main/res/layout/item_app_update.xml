@@ -10,7 +10,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="128dp"
         android:layout_gravity="start|center_vertical"
         app:cardBackgroundColor="@color/nav_bg"
         app:strokeColor="@color/transparent"
@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/notificationBannerImage"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="128dp"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/notificationGradiant"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="128dp"
             app:srcCompat="@drawable/linear_gradient_nav"
             tools:ignore="ContentDescription" />
 
@@ -49,28 +49,6 @@
                 app:shapeAppearanceOverlay="@style/roundedImageView"
                 tools:ignore="ContentDescription,ImageContrastCheck"
                 tools:srcCompat="@tools:sample/backgrounds/scenic"
-                tools:tint="@color/transparent" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/notificationCoverUserContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="23dp"
-            android:backgroundTint="@color/transparent"
-            android:visibility="gone"
-            app:cardCornerRadius="64dp"
-            app:strokeColor="@color/transparent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/notificationCoverUser"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_round_add_circle_24"
-                tools:ignore="ContentDescription,ImageContrastCheck"
                 tools:tint="@color/transparent" />
 
         </com.google.android.material.card.MaterialCardView>
