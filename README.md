@@ -7,20 +7,21 @@
    <a href="https://www.codefactor.io/repository/github/RepoDevil/dantotsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Dantotsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
-<br />
+
 
 # **Dantotsu** 🌟
 
 Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
 
-> **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese. Try it out for yourself and be the judge!
-<br />
+> **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese.
+> Try it out for yourself and be the judge!
 
 # **Mr. Matagi** 💦
 
 Mr. Matagi is aimed at improving upon it.
 
-> **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. A copy of a project is a fork and a collection of changes is a branch.
+> **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. 
+> A copy of a project is a fork and a collection of changes is a branch.
 <br />
 
 ## Mr. Matagi Modifications
@@ -65,16 +66,14 @@ Mr. Matagi is aimed at improving upon it.
 
 All contributions are welcome, from code to documentation to graphics to design suggestions to bug reports. Please use GitHub to its fullest; contribute Pull Requests, contribute tutorials or other content - whatever you have to offer, we can use!
 <br />
-<br />
-
-## VISITORS
-
-<img src="https://count.getloli.com/get/@:repodevildantotsu" alt=":repodevildantotsu" />
-<br />
 
 ## LICENSE 📜
 
 Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)
 <br />
+
+## VISITORS
+
+<img src="https://count.getloli.com/get/@:repodevildantotsu" alt=":repodevildantotsu" />
 
 #### Note: I am not a Dantotsu collaborator, nor member of its Discord.
