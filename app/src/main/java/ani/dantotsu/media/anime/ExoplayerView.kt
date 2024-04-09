@@ -57,7 +57,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.media3.cast.CastPlayer
 import androidx.media3.cast.SessionAvailabilityListener
 import androidx.media3.common.C
@@ -96,6 +98,9 @@ import androidx.media3.ui.DefaultTimeBar
 import androidx.media3.ui.PlayerView
 import androidx.media3.ui.SubtitleView
 import androidx.mediarouter.app.MediaRouteButton
+import androidx.window.layout.FoldingFeature
+import androidx.window.layout.WindowInfoTracker
+import androidx.window.layout.WindowLayoutInfo
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
@@ -418,6 +423,27 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
+    /**
+     * Updating the layout depending on type and state of device
+     */
+    private fun updateCurrentLayout(newLayoutInfo: WindowLayoutInfo) {
+        if (!PrefManager.getVal<Boolean>(PrefName.UseFoldable)) return
+        val isFolding = (newLayoutInfo.displayFeatures.find {
+            it is FoldingFeature
+        } as? FoldingFeature)?.let {
+            if (it.isSeparating) {
+                if (it.orientation == FoldingFeature.Orientation.HORIZONTAL) {
+                    // adjust layouts for foldable
+                }
+            }
+            it.isSeparating
+        } ?: false
+        if (!isFolding) {
+            // restore layouts to normal
+        }
+        binding.root.requestLayout()
+    }
+
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -439,6 +465,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
 
         hideSystemBarsExtendView()
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                WindowInfoTracker.getOrCreate(this@ExoplayerView)
+                    .windowLayoutInfo(this@ExoplayerView)
+                    .collect { updateCurrentLayout(it) }
+            }
+        }
 
         onBackPressedDispatcher.addCallback(this) {
             torrent?.hash?.let {
@@ -586,11 +620,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         // Picture-in-picture
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            pipEnabled =
-                packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE) && PrefManager.getVal(
-                    PrefName.Pip
-                )
+            pipEnabled = packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)
+                        && PrefManager.getVal(PrefName.Pip)
             if (pipEnabled) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    setPictureInPictureParams(getPictureInPictureBuilder().build())
+                }
                 exoPip.visibility = View.VISIBLE
                 exoPip.setOnClickListener {
                     enterPipMode()
@@ -2110,18 +2145,25 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         if (!pipEnabled) return
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                enterPictureInPictureMode(
-                    PictureInPictureParams
-                        .Builder()
-                        .setAspectRatio(aspectRatio)
-                        .build()
-                )
+                enterPictureInPictureMode(getPictureInPictureBuilder().build())
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 enterPictureInPictureMode()
             }
         } catch (e: Exception) {
             logError(e)
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getPictureInPictureBuilder() : PictureInPictureParams.Builder {
+        val pictureInPictureParamsBuilder = PictureInPictureParams.Builder()
+
+        setPictureInPictureParams(pictureInPictureParamsBuilder
+            .setAspectRatio(aspectRatio)
+            .build()
+        )
+
+        return pictureInPictureParamsBuilder
     }
 
     private fun onPiPChanged(isInPictureInPictureMode: Boolean) {
@@ -2137,7 +2179,17 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 "${media.id}_${episode.number}",
                 exoPlayer.currentPosition
             )
-            if (wasPlaying) exoPlayer.play()
+        }
+        when (lifecycle.currentState) {
+            Lifecycle.State.CREATED -> { // Closed
+                if (isInPictureInPictureMode) onBackPressedDispatcher.onBackPressed()
+            }
+            Lifecycle.State.STARTED -> { // Maximized
+                if (wasPlaying) exoPlayer.play()
+            }
+            else -> {
+                if (wasPlaying) exoPlayer.play()
+            }
         }
     }
 

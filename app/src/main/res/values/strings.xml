@@ -89,6 +89,7 @@
         <item>All</item>
     </string-array>
 
+    <string name="use_foldable">Use foldable layouts</string>
     <string name="use_shortcuts">Add shortcuts to launcher icon</string>
 
     <string name="no_notifications">No more notifications</string>

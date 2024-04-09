@@ -109,22 +109,22 @@ class CommentsFragment : Fragment() {
         binding.commentsList.setBaseline(activity.navBar, activity.binding.commentInputLayout)
 
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            activity.binding.commentMessageContainer.visibility = View.GONE
-            return
-        }
-
-        if (CommentsAPI.authToken != null) {
-            lifecycleScope.launch {
-                val commentId = arguments?.getInt("commentId")
-                if (commentId != null && commentId > 0) {
-                    loadSingleComment(commentId)
-                } else {
-                    loadAndDisplayComments()
+            if (CommentsAPI.authToken != null) {
+                lifecycleScope.launch {
+                    val commentId = arguments?.getInt("commentId")
+                    if (commentId != null && commentId > 0) {
+                        loadSingleComment(commentId)
+                    } else {
+                        loadAndDisplayComments()
+                    }
                 }
+            } else {
+                toast("Not logged in")
+                activity.binding.commentMessageContainer.visibility = View.GONE
             }
         } else {
-            toast("Not logged in")
             activity.binding.commentMessageContainer.visibility = View.GONE
+            return
         }
 
         binding.commentSort.setOnClickListener { sortView ->

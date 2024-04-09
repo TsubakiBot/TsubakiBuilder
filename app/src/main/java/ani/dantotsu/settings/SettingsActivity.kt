@@ -34,6 +34,8 @@ import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.UnstableApi
+import androidx.window.layout.FoldingFeature
+import androidx.window.layout.WindowInfoTracker
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
@@ -105,6 +107,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
@@ -1030,6 +1033,22 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
 
         bindingSystem = ActivitySettingsSystemBinding.bind(binding.root).apply {
 
+            settingsUseFoldable.isChecked = PrefManager.getVal(PrefName.UseFoldable)
+            settingsUseFoldable.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.UseFoldable, isChecked)
+            }
+
+            CoroutineScope(Dispatchers.IO).launch {
+                WindowInfoTracker.getOrCreate(this@SettingsActivity)
+                    .windowLayoutInfo(this@SettingsActivity)
+                    .collect { newLayoutInfo ->
+                        withContext(Dispatchers.Main) {
+                            settingsUseFoldable.isVisible =
+                                newLayoutInfo.displayFeatures.find { it is FoldingFeature } != null
+                        }
+                    }
+            }
+
             settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
             settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.UseShortcuts, isChecked)
@@ -1409,7 +1428,6 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
             handleOkAction()
         }
-
     }
 
 
