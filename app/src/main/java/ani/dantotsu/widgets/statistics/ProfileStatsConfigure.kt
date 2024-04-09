@@ -10,11 +10,14 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import ani.dantotsu.R
 import ani.dantotsu.databinding.StatisticsWidgetConfigureBinding
 
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.widgets.ColorDialog
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
+import ani.matagi.widgets.resumable.ResumableWidget
 import com.google.android.material.button.MaterialButton
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
@@ -68,101 +71,49 @@ class ProfileStatsConfigure : AppCompatActivity(),
         val topBackground = prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
         (binding.topBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(topBackground)
         binding.topBackgroundButton.setOnClickListener {
-            val tag = ProfileStatsWidget.PREF_BACKGROUND_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(topBackground)
-                .colors(
-                    this@ProfileStatsConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ProfileStatsConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ProfileStatsConfigure,
+                topBackground,
+                ProfileStatsWidget.PREF_BACKGROUND_COLOR)
         }
         val bottomBackground = prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
         (binding.bottomBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(bottomBackground)
         binding.bottomBackgroundButton.setOnClickListener {
-            val tag = ProfileStatsWidget.PREF_BACKGROUND_FADE
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(bottomBackground)
-                .colors(
-                    this@ProfileStatsConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ProfileStatsConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ProfileStatsConfigure,
+                bottomBackground,
+                ProfileStatsWidget.PREF_BACKGROUND_FADE)
         }
         val titleColor = prefs.getInt(ProfileStatsWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE)
         (binding.titleColorButton as MaterialButton).iconTint = ColorStateList.valueOf(titleColor)
         binding.titleColorButton.setOnClickListener {
-            val tag = ProfileStatsWidget.PREF_TITLE_TEXT_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(titleColor)
-                .colors(
-                    this@ProfileStatsConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ProfileStatsConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ProfileStatsConfigure,
+                titleColor,
+                ProfileStatsWidget.PREF_TITLE_TEXT_COLOR)
         }
         val statsColor = prefs.getInt(ProfileStatsWidget.PREF_STATS_TEXT_COLOR, Color.WHITE)
         (binding.statsColorButton as MaterialButton).iconTint = ColorStateList.valueOf(statsColor)
         binding.statsColorButton.setOnClickListener {
-            val tag = ProfileStatsWidget.PREF_STATS_TEXT_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(statsColor)
-                .colors(
-                    this@ProfileStatsConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ProfileStatsConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ProfileStatsConfigure,
+                statsColor,
+                ProfileStatsWidget.PREF_STATS_TEXT_COLOR)
         }
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
-            if (isChecked) {
-                binding.topBackgroundButton.visibility = View.GONE
-                binding.bottomBackgroundButton.visibility = View.GONE
-                binding.titleColorButton.visibility = View.GONE
-                binding.statsColorButton.visibility = View.GONE
-                themeColors()
-
-            } else {
-                binding.topBackgroundButton.visibility = View.VISIBLE
-                binding.bottomBackgroundButton.visibility = View.VISIBLE
-                binding.titleColorButton.visibility = View.VISIBLE
-                binding.statsColorButton.visibility = View.VISIBLE
-            }
+            binding.topBackgroundButton.isGone = isChecked
+            binding.bottomBackgroundButton.isGone = isChecked
+            binding.titleColorButton.isGone = isChecked
+            binding.statsColorButton.isGone = isChecked
+            if (isChecked) themeColors()
         }
         binding.addButton.setOnClickListener(onClickListener)
 
         // Find the widget id from the intent.
-        val intent = intent
-        val extras = intent.extras
-        if (extras != null) {
-            appWidgetId = extras.getInt(
-                AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
-            )
-        }
+        appWidgetId = intent.extras?.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
+        ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
         // If this activity was started with an intent without an app widget ID, finish with an error.
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {

@@ -9,9 +9,12 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import ani.dantotsu.R
 import ani.dantotsu.databinding.UpcomingWidgetConfigureBinding
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.widgets.ColorDialog
+import ani.matagi.widgets.resumable.ResumableWidget
 import com.google.android.material.button.MaterialButton
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
@@ -51,98 +54,48 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
         val topBackground = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
         (binding.topBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(topBackground)
         binding.topBackgroundButton.setOnClickListener {
-            val tag = UpcomingWidget.PREF_BACKGROUND_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(topBackground)
-                .colors(
-                    this@UpcomingWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@UpcomingWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@UpcomingWidgetConfigure,
+                topBackground,
+                UpcomingWidget.PREF_BACKGROUND_COLOR)
         }
         val bottomBackground = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
         (binding.bottomBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(bottomBackground)
         binding.bottomBackgroundButton.setOnClickListener {
-            val tag = UpcomingWidget.PREF_BACKGROUND_FADE
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(bottomBackground)
-                .colors(
-                    this@UpcomingWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@UpcomingWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@UpcomingWidgetConfigure,
+                bottomBackground,
+                UpcomingWidget.PREF_BACKGROUND_FADE)
         }
         val titleTextColor = prefs.getInt(UpcomingWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE)
         (binding.titleColorButton as MaterialButton).iconTint = ColorStateList.valueOf(titleTextColor)
         binding.titleColorButton.setOnClickListener {
-            val tag = UpcomingWidget.PREF_TITLE_TEXT_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(titleTextColor)
-                .colors(
-                    this@UpcomingWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@UpcomingWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@UpcomingWidgetConfigure,
+                titleTextColor,
+                UpcomingWidget.PREF_TITLE_TEXT_COLOR)
         }
         val countdownTextColor = prefs.getInt(UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR, Color.WHITE)
         (binding.countdownColorButton as MaterialButton).iconTint = ColorStateList.valueOf(countdownTextColor)
         binding.countdownColorButton.setOnClickListener {
-            val tag = UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(countdownTextColor)
-                .colors(
-                    this@UpcomingWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@UpcomingWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@UpcomingWidgetConfigure,
+                countdownTextColor,
+                UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR)
         }
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
-            if (isChecked) {
-                binding.topBackgroundButton.visibility = View.GONE
-                binding.bottomBackgroundButton.visibility = View.GONE
-                binding.titleColorButton.visibility = View.GONE
-                binding.countdownColorButton.visibility = View.GONE
-                themeColors()
-
-            } else {
-                binding.topBackgroundButton.visibility = View.VISIBLE
-                binding.bottomBackgroundButton.visibility = View.VISIBLE
-                binding.titleColorButton.visibility = View.VISIBLE
-                binding.countdownColorButton.visibility = View.VISIBLE
-            }
+            binding.topBackgroundButton.isGone = isChecked
+            binding.bottomBackgroundButton.isGone = isChecked
+            binding.titleColorButton.isGone = isChecked
+            binding.countdownColorButton.isGone = isChecked
+            if (isChecked) themeColors()
         }
         binding.addButton.setOnClickListener(onClickListener)
 
-        val intent = intent
-        val extras = intent.extras
-        if (extras != null) {
-            appWidgetId = extras.getInt(
-                AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
-            )
-        }
+        appWidgetId = intent.extras?.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
+        ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish()

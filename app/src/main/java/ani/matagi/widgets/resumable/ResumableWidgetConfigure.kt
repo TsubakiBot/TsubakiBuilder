@@ -14,6 +14,7 @@ import androidx.core.view.isGone
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ResumableWidgetConfigureBinding
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.widgets.ColorDialog
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
 
@@ -66,71 +67,33 @@ class ResumableWidgetConfigure : AppCompatActivity(),
         }
 
         binding.topBackgroundButton.setOnClickListener {
-            val tag = ResumableWidget.PREF_BACKGROUND_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(
-                    prefs.getInt(
-                        ResumableWidget.PREF_BACKGROUND_COLOR,
-                        ContextCompat.getColor(this, R.color.theme)
-                    )
-                )
-                .colors(
-                    this@ResumableWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ResumableWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ResumableWidgetConfigure,
+                prefs.getInt(
+                    ResumableWidget.PREF_BACKGROUND_COLOR,
+                    ContextCompat.getColor(this, R.color.theme)
+                ),
+                ResumableWidget.PREF_BACKGROUND_COLOR)
         }
         binding.bottomBackgroundButton.setOnClickListener {
-            val tag = ResumableWidget.PREF_BACKGROUND_FADE
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(prefs.getInt(ResumableWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000")))
-                .colors(
-                    this@ResumableWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .setupColorWheelAlpha(true)
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ResumableWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ResumableWidgetConfigure,
+                prefs.getInt(ResumableWidget.PREF_BACKGROUND_FADE,
+                    Color.parseColor("#00000000")
+                ),
+                ResumableWidget.PREF_BACKGROUND_FADE)
         }
         binding.titleColorButton.setOnClickListener {
-            val tag = ResumableWidget.PREF_TITLE_TEXT_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(prefs.getInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE))
-                .colors(
-                    this@ResumableWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ResumableWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ResumableWidgetConfigure,
+                prefs.getInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE),
+                ResumableWidget.PREF_TITLE_TEXT_COLOR)
         }
         binding.flipperColorButton.setOnClickListener {
-            val tag = ResumableWidget.PREF_FLIPPER_IMG_COLOR
-            SimpleColorDialog().title(R.string.custom_theme)
-                .colorPreset(prefs.getInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, Color.WHITE))
-                .colors(
-                    this@ResumableWidgetConfigure,
-                    SimpleColorDialog.MATERIAL_COLOR_PALLET
-                )
-                .allowCustom(true)
-                .showOutline(0x46000000)
-                .gridNumColumn(5)
-                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                .neg()
-                .show(this@ResumableWidgetConfigure, tag)
+            ColorDialog.showColorDialog(
+                this@ResumableWidgetConfigure,
+                prefs.getInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, Color.WHITE),
+                ResumableWidget.PREF_FLIPPER_IMG_COLOR)
         }
 
         binding.useStackView.run {
@@ -163,13 +126,9 @@ class ResumableWidgetConfigure : AppCompatActivity(),
 
         binding.addButton.setOnClickListener(onClickListener)
 
-        val intent = intent
-        val extras = intent.extras
-        if (extras != null) {
-            appWidgetId = extras.getInt(
-                AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
-            )
-        }
+        appWidgetId = intent.extras?.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
+        ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
 
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish()
