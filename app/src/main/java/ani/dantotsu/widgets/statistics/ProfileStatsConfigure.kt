@@ -11,13 +11,10 @@ import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import ani.dantotsu.R
 import ani.dantotsu.databinding.StatisticsWidgetConfigureBinding
 
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
-import ani.dantotsu.widgets.upcoming.UpcomingWidget
-import ani.matagi.widgets.resumable.ResumableWidget
 import com.google.android.material.button.MaterialButton
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog

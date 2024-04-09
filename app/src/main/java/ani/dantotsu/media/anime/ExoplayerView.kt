@@ -1900,13 +1900,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
 
                 }
-                if (PrefManager.getVal(PrefName.AutoSkipOPED) && (new.skipType == "op" || new.skipType == "ed")
+                if (PrefManager.getVal(PrefName.AutoSkipOPED)
+                    && (new.skipType == "op" || new.skipType == "ed")
                     && !skippedTimeStamps.contains(new)
                 ) {
                     exoPlayer.seekTo((new.interval.endTime * 1000).toLong())
                     skippedTimeStamps.add(new)
                 }
-                if (PrefManager.getVal(PrefName.AutoSkipRecap) && new.skipType == "recap" && !skippedTimeStamps.contains(new)) {
+                if (PrefManager.getVal(PrefName.AutoSkipRecap)
+                    && new.skipType == "recap"
+                    && !skippedTimeStamps.contains(new)) {
                     exoPlayer.seekTo((new.interval.endTime * 1000).toLong())
                     skippedTimeStamps.add(new)
                 }

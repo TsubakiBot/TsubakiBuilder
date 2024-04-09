@@ -23,7 +23,6 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.Media
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.widgets.WidgetSizeProvider
-import ani.dantotsu.widgets.upcoming.UpcomingWidget
 import ani.matagi.collections.Collections.mix
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -106,7 +105,7 @@ class ResumableWidget : AppWidgetProvider() {
             appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
                 anime?.let { list -> continueAnime.addAll(list) }
                 manga?.let { list -> continueManga.addAll(list) }
-                val rv = UpcomingWidget.updateAppWidget(context, it)
+                val rv = updateAppWidget(context, it)
                 appWidgetManager.updateAppWidget(it, rv)
             }
         }

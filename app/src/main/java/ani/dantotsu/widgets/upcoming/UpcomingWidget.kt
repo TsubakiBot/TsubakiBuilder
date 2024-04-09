@@ -15,7 +15,6 @@ import androidx.core.graphics.drawable.toBitmap
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.widgets.WidgetSizeProvider
-import ani.matagi.widgets.resumable.ResumableWidget
 
 /**
  * Implementation of App Widget functionality.
@@ -36,7 +35,7 @@ class UpcomingWidget : AppWidgetProvider() {
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
         appWidgetIds.forEach {
-            context.getSharedPreferences(ResumableWidget.getPrefsName(it), Context.MODE_PRIVATE).edit().clear().apply()
+            context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE).edit().clear().apply()
         }
         super.onDeleted(context, appWidgetIds)
     }
