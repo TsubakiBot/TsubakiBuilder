@@ -900,6 +900,7 @@ Non quae tempore quo provident laudantium qui illo dolor vel quia dolor et exerc
     <string name="countdown_text_color">Countdown Text Color</string>
     <string name="title_color">Title Color</string>
     <string name="stat_text_color">Stats Text Color</string>
+    <string name="flipper_color">Flipper Color</string>
     <string name="placeholder">Placeholder</string>
 
     <string name="anime_add_repository">Add Anime Repo</string>

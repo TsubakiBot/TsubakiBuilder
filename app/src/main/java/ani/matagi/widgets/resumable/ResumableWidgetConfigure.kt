@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ResumableWidgetConfigureBinding
 import ani.dantotsu.themes.ThemeManager
@@ -57,17 +58,11 @@ class ResumableWidgetConfigure : AppCompatActivity(),
 
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
-            if (isChecked) {
-                binding.topBackgroundButton.visibility = View.GONE
-                binding.bottomBackgroundButton.visibility = View.GONE
-                binding.titleColorButton.visibility = View.GONE
-                themeColors()
-
-            } else {
-                binding.topBackgroundButton.visibility = View.VISIBLE
-                binding.bottomBackgroundButton.visibility = View.VISIBLE
-                binding.titleColorButton.visibility = View.VISIBLE
-            }
+            binding.topBackgroundButton.isGone = isChecked
+            binding.bottomBackgroundButton.isGone = isChecked
+            binding.titleColorButton.isGone = isChecked
+            binding.flipperColorButton.isGone = isChecked
+            if (isChecked) themeColors()
         }
 
         binding.topBackgroundButton.setOnClickListener {
@@ -111,6 +106,21 @@ class ResumableWidgetConfigure : AppCompatActivity(),
             val tag = ResumableWidget.PREF_TITLE_TEXT_COLOR
             SimpleColorDialog().title(R.string.custom_theme)
                 .colorPreset(prefs.getInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE))
+                .colors(
+                    this@ResumableWidgetConfigure,
+                    SimpleColorDialog.MATERIAL_COLOR_PALLET
+                )
+                .allowCustom(true)
+                .showOutline(0x46000000)
+                .gridNumColumn(5)
+                .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
+                .neg()
+                .show(this@ResumableWidgetConfigure, tag)
+        }
+        binding.flipperColorButton.setOnClickListener {
+            val tag = ResumableWidget.PREF_FLIPPER_IMG_COLOR
+            SimpleColorDialog().title(R.string.custom_theme)
+                .colorPreset(prefs.getInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, Color.WHITE))
                 .colors(
                     this@ResumableWidgetConfigure,
                     SimpleColorDialog.MATERIAL_COLOR_PALLET
@@ -200,6 +210,15 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                         )
                         .apply()
                 }
+
+                ResumableWidget.PREF_FLIPPER_IMG_COLOR -> {
+                    prefs.edit()
+                        .putInt(
+                            ResumableWidget.PREF_FLIPPER_IMG_COLOR,
+                            extras.getInt(SimpleColorDialog.COLOR)
+                        )
+                        .apply()
+                }
             }
         }
         return true
@@ -210,14 +229,19 @@ class ResumableWidgetConfigure : AppCompatActivity(),
         theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, typedValueSurface, true)
         val backgroundColor = typedValueSurface.data
 
+        val typedValueText = TypedValue()
+        theme.resolveAttribute(com.google.android.material.R.attr.colorOnBackground, typedValueText, true)
+        val textColor = typedValueText.data
+
         val typedValuePrimary = TypedValue()
         theme.resolveAttribute(com.google.android.material.R.attr.colorPrimary, typedValuePrimary, true)
-        val textColor = typedValuePrimary.data
+        val flipperColor = typedValuePrimary.data
 
         getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)
             putInt(ResumableWidget.PREF_BACKGROUND_FADE, backgroundColor)
             putInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, textColor)
+            putInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, flipperColor)
             apply()
         }
     }

@@ -96,21 +96,15 @@ class ResumableWidget : AppWidgetProvider() {
     companion object {
         var widgetItems = mutableListOf<WidgetItem>()
         private var refreshing = false
-        private var continueMedia: ArrayList<Media> = arrayListOf()
+        private val continueAnime: ArrayList<Media> = arrayListOf()
+        private val continueManga: ArrayList<Media> = arrayListOf()
 
-        fun injectUpdate(context: Context?, continueAnime: ArrayList<Media>?, continueManga: ArrayList<Media>?) {
+        fun injectUpdate(context: Context?, anime: ArrayList<Media>?, manga: ArrayList<Media>?) {
             if (null == context) return
             val appWidgetManager = AppWidgetManager.getInstance(context)
-            appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java)).forEach {
-                val prefs = context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE)
-                when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
-                    ResumableType.CONTINUE_ANIME.ordinal -> continueAnime?.let { continueMedia.addAll(it) }
-                    ResumableType.CONTINUE_MANGA.ordinal -> continueManga?.let { continueMedia.addAll(it) }
-                    else -> {
-                        continueAnime?.let { continueMedia.addAll(it) }
-                        continueManga?.let { continueMedia.addAll(it) }
-                    }
-                }
+            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
+                anime?.let { list -> continueAnime.addAll(list) }
+                manga?.let { list -> continueManga.addAll(list) }
                 val rv = UpcomingWidget.updateAppWidget(context, it)
                 appWidgetManager.updateAppWidget(it, rv)
             }
@@ -118,6 +112,7 @@ class ResumableWidget : AppWidgetProvider() {
 
         private suspend fun getContinueItems(type: String): MutableList<WidgetItem> {
             val mediaItems = mutableListOf<WidgetItem>()
+            val continueMedia = if (type == "MANGA") continueManga else continueAnime
             coroutineScope {
                 continueMedia.ifEmpty { Anilist.query.continueMedia(type) }.map { media ->
                     async(Dispatchers.IO) {
@@ -208,6 +203,7 @@ class ResumableWidget : AppWidgetProvider() {
             val backgroundColor = prefs.getInt(PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
             val backgroundFade = prefs.getInt(PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
             val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
+            val flipperImgColor = prefs.getInt(PREF_FLIPPER_IMG_COLOR, Color.WHITE)
 
             val gradientDrawable = ResourcesCompat.getDrawable(
                 context.resources,
@@ -229,7 +225,7 @@ class ResumableWidget : AppWidgetProvider() {
                 R.drawable.ic_round_arrow_back_ios_new_24,
                 null
             ) as Drawable
-            flipperDrawable.setTint(titleTextColor)
+            flipperDrawable.setTint(flipperImgColor)
 
             val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
                 setImageViewBitmap(R.id.backgroundView, gradientDrawable.toBitmap(width, height))
@@ -299,6 +295,7 @@ class ResumableWidget : AppWidgetProvider() {
         const val PREF_BACKGROUND_COLOR = "background_color"
         const val PREF_BACKGROUND_FADE = "background_fade"
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"
+        const val PREF_FLIPPER_IMG_COLOR = "flipper_img_color"
         const val PREF_WIDGET_TYPE = "widget_type"
         const val PREF_USE_STACKVIEW = "use_stackview"
 
