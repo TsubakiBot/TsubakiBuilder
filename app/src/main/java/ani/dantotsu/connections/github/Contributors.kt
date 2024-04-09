@@ -18,7 +18,7 @@ import java.util.Collections
 class Contributors {
 
     fun getContributors(): Array<Developer> {
-        var developers = arrayOf<Developer>()
+        val contributors = arrayListOf<Developer>()
         runBlocking(Dispatchers.IO) {
             val repo = getAppString(R.string.repo)
             val res = client.get("https://api.github.com/repos/$repo/contributors")
@@ -27,24 +27,23 @@ class Contributors {
                 }
             val owner = res.first { it.login == "rebelonion" }
             Collections.swap(res, res.indexOf(owner), 0)
-            res.map {
-                async(Dispatchers.IO) {
-                    developers = developers.plus(
-                        Developer(
-                            it.login,
-                            it.avatarUrl,
-                            when (it.login) {
-                                "rebelonion" -> "Owner & Maintainer"
-                                "sneazy-ibo" -> "Contributor & Comment Moderator"
-                                "WaiWhat" -> "Icon Designer"
-                                else -> "Contributor"
-                            },
-                            it.htmlUrl
-                        )
+            res.forEach {
+                contributors.add(
+                    Developer(
+                        it.login,
+                        it.avatarUrl,
+                        when (it.login) {
+                            "rebelonion" -> "Owner & Maintainer"
+                            "sneazy-ibo" -> "Contributor & Comment Moderator"
+                            "WaiWhat" -> "Icon Designer"
+                            else -> "Contributor"
+                        },
+                        it.htmlUrl
                     )
-                }
-            }.awaitAll()
-            developers = developers.plus(
+                )
+            }
+
+            contributors.addAll(
                 arrayOf(
                     Developer(
                         "MarshMeadow",
@@ -103,7 +102,7 @@ class Contributors {
                 )
             )
         }
-        return developers
+        return contributors.toTypedArray()
     }
 
 

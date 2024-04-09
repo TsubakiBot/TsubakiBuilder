@@ -17,26 +17,24 @@ import kotlinx.serialization.json.decodeFromJsonElement
 class Forks {
 
     fun getForks(): Array<Developer> {
-        var forks = arrayOf<Developer>()
+        val forks = arrayListOf<Developer>()
         runBlocking(Dispatchers.IO) {
             val res = client.get("https://api.github.com/repos/rebelonion/Dantotsu/forks")
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
-            res.map {
-                async(Dispatchers.IO) {
-                    forks = forks.plus(
-                        Developer(
-                            it.name,
-                            it.owner.avatarUrl,
-                            it.owner.login,
-                            it.htmlUrl
-                        )
+            res.shuffled().forEach {
+                forks.add(
+                    Developer(
+                        it.name,
+                        it.owner.avatarUrl,
+                        it.owner.login,
+                        it.htmlUrl
                     )
-                }
-            }.awaitAll()
+                )
+            }
         }
-        return forks
+        return forks.toTypedArray()
     }
 
 
