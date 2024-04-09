@@ -25,12 +25,13 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 
-class UpcomingRemoteViewsFactory(private val context: Context) :
+class UpcomingRemoteViewsFactory(private val context: Context, appWidgetId: Int) :
     RemoteViewsService.RemoteViewsFactory {
     private var widgetItems = mutableListOf<WidgetItem>()
     private var refreshing = false
-    private val prefs =
-        context.getSharedPreferences(UpcomingWidget.PREFS_NAME, Context.MODE_PRIVATE)
+    private val prefs = context.getSharedPreferences(
+        UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE
+    )
 
     override fun onCreate() {
         Logger.log("UpcomingRemoteViewsFactory onCreate")
@@ -55,7 +56,6 @@ class UpcomingRemoteViewsFactory(private val context: Context) :
     private fun fillWidgetItems() {
         refreshing = true
         val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
-        val prefs = context.getSharedPreferences(UpcomingWidget.PREFS_NAME, Context.MODE_PRIVATE)
         val lastUpdated = prefs.getLong(UpcomingWidget.LAST_UPDATE, 0)
         val serializedMedia = prefs.getString(UpcomingWidget.PREF_SERIALIZED_MEDIA, "")
         if (System.currentTimeMillis() - lastUpdated > 1000 * 60 * 60 * 4 || serializedMedia.isNullOrEmpty()) {

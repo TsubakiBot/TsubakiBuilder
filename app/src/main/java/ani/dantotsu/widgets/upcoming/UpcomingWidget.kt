@@ -15,6 +15,7 @@ import androidx.core.graphics.drawable.toBitmap
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.widgets.WidgetSizeProvider
+import ani.matagi.widgets.resumable.ResumableWidget
 
 /**
  * Implementation of App Widget functionality.
@@ -34,8 +35,8 @@ class UpcomingWidget : AppWidgetProvider() {
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
-        for (appWidgetId in appWidgetIds) {
-            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit().clear().apply()
+        appWidgetIds.forEach {
+            context.getSharedPreferences(ResumableWidget.getPrefsName(it), Context.MODE_PRIVATE).edit().clear().apply()
         }
         super.onDeleted(context, appWidgetIds)
     }
@@ -66,7 +67,7 @@ class UpcomingWidget : AppWidgetProvider() {
             context: Context,
             appWidgetId: Int,
         ): RemoteViews {
-            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
             val backgroundColor =
                 prefs.getInt(PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
             val backgroundFade = prefs.getInt(PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
@@ -119,6 +120,7 @@ class UpcomingWidget : AppWidgetProvider() {
                         1,
                         Intent(context, UpcomingWidgetConfigure::class.java).apply {
                             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                            data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
                         },
                         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                     )
@@ -127,7 +129,9 @@ class UpcomingWidget : AppWidgetProvider() {
             return views
         }
 
-        const val PREFS_NAME = "ani.dantotsu.widgets.UpcomingWidget"
+        fun getPrefsName(appWidgetId: Int): String {
+            return "ani.dantotsu.widgets.UpcomingWidget.${appWidgetId}"
+        }
         const val PREF_BACKGROUND_COLOR = "background_color"
         const val PREF_BACKGROUND_FADE = "background_fade"
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"

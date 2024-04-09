@@ -107,8 +107,8 @@ class ResumableWidgetConfigure : AppCompatActivity(),
 
         binding.widgetType.setText(
             ResumableType.entries[
-            prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)
-        ].type)
+                prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)
+            ].type)
         binding.widgetType.setAdapter(
             ArrayAdapter(
                 this,
@@ -142,41 +142,43 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                 ResumableWidget.getPrefsName(appWidgetId),
                 Context.MODE_PRIVATE
             )
-            when (dialogTag) {
-                ResumableWidget.PREF_BACKGROUND_COLOR -> {
-                    prefs.edit()
-                        .putInt(
-                            ResumableWidget.PREF_BACKGROUND_COLOR,
-                            extras.getInt(SimpleColorDialog.COLOR)
-                        )
-                        .apply()
-                }
+            if (!isMonetEnabled) {
+                when (dialogTag) {
+                    ResumableWidget.PREF_BACKGROUND_COLOR -> {
+                        prefs.edit()
+                            .putInt(
+                                ResumableWidget.PREF_BACKGROUND_COLOR,
+                                extras.getInt(SimpleColorDialog.COLOR)
+                            )
+                            .apply()
+                    }
 
-                ResumableWidget.PREF_BACKGROUND_FADE -> {
-                    prefs.edit()
-                        .putInt(
-                            ResumableWidget.PREF_BACKGROUND_FADE,
-                            extras.getInt(SimpleColorDialog.COLOR)
-                        )
-                        .apply()
-                }
+                    ResumableWidget.PREF_BACKGROUND_FADE -> {
+                        prefs.edit()
+                            .putInt(
+                                ResumableWidget.PREF_BACKGROUND_FADE,
+                                extras.getInt(SimpleColorDialog.COLOR)
+                            )
+                            .apply()
+                    }
 
-                ResumableWidget.PREF_TITLE_TEXT_COLOR -> {
-                    prefs.edit()
-                        .putInt(
-                            ResumableWidget.PREF_TITLE_TEXT_COLOR,
-                            extras.getInt(SimpleColorDialog.COLOR)
-                        )
-                        .apply()
-                }
+                    ResumableWidget.PREF_TITLE_TEXT_COLOR -> {
+                        prefs.edit()
+                            .putInt(
+                                ResumableWidget.PREF_TITLE_TEXT_COLOR,
+                                extras.getInt(SimpleColorDialog.COLOR)
+                            )
+                            .apply()
+                    }
 
-                ResumableWidget.PREF_FLIPPER_IMG_COLOR -> {
-                    prefs.edit()
-                        .putInt(
-                            ResumableWidget.PREF_FLIPPER_IMG_COLOR,
-                            extras.getInt(SimpleColorDialog.COLOR)
-                        )
-                        .apply()
+                    ResumableWidget.PREF_FLIPPER_IMG_COLOR -> {
+                        prefs.edit()
+                            .putInt(
+                                ResumableWidget.PREF_FLIPPER_IMG_COLOR,
+                                extras.getInt(SimpleColorDialog.COLOR)
+                            )
+                            .apply()
+                    }
                 }
             }
         }

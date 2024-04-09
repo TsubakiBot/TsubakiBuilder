@@ -14,8 +14,9 @@ class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int
     RemoteViewsService.RemoteViewsFactory {
     private var refreshing = false
 
-    private val prefs =
-        context.getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+    private val prefs = context.getSharedPreferences(
+        ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE
+    )
 
     override fun onCreate() {
         Logger.log("ResumableRemoteViewsFactory onCreate")

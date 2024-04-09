@@ -49,8 +49,8 @@ class ResumableWidget : AppWidgetProvider() {
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
-        for (appWidgetId in appWidgetIds) {
-            context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().clear().apply()
+        appWidgetIds.forEach {
+            context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE).edit().clear().apply()
         }
         super.onDeleted(context, appWidgetIds)
     }

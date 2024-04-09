@@ -10,11 +10,9 @@ import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import ani.dantotsu.R
 import ani.dantotsu.databinding.UpcomingWidgetConfigureBinding
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
-import ani.matagi.widgets.resumable.ResumableWidget
 import com.google.android.material.button.MaterialButton
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
@@ -50,7 +48,12 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
 
         binding = UpcomingWidgetConfigureBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val prefs = getSharedPreferences(UpcomingWidget.PREFS_NAME, Context.MODE_PRIVATE)
+        appWidgetId = intent.getIntExtra(
+            AppWidgetManager.EXTRA_APPWIDGET_ID,
+            AppWidgetManager.INVALID_APPWIDGET_ID
+        )
+        val prefs = getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+
         val topBackground = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
         (binding.topBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(topBackground)
         binding.topBackgroundButton.setOnClickListener {
@@ -116,7 +119,7 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
         theme.resolveAttribute(com.google.android.material.R.attr.colorOutline, typedValueOutline, true)
         val subTextColor = typedValueOutline.data
 
-        getSharedPreferences(UpcomingWidget.PREFS_NAME, Context.MODE_PRIVATE).edit().apply {
+        getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(UpcomingWidget.PREF_BACKGROUND_COLOR, backgroundColor)
             putInt(UpcomingWidget.PREF_BACKGROUND_FADE, backgroundColor)
             putInt(UpcomingWidget.PREF_TITLE_TEXT_COLOR, textColor)
@@ -127,13 +130,14 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
 
     override fun onResult(dialogTag: String, which: Int, extras: Bundle): Boolean {
         if (which == SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE) {
+            val prefs = getSharedPreferences(
+                UpcomingWidget.getPrefsName(appWidgetId),
+                Context.MODE_PRIVATE
+            )
             if (!isMonetEnabled) {
                 when (dialogTag) {
                     UpcomingWidget.PREF_BACKGROUND_COLOR -> {
-                        getSharedPreferences(
-                            UpcomingWidget.PREFS_NAME,
-                            Context.MODE_PRIVATE
-                        ).edit()
+                        prefs.edit()
                             .putInt(
                                 UpcomingWidget.PREF_BACKGROUND_COLOR,
                                 extras.getInt(SimpleColorDialog.COLOR)
@@ -144,10 +148,7 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
                     }
 
                     UpcomingWidget.PREF_BACKGROUND_FADE -> {
-                        getSharedPreferences(
-                            UpcomingWidget.PREFS_NAME,
-                            Context.MODE_PRIVATE
-                        ).edit()
+                        prefs.edit()
                             .putInt(
                                 UpcomingWidget.PREF_BACKGROUND_FADE,
                                 extras.getInt(SimpleColorDialog.COLOR)
@@ -158,10 +159,7 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
                     }
 
                     UpcomingWidget.PREF_TITLE_TEXT_COLOR -> {
-                        getSharedPreferences(
-                            UpcomingWidget.PREFS_NAME,
-                            Context.MODE_PRIVATE
-                        ).edit()
+                        prefs.edit()
                             .putInt(
                                 UpcomingWidget.PREF_TITLE_TEXT_COLOR,
                                 extras.getInt(SimpleColorDialog.COLOR)
@@ -172,10 +170,7 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
                     }
 
                     UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR -> {
-                        getSharedPreferences(
-                            UpcomingWidget.PREFS_NAME,
-                            Context.MODE_PRIVATE
-                        ).edit()
+                        prefs.edit()
                             .putInt(
                                 UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR,
                                 extras.getInt(SimpleColorDialog.COLOR)

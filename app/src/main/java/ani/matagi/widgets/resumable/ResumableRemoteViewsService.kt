@@ -7,7 +7,6 @@ import ani.dantotsu.util.Logger
 
 class ResumableRemoteViewsService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        Logger.log("ResumableRemoteViewsFactory onGetViewFactory")
         val appWidgetId: Int = intent.getIntExtra(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
