@@ -51,6 +51,7 @@ import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.databinding.ActivitySettingsExtensionsBinding
 import ani.dantotsu.databinding.ActivitySettingsMangaBinding
 import ani.dantotsu.databinding.ActivitySettingsNotificationsBinding
+import ani.dantotsu.databinding.ActivitySettingsSystemBinding
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.download.DownloadsManager
@@ -122,6 +123,7 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
     private lateinit var bindingAnime: ActivitySettingsAnimeBinding
     private lateinit var bindingManga: ActivitySettingsMangaBinding
     private lateinit var bindingNotifications: ActivitySettingsNotificationsBinding
+    private lateinit var bindingSystem: ActivitySettingsSystemBinding
     private lateinit var bindingAbout: ActivitySettingsAboutBinding
     private val extensionInstaller = Injekt.get<BasePreferences>().extensionInstaller()
     private var cursedCounter = 0
@@ -1194,32 +1196,8 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             }
         }
 
-        bindingAbout = ActivitySettingsAboutBinding.bind(binding.root).apply {
-            settingsDev.setOnClickListener {
-                DevelopersDialogFragment().show(supportFragmentManager, "dialog")
-            }
-            settingsForks.setOnClickListener {
-                ForksDialogFragment().show(supportFragmentManager, "dialog")
-            }
-            settingsDisclaimer.setOnClickListener {
-                val title = getString(R.string.disclaimer)
-                val text = TextView(this@SettingsActivity)
-                text.setText(R.string.full_disclaimer)
-
-                CustomBottomDialog.newInstance().apply {
-                    setTitleText(title)
-                    addView(text)
-                    setNegativeButton(currContext()!!.getString(R.string.close)) {
-                        dismiss()
-                    }
-                    show(supportFragmentManager, "dialog")
-                }
-            }
-
-            settingsFAQ.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, FAQActivity::class.java))
-            }
-
+        bindingSystem = ActivitySettingsSystemBinding.bind(binding.root).apply {
+            
             if (!BuildConfig.FLAVOR.contains("fdroid")) {
                 binding.settingsLogo.setOnLongClickListener {
                     lifecycleScope.launch(Dispatchers.IO) {
@@ -1266,6 +1244,36 @@ class SettingsActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListene
             settingsShareLog.setOnClickListener {
                 Logger.shareLog(this@SettingsActivity)
             }
+        }
+
+        bindingAbout = ActivitySettingsAboutBinding.bind(binding.root).apply {
+
+            settingsFAQ.setOnClickListener {
+                startActivity(Intent(this@SettingsActivity, FAQActivity::class.java))
+            }
+
+            settingsDev.setOnClickListener {
+                DevelopersDialogFragment().show(supportFragmentManager, "dialog")
+            }
+            settingsForks.setOnClickListener {
+                ForksDialogFragment().show(supportFragmentManager, "dialog")
+            }
+            settingsDisclaimer.setOnClickListener {
+                val title = getString(R.string.disclaimer)
+                val text = TextView(this@SettingsActivity)
+                text.setText(R.string.full_disclaimer)
+
+                CustomBottomDialog.newInstance().apply {
+                    setTitleText(title)
+                    addView(text)
+                    setNegativeButton(currContext()!!.getString(R.string.close)) {
+                        dismiss()
+                    }
+                    show(supportFragmentManager, "dialog")
+                }
+            }
+
+
         }
 
         binding.settingBuyMeCoffee.setOnClickListener {

@@ -81,6 +81,7 @@
             <include layout="@layout/activity_settings_anime" />
             <include layout="@layout/activity_settings_manga" />
             <include layout="@layout/activity_settings_notifications" />
+            <include layout="@layout/activity_settings_system" />
             <include layout="@layout/activity_settings_about" />
 
             <TextView
