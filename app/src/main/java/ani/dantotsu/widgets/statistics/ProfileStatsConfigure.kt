@@ -188,13 +188,13 @@ class ProfileStatsConfigure : AppCompatActivity(),
         )
         val textColor = typedValuePrimary.data
 
-        val typedValueOutline = TypedValue()
+        val typedValueSubtext = TypedValue()
         theme.resolveAttribute(
-            com.google.android.material.R.attr.colorOutline,
-            typedValueOutline,
+            com.google.android.material.R.attr.colorOnBackground,
+            typedValueSubtext,
             true
         )
-        val subTextColor = typedValueOutline.data
+        val subTextColor = typedValueSubtext.data
 
         getSharedPreferences(ProfileStatsWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, backgroundColor)
