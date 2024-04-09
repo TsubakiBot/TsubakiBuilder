@@ -7,31 +7,74 @@
    <a href="https://www.codefactor.io/repository/github/RepoDevil/dantotsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Dantotsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
-
-### Note: I am not a Dantotsu collaborator, nor member of its Discord.
-This fork began after reading multiple reviews of the promising UI, but excessive number of bugs. I cleared a decent chunk of the backlog before deciding that the condescending attitude of the project owner, lack of collaboration by an unskilled developer with push access, and sheer volume of copied code were red flags. After explaining my reasoning, I excused myself from further involvement.
+<br />
 
 # **Dantotsu** 🌟
 
 Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
 
 > **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese. Try it out for yourself and be the judge!
+<br />
 
 # **Mr. Matagi** 💦
 
 Mr. Matagi is aimed at improving upon it.
 
 > **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. A copy of a project is a fork and a collection of changes is a branch.
+<br />
+
+## Mr. Matagi Modifications
+
+- Torrent support (thanks to [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
+- Embedded audio and subtitle support
+- Continue reading / watching / both widget & shortcuts
+- Picture-in-picture fixed, Foldable support added
+- Fixed widget themes and improved upcoming widget
+- Options to disable the comments API and dev trolling
+- Improved loading speed throughout the app
+
+### Upstream Contributions
+<details><summary>Click the arrow to expand the list</summary>
+<br />
+
+- Reduced the minimum API to 21
+- Delete list items from context menu
+- Revamped and optimized settings
+- Add new items to lists when started
+- Fixed navigation bar handling
+- Fixed the manga reader RTL and bottom to top
+- Counter for latest chapter release
+- Automatic source searching
+- Magnet link recognition and export
+- Subtitle transparency options
+- Automated series search from media info
+- Custom AnimatedBottomBar library
+- Fixed landscape navigation
+- Profile statistic widget
+- Option to disable trending scroller
+- Revamp the application restart process
+- Support for extension repo entry
+- Repo modification from extension page
+- Automated collection of contributors & forks
+- Code optimization and fixes throughout
+- Other bits and pieces I likely forgot
+</details>
+<br />
 
 ## WANT TO CONTRIBUTE? 🤝
 
 All contributions are welcome, from code to documentation to graphics to design suggestions to bug reports. Please use GitHub to its fullest; contribute Pull Requests, contribute tutorials or other content - whatever you have to offer, we can use!
+<br />
+<br />
 
 ## VISITORS
 
 <img src="https://count.getloli.com/get/@:repodevildantotsu" alt=":repodevildantotsu" />
+<br />
 
 ## LICENSE 📜
 
 Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)
+<br />
 
+#### Note: I am not a Dantotsu collaborator, nor member of its Discord.
