@@ -129,24 +129,6 @@
         app:iconSize="24dp"
         app:iconTint="?attr/colorPrimary" />
 
-
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/useStackView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:drawableStart="@drawable/ic_label_off_24"
-        android:drawablePadding="16dp"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/poppins_bold"
-        android:minHeight="64dp"
-        android:text="@string/use_stackview"
-        android:textAlignment="viewStart"
-        android:textColor="?attr/colorOnBackground"
-        app:cornerRadius="0dp"
-        app:drawableTint="?attr/colorPrimary"
-        app:showText="false" />
-
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"

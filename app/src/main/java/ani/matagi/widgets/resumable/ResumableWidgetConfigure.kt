@@ -96,15 +96,6 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                 ResumableWidget.PREF_FLIPPER_IMG_COLOR)
         }
 
-        binding.useStackView.run {
-            isChecked = prefs.getBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
-        }
-        binding.useStackView.setOnCheckedChangeListener { _, isChecked ->
-            prefs.edit()
-                .putBoolean(ResumableWidget.PREF_USE_STACKVIEW, isChecked)
-                .apply()
-        }
-
         binding.widgetType.setText(
             ResumableType.entries[
                 prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)

@@ -13,7 +13,6 @@ import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.RemoteViews
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -29,7 +28,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
-
 
 /**
  * Implementation of App Widget functionality.
@@ -71,10 +69,10 @@ class ResumableWidget : AppWidgetProvider() {
         )
         val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
             if (VIEWFLIPPER_NEXT == intent.action) {
-                showNext(R.id.widgetViewFlipper)
+                @Suppress("DEPRECATION") showNext(R.id.widgetViewFlipper)
             }
             if (VIEWFLIPPER_PREV == intent.action) {
-                showPrevious(R.id.widgetViewFlipper)
+                @Suppress("DEPRECATION") showPrevious(R.id.widgetViewFlipper)
             }
         }
         AppWidgetManager.getInstance(context).updateAppWidget(appWidgetId, views)
@@ -236,43 +234,24 @@ class ResumableWidget : AppWidgetProvider() {
                 setImageViewBitmap(R.id.leftFlipper, flipperDrawable.toBitmap())
                 setImageViewBitmap(R.id.rightFlipper, flipperDrawable.toBitmap())
 
-                if (prefs.getBoolean(PREF_USE_STACKVIEW, false)) {
-                    setViewVisibility(R.id.widgetViewFlipper, View.GONE)
-                    setViewVisibility(R.id.widgetStackView, View.VISIBLE)
-                    setViewVisibility(R.id.leftFlipper, View.GONE)
-                    setViewVisibility(R.id.rightFlipper, View.GONE)
-                    setPendingIntentTemplate(
-                        R.id.widgetStackView,
-                        PendingIntent.getActivity(
-                            context,
-                            0,
-                            intentTemplate,
-                            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-                        )
+                setPendingIntentTemplate(
+                    R.id.widgetViewFlipper,
+                    PendingIntent.getActivity(
+                        context,
+                        0,
+                        intentTemplate,
+                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
                     )
-                    setLocalAdapter(context, appWidgetId, R.id.widgetStackView)
-                    setEmptyView(R.id.widgetStackView, R.id.empty_view)
-                } else {
-                    setViewVisibility(R.id.widgetStackView, View.GONE)
-                    setViewVisibility(R.id.widgetViewFlipper, View.VISIBLE)
-                    setViewVisibility(R.id.leftFlipper, View.VISIBLE)
-                    setViewVisibility(R.id.rightFlipper, View.VISIBLE)
-                    widgetItems.clear()
-                    setPendingIntentTemplate(
-                        R.id.widgetViewFlipper,
-                        PendingIntent.getActivity(
-                            context,
-                            0,
-                            intentTemplate,
-                            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-                        )
-                    )
-                    setLocalAdapter(context, appWidgetId, R.id.widgetViewFlipper)
-                    setEmptyView(R.id.widgetViewFlipper, R.id.empty_view)
+                )
+                setLocalAdapter(context, appWidgetId, R.id.widgetViewFlipper)
+                setEmptyView(R.id.widgetViewFlipper, R.id.empty_view)
 
-                    setOnClickPendingIntent(R.id.leftFlipper, getPendingSelfIntent(context, appWidgetId, VIEWFLIPPER_PREV))
-                    setOnClickPendingIntent(R.id.rightFlipper, getPendingSelfIntent(context, appWidgetId, VIEWFLIPPER_NEXT))
-                }
+                setOnClickPendingIntent(
+                    R.id.leftFlipper, getPendingSelfIntent(context, appWidgetId, VIEWFLIPPER_PREV)
+                )
+                setOnClickPendingIntent(
+                    R.id.rightFlipper, getPendingSelfIntent(context, appWidgetId, VIEWFLIPPER_NEXT)
+                )
 
                 setOnClickPendingIntent(
                     R.id.widgetTitle,
@@ -298,7 +277,6 @@ class ResumableWidget : AppWidgetProvider() {
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"
         const val PREF_FLIPPER_IMG_COLOR = "flipper_img_color"
         const val PREF_WIDGET_TYPE = "widget_type"
-        const val PREF_USE_STACKVIEW = "use_stackview"
 
         const val VIEWFLIPPER_NEXT = "viewflipper_next"
         const val VIEWFLIPPER_PREV = "viewflipper_prev"
@@ -313,5 +291,4 @@ internal fun updateAppWidget(
     val views = ResumableWidget.updateAppWidget(context, appWidgetId)
     appWidgetManager.updateAppWidget(appWidgetId, views)
     appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widgetViewFlipper)
-    appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widgetStackView)
 }
