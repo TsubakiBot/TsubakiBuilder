@@ -32,6 +32,7 @@ Mr. Matagi is aimed at improving upon it.
 - Picture-in-picture fixed, Foldable support added
 - Fixed widget themes and improved upcoming widget
 - Options to disable the comments API and dev trolling
+- System backup and restore / device transfer support
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
