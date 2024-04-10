@@ -1079,9 +1079,10 @@ class MangaReaderActivity : AppCompatActivity() {
         callback: ((ImageViewDialog) -> Unit)? = null
     ): Boolean {
         if (!defaultSettings.longClickImage) return false
-        val title = "(Page ${pos + 1}${if (img2 != null) "-${pos + 2}" else ""}) ${
-            chaptersTitleArr.getOrNull(currentChapterIndex)?.replace(" : ", " - ") ?: ""
-        } [${media.userPreferredName}]"
+        var chapter = chaptersTitleArr.getOrNull(currentChapterIndex)?.replace(" : ", " - ") ?: ""
+        if (chapter.isNotBlank() && chapter.substringAfterLast(" - ") == chapter.substringBeforeLast(" - "))
+            chapter = chapter.substringAfterLast(" - ")
+        val title = "Page ${pos + 1}${img2?.let {"-${pos + 2}"}} [${media.userPreferredName}] (${chapter})"
 
         ImageViewDialog.newInstance(title, img1.url, true, img2?.url).apply {
             val transforms1 = mutableListOf<BitmapTransformation>()
