@@ -44,13 +44,13 @@ import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toPx
+import ani.dantotsu.utf8
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.Serializable
-import java.net.URLEncoder
 
 
 class MediaInfoFragment : Fragment() {
@@ -315,10 +315,7 @@ class MediaInfoFragment : Fragment() {
                         val name = a.subSequence(first, end).toString()
                         return "${a.subSequence(0, first)}" +
                                 "[$name](https://www.youtube.com/results?search_query=${
-                                    URLEncoder.encode(
-                                        name,
-                                        "utf-8"
-                                    )
+                                    name.utf8
                                 })" +
                                 "${a.subSequence(end, a.length)}"
                     }

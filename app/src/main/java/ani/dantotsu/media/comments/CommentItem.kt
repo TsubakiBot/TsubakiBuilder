@@ -9,11 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.comments.Comment
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ItemCommentsBinding
-import ani.dantotsu.getAppString
 import ani.dantotsu.loadImage
 import ani.dantotsu.others.ImageViewDialog
 import ani.dantotsu.profile.ProfileActivity
@@ -151,8 +151,8 @@ class CommentItem(
                 when (item.itemId) {
                     R.id.commentReport -> {
                         dialogBuilder(
-                            getAppString(R.string.report_comment),
-                            getAppString(R.string.report_comment_confirm)
+                            getString(R.string.report_comment),
+                            getString(R.string.report_comment_confirm)
                         ) {
                             CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
                                 val success = CommentsAPI.reportComment(
@@ -171,8 +171,8 @@ class CommentItem(
 
                     R.id.commentDelete -> {
                         dialogBuilder(
-                            getAppString(R.string.delete_comment),
-                            getAppString(R.string.delete_comment_confirm)
+                            getString(R.string.delete_comment),
+                            getString(R.string.delete_comment_confirm)
                         ) {
                             CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
                                 val success = CommentsAPI.deleteComment(comment.commentId)
@@ -187,8 +187,8 @@ class CommentItem(
 
                     R.id.commentBanUser -> {
                         dialogBuilder(
-                            getAppString(R.string.ban_user),
-                            getAppString(R.string.ban_user_confirm)
+                            getString(R.string.ban_user),
+                            getString(R.string.ban_user_confirm)
                         ) {
                             CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
                                 val success = CommentsAPI.banUser(comment.userId)

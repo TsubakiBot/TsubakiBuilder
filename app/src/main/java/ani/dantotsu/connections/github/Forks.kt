@@ -3,7 +3,7 @@ package ani.dantotsu.connections.github
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
 import ani.dantotsu.client
-import ani.dantotsu.getAppString
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.settings.Developer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

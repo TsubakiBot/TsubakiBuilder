@@ -48,13 +48,11 @@ import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.GestureDetector
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AlphaAnimation
@@ -66,10 +64,8 @@ import android.view.animation.TranslateAnimation
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -80,14 +76,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
-import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
@@ -96,7 +89,6 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
-import ani.dantotsu.media.anime.ExoplayerView
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse
@@ -125,10 +117,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.internal.ViewUtils
 import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
-import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
-import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
-import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
-import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.MarkwonConfiguration
@@ -142,17 +130,11 @@ import io.noties.markwon.image.AsyncDrawable
 import io.noties.markwon.image.glide.GlideImagesPlugin
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
-import tachiyomi.core.util.lang.launchIO
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -170,20 +152,6 @@ import kotlin.math.pow
 
 var statusBarHeight = 0
 var navBarHeight = 0
-
-/**
- * The value of a number divided by density.
- *
- * WARNING: Not a valid px to dp conversion
- * */
-val Int.dp: Float get() = (this / Resources.getSystem().displayMetrics.density)
-
-/**
- * The value of a number multiplied by density.
- *
- * WARNING: Not a valid dp to px conversion
- * */
-val Float.px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 val Number.toPx get() = TypedValue.applyDimension(
     TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
@@ -645,11 +613,6 @@ fun MutableList<ShowResponse>.sortByTitle(string: String) {
     }
 }
 
-fun String.findBetween(a: String, b: String): String? {
-    val string = substringAfter(a, "").substringBefore(b, "")
-    return string.ifEmpty { null }
-}
-
 fun ImageView.loadImage(url: String?, size: Int = 0) {
     if (!url.isNullOrEmpty()) {
         val localFile = File(url)
@@ -661,13 +624,13 @@ fun ImageView.loadImage(url: String?, size: Int = 0) {
     }
 }
 
-fun getStringOrTrolled(url: String?) : String {
+fun geUrlOrTrolled(url: String?) : String {
     return if (PrefManager.getVal(PrefName.DisableMitM)) url ?: "" else
         PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { url ?: "" }
 }
 
 fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
-    file?.url = getStringOrTrolled(file?.url)
+    file?.url = geUrlOrTrolled(file?.url)
     if (file?.url?.isNotEmpty() == true) {
         tryWith {
             if (file.url.startsWith("content://")) {
@@ -1148,75 +1111,6 @@ class EmptyAdapter(private val count: Int) : RecyclerView.Adapter<RecyclerView.V
     inner class EmptyViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
 
-fun getAppString(res: Int): String {
-    return currContext()?.getString(res) ?: ""
-}
-
-fun getAppString(res: Int, value: String?): String {
-    return currContext()?.getString(res, value) ?: ""
-}
-
-fun getAppString(res: Int, value: String?, other: String?): String {
-    return currContext()?.getString(res, value, other) ?: ""
-}
-
-fun toast(string: String?) {
-    if (string != null) {
-        Logger.log(string)
-        MainScope().launch {
-            Toast.makeText(currActivity()?.application ?: return@launch, string, Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-}
-
-fun toast(res: Int) {
-    toast(getAppString(res))
-}
-
-fun snackString(s: String?, activity: Activity? = null, clipboard: String? = null): Snackbar? {
-    try { //I have no idea why this sometimes crashes for some people...
-        if (s != null) {
-            (activity ?: currActivity())?.apply {
-                val snackBar = Snackbar.make(
-                    window.decorView.findViewById(android.R.id.content),
-                    s,
-                    Snackbar.LENGTH_SHORT
-                )
-                runOnUiThread {
-                    snackBar.view.apply {
-                        updateLayoutParams<FrameLayout.LayoutParams> {
-                            gravity = (Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
-                            width = WRAP_CONTENT
-                        }
-                        translationY = -(navBarHeight.toDp + 32f)
-                        translationZ = 32f
-                        updatePadding(16f.toPx, right = 16f.toPx)
-                        setOnClickListener {
-                            snackBar.dismiss()
-                        }
-                        setOnLongClickListener {
-                            copyToClipboard(clipboard ?: s, false)
-                            toast(getString(R.string.copied_to_clipboard))
-                            true
-                        }
-                    }
-                    snackBar.show()
-                }
-                return snackBar
-            }
-            Logger.log(s)
-        }
-    } catch (e: Exception) {
-        Logger.log(e)
-    }
-    return null
-}
-
-fun snackString(r: Int, activity: Activity? = null, clipboard: String? = null): Snackbar? {
-    return snackString(getAppString(r), activity, clipboard)
-}
-
 open class NoPaddingArrayAdapter<T>(context: Context, layoutId: Int, items: List<T>) :
     ArrayAdapter<T>(context, layoutId, items) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -1400,7 +1294,7 @@ fun blurImage(imageView: ImageView, banner: String?) {
         if (PrefManager.getVal(PrefName.BlurBanners)) {
             val context = imageView.context
             if (!(context as Activity).isDestroyed) {
-                val url = getStringOrTrolled(banner)
+                val url = geUrlOrTrolled(banner)
                 Glide.with(context as Context)
                     .load(GlideUrl(url))
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
@@ -1492,32 +1386,4 @@ fun buildMarkwon(
         }))
         .build()
     return markwon
-}
-
-@OptIn(DelicateCoroutinesApi::class)
-fun torrServerStart(context: Context) {
-    launchIO {
-        if (!TorrentServerService.isRunning(context)) {
-            TorrentServerService.start()
-            TorrentServerService.wait(10)
-            TorrentServerUtils.setTrackersList()
-        }
-    }
-}
-
-@androidx.annotation.OptIn(UnstableApi::class)
-fun torrServerStop(context: Context) {
-    ExoplayerView.torrent = null
-    if (TorrentServerService.isRunning(context)) {
-        runBlocking(Dispatchers.IO) {
-            TorrentServerApi.listTorrent().map { torrent ->
-                async(Dispatchers.IO) {
-                    torrent.hash?.let { TorrentServerApi.remTorrent(it) }
-                }
-            }.awaitAll()
-            try {
-                TorrentServerService.stop()
-            } catch (ignored: Exception) { }
-        }
-    }
 }
