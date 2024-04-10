@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.countDown
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.DialogLayoutBinding
 import ani.dantotsu.databinding.ItemAnimeWatchBinding
@@ -473,16 +474,20 @@ class AnimeWatchAdapter(
                     ext.sourceLanguage = lang
                 }
                 try {
-                    binding?.animeSourceLanguage?.setText(parser.extension.sources[lang].lang)
+                    binding?.animeSourceLanguage?.setText(
+                        LanguageMapper.getExtensionItem(parser.extension.sources[lang])
+                    )
                 } catch (e: IndexOutOfBoundsException) {
                     binding?.animeSourceLanguage?.setText(
-                        parser.extension.sources.firstOrNull()?.lang ?: "Unknown"
+                        parser.extension.sources.firstOrNull()?.let {
+                            LanguageMapper.getExtensionItem(it)
+                        } ?: "Unknown"
                     )
                 }
                 val adapter = ArrayAdapter(
                     fragment.requireContext(),
                     R.layout.item_dropdown,
-                    parser.extension.sources.map { LanguageMapper.mapLanguageCodeToName(it.lang) }
+                    parser.extension.sources.map { LanguageMapper.getExtensionItem(it) }
                 )
                 val items = adapter.count
 
@@ -498,7 +503,7 @@ class AnimeWatchAdapter(
     inner class ViewHolder(val binding: ItemAnimeWatchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            displayTimer(media, binding.animeSourceContainer)
+            countDown(media, binding.animeSourceContainer)
         }
     }
 }

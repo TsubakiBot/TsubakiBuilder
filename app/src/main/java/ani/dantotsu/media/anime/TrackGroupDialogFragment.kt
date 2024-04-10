@@ -15,7 +15,7 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import ani.dantotsu.others.LanguageMapper.getLanguageListItem
+import ani.dantotsu.others.LanguageMapper.getLanguageItem
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
@@ -75,7 +75,7 @@ class TrackGroupDialogFragment(
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
                     else -> {
-                        binding.subtitleTitle.text = getLanguageListItem(language)
+                        binding.subtitleTitle.text = getLanguageItem(language)
                             ?: getString(R.string.unknown_track, language)
                     }
                 }

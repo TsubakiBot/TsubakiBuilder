@@ -1,5 +1,9 @@
 package ani.dantotsu.others
 
+import eu.kanade.tachiyomi.animesource.AnimeSource
+import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
+import eu.kanade.tachiyomi.source.ConfigurableSource
+import eu.kanade.tachiyomi.source.MangaSource
 import java.util.Locale
 
 object LanguageMapper {
@@ -22,7 +26,23 @@ object LanguageMapper {
         return locale?.displayName ?: code
     }
 
-    fun getLanguageListItem(code: String): String? {
+    fun getExtensionItem(source: ConfigurableAnimeSource): String {
+        return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
+    }
+
+    fun getExtensionItem(source: AnimeSource): String {
+        return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
+    }
+
+    fun getExtensionItem(source: ConfigurableSource): String {
+        return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
+    }
+
+    fun getExtensionItem(source: MangaSource): String {
+        return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
+    }
+
+    fun getLanguageItem(code: String): String? {
         val locale = getLocalFromCode(code)
         return locale?.let { "[${it.language}] ${it.displayName}" }
     }

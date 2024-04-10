@@ -523,16 +523,19 @@ class MangaReadAdapter(
                     ext.sourceLanguage = lang
                 }
                 try {
-                    binding?.animeSourceLanguage?.setText(parser.extension.sources[lang].lang)
+                    binding?.animeSourceLanguage?.setText(
+                        LanguageMapper.getExtensionItem(parser.extension.sources[lang]))
                 } catch (e: IndexOutOfBoundsException) {
                     binding?.animeSourceLanguage?.setText(
-                        parser.extension.sources.firstOrNull()?.lang ?: "Unknown"
+                        parser.extension.sources.firstOrNull()?.let {
+                            LanguageMapper.getExtensionItem(it)
+                        } ?: "Unknown"
                     )
                 }
                 val adapter = ArrayAdapter(
                     fragment.requireContext(),
                     R.layout.item_dropdown,
-                    parser.extension.sources.map { LanguageMapper.mapLanguageCodeToName(it.lang) }
+                    parser.extension.sources.map { LanguageMapper.getExtensionItem(it) }
                 )
                 val items = adapter.count
                 binding?.animeSourceLanguageContainer?.isVisible = items > 1

@@ -2183,16 +2183,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 exoPlayer.currentPosition
             )
         }
-        when (lifecycle.currentState) {
-            Lifecycle.State.CREATED -> { // Closed
-                if (isInPictureInPictureMode) onBackPressedDispatcher.onBackPressed()
+        if (lifecycle.currentState == Lifecycle.State.CREATED) {
+            if (isInPictureInPictureMode) {
+                onBackPressedDispatcher.onBackPressed()
             }
-            Lifecycle.State.STARTED -> { // Maximized
-                if (wasPlaying) exoPlayer.play()
-            }
-            else -> {
-                if (wasPlaying) exoPlayer.play()
-            }
+        } else {
+            if (wasPlaying) exoPlayer.play()
         }
     }
 
