@@ -3,7 +3,9 @@ package ani.dantotsu
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.UiModeManager
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.GradientDrawable
@@ -92,6 +94,11 @@ class MainActivity : AppCompatActivity() {
 
         //get FRAGMENT_CLASS_NAME from intent
         val fragment = intent.getStringExtra("FRAGMENT_CLASS_NAME")
+
+        val uiModeManager: UiModeManager = getSystemService(UI_MODE_SERVICE) as UiModeManager
+        if (uiModeManager.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        } // Forced landscape for Android TV
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
