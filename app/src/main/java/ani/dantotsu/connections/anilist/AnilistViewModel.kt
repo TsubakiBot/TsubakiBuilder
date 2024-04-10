@@ -31,20 +31,19 @@ suspend fun getUserId(context: Context, block: () -> Unit) {
         }
     }
 
-    val anilist = if (Anilist.userid == null && Anilist.token != null) {
+    if (Anilist.userid == null && Anilist.token != null) {
         if (Anilist.query.getUserData()) {
             tryWithSuspend {
                 if (MAL.token != null && !MAL.query.getUserData())
                     snackString(context.getString(R.string.error_loading_mal_user_data))
             }
-            true
         } else {
             snackString(context.getString(R.string.error_loading_anilist_user_data))
-            false
+            throw Exception()
         }
-    } else true
+    }
 
-    if (anilist) block.invoke()
+    block.invoke()
 }
 
 class AnilistHomeViewModel : ViewModel() {

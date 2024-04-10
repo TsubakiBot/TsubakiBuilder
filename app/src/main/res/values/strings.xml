@@ -884,6 +884,9 @@ Non quae tempore quo provident laudantium qui illo dolor vel quia dolor et exerc
     <string name="do_it">Do it!</string>
     <string name="password">Password</string>
 
+    <string name="anilist_broken_title">Internal Server Error!</string>
+    <string name="anilist_broken">AniList appears to be unresponsive and functionality will be severely limited. Would you like to close the app and try again later?\n</string>
+
     <string name="search_title">Search %1$s</string>
 
     <string name="profile_stats_widget">Track progress directly from your home screen</string>

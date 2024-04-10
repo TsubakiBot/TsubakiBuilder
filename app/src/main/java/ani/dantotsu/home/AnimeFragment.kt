@@ -31,6 +31,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.serverDownDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -269,13 +270,18 @@ class AnimeFragment : Fragment() {
             true
         }
 
+        var serverDown = false
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        getUserId(requireContext()) {
-                            load()
+                        try {
+                            getUserId(requireContext()) {
+                                load()
+                            }
+                        } catch (ignored: Exception) {
+                            serverDownDialog(activity)
                         }
                         model.loaded = true
                         model.loadTrending(1)

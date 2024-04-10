@@ -41,6 +41,7 @@ import ani.dantotsu.openLinkInBrowser
 import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
+import ani.dantotsu.serverDownDialog
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
@@ -361,8 +362,12 @@ class HomeFragment : Fragment() {
                 scope.launch {
                     withContext(Dispatchers.IO) {
                         //Get userData First
-                        getUserId(requireContext()) {
-                            load()
+                        try {
+                            getUserId(requireContext()) {
+                                load()
+                            }
+                        } catch (ignored: Exception) {
+                            serverDownDialog(activity)
                         }
                         model.loaded = true
                         model.setListImages()
@@ -398,23 +403,25 @@ class HomeFragment : Fragment() {
         }
 
         if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) {
-            CoroutineScope(Dispatchers.IO).launch {
-                while(live.value == true) delay(1000)
-                delay(2000)
-                if (Random.nextInt(0, 100) > 75) {
-                    binding.donationButton.setOnClickListener {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            it.pop()
-                            openLinkInBrowser(getString(R.string.coffee))
-                            if (binding.donationReminder.isVisible) animateDonationView()
+            _binding?.let { binding ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    while (live.value == true) delay(1000)
+                    delay(2000)
+                    if (Random.nextInt(0, 100) > 75) {
+                        binding.donationButton.setOnClickListener {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                it.pop()
+                                openLinkInBrowser(getString(R.string.coffee))
+                                if (binding.donationReminder.isVisible) animateDonationView()
+                            }
                         }
-                    }
-                    binding.donationClose.setOnClickListener {
-                        CoroutineScope(Dispatchers.Main).launch {
-                            if (binding.donationReminder.isVisible) animateDonationView()
+                        binding.donationClose.setOnClickListener {
+                            CoroutineScope(Dispatchers.Main).launch {
+                                if (binding.donationReminder.isVisible) animateDonationView()
+                            }
                         }
+                        animateDonationView()
                     }
-                    animateDonationView()
                 }
             }
         }

@@ -158,7 +158,6 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavBar = findViewById<AnimatedBottomBar>(R.id.navbar)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-
             val backgroundDrawable = bottomNavBar.background as GradientDrawable
             val currentColor = backgroundDrawable.color?.defaultColor ?: 0
             val semiTransparentColor = (currentColor and 0x00FFFFFF) or 0xF9000000.toInt()

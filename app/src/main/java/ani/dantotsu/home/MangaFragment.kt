@@ -28,6 +28,7 @@ import ani.dantotsu.databinding.FragmentMangaBinding
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.serverDownDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -253,8 +254,12 @@ class MangaFragment : Fragment() {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        getUserId(requireContext()) {
-                            load()
+                        try {
+                            getUserId(requireContext()) {
+                                load()
+                            }
+                        } catch (ignored: Exception) {
+                            serverDownDialog(activity)
                         }
                         model.loaded = true
                         model.loadTrending()

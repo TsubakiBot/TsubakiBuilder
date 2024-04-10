@@ -79,6 +79,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -90,6 +91,7 @@ import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
+import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.settings.saving.PrefManager
@@ -330,6 +332,26 @@ fun Context.restartApp(view: View) {
             Runtime.getRuntime().exit(0)
         }
         show()
+    }
+}
+
+suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatchers.Main) {
+    activity?.let {
+        CustomBottomDialog.newInstance().apply {
+            title = it.getString(R.string.anilist_broken_title)
+            addView(TextView(activity).apply {
+                text = it.getString(R.string.anilist_broken)
+            })
+
+            setNegativeButton(it.getString(R.string.cancel)) {
+                dismiss()
+            }
+
+            setPositiveButton(it.getString(R.string.close)) {
+                it.finishAffinity()
+            }
+            show(it.supportFragmentManager, "dialog")
+        }
     }
 }
 
