@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ani.dantotsu.others.Xpandable
+    <LinearLayout
+        android:id="@+id/settingsCommonLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:isExpanded="true">
-
+        android:paddingStart="31dp"
+        android:paddingEnd="31dp">
         <TextView
+            android:id="@+id/settingsCommonTitle"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingEnd="28dp"
             android:text="@string/common"
-            android:textColor="?attr/colorSecondary"
-            app:drawableEndCompat="@drawable/ic_round_arrow_drop_down_24"
-            tools:ignore="TextContrastCheck" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_round_arrow_back_ios_new_24"
+            app:drawableTint="?attr/colorOnBackground"
+            tools:ignore="RtlSymmetry" />
 
         <View
             android:layout_width="match_parent"
@@ -167,7 +175,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
@@ -313,5 +321,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:background="?android:attr/listDivider" />
-    </ani.dantotsu.others.Xpandable>
-</merge>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
