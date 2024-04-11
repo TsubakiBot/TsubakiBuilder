@@ -12,7 +12,6 @@ import ani.matagi.widgets.resumable.ResumableWidget.Companion.widgetItems
 
 class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int) :
     RemoteViewsService.RemoteViewsFactory {
-    private var refreshing = false
 
     private val prefs = context.getSharedPreferences(
         ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE
@@ -24,7 +23,7 @@ class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int
     }
 
     override fun onDataSetChanged() {
-        if (refreshing) return
+        if (ResumableWidget.refreshing) return
         Logger.log("ResumableRemoteViewsFactory onDataSetChanged")
         widgetItems.clear()
         ResumableWidget.fillWidgetItems(prefs)

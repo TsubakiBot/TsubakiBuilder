@@ -93,7 +93,7 @@ class ResumableWidget : AppWidgetProvider() {
 
     companion object {
         var widgetItems = mutableListOf<WidgetItem>()
-        private var refreshing = false
+        var refreshing = false
         private val continueAnime: ArrayList<Media> = arrayListOf()
         private val continueManga: ArrayList<Media> = arrayListOf()
 
@@ -158,32 +158,32 @@ class ResumableWidget : AppWidgetProvider() {
         }
 
         private fun RemoteViews.setLocalAdapter(context: Context, appWidgetId: Int, view: Int) {
-            val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
-            val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
-            val intent = Intent(context, ResumableRemoteViewsService::class.java).apply {
-                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-                data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
-            }
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 val builder = RemoteViews.RemoteCollectionItems.Builder()
+                val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+                val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
                 widgetItems.clear()
                 fillWidgetItems(prefs).forEach { item ->
-                    val rv = RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
-                        setTextViewText(R.id.text_show_title, item.title)
-                        setTextColor(R.id.text_show_title, titleTextColor)
-                        val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
-                        setImageViewBitmap(R.id.image_show_icon, bitmap)
-                        val fillInIntent = Intent().apply {
-                            putExtra("mediaId", item.id)
-                            putExtra("continue", true)
+                    val rv =
+                        RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
+                            setTextViewText(R.id.text_show_title, item.title)
+                            setTextColor(R.id.text_show_title, titleTextColor)
+                            val bitmap = BitmapUtil.downloadImageAsBitmap(item.image)
+                            setImageViewBitmap(R.id.image_show_icon, bitmap)
+                            val fillInIntent = Intent().apply {
+                                putExtra("mediaId", item.id)
+                                putExtra("continue", true)
+                            }
+                            setOnClickFillInIntent(R.id.image_show_icon, fillInIntent)
                         }
-                        setOnClickFillInIntent(R.id.image_show_icon, fillInIntent)
-                    }
                     builder.addItem(item.id.toLong(), rv)
                 }
                 setRemoteAdapter(view, builder.setViewTypeCount(1).build())
             } else {
+                val intent = Intent(context, ResumableRemoteViewsService::class.java).apply {
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                    data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
+                }
                 setRemoteAdapter(view, intent)
             }
         }
