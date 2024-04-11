@@ -103,7 +103,7 @@ class ResumableWidget : AppWidgetProvider() {
             anime?.let { list -> continueAnime.addAll(list) }
             manga?.let { list -> continueManga.addAll(list) }
             appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
-                appWidgetManager.updateAppWidget(it, updateAppWidget(context, it))
+                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
             }
         }
 
