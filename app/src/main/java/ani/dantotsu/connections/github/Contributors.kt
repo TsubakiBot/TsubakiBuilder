@@ -25,7 +25,7 @@ class Contributors {
                 }
             val owner = res.first { it.login == "rebelonion" }
             Collections.swap(res, res.indexOf(owner), 0)
-            res.forEach {
+            res.filter { it.login != "SunglassJerry" }.forEach {
                 contributors.add(
                     Developer(
                         it.login,
@@ -64,7 +64,7 @@ class Contributors {
                     Developer(
                         "SunglassJeery",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b5804776-FEKfP5wbz2xv.png",
-                        "Discord & Comment Moderator",
+                        "Head Discord & Comment Moderator",
                         "https://anilist.co/user/5804776"
                     ),
                     Developer(
