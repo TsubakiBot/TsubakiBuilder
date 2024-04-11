@@ -100,11 +100,10 @@ class ResumableWidget : AppWidgetProvider() {
         fun injectUpdate(context: Context?, anime: ArrayList<Media>?, manga: ArrayList<Media>?) {
             if (null == context) return
             val appWidgetManager = AppWidgetManager.getInstance(context)
+            anime?.let { list -> continueAnime.addAll(list) }
+            manga?.let { list -> continueManga.addAll(list) }
             appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
-                anime?.let { list -> continueAnime.addAll(list) }
-                manga?.let { list -> continueManga.addAll(list) }
-                val rv = updateAppWidget(context, it)
-                appWidgetManager.updateAppWidget(it, rv)
+                appWidgetManager.updateAppWidget(it, updateAppWidget(context, it))
             }
         }
 
