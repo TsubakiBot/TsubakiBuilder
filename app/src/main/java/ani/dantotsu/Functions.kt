@@ -1029,8 +1029,9 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                     (it.metadata.series.lastUpdated!!.timestamp * 1000)) / 1000
 
             withContext(Dispatchers.Main) {
-                val v =
-                    ItemCountDownBinding.inflate(LayoutInflater.from(view.context), view, false)
+                val v = ItemCountDownBinding.inflate(
+                    LayoutInflater.from(view.context), view, false
+                )
                 view.addView(v.root, 0)
                 v.mediaCountdownText.text =
                     currActivity()?.getString(R.string.chapter_release_timeout, latestChapter)
