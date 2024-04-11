@@ -123,7 +123,6 @@ class ResumableWidget : AppWidgetProvider() {
                     }
                 }
             }.awaitAll()
-            continueMedia.clear()
             return mediaItems
         }
 
