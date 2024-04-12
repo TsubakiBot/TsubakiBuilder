@@ -14,7 +14,6 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -41,16 +40,8 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 bottomMargin = navBarHeight
             }
             onBackPressedDispatcher.addCallback(this@SettingsThemeActivity) {
-                val mainIntent = Intent.makeRestartActivityTask(
-                    packageManager.getLaunchIntentForPackage(packageName)!!.component
-                )
-                val component = ComponentName(packageName, SettingsActivity::class.qualifiedName!!)
-                try {
-                    startActivity(Intent().setComponent(component))
-                } catch (anything: Exception) {
-                    startActivity(mainIntent)
-                }
-                finishAndRemoveTask()
+                startActivity(Intent(this@SettingsThemeActivity, SettingsActivity::class.java))
+                finish()
             }
             settingsThemeTitle.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
@@ -59,10 +50,10 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             settingsUi.setOnClickListener {
                 startActivity(
                     Intent(
-                        this@SettingsThemeActivity,
-                        UserInterfaceSettingsActivity::class.java
+                        this@SettingsThemeActivity, UserInterfaceSettingsActivity::class.java
                     )
                 )
+                finish()
             }
 
             settingsUseOLED.isChecked = PrefManager.getVal(PrefName.UseOLED)

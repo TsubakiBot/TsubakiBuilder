@@ -1,12 +1,13 @@
 package ani.dantotsu.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
@@ -14,7 +15,6 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
-import ani.dantotsu.databinding.ActivitySettingsAboutBinding
 import ani.dantotsu.databinding.ActivitySettingsAccountsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
@@ -23,7 +23,6 @@ import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import io.noties.markwon.Markwon
@@ -34,14 +33,12 @@ import kotlinx.coroutines.launch
 
 class SettingsAccountActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsAccountsBinding
-    private val restartMainActivity = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() = startMainActivity(this@SettingsAccountActivity)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsAccountsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -50,6 +47,10 @@ class SettingsAccountActivity : AppCompatActivity() {
             settingsAccountLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
+            }
+            onBackPressedDispatcher.addCallback(this@SettingsAccountActivity) {
+                startActivity(Intent(this@SettingsAccountActivity, SettingsActivity::class.java))
+                finish()
             }
             settingsAccountTitle.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
@@ -82,7 +83,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsAnilistLogin.setText(R.string.logout)
                     settingsAnilistLogin.setOnClickListener {
                         Anilist.removeSavedToken()
-                        restartMainActivity.isEnabled = true
+                        recreate()
                         reload()
                     }
                     settingsAnilistUsername.visibility = View.VISIBLE
@@ -105,7 +106,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                         settingsMALLogin.setText(R.string.logout)
                         settingsMALLogin.setOnClickListener {
                             MAL.removeSavedToken()
-                            restartMainActivity.isEnabled = true
+                            recreate()
                             reload()
                         }
                         settingsMALUsername.visibility = View.VISIBLE
@@ -113,15 +114,14 @@ class SettingsAccountActivity : AppCompatActivity() {
                         settingsMALAvatar.loadImage(MAL.avatar)
                         settingsMALAvatar.setOnClickListener {
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                            val myanilistLink = getString(R.string.myanilist_link, MAL.username)
-                            openLinkInBrowser(myanilistLink)
+                            openLinkInBrowser(getString(R.string.myanilist_link, MAL.username))
                         }
                     } else {
                         settingsMALAvatar.setImageResource(R.drawable.ic_round_person_32)
                         settingsMALUsername.visibility = View.GONE
                         settingsMALLogin.setText(R.string.sign_in)
                         settingsMALLogin.setOnClickListener {
-                            MAL.loginIntent(this@SettingsAccountActivity)
+                            MAL.loginIntent(context)
                         }
                     }
                 } else {
@@ -129,7 +129,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsAnilistUsername.visibility = View.GONE
                     settingsAnilistLogin.setText(R.string.sign_in)
                     settingsAnilistLogin.setOnClickListener {
-                        Anilist.loginIntent(this@SettingsAccountActivity)
+                        Anilist.loginIntent(context)
                     }
                     settingsMALLoginRequired.visibility = View.VISIBLE
                     settingsMALLogin.visibility = View.GONE
@@ -153,8 +153,8 @@ class SettingsAccountActivity : AppCompatActivity() {
                         username ?: Discord.token?.replace(Regex("."), "*")
                     settingsDiscordLogin.setText(R.string.logout)
                     settingsDiscordLogin.setOnClickListener {
-                        Discord.removeSavedToken(this@SettingsAccountActivity)
-                        restartMainActivity.isEnabled = true
+                        Discord.removeSavedToken(context)
+                        recreate()
                         reload()
                     }
 
@@ -168,10 +168,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsImageSwitcher.setImageResource(initialStatus)
 
                     val zoomInAnimation =
-                        AnimationUtils.loadAnimation(
-                            this@SettingsAccountActivity,
-                            R.anim.bounce_zoom
-                        )
+                        AnimationUtils.loadAnimation(context, R.anim.bounce_zoom)
                     settingsImageSwitcher.setOnClickListener {
                         var status = "online"
                         initialStatus = when (initialStatus) {
@@ -208,12 +205,12 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsDiscordUsername.visibility = View.GONE
                     settingsDiscordLogin.setText(R.string.sign_in)
                     settingsDiscordLogin.setOnClickListener {
-                        Discord.warning(this@SettingsAccountActivity)
+                        Discord.warning(context)
                             .show(supportFragmentManager, "dialog")
                     }
                 }
-                reload()
             }
+            reload()
         }
     }
 }

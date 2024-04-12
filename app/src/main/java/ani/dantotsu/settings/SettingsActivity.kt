@@ -11,25 +11,17 @@ import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.BuildConfig
+import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
-import ani.dantotsu.databinding.ActivitySettingsAboutBinding
-import ani.dantotsu.databinding.ActivitySettingsAccountsBinding
-import ani.dantotsu.databinding.ActivitySettingsAnimeBinding
 import ani.dantotsu.databinding.ActivitySettingsBinding
-import ani.dantotsu.databinding.ActivitySettingsCommonBinding
-import ani.dantotsu.databinding.ActivitySettingsExtensionsBinding
-import ani.dantotsu.databinding.ActivitySettingsMangaBinding
-import ani.dantotsu.databinding.ActivitySettingsNotificationsBinding
-import ani.dantotsu.databinding.ActivitySettingsSystemBinding
-import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
@@ -38,30 +30,17 @@ import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.pop
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.snackString
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
-import ani.dantotsu.util.LauncherWrapper
 import ani.matagi.update.MatagiUpdater
-import eltos.simpledialogfragment.SimpleDialog
-import eu.kanade.domain.base.BasePreferences
-import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
-import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
-import uy.kohesive.injekt.injectLazy
 import kotlin.random.Random
 
 
 class SettingsActivity : AppCompatActivity() {
-    private val restartMainActivity = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() = startMainActivity(this@SettingsActivity)
-    }
     lateinit var binding: ActivitySettingsBinding
     private var cursedCounter = 0
 
@@ -86,7 +65,10 @@ class SettingsActivity : AppCompatActivity() {
             bottomMargin = navBarHeight
         }
 
-        onBackPressedDispatcher.addCallback(this, restartMainActivity)
+        onBackPressedDispatcher.addCallback(this@SettingsActivity) {
+            startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
+            finish()
+        }
 
         binding.settingsBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

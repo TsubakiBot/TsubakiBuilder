@@ -33,7 +33,6 @@ import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.startMainActivity
 import ani.matagi.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
@@ -86,7 +85,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                 .setPositiveButton("Yes") { _, _ ->
                     Anilist.removeSavedToken()
                     dismiss()
-                    startMainActivity(requireActivity())
+                    requireActivity().recreate()
                 }
                 .setNegativeButton("No") { _, _ -> }
                 .create()

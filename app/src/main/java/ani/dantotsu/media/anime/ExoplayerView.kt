@@ -1044,7 +1044,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
 
-        //Handle Media
+        // Handle Media
         if (!initialized) return startMainActivity(this)
         model.setMedia(media)
         title = media.userPreferredName

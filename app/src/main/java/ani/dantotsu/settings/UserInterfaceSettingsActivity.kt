@@ -21,7 +21,7 @@ import ani.dantotsu.themes.ThemeManager
 
 class UserInterfaceSettingsActivity : AppCompatActivity() {
     lateinit var binding: ActivityUserInterfaceSettingsBinding
-    private val ui = "ui_settings"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
@@ -37,16 +37,12 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
             }
 
             onBackPressedDispatcher.addCallback(this@UserInterfaceSettingsActivity) {
-                val mainIntent = Intent.makeRestartActivityTask(
-                    packageManager.getLaunchIntentForPackage(packageName)!!.component
+                startActivity(
+                    Intent(
+                        this@UserInterfaceSettingsActivity, SettingsThemeActivity::class.java
+                    )
                 )
-                val component = ComponentName(packageName, SettingsActivity::class.qualifiedName!!)
-                try {
-                    startActivity(Intent().setComponent(component))
-                } catch (anything: Exception) {
-                    startActivity(mainIntent)
-                }
-                finishAndRemoveTask()
+                finish()
             }
 
             uiSettingsBack.setOnClickListener {

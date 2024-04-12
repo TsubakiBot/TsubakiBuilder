@@ -130,12 +130,14 @@
 
                 <TextView
                     android:id="@+id/settingsMALLoginRequired"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.5"
+                    android:layout_marginBottom="-4dp"
                     android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
                     android:text="@string/login_with_anilist"
-                    android:textAlignment="center"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="16sp"
                     android:visibility="gone" />
 
                 <TextView
