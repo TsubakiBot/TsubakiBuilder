@@ -1081,7 +1081,7 @@ class MangaReaderActivity : AppCompatActivity() {
         var chapter = chaptersTitleArr.getOrNull(currentChapterIndex)?.replace(" : ", " - ") ?: ""
         if (chapter.isNotBlank() && chapter.substringAfterLast(" - ") == chapter.substringBeforeLast(" - "))
             chapter = chapter.substringAfterLast(" - ")
-        val title = "Page ${pos + 1}${img2?.let {"-${pos + 2}"}} [${media.userPreferredName}] (${chapter})"
+        val title = "Page ${pos + 1}${img2?.let {"-${pos + 2}"} ?: ""} [${media.userPreferredName}] (${chapter})"
 
         ImageViewDialog.newInstance(title, img1.url, true, img2?.url).apply {
             val transforms1 = mutableListOf<BitmapTransformation>()
