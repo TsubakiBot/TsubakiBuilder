@@ -59,7 +59,7 @@ object MatagiUpdater {
     private fun getUpdateDialog(activity: FragmentActivity, version: String): CustomBottomDialog {
         return CustomBottomDialog.newInstance().apply {
             setTitleText(activity.getString(R.string.install_update, version))
-            setCheck(activity.getString(R.string.dont_show_again, version), false) { isChecked ->
+            setCheck(activity.getString(R.string.matagi_dont_show, version), false) { isChecked ->
                 if (isChecked) PrefManager.setCustomVal("dont_ask_for_update_$version", true)
             }
         }
@@ -157,7 +157,7 @@ object MatagiUpdater {
             Glide.with(activity)
                 .load(activity.getString(R.string.update_icon))
                 .into(view.notificationCover)
-            view.notificationText.text = activity.getString(R.string.update_notice, version)
+            view.notificationText.text = activity.getString(R.string.matagi_update, version)
             val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
             dateFormat.timeZone = TimeZone.getTimeZone("UTC")
             view.notificationDate.text = dateFormat.format(System.currentTimeMillis())
@@ -187,13 +187,13 @@ object MatagiUpdater {
 
     private fun Activity.downloadUpdate(version: String, url: String) {
 
-        toast(getString(R.string.downloading_update, version))
+        toast(getString(R.string.matagi_downloading, version))
 
         val downloadManager = this.getSystemService<DownloadManager>()!!
 
         val request = DownloadManager.Request(Uri.parse(url))
             .setMimeType("application/vnd.android.package-archive")
-            .setTitle(getString(R.string.downloading_update, version))
+            .setTitle(getString(R.string.matagi_downloading, version))
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
                 "Mr.Matagi-$version.apk"

@@ -402,26 +402,24 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if (BuildConfig.BUILD_TYPE.contentEquals("matagi")) {
-            _binding?.let { binding ->
-                CoroutineScope(Dispatchers.IO).launch {
-                    while (live.value == true) delay(1000)
-                    delay(2000)
-                    if (Random.nextInt(0, 100) > 75) {
-                        binding.donationButton.setOnClickListener {
-                            CoroutineScope(Dispatchers.IO).launch {
-                                it.pop()
-                                openLinkInBrowser(getString(R.string.coffee))
-                                if (binding.donationReminder.isVisible) animateDonationView()
-                            }
+        _binding?.let { binding ->
+            CoroutineScope(Dispatchers.IO).launch {
+                while (live.value == true) delay(1000)
+                delay(2000)
+                if (Random.nextInt(0, 100) > 75) {
+                    binding.donationButton.setOnClickListener {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            it.pop()
+                            openLinkInBrowser(getString(R.string.coffee))
+                            if (binding.donationReminder.isVisible) animateDonationView()
                         }
-                        binding.donationClose.setOnClickListener {
-                            CoroutineScope(Dispatchers.Main).launch {
-                                if (binding.donationReminder.isVisible) animateDonationView()
-                            }
-                        }
-                        animateDonationView()
                     }
+                    binding.donationClose.setOnClickListener {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            if (binding.donationReminder.isVisible) animateDonationView()
+                        }
+                    }
+                    animateDonationView()
                 }
             }
         }
