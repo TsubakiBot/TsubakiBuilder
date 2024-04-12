@@ -21,6 +21,7 @@ class SettingsAboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -43,14 +44,14 @@ class SettingsAboutActivity : AppCompatActivity() {
                 ForksDialogFragment().show(supportFragmentManager, "dialog")
             }
             settingsDisclaimer.setOnClickListener {
-                val title = getString(R.string.disclaimer)
-                val text = TextView(this@SettingsAboutActivity)
-                text.setText(R.string.full_disclaimer)
+                val text = TextView(this@SettingsAboutActivity).apply {
+                    setText(R.string.full_disclaimer)
+                }
 
                 CustomBottomDialog.newInstance().apply {
-                    setTitleText(title)
+                    setTitleText(context.getString(R.string.disclaimer))
                     addView(text)
-                    setNegativeButton(currContext()!!.getString(R.string.close)) {
+                    setNegativeButton(context.getString(R.string.close)) {
                         dismiss()
                     }
                     show(supportFragmentManager, "dialog")
