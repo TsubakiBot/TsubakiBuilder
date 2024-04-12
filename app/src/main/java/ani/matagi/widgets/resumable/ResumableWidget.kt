@@ -143,6 +143,8 @@ class ResumableWidget : AppWidgetProvider() {
                     }
                 }
                 refreshing = false
+                continueAnime.clear()
+                continueManga.clear()
             }
             return widgetItems
         }
