@@ -281,61 +281,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!--Notifications-->
-
-            <LinearLayout
-                android:id="@+id/settingsNotification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:clickable="true"
-                android:layout_marginTop="24dp"
-                android:focusable="true"
-                android:baselineAligned="false">
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="24dp">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        app:tint="?attr/colorPrimary"
-                        app:srcCompat="@drawable/ic_round_notifications_none_24"
-                        android:contentDescription="@string/notifications"/>
-
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:minHeight="44sp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="?attr/colorOnSurface"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="@string/notifications"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.66"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:textColor="?attr/colorOnSurfaceVariant"
-                        android:text="@string/notifications_desc"/>
-
-                </LinearLayout>
-            </LinearLayout>
-
             <!--Anime-->
 
             <LinearLayout
@@ -442,6 +387,116 @@
                         android:fontFamily="@font/poppins_semi_bold"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:text="@string/manga_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Notifications-->
+
+            <LinearLayout
+                android:id="@+id/settingsNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_notifications_none_24"
+                        android:contentDescription="@string/notifications"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/notifications"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/notifications_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--System-->
+
+            <LinearLayout
+                android:id="@+id/settingsSystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_admin_panel_settings_24"
+                        android:contentDescription="@string/system"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/system"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/system_desc"/>
 
                 </LinearLayout>
             </LinearLayout>

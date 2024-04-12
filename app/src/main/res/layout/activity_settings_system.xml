@@ -66,6 +66,30 @@
             android:layout_marginEnd="-16dp"
             android:background="?android:attr/listDivider" />
 
+        <Button
+            android:id="@+id/importExportSettings"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="-31dp"
+            android:layout_marginEnd="-31dp"
+            android:background="@drawable/ui_bg"
+            android:backgroundTint="?attr/colorSecondary"
+            android:backgroundTintMode="src_atop"
+            android:fontFamily="@font/poppins_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingStart="31dp"
+            android:paddingEnd="31dp"
+            android:text="@string/backup_restore"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnBackground"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/backup_restore"
+            app:iconPadding="16dp"
+            app:iconSize="24dp"
+            app:iconTint="?attr/colorPrimary" />
+
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/settingsUseFoldable"
             android:layout_width="match_parent"
