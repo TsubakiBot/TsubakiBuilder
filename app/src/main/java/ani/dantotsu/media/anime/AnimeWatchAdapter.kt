@@ -435,9 +435,6 @@ class AnimeWatchAdapter(
                 binding.animeSourceProgressBar.visibility = View.GONE
 
                 val sourceFound = media.anime.episodes!!.isNotEmpty()
-                binding.animeSourceNotFound.isGone = sourceFound
-                binding.faqbutton.isGone = sourceFound
-
                 if (!sourceFound) {
                     val nextIndex = when {
                         !isOnline(binding.animeSource.context) -> {
@@ -470,6 +467,8 @@ class AnimeWatchAdapter(
                     }
                 }
                 binding.animeSource.setOnClickListener { autoSelect = false }
+                binding.animeSourceNotFound.isGone = sourceFound
+                binding.faqbutton.isGone = sourceFound
             } else {
                 binding.animeSourceContinue.visibility = View.GONE
                 binding.animeSourceNotFound.visibility = View.GONE
