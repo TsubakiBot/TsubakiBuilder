@@ -11,13 +11,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsAnimeBinding
 import ani.dantotsu.databinding.ActivitySettingsMangaBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -35,9 +35,10 @@ class SettingsAnimeActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
             settingsAnimeLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
@@ -81,7 +82,7 @@ class SettingsAnimeActivity: AppCompatActivity(){
             settingsIncludeAnimeList.isChecked = PrefManager.getVal(PrefName.IncludeAnimeList)
             settingsIncludeAnimeList.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.IncludeAnimeList, isChecked)
-                restartApp(binding.root)
+                Refresh.all()
             }
 
             var previousEp: View = when (PrefManager.getVal<Int>(PrefName.AnimeDefaultView)) {

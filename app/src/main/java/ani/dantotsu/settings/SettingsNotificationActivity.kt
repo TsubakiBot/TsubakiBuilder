@@ -31,9 +31,10 @@ class SettingsNotificationActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsNotificationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
             settingsNotificationsLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight

@@ -45,9 +45,10 @@ class SettingsCommonActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsCommonBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val openDocumentLauncher =
             registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
                 if (uri != null) {
@@ -72,7 +73,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                                         return@passwordAlertDialog
                                     }
                                     if (PreferencePackager.unpack(decryptedJson))
-                                        restartApp(binding.root)
+                                        restartApp()
                                 } else {
                                     toast(getString(R.string.password_cannot_be_empty))
                                 }
@@ -80,7 +81,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         } else if (name.endsWith(".ani")) {
                             val decryptedJson = jsonString.toString(Charsets.UTF_8)
                             if (PreferencePackager.unpack(decryptedJson))
-                                restartApp(binding.root)
+                                restartApp()
                         } else {
                             toast(getString(R.string.unknown_file_type))
                         }
@@ -201,7 +202,7 @@ class SettingsCommonActivity: AppCompatActivity(){
             settingsExtensionDns.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.DohProvider, i)
                 settingsExtensionDns.clearFocus()
-                restartApp(binding.root)
+                restartApp()
             }
 
             settingsContinueMedia.isChecked = PrefManager.getVal(PrefName.ContinueMedia)
@@ -227,7 +228,7 @@ class SettingsCommonActivity: AppCompatActivity(){
             settingsAdultAnimeOnly.isChecked = PrefManager.getVal(PrefName.AdultOnly)
             settingsAdultAnimeOnly.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.AdultOnly, isChecked)
-                restartApp(binding.root)
+                restartApp()
             }
 
             settingsDownloadLocation.setOnClickListener {

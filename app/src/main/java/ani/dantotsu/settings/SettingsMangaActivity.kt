@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsMangaBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -28,9 +28,10 @@ class SettingsMangaActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsMangaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
             settingsMangaLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
@@ -101,7 +102,7 @@ class SettingsMangaActivity: AppCompatActivity(){
             settingsIncludeMangaList.isChecked = PrefManager.getVal(PrefName.IncludeMangaList)
             settingsIncludeMangaList.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.IncludeMangaList, isChecked)
-                restartApp(binding.root)
+                Refresh.all()
             }
         }
     }

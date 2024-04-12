@@ -42,9 +42,10 @@ class SettingsExtensionsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsExtensionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
             settingsExtensionsLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight

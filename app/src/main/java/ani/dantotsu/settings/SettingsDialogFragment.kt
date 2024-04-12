@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.BottomSheetSettingsBinding
 import ani.dantotsu.download.anime.OfflineAnimeFragment
@@ -26,15 +27,14 @@ import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
 import ani.dantotsu.offline.OfflineFragment
-import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
-import ani.dantotsu.reloadActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.startMainActivity
+import ani.matagi.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import kotlinx.coroutines.CoroutineScope
@@ -132,7 +132,8 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                     Glide.get(it).clearMemory()
                 }
             }
-            activity?.reloadActivity()
+            Refresh.all()
+            requireActivity().recreate()
         }
 
         binding.settingsExtensionSettings.setSafeOnClickListener {

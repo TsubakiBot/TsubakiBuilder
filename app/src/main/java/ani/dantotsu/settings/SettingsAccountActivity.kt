@@ -42,7 +42,6 @@ class SettingsAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
 
         binding = ActivitySettingsAccountsBinding.inflate(layoutInflater)
         setContentView(binding.root)

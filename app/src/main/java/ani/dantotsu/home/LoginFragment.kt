@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
@@ -19,6 +20,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.FragmentLoginBinding
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
@@ -56,7 +58,7 @@ class LoginFragment : Fragment() {
                             DocumentFile.fromSingleUri(requireActivity(), uri)?.name ?: "settings"
                         //.sani is encrypted, .ani is not
                         if (name.endsWith(".sani")) {
-                            passwordAlertDialog { password ->
+                            passwordAlertDialog(false) { password ->
                                 if (password != null) {
                                     val salt = jsonString.copyOfRange(0, 16)
                                     val encrypted = jsonString.copyOfRange(16, jsonString.size)
@@ -71,7 +73,7 @@ class LoginFragment : Fragment() {
                                         return@passwordAlertDialog
                                     }
                                     if (PreferencePackager.unpack(decryptedJson))
-                                        restartApp()
+                                        activity?.restartApp()
                                 } else {
                                     toast("Password cannot be empty")
                                 }
@@ -79,7 +81,7 @@ class LoginFragment : Fragment() {
                         } else if (name.endsWith(".ani")) {
                             val decryptedJson = jsonString.toString(Charsets.UTF_8)
                             if (PreferencePackager.unpack(decryptedJson))
-                                restartApp()
+                                activity?.restartApp()
                         } else {
                             toast("Invalid file type")
                         }
@@ -116,48 +118,57 @@ class LoginFragment : Fragment() {
         } catch (ignored: PackageManager.NameNotFoundException) { }
     }
 
-    private fun passwordAlertDialog(callback: (CharArray?) -> Unit) {
+    private fun passwordAlertDialog(isExporting: Boolean, callback: (CharArray?) -> Unit) {
         val password = CharArray(16).apply { fill('0') }
 
         // Inflate the dialog layout
-        val dialogView =
-            LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_user_agent, null)
-        dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)?.hint = "Password"
-        val subtitleTextView = dialogView.findViewById<TextView>(R.id.subtitle)
-        subtitleTextView?.visibility = View.VISIBLE
-        subtitleTextView?.text = "Enter your password to decrypt the file"
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_user_agent, null)
+        val box = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)
+        box?.hint = getString(R.string.password)
+        box?.setSingleLine()
 
         val dialog = AlertDialog.Builder(requireActivity(), R.style.MyPopup)
-            .setTitle("Enter Password")
+            .setTitle(getString(R.string.enter_password))
             .setView(dialogView)
-            .setPositiveButton("OK", null)
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setPositiveButton(R.string.ok, null)
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
                 password.fill('0')
                 dialog.dismiss()
                 callback(null)
             }
             .create()
 
-        dialog.window?.setDimAmount(0.8f)
-        dialog.show()
-
-        // Override the positive button here
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+        fun handleOkAction() {
             val editText = dialog.findViewById<TextInputEditText>(R.id.userAgentTextBox)
             if (editText?.text?.isNotBlank() == true) {
                 editText.text?.toString()?.trim()?.toCharArray(password)
                 dialog.dismiss()
                 callback(password)
             } else {
-                toast("Password cannot be empty")
+                toast(getString(R.string.password_cannot_be_empty))
             }
         }
-    }
+        box?.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                handleOkAction()
+                true
+            } else {
+                false
+            }
+        }
+        val subtitleTextView = dialogView.findViewById<TextView>(R.id.subtitle)
+        subtitleTextView?.visibility = View.VISIBLE
+        if (!isExporting)
+            subtitleTextView?.text = getString(R.string.enter_password_to_decrypt_file)
 
-    private fun restartApp() {
-        val intent = Intent(requireActivity(), requireActivity().javaClass)
-        requireActivity().finish()
-        startActivity(intent)
+
+        dialog.window?.setDimAmount(0.8f)
+        dialog.show()
+
+        // Override the positive button here
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            handleOkAction()
+        }
     }
 
 }

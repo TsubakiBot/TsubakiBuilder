@@ -309,30 +309,29 @@ fun ViewGroup.setBaseline(navBar: AnimatedBottomBar, overlayView: View) {
     setPadding(paddingLeft, paddingTop, paddingRight, navBarHeight + navBar.measuredHeight + overlayView.measuredHeight)
 }
 
+/**
+* Finish the calling activity and launch it again within the same lifecycle scope
+*/
+
 fun Activity.reloadActivity() {
-    Refresh.all()
     finish()
     startActivity(Intent(this, this::class.java))
-    initActivity(this)
 }
 
-fun Context.restartApp(view: View) {
+/**
+ * Restarts the application from the launch intent and redirects to the calling activity
+ */
+fun Activity.restartApp() {
     val mainIntent = Intent.makeRestartActivityTask(
         packageManager.getLaunchIntentForPackage(this.packageName)!!.component
     )
     val component = ComponentName(this@restartApp.packageName, this@restartApp::class.qualifiedName!!)
-    Snackbar.make(view, R.string.restart_app, Snackbar.LENGTH_INDEFINITE).apply {
-        setAction(R.string.do_it) {
-            this.dismiss()
-            try {
-                startActivity(Intent().setComponent(component))
-            } catch (anything: Exception) {
-                startActivity(mainIntent)
-            }
-            Runtime.getRuntime().exit(0)
-        }
-        show()
+    try {
+        startActivity(Intent().setComponent(component))
+    } catch (anything: Exception) {
+        startActivity(mainIntent)
     }
+    finishAndRemoveTask()
 }
 
 suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatchers.Main) {

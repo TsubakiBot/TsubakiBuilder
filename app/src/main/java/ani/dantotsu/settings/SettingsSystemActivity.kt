@@ -33,7 +33,6 @@ class SettingsSystemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
 
         binding = ActivitySettingsSystemBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -64,7 +63,7 @@ class SettingsSystemActivity : AppCompatActivity() {
             settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
             settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                restartApp(binding.root)
+                restartApp()
             }
 
             if (!BuildConfig.FLAVOR.contains("fdroid")) {
@@ -101,7 +100,7 @@ class SettingsSystemActivity : AppCompatActivity() {
             settingsLogToFile.isChecked = PrefManager.getVal(PrefName.LogToFile)
             settingsLogToFile.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.LogToFile, isChecked)
-                restartApp(binding.root)
+                restartApp()
             }
 
             settingsShareLog.setOnClickListener {

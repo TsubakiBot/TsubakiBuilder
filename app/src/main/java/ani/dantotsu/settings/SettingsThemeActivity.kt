@@ -1,17 +1,19 @@
 package ani.dantotsu.settings
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.reloadActivity
 import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -29,15 +31,30 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
-        val context = this
+
         binding = ActivitySettingsThemeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.apply {
             settingsThemeLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsThemeTitle.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            onBackPressedDispatcher.addCallback(this@SettingsThemeActivity) {
+                val mainIntent = Intent.makeRestartActivityTask(
+                    packageManager.getLaunchIntentForPackage(packageName)!!.component
+                )
+                val component = ComponentName(packageName, SettingsActivity::class.qualifiedName!!)
+                try {
+                    startActivity(Intent().setComponent(component))
+                } catch (anything: Exception) {
+                    startActivity(mainIntent)
+                }
+                finishAndRemoveTask()
+            }
+            settingsThemeTitle.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
 
             settingsUi.setOnClickListener {
                 startActivity(
@@ -51,7 +68,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             settingsUseOLED.isChecked = PrefManager.getVal(PrefName.UseOLED)
             settingsUseOLED.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.UseOLED, isChecked)
-                restartApp(binding.root)
+                recreate()
             }
 
             if (Version.isSnowCone) {
@@ -60,14 +77,14 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 settingsUseMaterialYou.setOnCheckedChangeListener { _, isChecked ->
                     PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
                     if (isChecked) settingsUseCustomTheme.isChecked = false
-                    restartApp(binding.root)
+                    recreate()
                 }
 
                 settingsUseSourceTheme.isChecked =
                     PrefManager.getVal(PrefName.UseSourceTheme)
                 settingsUseSourceTheme.setOnCheckedChangeListener { _, isChecked ->
                     PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
-                    restartApp(binding.root)
+                    recreate()
                 }
             } else {
                 settingsUseMaterialYou.isEnabled = false
@@ -81,26 +98,18 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 if (isChecked) {
                     settingsUseMaterialYou.isChecked = false
                 }
-                restartApp(binding.root)
+                recreate()
             }
 
             val themeString: String = PrefManager.getVal(PrefName.Theme)
             val themeText = themeString.substring(0, 1) + themeString.substring(1).lowercase()
             themeSwitcher.setText(themeText)
 
-            themeSwitcher.setAdapter(
-                ArrayAdapter(
-                    this@SettingsThemeActivity,
-                    R.layout.item_dropdown,
-                    ThemeManager.Companion.Theme.entries
-                        .map { it.theme.substring(0, 1) + it.theme.substring(1).lowercase() })
-            )
-
             themeSwitcher.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.Theme, ThemeManager.Companion.Theme.entries[i].theme)
                 //ActivityHelper.shouldRefreshMainActivity = true
                 themeSwitcher.clearFocus()
-                restartApp(binding.root)
+                recreate()
             }
 
             customTheme.setOnClickListener {
@@ -108,7 +117,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
 
                 class CustomColorDialog : SimpleColorDialog() { //idk where to put it
                     override fun onPositiveButtonClick() {
-                        restartApp(binding.root)
+                        recreate()
                         super.onPositiveButtonClick()
                     }
                 }
@@ -137,7 +146,8 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 previous = current
                 current.alpha = 1f
                 PrefManager.setVal(PrefName.DarkMode, mode)
-                reloadActivity()
+                Refresh.all()
+                recreate()
             }
 
             settingsUiAuto.setOnClickListener {
@@ -153,6 +163,18 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 uiTheme(2, it)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        binding.themeSwitcher.setAdapter(
+            ArrayAdapter(
+                this@SettingsThemeActivity,
+                R.layout.item_dropdown,
+                ThemeManager.Companion.Theme.entries
+                    .map { it.theme.substring(0, 1) + it.theme.substring(1).lowercase() })
+        )
     }
 
     override fun onResult(dialogTag: String, which: Int, extras: Bundle): Boolean {
