@@ -917,6 +917,10 @@
     <string name="social">Social</string>
     <string name="auto_skip_recap">Auto Skip Recap</string>
     <string name="use_anilist_icon">Use AniList Icon</string>
+
+    <string name="exo_source_exception">Source Exception: %1$s</string>
+    <string name="exo_decoding_failed">Decoding failed: %1$s</string>
+    <string name="exo_player_error">Player Error: %1$d %2$s: %3$s</string>
     
     <string name="accounts_desc">Anilist, MAL and Discord.\nWhat more could you need?</string>
     <string name="theme_desc">Change the vibe of your app</string>

@@ -414,11 +414,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 )
             )
 
-            subtitles.alpha =
-                when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
-                    true -> PrefManager.getVal(PrefName.SubAlpha)
-                    false -> 0f
-                }
+            if (subsEmbedded) {
+                subtitles.alpha = PrefManager.getVal(PrefName.SubAlpha)
+            } else {
+                subtitles.alpha =
+                    when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+                        true -> PrefManager.getVal(PrefName.SubAlpha)
+                        false -> 0f
+                    }
+            }
 
             subtitles.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
         }
@@ -1935,10 +1939,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             )
             .build()
         if (type == TRACK_TYPE_TEXT) setupSubFormatting(playerView)
-        playerView.subtitleView?.alpha = when (isDisabled) {
-            false -> PrefManager.getVal(PrefName.SubAlpha)
-            true -> 0f
-        }
     }
 
     private val dummyTrack = Tracks.Group(
@@ -2006,13 +2006,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     override fun onPlayerError(error: PlaybackException) {
         when (error.errorCode) {
             PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
-            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> {
-                toast("Source Exception : ${error.message}")
+            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED, -> {
+                toast(getString(R.string.exo_source_exception, error.message))
                 isPlayerPlaying = true
                 sourceClick()
             }
+            PlaybackException.ERROR_CODE_DECODING_FAILED -> {
+                toast(getString(R.string.exo_decoding_failed, error.message))
+                sourceClick()
+            }
             else -> {
-                toast("Player Error ${error.errorCode} (${error.errorCodeName}) : ${error.message}")
+                toast(getString(
+                    R.string.exo_player_error, error.errorCode, error.errorCodeName, error.message
+                ))
                 Logger.log(error)
             }
         }
