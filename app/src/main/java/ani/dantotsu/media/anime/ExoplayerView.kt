@@ -1485,27 +1485,26 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             ext.onVideoPlayed(video)
         }
 
-        val httpClient = okHttpClient.newBuilder().apply {
-            ignoreAllSSLErrors()
-            followRedirects(true)
-            followSslRedirects(true)
-        }.build()
-        val dataSourceFactory = DataSource.Factory {
-            val dataSource: HttpDataSource = OkHttpDataSource.Factory(httpClient).createDataSource()
-            defaultHeaders.forEach {
-                dataSource.setRequestProperty(it.key, it.value)
-            }
-            video?.file?.headers?.forEach {
-                dataSource.setRequestProperty(it.key, it.value)
-            }
-            dataSource
-        }
-        val dafuckDataSourceFactory = DefaultDataSource.Factory(this)
         cacheFactory = CacheDataSource.Factory().apply {
             setCache(VideoCache.getInstance(this@ExoplayerView))
             if (ext.server.offline) {
-                setUpstreamDataSourceFactory(dafuckDataSourceFactory)
+                setUpstreamDataSourceFactory(DefaultDataSource.Factory(this@ExoplayerView))
             } else {
+                val httpClient = okHttpClient.newBuilder().apply {
+                    ignoreAllSSLErrors()
+                    followRedirects(true)
+                    followSslRedirects(true)
+                }.build()
+                val dataSourceFactory = DataSource.Factory {
+                    val dataSource: HttpDataSource = OkHttpDataSource.Factory(httpClient).createDataSource()
+                    defaultHeaders.forEach {
+                        dataSource.setRequestProperty(it.key, it.value)
+                    }
+                    video?.file?.headers?.forEach {
+                        dataSource.setRequestProperty(it.key, it.value)
+                    }
+                    dataSource
+                }
                 setUpstreamDataSourceFactory(dataSourceFactory)
             }
             setCacheWriteDataSinkFactory(null)
@@ -1530,8 +1529,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     it.name?.endsWith(".mp4") == true || it.name?.endsWith(".mkv") == true
                 }
                 if (docFile != null) {
-                    val uri = docFile.uri
-                    MediaItem.Builder().setUri(uri).setMimeType(mimeType).build()
+                    MediaItem.fromUri(docFile.uri)
                 } else {
                     snackString("File not found")
                     null
