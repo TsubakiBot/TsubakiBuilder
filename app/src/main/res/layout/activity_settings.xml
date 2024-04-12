@@ -40,14 +40,14 @@
                     tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
             </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/settingsLogo"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_weight="0"
-                    android:layout_marginEnd="12dp"
-                    app:srcCompat="@drawable/anim_splash"
-                    tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/settingsLogo"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_weight="0"
+                android:layout_marginEnd="12dp"
+                app:srcCompat="@drawable/anim_splash"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
@@ -59,447 +59,447 @@
             android:orientation="vertical"
             android:paddingHorizontal="32dp">
 
-<!--Accounts-->
-
-        <LinearLayout
-            android:id="@+id/settingsAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_person_32"
-            android:contentDescription="@string/accounts"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/accounts"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/accounts_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Theme-->
-
-        <LinearLayout
-            android:id="@+id/settingsTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_palette"
-            android:contentDescription="@string/theme"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/theme"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/theme_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Extensions-->
-
-        <LinearLayout
-            android:id="@+id/settingsExtension"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            android:scaleY="0.92"
-            android:scaleX="0.92"
-            app:srcCompat="@drawable/ic_extension"
-            android:contentDescription="@string/extensions"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/extensions"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/extensions_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Common-->
-
-        <LinearLayout
-            android:id="@+id/settingsCommon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_lightbulb_24"
-            android:contentDescription="@string/common"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/common"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/common_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Notifications-->
-
-        <LinearLayout
-            android:id="@+id/settingsNotification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_notifications_none_24"
-            android:contentDescription="@string/notifications"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/notifications"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/notifications_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Anime-->
-
-        <LinearLayout
-            android:id="@+id/settingsAnime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_movie_filter_24"
-            android:contentDescription="@string/anime"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/anime"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/anime_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--Manga-->
-
-        <LinearLayout
-            android:id="@+id/settingsManga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_import_contacts_24"
-            android:contentDescription="@string/manga"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/manga"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/manga_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
-
-<!--About-->
-
-        <LinearLayout
-            android:id="@+id/settingsAbout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:layout_marginTop="24dp"
-            android:focusable="true"
-            android:baselineAligned="false">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_info_24"
-            android:contentDescription="@string/about"/>
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:minHeight="44sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/about"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.66"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:text="@string/about_desc"/>
-
-    </LinearLayout>
-   </LinearLayout>
+            <!--Accounts-->
+
+            <LinearLayout
+                android:id="@+id/settingsAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_person_32"
+                        android:contentDescription="@string/accounts"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/accounts"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/accounts_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Theme-->
+
+            <LinearLayout
+                android:id="@+id/settingsTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_palette"
+                        android:contentDescription="@string/theme"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/theme"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/theme_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Extensions-->
+
+            <LinearLayout
+                android:id="@+id/settingsExtension"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        android:scaleY="0.92"
+                        android:scaleX="0.92"
+                        app:srcCompat="@drawable/ic_extension"
+                        android:contentDescription="@string/extensions"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/extensions"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/extensions_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Common-->
+
+            <LinearLayout
+                android:id="@+id/settingsCommon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_lightbulb_24"
+                        android:contentDescription="@string/common"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/common"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/common_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Notifications-->
+
+            <LinearLayout
+                android:id="@+id/settingsNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_notifications_none_24"
+                        android:contentDescription="@string/notifications"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/notifications"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/notifications_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Anime-->
+
+            <LinearLayout
+                android:id="@+id/settingsAnime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_movie_filter_24"
+                        android:contentDescription="@string/anime"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/anime"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/anime_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Manga-->
+
+            <LinearLayout
+                android:id="@+id/settingsManga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_import_contacts_24"
+                        android:contentDescription="@string/manga"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/manga"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/manga_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--About-->
+
+            <LinearLayout
+                android:id="@+id/settingsAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:layout_marginTop="24dp"
+                android:focusable="true"
+                android:baselineAligned="false">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="24dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:tint="?attr/colorPrimary"
+                        app:srcCompat="@drawable/ic_round_info_24"
+                        android:contentDescription="@string/about"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="44sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/about"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.66"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:text="@string/about_desc"/>
+
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
