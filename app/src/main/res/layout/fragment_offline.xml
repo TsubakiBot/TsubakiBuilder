@@ -36,7 +36,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/noInternetSad"
                 android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
                 android:id="@+id/no_internet"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="@string/no_internet"
+                android:text="@string/no_internet_offline"
                 android:textAlignment="center"
                 android:textColor="?attr/colorOnBackground"
                 app:layout_constraintEnd_toEndOf="parent"

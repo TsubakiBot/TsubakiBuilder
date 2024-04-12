@@ -53,7 +53,7 @@ class MangaReadAdapter(
     private val fragment: MangaReadFragment,
     private val mangaReadSources: MangaReadSources
 ) : RecyclerView.Adapter<MangaReadAdapter.ViewHolder>() {
-
+    private var autoSelect = true
     var subscribe: MediaDetailsActivity.PopImageButton? = null
     private var _binding: ItemAnimeWatchBinding? = null
     val hiddenScanlators = mutableListOf<String>()
@@ -486,11 +486,21 @@ class MangaReadAdapter(
                 }
                 binding.animeSourceProgressBar.visibility = View.GONE
                 val sourceFound = media.manga.chapters!!.isNotEmpty()
-                binding.animeSourceNotFound.isGone = sourceFound
-                binding.faqbutton.isGone = sourceFound
-                if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
-                    if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
-                        val nextIndex = media.selected!!.sourceIndex + 1
+                if (!sourceFound) {
+                    val nextIndex = when {
+                        !isOnline(binding.animeSource.context) -> {
+                            binding.animeSource.adapter.count - 1
+                        }
+                        PrefManager.getVal(PrefName.SearchSources) && autoSelect -> {
+                            if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
+                                media.selected!!.sourceIndex + 1
+                            } else { -1 }
+                        }
+                        else -> {
+                            -1
+                        }
+                    }
+                    if (nextIndex > 0) {
                         binding.animeSource.setText(binding.animeSource.adapter
                             .getItem(nextIndex).toString(), false)
                         fragment.onSourceChange(nextIndex).apply {
@@ -504,6 +514,9 @@ class MangaReadAdapter(
                         fragment.loadChapters(nextIndex, invalidate)
                     }
                 }
+                binding.animeSource.setOnClickListener { autoSelect = false }
+                binding.animeSourceNotFound.isGone = sourceFound
+                binding.faqbutton.isGone = sourceFound
             } else {
                 binding.animeSourceContinue.visibility = View.GONE
                 binding.animeSourceNotFound.visibility = View.GONE

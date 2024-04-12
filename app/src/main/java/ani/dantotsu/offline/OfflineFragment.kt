@@ -29,7 +29,7 @@ class OfflineFragment : Fragment() {
         }
         offline = PrefManager.getVal(PrefName.OfflineMode)
         binding.noInternet.text =
-            if (offline) "Offline Mode" else getString(R.string.no_internet)
+            if (offline) getString(R.string.offline_mode) else getString(R.string.no_internet_offline)
         binding.refreshButton.visibility = if (offline) View.GONE else View.VISIBLE
         binding.refreshButton.setOnClickListener {
             if (isOnline(requireContext())) {
