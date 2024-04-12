@@ -30,9 +30,11 @@ Mr. Matagi is aimed at improving upon it.
 - Embedded audio and subtitle support
 - Continue reading / watching / both widget & shortcuts
 - Picture-in-picture fixed, Foldable support added
-- Fixed widget themes and improved upcoming widget
-- Options to disable the comments API and dev trolling
+- Fixed upstream widget themes and management
+- Options to disable the comments API and trolling
 - System backup and restore / device transfer support
+- Change themes and other UI setting instantly
+- Offline mode with no internet connection required
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
