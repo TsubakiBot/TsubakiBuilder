@@ -40,7 +40,7 @@ class SettingsNotificationActivity: AppCompatActivity(){
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsNotificationsTitle.setOnClickListener {
+            notificationSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
 

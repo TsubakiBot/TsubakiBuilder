@@ -30,7 +30,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsAboutTitle.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            aboutSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
             settingsFAQ.setOnClickListener {
                 startActivity(Intent(this@SettingsAboutActivity, FAQActivity::class.java))

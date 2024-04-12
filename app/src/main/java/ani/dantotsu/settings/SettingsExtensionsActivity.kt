@@ -51,7 +51,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsExtensionsTitle.setOnClickListener{
+            extensionSettingsBack.setOnClickListener{
                 onBackPressedDispatcher.onBackPressed()
             }
 
@@ -144,6 +144,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
 
             setExtensionOutput(animeRepoInventory, MediaType.ANIME)
             setExtensionOutput(mangaRepoInventory, MediaType.MANGA)
+
             animeAddRepository.setOnClickListener {
                 val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
                 val editText =

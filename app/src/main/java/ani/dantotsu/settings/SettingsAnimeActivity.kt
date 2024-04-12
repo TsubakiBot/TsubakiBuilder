@@ -44,7 +44,7 @@ class SettingsAnimeActivity: AppCompatActivity(){
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsAnimeTitle.setOnClickListener {
+            animeSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
 

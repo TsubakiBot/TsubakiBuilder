@@ -37,7 +37,7 @@ class SettingsMangaActivity: AppCompatActivity(){
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsMangaTitle.setOnClickListener {
+            mangaSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
             purgeMangaDownloads.setOnClickListener {

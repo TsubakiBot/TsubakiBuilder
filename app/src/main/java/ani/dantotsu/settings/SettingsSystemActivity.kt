@@ -42,7 +42,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            settingsSystemTitle.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            systemSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
             settingsUseFoldable.isChecked = PrefManager.getVal(PrefName.UseFoldable)
             settingsUseFoldable.setOnCheckedChangeListener { _, isChecked ->

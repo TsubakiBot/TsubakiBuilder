@@ -43,7 +43,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 startActivity(Intent(this@SettingsThemeActivity, SettingsActivity::class.java))
                 finish()
             }
-            settingsThemeTitle.setOnClickListener {
+            themeSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
 

@@ -52,7 +52,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                 startActivity(Intent(this@SettingsAccountActivity, SettingsActivity::class.java))
                 finish()
             }
-            settingsAccountTitle.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            accountSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
             settingsCommentsApi.isChecked = PrefManager.getVal(PrefName.CommentsOptIn)
             settingsCommentsApi.setOnCheckedChangeListener { _, isChecked ->
