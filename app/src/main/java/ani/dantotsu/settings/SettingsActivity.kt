@@ -30,6 +30,7 @@ import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.pop
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.snackString
+import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
@@ -66,8 +67,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this@SettingsActivity) {
-            startActivity(Intent(this@SettingsActivity, MainActivity::class.java))
-            finish()
+            startMainActivity(this@SettingsActivity)
         }
 
         binding.settingsBack.setOnClickListener {
