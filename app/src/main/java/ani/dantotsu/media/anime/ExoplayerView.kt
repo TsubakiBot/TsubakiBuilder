@@ -44,6 +44,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
@@ -57,6 +58,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -158,7 +160,6 @@ import com.lagradost.nicehttp.ignoreAllSSLErrors
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -428,23 +429,25 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
      */
     private fun updateCurrentLayout(newLayoutInfo: WindowLayoutInfo) {
         if (!PrefManager.getVal<Boolean>(PrefName.UseFoldable)) return
+        val controller = playerView.findViewById<FrameLayout>(R.id.exo_controller)
         val isFolding = (newLayoutInfo.displayFeatures.find {
             it is FoldingFeature
         } as? FoldingFeature)?.let {
             if (it.isSeparating) {
                 if (it.orientation == FoldingFeature.Orientation.HORIZONTAL) {
-                    // adjust layouts for foldable
+                    playerView.layoutParams.height = it.bounds.top - 24.toPx // Crease
+                    controller.layoutParams.height = it.bounds.bottom - 24.toPx // Crease
                 }
             }
             it.isSeparating
         } ?: false
         if (!isFolding) {
-            // restore layouts to normal
+            playerView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            controller.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
         }
         binding.root.requestLayout()
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

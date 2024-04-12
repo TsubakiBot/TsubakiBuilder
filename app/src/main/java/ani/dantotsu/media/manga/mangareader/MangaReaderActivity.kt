@@ -10,6 +10,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.KeyEvent.ACTION_DOWN
@@ -26,6 +27,7 @@ import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
 import android.widget.AdapterView
 import android.widget.CheckBox
+import android.widget.FrameLayout
 import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -34,10 +36,15 @@ import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import androidx.window.layout.FoldingFeature
+import androidx.window.layout.WindowInfoTracker
+import androidx.window.layout.WindowLayoutInfo
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
@@ -183,9 +190,6 @@ class MangaReaderActivity : AppCompatActivity() {
         ThemeManager(this).applyTheme()
         binding = ActivityMangaReaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.mangaReaderBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
 
         defaultSettings = loadReaderSettings("reader_settings") ?: defaultSettings
 
@@ -207,9 +211,21 @@ class MangaReaderActivity : AppCompatActivity() {
             }
         }
 
+        binding.mangaReaderBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         controllerDuration = (PrefManager.getVal<Float>(PrefName.AnimationSpeed) * 200).toLong()
 
         setSystemBarVisibility()
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                WindowInfoTracker.getOrCreate(this@MangaReaderActivity)
+                    .windowLayoutInfo(this@MangaReaderActivity)
+                    .collect { updateCurrentLayout(it) }
+            }
+        }
 
         var pageSliderTimer = Timer()
         fun pageSliderHide() {
@@ -1069,6 +1085,29 @@ class MangaReaderActivity : AppCompatActivity() {
 
     fun getTransformation(mangaImage: MangaImage): BitmapTransformation? {
         return model.loadTransformation(mangaImage, media.selected!!.sourceIndex)
+    }
+
+    /**
+     * Updating the layout depending on type and state of device
+     */
+    private fun updateCurrentLayout(newLayoutInfo: WindowLayoutInfo) {
+        if (!PrefManager.getVal<Boolean>(PrefName.UseFoldable)) return
+        val isFolding = (newLayoutInfo.displayFeatures.find {
+            it is FoldingFeature
+        } as? FoldingFeature)?.let {
+            if (it.isSeparating) {
+                if (it.orientation == FoldingFeature.Orientation.HORIZONTAL) {
+                    binding.mangaReaderSwipy.layoutParams.height = it.bounds.top - 24.toPx // Crease
+                    binding.mangaReaderCont.layoutParams.height  = it.bounds.bottom - 24.toPx // Crease
+                }
+            }
+            it.isSeparating
+        } ?: false
+        if (!isFolding) {
+            binding.mangaReaderSwipy.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            binding.mangaReaderCont.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+        }
+        binding.root.requestLayout()
     }
 
     fun onImageLongClicked(
