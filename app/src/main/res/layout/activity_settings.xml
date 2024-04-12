@@ -59,7 +59,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="32dp">
 
-<!--account-->
+<!--Accounts-->
 
         <LinearLayout
             android:id="@+id/settingsAccount"
@@ -67,7 +67,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -79,7 +81,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_person_24" />
+            app:srcCompat="@drawable/ic_round_person_32"
+            android:contentDescription="@string/accounts"/>
 
     </FrameLayout>
 
@@ -111,7 +114,7 @@
     </LinearLayout>
    </LinearLayout>
 
-<!--theme-->
+<!--Theme-->
 
         <LinearLayout
             android:id="@+id/settingsTheme"
@@ -119,7 +122,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -131,7 +136,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_palette" />
+            app:srcCompat="@drawable/ic_palette"
+            android:contentDescription="@string/theme"/>
 
     </FrameLayout>
 
@@ -163,7 +169,7 @@
     </LinearLayout>
    </LinearLayout>
 
-<!--extentions-->
+<!--Extensions-->
 
         <LinearLayout
             android:id="@+id/settingsExtension"
@@ -171,7 +177,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -185,7 +193,8 @@
             app:tint="?attr/colorPrimary"
             android:scaleY="0.92"
             android:scaleX="0.92"
-            app:srcCompat="@drawable/ic_extension" />
+            app:srcCompat="@drawable/ic_extension"
+            android:contentDescription="@string/extensions"/>
 
     </FrameLayout>
 
@@ -225,7 +234,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -237,7 +248,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_lightbulb_24" />
+            app:srcCompat="@drawable/ic_lightbulb_24"
+            android:contentDescription="@string/common"/>
 
     </FrameLayout>
 
@@ -269,7 +281,7 @@
     </LinearLayout>
    </LinearLayout>
 
-<!--Notification-->
+<!--Notifications-->
 
         <LinearLayout
             android:id="@+id/settingsNotification"
@@ -277,7 +289,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -289,7 +303,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_notifications_none_24" />
+            app:srcCompat="@drawable/ic_round_notifications_none_24"
+            android:contentDescription="@string/notifications"/>
 
     </FrameLayout>
 
@@ -329,7 +344,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -341,7 +358,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_movie_filter_24" />
+            app:srcCompat="@drawable/ic_round_movie_filter_24"
+            android:contentDescription="@string/anime"/>
 
     </FrameLayout>
 
@@ -381,7 +399,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -393,7 +413,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_import_contacts_24" />
+            app:srcCompat="@drawable/ic_round_import_contacts_24"
+            android:contentDescription="@string/manga"/>
 
     </FrameLayout>
 
@@ -425,7 +446,7 @@
     </LinearLayout>
    </LinearLayout>
 
-<!--about-->
+<!--About-->
 
         <LinearLayout
             android:id="@+id/settingsAbout"
@@ -433,7 +454,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="true"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:focusable="true"
+            android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -445,7 +468,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:tint="?attr/colorPrimary"
-            app:srcCompat="@drawable/ic_round_info_24" />
+            app:srcCompat="@drawable/ic_round_info_24"
+            android:contentDescription="@string/about"/>
 
     </FrameLayout>
 
@@ -527,7 +551,7 @@
 
                 <ImageView
                     android:id="@+id/loginDiscord"
-                    android:layout_width="48dp"
+                    android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
