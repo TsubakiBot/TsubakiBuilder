@@ -63,6 +63,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="-16dp"
+            android:layout_marginBottom="16dp"
             android:background="?android:attr/listDivider" />
 
         <!-- beginning of layout contents -->
@@ -71,14 +72,13 @@
             android:id="@+id/settingsAnilistLoginContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="24dp"
+                android:layout_width="31dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerInside"
                 android:contentDescription="@string/anilist"
                 app:srcCompat="@drawable/ic_anilist"
                 app:tint="?attr/colorPrimary" />
