@@ -18,6 +18,7 @@ import ani.dantotsu.logError
 import ani.dantotsu.media.Author
 import ani.dantotsu.media.Character
 import ani.dantotsu.media.Media
+import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.Studio
 import ani.dantotsu.others.MalScraper
 import ani.dantotsu.profile.User
@@ -25,6 +26,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import ani.matagi.collections.Collections.mix
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
@@ -690,6 +692,88 @@ class AnilistQueries {
             returnMap["recommendations"] = list
         }
         return returnMap
+    }
+
+    suspend fun initResumable(type: MediaType?): List<Media> {
+        var query = """{"""
+        if (type == null || type == MediaType.ANIME) {
+            query += """currentAnime: ${
+                continueMediaQuery(
+                    "ANIME",
+                    "CURRENT"
+                )
+            }, repeatingAnime: ${continueMediaQuery("ANIME", "REPEATING")}"""
+        }
+        if (type == null || type == MediaType.MANGA) {
+            query += """currentManga: ${
+                continueMediaQuery(
+                    "MANGA",
+                    "CURRENT"
+                )
+            }, repeatingManga: ${continueMediaQuery("MANGA", "REPEATING")}"""
+        }
+        query += """}""".trimEnd(',')
+
+        val response = executeQuery<Query.HomePageMedia>(query, show = true)
+        Logger.log(response.toString())
+        val returnMap = mutableMapOf<String, ArrayList<Media>>()
+        fun current(type: MediaType) {
+            val subMap = mutableMapOf<Int, Media>()
+            val returnArray = arrayListOf<Media>()
+            val current =
+                if (type == MediaType.ANIME) response?.data?.currentAnime else response?.data?.currentManga
+            val repeating =
+                if (type == MediaType.ANIME) response?.data?.repeatingAnime else response?.data?.repeatingManga
+            current?.lists?.forEach { li ->
+                li.entries?.reversed()?.forEach {
+                    val m = Media(it)
+                    m.cameFromContinue = true
+                    subMap[m.id] = m
+                }
+            }
+            repeating?.lists?.forEach { li ->
+                li.entries?.reversed()?.forEach {
+                    val m = Media(it)
+                    m.cameFromContinue = true
+                    subMap[m.id] = m
+                }
+            }
+            if (type != MediaType.ANIME) {
+                returnArray.addAll(subMap.values)
+                returnMap[type.asText()] = returnArray
+                return
+            }
+            @Suppress("UNCHECKED_CAST")
+            val list = PrefManager.getNullableCustomVal(
+                "continueAnimeList",
+                listOf<Int>(),
+                List::class.java
+            ) as List<Int>
+            if (list.isNotEmpty()) {
+                list.reversed().forEach {
+                    if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
+                }
+                for (i in subMap) {
+                    if (i.value !in returnArray) returnArray.add(i.value)
+                }
+            } else returnArray.addAll(subMap.values)
+            returnMap[type.asText()] = returnArray
+
+        }
+
+        if (type == null || type == MediaType.ANIME) {
+            current(MediaType.ANIME)
+        }
+        if (type == null || type == MediaType.MANGA) {
+            current(MediaType.MANGA)
+        }
+        return if (type != null) {
+            returnMap[type.asText()] ?: arrayListOf()
+        } else {
+            val anime = returnMap[MediaType.ANIME.asText()] ?: arrayListOf()
+            val manga = returnMap[MediaType.MANGA.asText()] ?: arrayListOf()
+            anime.mix(manga)
+        }
     }
 
 

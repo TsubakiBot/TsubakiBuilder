@@ -20,6 +20,7 @@ import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.Media
+import ani.dantotsu.media.MediaType
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.matagi.collections.Collections.mix
@@ -107,11 +108,15 @@ class ResumableWidget : AppWidgetProvider() {
             }
         }
 
-        private suspend fun getContinueItems(type: String): MutableList<WidgetItem> {
+        private suspend fun getContinueItems(type: MediaType?): MutableList<WidgetItem> {
             val mediaItems = mutableListOf<WidgetItem>()
-            val continueMedia = if (type == "MANGA") continueManga else continueAnime
+            val continueMedia = when (type) {
+                MediaType.ANIME -> { continueAnime }
+                MediaType.MANGA -> { continueManga }
+                else -> { continueAnime.mix(continueManga) }
+            }
             coroutineScope {
-                continueMedia.ifEmpty { Anilist.query.continueMedia(type) }.map { media ->
+                continueMedia.ifEmpty { Anilist.query.initResumable(type) }.map { media ->
                     async(Dispatchers.IO) {
                         mediaItems.add(
                             WidgetItem(
@@ -131,20 +136,18 @@ class ResumableWidget : AppWidgetProvider() {
             runBlocking(Dispatchers.IO) {
                 when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
                     ResumableType.CONTINUE_ANIME.ordinal -> {
-                        widgetItems.addAll(getContinueItems("ANIME"))
+                        widgetItems.addAll(getContinueItems(MediaType.ANIME))
                     }
                     ResumableType.CONTINUE_MANGA.ordinal -> {
-                        widgetItems.addAll(getContinueItems("MANGA"))
+                        widgetItems.addAll(getContinueItems(MediaType.MANGA))
                     }
                     else -> {
-                        widgetItems.addAll(
-                            getContinueItems("ANIME").mix(getContinueItems("MANGA"))
-                        )
+                        widgetItems.addAll(getContinueItems(null))
                     }
                 }
-                refreshing = false
                 continueAnime.clear()
                 continueManga.clear()
+                refreshing = false
             }
             return widgetItems
         }
