@@ -1853,6 +1853,31 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
 
             val new = currentTimeStamp
+            var timer: CountDownTimer? = null
+            fun cancelTimer() {
+                timer?.cancel()
+                timer = null
+                return
+            }
+            timer = object : CountDownTimer(5000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    if (new == null) {
+                        skipTimeButton.visibility = View.GONE
+                        exoSkip.isVisible = PrefManager.getVal<Int>(PrefName.SkipTime) > 0
+                        disappeared = false
+                        functionstarted = false
+                        cancelTimer()
+                    }
+                }
+
+                override fun onFinish() {
+                    skipTimeButton.visibility = View.GONE
+                    exoSkip.isVisible = PrefManager.getVal<Int>(PrefName.SkipTime) > 0
+                    disappeared = true
+                    functionstarted = false
+                    cancelTimer()
+                }
+            }
             timeStampText.text = if (new != null) {
                 fun disappearSkip() {
                     functionstarted = true
@@ -1861,31 +1886,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     skipTimeText.text = new.skipType.getType()
                     skipTimeButton.setOnClickListener {
                         exoPlayer.seekTo((new.interval.endTime * 1000).toLong())
-                    }
-                    var timer: CountDownTimer? = null
-                    fun cancelTimer() {
-                        timer?.cancel()
-                        timer = null
-                        return
-                    }
-                    timer = object : CountDownTimer(5000, 1000) {
-                        override fun onTick(millisUntilFinished: Long) {
-                            if (new == null) {
-                                skipTimeButton.visibility = View.GONE
-                                exoSkip.isVisible = PrefManager.getVal<Int>(PrefName.SkipTime) > 0
-                                disappeared = false
-                                functionstarted = false
-                                cancelTimer()
-                            }
-                        }
-
-                        override fun onFinish() {
-                            skipTimeButton.visibility = View.GONE
-                            exoSkip.isVisible = PrefManager.getVal<Int>(PrefName.SkipTime) > 0
-                            disappeared = true
-                            functionstarted = false
-                            cancelTimer()
-                        }
                     }
                     timer?.start()
 
