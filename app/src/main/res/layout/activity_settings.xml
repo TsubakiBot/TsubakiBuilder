@@ -53,10 +53,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
             android:animateLayoutChanges="true"
             android:clipToPadding="false"
-            android:orientation="vertical"
-            android:paddingHorizontal="32dp">
+            android:orientation="vertical">
 
             <!--Accounts-->
 
@@ -64,11 +64,12 @@
                 android:id="@+id/settingsAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -119,11 +120,12 @@
                 android:id="@+id/settingsTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -174,11 +176,12 @@
                 android:id="@+id/settingsExtension"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -231,11 +234,12 @@
                 android:id="@+id/settingsCommon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -286,11 +290,12 @@
                 android:id="@+id/settingsAnime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -341,11 +346,12 @@
                 android:id="@+id/settingsManga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -396,11 +402,12 @@
                 android:id="@+id/settingsNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -451,11 +458,12 @@
                 android:id="@+id/settingsSystem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -506,11 +514,12 @@
                 android:id="@+id/settingsAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:clickable="true"
                 android:layout_marginTop="24dp"
                 android:focusable="true"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
