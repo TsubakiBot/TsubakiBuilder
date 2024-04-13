@@ -1870,11 +1870,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
                     timer = object : CountDownTimer(5000, 1000) {
                         override fun onTick(millisUntilFinished: Long) {
+                            if (new == null) {
                                 skipTimeButton.visibility = View.GONE
                                 exoSkip.isVisible = PrefManager.getVal<Int>(PrefName.SkipTime) > 0
                                 disappeared = false
                                 functionstarted = false
                                 cancelTimer()
+                            }
                         }
 
                         override fun onFinish() {
