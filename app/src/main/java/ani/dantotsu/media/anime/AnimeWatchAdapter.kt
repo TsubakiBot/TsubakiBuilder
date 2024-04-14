@@ -52,7 +52,6 @@ class AnimeWatchAdapter(
     private val fragment: AnimeWatchFragment,
     private val watchSources: WatchSources
 ) : RecyclerView.Adapter<AnimeWatchAdapter.ViewHolder>() {
-    private var autoSelect = true
     var subscribe: MediaDetailsActivity.PopImageButton? = null
     private var _binding: ItemAnimeWatchBinding? = null
 
@@ -440,7 +439,7 @@ class AnimeWatchAdapter(
                         !isOnline(binding.animeSource.context) -> {
                             binding.animeSource.adapter.count - 1
                         }
-                        PrefManager.getVal(PrefName.SearchSources) && autoSelect -> {
+                        PrefManager.getVal<Boolean>(PrefName.SearchSources) -> {
                             if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
                                 media.selected!!.sourceIndex + 1
                             } else { -1 }
@@ -466,7 +465,6 @@ class AnimeWatchAdapter(
                         fragment.loadEpisodes(nextIndex, false)
                     }
                 }
-                binding.animeSource.setOnClickListener { autoSelect = false }
                 binding.animeSourceNotFound.isGone = sourceFound
                 binding.faqbutton.isGone = sourceFound
             } else {

@@ -1027,7 +1027,7 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                 var timestamp: Long = it.metadata.series.lastUpdated!!.timestamp
                 val latestChapter = getSeries(it)?.let { series ->
                     timestamp = series.lastUpdated?.timestamp ?: timestamp
-                    series.latestChapter.toString()
+                    currActivity()?.getString(R.string.chapter_number, series.latestChapter)
                 } ?: {
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
                     timestamp = dateFormat.parse(it.record.releaseDate)?.time ?: timestamp
