@@ -61,6 +61,7 @@ class UpcomingRemoteViewsFactory(private val context: Context, appWidgetId: Int)
         val mediaList =
             if (System.currentTimeMillis() - lastUpdated > 1000 * 60 * 60 * 4 || serializedMedia.isNullOrEmpty()) {
                 prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, 0).apply()
+                prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
                 listOf()
             } else {
                 deserializeMedia(serializedMedia)

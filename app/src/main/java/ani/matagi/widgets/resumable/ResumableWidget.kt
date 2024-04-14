@@ -140,6 +140,7 @@ class ResumableWidget : AppWidgetProvider() {
                     continueAnime.addAll(
                         if (expired || serializedAnime.isNullOrEmpty()) {
                             prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            prefs.edit().remove(PREF_SERIALIZED_ANIME).apply()
                             listOf()
                         } else {
                             deserializeAnime(serializedAnime)
@@ -150,6 +151,7 @@ class ResumableWidget : AppWidgetProvider() {
                     continueManga.addAll(
                         if (expired || serializedManga.isNullOrEmpty()) {
                             prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
                             listOf()
                         } else {
                             deserializeManga(serializedManga)
