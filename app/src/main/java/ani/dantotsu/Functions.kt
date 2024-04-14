@@ -117,7 +117,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.internal.ViewUtils
-import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
@@ -141,7 +140,10 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.lang.reflect.Field
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import java.util.TimeZone
 import java.util.Timer
 import java.util.TimerTask
@@ -1021,35 +1023,42 @@ fun countDown(media: Media, view: ViewGroup) {
 fun sinceWhen(media: Media, view: ViewGroup) {
     if (media.status != "RELEASING" && media.status != "HIATUS") return
     CoroutineScope(Dispatchers.IO).launch {
-        MangaUpdates().search(media.mangaName(), media.startDate)?.let {
-            val latestChapter = MangaUpdates.getLatestChapter(view.context, it)
-            val timeSince = (System.currentTimeMillis() -
-                    (it.metadata.series.lastUpdated!!.timestamp * 1000)) / 1000
+        with (MangaUpdates()) {
+            searchReleases(media.mangaName(), media.startDate)?.let {
+                val series = getSeries(it)
+                val latestChapter = series?.latestChapter ?: getLatestChapter(view.context, it)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
+                val timestamp = series?.lastUpdated?.timestamp
+                    ?: dateFormat.parse(it.record.releaseDate)?.time
+                    ?: it.metadata.series.lastUpdated!!.timestamp
 
-            withContext(Dispatchers.Main) {
-                val v = ItemCountDownBinding.inflate(
-                    LayoutInflater.from(view.context), view, false
-                )
-                view.addView(v.root, 0)
-                v.mediaCountdownText.text =
-                    currActivity()?.getString(R.string.chapter_release_timeout, latestChapter)
+                val timeSince = (System.currentTimeMillis() - (timestamp * 1000)) / 1000
 
-                object : CountUpTimer(86400000) {
-                    override fun onTick(second: Int) {
-                        val a = second + timeSince
-                        v.mediaCountdown.text = currActivity()?.getString(
-                            R.string.time_format,
-                            a / 86400,
-                            a % 86400 / 3600,
-                            a % 86400 % 3600 / 60,
-                            a % 86400 % 3600 % 60
-                        )
-                    }
+                withContext(Dispatchers.Main) {
+                    val v = ItemCountDownBinding.inflate(
+                        LayoutInflater.from(view.context), view, false
+                    )
+                    view.addView(v.root, 0)
+                    v.mediaCountdownText.text =
+                        currActivity()?.getString(R.string.chapter_release_timeout, latestChapter)
 
-                    override fun onFinish() {
-                        // The legend will never die.
-                    }
-                }.start()
+                    object : CountUpTimer(86400000) {
+                        override fun onTick(second: Int) {
+                            val a = second + timeSince
+                            v.mediaCountdown.text = currActivity()?.getString(
+                                R.string.time_format,
+                                a / 86400,
+                                a % 86400 / 3600,
+                                a % 86400 % 3600 / 60,
+                                a % 86400 % 3600 % 60
+                            )
+                        }
+
+                        override fun onFinish() {
+                            // The legend will never die.
+                        }
+                    }.start()
+                }
             }
         }
     }
