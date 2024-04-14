@@ -22,8 +22,20 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.util.BitmapUtil
+import ani.dantotsu.util.Logger
 import ani.dantotsu.widgets.WidgetSizeProvider
+import ani.dantotsu.widgets.upcoming.UpcomingWidget
 import ani.matagi.collections.Collections.mix
+import com.google.gson.GsonBuilder
+import com.google.gson.InstanceCreator
+import eu.kanade.tachiyomi.animesource.model.SAnime
+import eu.kanade.tachiyomi.animesource.model.SAnimeImpl
+import eu.kanade.tachiyomi.animesource.model.SEpisode
+import eu.kanade.tachiyomi.animesource.model.SEpisodeImpl
+import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.SChapterImpl
+import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -95,28 +107,99 @@ class ResumableWidget : AppWidgetProvider() {
     companion object {
         var widgetItems = mutableListOf<WidgetItem>()
         var refreshing = false
-        private val continueAnime: ArrayList<Media> = arrayListOf()
-        private val continueManga: ArrayList<Media> = arrayListOf()
 
         fun injectUpdate(context: Context?, anime: ArrayList<Media>?, manga: ArrayList<Media>?) {
             if (null == context) return
             val appWidgetManager = AppWidgetManager.getInstance(context)
-            anime?.let { list -> continueAnime.addAll(list) }
-            manga?.let { list -> continueManga.addAll(list) }
+
+            val serializedAnime = anime?.let { list -> serializeAnime(list) }
+            val serializedManga = manga?.let { list -> serializeManga(list) }
             appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
+                val prefs = context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE)
+                serializedAnime?.let { list -> prefs.edit().putString(PREF_SERIALIZED_ANIME, list).apply()}
+                    ?: prefs.edit().remove(PREF_SERIALIZED_ANIME).apply()
+                serializedManga?.let { list -> prefs.edit().putString(PREF_SERIALIZED_MANGA, list).apply()}
+                    ?: prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
+                prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis()).apply()
                 appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
             }
         }
 
-        private suspend fun getContinueItems(type: MediaType?): MutableList<WidgetItem> {
+        private suspend fun getContinueItems(prefs: SharedPreferences, type: MediaType?): MutableList<WidgetItem> {
             val mediaItems = mutableListOf<WidgetItem>()
-            val continueMedia = when (type) {
-                MediaType.ANIME -> { continueAnime }
-                MediaType.MANGA -> { continueManga }
-                else -> { continueAnime.mix(continueManga) }
+
+            val expired = System.currentTimeMillis() - prefs.getLong(LAST_UPDATE, 0) > 28800000
+            val serializedAnime = prefs.getString(PREF_SERIALIZED_ANIME, null)
+            val serializedManga = prefs.getString(PREF_SERIALIZED_MANGA, null)
+
+            val continueAnime: ArrayList<Media> = arrayListOf()
+            val continueManga: ArrayList<Media> = arrayListOf()
+
+            when (type) {
+                MediaType.ANIME -> {
+                    continueAnime.addAll(
+                        if (expired || serializedAnime.isNullOrEmpty()) {
+                            prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            listOf()
+                        } else {
+                            deserializeAnime(serializedAnime)
+                        }
+                    )
+                }
+                MediaType.MANGA -> {
+                    continueManga.addAll(
+                        if (expired || serializedManga.isNullOrEmpty()) {
+                            prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            listOf()
+                        } else {
+                            deserializeManga(serializedManga)
+                        }
+                    )
+                }
+                else -> {
+                    continueAnime.addAll(
+                        if (expired || serializedAnime.isNullOrEmpty()) {
+                            prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            listOf()
+                        } else {
+                            deserializeAnime(serializedAnime)
+                        }
+                    )
+                    continueManga.addAll(
+                        if (expired || serializedManga.isNullOrEmpty()) {
+                            prefs.edit().putLong(LAST_UPDATE, 0).apply()
+                            listOf()
+                        } else {
+                            deserializeManga(serializedManga)
+                        }
+                    )
+                }
+            }
+            val resumableAnime = if (type == null || type == MediaType.ANIME)
+                continueAnime.ifEmpty {
+                    prefs.edit().putLong(LAST_UPDATE, System.currentTimeMillis()).apply()
+                    Anilist.query.initResumable(MediaType.ANIME)
+                }
+            else listOf()
+            val resumableManga = if (type == null || type == MediaType.MANGA)
+                continueManga.ifEmpty {
+                    prefs.edit().putLong(LAST_UPDATE, System.currentTimeMillis()).apply()
+                    Anilist.query.initResumable(MediaType.MANGA)
+                }
+            else listOf()
+            val resumable = when (type) {
+                MediaType.ANIME -> {
+                    resumableAnime
+                }
+                MediaType.MANGA -> {
+                    resumableManga
+                }
+                else -> {
+                    resumableAnime.mix(resumableManga)
+                }
             }
             coroutineScope {
-                continueMedia.ifEmpty { Anilist.query.initResumable(type) }.map { media ->
+                resumable.map { media ->
                     async(Dispatchers.IO) {
                         mediaItems.add(
                             WidgetItem(
@@ -126,8 +209,29 @@ class ResumableWidget : AppWidgetProvider() {
                             )
                         )
                     }
+                }.awaitAll()
+            }
+            when (type) {
+                MediaType.ANIME -> {
+                    serializeAnime(resumableAnime)?.let {
+                        prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
+                    } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
                 }
-            }.awaitAll()
+                MediaType.MANGA -> {
+                    serializeManga(resumableManga)?.let {
+                        prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
+                    } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
+                }
+                else -> {
+                    serializeAnime(resumableAnime)?.let {
+                        prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
+                    } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
+                    serializeManga(resumableManga)?.let {
+                        prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
+                    } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
+                }
+            }
+
             return mediaItems
         }
 
@@ -136,17 +240,15 @@ class ResumableWidget : AppWidgetProvider() {
             runBlocking(Dispatchers.IO) {
                 when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
                     ResumableType.CONTINUE_ANIME.ordinal -> {
-                        widgetItems.addAll(getContinueItems(MediaType.ANIME))
+                        widgetItems.addAll(getContinueItems(prefs, MediaType.ANIME))
                     }
                     ResumableType.CONTINUE_MANGA.ordinal -> {
-                        widgetItems.addAll(getContinueItems(MediaType.MANGA))
+                        widgetItems.addAll(getContinueItems(prefs, MediaType.MANGA))
                     }
                     else -> {
-                        widgetItems.addAll(getContinueItems(null))
+                        widgetItems.addAll(getContinueItems(prefs, null))
                     }
                 }
-                continueAnime.clear()
-                continueManga.clear()
                 refreshing = false
             }
             return widgetItems
@@ -272,6 +374,66 @@ class ResumableWidget : AppWidgetProvider() {
             return views
         }
 
+        private val animeGson = GsonBuilder()
+            .registerTypeAdapter(SAnime::class.java, InstanceCreator<SAnime> {
+                SAnimeImpl() // Provide an instance of SAnimeImpl
+            })
+            .registerTypeAdapter(SEpisode::class.java, InstanceCreator<SEpisode> {
+                SEpisodeImpl() // Provide an instance of SEpisodeImpl
+            })
+            .create()
+
+        private fun serializeAnime(media: List<Media>): String? {
+            return try {
+                val json = animeGson.toJson(media)
+                json
+            } catch (e: Exception) {
+                Logger.log(e)
+                null
+            }
+        }
+
+        private fun deserializeAnime(json: String): List<Media> {
+            return try {
+                val media = animeGson.fromJson(json, Array<Media>::class.java).toList()
+                media
+            } catch (e: Exception) {
+                Logger.log(e)
+                listOf()
+            }
+        }
+
+        private val mangaGson = GsonBuilder()
+            .registerTypeAdapter(SManga::class.java, InstanceCreator<SManga> {
+                SMangaImpl() // Provide an instance of SMangaImpl
+            })
+            .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
+                SChapterImpl() // Provide an instance of SChapterImpl
+            })
+            .create()
+
+        private fun serializeManga(media: List<Media>): String? {
+            return try {
+                val json = mangaGson.toJson(media)
+                json
+            } catch (e: Exception) {
+                Logger.log(e)
+                null
+            }
+        }
+
+        private fun deserializeManga(json: String): List<Media> {
+            return try {
+                val media = mangaGson.fromJson(json, Array<Media>::class.java).toList()
+                media
+            } catch (e: Exception) {
+                Logger.log(e)
+                listOf()
+            }
+        }
+
+
+
         fun getPrefsName(appWidgetId: Int): String {
             return "ani.dantotsu.widgets.ResumableWidget.${appWidgetId}"
         }
@@ -280,6 +442,10 @@ class ResumableWidget : AppWidgetProvider() {
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"
         const val PREF_FLIPPER_IMG_COLOR = "flipper_img_color"
         const val PREF_WIDGET_TYPE = "widget_type"
+
+        const val PREF_SERIALIZED_ANIME = "serialized_anime"
+        const val PREF_SERIALIZED_MANGA = "serialized_manga"
+        const val LAST_UPDATE = "last_update"
 
         const val VIEWFLIPPER_NEXT = "viewflipper_next"
         const val VIEWFLIPPER_PREV = "viewflipper_prev"

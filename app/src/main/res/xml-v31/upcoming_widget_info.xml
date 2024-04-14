@@ -9,5 +9,5 @@
     android:previewImage="@drawable/upcoming_widget_preview"
     android:previewLayout="@layout/upcoming_widget"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="7200000"
+    android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen"/>
