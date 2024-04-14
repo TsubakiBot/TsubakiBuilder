@@ -45,7 +45,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/theme"
+                android:text="@string/theme_ui"
                 android:textSize="28sp" />
 
             <ImageView
@@ -221,9 +221,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
-            android:padding="16dp"
+            android:padding="8dp"
             android:text="@string/requires_android_12"
             android:textColor="?attr/colorSecondary" />
 
@@ -249,7 +249,6 @@
             android:id="@+id/settingsUseSourceTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:checked="false"
             android:drawableStart="@drawable/ic_palette"
             android:drawablePadding="16dp"
@@ -269,6 +268,7 @@
             android:layout_height="64dp"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
             android:text="@string/use_custom_theme"
             android:textColor="?attr/colorSecondary"
             tools:ignore="TextContrastCheck" />
