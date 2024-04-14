@@ -142,7 +142,6 @@ import java.io.OutputStream
 import java.lang.reflect.Field
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 import java.util.Timer
@@ -1025,13 +1024,15 @@ fun sinceWhen(media: Media, view: ViewGroup) {
     CoroutineScope(Dispatchers.IO).launch {
         with (MangaUpdates()) {
             searchReleases(media.mangaName(), media.startDate)?.let {
-                val series = getSeries(it)
-                val latestChapter = series?.latestChapter ?: getLatestChapter(view.context, it)
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
-                val timestamp = series?.lastUpdated?.timestamp
-                    ?: dateFormat.parse(it.record.releaseDate)?.time
-                    ?: it.metadata.series.lastUpdated!!.timestamp
-
+                var timestamp: Long = it.metadata.series.lastUpdated!!.timestamp
+                val latestChapter = getSeries(it)?.let { series ->
+                    timestamp = series.lastUpdated?.timestamp ?: timestamp
+                    series.latestChapter.toString()
+                } ?: {
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
+                    timestamp = dateFormat.parse(it.record.releaseDate)?.time ?: timestamp
+                    getLatestChapter(view.context, it)
+                }
                 val timeSince = (System.currentTimeMillis() - (timestamp * 1000)) / 1000
 
                 withContext(Dispatchers.Main) {
