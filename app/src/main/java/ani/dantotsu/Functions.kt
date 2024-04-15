@@ -66,6 +66,8 @@ import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -285,6 +287,16 @@ fun Activity.setNavigationTheme() {
     ) {
         window.navigationBarColor = tv.data
     }
+}
+
+@ColorInt
+fun Context.getColorFromAttr(
+    @AttrRes attrColor: Int,
+    typedValue: TypedValue = TypedValue(),
+    resolveRefs: Boolean = true
+): Int {
+    theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+    return typedValue.data
 }
 
 /**

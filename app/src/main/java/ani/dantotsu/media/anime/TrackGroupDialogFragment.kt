@@ -15,7 +15,9 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
+import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.others.LanguageMapper.getLanguageItem
+
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
@@ -82,6 +84,9 @@ class TrackGroupDialogFragment(
                 if (trackGroup.isSelected) {
                     val selected = "✔ ${binding.subtitleTitle.text}"
                     binding.subtitleTitle.text = selected
+                    binding.root.setCardBackgroundColor(
+                        binding.root.context.getColorFromAttr(R.attr.outlineColor)
+                    )
                 }
                 binding.root.setOnClickListener {
                     dismiss()

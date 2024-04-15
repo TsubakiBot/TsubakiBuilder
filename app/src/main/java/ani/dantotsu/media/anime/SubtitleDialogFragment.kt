@@ -14,6 +14,7 @@ import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
+import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
@@ -108,8 +109,10 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
                     val mediaID: Int = media.id
                     val selSubs: String? =
                         PrefManager.getNullableCustomVal("subLang_${mediaID}", null, String::class.java)
-                    if (episode.selectedSubtitle != position - 1 && selSubs != subtitles[position - 1].language) {
-                        binding.root.setCardBackgroundColor(TRANSPARENT)
+                    if (episode.selectedSubtitle == position - 1 && selSubs == subtitles[position - 1].language) {
+                        binding.root.setCardBackgroundColor(
+                            binding.root.context.getColorFromAttr(R.attr.outlineColor)
+                        )
                     }
                 }
                 binding.root.setOnClickListener {
