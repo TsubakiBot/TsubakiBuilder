@@ -13,7 +13,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="24dp"
-        app:srcCompat="@drawable/ic_circle_add"
+        app:srcCompat="@drawable/ic_round_settings_24"
         app:tint="?attr/colorPrimary"
         tools:ignore="ContentDescription" />
 

@@ -62,6 +62,46 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 recreate()
             }
 
+            val themeString: String = PrefManager.getVal(PrefName.Theme)
+            val themeText = themeString.substring(0, 1) + themeString.substring(1).lowercase()
+            themeSwitcher.setText(themeText)
+
+            themeSwitcher.setOnItemClickListener { _, _, i, _ ->
+                PrefManager.setVal(PrefName.Theme, ThemeManager.Companion.Theme.entries[i].theme)
+                //ActivityHelper.shouldRefreshMainActivity = true
+                themeSwitcher.clearFocus()
+                recreate()
+            }
+
+            var previous: View = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
+                0 -> settingsUiAuto
+                1 -> settingsUiLight
+                2 -> settingsUiDark
+                else -> settingsUiAuto
+            }
+            previous.alpha = 1f
+            fun uiTheme(mode: Int, current: View) {
+                previous.alpha = 0.33f
+                previous = current
+                current.alpha = 1f
+                PrefManager.setVal(PrefName.DarkMode, mode)
+                Refresh.all()
+                recreate()
+            }
+
+            settingsUiAuto.setOnClickListener {
+                uiTheme(0, it)
+            }
+
+            settingsUiLight.setOnClickListener {
+                settingsUseOLED.isChecked = false
+                uiTheme(1, it)
+            }
+
+            settingsUiDark.setOnClickListener {
+                uiTheme(2, it)
+            }
+
             if (Version.isSnowCone) {
                 settingsUseMaterialYou.isChecked =
                     PrefManager.getVal(PrefName.UseMaterialYou)
@@ -111,46 +151,6 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 }
             }
             requiresSnowCone.isVisible = Version.isSnowCone
-
-            val themeString: String = PrefManager.getVal(PrefName.Theme)
-            val themeText = themeString.substring(0, 1) + themeString.substring(1).lowercase()
-            themeSwitcher.setText(themeText)
-
-            themeSwitcher.setOnItemClickListener { _, _, i, _ ->
-                PrefManager.setVal(PrefName.Theme, ThemeManager.Companion.Theme.entries[i].theme)
-                //ActivityHelper.shouldRefreshMainActivity = true
-                themeSwitcher.clearFocus()
-                recreate()
-            }
-
-            var previous: View = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
-                0 -> settingsUiAuto
-                1 -> settingsUiLight
-                2 -> settingsUiDark
-                else -> settingsUiAuto
-            }
-            previous.alpha = 1f
-            fun uiTheme(mode: Int, current: View) {
-                previous.alpha = 0.33f
-                previous = current
-                current.alpha = 1f
-                PrefManager.setVal(PrefName.DarkMode, mode)
-                Refresh.all()
-                recreate()
-            }
-
-            settingsUiAuto.setOnClickListener {
-                uiTheme(0, it)
-            }
-
-            settingsUiLight.setOnClickListener {
-                settingsUseOLED.isChecked = false
-                uiTheme(1, it)
-            }
-
-            settingsUiDark.setOnClickListener {
-                uiTheme(2, it)
-            }
         }
     }
 
