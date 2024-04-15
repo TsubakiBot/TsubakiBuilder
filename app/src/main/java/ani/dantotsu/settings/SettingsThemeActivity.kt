@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
@@ -76,20 +77,40 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
                     recreate()
                 }
-            } else {
-                settingsUseMaterialYou.isEnabled = false
-                settingsUseSourceTheme.isEnabled = false
-            }
 
-            settingsUseCustomTheme.isChecked =
-                PrefManager.getVal(PrefName.UseCustomTheme)
-            settingsUseCustomTheme.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseCustomTheme, isChecked)
-                if (isChecked) {
-                    settingsUseMaterialYou.isChecked = false
+                settingsUseCustomTheme.isChecked =
+                    PrefManager.getVal(PrefName.UseCustomTheme)
+                settingsUseCustomTheme.setOnCheckedChangeListener { _, isChecked ->
+                    PrefManager.setVal(PrefName.UseCustomTheme, isChecked)
+                    if (isChecked) {
+                        settingsUseMaterialYou.isChecked = false
+                    }
+                    recreate()
                 }
-                recreate()
+
+                customTheme.setOnClickListener {
+                    val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)
+
+                    class CustomColorDialog : SimpleColorDialog() { //idk where to put it
+                        override fun onPositiveButtonClick() {
+                            recreate()
+                            super.onPositiveButtonClick()
+                        }
+                    }
+
+                    val tag = "colorPicker"
+                    CustomColorDialog().title(R.string.custom_theme)
+                        .colorPreset(originalColor)
+                        .colors(this@SettingsThemeActivity, SimpleColorDialog.MATERIAL_COLOR_PALLET)
+                        .allowCustom(true)
+                        .showOutline(0x46000000)
+                        .gridNumColumn(5)
+                        .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
+                        .neg()
+                        .show(this@SettingsThemeActivity, tag)
+                }
             }
+            requiresSnowCone.isVisible = Version.isSnowCone
 
             val themeString: String = PrefManager.getVal(PrefName.Theme)
             val themeText = themeString.substring(0, 1) + themeString.substring(1).lowercase()
@@ -100,28 +121,6 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 //ActivityHelper.shouldRefreshMainActivity = true
                 themeSwitcher.clearFocus()
                 recreate()
-            }
-
-            customTheme.setOnClickListener {
-                val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)
-
-                class CustomColorDialog : SimpleColorDialog() { //idk where to put it
-                    override fun onPositiveButtonClick() {
-                        recreate()
-                        super.onPositiveButtonClick()
-                    }
-                }
-
-                val tag = "colorPicker"
-                CustomColorDialog().title(R.string.custom_theme)
-                    .colorPreset(originalColor)
-                    .colors(this@SettingsThemeActivity, SimpleColorDialog.MATERIAL_COLOR_PALLET)
-                    .allowCustom(true)
-                    .showOutline(0x46000000)
-                    .gridNumColumn(5)
-                    .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                    .neg()
-                    .show(this@SettingsThemeActivity, tag)
             }
 
             var previous: View = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
