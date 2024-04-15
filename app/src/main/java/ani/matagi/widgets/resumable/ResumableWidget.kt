@@ -376,6 +376,13 @@ class ResumableWidget : AppWidgetProvider() {
             return views
         }
 
+        fun notifyDataSetChanged(context: Context) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
+                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+            }
+        }
+
         private val animeGson = GsonBuilder()
             .registerTypeAdapter(SAnime::class.java, InstanceCreator<SAnime> {
                 SAnimeImpl() // Provide an instance of SAnimeImpl
