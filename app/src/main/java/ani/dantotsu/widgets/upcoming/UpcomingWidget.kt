@@ -19,6 +19,7 @@ import ani.dantotsu.widgets.WidgetSizeProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Implementation of App Widget functionality.
@@ -132,14 +133,12 @@ class UpcomingWidget : AppWidgetProvider() {
             return views
         }
 
-        fun notifyDataSetChanged(context: Context) {
-            CoroutineScope(Dispatchers.IO).launch {
-                val appWidgetManager = AppWidgetManager.getInstance(context)
-                appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java))
-                    .forEach {
-                        appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetListView)
-                    }
-            }
+        suspend fun notifyDataSetChanged(context: Context) = withContext(Dispatchers.IO) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java))
+                .forEach {
+                    appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetListView)
+                }
         }
 
         fun getPrefsName(appWidgetId: Int): String {

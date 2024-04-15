@@ -36,12 +36,10 @@ import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SChapterImpl
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.SMangaImpl
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
@@ -381,14 +379,12 @@ class ResumableWidget : AppWidgetProvider() {
             return views
         }
 
-        fun notifyDataSetChanged(context: Context) {
-            CoroutineScope(Dispatchers.IO).launch {
-                val appWidgetManager = AppWidgetManager.getInstance(context)
-                appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java))
-                    .forEach {
-                        appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
-                    }
-            }
+        suspend fun notifyDataSetChanged(context: Context) = withContext(Dispatchers.IO) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java))
+                .forEach {
+                    appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+                }
         }
 
         private val animeGson = GsonBuilder()
