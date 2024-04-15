@@ -16,6 +16,9 @@ import androidx.core.graphics.drawable.toBitmap
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.widgets.WidgetSizeProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Implementation of App Widget functionality.
@@ -130,9 +133,12 @@ class UpcomingWidget : AppWidgetProvider() {
         }
 
         fun notifyDataSetChanged(context: Context) {
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java)).forEach {
-                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetListView)
+            CoroutineScope(Dispatchers.IO).launch {
+                val appWidgetManager = AppWidgetManager.getInstance(context)
+                appWidgetManager.getAppWidgetIds(ComponentName(context, UpcomingWidget::class.java))
+                    .forEach {
+                        appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetListView)
+                    }
             }
         }
 

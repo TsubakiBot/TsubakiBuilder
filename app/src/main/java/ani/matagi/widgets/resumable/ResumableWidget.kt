@@ -36,11 +36,14 @@ import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SChapterImpl
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.SMangaImpl
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 /**
  * Implementation of App Widget functionality.
@@ -108,8 +111,10 @@ class ResumableWidget : AppWidgetProvider() {
         var widgetItems = mutableListOf<WidgetItem>()
         var refreshing = false
 
-        fun injectUpdate(context: Context?, anime: ArrayList<Media>?, manga: ArrayList<Media>?) {
-            if (null == context) return
+        suspend fun injectUpdate(
+            context: Context?, anime: ArrayList<Media>?, manga: ArrayList<Media>?
+        ) = withContext(Dispatchers.IO) {
+            if (null == context) return@withContext
             val appWidgetManager = AppWidgetManager.getInstance(context)
 
             val serializedAnime = anime?.let { list -> serializeAnime(list) }
@@ -377,9 +382,12 @@ class ResumableWidget : AppWidgetProvider() {
         }
 
         fun notifyDataSetChanged(context: Context) {
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
-                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+            CoroutineScope(Dispatchers.IO).launch {
+                val appWidgetManager = AppWidgetManager.getInstance(context)
+                appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java))
+                    .forEach {
+                        appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+                    }
             }
         }
 

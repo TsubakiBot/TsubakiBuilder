@@ -3,11 +3,12 @@
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
-   <a href="https://github.com/RepoDevil/Dantotsu/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Dantotsu/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
-   <a href="https://www.codefactor.io/repository/github/RepoDevil/dantotsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Dantotsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
+   <a href="https://github.com/RepoDevil/Mr.Matagi/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Mr.Matagi/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
+   <a href="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi"><img src="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 
+### 🚀 STAR THIS REPOSITORY TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!
 
 # **Dantotsu** 🌟
 
@@ -20,7 +21,7 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
 
 Mr. Matagi is aimed at improving upon it.
 
-> **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese. 
+> **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese.
 > A copy of a project is a fork and a collection of changes is a branch.
 <br />
 
@@ -28,7 +29,8 @@ Mr. Matagi is aimed at improving upon it.
 
 - Torrent support (thanks to [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
 - Embedded audio and subtitle support
-- Continue reading / watching / both widget & shortcuts
+- Continue reading / watching / anything widgets
+- Dynamic launcher icon shortcuts (thanks to [Neko](https://github.com/nekomangaorg/Neko))
 - Picture-in-picture fixed, Foldable support added
 - Fixed upstream widget themes and management
 - Options to disable the comments API and trolling

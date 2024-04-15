@@ -14,6 +14,7 @@ import kotlinx.coroutines.runBlocking
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import kotlin.math.min
 
 object BitmapUtil {
     private fun roundCorners(bitmap: Bitmap, cornerRadius: Float = 20f): Bitmap {
@@ -59,5 +60,13 @@ object BitmapUtil {
             }
         }
         return bitmap?.let { roundCorners(it) }
+    }
+
+    fun Bitmap.toSquare(): Bitmap {
+        val side = min(width, height)
+        val xOffset = (width - side) / 2
+        // Slight offset for the y, since a lil bit under the top is usually the focus of covers
+        val yOffset = ((height - side) / 2 * 0.25).toInt()
+        return Bitmap.createBitmap(this, xOffset, yOffset, side, side)
     }
 }

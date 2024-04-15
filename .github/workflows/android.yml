@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -63,6 +64,12 @@ jobs:
         GIT_HASH=$(git rev-parse --short HEAD)
         echo "GIT_HASH=${GIT_HASH}" >> $GITHUB_ENV
 
+    - name: Purge obsolete tags
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      uses: fabriziocacicia/delete-tags-without-release-action@v0.1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9 # 1.6.0
       id: downloadserver  # Remember to give an ID if you need the output filename
       name: Download server.aar
@@ -90,7 +97,7 @@ jobs:
     - uses: burrunan/gradle-cache-action@v1
       name: Build Release Gradle
       with:
-        job-id: Dantotsu
+        job-id: Release
         # Specifies arguments for Gradle execution
         arguments: |
           --configure-on-demand
@@ -110,17 +117,18 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
-          name: Dantotsu-${{ env.GIT_HASH }}
+          name: Mr.Matagi-${{ env.GIT_HASH }}
           retention-days: 1
-          path: "app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-universal-matagi.apk"
+          path: "app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk"
 
-    - uses: keyfactor/action-delete-prereleases@main
+    - name: Purge obsolete releases
+      uses: keyfactor/action-delete-prereleases@main
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Announce on Discord
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') && github.repository == 'RepoDevil/Dantotsu' }}
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') && github.repository == 'RepoDevil/Mr.Matagi' }}
       continue-on-error: true
       shell: bash
       run: |
@@ -131,9 +139,8 @@ jobs:
         if [ ${#commit_messages} -gt $max_length ]; then
           commit_messages="${commit_messages:0:$max_length}... (truncated)"
         fi
-        contentbody=$( jq -nc --arg msg "[Mr. Matagi **$GIT_HASH**](https://github.com/RepoDevil/Dantotsu/releases/$GIT_HASH)" --arg commits "$commit_messages" '{"content": ($msg + "\n" + $commits)}' )
+        contentbody=$( jq -nc --arg msg "[Mr. Matagi - **$GIT_HASH**](https://github.com/RepoDevil/Mr.Matagi/releases/$GIT_HASH)" --arg commits "$commit_messages" '{"content": ($msg + "\n" + $commits)}' )
         curl -F "payload_json=${contentbody}" ${{ secrets.DISCORD_WEBHOOK }}
-
       env:
         COMMIT_LOG: ${{ env.COMMIT_LOG }}
         VERSION: ${{ env.VERSION }}
@@ -146,21 +153,23 @@ jobs:
         path: last_sha.txt
 
     - uses: 8bitDream/action-github-releases@v1.0.0
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: ${{ env.GIT_HASH }}
         prerelease: true
-        title: Dantotsu-${{ env.GIT_HASH }}
+        title: Mr.Matagi-${{ env.GIT_HASH }}
         files: |
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-universal-matagi.apk
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
-          app/build/outputs/apk/google/matagi/Dantotsu-${{ env.GIT_HASH }}-google-x86-matagi.apk
+          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-universal-matagi.apk
+          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk
+          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
+          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
+          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86-matagi.apk
 
     - name: Purge cache
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       continue-on-error: true
-      uses: MyAlbum/purge-cache@v1
+      uses: MyAlbum/purge-cache@v2
       with:
-        max-age: 172800 # 2 days, default: 7 days since last use
+        max-age: 86400 # 1 day, default: 7 days since last use
+        token: ${{ secrets.GITHUB_TOKEN }}

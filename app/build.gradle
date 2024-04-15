@@ -110,7 +110,7 @@ android {
 
     applicationVariants.configureEach { variant ->
         variant.outputs.each { output ->
-            output.outputFileName = project.archivesBaseName + "-${output.baseName}.apk"
+            output.outputFileName = "${project.archivesBaseName}-${output.baseName}.apk"
         }
     }
 }
@@ -220,7 +220,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp-dnsoverhttps'
     implementation 'com.squareup.okio:okio:3.8.0'
     implementation 'com.squareup.okhttp3:okhttp-brotli:5.0.0-alpha.12'
-    implementation 'org.jsoup:jsoup:1.16.1'
+    implementation 'org.jsoup:jsoup:1.17.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json-okio:1.6.3'
     implementation 'com.jakewharton.rxrelay:rxrelay:1.2.0'
     implementation 'com.github.tachiyomiorg:unifile:17bec43'

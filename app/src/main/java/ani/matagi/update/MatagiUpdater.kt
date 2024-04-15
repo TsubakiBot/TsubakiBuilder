@@ -35,6 +35,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
+import ani.dantotsu.utf8
 import ani.dantotsu.util.Logger
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
@@ -67,7 +68,7 @@ object MatagiUpdater {
 
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
         if (post) snackString(currContext()?.getString(R.string.checking_for_update))
-        val repo = activity.getString(R.string.repo)
+        val repo = activity.getString(R.string.repo).utf8
         tryWithSuspend {
             val res = client.get("https://api.github.com/repos/$repo/releases")
                 .parsed<JsonArray>().map {
@@ -105,7 +106,7 @@ object MatagiUpdater {
     }
 
     private suspend fun installUpdate(activity: FragmentActivity, version: String) = withContext(Dispatchers.IO) {
-        val repo = activity.getString(R.string.repo)
+        val repo = activity.getString(R.string.repo).utf8
         try {
             client.get("https://api.github.com/repos/$repo/releases/tags/$version")
                 .parsed<GithubResponse>().assets?.find {
