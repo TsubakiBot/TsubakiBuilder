@@ -10,7 +10,7 @@
 
     <string name="dantotsu" >https://dantotsu.app/</string>
     <string name="discord">https://discord.gg/vnrhgrt</string>
-    <string name="github">https://github.com/RepoDevil/Dantotsu</string>
+    <string name="github">https://github.com/RepoDevil/Mr.Matagi</string>
     <string name="telegram" tools:ignore="Typos">https://t.me/+gzBCQExtLQo1YTNh </string>
     <string name="coffee">https://www.buymeacoffee.com/abandonedcart</string>
 
@@ -18,8 +18,8 @@
     <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
     <string name="discord_link">https://discord.com/users/%1$s/</string>
 
-    <string name="update_banner">https://raw.githubusercontent.com/RepoDevil/Dantotsu/matagi/png/banner.png</string>
-    <string name="update_icon">https://raw.githubusercontent.com/RepoDevil/Dantotsu/matagi/png/icon.png</string>
+    <string name="update_banner">https://raw.githubusercontent.com/RepoDevil/Mr.Matagi/matagi/png/banner.png</string>
+    <string name="update_icon">https://raw.githubusercontent.com/RepoDevil/Mr.Matagi/matagi/png/icon.png</string>
 
     <string name="memory_byte">Byte</string>
     <string name="memory_kilobyte">KB</string>
