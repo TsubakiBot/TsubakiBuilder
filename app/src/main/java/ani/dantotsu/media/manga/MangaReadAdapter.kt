@@ -484,22 +484,11 @@ class MangaReadAdapter(
                     binding.animeSourceContinue.visibility = View.GONE
                 }
                 binding.animeSourceProgressBar.visibility = View.GONE
+
                 val sourceFound = media.manga.chapters!!.isNotEmpty()
-                if (!sourceFound) {
-                    val nextIndex = when {
-                        !isOnline(binding.animeSource.context) -> {
-                            binding.animeSource.adapter.count - 1
-                        }
-                        PrefManager.getVal<Boolean>(PrefName.SearchSources) -> {
-                            if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
-                                media.selected!!.sourceIndex + 1
-                            } else { -1 }
-                        }
-                        else -> {
-                            -1
-                        }
-                    }
-                    if (nextIndex > 0) {
+                if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
+                    if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
+                        val nextIndex = media.selected!!.sourceIndex + 1
                         binding.animeSource.setText(binding.animeSource.adapter
                             .getItem(nextIndex).toString(), false)
                         fragment.onSourceChange(nextIndex).apply {

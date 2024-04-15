@@ -434,29 +434,14 @@ class AnimeWatchAdapter(
                 binding.animeSourceProgressBar.visibility = View.GONE
 
                 val sourceFound = media.anime.episodes!!.isNotEmpty()
-                if (!sourceFound) {
-                    val nextIndex = when {
-                        !isOnline(binding.animeSource.context) -> {
-                            binding.animeSource.adapter.count - 1
-                        }
-                        PrefManager.getVal<Boolean>(PrefName.SearchSources) -> {
-                            if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
-                                media.selected!!.sourceIndex + 1
-                            } else { -1 }
-                        }
-                        else -> {
-                            -1
-                        }
-                    }
-                    if (nextIndex > 0) {
-                        binding.animeSource.setText(
-                            binding.animeSource.adapter
-                                .getItem(nextIndex).toString(), false
-                        )
+                if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
+                    if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
+                        val nextIndex = media.selected!!.sourceIndex + 1
+                        binding.animeSource.setText(binding.animeSource.adapter
+                            .getItem(nextIndex).toString(), false)
                         fragment.onSourceChange(nextIndex).apply {
                             binding.animeSourceTitle.text = showUserText
-                            showUserTextListener =
-                                { MainScope().launch { binding.animeSourceTitle.text = it } }
+                            showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
                             binding.animeSourceDubbed.isChecked = selectDub
                             binding.animeSourceDubbedCont.isVisible = isDubAvailableSeparately()
                             setLanguageList(0, nextIndex)
