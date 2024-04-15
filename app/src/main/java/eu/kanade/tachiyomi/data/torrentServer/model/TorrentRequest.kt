@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.data.torrentServer.model
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.serializer
 
 @Serializable
 data class TorrentRequest(

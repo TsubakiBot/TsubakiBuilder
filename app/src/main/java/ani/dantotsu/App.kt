@@ -16,7 +16,6 @@ import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.util.FinalExceptionHandler
 import ani.dantotsu.util.Logger
 import ani.matagi.io.Debug
 import com.google.android.material.color.DynamicColors
@@ -25,7 +24,6 @@ import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,7 +34,6 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.io.PrintWriter
 import java.io.StringWriter
-import kotlin.system.exitProcess
 
 
 @SuppressLint("StaticFieldLeak")

@@ -17,7 +17,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.sinceWhen
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.DialogLayoutBinding
@@ -39,6 +38,7 @@ import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.sinceWhen
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
@@ -228,7 +228,7 @@ class MangaReadAdapter(
                         refresh = true
                         val intent = Intent(fragment.requireContext(), CookieCatcher::class.java)
                             .putExtra("url", url)
-                        ContextCompat.startActivity(fragment.requireContext(), intent, null)
+                        startActivity(fragment.requireContext(), intent, null)
                     }
                 }
             }

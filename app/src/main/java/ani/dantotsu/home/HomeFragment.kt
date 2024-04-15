@@ -22,7 +22,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.blurImage
@@ -38,7 +37,6 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.matagi.update.MatagiUpdater
 import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.serverDownDialog
@@ -50,9 +48,10 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
-import ani.matagi.widgets.resumable.ResumableWidget
-import ani.matagi.view.AnimatedLinearLayout
 import ani.matagi.launcher.ResumableShortcuts
+import ani.matagi.update.MatagiUpdater
+import ani.matagi.view.AnimatedLinearLayout
+import ani.matagi.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

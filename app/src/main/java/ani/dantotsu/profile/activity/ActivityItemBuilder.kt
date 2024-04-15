@@ -1,13 +1,13 @@
 package ani.dantotsu.profile.activity
 
 import ani.dantotsu.R
-import ani.dantotsu.Strings
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
 object ActivityItemBuilder {
     fun getContent(notification: Notification): String {
         val notificationType: NotificationType =

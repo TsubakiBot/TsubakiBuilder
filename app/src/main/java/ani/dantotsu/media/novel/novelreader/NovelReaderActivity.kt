@@ -52,8 +52,6 @@ import com.vipulog.ebookreader.RelocationInfo
 import com.vipulog.ebookreader.TocItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream

@@ -913,10 +913,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         keyMap[KEYCODE_DPAD_LEFT] = { seek(false) }
 
         //Screen Gestures
-        if (PrefManager.getVal<Boolean>(PrefName.Gestures) || PrefManager.getVal<Boolean>(PrefName.DoubleTap)) {
+        if (PrefManager.getVal(PrefName.Gestures) || PrefManager.getVal(PrefName.DoubleTap)) {
 
             fun doubleTap(forward: Boolean, event: MotionEvent) {
-                if (!locked && isInitialized && PrefManager.getVal<Boolean>(PrefName.DoubleTap)) {
+                if (!locked && isInitialized && PrefManager.getVal(PrefName.DoubleTap)) {
                     seek(forward, event)
                 }
             }
@@ -1670,7 +1670,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         }
     }
-    
+
     private fun releasePlayer() {
         isPlayerPlaying = exoPlayer.playWhenReady
         playbackPosition = exoPlayer.currentPosition

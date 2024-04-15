@@ -1,6 +1,5 @@
 package ani.dantotsu.widgets.statistics
 
-import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
@@ -12,7 +11,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import ani.dantotsu.databinding.StatisticsWidgetConfigureBinding
-
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
 import com.google.android.material.button.MaterialButton

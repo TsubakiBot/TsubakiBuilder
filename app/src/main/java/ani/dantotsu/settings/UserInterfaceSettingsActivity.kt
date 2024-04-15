@@ -1,7 +1,6 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
-import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
@@ -9,11 +8,9 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
-import ani.dantotsu.databinding.ActivitySettingsAboutBinding
 import ani.dantotsu.databinding.ActivityUserInterfaceSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight

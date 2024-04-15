@@ -9,8 +9,6 @@ import ani.dantotsu.BuildConfig
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.util.Date
 import java.util.concurrent.Executors

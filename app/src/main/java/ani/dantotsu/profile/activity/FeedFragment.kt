@@ -19,7 +19,6 @@ import ani.dantotsu.databinding.FragmentFeedBinding
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setBaseline
-import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers

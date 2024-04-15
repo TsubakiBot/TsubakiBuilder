@@ -1,9 +1,7 @@
 package ani.dantotsu.profile.activity
 
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.updateLayoutParams
 import ani.dantotsu.R
 import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.api.Notification

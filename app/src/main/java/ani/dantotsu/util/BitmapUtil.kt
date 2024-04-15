@@ -7,7 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Shader
-import android.graphics.drawable.Drawable
 import androidx.collection.LruCache
 import ani.matagi.io.Memory
 import kotlinx.coroutines.Dispatchers

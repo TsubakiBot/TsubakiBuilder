@@ -31,7 +31,6 @@ import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.databinding.ItemStreamBinding
 import ani.dantotsu.databinding.ItemUrlBinding
 import ani.dantotsu.download.DownloadedType
-import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.media.Media
@@ -60,8 +59,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.text.DecimalFormat
 
 

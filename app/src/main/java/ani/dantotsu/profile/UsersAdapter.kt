@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.blurImage
 import ani.dantotsu.databinding.ItemFollowerBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.setAnimation

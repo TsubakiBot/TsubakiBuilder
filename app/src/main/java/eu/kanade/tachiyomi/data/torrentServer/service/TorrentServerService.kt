@@ -12,7 +12,6 @@ import android.os.IBinder
 import android.util.Log
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
-import ani.dantotsu.currContext
 import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
