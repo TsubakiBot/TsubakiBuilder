@@ -1957,7 +1957,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 TRACK_TYPE_TEXT -> {
                     if (subsEmbedded) {
                         if (it.isSupported(true)) subTracks.add(it)
-                        return@forEach
                     }
                 }
             }

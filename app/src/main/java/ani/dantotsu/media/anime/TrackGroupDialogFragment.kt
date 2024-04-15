@@ -84,9 +84,11 @@ class TrackGroupDialogFragment(
                 if (trackGroup.isSelected) {
                     val selected = "✔ ${binding.subtitleTitle.text}"
                     binding.subtitleTitle.text = selected
-                    binding.root.setCardBackgroundColor(
-                        binding.root.context.getColorFromAttr(R.attr.outlineColor)
-                    )
+                    with (binding.root.context) {
+                        binding.root.setCardBackgroundColor(
+                            getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+                        )
+                    }
                 }
                 binding.root.setOnClickListener {
                     dismiss()

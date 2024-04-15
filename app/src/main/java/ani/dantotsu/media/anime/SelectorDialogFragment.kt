@@ -291,8 +291,6 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
     fun startExoplayer(media: Media) {
         prevEpisode = null
 
-        dismiss()
-
         episode?.let { ep ->
             val video = ep.extractors?.find {
                 it.server.name == ep.selectedExtractor
@@ -312,6 +310,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                 }
                                 .setNegativeButton(R.string.no) { dialog, _ ->
                                     dialog.dismiss()
+                                    dismiss()
                                 }
                                 .create()
                             dialog.window?.setDimAmount(0.8f)
@@ -322,12 +321,14 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             launchWithTorrentServer(video)
                         }
                     } else {
+                        dismiss()
                         launchWithExternalPlayer(ep, video)
                         return
                     }
                 }
             }
         }
+        dismiss()
 
         if (launch!! || model.watchSources!!.isDownloadedSource(media.selected!!.sourceIndex)) {
             stopAddingToList()

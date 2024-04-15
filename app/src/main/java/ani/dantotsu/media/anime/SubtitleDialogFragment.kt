@@ -110,9 +110,11 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
                     val selSubs: String? =
                         PrefManager.getNullableCustomVal("subLang_${mediaID}", null, String::class.java)
                     if (episode.selectedSubtitle == position - 1 && selSubs == subtitles[position - 1].language) {
-                        binding.root.setCardBackgroundColor(
-                            binding.root.context.getColorFromAttr(R.attr.outlineColor)
-                        )
+                        with (binding.root.context) {
+                            binding.root.setCardBackgroundColor(
+                                getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+                            )
+                        }
                     }
                 }
                 binding.root.setOnClickListener {

@@ -11,6 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import ani.dantotsu.databinding.StatisticsWidgetConfigureBinding
+import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
 import com.google.android.material.button.MaterialButton
@@ -29,8 +30,6 @@ class ProfileStatsConfigure : AppCompatActivity(),
 
         // It is the responsibility of the configuration activity to update the app widget
         val appWidgetManager = AppWidgetManager.getInstance(context)
-        //updateAppWidget(context, appWidgetManager, appWidgetId)
-
 
         ProfileStatsWidget.updateAppWidget(
             context,
@@ -118,29 +117,9 @@ class ProfileStatsConfigure : AppCompatActivity(),
     }
 
     private fun themeColors() {
-        val typedValueSurface = TypedValue()
-        theme.resolveAttribute(
-            com.google.android.material.R.attr.colorSurface,
-            typedValueSurface,
-            true
-        )
-        val backgroundColor = typedValueSurface.data
-
-        val typedValuePrimary = TypedValue()
-        theme.resolveAttribute(
-            com.google.android.material.R.attr.colorPrimary,
-            typedValuePrimary,
-            true
-        )
-        val textColor = typedValuePrimary.data
-
-        val typedValueSubtext = TypedValue()
-        theme.resolveAttribute(
-            com.google.android.material.R.attr.colorOnBackground,
-            typedValueSubtext,
-            true
-        )
-        val subTextColor = typedValueSubtext.data
+        val backgroundColor = getColorFromAttr(com.google.android.material.R.attr.colorSurface)
+        val textColor = getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+        val subTextColor = getColorFromAttr(com.google.android.material.R.attr.colorOnBackground)
 
         getSharedPreferences(ProfileStatsWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, backgroundColor)
