@@ -1035,7 +1035,7 @@ fun sinceWhen(media: Media, view: ViewGroup) {
     if (media.status != "RELEASING" && media.status != "HIATUS") return
     CoroutineScope(Dispatchers.IO).launch {
         with (MangaUpdates()) {
-            searchReleases(media.mangaName(), media.startDate)?.let {
+            searchReleases(media)?.let {
                 var timestamp: Long = it.metadata.series.lastUpdated!!.timestamp
                 val latestChapter = getSeries(it)?.let { series ->
                     timestamp = series.lastUpdated?.timestamp ?: timestamp
