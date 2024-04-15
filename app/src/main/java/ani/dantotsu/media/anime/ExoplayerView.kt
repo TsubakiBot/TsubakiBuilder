@@ -58,7 +58,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -1567,7 +1566,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
 
-
         //Source
         exoSource.setOnClickListener {
             sourceClick()
@@ -1960,11 +1958,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     if (subsEmbedded) {
                         if (it.isSupported(true)) subTracks.add(it)
                         return@forEach
-                    }
-                    if (it.mediaTrackGroup.id == "1:") {
-                        onSetTrackGroupOverride(it, TRACK_TYPE_TEXT, it.length - 1)
-                    } else {
-                        onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                     }
                 }
             }

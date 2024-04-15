@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.OptIn
-import androidx.core.view.isVisible
 import androidx.media3.common.C.TRACK_TYPE_AUDIO
 import androidx.media3.common.C.TrackType
 import androidx.media3.common.Tracks
@@ -17,7 +16,6 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
 import ani.dantotsu.others.LanguageMapper.getLanguageItem
-import java.util.Locale
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
@@ -69,9 +67,9 @@ class TrackGroupDialogFragment(
         override fun onBindViewHolder(holder: StreamViewHolder, position: Int) {
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
-                when (val language = trackGroup.getTrackFormat(0).language?.lowercase()) {
+                when (val language = trackGroup.getTrackFormat(0).language) {
                     null -> {
-                        binding.subtitleTitle.text = getString(R.string.unknown_track, "Track $position")
+                        binding.subtitleTitle.text = getString(R.string.unknown_track, String.format("%02d", position))
                     }
                     "none" -> {
                         binding.subtitleTitle.text = getString(R.string.disabled_track)

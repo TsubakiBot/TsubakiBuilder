@@ -11,11 +11,11 @@ object LanguageMapper {
         return if (code.contains("-")) {
             val parts = code.split("-")
             try {
-                Locale(parts[0], parts[1])
+                Locale(parts[0].lowercase(), parts[1].uppercase())
             } catch (ignored: Exception) { null }
         } else {
             try {
-                Locale(code)
+                Locale(code.lowercase())
             } catch (ignored: Exception) { null }
         }
     }

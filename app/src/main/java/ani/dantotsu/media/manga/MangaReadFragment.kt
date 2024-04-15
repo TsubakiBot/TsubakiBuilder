@@ -42,8 +42,8 @@ import ani.dantotsu.isOnline
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaDetailsViewModel
-import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.MediaNameAdapter
+import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.manga.mangareader.ChapterLoaderDialog
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.subscription.SubscriptionHelper
