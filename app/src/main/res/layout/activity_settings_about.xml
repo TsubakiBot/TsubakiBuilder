@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -159,13 +160,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:clipToPadding="false"
+            android:layout_marginTop="32dp"
+            android:gravity="bottom"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/poppins_bold"
                 android:maxLines="3"
@@ -245,7 +247,6 @@
                 android:id="@+id/settingsVersion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="64dp"
                 android:alpha="0.58"
                 android:ellipsize="end"
                 android:maxLines="3"

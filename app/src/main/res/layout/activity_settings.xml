@@ -50,24 +50,15 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <ani.dantotsu.FadingEdgeRecyclerView
+            android:id="@+id/settingsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical">
-
-            <ani.dantotsu.FadingEdgeRecyclerView
-                android:id="@+id/settingsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="true"
-                android:requiresFadingEdge="vertical"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_settings" />
-
-        </LinearLayout>
+            android:layout_marginBottom="16dp"
+            android:nestedScrollingEnabled="true"
+            android:requiresFadingEdge="vertical"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_settings" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
