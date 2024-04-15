@@ -17,13 +17,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
-import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
-import ani.dantotsu.pop
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.snackString
 import ani.dantotsu.startMainActivity
@@ -64,16 +61,6 @@ class SettingsActivity : AppCompatActivity() {
 
             settingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
-            }
-
-            settingsVersion.apply {
-                text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
-
-                setOnLongClickListener {
-                    copyToClipboard(getDeviceInfo(), false)
-                    toast(getString(R.string.copied_device_info))
-                    return@setOnLongClickListener true
-                }
             }
 
             val settings = arrayListOf(
@@ -147,27 +134,6 @@ class SettingsActivity : AppCompatActivity() {
                     true
                 }
             }
-
-            settingBuyMeCoffee.setOnClickListener {
-                lifecycleScope.launch {
-                    it.pop()
-                }
-                openLinkInBrowser(getString(R.string.coffee))
-            }
-            lifecycleScope.launch {
-                settingBuyMeCoffee.pop()
-            }
-
-            loginDiscord.setOnClickListener {
-                openLinkInBrowser(getString(R.string.discord))
-            }
-            loginGithub.setOnClickListener {
-                openLinkInBrowser(getString(R.string.github))
-            }
-            loginTelegram.setOnClickListener {
-                openLinkInBrowser(getString(R.string.telegram))
-            }
-
 
             (settingsLogo.drawable as Animatable).start()
             val array = resources.getStringArray(R.array.tips)
