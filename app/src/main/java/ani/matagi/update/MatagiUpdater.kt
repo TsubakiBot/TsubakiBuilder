@@ -68,7 +68,7 @@ object MatagiUpdater {
 
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
         if (post) snackString(currContext()?.getString(R.string.checking_for_update))
-        val repo = activity.getString(R.string.repo).utf8
+        val repo = activity.getString(R.string.repo)
         tryWithSuspend {
             val res = client.get("https://api.github.com/repos/$repo/releases")
                 .parsed<JsonArray>().map {
@@ -106,7 +106,7 @@ object MatagiUpdater {
     }
 
     private suspend fun installUpdate(activity: FragmentActivity, version: String) = withContext(Dispatchers.IO) {
-        val repo = activity.getString(R.string.repo).utf8
+        val repo = activity.getString(R.string.repo)
         try {
             client.get("https://api.github.com/repos/$repo/releases/tags/$version")
                 .parsed<GithubResponse>().assets?.find {
