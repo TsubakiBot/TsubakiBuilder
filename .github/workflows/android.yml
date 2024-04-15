@@ -59,16 +59,16 @@ jobs:
       env:
         CI: true
 
-    - name: Retrieve commit identification
-      run: |
-        GIT_HASH=$(git rev-parse --short HEAD)
-        echo "GIT_HASH=${GIT_HASH}" >> $GITHUB_ENV
-
-    - name: Purge obsolete tags
+    - name: Drop orphan tags
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       uses: fabriziocacicia/delete-tags-without-release-action@v0.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Retrieve commit hash
+      run: |
+        GIT_HASH=$(git rev-parse --short HEAD)
+        echo "GIT_HASH=${GIT_HASH}" >> $GITHUB_ENV
 
     - uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9 # 1.6.0
       id: downloadserver  # Remember to give an ID if you need the output filename
@@ -121,12 +121,6 @@ jobs:
           retention-days: 1
           path: "app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk"
 
-    - name: Purge obsolete releases
-      uses: keyfactor/action-delete-prereleases@main
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
-      with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Announce on Discord
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') && github.repository == 'RepoDevil/Mr.Matagi' }}
       continue-on-error: true
@@ -166,7 +160,20 @@ jobs:
           app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
           app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86-matagi.apk
 
-    - name: Purge cache
+  clean:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+
+    - name: Purge past releases
+      uses: keyfactor/action-delete-prereleases@main
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Purge build cache
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
       continue-on-error: true
       uses: MyAlbum/purge-cache@v2
