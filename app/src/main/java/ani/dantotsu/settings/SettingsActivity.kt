@@ -1,6 +1,5 @@
 package ani.dantotsu.settings
 
-import android.content.Intent
 import android.graphics.drawable.Animatable
 import android.os.Build.BRAND
 import android.os.Build.DEVICE
@@ -10,12 +9,12 @@ import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
-import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
-import androidx.media3.common.util.UnstableApi
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
@@ -37,121 +36,153 @@ import kotlinx.coroutines.launch
 
 
 class SettingsActivity : AppCompatActivity() {
+    private val restartMainActivity = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() = startMainActivity(this@SettingsActivity)
+    }
     lateinit var binding: ActivitySettingsBinding
     private var cursedCounter = 0
 
-    @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
+        initActivity(this)
+
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initActivity(this)
-
-        binding.settingsVersion.text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
-        binding.settingsVersion.setOnLongClickListener {
-            copyToClipboard(getDeviceInfo(), false)
-            toast(getString(R.string.copied_device_info))
-            return@setOnLongClickListener true
-        }
-
-        binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = statusBarHeight
-            bottomMargin = navBarHeight
-        }
-
-        onBackPressedDispatcher.addCallback(this@SettingsActivity) {
-            startMainActivity(this@SettingsActivity)
-        }
-
-        binding.settingsBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-
+        val context = this
         binding.apply {
 
-            settingsTheme.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsThemeActivity::class.java))
+            settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = statusBarHeight
+                bottomMargin = navBarHeight
             }
 
-            settingsAccount.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsAccountActivity::class.java))
+            onBackPressedDispatcher.addCallback(this@SettingsActivity) {
+                startMainActivity(this@SettingsActivity)
             }
 
-            settingsAnime.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsAnimeActivity::class.java))
+            settingsBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
             }
 
-            settingsManga.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsMangaActivity::class.java))
-            }
+            settingsVersion.apply {
+                text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
 
-            settingsExtension.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsExtensionsActivity::class.java))
-            }
-
-            settingsCommon.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsCommonActivity::class.java))
-            }
-
-            settingsSystem.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsSystemActivity::class.java))
-            }
-
-            settingsNotification.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsNotificationActivity::class.java))
-            }
-
-            settingsAbout.setOnClickListener {
-                startActivity(Intent(this@SettingsActivity, SettingsAboutActivity::class.java))
-            }
-        }
-
-        if (!BuildConfig.FLAVOR.contains("fdroid")) {
-            binding.settingsLogo.setOnLongClickListener {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    MatagiUpdater.check(this@SettingsActivity, true)
+                setOnLongClickListener {
+                    copyToClipboard(getDeviceInfo(), false)
+                    toast(getString(R.string.copied_device_info))
+                    return@setOnLongClickListener true
                 }
-                true
             }
-        }
 
-        binding.settingBuyMeCoffee.setOnClickListener {
+            val settings = arrayListOf(
+                Settings(
+                    getString(R.string.accounts),
+                    R.drawable.ic_round_person_32,
+                    getString(R.string.accounts_desc),
+                    SettingsAccountActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.theme_ui),
+                    R.drawable.ic_palette,
+                    getString(R.string.theme_desc),
+                    SettingsThemeActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.extensions),
+                    R.drawable.ic_extension,
+                    getString(R.string.extensions_desc),
+                    SettingsExtensionsActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.common),
+                    R.drawable.ic_lightbulb_24,
+                    getString(R.string.common_desc),
+                    SettingsCommonActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.anime),
+                    R.drawable.ic_round_movie_filter_24,
+                    getString(R.string.anime_desc),
+                    SettingsAnimeActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.manga),
+                    R.drawable.ic_round_import_contacts_24,
+                    getString(R.string.manga_desc),
+                    SettingsMangaActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.notifications),
+                    R.drawable.ic_round_notifications_none_24,
+                    getString(R.string.notifications_desc),
+                    SettingsNotificationActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.system),
+                    R.drawable.ic_admin_panel_settings_24,
+                    getString(R.string.system_desc),
+                    SettingsSystemActivity::class.java
+                ),
+                Settings(
+                    getString(R.string.about),
+                    R.drawable.ic_round_info_24,
+                    getString(R.string.about_desc),
+                    SettingsAboutActivity::class.java
+                ),
+            )
+
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                adapter = SettingsAdapter(settings)
+                setHasFixedSize(true)
+            }
+
+            if (!BuildConfig.FLAVOR.contains("fdroid")) {
+                binding.settingsLogo.setOnLongClickListener {
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        MatagiUpdater.check(this@SettingsActivity, true)
+                    }
+                    true
+                }
+            }
+
+            settingBuyMeCoffee.setOnClickListener {
+                lifecycleScope.launch {
+                    it.pop()
+                }
+                openLinkInBrowser(getString(R.string.coffee))
+            }
             lifecycleScope.launch {
-                it.pop()
-            }
-            openLinkInBrowser(getString(R.string.coffee))
-        }
-        lifecycleScope.launch {
-            binding.settingBuyMeCoffee.pop()
-        }
-
-        binding.loginDiscord.setOnClickListener {
-            openLinkInBrowser(getString(R.string.discord))
-        }
-        binding.loginGithub.setOnClickListener {
-            openLinkInBrowser(getString(R.string.github))
-        }
-        binding.loginTelegram.setOnClickListener {
-            openLinkInBrowser(getString(R.string.telegram))
-        }
-
-
-        (binding.settingsLogo.drawable as Animatable).start()
-        val array = resources.getStringArray(R.array.tips)
-
-        binding.settingsLogo.setSafeOnClickListener {
-            cursedCounter++
-            (binding.settingsLogo.drawable as Animatable).start()
-            if (cursedCounter % 7 == 0) {
-                toast(R.string.you_cursed)
-                openLinkInYouTube(getString(R.string.cursed_yt))
-                //PrefManager.setVal(PrefName.ImageUrl, !PrefManager.getVal(PrefName.ImageUrl, false))
-            } else {
-                snackString(array[(Math.random() * array.size).toInt()], this)
+                settingBuyMeCoffee.pop()
             }
 
+            loginDiscord.setOnClickListener {
+                openLinkInBrowser(getString(R.string.discord))
+            }
+            loginGithub.setOnClickListener {
+                openLinkInBrowser(getString(R.string.github))
+            }
+            loginTelegram.setOnClickListener {
+                openLinkInBrowser(getString(R.string.telegram))
+            }
+
+
+            (settingsLogo.drawable as Animatable).start()
+            val array = resources.getStringArray(R.array.tips)
+
+            settingsLogo.setSafeOnClickListener {
+                cursedCounter++
+                (binding.settingsLogo.drawable as Animatable).start()
+                if (cursedCounter % 7 == 0) {
+                    toast(R.string.you_cursed)
+                    openLinkInYouTube(getString(R.string.cursed_yt))
+                    // PrefManager.setVal(PrefName.ImageUrl, !PrefManager.getVal(PrefName.ImageUrl, false))
+                } else {
+                    snackString(array[(Math.random() * array.size).toInt()], this@SettingsActivity)
+                }
+            }
         }
     }
 
