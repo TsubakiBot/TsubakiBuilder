@@ -14,7 +14,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  rinse:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+
+    - name: Drop orphan tags
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      uses: fabriziocacicia/delete-tags-without-release-action@v0.1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Purge past releases
+      uses: keyfactor/action-delete-prereleases@main
+      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+      with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        
+  wash:
+    needs: rinse
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -58,12 +77,6 @@ jobs:
       shell: /usr/bin/bash -e {0}
       env:
         CI: true
-
-    - name: Drop orphan tags
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
-      uses: fabriziocacicia/delete-tags-without-release-action@v0.1.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Retrieve commit hash
       run: |
@@ -160,18 +173,12 @@ jobs:
           app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
           app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86-matagi.apk
 
-  clean:
-    needs: build
+  dry:
+    needs: wash
     runs-on: ubuntu-latest
     env:
       CI: true
     steps:
-
-    - name: Purge past releases
-      uses: keyfactor/action-delete-prereleases@main
-      if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
-      with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Purge build cache
       if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
