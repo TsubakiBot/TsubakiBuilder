@@ -1198,6 +1198,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                         it
                                     )
                                 },
+                                smallImage = RPC.Link("Dantotsu", Discord.small_Image),
                                 buttons = buttons
                             )
                         )
@@ -1423,7 +1424,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val ext = episode.extractors?.find { it.server.name == episode.selectedExtractor } ?: return
         extractor = ext
         video = ext.videos.getOrNull(episode.selectedVideo) ?: return
-
         subtitle = intent.getSerialized("subtitle")
             ?: when (val subLang: String? =
                 PrefManager.getNullableCustomVal("subLang_${media.id}", null, String::class.java)) {
@@ -1447,15 +1447,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 subClick()
             }
         }
-        var sub: MediaItem.SubtitleConfiguration? = null
-        if (subtitle != null) {
-            val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle!!.file.url
+        val sub: MutableList<MediaItem.SubtitleConfiguration> = emptyList<MediaItem.SubtitleConfiguration>().toMutableList()
+        ext.subtitles.forEach { subtitle ->
+            val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle.file.url
             //var localFile: String? = null
-            if (subtitle?.type == SubtitleType.UNKNOWN) {
+            if (subtitle.type == SubtitleType.UNKNOWN) {
                 runBlocking {
                     val type = SubtitleDownloader.loadSubtitleType(subtitleUrl)
                     val fileUri = Uri.parse(subtitleUrl)
-                    sub = MediaItem.SubtitleConfiguration
+                    sub += MediaItem.SubtitleConfiguration
                         .Builder(fileUri)
                         .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
                         .setMimeType(
@@ -1467,16 +1467,17 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                             }
                         )
                         .setId("69")
+                        .setLanguage(subtitle.language)
                         .build()
                 }
                 println("sub: $sub")
             } else {
                 val subUri = Uri.parse(subtitleUrl)
-                sub = MediaItem.SubtitleConfiguration
+                sub += MediaItem.SubtitleConfiguration
                     .Builder(subUri)
                     .setSelectionFlags(C.SELECTION_FLAG_FORCED)
                     .setMimeType(
-                        when (subtitle?.type) {
+                        when (subtitle.type) {
                             SubtitleType.VTT -> MimeTypes.TEXT_VTT
                             SubtitleType.ASS -> MimeTypes.TEXT_SSA
                             SubtitleType.SRT -> MimeTypes.APPLICATION_SUBRIP
@@ -1484,6 +1485,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         }
                     )
                     .setId("69")
+                    .setLanguage(subtitle.language)
                     .build()
             }
         }
@@ -1524,7 +1526,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
 
         val downloadedMediaItem = if (ext.server.offline) {
-            val key = ext.server.name
             val titleName = ext.server.name.split("/").first()
             val episodeName = ext.server.name.split("/").last()
 
@@ -1552,21 +1553,18 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             val builder = MediaItem.Builder().setUri(video!!.file.url).setMimeType(mimeType)
             Logger.log("url: ${video!!.file.url}")
             Logger.log("mimeType: $mimeType")
-
-            if (sub != null) {
-                val listofnotnullsubs = listOfNotNull(sub)
-                builder.setSubtitleConfigurations(listofnotnullsubs)
-            }
+            builder.setSubtitleConfigurations(sub)
             builder.build()
         } else {
-            val addedSubsDownloadedMediaItem = downloadedMediaItem.buildUpon()
-            if (sub != null) {
-                val listofnotnullsubs = listOfNotNull(sub)
-                val addLanguage = listofnotnullsubs[0].buildUpon().setLanguage("en").build()
+            if (sub.isNotEmpty()) {
+                val addedSubsDownloadedMediaItem = downloadedMediaItem.buildUpon()
+                val addLanguage = sub[0].buildUpon().setLanguage("en").build()
                 addedSubsDownloadedMediaItem.setSubtitleConfigurations(listOf(addLanguage))
                 episode.selectedSubtitle = 0
+                addedSubsDownloadedMediaItem.build()
+            } else {
+                downloadedMediaItem
             }
-            addedSubsDownloadedMediaItem.build()
         }
 
 
@@ -1674,7 +1672,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         }
     }
-
+    
     private fun releasePlayer() {
         isPlayerPlaying = exoPlayer.playWhenReady
         playbackPosition = exoPlayer.currentPosition
