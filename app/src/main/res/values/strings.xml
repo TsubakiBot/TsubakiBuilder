@@ -362,6 +362,7 @@
     <string name="sort_by_title">Sort by Title</string>
     <string name="sort_by_last_updated">Sort by Last Updated</string>
     <string name="sort_by_score">Sort by Score</string>
+    <string name="sort_by_airing">Sort by Next Airing</string>
     <string name="over_scroll">Over Scroll to Next/Previous Chapter</string>
     <string name="volume_buttons">Change pages with Volume Buttons</string>
     <string name="list_private">Private</string>

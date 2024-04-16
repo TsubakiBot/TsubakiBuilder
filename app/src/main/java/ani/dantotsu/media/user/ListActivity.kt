@@ -134,6 +134,7 @@ class ListActivity : AppCompatActivity() {
                     R.id.title -> "title"
                     R.id.updated -> "updatedAt"
                     R.id.release -> "release"
+                    R.id.airing -> "airing"
                     else -> null
                 }
                 PrefManager.setVal(
