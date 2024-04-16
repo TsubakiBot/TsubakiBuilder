@@ -551,7 +551,6 @@ class MangaReadAdapter(
     inner class ViewHolder(val binding: ItemAnimeWatchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            // Manga Timer
             sinceWhen(media, binding.animeSourceContainer)
         }
     }

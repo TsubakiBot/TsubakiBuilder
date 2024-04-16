@@ -78,6 +78,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -1032,8 +1033,9 @@ fun sinceWhen(media: Media, view: ViewGroup) {
     if (media.status != "RELEASING" && media.status != "HIATUS") return
     CoroutineScope(Dispatchers.IO).launch {
         with (MangaUpdates()) {
-            searchReleases(media)?.let {
+            findLatestRelease(media)?.let {
                 var timestamp: Long = it.metadata.series.lastUpdated!!.timestamp
+
                 val latestChapter = getSeries(it)?.let { series ->
                     timestamp = series.lastUpdated?.timestamp ?: timestamp
                     currActivity()?.getString(R.string.chapter_number, series.latestChapter)
@@ -1042,6 +1044,7 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                     timestamp = dateFormat.parse(it.record.releaseDate)?.time ?: timestamp
                     getLatestChapter(view.context, it)
                 }
+                val predicted = predictRelease(media, timestamp * 1000)
                 val timeSince = (System.currentTimeMillis() - (timestamp * 1000)) / 1000
 
                 withContext(Dispatchers.Main) {
@@ -1051,6 +1054,16 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                     view.addView(v.root, 0)
                     v.mediaCountdownText.text =
                         currActivity()?.getString(R.string.chapter_release_timeout, latestChapter)
+
+                    predicted?.let { time ->
+                        v.mediaPredication.text = currActivity()?.getString(
+                            R.string.chapter_predication,
+                            SimpleDateFormat.getDateTimeInstance().format(time)
+                                .substringBeforeLast(' ').substringBeforeLast(' ')
+                            // SimpleDateFormat parses MMMM to MO5 for May. This is a workaround
+                        )
+                        v.mediaPredication.isVisible = true
+                    }
 
                     object : CountUpTimer(86400000) {
                         override fun onTick(second: Int) {
