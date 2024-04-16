@@ -124,7 +124,7 @@ class ResumableWidget : AppWidgetProvider() {
                 serializedManga?.let { list -> prefs.edit().putString(PREF_SERIALIZED_MANGA, list).apply()}
                     ?: prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
                 prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis()).apply()
-                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+                appWidgetManager.updateAppWidget(it, updateAppWidget(context, it))
             }
         }
 
