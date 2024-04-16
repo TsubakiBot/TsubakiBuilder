@@ -533,6 +533,7 @@
     <string name="chapter_release_timeout">%1$s has been available for</string>
     <string name="time_format">%1$d days %2$d hrs %3$d mins %4$d secs</string>
     <string name="chapter_predication">New Chapter Expected %1$s</string>
+    <string name="chapter_delayed">New Chapter appears to be delayed</string>
     <string-array name="sort_by">
         <item>Score</item>
         <item>Popular</item>

@@ -1058,12 +1058,16 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                         currActivity()?.getString(R.string.chapter_release_timeout, latestChapter)
 
                     predicted?.let { time ->
-                        v.mediaPredication.text = currActivity()?.getString(
-                            R.string.chapter_predication,
-                            SimpleDateFormat.getDateTimeInstance().format(time)
-                                .substringBeforeLast(' ').substringBeforeLast(' ')
-                            // SimpleDateFormat parses MMMM to MO5 for May. This is a workaround
-                        )
+                        v.mediaPredication.text = if (System.currentTimeMillis() > time) {
+                            currActivity()?.getString(R.string.chapter_delayed)
+                        } else {
+                            currActivity()?.getString(
+                                R.string.chapter_predication,
+                                SimpleDateFormat.getDateTimeInstance().format(time)
+                                    .substringBeforeLast(' ').substringBeforeLast(' ')
+                                // SimpleDateFormat parses MMMM to MO5 for May. This is a workaround
+                            )
+                        }
                         v.mediaPredication.isVisible = true
                     }
 
