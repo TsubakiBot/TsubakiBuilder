@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
 import android.webkit.WebViewClient
-import ani.dantotsu.BottomSheetDialogFragment
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.FileUrl
 import ani.dantotsu.databinding.BottomSheetWebviewBinding
 import ani.dantotsu.defaultHeaders

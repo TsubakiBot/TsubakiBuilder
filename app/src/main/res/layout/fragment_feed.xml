@@ -24,7 +24,7 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
-            <ani.dantotsu.FadingEdgeRecyclerView
+            <ani.dantotsu.others.FadingEdgeRecyclerView
                 android:id="@+id/listRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

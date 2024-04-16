@@ -138,10 +138,8 @@ class AnilistQueries {
                                             isFav = i.node?.isFavourite ?: false,
                                             role = when (i.role.toString()) {
                                                 "MAIN" -> currContext().getString(R.string.main_role)
-                                                    ?: "MAIN"
 
                                                 "SUPPORTING" -> currContext().getString(R.string.supporting_role)
-                                                    ?: "SUPPORTING"
 
                                                 else -> i.role.toString()
                                             },

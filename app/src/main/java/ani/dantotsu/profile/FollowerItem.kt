@@ -3,9 +3,9 @@ package ani.dantotsu.profile
 
 import android.view.View
 import ani.dantotsu.R
-import ani.dantotsu.blurImage
 import ani.dantotsu.databinding.ItemFollowerBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.util.BitmapUtil
 import com.xwray.groupie.viewbinding.BindableItem
 
 class FollowerItem(
@@ -21,7 +21,7 @@ class FollowerItem(
         binding = viewBinding
         binding.profileUserName.text = name
         avatar?.let { binding.profileUserAvatar.loadImage(it) }
-        blurImage(binding.profileBannerImage, banner ?: avatar)
+        BitmapUtil.blurImage(binding.profileBannerImage, banner ?: avatar)
         binding.root.setOnClickListener { clickCallback(id) }
     }
 

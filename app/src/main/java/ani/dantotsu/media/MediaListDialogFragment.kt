@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import ani.dantotsu.BottomSheetDialogFragment
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.DatePickerFragment
 import ani.dantotsu.InputFilterMinMax
 import ani.dantotsu.R

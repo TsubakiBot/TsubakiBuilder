@@ -48,7 +48,7 @@
                 android:textSize="18sp"
                 android:visibility="gone" />
 
-            <ani.dantotsu.FadingEdgeRecyclerView
+            <ani.dantotsu.others.FadingEdgeRecyclerView
                 android:id="@+id/charactersRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

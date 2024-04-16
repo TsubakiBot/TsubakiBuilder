@@ -95,7 +95,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
                             }
                         )
                 } else {
-                    novelExtensionManager.uninstallExtension(pkg.pkgName, currContext() ?: context)
+                    novelExtensionManager.uninstallExtension(pkg.pkgName, currContext())
                     snackString("Extension uninstalled")
                 }
             }

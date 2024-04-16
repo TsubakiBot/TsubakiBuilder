@@ -79,13 +79,10 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
 import ani.dantotsu.connections.anilist.Genre
@@ -107,19 +104,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.internal.ViewUtils
 import eu.kanade.tachiyomi.data.notification.Notifications
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
@@ -132,7 +123,6 @@ import io.noties.markwon.html.HtmlPlugin
 import io.noties.markwon.html.TagHandlerNoOp
 import io.noties.markwon.image.AsyncDrawable
 import io.noties.markwon.image.glide.GlideImagesPlugin
-import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -179,7 +169,7 @@ val Number.dpToColumns: Int get() {
                 metrics.widthPixels.toDp / this@dpToColumns.toInt()
             }
         }
-    } ?: 1
+    }
     return columns.toInt()
 }
 
@@ -368,39 +358,6 @@ suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatch
     }
 }
 
-open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
-    override fun onStart() {
-        super.onStart()
-        dialog?.window?.let { window ->
-            WindowCompat.setDecorFitsSystemWindows(window, false)
-            val immersiveMode: Boolean = PrefManager.getVal(PrefName.ImmersiveMode)
-            if (immersiveMode) {
-                WindowInsetsControllerCompat(
-                    window, window.decorView
-                ).hide(WindowInsetsCompat.Type.statusBars())
-            }
-            if (this.resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
-                val behavior = BottomSheetBehavior.from(requireView().parent as View)
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-            val typedValue = TypedValue()
-            val theme = requireContext().theme
-            theme.resolveAttribute(
-                com.google.android.material.R.attr.colorSurface,
-                typedValue,
-                true
-            )
-            window.navigationBarColor = typedValue.data
-        }
-    }
-
-    override fun show(manager: FragmentManager, tag: String?) {
-        val ft = manager.beginTransaction()
-        ft.add(this, tag)
-        ft.commitAllowingStateLoss()
-    }
-}
-
 fun isOnline(context: Context): Boolean {
     val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -547,38 +504,6 @@ fun setAnimation(
         anim.duration = (duration * (PrefManager.getVal(PrefName.AnimationSpeed) as Float)).toLong()
         anim.setInterpolator(context, R.anim.over_shoot)
         viewToAnimate.startAnimation(anim)
-    }
-}
-
-
-class FadingEdgeRecyclerView : RecyclerView {
-
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
-
-    override fun isPaddingOffsetRequired(): Boolean {
-        return !clipToPadding
-    }
-
-    override fun getLeftPaddingOffset(): Int {
-        return if (clipToPadding) 0 else -paddingLeft
-    }
-
-    override fun getTopPaddingOffset(): Int {
-        return if (clipToPadding) 0 else -paddingTop
-    }
-
-    override fun getRightPaddingOffset(): Int {
-        return if (clipToPadding) 0 else paddingRight
-    }
-
-    override fun getBottomPaddingOffset(): Int {
-        return if (clipToPadding) 0 else paddingBottom
     }
 }
 
@@ -1158,18 +1083,6 @@ fun setSlideUp() = AnimationSet(false).apply {
     }
 }
 
-class EmptyAdapter(private val count: Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return EmptyViewHolder(View(parent.context))
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
-
-    override fun getItemCount(): Int = count
-
-    inner class EmptyViewHolder(view: View) : RecyclerView.ViewHolder(view)
-}
-
 open class NoPaddingArrayAdapter<T>(context: Context, layoutId: Int, items: List<T>) :
     ArrayAdapter<T>(context, layoutId, items) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -1177,57 +1090,6 @@ open class NoPaddingArrayAdapter<T>(context: Context, layoutId: Int, items: List
         view.setPadding(0, view.paddingTop, view.paddingRight, view.paddingBottom)
         (view as TextView).setTextColor(Color.WHITE)
         return view
-    }
-}
-
-@SuppressLint("ClickableViewAccessibility")
-class SpinnerNoSwipe : androidx.appcompat.widget.AppCompatSpinner {
-    private var mGestureDetector: GestureDetector? = null
-
-    constructor(context: Context) : super(context) {
-        setup()
-    }
-
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        setup()
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        setup()
-    }
-
-    private fun setup() {
-        mGestureDetector =
-            GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
-                override fun onSingleTapUp(e: MotionEvent): Boolean {
-                    return performClick()
-                }
-            })
-    }
-
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        mGestureDetector!!.onTouchEvent(event)
-        return true
-    }
-}
-
-@SuppressLint("RestrictedApi")
-class CustomBottomNavBar @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
-) : BottomNavigationView(context, attrs) {
-    init {
-        ViewUtils.doOnApplyWindowInsets(
-            this
-        ) { view, insets, initialPadding ->
-            initialPadding.bottom = 0
-            updateLayoutParams<MarginLayoutParams> { bottomMargin = navBarHeight }
-            initialPadding.applyToView(view)
-            insets
-        }
     }
 }
 
@@ -1344,36 +1206,6 @@ suspend fun View.pop() {
         ObjectAnimator.ofFloat(this@pop, "scaleY", 1.25f, 1f).setDuration(100).start()
     }
     delay(100)
-}
-
-fun blurImage(imageView: ImageView, banner: String?) {
-    if (banner != null) {
-        val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
-        val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
-        if (PrefManager.getVal(PrefName.BlurBanners)) {
-            val context = imageView.context
-            if (!(context as Activity).isDestroyed) {
-                val url = geUrlOrTrolled(banner)
-                Glide.with(context as Context)
-                    .load(
-                        if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith("content://")) Uri.parse(
-                            url
-                        ) else File(url)
-                    )
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
-                    .apply(if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
-                        RequestOptions.noTransformation()
-                    } else {
-                        RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
-                    })
-                    .into(imageView)
-            }
-        } else {
-            imageView.loadImage(banner)
-        }
-    } else {
-        imageView.setImageResource(R.drawable.linear_gradient_bg)
-    }
 }
 
 /**

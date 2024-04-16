@@ -20,7 +20,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
-import ani.dantotsu.blurImage
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemMediaCompactBinding
 import ani.dantotsu.databinding.ItemMediaLargeBinding
@@ -31,6 +30,7 @@ import ani.dantotsu.setAnimation
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.util.BitmapUtil
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import java.io.Serializable
 
@@ -137,7 +137,7 @@ class MediaAdaptor(
                 val media = mediaList?.get(position)
                 if (media != null) {
                     b.itemCompactImage.loadImage(media.cover)
-                    blurImage(b.itemCompactBanner, media.banner ?: media.cover)
+                    BitmapUtil.blurImage(b.itemCompactBanner, media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
                         media.status == currActivity()!!.getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
@@ -183,7 +183,7 @@ class MediaAdaptor(
                                 AccelerateDecelerateInterpolator()
                             )
                         )
-                    blurImage(if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen , media.banner ?: media.cover)
+                    BitmapUtil.blurImage(if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen , media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
                         media.status == currActivity()!!.getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
@@ -232,7 +232,7 @@ class MediaAdaptor(
                                 AccelerateDecelerateInterpolator()
                             )
                         )
-                    blurImage(if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen , media.banner ?: media.cover)
+                    BitmapUtil.blurImage(if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen , media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
                         media.status == currActivity()!!.getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName

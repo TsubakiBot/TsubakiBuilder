@@ -1045,7 +1045,7 @@ class MangaReaderActivity : AppCompatActivity() {
     ): T? {
         val a = context ?: currContext()
         try {
-            if (a?.fileList() != null)
+            if (a.fileList() != null)
                 if (fileName in a.fileList()) {
                     val fileIS: FileInputStream = a.openFileInput(fileName)
                     val objIS = ObjectInputStream(fileIS)
@@ -1055,10 +1055,10 @@ class MangaReaderActivity : AppCompatActivity() {
                     return data
                 }
         } catch (e: Exception) {
-            if (toast) snackString(a?.getString(R.string.error_loading_data, fileName))
+            if (toast) snackString(a.getString(R.string.error_loading_data, fileName))
             //try to delete the file
             try {
-                a?.deleteFile(fileName)
+                a.deleteFile(fileName)
             } catch (e: Exception) {
                 Logger.log("Failed to delete file $fileName")
                 Logger.log(e)
@@ -1071,13 +1071,11 @@ class MangaReaderActivity : AppCompatActivity() {
     private fun saveReaderSettings(fileName: String, data: Any?, context: Context? = null) {
         tryWith {
             val a = context ?: currContext()
-            if (a != null) {
-                val fos: FileOutputStream = a.openFileOutput(fileName, Context.MODE_PRIVATE)
-                val os = ObjectOutputStream(fos)
-                os.writeObject(data)
-                os.close()
-                fos.close()
-            }
+            val fos: FileOutputStream = a.openFileOutput(fileName, Context.MODE_PRIVATE)
+            val os = ObjectOutputStream(fos)
+            os.writeObject(data)
+            os.close()
+            fos.close()
         }
     }
 

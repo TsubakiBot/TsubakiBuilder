@@ -3,7 +3,6 @@ package ani.dantotsu.profile.activity
 import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
-import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ItemNotificationBinding
@@ -11,6 +10,7 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.profile.activity.NotificationActivity.Companion.NotificationClickType
 import ani.dantotsu.setAnimation
 import ani.dantotsu.toPx
+import ani.dantotsu.util.BitmapUtil
 import com.xwray.groupie.viewbinding.BindableItem
 
 class NotificationItem(
@@ -37,7 +37,7 @@ class NotificationItem(
         val cover = if (user) notification.user?.bannerImage
             ?: notification.user?.avatar?.medium else notification.media?.bannerImage
             ?: notification.media?.coverImage?.large
-        blurImage(binding.notificationBannerImage, cover)
+        BitmapUtil.blurImage(binding.notificationBannerImage, cover)
 
         val defaultHeight = 153.toPx
 
