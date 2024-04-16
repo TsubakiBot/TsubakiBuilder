@@ -31,13 +31,13 @@ fun updateProgress(media: Media, number: String) {
                         a, null,
                         if (media.userStatus == "REPEATING") media.userStatus!! else "CURRENT"
                     )
-                    toast(currContext()?.getString(R.string.setting_progress, media.userPreferredName, a))
+                    toast(currContext().getString(R.string.setting_progress, media.userPreferredName, a))
                 }
                 media.userProgress = a
                 Refresh.all()
             }
         } else {
-            toast(currContext()?.getString(R.string.login_anilist_account))
+            toast(currContext().getString(R.string.login_anilist_account))
         }
     } else {
         toast("Sneaky sneaky :3")

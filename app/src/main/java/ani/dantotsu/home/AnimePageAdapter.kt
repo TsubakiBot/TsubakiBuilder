@@ -69,7 +69,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             holder.itemView.findViewById<MaterialCardView>(R.id.userAvatarContainer)
         materialCardView.setCardBackgroundColor(semiTransparentColor)
         val typedValue = TypedValue()
-        currContext()?.theme?.resolveAttribute(android.R.attr.windowBackground, typedValue, true)
+        currContext().theme?.resolveAttribute(android.R.attr.windowBackground, typedValue, true)
         val color = typedValue.data
 
         textInputLayout.boxBackgroundColor = (color and 0x00FFFFFF) or 0x28000000

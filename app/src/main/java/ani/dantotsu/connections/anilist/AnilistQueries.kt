@@ -137,10 +137,10 @@ class AnilistQueries {
                                             banner = media.banner ?: media.cover,
                                             isFav = i.node?.isFavourite ?: false,
                                             role = when (i.role.toString()) {
-                                                "MAIN" -> currContext()?.getString(R.string.main_role)
+                                                "MAIN" -> currContext().getString(R.string.main_role)
                                                     ?: "MAIN"
 
-                                                "SUPPORTING" -> currContext()?.getString(R.string.supporting_role)
+                                                "SUPPORTING" -> currContext().getString(R.string.supporting_role)
                                                     ?: "SUPPORTING"
 
                                                 else -> i.role.toString()
@@ -168,10 +168,10 @@ class AnilistQueries {
                                             name = i.node?.name?.userPreferred,
                                             image = i.node?.image?.large,
                                             role = when (i.role.toString()) {
-                                                "MAIN" -> currContext()?.getString(R.string.main_role)
+                                                "MAIN" -> currContext().getString(R.string.main_role)
                                                     ?: "MAIN"
 
-                                                "SUPPORTING" -> currContext()?.getString(R.string.supporting_role)
+                                                "SUPPORTING" -> currContext().getString(R.string.supporting_role)
                                                     ?: "SUPPORTING"
 
                                                 else -> i.role.toString()
@@ -308,14 +308,14 @@ class AnilistQueries {
 
                     if (response.data?.media != null) parse()
                     else {
-                        snackString(currContext()?.getString(R.string.adult_stuff))
+                        snackString(currContext().getString(R.string.adult_stuff))
                         response = executeQuery(query, force = true, useToken = false)
                         if (response?.data?.media != null) parse()
-                        else snackString(currContext()?.getString(R.string.what_did_you_open))
+                        else snackString(currContext().getString(R.string.what_did_you_open))
                     }
                 } else {
-                    if (currContext()?.let { isOnline(it) } == true) {
-                        snackString(currContext()?.getString(R.string.error_getting_data))
+                    if (currContext().let { isOnline(it) } == true) {
+                        snackString(currContext().getString(R.string.error_getting_data))
                     } else {
                     }
                 }

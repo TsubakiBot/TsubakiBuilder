@@ -292,7 +292,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
         //load media.json and convert to media class with gson
         return try {
             val directory = DownloadsManager.getSubDirectory(
-                context ?: currContext()!!, downloadedType.type,
+                context ?: currContext(), downloadedType.type,
                 false, downloadedType.title
             )
             val gson = GsonBuilder()
@@ -308,7 +308,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 .create()
             val media = directory?.findFile("media.json")
                 ?: return null
-            val mediaJson = media.openInputStream(context?:currContext()!!)?.bufferedReader().use {
+            val mediaJson = media.openInputStream(context?:currContext())?.bufferedReader().use {
                 it?.readText()
             }
                 ?: return null
@@ -325,7 +325,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
         //load media.json and convert to media class with gson
         try {
             val directory = DownloadsManager.getSubDirectory(
-                context ?: currContext()!!, downloadedType.type,
+                context ?: currContext(), downloadedType.type,
                 false, downloadedType.title
             )
             val mediaModel = getMedia(downloadedType)!!

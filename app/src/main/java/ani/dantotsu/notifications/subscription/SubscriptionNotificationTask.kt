@@ -42,7 +42,6 @@ class SubscriptionNotificationTask : Task {
                 withContext(Dispatchers.IO) {
                     PrefManager.init(context)
                     currentlyPerforming = true
-                    App.context = context
                     Logger.log("SubscriptionNotificationTask: execute")
                     var timeout = 15_000L
                     do {

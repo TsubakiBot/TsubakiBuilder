@@ -304,7 +304,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                 .setTitle(R.string.server_disabled)
                                 .setMessage(R.string.enable_server)
                                 .setPositiveButton(R.string.yes) { dialog, _ ->
-                                    currContext()?.let { torrServerStart(it) }
+                                    currContext().let { torrServerStart(it) }
                                     toast(R.string.server_enabled)
                                     dialog.dismiss()
                                 }

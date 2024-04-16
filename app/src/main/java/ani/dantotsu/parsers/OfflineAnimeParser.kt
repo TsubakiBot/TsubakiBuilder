@@ -130,7 +130,7 @@ class OfflineVideoExtractor(private val videoServer: VideoServer) : VideoExtract
     }
 
     private fun getSubtitle(title: String, episode: String): List<Subtitle>? {
-        currContext()?.let {
+        currContext().let {
             getSubDirectory(
                 it,
                 MediaType.ANIME,

@@ -12,9 +12,9 @@ import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.App.Companion.context
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityImageSearchBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
@@ -102,7 +102,7 @@ class ImageSearchActivity : AppCompatActivity() {
 
         recyclerView.post {
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager = LinearLayoutManager(currContext())
         }
     }
 }

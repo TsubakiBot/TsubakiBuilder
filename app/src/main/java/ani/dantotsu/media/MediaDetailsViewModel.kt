@@ -239,7 +239,7 @@ class MediaDetailsViewModel : ViewModel() {
                 if (media.anime?.episodes?.get(i) != null) {
                     media.anime.selectedEpisode = i
                 } else {
-                    snackString(currContext()?.getString(R.string.episode_not_found, i))
+                    snackString(currContext().getString(R.string.episode_not_found, i))
                     return@post
                 }
                 media.selected = this.loadSelected(media)

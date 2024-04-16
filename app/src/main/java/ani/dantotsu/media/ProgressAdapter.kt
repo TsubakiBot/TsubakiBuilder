@@ -33,7 +33,7 @@ class ProgressAdapter(private val horizontal: Boolean = true, searched: Boolean)
         bar = progressBar
         val doubleClickDetector = GestureDetector(progressBar.context, object : GesturesListener() {
             override fun onDoubleClick(event: MotionEvent) {
-                snackString(currContext()?.getString(R.string.cant_wait))
+                snackString(currContext().getString(R.string.cant_wait))
                 ObjectAnimator.ofFloat(
                     progressBar,
                     "translationX",

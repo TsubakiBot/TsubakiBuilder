@@ -145,18 +145,18 @@ class App : MultiDexApplication() {
     }
 
     companion object {
-        private var instance: App? = null
-
-        /** Reference to the application context.
+        /** Reference to the application instance.
          *
          * USE WITH EXTREME CAUTION!**/
-        var context: Context? = null
-        fun currentContext(): Context? {
-            return instance?.mFTActivityLifecycleCallbacks?.currentActivity ?: context
+        @JvmStatic
+        lateinit var instance : App
+            private set
+        fun currentContext(): Context {
+            return instance.mFTActivityLifecycleCallbacks.currentActivity ?: instance.applicationContext
         }
 
         fun currentActivity(): Activity? {
-            return instance?.mFTActivityLifecycleCallbacks?.currentActivity
+            return instance.mFTActivityLifecycleCallbacks.currentActivity
         }
     }
 }

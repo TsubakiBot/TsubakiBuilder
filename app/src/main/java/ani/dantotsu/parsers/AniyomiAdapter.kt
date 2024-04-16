@@ -67,7 +67,7 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
         }
         val configurableSource = extension.sources[sourceLanguage] as? ConfigurableAnimeSource
             ?: return false
-        currContext()?.let { context ->
+        currContext().let { context ->
             val sharedPreferences =
                 context.getSharedPreferences(
                     configurableSource.getPreferenceKey(),
@@ -95,7 +95,7 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
             true -> MediaNameAdapter.SubDubType.DUB
             false -> MediaNameAdapter.SubDubType.SUB
         }
-        currContext()?.let { context ->
+        currContext().let { context ->
             val sharedPreferences =
                 context.getSharedPreferences(
                     configurableSource.getPreferenceKey(),
@@ -114,7 +114,7 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
     override fun isDubAvailableSeparately(sourceLang: Int?): Boolean {
         val configurableSource = extension.sources[sourceLanguage] as? ConfigurableAnimeSource
             ?: return false
-        currContext()?.let { context ->
+        currContext().let { context ->
             Logger.log("isDubAvailableSeparately: ${configurableSource.getPreferenceKey()}")
             val sharedPreferences =
                 context.getSharedPreferences(

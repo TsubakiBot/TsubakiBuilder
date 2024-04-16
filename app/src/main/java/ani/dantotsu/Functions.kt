@@ -168,7 +168,7 @@ val Number.toDp get() = TypedValue.applyDimension(
 )
 
 val Number.dpToColumns: Int get() {
-    val columns = currContext()?.run {
+    val columns = currContext().run {
         val metrics = DisplayMetrics()
         with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -196,7 +196,7 @@ object Refresh {
     val activity = mutableMapOf<Int, MutableLiveData<Boolean>>()
 }
 
-fun currContext(): Context? {
+fun currContext(): Context {
     return App.currentContext()
 }
 
@@ -497,7 +497,7 @@ class InputFilterMinMax(
     }
 
     private fun isInRange(a: Double, b: Double, c: Double): Boolean {
-        val statusStrings = currContext()!!.resources.getStringArray(R.array.status_manga)[2]
+        val statusStrings = currContext().resources.getStringArray(R.array.status_manga)[2]
 
         if (c == b) {
             status?.setText(statusStrings, false)
@@ -809,7 +809,7 @@ fun openLinkInBrowser(link: String?) {
                 data = Uri.parse(link)
                 selector = emptyBrowserIntent
             }
-            currContext()!!.startActivity(sendIntent)
+            currContext().startActivity(sendIntent)
         } catch (e: ActivityNotFoundException) {
             snackString("No browser found")
         } catch (e: Exception) {
@@ -826,7 +826,7 @@ fun openLinkInYouTube(link: String?) {
                 data = Uri.parse(link)
                 setPackage("com.google.android.youtube")
             }
-            currContext()!!.startActivity(videoIntent)
+            currContext().startActivity(videoIntent)
         } catch (e: ActivityNotFoundException) {
             openLinkInBrowser(link)
         } catch (e: Exception) {
@@ -947,8 +947,8 @@ fun saveImage(image: Bitmap, path: String, imageFileName: String): File? {
         val fOut: OutputStream = FileOutputStream(imageFile)
         image.compress(Bitmap.CompressFormat.PNG, 0, fOut)
         fOut.close()
-        scanFile(imageFile.absolutePath, currContext()!!)
-        toast(String.format(currContext()!!.getString(R.string.saved_to_path, path)))
+        scanFile(imageFile.absolutePath, currContext())
+        toast(String.format(currContext().getString(R.string.saved_to_path, path)))
         imageFile
     } catch (e: Exception) {
         snackString("Failed to save image: ${e.localizedMessage}")
@@ -986,12 +986,12 @@ class NoGestureSubsamplingImageView(context: Context?, attr: AttributeSet?) :
 }
 
 fun copyToClipboard(string: String, toast: Boolean = true) {
-    val activity = currContext() ?: return
-    val clipboard = getSystemService(activity, ClipboardManager::class.java)
+    val context = currContext()
+    val clipboard = getSystemService(context, ClipboardManager::class.java)
     val clip = ClipData.newPlainText("label", string)
     clipboard?.setPrimaryClip(clip)
     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
-        if (toast) snackString(activity.getString(R.string.copied_text, string))
+        if (toast) snackString(context.getString(R.string.copied_text, string))
     }
 }
 
@@ -1023,7 +1023,7 @@ fun countDown(media: Media, view: ViewGroup) {
 
             override fun onFinish() {
                 v.mediaCountdownContainer.visibility = View.GONE
-                snackString(currContext()?.getString(R.string.congrats_vro))
+                snackString(currContext().getString(R.string.congrats_vro))
             }
         }.start()
     }

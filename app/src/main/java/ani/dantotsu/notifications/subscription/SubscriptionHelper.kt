@@ -54,7 +54,7 @@ class SubscriptionHelper {
             val ep = withTimeoutOrNull(10 * 1000) {
                 tryWithSuspend {
                     val show = parser.loadSavedShowResponse(id) ?: throw Exception(
-                        currContext()?.getString(
+                        currContext().getString(
                             R.string.failed_to_load_data,
                             id
                         )
@@ -88,7 +88,7 @@ class SubscriptionHelper {
             val chp = withTimeoutOrNull(10 * 1000) {
                 tryWithSuspend {
                     val show = parser.loadSavedShowResponse(id) ?: throw Exception(
-                        currContext()?.getString(
+                        currContext().getString(
                             R.string.failed_to_load_data,
                             id
                         )

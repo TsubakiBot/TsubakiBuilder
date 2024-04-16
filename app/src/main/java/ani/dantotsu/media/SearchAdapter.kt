@@ -19,9 +19,9 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import ani.dantotsu.App.Companion.context
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemChipBinding
 import ani.dantotsu.databinding.ItemSearchHeaderBinding
 import ani.dantotsu.openLinkInBrowser
@@ -94,7 +94,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         if (PrefManager.getVal(PrefName.Incognito)) {
             val startIconDrawableRes = R.drawable.ic_incognito_24
             val startIconDrawable: Drawable? =
-                context?.let { AppCompatResources.getDrawable(it, startIconDrawableRes) }
+                currContext().let { AppCompatResources.getDrawable(it, startIconDrawableRes) }
             binding.searchBar.startIconDrawable = startIconDrawable
         }
 

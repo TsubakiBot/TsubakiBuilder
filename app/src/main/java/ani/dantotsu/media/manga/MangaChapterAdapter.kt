@@ -201,7 +201,7 @@ class MangaChapterAdapter(
         }
 
         init {
-            val theme = currContext()?.theme
+            val theme = currContext().theme
             theme?.resolveAttribute(
                 com.google.android.material.R.attr.colorError,
                 typedValue1,
