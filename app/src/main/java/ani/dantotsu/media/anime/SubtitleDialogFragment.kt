@@ -14,10 +14,10 @@ import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 class SubtitleDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSubtitlesBinding? = null
@@ -112,7 +112,7 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
                     if (episode.selectedSubtitle == position - 1 && selSubs == subtitles[position - 1].language) {
                         with (binding.root.context) {
                             binding.root.setCardBackgroundColor(
-                                getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+                                getThemeColor(com.google.android.material.R.attr.colorPrimary)
                             )
                         }
                     }

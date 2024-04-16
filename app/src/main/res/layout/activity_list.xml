@@ -31,11 +31,20 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageButton
+                    android:id="@+id/listBackButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="@string/back_button"
+                    app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
+                    app:tint="?attr/colorOnBackground" />
+
                 <TextView
                     android:id="@+id/listTitle"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_marginStart="32dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins_bold"

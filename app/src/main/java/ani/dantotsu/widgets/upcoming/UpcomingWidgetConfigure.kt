@@ -11,12 +11,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import ani.dantotsu.databinding.UpcomingWidgetConfigureBinding
-import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
 import com.google.android.material.button.MaterialButton
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 /**
  * The configuration screen for the [UpcomingWidget] AppWidget.
@@ -108,9 +108,9 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
     }
 
     private fun themeColors() {
-        val backgroundColor = getColorFromAttr(com.google.android.material.R.attr.colorSurface)
-        val textColor =  getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
-        val subTextColor = getColorFromAttr(com.google.android.material.R.attr.colorOutline)
+        val backgroundColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
+        val textColor =  getThemeColor(com.google.android.material.R.attr.colorPrimary)
+        val subTextColor = getThemeColor(com.google.android.material.R.attr.colorOutline)
 
         getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(UpcomingWidget.PREF_BACKGROUND_COLOR, backgroundColor)

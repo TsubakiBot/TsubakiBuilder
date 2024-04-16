@@ -15,8 +15,8 @@ import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.others.LanguageMapper.getLanguageItem
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 
 @OptIn(UnstableApi::class)
@@ -86,7 +86,7 @@ class TrackGroupDialogFragment(
                     binding.subtitleTitle.text = selected
                     with (binding.root.context) {
                         binding.root.setCardBackgroundColor(
-                            getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+                            getThemeColor(com.google.android.material.R.attr.colorPrimary)
                         )
                     }
                 }

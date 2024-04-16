@@ -12,11 +12,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ResumableWidgetConfigureBinding
-import ani.dantotsu.getColorFromAttr
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.widgets.ColorDialog
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 /**
  * The configuration screen for the [ResumableWidget] AppWidget.
@@ -177,9 +177,9 @@ class ResumableWidgetConfigure : AppCompatActivity(),
     }
 
     private fun themeColors() {
-        val backgroundColor = getColorFromAttr(com.google.android.material.R.attr.colorSurface)
-        val textColor = getColorFromAttr(com.google.android.material.R.attr.colorOnBackground)
-        val flipperColor = getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+        val backgroundColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
+        val textColor = getThemeColor(com.google.android.material.R.attr.colorOnBackground)
+        val flipperColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
 
         getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
             putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)

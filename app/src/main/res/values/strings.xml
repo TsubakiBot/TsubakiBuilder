@@ -467,6 +467,7 @@
     <string name="please_reload">Please Reload.</string>
     <string name="copied_text">Copied "%1$s"</string>
     <string name="back_to_exit">Press BACK again to exit</string>
+    <string name="back_button">Back Button</string>
     <string name="anilist_not_found">Seems like that wasn\'t found on Anilist.</string>
     <string name="disabled_auto_skip">Disabled Auto Skipping OP &amp; ED</string>
     <string name="auto_skip">Auto Skipping OP &amp; ED</string>

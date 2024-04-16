@@ -280,16 +280,6 @@ fun Activity.setNavigationTheme() {
     }
 }
 
-@ColorInt
-fun Context.getColorFromAttr(
-    @AttrRes attrColor: Int,
-    typedValue: TypedValue = TypedValue(),
-    resolveRefs: Boolean = true
-): Int {
-    theme.resolveAttribute(attrColor, typedValue, resolveRefs)
-    return typedValue.data
-}
-
 /**
  * Sets clipToPadding false and sets the combined height of navigation bars as bottom padding.
  *

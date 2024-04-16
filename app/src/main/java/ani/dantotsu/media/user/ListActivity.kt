@@ -22,6 +22,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -37,15 +38,13 @@ class ListActivity : AppCompatActivity() {
         ThemeManager(this).applyTheme()
         binding = ActivityListBinding.inflate(layoutInflater)
 
-        val typedValue = TypedValue()
-        theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, typedValue, true)
-        val primaryColor = typedValue.data
-        val typedValue3 = TypedValue()
-        theme.resolveAttribute(com.google.android.material.R.attr.colorPrimary, typedValue3, true)
-        val primaryTextColor = typedValue3.data
-        val typedValue4 = TypedValue()
-        theme.resolveAttribute(com.google.android.material.R.attr.colorOutline, typedValue4, true)
-        val secondaryTextColor = typedValue4.data
+        binding.listBackButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        val primaryColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
+        val primaryTextColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
+        val secondaryTextColor = getThemeColor(com.google.android.material.R.attr.colorOutline)
 
         window.statusBarColor = primaryColor
         window.navigationBarColor = primaryColor
@@ -154,9 +153,9 @@ class ListActivity : AppCompatActivity() {
                 }
                 true
             }
-            popup.menu.findItem(R.id.airing).setVisible(anime)
             popup.inflate(R.menu.list_sort_menu)
             popup.show()
+            popup.menu.findItem(R.id.airing).setVisible(anime)
         }
 
         binding.filter.setOnClickListener {
