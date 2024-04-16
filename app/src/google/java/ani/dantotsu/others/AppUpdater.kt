@@ -113,7 +113,6 @@ object AppUpdater {
     private fun compareVersion(version: String): Boolean {
         return when (BuildConfig.BUILD_TYPE) {
             "debug" -> BuildConfig.VERSION_NAME != version
-            "alpha" -> false
             else -> {
                 fun toDouble(list: List<String>): Double {
                     return list.mapIndexed { i: Int, s: String ->
