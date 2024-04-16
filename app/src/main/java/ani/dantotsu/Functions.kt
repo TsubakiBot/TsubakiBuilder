@@ -1044,7 +1044,9 @@ fun sinceWhen(media: Media, view: ViewGroup) {
                     timestamp = dateFormat.parse(it.record.releaseDate)?.time ?: timestamp
                     getLatestChapter(view.context, it)
                 }
-                val predicted = predictRelease(media, timestamp * 1000)
+                val predicted = if (media.status == "RELEASING")
+                    predictRelease(media, it.record.title, timestamp * 1000)
+                else null
                 val timeSince = (System.currentTimeMillis() - (timestamp * 1000)) / 1000
 
                 withContext(Dispatchers.Main) {
