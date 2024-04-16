@@ -154,6 +154,7 @@ class ListActivity : AppCompatActivity() {
                 }
                 true
             }
+            popup.menu.findItem(R.id.airing).setVisible(anime)
             popup.inflate(R.menu.list_sort_menu)
             popup.show()
         }

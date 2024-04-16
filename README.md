@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://pbxt.replicate.delivery/2PX94viD6lJSDVayQrGyDH7CGu7IjQ6e8HEtOGDeelefXRdOC/out.png" alt="Dantotsu Banner" width=100% >
+
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
@@ -7,23 +7,18 @@
    <a href="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi"><img src="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
-
-### 🚀 STAR THIS REPOSITORY TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!
-
-# **Dantotsu** 🌟
-
-Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
-
-> **Dantotsu (断トツ; Dan-totsu)** literally means "the best of the best" in Japanese.
-> Try it out for yourself and be the judge!
+<br />
 
 # **Mr. Matagi** 💦
 
+Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
+<br />
 Mr. Matagi is aimed at improving upon it.
 
 > **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese.
 > A copy of a project is a fork and a collection of changes is a branch.
-<br />
+
+### 🚀 STAR THIS REPO TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!  
 
 ## Mr. Matagi Modifications
 
@@ -36,7 +31,8 @@ Mr. Matagi is aimed at improving upon it.
 - Options to disable the comments API and trolling
 - System backup and restore / device transfer support
 - Change themes and other UI setting instantly
-- Offline mode with no internet connection required
+- Sort your anime by next upcoming episodes
+- Predictions for upcoming manga chapters
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
@@ -65,7 +61,6 @@ Mr. Matagi is aimed at improving upon it.
 - Code optimization and fixes throughout
 - Other bits and pieces I likely forgot
 </details>
-<br />
 
 ## WANT TO CONTRIBUTE? 🤝
 
@@ -74,11 +69,12 @@ All contributions are welcome, from code to documentation to graphics to design 
 
 ## LICENSE 📜
 
-Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)
+Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)  
+*Note: I am not a Dantotsu collaborator, nor member of its Discord.*
 <br />
 
 ## VISITORS
 
+<p align="center">
 <img src="https://count.getloli.com/get/@:repodevildantotsu" alt=":repodevildantotsu" />
-
-#### Note: I am not a Dantotsu collaborator, nor member of its Discord.
+</p>
