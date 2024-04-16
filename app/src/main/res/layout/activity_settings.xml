@@ -54,7 +54,7 @@
             android:id="@+id/settingsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:nestedScrollingEnabled="true"
             android:requiresFadingEdge="vertical"
             tools:itemCount="9"

@@ -98,7 +98,9 @@ class SettingsSystemActivity : AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            systemSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            systemSettingsBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
 
             importExportSettings.setOnClickListener {
                 StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
@@ -271,5 +273,10 @@ class SettingsSystemActivity : AppCompatActivity() {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
             handleOkAction()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

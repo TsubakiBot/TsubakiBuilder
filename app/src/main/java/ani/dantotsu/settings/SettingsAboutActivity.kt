@@ -37,7 +37,9 @@ class SettingsAboutActivity : AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            aboutSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+            aboutSettingsBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
 
             settingsFAQ.setOnClickListener {
                 startActivity(Intent(this@SettingsAboutActivity, FAQActivity::class.java))
@@ -95,5 +97,10 @@ class SettingsAboutActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

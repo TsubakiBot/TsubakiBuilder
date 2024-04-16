@@ -440,14 +440,11 @@ fun startMainActivity(activity: Activity, bundle: Bundle? = null) {
     activity.finishAffinity()
     activity.startActivity(
         Intent(activity, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                    Intent.FLAG_ACTIVITY_NEW_TASK
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
             if (bundle != null) putExtras(bundle)
         }
     )
 }
-
 
 class DatePickerFragment(activity: Activity, var date: FuzzyDate = FuzzyDate().getToday()) :
     DialogFragment(),

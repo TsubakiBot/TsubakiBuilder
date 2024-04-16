@@ -383,7 +383,7 @@ class ResumableWidget : AppWidgetProvider() {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java))
                 .forEach {
-                    appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+                    appWidgetManager.updateAppWidget(it, updateAppWidget(context, it))
                 }
         }
 
