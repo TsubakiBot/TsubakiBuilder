@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LayoutAnimationController
-import android.view.animation.TranslateAnimation
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -36,8 +35,6 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.pop
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.serverDownDialog
 import ani.dantotsu.setSafeOnClickListener
@@ -50,17 +47,13 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.matagi.launcher.ResumableShortcuts
 import ani.matagi.update.MatagiUpdater
-import ani.matagi.view.AnimatedLinearLayout
 import ani.matagi.widgets.resumable.ResumableWidget
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.random.Random
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -398,89 +391,6 @@ class HomeFragment : Fragment() {
                     live.postValue(false)
                     _binding?.homeRefresh?.isRefreshing = false
                 }
-            }
-        }
-
-        _binding?.let { binding ->
-            CoroutineScope(Dispatchers.IO).launch {
-                while (live.value == true) delay(1000)
-                delay(2000)
-                if (Random.nextInt(0, 100) > 75) {
-                    binding.donationButton.setOnClickListener {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            it.pop()
-                            openLinkInBrowser(getString(R.string.coffee))
-                            if (binding.donationReminder.isVisible) animateDonationView()
-                        }
-                    }
-                    binding.donationClose.setOnClickListener {
-                        CoroutineScope(Dispatchers.Main).launch {
-                            if (binding.donationReminder.isVisible) animateDonationView()
-                        }
-                    }
-                    animateDonationView()
-                }
-            }
-        }
-    }
-
-    private suspend fun animateDonationView() = withContext(Dispatchers.Main) {
-        _binding?.let { binding ->
-            if (binding.donationReminder.isVisible) {
-                val animate = TranslateAnimation(
-                    0f, 0f, 0f, -binding.donationReminder.height.toFloat()
-                ).apply {
-                    duration = 1000
-                    fillAfter = false
-                }
-                binding.donationReminder.setAnimationListener(object :
-                    AnimatedLinearLayout.AnimationListener {
-                    override fun onAnimationStart(layout: AnimatedLinearLayout) {
-                        binding.donationClose.visibility = View.GONE
-                        binding.donationText.postDelayed({
-                            binding.donationText.visibility = View.INVISIBLE
-                        }, 295)
-                        binding.donationButton.postDelayed({
-                            binding.donationButton.visibility = View.INVISIBLE
-                        }, 545)
-                    }
-
-                    override fun onAnimationEnd(layout: AnimatedLinearLayout) {
-                        binding.donationReminder.clearAnimation()
-                        layout.setAnimationListener(null)
-                        binding.donationReminder.visibility = View.GONE
-                    }
-                })
-                binding.donationReminder.startAnimation(animate)
-            } else {
-                binding.donationReminder.visibility = View.VISIBLE
-                val animate = TranslateAnimation(
-                    0f, 0f, -binding.donationReminder.height.toFloat(), 0f
-                ).apply {
-                    duration = 1000
-                    fillAfter = false
-                }
-                binding.donationReminder.setAnimationListener(object :
-                    AnimatedLinearLayout.AnimationListener {
-                    override fun onAnimationStart(layout: AnimatedLinearLayout) {
-                        binding.donationText.postDelayed({
-                            binding.donationText.visibility = View.VISIBLE
-                        }, 250)
-                        binding.donationButton.postDelayed({
-                            binding.donationButton.visibility = View.VISIBLE
-                        }, 500)
-                    }
-
-                    override fun onAnimationEnd(layout: AnimatedLinearLayout) {
-                        binding.donationClose.visibility = View.VISIBLE
-                        binding.donationReminder.clearAnimation()
-                        layout.setAnimationListener(null)
-                        CoroutineScope(Dispatchers.IO).launch {
-                            binding.donationButton.pop()
-                        }
-                    }
-                })
-                binding.donationReminder.startAnimation(animate)
             }
         }
     }
