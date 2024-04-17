@@ -15,7 +15,7 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
 <br />
 Mr. Matagi is aimed at improving upon it.
 
-> **Mataagi (又木; Mata-gi)** means "forked branch" in Japanese.
+> **Matagi (又木; Ma-ta-gi)** means "forked branch" in Japanese.
 > A copy of a project is a fork and a collection of changes is a branch.
 
 ### 🚀 STAR THIS REPO TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!  

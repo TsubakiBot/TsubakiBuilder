@@ -506,9 +506,9 @@
     <string name="deleted_from_list">Deleted from List</string>
     <string name="no_list_id">No List ID found…</string>
 
-    <string name="matagi_update">Mr. Matagi Update %1$s</string>
+    <string name="matagi_update">Mr. Matagi Himitsu %1$s</string>
     <string name="matagi_dont_show">Don\'t notify again for %1$s</string>
-    <string name="matagi_downloading">Downloading Mr. Matagi %1$s</string>
+    <string name="matagi_downloading">Downloading Himitsu %1$s</string>
 
     <string name="checking_for_update">Checking for Update</string>
     <string name="dont_show_again">Don\'t notify again for version %1$s</string>
