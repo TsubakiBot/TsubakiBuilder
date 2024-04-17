@@ -73,9 +73,6 @@
         <item>All</item>
     </string-array>
 
-    <string name="use_foldable">Use foldable layouts</string>
-    <string name="use_shortcuts">Add shortcuts to launcher icon</string>
-
     <string name="no_notifications">No more notifications</string>
     <string name="followers">Followers</string>
     <string name="social_in_media">Show social stats in media</string>
@@ -225,12 +222,12 @@
         <item>Challenge: Go to the very bottom of the Popular Anime &amp; Manga</item>
         <item>Try Long Clicking the Show\'s Title.</item>
         <item>Damn, why are you wasting your Time?</item>
-        <item>You can Long Click to copy this Message.</item>
+        <item>You can long click to copy this message.</item>
         <item>OMG LOOK! YOU FOUND AN EASTER EGG!?</item>
         <item>You know who else likes this Animation?</item>
         <item>MAL support? bruh.</item>
         <item>Novels? more like NO vels.</item>
-        <item>Long Click the logo to check for App Update</item>
+        <item>Long Click the logo to check for updates</item>
     </string-array>
 
     <string-array name="themes">
@@ -393,7 +390,7 @@
     <string name="search_source_list">Search next available source</string>
     <string name="timestamp_proxy_desc">Useful if you are getting Handshake Fails</string>
     <string name="timestamp_proxy">Use Proxy for Timestamps</string>
-    <string name="check_app_updates">Always check for App Updates</string>
+    <string name="check_app_updates">Check for updates</string>
     <string name="author">Author</string>
     <string name="forks">Versions</string>
     <string name="faq">FAQ</string>
@@ -459,7 +456,7 @@
     <string name="jobless_message">DAMN! YOU TRULY ARE JOBLESS\nYOU REACHED THE END</string>
     <string name="file_manager_not_found">Couldn\'t find a File Manager to open SD card</string>
     <string name="error_loading_data">Error loading data %1$s</string>
-    <string name="long_click_to_check_update">Long click to check for app updates</string>
+    <string name="long_click_to_check_update">Long click to check for updates</string>
     <string name="saved_to_path">Saved to:\n%s</string>
     <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Please log into AniList account!</string>
@@ -745,12 +742,24 @@
     <string name="purge_manga_downloads">Delete all Manga Downloads</string>
     <string name="purge_novel_downloads">Delete all Novel Downloads</string>
     <string name="requires_android_12">Requires Android 12+</string>
-    <string name="share_username_in_crash_reports">Share username in crash reports</string>
+    <string name="share_username_in_logs">Share username in logs</string>
     <string name="pinned_sources">Pinned Sources</string>
     <string name="backup_restore">Backup and Restore</string>
     <string name="restore_settings">Import Settings</string>
     <string name="restore_settings_underline"><u>Restore Settings</u></string>
     <string name="try_internal_cast_experimental">Try Internal Cast (Experimental)</string>
+
+    <string name="faq_desc">General questions about Mr. Matagi</string>
+    <string name="check_app_updates_desc">Check Github for app updates</string>
+    <string name="share_username_in_logs_desc">Include username in crash reports</string>
+    <string name="devs_desc">Mr. Matagi\'s very own unpaid laborers</string>
+    <string name="forks_desc">Projects derived from Dantotsu</string>
+    <string name="disclaimer_desc">Something to keep in mind</string>
+
+    <string name="use_foldable">Use foldable layouts</string>
+    <string name="use_foldable_desc">Responds to hinge configuration</string>
+    <string name="add_shortcuts">Add shortcuts to launcher</string>
+    <string name="add_shortcuts_desc">Adds continue items to icon long click</string>
 
     <string name="comments">Comments</string>
     <string name="newest">Newest</string>
@@ -805,7 +814,8 @@
     <string name="open_website">Open Website</string>
 
     <string name="log_to_file">Log to File</string>
-    <string name="logging_warning">Logging to a file will slow down the app. Only enable if you are experiencing issues.</string>
+    <string name="logging_warning">May cause lag. Only enable if experiencing issues.</string>
+    <string name="share_log">Click to share current log file</string>
     <string name="radius">Radius</string>
     <string name="sampling">Sampling</string>
     <string name="blur_banners">Blur Banners</string>

@@ -48,7 +48,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.faq),
-                        desc = getString(R.string.faq),
+                        desc = getString(R.string.faq_desc),
                         icon = R.drawable.ic_round_help_24,
                         onClick = {
                             startActivity(Intent(context, FAQActivity::class.java))
@@ -58,7 +58,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.devs),
-                        desc= getString(R.string.devs),
+                        desc= getString(R.string.devs_desc),
                         icon = R.drawable.ic_round_accessible_forward_24,
                         onClick = {
                             DevelopersDialogFragment().show(supportFragmentManager, "dialog")
@@ -67,7 +67,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.forks),
-                        desc = getString(R.string.forks),
+                        desc = getString(R.string.forks_desc),
                         icon = R.drawable.ic_round_restaurant_24,
                         onClick = {
                             ForksDialogFragment().show(supportFragmentManager, "dialog")
@@ -76,7 +76,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.disclaimer),
-                        desc = getString(R.string.disclaimer),
+                        desc = getString(R.string.disclaimer_desc),
                         icon = R.drawable.ic_round_info_24,
                         onClick = {
                             val text = TextView(context)

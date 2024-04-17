@@ -18,7 +18,6 @@ import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
-import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
@@ -35,10 +34,8 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
-import ani.matagi.os.Version
 import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
-import eltos.simpledialogfragment.color.SimpleColorDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -171,7 +168,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.use_foldable),
-                        desc = getString(R.string.use_foldable),
+                        desc = getString(R.string.use_foldable_desc),
                         icon = R.drawable.ic_devices_fold_24,
                         isChecked = PrefManager.getVal(PrefName.UseFoldable),
                         switch = {isChecked, _ ->
@@ -180,8 +177,8 @@ class SettingsSystemActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
-                        name = getString(R.string.use_shortcuts),
-                        desc = getString(R.string.use_shortcuts),
+                        name = getString(R.string.add_shortcuts),
+                        desc = getString(R.string.add_shortcuts_desc),
                         icon = R.drawable.ic_app_shortcut_24,
                         isChecked = PrefManager.getVal(PrefName.UseShortcuts),
                         switch = {isChecked, _ ->
@@ -192,7 +189,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.check_app_updates),
-                        desc = getString(R.string.check_app_updates),
+                        desc = getString(R.string.check_app_updates_desc),
                         icon = R.drawable.ic_round_new_releases_24,
                         isChecked = PrefManager.getVal(PrefName.CheckUpdate),
                         switch = {isChecked, _ ->
@@ -210,8 +207,8 @@ class SettingsSystemActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
-                        name = getString(R.string.share_username_in_crash_reports),
-                        desc = getString(R.string.share_username_in_crash_reports),
+                        name = getString(R.string.share_username_in_logs),
+                        desc = getString(R.string.share_username_in_logs_desc),
                         icon = R.drawable.ic_round_search_24,
                         isChecked = PrefManager.getVal(PrefName.SharedUserID),
                         switch = {isChecked, _ ->
@@ -222,7 +219,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.log_to_file),
-                        desc = getString(R.string.log_to_file),
+                        desc = getString(R.string.logging_warning),
                         icon = R.drawable.ic_round_edit_note_24,
                         isChecked = PrefManager.getVal(PrefName.LogToFile),
                         switch = {isChecked, _ ->
@@ -234,7 +231,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = "",
-                        desc = getString(R.string.logging_warning),
+                        desc = getString(R.string.share_log),
                         icon = R.drawable.ic_round_share_24,
                         onClick = {
                             Logger.shareLog(this@SettingsSystemActivity)
