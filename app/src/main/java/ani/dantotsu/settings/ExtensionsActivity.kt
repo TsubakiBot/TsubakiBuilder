@@ -28,6 +28,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.LanguageMapper
+import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -46,6 +47,7 @@ class ExtensionsActivity : AppCompatActivity() {
 
     private val animeExtensionManager: AnimeExtensionManager by injectLazy()
     private val mangaExtensionManager: MangaExtensionManager by injectLazy()
+    private val novelExtensionManager: NovelExtensionManager by injectLazy()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +117,9 @@ class ExtensionsActivity : AppCompatActivity() {
                     }
                     if (tab.text?.contains("Manga") == true) {
                         generateRepositoryButton(MediaType.MANGA)
+                    }
+                    if (tab.text?.contains("Novel") == true) {
+                        generateRepositoryButton(MediaType.NOVEL)
                     }
                 }
 
@@ -196,20 +201,30 @@ class ExtensionsActivity : AppCompatActivity() {
     private fun processUserInput(input: String, mediaType: MediaType) {
         val entry = if (input.endsWith("/") || input.endsWith("index.min.json"))
             input.substring(0, input.lastIndexOf("/")) else input
-        if (mediaType == MediaType.ANIME) {
-            val anime =
-                PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
-            PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
-            CoroutineScope(Dispatchers.IO).launch {
-                animeExtensionManager.findAvailableExtensions()
+        when (mediaType) {
+            MediaType.ANIME -> {
+                val anime =
+                    PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
+                PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
+                CoroutineScope(Dispatchers.IO).launch {
+                    animeExtensionManager.findAvailableExtensions()
+                }
             }
-        }
-        if (mediaType == MediaType.MANGA) {
-            val manga =
-                PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
-            PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
-            CoroutineScope(Dispatchers.IO).launch {
-                mangaExtensionManager.findAvailableExtensions()
+            MediaType.MANGA -> {
+                val manga =
+                    PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
+                PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
+                CoroutineScope(Dispatchers.IO).launch {
+                    mangaExtensionManager.findAvailableExtensions()
+                }
+            }
+            MediaType.NOVEL -> {
+                val novel =
+                    PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
+                PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
+                CoroutineScope(Dispatchers.IO).launch {
+                    novelExtensionManager.findAvailableExtensions()
+                }
             }
         }
     }
@@ -219,6 +234,7 @@ class ExtensionsActivity : AppCompatActivity() {
         val prefName: PrefName? = when (type) {
             MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
             MediaType.MANGA -> { PrefName.MangaExtensionRepos }
+            MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
             else -> { null }
         }
         prefName?.let { repoList ->
@@ -239,6 +255,7 @@ class ExtensionsActivity : AppCompatActivity() {
                                 when (type) {
                                     MediaType.ANIME -> { animeExtensionManager.findAvailableExtensions() }
                                     MediaType.MANGA -> { mangaExtensionManager.findAvailableExtensions() }
+                                    MediaType.NOVEL -> { novelExtensionManager.findAvailableExtensions() }
                                     else -> {  }
                                 }
                             }
@@ -280,6 +297,7 @@ class ExtensionsActivity : AppCompatActivity() {
         val hintResource: Int? = when (type) {
             MediaType.ANIME -> { R.string.anime_add_repository }
             MediaType.MANGA -> { R.string.manga_add_repository }
+            MediaType.NOVEL -> { R.string.novel_add_repository }
             else -> { null }
         }
         hintResource?.let { res ->

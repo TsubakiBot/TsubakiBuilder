@@ -28,6 +28,7 @@ sealed class NovelExtension {
         override val versionCode: Long,
         val sources: List<AvailableNovelSources>,
         val iconUrl: String,
+        val repository: String
     ) : NovelExtension()
 }
 

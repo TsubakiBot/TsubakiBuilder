@@ -893,6 +893,7 @@
 
     <string name="anime_add_repository">Add Anime Repo</string>
     <string name="manga_add_repository">Add Manga Repo</string>
+    <string name="novel_add_repository">Add Novel Repo</string>
     <string name="edit_repositories">Edit repositories</string>
     <string name="rem_repository">Remove repository?</string>
 

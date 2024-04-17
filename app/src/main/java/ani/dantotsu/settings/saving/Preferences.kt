@@ -34,6 +34,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     ),
     AnimeExtensionRepos(Pref(Location.General, Set::class, setOf<String>())),
     MangaExtensionRepos(Pref(Location.General, Set::class, setOf<String>())),
+    NovelExtensionRepos(Pref(Location.General, Set::class, setOf<String>())),
     TorrServerEnabled(Pref(Location.General, Boolean::class, false)),
     AnimeSourcesOrder(Pref(Location.General, List::class, listOf<String>())),
     AnimeSearchHistory(Pref(Location.General, Set::class, setOf<String>())),

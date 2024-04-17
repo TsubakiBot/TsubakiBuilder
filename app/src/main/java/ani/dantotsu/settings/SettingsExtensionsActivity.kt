@@ -20,6 +20,7 @@ import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -40,6 +41,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
     private val extensionInstaller = Injekt.get<BasePreferences>().extensionInstaller()
     private val animeExtensionManager: AnimeExtensionManager by injectLazy()
     private val mangaExtensionManager: MangaExtensionManager by injectLazy()
+    private val novelExtensionManager: NovelExtensionManager by injectLazy()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
@@ -63,6 +65,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 val prefName: PrefName? = when (type) {
                     MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
                     MediaType.MANGA -> { PrefName.MangaExtensionRepos }
+                    MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
                     else -> { null }
                 }
                 prefName?.let { repoList ->
@@ -83,6 +86,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                                         when (type) {
                                             MediaType.ANIME -> { animeExtensionManager.findAvailableExtensions() }
                                             MediaType.MANGA -> { mangaExtensionManager.findAvailableExtensions() }
+                                            MediaType.NOVEL -> { novelExtensionManager.findAvailableExtensions() }
                                             else -> { }
                                         }
                                     }
@@ -107,20 +111,30 @@ class SettingsExtensionsActivity: AppCompatActivity() {
             fun processUserInput(input: String, mediaType: MediaType, view: ViewGroup) {
                 val entry = if (input.endsWith("/") || input.endsWith("index.min.json"))
                     input.substring(0, input.lastIndexOf("/")) else input
-                if (mediaType == MediaType.ANIME) {
-                    val anime =
-                        PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
-                    PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        animeExtensionManager.findAvailableExtensions()
+                when (mediaType) {
+                    MediaType.ANIME -> {
+                        val anime =
+                            PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
+                        PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            animeExtensionManager.findAvailableExtensions()
+                        }
                     }
-                }
-                if (mediaType == MediaType.MANGA) {
-                    val manga =
-                        PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
-                    PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        mangaExtensionManager.findAvailableExtensions()
+                    MediaType.MANGA -> {
+                        val manga =
+                            PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
+                        PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            mangaExtensionManager.findAvailableExtensions()
+                        }
+                    }
+                    MediaType.NOVEL -> {
+                        val novel =
+                            PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
+                        PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            novelExtensionManager.findAvailableExtensions()
+                        }
                     }
                 }
                 setExtensionOutput(view, mediaType)
@@ -209,6 +223,40 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                                 }.create()
 
                             processEditorAction(alertDialog, editText, MediaType.MANGA, it.attachView)
+                            alertDialog.show()
+                            alertDialog.window?.setDimAmount(0.8f)
+                        },
+                        attach = { view ->
+                            setExtensionOutput(view, MediaType.MANGA)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.novel_add_repository),
+                        desc = getString(R.string.novel_add_repository),
+                        icon = R.drawable.ic_github,
+                        onClick = {
+                            val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
+                            val editText =
+                                dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
+                                    hint = getString(R.string.novel_add_repository)
+                                }
+                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.novel_add_repository).setView(dialogView)
+                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                    if (!editText.text.isNullOrBlank()) {
+                                        processUserInput(
+                                            editText.text.toString(),
+                                            MediaType.NOVEL,
+                                            it.attachView
+                                        )
+                                    }
+                                    dialog.dismiss()
+                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
+
+                            processEditorAction(alertDialog, editText, MediaType.NOVEL, it.attachView)
                             alertDialog.show()
                             alertDialog.window?.setDimAmount(0.8f)
                         },
