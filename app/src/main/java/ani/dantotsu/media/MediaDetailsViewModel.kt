@@ -41,7 +41,6 @@ class MediaDetailsViewModel : ViewModel() {
         PrefManager.setCustomVal("Selected-$id", data)
     }
 
-
     fun loadSelected(media: Media, isDownload: Boolean = false): Selected {
         val data =
             PrefManager.getNullableCustomVal("Selected-${media.id}", null, Selected::class.java)
@@ -85,7 +84,6 @@ class MediaDetailsViewModel : ViewModel() {
     }
 
     val responses = MutableLiveData<List<ShowResponse>?>(null)
-
 
     //Anime
     private val kitsuEpisodes: MutableLiveData<Map<String, Episode>> =

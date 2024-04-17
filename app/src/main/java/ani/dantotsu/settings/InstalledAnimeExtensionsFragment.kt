@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
+import ani.dantotsu.media.SourceBrowseDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.settings.extensionprefs.AnimeSourcePreferencesFragment
@@ -171,7 +172,14 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
                     snackString("Extension uninstalled")
                 }
             }
-        }, skipIcons
+        },
+        { extension ->
+            SourceBrowseDialogFragment(extension).show(
+                requireActivity().supportFragmentManager,
+                null
+            )
+        },
+        skipIcons
     )
 
 
@@ -267,6 +275,7 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
     private class AnimeExtensionsAdapter(
         private val onSettingsClicked: (AnimeExtension.Installed) -> Unit,
         private val onUninstallClicked: (AnimeExtension.Installed, Boolean) -> Unit,
+        private val onSearchClicked: (AnimeExtension.Installed) -> Unit,
         val skipIcons: Boolean
     ) : ListAdapter<AnimeExtension.Installed, AnimeExtensionsAdapter.ViewHolder>(
         DIFF_CALLBACK_INSTALLED
@@ -314,6 +323,10 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
                 onUninstallClicked(extension, true)
                 true
             }
+
+            holder.searchImageView.setOnClickListener {
+                onSearchClicked(extension)
+            }
         }
 
         fun filter(query: String, currentList: List<AnimeExtension.Installed>) {
@@ -334,6 +347,7 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             val settingsImageView: ImageView = view.findViewById(R.id.settingsImageView)
             val extensionIconImageView: ImageView = view.findViewById(R.id.extensionIconImageView)
             val closeTextView: ImageView = view.findViewById(R.id.closeTextView)
+            val searchImageView: ImageView = view.findViewById(R.id.searchImageView)
         }
 
         companion object {
