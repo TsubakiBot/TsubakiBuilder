@@ -11,9 +11,11 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ActivitySettingsExtensionsBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
@@ -42,6 +44,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsExtensionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -101,7 +104,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 }
             }
 
-            fun processUserInput(input: String, mediaType: MediaType) {
+            fun processUserInput(input: String, mediaType: MediaType, view: ViewGroup) {
                 val entry = if (input.endsWith("/") || input.endsWith("index.min.json"))
                     input.substring(0, input.lastIndexOf("/")) else input
                 if (mediaType == MediaType.ANIME) {
@@ -111,7 +114,6 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                     CoroutineScope(Dispatchers.IO).launch {
                         animeExtensionManager.findAvailableExtensions()
                     }
-                    setExtensionOutput(animeRepoInventory, MediaType.ANIME)
                 }
                 if (mediaType == MediaType.MANGA) {
                     val manga =
@@ -120,11 +122,13 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                     CoroutineScope(Dispatchers.IO).launch {
                         mangaExtensionManager.findAvailableExtensions()
                     }
-                    setExtensionOutput(mangaRepoInventory, MediaType.MANGA)
                 }
+                setExtensionOutput(view, mediaType)
             }
 
-            fun processEditorAction(dialog: AlertDialog, editText: EditText, mediaType: MediaType) {
+            fun processEditorAction(
+                dialog: AlertDialog, editText: EditText, mediaType: MediaType, view: ViewGroup
+            ) {
                 editText.setOnEditorActionListener { textView, action, keyEvent ->
                     if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE ||
                         (keyEvent?.action == KeyEvent.ACTION_UP
@@ -133,7 +137,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                         return@setOnEditorActionListener if (textView.text.isNullOrBlank()) {
                             false
                         } else {
-                            processUserInput(textView.text.toString(), mediaType)
+                            processUserInput(textView.text.toString(), mediaType, view)
                             dialog.dismiss()
                             true
                         }
@@ -142,101 +146,143 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 }
             }
 
-            setExtensionOutput(animeRepoInventory, MediaType.ANIME)
-            setExtensionOutput(mangaRepoInventory, MediaType.MANGA)
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.anime_add_repository),
+                        desc = getString(R.string.anime_add_repository),
+                        icon = R.drawable.ic_github,
+                        onClick = {
+                            val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
+                            val editText =
+                                dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
+                                    hint = getString(R.string.anime_add_repository)
+                                }
+                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.anime_add_repository).setView(dialogView)
+                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                    if (!editText.text.isNullOrBlank()) {
+                                        processUserInput(
+                                            editText.text.toString(),
+                                            MediaType.ANIME,
+                                            it.attachView
+                                        )
+                                    }
+                                    dialog.dismiss()
+                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
 
-            animeAddRepository.setOnClickListener {
-                val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
-                val editText =
-                    dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
-                        hint = getString(R.string.anime_add_repository)
-                    }
-                val alertDialog = AlertDialog.Builder(this@SettingsExtensionsActivity, R.style.MyPopup)
-                    .setTitle(R.string.anime_add_repository)
-                    .setView(dialogView)
-                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                        if (!editText.text.isNullOrBlank())
-                            processUserInput(editText.text.toString(), MediaType.ANIME)
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
+                            processEditorAction(alertDialog, editText, MediaType.ANIME, it.attachView)
+                            alertDialog.show()
+                            alertDialog.window?.setDimAmount(0.8f)
+                        },
+                        attach = { view ->
+                            setExtensionOutput(view, MediaType.ANIME)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.manga_add_repository),
+                        desc = getString(R.string.manga_add_repository),
+                        icon = R.drawable.ic_github,
+                        onClick = {
+                            val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
+                            val editText =
+                                dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
+                                    hint = getString(R.string.manga_add_repository)
+                                }
+                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.manga_add_repository).setView(dialogView)
+                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                    if (!editText.text.isNullOrBlank()) {
+                                        processUserInput(
+                                            editText.text.toString(),
+                                            MediaType.MANGA,
+                                            it.attachView
+                                        )
+                                    }
+                                    dialog.dismiss()
+                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
 
-                processEditorAction(alertDialog, editText, MediaType.ANIME)
-                alertDialog.show()
-                alertDialog.window?.setDimAmount(0.8f)
-            }
+                            processEditorAction(alertDialog, editText, MediaType.MANGA, it.attachView)
+                            alertDialog.show()
+                            alertDialog.window?.setDimAmount(0.8f)
+                        },
+                        attach = { view ->
+                            setExtensionOutput(view, MediaType.MANGA)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.user_agent),
+                        desc = getString(R.string.NSFWExtention),
+                        icon = R.drawable.ic_round_video_settings_24,
+                        onClick = {
+                            val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
+                            val editText = dialogView.userAgentTextBox
+                            editText.setText(PrefManager.getVal<String>(PrefName.DefaultUserAgent))
+                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.user_agent).setView(dialogView.root)
+                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                    PrefManager.setVal(PrefName.DefaultUserAgent, editText.text.toString())
+                                    dialog.dismiss()
+                                }.setNeutralButton(getString(R.string.reset)) { dialog, _ ->
+                                    PrefManager.removeVal(PrefName.DefaultUserAgent)
+                                    editText.setText("")
+                                    dialog.dismiss()
+                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
 
-            mangaAddRepository.setOnClickListener {
-                val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
-                val editText =
-                    dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox).apply {
-                        hint = getString(R.string.manga_add_repository)
-                    }
-                val alertDialog = AlertDialog.Builder(this@SettingsExtensionsActivity, R.style.MyPopup)
-                    .setTitle(R.string.manga_add_repository)
-                    .setView(dialogView)
-                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                        if (!editText.text.isNullOrBlank())
-                            processUserInput(editText.text.toString(), MediaType.MANGA)
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
+                            alertDialog.show()
+                            alertDialog.window?.setDimAmount(0.8f)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.force_legacy_installer),
+                        desc = getString(R.string.force_legacy_installer),
+                        icon = R.drawable.ic_round_new_releases_24,
+                        isChecked =  extensionInstaller.get() == BasePreferences.ExtensionInstaller.LEGACY,
+                        switch = { isChecked, _ ->
+                            if (isChecked) {
+                                extensionInstaller.set(BasePreferences.ExtensionInstaller.LEGACY)
+                            } else {
+                                extensionInstaller.set(BasePreferences.ExtensionInstaller.PACKAGEINSTALLER)
+                            }
+                        }
 
-                processEditorAction(alertDialog, editText, MediaType.MANGA)
-                alertDialog.show()
-                alertDialog.window?.setDimAmount(0.8f)
-            }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.skip_loading_extension_icons),
+                        desc = getString(R.string.skip_loading_extension_icons),
+                        icon = R.drawable.ic_round_no_icon_24,
+                        isChecked = PrefManager.getVal(PrefName.SkipExtensionIcons),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.SkipExtensionIcons, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.NSFWExtention),
+                        desc = getString(R.string.NSFWExtention),
+                        icon = R.drawable.ic_round_nsfw_24,
+                        isChecked = PrefManager.getVal(PrefName.NSFWExtension),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.NSFWExtension, isChecked)
+                        }
 
-            settingsForceLegacyInstall.isChecked =
-                extensionInstaller.get() == BasePreferences.ExtensionInstaller.LEGACY
-            settingsForceLegacyInstall.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    extensionInstaller.set(BasePreferences.ExtensionInstaller.LEGACY)
-                } else {
-                    extensionInstaller.set(BasePreferences.ExtensionInstaller.PACKAGEINSTALLER)
-                }
-            }
-
-            skipExtensionIcons.isChecked =
-                PrefManager.getVal(PrefName.SkipExtensionIcons)
-            skipExtensionIcons.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.getVal(PrefName.SkipExtensionIcons, isChecked)
-            }
-            NSFWExtension.isChecked = PrefManager.getVal(PrefName.NSFWExtension)
-            NSFWExtension.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.NSFWExtension, isChecked)
-
-            }
-
-            userAgent.setOnClickListener {
-                val dialogView = layoutInflater.inflate(R.layout.dialog_user_agent, null)
-                val editText = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)
-                editText.setText(PrefManager.getVal<String>(PrefName.DefaultUserAgent))
-                val alertDialog = AlertDialog.Builder(this@SettingsExtensionsActivity, R.style.MyPopup)
-                    .setTitle(R.string.user_agent)
-                    .setView(dialogView)
-                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                        PrefManager.setVal(PrefName.DefaultUserAgent, editText.text.toString())
-                        dialog.dismiss()
-                    }
-                    .setNeutralButton(getString(R.string.reset)) { dialog, _ ->
-                        PrefManager.removeVal(PrefName.DefaultUserAgent)
-                        editText.setText("")
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
-
-                alertDialog.show()
-                alertDialog.window?.setDimAmount(0.8f)
+                    )
+                )
+            )
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
             }
         }
     }

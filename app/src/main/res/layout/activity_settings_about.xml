@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -70,97 +70,21 @@
 
         <!-- beginning of layout contents -->
 
-        <Button
-            android:id="@+id/settingsFAQ"
+        <ani.dantotsu.others.FadingEdgeRecyclerView
+            android:id="@+id/settingsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginStart="-31dp"
-            android:layout_marginEnd="-31dp"
-            android:background="@drawable/ui_bg"
-            android:backgroundTint="?attr/colorOnBackground"
-            android:backgroundTintMode="src_atop"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingStart="31dp"
-            android:paddingEnd="31dp"
-            android:text="@string/faq"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground"
-            app:cornerRadius="0dp"
-            app:icon="@drawable/ic_round_help_24"
-            app:iconPadding="16dp"
-            app:iconSize="24dp"
-            app:iconTint="?attr/colorPrimary" />
-        <Button
-            android:id="@+id/settingsDev"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginStart="-31dp"
-            android:layout_marginEnd="-31dp"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingStart="31dp"
-            android:paddingEnd="31dp"
-            android:text="@string/devs"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground"
-            app:cornerRadius="0dp"
-            app:icon="@drawable/ic_round_accessible_forward_24"
-            app:iconPadding="16dp"
-            app:iconSize="24dp" />
-
-        <Button
-            android:id="@+id/settingsForks"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginStart="-31dp"
-            android:layout_marginEnd="-31dp"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingStart="31dp"
-            android:paddingEnd="31dp"
-            android:text="@string/forks"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground"
-            app:cornerRadius="0dp"
-            app:icon="@drawable/ic_round_restaurant_24"
-            app:iconPadding="16dp"
-            app:iconSize="24dp" />
-
-        <Button
-            android:id="@+id/settingsDisclaimer"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginStart="-31dp"
-            android:layout_marginEnd="-31dp"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingStart="31dp"
-            android:paddingEnd="31dp"
-            android:text="@string/disclaimer"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground"
-            app:cornerRadius="0dp"
-            app:icon="@drawable/ic_round_info_24"
-            app:iconPadding="16dp"
-            app:iconSize="24dp" />
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:nestedScrollingEnabled="true"
+            android:requiresFadingEdge="vertical"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_settings" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:layout_marginVertical="32dp"
+            android:layout_marginVertical="16dp"
             android:orientation="vertical">
 
             <TextView

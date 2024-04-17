@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsAnimeBinding
@@ -34,6 +35,7 @@ class SettingsAnimeActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -47,41 +49,75 @@ class SettingsAnimeActivity: AppCompatActivity(){
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            settingsPlayer.setOnClickListener {
-                startActivity(Intent(this@SettingsAnimeActivity, PlayerSettingsActivity::class.java))
-            }
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.player_settings),
+                        desc = getString(R.string.player_settings),
+                        icon = R.drawable.ic_round_video_settings_24,
+                        onClick = {
+                            startActivity(Intent(context, PlayerSettingsActivity::class.java))
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.purge_anime_downloads),
+                        desc = getString(R.string.purge_anime_downloads),
+                        icon = R.drawable.ic_round_delete_24,
+                        onClick = {
+                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.purge_anime_downloads)
+                                .setMessage(getString(R.string.purge_confirm, getString(R.string.anime)))
+                                .setPositiveButton(R.string.yes) { dialog, _ ->
+                                    val downloadsManager = Injekt.get<DownloadsManager>()
+                                    downloadsManager.purgeDownloads(MediaType.ANIME)
+                                    dialog.dismiss()
+                                }.setNegativeButton(R.string.no) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
+                            dialog.window?.setDimAmount(0.8f)
+                            dialog.show()
+                        }
 
-            purgeAnimeDownloads.setOnClickListener {
-                val dialog = AlertDialog.Builder(this@SettingsAnimeActivity, R.style.MyPopup)
-                    .setTitle(R.string.purge_anime_downloads)
-                    .setMessage(getString(R.string.purge_confirm, getString(R.string.anime)))
-                    .setPositiveButton(R.string.yes) { dialog, _ ->
-                        val downloadsManager = Injekt.get<DownloadsManager>()
-                        downloadsManager.purgeDownloads(MediaType.ANIME)
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton(R.string.no) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                dialog.window?.setDimAmount(0.8f)
-                dialog.show()
-            }
-
-            settingsPreferDub.isChecked = PrefManager.getVal(PrefName.SettingsPreferDub)
-            settingsPreferDub.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.SettingsPreferDub, isChecked)
-            }
-
-
-            settingsShowYt.isChecked = PrefManager.getVal(PrefName.ShowYtButton)
-            settingsShowYt.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.ShowYtButton, isChecked)
-            }
-            settingsIncludeAnimeList.isChecked = PrefManager.getVal(PrefName.IncludeAnimeList)
-            settingsIncludeAnimeList.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.IncludeAnimeList, isChecked)
-                Refresh.all()
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.prefer_dub),
+                        desc = getString(R.string.prefer_dub),
+                        icon = R.drawable.ic_round_audiotrack_24,
+                        isChecked = PrefManager.getVal(PrefName.SettingsPreferDub),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.SettingsPreferDub, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.show_yt),
+                        desc = getString(R.string.show_yt),
+                        icon = R.drawable.ic_round_play_circle_24,
+                        isChecked = PrefManager.getVal(PrefName.ShowYtButton),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.ShowYtButton, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.include_list),
+                        desc = getString(R.string.include_list),
+                        icon = R.drawable.view_list_24,
+                        isChecked = PrefManager.getVal(PrefName.IncludeAnimeList),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.IncludeAnimeList, isChecked)
+                            Refresh.all()
+                        }
+                    ),
+                )
+            )
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
             }
 
             var previousEp: View = when (PrefManager.getVal<Int>(PrefName.AnimeDefaultView)) {

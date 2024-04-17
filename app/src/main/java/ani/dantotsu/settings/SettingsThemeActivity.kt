@@ -9,6 +9,7 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
@@ -30,6 +31,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsThemeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -47,19 +49,95 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            settingsUi.setOnClickListener {
-                startActivity(
-                    Intent(
-                        this@SettingsThemeActivity, UserInterfaceSettingsActivity::class.java
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.ui_settings),
+                        desc = getString(R.string.ui_settings),
+                        icon = R.drawable.ic_round_auto_awesome_24,
+                        onClick = {
+                            startActivity(Intent(context, UserInterfaceSettingsActivity::class.java))
+                            finish()
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.oled_theme_variant),
+                        desc = getString(R.string.oled_theme_variant),
+                        icon = R.drawable.ic_round_brightness_4_24,
+                        isChecked = PrefManager.getVal(PrefName.UseOLED),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseOLED, isChecked)
+                            recreate()
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_material_you),
+                        desc = getString(R.string.use_material_you),
+                        icon = R.drawable.ic_round_new_releases_24,
+                        isChecked = PrefManager.getVal(PrefName.UseMaterialYou),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
+                            if (isChecked) PrefManager.setVal(PrefName.UseCustomTheme, false)
+                            recreate()
+                        },
+                        isVisible = Version.isSnowCone
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_unique_theme_for_each_item),
+                        desc = getString(R.string.use_unique_theme_for_each_item),
+                        icon = R.drawable.ic_palette,
+                        isChecked = PrefManager.getVal(PrefName.UseSourceTheme),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
+                            recreate()
+                        },
+                        isVisible = Version.isSnowCone
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_custom_theme),
+                        desc = getString(R.string.use_custom_theme),
+                        icon = R.drawable.ic_palette,
+                        isChecked = PrefManager.getVal(PrefName.UseCustomTheme),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseCustomTheme, isChecked)
+                            if (isChecked) PrefManager.setVal(PrefName.UseMaterialYou, false)
+                            recreate()
+                        },
+                        isVisible = Version.isSnowCone
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.color_picker),
+                        desc = getString(R.string.color_picker),
+                        icon = R.drawable.ic_palette,
+                        onClick = {
+                            val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)
+                            class CustomColorDialog : SimpleColorDialog() {
+                                override fun onPositiveButtonClick() {
+                                    recreate()
+                                    super.onPositiveButtonClick()
+                                }
+                            }
+                            val tag = "colorPicker"
+                            CustomColorDialog().title(R.string.custom_theme).colorPreset(originalColor)
+                                .colors(context, SimpleColorDialog.MATERIAL_COLOR_PALLET)
+                                .allowCustom(true).showOutline(0x46000000).gridNumColumn(5)
+                                .choiceMode(SimpleColorDialog.SINGLE_CHOICE).neg()
+                                .show(context, tag)
+                        },
+                        isVisible = Version.isSnowCone
                     )
                 )
-                finish()
-            }
-
-            settingsUseOLED.isChecked = PrefManager.getVal(PrefName.UseOLED)
-            settingsUseOLED.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseOLED, isChecked)
-                recreate()
+            )
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
             }
 
             val themeString: String = PrefManager.getVal(PrefName.Theme)
@@ -94,63 +172,16 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             }
 
             settingsUiLight.setOnClickListener {
-                settingsUseOLED.isChecked = false
+                val oledSwitch = settingsRecyclerView.findViewHolderForAdapterPosition(1)
+                        as SettingsAdapter.SettingsSwitchViewHolder
+                oledSwitch.binding.settingsButton.isChecked = false
+                PrefManager.setVal(PrefName.UseOLED, false)
                 uiTheme(1, it)
             }
 
             settingsUiDark.setOnClickListener {
                 uiTheme(2, it)
             }
-
-            if (Version.isSnowCone) {
-                settingsUseMaterialYou.isChecked =
-                    PrefManager.getVal(PrefName.UseMaterialYou)
-                settingsUseMaterialYou.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
-                    if (isChecked) settingsUseCustomTheme.isChecked = false
-                    recreate()
-                }
-
-                settingsUseSourceTheme.isChecked =
-                    PrefManager.getVal(PrefName.UseSourceTheme)
-                settingsUseSourceTheme.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
-                    recreate()
-                }
-
-                settingsUseCustomTheme.isChecked =
-                    PrefManager.getVal(PrefName.UseCustomTheme)
-                settingsUseCustomTheme.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.UseCustomTheme, isChecked)
-                    if (isChecked) {
-                        settingsUseMaterialYou.isChecked = false
-                    }
-                    recreate()
-                }
-
-                customTheme.setOnClickListener {
-                    val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)
-
-                    class CustomColorDialog : SimpleColorDialog() { //idk where to put it
-                        override fun onPositiveButtonClick() {
-                            recreate()
-                            super.onPositiveButtonClick()
-                        }
-                    }
-
-                    val tag = "colorPicker"
-                    CustomColorDialog().title(R.string.custom_theme)
-                        .colorPreset(originalColor)
-                        .colors(this@SettingsThemeActivity, SimpleColorDialog.MATERIAL_COLOR_PALLET)
-                        .allowCustom(true)
-                        .showOutline(0x46000000)
-                        .gridNumColumn(5)
-                        .choiceMode(SimpleColorDialog.SINGLE_CHOICE)
-                        .neg()
-                        .show(this@SettingsThemeActivity, tag)
-                }
-            }
-            requiresSnowCone.isVisible = Version.isSnowCone
         }
     }
 

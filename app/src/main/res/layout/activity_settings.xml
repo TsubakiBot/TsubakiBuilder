@@ -10,14 +10,15 @@
         android:id="@+id/settingsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:paddingHorizontal="32dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="-16dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView

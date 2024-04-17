@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
@@ -41,31 +42,59 @@ class SettingsAboutActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            settingsFAQ.setOnClickListener {
-                startActivity(Intent(this@SettingsAboutActivity, FAQActivity::class.java))
-            }
 
-            settingsDev.setOnClickListener {
-                DevelopersDialogFragment().show(supportFragmentManager, "dialog")
-            }
-            settingsForks.setOnClickListener {
-                ForksDialogFragment().show(supportFragmentManager, "dialog")
-            }
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.faq),
+                        desc = getString(R.string.faq),
+                        icon = R.drawable.ic_round_help_24,
+                        onClick = {
+                            startActivity(Intent(context, FAQActivity::class.java))
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.devs),
+                        desc= getString(R.string.devs),
+                        icon = R.drawable.ic_round_accessible_forward_24,
+                        onClick = {
+                            DevelopersDialogFragment().show(supportFragmentManager, "dialog")
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.forks),
+                        desc = getString(R.string.forks),
+                        icon = R.drawable.ic_round_restaurant_24,
+                        onClick = {
+                            ForksDialogFragment().show(supportFragmentManager, "dialog")
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.disclaimer),
+                        desc = getString(R.string.disclaimer),
+                        icon = R.drawable.ic_round_info_24,
+                        onClick = {
+                            val text = TextView(context)
+                            text.setText(R.string.full_disclaimer)
 
-            settingsDisclaimer.setOnClickListener {
-                val text = TextView(this@SettingsAboutActivity).apply {
-                    setText(R.string.full_disclaimer)
-                }
-
-                CustomBottomDialog.newInstance().apply {
-                    setTitleText(context.getString(R.string.disclaimer))
-                    addView(text)
-                    setNegativeButton(context.getString(R.string.close)) {
-                        dismiss()
-                    }
-                    show(supportFragmentManager, "dialog")
-                }
-            }
+                            CustomBottomDialog.newInstance().apply {
+                                setTitleText(context.getString(R.string.disclaimer))
+                                addView(text)
+                                setNegativeButton(context.getString(R.string.close)) {
+                                    dismiss()
+                                }
+                                show(supportFragmentManager, "dialog")
+                            }
+                        }
+                    ),
+                )
+            )
+            binding.settingsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
             settingBuyMeCoffee.setOnClickListener {
                 lifecycleScope.launch {

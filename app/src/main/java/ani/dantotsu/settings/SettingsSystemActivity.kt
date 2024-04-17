@@ -13,10 +13,12 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
@@ -33,8 +35,10 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
+import ani.matagi.os.Version
 import ani.matagi.update.MatagiUpdater
 import com.google.android.material.textfield.TextInputEditText
+import eltos.simpledialogfragment.color.SimpleColorDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -102,122 +106,157 @@ class SettingsSystemActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            importExportSettings.setOnClickListener {
-                StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
-                val selectedArray = mutableListOf(false)
-                val filteredLocations = Location.entries.filter { it.exportable }
-                selectedArray.addAll(List(filteredLocations.size - 1) { false })
-                val dialog = AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
-                    .setTitle(R.string.backup_restore)
-                    .setMultiChoiceItems(
-                        filteredLocations.map { it.name }.toTypedArray(),
-                        selectedArray.toBooleanArray()
-                    ) { _, which, isChecked ->
-                        selectedArray[which] = isChecked
-                    }
-                    .setPositiveButton(R.string.button_restore) { dialog, _ ->
-                        openDocumentLauncher.launch(arrayOf("*/*"))
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton(R.string.button_backup) { dialog, _ ->
-                        if (!selectedArray.contains(true)) {
-                            toast(R.string.no_location_selected)
-                            return@setNegativeButton
-                        }
-                        dialog.dismiss()
-                        val selected =
-                            filteredLocations.filterIndexed { index, _ -> selectedArray[index] }
-                        if (selected.contains(Location.Protected)) {
-                            passwordAlertDialog(true) { password ->
-                                if (password != null) {
-                                    savePrefsToDownloads(
-                                        "DantotsuSettings",
-                                        PrefManager.exportAllPrefs(selected),
-                                        this@SettingsSystemActivity,
-                                        password
-                                    )
-                                } else {
-                                    toast(R.string.password_cannot_be_empty)
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.backup_restore),
+                        desc = getString(R.string.backup_restore),
+                        icon = R.drawable.backup_restore,
+                        onClick = {
+                            StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
+                            val selectedArray = mutableListOf(false)
+                            val filteredLocations = Location.entries.filter { it.exportable }
+                            selectedArray.addAll(List(filteredLocations.size - 1) { false })
+                            val dialog = AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
+                                .setTitle(R.string.backup_restore)
+                                .setMultiChoiceItems(
+                                    filteredLocations.map { it.name }.toTypedArray(),
+                                    selectedArray.toBooleanArray()
+                                ) { _, which, isChecked ->
+                                    selectedArray[which] = isChecked
                                 }
+                                .setPositiveButton(R.string.button_restore) { dialog, _ ->
+                                    openDocumentLauncher.launch(arrayOf("*/*"))
+                                    dialog.dismiss()
+                                }
+                                .setNegativeButton(R.string.button_backup) { dialog, _ ->
+                                    if (!selectedArray.contains(true)) {
+                                        toast(R.string.no_location_selected)
+                                        return@setNegativeButton
+                                    }
+                                    dialog.dismiss()
+                                    val selected =
+                                        filteredLocations.filterIndexed { index, _ -> selectedArray[index] }
+                                    if (selected.contains(Location.Protected)) {
+                                        passwordAlertDialog(true) { password ->
+                                            if (password != null) {
+                                                savePrefsToDownloads(
+                                                    "DantotsuSettings",
+                                                    PrefManager.exportAllPrefs(selected),
+                                                    this@SettingsSystemActivity,
+                                                    password
+                                                )
+                                            } else {
+                                                toast(R.string.password_cannot_be_empty)
+                                            }
+                                        }
+                                    } else {
+                                        savePrefsToDownloads(
+                                            "DantotsuSettings",
+                                            PrefManager.exportAllPrefs(selected),
+                                            this@SettingsSystemActivity,
+                                            null
+                                        )
+                                    }
+                                }
+                                .setNeutralButton(R.string.cancel) { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .create()
+                            dialog.window?.setDimAmount(0.8f)
+                            dialog.show()
+                        },
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_foldable),
+                        desc = getString(R.string.use_foldable),
+                        icon = R.drawable.ic_devices_fold_24,
+                        isChecked = PrefManager.getVal(PrefName.UseFoldable),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseFoldable, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_shortcuts),
+                        desc = getString(R.string.use_shortcuts),
+                        icon = R.drawable.ic_app_shortcut_24,
+                        isChecked = PrefManager.getVal(PrefName.UseShortcuts),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseShortcuts, isChecked)
+                            restartApp()
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.check_app_updates),
+                        desc = getString(R.string.check_app_updates),
+                        icon = R.drawable.ic_round_new_releases_24,
+                        isChecked = PrefManager.getVal(PrefName.CheckUpdate),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.CheckUpdate, isChecked)
+                            if (!isChecked) {
+                                snackString(getString(R.string.long_click_to_check_update))
                             }
-                        } else {
-                            savePrefsToDownloads(
-                                "DantotsuSettings",
-                                PrefManager.exportAllPrefs(selected),
-                                this@SettingsSystemActivity,
-                                null
-                            )
+                        },
+                        onLongClick = {
+                            lifecycleScope.launch(Dispatchers.IO) {
+                                MatagiUpdater.check(this@SettingsSystemActivity, true)
+                            }
+                        },
+                        isVisible = !BuildConfig.FLAVOR.contains("fdroid")
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.share_username_in_crash_reports),
+                        desc = getString(R.string.share_username_in_crash_reports),
+                        icon = R.drawable.ic_round_search_24,
+                        isChecked = PrefManager.getVal(PrefName.SharedUserID),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.SharedUserID, isChecked)
+                        },
+                        isVisible = !BuildConfig.FLAVOR.contains("fdroid")
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.log_to_file),
+                        desc = getString(R.string.log_to_file),
+                        icon = R.drawable.ic_round_edit_note_24,
+                        isChecked = PrefManager.getVal(PrefName.LogToFile),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.LogToFile, isChecked)
+                            restartApp()
                         }
-                    }
-                    .setNeutralButton(R.string.cancel) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                dialog.window?.setDimAmount(0.8f)
-                dialog.show()
-            }
 
-            settingsUseFoldable.isChecked = PrefManager.getVal(PrefName.UseFoldable)
-            settingsUseFoldable.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseFoldable, isChecked)
-            }
-
-            CoroutineScope(Dispatchers.IO).launch {
-                WindowInfoTracker.getOrCreate(this@SettingsSystemActivity)
-                    .windowLayoutInfo(this@SettingsSystemActivity)
-                    .collect { newLayoutInfo ->
-                        withContext(Dispatchers.Main) {
-                            settingsUseFoldable.isVisible =
-                                newLayoutInfo.displayFeatures.find { it is FoldingFeature } != null
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = "",
+                        desc = getString(R.string.logging_warning),
+                        icon = R.drawable.ic_round_share_24,
+                        onClick = {
+                            Logger.shareLog(this@SettingsSystemActivity)
                         }
-                    }
-            }
-
-            settingsUseShortcuts.isChecked = PrefManager.getVal(PrefName.UseShortcuts)
-            settingsUseShortcuts.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                restartApp()
-            }
-
-            if (!BuildConfig.FLAVOR.contains("fdroid")) {
-
-                settingsCheckUpdate.isChecked = PrefManager.getVal(PrefName.CheckUpdate)
-                settingsCheckUpdate.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.CheckUpdate, isChecked)
-                    if (!isChecked) {
-                        snackString(getString(R.string.long_click_to_check_update))
-                    }
+                    )
+                )
+            )
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
+                CoroutineScope(Dispatchers.IO).launch {
+                    WindowInfoTracker.getOrCreate(this@SettingsSystemActivity)
+                        .windowLayoutInfo(this@SettingsSystemActivity)
+                        .collect { newLayoutInfo ->
+                            withContext(Dispatchers.Main) {
+                                val foldableItem = findViewHolderForAdapterPosition(1)
+                                        as SettingsAdapter.SettingsSwitchViewHolder
+                                foldableItem.binding.root.isVisible =
+                                    newLayoutInfo.displayFeatures.find { it is FoldingFeature } != null
+                            }
+                        }
                 }
-
-                settingsCheckUpdate.setOnLongClickListener {
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        MatagiUpdater.check(this@SettingsSystemActivity, true)
-                    }
-                    true
-                }
-
-                settingsShareUsername.isChecked = PrefManager.getVal(PrefName.SharedUserID)
-                settingsShareUsername.setOnCheckedChangeListener { _, isChecked ->
-                    PrefManager.setVal(PrefName.SharedUserID, isChecked)
-                }
-
-            } else {
-                settingsCheckUpdate.visibility = View.GONE
-                settingsShareUsername.visibility = View.GONE
-                settingsCheckUpdate.isEnabled = false
-                settingsShareUsername.isEnabled = false
-                settingsCheckUpdate.isChecked = false
-                settingsShareUsername.isChecked = false
-            }
-
-            settingsLogToFile.isChecked = PrefManager.getVal(PrefName.LogToFile)
-            settingsLogToFile.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.LogToFile, isChecked)
-                restartApp()
-            }
-
-            settingsShareLog.setOnClickListener {
-                Logger.shareLog(this@SettingsSystemActivity)
             }
         }
     }

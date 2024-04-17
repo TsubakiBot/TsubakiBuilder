@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
@@ -21,6 +23,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
+import ani.dantotsu.util.StoragePermissions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -34,6 +37,7 @@ class SettingsCommonActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        val context = this
 
         binding = ActivitySettingsCommonBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -52,17 +56,6 @@ class SettingsCommonActivity: AppCompatActivity(){
             }
             commonSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
-            }
-            settingsDownloadManager.setOnClickListener {
-                val dialog = downloadManagerDialog.setSingleChoiceItems(
-                    managers,
-                    downloadManager
-                ) { dialog, count ->
-                    downloadManager = count
-                    PrefManager.setVal(PrefName.DownloadManager, downloadManager)
-                    dialog.dismiss()
-                }.show()
-                dialog.window?.setDimAmount(0.8f)
             }
 
             val exDns = listOf(
@@ -96,67 +89,121 @@ class SettingsCommonActivity: AppCompatActivity(){
                 restartApp()
             }
 
-            settingsContinueMedia.isChecked = PrefManager.getVal(PrefName.ContinueMedia)
-            settingsContinueMedia.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.ContinueMedia, isChecked)
-            }
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.always_continue_content),
+                        desc = getString(R.string.always_continue_content),
+                        icon = R.drawable.ic_round_delete_24,
+                        isChecked = PrefManager.getVal(PrefName.ContinueMedia),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.ContinueMedia, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.search_source_list),
+                        desc = getString(R.string.search_source_list),
+                        icon = R.drawable.ic_round_search_sources_24,
+                        isChecked = PrefManager.getVal(PrefName.SearchSources),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.SearchSources, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.recentlyListOnly),
+                        desc = getString(R.string.recentlyListOnly),
+                        icon = R.drawable.ic_round_new_releases_24,
+                        isChecked = PrefManager.getVal(PrefName.RecentlyListOnly),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.RecentlyListOnly, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.social_in_media),
+                        desc = getString(R.string.social_in_media),
+                        icon = R.drawable.ic_emoji_people_24,
+                        isChecked = PrefManager.getVal(PrefName.SocialInMedia),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.SocialInMedia, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.adult_only_content),
+                        desc = getString(R.string.adult_only_content),
+                        icon = R.drawable.ic_round_nsfw_24,
+                        isChecked = PrefManager.getVal(PrefName.AdultOnly),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.AdultOnly, isChecked)
+                            restartApp()
+                        },
+                        isVisible = Anilist.adult
 
-            settingsSearchSources.isChecked = PrefManager.getVal(PrefName.SearchSources)
-            settingsSearchSources.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.SearchSources, isChecked)
-            }
-
-            settingsRecentlyListOnly.isChecked = PrefManager.getVal(PrefName.RecentlyListOnly)
-            settingsRecentlyListOnly.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.RecentlyListOnly, isChecked)
-            }
-
-            settingsSocialInMedia.isChecked = PrefManager.getVal(PrefName.SocialInMedia)
-            settingsSocialInMedia.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.SocialInMedia, isChecked)
-            }
-
-            settingsAdultAnimeOnly.isChecked = PrefManager.getVal(PrefName.AdultOnly)
-            settingsAdultAnimeOnly.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.AdultOnly, isChecked)
-                restartApp()
-            }
-
-            settingsDownloadLocation.setOnClickListener {
-                val dialog = AlertDialog.Builder(this@SettingsCommonActivity, R.style.MyPopup)
-                    .setTitle(R.string.change_download_location)
-                    .setMessage(R.string.download_location_msg)
-                    .setPositiveButton(R.string.ok) { dialog, _ ->
-                        val oldUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
-                        launcher.registerForCallback { success ->
-                            if (success) {
-                                toast(getString(R.string.please_wait))
-                                val newUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
-                                GlobalScope.launch(Dispatchers.IO) {
-                                    Injekt.get<DownloadsManager>().moveDownloadsDir(
-                                        this@SettingsCommonActivity,
-                                        Uri.parse(oldUri), Uri.parse(newUri)
-                                    ) { finished, message ->
-                                        if (finished) {
-                                            toast(getString(R.string.success))
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.download_manager_select),
+                        desc = getString(R.string.download_manager_select),
+                        icon = R.drawable.ic_download_24,
+                        onClick = {
+                            val dialog = downloadManagerDialog.setSingleChoiceItems(
+                                managers, downloadManager
+                            ) { dialog, count ->
+                                downloadManager = count
+                                PrefManager.setVal(PrefName.DownloadManager, downloadManager)
+                                dialog.dismiss()
+                            }.show()
+                            dialog.window?.setDimAmount(0.8f)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.change_download_location),
+                        desc = getString(R.string.change_download_location),
+                        icon = R.drawable.ic_round_source_24,
+                        onClick = {
+                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                .setTitle(R.string.change_download_location)
+                                .setMessage(R.string.download_location_msg)
+                                .setPositiveButton(R.string.ok) { dialog, _ ->
+                                    val oldUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
+                                    launcher.registerForCallback { success ->
+                                        if (success) {
+                                            toast(getString(R.string.please_wait))
+                                            val newUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
+                                            GlobalScope.launch(Dispatchers.IO) {
+                                                Injekt.get<DownloadsManager>().moveDownloadsDir(
+                                                    context, Uri.parse(oldUri), Uri.parse(newUri)
+                                                ) { finished, message ->
+                                                    if (finished) {
+                                                        toast(getString(R.string.success))
+                                                    } else {
+                                                        toast(message)
+                                                    }
+                                                }
+                                            }
                                         } else {
-                                            toast(message)
+                                            toast(getString(R.string.error))
                                         }
                                     }
-                                }
-                            } else {
-                                toast(getString(R.string.error))
-                            }
+                                    launcher.launch()
+                                    dialog.dismiss()
+                                }.setNeutralButton(R.string.cancel) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
+                            dialog.window?.setDimAmount(0.8f)
+                            dialog.show()
                         }
-                        launcher.launch()
-                        dialog.dismiss()
-                    }
-                    .setNeutralButton(R.string.cancel) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                dialog.window?.setDimAmount(0.8f)
-                dialog.show()
+                    )
+                )
+            )
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
             }
 
             var previousStart: View = when (PrefManager.getVal<Int>(PrefName.DefaultStartUpTab)) {
