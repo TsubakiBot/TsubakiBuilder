@@ -147,7 +147,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 if (j != null) {
                     binding.searchRecyclerView.visibility = View.VISIBLE
                     binding.searchProgress.visibility = View.GONE
-                    // binding.searchRecyclerView.adapter =
+                    binding.searchRecyclerView.adapter = SourceBrowseAdapter(j, this, scope)
                     binding.searchRecyclerView.layoutManager = GridLayoutManager(
                         requireActivity(),
                         clamp(
