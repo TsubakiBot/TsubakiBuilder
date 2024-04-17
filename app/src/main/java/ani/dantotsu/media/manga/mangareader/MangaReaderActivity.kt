@@ -1093,17 +1093,22 @@ class MangaReaderActivity : AppCompatActivity() {
         } as? FoldingFeature)?.let {
             if (it.isSeparating) {
                 if (it.orientation == FoldingFeature.Orientation.HORIZONTAL) {
-                    binding.mangaReaderSwipy.layoutParams.height = it.bounds.top - 24.toPx // Crease
+                    binding.mangaReaderPager.layoutParams.height = it.bounds.top - 24.toPx // Crease
+                    binding.mangaReaderRecyclerContainer.layoutParams.height = it.bounds.top - 24.toPx // Crease
                     binding.mangaReaderCont.layoutParams.height  = it.bounds.bottom - 24.toPx // Crease
                 }
             }
             it.isSeparating
         } ?: false
         if (!isFolding) {
-            binding.mangaReaderSwipy.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            binding.mangaReaderPager.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            binding.mangaReaderRecyclerContainer.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
             binding.mangaReaderCont.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+
         }
-        binding.root.requestLayout()
+        binding.mangaReaderPager.requestLayout()
+        binding.mangaReaderRecyclerContainer.requestLayout()
+        binding.mangaReaderCont.requestLayout()
     }
 
     fun onImageLongClicked(
