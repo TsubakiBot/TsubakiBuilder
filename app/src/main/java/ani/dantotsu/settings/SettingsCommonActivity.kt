@@ -122,29 +122,6 @@ class SettingsCommonActivity: AppCompatActivity(){
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.social_in_media),
-                        desc = getString(R.string.social_in_media),
-                        icon = R.drawable.ic_emoji_people_24,
-                        isChecked = PrefManager.getVal(PrefName.SocialInMedia),
-                        switch = {isChecked, _ ->
-                            PrefManager.setVal(PrefName.SocialInMedia, isChecked)
-                        }
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.adult_only_content),
-                        desc = getString(R.string.adult_only_content),
-                        icon = R.drawable.ic_round_nsfw_24,
-                        isChecked = PrefManager.getVal(PrefName.AdultOnly),
-                        switch = {isChecked, _ ->
-                            PrefManager.setVal(PrefName.AdultOnly, isChecked)
-                            restartApp()
-                        },
-                        isVisible = Anilist.adult
-
-                    ),
-                    Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.download_manager_select),
                         desc = getString(R.string.download_manager_select),
@@ -197,6 +174,27 @@ class SettingsCommonActivity: AppCompatActivity(){
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.social_in_media),
+                        desc = getString(R.string.social_in_media),
+                        icon = R.drawable.ic_emoji_people_24,
+                        isChecked = PrefManager.getVal(PrefName.SocialInMedia),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.SocialInMedia, isChecked)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.adult_only_content),
+                        desc = getString(R.string.adult_only_content),
+                        icon = R.drawable.ic_round_nsfw_24,
+                        isChecked = PrefManager.getVal(PrefName.AdultOnly),
+                        switch = {isChecked, _ ->
+                            PrefManager.setVal(PrefName.AdultOnly, isChecked)
+                            restartApp()
                         }
                     )
                 )
