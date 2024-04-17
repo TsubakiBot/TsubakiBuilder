@@ -66,6 +66,10 @@ class ExtensionsActivity : AppCompatActivity() {
             }
         }
 
+        binding.listBackButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         binding.searchView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = statusBarHeight + navBarHeight
         }
