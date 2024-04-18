@@ -75,6 +75,7 @@
 -keep,allowoptimization class com.arthenica.** { public protected *; }
 
 # From extensions-lib
+-keep,allowoptimization class eu.kanade.tachiyomi.animesource.** { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.source.** { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.RateLimitInterceptorKt { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.SpecificHostRateLimitInterceptorKt { public protected *; }
