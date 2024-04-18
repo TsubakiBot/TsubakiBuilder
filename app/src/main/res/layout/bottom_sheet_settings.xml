@@ -253,7 +253,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -282,7 +283,7 @@
                     android:inputType="none"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:text="@string/extension_name"
+                    android:text="@string/extension_search"
                     android:textAllCaps="true"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="14sp"
@@ -297,6 +298,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="bottom"
             android:transitionName="@string/extension_search"
             app:boxBackgroundColor="@color/bg"
@@ -306,7 +308,9 @@
             app:boxCornerRadiusTopEnd="28dp"
             app:boxCornerRadiusTopStart="28dp"
             app:endIconDrawable="@drawable/ic_round_search_24"
-            app:hintAnimationEnabled="true">
+            app:hintAnimationEnabled="true"
+            android:visibility="gone"
+            tools:visibility="visible">
             <AutoCompleteTextView
                 android:id="@+id/searchViewText"
                 android:layout_width="match_parent"

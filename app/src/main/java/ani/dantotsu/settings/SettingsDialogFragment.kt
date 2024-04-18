@@ -236,6 +236,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         var animeSource: AnimeParser? = null
         var mangaSource: MangaParser? = null
         binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
+            binding.searchView.isVisible = true
             if (MangaSources.names.contains(i.toString())) {
                 mangaSource = MangaSources[i]
             } else {
