@@ -242,6 +242,7 @@ class ResumableWidget : AppWidgetProvider() {
 
         fun fillWidgetItems(prefs: SharedPreferences) : MutableList<WidgetItem> {
             refreshing = true
+            widgetItems.clear()
             runBlocking(Dispatchers.IO) {
                 when (prefs.getInt(PREF_WIDGET_TYPE, 2)) {
                     ResumableType.CONTINUE_ANIME.ordinal -> {
@@ -274,7 +275,6 @@ class ResumableWidget : AppWidgetProvider() {
                 val builder = RemoteViews.RemoteCollectionItems.Builder()
                 val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
                 val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
-                widgetItems.clear()
                 fillWidgetItems(prefs).forEach { item ->
                     val rv =
                         RemoteViews(context.packageName, R.layout.item_resumable_widget).apply {
@@ -337,6 +337,7 @@ class ResumableWidget : AppWidgetProvider() {
             flipperDrawable.setTint(flipperImgColor)
 
             val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
+                if (refreshing) return@apply
                 setImageViewBitmap(R.id.backgroundView, gradientDrawable.toBitmap(width, height))
                 setTextColor(R.id.widgetTitle, titleTextColor)
                 setTextColor(R.id.text_show_title, titleTextColor)

@@ -25,7 +25,6 @@ class ResumableRemoteViewsFactory(private val context: Context, appWidgetId: Int
     override fun onDataSetChanged() {
         if (ResumableWidget.refreshing) return
         Logger.log("ResumableRemoteViewsFactory onDataSetChanged")
-        widgetItems.clear()
         ResumableWidget.fillWidgetItems(prefs)
     }
 

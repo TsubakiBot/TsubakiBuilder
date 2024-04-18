@@ -6,7 +6,6 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 -dontobfuscate
--optimizations !code/allocation/variable
 
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
@@ -15,11 +14,9 @@
    public *;
 }
 
--keepattributes Signature
-
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
--keepattributes *Annotation*,SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable
 
 -keep class com.google.android.material.R$drawable { *; }
 
@@ -55,7 +52,7 @@
 -keep,allowoptimization class eu.kanade.**
 -keep,allowoptimization class tachiyomi.**
 
-##---------------Begin: proguard configuration for kuukiyomi  ----------
+##---------------Begin: proguard configuration for aniyomi  ----------
 # Keep common dependencies used in extensions
 -keep,allowoptimization class androidx.preference.** { public protected *; }
 -keep,allowoptimization class android.content.** { *; }
@@ -75,15 +72,16 @@
 -keep,allowoptimization class com.arthenica.** { public protected *; }
 
 # From extensions-lib
--keep,allowoptimization class eu.kanade.tachiyomi.animesource.** { public protected *; }
--keep,allowoptimization class eu.kanade.tachiyomi.source.** { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.RateLimitInterceptorKt { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.SpecificHostRateLimitInterceptorKt { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.NetworkHelper { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.OkHttpExtensionsKt { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.network.RequestsKt { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.AppInfo { public protected *; }
-##---------------End: proguard configuration for kuukiyomi  ----------
+##---------------End: proguard configuration for aniyomi  ----------
+
+-keep,allowoptimization class eu.kanade.tachiyomi.animesource.** { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.source.** { public protected *; }
 
 ##---------------Begin: proguard configuration for RxJava 1.x  ----------
 -dontwarn sun.misc.**
@@ -124,24 +122,62 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
+-keep,includedescriptorclasses class ani.dantotsu.**$$serializer { *; }
+-keepclassmembers class ani.dantotsu.** {
+    *** Companion;
+}
+-keepclasseswithmembers class ani.dantotsu.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+-keep,includedescriptorclasses class tachiyomi.**$$serializer { *; }
+-keepclassmembers class tachiyomi.** {
+    *** Companion;
+}
+-keepclasseswithmembers class tachiyomi.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
 -keep class kotlinx.serialization.**
 -keepclassmembers class kotlinx.serialization.** {
     <methods>;
 }
 ##---------------End: proguard configuration for kotlinx.serialization  ----------
 
-##---------------Begin: proguard configuration for gson  ----------
+##---------------Begin: proguard configuration for Gson  ----------
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class eu.kanade.** { <fields>; }
+-keep class ani.dantotsu.** { <fields>; }
+-keep class tachiyomi.** { <fields>; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
 -keep class * extends com.google.gson.TypeAdapter
 -keep class * implements com.google.gson.TypeAdapterFactory
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
 -keepclassmembers,allowobfuscation class * {
   @com.google.gson.annotations.SerializedName <fields>;
 }
+
+# Retain generic signatures of TypeToken and its subclasses with R8 version 3.0 and higher.
 -keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
 -keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
 
-##---------------End: proguard configuration for gson  ----------
+##---------------End: proguard configuration for Gson  ----------
 
 -keepattributes EnclosingMethod
 -keep class org.jsoup.** { *; }
