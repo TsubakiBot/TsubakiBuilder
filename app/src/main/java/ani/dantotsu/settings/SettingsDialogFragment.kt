@@ -229,13 +229,15 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             ArrayAdapter(
                 requireContext(),
                 R.layout.item_dropdown,
-                AnimeSources.names.plus(MangaSources.names)
+                AnimeSources.names.take(AnimeSources.names.size - 1)
+                    .plus(MangaSources.names.take(MangaSources.names.size - 1))
             )
         )
 
         var animeSource: AnimeParser? = null
         var mangaSource: MangaParser? = null
         binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
+            binding.searchViewText.hint = getString(R.string.search_title, i.toString())
             binding.searchView.isVisible = true
             if (MangaSources.names.contains(i.toString())) {
                 mangaSource = MangaSources[i]

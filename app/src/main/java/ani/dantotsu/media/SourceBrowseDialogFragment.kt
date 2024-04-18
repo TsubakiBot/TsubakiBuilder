@@ -68,10 +68,6 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
     val model: MediaDetailsViewModel by viewModels()
     private var searched = false
-    var anime = true
-    var i: Int? = null
-    var id: Int? = null
-    var media: Media? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,8 +88,6 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         if (incomingQuery.isNotBlank()) binding.searchBarText.setText(incomingQuery)
 
         model.getMedia().observe(viewLifecycleOwner) {
-            media = it
-
             binding.mediaListProgressBar.visibility = View.GONE
             binding.mediaListLayout.visibility = View.VISIBLE
 
@@ -144,7 +138,9 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 if (j != null) {
                     binding.searchRecyclerView.visibility = View.VISIBLE
                     binding.searchProgress.visibility = View.GONE
-                    binding.searchRecyclerView.adapter = SourceBrowseAdapter(j, mediaType, this, scope)
+
+                    binding.searchRecyclerView.adapter =
+                        GenericSourceAdapter(j, model, mediaType, this, scope)
                     binding.searchRecyclerView.layoutManager = GridLayoutManager(
                         requireActivity(),
                         clamp(

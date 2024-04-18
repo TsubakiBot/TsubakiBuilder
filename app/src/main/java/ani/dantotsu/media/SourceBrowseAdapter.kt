@@ -12,9 +12,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SourceBrowseAdapter(
+abstract class SourceBrowseAdapter(
     private val sources: List<ShowResponse>,
-    private val mediaType: MediaType,
     private val dialogFragment: SourceBrowseDialogFragment,
     private val scope: CoroutineScope
 ) : RecyclerView.Adapter<SourceBrowseAdapter.SourceViewHolder>() {
@@ -34,21 +33,14 @@ class SourceBrowseAdapter(
 
     override fun getItemCount(): Int = sources.size
 
+    abstract suspend fun onItemClick(source: ShowResponse)
+
     inner class SourceViewHolder(val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 dialogFragment.dismiss()
-                scope.launch(Dispatchers.IO) {
-                    ContextCompat.startActivity(
-                        it.context,
-                        Intent(it.context, SearchActivity::class.java)
-                            .putExtra("type", mediaType.asText().uppercase())
-                            .putExtra("query", binding.itemCompactTitle.text)
-                            .putExtra("search", true),
-                        null
-                    )
-                }
+                scope.launch(Dispatchers.IO) { onItemClick(sources[bindingAdapterPosition]) }
             }
             var a = true
             itemView.setOnLongClickListener {
