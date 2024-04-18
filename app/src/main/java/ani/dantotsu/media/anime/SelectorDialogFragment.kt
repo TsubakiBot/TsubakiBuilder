@@ -304,7 +304,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                 .setTitle(R.string.server_disabled)
                                 .setMessage(R.string.enable_server)
                                 .setPositiveButton(R.string.yes) { dialog, _ ->
-                                    currContext().let { torrServerStart(it) }
+                                    torrServerStart(currContext())
                                     toast(R.string.server_enabled)
                                     dialog.dismiss()
                                 }
@@ -613,14 +613,14 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
     companion object {
         fun newInstance(
             server: String? = null,
-            la: Boolean = true,
+            launch: Boolean = true,
             prev: String? = null,
             isDownload: Boolean
         ): SelectorDialogFragment =
             SelectorDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString("server", server)
-                    putBoolean("launch", la)
+                    putBoolean("launch", launch)
                     putString("prev", prev)
                     putBoolean("isDownload", isDownload)
                 }

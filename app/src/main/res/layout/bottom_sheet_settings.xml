@@ -251,12 +251,15 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/sourceBrowser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/sourceNameContainer"

@@ -12,11 +12,11 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
 import ani.dantotsu.media.anime.AnimeSourceAdapter
 import ani.dantotsu.media.manga.MangaSourceAdapter
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.HAnimeSources
 import ani.dantotsu.parsers.HMangaSources

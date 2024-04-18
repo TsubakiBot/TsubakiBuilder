@@ -225,6 +225,12 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
+        binding.settingsExtensionSettings.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            binding.sourceBrowser.isVisible = true
+            true
+        }
+
         val sources = AnimeSources.names.take(AnimeSources.names.size - 1)
             .plus(MangaSources.names.take(MangaSources.names.size - 1))
         binding.sourceNames.setAdapter(
@@ -260,6 +266,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                     requireActivity().supportFragmentManager, null
                 )
             }
+            dismiss()
         }
 
         binding.searchView.setEndIconOnClickListener {

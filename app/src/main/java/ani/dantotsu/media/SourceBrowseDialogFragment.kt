@@ -19,7 +19,6 @@ import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.DynamicAnimeParser
 import ani.dantotsu.parsers.DynamicMangaParser
 import ani.dantotsu.parsers.MangaParser
-import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.parsers.novel.DynamicNovelParser
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.toPx
@@ -45,7 +44,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
     }
 
     constructor(source: AnimeParser, search: String) : this() {
-        mediaType = MediaType.MANGA
+        mediaType = MediaType.ANIME
         animeParser = source
         incomingQuery = search
     }
@@ -84,6 +83,17 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         val scope = requireActivity().lifecycleScope
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val parser = animeParser ?: mangaParser ?: when (mediaType) {
+            MediaType.ANIME -> {
+                DynamicAnimeParser(animeExtesnion)
+            }
+            MediaType.MANGA -> {
+                DynamicMangaParser(mangaExtension)
+            }
+            MediaType.NOVEL -> {
+                DynamicNovelParser(novelExtension)
+            }
+        }
 
         if (incomingQuery.isNotBlank()) binding.searchBarText.setText(incomingQuery)
 
@@ -94,18 +104,6 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
             binding.searchRecyclerView.visibility = View.GONE
             binding.searchProgress.visibility = View.VISIBLE
 
-            val source = animeParser ?: mangaParser ?: when (mediaType) {
-                MediaType.ANIME -> {
-                    DynamicAnimeParser(animeExtesnion)
-                }
-                MediaType.MANGA -> {
-                    DynamicMangaParser(mangaExtension)
-                }
-                MediaType.NOVEL -> {
-                    DynamicNovelParser(novelExtension)
-                }
-            }
-
             fun search(query: String? = null) {
                 binding.searchBarText.clearFocus()
                 imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
@@ -113,14 +111,14 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                     model.responses.postValue(
                         withContext(Dispatchers.IO) {
                             tryWithSuspend {
-                                source.search(query ?: binding.searchBarText.text.toString())
+                                parser.search(query ?: binding.searchBarText.text.toString())
                             }
                         }
                     )
                 }
             }
 
-            binding.searchSourceTitle.text = source.name
+            binding.searchSourceTitle.text = parser.name
             binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
                 return@setOnEditorActionListener when (actionId) {
                     EditorInfo.IME_ACTION_SEARCH -> {
@@ -134,13 +132,12 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
             binding.searchBar.setEndIconOnClickListener { search() }
             if (!searched) search()
             searched = true
-            model.responses.observe(viewLifecycleOwner) { j ->
-                if (j != null) {
+            model.responses.observe(viewLifecycleOwner) { res ->
+                if (res != null) {
                     binding.searchRecyclerView.visibility = View.VISIBLE
                     binding.searchProgress.visibility = View.GONE
-
                     binding.searchRecyclerView.adapter =
-                        GenericSourceAdapter(j, model, mediaType, this, scope)
+                        GenericSourceAdapter(res, parser, model, this, scope)
                     binding.searchRecyclerView.layoutManager = GridLayoutManager(
                         requireActivity(),
                         clamp(
