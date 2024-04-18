@@ -181,6 +181,9 @@
             android:name=".settings.SettingsExtensionsActivity"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".settings.SettingsAddonActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".settings.SettingsMangaActivity"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -469,7 +472,8 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service android:name="eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService"
-            android:foregroundServiceType="dataSync"/>
+            android:stopWithTask="true"
+            android:foregroundServiceType="dataSync" />
 
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"

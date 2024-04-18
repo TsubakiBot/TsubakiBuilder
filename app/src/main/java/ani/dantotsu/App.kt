@@ -6,6 +6,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import ani.dantotsu.addons.download.DownloadAddonManager
+import ani.dantotsu.addons.torrent.TorrentAddonManager
 import ani.dantotsu.aniyomi.anime.custom.AppModule
 import ani.dantotsu.aniyomi.anime.custom.PreferenceModule
 import ani.dantotsu.connections.comments.CommentsAPI
@@ -41,6 +43,8 @@ class App : MultiDexApplication() {
     private lateinit var animeExtensionManager: AnimeExtensionManager
     private lateinit var mangaExtensionManager: MangaExtensionManager
     private lateinit var novelExtensionManager: NovelExtensionManager
+    private lateinit var torrentAddonManager: TorrentAddonManager
+    private lateinit var downloadAddonManager: DownloadAddonManager
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
@@ -86,10 +90,16 @@ class App : MultiDexApplication() {
         animeExtensionManager = Injekt.get()
         mangaExtensionManager = Injekt.get()
         novelExtensionManager = Injekt.get()
+        torrentAddonManager = Injekt.get()
+        downloadAddonManager = Injekt.get()
 
         CoroutineScope(Dispatchers.IO).launch { loadAnimeExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadMangaExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadNovelExtensions() }
+        CoroutineScope(Dispatchers.IO).launch {
+            torrentAddonManager.init()
+            downloadAddonManager.init()
+        }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
             CoroutineScope(Dispatchers.Default).launch { CommentsAPI.fetchAuthToken() }
         }

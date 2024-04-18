@@ -947,4 +947,17 @@
     <string name="notifications_desc">Customize news and updates</string>
     <string name="system_desc">Updates and useful utilities</string>
     <string name="about_desc">Learn more about Mr. Matagi</string>
+
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons are Dantotsu extra feature modules.</string>
+
+    <string name="torrent_addon">Torrent Addon</string>
+    <string name="enable">Enable</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
+    <string name="loaded_successfully">Loaded Successfully</string>
+    <string name="not_installed">Not Installed</string>
+    <string name="torrent_extension_not_supported">Torrent extension not supported on this device</string>
+    <string name="update_addon">Update Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Download addon not found</string>
 </resources>
