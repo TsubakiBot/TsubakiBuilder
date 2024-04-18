@@ -80,6 +80,7 @@
 -keep,allowoptimization class eu.kanade.tachiyomi.AppInfo { public protected *; }
 ##---------------End: proguard configuration for aniyomi  ----------
 
+-keep,allowoptimization class ani.dantotsu.parsers.** { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.animesource.** { public protected *; }
 -keep,allowoptimization class eu.kanade.tachiyomi.source.** { public protected *; }
 

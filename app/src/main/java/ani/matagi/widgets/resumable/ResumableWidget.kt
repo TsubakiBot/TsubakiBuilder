@@ -124,7 +124,7 @@ class ResumableWidget : AppWidgetProvider() {
                 serializedManga?.let { list -> prefs.edit().putString(PREF_SERIALIZED_MANGA, list).apply()}
                     ?: prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
                 prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis()).apply()
-                appWidgetManager.updateAppWidget(it, updateAppWidget(context, it))
+                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
             }
         }
 
@@ -337,7 +337,6 @@ class ResumableWidget : AppWidgetProvider() {
             flipperDrawable.setTint(flipperImgColor)
 
             val views = RemoteViews(context.packageName, R.layout.resumable_widget).apply {
-                if (refreshing) return@apply
                 setImageViewBitmap(R.id.backgroundView, gradientDrawable.toBitmap(width, height))
                 setTextColor(R.id.widgetTitle, titleTextColor)
                 setTextColor(R.id.text_show_title, titleTextColor)
@@ -354,6 +353,7 @@ class ResumableWidget : AppWidgetProvider() {
                         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
                     )
                 )
+                if (refreshing) return@apply
                 setLocalAdapter(context, appWidgetId, R.id.widgetViewFlipper)
                 setEmptyView(R.id.widgetViewFlipper, R.id.empty_view)
 

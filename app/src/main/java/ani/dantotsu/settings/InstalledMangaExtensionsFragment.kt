@@ -174,8 +174,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
         },
         { extension ->
             SourceBrowseDialogFragment(extension).show(
-                requireActivity().supportFragmentManager,
-                null
+                requireActivity().supportFragmentManager, null
             )
         },
         skipIcons

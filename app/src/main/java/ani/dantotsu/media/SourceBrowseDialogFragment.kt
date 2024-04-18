@@ -12,19 +12,20 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.DynamicAnimeParser
 import ani.dantotsu.parsers.DynamicMangaParser
+import ani.dantotsu.parsers.MangaParser
+import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.parsers.novel.DynamicNovelParser
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import eu.kanade.tachiyomi.extension.anime.model.AnimeExtension
 import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,6 +44,21 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         novelExtension = extension
     }
 
+    constructor(source: AnimeParser, search: String) : this() {
+        mediaType = MediaType.MANGA
+        animeParser = source
+        incomingQuery = search
+    }
+
+    constructor(source: MangaParser, search: String) : this() {
+        mediaType = MediaType.MANGA
+        mangaParser = source
+        incomingQuery = search
+    }
+
+    private var animeParser: AnimeParser? = null
+    private var mangaParser: MangaParser? = null
+    private var incomingQuery = ""
     private lateinit var mediaType: MediaType
     private lateinit var animeExtesnion: AnimeExtension.Installed
     private lateinit var mangaExtension: MangaExtension.Installed
@@ -73,24 +89,18 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        CoroutineScope(Dispatchers.IO).launch {
-            when (mediaType) {
-                MediaType.ANIME -> {
-                    Anilist.query.getMedia(16498)?.let { model.loadSelected(it, false) }
-                }
-                MediaType.MANGA -> {
-                    Anilist.query.getMedia(105778)?.let { model.loadSelected(it, false) }
-                }
-                MediaType.NOVEL -> {
-
-                }
-            }
-        }
+        if (incomingQuery.isNotBlank()) binding.searchBarText.setText(incomingQuery)
 
         model.getMedia().observe(viewLifecycleOwner) {
             media = it
 
-            val source = when (mediaType) {
+            binding.mediaListProgressBar.visibility = View.GONE
+            binding.mediaListLayout.visibility = View.VISIBLE
+
+            binding.searchRecyclerView.visibility = View.GONE
+            binding.searchProgress.visibility = View.VISIBLE
+
+            val source = animeParser ?: mangaParser ?: when (mediaType) {
                 MediaType.ANIME -> {
                     DynamicAnimeParser(animeExtesnion)
                 }
@@ -102,27 +112,21 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 }
             }
 
-            binding.mediaListProgressBar.visibility = View.GONE
-            binding.mediaListLayout.visibility = View.VISIBLE
-
-            binding.searchRecyclerView.visibility = View.GONE
-            binding.searchProgress.visibility = View.VISIBLE
-
-            fun search() {
+            fun search(query: String? = null) {
                 binding.searchBarText.clearFocus()
                 imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
                 scope.launch {
                     model.responses.postValue(
                         withContext(Dispatchers.IO) {
                             tryWithSuspend {
-                                source.search(binding.searchBarText.text.toString())
+                                source.search(query ?: binding.searchBarText.text.toString())
                             }
                         }
                     )
                 }
             }
+
             binding.searchSourceTitle.text = source.name
-            binding.searchBarText.setText(media?.mangaName() ?: "")
             binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
                 return@setOnEditorActionListener when (actionId) {
                     EditorInfo.IME_ACTION_SEARCH -> {

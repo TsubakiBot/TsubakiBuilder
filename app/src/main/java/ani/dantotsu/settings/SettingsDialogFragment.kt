@@ -4,13 +4,16 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
@@ -25,8 +28,13 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.SourceBrowseDialogFragment
 import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.parsers.AnimeParser
+import ani.dantotsu.parsers.AnimeSources
+import ani.dantotsu.parsers.MangaParser
+import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -36,8 +44,11 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.matagi.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -65,10 +76,9 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val window = dialog?.window
         window?.statusBarColor = Color.CYAN
-        val typedValue = TypedValue()
-        val theme = requireContext().theme
-        theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, typedValue, true)
-        window?.navigationBarColor = typedValue.data
+        window?.navigationBarColor = requireContext().getThemeColor(
+            com.google.android.material.R.attr.colorSurface
+        )
         val notificationIcon = if (Anilist.unreadNotificationCount > 0) {
             R.drawable.ic_round_notifications_active_24
         } else {
@@ -80,15 +90,15 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             binding.settingsLogin.setText(R.string.logout)
             binding.settingsLogin.setOnClickListener {
                 val alertDialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Yes") { _, _ ->
-                    Anilist.removeSavedToken()
-                    dismiss()
-                    requireActivity().recreate()
-                }
-                .setNegativeButton("No") { _, _ -> }
-                .create()
+                    .setTitle("Logout")
+                    .setMessage("Are you sure you want to logout?")
+                    .setPositiveButton("Yes") { _, _ ->
+                        Anilist.removeSavedToken()
+                        dismiss()
+                        requireActivity().recreate()
+                    }
+                    .setNegativeButton("No") { _, _ -> }
+                    .create()
                 alertDialog.window?.setDimAmount(0.8f)
                 alertDialog.show()
             }
@@ -106,7 +116,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
         binding.settingsNotificationCount.isVisible = count > 0
         binding.settingsNotificationCount.text = count.toString()
-        binding.settingsUserAvatar.setOnClickListener{
+        binding.settingsUserAvatar.setOnClickListener {
             ContextCompat.startActivity(
                 requireContext(), Intent(requireContext(), ProfileActivity::class.java)
                     .putExtra("userId", Anilist.userid), null
@@ -212,6 +222,42 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
 
                 dismiss()
                 PrefManager.setVal(PrefName.OfflineMode, isChecked)
+            }
+        }
+
+        binding.sourceNames.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.item_dropdown,
+                AnimeSources.names.plus(MangaSources.names)
+            )
+        )
+
+        var animeSource: AnimeParser? = null
+        var mangaSource: MangaParser? = null
+        binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
+            if (MangaSources.names.contains(i.toString())) {
+                mangaSource = MangaSources[i]
+            } else {
+                animeSource = AnimeSources[i]
+            }
+        }
+
+        binding.searchViewText.setOnEditorActionListener { textView, actionId, _ ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    animeSource?.let {
+                        SourceBrowseDialogFragment(it, textView.text.toString()).show(
+                            requireActivity().supportFragmentManager, null
+                        )
+                    } ?: mangaSource?.let {
+                        SourceBrowseDialogFragment(it, textView.text.toString()).show(
+                            requireActivity().supportFragmentManager, null
+                        )
+                    }
+                    true
+                }
+                else -> false
             }
         }
     }
