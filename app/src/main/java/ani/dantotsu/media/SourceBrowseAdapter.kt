@@ -1,7 +1,9 @@
 package ani.dantotsu.media
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemCharacterBinding
 import ani.dantotsu.loadImage
@@ -12,6 +14,7 @@ import kotlinx.coroutines.launch
 
 class SourceBrowseAdapter(
     private val sources: List<ShowResponse>,
+    private val mediaType: MediaType,
     private val dialogFragment: SourceBrowseDialogFragment,
     private val scope: CoroutineScope
 ) : RecyclerView.Adapter<SourceBrowseAdapter.SourceViewHolder>() {
@@ -31,14 +34,21 @@ class SourceBrowseAdapter(
 
     override fun getItemCount(): Int = sources.size
 
-    suspend fun onItemClick(source: ShowResponse) {}
-
     inner class SourceViewHolder(val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 dialogFragment.dismiss()
-                scope.launch(Dispatchers.IO) { onItemClick(sources[bindingAdapterPosition]) }
+                scope.launch(Dispatchers.IO) {
+                    ContextCompat.startActivity(
+                        it.context,
+                        Intent(it.context, SearchActivity::class.java)
+                            .putExtra("type", mediaType.asText().uppercase())
+                            .putExtra("query", binding.itemCompactTitle.text)
+                            .putExtra("search", true),
+                        null
+                    )
+                }
             }
             var a = true
             itemView.setOnLongClickListener {

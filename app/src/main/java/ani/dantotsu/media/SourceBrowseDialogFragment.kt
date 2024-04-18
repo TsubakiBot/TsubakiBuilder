@@ -9,22 +9,15 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.updateLayoutParams
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
-import ani.dantotsu.media.anime.AnimeSourceAdapter
-import ani.dantotsu.media.manga.MangaSourceAdapter
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.BottomSheetDialogFragment
-import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.DynamicAnimeParser
 import ani.dantotsu.parsers.DynamicMangaParser
-import ani.dantotsu.parsers.HAnimeSources
-import ani.dantotsu.parsers.HMangaSources
-import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.parsers.novel.DynamicNovelParser
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.toPx
@@ -147,7 +140,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 if (j != null) {
                     binding.searchRecyclerView.visibility = View.VISIBLE
                     binding.searchProgress.visibility = View.GONE
-                    binding.searchRecyclerView.adapter = SourceBrowseAdapter(j, this, scope)
+                    binding.searchRecyclerView.adapter = SourceBrowseAdapter(j, mediaType, this, scope)
                     binding.searchRecyclerView.layoutManager = GridLayoutManager(
                         requireActivity(),
                         clamp(
