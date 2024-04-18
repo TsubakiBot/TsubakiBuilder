@@ -19,7 +19,7 @@ android {
         targetSdk 34
         versionCode((System.currentTimeMillis() / 60000).toInteger())
         versionName "3.0.0"
-        versionCode 300000000
+        versionCode = versionName.replace(".","").toInteger() * 1000000
         signingConfig signingConfigs.debug
         splits {
             abi {
@@ -52,11 +52,13 @@ android {
     buildTypes {
         matagi {
             isDefault true
+            minifyEnabled true
+            shrinkResources = true
             applicationIdSuffix ".matagi"
             versionNameSuffix "-matagi"
             manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"
             manifestPlaceholders.icon_placeholder_round = "@mipmap/ic_launcher_alpha_round"
-            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             try {
                 def keystoreProps = new Properties()
@@ -171,7 +173,7 @@ dependencies {
 
 //  UI
     implementation 'com.google.android.material:material:1.11.0'
-    implementation 'com.github.8bitDream:AnimatedBottomBar:7fcb9af'
+    implementation 'com.github.8bitDream:AnimatedBottomBar:66328da'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
     implementation 'com.alexvasilkov:gesture-views:2.8.3'

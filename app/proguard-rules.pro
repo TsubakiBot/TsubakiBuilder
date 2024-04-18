@@ -5,16 +5,23 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
+-dontobfuscate
+-optimizations !code/allocation/variable
+
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-keepclassmembers class ani.dantotsu.others.webview.WebViewBottomDialog {
+   public *;
+}
+
+-keepattributes Signature
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes *Annotation*,SourceFile,LineNumberTable
+
+-keep class com.google.android.material.R$drawable { *; }
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
@@ -43,38 +50,110 @@
     public static <1> INSTANCE;
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep class ani.dantotsu.** { *; }
--keep class ani.dantotsu.download.DownloadsManager { *; }
--keepattributes Signature
--keep class uy.kohesive.injekt.** { *; }
--keep class eu.kanade.tachiyomi.** { *; }
--keep class kotlin.** { *; }
--dontwarn kotlin.**
--keep class kotlinx.** { *; }
--keepclassmembers class uy.kohesive.injekt.api.FullTypeReference {
-    <init>(...);
+
+-keep,allowoptimization class ani.dantotsu.**
+-keep,allowoptimization class eu.kanade.**
+-keep,allowoptimization class tachiyomi.**
+
+##---------------Begin: proguard configuration for kuukiyomi  ----------
+# Keep common dependencies used in extensions
+-keep,allowoptimization class androidx.preference.** { public protected *; }
+-keep,allowoptimization class android.content.** { *; }
+-keep,allowoptimization class uy.kohesive.injekt.** { public protected *; }
+-keep,allowoptimization class android.test.base.** { *; }
+-keep,allowoptimization class kotlin.** { public protected *; }
+-keep,allowoptimization class kotlinx.coroutines.** { public protected *; }
+-keep,allowoptimization class kotlinx.serialization.** { public protected *; }
+-keep,allowoptimization class kotlin.time.** { public protected *; }
+-keep,allowoptimization class okhttp3.** { public protected *; }
+-keep,allowoptimization class okio.** { public protected *; }
+-keep,allowoptimization class org.jsoup.** { public protected *; }
+-keep,allowoptimization class rx.** { public protected *; }
+-keep,allowoptimization class app.cash.quickjs.** { public protected *; }
+-keep,allowoptimization class uy.kohesive.injekt.** { public protected *; }
+-keep,allowoptimization class is.xyz.mpv.** { public protected *; }
+-keep,allowoptimization class com.arthenica.** { public protected *; }
+
+# From extensions-lib
+-keep,allowoptimization class eu.kanade.tachiyomi.source.** { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.RateLimitInterceptorKt { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.network.interceptor.SpecificHostRateLimitInterceptorKt { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.network.NetworkHelper { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.network.OkHttpExtensionsKt { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.network.RequestsKt { public protected *; }
+-keep,allowoptimization class eu.kanade.tachiyomi.AppInfo { public protected *; }
+##---------------End: proguard configuration for kuukiyomi  ----------
+
+##---------------Begin: proguard configuration for RxJava 1.x  ----------
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
 }
--keep class com.google.gson.** { *; }
--keepattributes *Annotation*
+
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+-dontnote rx.internal.util.PlatformDependent
+##---------------End: proguard configuration for RxJava 1.x  ----------
+
+##---------------Begin: proguard configuration for kotlinx.serialization  ----------
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.** # core serialization annotations
+
+# kotlinx-serialization-json specific. Add this if you have java.lang.NoClassDefFoundError kotlinx.serialization.json.JsonObjectSerializer
+-keepclassmembers class kotlinx.serialization.json.** {
+    *** Companion;
+}
+-keepclasseswithmembers class kotlinx.serialization.json.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+-keep,includedescriptorclasses class eu.kanade.**$$serializer { *; }
+-keepclassmembers class eu.kanade.** {
+    *** Companion;
+}
+-keepclasseswithmembers class eu.kanade.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+-keep class kotlinx.serialization.**
+-keepclassmembers class kotlinx.serialization.** {
+    <methods>;
+}
+##---------------End: proguard configuration for kotlinx.serialization  ----------
+
+##---------------Begin: proguard configuration for gson  ----------
+-keep class * extends com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
+
+##---------------End: proguard configuration for gson  ----------
+
 -keepattributes EnclosingMethod
--keep class com.google.gson.reflect.TypeToken { *; }
 -keep class org.jsoup.** { *; }
 -keepclassmembers class org.jsoup.nodes.Document { *; }
 
-
+-dontwarn org.jspecify.annotations.NullMarked
+-dontwarn com.oracle.svm.core.annotate.Delete
+-dontwarn com.oracle.svm.core.annotate.Substitute
+-dontwarn com.oracle.svm.core.annotate.TargetClass
+-dontwarn java.lang.Module
+-dontwarn org.graalvm.nativeimage.hosted.Feature$BeforeAnalysisAccess
+-dontwarn org.graalvm.nativeimage.hosted.Feature
+-dontwarn org.graalvm.nativeimage.hosted.RuntimeResourceAccess
 
 # @Serializable and @Polymorphic are used at runtime for polymorphic serialization.
 -keepattributes RuntimeVisibleAnnotations,AnnotationDefault
-
-# Serializer for classes with named companion objects are retrieved using `getDeclaredClasses`.
-# If you have any, uncomment and replace classes with those containing named companion objects.
-#-keepattributes InnerClasses # Needed for `getDeclaredClasses`.
-#-if @kotlinx.serialization.Serializable class
-#com.example.myapplication.HasNamedCompanion, # <-- List serializable classes with named companions.
-#com.example.myapplication.HasNamedCompanion2
-#{
-#    static **$* *;
-#}
-#-keepnames class <1>$$serializer { # -keepnames suffices; class is kept when serializer() is kept.
-#    static <1>$$serializer INSTANCE;
-#}
