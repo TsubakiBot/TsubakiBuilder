@@ -225,39 +225,48 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
+        val sources = AnimeSources.names.take(AnimeSources.names.size - 1)
+            .plus(MangaSources.names.take(MangaSources.names.size - 1))
         binding.sourceNames.setAdapter(
             ArrayAdapter(
                 requireContext(),
                 R.layout.item_dropdown,
-                AnimeSources.names.take(AnimeSources.names.size - 1)
-                    .plus(MangaSources.names.take(MangaSources.names.size - 1))
+                sources
             )
         )
 
         var animeSource: AnimeParser? = null
         var mangaSource: MangaParser? = null
         binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
-            binding.searchViewText.hint = getString(R.string.search_title, i.toString())
+            binding.searchViewText.hint = getString(R.string.search_title, sources[i])
             binding.searchView.isVisible = true
-            if (MangaSources.names.contains(i.toString())) {
+            if (MangaSources.names.contains(sources[i])) {
                 mangaSource = MangaSources[i]
             } else {
                 animeSource = AnimeSources[i]
             }
         }
 
+        fun search(query: String) {
+            animeSource?.let {
+                SourceBrowseDialogFragment(it, query).show(
+                    requireActivity().supportFragmentManager, null
+                )
+            } ?: mangaSource?.let {
+                SourceBrowseDialogFragment(it, query).show(
+                    requireActivity().supportFragmentManager, null
+                )
+            }
+        }
+
+        binding.searchView.setEndIconOnClickListener {
+            search(binding.searchViewText.text.toString())
+        }
+
         binding.searchViewText.setOnEditorActionListener { textView, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                    animeSource?.let {
-                        SourceBrowseDialogFragment(it, textView.text.toString()).show(
-                            requireActivity().supportFragmentManager, null
-                        )
-                    } ?: mangaSource?.let {
-                        SourceBrowseDialogFragment(it, textView.text.toString()).show(
-                            requireActivity().supportFragmentManager, null
-                        )
-                    }
+                   search(textView.text.toString())
                     true
                 }
                 else -> false
