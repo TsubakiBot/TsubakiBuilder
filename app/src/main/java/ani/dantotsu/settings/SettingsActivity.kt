@@ -88,16 +88,6 @@ class SettingsActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
-                        name = getString(R.string.extensions),
-                        desc = getString(R.string.extensions_desc),
-                        icon = R.drawable.ic_extension,
-                        onClick = {
-                            startActivity(Intent(context, SettingsExtensionsActivity::class.java))
-                        },
-                        isActivity = true
-                    ),
-                    Settings(
-                        type = SettingsView.BUTTON,
                         name = getString(R.string.common),
                         desc = getString(R.string.common_desc),
                         icon = R.drawable.ic_lightbulb_24,
@@ -123,6 +113,26 @@ class SettingsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_round_import_contacts_24,
                         onClick = {
                             startActivity(Intent(context, SettingsMangaActivity::class.java))
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.extensions),
+                        desc = getString(R.string.extensions_desc),
+                        icon = R.drawable.ic_extension,
+                        onClick = {
+                            startActivity(Intent(context, SettingsExtensionsActivity::class.java))
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.addons),
+                        desc = getString(R.string.addons_desc),
+                        icon = R.drawable.ic_round_restaurant_24,
+                        onClick = {
+                            startActivity(Intent(context, SettingsAddonActivity::class.java))
                         },
                         isActivity = true
                     ),
@@ -193,7 +203,7 @@ class SettingsActivity : AppCompatActivity() {
     companion object {
         fun getDeviceInfo(): String {
             return """
-                dantotsu Version: ${BuildConfig.VERSION_NAME}
+                Mr. Matagi Himitsu ${BuildConfig.COMMIT}
                 Device: $BRAND $DEVICE
                 Architecture: ${getArch()}
                 OS Version: $CODENAME $RELEASE ($SDK_INT)

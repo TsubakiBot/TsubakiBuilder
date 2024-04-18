@@ -47,7 +47,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                 bottomMargin = navBarHeight
             }
 
-            binding.addonSettingsBack.setOnClickListener { onBackPressed() }
+            binding.addonSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
             binding.torrentAddonSwitch.isChecked = PrefManager.getVal(PrefName.TorrentEnabled)
             binding.torrentAddonSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -153,9 +153,9 @@ class SettingsAddonActivity : AppCompatActivity() {
         when (status) {
             context.getString(R.string.loaded_successfully) -> {
                 icon.setImageResource(R.drawable.ic_circle_check)
-                icon.setColorFilter(ContextCompat.getColor(context, R.color.literally_just_green))
+                icon.setColorFilter(ContextCompat.getColor(context, android.R.color.holo_green_light))
                 textView.text = context.getString(R.string.loaded_successfully)
-                textView.setTextColor(ContextCompat.getColor(context, R.color.literally_just_green))
+                textView.setTextColor(ContextCompat.getColor(context,  android.R.color.holo_green_light))
             }
 
             null -> {
