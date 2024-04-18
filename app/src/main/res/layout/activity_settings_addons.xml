@@ -87,38 +87,42 @@
             android:layout_marginHorizontal="16dp"
             android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/status"
-                android:textSize="16sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/status"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/torrentAddonStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-8dp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/placeholder"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/torrentAddonStatusIcon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center_vertical|end"
-                android:padding="8dp"
                 app:srcCompat="@drawable/ic_round_settings_24"
                 app:tint="?attr/colorOnBackground"
                 tools:ignore="ContentDescription" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/torrentAddonStatus"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="-16dp"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/placeholder"
-            android:textSize="12sp" />
 
         <FrameLayout
             android:id="@+id/settingsTorrentUpdate"
@@ -184,38 +188,42 @@
             android:layout_marginHorizontal="16dp"
             android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/status"
-                android:textSize="16sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/status"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/downloadAddonStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-8dp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/placeholder"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/downloadAddonStatusIcon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center_vertical|end"
-                android:padding="8dp"
                 app:srcCompat="@drawable/ic_round_settings_24"
                 app:tint="?attr/colorOnBackground"
                 tools:ignore="ContentDescription" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/downloadAddonStatus"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="-16dp"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/placeholder"
-            android:textSize="12sp" />
 
         <FrameLayout
             android:id="@+id/settingsDownloadUpdate"
