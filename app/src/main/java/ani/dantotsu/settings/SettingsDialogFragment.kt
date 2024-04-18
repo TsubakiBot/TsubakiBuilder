@@ -238,7 +238,10 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         var animeSource: AnimeParser? = null
         var mangaSource: MangaParser? = null
         binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
-            binding.searchViewText.hint = getString(R.string.search_title, sources[i])
+            binding.searchViewText.run {
+                transitionName = getString(R.string.search_title, sources[i])
+                hint = getString(R.string.search_title, sources[i])
+            }
             binding.searchView.isVisible = true
             if (MangaSources.names.contains(sources[i])) {
                 mangaSource = MangaSources[i]
