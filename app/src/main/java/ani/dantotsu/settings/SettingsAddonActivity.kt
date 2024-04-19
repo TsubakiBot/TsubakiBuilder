@@ -22,6 +22,8 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.torrServerKill
+import ani.dantotsu.torrServerStart
 import ani.dantotsu.util.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -183,17 +185,9 @@ class SettingsAddonActivity : AppCompatActivity() {
                             PrefManager.setVal(PrefName.TorrServerEnabled, isChecked)
                             Injekt.get<TorrentAddonManager>().extension?.let {
                                 if (isChecked) {
-                                    lifecycleScope.launchIO {
-                                        if (!ServerService.isRunning()) {
-                                            ServerService.start()
-                                        }
-                                    }
+                                    torrServerStart()
                                 } else {
-                                    lifecycleScope.launchIO {
-                                        if (ServerService.isRunning()) {
-                                            ServerService.stop()
-                                        }
-                                    }
+                                    torrServerKill()
                                 }
                             }
                         }

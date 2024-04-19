@@ -285,6 +285,40 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private fun parseMagnetLink(video: Video, ep: Episode, videoUrl: String) : Boolean {
+        if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!PrefManager.getVal<Boolean>(PrefName.TorrServerEnabled)
+                    && !TorrManager.isServiceRunning()) {
+                    val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
+                        .setTitle(R.string.server_disabled)
+                        .setMessage(R.string.enable_server_temp)
+                        .setPositiveButton(R.string.yes) { dialog, _ ->
+                            torrServerStart()
+                            toast(R.string.server_enabled)
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton(R.string.no) { dialog, _ ->
+                            dialog.dismiss()
+                            dismiss()
+                        }
+                        .create()
+                    dialog.window?.setDimAmount(0.8f)
+                    dialog.show()
+                    return true
+                }
+                runBlocking(Dispatchers.IO) {
+                    launchWithTorrentServer(video)
+                }
+            } else {
+                dismiss()
+                launchWithExternalPlayer(ep, video)
+                return true
+            }
+        }
+        return false
+    }
+
     @SuppressLint("UnsafeOptInUsageError")
     fun startExoplayer(media: Media) {
         prevEpisode = null
@@ -293,38 +327,10 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             val video = ep.extractors?.find {
                 it.server.name == ep.selectedExtractor
             }?.videos?.getOrNull(ep.selectedVideo)
-            video?.file?.url?.let { videoUrl ->
-                if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (!PrefManager.getVal<Boolean>(PrefName.TorrServerEnabled)
-                            && !TorrManager.isServiceRunning()) {
-                            val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
-                                .setTitle(R.string.server_disabled)
-                                .setMessage(R.string.enable_server_temp)
-                                .setPositiveButton(R.string.yes) { dialog, _ ->
-                                    torrServerStart()
-                                    toast(R.string.server_enabled)
-                                    dialog.dismiss()
-                                }
-                                .setNegativeButton(R.string.no) { dialog, _ ->
-                                    dialog.dismiss()
-                                    dismiss()
-                                }
-                                .create()
-                            dialog.window?.setDimAmount(0.8f)
-                            dialog.show()
-                            return
-                        }
-                        runBlocking(Dispatchers.IO) {
-                            launchWithTorrentServer(video)
-                        }
-                    } else {
-                        dismiss()
-                        launchWithExternalPlayer(ep, video)
-                        return
-                    }
-                }
+            val isExportedOrUnavailable = video?.file?.url?.let { videoUrl ->
+                parseMagnetLink(video, ep, videoUrl)
             }
+            if (isExportedOrUnavailable == true) return
         }
         dismiss()
 
@@ -341,8 +347,6 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             )
         }
     }
-
-
 
     private fun stopAddingToList() {
         episode?.extractorCallback = null
@@ -481,6 +485,10 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     val subtitleNames = subtitles.map { it.language }
                     var subtitleToDownload: Subtitle? = null
                     val activity = currActivity()?:requireActivity()
+                    val isExportedOrUnavailable = selectedVideo?.file?.url?.let { videoUrl ->
+                        parseMagnetLink(video, episode, videoUrl)
+                    }
+                    if (isExportedOrUnavailable == true) return@setSafeOnClickListener
                     if (subtitles.isNotEmpty()) {
                         val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
                             .setTitle("Download Subtitle")
