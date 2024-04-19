@@ -1,7 +1,6 @@
 package ani.dantotsu.settings
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -90,6 +89,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                     true
                 }
                 b.settingsLayout.isVisible = settings.isVisible
+                settings.attachToSwitch?.invoke(b)
             }
         }
     }

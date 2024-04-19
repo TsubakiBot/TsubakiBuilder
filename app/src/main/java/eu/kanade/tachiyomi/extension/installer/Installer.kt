@@ -8,7 +8,11 @@ import android.content.IntentFilter
 import android.net.Uri
 import androidx.annotation.CallSuper
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import ani.dantotsu.addons.download.DownloadAddonManager
+import ani.dantotsu.addons.torrent.TorrentAddonManager
+import ani.dantotsu.media.AddonType
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.Type
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import eu.kanade.tachiyomi.extension.InstallStep
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
@@ -25,6 +29,8 @@ abstract class Installer(private val service: Service) {
     private val animeExtensionManager: AnimeExtensionManager by injectLazy()
     private val mangaExtensionManager: MangaExtensionManager by injectLazy()
     private val novelExtensionManager: NovelExtensionManager by injectLazy()
+    private val torrentAddonManager: TorrentAddonManager by injectLazy()
+    private val downloadAddonManager: DownloadAddonManager by injectLazy()
 
     private var waitingInstall = AtomicReference<Entry>(null)
     private val queue = Collections.synchronizedList(mutableListOf<Entry>())
@@ -49,7 +55,7 @@ abstract class Installer(private val service: Service) {
      * @param downloadId Download ID as known by [ExtensionManager]
      * @param uri Uri of APK to install
      */
-    fun addToQueue(type: MediaType, downloadId: Long, uri: Uri) {
+    fun addToQueue(type: Type, downloadId: Long, uri: Uri) {
         queue.add(Entry(type, downloadId, uri))
         checkQueue()
     }
@@ -67,6 +73,8 @@ abstract class Installer(private val service: Service) {
             MediaType.ANIME -> animeExtensionManager.setInstalling(entry.downloadId)
             MediaType.MANGA -> mangaExtensionManager.setInstalling(entry.downloadId)
             MediaType.NOVEL -> novelExtensionManager.setInstalling(entry.downloadId)
+            AddonType.TORRENT -> torrentAddonManager.setInstalling(entry.downloadId)
+            AddonType.DOWNLOAD -> downloadAddonManager.setInstalling(entry.downloadId)
         }
     }
 
@@ -101,6 +109,14 @@ abstract class Installer(private val service: Service) {
 
                 MediaType.NOVEL -> {
                     novelExtensionManager.updateInstallStep(completedEntry.downloadId, resultStep)
+                }
+
+                AddonType.TORRENT -> {
+                    torrentAddonManager.updateInstallStep(completedEntry.downloadId, resultStep)
+                }
+
+                AddonType.DOWNLOAD -> {
+                    downloadAddonManager.updateInstallStep(completedEntry.downloadId, resultStep)
                 }
             }
             checkQueue()
@@ -145,6 +161,12 @@ abstract class Installer(private val service: Service) {
                 MediaType.NOVEL -> {
                     novelExtensionManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
+                AddonType.TORRENT -> {
+                    torrentAddonManager.updateInstallStep(it.downloadId, InstallStep.Error)
+                }
+                AddonType.DOWNLOAD -> {
+                    downloadAddonManager.updateInstallStep(it.downloadId, InstallStep.Error)
+                }
             }
         }
         queue.clear()
@@ -188,7 +210,7 @@ abstract class Installer(private val service: Service) {
      * @param downloadId Download ID as known by [ExtensionManager]
      * @param uri Uri of APK to install
      */
-    data class Entry(val type: MediaType, val downloadId: Long, val uri: Uri)
+    data class Entry(val type: Type, val downloadId: Long, val uri: Uri)
 
     init {
         val filter = IntentFilter(ACTION_CANCEL_QUEUE)

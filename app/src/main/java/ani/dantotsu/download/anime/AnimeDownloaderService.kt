@@ -76,7 +76,7 @@ class AnimeDownloaderService : Service() {
     private val mutex = Mutex()
     private var isCurrentlyProcessing = false
     private var currentTasks: MutableList<AnimeDownloadTask> = mutableListOf()
-    private val ffExtension =  Injekt.get<DownloadAddonManager>().extension
+    private val ffExtension =  Injekt.get<DownloadAddonManager>().extension?.extension
 
     override fun onBind(intent: Intent?): IBinder? {
         // This is only required for bound services.

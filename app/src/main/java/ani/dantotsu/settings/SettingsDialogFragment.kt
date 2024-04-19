@@ -13,8 +13,6 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.lifecycleScope
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
@@ -48,8 +46,6 @@ import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule

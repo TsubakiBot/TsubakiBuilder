@@ -302,7 +302,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             && !TorrentServerService.isRunning(requireContext())) {
                             val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
                                 .setTitle(R.string.server_disabled)
-                                .setMessage(R.string.enable_server)
+                                .setMessage(R.string.enable_server_temp)
                                 .setPositiveButton(R.string.yes) { dialog, _ ->
                                     torrServerStart(currContext())
                                     toast(R.string.server_enabled)

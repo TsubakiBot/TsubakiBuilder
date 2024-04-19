@@ -8,12 +8,15 @@ import android.net.Uri
 import android.os.Build
 import android.os.IBinder
 import ani.dantotsu.R
+import ani.dantotsu.media.AddonType
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.Type
 import ani.dantotsu.util.Logger
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.installer.Installer
 import eu.kanade.tachiyomi.extension.installer.PackageInstallerInstaller
+import eu.kanade.tachiyomi.extension.util.ExtensionInstaller.Companion.EXTRA_ADDON_TYPE
 import eu.kanade.tachiyomi.extension.util.ExtensionInstaller.Companion.EXTRA_DOWNLOAD_ID
 import eu.kanade.tachiyomi.extension.util.ExtensionInstaller.Companion.EXTRA_EXTENSION_TYPE
 import eu.kanade.tachiyomi.util.system.getSerializableExtraCompat
@@ -46,6 +49,7 @@ class ExtensionInstallService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val uri = intent?.data
         val type = intent?.getSerializableExtraCompat<MediaType>(EXTRA_EXTENSION_TYPE)
+            ?: intent?.getSerializableExtraCompat<AddonType>(EXTRA_ADDON_TYPE)
         val id = intent?.getLongExtra(EXTRA_DOWNLOAD_ID, -1)?.takeIf { it != -1L }
         val installerUsed = intent?.getSerializableExtraCompat<BasePreferences.ExtensionInstaller>(
             EXTRA_INSTALLER
@@ -84,7 +88,7 @@ class ExtensionInstallService : Service() {
 
         fun getIntent(
             context: Context,
-            type: MediaType,
+            type: Type,
             downloadId: Long,
             uri: Uri,
             installer: BasePreferences.ExtensionInstaller,
@@ -92,8 +96,13 @@ class ExtensionInstallService : Service() {
             return Intent(context, ExtensionInstallService::class.java)
                 .setDataAndType(uri, ExtensionInstaller.APK_MIME)
                 .putExtra(EXTRA_DOWNLOAD_ID, downloadId)
-                .putExtra(EXTRA_EXTENSION_TYPE, type)
-                .putExtra(EXTRA_INSTALLER, installer)
+                .putExtra(EXTRA_INSTALLER, installer).apply {
+                    if (type is MediaType) {
+                        putExtra(EXTRA_EXTENSION_TYPE, type)
+                    } else if (type is AddonType) {
+                        putExtra(EXTRA_ADDON_TYPE, type)
+                    }
+                }
         }
     }
 }

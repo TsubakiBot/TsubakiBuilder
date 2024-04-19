@@ -30,6 +30,37 @@ internal class ExtensionInstallReceiver : BroadcastReceiver() {
     private var mangaListener: MangaListener? = null
     private var type: MediaType? = null
 
+    companion object {
+
+        /**
+         * Returns true if this package is performing an update.
+         *
+         * @param intent The intent that triggered the event.
+         */
+        fun isReplacing(intent: Intent): Boolean {
+            return intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
+        }
+
+        /**
+         * Returns the package name of the installed, updated or removed application.
+         */
+        fun getPackageNameFromIntent(intent: Intent?): String? {
+            return intent?.data?.encodedSchemeSpecificPart ?: return null
+        }
+    }
+
+    /**
+     * Returns the intent filter this receiver should subscribe to.
+     */
+    private val filter
+        get() = IntentFilter().apply {
+            priority = 100
+            addAction(Intent.ACTION_PACKAGE_ADDED)
+            addAction(Intent.ACTION_PACKAGE_REPLACED)
+            addAction(Intent.ACTION_PACKAGE_REMOVED)
+            addDataScheme("package")
+        }
+
     /**
      * Registers this broadcast receiver
      */
@@ -49,18 +80,6 @@ internal class ExtensionInstallReceiver : BroadcastReceiver() {
         mangaListener = listener
         return this
     }
-
-    /**
-     * Returns the intent filter this receiver should subscribe to.
-     */
-    private val filter
-        get() = IntentFilter().apply {
-            priority = 100
-            addAction(Intent.ACTION_PACKAGE_ADDED)
-            addAction(Intent.ACTION_PACKAGE_REPLACED)
-            addAction(Intent.ACTION_PACKAGE_REMOVED)
-            addDataScheme("package")
-        }
 
     /**
      * Called when one of the events of the [filter] is received. When the package is an extension,
@@ -137,20 +156,12 @@ internal class ExtensionInstallReceiver : BroadcastReceiver() {
     }
 
     /**
-     * Returns true if this package is performing an update.
-     *
-     * @param intent The intent that triggered the event.
-     */
-    private fun isReplacing(intent: Intent): Boolean {
-        return intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
-    }
-
-    /**
      * Returns the extension triggered by the given intent.
      *
      * @param context The application context.
      * @param intent The intent containing the package name of the extension.
      */
+    @OptIn(DelicateCoroutinesApi::class)
     private suspend fun getAnimeExtensionFromIntent(context: Context, intent: Intent?): AnimeLoadResult {
         val pkgName = getPackageNameFromIntent(intent)
         if (pkgName == null) {
@@ -178,13 +189,6 @@ internal class ExtensionInstallReceiver : BroadcastReceiver() {
                 pkgName,
             )
         }.await()
-    }
-
-    /**
-     * Returns the package name of the installed, updated or removed application.
-     */
-    private fun getPackageNameFromIntent(intent: Intent?): String? {
-        return intent?.data?.encodedSchemeSpecificPart ?: return null
     }
 
     /**
