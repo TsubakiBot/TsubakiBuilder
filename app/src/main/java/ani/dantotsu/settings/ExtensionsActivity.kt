@@ -231,11 +231,10 @@ class ExtensionsActivity : AppCompatActivity() {
 
     private fun getSavedRepositories(repoInventory: ViewGroup, type: MediaType) {
         repoInventory.removeAllViews()
-        val prefName: PrefName? = when (type) {
+        val prefName: PrefName = when (type) {
             MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
             MediaType.MANGA -> { PrefName.MangaExtensionRepos }
             MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
-            else -> { null }
         }
         prefName?.let { repoList ->
             PrefManager.getVal<Set<String>>(repoList).forEach { item ->
@@ -256,7 +255,6 @@ class ExtensionsActivity : AppCompatActivity() {
                                     MediaType.ANIME -> { animeExtensionManager.findAvailableExtensions() }
                                     MediaType.MANGA -> { mangaExtensionManager.findAvailableExtensions() }
                                     MediaType.NOVEL -> { novelExtensionManager.findAvailableExtensions() }
-                                    else -> {  }
                                 }
                             }
                             dialog.dismiss()
@@ -294,36 +292,33 @@ class ExtensionsActivity : AppCompatActivity() {
     }
 
     private fun generateRepositoryButton(type: MediaType) {
-        val hintResource: Int? = when (type) {
+        val hintResource: Int = when (type) {
             MediaType.ANIME -> { R.string.anime_add_repository }
             MediaType.MANGA -> { R.string.manga_add_repository }
             MediaType.NOVEL -> { R.string.novel_add_repository }
-            else -> { null }
         }
-        hintResource?.let { res ->
-            binding.openSettingsButton.setOnClickListener {
-                val dialogView = DialogRepositoriesBinding.inflate(
-                    LayoutInflater.from(binding.openSettingsButton.context), null, false
-                )
-                dialogView.repositoryTextBox.hint = getString(res)
-                dialogView.repoInventory.apply {
-                    getSavedRepositories(this, type)
-                }
-                val alertDialog = AlertDialog.Builder(this@ExtensionsActivity, R.style.MyPopup)
-                    .setTitle(R.string.edit_repositories)
-                    .setView(dialogView.root)
-                    .setPositiveButton(getString(R.string.add)) { _, _ ->
-                        if (!dialogView.repositoryTextBox.text.isNullOrBlank())
-                            processUserInput(dialogView.repositoryTextBox.text.toString(), type)
-                    }
-                    .setNegativeButton(getString(R.string.close)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                processEditorAction(dialogView.repositoryTextBox, type)
-                alertDialog.show()
-                alertDialog.window?.setDimAmount(0.8f)
+        binding.openSettingsButton.setOnClickListener {
+            val dialogView = DialogRepositoriesBinding.inflate(
+                LayoutInflater.from(binding.openSettingsButton.context), null, false
+            )
+            dialogView.repositoryTextBox.hint = getString(hintResource)
+            dialogView.repoInventory.apply {
+                getSavedRepositories(this, type)
             }
+            val alertDialog = AlertDialog.Builder(this@ExtensionsActivity, R.style.MyPopup)
+                .setTitle(R.string.edit_repositories)
+                .setView(dialogView.root)
+                .setPositiveButton(getString(R.string.add)) { _, _ ->
+                    if (!dialogView.repositoryTextBox.text.isNullOrBlank())
+                        processUserInput(dialogView.repositoryTextBox.text.toString(), type)
+                }
+                .setNegativeButton(getString(R.string.close)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+            processEditorAction(dialogView.repositoryTextBox, type)
+            alertDialog.show()
+            alertDialog.window?.setDimAmount(0.8f)
         }
     }
 }

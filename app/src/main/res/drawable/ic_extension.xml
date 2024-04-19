@@ -4,6 +4,11 @@
     android:tint="?attr/colorControlNormal"
     android:viewportWidth="421.979"
     android:viewportHeight="421.979">
+    <group
+        android:translateX="20"
+        android:translateY="20"
+        android:scaleX="0.90"
+        android:scaleY="0.90">
     <path
         android:fillColor="#FFF"
         android:pathData="M367.797,62.811c10.687,0,20.178,5.228,27.805,9.429c5.603,3.085,10.025,5.521,14.576,5.521
@@ -32,4 +37,5 @@
 				c0-20.575,17.045-37.312,37.996-37.312c20.952,0,37.998,16.737,37.998,37.312c0,10.685-5.229,20.176-9.429,27.803
 				c-3.088,5.604-5.522,10.026-5.522,14.576c0,1.971,0.694,11.802,14.42,11.802h34.028c15.716,0,28.5-12.784,28.5-28.5V249.676
 				C421.979,233.961,409.193,221.176,393.479,221.176z" />
+    </group>
 </vector>

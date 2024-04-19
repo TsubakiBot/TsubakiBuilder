@@ -388,12 +388,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             val commentTab = navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
             navBar.addTab(commentTab)
         }
+        if (extension != null) selected = 1
         if (model.continueMedia == null && media.cameFromContinue) {
             model.continueMedia = PrefManager.getVal(PrefName.ContinueMedia)
             selected = 1
         }
-        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null || extension != null)
-            selected = 2
+        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null) selected = 2
         if (viewPager.currentItem != selected) viewPager.post {
             viewPager.setCurrentItem(selected, false)
         }
