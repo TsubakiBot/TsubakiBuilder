@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <LinearLayout
@@ -255,6 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="-8dp"
             android:layout_marginBottom="32dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -301,7 +303,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="-16dp"
+            android:layout_marginTop="-8dp"
             android:layout_marginBottom="32dp"
             android:layout_gravity="bottom"
             android:transitionName="@string/extension_search"
