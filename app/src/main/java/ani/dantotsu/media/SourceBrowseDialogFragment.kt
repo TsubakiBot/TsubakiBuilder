@@ -12,7 +12,9 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.BottomSheetDialogFragment
@@ -80,8 +82,6 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        val allResults = hashMapOf<BaseParser, List<ShowResponse>>()
-
         model.getMedia().observe(viewLifecycleOwner) {
 
             binding.mediaListProgressBar.visibility = View.GONE
@@ -91,6 +91,9 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
             binding.searchProgress.visibility = View.VISIBLE
 
             if (incomingQuery.isNotBlank()) {
+                binding.searchSourceTitle.text = getString(R.string.extension_search)
+                val parserAdapters = mutableListOf<GenericSourceAdapter>()
+                val allResults = hashMapOf<BaseParser, List<ShowResponse>>()
                 binding.searchBar.isVisible = false
                 CoroutineScope(Dispatchers.IO).launch {
                     AnimeSources.list.take(AnimeSources.names.size - 1).forEach {
@@ -105,6 +108,12 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                             allResults.put(mangaParser, mangaParser.search(incomingQuery))
                         }
                     }
+
+                    allResults.forEach {
+                        parserAdapters.add(GenericSourceAdapter(
+                            it.value, it.key, model, this@SourceBrowseDialogFragment, scope)
+                        )
+                    }
                     model.responses.postValue(allResults.values.flatten())
                 }
 
@@ -113,7 +122,11 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
                         binding.searchRecyclerView.adapter =
-                            GenericSourceListAdapter(res, model, this, scope)
+                            ConcatAdapter(
+                                ConcatAdapter.Config.Builder().setIsolateViewTypes(false).build()
+                            ).apply {
+                                parserAdapters.forEach { addAdapter(it) }
+                            }
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(
