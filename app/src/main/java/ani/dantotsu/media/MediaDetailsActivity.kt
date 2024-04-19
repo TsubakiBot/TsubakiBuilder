@@ -346,18 +346,27 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             }
         }
         adult = media.isAdult
+        val commentId = intent.getIntExtra("commentId", -1)
+        val extension = intent.getStringExtra("extension")
         if (media.anime != null) {
             if (PrefManager.getVal(PrefName.TorrServerEnabled))
                 torrServerStart(this@MediaDetailsActivity)
-            viewPager.adapter =
-                ViewPagerAdapter(supportFragmentManager, lifecycle, SupportedMedia.ANIME, media, intent.getIntExtra("commentId", -1))
+            viewPager.adapter = ViewPagerAdapter(
+                supportFragmentManager,
+                lifecycle,
+                SupportedMedia.ANIME,
+                media,
+                commentId,
+                extension
+            )
         } else if (media.manga != null) {
             viewPager.adapter = ViewPagerAdapter(
                 supportFragmentManager,
                 lifecycle,
                 if (media.format == "NOVEL") SupportedMedia.NOVEL else SupportedMedia.MANGA,
                 media,
-                intent.getIntExtra("commentId", -1)
+                commentId,
+                extension
             )
             anime = false
         }
@@ -383,7 +392,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             model.continueMedia = PrefManager.getVal(PrefName.ContinueMedia)
             selected = 1
         }
-        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null) selected = 2
+        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null || extension != null)
+            selected = 2
         if (viewPager.currentItem != selected) viewPager.post {
             viewPager.setCurrentItem(selected, false)
         }
@@ -442,7 +452,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         lifecycle: Lifecycle,
         private val mediaType: SupportedMedia,
         private val media: Media,
-        private val commentId: Int
+        private val commentId: Int,
+        private val extension: String? = null
     ) :
         FragmentStateAdapter(fragmentManager, lifecycle) {
 
@@ -450,10 +461,16 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         override fun createFragment(position: Int): Fragment = when (position) {
             0 -> MediaInfoFragment()
-            1 -> when (mediaType) {
-                SupportedMedia.ANIME -> AnimeWatchFragment()
-                SupportedMedia.MANGA -> MangaReadFragment()
-                SupportedMedia.NOVEL -> NovelReadFragment()
+            1 -> {
+                val fragment = when (mediaType) {
+                    SupportedMedia.ANIME -> AnimeWatchFragment()
+                    SupportedMedia.MANGA -> MangaReadFragment()
+                    SupportedMedia.NOVEL -> NovelReadFragment()
+                }
+                val bundle = Bundle()
+                extension?.let { bundle.putString("extension", extension) }
+                fragment.arguments = bundle
+                fragment
             }
             2 -> {
                 val fragment = CommentsFragment()

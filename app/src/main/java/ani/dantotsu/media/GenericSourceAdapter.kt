@@ -25,7 +25,7 @@ class GenericSourceAdapter(
     override suspend fun onItemClick(context: Context, source: ShowResponse) {
         source.sAnime?.let { anime ->
             val map = mutableMapOf<String, Episode>()
-            with (parser as AnimeParser) {
+            val extension = with (parser as AnimeParser) {
                 loadEpisodes(source.link, source.extra, anime).forEach {
                     map[it.number] = Episode(
                         it.number,
@@ -38,28 +38,32 @@ class GenericSourceAdapter(
                         sEpisode = it.sEpisode
                     )
                 }
+                name
             }
             ContextCompat.startActivity(
                 context,
                 Intent(context, SearchActivity::class.java)
                     .putExtra("type", MediaType.ANIME.asText().uppercase())
                     .putExtra("query", anime.title)
-                    .putExtra("search", true),
+                    .putExtra("search", true)
+                    .putExtra("extension", extension),
                 null
             )
         } ?: source.sManga?.let { manga ->
             val map = mutableMapOf<String, MangaChapter>()
-            with (parser as MangaParser) {
+            val extension = with (parser as MangaParser) {
                 loadChapters(source.link, source.extra, manga).forEach {
                     map[it.number] = MangaChapter(it)
                 }
+                name
             }
             ContextCompat.startActivity(
                 context,
                 Intent(context, SearchActivity::class.java)
                     .putExtra("type", MediaType.MANGA.asText().uppercase())
                     .putExtra("query", manga.title)
-                    .putExtra("search", true),
+                    .putExtra("search", true)
+                    .putExtra("extension", extension),
                 null
             )
         }

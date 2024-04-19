@@ -204,6 +204,10 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                             if (offline) media.selected!!.sourceIndex = model.mangaReadSources!!.list.lastIndex
                             model.loadMangaChapters(media, media.selected!!.sourceIndex)
                         }
+
+                        arguments?.getString("extension")?.let { name ->
+                            onSourceChange(model.mangaReadSources!!.names.indexOf(name))
+                        }
                         loaded = true
                     } else {
                         reload()

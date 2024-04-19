@@ -89,7 +89,11 @@ class SearchActivity : AppCompatActivity() {
         result = model.searchResults
 
         progressAdapter = ProgressAdapter(searched = model.searched)
-        mediaAdaptor = MediaAdaptor(style, model.searchResults.results, this, matchParent = true)
+        mediaAdaptor = MediaAdaptor(
+            style, model.searchResults.results, this, matchParent = true
+        ).apply {
+            extension = intent.getStringExtra("extension")
+        }
         headerAdaptor = SearchAdapter(this, model.searchResults.type)
 
         val gridSize = (screenWidth / 120f).toInt()

@@ -207,6 +207,10 @@ class AnimeWatchFragment : Fragment() {
                         }
                         model.loadEpisodes(media, media.selected!!.sourceIndex)
                     }
+
+                    arguments?.getString("extension")?.let { name ->
+                        onSourceChange(model.watchSources!!.names.indexOf(name))
+                    }
                     loaded = true
                 } else {
                     reload()

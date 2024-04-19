@@ -44,6 +44,8 @@ class MediaAdaptor(
     private val fav: Boolean = false,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    var extension: String? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (type) {
             0 -> MediaViewHolder(
@@ -371,10 +373,10 @@ class MediaAdaptor(
             if (bitmap != null) MediaSingleton.bitmap = bitmap
             ContextCompat.startActivity(
                 activity,
-                Intent(activity, MediaDetailsActivity::class.java).putExtra(
-                    "media",
-                    media as Serializable
-                ),
+                Intent(activity, MediaDetailsActivity::class.java)
+                    .putExtra("media", media as Serializable)
+                    .putExtra("extension", extension)
+                ,
                 if (itemCompactImage != null) {
                     ActivityOptionsCompat.makeSceneTransitionAnimation(
                         activity,
