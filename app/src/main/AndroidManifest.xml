@@ -472,6 +472,10 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service android:name="eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService"
+            android:foregroundServiceType="dataSync" />
+
+        <service android:name=".addons.torrent.ServerService"
+            android:exported="false"
             android:stopWithTask="true"
             android:foregroundServiceType="dataSync" />
 
