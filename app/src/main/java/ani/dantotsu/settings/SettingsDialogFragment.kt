@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
@@ -166,7 +167,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.hidePreventInjection.isVisible = true
+            binding.hidePreventInjection.isVisible = binding.hidePreventInjection.isGone
             true
         }
 
@@ -227,7 +228,8 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
 
         binding.settingsExtensionSettings.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.sourceBrowser.isVisible = true
+            binding.sourceBrowser.isVisible = binding.sourceBrowser.isGone
+            if (it.isGone) binding.searchView.isGone = true
             true
         }
 

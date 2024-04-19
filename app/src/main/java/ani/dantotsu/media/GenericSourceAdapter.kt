@@ -1,7 +1,9 @@
 package ani.dantotsu.media
 
+import android.content.Context
+import android.content.Intent
 import androidx.annotation.OptIn
-import androidx.fragment.app.FragmentActivity
+import androidx.core.content.ContextCompat
 import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.media.manga.MangaChapter
@@ -9,7 +11,6 @@ import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.BaseParser
 import ani.dantotsu.parsers.MangaParser
 import ani.dantotsu.parsers.ShowResponse
-import ani.dantotsu.util.Logger
 import kotlinx.coroutines.CoroutineScope
 
 class GenericSourceAdapter(
@@ -21,34 +22,46 @@ class GenericSourceAdapter(
 ) : SourceBrowseAdapter(sources, fragment, scope) {
 
     @OptIn(UnstableApi::class)
-    override suspend fun onItemClick(source: ShowResponse) {
+    override suspend fun onItemClick(context: Context, source: ShowResponse) {
         source.sAnime?.let { anime ->
             val map = mutableMapOf<String, Episode>()
-            val animeParser = parser as AnimeParser
-            animeParser.loadEpisodes(source.link, source.extra, anime).forEach {
-                map[it.number] = Episode(
-                    it.number,
-                    it.link,
-                    it.title,
-                    it.description,
-                    it.thumbnail,
-                    it.isFiller,
-                    extra = it.extra,
-                    sEpisode = it.sEpisode
-                )
+            with (parser as AnimeParser) {
+                loadEpisodes(source.link, source.extra, anime).forEach {
+                    map[it.number] = Episode(
+                        it.number,
+                        it.link,
+                        it.title,
+                        it.description,
+                        it.thumbnail,
+                        it.isFiller,
+                        extra = it.extra,
+                        sEpisode = it.sEpisode
+                    )
+                }
             }
-            map.forEach {
-                Logger.log(it.key)
-            }
+            ContextCompat.startActivity(
+                context,
+                Intent(context, SearchActivity::class.java)
+                    .putExtra("type", MediaType.ANIME.asText().uppercase())
+                    .putExtra("query", anime.title)
+                    .putExtra("search", true),
+                null
+            )
         } ?: source.sManga?.let { manga ->
             val map = mutableMapOf<String, MangaChapter>()
-            val mangaParser = parser as MangaParser
-            mangaParser.loadChapters(source.link, source.extra, manga).forEach {
-                map[it.number] = MangaChapter(it)
+            with (parser as MangaParser) {
+                loadChapters(source.link, source.extra, manga).forEach {
+                    map[it.number] = MangaChapter(it)
+                }
             }
-            map.forEach {
-                Logger.log(it.key)
-            }
+            ContextCompat.startActivity(
+                context,
+                Intent(context, SearchActivity::class.java)
+                    .putExtra("type", MediaType.MANGA.asText().uppercase())
+                    .putExtra("query", manga.title)
+                    .putExtra("search", true),
+                null
+            )
         }
     }
 }

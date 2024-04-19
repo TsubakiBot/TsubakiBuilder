@@ -1,9 +1,8 @@
 package ani.dantotsu.media
 
-import android.content.Intent
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemCharacterBinding
 import ani.dantotsu.loadImage
@@ -33,14 +32,16 @@ abstract class SourceBrowseAdapter(
 
     override fun getItemCount(): Int = sources.size
 
-    abstract suspend fun onItemClick(source: ShowResponse)
+    abstract suspend fun onItemClick(context: Context, source: ShowResponse)
 
     inner class SourceViewHolder(val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 dialogFragment.dismiss()
-                scope.launch(Dispatchers.IO) { onItemClick(sources[bindingAdapterPosition]) }
+                scope.launch(Dispatchers.IO) {
+                    onItemClick(itemView.context, sources[bindingAdapterPosition])
+                }
             }
             var a = true
             itemView.setOnLongClickListener {

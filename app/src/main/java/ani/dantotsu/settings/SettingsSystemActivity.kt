@@ -103,6 +103,17 @@ class SettingsSystemActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
+            var hasFoldingFeature = false
+            CoroutineScope(Dispatchers.IO).launch {
+                WindowInfoTracker.getOrCreate(this@SettingsSystemActivity)
+                    .windowLayoutInfo(this@SettingsSystemActivity)
+                    .collect { newLayoutInfo ->
+                        hasFoldingFeature = newLayoutInfo.displayFeatures.find {
+                            it is FoldingFeature
+                        } != null
+                    }
+            }
+
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
@@ -173,7 +184,8 @@ class SettingsSystemActivity : AppCompatActivity() {
                         isChecked = PrefManager.getVal(PrefName.UseFoldable),
                         switch = {isChecked, _ ->
                             PrefManager.setVal(PrefName.UseFoldable, isChecked)
-                        }
+                        },
+                        isVisible = hasFoldingFeature
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
@@ -242,18 +254,6 @@ class SettingsSystemActivity : AppCompatActivity() {
             settingsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
-                CoroutineScope(Dispatchers.IO).launch {
-                    WindowInfoTracker.getOrCreate(this@SettingsSystemActivity)
-                        .windowLayoutInfo(this@SettingsSystemActivity)
-                        .collect { newLayoutInfo ->
-                            withContext(Dispatchers.Main) {
-                                val foldableItem = findViewHolderForAdapterPosition(1)
-                                        as SettingsAdapter.SettingsSwitchViewHolder
-                                foldableItem.binding.root.isVisible =
-                                    newLayoutInfo.displayFeatures.find { it is FoldingFeature } != null
-                            }
-                        }
-                }
             }
         }
     }
