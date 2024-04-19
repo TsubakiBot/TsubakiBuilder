@@ -36,6 +36,7 @@
 - [Support for extension repo entry](https://github.com/rebelonion/Dantotsu/pull/299)
 - [Repo modification from extension page](https://github.com/rebelonion/Dantotsu/pull/332)
 - [Automated list of contributors & forks](https://github.com/rebelonion/Dantotsu/pull/314)
+- [Fixed square icons for Material theme](https://github.com/rebelonion/Dantotsu/pull/322)
 - [Code optimization and fixes throughout](https://github.com/rebelonion/Dantotsu/pull/271)
 - [Other bits and pieces I likely forgot](https://github.com/rebelonion/Dantotsu/pulls?q=is%3Apr+author%3AAbandonedCart)
 </details>

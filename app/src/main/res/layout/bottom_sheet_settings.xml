@@ -255,7 +255,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:visibility="gone"

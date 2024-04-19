@@ -225,7 +225,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.settingsExtensionSettings.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             binding.sourceBrowser.isVisible = binding.sourceBrowser.isGone
-            if (it.isGone) binding.searchView.isGone = true
+            if (binding.sourceBrowser.isGone) binding.searchView.isGone = true
             true
         }
 
