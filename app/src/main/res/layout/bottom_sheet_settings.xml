@@ -250,59 +250,12 @@
                 app:iconSize="24dp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/sourceBrowser"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="-8dp"
-            android:layout_marginBottom="32dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sourceNameContainer"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:hint="@string/extensions"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                app:hintAnimationEnabled="true"
-                app:startIconDrawable="@drawable/ic_round_source_24">
-
-                <AutoCompleteTextView
-                    android:id="@+id/sourceNames"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/poppins_bold"
-                    android:freezesText="false"
-                    android:inputType="none"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:text="@string/extension_browse"
-                    android:textAllCaps="true"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="14sp"
-                    tools:ignore="LabelFor,TextContrastCheck,DuplicateSpeakableTextCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/searchView"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="-8dp"
             android:layout_marginBottom="32dp"
             android:layout_gravity="bottom"
             android:transitionName="@string/extension_search"
@@ -328,6 +281,7 @@
                 android:imeOptions="actionSearch"
                 android:inputType="textPersonName"
                 android:textColor="?attr/colorOnBackground"
+                android:hint="@string/extension_search"
                 android:padding="8dp"
                 android:selectAllOnFocus="true"
                 android:textSize="14sp"

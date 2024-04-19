@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -30,10 +29,6 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.SourceBrowseDialogFragment
 import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.others.BottomSheetDialogFragment
-import ani.dantotsu.parsers.AnimeParser
-import ani.dantotsu.parsers.AnimeSources
-import ani.dantotsu.parsers.MangaParser
-import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -224,47 +219,14 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
 
         binding.settingsExtensionSettings.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.sourceBrowser.isVisible = binding.sourceBrowser.isGone
-            if (binding.sourceBrowser.isGone) binding.searchView.isGone = true
+            binding.searchView.isVisible = binding.searchView.isGone
             true
         }
 
-        val sources = AnimeSources.names.take(AnimeSources.names.size - 1)
-            .plus(MangaSources.names.take(MangaSources.names.size - 1))
-        binding.sourceNames.setAdapter(
-            ArrayAdapter(
-                requireContext(),
-                R.layout.item_dropdown,
-                sources
-            )
-        )
-
-        var animeSource: AnimeParser? = null
-        var mangaSource: MangaParser? = null
-        binding.sourceNames.setOnItemClickListener { _, _, i, _ ->
-            val source = sources[i]
-            binding.searchViewText.run {
-                transitionName = getString(R.string.search_title, source)
-                hint = getString(R.string.search_title, source)
-            }
-            binding.searchView.isVisible = true
-            if (MangaSources.names.contains(source)) {
-                mangaSource = MangaSources[i]
-            } else {
-                animeSource = AnimeSources[i]
-            }
-        }
-
         fun search(query: String) {
-            animeSource?.let {
-                SourceBrowseDialogFragment(it, query).show(
-                    requireActivity().supportFragmentManager, null
-                )
-            } ?: mangaSource?.let {
-                SourceBrowseDialogFragment(it, query).show(
-                    requireActivity().supportFragmentManager, null
-                )
-            }
+            SourceBrowseDialogFragment(query).show(
+                requireActivity().supportFragmentManager, null
+            )
             dismiss()
         }
 
