@@ -14,10 +14,7 @@ import ani.dantotsu.addons.download.AddonInstallReceiver
 import ani.dantotsu.media.AddonType
 import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.extension.InstallStep
-import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TorrentAddonManager(

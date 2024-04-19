@@ -22,11 +22,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.R
+import ani.dantotsu.TorrManager
+import ani.dantotsu.TorrManager.getPlayLink
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.databinding.ItemStreamBinding
 import ani.dantotsu.databinding.ItemUrlBinding
@@ -38,6 +38,7 @@ import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.others.Download.download
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
@@ -51,9 +52,6 @@ import ani.dantotsu.toast
 import ani.dantotsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
-import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
-import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
-import eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -273,17 +271,17 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
     @androidx.annotation.OptIn(UnstableApi::class)
     private suspend fun launchWithTorrentServer(video: Video) = withContext(Dispatchers.IO) {
         ExoplayerView.torrent?.hash?.let {
-            runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+            runBlocking(Dispatchers.IO) { TorrManager.removeTorrent(it) }
         }
         val index = if (video.file.url.contains("index=")) {
             try {
                 video.file.url.substringAfter("index=").toInt()
             } catch (ignored: NumberFormatException) { 0 }
         } else { 0 }
-        ExoplayerView.torrent = TorrentServerApi.addTorrent(
+        ExoplayerView.torrent = TorrManager.addTorrent(
             video.file.url, video.quality.toString(), "", "", false
         ).apply {
-            video.file.url = TorrentServerUtils.getTorrentPlayLink(this, index)
+            video.file.url = this.getPlayLink(index)
         }
     }
 
@@ -299,12 +297,12 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                 if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (!PrefManager.getVal<Boolean>(PrefName.TorrServerEnabled)
-                            && !TorrentServerService.isRunning(requireContext())) {
+                            && !TorrManager.isServiceRunning()) {
                             val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
                                 .setTitle(R.string.server_disabled)
                                 .setMessage(R.string.enable_server_temp)
                                 .setPositiveButton(R.string.yes) { dialog, _ ->
-                                    torrServerStart(currContext())
+                                    torrServerStart()
                                     toast(R.string.server_enabled)
                                     dialog.dismiss()
                                 }

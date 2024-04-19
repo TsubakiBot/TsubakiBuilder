@@ -178,9 +178,9 @@ class SettingsAddonActivity : AppCompatActivity() {
                         name = getString(R.string.enable_server),
                         desc = getString(R.string.enable_server),
                         icon = R.drawable.ic_round_dns_24,
-                        isChecked = PrefManager.getVal(PrefName.TorrentEnabled),
+                        isChecked = PrefManager.getVal(PrefName.TorrServerEnabled),
                         switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.TorrentEnabled, isChecked)
+                            PrefManager.setVal(PrefName.TorrServerEnabled, isChecked)
                             Injekt.get<TorrentAddonManager>().extension?.let {
                                 if (isChecked) {
                                     lifecycleScope.launchIO {

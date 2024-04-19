@@ -476,7 +476,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        torrServerStop(this@MainActivity)
+        torrServerStop()
         super.onDestroy()
     }
 

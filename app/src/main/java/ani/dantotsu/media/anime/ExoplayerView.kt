@@ -105,6 +105,7 @@ import androidx.window.layout.WindowLayoutInfo
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
+import ani.dantotsu.TorrManager.removeTorrent
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal
 import ani.dantotsu.connections.anilist.Anilist
@@ -156,7 +157,6 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.slider.Slider
 import com.lagradost.nicehttp.ignoreAllSSLErrors
-import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
 import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -482,7 +482,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         onBackPressedDispatcher.addCallback(this) {
             torrent?.hash?.let {
-                runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+                runBlocking(Dispatchers.IO) { removeTorrent(it) }
                 torrent = null
             }
             finishAndRemoveTask()
@@ -2097,7 +2097,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
 
         torrent?.hash?.let {
-            runBlocking(Dispatchers.IO) { TorrentServerApi.remTorrent(it) }
+            runBlocking(Dispatchers.IO) { removeTorrent(it) }
             torrent = null
         }
 

@@ -149,9 +149,9 @@ class SettingsAnimeActivity: AppCompatActivity(){
             settingsTorrServer.isChecked = PrefManager.getVal(PrefName.TorrServerEnabled)
             settingsTorrServer.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked)
-                    torrServerStart(this@SettingsAnimeActivity)
+                    torrServerStart()
                 else
-                    torrServerStop(this@SettingsAnimeActivity)
+                    torrServerStop()
                 PrefManager.setVal(PrefName.TorrServerEnabled, isChecked)
             }
 
@@ -168,9 +168,9 @@ class SettingsAnimeActivity: AppCompatActivity(){
                             ) {
                                 snackString(R.string.invalid_port)
                             }
-                            torrServerStop(this@SettingsAnimeActivity)
+                            torrServerStop()
                             TorrentServerUtils.port = view.text.toString()
-                            torrServerStart(this@SettingsAnimeActivity)
+                            torrServerStart()
                             return@OnEditorActionListener true
                         }
                     }

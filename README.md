@@ -1,29 +1,5 @@
 <p align="center">
-
-</p>
-<p align="center">
-   <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
-   <a href="https://github.com/RepoDevil/Mr.Matagi/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Mr.Matagi/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
-   <a href="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi"><img src="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
-   <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
-</p>
-<br />
-
-# **Mr. Matagi** 💦
-
-Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
-<br />
-Mr. Matagi is aimed at improving upon it.
-
-> **Matagi (又木; Ma-ta-gi)** means "forked branch" in Japanese.
-> A copy of a project is a fork and a collection of changes is a branch.
-
-### 🚀 STAR THIS REPO TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!  
-
-## Mr. Matagi Modifications
-
-- Torrent support (thanks to [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
-- Embedded audio and subtitle support
+- Reverse search: Search inside extensions
 - Continue reading / watching / anything widgets
 - Dynamic launcher icon shortcuts (thanks to [Neko](https://github.com/nekomangaorg/Neko))
 - Picture-in-picture fixed, Foldable support added
@@ -36,30 +12,32 @@ Mr. Matagi is aimed at improving upon it.
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
-<details><summary>Click the arrow to expand the list</summary>
+<details open><summary>Click the arrow to toggle the list</summary>
 <br />
 
-- Reduced the minimum API to 21
-- Delete list items from context menu
-- Revamped and optimized settings
-- Add new items to lists when started
-- Fixed navigation bar handling
-- Fixed the manga reader RTL and bottom to top
-- Counter for latest chapter release
-- Automatic source searching
-- Magnet link recognition and export
-- Subtitle transparency options
-- Automated series search from media info
 - Custom AnimatedBottomBar library
-- Fixed landscape navigation
-- Profile statistic widget
-- Option to disable trending scroller
-- Revamp the application restart process
-- Support for extension repo entry
-- Repo modification from extension page
-- Automated collection of contributors & forks
-- Code optimization and fixes throughout
-- Other bits and pieces I likely forgot
+- [Torrent implementation (uncredited)](https://github.com/rebelonion/Dantotsu/pull/305)
+- [Embedded audio and subtitle support](https://github.com/rebelonion/Dantotsu/pull/338)
+- [Reduced the minimum API to 21](https://github.com/rebelonion/Dantotsu/pull/257)
+- [Delete list items from context menu](https://github.com/rebelonion/Dantotsu/pull/251)
+- [Haptic response to long clicks](https://github.com/rebelonion/Dantotsu/pull/290)
+- [Revamped and optimized settings](https://github.com/rebelonion/Dantotsu/pull/259)
+- [Add new items to lists when started](https://github.com/rebelonion/Dantotsu/pull/245)
+- [Fixed navigation bar handling](https://github.com/rebelonion/Dantotsu/pull/260)
+- [Fixed the manga reader RTL / Bottom-Top](https://github.com/rebelonion/Dantotsu/pull/320)
+- [Counter for latest chapter release](https://github.com/rebelonion/Dantotsu/pull/316)
+- [Automated source searching](https://github.com/rebelonion/Dantotsu/pull/280)
+- [Subtitle transparency options](https://github.com/rebelonion/Dantotsu/pull/281)
+- [Series search from media info](https://github.com/rebelonion/Dantotsu/pull/303)
+- [Fixed landscape navigation](https://github.com/rebelonion/Dantotsu/pull/250)
+- [Profile statistic widget](https://github.com/rebelonion/Dantotsu/pull/292)
+- [Framework for per-widget settings](https://github.com/rebelonion/Dantotsu/pull/333)
+- [Option to disable trending scroller](https://github.com/rebelonion/Dantotsu/pull/288)
+- [Support for extension repo entry](https://github.com/rebelonion/Dantotsu/pull/299)
+- [Repo modification from extension page](https://github.com/rebelonion/Dantotsu/pull/332)
+- [Automated list of contributors & forks](https://github.com/rebelonion/Dantotsu/pull/314)
+- [Code optimization and fixes throughout](https://github.com/rebelonion/Dantotsu/pull/271)
+- [Other bits and pieces I likely forgot](https://github.com/rebelonion/Dantotsu/pulls?q=is%3Apr+author%3AAbandonedCart)
 </details>
 
 ## WANT TO CONTRIBUTE? 🤝
