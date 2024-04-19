@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.extension
 
 import android.content.Context
 import android.os.Bundle
@@ -16,11 +16,12 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
+import ani.dantotsu.media.MediaDetailsViewModel
+import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.AnimeSources
-import ani.dantotsu.parsers.BaseParser
 import ani.dantotsu.parsers.DynamicAnimeParser
 import ani.dantotsu.parsers.DynamicMangaParser
 import ani.dantotsu.parsers.MangaParser
@@ -92,41 +93,56 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
 
             if (incomingQuery.isNotBlank()) {
                 binding.searchSourceTitle.text = getString(R.string.extension_search)
-                val parserAdapters = mutableListOf<GenericSourceAdapter>()
-                val allResults = hashMapOf<BaseParser, List<ShowResponse>>()
+                val adapters = mutableListOf<SourceBrowserAdapter>()
+                val results = arrayListOf<List<ShowResponse>>()
                 binding.searchBar.isVisible = false
                 CoroutineScope(Dispatchers.IO).launch {
                     AnimeSources.list.take(AnimeSources.names.size - 1).forEach {
                         val animeParser = it.get.value as AnimeParser
                         tryWithSuspend {
-                            allResults.put(animeParser, animeParser.search(incomingQuery))
+                            val result = animeParser.search(incomingQuery)
+                            adapters.add(
+                                SourceBrowserAdapter(
+                                    result,
+                                    animeParser,
+                                    MediaType.ANIME,
+                                    model,
+                                    this@SourceBrowseDialogFragment,
+                                    scope
+                                )
+                            )
+                            results.add(result)
                         }
                     }
                     MangaSources.list.take(MangaSources.names.size - 1).forEach {
                         val mangaParser = it.get.value as MangaParser
                         tryWithSuspend {
-                            allResults.put(mangaParser, mangaParser.search(incomingQuery))
+                            val result = mangaParser.search(incomingQuery)
+                            adapters.add(
+                                SourceBrowserAdapter(
+                                    result,
+                                    mangaParser,
+                                    MediaType.MANGA,
+                                    model,
+                                    this@SourceBrowseDialogFragment,
+                                    scope
+                                )
+                            )
+                            results.add(result)
                         }
                     }
-
-                    allResults.forEach {
-                        parserAdapters.add(GenericSourceAdapter(
-                            it.value, it.key, model, this@SourceBrowseDialogFragment, scope)
-                        )
-                    }
-                    model.responses.postValue(allResults.values.flatten())
+                    model.responses.postValue(results.flatten())
                 }
 
                 model.responses.observe(viewLifecycleOwner) { res ->
                     if (res != null) {
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
-                        binding.searchRecyclerView.adapter =
-                            ConcatAdapter(
-                                ConcatAdapter.Config.Builder().setIsolateViewTypes(false).build()
-                            ).apply {
-                                parserAdapters.forEach { addAdapter(it) }
-                            }
+                        binding.searchRecyclerView.adapter = ConcatAdapter(
+                            ConcatAdapter.Config.Builder().setIsolateViewTypes(false).build()
+                        ).apply {
+                            adapters.forEach { addAdapter(it) }
+                        }
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(
@@ -139,17 +155,9 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 }
             } else {
                 val parser = when (mediaType) {
-                    MediaType.ANIME -> {
-                        DynamicAnimeParser(animeExtesnion)
-                    }
-
-                    MediaType.MANGA -> {
-                        DynamicMangaParser(mangaExtension)
-                    }
-
-                    MediaType.NOVEL -> {
-                        DynamicNovelParser(novelExtension)
-                    }
+                    MediaType.ANIME -> { DynamicAnimeParser(animeExtesnion) }
+                    MediaType.MANGA -> { DynamicMangaParser(mangaExtension) }
+                    MediaType.NOVEL -> { DynamicNovelParser(novelExtension) }
                 }
 
                 fun search(query: String? = null) {
@@ -185,7 +193,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
                         binding.searchRecyclerView.adapter =
-                            GenericSourceAdapter(res, parser, model, this, scope)
+                            SourceBrowserAdapter(res, parser, mediaType, model, this, scope)
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(

@@ -5,12 +5,12 @@ interface Type {
 
     companion object {
         fun fromText(string : String): Type? {
-            return when (string) {
-                "Anime" -> MediaType.ANIME
-                "Manga" -> MediaType.MANGA
-                "Novel" -> MediaType.NOVEL
-                "Torrent" -> AddonType.TORRENT
-                "Download" -> AddonType.DOWNLOAD
+            return when (string.lowercase()) {
+                "anime" -> MediaType.ANIME
+                "manga" -> MediaType.MANGA
+                "novel" -> MediaType.NOVEL
+                "torrent" -> AddonType.TORRENT
+                "download" -> AddonType.DOWNLOAD
                 else -> { null }
             }
         }
@@ -29,17 +29,6 @@ enum class MediaType: Type {
             NOVEL -> "Novel"
         }
     }
-
-    companion object {
-        fun fromText(string : String): MediaType? {
-            return when (string) {
-                "Anime" -> ANIME
-                "Manga" -> MANGA
-                "Novel" -> NOVEL
-                else -> { null }
-            }
-        }
-    }
 }
 
 enum class AddonType: Type {
@@ -50,16 +39,6 @@ enum class AddonType: Type {
         return when (this) {
             TORRENT -> "Torrent"
             DOWNLOAD -> "Download"
-        }
-    }
-
-    companion object {
-        fun fromText(string : String): AddonType? {
-            return when (string) {
-                "Torrent" -> TORRENT
-                "Download" -> DOWNLOAD
-                else -> { null }
-            }
         }
     }
 }

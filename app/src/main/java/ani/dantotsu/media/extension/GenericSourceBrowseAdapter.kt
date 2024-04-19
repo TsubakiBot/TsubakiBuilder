@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.extension
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,11 +11,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-abstract class SourceBrowseAdapter(
+abstract class GenericSourceBrowseAdapter(
     private val sources: List<ShowResponse>,
     private val dialogFragment: SourceBrowseDialogFragment,
     private val scope: CoroutineScope
-) : RecyclerView.Adapter<SourceBrowseAdapter.SourceViewHolder>() {
+) : RecyclerView.Adapter<GenericSourceBrowseAdapter.SourceViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SourceViewHolder {
         val binding =
             ItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)

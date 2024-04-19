@@ -10,11 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
 import ani.dantotsu.media.MediaDetailsViewModel
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
 import eu.kanade.tachiyomi.util.system.getThemeColor

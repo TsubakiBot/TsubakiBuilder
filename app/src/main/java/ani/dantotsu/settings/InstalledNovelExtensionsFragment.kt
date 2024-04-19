@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
-import ani.dantotsu.media.SourceBrowseDialogFragment
+import ani.dantotsu.media.extension.SourceBrowseDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtension

@@ -68,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
         if (model.notSet) {
             model.notSet = false
             model.searchResults = SearchResults(
-                intent.getStringExtra("type") ?: "ANIME",
+                type = intent.getStringExtra("type") ?: "ANIME",
                 isAdult = if (Anilist.adult) intent.getBooleanExtra("hentai", false) else false,
                 onList = listOnly,
                 search = intent.getStringExtra("query"),
@@ -216,7 +216,7 @@ class SearchActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun recycler() {
-        mediaAdaptor.type = style
+        mediaAdaptor.viewType = style
         mediaAdaptor.notifyDataSetChanged()
     }
 

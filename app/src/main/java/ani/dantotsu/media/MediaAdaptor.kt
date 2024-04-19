@@ -36,7 +36,7 @@ import java.io.Serializable
 
 
 class MediaAdaptor(
-    var type: Int,
+    var viewType: Int,
     private val mediaList: MutableList<Media>?,
     private val activity: FragmentActivity,
     private val matchParent: Boolean = false,
@@ -47,7 +47,7 @@ class MediaAdaptor(
     var extension: String? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (type) {
+        return when (this.viewType) {
             0 -> MediaViewHolder(
                 ItemMediaCompactBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -87,7 +87,7 @@ class MediaAdaptor(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (type) {
+        when (viewType) {
             0 -> {
                 val b = (holder as MediaViewHolder).binding
                 setAnimation(activity, b.root)
@@ -284,7 +284,7 @@ class MediaAdaptor(
     override fun getItemCount() = mediaList!!.size
 
     override fun getItemViewType(position: Int): Int {
-        return type
+        return viewType
     }
 
     fun randomOptionClick() {

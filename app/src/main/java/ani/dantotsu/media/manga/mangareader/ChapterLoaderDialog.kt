@@ -10,13 +10,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.manga.MangaChapter
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.tryWith
 import kotlinx.coroutines.Dispatchers

@@ -26,7 +26,7 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
-import ani.dantotsu.media.SourceBrowseDialogFragment
+import ani.dantotsu.media.extension.SourceBrowseDialogFragment
 import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.profile.ProfileActivity

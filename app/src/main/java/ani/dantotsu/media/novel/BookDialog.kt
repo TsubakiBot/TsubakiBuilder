@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.databinding.BottomSheetBookBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaDetailsViewModel
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.ShowResponse
 import kotlinx.coroutines.Dispatchers

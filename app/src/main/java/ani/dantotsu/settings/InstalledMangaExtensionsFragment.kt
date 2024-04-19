@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
-import ani.dantotsu.media.SourceBrowseDialogFragment
+import ani.dantotsu.media.extension.SourceBrowseDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.settings.extensionprefs.MangaSourcePreferencesFragment
