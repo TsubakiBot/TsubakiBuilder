@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="downloadManagers">
+        <item>Default</item>
+        <item>1DM</item>
+        <item>ADM</item>
+    </string-array>
+</resources>

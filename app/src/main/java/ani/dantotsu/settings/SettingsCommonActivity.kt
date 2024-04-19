@@ -22,6 +22,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
+import com.afollestad.materialdialogs.utils.MDUtil.getStringArray
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -42,7 +43,7 @@ class SettingsCommonActivity: AppCompatActivity(){
 
         val contract = ActivityResultContracts.OpenDocumentTree()
         launcher = LauncherWrapper(this, contract)
-        val managers = arrayOf("Default", "1DM", "ADM")
+        val managers = resources.getStringArray(R.array.downloadManagers)
         val downloadManagerDialog =
             AlertDialog.Builder(this, R.style.MyPopup).setTitle(R.string.download_manager)
         var downloadManager: Int = PrefManager.getVal(PrefName.DownloadManager)

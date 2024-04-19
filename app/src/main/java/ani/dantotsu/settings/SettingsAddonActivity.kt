@@ -55,153 +55,153 @@ class SettingsAddonActivity : AppCompatActivity() {
 
             binding.addonSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-            arrayListOf(
-                Settings(
-                    type = SettingsView.BUTTON,
-                    name = getString(R.string.anime_downloader_addon),
-                    desc = getString(R.string.not_installed),
-                    icon = R.drawable.anim_play_to_pause,
-                    isActivity = true,
-                    attach = {
-                        setStatus(
-                            view = it,
-                            context = context,
-                            status = downloadAddonManager.hadError(context),
-                            hasUpdate = downloadAddonManager.hasUpdate
-                        )
-                        var job = Job()
-                        downloadAddonManager.addListenerAction { _ ->
-                            job.cancel()
-                            it.settingsIconRight.animate().cancel()
-                            it.settingsIconRight.rotation = 0f
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.anime_downloader_addon),
+                        desc = getString(R.string.not_installed),
+                        icon = R.drawable.anim_play_to_pause,
+                        isActivity = true,
+                        attach = {
                             setStatus(
                                 view = it,
                                 context = context,
                                 status = downloadAddonManager.hadError(context),
-                                hasUpdate = false
+                                hasUpdate = downloadAddonManager.hasUpdate
                             )
-                        }
-                        it.settingsIconRight.setOnClickListener { _ ->
-                            if (it.settingsDesc.text == getString(R.string.installed)) {
-                                downloadAddonManager.uninstall()
-                                return@setOnClickListener //uninstall logic here
-                            } else {
-                                job = Job()
-                                val scope = CoroutineScope(Dispatchers.Main + job)
-                                it.settingsIconRight.setImageResource(R.drawable.ic_sync)
-                                scope.launch {
-                                    while (isActive) {
-                                        withContext(Dispatchers.Main) {
-                                            it.settingsIconRight.animate()
-                                                .rotationBy(360f)
-                                                .setDuration(1000)
-                                                .setInterpolator(LinearInterpolator())
-                                                .start()
+                            var job = Job()
+                            downloadAddonManager.addListenerAction { _ ->
+                                job.cancel()
+                                it.settingsIconRight.animate().cancel()
+                                it.settingsIconRight.rotation = 0f
+                                setStatus(
+                                    view = it,
+                                    context = context,
+                                    status = downloadAddonManager.hadError(context),
+                                    hasUpdate = false
+                                )
+                            }
+                            it.settingsIconRight.setOnClickListener { _ ->
+                                if (it.settingsDesc.text == getString(R.string.installed)) {
+                                    downloadAddonManager.uninstall()
+                                    return@setOnClickListener //uninstall logic here
+                                } else {
+                                    job = Job()
+                                    val scope = CoroutineScope(Dispatchers.Main + job)
+                                    it.settingsIconRight.setImageResource(R.drawable.ic_sync)
+                                    scope.launch {
+                                        while (isActive) {
+                                            withContext(Dispatchers.Main) {
+                                                it.settingsIconRight.animate()
+                                                    .rotationBy(360f)
+                                                    .setDuration(1000)
+                                                    .setInterpolator(LinearInterpolator())
+                                                    .start()
+                                            }
+                                            delay(1000)
                                         }
-                                        delay(1000)
+                                    }
+                                    snackString(getString(R.string.downloading))
+                                    lifecycleScope.launchIO {
+                                        AddonDownloader.update(
+                                            activity = context,
+                                            downloadAddonManager,
+                                            repo = DownloadAddonManager.REPO,
+                                            currentVersion = downloadAddonManager.getVersion() ?: ""
+                                        )
                                     }
                                 }
-                                snackString(getString(R.string.downloading))
-                                lifecycleScope.launchIO {
-                                    AddonDownloader.update(
-                                        activity = context,
-                                        downloadAddonManager,
-                                        repo = DownloadAddonManager.REPO,
-                                        currentVersion = downloadAddonManager.getVersion() ?: ""
-                                    )
-                                }
                             }
-                        }
-                    },
-                ), Settings(
-                    type = SettingsView.BUTTON,
-                    name = getString(R.string.torrent_addon),
-                    desc = getString(R.string.not_installed),
-                    icon = R.drawable.anim_play_to_pause,
-                    isActivity = true,
-                    attach = {
-                        setStatus(
-                            view = it,
-                            context = context,
-                            status = torrentAddonManager.hadError(context),
-                            hasUpdate = torrentAddonManager.hasUpdate
-                        )
-                        var job = Job()
-                        torrentAddonManager.addListenerAction { _ ->
-                            job.cancel()
-                            it.settingsIconRight.animate().cancel()
-                            it.settingsIconRight.rotation = 0f
+                        },
+                    ), Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.torrent_addon),
+                        desc = getString(R.string.not_installed),
+                        icon = R.drawable.anim_play_to_pause,
+                        isActivity = true,
+                        attach = {
                             setStatus(
                                 view = it,
                                 context = context,
                                 status = torrentAddonManager.hadError(context),
-                                hasUpdate = false
+                                hasUpdate = torrentAddonManager.hasUpdate
                             )
-                        }
-                        it.settingsIconRight.setOnClickListener { _ ->
-                            if (it.settingsDesc.text == getString(R.string.installed)) {
-                                ServerService.stop()
-                                torrentAddonManager.uninstall()
-                                return@setOnClickListener
-                            } else {
-                                job = Job()
-                                val scope = CoroutineScope(Dispatchers.Main + job)
-                                it.settingsIconRight.setImageResource(R.drawable.ic_sync)
-                                scope.launch {
-                                    while (isActive) {
-                                        withContext(Dispatchers.Main) {
-                                            it.settingsIconRight.animate()
-                                                .rotationBy(360f)
-                                                .setDuration(1000)
-                                                .setInterpolator(LinearInterpolator())
-                                                .start()
+                            var job = Job()
+                            torrentAddonManager.addListenerAction { _ ->
+                                job.cancel()
+                                it.settingsIconRight.animate().cancel()
+                                it.settingsIconRight.rotation = 0f
+                                setStatus(
+                                    view = it,
+                                    context = context,
+                                    status = torrentAddonManager.hadError(context),
+                                    hasUpdate = false
+                                )
+                            }
+                            it.settingsIconRight.setOnClickListener { _ ->
+                                if (it.settingsDesc.text == getString(R.string.installed)) {
+                                    ServerService.stop()
+                                    torrentAddonManager.uninstall()
+                                    return@setOnClickListener
+                                } else {
+                                    job = Job()
+                                    val scope = CoroutineScope(Dispatchers.Main + job)
+                                    it.settingsIconRight.setImageResource(R.drawable.ic_sync)
+                                    scope.launch {
+                                        while (isActive) {
+                                            withContext(Dispatchers.Main) {
+                                                it.settingsIconRight.animate()
+                                                    .rotationBy(360f)
+                                                    .setDuration(1000)
+                                                    .setInterpolator(LinearInterpolator())
+                                                    .start()
+                                            }
+                                            delay(1000)
                                         }
-                                        delay(1000)
                                     }
-                                }
-                                snackString(getString(R.string.downloading))
-                                lifecycleScope.launchIO {
-                                    AddonDownloader.update(
-                                        activity = context,
-                                        torrentAddonManager,
-                                        repo = TorrentAddonManager.REPO,
-                                        currentVersion = torrentAddonManager.getVersion() ?: "",
-                                    )
-                                }
-                            }
-                        }
-                    },
-                ),
-                Settings(
-                    type = SettingsView.SWITCH,
-                    name = getString(R.string.enable_server),
-                    desc = getString(R.string.enable_server),
-                    icon = R.drawable.ic_round_dns_24,
-                    isChecked = PrefManager.getVal(PrefName.TorrentEnabled),
-                    switch = { isChecked, _ ->
-                        PrefManager.setVal(PrefName.TorrentEnabled, isChecked)
-                        Injekt.get<TorrentAddonManager>().extension?.let {
-                            if (isChecked) {
-                                lifecycleScope.launchIO {
-                                    if (!ServerService.isRunning()) {
-                                        ServerService.start()
-                                    }
-                                }
-                            } else {
-                                lifecycleScope.launchIO {
-                                    if (ServerService.isRunning()) {
-                                        ServerService.stop()
+                                    snackString(getString(R.string.downloading))
+                                    lifecycleScope.launchIO {
+                                        AddonDownloader.update(
+                                            activity = context,
+                                            torrentAddonManager,
+                                            repo = TorrentAddonManager.REPO,
+                                            currentVersion = torrentAddonManager.getVersion() ?: "",
+                                        )
                                     }
                                 }
                             }
+                        },
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.enable_server),
+                        desc = getString(R.string.enable_server),
+                        icon = R.drawable.ic_round_dns_24,
+                        isChecked = PrefManager.getVal(PrefName.TorrentEnabled),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.TorrentEnabled, isChecked)
+                            Injekt.get<TorrentAddonManager>().extension?.let {
+                                if (isChecked) {
+                                    lifecycleScope.launchIO {
+                                        if (!ServerService.isRunning()) {
+                                            ServerService.start()
+                                        }
+                                    }
+                                } else {
+                                    lifecycleScope.launchIO {
+                                        if (ServerService.isRunning()) {
+                                            ServerService.stop()
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    }
+                    )
                 )
             )
             binding.settingsRecyclerView.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-
         }
     }
 
