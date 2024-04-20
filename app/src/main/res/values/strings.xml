@@ -33,7 +33,7 @@
     <string name="refresh">Refresh</string>
 
     <string name="search">Search</string>
-    <string name="extension_search">Search Extensions</string>
+    <string name="extension_search">Reverse Source Search</string>
     <string name="search_results">Search Results</string>
     <string name="sort_by">Sort By</string>
     <string name="genre">Genre</string>
