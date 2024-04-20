@@ -25,6 +25,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
+import ani.matagi.os.Version
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginFragment : Fragment() {
@@ -97,7 +98,7 @@ class LoginFragment : Fragment() {
             openDocumentLauncher.launch(arrayOf("*/*"))
         }
 
-        if (!BuildConfig.BUILD_TYPE.contentEquals("matagi")) return
+        if (!Version.isHimitsu) return
         try {
             with(requireActivity().packageManager) {
                 getPackageInfo("ani.dantotsu.beta", PackageManager.GET_META_DATA)
