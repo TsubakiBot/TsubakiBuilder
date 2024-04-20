@@ -11,6 +11,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onStart() {
@@ -27,14 +28,9 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
                 val behavior = BottomSheetBehavior.from(requireView().parent as View)
                 behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
-            val typedValue = TypedValue()
-            val theme = requireContext().theme
-            theme.resolveAttribute(
-                com.google.android.material.R.attr.colorSurface,
-                typedValue,
-                true
+            window.navigationBarColor = requireContext().getThemeColor(
+                com.google.android.material.R.attr.colorSurface
             )
-            window.navigationBarColor = typedValue.data
         }
     }
 

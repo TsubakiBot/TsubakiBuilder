@@ -53,6 +53,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
+import android.view.Window
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AlphaAnimation
@@ -279,6 +280,16 @@ fun Activity.setNavigationTheme() {
         || (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT)
     ) {
         window.navigationBarColor = tv.data
+    }
+}
+
+fun Window.setNavigationTheme(context: Context) {
+    val tv = TypedValue()
+    context.theme.resolveAttribute(android.R.attr.colorBackground, tv, true)
+    if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && tv.isColorType)
+        || (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT)
+    ) {
+        navigationBarColor = tv.data
     }
 }
 
