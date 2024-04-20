@@ -837,6 +837,7 @@
     <string name="error_importing_settings">Error importing settings</string>
     <string name="download_manager">Download Manager</string>
     <string name="enter_password">Enter Password</string>
+    <string name="invalid_file_type">Invalid file type</string>
 
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
 

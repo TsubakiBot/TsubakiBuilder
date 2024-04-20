@@ -70,13 +70,13 @@ class LoginFragment : Fragment() {
                                             salt
                                         )
                                     } catch (e: Exception) {
-                                        toast("Incorrect password")
+                                        toast(getString(R.string.incorrect_password))
                                         return@passwordAlertDialog
                                     }
                                     if (PreferencePackager.unpack(decryptedJson))
                                         activity?.restartApp()
                                 } else {
-                                    toast("Password cannot be empty")
+                                    toast(getString(R.string.password_cannot_be_empty))
                                 }
                             }
                         } else if (name.endsWith(".ani")) {
@@ -84,11 +84,11 @@ class LoginFragment : Fragment() {
                             if (PreferencePackager.unpack(decryptedJson))
                                 activity?.restartApp()
                         } else {
-                            toast("Invalid file type")
+                            toast(getString(R.string.invalid_file_type))
                         }
                     } catch (e: Exception) {
                         Logger.log(e)
-                        toast("Error importing settings")
+                        toast(getString(R.string.error_importing_settings))
                     }
                 }
             }
