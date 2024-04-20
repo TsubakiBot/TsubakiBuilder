@@ -79,6 +79,8 @@ class App : MultiDexApplication() {
                 Debug.clipException(this, exception.toString())
             } catch (ignored: Exception) {
             }
+            android.os.Process.killProcess(android.os.Process.myPid())
+            kotlin.system.exitProcess(-1)
         }
 
         initializeNetwork()
