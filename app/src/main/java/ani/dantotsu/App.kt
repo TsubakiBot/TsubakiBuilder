@@ -77,7 +77,8 @@ class App : MultiDexApplication() {
             }
             try {
                 Debug.clipException(this, exception.toString())
-            } catch (ignored: Exception) { }
+            } catch (ignored: Exception) {
+            }
         }
 
         initializeNetwork()
@@ -159,10 +160,12 @@ class App : MultiDexApplication() {
          *
          * USE WITH EXTREME CAUTION!**/
         @JvmStatic
-        lateinit var instance : App
+        lateinit var instance: App
             private set
+
         fun currentContext(): Context {
-            return instance.mFTActivityLifecycleCallbacks.currentActivity ?: instance.applicationContext
+            return instance.mFTActivityLifecycleCallbacks.currentActivity
+                ?: instance.applicationContext
         }
 
         fun currentActivity(): Activity? {

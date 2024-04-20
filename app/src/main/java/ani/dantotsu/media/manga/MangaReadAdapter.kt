@@ -257,8 +257,10 @@ class MangaReadAdapter(
             dialogBinding.animeScanlatorContainer.isVisible = options.count() > 1
             dialogBinding.scanlatorNo.text = "${options.count()}"
             dialogBinding.animeScanlatorTop.setOnClickListener {
-                val dialogView2 = LayoutInflater.from(currContext()).inflate(R.layout.custom_dialog_layout, null)
-                val checkboxContainer = dialogView2.findViewById<LinearLayout>(R.id.checkboxContainer)
+                val dialogView2 =
+                    LayoutInflater.from(currContext()).inflate(R.layout.custom_dialog_layout, null)
+                val checkboxContainer =
+                    dialogView2.findViewById<LinearLayout>(R.id.checkboxContainer)
                 val tickAllButton = dialogView2.findViewById<ImageButton>(R.id.toggleButton)
 
                 // Function to get the right image resource for the toggle button
@@ -440,7 +442,11 @@ class MangaReadAdapter(
             if (media.manga?.chapters != null) {
                 val chapters = media.manga.chapters!!.keys.toTypedArray()
                 val anilistEp = (media.userProgress ?: 0).plus(1)
-                val appEp = PrefManager.getNullableCustomVal("${media.id}_current_chp", null, String::class.java)
+                val appEp = PrefManager.getNullableCustomVal(
+                    "${media.id}_current_chp",
+                    null,
+                    String::class.java
+                )
                     ?.toIntOrNull() ?: 1
                 var continueEp = (if (anilistEp > appEp) anilistEp else appEp).toString()
                 val filteredChapters = chapters.filter { chapterKey ->
@@ -469,7 +475,11 @@ class MangaReadAdapter(
                     val ep = media.manga.chapters!![continueEp]!!
                     binding.itemEpisodeImage.loadImage(media.banner ?: media.cover)
                     binding.animeSourceContinueText.text =
-                        currActivity()!!.getString(R.string.continue_chapter, ep.number, if (!ep.title.isNullOrEmpty()) ep.title else "")
+                        currActivity()!!.getString(
+                            R.string.continue_chapter,
+                            ep.number,
+                            if (!ep.title.isNullOrEmpty()) ep.title else ""
+                        )
                     binding.animeSourceContinue.setOnClickListener {
                         fragment.onMangaChapterClick(continueEp)
                     }
@@ -489,11 +499,14 @@ class MangaReadAdapter(
                 if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
                     if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
                         val nextIndex = media.selected!!.sourceIndex + 1
-                        binding.animeSource.setText(binding.animeSource.adapter
-                            .getItem(nextIndex).toString(), false)
+                        binding.animeSource.setText(
+                            binding.animeSource.adapter
+                                .getItem(nextIndex).toString(), false
+                        )
                         fragment.onSourceChange(nextIndex).apply {
                             binding.animeSourceTitle.text = showUserText
-                            showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
+                            showUserTextListener =
+                                { MainScope().launch { binding.animeSourceTitle.text = it } }
                             setLanguageList(0, nextIndex)
                         }
                         subscribeButton(false)
@@ -524,7 +537,8 @@ class MangaReadAdapter(
                 }
                 try {
                     binding?.animeSourceLanguage?.setText(
-                        LanguageMapper.getExtensionItem(parser.extension.sources[lang]))
+                        LanguageMapper.getExtensionItem(parser.extension.sources[lang])
+                    )
                 } catch (e: IndexOutOfBoundsException) {
                     binding?.animeSourceLanguage?.setText(
                         parser.extension.sources.firstOrNull()?.let {

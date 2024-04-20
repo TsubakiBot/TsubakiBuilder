@@ -210,6 +210,7 @@ class ExtensionsActivity : AppCompatActivity() {
                     animeExtensionManager.findAvailableExtensions()
                 }
             }
+
             MediaType.MANGA -> {
                 val manga =
                     PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
@@ -218,6 +219,7 @@ class ExtensionsActivity : AppCompatActivity() {
                     mangaExtensionManager.findAvailableExtensions()
                 }
             }
+
             MediaType.NOVEL -> {
                 val novel =
                     PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
@@ -232,9 +234,17 @@ class ExtensionsActivity : AppCompatActivity() {
     private fun getSavedRepositories(repoInventory: ViewGroup, type: MediaType) {
         repoInventory.removeAllViews()
         val prefName: PrefName = when (type) {
-            MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
-            MediaType.MANGA -> { PrefName.MangaExtensionRepos }
-            MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
+            MediaType.ANIME -> {
+                PrefName.AnimeExtensionRepos
+            }
+
+            MediaType.MANGA -> {
+                PrefName.MangaExtensionRepos
+            }
+
+            MediaType.NOVEL -> {
+                PrefName.NovelExtensionRepos
+            }
         }
         prefName.let { repoList ->
             PrefManager.getVal<Set<String>>(repoList).forEach { item ->
@@ -252,9 +262,17 @@ class ExtensionsActivity : AppCompatActivity() {
                             repoInventory.removeView(view.root)
                             CoroutineScope(Dispatchers.IO).launch {
                                 when (type) {
-                                    MediaType.ANIME -> { animeExtensionManager.findAvailableExtensions() }
-                                    MediaType.MANGA -> { mangaExtensionManager.findAvailableExtensions() }
-                                    MediaType.NOVEL -> { novelExtensionManager.findAvailableExtensions() }
+                                    MediaType.ANIME -> {
+                                        animeExtensionManager.findAvailableExtensions()
+                                    }
+
+                                    MediaType.MANGA -> {
+                                        mangaExtensionManager.findAvailableExtensions()
+                                    }
+
+                                    MediaType.NOVEL -> {
+                                        novelExtensionManager.findAvailableExtensions()
+                                    }
                                 }
                             }
                             dialog.dismiss()
@@ -293,9 +311,17 @@ class ExtensionsActivity : AppCompatActivity() {
 
     private fun generateRepositoryButton(type: MediaType) {
         val hintResource: Int = when (type) {
-            MediaType.ANIME -> { R.string.anime_add_repository }
-            MediaType.MANGA -> { R.string.manga_add_repository }
-            MediaType.NOVEL -> { R.string.novel_add_repository }
+            MediaType.ANIME -> {
+                R.string.anime_add_repository
+            }
+
+            MediaType.MANGA -> {
+                R.string.manga_add_repository
+            }
+
+            MediaType.NOVEL -> {
+                R.string.novel_add_repository
+            }
         }
         binding.openSettingsButton.setOnClickListener {
             val dialogView = DialogRepositoriesBinding.inflate(

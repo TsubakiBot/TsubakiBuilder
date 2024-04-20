@@ -293,8 +293,10 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         val type = downloadedType.type.asText()
         //load media.json and convert to media class with gson
         return try {
-            val directory = getSubDirectory(context?:currContext(), downloadedType.type,
-                false, downloadedType.title)
+            val directory = getSubDirectory(
+                context ?: currContext(), downloadedType.type,
+                false, downloadedType.title
+            )
             val gson = GsonBuilder()
                 .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
                     SChapterImpl() // Provide an instance of SChapterImpl
@@ -302,7 +304,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
                 .create()
             val media = directory?.findFile("media.json")
                 ?: return null
-            val mediaJson = media.openInputStream(context?:currContext())?.bufferedReader().use {
+            val mediaJson = media.openInputStream(context ?: currContext())?.bufferedReader().use {
                 it?.readText()
             }
             gson.fromJson(mediaJson, Media::class.java)
@@ -317,8 +319,10 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         val type = downloadedType.type.asText()
         //load media.json and convert to media class with gson
         try {
-            val directory = getSubDirectory(context?:currContext(), downloadedType.type,
-            false, downloadedType.title)
+            val directory = getSubDirectory(
+                context ?: currContext(), downloadedType.type,
+                false, downloadedType.title
+            )
             val mediaModel = getMedia(downloadedType)!!
             val cover = directory?.findFile("cover.jpg")
             val coverUri: Uri? = if (cover?.exists() == true) {

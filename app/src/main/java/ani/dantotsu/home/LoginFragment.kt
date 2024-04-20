@@ -97,7 +97,7 @@ class LoginFragment : Fragment() {
 
         if (!BuildConfig.BUILD_TYPE.contentEquals("matagi")) return
         try {
-            with (requireActivity().packageManager) {
+            with(requireActivity().packageManager) {
                 getPackageInfo("ani.dantotsu.beta", PackageManager.GET_META_DATA)
                     .versionName.endsWith("-matagi")
             }
@@ -106,22 +106,26 @@ class LoginFragment : Fragment() {
                 .setTitle(R.string.conversion_title)
                 .setMessage(R.string.conversion_message)
                 .setPositiveButton(R.string.backup) { _: DialogInterface?, _: Int ->
-                    startActivity(Intent().setComponent(
-                        ComponentName("ani.dantotsu.beta", "ani.dantotsu.MainActivity")
-                    ))
+                    startActivity(
+                        Intent().setComponent(
+                            ComponentName("ani.dantotsu.beta", "ani.dantotsu.MainActivity")
+                        )
+                    )
                     requireActivity().finish()
                 }
-                .setNegativeButton(R.string.close)  { _: DialogInterface?, _: Int ->
+                .setNegativeButton(R.string.close) { _: DialogInterface?, _: Int ->
 
                 }.show()
-        } catch (ignored: PackageManager.NameNotFoundException) { }
+        } catch (ignored: PackageManager.NameNotFoundException) {
+        }
     }
 
     private fun passwordAlertDialog(isExporting: Boolean, callback: (CharArray?) -> Unit) {
         val password = CharArray(16).apply { fill('0') }
 
         // Inflate the dialog layout
-        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_user_agent, null)
+        val dialogView =
+            LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_user_agent, null)
         val box = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)
         box?.hint = getString(R.string.password)
         box?.setSingleLine()

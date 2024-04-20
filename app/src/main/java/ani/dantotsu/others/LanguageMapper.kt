@@ -12,16 +12,20 @@ object LanguageMapper {
             val parts = code.split("-")
             try {
                 Locale(parts[0].lowercase(), parts[1].uppercase())
-            } catch (ignored: Exception) { null }
+            } catch (ignored: Exception) {
+                null
+            }
         } else {
             try {
                 Locale(code.lowercase())
-            } catch (ignored: Exception) { null }
+            } catch (ignored: Exception) {
+                null
+            }
         }
     }
 
     fun mapLanguageCodeToName(code: String): String {
-        if (code == "all" ) return "Multi"
+        if (code == "all") return "Multi"
         val locale = getLocalFromCode(code)
         return locale?.displayName ?: code
     }

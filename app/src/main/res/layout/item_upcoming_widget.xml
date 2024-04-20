@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/widget_item"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -12,25 +12,25 @@
         android:id="@+id/image_show_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:alpha="0.2"
         android:contentDescription="@string/airing_image"
-        android:alpha="0.2"/>
+        android:scaleType="fitXY" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_vertical"
-        android:padding="4dp"
         android:orientation="horizontal"
+        android:padding="4dp"
         tools:ignore="RtlSymmetry">
 
         <ImageView
             android:id="@+id/image_show_icon"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
-            android:contentDescription="@string/airing_image"/>
+            android:contentDescription="@string/airing_image"
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
 
 
         <LinearLayout
@@ -44,11 +44,11 @@
                 android:id="@+id/text_show_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_bold"
+                android:maxLines="2"
                 android:text=""
                 android:textColor="@color/bg_white"
-                android:maxLines="2"
-                android:ellipsize="end"
                 android:textSize="16sp" />
 
             <TextView

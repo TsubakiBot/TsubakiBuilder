@@ -43,7 +43,7 @@ class OfflineAnimeParser : AnimeParser() {
                 if (it.isDirectory) {
                     val episode = Episode(
                         it.name!!,
-                        getTaskName(animeLink,it.name!!),
+                        getTaskName(animeLink, it.name!!),
                         it.name,
                         null,
                         null,

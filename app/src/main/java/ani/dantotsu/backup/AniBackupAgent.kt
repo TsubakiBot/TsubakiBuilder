@@ -42,7 +42,8 @@ class AniBackupAgent : BackupAgentHelper() {
 //        SharedPreferencesBackupHelper(this, PREFS_IRRELEVANT).also {
 //            addHelper(PREFS_BACKUP_KEY, it)
 //        }
-        val irrelevant: Map<String, *> = getSharedPreferences(PREFS_IRRELEVANT, Context.MODE_PRIVATE).all
+        val irrelevant: Map<String, *> =
+            getSharedPreferences(PREFS_IRRELEVANT, Context.MODE_PRIVATE).all
         val keys = irrelevant.filterKeys {
             it != PrefName.OfflineMode.name &&
                     it != PrefName.DiscordStatus.name &&

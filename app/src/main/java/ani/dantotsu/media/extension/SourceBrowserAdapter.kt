@@ -6,11 +6,8 @@ import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.media.MediaDetailsViewModel
-import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SearchActivity
-import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.BaseParser
-import ani.dantotsu.parsers.MangaParser
 import ani.dantotsu.parsers.ShowResponse
 import kotlinx.coroutines.CoroutineScope
 

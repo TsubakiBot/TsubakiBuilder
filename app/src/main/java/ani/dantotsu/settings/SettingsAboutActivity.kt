@@ -58,7 +58,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.devs),
-                        desc= getString(R.string.devs_desc),
+                        desc = getString(R.string.devs_desc),
                         icon = R.drawable.ic_round_accessible_forward_24,
                         onClick = {
                             DevelopersDialogFragment().show(supportFragmentManager, "dialog")
@@ -94,7 +94,8 @@ class SettingsAboutActivity : AppCompatActivity() {
                     ),
                 )
             )
-            binding.settingsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            binding.settingsRecyclerView.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
             settingBuyMeCoffee.setOnClickListener {
                 lifecycleScope.launch {

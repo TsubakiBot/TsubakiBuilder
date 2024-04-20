@@ -34,7 +34,7 @@ class OtherDetailsViewModel : ViewModel() {
         val df = DateFormat.getDateInstance(DateFormat.FULL)
         val map = mutableMapOf<String, MutableList<Media>>()
         val idMap = mutableMapOf<String, MutableList<Int>>()
-        res?.forEach {
+        res.forEach {
             val v = it.relation?.split(",")?.map { i -> i.toLong() }!!
             val dateInfo = df.format(Date(v[1] * 1000))
             val list = map.getOrPut(dateInfo) { mutableListOf() }

@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
 import android.webkit.WebViewClient
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.FileUrl
 import ani.dantotsu.databinding.BottomSheetWebviewBinding
 import ani.dantotsu.defaultHeaders
+import ani.dantotsu.others.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.network.NetworkHelper
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get

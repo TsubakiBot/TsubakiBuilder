@@ -132,7 +132,7 @@ class ProfileFragment : Fragment() {
         }
 
         user.favourites?.staff?.nodes?.forEach { i ->
-            favStaff.add(Author(i.id, i.name.full, i.image.large , "" ))
+            favStaff.add(Author(i.id, i.name.full, i.image.large, ""))
         }
 
         setFavPeople()
@@ -154,7 +154,8 @@ class ProfileFragment : Fragment() {
             binding.profileFavStaffRecycler.layoutManager = LinearLayoutManager(
                 activity, LinearLayoutManager.HORIZONTAL, false
             )
-            binding.profileFavStaffRecycler.layoutAnimation = LayoutAnimationController(setSlideIn(), 0.25f)
+            binding.profileFavStaffRecycler.layoutAnimation =
+                LayoutAnimationController(setSlideIn(), 0.25f)
         }
 
         if (favCharacter.isEmpty()) {
@@ -164,7 +165,8 @@ class ProfileFragment : Fragment() {
             binding.profileFavCharactersRecycler.layoutManager = LinearLayoutManager(
                 activity, LinearLayoutManager.HORIZONTAL, false
             )
-            binding.profileFavCharactersRecycler.layoutAnimation = LayoutAnimationController(setSlideIn(), 0.25f)
+            binding.profileFavCharactersRecycler.layoutAnimation =
+                LayoutAnimationController(setSlideIn(), 0.25f)
         }
     }
 
@@ -184,7 +186,7 @@ class ProfileFragment : Fragment() {
             recyclerView.visibility = View.GONE
             if (it != null) {
                 if (it.isNotEmpty()) {
-                    recyclerView.adapter = MediaAdaptor(0, it, activity, fav=true)
+                    recyclerView.adapter = MediaAdaptor(0, it, activity, fav = true)
                     recyclerView.layoutManager = LinearLayoutManager(
                         activity,
                         LinearLayoutManager.HORIZONTAL,

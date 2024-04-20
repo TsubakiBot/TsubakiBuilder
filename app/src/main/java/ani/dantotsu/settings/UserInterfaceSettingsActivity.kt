@@ -49,19 +49,20 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
             uiSettingsHomeLayout.setOnClickListener {
                 val set = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayoutShow).toMutableList()
                 val views = resources.getStringArray(R.array.home_layouts)
-                val dialog = AlertDialog.Builder(this@UserInterfaceSettingsActivity, R.style.MyPopup)
-                    .setTitle(getString(R.string.home_layout_show)).apply {
-                        setMultiChoiceItems(
-                            views,
-                            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayoutShow)
-                                .toBooleanArray()
-                        ) { _, i, value ->
-                            set[i] = value
-                        }
-                        setPositiveButton("Done") { _, _ ->
-                            PrefManager.setVal(PrefName.HomeLayoutShow, set)
-                        }
-                    }.show()
+                val dialog =
+                    AlertDialog.Builder(this@UserInterfaceSettingsActivity, R.style.MyPopup)
+                        .setTitle(getString(R.string.home_layout_show)).apply {
+                            setMultiChoiceItems(
+                                views,
+                                PrefManager.getVal<List<Boolean>>(PrefName.HomeLayoutShow)
+                                    .toBooleanArray()
+                            ) { _, i, value ->
+                                set[i] = value
+                            }
+                            setPositiveButton("Done") { _, _ ->
+                                PrefManager.setVal(PrefName.HomeLayoutShow, set)
+                            }
+                        }.show()
                 dialog.window?.setDimAmount(0.8f)
             }
 

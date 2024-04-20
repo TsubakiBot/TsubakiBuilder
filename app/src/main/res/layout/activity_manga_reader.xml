@@ -195,9 +195,9 @@
         android:id="@+id/mangaReaderCont"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="bottom"
         android:orientation="vertical"
         android:visibility="gone"
-        android:layout_gravity="bottom"
         tools:visibility="visible">
 
         <FrameLayout

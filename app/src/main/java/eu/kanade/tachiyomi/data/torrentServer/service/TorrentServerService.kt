@@ -42,6 +42,7 @@ class TorrentServerService : Service() {
                         notification(applicationContext)
                         return START_STICKY
                     }
+
                     ACTION_STOP -> {
                         stopServer()
                         return START_NOT_STICKY
@@ -113,7 +114,7 @@ class TorrentServerService : Service() {
 
         fun isRunning(): Boolean {
             Injekt.get<Application>().run {
-                with (getSystemService(ACTIVITY_SERVICE) as ActivityManager) {
+                with(getSystemService(ACTIVITY_SERVICE) as ActivityManager) {
                     @Suppress("DEPRECATION") // We only need our services
                     getRunningServices(Int.MAX_VALUE).forEach {
                         if (TorrentServerService::class.java.name.equals(it.service.className)) {

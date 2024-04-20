@@ -10,7 +10,8 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.setAnimation
 
 
-class UsersAdapter(private val user: ArrayList<User>) : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
+class UsersAdapter(private val user: ArrayList<User>) :
+    RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     inner class UsersViewHolder(val binding: ItemFollowerBinding) :
         RecyclerView.ViewHolder(binding.root) {

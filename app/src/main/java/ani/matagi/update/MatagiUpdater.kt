@@ -77,7 +77,8 @@ object MatagiUpdater {
                 it.timeStamp()
             } ?: throw Exception("No Prerelease Found")
             val v = r.tagName
-            val (md, version) = (r.body ?: "") to v.ifEmpty { throw Exception("Unexpected Tag : ${r.tagName}") }
+            val (md, version) = (r.body
+                ?: "") to v.ifEmpty { throw Exception("Unexpected Tag : ${r.tagName}") }
 
             Logger.log("Release Hash : $version")
             val dontShow = PrefManager.getCustomVal("dont_ask_for_update_$version", false)
@@ -104,22 +105,23 @@ object MatagiUpdater {
         }
     }
 
-    private suspend fun installUpdate(activity: FragmentActivity, version: String) = withContext(Dispatchers.IO) {
-        val repo = activity.getString(R.string.repo)
-        try {
-            client.get("https://api.github.com/repos/$repo/releases/tags/$version")
-                .parsed<GithubResponse>().assets?.find {
-                    it.browserDownloadURL.contains(
-                        "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
-                    )
-                }?.browserDownloadURL.apply {
-                    if (this != null) activity.downloadUpdate(version, this)
-                    else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
-                }
-        } catch (e: Exception) {
-            logError(e)
+    private suspend fun installUpdate(activity: FragmentActivity, version: String) =
+        withContext(Dispatchers.IO) {
+            val repo = activity.getString(R.string.repo)
+            try {
+                client.get("https://api.github.com/repos/$repo/releases/tags/$version")
+                    .parsed<GithubResponse>().assets?.find {
+                        it.browserDownloadURL.contains(
+                            "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
+                        )
+                    }?.browserDownloadURL.apply {
+                        if (this != null) activity.downloadUpdate(version, this)
+                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
+                    }
+            } catch (e: Exception) {
+                logError(e)
+            }
         }
-    }
 
     private fun requestUpdate(activity: FragmentActivity, version: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -235,7 +237,7 @@ object MatagiUpdater {
         try {
             uri.path?.let {
                 context.contentResolver.openInputStream(uri).use { apkStream ->
-                    val session = with (context.packageManager.packageInstaller) {
+                    val session = with(context.packageManager.packageInstaller) {
                         val params = PackageInstaller.SessionParams(
                             PackageInstaller.SessionParams.MODE_FULL_INSTALL
                         )

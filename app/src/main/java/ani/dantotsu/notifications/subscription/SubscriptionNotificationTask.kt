@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import ani.dantotsu.App
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.UrlMedia

@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SettingsCommonActivity: AppCompatActivity(){
+class SettingsCommonActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsCommonBinding
     private lateinit var launcher: LauncherWrapper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +95,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         desc = getString(R.string.always_continue_content),
                         icon = R.drawable.ic_round_delete_24,
                         isChecked = PrefManager.getVal(PrefName.ContinueMedia),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.ContinueMedia, isChecked)
                         }
                     ),
@@ -105,7 +105,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         desc = getString(R.string.search_source_list),
                         icon = R.drawable.ic_round_search_sources_24,
                         isChecked = PrefManager.getVal(PrefName.SearchSources),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.SearchSources, isChecked)
                         }
                     ),
@@ -115,7 +115,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         desc = getString(R.string.recentlyListOnly),
                         icon = R.drawable.ic_round_new_releases_24,
                         isChecked = PrefManager.getVal(PrefName.RecentlyListOnly),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.RecentlyListOnly, isChecked)
                         }
                     ),
@@ -149,7 +149,8 @@ class SettingsCommonActivity: AppCompatActivity(){
                                     launcher.registerForCallback { success ->
                                         if (success) {
                                             toast(getString(R.string.please_wait))
-                                            val newUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
+                                            val newUri =
+                                                PrefManager.getVal<String>(PrefName.DownloadsDir)
                                             GlobalScope.launch(Dispatchers.IO) {
                                                 Injekt.get<DownloadsManager>().moveDownloadsDir(
                                                     context, Uri.parse(oldUri), Uri.parse(newUri)
@@ -180,7 +181,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         desc = getString(R.string.social_in_media),
                         icon = R.drawable.ic_emoji_people_24,
                         isChecked = PrefManager.getVal(PrefName.SocialInMedia),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.SocialInMedia, isChecked)
                         }
                     ),
@@ -190,7 +191,7 @@ class SettingsCommonActivity: AppCompatActivity(){
                         desc = getString(R.string.adult_only_content),
                         icon = R.drawable.ic_round_nsfw_24,
                         isChecked = PrefManager.getVal(PrefName.AdultOnly),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.AdultOnly, isChecked)
                             restartApp()
                         }
@@ -230,6 +231,7 @@ class SettingsCommonActivity: AppCompatActivity(){
             }
         }
     }
+
     @Suppress("DEPRECATION")
     override fun finish() {
         super.finish()

@@ -94,16 +94,21 @@ object BitmapUtil {
                     val url = geUrlOrTrolled(banner)
                     Glide.with(context as Context)
                         .load(
-                            if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith("content://")) Uri.parse(
+                            if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith(
+                                    "content://"
+                                )
+                            ) Uri.parse(
                                 url
                             ) else File(url)
                         )
                         .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
-                        .apply(if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
-                            RequestOptions.noTransformation()
-                        } else {
-                            RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
-                        })
+                        .apply(
+                            if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
+                                RequestOptions.noTransformation()
+                            } else {
+                                RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
+                            }
+                        )
                         .into(imageView)
                 }
             } else {

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -53,39 +52,50 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         )
-        val prefs = getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+        val prefs =
+            getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
 
-        val topBackground = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
-        (binding.topBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(topBackground)
+        val topBackground =
+            prefs.getInt(UpcomingWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
+        (binding.topBackgroundButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(topBackground)
         binding.topBackgroundButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@UpcomingWidgetConfigure,
                 topBackground,
-                UpcomingWidget.PREF_BACKGROUND_COLOR)
+                UpcomingWidget.PREF_BACKGROUND_COLOR
+            )
         }
-        val bottomBackground = prefs.getInt(UpcomingWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
-        (binding.bottomBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(bottomBackground)
+        val bottomBackground =
+            prefs.getInt(UpcomingWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
+        (binding.bottomBackgroundButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(bottomBackground)
         binding.bottomBackgroundButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@UpcomingWidgetConfigure,
                 bottomBackground,
-                UpcomingWidget.PREF_BACKGROUND_FADE)
+                UpcomingWidget.PREF_BACKGROUND_FADE
+            )
         }
         val titleTextColor = prefs.getInt(UpcomingWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE)
-        (binding.titleColorButton as MaterialButton).iconTint = ColorStateList.valueOf(titleTextColor)
+        (binding.titleColorButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(titleTextColor)
         binding.titleColorButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@UpcomingWidgetConfigure,
                 titleTextColor,
-                UpcomingWidget.PREF_TITLE_TEXT_COLOR)
+                UpcomingWidget.PREF_TITLE_TEXT_COLOR
+            )
         }
         val countdownTextColor = prefs.getInt(UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR, Color.WHITE)
-        (binding.countdownColorButton as MaterialButton).iconTint = ColorStateList.valueOf(countdownTextColor)
+        (binding.countdownColorButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(countdownTextColor)
         binding.countdownColorButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@UpcomingWidgetConfigure,
                 countdownTextColor,
-                UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR)
+                UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR
+            )
         }
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
@@ -109,16 +119,17 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
 
     private fun themeColors() {
         val backgroundColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
-        val textColor =  getThemeColor(com.google.android.material.R.attr.colorPrimary)
+        val textColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
         val subTextColor = getThemeColor(com.google.android.material.R.attr.colorOutline)
 
-        getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
-            putInt(UpcomingWidget.PREF_BACKGROUND_COLOR, backgroundColor)
-            putInt(UpcomingWidget.PREF_BACKGROUND_FADE, backgroundColor)
-            putInt(UpcomingWidget.PREF_TITLE_TEXT_COLOR, textColor)
-            putInt(UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR, subTextColor)
-            apply()
-        }
+        getSharedPreferences(UpcomingWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit()
+            .apply {
+                putInt(UpcomingWidget.PREF_BACKGROUND_COLOR, backgroundColor)
+                putInt(UpcomingWidget.PREF_BACKGROUND_FADE, backgroundColor)
+                putInt(UpcomingWidget.PREF_TITLE_TEXT_COLOR, textColor)
+                putInt(UpcomingWidget.PREF_COUNTDOWN_TEXT_COLOR, subTextColor)
+                apply()
+            }
     }
 
     override fun onResult(dialogTag: String, which: Int, extras: Bundle): Boolean {

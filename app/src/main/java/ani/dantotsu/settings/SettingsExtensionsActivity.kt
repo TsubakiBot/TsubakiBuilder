@@ -35,7 +35,7 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 
-class SettingsExtensionsActivity: AppCompatActivity() {
+class SettingsExtensionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsExtensionsBinding
     private val extensionInstaller = Injekt.get<BasePreferences>().extensionInstaller()
     private val animeExtensionManager: AnimeExtensionManager by injectLazy()
@@ -55,38 +55,60 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 topMargin = statusBarHeight
                 bottomMargin = navBarHeight
             }
-            extensionSettingsBack.setOnClickListener{
+            extensionSettingsBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
 
             fun setExtensionOutput(repoInventory: ViewGroup, type: MediaType) {
                 repoInventory.removeAllViews()
                 val prefName: PrefName? = when (type) {
-                    MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
-                    MediaType.MANGA -> { PrefName.MangaExtensionRepos }
-                    MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
-                    else -> { null }
+                    MediaType.ANIME -> {
+                        PrefName.AnimeExtensionRepos
+                    }
+
+                    MediaType.MANGA -> {
+                        PrefName.MangaExtensionRepos
+                    }
+
+                    MediaType.NOVEL -> {
+                        PrefName.NovelExtensionRepos
+                    }
+
+                    else -> {
+                        null
+                    }
                 }
                 prefName?.let { repoList ->
                     PrefManager.getVal<Set<String>>(repoList).forEach { item ->
                         val view = ItemRepositoryBinding.inflate(
                             LayoutInflater.from(repoInventory.context), repoInventory, true
                         )
-                        view.repositoryItem.text = item.removePrefix("https://raw.githubusercontent.com")
+                        view.repositoryItem.text =
+                            item.removePrefix("https://raw.githubusercontent.com")
                         view.repositoryItem.setOnClickListener {
                             AlertDialog.Builder(this@SettingsExtensionsActivity, R.style.MyPopup)
                                 .setTitle(R.string.rem_repository)
                                 .setMessage(item)
                                 .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                                    val repos = PrefManager.getVal<Set<String>>(repoList).minus(item)
+                                    val repos =
+                                        PrefManager.getVal<Set<String>>(repoList).minus(item)
                                     PrefManager.setVal(repoList, repos)
                                     setExtensionOutput(repoInventory, type)
                                     CoroutineScope(Dispatchers.IO).launch {
                                         when (type) {
-                                            MediaType.ANIME -> { animeExtensionManager.findAvailableExtensions() }
-                                            MediaType.MANGA -> { mangaExtensionManager.findAvailableExtensions() }
-                                            MediaType.NOVEL -> { novelExtensionManager.findAvailableExtensions() }
-                                            else -> { }
+                                            MediaType.ANIME -> {
+                                                animeExtensionManager.findAvailableExtensions()
+                                            }
+
+                                            MediaType.MANGA -> {
+                                                mangaExtensionManager.findAvailableExtensions()
+                                            }
+
+                                            MediaType.NOVEL -> {
+                                                novelExtensionManager.findAvailableExtensions()
+                                            }
+
+                                            else -> {}
                                         }
                                     }
                                     dialog.dismiss()
@@ -113,23 +135,28 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                 when (mediaType) {
                     MediaType.ANIME -> {
                         val anime =
-                            PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
+                            PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos)
+                                .plus(entry)
                         PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
                         CoroutineScope(Dispatchers.IO).launch {
                             animeExtensionManager.findAvailableExtensions()
                         }
                     }
+
                     MediaType.MANGA -> {
                         val manga =
-                            PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
+                            PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos)
+                                .plus(entry)
                         PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
                         CoroutineScope(Dispatchers.IO).launch {
                             mangaExtensionManager.findAvailableExtensions()
                         }
                     }
+
                     MediaType.NOVEL -> {
                         val novel =
-                            PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
+                            PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos)
+                                .plus(entry)
                         PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
                         CoroutineScope(Dispatchers.IO).launch {
                             novelExtensionManager.findAvailableExtensions()
@@ -187,7 +214,12 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                                     dialog.dismiss()
                                 }.create()
 
-                            processEditorAction(alertDialog, editText, MediaType.ANIME, it.attachView)
+                            processEditorAction(
+                                alertDialog,
+                                editText,
+                                MediaType.ANIME,
+                                it.attachView
+                            )
                             alertDialog.show()
                             alertDialog.window?.setDimAmount(0.8f)
                         },
@@ -221,7 +253,12 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                                     dialog.dismiss()
                                 }.create()
 
-                            processEditorAction(alertDialog, editText, MediaType.MANGA, it.attachView)
+                            processEditorAction(
+                                alertDialog,
+                                editText,
+                                MediaType.MANGA,
+                                it.attachView
+                            )
                             alertDialog.show()
                             alertDialog.window?.setDimAmount(0.8f)
                         },
@@ -255,7 +292,12 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                                     dialog.dismiss()
                                 }.create()
 
-                            processEditorAction(alertDialog, editText, MediaType.NOVEL, it.attachView)
+                            processEditorAction(
+                                alertDialog,
+                                editText,
+                                MediaType.NOVEL,
+                                it.attachView
+                            )
                             alertDialog.show()
                             alertDialog.window?.setDimAmount(0.8f)
                         },
@@ -275,7 +317,10 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                             val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
                                 .setTitle(R.string.user_agent).setView(dialogView.root)
                                 .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                                    PrefManager.setVal(PrefName.DefaultUserAgent, editText.text.toString())
+                                    PrefManager.setVal(
+                                        PrefName.DefaultUserAgent,
+                                        editText.text.toString()
+                                    )
                                     dialog.dismiss()
                                 }.setNeutralButton(getString(R.string.reset)) { dialog, _ ->
                                     PrefManager.removeVal(PrefName.DefaultUserAgent)
@@ -294,7 +339,7 @@ class SettingsExtensionsActivity: AppCompatActivity() {
                         name = getString(R.string.force_legacy_installer),
                         desc = getString(R.string.force_legacy_installer),
                         icon = R.drawable.ic_round_new_releases_24,
-                        isChecked =  extensionInstaller.get() == BasePreferences.ExtensionInstaller.LEGACY,
+                        isChecked = extensionInstaller.get() == BasePreferences.ExtensionInstaller.LEGACY,
                         switch = { isChecked, _ ->
                             if (isChecked) {
                                 extensionInstaller.set(BasePreferences.ExtensionInstaller.LEGACY)

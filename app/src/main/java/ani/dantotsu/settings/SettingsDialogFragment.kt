@@ -237,9 +237,10 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.searchViewText.setOnEditorActionListener { textView, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                   search(textView.text.toString())
+                    search(textView.text.toString())
                     true
                 }
+
                 else -> false
             }
         }

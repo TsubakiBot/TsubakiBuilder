@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     private val scope = lifecycleScope
     private var load = false
 
-        @SuppressLint("InternalInsetResource", "DiscouragedApi")
+    @SuppressLint("InternalInsetResource", "DiscouragedApi")
     @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager(this).applyTheme()
@@ -483,7 +483,7 @@ class MainActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val margin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) 8 else 32
-        val params : ViewGroup.MarginLayoutParams =
+        val params: ViewGroup.MarginLayoutParams =
             binding.includedNavbar.navbar.layoutParams as ViewGroup.MarginLayoutParams
         params.updateMargins(bottom = margin.toPx)
     }

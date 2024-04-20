@@ -148,7 +148,8 @@ class MediaInfoFragment : Fragment() {
                     }
                     binding.mediaInfoDurationContainer.visibility = View.VISIBLE
                     binding.mediaInfoSeasonContainer.visibility = View.VISIBLE
-                    val seasonInfo = "${(media.anime.season ?: "??")} ${(media.anime.seasonYear ?: "??")}"
+                    val seasonInfo =
+                        "${(media.anime.season ?: "??")} ${(media.anime.seasonYear ?: "??")}"
                     binding.mediaInfoSeason.text = seasonInfo
 
                     if (media.anime.mainStudio != null) {
@@ -185,9 +186,9 @@ class MediaInfoFragment : Fragment() {
                     }
                     binding.mediaInfoTotalTitle.setText(R.string.total_eps)
                     val infoTotal = if (media.anime.nextAiringEpisode != null)
-                            "${media.anime.nextAiringEpisode} | ${media.anime.totalEpisodes ?: "~"}"
+                        "${media.anime.nextAiringEpisode} | ${media.anime.totalEpisodes ?: "~"}"
                     else
-                            (media.anime.totalEpisodes ?: "~").toString()
+                        (media.anime.totalEpisodes ?: "~").toString()
                     binding.mediaInfoTotal.text = infoTotal
 
                 } else if (media.manga != null) {
@@ -216,7 +217,8 @@ class MediaInfoFragment : Fragment() {
                     (media.description ?: "null").replace("\\n", "<br>").replace("\\\"", "\""),
                     HtmlCompat.FROM_HTML_MODE_LEGACY
                 )
-                val infoDesc = tripleTab + if (desc.toString() != "null") desc else getString(R.string.no_description_available)
+                val infoDesc =
+                    tripleTab + if (desc.toString() != "null") desc else getString(R.string.no_description_available)
                 binding.mediaInfoDescription.text = infoDesc
 
                 binding.mediaInfoDescription.setOnClickListener {

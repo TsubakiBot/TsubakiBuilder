@@ -78,26 +78,26 @@
                                     android:id="@+id/homeUserName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
                                     android:fontFamily="@font/poppins_bold"
                                     android:gravity="center"
                                     android:text="@string/username"
-                                    android:layout_marginTop="8dp"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:orientation="horizontal"
-                                    android:layout_marginTop="-4dp">
+                                    android:layout_marginTop="-4dp"
+                                    android:orientation="horizontal">
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:alpha="0.58"
                                         android:fontFamily="@font/poppins"
+                                        android:includeFontPadding="false"
                                         android:text="@string/episodes_watched"
                                         android:textSize="12sp"
-                                        android:includeFontPadding="false"
                                         tools:ignore="TextContrastCheck,TooDeepLayout" />
 
                                     <TextView
@@ -106,25 +106,25 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="4dp"
                                         android:fontFamily="@font/poppins_bold"
+                                        android:includeFontPadding="false"
                                         android:textColor="?attr/colorPrimaryVariant"
-                                        android:textSize="12sp"
-                                        android:includeFontPadding="false"/>
+                                        android:textSize="12sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:orientation="horizontal"
-                                    android:layout_marginTop="-3dp">
+                                    android:layout_marginTop="-3dp"
+                                    android:orientation="horizontal">
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:alpha="0.58"
                                         android:fontFamily="@font/poppins"
+                                        android:includeFontPadding="false"
                                         android:text="@string/chapters_read"
                                         android:textSize="12sp"
-                                        android:includeFontPadding="false"
                                         tools:ignore="TextContrastCheck" />
 
                                     <TextView
@@ -133,9 +133,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="4dp"
                                         android:fontFamily="@font/poppins_bold"
+                                        android:includeFontPadding="false"
                                         android:textColor="?attr/colorPrimaryVariant"
-                                        android:textSize="12sp"
-                                        android:includeFontPadding="false" />
+                                        android:textSize="12sp" />
                                 </LinearLayout>
 
                             </LinearLayout>

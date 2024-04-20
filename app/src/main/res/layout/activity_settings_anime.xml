@@ -21,8 +21,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-16dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="-16dp"
                 app:cardBackgroundColor="@color/nav_bg_inv"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
@@ -43,8 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="32dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
                 android:text="@string/anime"
                 android:textSize="28sp" />
 
@@ -154,9 +154,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="-16dp"
-            android:layout_marginVertical="16dp"
             android:background="?android:attr/listDivider" />
 
         <TextView
@@ -198,8 +198,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginHorizontal="16dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -222,8 +222,8 @@
                 android:fontFamily="@font/poppins_bold"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:text="9999"
                 android:maxLength="5"
+                android:text="9999"
                 android:textAlignment="center"
                 android:textColor="?attr/colorSecondary"
                 android:textSize="14sp"
@@ -234,8 +234,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
             android:alpha="0.58"
             android:fontFamily="@font/poppins_family"
             android:text="@string/port_range"
@@ -245,8 +245,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="-16dp"
-            android:layout_marginEnd="-16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="-16dp"
             android:layout_marginBottom="16dp"
             android:background="?android:attr/listDivider" />
     </LinearLayout>

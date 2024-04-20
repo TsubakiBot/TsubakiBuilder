@@ -174,4 +174,10 @@ class UpcomingRemoteViewsFactory(private val context: Context, appWidgetId: Int)
     }
 }
 
-data class WidgetItem(val title: String, val countdown: String, val image: String, val banner: String, val id: Int)
+data class WidgetItem(
+    val title: String,
+    val countdown: String,
+    val image: String,
+    val banner: String,
+    val id: Int
+)

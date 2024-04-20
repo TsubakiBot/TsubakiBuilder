@@ -21,7 +21,7 @@ import eu.kanade.tachiyomi.util.system.getThemeColor
 
 @OptIn(UnstableApi::class)
 class TrackGroupDialogFragment(
-    instance: ExoplayerView, trackGroups: ArrayList<Tracks.Group>, type : @TrackType Int
+    instance: ExoplayerView, trackGroups: ArrayList<Tracks.Group>, type: @TrackType Int
 ) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSubtitlesBinding? = null
     private val binding get() = _binding!!
@@ -71,11 +71,14 @@ class TrackGroupDialogFragment(
             trackGroups[position].let { trackGroup ->
                 when (val language = trackGroup.getTrackFormat(0).language) {
                     null -> {
-                        binding.subtitleTitle.text = getString(R.string.unknown_track, String.format("%02d", position))
+                        binding.subtitleTitle.text =
+                            getString(R.string.unknown_track, String.format("%02d", position))
                     }
+
                     "none" -> {
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
+
                     else -> {
                         binding.subtitleTitle.text = getLanguageItem(language)
                             ?: getString(R.string.unknown_track, language)
@@ -84,7 +87,7 @@ class TrackGroupDialogFragment(
                 if (trackGroup.isSelected) {
                     val selected = "✔ ${binding.subtitleTitle.text}"
                     binding.subtitleTitle.text = selected
-                    with (binding.root.context) {
+                    with(binding.root.context) {
                         binding.root.setCardBackgroundColor(
                             getThemeColor(com.google.android.material.R.attr.colorPrimary)
                         )

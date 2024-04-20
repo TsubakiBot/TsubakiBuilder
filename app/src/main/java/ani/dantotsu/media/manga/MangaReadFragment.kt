@@ -200,8 +200,10 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                             ConcatAdapter(headerAdapter, chapterAdapter)
 
                         lifecycleScope.launch(Dispatchers.IO) {
-                            val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
-                            if (offline) media.selected!!.sourceIndex = model.mangaReadSources!!.list.lastIndex
+                            val offline =
+                                !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
+                            if (offline) media.selected!!.sourceIndex =
+                                model.mangaReadSources!!.list.lastIndex
                             model.loadMangaChapters(media, media.selected!!.sourceIndex)
                         }
 

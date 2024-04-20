@@ -15,10 +15,11 @@ class Forks {
     fun getForks(): Array<Developer> {
         val forks = arrayListOf<Developer>()
         runBlocking(Dispatchers.IO) {
-            val res = client.get("https://api.github.com/repos/rebelonion/Dantotsu/forks?sort=stargazers")
-                .parsed<JsonArray>().map {
-                    Mapper.json.decodeFromJsonElement<GithubResponse>(it)
-                }
+            val res =
+                client.get("https://api.github.com/repos/rebelonion/Dantotsu/forks?sort=stargazers")
+                    .parsed<JsonArray>().map {
+                        Mapper.json.decodeFromJsonElement<GithubResponse>(it)
+                    }
             res.forEach {
                 forks.add(
                     Developer(

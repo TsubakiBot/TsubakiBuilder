@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.DatePickerFragment
 import ani.dantotsu.InputFilterMinMax
 import ani.dantotsu.R
@@ -20,6 +19,7 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.BottomSheetMediaListBinding
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWith
 import com.google.android.material.materialswitch.MaterialSwitch

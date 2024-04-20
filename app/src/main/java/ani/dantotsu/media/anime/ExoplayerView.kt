@@ -535,12 +535,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                     }
                                     rotation = ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE
                                 }
+
                                 in 225..315 -> {
                                     if (rotation != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                                         exoRotate.visibility = View.VISIBLE
                                     }
                                     rotation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                                 }
+
                                 in 315..360, in 0..45 -> {
                                     if (rotation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                                         exoRotate.visibility = View.VISIBLE
@@ -627,7 +629,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         // Picture-in-picture
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             pipEnabled = packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)
-                        && PrefManager.getVal(PrefName.Pip)
+                    && PrefManager.getVal(PrefName.Pip)
             if (pipEnabled) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     setPictureInPictureParams(getPictureInPictureBuilder().build())
@@ -1446,7 +1448,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 subClick()
             }
         }
-        val sub: MutableList<MediaItem.SubtitleConfiguration> = emptyList<MediaItem.SubtitleConfiguration>().toMutableList()
+        val sub: MutableList<MediaItem.SubtitleConfiguration> =
+            emptyList<MediaItem.SubtitleConfiguration>().toMutableList()
         ext.subtitles.forEach { subtitle ->
             val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle.file.url
             //var localFile: String? = null
@@ -1504,7 +1507,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     followSslRedirects(true)
                 }.build()
                 val dataSourceFactory = DataSource.Factory {
-                    val dataSource: HttpDataSource = OkHttpDataSource.Factory(httpClient).createDataSource()
+                    val dataSource: HttpDataSource =
+                        OkHttpDataSource.Factory(httpClient).createDataSource()
                     defaultHeaders.forEach {
                         dataSource.setRequestProperty(it.key, it.value)
                     }
@@ -1910,7 +1914,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
                 if (PrefManager.getVal(PrefName.AutoSkipRecap)
                     && new.skipType == "recap"
-                    && !skippedTimeStamps.contains(new)) {
+                    && !skippedTimeStamps.contains(new)
+                ) {
                     exoPlayer.seekTo((new.interval.endTime * 1000).toLong())
                     skippedTimeStamps.add(new)
                 }
@@ -1955,6 +1960,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 TRACK_TYPE_AUDIO -> {
                     if (it.isSupported(true)) audioTracks.add(it)
                 }
+
                 TRACK_TYPE_TEXT -> {
                     if (subsEmbedded) {
                         if (it.isSupported(true)) subTracks.add(it)
@@ -1989,7 +1995,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                         }
                     }
-                    else -> { }
+
+                    else -> {}
                 }
             }
         }
@@ -1999,19 +2006,27 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     override fun onPlayerError(error: PlaybackException) {
         when (error.errorCode) {
             PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
-            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED, -> {
+            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+            -> {
                 toast(getString(R.string.exo_source_exception, error.message))
                 isPlayerPlaying = true
                 sourceClick()
             }
+
             PlaybackException.ERROR_CODE_DECODING_FAILED -> {
                 toast(getString(R.string.exo_decoding_failed, error.message))
                 sourceClick()
             }
+
             else -> {
-                toast(getString(
-                    R.string.exo_player_error, error.errorCode, error.errorCodeName, error.message
-                ))
+                toast(
+                    getString(
+                        R.string.exo_player_error,
+                        error.errorCode,
+                        error.errorCodeName,
+                        error.message
+                    )
+                )
                 Logger.log(error)
             }
         }
@@ -2155,12 +2170,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun getPictureInPictureBuilder() : PictureInPictureParams.Builder {
+    private fun getPictureInPictureBuilder(): PictureInPictureParams.Builder {
         val pictureInPictureParamsBuilder = PictureInPictureParams.Builder()
 
-        setPictureInPictureParams(pictureInPictureParamsBuilder
-            .setAspectRatio(aspectRatio)
-            .build()
+        setPictureInPictureParams(
+            pictureInPictureParamsBuilder
+                .setAspectRatio(aspectRatio)
+                .build()
         )
 
         return pictureInPictureParamsBuilder

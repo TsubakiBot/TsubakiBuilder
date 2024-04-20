@@ -14,12 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.others.EmptyAdapter
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityAuthorBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.EmptyAdapter
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
@@ -97,8 +97,10 @@ class AuthorActivity : AppCompatActivity() {
 
                 binding.charactersRecycler.visibility = View.VISIBLE
                 binding.charactersText.visibility = View.VISIBLE
-                binding.charactersRecycler.adapter = CharacterAdapter(author!!.character ?: arrayListOf())
-                binding.charactersRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                binding.charactersRecycler.adapter =
+                    CharacterAdapter(author!!.character ?: arrayListOf())
+                binding.charactersRecycler.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
                 if (author!!.character.isNullOrEmpty()) {
                     binding.charactersRecycler.visibility = View.GONE
                     binding.charactersText.visibility = View.GONE
@@ -110,7 +112,7 @@ class AuthorActivity : AppCompatActivity() {
             if (it) {
                 scope.launch {
                     if (author != null)
-                        withContext(Dispatchers.IO) { model.loadAuthor(author!!)}
+                        withContext(Dispatchers.IO) { model.loadAuthor(author!!) }
                     live.postValue(false)
                 }
             }

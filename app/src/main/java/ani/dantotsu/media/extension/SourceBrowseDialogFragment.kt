@@ -45,10 +45,12 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         mediaType = MediaType.ANIME
         animeExtesnion = extension
     }
+
     constructor(extension: MangaExtension.Installed) : this() {
         mediaType = MediaType.MANGA
         mangaExtension = extension
     }
+
     constructor(extension: NovelExtension.Installed) : this() {
         mediaType = MediaType.NOVEL
         novelExtension = extension
@@ -154,9 +156,17 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 }
             } else {
                 val parser = when (mediaType) {
-                    MediaType.ANIME -> { DynamicAnimeParser(animeExtesnion) }
-                    MediaType.MANGA -> { DynamicMangaParser(mangaExtension) }
-                    MediaType.NOVEL -> { DynamicNovelParser(novelExtension) }
+                    MediaType.ANIME -> {
+                        DynamicAnimeParser(animeExtesnion)
+                    }
+
+                    MediaType.MANGA -> {
+                        DynamicMangaParser(mangaExtension)
+                    }
+
+                    MediaType.NOVEL -> {
+                        DynamicNovelParser(novelExtension)
+                    }
                 }
 
                 fun search(query: String? = null) {

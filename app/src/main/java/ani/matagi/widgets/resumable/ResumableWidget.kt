@@ -62,7 +62,8 @@ class ResumableWidget : AppWidgetProvider() {
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
         appWidgetIds.forEach {
-            context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE).edit().clear().apply()
+            context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE).edit().clear()
+                .apply()
         }
         super.onDeleted(context, appWidgetIds)
     }
@@ -117,18 +118,27 @@ class ResumableWidget : AppWidgetProvider() {
 
             val serializedAnime = anime?.let { list -> serializeAnime(list) }
             val serializedManga = manga?.let { list -> serializeManga(list) }
-            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java)).forEach {
-                val prefs = context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE)
-                serializedAnime?.let { list -> prefs.edit().putString(PREF_SERIALIZED_ANIME, list).apply()}
-                    ?: prefs.edit().remove(PREF_SERIALIZED_ANIME).apply()
-                serializedManga?.let { list -> prefs.edit().putString(PREF_SERIALIZED_MANGA, list).apply()}
-                    ?: prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
-                prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis()).apply()
-                appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
-            }
+            appWidgetManager.getAppWidgetIds(ComponentName(context, ResumableWidget::class.java))
+                .forEach {
+                    val prefs = context.getSharedPreferences(getPrefsName(it), Context.MODE_PRIVATE)
+                    serializedAnime?.let { list ->
+                        prefs.edit().putString(PREF_SERIALIZED_ANIME, list).apply()
+                    }
+                        ?: prefs.edit().remove(PREF_SERIALIZED_ANIME).apply()
+                    serializedManga?.let { list ->
+                        prefs.edit().putString(PREF_SERIALIZED_MANGA, list).apply()
+                    }
+                        ?: prefs.edit().remove(PREF_SERIALIZED_MANGA).apply()
+                    prefs.edit().putLong(UpcomingWidget.LAST_UPDATE, System.currentTimeMillis())
+                        .apply()
+                    appWidgetManager.notifyAppWidgetViewDataChanged(it, R.id.widgetViewFlipper)
+                }
         }
 
-        private suspend fun getContinueItems(prefs: SharedPreferences, type: MediaType?): MutableList<WidgetItem> {
+        private suspend fun getContinueItems(
+            prefs: SharedPreferences,
+            type: MediaType?
+        ): MutableList<WidgetItem> {
             val mediaItems = mutableListOf<WidgetItem>()
 
             val expired = System.currentTimeMillis() - prefs.getLong(LAST_UPDATE, 0) > 28800000
@@ -150,6 +160,7 @@ class ResumableWidget : AppWidgetProvider() {
                         }
                     )
                 }
+
                 MediaType.MANGA -> {
                     continueManga.addAll(
                         if (expired || serializedManga.isNullOrEmpty()) {
@@ -161,6 +172,7 @@ class ResumableWidget : AppWidgetProvider() {
                         }
                     )
                 }
+
                 else -> {
                     continueAnime.addAll(
                         if (expired || serializedAnime.isNullOrEmpty()) {
@@ -196,9 +208,11 @@ class ResumableWidget : AppWidgetProvider() {
                 MediaType.ANIME -> {
                     resumableAnime
                 }
+
                 MediaType.MANGA -> {
                     resumableManga
                 }
+
                 else -> {
                     resumableAnime.mix(resumableManga)
                 }
@@ -222,11 +236,13 @@ class ResumableWidget : AppWidgetProvider() {
                         prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
                     } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
                 }
+
                 MediaType.MANGA -> {
                     serializeManga(resumableManga)?.let {
                         prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
                     } ?: prefs.edit().remove(UpcomingWidget.PREF_SERIALIZED_MEDIA).apply()
                 }
+
                 else -> {
                     serializeAnime(resumableAnime)?.let {
                         prefs.edit().putString(UpcomingWidget.PREF_SERIALIZED_MEDIA, it).apply()
@@ -240,7 +256,7 @@ class ResumableWidget : AppWidgetProvider() {
             return mediaItems
         }
 
-        fun fillWidgetItems(prefs: SharedPreferences) : MutableList<WidgetItem> {
+        fun fillWidgetItems(prefs: SharedPreferences): MutableList<WidgetItem> {
             refreshing = true
             widgetItems.clear()
             runBlocking(Dispatchers.IO) {
@@ -248,9 +264,11 @@ class ResumableWidget : AppWidgetProvider() {
                     ResumableType.CONTINUE_ANIME.ordinal -> {
                         widgetItems.addAll(getContinueItems(prefs, MediaType.ANIME))
                     }
+
                     ResumableType.CONTINUE_MANGA.ordinal -> {
                         widgetItems.addAll(getContinueItems(prefs, MediaType.MANGA))
                     }
+
                     else -> {
                         widgetItems.addAll(getContinueItems(prefs, null))
                     }
@@ -260,8 +278,12 @@ class ResumableWidget : AppWidgetProvider() {
             return widgetItems
         }
 
-        private fun getPendingSelfIntent(context: Context, appWidgetId: Int, action: String): PendingIntent {
-            val intent = Intent(context, ResumableWidget::class.java).setAction(action).apply{
+        private fun getPendingSelfIntent(
+            context: Context,
+            appWidgetId: Int,
+            action: String
+        ): PendingIntent {
+            val intent = Intent(context, ResumableWidget::class.java).setAction(action).apply {
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
                 data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
             }
@@ -273,7 +295,8 @@ class ResumableWidget : AppWidgetProvider() {
         private fun RemoteViews.setLocalAdapter(context: Context, appWidgetId: Int, view: Int) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 val builder = RemoteViews.RemoteCollectionItems.Builder()
-                val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+                val prefs =
+                    context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
                 val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
                 fillWidgetItems(prefs).forEach { item ->
                     val rv =
@@ -308,7 +331,8 @@ class ResumableWidget : AppWidgetProvider() {
             intentTemplate.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intentTemplate.putExtra("fromWidget", true)
 
-            val prefs = context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+            val prefs =
+                context.getSharedPreferences(getPrefsName(appWidgetId), Context.MODE_PRIVATE)
             val backgroundColor = prefs.getInt(PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
             val backgroundFade = prefs.getInt(PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
             val titleTextColor = prefs.getInt(PREF_TITLE_TEXT_COLOR, Color.WHITE)
@@ -447,10 +471,10 @@ class ResumableWidget : AppWidgetProvider() {
         }
 
 
-
         fun getPrefsName(appWidgetId: Int): String {
             return "ani.dantotsu.widgets.ResumableWidget.${appWidgetId}"
         }
+
         const val PREF_BACKGROUND_COLOR = "background_color"
         const val PREF_BACKGROUND_FADE = "background_fade"
         const val PREF_TITLE_TEXT_COLOR = "title_text_color"

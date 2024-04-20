@@ -102,11 +102,12 @@ class ActivityItem(
         }
         val context = binding.root.context
         val userList = arrayListOf<User>()
-        activity.likes?.forEach{ i ->
+        activity.likes?.forEach { i ->
             userList.add(User(i.id, i.name.toString(), i.avatar?.medium, i.bannerImage))
         }
-        binding.activityLike.setOnLongClickListener{
-            UsersDialogFragment().apply { userList(userList)
+        binding.activityLike.setOnLongClickListener {
+            UsersDialogFragment().apply {
+                userList(userList)
                 show(fragActivity.supportFragmentManager, "dialog")
             }
             true
@@ -120,8 +121,10 @@ class ActivityItem(
                 binding.activityContent.visibility = View.GONE
                 binding.activityBannerContainer.visibility = View.VISIBLE
                 binding.activityMediaName.text = activity.media?.title?.userPreferred
-                val activityText = "${activity.user!!.name} ${activity.status} ${activity.progress 
-                    ?: activity.media?.title?.userPreferred}"
+                val activityText = "${activity.user!!.name} ${activity.status} ${
+                    activity.progress
+                        ?: activity.media?.title?.userPreferred
+                }"
                 binding.activityText.text = activityText
                 binding.activityCover.loadImage(cover)
                 BitmapUtil.blurImage(binding.activityBannerImage, banner ?: cover)

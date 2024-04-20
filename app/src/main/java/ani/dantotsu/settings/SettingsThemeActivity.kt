@@ -56,7 +56,12 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         desc = getString(R.string.ui_settings),
                         icon = R.drawable.ic_round_auto_awesome_24,
                         onClick = {
-                            startActivity(Intent(context, UserInterfaceSettingsActivity::class.java))
+                            startActivity(
+                                Intent(
+                                    context,
+                                    UserInterfaceSettingsActivity::class.java
+                                )
+                            )
                             finish()
                         },
                         isActivity = true
@@ -117,14 +122,17 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         icon = R.drawable.ic_palette,
                         onClick = {
                             val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)
+
                             class CustomColorDialog : SimpleColorDialog() {
                                 override fun onPositiveButtonClick() {
                                     recreate()
                                     super.onPositiveButtonClick()
                                 }
                             }
+
                             val tag = "colorPicker"
-                            CustomColorDialog().title(R.string.custom_theme).colorPreset(originalColor)
+                            CustomColorDialog().title(R.string.custom_theme)
+                                .colorPreset(originalColor)
                                 .colors(context, SimpleColorDialog.MATERIAL_COLOR_PALLET)
                                 .allowCustom(true).showOutline(0x46000000).gridNumColumn(5)
                                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE).neg()

@@ -9,7 +9,10 @@ import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.InstallStep
 
-class InstallerSteps(private val notificationManager: NotificationManager, private val context: Context) {
+class InstallerSteps(
+    private val notificationManager: NotificationManager,
+    private val context: Context
+) {
 
     fun onInstallStep(installStep: InstallStep, extra: () -> Unit) {
         val builder = NotificationCompat.Builder(

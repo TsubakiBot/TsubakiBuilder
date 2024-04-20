@@ -41,7 +41,8 @@ class ExtensionInstallActivity : AppCompatActivity() {
         ThemeManager(this).applyTheme()
 
         if (intent.hasExtra(ExtensionInstaller.EXTRA_EXTENSION_TYPE))
-            type = intent.getSerializableExtraCompat<MediaType>(ExtensionInstaller.EXTRA_EXTENSION_TYPE)
+            type =
+                intent.getSerializableExtraCompat<MediaType>(ExtensionInstaller.EXTRA_EXTENSION_TYPE)
         if (intent.hasExtra(ExtensionInstaller.EXTRA_ADDON_TYPE))
             type = intent.getSerializableExtraCompat<AddonType>(ExtensionInstaller.EXTRA_ADDON_TYPE)
 
@@ -95,12 +96,15 @@ class ExtensionInstallActivity : AppCompatActivity() {
             MediaType.ANIME -> {
                 Injekt.get<AnimeExtensionManager>().updateInstallStep(downloadId, newStep)
             }
+
             MediaType.MANGA -> {
                 Injekt.get<MangaExtensionManager>().updateInstallStep(downloadId, newStep)
             }
+
             MediaType.NOVEL -> {
                 Injekt.get<NovelExtensionManager>().updateInstallStep(downloadId, newStep)
             }
+
             AddonType.TORRENT -> {
                 Injekt.get<TorrentAddonManager>().updateInstallStep(downloadId, newStep)
             }
@@ -108,7 +112,8 @@ class ExtensionInstallActivity : AppCompatActivity() {
             AddonType.DOWNLOAD -> {
                 Injekt.get<DownloadAddonManager>().updateInstallStep(downloadId, newStep)
             }
-            null -> { }
+
+            null -> {}
         }
     }
 }

@@ -155,15 +155,19 @@ abstract class Installer(private val service: Service) {
                 MediaType.ANIME -> {
                     animeExtensionManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
+
                 MediaType.MANGA -> {
                     mangaExtensionManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
+
                 MediaType.NOVEL -> {
                     novelExtensionManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
+
                 AddonType.TORRENT -> {
                     torrentAddonManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
+
                 AddonType.DOWNLOAD -> {
                     downloadAddonManager.updateInstallStep(it.downloadId, InstallStep.Error)
                 }
@@ -194,9 +198,11 @@ abstract class Installer(private val service: Service) {
                 MediaType.ANIME -> {
                     animeExtensionManager.updateInstallStep(downloadId, InstallStep.Idle)
                 }
+
                 MediaType.MANGA -> {
                     mangaExtensionManager.updateInstallStep(downloadId, InstallStep.Idle)
                 }
+
                 MediaType.NOVEL -> {
                     novelExtensionManager.updateInstallStep(downloadId, InstallStep.Idle)
                 }

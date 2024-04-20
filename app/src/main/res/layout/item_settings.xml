@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:id="@+id/settingsLayout"
         android:layout_width="match_parent"
@@ -49,6 +49,7 @@
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/slogan"
                 android:textColor="?attr/colorOnSurfaceVariant" />
+
             <LinearLayout
                 android:id="@+id/attachView"
                 android:layout_width="match_parent"
@@ -58,15 +59,16 @@
                 android:visibility="gone"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>
+
         <ImageView
             android:id="@+id/settingsIconRight"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:rotation="180"
             android:visibility="gone"
-            tools:visibility="visible"
             app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
             app:tint="?attr/colorPrimary"
-            android:rotation="180"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
     </LinearLayout>
 </FrameLayout>

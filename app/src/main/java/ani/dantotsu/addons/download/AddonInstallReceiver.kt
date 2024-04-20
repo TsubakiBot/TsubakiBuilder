@@ -37,7 +37,7 @@ internal class AddonInstallReceiver : BroadcastReceiver() {
         ContextCompat.registerReceiver(context, this, filter, ContextCompat.RECEIVER_EXPORTED)
     }
 
-    fun setListener(listener: AddonListener, type: AddonType) : AddonInstallReceiver {
+    fun setListener(listener: AddonListener, type: AddonType): AddonInstallReceiver {
         this.listener = listener
         this.type = type
         return this

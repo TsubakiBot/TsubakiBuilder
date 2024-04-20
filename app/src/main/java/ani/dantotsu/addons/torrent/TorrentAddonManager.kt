@@ -95,7 +95,7 @@ class TorrentAddonManager(
         }
     }
 
-   private inner class InstallationListener : AddonListener {
+    private inner class InstallationListener : AddonListener {
         override fun onAddonInstalled(result: LoadResult?) {
             if (result is TorrentLoadResult.Success) {
                 extension = result.extension

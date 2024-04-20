@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -61,22 +60,29 @@ class ProfileStatsConfigure : AppCompatActivity(),
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         )
-        val prefs = getSharedPreferences(ProfileStatsWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
-        val topBackground = prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
-        (binding.topBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(topBackground)
+        val prefs =
+            getSharedPreferences(ProfileStatsWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+        val topBackground =
+            prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, Color.parseColor("#80000000"))
+        (binding.topBackgroundButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(topBackground)
         binding.topBackgroundButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@ProfileStatsConfigure,
                 topBackground,
-                ProfileStatsWidget.PREF_BACKGROUND_COLOR)
+                ProfileStatsWidget.PREF_BACKGROUND_COLOR
+            )
         }
-        val bottomBackground = prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
-        (binding.bottomBackgroundButton as MaterialButton).iconTint = ColorStateList.valueOf(bottomBackground)
+        val bottomBackground =
+            prefs.getInt(ProfileStatsWidget.PREF_BACKGROUND_FADE, Color.parseColor("#00000000"))
+        (binding.bottomBackgroundButton as MaterialButton).iconTint =
+            ColorStateList.valueOf(bottomBackground)
         binding.bottomBackgroundButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@ProfileStatsConfigure,
                 bottomBackground,
-                ProfileStatsWidget.PREF_BACKGROUND_FADE)
+                ProfileStatsWidget.PREF_BACKGROUND_FADE
+            )
         }
         val titleColor = prefs.getInt(ProfileStatsWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE)
         (binding.titleColorButton as MaterialButton).iconTint = ColorStateList.valueOf(titleColor)
@@ -84,7 +90,8 @@ class ProfileStatsConfigure : AppCompatActivity(),
             ColorDialog.showColorDialog(
                 this@ProfileStatsConfigure,
                 titleColor,
-                ProfileStatsWidget.PREF_TITLE_TEXT_COLOR)
+                ProfileStatsWidget.PREF_TITLE_TEXT_COLOR
+            )
         }
         val statsColor = prefs.getInt(ProfileStatsWidget.PREF_STATS_TEXT_COLOR, Color.WHITE)
         (binding.statsColorButton as MaterialButton).iconTint = ColorStateList.valueOf(statsColor)
@@ -92,7 +99,8 @@ class ProfileStatsConfigure : AppCompatActivity(),
             ColorDialog.showColorDialog(
                 this@ProfileStatsConfigure,
                 statsColor,
-                ProfileStatsWidget.PREF_STATS_TEXT_COLOR)
+                ProfileStatsWidget.PREF_STATS_TEXT_COLOR
+            )
         }
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
@@ -121,7 +129,10 @@ class ProfileStatsConfigure : AppCompatActivity(),
         val textColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
         val subTextColor = getThemeColor(com.google.android.material.R.attr.colorOnBackground)
 
-        getSharedPreferences(ProfileStatsWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
+        getSharedPreferences(
+            ProfileStatsWidget.getPrefsName(appWidgetId),
+            Context.MODE_PRIVATE
+        ).edit().apply {
             putInt(ProfileStatsWidget.PREF_BACKGROUND_COLOR, backgroundColor)
             putInt(ProfileStatsWidget.PREF_BACKGROUND_FADE, backgroundColor)
             putInt(ProfileStatsWidget.PREF_TITLE_TEXT_COLOR, textColor)

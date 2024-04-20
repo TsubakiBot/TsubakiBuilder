@@ -54,7 +54,10 @@ object TorrentServerApi {
             ).toString()
         val resp =
             network.client.newCall(
-                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
+                POST(
+                    "$hostUrl/torrents",
+                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
+                ),
             ).execute()
         return Json.decodeFromString(Torrent.serializer(), resp.body.string())
     }
@@ -63,7 +66,10 @@ object TorrentServerApi {
         val req = TorrentRequest("get", hash).toString()
         val resp =
             network.client.newCall(
-                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
+                POST(
+                    "$hostUrl/torrents",
+                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
+                ),
             ).execute()
         return Json.decodeFromString(Torrent.serializer(), resp.body.string())
     }
@@ -71,7 +77,10 @@ object TorrentServerApi {
     fun remTorrent(hash: String) {
         val req = TorrentRequest("rem", hash).toString()
         network.client.newCall(
-            POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
+            POST(
+                "$hostUrl/torrents",
+                body = req.toRequestBody("application/json".toMediaTypeOrNull())
+            ),
         ).execute()
     }
 
@@ -79,12 +88,21 @@ object TorrentServerApi {
         val req = TorrentRequest("list").toString()
         val resp =
             network.client.newCall(
-                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
+                POST(
+                    "$hostUrl/torrents",
+                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
+                ),
             ).execute()
         return Json.decodeFromString<List<Torrent>>(resp.body.string())
     }
 
-    fun uploadTorrent(file: InputStream, title: String, poster: String, data: String, save: Boolean): Torrent {
+    fun uploadTorrent(
+        file: InputStream,
+        title: String,
+        poster: String,
+        data: String,
+        save: Boolean
+    ): Torrent {
         val resp = Jsoup.connect("$hostUrl/torrent/upload")
             .data("title", title)
             .data("poster", poster)

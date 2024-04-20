@@ -13,12 +13,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
-import ani.dantotsu.others.EmptyAdapter
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityStudioBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.EmptyAdapter
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager

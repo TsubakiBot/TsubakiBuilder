@@ -42,7 +42,11 @@ object ActivityItemBuilder {
             }
 
             NotificationType.AIRING -> {
-                getString(R.string.notification_episode_aired, notification.episode, notification.media?.title?.english ?: notification.media?.title?.romaji)
+                getString(
+                    R.string.notification_episode_aired,
+                    notification.episode,
+                    notification.media?.title?.english ?: notification.media?.title?.romaji
+                )
             }
 
             NotificationType.ACTIVITY_LIKE -> {
@@ -66,15 +70,26 @@ object ActivityItemBuilder {
             }
 
             NotificationType.RELATED_MEDIA_ADDITION -> {
-                getString(R.string.notification_media_added, notification.media?.title?.english ?: notification.media?.title?.romaji)
+                getString(
+                    R.string.notification_media_added,
+                    notification.media?.title?.english ?: notification.media?.title?.romaji
+                )
             }
 
             NotificationType.MEDIA_DATA_CHANGE -> {
-                getString(R.string.notification_media_changed, notification.media?.title?.english ?: notification.media?.title?.romaji, notification.reason)
+                getString(
+                    R.string.notification_media_changed,
+                    notification.media?.title?.english ?: notification.media?.title?.romaji,
+                    notification.reason
+                )
             }
 
             NotificationType.MEDIA_MERGE -> {
-                getString(R.string.notification_media_merge, notification.deletedMediaTitles?.joinToString(", "), notification.media?.title?.english ?: notification.media?.title?.romaji)
+                getString(
+                    R.string.notification_media_merge,
+                    notification.deletedMediaTitles?.joinToString(", "),
+                    notification.media?.title?.english ?: notification.media?.title?.romaji
+                )
             }
 
             NotificationType.MEDIA_DELETION -> {
@@ -110,6 +125,7 @@ object ActivityItemBuilder {
                     else -> "Just now"
                 }
             }
+
             1L -> "1 day ago"
             in 2..6 -> "$daysDifference days ago"
             else -> SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(targetDate)

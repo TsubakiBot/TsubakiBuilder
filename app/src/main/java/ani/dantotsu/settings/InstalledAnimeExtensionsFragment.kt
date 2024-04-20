@@ -72,7 +72,8 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             if (allSettings.isNotEmpty()) {
                 var selectedSetting = allSettings[0]
                 if (allSettings.size > 1) {
-                    val names = allSettings.map { LanguageMapper.getExtensionItem(it) }.toTypedArray()
+                    val names =
+                        allSettings.map { LanguageMapper.getExtensionItem(it) }.toTypedArray()
                     var selectedIndex = 0
                     val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
                         .setTitle(R.string.select_source)

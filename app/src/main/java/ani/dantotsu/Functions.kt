@@ -66,8 +66,6 @@ import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -149,29 +147,32 @@ import kotlin.math.pow
 var statusBarHeight = 0
 var navBarHeight = 0
 
-val Number.toPx get() = TypedValue.applyDimension(
-    TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
-).toInt()
+val Number.toPx
+    get() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
+    ).toInt()
 
-val Number.toDp get() = TypedValue.applyDimension(
-    TypedValue.COMPLEX_UNIT_PX, this.toFloat(), Resources.getSystem().displayMetrics
-)
+val Number.toDp
+    get() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_PX, this.toFloat(), Resources.getSystem().displayMetrics
+    )
 
-val Number.dpToColumns: Int get() {
-    val columns = currContext().run {
-        val metrics = DisplayMetrics()
-        with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                val bounds: Rect = currentWindowMetrics.bounds
-                ((bounds.width() / (resources.configuration.densityDpi / 160)) + 0.5)/ this@dpToColumns.toInt()
-            } else @Suppress("deprecation") {
-                defaultDisplay.getRealMetrics(metrics)
-                metrics.widthPixels.toDp / this@dpToColumns.toInt()
+val Number.dpToColumns: Int
+    get() {
+        val columns = currContext().run {
+            val metrics = DisplayMetrics()
+            with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    val bounds: Rect = currentWindowMetrics.bounds
+                    ((bounds.width() / (resources.configuration.densityDpi / 160)) + 0.5) / this@dpToColumns.toInt()
+                } else @Suppress("deprecation") {
+                    defaultDisplay.getRealMetrics(metrics)
+                    metrics.widthPixels.toDp / this@dpToColumns.toInt()
+                }
             }
         }
+        return columns.toInt()
     }
-    return columns.toInt()
-}
 
 lateinit var bottomBar: AnimatedBottomBar
 var selectedOption = 1
@@ -224,7 +225,8 @@ fun initActivity(a: Activity) {
             window.decorView
         ).hide(WindowInsetsCompat.Type.statusBars())
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && statusBarHeight == 0
-            && a.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            && a.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+        ) {
             window.decorView.rootWindowInsets?.displayCutout?.apply {
                 if (boundingRects.size > 0) {
                     statusBarHeight = min(boundingRects[0].width(), boundingRects[0].height())
@@ -300,12 +302,17 @@ fun ViewGroup.setBaseline(navBar: AnimatedBottomBar, overlayView: View) {
     navBar.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     overlayView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     clipToPadding = false
-    setPadding(paddingLeft, paddingTop, paddingRight, navBarHeight + navBar.measuredHeight + overlayView.measuredHeight)
+    setPadding(
+        paddingLeft,
+        paddingTop,
+        paddingRight,
+        navBarHeight + navBar.measuredHeight + overlayView.measuredHeight
+    )
 }
 
 /**
-* Finish the calling activity and launch it again within the same lifecycle scope
-*/
+ * Finish the calling activity and launch it again within the same lifecycle scope
+ */
 
 fun Activity.reloadActivity() {
     finish()
@@ -319,7 +326,8 @@ fun Activity.restartApp() {
     val mainIntent = Intent.makeRestartActivityTask(
         packageManager.getLaunchIntentForPackage(this.packageName)!!.component
     )
-    val component = ComponentName(this@restartApp.packageName, this@restartApp::class.qualifiedName!!)
+    val component =
+        ComponentName(this@restartApp.packageName, this@restartApp::class.qualifiedName!!)
     try {
         startActivity(Intent().setComponent(component))
     } catch (anything: Exception) {
@@ -570,7 +578,7 @@ fun ImageView.loadImage(url: String?, size: Int = 0) {
     }
 }
 
-fun geUrlOrTrolled(url: String?) : String {
+fun geUrlOrTrolled(url: String?): String {
     return if (PrefManager.getVal(PrefName.DisableMitM)) url ?: "" else
         PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { url ?: "" }
 }
@@ -912,7 +920,8 @@ fun copyToClipboard(string: String, toast: Boolean = true) {
 
 fun countDown(media: Media, view: ViewGroup) {
     if (media.anime?.nextAiringEpisode != null && media.anime.nextAiringEpisodeTime != null
-        && (media.anime.nextAiringEpisodeTime!! - System.currentTimeMillis() / 1000) <= 86400 * 28.toLong()) {
+        && (media.anime.nextAiringEpisodeTime!! - System.currentTimeMillis() / 1000) <= 86400 * 28.toLong()
+    ) {
         val v = ItemCountDownBinding.inflate(LayoutInflater.from(view.context), view, false)
         view.addView(v.root, 0)
         v.mediaCountdownText.text =
@@ -947,7 +956,7 @@ fun countDown(media: Media, view: ViewGroup) {
 fun sinceWhen(media: Media, view: ViewGroup) {
     if (media.status != "RELEASING" && media.status != "HIATUS") return
     CoroutineScope(Dispatchers.IO).launch {
-        with (MangaUpdates()) {
+        with(MangaUpdates()) {
             findLatestRelease(media)?.let {
                 var timestamp: Long = it.metadata.series.lastUpdated!!.timestamp
 
@@ -1012,7 +1021,7 @@ fun displayTimer(media: Media, view: ViewGroup) {
     when {
         media.anime != null -> countDown(media, view)
         media.format == "MANGA" || media.format == "ONE_SHOT" -> sinceWhen(media, view)
-        else -> { } // No timer yet
+        else -> {} // No timer yet
     }
 }
 

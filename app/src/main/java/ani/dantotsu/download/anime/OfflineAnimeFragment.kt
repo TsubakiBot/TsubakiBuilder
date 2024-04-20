@@ -308,7 +308,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 .create()
             val media = directory?.findFile("media.json")
                 ?: return null
-            val mediaJson = media.openInputStream(context?:currContext())?.bufferedReader().use {
+            val mediaJson = media.openInputStream(context ?: currContext())?.bufferedReader().use {
                 it?.readText()
             }
                 ?: return null

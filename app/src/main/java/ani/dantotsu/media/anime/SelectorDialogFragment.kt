@@ -231,7 +231,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun exportMagnetIntent(episode: Episode, video: Video) : Intent {
+    private fun exportMagnetIntent(episode: Episode, video: Video): Intent {
         val amnis = "com.amnis"
         return Intent(Intent.ACTION_VIEW).apply {
             component = ComponentName(amnis, "$amnis.gui.player.PlayerActivity")
@@ -255,15 +255,19 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         } catch (e: ActivityNotFoundException) {
             val amnis = "com.amnis"
             try {
-                startActivity(Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=$amnis"))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("market://details?id=$amnis")
+                    )
                 )
             } catch (e: ActivityNotFoundException) {
-                startActivity(Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=$amnis")
-                ))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=$amnis")
+                    )
+                )
             }
         }
     }
@@ -276,8 +280,12 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         val index = if (video.file.url.contains("index=")) {
             try {
                 video.file.url.substringAfter("index=").toInt()
-            } catch (ignored: NumberFormatException) { 0 }
-        } else { 0 }
+            } catch (ignored: NumberFormatException) {
+                0
+            }
+        } else {
+            0
+        }
         ExoplayerView.torrent = TorrManager.addTorrent(
             video.file.url, video.quality.toString(), "", "", false
         ).apply {
@@ -285,11 +293,12 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun parseMagnetLink(video: Video, ep: Episode, videoUrl: String) : Boolean {
+    private fun parseMagnetLink(video: Video, ep: Episode, videoUrl: String): Boolean {
         if (videoUrl.startsWith("magnet:") || videoUrl.endsWith(".torrent")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (!PrefManager.getVal<Boolean>(PrefName.TorrServerEnabled)
-                    && !TorrManager.isServiceRunning()) {
+                    && !TorrManager.isServiceRunning()
+                ) {
                     val dialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
                         .setTitle(R.string.server_disabled)
                         .setMessage(R.string.enable_server_temp)
@@ -452,7 +461,11 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                     SubtitleDownloader.downloadSubtitle(
                                         requireContext(),
                                         subtitleToDownload!!.file.url,
-                                        DownloadedType(media!!.mainName(), media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!.number, MediaType.ANIME)
+                                        DownloadedType(
+                                            media!!.mainName(),
+                                            media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!.number,
+                                            MediaType.ANIME
+                                        )
                                     )
                                 }
                             }
@@ -484,7 +497,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                         if (extractor.videos.size > episode.selectedVideo) extractor.videos[episode.selectedVideo] else null
                     val subtitleNames = subtitles.map { it.language }
                     var subtitleToDownload: Subtitle? = null
-                    val activity = currActivity()?:requireActivity()
+                    val activity = currActivity() ?: requireActivity()
                     val isExportedOrUnavailable = selectedVideo?.file?.url?.let { videoUrl ->
                         parseMagnetLink(video, episode, videoUrl)
                     }
@@ -562,9 +575,13 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             if (video.format == VideoType.CONTAINER) {
                 binding.urlSize.isVisible = video.size != null
                 // if video size is null or 0, show "Unknown Size" else show the size in MB
-                val sizeText = getString(R.string.mb_size, "${if (video.extraNote != null) " : " else ""}${
-                    if (video.size == 0.0) getString(R.string.size_unknown) else DecimalFormat("#.##").format(video.size ?: 0)
-                }")
+                val sizeText = getString(
+                    R.string.mb_size, "${if (video.extraNote != null) " : " else ""}${
+                        if (video.size == 0.0) getString(R.string.size_unknown) else DecimalFormat("#.##").format(
+                            video.size ?: 0
+                        )
+                    }"
+                )
                 binding.urlSize.text = sizeText
             }
             binding.urlNote.visibility = View.VISIBLE

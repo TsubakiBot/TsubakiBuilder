@@ -124,52 +124,53 @@ class SettingsSystemActivity : AppCompatActivity() {
                             val selectedArray = mutableListOf(false)
                             val filteredLocations = Location.entries.filter { it.exportable }
                             selectedArray.addAll(List(filteredLocations.size - 1) { false })
-                            val dialog = AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
-                                .setTitle(R.string.backup_restore)
-                                .setMultiChoiceItems(
-                                    filteredLocations.map { it.name }.toTypedArray(),
-                                    selectedArray.toBooleanArray()
-                                ) { _, which, isChecked ->
-                                    selectedArray[which] = isChecked
-                                }
-                                .setPositiveButton(R.string.button_restore) { dialog, _ ->
-                                    openDocumentLauncher.launch(arrayOf("*/*"))
-                                    dialog.dismiss()
-                                }
-                                .setNegativeButton(R.string.button_backup) { dialog, _ ->
-                                    if (!selectedArray.contains(true)) {
-                                        toast(R.string.no_location_selected)
-                                        return@setNegativeButton
+                            val dialog =
+                                AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
+                                    .setTitle(R.string.backup_restore)
+                                    .setMultiChoiceItems(
+                                        filteredLocations.map { it.name }.toTypedArray(),
+                                        selectedArray.toBooleanArray()
+                                    ) { _, which, isChecked ->
+                                        selectedArray[which] = isChecked
                                     }
-                                    dialog.dismiss()
-                                    val selected =
-                                        filteredLocations.filterIndexed { index, _ -> selectedArray[index] }
-                                    if (selected.contains(Location.Protected)) {
-                                        passwordAlertDialog(true) { password ->
-                                            if (password != null) {
-                                                savePrefsToDownloads(
-                                                    "DantotsuSettings",
-                                                    PrefManager.exportAllPrefs(selected),
-                                                    this@SettingsSystemActivity,
-                                                    password
-                                                )
-                                            } else {
-                                                toast(R.string.password_cannot_be_empty)
-                                            }
+                                    .setPositiveButton(R.string.button_restore) { dialog, _ ->
+                                        openDocumentLauncher.launch(arrayOf("*/*"))
+                                        dialog.dismiss()
+                                    }
+                                    .setNegativeButton(R.string.button_backup) { dialog, _ ->
+                                        if (!selectedArray.contains(true)) {
+                                            toast(R.string.no_location_selected)
+                                            return@setNegativeButton
                                         }
-                                    } else {
-                                        savePrefsToDownloads(
-                                            "DantotsuSettings",
-                                            PrefManager.exportAllPrefs(selected),
-                                            this@SettingsSystemActivity,
-                                            null
-                                        )
+                                        dialog.dismiss()
+                                        val selected =
+                                            filteredLocations.filterIndexed { index, _ -> selectedArray[index] }
+                                        if (selected.contains(Location.Protected)) {
+                                            passwordAlertDialog(true) { password ->
+                                                if (password != null) {
+                                                    savePrefsToDownloads(
+                                                        "DantotsuSettings",
+                                                        PrefManager.exportAllPrefs(selected),
+                                                        this@SettingsSystemActivity,
+                                                        password
+                                                    )
+                                                } else {
+                                                    toast(R.string.password_cannot_be_empty)
+                                                }
+                                            }
+                                        } else {
+                                            savePrefsToDownloads(
+                                                "DantotsuSettings",
+                                                PrefManager.exportAllPrefs(selected),
+                                                this@SettingsSystemActivity,
+                                                null
+                                            )
+                                        }
                                     }
-                                }
-                                .setNeutralButton(R.string.cancel) { dialog, _ ->
-                                    dialog.dismiss()
-                                }
-                                .create()
+                                    .setNeutralButton(R.string.cancel) { dialog, _ ->
+                                        dialog.dismiss()
+                                    }
+                                    .create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
                         },
@@ -180,7 +181,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.use_foldable_desc),
                         icon = R.drawable.ic_devices_fold_24,
                         isChecked = PrefManager.getVal(PrefName.UseFoldable),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseFoldable, isChecked)
                         },
                         isVisible = hasFoldingFeature
@@ -191,7 +192,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.add_shortcuts_desc),
                         icon = R.drawable.ic_app_shortcut_24,
                         isChecked = PrefManager.getVal(PrefName.UseShortcuts),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseShortcuts, isChecked)
                             restartApp()
                         }
@@ -202,7 +203,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.check_app_updates_desc),
                         icon = R.drawable.ic_round_new_releases_24,
                         isChecked = PrefManager.getVal(PrefName.CheckUpdate),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.CheckUpdate, isChecked)
                             if (!isChecked) {
                                 snackString(getString(R.string.long_click_to_check_update))
@@ -221,7 +222,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.share_username_in_logs_desc),
                         icon = R.drawable.ic_round_search_24,
                         isChecked = PrefManager.getVal(PrefName.SharedUserID),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.SharedUserID, isChecked)
                         },
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
@@ -232,7 +233,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.logging_warning),
                         icon = R.drawable.ic_round_edit_note_24,
                         isChecked = PrefManager.getVal(PrefName.LogToFile),
-                        switch = {isChecked, _ ->
+                        switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.LogToFile, isChecked)
                             restartApp()
                         }

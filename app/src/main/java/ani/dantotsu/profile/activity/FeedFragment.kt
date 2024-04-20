@@ -84,10 +84,17 @@ class FeedFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         res?.data?.page?.activities?.let { activities ->
                             activityList = activities
-                            val filtered = activityList.filterNot {  //filter out messages that are not directed to the user
-                                it.recipient?.id != null && it.recipient.id != Anilist.userid
-                            }
-                            adapter.update(filtered.map { ActivityItem(it, ::onActivityClick,requireActivity()) })
+                            val filtered =
+                                activityList.filterNot {  //filter out messages that are not directed to the user
+                                    it.recipient?.id != null && it.recipient.id != Anilist.userid
+                                }
+                            adapter.update(filtered.map {
+                                ActivityItem(
+                                    it,
+                                    ::onActivityClick,
+                                    requireActivity()
+                                )
+                            })
                         }
                         binding.listProgressBar.visibility = ViewGroup.GONE
                         val scrollView = binding.listRecyclerView
@@ -133,7 +140,13 @@ class FeedFragment : Fragment() {
                     val filtered = activities.filterNot {
                         it.recipient?.id != null && it.recipient.id != Anilist.userid
                     }
-                    adapter.addAll(filtered.map { ActivityItem(it, ::onActivityClick,requireActivity()) })
+                    adapter.addAll(filtered.map {
+                        ActivityItem(
+                            it,
+                            ::onActivityClick,
+                            requireActivity()
+                        )
+                    })
                 }
                 binding.feedSwipeRefresh.isRefreshing = false
                 onFinish()
@@ -149,6 +162,7 @@ class FeedFragment : Fragment() {
                         .putExtra("userId", id), null
                 )
             }
+
             "MEDIA" -> {
                 ContextCompat.startActivity(
                     activity, Intent(activity, MediaDetailsActivity::class.java)

@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:theme="@style/Theme.Dantotsu.AppWidgetContainer">
 
     <ImageView
@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:src="@drawable/linear_gradient_black"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/widgetContainer"
@@ -28,24 +28,24 @@
                 android:id="@+id/leftFlipper"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:padding="6dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="0"
                 android:foregroundGravity="center_vertical"
+                android:padding="6dp"
                 android:src="@drawable/ic_round_arrow_back_ios_new_24"
-                tools:ignore="ContentDescription"/>
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/widgetTitle"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:maxLines="2"
                 android:ellipsize="none"
+                android:gravity="center"
+                android:maxLines="2"
                 android:text="@string/continue_media"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -53,14 +53,14 @@
                 android:id="@+id/rightFlipper"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                android:padding="6dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="0"
                 android:foregroundGravity="center_vertical"
+                android:padding="6dp"
                 android:rotation="180"
                 android:src="@drawable/ic_round_arrow_back_ios_new_24"
-                tools:ignore="ContentDescription"/>
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
@@ -76,9 +76,9 @@
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:ellipsize="end"
             android:text="@string/no_media_to_display"
             android:textColor="#ffffff"
             android:textSize="20sp"

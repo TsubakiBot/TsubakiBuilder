@@ -87,7 +87,8 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
     protected fun generateId(name: String, lang: String, versionId: Int): Long {
         val key = "${name.lowercase()}/$lang/$versionId"
         val bytes = MessageDigest.getInstance("MD5").digest(key.toByteArray())
-        return (0..7).map { bytes[it].toLong() and 0xff shl 8 * (7 - it) }.reduce(Long::or) and Long.MAX_VALUE
+        return (0..7).map { bytes[it].toLong() and 0xff shl 8 * (7 - it) }
+            .reduce(Long::or) and Long.MAX_VALUE
     }
 
     /**
@@ -146,7 +147,11 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         "Use the non-RxJava API instead",
         ReplaceWith("getSearchAnime"),
     )
-    override fun fetchSearchAnime(page: Int, query: String, filters: AnimeFilterList): Observable<AnimesPage> {
+    override fun fetchSearchAnime(
+        page: Int,
+        query: String,
+        filters: AnimeFilterList
+    ): Observable<AnimesPage> {
         return Observable.defer {
             try {
                 client.newCall(searchAnimeRequest(page, query, filters)).asObservableSuccess()
@@ -168,7 +173,11 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    protected abstract fun searchAnimeRequest(page: Int, query: String, filters: AnimeFilterList): Request
+    protected abstract fun searchAnimeRequest(
+        page: Int,
+        query: String,
+        filters: AnimeFilterList
+    ): Request
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
@@ -401,7 +410,8 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         video: Video,
         tries: Int,
     ): Long {
-        val headers = Headers.Builder().addAll(video.headers ?: headers).add("Range", "bytes=0-1").build()
+        val headers =
+            Headers.Builder().addAll(video.headers ?: headers).add("Range", "bytes=0-1").build()
         val request = GET(video.videoUrl!!, headers)
         val response = client.newCall(request).execute()
         // parse the response headers to get the size of the video, in particular the content-range header

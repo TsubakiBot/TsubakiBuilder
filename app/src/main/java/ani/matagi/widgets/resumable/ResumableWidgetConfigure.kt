@@ -55,7 +55,8 @@ class ResumableWidgetConfigure : AppCompatActivity(),
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         )
-        val prefs = getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
+        val prefs =
+            getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE)
 
         binding.useAppTheme.setOnCheckedChangeListener { _, isChecked ->
             isMonetEnabled = isChecked
@@ -73,38 +74,44 @@ class ResumableWidgetConfigure : AppCompatActivity(),
                     ResumableWidget.PREF_BACKGROUND_COLOR,
                     ContextCompat.getColor(this, R.color.theme)
                 ),
-                ResumableWidget.PREF_BACKGROUND_COLOR)
+                ResumableWidget.PREF_BACKGROUND_COLOR
+            )
         }
         binding.bottomBackgroundButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@ResumableWidgetConfigure,
-                prefs.getInt(ResumableWidget.PREF_BACKGROUND_FADE,
+                prefs.getInt(
+                    ResumableWidget.PREF_BACKGROUND_FADE,
                     Color.parseColor("#00000000")
                 ),
-                ResumableWidget.PREF_BACKGROUND_FADE)
+                ResumableWidget.PREF_BACKGROUND_FADE
+            )
         }
         binding.titleColorButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@ResumableWidgetConfigure,
                 prefs.getInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, Color.WHITE),
-                ResumableWidget.PREF_TITLE_TEXT_COLOR)
+                ResumableWidget.PREF_TITLE_TEXT_COLOR
+            )
         }
         binding.flipperColorButton.setOnClickListener {
             ColorDialog.showColorDialog(
                 this@ResumableWidgetConfigure,
                 prefs.getInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, Color.WHITE),
-                ResumableWidget.PREF_FLIPPER_IMG_COLOR)
+                ResumableWidget.PREF_FLIPPER_IMG_COLOR
+            )
         }
 
         binding.widgetType.setText(
             ResumableType.entries[
                 prefs.getInt(ResumableWidget.PREF_WIDGET_TYPE, 2)
-            ].type)
+            ].type
+        )
         binding.widgetType.setAdapter(
             ArrayAdapter(
                 this,
                 R.layout.item_dropdown,
-                ResumableType.entries .map { it.type }
+                ResumableType.entries.map { it.type }
             )
         )
 
@@ -181,12 +188,13 @@ class ResumableWidgetConfigure : AppCompatActivity(),
         val textColor = getThemeColor(com.google.android.material.R.attr.colorOnBackground)
         val flipperColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
 
-        getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit().apply {
-            putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)
-            putInt(ResumableWidget.PREF_BACKGROUND_FADE, backgroundColor)
-            putInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, textColor)
-            putInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, flipperColor)
-            apply()
-        }
+        getSharedPreferences(ResumableWidget.getPrefsName(appWidgetId), Context.MODE_PRIVATE).edit()
+            .apply {
+                putInt(ResumableWidget.PREF_BACKGROUND_COLOR, backgroundColor)
+                putInt(ResumableWidget.PREF_BACKGROUND_FADE, backgroundColor)
+                putInt(ResumableWidget.PREF_TITLE_TEXT_COLOR, textColor)
+                putInt(ResumableWidget.PREF_FLIPPER_IMG_COLOR, flipperColor)
+                apply()
+            }
     }
 }

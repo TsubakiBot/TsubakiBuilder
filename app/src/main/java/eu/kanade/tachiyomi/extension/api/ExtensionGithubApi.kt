@@ -238,6 +238,7 @@ internal class ExtensionGithubApi {
             extensions
         }
     }
+
     private fun List<ExtensionJsonObject>.toNovelExtensions(repository: String): List<NovelExtension.Available> {
         return mapNotNull { extension ->
             val sources = extension.sources?.map { source ->

@@ -112,7 +112,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         // Ui init
 
         initActivity(this)
-        binding.mediaViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = navBarHeight }
+        binding.mediaViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = navBarHeight
+        }
         val oldMargin = binding.mediaViewPager.marginBottom
         AndroidBug5497Workaround.assistActivity(this) {
             if (it) {
@@ -128,9 +130,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             }
         }
         val navBarRightMargin = if (resources.configuration.orientation ==
-            Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
+            Configuration.ORIENTATION_LANDSCAPE
+        ) navBarHeight else 0
         val navBarBottomMargin = if (resources.configuration.orientation ==
-            Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
+            Configuration.ORIENTATION_LANDSCAPE
+        ) 0 else navBarHeight
         navBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             rightMargin = navBarRightMargin
             bottomMargin = navBarBottomMargin
@@ -385,7 +389,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         navBar.addTab(infoTab)
         navBar.addTab(watchTab)
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            val commentTab = navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
+            val commentTab =
+                navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
             navBar.addTab(commentTab)
         }
         if (extension != null) selected = 1
@@ -429,10 +434,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val rightMargin = if (resources.configuration.orientation ==
-            Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
+            Configuration.ORIENTATION_LANDSCAPE
+        ) navBarHeight else 0
         val bottomMargin = if (resources.configuration.orientation ==
-            Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
-        val params : ViewGroup.MarginLayoutParams =
+            Configuration.ORIENTATION_LANDSCAPE
+        ) 0 else navBarHeight
+        val params: ViewGroup.MarginLayoutParams =
             navBar.layoutParams as ViewGroup.MarginLayoutParams
         params.updateMargins(right = rightMargin, bottom = bottomMargin)
     }
@@ -472,6 +479,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 fragment.arguments = bundle
                 fragment
             }
+
             2 -> {
                 val fragment = CommentsFragment()
                 val bundle = Bundle()
