@@ -189,7 +189,6 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                     }
                 }
 
-                binding.searchSourceTitle.text = parser.name
                 binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
                     return@setOnEditorActionListener when (actionId) {
                         EditorInfo.IME_ACTION_SEARCH -> {
@@ -201,7 +200,10 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                     }
                 }
                 binding.searchBar.setEndIconOnClickListener { search() }
-                if (!searched) search()
+                if (!searched) {
+                    search()
+                    binding.searchSourceTitle.text = parser.name
+                }
                 searched = true
                 model.responses.observe(viewLifecycleOwner) { results ->
                     results?.let {
