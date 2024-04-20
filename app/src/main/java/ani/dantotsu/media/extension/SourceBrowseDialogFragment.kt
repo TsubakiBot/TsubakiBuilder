@@ -101,7 +101,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
             binding.searchProgress.visibility = View.VISIBLE
 
             if (queryString.isNotBlank()) {
-                binding.searchSourceTitle.text = queryString
+                binding.searchSourceTitle.text = queryString.uppercase()
                 val allResults = hashMapOf<BaseParser, List<ShowResponse>?>()
                 binding.searchBar.isVisible = false
                 scope.launch {
@@ -177,6 +177,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 fun search() {
                     binding.searchBarText.clearFocus()
                     imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
+                    binding.searchSourceTitle.text = binding.searchBarText.text.toString().uppercase()
                     scope.launch {
                         model.responses.postValue(
                             withContext(Dispatchers.IO) {
@@ -188,7 +189,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                     }
                 }
 
-                binding.searchSourceTitle.text = binding.searchBarText.text.toString()
+                binding.searchSourceTitle.text = parser.name
                 binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
                     return@setOnEditorActionListener when (actionId) {
                         EditorInfo.IME_ACTION_SEARCH -> {
