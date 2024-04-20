@@ -17,7 +17,7 @@ class SourceBrowserAdapter(
     val model: MediaDetailsViewModel,
     fragment: SourceBrowseDialogFragment,
     scope: CoroutineScope
-) : GenericSourceBrowseAdapter(sources, fragment, scope) {
+) : GenericSourceBrowseAdapter(sources, parser.name, fragment, scope) {
 
     @OptIn(UnstableApi::class)
     override suspend fun onItemClick(context: Context, source: ShowResponse) {

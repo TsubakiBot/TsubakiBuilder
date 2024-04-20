@@ -59,10 +59,10 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
     }
 
     constructor(search: String) : this() {
-        incomingQuery = search
+        queryString = search
     }
 
-    private var incomingQuery = ""
+    private var queryString = ""
     private lateinit var mediaType: MediaType
     private lateinit var animeExtesnion: AnimeExtension.Installed
     private lateinit var mangaExtension: MangaExtension.Installed
@@ -100,8 +100,8 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
             binding.searchRecyclerView.visibility = View.GONE
             binding.searchProgress.visibility = View.VISIBLE
 
-            if (incomingQuery.isNotBlank()) {
-                binding.searchSourceTitle.text = getString(R.string.extension_search)
+            if (queryString.isNotBlank()) {
+                binding.searchSourceTitle.text = queryString
                 val allResults = hashMapOf<BaseParser, List<ShowResponse>?>()
                 binding.searchBar.isVisible = false
                 scope.launch {
@@ -110,7 +110,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                             async {
                                 val animeParser = it.get.value as AnimeParser
                                 tryWithSuspend {
-                                    allResults.put(animeParser, animeParser.search(incomingQuery))
+                                    allResults.put(animeParser, animeParser.search(queryString))
                                 }
                             }
                         }.awaitAll()
@@ -118,7 +118,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                             async {
                                 val mangaParser = it.get.value as MangaParser
                                 tryWithSuspend {
-                                    allResults.put(mangaParser, mangaParser.search(incomingQuery))
+                                    allResults.put(mangaParser, mangaParser.search(queryString))
                                 }
                             }
                         }.awaitAll()
@@ -174,21 +174,21 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                     }
                 }
 
-                fun search(query: String? = null) {
+                fun search() {
                     binding.searchBarText.clearFocus()
                     imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
                     scope.launch {
                         model.responses.postValue(
                             withContext(Dispatchers.IO) {
                                 tryWithSuspend {
-                                    parser.search(query ?: binding.searchBarText.text.toString())
+                                    parser.search(binding.searchBarText.text.toString())
                                 }
                             }
                         )
                     }
                 }
 
-                binding.searchSourceTitle.text = parser.name
+                binding.searchSourceTitle.text = binding.searchBarText.text.toString()
                 binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
                     return@setOnEditorActionListener when (actionId) {
                         EditorInfo.IME_ACTION_SEARCH -> {

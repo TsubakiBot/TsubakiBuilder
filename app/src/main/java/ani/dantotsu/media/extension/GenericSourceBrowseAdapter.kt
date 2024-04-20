@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 
 abstract class GenericSourceBrowseAdapter(
     private val sources: List<ShowResponse>,
+    private val parserName: String,
     private val dialogFragment: SourceBrowseDialogFragment,
     private val scope: CoroutineScope
 ) : RecyclerView.Adapter<GenericSourceBrowseAdapter.SourceViewHolder>() {
@@ -28,6 +29,7 @@ abstract class GenericSourceBrowseAdapter(
         binding.itemCompactImage.loadImage(character.coverUrl, 200)
         binding.itemCompactTitle.isSelected = true
         binding.itemCompactTitle.text = character.name
+        binding.itemCompactRelation.text = parserName
     }
 
     override fun getItemCount(): Int = sources.size
