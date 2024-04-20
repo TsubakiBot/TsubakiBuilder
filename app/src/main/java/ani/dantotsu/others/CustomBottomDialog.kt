@@ -51,7 +51,8 @@ open class CustomBottomDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetCustomBinding.inflate(inflater, container, false)
-        dialog?.window?.statusBarColor = Color.TRANSPARENT
+        val window = dialog?.window
+        window?.statusBarColor = Color.TRANSPARENT
         return binding.root
     }
 

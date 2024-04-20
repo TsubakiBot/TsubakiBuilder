@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -35,6 +36,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import eu.kanade.tachiyomi.extension.anime.model.AnimeExtension
 import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -78,7 +80,9 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetSourceSearchBinding.inflate(inflater, container, false)
-        dialog?.window?.statusBarColor = Color.TRANSPARENT
+        val window = dialog?.window
+        window?.statusBarColor = Color.TRANSPARENT
+        window?.navigationBarColor = requireContext().getThemeColor(com.google.android.material.R.attr.colorSurface)
         return binding.root
     }
 

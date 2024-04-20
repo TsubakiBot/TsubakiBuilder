@@ -52,6 +52,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,10 +92,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         _binding = BottomSheetSelectorBinding.inflate(inflater, container, false)
         val window = dialog?.window
         window?.statusBarColor = Color.TRANSPARENT
-        val typedValue = TypedValue()
-        val theme = requireContext().theme
-        theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, typedValue, true)
-        window?.navigationBarColor = typedValue.data
+        window?.navigationBarColor = requireContext().getThemeColor(com.google.android.material.R.attr.colorSurface)
         return binding.root
     }
 
