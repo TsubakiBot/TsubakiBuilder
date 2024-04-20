@@ -121,7 +121,8 @@ class MainActivity : AppCompatActivity() {
                 val name =
                     DocumentFile.fromSingleUri(this, uri)?.name ?: "settings"
                 //.sani is encrypted, .ani is not
-                if (name.endsWith(".sani")) {
+                if (name.endsWith(".sani")
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     passwordAlertDialog { password ->
                         if (password != null) {
                             val salt = jsonString.copyOfRange(0, 16)
@@ -176,6 +177,10 @@ class MainActivity : AppCompatActivity() {
             resources.getDimensionPixelSize(statusBarHeightId)
         } catch (e: Exception) {
             statusBarHeight
+        }
+        initActivity(this)
+        binding.includedNavbar.navbarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = navBarHeight
         }
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = 11 * offset / 12
@@ -269,9 +274,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         binding.root.doOnAttach {
-            initActivity(this)
             val preferences: SourcePreferences = Injekt.get()
             if (preferences.animeExtensionUpdatesCount()
                     .get() > 0 || preferences.mangaExtensionUpdatesCount().get() > 0
@@ -298,9 +301,6 @@ class MainActivity : AppCompatActivity() {
                 }
             } else {
                 PrefManager.getVal(PrefName.DefaultStartUpTab)
-            }
-            binding.includedNavbar.navbarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = navBarHeight
             }
         }
 

@@ -13,9 +13,9 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.PBEKeySpec
 
 // used to encrypt and decrypt json strings on import and export
+@RequiresApi(Build.VERSION_CODES.M)
 class PreferenceKeystore {
     companion object {
-        @RequiresApi(Build.VERSION_CODES.M)
         fun generateKey(alias: String) {
             val keyGenerator =
                 KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
@@ -33,7 +33,6 @@ class PreferenceKeystore {
             keyGenerator.generateKey()
         }
 
-        @RequiresApi(Build.VERSION_CODES.M)
         fun encryptWithPassword(
             password: CharArray,
             plaintext: String,
@@ -46,7 +45,6 @@ class PreferenceKeystore {
             return cipher.doFinal(plaintext.toByteArray(Charsets.UTF_8))
         }
 
-        @RequiresApi(Build.VERSION_CODES.M)
         fun decryptWithPassword(
             password: CharArray,
             ciphertext: ByteArray,

@@ -5,6 +5,7 @@ import android.content.ComponentName
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +57,8 @@ class LoginFragment : Fragment() {
                         val name =
                             DocumentFile.fromSingleUri(requireActivity(), uri)?.name ?: "settings"
                         //.sani is encrypted, .ani is not
-                        if (name.endsWith(".sani")) {
+                        if (name.endsWith(".sani")
+                            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             passwordAlertDialog(false) { password ->
                                 if (password != null) {
                                     val salt = jsonString.copyOfRange(0, 16)

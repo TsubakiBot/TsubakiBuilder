@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,7 +58,8 @@ class SettingsSystemActivity : AppCompatActivity() {
                             ?: throw Exception("Error reading file")
                         val name = DocumentFile.fromSingleUri(this, uri)?.name ?: "settings"
                         //.sani is encrypted, .ani is not
-                        if (name.endsWith(".sani")) {
+                        if (name.endsWith(".sani")
+                            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             passwordAlertDialog(false) { password ->
                                 if (password != null) {
                                     val salt = jsonString.copyOfRange(0, 16)
@@ -122,7 +124,12 @@ class SettingsSystemActivity : AppCompatActivity() {
                         onClick = {
                             StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
                             val selectedArray = mutableListOf(false)
-                            val filteredLocations = Location.entries.filter { it.exportable }
+                            var filteredLocations = Location.entries.filter { it.exportable }
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                                filteredLocations = filteredLocations.filter {
+                                    it.location != Location.Protected.location
+                                }
+                            }
                             selectedArray.addAll(List(filteredLocations.size - 1) { false })
                             val dialog =
                                 AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
