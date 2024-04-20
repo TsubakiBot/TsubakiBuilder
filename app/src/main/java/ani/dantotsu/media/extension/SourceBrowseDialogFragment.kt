@@ -1,6 +1,7 @@
 package ani.dantotsu.media.extension
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -77,6 +78,7 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetSourceSearchBinding.inflate(inflater, container, false)
+        dialog?.window?.statusBarColor = Color.TRANSPARENT
         return binding.root
     }
 
