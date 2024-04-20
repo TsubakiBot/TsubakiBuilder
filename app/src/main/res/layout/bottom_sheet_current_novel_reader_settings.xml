@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Line Height" />
+                android:text="@string/line_height" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -285,7 +285,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Margin" />
+                android:text="@string/margin" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -353,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Maximum Inline Size" />
+                android:text="@string/maximum_inline_size" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -414,7 +414,7 @@
             android:layout_marginBottom="8dp"
             android:alpha="0.58"
             android:fontFamily="@font/poppins_family"
-            android:text="Maximum column width (horizontal writing) or height (vertical writing)"
+            android:text="@string/maximum_column_width"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -430,7 +430,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Maximum Block Size" />
+                android:text="@string/maximum_block_size" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -491,7 +491,7 @@
             android:layout_marginBottom="8dp"
             android:alpha="0.58"
             android:fontFamily="@font/poppins_family"
-            android:text="Maximum height (horizontal writing) or width (vertical writing)"
+            android:text="@string/maximum_height"
             android:textSize="14sp" />
 
         <com.google.android.material.materialswitch.MaterialSwitch

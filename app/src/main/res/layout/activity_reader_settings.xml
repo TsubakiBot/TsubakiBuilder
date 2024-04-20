@@ -653,7 +653,7 @@
                     android:gravity="center_vertical"
                     android:paddingStart="32dp"
                     android:paddingEnd="32dp"
-                    android:text="Default Novel Settings"
+                    android:text="@string/default_novel_settings"
                     android:textColor="?attr/colorSecondary"
                     app:drawableEndCompat="@drawable/ic_round_arrow_drop_down_24"
                     tools:ignore="TextContrastCheck" />
@@ -835,7 +835,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Line Height" />
+                        android:text="@string/line_height" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -906,7 +906,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Margin" />
+                        android:text="@string/margin" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -976,7 +976,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Maximum Inline Size" />
+                        android:text="@string/maximum_inline_size" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -1039,7 +1039,7 @@
                     android:fontFamily="@font/poppins_family"
                     android:paddingStart="32dp"
                     android:paddingEnd="32dp"
-                    android:text="Maximum column width (horizontal writing) or height (vertical writing)"
+                    android:text="@string/maximum_column_width"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -1057,7 +1057,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Maximum Block Size" />
+                        android:text="@string/maximum_block_size" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -1120,7 +1120,7 @@
                     android:fontFamily="@font/poppins_family"
                     android:paddingStart="32dp"
                     android:paddingEnd="32dp"
-                    android:text="Maximum height (horizontal writing) or width (vertical writing)"
+                    android:text="@string/maximum_height"
                     android:textSize="14sp" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch

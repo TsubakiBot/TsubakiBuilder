@@ -93,10 +93,10 @@
             android:paddingTop="1dp"
             android:paddingBottom="0dp"
             android:singleLine="true"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="?attr/colorPrimary"
             android:textSize="15sp"
-            tools:ignore="HardcodedText,RtlSymmetry" />
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/commentUserLevel"
@@ -126,9 +126,9 @@
             android:layout_marginEnd="6dp"
             android:alpha="0.6"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Time"
+            android:text="@string/time"
             android:textSize="12sp"
-            tools:ignore="HardcodedText,RtlSymmetry" />
+            tools:ignore="RtlSymmetry" />
 
         <ImageView
             android:id="@+id/adminBadge"
@@ -199,9 +199,8 @@
             android:layout_marginStart="4dp"
             android:alpha="0.6"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="View replies"
-            android:textSize="12sp"
-            tools:ignore="HardcodedText" />
+            android:text="@string/view_replies"
+            android:textSize="12sp"/>
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -223,11 +222,10 @@
             android:alpha="0.6"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
-            android:text="Reply"
+            android:text="@string/reply"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/commentDownVote"
-            app:layout_constraintTop_toBottomOf="@+id/commentText"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintTop_toBottomOf="@+id/commentText" />
 
         <TextView
             android:id="@+id/commentEdit"
@@ -237,11 +235,10 @@
             android:alpha="0.6"
             android:gravity="center"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Edit"
+            android:text="@string/edit"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/commentReply"
-            app:layout_constraintStart_toEndOf="@+id/commentReply"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintStart_toEndOf="@+id/commentReply"  />
         <ImageView
             android:id="@+id/commentUpVote"
             android:layout_width="24dp"

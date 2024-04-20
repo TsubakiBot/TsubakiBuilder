@@ -18,10 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Format"
+            android:text="@string/format"
             android:textColor="?attr/colorPrimary"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/openButton"
@@ -29,10 +28,9 @@
             android:layout_height="32dp"
             android:layout_gravity="end"
             android:background="?android:colorBackground"
-            android:contentDescription="Open"
+            android:contentDescription="@string/open"
             android:src="@drawable/ic_open_24"
-            app:tint="?attr/colorPrimary"
-            tools:ignore="HardcodedText" />
+            app:tint="?attr/colorPrimary" />
 
     </FrameLayout>
 

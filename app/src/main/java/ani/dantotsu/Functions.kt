@@ -455,7 +455,7 @@ class InputFilterMinMax(
 }
 
 
-class ZoomOutPageTransformer() :
+class ZoomOutPageTransformer :
     ViewPager2.PageTransformer {
     override fun transformPage(view: View, position: Float) {
         if (position == 0.0f && PrefManager.getVal(PrefName.LayoutAnimations)) {

@@ -48,9 +48,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="15sp"
-                tools:ignore="HardcodedText,RtlSymmetry" />
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/activityTime"

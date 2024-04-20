@@ -236,7 +236,7 @@ class ExtensionsActivity : AppCompatActivity() {
             MediaType.MANGA -> { PrefName.MangaExtensionRepos }
             MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
         }
-        prefName?.let { repoList ->
+        prefName.let { repoList ->
             PrefManager.getVal<Set<String>>(repoList).forEach { item ->
                 val view = ItemRepositoryBinding.inflate(
                     LayoutInflater.from(repoInventory.context), repoInventory, true

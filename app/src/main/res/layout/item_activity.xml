@@ -47,9 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="15sp"
-                tools:ignore="HardcodedText,RtlSymmetry" />
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/activityTime"
@@ -175,8 +175,7 @@
                     android:maxLines="2"
                     android:text="@string/anime"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/activityText"
@@ -190,8 +189,7 @@
                     android:text="@string/slogan"
                     android:textColor="@color/bg_opp"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </FrameLayout>
@@ -220,9 +218,8 @@
             android:layout_marginStart="4dp"
             android:alpha="0.8"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="View replies"
-            android:textSize="12sp"
-            tools:ignore="HardcodedText" />
+            android:text="@string/view_replies"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

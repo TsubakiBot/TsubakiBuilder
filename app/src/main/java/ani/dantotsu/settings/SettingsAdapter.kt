@@ -84,7 +84,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 b.settingsButton.setOnCheckedChangeListener { _, isChecked ->
                     settings.switch?.invoke(isChecked, b)
                 }
-                b.settingsLayout.setOnLongClickListener() {
+                b.settingsLayout.setOnLongClickListener {
                     settings.onLongClick?.invoke()
                     true
                 }

@@ -33,7 +33,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_bold"
-                    android:hint="Something"
+                    android:hint="@string/something"
                     android:textColorHint="@color/bg_opp"
                     android:transitionName="@string/search"
                     app:boxBackgroundColor="?attr/colorPrimaryContainer"
@@ -97,9 +97,9 @@
                  android:layout_weight="1"
                  android:fontFamily="@font/poppins_bold"
                  android:gravity="center_vertical"
-                 android:hint="Type"
+                 android:hint="@string/type"
                  android:textSize="14sp"
-                 tools:ignore="HardcodedText,RtlSymmetry" />
+                 tools:ignore="RtlSymmetry" />
 
           <ImageView
                  android:id="@+id/downloadedList"

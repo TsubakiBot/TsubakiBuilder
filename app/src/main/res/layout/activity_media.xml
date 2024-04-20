@@ -320,13 +320,12 @@
                     android:autofillHints="The One Piece is real"
                     android:background="@drawable/card_outline"
                     android:fontFamily="@font/poppins_semi_bold"
-                    android:hint="Add a comment..."
+                    android:hint="@string/add_a_comment"
                     android:inputType="textMultiLine"
                     android:maxLength="300"
                     android:maxLines="8"
                     android:padding="8dp"
-                    android:textSize="12sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="12sp" />
 
                 <ImageButton
                     android:id="@+id/commentLabel"

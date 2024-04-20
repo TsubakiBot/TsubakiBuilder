@@ -964,4 +964,42 @@
     <string name="update_addon">Update Addon</string>
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Download addon not found</string>
+
+    <string name="default_novel_settings">Default Novel Settings</string>
+    <string name="line_height">Line Height</string>
+    <string name="margin">Margin</string>
+    <string name="maximum_inline_size">Maximum Inline Size</string>
+    <string name="maximum_column_width">Maximum column width (horizontal writing) or height (vertical writing)</string>
+    <string name="maximum_block_size">Maximum Block Size</string>
+    <string name="maximum_height">Maximum height (horizontal writing) or width (vertical writing)</string>
+
+    <string name="global">Global</string>
+    <string name="china">China</string>
+    <string name="south_korea">South Korea</string>
+    <string name="japan">Japan</string>
+    <string name="taiwan">Taiwan</string>
+
+    <string name="something">Something</string>
+    <string name="image">Image</string>
+
+    <string name="sort_score">Score</string>
+    <string name="popular">Popular</string>
+    <string name="trending">Trending</string>
+    <string name="new_releases">New Releases</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Pure Pain</string>
+
+    <string name="add_a_comment">Add a comment…</string>
+
+    <string name="type">Type</string>
+    <string name="view">View</string>
+
+    <string name="count">COUNT</string>
+    <string name="open">Open</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Reply</string>
+    <string name="time">Time</string>
+
+
 </resources>

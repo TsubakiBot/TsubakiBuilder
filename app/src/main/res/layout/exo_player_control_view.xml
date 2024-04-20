@@ -486,7 +486,7 @@
                     android:includeFontPadding="false"
                     android:textColor="#F1F1F1"
                     android:textSize="14sp"
-                    tools:ignore="HardcodedText,TextContrastCheck"
+                    tools:ignore="TextContrastCheck"
                     tools:text="@string/animations" />
 
             </LinearLayout>

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/country_global"
-        android:title="Global" />
+        android:title="@string/global" />
     <item
         android:id="@+id/country_china"
-        android:title="China" />
+        android:title="@string/china" />
     <item
         android:id="@+id/country_south_korea"
-        android:title="South Korea" />
+        android:title="@string/south_korea" />
     <item
         android:id="@+id/country_japan"
-        android:title="Japan" />
+        android:title="@string/japan" />
     <item
         android:id="@+id/country_taiwan"
-        android:title="Taiwan" />
+        android:title="@string/taiwan" />
 </menu>

@@ -30,8 +30,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:padding="8dp"
                 android:text="@string/stats"
-                android:textSize="18sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="18sp" />
 
             <TableLayout
                 android:layout_width="match_parent"
