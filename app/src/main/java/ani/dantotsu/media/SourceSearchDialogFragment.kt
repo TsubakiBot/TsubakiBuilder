@@ -99,13 +99,15 @@ class SourceSearchDialogFragment : BottomSheetDialogFragment() {
                 binding.searchBar.setEndIconOnClickListener { search() }
                 if (!searched) search()
                 searched = true
-                model.responses.observe(viewLifecycleOwner) { j ->
-                    if (j != null) {
+                model.responses.observe(viewLifecycleOwner) { results ->
+                    results?.let { result ->
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
                         binding.searchRecyclerView.adapter =
-                            if (anime) AnimeSourceAdapter(j, model, i!!, media!!.id, this, scope)
-                            else MangaSourceAdapter(j, model, i!!, media!!.id, this, scope)
+                            if (anime)
+                                AnimeSourceAdapter(result, model, i!!, media!!.id, this, scope)
+                            else
+                                MangaSourceAdapter(result, model, i!!, media!!.id, this, scope)
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(

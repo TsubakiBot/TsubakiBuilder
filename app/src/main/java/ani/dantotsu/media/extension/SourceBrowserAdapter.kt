@@ -17,7 +17,6 @@ import kotlinx.coroutines.CoroutineScope
 class SourceBrowserAdapter(
     sources: List<ShowResponse>,
     val parser: BaseParser,
-    private val mediaType: MediaType,
     val model: MediaDetailsViewModel,
     fragment: SourceBrowseDialogFragment,
     scope: CoroutineScope
@@ -25,31 +24,26 @@ class SourceBrowserAdapter(
 
     @OptIn(UnstableApi::class)
     override suspend fun onItemClick(context: Context, source: ShowResponse) {
-        if (mediaType == MediaType.ANIME) {
-            source.sAnime?.let { anime ->
-                ContextCompat.startActivity(
-                    context,
-                    Intent(context, SearchActivity::class.java)
-                        .putExtra("type", mediaType.asText().uppercase())
-                        .putExtra("query", anime.title)
-                        .putExtra("search", true)
-                        .putExtra("extension", parser.name),
-                    null
-                )
-            }
-        }
-        if (mediaType == MediaType.MANGA) {
-            source.sManga?.let { manga ->
-                ContextCompat.startActivity(
-                    context,
-                    Intent(context, SearchActivity::class.java)
-                        .putExtra("type", mediaType.asText().uppercase())
-                        .putExtra("query", manga.title)
-                        .putExtra("search", true)
-                        .putExtra("extension", parser.name),
-                    null
-                )
-            }
+        source.sAnime?.let { anime ->
+            ContextCompat.startActivity(
+                context,
+                Intent(context, SearchActivity::class.java)
+                    .putExtra("type", "ANIME")
+                    .putExtra("query", anime.title)
+                    .putExtra("search", true)
+                    .putExtra("extension", parser.name),
+                null
+            )
+        } ?: source.sManga?.let { manga ->
+            ContextCompat.startActivity(
+                context,
+                Intent(context, SearchActivity::class.java)
+                    .putExtra("type", "MANGA")
+                    .putExtra("query", manga.title)
+                    .putExtra("search", true)
+                    .putExtra("extension", parser.name),
+                null
+            )
         }
     }
 }

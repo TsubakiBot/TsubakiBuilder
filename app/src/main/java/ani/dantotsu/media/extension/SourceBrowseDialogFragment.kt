@@ -22,6 +22,7 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.AnimeSources
+import ani.dantotsu.parsers.BaseParser
 import ani.dantotsu.parsers.DynamicAnimeParser
 import ani.dantotsu.parsers.DynamicMangaParser
 import ani.dantotsu.parsers.MangaParser
@@ -33,8 +34,9 @@ import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import eu.kanade.tachiyomi.extension.anime.model.AnimeExtension
 import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -93,56 +95,53 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
 
             if (incomingQuery.isNotBlank()) {
                 binding.searchSourceTitle.text = getString(R.string.extension_search)
-                val adapters = mutableListOf<SourceBrowserAdapter>()
-                val results = arrayListOf<List<ShowResponse>>()
+                val allResults = hashMapOf<BaseParser, List<ShowResponse>?>()
                 binding.searchBar.isVisible = false
-                CoroutineScope(Dispatchers.IO).launch {
-                    AnimeSources.list.take(AnimeSources.names.size - 1).forEach {
-                        val animeParser = it.get.value as AnimeParser
-                        tryWithSuspend {
-                            val result = animeParser.search(incomingQuery)
-                            adapters.add(
-                                SourceBrowserAdapter(
-                                    result,
-                                    animeParser,
-                                    MediaType.ANIME,
-                                    model,
-                                    this@SourceBrowseDialogFragment,
-                                    scope
-                                )
-                            )
-                            results.add(result)
+                scope.launch {
+                    withContext(Dispatchers.IO) {
+                        AnimeSources.list.take(AnimeSources.names.size - 1).map {
+                            async {
+                                val animeParser = it.get.value as AnimeParser
+                                tryWithSuspend {
+                                    allResults.put(animeParser, animeParser.search(incomingQuery))
+                                }
+                            }
+                        }.awaitAll()
+                        MangaSources.list.take(MangaSources.names.size - 1).map {
+                            async {
+                                val mangaParser = it.get.value as MangaParser
+                                tryWithSuspend {
+                                    allResults.put(mangaParser, mangaParser.search(incomingQuery))
+                                }
+                            }
+                        }.awaitAll()
+                        withContext(scope.coroutineContext) {
+                            model.collections.postValue(allResults)
                         }
                     }
-                    MangaSources.list.take(MangaSources.names.size - 1).forEach {
-                        val mangaParser = it.get.value as MangaParser
-                        tryWithSuspend {
-                            val result = mangaParser.search(incomingQuery)
-                            adapters.add(
-                                SourceBrowserAdapter(
-                                    result,
-                                    mangaParser,
-                                    MediaType.MANGA,
-                                    model,
-                                    this@SourceBrowseDialogFragment,
-                                    scope
-                                )
-                            )
-                            results.add(result)
-                        }
-                    }
-                    model.responses.postValue(results.flatten())
                 }
 
-                model.responses.observe(viewLifecycleOwner) { res ->
-                    if (res != null) {
+                model.collections.observe(viewLifecycleOwner) { collections ->
+                    collections?.let {
+                        val adapter = ConcatAdapter().apply {
+                            it.forEach {
+                                it.value?.let { results ->
+                                    addAdapter(
+                                        SourceBrowserAdapter(
+                                            results,
+                                            it.key,
+                                            model,
+                                            this@SourceBrowseDialogFragment,
+                                            scope
+                                        )
+                                    )
+                                }
+                            }
+                        }
+
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
-                        binding.searchRecyclerView.adapter = ConcatAdapter(
-                            ConcatAdapter.Config.Builder().setIsolateViewTypes(false).build()
-                        ).apply {
-                            adapters.forEach { addAdapter(it) }
-                        }
+                        binding.searchRecyclerView.adapter = adapter
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(
@@ -188,12 +187,12 @@ class SourceBrowseDialogFragment() : BottomSheetDialogFragment() {
                 binding.searchBar.setEndIconOnClickListener { search() }
                 if (!searched) search()
                 searched = true
-                model.responses.observe(viewLifecycleOwner) { res ->
-                    if (res != null) {
+                model.responses.observe(viewLifecycleOwner) { results ->
+                    results?.let {
                         binding.searchRecyclerView.visibility = View.VISIBLE
                         binding.searchProgress.visibility = View.GONE
                         binding.searchRecyclerView.adapter =
-                            SourceBrowserAdapter(res, parser, mediaType, model, this, scope)
+                            SourceBrowserAdapter(it, parser, model, this, scope)
                         binding.searchRecyclerView.layoutManager = GridLayoutManager(
                             requireActivity(),
                             clamp(

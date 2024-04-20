@@ -16,6 +16,7 @@ import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.Jikan
 import ani.dantotsu.others.Kitsu
 import ani.dantotsu.parsers.AnimeSources
+import ani.dantotsu.parsers.BaseParser
 import ani.dantotsu.parsers.Book
 import ani.dantotsu.parsers.MangaImage
 import ani.dantotsu.parsers.MangaReadSources
@@ -84,6 +85,8 @@ class MediaDetailsViewModel : ViewModel() {
     }
 
     val responses = MutableLiveData<List<ShowResponse>?>(null)
+
+    val collections = MutableLiveData<HashMap<BaseParser, List<ShowResponse>?>?>(null)
 
     //Anime
     private val kitsuEpisodes: MutableLiveData<Map<String, Episode>> =
