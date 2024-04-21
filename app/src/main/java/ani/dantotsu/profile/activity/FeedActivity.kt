@@ -11,11 +11,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
+import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.updateMargins
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class FeedActivity : AppCompatActivity() {
@@ -29,17 +31,16 @@ class FeedActivity : AppCompatActivity() {
         initActivity(this)
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navBar = binding.feedNavBar
+        navBar = binding.feedNavBar.apply {
+            updateLayoutParams(resources.configuration.orientation)
+        }
+
         val navBarRightMargin = if (resources.configuration.orientation ==
             Configuration.ORIENTATION_LANDSCAPE
         ) navBarHeight else 0
         val navBarBottomMargin = if (resources.configuration.orientation ==
             Configuration.ORIENTATION_LANDSCAPE
         ) 0 else navBarHeight
-        navBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            rightMargin = navBarRightMargin
-            bottomMargin = navBarBottomMargin
-        }
         binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             rightMargin = navBarRightMargin
             bottomMargin = navBarBottomMargin
@@ -75,6 +76,7 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        navBar.updateMargins(newConfig.orientation)
         val rightMargin = if (newConfig.orientation ==
             Configuration.ORIENTATION_LANDSCAPE
         ) navBarHeight else 0
@@ -82,11 +84,8 @@ class FeedActivity : AppCompatActivity() {
             Configuration.ORIENTATION_LANDSCAPE
         ) 0 else navBarHeight
         val params: ViewGroup.MarginLayoutParams =
-            navBar.layoutParams as ViewGroup.MarginLayoutParams
-        params.updateMargins(right = rightMargin, bottom = bottomMargin)
-        val paramsViewpager: ViewGroup.MarginLayoutParams =
             binding.feedViewPager.layoutParams as ViewGroup.MarginLayoutParams
-        paramsViewpager.updateMargins(right = rightMargin, bottom = bottomMargin)
+        params.updateMargins(right = rightMargin, bottom = bottomMargin)
     }
 
     override fun onResume() {

@@ -67,6 +67,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -78,6 +79,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -246,6 +249,22 @@ fun initActivity(a: Activity) {
             }
         }
     if (a !is MainActivity) a.setNavigationTheme()
+}
+
+fun AnimatedBottomBar.updateLayoutParams(orientation: Int) {
+    val navBarRightMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
+    val navBarBottomMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
+    this.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        rightMargin = navBarRightMargin
+        bottomMargin = navBarBottomMargin
+    }
+}
+
+fun AnimatedBottomBar.updateMargins(orientation: Int) {
+    val rightMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
+    val bottomMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
+    val params: ViewGroup.MarginLayoutParams = layoutParams as ViewGroup.MarginLayoutParams
+    params.updateMargins(right = rightMargin, bottom = bottomMargin)
 }
 
 fun Activity.hideSystemBars() {
@@ -845,6 +864,7 @@ fun savePrefs(serialized: String, path: String, title: String, context: Context)
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 fun savePrefs(
     serialized: String,
     path: String,
