@@ -124,15 +124,16 @@ object MatagiUpdater {
                 activity.getString(R.string.token_repo)
             else activity.getString(R.string.repo)
             try {
-                client.get("https://api.github.com/repos/$repo/releases/tags/$version", headers)
+                val res = client.get("https://api.github.com/repos/$repo/releases/tags/$version", headers)
                     .parsed<GithubResponse>().assets?.find {
                         it.browserDownloadURL.contains(
                             "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
                         )
-                    }?.browserDownloadURL.apply {
-                        if (this != null) activity.downloadUpdate(version, this)
-                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/$version")
                     }
+                val downloadUrl = res?.assetUrl?.takeIf { tokenRes != 0 } ?: res?.browserDownloadURL
+                downloadUrl?.let {
+                    activity.downloadUpdate(version, it)
+                } ?: openLinkInBrowser("https://github.com/$repo/releases/tag/$version")
             } catch (e: Exception) {
                 logError(e)
             }
@@ -204,12 +205,9 @@ object MatagiUpdater {
 
     private fun Activity.downloadUpdate(version: String, url: String) {
 
-        toast(getString(R.string.matagi_downloading, version))
-
         val downloadManager = this.getSystemService<DownloadManager>()!!
 
         val request = DownloadManager.Request(Uri.parse(url))
-            .setMimeType("application/vnd.android.package-archive")
             .setTitle(getString(R.string.matagi_downloading, version))
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
@@ -218,8 +216,12 @@ object MatagiUpdater {
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
-        if (tokenRes != 0)
+        if (tokenRes != 0) {
             request.addRequestHeader(headers.keys.first(), headers.values.first())
+            request.addRequestHeader("Accept", "application/octet-stream")
+        } else {
+            request.setMimeType("application/vnd.android.package-archive")
+        }
 
         val id = try {
             downloadManager.enqueue(request)
@@ -228,6 +230,7 @@ object MatagiUpdater {
             -1
         }
         if (id == -1L) return
+        toast(getString(R.string.matagi_downloading, version))
         ContextCompat.registerReceiver(
             this,
             object : BroadcastReceiver() {
@@ -306,6 +309,8 @@ object MatagiUpdater {
     ) {
         @Serializable
         data class Asset(
+            @SerialName("url")
+            val assetUrl: String,
             @SerialName("browser_download_url")
             val browserDownloadURL: String
         )
