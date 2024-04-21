@@ -37,7 +37,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
-import ani.matagi.update.MatagiUpdater
+import ani.himitsu.update.MatagiUpdater
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 

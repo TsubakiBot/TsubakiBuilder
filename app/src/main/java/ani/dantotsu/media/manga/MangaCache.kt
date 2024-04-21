@@ -11,7 +11,7 @@ import android.provider.MediaStore
 import android.util.LruCache
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import ani.matagi.io.Memory
+import ani.himitsu.io.Memory
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.online.HttpSource
 import kotlinx.coroutines.Dispatchers

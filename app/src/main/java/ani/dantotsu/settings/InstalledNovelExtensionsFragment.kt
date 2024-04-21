@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
-import ani.dantotsu.media.extension.SourceBrowseDialogFragment
+import ani.himitsu.extension.SourceDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtension
@@ -101,7 +101,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         },
         { extension ->
-            SourceBrowseDialogFragment(extension).show(
+            SourceDialogFragment(extension).show(
                 requireActivity().supportFragmentManager, null
             )
         },

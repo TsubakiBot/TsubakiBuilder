@@ -15,7 +15,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
-import ani.matagi.update.MatagiUpdater
+import ani.himitsu.update.MatagiUpdater
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

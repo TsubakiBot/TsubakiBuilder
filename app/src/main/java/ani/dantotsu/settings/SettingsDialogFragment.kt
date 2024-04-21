@@ -26,7 +26,7 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
-import ani.dantotsu.media.extension.SourceBrowseDialogFragment
+import ani.himitsu.extension.SourceDialogFragment
 import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.others.BottomSheetDialogFragment
 import ani.dantotsu.profile.ProfileActivity
@@ -35,7 +35,7 @@ import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.matagi.update.MatagiUpdater
+import ani.himitsu.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor
@@ -224,7 +224,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
 
         fun search(query: String) {
-            SourceBrowseDialogFragment(query).show(
+            SourceDialogFragment(query).show(
                 requireActivity().supportFragmentManager, null
             )
             dismiss()

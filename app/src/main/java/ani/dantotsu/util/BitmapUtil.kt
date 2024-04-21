@@ -17,7 +17,7 @@ import ani.dantotsu.geUrlOrTrolled
 import ani.dantotsu.loadImage
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.matagi.io.Memory
+import ani.himitsu.io.Memory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl

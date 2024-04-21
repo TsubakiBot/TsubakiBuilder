@@ -59,7 +59,6 @@ import ani.dantotsu.util.LauncherWrapper
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -67,7 +66,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
 import kotlin.math.abs
-
 
 class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
     lateinit var launcher: LauncherWrapper
@@ -79,7 +77,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     var anime = true
     private var adult = false
 
-    @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

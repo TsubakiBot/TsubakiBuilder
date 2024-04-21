@@ -15,7 +15,6 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
-import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.FragmentLoginBinding
@@ -25,7 +24,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
-import ani.matagi.os.Version
+import ani.himitsu.os.Version
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginFragment : Fragment() {

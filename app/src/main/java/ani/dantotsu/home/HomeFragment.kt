@@ -45,9 +45,9 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.util.BitmapUtil
-import ani.matagi.launcher.ResumableShortcuts
-import ani.matagi.update.MatagiUpdater
-import ani.matagi.widgets.resumable.ResumableWidget
+import ani.himitsu.launcher.ResumableShortcuts
+import ani.himitsu.update.MatagiUpdater
+import ani.himitsu.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

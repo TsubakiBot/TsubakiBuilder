@@ -28,7 +28,7 @@ import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
-import ani.matagi.update.MatagiUpdater
+import ani.himitsu.update.MatagiUpdater
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
