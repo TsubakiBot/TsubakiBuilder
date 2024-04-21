@@ -12,6 +12,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
@@ -22,6 +23,8 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
+import ani.dantotsu.util.StoragePermissions
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -122,7 +125,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.download_manager_select),
-                        desc = getString(R.string.download_manager_select),
+                        desc = getString(R.string.download_manager_select_desc),
                         icon = R.drawable.ic_download_24,
                         onClick = {
                             val dialog = downloadManagerDialog.setSingleChoiceItems(
@@ -138,7 +141,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.change_download_location),
-                        desc = getString(R.string.change_download_location),
+                        desc = getString(R.string.change_download_location_desc),
                         icon = R.drawable.ic_round_source_24,
                         onClick = {
                             val dialog = AlertDialog.Builder(context, R.style.MyPopup)
@@ -188,7 +191,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.adult_only_content),
-                        desc = getString(R.string.adult_only_content),
+                        desc = getString(R.string.adult_only_content_desc),
                         icon = R.drawable.ic_round_nsfw_24,
                         isChecked = PrefManager.getVal(PrefName.AdultOnly),
                         switch = { isChecked, _ ->

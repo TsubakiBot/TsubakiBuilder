@@ -40,6 +40,7 @@ import androidx.work.OneTimeWorkRequest
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.ActivityMainBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.databinding.SplashScreenBinding
 import ani.dantotsu.home.AnimeFragment
 import ani.dantotsu.home.HomeFragment
@@ -496,16 +497,14 @@ class MainActivity : AppCompatActivity() {
         val password = CharArray(16).apply { fill('0') }
 
         // Inflate the dialog layout
-        val dialogView =
-            LayoutInflater.from(this).inflate(R.layout.dialog_user_agent, null)
-        dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)?.hint = "Password"
-        val subtitleTextView = dialogView.findViewById<TextView>(R.id.subtitle)
-        subtitleTextView?.visibility = View.VISIBLE
-        subtitleTextView?.text = getString(R.string.enter_password_to_decrypt_file)
+        val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
+        dialogView.userAgentTextBox.hint = "Password"
+        dialogView.subtitle.visibility = View.VISIBLE
+        dialogView.subtitle.text = getString(R.string.enter_password_to_decrypt_file)
 
         val dialog = AlertDialog.Builder(this, R.style.MyPopup)
             .setTitle("Enter Password")
-            .setView(dialogView)
+            .setView(dialogView.root)
             .setPositiveButton("OK", null)
             .setNegativeButton("Cancel") { dialog, _ ->
                 password.fill('0')

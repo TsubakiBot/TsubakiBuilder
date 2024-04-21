@@ -1,12 +1,11 @@
-package ani.dantotsu.addons.download
+package ani.dantotsu.addons
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.core.content.ContextCompat
-import ani.dantotsu.addons.AddonListener
-import ani.dantotsu.addons.AddonLoader
+import ani.dantotsu.addons.download.DownloadAddonManager
 import ani.dantotsu.addons.torrent.TorrentAddonManager
 import ani.dantotsu.media.AddonType
 import eu.kanade.tachiyomi.extension.util.ExtensionInstallReceiver

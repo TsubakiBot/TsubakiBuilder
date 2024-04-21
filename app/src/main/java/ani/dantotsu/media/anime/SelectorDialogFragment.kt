@@ -492,6 +492,11 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                         media!!.userPreferredName
                     )
                 } else {
+                    val downloadAddonManager: DownloadAddonManager = Injekt.get()
+                    if (!downloadAddonManager.isAvailable()){
+                        toast("Download Extension not available")
+                        return@setSafeOnClickListener
+                    }
                     val episode = media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!
                     val selectedVideo =
                         if (extractor.videos.size > episode.selectedVideo) extractor.videos[episode.selectedVideo] else null

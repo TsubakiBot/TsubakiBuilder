@@ -48,7 +48,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.reader_settings),
-                        desc = getString(R.string.reader_settings),
+                        desc = getString(R.string.reader_settings_desc),
                         icon = R.drawable.ic_round_reader_settings,
                         onClick = {
                             startActivity(Intent(context, ReaderSettingsActivity::class.java))
@@ -58,7 +58,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.purge_manga_downloads),
-                        desc = getString(R.string.purge_manga_downloads),
+                        desc = getString(R.string.purge_manga_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
                         onClick = {
                             val dialog = AlertDialog.Builder(context, R.style.MyPopup)
@@ -84,7 +84,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.purge_novel_downloads),
-                        desc = getString(R.string.purge_novel_downloads),
+                        desc = getString(R.string.purge_novel_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
                         onClick = {
                             val dialog = AlertDialog.Builder(context, R.style.MyPopup)
@@ -109,7 +109,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.include_list),
-                        desc = getString(R.string.include_list),
+                        desc = getString(R.string.include_list_desc),
                         icon = R.drawable.view_list_24,
                         isChecked = PrefManager.getVal(PrefName.IncludeMangaList),
                         switch = { isChecked, _ ->

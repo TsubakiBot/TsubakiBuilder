@@ -69,7 +69,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.oled_theme_variant),
-                        desc = getString(R.string.oled_theme_variant),
+                        desc = getString(R.string.oled_theme_variant_desc),
                         icon = R.drawable.ic_round_brightness_4_24,
                         isChecked = PrefManager.getVal(PrefName.UseOLED),
                         switch = { isChecked, _ ->
@@ -80,7 +80,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.use_material_you),
-                        desc = getString(R.string.use_material_you),
+                        desc = getString(R.string.use_material_you_desc),
                         icon = R.drawable.ic_round_new_releases_24,
                         isChecked = PrefManager.getVal(PrefName.UseMaterialYou),
                         switch = { isChecked, _ ->
@@ -93,7 +93,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.use_unique_theme_for_each_item),
-                        desc = getString(R.string.use_unique_theme_for_each_item),
+                        desc = getString(R.string.use_unique_theme_for_each_item_desc),
                         icon = R.drawable.ic_palette,
                         isChecked = PrefManager.getVal(PrefName.UseSourceTheme),
                         switch = { isChecked, _ ->
@@ -105,7 +105,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.use_custom_theme),
-                        desc = getString(R.string.use_custom_theme),
+                        desc = getString(R.string.use_custom_theme_desc),
                         icon = R.drawable.ic_palette,
                         isChecked = PrefManager.getVal(PrefName.UseCustomTheme),
                         switch = { isChecked, _ ->
@@ -118,7 +118,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.color_picker),
-                        desc = getString(R.string.color_picker),
+                        desc = getString(R.string.color_picker_desc),
                         icon = R.drawable.ic_palette,
                         onClick = {
                             val originalColor: Int = PrefManager.getVal(PrefName.CustomThemeInt)

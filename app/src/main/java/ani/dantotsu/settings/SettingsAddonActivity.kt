@@ -63,7 +63,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.anime_downloader_addon),
                         desc = getString(R.string.not_installed),
-                        icon = R.drawable.anim_play_to_pause,
+                        icon = R.drawable.ic_download_24,
                         isActivity = true,
                         attach = {
                             setStatus(
@@ -87,7 +87,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                             it.settingsIconRight.setOnClickListener { _ ->
                                 if (it.settingsDesc.text == getString(R.string.installed)) {
                                     downloadAddonManager.uninstall()
-                                    return@setOnClickListener //uninstall logic here
+                                    return@setOnClickListener
                                 } else {
                                     job = Job()
                                     val scope = CoroutineScope(Dispatchers.Main + job)
@@ -120,7 +120,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.torrent_addon),
                         desc = getString(R.string.not_installed),
-                        icon = R.drawable.anim_play_to_pause,
+                        icon = R.drawable.ic_round_magnet_24,
                         isActivity = true,
                         attach = {
                             setStatus(
@@ -190,7 +190,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                                     torrServerKill()
                                 }
                             }
-                        }
+                        },
                     )
                 )
             )

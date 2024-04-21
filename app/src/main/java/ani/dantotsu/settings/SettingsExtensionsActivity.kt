@@ -191,7 +191,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.anime_add_repository),
-                        desc = getString(R.string.anime_add_repository),
+                        desc = getString(R.string.anime_add_repository_desc),
                         icon = R.drawable.ic_github,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -230,7 +230,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.manga_add_repository),
-                        desc = getString(R.string.manga_add_repository),
+                        desc = getString(R.string.manga_add_repository_desc),
                         icon = R.drawable.ic_github,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -308,7 +308,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.user_agent),
-                        desc = getString(R.string.NSFWExtention),
+                        desc = getString(R.string.user_agent_desc),
                         icon = R.drawable.ic_round_video_settings_24,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -337,7 +337,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.force_legacy_installer),
-                        desc = getString(R.string.force_legacy_installer),
+                        desc = getString(R.string.force_legacy_installer_desc),
                         icon = R.drawable.ic_round_new_releases_24,
                         isChecked = extensionInstaller.get() == BasePreferences.ExtensionInstaller.LEGACY,
                         switch = { isChecked, _ ->
@@ -352,7 +352,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.skip_loading_extension_icons),
-                        desc = getString(R.string.skip_loading_extension_icons),
+                        desc = getString(R.string.skip_loading_extension_icons_desc),
                         icon = R.drawable.ic_round_no_icon_24,
                         isChecked = PrefManager.getVal(PrefName.SkipExtensionIcons),
                         switch = { isChecked, _ ->
@@ -362,7 +362,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.NSFWExtention),
-                        desc = getString(R.string.NSFWExtention),
+                        desc = getString(R.string.NSFWExtention_desc),
                         icon = R.drawable.ic_round_nsfw_24,
                         isChecked = PrefManager.getVal(PrefName.NSFWExtension),
                         switch = { isChecked, _ ->
