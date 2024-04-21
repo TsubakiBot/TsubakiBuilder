@@ -2,8 +2,7 @@ name: Matagi Dispatch
 
 on:
   push:
-    branches:
-      - matagi
+    branches: [ matagi, himitsu ]
     paths-ignore:
       - '**/README.md'
 
@@ -15,7 +14,7 @@ concurrency:
 
 jobs:
   soak:
-    if: ${{ ! startsWith(github.event.head_commit.message, 'Update ') }}
+    if: github.ref == 'refs/heads/matagi'
     runs-on: ubuntu-latest
     steps:
       - name: Execute dispatch event
@@ -26,10 +25,8 @@ jobs:
           repository: RepoDevil/Mr.Matagi
           event-type: matagi
 
-
-          name: Build Prerelease
   rinse:
-    if: ${{ startsWith(github.event.head_commit.message, 'Update ') }}
+    if: github.ref == 'refs/heads/himitsu'
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -65,19 +62,21 @@ jobs:
         mkdir app/src/main/res/raw
         echo ${{ secrets.ORG_TOKEN }} > app/src/main/res/raw/token.api
 
-    - uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9 # 1.6.0
-      id: downloadserver  # Remember to give an ID if you need the output filename
-      name: Download server.aar
-      with:
-        url: "${{ secrets.TORRSERVER_URL }}server.aar"
-        target: app/libs/
+    - name: Download server.aar
+      shell: bash
+      run: |
+        curl -H "Authorization: Token '${{ secrets.ORG_TOKEN }}" \
+        -H 'Accept: application/vnd.github.v3.raw' \
+        -o "app/libs/server.aar" \
+        -L "${{ secrets.TORRSERVER_URL }}/server.aar"
 
-    - uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9 # 1.6.0
-      id: downloadsources  # Remember to give an ID if you need the output filename
-      name: Download server-sources.jar
-      with:
-        url: "${{ secrets.TORRSERVER_URL }}server-sources.jar"
-        target: app/libs/
+    - name: Download server-sources.jar
+      shell: bash
+      run: |
+        curl -H "Authorization: Token ${{ secrets.ORG_TOKEN }}" \
+        -H 'Accept: application/vnd.github.v3.raw' \
+        -o "app/libs/server-sources.jar" \
+        -L "${{ secrets.TORRSERVER_URL }}/server-sources.jar"
 
     - name: Setup JDK 17
       uses: actions/setup-java@v4

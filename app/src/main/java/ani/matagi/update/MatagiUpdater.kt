@@ -63,6 +63,7 @@ object MatagiUpdater {
         val token = currContext().resources.openRawResource(tokenRes).bufferedReader().use {
             it.readText()
         }
+        mapOf("Authorization" to "Bearer $token")
         mapOf("Authorization" to "Token $token")
     } else emptyMap()
 
@@ -217,8 +218,8 @@ object MatagiUpdater {
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
-            if (headers.isNotEmpty())
-                request.addRequestHeader(headers.keys.first(), headers.values.first())
+        if (tokenRes != 0)
+            request.addRequestHeader(headers.keys.first(), headers.values.first())
 
         val id = try {
             downloadManager.enqueue(request)
