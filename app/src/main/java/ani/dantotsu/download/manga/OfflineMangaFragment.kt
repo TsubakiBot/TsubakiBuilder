@@ -26,6 +26,8 @@ import ani.dantotsu.R
 import ani.dantotsu.bottomBar
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
+import ani.dantotsu.download.DownloadCompat
+import ani.dantotsu.download.DownloadCompat.Companion.loadOfflineMangaModelCompat
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.compareName
@@ -161,8 +163,8 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             // Get the OfflineMangaModel that was clicked
             val item = adapter.getItem(position) as OfflineMangaModel
             val media =
-                downloadManager.mangaDownloadedTypes.firstOrNull { it.title.compareName(item.title) }
-                    ?: downloadManager.novelDownloadedTypes.firstOrNull { it.title.compareName(item.title) }
+                downloadManager.mangaDownloadedTypes.firstOrNull { it.titleName.compareName(item.title) }
+                    ?: downloadManager.novelDownloadedTypes.firstOrNull { it.titleName.compareName(item.title) }
             media?.let {
 
                 ContextCompat.startActivity(
@@ -181,7 +183,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             // Get the OfflineMangaModel that was clicked
             val item = adapter.getItem(position) as OfflineMangaModel
             val type: MediaType =
-                if (downloadManager.mangaDownloadedTypes.any { it.title == item.title }) {
+                if (downloadManager.mangaDownloadedTypes.any { it.titleName == item.title }) {
                     MediaType.MANGA
                 } else {
                     MediaType.NOVEL
@@ -276,14 +278,33 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             val offlineMangaModel = loadOfflineMangaModel(download)
             newMangaDownloads += offlineMangaModel
         }
-        downloads = newMangaDownloads
-        val novelTitles = downloadManager.novelDownloadedTypes.map { it.title }.distinct()
-        val newNovelDownloads = mutableListOf<OfflineMangaModel>()
-        for (title in novelTitles) {
-            val tDownloads = downloadManager.novelDownloadedTypes.filter { it.title == title }
-            val download = tDownloads.first()
-            val offlineMangaModel = loadOfflineMangaModel(download)
-            newNovelDownloads += offlineMangaModel
+        downloads = listOf()
+        downloadsJob = Job()
+        CoroutineScope(Dispatchers.IO + downloadsJob).launch {
+            val mangaTitles = downloadManager.mangaDownloadedTypes.map { it.titleName }.distinct()
+            val newMangaDownloads = mutableListOf<OfflineMangaModel>()
+            for (title in mangaTitles) {
+                val tDownloads = downloadManager.mangaDownloadedTypes.filter { it.titleName == title }
+                val download = tDownloads.first()
+                val offlineMangaModel = loadOfflineMangaModel(download)
+                newMangaDownloads += offlineMangaModel
+            }
+            downloads = newMangaDownloads
+            val novelTitles = downloadManager.novelDownloadedTypes.map { it.titleName }.distinct()
+            val newNovelDownloads = mutableListOf<OfflineMangaModel>()
+            for (title in novelTitles) {
+                val tDownloads = downloadManager.novelDownloadedTypes.filter { it.titleName == title }
+                val download = tDownloads.first()
+                val offlineMangaModel = loadOfflineMangaModel(download)
+                newNovelDownloads += offlineMangaModel
+            }
+            downloads += newNovelDownloads
+            withContext(Dispatchers.Main) {
+                adapter.setItems(downloads)
+                total.text =
+                    if (gridView.count > 0) "Manga and Novels (${gridView.count})" else "Empty List"
+                adapter.notifyDataSetChanged()
+            }
         }
         downloads += newNovelDownloads
 
@@ -294,8 +315,8 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         //load media.json and convert to media class with gson
         return try {
             val directory = getSubDirectory(
-                context ?: currContext(), downloadedType.type,
-                false, downloadedType.title
+                context ?: currContext()!!, downloadedType.type,
+                false, downloadedType.titleName
             )
             val gson = GsonBuilder()
                 .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
@@ -303,10 +324,11 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
                 })
                 .create()
             val media = directory?.findFile("media.json")
-                ?: return null
-            val mediaJson = media.openInputStream(context ?: currContext())?.bufferedReader().use {
-                it?.readText()
-            }
+                ?: return DownloadCompat.loadMediaCompat(downloadedType)
+            val mediaJson =
+                media.openInputStream(context ?: currContext()!!)?.bufferedReader().use {
+                    it?.readText()
+                }
             gson.fromJson(mediaJson, Media::class.java)
         } catch (e: Exception) {
             Logger.log("Error loading media.json: ${e.message}")
@@ -320,8 +342,8 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         //load media.json and convert to media class with gson
         try {
             val directory = getSubDirectory(
-                context ?: currContext(), downloadedType.type,
-                false, downloadedType.title
+                context ?: currContext()!!, downloadedType.type,
+                false, downloadedType.titleName
             )
             val mediaModel = getMedia(downloadedType)!!
             val cover = directory?.findFile("cover.jpg")
@@ -354,20 +376,25 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
                 bannerUri
             )
         } catch (e: Exception) {
-            Logger.log("Error loading media.json: ${e.message}")
-            Logger.log(e)
-            return OfflineMangaModel(
-                "unknown",
-                "0",
-                "??",
-                "??",
-                "movie",
-                "hmm",
-                isOngoing = false,
-                isUserScored = false,
-                null,
-                null
-            )
+            return try {
+                loadOfflineMangaModelCompat(downloadedType)
+            } catch (e: Exception) {
+                Logger.log("Error loading media.json: ${e.message}")
+                Logger.log(e)
+                Injekt.get<CrashlyticsInterface>().logException(e)
+                return OfflineMangaModel(
+                    "unknown",
+                    "0",
+                    "??",
+                    "??",
+                    "movie",
+                    "hmm",
+                    isOngoing = false,
+                    isUserScored = false,
+                    null,
+                    null
+                )
+            }
         }
     }
 }

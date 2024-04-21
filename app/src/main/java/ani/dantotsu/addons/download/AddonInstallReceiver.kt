@@ -88,7 +88,6 @@ internal class AddonInstallReceiver : BroadcastReceiver() {
             }
 
             Intent.ACTION_PACKAGE_REPLACED -> {
-                if (ExtensionInstallReceiver.isReplacing(intent)) return
                 launchNow {
                     when (type) {
                         AddonType.DOWNLOAD -> {
