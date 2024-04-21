@@ -120,7 +120,7 @@ class NovelExtensionManager(private val context: Context) {
      * @param extension The anime extension to be installed.
      */
     fun installExtension(extension: NovelExtension.Available): Observable<InstallStep> {
-        return installer.downloadAndInstall(api.getApkUrl(extension), extension.pkgName,
+        return installer.downloadAndInstall(api.getNovelApkUrl(extension), extension.pkgName,
             extension.name, MediaType.NOVEL)
     }
 
@@ -160,7 +160,7 @@ class NovelExtensionManager(private val context: Context) {
      *
      * @param pkgName The package name of the application to uninstall.
      */
-    fun uninstallExtension(pkgName: String, context: Context) {
+    fun uninstallExtension(pkgName: String) {
         installer.uninstallApk(pkgName)
     }
 

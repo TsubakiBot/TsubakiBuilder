@@ -292,36 +292,4 @@ internal class ExtensionInstallReceiver : BroadcastReceiver() {
         fun onExtensionUpdated(extension: NovelExtension.Installed)
         fun onPackageUninstalled(pkgName: String)
     }
-
-    companion object {
-
-        /**
-         * Returns the intent filter this receiver should subscribe to.
-         */
-        val filter
-            get() = IntentFilter().apply {
-                priority = 100
-                addAction(Intent.ACTION_PACKAGE_ADDED)
-                addAction(Intent.ACTION_PACKAGE_REPLACED)
-                addAction(Intent.ACTION_PACKAGE_REMOVED)
-                addDataScheme("package")
-            }
-
-        /**
-         * Returns true if this package is performing an update.
-         *
-         * @param intent The intent that triggered the event.
-         */
-        fun isReplacing(intent: Intent): Boolean {
-            return intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
-        }
-
-
-        /**
-         * Returns the package name of the installed, updated or removed application.
-         */
-        fun getPackageNameFromIntent(intent: Intent?): String? {
-            return intent?.data?.encodedSchemeSpecificPart ?: return null
-        }
-    }
 }

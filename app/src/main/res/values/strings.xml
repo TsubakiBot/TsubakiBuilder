@@ -76,7 +76,8 @@
 
     <string name="no_notifications">No more notifications</string>
     <string name="followers">Followers</string>
-    <string name="social_in_media">Show social stats in media</string>
+    <string name="social_in_media">Social stats in media</string>
+    <string name="social_in_media_desc">Display friend ratings and progress</string>
 
     <string name="status">STATUS</string>
     <string-array name="status" translatable="false">
@@ -761,7 +762,7 @@
     <string name="disclaimer_desc">Something to keep in mind</string>
 
     <string name="use_foldable">Use foldable layouts</string>
-    <string name="use_foldable_desc">Responds to hinge configuration</string>
+    <string name="use_foldable_desc">Content adapts to hinge configuration</string>
     <string name="add_shortcuts">Add shortcuts to launcher</string>
     <string name="add_shortcuts_desc">Adds continue items to icon long click</string>
 
@@ -1036,17 +1037,10 @@
     <string name="use_unique_theme_for_each_item_desc">Use color from media\'s banner</string>
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
-    
-    <string name="torrent_addon">Torrent Addon</string>
+
     <string name="enable_torrent">Enable torrent</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
-    <string name="loaded_successfully">Loaded Successfully</string>
-    <string name="not_installed">Not Installed</string>
-    <string name="torrent_extension_not_supported">Torrent extension not supported on this device</string>
-    <string name="update_addon">Update Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Download addon not found</string>
-    <string name="image">Image</string>
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
+    <string name="no_video_selected">No Video Selected</string>
+    <string name="download_extension_not_available">Download Extension not available</string>
 </resources>

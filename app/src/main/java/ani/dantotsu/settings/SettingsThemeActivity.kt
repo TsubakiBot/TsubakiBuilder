@@ -53,7 +53,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.ui_settings),
-                        desc = getString(R.string.ui_settings),
+                        desc = getString(R.string.ui_settings_desc),
                         icon = R.drawable.ic_round_auto_awesome_24,
                         onClick = {
                             startActivity(

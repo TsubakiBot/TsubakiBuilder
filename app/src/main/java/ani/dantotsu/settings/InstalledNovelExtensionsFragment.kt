@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
 import ani.dantotsu.media.extension.SourceBrowseDialogFragment
 import ani.dantotsu.others.LanguageMapper
@@ -96,7 +95,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
                             }
                         )
                 } else {
-                    novelExtensionManager.uninstallExtension(pkg.pkgName, currContext())
+                    novelExtensionManager.uninstallExtension(pkg.pkgName)
                     snackString("Extension uninstalled")
                 }
             }

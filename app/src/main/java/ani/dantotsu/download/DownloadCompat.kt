@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Environment
 import android.widget.Toast
 import ani.dantotsu.R
-import ani.dantotsu.connections.crashlytics.CrashlyticsInterface
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.download.anime.OfflineAnimeModel
@@ -28,25 +27,26 @@ import eu.kanade.tachiyomi.animesource.model.SEpisodeImpl
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SChapterImpl
 import eu.kanade.tachiyomi.source.model.SManga
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.util.Locale
+import kotlin.collections.set
+
+fun directory(downloadedType: DownloadedType) = File(
+    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+    "Dantotsu/${downloadedType.type.asText()}/${downloadedType.titleName}"
+)
+
+fun directory(type: MediaType, path: String) = File(
+    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+    "Dantotsu/{$type.asText()}/$path"
+)
 
 @Deprecated("external storage is deprecated, use SAF instead")
 class DownloadCompat {
     companion object {
         @Deprecated("external storage is deprecated, use SAF instead")
         fun loadMediaCompat(downloadedType: DownloadedType): Media? {
-            val type = when (downloadedType.type) {
-                MediaType.MANGA -> "Manga"
-                MediaType.ANIME -> "Anime"
-                else -> "Novel"
-            }
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/$type/${downloadedType.titleName}"
-            )
+            val directory = directory(downloadedType)
             //load media.json and convert to media class with gson
             return try {
                 val gson = GsonBuilder()
@@ -66,24 +66,16 @@ class DownloadCompat {
             } catch (e: Exception) {
                 Logger.log("Error loading media.json: ${e.message}")
                 Logger.log(e)
-                Injekt.get<CrashlyticsInterface>().logException(e)
                 null
             }
         }
 
         @Deprecated("external storage is deprecated, use SAF instead")
         fun loadOfflineAnimeModelCompat(downloadedType: DownloadedType): OfflineAnimeModel {
-            val type = when (downloadedType.type) {
-                MediaType.MANGA -> "Manga"
-                MediaType.ANIME -> "Anime"
-                else -> "Novel"
-            }
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/$type/${downloadedType.titleName}"
-            )
+            val directory = directory(downloadedType)
             //load media.json and convert to media class with gson
             try {
+                @Suppress("DEPRECATION")
                 val mediaModel = loadMediaCompat(downloadedType)!!
                 val cover = File(directory, "cover.jpg")
                 val coverUri: Uri? = if (cover.exists()) {
@@ -113,7 +105,7 @@ class DownloadCompat {
                     totalEpisode,
                     totalEpisodesList,
                     watchedEpisodes,
-                    type,
+                    downloadedType.type.asText(),
                     chapters,
                     isOngoing,
                     isUserScored,
@@ -123,7 +115,6 @@ class DownloadCompat {
             } catch (e: Exception) {
                 Logger.log("Error loading media.json: ${e.message}")
                 Logger.log(e)
-                Injekt.get<CrashlyticsInterface>().logException(e)
                 return OfflineAnimeModel(
                     "unknown",
                     "0",
@@ -142,17 +133,10 @@ class DownloadCompat {
 
         @Deprecated("external storage is deprecated, use SAF instead")
         fun loadOfflineMangaModelCompat(downloadedType: DownloadedType): OfflineMangaModel {
-            val type = when (downloadedType.type) {
-                MediaType.MANGA -> "Manga"
-                MediaType.ANIME -> "Anime"
-                else -> "Novel"
-            }
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/$type/${downloadedType.titleName}"
-            )
+            val directory = directory(downloadedType)
             //load media.json and convert to media class with gson
             try {
+                @Suppress("DEPRECATION")
                 val mediaModel = loadMediaCompat(downloadedType)!!
                 val cover = File(directory, "cover.jpg")
                 val coverUri: Uri? = if (cover.exists()) {
@@ -176,7 +160,7 @@ class DownloadCompat {
                     score,
                     totalchapter,
                     readchapter,
-                    type,
+                    downloadedType.type.asText(),
                     chapters,
                     isOngoing,
                     isUserScored,
@@ -186,7 +170,6 @@ class DownloadCompat {
             } catch (e: Exception) {
                 Logger.log("Error loading media.json: ${e.message}")
                 Logger.log(e)
-                Injekt.get<CrashlyticsInterface>().logException(e)
                 return OfflineMangaModel(
                     "unknown",
                     "0",
@@ -203,16 +186,13 @@ class DownloadCompat {
         }
 
         @Deprecated("external storage is deprecated, use SAF instead")
-        suspend fun loadEpisodesCompat(
+        fun loadEpisodesCompat(
             animeLink: String,
             extra: Map<String, String>?,
             sAnime: SAnime
         ): List<Episode> {
 
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "${animeLocation}/$animeLink"
-            )
+            val directory = directory(MediaType.ANIME, animeLink)
             //get all of the folder names and add them to the list
             val episodes = mutableListOf<Episode>()
             if (directory.exists()) {
@@ -241,15 +221,12 @@ class DownloadCompat {
         }
 
         @Deprecated("external storage is deprecated, use SAF instead")
-        suspend fun loadChaptersCompat(
+        fun loadChaptersCompat(
             mangaLink: String,
             extra: Map<String, String>?,
             sManga: SManga
         ): List<MangaChapter> {
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/Manga/$mangaLink"
-            )
+            val directory = directory(MediaType.MANGA, mangaLink)
             //get all of the folder names and add them to the list
             val chapters = mutableListOf<MangaChapter>()
             if (directory.exists()) {
@@ -273,11 +250,8 @@ class DownloadCompat {
         }
 
         @Deprecated("external storage is deprecated, use SAF instead")
-        suspend fun loadImagesCompat(chapterLink: String, sChapter: SChapter): List<MangaImage> {
-            val directory = File(
-                currContext()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/Manga/$chapterLink"
-            )
+        fun loadImagesCompat(chapterLink: String, sChapter: SChapter): List<MangaImage> {
+            val directory = directory(MediaType.MANGA, chapterLink)
             val images = mutableListOf<MangaImage>()
             val imageNumberRegex = Regex("""(\d+)\.jpg$""")
             if (directory.exists()) {
@@ -301,17 +275,14 @@ class DownloadCompat {
 
         @Deprecated("external storage is deprecated, use SAF instead")
         fun loadSubtitleCompat(title: String, episode: String): List<Subtitle>? {
-            currContext()?.let {
-                File(
-                    it.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                    "$animeLocation/$title/$episode"
-                ).listFiles()?.forEach {
-                    if (it.name.contains("subtitle")) {
+            currContext().let {
+                directory(MediaType.ANIME, "$title/$episode").listFiles()?.forEach { file ->
+                    if (file.name.contains("subtitle")) {
                         return listOf(
                             Subtitle(
                                 "Downloaded Subtitle",
-                                Uri.fromFile(it).toString(),
-                                determineSubtitletype(it.absolutePath)
+                                Uri.fromFile(file).toString(),
+                                determineSubtitletype(file.absolutePath)
                             )
                         )
                     }
@@ -330,17 +301,7 @@ class DownloadCompat {
 
         @Deprecated("external storage is deprecated, use SAF instead")
         fun removeMediaCompat(context: Context, title: String, type: MediaType) {
-            val subDirectory = if (type == MediaType.MANGA) {
-                "Manga"
-            } else if (type == MediaType.ANIME) {
-                "Anime"
-            } else {
-                "Novel"
-            }
-            val directory = File(
-                context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/$subDirectory/$title"
-            )
+            val directory = directory(type, title)
             if (directory.exists()) {
                 directory.deleteRecursively()
             }
@@ -348,22 +309,10 @@ class DownloadCompat {
 
         @Deprecated("external storage is deprecated, use SAF instead")
         fun removeDownloadCompat(context: Context, downloadedType: DownloadedType) {
-            val directory = if (downloadedType.type == MediaType.MANGA) {
-                File(
-                    context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                    "Dantotsu/Manga/${downloadedType.titleName}/${downloadedType.chapterName}"
-                )
-            } else if (downloadedType.type == MediaType.ANIME) {
-                File(
-                    context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                    "Dantotsu/Anime/${downloadedType.titleName}/${downloadedType.chapterName}"
-                )
-            } else {
-                File(
-                    context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                    "Dantotsu/Novel/${downloadedType.titleName}/${downloadedType.chapterName}"
-                )
-            }
+            val directory = File(
+                context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
+                "Dantotsu/${downloadedType.type.asText()}/${downloadedType.titleName}/${downloadedType.chapterName}"
+            )
 
             // Check if the directory exists and delete it recursively
             if (directory.exists()) {
@@ -375,7 +324,5 @@ class DownloadCompat {
                 }
             }
         }
-
-        private val animeLocation = "Dantotsu/Anime"
     }
 }

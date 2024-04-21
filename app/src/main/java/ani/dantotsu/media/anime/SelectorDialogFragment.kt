@@ -11,7 +11,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.TorrManager
 import ani.dantotsu.TorrManager.getPlayLink
+import ani.dantotsu.addons.download.DownloadAddonManager
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
@@ -58,8 +58,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 import java.text.DecimalFormat
-
 
 class SelectorDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSelectorBinding? = null
@@ -494,7 +495,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                 } else {
                     val downloadAddonManager: DownloadAddonManager = Injekt.get()
                     if (!downloadAddonManager.isAvailable()){
-                        toast("Download Extension not available")
+                        toast(getString(R.string.download_extension_not_available))
                         return@setSafeOnClickListener
                     }
                     val episode = media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!
@@ -530,10 +531,10 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                     )
                                     broadcastDownloadStarted(episode.number, activity)
                                 } else {
-                                    snackString("No Video Selected")
+                                    snackString(R.string.no_video_selected)
                                 }
                             }
-                            .setNegativeButton("Skip") { dialog, _ ->
+                            .setNegativeButton(R.string.skip) { dialog, _ ->
                                 subtitleToDownload = null
                                 if (selectedVideo != null) {
                                     Helper.startAnimeDownloadService(
@@ -547,11 +548,11 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                     )
                                     broadcastDownloadStarted(episode.number, activity)
                                 } else {
-                                    snackString("No Video Selected")
+                                    snackString(R.string.no_video_selected)
                                 }
                                 dialog.dismiss()
                             }
-                            .setNeutralButton("Cancel") { dialog, _ ->
+                            .setNeutralButton(R.string.cancel) { dialog, _ ->
                                 subtitleToDownload = null
                                 dialog.dismiss()
                             }
@@ -571,7 +572,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             )
                             broadcastDownloadStarted(episode.number, activity)
                         } else {
-                            snackString("No Video Selected")
+                            snackString(R.string.no_video_selected)
                         }
                     }
                 }

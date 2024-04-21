@@ -119,7 +119,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.backup_restore),
-                        desc = getString(R.string.backup_restore),
+                        desc = getString(R.string.backup_restore_desc),
                         icon = R.drawable.backup_restore,
                         onClick = {
                             StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
