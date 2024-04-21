@@ -90,8 +90,9 @@ object MatagiUpdater {
                 it.timeStamp()
             } ?: throw Exception("No Prerelease Found")
             val v = r.tagName
-            val (md, version) = (r.body
-                ?: "") to v.ifEmpty { throw Exception("Unexpected Tag : ${r.tagName}") }
+            val (_, version) = (r.body ?: "") to v.ifEmpty {
+                throw Exception("Unexpected Tag : ${r.tagName}")
+            }
 
             Logger.log("Release Hash : $version")
             val dontShow = PrefManager.getCustomVal("dont_ask_for_update_$version", false)

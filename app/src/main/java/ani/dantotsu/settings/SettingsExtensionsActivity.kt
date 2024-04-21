@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
@@ -25,6 +26,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.matagi.os.Version
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
@@ -346,8 +348,8 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             } else {
                                 extensionInstaller.set(BasePreferences.ExtensionInstaller.PACKAGEINSTALLER)
                             }
-                        }
-
+                        },
+                        isVisible = Version.isLowerThan(Build.VERSION_CODES.Q)
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
