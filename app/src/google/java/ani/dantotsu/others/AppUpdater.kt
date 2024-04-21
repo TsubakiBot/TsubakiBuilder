@@ -90,7 +90,7 @@ object AppUpdater {
                                         it.browserDownloadURL.endsWith("apk")
                                     }?.browserDownloadURL.apply {
                                         if (this != null) activity.downloadUpdate(version, this)
-                                        else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/v$version")
+                                        else openLinkInBrowser("https://github.com/$repo/releases/tag/$version")
                                     }
                             } catch (e: Exception) {
                                 logError(e)
@@ -136,8 +136,6 @@ object AppUpdater {
     //Blatantly kanged from https://github.com/LagradOst/CloudStream-3/blob/master/app/src/main/java/com/lagradost/cloudstream3/utils/InAppUpdater.kt
     private fun Activity.downloadUpdate(version: String, url: String): Boolean {
 
-        toast(getString(R.string.downloading_update, version))
-
         val downloadManager = this.getSystemService<DownloadManager>()!!
 
         val request = DownloadManager.Request(Uri.parse(url))
@@ -158,6 +156,7 @@ object AppUpdater {
             -1
         }
         if (id == -1L) return true
+        toast(getString(R.string.downloading_update, version))
         ContextCompat.registerReceiver(
             this,
             object : BroadcastReceiver() {
