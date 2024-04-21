@@ -55,6 +55,16 @@ object MatagiUpdater {
 
     private var buildHash: String? = null
     var hasUpdate = 0
+    @SuppressLint("DiscouragedApi")
+    val tokenRes = currContext().resources.getIdentifier(
+        "token", "raw", currContext().packageName
+    )
+    val headers = if (tokenRes != 0) {
+        val token = currContext().resources.openRawResource(tokenRes).bufferedReader().use {
+            it.readText()
+        }
+        mapOf("Authorization" to "Token $token")
+    } else emptyMap()
 
     private fun getUpdateDialog(activity: FragmentActivity, version: String): CustomBottomDialog {
         return CustomBottomDialog.newInstance().apply {
@@ -67,9 +77,11 @@ object MatagiUpdater {
 
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
         if (post) snackString(currContext().getString(R.string.checking_for_update))
-        val repo = activity.getString(R.string.repo)
+        val repo = if (tokenRes != 0)
+            activity.getString(R.string.token_repo)
+        else activity.getString(R.string.repo)
         tryWithSuspend {
-            val res = client.get("https://api.github.com/repos/$repo/releases")
+            val res = client.get("https://api.github.com/repos/$repo/releases", headers)
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
@@ -107,9 +119,11 @@ object MatagiUpdater {
 
     private suspend fun installUpdate(activity: FragmentActivity, version: String) =
         withContext(Dispatchers.IO) {
-            val repo = activity.getString(R.string.repo)
+            val repo = if (tokenRes != 0)
+                activity.getString(R.string.token_repo)
+            else activity.getString(R.string.repo)
             try {
-                client.get("https://api.github.com/repos/$repo/releases/tags/$version")
+                client.get("https://api.github.com/repos/$repo/releases/tags/$version", headers)
                     .parsed<GithubResponse>().assets?.find {
                         it.browserDownloadURL.contains(
                             "-${Build.SUPPORTED_ABIS.firstOrNull() ?: "universal"}-", true
@@ -203,6 +217,8 @@ object MatagiUpdater {
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
+            if (headers.isNotEmpty())
+                request.addRequestHeader(headers.keys.first(), headers.values.first())
 
         val id = try {
             downloadManager.enqueue(request)

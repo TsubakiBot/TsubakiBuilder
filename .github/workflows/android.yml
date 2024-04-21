@@ -60,6 +60,11 @@ jobs:
         GIT_HASH=$(git rev-parse --short HEAD)
         echo "GIT_HASH=${GIT_HASH}" >> $GITHUB_ENV
 
+    - name: Retrieve update token
+      run: |
+        mkdir app/src/main/res/raw
+        echo ${{ secrets.ORG_TOKEN }} > app/src/main/res/raw/token.api
+
     - uses: suisei-cn/actions-download-file@818d6b7dc8fe73f2f924b6241f2b1134ca1377d9 # 1.6.0
       id: downloadserver  # Remember to give an ID if you need the output filename
       name: Download server.aar

@@ -3,6 +3,7 @@
     <string name="app_name">Mr. Matagi</string>
 
     <string name="repo">RepoDevil/Mr.Matagi</string>
+    <string name="token_repo">RepoDevil/Himitsu</string>
 
     <string name="preference_file_key">dantotsuprefs</string>
 
