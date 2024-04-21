@@ -316,10 +316,10 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val rightMargin = if (resources.configuration.orientation ==
+        val rightMargin = if (newConfig.orientation ==
             Configuration.ORIENTATION_LANDSCAPE
         ) navBarHeight else 0
-        val bottomMargin = if (resources.configuration.orientation ==
+        val bottomMargin = if (newConfig.orientation ==
             Configuration.ORIENTATION_LANDSCAPE
         ) 0 else navBarHeight
         val params: ViewGroup.MarginLayoutParams =
