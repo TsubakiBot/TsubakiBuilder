@@ -257,6 +257,7 @@ class AnilistQueries {
                             media.anime.episodeDuration = fetchedMedia.duration
                             media.anime.season = fetchedMedia.season?.toString()
                             media.anime.seasonYear = fetchedMedia.seasonYear
+                            media.anime.totalEpisodes = fetchedMedia.episodes
 
                             fetchedMedia.studios?.nodes?.apply {
                                 if (isNotEmpty()) {
@@ -290,6 +291,7 @@ class AnilistQueries {
                                 }
                             }
                         } else if (media.manga != null) {
+                            media.manga.totalChapters = fetchedMedia.chapters
                             fetchedMedia.staff?.edges?.find { authorRoles.contains(it.role?.trim()) }?.node?.let {
                                 media.manga.author = Author(
                                     it.id,
@@ -310,7 +312,7 @@ class AnilistQueries {
                         else snackString(currContext().getString(R.string.what_did_you_open))
                     }
                 } else {
-                    if (currContext().let { isOnline(it) } == true) {
+                    if (isOnline(currContext())) {
                         snackString(currContext().getString(R.string.error_getting_data))
                     } else {
                     }
@@ -372,69 +374,11 @@ class AnilistQueries {
         return media
     }
 
-    suspend fun continueMedia(type: String, planned: Boolean = false): ArrayList<Media> {
-        val returnArray = arrayListOf<Media>()
-        val map = mutableMapOf<Int, Media>()
-        val query = if (planned) {
-            """{ planned: ${continueMediaQuery(type, "PLANNING")} }"""
-        } else {
-            """{ 
-                current: ${continueMediaQuery(type, "CURRENT")},
-                repeating: ${continueMediaQuery(type, "REPEATING")}
-            }"""
-        }
-
-        val response = executeQuery<Query.CombinedMediaListResponse>(query)
-        if (planned) {
-            response?.data?.planned?.lists?.forEach { li ->
-                li.entries?.reversed()?.forEach {
-                    val m = Media(it)
-                    m.cameFromContinue = true
-                    map[m.id] = m
-                }
-            }
-        } else {
-            response?.data?.current?.lists?.forEach { li ->
-                li.entries?.reversed()?.forEach {
-                    val m = Media(it)
-                    m.cameFromContinue = true
-                    map[m.id] = m
-                }
-            }
-            response?.data?.repeating?.lists?.forEach { li ->
-                li.entries?.reversed()?.forEach {
-                    val m = Media(it)
-                    m.cameFromContinue = true
-                    map[m.id] = m
-                }
-            }
-        }
-        if (type != "ANIME") {
-            returnArray.addAll(map.values)
-            return returnArray
-        }
-        @Suppress("UNCHECKED_CAST")
-        val list = PrefManager.getNullableCustomVal(
-            "continueAnimeList",
-            listOf<Int>(),
-            List::class.java
-        ) as List<Int>
-        if (list.isNotEmpty()) {
-            list.reversed().forEach {
-                if (map.containsKey(it)) returnArray.add(map[it]!!)
-            }
-            for (i in map) {
-                if (i.value !in returnArray) returnArray.add(i.value)
-            }
-        } else returnArray.addAll(map.values)
-        return returnArray
-    }
-
     private fun continueMediaQuery(type: String, status: String): String {
         return """ MediaListCollection(userId: ${Anilist.userid}, type: $type, status: $status , sort: UPDATED_TIME ) { lists { entries { progress private score(format:POINT_100) status media { id idMal type isAdult status chapters episodes nextAiringEpisode {episode} meanScore isFavourite format bannerImage coverImage{large} title { english romaji userPreferred } } } } } """
     }
 
-    suspend fun favMedia(anime: Boolean, id: Int? = Anilist.userid): ArrayList<Media> {
+    private suspend fun favMedia(anime: Boolean, id: Int? = Anilist.userid): ArrayList<Media> {
         var hasNextPage = true
         var page = 0
 
@@ -1643,7 +1587,7 @@ Page(page:$page,perPage:50) {
         return getUserProfile(id)
     }
 
-    suspend fun getUserId(username: String): Int? {
+    private suspend fun getUserId(username: String): Int? {
         return executeQuery<Query.User>(
             """{User(name:"$username"){id}}""",
             force = true

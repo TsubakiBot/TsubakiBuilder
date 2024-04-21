@@ -287,8 +287,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                         append(" / ")
                     }
                     bold { color(white) { append("${media.anime!!.totalEpisodes ?: "??"}") } }
-                } else
+                } else if (media.manga != null) {
                     bold { color(white) { append("${media.manga!!.totalChapters ?: "??"}") } }
+                }
             }
             binding.mediaTotal.text = text
         }
