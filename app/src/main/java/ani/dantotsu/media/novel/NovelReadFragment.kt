@@ -113,20 +113,28 @@ class NovelReadFragment : Fragment(),
                 )
             )
         ) {
-            val file = File(
-                context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "a/${media.mainName()}/${novel.name}/0.epub" //FIXME
-            )
-            if (!file.exists()) return false
-            val fileUri = FileProvider.getUriForFile(
-                requireContext(),
-                "${requireContext().packageName}.provider",
-                file
-            )
-            val intent = Intent(context, NovelReaderActivity::class.java).apply {
-                action = Intent.ACTION_VIEW
-                setDataAndType(fileUri, "application/epub+zip")
-                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            try {
+                val directory =
+                    DownloadsManager.getSubDirectory(
+                        context ?: currContext()!!,
+                        MediaType.NOVEL,
+                        false,
+                        media.mainName(),
+                        novel.name
+                    )
+                val file = directory?.findFile("0.epub")
+                if (file?.exists() == false) return false
+                val fileUri = file?.uri ?: return false
+                val intent = Intent(context, NovelReaderActivity::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                    setDataAndType(fileUri, "application/epub+zip")
+                    flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                }
+                startActivity(intent)
+                return true
+            } catch (e: Exception) {
+                Logger.log(e)
+                return false
             }
             startActivity(intent)
             return true

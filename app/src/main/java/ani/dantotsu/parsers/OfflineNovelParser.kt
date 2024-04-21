@@ -80,7 +80,7 @@ class OfflineNovelParser : NovelParser() {
             val cover =
                 currContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.absolutePath + "/Dantotsu/Novel/$title/cover.jpg"
             names.forEach {
-                returnList.add(ShowResponse(it, it, cover))
+                returnList.add(ShowResponse(it, query, cover))
             }
         }
         return returnList
