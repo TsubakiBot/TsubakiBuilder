@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="end|center"
             android:layout_marginEnd="12dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="6dp"
             android:orientation="vertical"
             tools:ignore="UseCompoundDrawables">
 
