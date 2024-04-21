@@ -66,6 +66,7 @@
         app:abb_indicatorAppearance="round"
         app:abb_indicatorLocation="top"
         app:abb_selectedTabType="text"
+        app:abb_textSize="10sp"
         app:abb_textAppearance="@style/NavBarText"
         app:itemActiveIndicatorStyle="@style/BottomNavBar"
         app:itemIconTint="@color/tab_layout_icon"

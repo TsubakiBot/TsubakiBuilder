@@ -430,6 +430,7 @@
         android:padding="0dp"
         app:abb_animationInterpolator="@anim/over_shoot"
         app:abb_selectedTabType="text"
+        app:abb_textSize="10sp"
         app:abb_textAppearance="@style/NavBarText"
         app:itemActiveIndicatorStyle="@style/BottomNavBar"
         app:itemIconTint="@color/tab_layout_icon"
