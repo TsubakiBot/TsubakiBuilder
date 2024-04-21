@@ -178,7 +178,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.enable_server),
-                        desc = "",
+                        desc = getString(R.string.enable_server_desc),
                         icon = R.drawable.ic_round_dns_24,
                         isChecked = PrefManager.getVal(PrefName.TorrServerEnabled),
                         switch = { isChecked, _ ->

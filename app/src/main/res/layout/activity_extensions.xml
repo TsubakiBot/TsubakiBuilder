@@ -40,7 +40,7 @@
             android:fontFamily="@font/poppins_bold"
             android:gravity="center_vertical"
             android:text="@string/extensions"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorOnBackground"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -94,7 +94,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:layout_weight="1"
-        android:visibility="gone"></FrameLayout>
+        android:visibility="gone" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchView"

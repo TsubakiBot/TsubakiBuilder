@@ -173,6 +173,7 @@
     <string name="torrent_running">Server is running…</string>
     <string name="settings_torrent">Internal TorrServer</string>
     <string name="enable_server">Enable TorrServer</string>
+    <string name="enable_server_desc">Enables on-demand use of a local server</string>
     <string name="torrent_port">Server port number</string>
     <string name="torrents">torrents</string>
     <string name="active_torrents">Active torrents</string>
@@ -1003,7 +1004,6 @@
     <string name="reply">Reply</string>
     <string name="time">Time</string>
 
-    <string name="enable_torrent_desc">Enables on-demand use of a local torrent server</string>
     <string name="player_settings_desc">All the player related settings</string>
     <string name="purge_anime_downloads_desc">Delete all downloaded Anime</string>
     <string name="prefer_dub_desc">Select dubbed media by default</string>
@@ -1038,7 +1038,6 @@
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
 
-    <string name="enable_torrent">Enable torrent</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
     <string name="no_video_selected">No Video Selected</string>

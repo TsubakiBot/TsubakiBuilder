@@ -64,23 +64,28 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end|center"
             android:layout_marginEnd="12dp"
+            android:layout_marginVertical="8dp"
             android:orientation="vertical"
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/activityLike"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_round_favorite_24"
                 tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/activityLikeCount"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:textSize="15sp"
