@@ -1,4 +1,4 @@
-package ani.dantotsu.others.dialog
+package ani.dantotsu.view.dialog
 
 import android.content.res.Configuration
 import android.view.View

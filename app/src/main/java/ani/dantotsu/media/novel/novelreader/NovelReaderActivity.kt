@@ -32,7 +32,7 @@ import ani.dantotsu.R
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityNovelReaderBinding
 import ani.dantotsu.hideSystemBars
-import ani.dantotsu.others.dialog.ImageViewDialog
+import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.CurrentNovelReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings

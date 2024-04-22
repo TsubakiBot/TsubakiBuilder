@@ -24,7 +24,7 @@ import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.others.dialog.ImageViewDialog
+import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

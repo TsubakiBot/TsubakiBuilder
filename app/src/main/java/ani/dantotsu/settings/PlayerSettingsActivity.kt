@@ -19,7 +19,7 @@ import ani.dantotsu.databinding.ActivityPlayerSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.others.widget.Xpandable
+import ani.dantotsu.view.Xpandable
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager

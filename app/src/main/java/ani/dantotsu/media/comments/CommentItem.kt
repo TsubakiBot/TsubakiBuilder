@@ -15,7 +15,7 @@ import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ItemCommentsBinding
 import ani.dantotsu.loadImage
-import ani.dantotsu.others.dialog.ImageViewDialog
+import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString

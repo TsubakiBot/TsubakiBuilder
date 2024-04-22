@@ -49,7 +49,7 @@ import ani.dantotsu.home.NoInternet
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
-import ani.dantotsu.others.dialog.CustomBottomDialog
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity

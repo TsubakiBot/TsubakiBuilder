@@ -15,7 +15,7 @@ import ani.dantotsu.databinding.ActivitySettingsAboutBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.others.dialog.CustomBottomDialog
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import ani.dantotsu.pop
 import ani.dantotsu.settings.fragment.DevelopersDialogFragment
 import ani.dantotsu.settings.fragment.ForksDialogFragment

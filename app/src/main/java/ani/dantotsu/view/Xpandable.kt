@@ -1,4 +1,4 @@
-package ani.dantotsu.others.widget
+package ani.dantotsu.view
 
 import android.animation.ObjectAnimator
 import android.content.Context

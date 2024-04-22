@@ -19,7 +19,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.BottomSheetSearchFilterBinding
 import ani.dantotsu.databinding.ItemChipBinding
-import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

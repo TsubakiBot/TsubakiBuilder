@@ -25,7 +25,7 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <ani.dantotsu.others.FadingEdgeRecyclerView
+    <ani.dantotsu.view.FadingEdgeRecyclerView
         android:id="@+id/usersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

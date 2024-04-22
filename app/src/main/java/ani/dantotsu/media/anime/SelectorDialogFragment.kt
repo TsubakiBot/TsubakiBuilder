@@ -38,7 +38,7 @@ import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.Download.download
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video

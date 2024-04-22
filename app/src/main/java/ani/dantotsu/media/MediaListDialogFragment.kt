@@ -19,7 +19,7 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.BottomSheetMediaListBinding
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWith
 import com.google.android.material.materialswitch.MaterialSwitch

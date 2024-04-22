@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.BottomSheetBookBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaDetailsViewModel
-import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.ShowResponse
 import kotlinx.coroutines.Dispatchers

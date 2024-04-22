@@ -10,7 +10,7 @@ import android.webkit.WebViewClient
 import ani.dantotsu.FileUrl
 import ani.dantotsu.databinding.BottomSheetWebviewBinding
 import ani.dantotsu.defaultHeaders
-import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.network.NetworkHelper
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get

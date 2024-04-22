@@ -141,7 +141,7 @@
 
         </LinearLayout>
 
-        <ani.dantotsu.others.FadingEdgeRecyclerView
+        <ani.dantotsu.view.FadingEdgeRecyclerView
             android:id="@+id/settingsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
