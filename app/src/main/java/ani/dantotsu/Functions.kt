@@ -745,6 +745,24 @@ fun openLinkInYouTube(link: String?) {
     }
 }
 
+fun openInGooglePlay(packageName: String) {
+    try {
+        currContext().startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("market://details?id=$packageName")
+            )
+        )
+    } catch (e: ActivityNotFoundException) {
+        currContext().startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+            )
+        )
+    }
+}
+
 fun saveImageToDownloads(title: String, bitmap: Bitmap, context: Activity) {
     FileProvider.getUriForFile(
         context,

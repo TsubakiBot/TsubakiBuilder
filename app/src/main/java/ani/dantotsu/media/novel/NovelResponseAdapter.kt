@@ -1,5 +1,7 @@
 package ani.dantotsu.media.novel
 
+import android.content.Intent
+import android.net.Uri
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemNovelResponseBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.novel.novelreader.NovelReaderActivity
 import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
@@ -70,7 +73,6 @@ class NovelResponseAdapter(
         binding.itemEpisodeDesc.text = desc ?: ""
 
         binding.root.setOnClickListener {
-            //make sure the file is not downloading
             if (activeDownloads.contains(novel.link)) {
                 return@setOnClickListener
             }
@@ -90,6 +92,12 @@ class NovelResponseAdapter(
                             novel.link
                         )
                     )
+//                    val intent = Intent(binding.root.context, NovelReaderActivity::class.java).apply {
+//                        action = Intent.ACTION_VIEW
+//                        setDataAndType(Uri.parse(link), "application/epub+zip")
+//                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+//                    }
+//                    binding.root.context.startActivity(intent)
                     bookDialog.dismiss()
                 }
             })

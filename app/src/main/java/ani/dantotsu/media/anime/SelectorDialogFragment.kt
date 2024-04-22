@@ -38,6 +38,7 @@ import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.openInGooglePlay
 import ani.dantotsu.others.Download.download
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
@@ -254,22 +255,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         try {
             startActivity(exportMagnetIntent(episode, video))
         } catch (e: ActivityNotFoundException) {
-            val amnis = "com.amnis"
-            try {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$amnis")
-                    )
-                )
-            } catch (e: ActivityNotFoundException) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=$amnis")
-                    )
-                )
-            }
+            openInGooglePlay("com.amnis")
         }
     }
 

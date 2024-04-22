@@ -3,10 +3,8 @@ package ani.dantotsu.media.novel.novelreader
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Base64
@@ -34,6 +32,7 @@ import ani.dantotsu.R
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityMangaReaderBinding
 import ani.dantotsu.hideSystemBars
+import ani.dantotsu.openInGooglePlay
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.CurrentNovelReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings
@@ -45,6 +44,8 @@ import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.google.android.material.slider.Slider
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.vipulog.ebookreader.Book
 import com.vipulog.ebookreader.EbookReaderEventListener
 import com.vipulog.ebookreader.ReaderError
@@ -157,21 +158,17 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
         val firstVersion = webViewVersion?.split(".")?.firstOrNull()?.toIntOrNull()
         if (webViewVersion == null || firstVersion == null || firstVersion < 87) {
             val text = if (webViewVersion == null) {
-                "Could not find webView installed"
+                getString(R.string.webview_not_found)
             } else if (firstVersion == null) {
-                "Could not find WebView Version Number: $webViewVersion"
-            } else if (firstVersion < 87) { //false positive?
-                "Webview Versiom: $firstVersion. PLease update"
+                getString(R.string.webview_not_found_version, webViewVersion)
+            } else if (firstVersion < 87) { // false positive?
+                getString(R.string.update_webview_version, firstVersion)
             } else {
-                "Please update WebView from PlayStore"
+                getString(R.string.update_webview)
             }
             Toast.makeText(this, text, Toast.LENGTH_LONG).show()
-            //open playstore
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data =
-                Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.webview")
-            startActivity(intent)
-            //stop reader
+
+            openInGooglePlay("com.google.android.webview")
             finish()
             return
         }
@@ -236,19 +233,23 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
     }
 
     private fun setupBackPressedHandler() {
-        var lastBackPressedTime: Long = 0
-        val doublePressInterval: Long = 2000
-
+        var doubleBackToExitPressedOnce = false
         onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (binding.bookReader.canGoBack()) {
                     binding.bookReader.goBack()
                 } else {
-                    if (lastBackPressedTime + doublePressInterval > System.currentTimeMillis()) {
+                    if (doubleBackToExitPressedOnce) {
                         finish()
-                    } else {
-                        snackString("Press back again to exit")
-                        lastBackPressedTime = System.currentTimeMillis()
+                    }
+                    doubleBackToExitPressedOnce = true
+                    snackString(this@NovelReaderActivity.getString(R.string.back_to_exit)).apply {
+                        this?.addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
+                            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                                super.onDismissed(transientBottomBar, event)
+                                doubleBackToExitPressedOnce = false
+                            }
+                        })
                     }
                 }
             }

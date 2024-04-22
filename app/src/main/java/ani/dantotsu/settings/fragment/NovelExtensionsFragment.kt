@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
+import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.InstallerSteps
@@ -27,7 +27,7 @@ import uy.kohesive.injekt.api.get
 
 class NovelExtensionsFragment : Fragment(),
     SearchQueryHandler, OnNovelInstallClickListener {
-    private var _binding: FragmentNovelExtensionsBinding? = null
+    private var _binding: FragmentExtensionsBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: NovelExtensionsViewModel by viewModels {
@@ -45,12 +45,12 @@ class NovelExtensionsFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNovelExtensionsBinding.inflate(inflater, container, false)
+        _binding = FragmentExtensionsBinding.inflate(inflater, container, false)
 
-        binding.allNovelExtensionsRecyclerView.isNestedScrollingEnabled = false
-        binding.allNovelExtensionsRecyclerView.adapter = adapter
-        binding.allNovelExtensionsRecyclerView.layoutManager = LinearLayoutManager(context)
-        (binding.allNovelExtensionsRecyclerView.layoutManager as LinearLayoutManager).isItemPrefetchEnabled =
+        binding.allExtensionsRecyclerView.isNestedScrollingEnabled = false
+        binding.allExtensionsRecyclerView.adapter = adapter
+        binding.allExtensionsRecyclerView.layoutManager = LinearLayoutManager(context)
+        (binding.allExtensionsRecyclerView.layoutManager as LinearLayoutManager).isItemPrefetchEnabled =
             true
 
         lifecycleScope.launch {

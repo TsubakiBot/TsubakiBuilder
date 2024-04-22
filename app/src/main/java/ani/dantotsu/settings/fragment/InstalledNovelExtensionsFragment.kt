@@ -18,8 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.databinding.FragmentNovelExtensionsBinding
-import ani.himitsu.extension.SourceDialogFragment
+import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtension
@@ -29,6 +28,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import ani.himitsu.extension.SourceDialogFragment
 import eu.kanade.tachiyomi.data.notification.Notifications
 import kotlinx.coroutines.launch
 import rx.android.schedulers.AndroidSchedulers
@@ -38,7 +38,7 @@ import java.util.Collections
 import java.util.Locale
 
 class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
-    private var _binding: FragmentNovelExtensionsBinding? = null
+    private var _binding: FragmentExtensionsBinding? = null
     private val binding get() = _binding!!
     private lateinit var extensionsRecyclerView: RecyclerView
     private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
@@ -114,9 +114,9 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNovelExtensionsBinding.inflate(inflater, container, false)
+        _binding = FragmentExtensionsBinding.inflate(inflater, container, false)
 
-        extensionsRecyclerView = binding.allNovelExtensionsRecyclerView
+        extensionsRecyclerView = binding.allExtensionsRecyclerView
         extensionsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         extensionsRecyclerView.adapter = extensionsAdapter
 

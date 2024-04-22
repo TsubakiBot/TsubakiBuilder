@@ -9,7 +9,7 @@ abstract class NovelParser : BaseParser() {
 
     abstract suspend fun loadBook(link: String, extra: Map<String, String>?): Book
 
-    fun List<ShowResponse>.sortByVolume(query: String): List<ShowResponse> {
+    private fun List<ShowResponse>.sortByVolume(query: String): List<ShowResponse> {
         val sorted = groupBy { res ->
             val match = volumeRegex.find(res.name)?.groupValues
                 ?.firstOrNull { it.isNotEmpty() }
