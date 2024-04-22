@@ -115,6 +115,5 @@ class AddonDownloader {
             val curr = toDouble(oldVersion.split("."))
             return new > curr
         }
-
     }
 }

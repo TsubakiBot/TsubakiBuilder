@@ -311,15 +311,12 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
         super.onConfigurationChanged(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
-            recreate()
         }
     }
 
-    override fun onResume() {
-        if (this::navBar.isInitialized) {
-            navBar.selectTabAt(selected)
-        }
-        super.onResume()
+    override fun onRestart() {
+        super.onRestart()
+        if (this::navBar.isInitialized) navBar.selectTabAt(selected)
     }
 
     private class ViewPagerAdapter(

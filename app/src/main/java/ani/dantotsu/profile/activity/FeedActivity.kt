@@ -85,13 +85,12 @@ class FeedActivity : AppCompatActivity() {
         )
         navBar.apply {
             updateMargins(newConfig.orientation)
-            recreate()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        navBar.selectTabAt(selected)
+    override fun onRestart() {
+        super.onRestart()
+        if (this::navBar.isInitialized) navBar.selectTabAt(selected)
     }
 
     private class ViewPagerAdapter(

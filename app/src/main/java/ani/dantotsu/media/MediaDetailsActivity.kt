@@ -427,13 +427,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         super.onConfigurationChanged(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
-            recreate()
         }
     }
 
-    override fun onResume() {
-        navBar.selectTabAt(selected)
-        super.onResume()
+    override fun onRestart() {
+        super.onRestart()
+        if (this::navBar.isInitialized) navBar.selectTabAt(selected)
     }
 
     private enum class SupportedMedia {
