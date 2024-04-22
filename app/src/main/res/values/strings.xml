@@ -1042,4 +1042,6 @@
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
     <string name="no_video_selected">No Video Selected</string>
     <string name="download_extension_not_available">Download Extension not available</string>
+    <string name="feed">Feed</string>
+    <string name="profile">Profile</string>
 </resources>

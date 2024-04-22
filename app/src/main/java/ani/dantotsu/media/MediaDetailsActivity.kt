@@ -425,7 +425,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        navBar.updateMargins(newConfig.orientation)
+        navBar.apply {
+            updateMargins(newConfig.orientation)
+            recreate()
+        }
     }
 
     override fun onResume() {
