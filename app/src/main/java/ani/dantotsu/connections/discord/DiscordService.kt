@@ -60,7 +60,7 @@ class DiscordService : Service() {
         log("Service onCreate()")
         val powerManager = baseContext.getSystemService(Context.POWER_SERVICE) as PowerManager
         wakeLock = powerManager.newWakeLock(
-            PowerManager.PARTIAL_WAKE_LOCK,
+            PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK,
             "discordRPC:backgroundPresence"
         )
         wakeLock.acquire(30 * 60 * 1000L /*30 minutes*/)
@@ -119,6 +119,7 @@ class DiscordService : Service() {
 
     override fun onDestroy() {
         log("Service Destroyed")
+        wakeLock.release()
         if (DiscordServiceRunningSingleton.running) {
             log("Accidental Service Destruction, restarting service")
             val intent = Intent(baseContext, DiscordService::class.java)
@@ -128,7 +129,7 @@ class DiscordService : Service() {
                 baseContext.startService(intent)
             }
         } else {
-            if (this::webSocket.isInitialized)
+            if (this::webSocket.isInitialized) {
                 setPresence(
                     json.encodeToString(
                         Presence.Response(
@@ -137,7 +138,7 @@ class DiscordService : Service() {
                         )
                     )
                 )
-            wakeLock.release()
+            }
         }
         SERVICE_RUNNING = false
         client = OkHttpClient()
