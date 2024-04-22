@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.BottomSheetUsersBinding
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 
 
 class UsersDialogFragment : BottomSheetDialogFragment() {

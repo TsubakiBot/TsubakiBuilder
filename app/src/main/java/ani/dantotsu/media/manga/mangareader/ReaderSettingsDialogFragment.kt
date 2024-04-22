@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetCurrentReaderSettingsBinding
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.CurrentReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings.Directions
 

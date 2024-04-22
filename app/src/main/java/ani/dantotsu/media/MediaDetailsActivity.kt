@@ -46,7 +46,7 @@ import ani.dantotsu.media.novel.NovelReadFragment
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.AndroidBug5497Workaround
-import ani.dantotsu.others.ImageViewDialog
+import ani.dantotsu.others.dialog.ImageViewDialog
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

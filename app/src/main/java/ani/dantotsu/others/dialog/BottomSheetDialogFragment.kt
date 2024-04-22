@@ -1,7 +1,6 @@
-package ani.dantotsu.others
+package ani.dantotsu.others.dialog
 
 import android.content.res.Configuration
-import android.util.TypedValue
 import android.view.View
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat

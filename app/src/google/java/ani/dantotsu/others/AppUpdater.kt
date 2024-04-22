@@ -21,6 +21,7 @@ import ani.dantotsu.client
 import ani.dantotsu.currContext
 import ani.dantotsu.logError
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.others.dialog.CustomBottomDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
 import ani.dantotsu.toast

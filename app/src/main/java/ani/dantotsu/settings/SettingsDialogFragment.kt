@@ -28,7 +28,7 @@ import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
 import ani.himitsu.extension.SourceDialogFragment
 import ani.dantotsu.offline.OfflineFragment
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity

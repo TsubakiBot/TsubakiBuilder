@@ -47,7 +47,7 @@ class AnimeSourcePreferencesFragment : PreferenceFragmentCompat() {
         onCloseAction?.invoke()
     }
 
-    fun populateAnimePreferenceScreen(): PreferenceScreen {
+    private fun populateAnimePreferenceScreen(): PreferenceScreen {
         val sourceId = requireArguments().getLong(SOURCE_ID)
         val source = Injekt.get<AnimeSourceManager>().get(sourceId) as? ConfigurableAnimeSource
             ?: error("Source with id: $sourceId not found!")

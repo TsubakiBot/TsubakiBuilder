@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.app.AlertDialog
 import android.app.NotificationManager
@@ -27,6 +27,8 @@ import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.himitsu.extension.SourceDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.AnimeSources
+import ani.dantotsu.settings.ExtensionsActivity
+import ani.dantotsu.settings.SearchQueryHandler
 import ani.dantotsu.settings.extensionprefs.AnimeSourcePreferencesFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

@@ -93,7 +93,7 @@ import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
-import ani.dantotsu.others.CustomBottomDialog
+import ani.dantotsu.others.dialog.CustomBottomDialog
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.settings.saving.PrefManager

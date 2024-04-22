@@ -1,4 +1,4 @@
-package ani.dantotsu.others
+package ani.dantotsu.others.widget
 
 import android.content.Context
 import android.util.AttributeSet

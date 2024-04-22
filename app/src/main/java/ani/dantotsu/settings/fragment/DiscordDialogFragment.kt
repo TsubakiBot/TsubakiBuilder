@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetDiscordRpcBinding
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 

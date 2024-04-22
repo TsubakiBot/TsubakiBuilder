@@ -31,7 +31,7 @@ class MangaSourcePreferencesFragment : PreferenceFragmentCompat() {
 
     }
 
-    fun populateMangaPreferenceScreen(): PreferenceScreen {
+    private fun populateMangaPreferenceScreen(): PreferenceScreen {
         val sourceId = requireArguments().getLong(SOURCE_ID)
         val source = Injekt.get<MangaSourceManager>().get(sourceId)!!
         check(source is ConfigurableSource)

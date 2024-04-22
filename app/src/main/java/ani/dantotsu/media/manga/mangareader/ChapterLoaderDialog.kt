@@ -3,7 +3,6 @@ package ani.dantotsu.media.manga.mangareader
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.manga.MangaChapter
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.tryWith
 import eu.kanade.tachiyomi.util.system.getThemeColor

@@ -1,4 +1,4 @@
-package ani.dantotsu.others
+package ani.dantotsu.others.dialog
 
 import android.graphics.Color
 import android.os.Bundle

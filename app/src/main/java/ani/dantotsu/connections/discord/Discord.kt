@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.TextView
 import ani.dantotsu.R
-import ani.dantotsu.others.CustomBottomDialog
+import ani.dantotsu.others.dialog.CustomBottomDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast

@@ -1,15 +1,17 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.connections.github.Contributors
+import ani.dantotsu.R
+import ani.dantotsu.connections.github.Forks
 import ani.dantotsu.databinding.BottomSheetDevelopersBinding
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
+import ani.dantotsu.settings.DevelopersAdapter
 
-class DevelopersDialogFragment : BottomSheetDialogFragment() {
+class ForksDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetDevelopersBinding? = null
     private val binding get() = _binding!!
 
@@ -24,7 +26,8 @@ class DevelopersDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.devsRecyclerView.adapter = DevelopersAdapter(Contributors().getContributors())
+        binding.devsTitle.setText(R.string.forks)
+        binding.devsRecyclerView.adapter = DevelopersAdapter(Forks().getForks())
         binding.devsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 

@@ -1,4 +1,4 @@
-package ani.dantotsu.others
+package ani.dantotsu.others.dialog
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -15,6 +15,7 @@ import ani.dantotsu.media.manga.mangareader.BaseImageAdapter.Companion.loadBitma
 import ani.dantotsu.media.manga.mangareader.BaseImageAdapter.Companion.loadBitmapOld
 import ani.dantotsu.media.manga.mangareader.BaseImageAdapter.Companion.mergeBitmap
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.others.getSerialized
 import ani.dantotsu.saveImageToDownloads
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.shareImage

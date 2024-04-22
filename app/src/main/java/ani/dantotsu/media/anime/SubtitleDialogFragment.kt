@@ -14,7 +14,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
 import ani.dantotsu.media.MediaDetailsViewModel
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
 import eu.kanade.tachiyomi.util.system.getThemeColor

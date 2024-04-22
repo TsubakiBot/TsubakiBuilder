@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.LanguageMapper.getLanguageItem
 import eu.kanade.tachiyomi.util.system.getThemeColor
 

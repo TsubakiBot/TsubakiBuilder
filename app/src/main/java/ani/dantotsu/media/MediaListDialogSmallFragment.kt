@@ -16,7 +16,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.BottomSheetMediaListSmallBinding
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.snackString
 import kotlinx.coroutines.Dispatchers

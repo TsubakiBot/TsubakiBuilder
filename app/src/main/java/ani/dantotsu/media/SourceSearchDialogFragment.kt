@@ -16,7 +16,7 @@ import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
 import ani.dantotsu.media.anime.AnimeSourceAdapter
 import ani.dantotsu.media.manga.MangaSourceAdapter
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.others.BottomSheetDialogFragment
+import ani.dantotsu.others.dialog.BottomSheetDialogFragment
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.HAnimeSources
 import ani.dantotsu.parsers.HMangaSources

@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.app.NotificationManager
 import android.content.Context
@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.FragmentExtensionsBinding
+import ani.dantotsu.settings.InstallerSteps
+import ani.dantotsu.settings.SearchQueryHandler
 import ani.dantotsu.settings.paging.AnimeExtensionAdapter
 import ani.dantotsu.settings.paging.AnimeExtensionsViewModel
 import ani.dantotsu.settings.paging.AnimeExtensionsViewModelFactory

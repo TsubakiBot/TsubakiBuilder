@@ -29,6 +29,12 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.novel.NovelExtensionManager
+import ani.dantotsu.settings.fragment.AnimeExtensionsFragment
+import ani.dantotsu.settings.fragment.InstalledAnimeExtensionsFragment
+import ani.dantotsu.settings.fragment.InstalledMangaExtensionsFragment
+import ani.dantotsu.settings.fragment.InstalledNovelExtensionsFragment
+import ani.dantotsu.settings.fragment.MangaExtensionsFragment
+import ani.dantotsu.settings.fragment.NovelExtensionsFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight

@@ -20,7 +20,8 @@ import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.others.CustomBottomDialog
+import ani.dantotsu.others.dialog.CustomBottomDialog
+import ani.dantotsu.settings.fragment.DiscordDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
