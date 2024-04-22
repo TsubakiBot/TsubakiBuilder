@@ -79,7 +79,6 @@
                 tools:visibility="visible" />
         </LinearLayout>
 
-
         <ProgressBar
             android:id="@+id/studioProgressBar"
             style="?android:attr/progressBarStyle"

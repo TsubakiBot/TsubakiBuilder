@@ -8,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.BottomSheetBookBinding
-import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.ShowResponse
@@ -60,8 +59,6 @@ class BookDialog : BottomSheetDialogFragment() {
         viewModel.book.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.itemBookTitle.text = it.name
-                binding.itemBookDesc.text = it.description
-                binding.itemBookImage.loadImage(it.img)
                 binding.bookRecyclerView.adapter = UrlAdapter(it.links, it, novelName, callback)
             }
         }

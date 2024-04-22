@@ -236,7 +236,7 @@ class NovelReadFragment : Fragment(),
                         this,
                         this,
                         this
-                    )  // probably a better way to do this but it works
+                    )  // probably a better way to do this b̶u̶t̶ i̶t̶ w̶o̶r̶k̶s̶
                     binding.animeSourceRecycler.adapter =
                         ConcatAdapter(headerAdapter, novelResponseAdapter)
                     loaded = true

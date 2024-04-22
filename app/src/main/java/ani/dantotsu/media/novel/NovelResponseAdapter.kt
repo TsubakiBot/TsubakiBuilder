@@ -17,7 +17,7 @@ import ani.dantotsu.util.Logger
 class NovelResponseAdapter(
     val fragment: NovelReadFragment,
     val downloadTriggerCallback: DownloadTriggerCallback,
-    val downloadedCheckCallback: DownloadedCheckCallback
+    private val downloadedCheckCallback: DownloadedCheckCallback
 ) : RecyclerView.Adapter<NovelResponseAdapter.ViewHolder>() {
     val list: MutableList<ShowResponse> = mutableListOf()
 

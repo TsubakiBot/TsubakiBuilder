@@ -69,11 +69,11 @@ class CommentItem(
             val levelColor = getAvatarColor(comment.totalVotes, backgroundColor)
             markwon.setMarkdown(commentText, comment.content)
             commentEdit.visibility = if (isUserComment) View.VISIBLE else View.GONE
-            if (comment.tag == null) {
-                commentUserTagLayout.visibility = View.GONE
-            } else {
+            comment.tag?.let {
+                commentUserTag.text = it.toString()
                 commentUserTagLayout.visibility = View.VISIBLE
-                commentUserTag.text = comment.tag.toString()
+            } ?: {
+                commentUserTagLayout.visibility = View.GONE
             }
             replying(isReplying) //sets default text
             editing(isEditing)
@@ -147,72 +147,74 @@ class CommentItem(
             adminBadge.visibility =
                 if (comment.isAdmin == true) View.VISIBLE else View.GONE
             commentInfo.setOnClickListener {
-                val popup = PopupMenu(commentsFragment.requireContext(), commentInfo)
-                popup.menuInflater.inflate(R.menu.profile_details_menu, popup.menu)
-                popup.menu.findItem(R.id.commentDelete)?.isVisible =
-                    isUserComment || CommentsAPI.isAdmin || CommentsAPI.isMod
-                popup.menu.findItem(R.id.commentBanUser)?.isVisible =
-                    (CommentsAPI.isAdmin || CommentsAPI.isMod) && !isUserComment
-                popup.menu.findItem(R.id.commentReport)?.isVisible = !isUserComment
-                popup.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.commentReport -> {
-                            dialogBuilder(
-                                getString(R.string.report_comment),
-                                getString(R.string.report_comment_confirm)
-                            ) {
-                                CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
-                                    val success = CommentsAPI.reportComment(
-                                        comment.commentId,
-                                        comment.username,
-                                        commentsFragment.mediaName,
-                                        comment.userId
-                                    )
-                                    if (success) {
-                                        snackString(R.string.comment_reported)
+                PopupMenu(commentsFragment.requireContext(), commentInfo).apply {
+                    menuInflater.inflate(R.menu.profile_details_menu, menu)
+                    menu.findItem(R.id.commentDelete)?.isVisible =
+                        isUserComment || CommentsAPI.isAdmin || CommentsAPI.isMod
+                    menu.findItem(R.id.commentBanUser)?.isVisible =
+                        (CommentsAPI.isAdmin || CommentsAPI.isMod) && !isUserComment
+                    menu.findItem(R.id.commentReport)?.isVisible = !isUserComment
+
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.commentReport -> {
+                                dialogBuilder(
+                                    getString(R.string.report_comment),
+                                    getString(R.string.report_comment_confirm)
+                                ) {
+                                    CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
+                                        val success = CommentsAPI.reportComment(
+                                            comment.commentId,
+                                            comment.username,
+                                            commentsFragment.mediaName,
+                                            comment.userId
+                                        )
+                                        if (success) {
+                                            snackString(R.string.comment_reported)
+                                        }
                                     }
                                 }
+                                true
                             }
-                            true
-                        }
 
-                        R.id.commentDelete -> {
-                            dialogBuilder(
-                                getString(R.string.delete_comment),
-                                getString(R.string.delete_comment_confirm)
-                            ) {
-                                CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
-                                    val success = CommentsAPI.deleteComment(comment.commentId)
-                                    if (success) {
-                                        snackString(R.string.comment_deleted)
-                                        parentSection.remove(this@CommentItem)
+                            R.id.commentDelete -> {
+                                dialogBuilder(
+                                    getString(R.string.delete_comment),
+                                    getString(R.string.delete_comment_confirm)
+                                ) {
+                                    CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
+                                        val success = CommentsAPI.deleteComment(comment.commentId)
+                                        if (success) {
+                                            snackString(R.string.comment_deleted)
+                                            parentSection.remove(this@CommentItem)
+                                        }
                                     }
                                 }
+                                true
                             }
-                            true
-                        }
 
-                        R.id.commentBanUser -> {
-                            dialogBuilder(
-                                getString(R.string.ban_user),
-                                getString(R.string.ban_user_confirm)
-                            ) {
-                                CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
-                                    val success = CommentsAPI.banUser(comment.userId)
-                                    if (success) {
-                                        snackString(R.string.user_banned)
+                            R.id.commentBanUser -> {
+                                dialogBuilder(
+                                    getString(R.string.ban_user),
+                                    getString(R.string.ban_user_confirm)
+                                ) {
+                                    CoroutineScope(Dispatchers.Main + SupervisorJob()).launch {
+                                        val success = CommentsAPI.banUser(comment.userId)
+                                        if (success) {
+                                            snackString(R.string.user_banned)
+                                        }
                                     }
                                 }
+                                true
                             }
-                            true
-                        }
 
-                        else -> {
-                            false
+                            else -> {
+                                false
+                            }
                         }
                     }
+                    show()
                 }
-                popup.show()
             }
             //fill the icon if the user has liked the comment
             setVoteButtons(viewBinding)
