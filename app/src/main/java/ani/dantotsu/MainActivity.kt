@@ -172,18 +172,9 @@ class MainActivity : AppCompatActivity() {
         }
         bottomNavBar.background = ContextCompat.getDrawable(this, R.drawable.bottom_nav_gray)
 
-        val offset = try {
-            val statusBarHeightId = resources.getIdentifier("status_bar_height", "dimen", "android")
-            resources.getDimensionPixelSize(statusBarHeightId)
-        } catch (e: Exception) {
-            statusBarHeight
-        }
         initActivity(this)
-        binding.includedNavbar.navbarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = navBarHeight
-        }
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
-        layoutParams.topMargin = 11 * offset / 12
+        layoutParams.topMargin = statusBarHeight
         binding.incognito.layoutParams = layoutParams
         incognitoLiveData = PrefManager.getLiveVal(
             PrefName.Incognito,

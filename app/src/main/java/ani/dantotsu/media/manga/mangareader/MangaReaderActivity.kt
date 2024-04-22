@@ -189,7 +189,11 @@ class MangaReaderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
-        binding = ActivityMangaReaderBinding.inflate(layoutInflater)
+        binding = ActivityMangaReaderBinding.inflate(layoutInflater).apply {
+            mangaReaderSlider.stepSize = 1.0f
+            mangaReaderSlider.valueFrom = 1.0f
+            mangaReaderSlider.valueTo = 100.0f
+        }
         setContentView(binding.root)
 
         defaultSettings = loadReaderSettings("reader_settings") ?: defaultSettings

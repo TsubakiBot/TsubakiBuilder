@@ -186,14 +186,14 @@ class NovelDownloaderService : Service() {
 
                 networkHelper.client.newCall(request).execute().use { response ->
                     val contentType = response.headers("Content-Type")
-                    val contentDisposition = response.header("Content-Disposition")
+                    val contentDisposition = response.headers("Content-Disposition")
 
                     Logger.log("Content-Type: ${contentType.toTypedArray()}")
                     Logger.log("Content-Disposition: $contentDisposition")
 
                     // Return true if the Content-Type or Content-Disposition indicates an EPUB file
                     contentType.contains("application/epub+zip") ||
-                            (contentDisposition?.contains("epub") == true)
+                            (contentDisposition.contains(".epub") == true)
                 }
             } catch (e: Exception) {
                 Logger.log("Error checking file type: ${e.message}")
