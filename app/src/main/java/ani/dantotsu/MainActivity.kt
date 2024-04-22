@@ -220,17 +220,22 @@ class MainActivity : AppCompatActivity() {
 
         var doubleBackToExitPressedOnce = false
         onBackPressedDispatcher.addCallback(this) {
-            if (doubleBackToExitPressedOnce) {
-                finish()
-            }
-            doubleBackToExitPressedOnce = true
-            snackString(this@MainActivity.getString(R.string.back_to_exit)).apply {
-                this?.addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
-                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                        super.onDismissed(transientBottomBar, event)
-                        doubleBackToExitPressedOnce = false
-                    }
-                })
+            if (binding.viewpager.currentItem != 1) {
+                binding.includedNavbar.navbar.selectTabAt(selectedOption)
+                binding.viewpager.setCurrentItem(1, true)
+            } else {
+                if (doubleBackToExitPressedOnce) {
+                    finish()
+                }
+                doubleBackToExitPressedOnce = true
+                snackString(this@MainActivity.getString(R.string.back_to_exit)).apply {
+                    this?.addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
+                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                            super.onDismissed(transientBottomBar, event)
+                            doubleBackToExitPressedOnce = false
+                        }
+                    })
+                }
             }
         }
 
