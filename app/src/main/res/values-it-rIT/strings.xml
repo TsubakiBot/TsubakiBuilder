@@ -3,9 +3,6 @@
     <string name="slogan">La NUOVA migliore app &amp; Anime e Manga per Android.</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">Pagina iniziale</string>
     <string name="anime">Anime</string>
     <string name="browse_anime">Esplora gli Anime</string>

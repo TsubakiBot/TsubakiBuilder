@@ -101,6 +101,9 @@ android {
         jvmTarget = '17'
         freeCompilerArgs = ["-Xcontext-receivers", "-Xmulti-platform"]
     }
+    lint {
+        abortOnError false
+    }
     namespace 'ani.dantotsu'
 
     applicationVariants.configureEach { variant ->

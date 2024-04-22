@@ -3,9 +3,6 @@
     <string name="slogan">एंड्रॉयड के लिए नया सर्वश्रेष्ठ एनिमे और मंगा ऐप।</string>
     <string name="login">लॉग इन करें</string>
     <string name="logout">लॉग आउट करें</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">होम</string>
     <string name="anime">एनिमे</string>
     <string name="browse_anime">एनिमे ब्राउज़ करें</string>

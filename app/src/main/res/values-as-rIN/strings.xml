@@ -3,9 +3,6 @@
     <string name="slogan">Androidৰ বাবে নতুন শ্ৰেষ্ঠ এনিমে &amp; মাংগাৰ এপ্‌।</string>
     <string name="login">লগইন</string>
     <string name="logout">লগআউট</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">হম</string>
     <string name="anime">এনিমে</string>
     <string name="browse_anime">এনিমে ব্ৰাউজ কৰক</string>

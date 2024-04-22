@@ -3,9 +3,6 @@
     <string name="slogan">اینڈروئیڈ کے لیے نیا اور سب سے اچھا &amp; مانگا آپ.</string>
     <string name="login">لاگین</string>
     <string name="logout">لاگ اوٹ</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">گھر</string>
     <string name="anime">انیمے</string>
     <string name="browse_anime">انیمے کو براؤز کریں</string>

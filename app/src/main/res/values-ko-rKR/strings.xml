@@ -3,9 +3,6 @@
     <string name="slogan">안드로이드를 위한 최고의 새로운 애니메이션 및 만화 앱.</string>
     <string name="login">로그인</string>
     <string name="logout">로그아웃</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">홈</string>
     <string name="anime">애니메이션</string>
     <string name="browse_anime">애니메이션 찾아보기</string>

@@ -3,9 +3,6 @@
     <string name="slogan">افضل تطبيق جديد للانمي &amp; المانجا للاندرويد.</string>
     <string name="login">تسجيل الدخول</string>
     <string name="logout">تسجيل الخروج</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">الصفحة الرئيسة</string>
     <string name="anime">أنمي</string>
     <string name="browse_anime">تصفح الانمي</string>

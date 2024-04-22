@@ -3,9 +3,6 @@
     <string name="slogan">全新的最佳动漫与漫画应用程序，适用于Android。</string>
     <string name="login">登录</string>
     <string name="logout">登出</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">主页</string>
     <string name="anime">动画</string>
     <string name="browse_anime">浏览动画</string>

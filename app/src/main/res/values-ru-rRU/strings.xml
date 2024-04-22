@@ -3,9 +3,6 @@
     <string name="slogan">Новое лучшее приложение для просмотра аниме и манги для Android.</string>
     <string name="login">Вход</string>
     <string name="logout">Выход</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">Главная</string>
     <string name="anime">Аниме</string>
     <string name="browse_anime">Просмотр аниме</string>

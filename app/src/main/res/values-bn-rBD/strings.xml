@@ -3,9 +3,6 @@
     <string name="slogan">অ্যান্ড্রয়েড এর জন্য অ্যানিমে &amp; মাঙ্গার নতুন সেরা অ্যাপ</string>
     <string name="login">লগইন</string>
     <string name="logout">লগআউট</string>
-    <string name="anilist_link">https://anilist.co/user/%1$s/</string>
-    <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>
-    <string name="discord_link">https://discord.com/users/%1$s/</string>
     <string name="home">হোম</string>
     <string name="anime">অ্যানিমে</string>
     <string name="browse_anime">অ্যানিমে ব্রাউজ করুন</string>
