@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Environment
 import android.os.StatFs
 import androidx.core.content.ContextCompat
+import ani.dantotsu.download.DownloadsManager
 import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.util.lang.Hash
 import java.io.File
@@ -14,18 +15,6 @@ object DiskUtil {
 
     fun hashKeyForDisk(key: String): String {
         return Hash.md5(key)
-    }
-
-    fun getDirectorySize(f: File): Long {
-        var size: Long = 0
-        if (f.isDirectory) {
-            for (file in f.listFiles().orEmpty()) {
-                size += getDirectorySize(file)
-            }
-        } else {
-            size = f.length()
-        }
-        return size
     }
 
     /**
@@ -55,26 +44,6 @@ object DiskUtil {
                     null
                 }
             }
-    }
-
-    /**
-     * Don't display downloaded chapters in gallery apps creating `.nomedia`.
-     */
-    fun createNoMediaFile(dir: UniFile?, context: Context?) {
-        if (dir != null && dir.exists()) {
-            val nomedia = dir.findFile(NOMEDIA_FILE)
-            if (nomedia == null) {
-                dir.createFile(NOMEDIA_FILE)
-                context?.let { scanMedia(it, dir.uri) }
-            }
-        }
-    }
-
-    /**
-     * Scans the given file so that it can be shown in gallery apps, for example.
-     */
-    fun scanMedia(context: Context, uri: Uri) {
-        MediaScannerConnection.scanFile(context, arrayOf(uri.path), null, null)
     }
 
     /**
@@ -113,5 +82,5 @@ object DiskUtil {
         }
     }
 
-    const val NOMEDIA_FILE = ".nomedia"
+    private const val NOMEDIA_FILE = ".nomedia"
 }

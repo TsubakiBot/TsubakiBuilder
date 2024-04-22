@@ -1,6 +1,7 @@
 package ani.dantotsu.download
 
 import android.content.Context
+import android.media.MediaScannerConnection
 import android.net.Uri
 import androidx.documentfile.provider.DocumentFile
 import ani.dantotsu.download.DownloadCompat.Companion.removeDownloadCompat
@@ -329,16 +330,15 @@ class DownloadsManager(private val context: Context) {
         }
 
         fun addNoMedia(context: Context) {
-            val baseDirectory = getBaseDirectory(context) ?: return
+            val downloadsDir = Uri.parse(PrefManager.getVal<String>(PrefName.DownloadsDir))
+            if (downloadsDir == Uri.EMPTY) return
+            val baseDirectory = DocumentFile.fromTreeUri(context, downloadsDir) ?: return
             if (baseDirectory.findFile(".nomedia") == null) {
                 baseDirectory.createFile("application/octet-stream", ".nomedia")
+                MediaScannerConnection.scanFile(
+                    context, arrayOf(baseDirectory.uri.path), null, null
+                )
             }
-        }
-
-        private fun getBaseDirectory(context: Context): DocumentFile? {
-            val baseDirectory = Uri.parse(PrefManager.getVal<String>(PrefName.DownloadsDir))
-            if (baseDirectory == Uri.EMPTY) return null
-            return DocumentFile.fromTreeUri(context, baseDirectory)
         }
 
         private fun DocumentFile.findOrCreateFolder(
