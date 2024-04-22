@@ -17,7 +17,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
-import ani.dantotsu.updateLayoutParams
+import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityProfileBinding
@@ -27,7 +27,6 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.profile.activity.FeedFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -35,8 +34,9 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
+import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
-import ani.dantotsu.util.BitmapUtil
+import ani.dantotsu.view.dialog.ImageViewDialog
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -193,10 +193,8 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                     profileUserName.text = userLevelText
                     val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
 
-                    BitmapUtil.blurImage(
-                        if (bannerAnimations) profileBannerImage else profileBannerImageNoKen,
-                        user.bannerImage ?: user.avatar?.medium
-                    )
+                    if (bannerAnimations) profileBannerImage else profileBannerImageNoKen
+                        .blurImage(user.bannerImage ?: user.avatar?.medium)
                     profileBannerImage.updateLayoutParams { height += statusBarHeight }
                     profileBannerImageNoKen.updateLayoutParams { height += statusBarHeight }
                     profileBannerGradient.updateLayoutParams { height += statusBarHeight }

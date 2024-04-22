@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
+import ani.dantotsu.blurImage
 import ani.dantotsu.buildMarkwon
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Activity
@@ -16,7 +17,6 @@ import ani.dantotsu.profile.UsersDialogFragment
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
 import ani.dantotsu.util.AniMarkdown.Companion.getBasicAniHTML
-import ani.dantotsu.util.BitmapUtil
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.viewbinding.BindableItem
 import kotlinx.coroutines.CoroutineScope
@@ -127,7 +127,7 @@ class ActivityItem(
                 }"
                 binding.activityText.text = activityText
                 binding.activityCover.loadImage(cover)
-                BitmapUtil.blurImage(binding.activityBannerImage, banner ?: cover)
+                binding.activityBannerImage.blurImage(banner ?: cover)
                 binding.activityAvatarContainer.setOnClickListener {
                     clickCallback(activity.userId ?: -1, "USER")
                 }

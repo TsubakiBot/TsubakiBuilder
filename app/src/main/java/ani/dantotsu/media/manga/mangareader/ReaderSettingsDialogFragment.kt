@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetCurrentReaderSettingsBinding
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.CurrentReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings.Directions
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class ReaderSettingsDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetCurrentReaderSettingsBinding? = null

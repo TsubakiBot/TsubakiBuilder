@@ -38,7 +38,6 @@ import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.Download.download
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
@@ -52,6 +51,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

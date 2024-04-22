@@ -15,9 +15,9 @@ import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.manga.MangaChapter
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.tryWith
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

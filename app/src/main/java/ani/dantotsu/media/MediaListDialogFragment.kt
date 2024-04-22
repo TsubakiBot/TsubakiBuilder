@@ -19,9 +19,9 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.BottomSheetMediaListBinding
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWith
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import com.google.android.material.materialswitch.MaterialSwitch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

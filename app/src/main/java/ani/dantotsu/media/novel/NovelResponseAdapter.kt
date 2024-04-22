@@ -13,8 +13,6 @@ import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.model.GlideUrl
 
 class NovelResponseAdapter(
     val fragment: NovelReadFragment,

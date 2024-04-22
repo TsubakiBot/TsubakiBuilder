@@ -8,9 +8,9 @@ import android.widget.AdapterView
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetCurrentNovelReaderSettingsBinding
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.CurrentNovelReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class NovelReaderSettingsDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetCurrentNovelReaderSettingsBinding? = null
