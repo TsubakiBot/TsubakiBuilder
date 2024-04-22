@@ -581,7 +581,7 @@ class MediaInfoFragment : Fragment() {
                         ).apply {
                             itemTitle.setText(R.string.social)
                             itemRecycler.adapter =
-                                MediaSocialAdapter(media.users!!)
+                                MediaSocialAdapter(media.users!!, type)
                             itemRecycler.layoutManager = LinearLayoutManager(
                                 requireContext(),
                                 LinearLayoutManager.HORIZONTAL,

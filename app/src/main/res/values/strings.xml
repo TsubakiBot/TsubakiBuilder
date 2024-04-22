@@ -1050,4 +1050,7 @@
     <string name="download_started">Download started</string>
     <string name="downloads_completed">All downloads completed</string>
     <string name="pending_downloads">Pending downloads: %1$d</string>
+    
+    <string name="reading">READING</string>
+    <string name="watching">WATCHING</string>
 </resources>
