@@ -1044,4 +1044,10 @@
     <string name="download_extension_not_available">Download Extension not available</string>
     <string name="feed">Feed</string>
     <string name="profile">Profile</string>
+
+    <string name="epub_download_exception">Exception while downloading .epub: %1$s</string>
+    <string name="novel_download_progress">Novel Download Progress</string>
+    <string name="download_started">Download started</string>
+    <string name="downloads_completed">All downloads completed</string>
+    <string name="pending_downloads">Pending downloads: %1$d</string>
 </resources>

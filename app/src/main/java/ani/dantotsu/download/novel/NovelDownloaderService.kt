@@ -9,21 +9,24 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo
 import android.os.Build
-import android.os.Environment
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.documentfile.provider.DocumentFile
 import ani.dantotsu.R
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
+import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.novel.NovelReadFragment
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import com.anggrayudi.storage.file.forceDelete
+import com.anggrayudi.storage.file.openOutputStream
 import com.google.gson.GsonBuilder
 import com.google.gson.InstanceCreator
 import eu.kanade.tachiyomi.data.notification.Notifications
@@ -45,8 +48,6 @@ import okio.sink
 import tachiyomi.core.util.lang.launchIO
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
-import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -75,7 +76,7 @@ class NovelDownloaderService : Service() {
         notificationManager = NotificationManagerCompat.from(this)
         builder =
             NotificationCompat.Builder(this, Notifications.CHANNEL_DOWNLOADER_PROGRESS).apply {
-                setContentTitle("Novel Download Progress")
+                setContentTitle(getString(R.string.novel_download_progress))
                 setSmallIcon(R.drawable.ic_download_24)
                 priority = NotificationCompat.PRIORITY_DEFAULT
                 setOnlyAlertOnce(true)
@@ -107,7 +108,7 @@ class NovelDownloaderService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        snackString("Download started")
+        snackString(getString(R.string.download_started))
         val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
         serviceScope.launch {
             mutex.withLock {
@@ -160,9 +161,9 @@ class NovelDownloaderService : Service() {
         // Update the notification to reflect the current state of the queue
         val pendingDownloads = NovelServiceDataSingleton.downloadQueue.size
         val text = if (pendingDownloads > 0) {
-            "Pending downloads: $pendingDownloads"
+            getString(R.string.pending_downloads, pendingDownloads)
         } else {
-            "All downloads completed"
+            getString(R.string.downloads_completed)
         }
         builder.setContentText(text)
         if (ActivityCompat.checkSelfPermission(
@@ -184,15 +185,15 @@ class NovelDownloaderService : Service() {
                     .build()
 
                 networkHelper.client.newCall(request).execute().use { response ->
-                    val contentType = response.header("Content-Type")
+                    val contentType = response.headers("Content-Type")
                     val contentDisposition = response.header("Content-Disposition")
 
-                    Logger.log("Content-Type: $contentType")
+                    Logger.log("Content-Type: ${contentType.toTypedArray()}")
                     Logger.log("Content-Disposition: $contentDisposition")
 
                     // Return true if the Content-Type or Content-Disposition indicates an EPUB file
-                    contentType == "application/epub+zip" ||
-                            (contentDisposition?.contains(".epub") == true)
+                    contentType.contains("application/epub+zip") ||
+                            (contentDisposition?.contains("epub") == true)
                 }
             } catch (e: Exception) {
                 Logger.log("Error checking file type: ${e.message}")
@@ -249,24 +250,27 @@ class NovelDownloaderService : Service() {
                             if (!response.isSuccessful) {
                                 throw IOException("Failed to download file: ${response.message}")
                             }
+                            val directory = getSubDirectory(
+                                this@NovelDownloaderService,
+                                MediaType.NOVEL,
+                                false,
+                                task.title,
+                                task.chapter
+                            ) ?: throw Exception("Directory not found")
+                            directory.findFile("0.epub")?.forceDelete(this@NovelDownloaderService)
 
-                            val file = File(
-                                this@NovelDownloaderService.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                                "Dantotsu/Novel/${task.title}/${task.chapter}/0.epub"
-                            )
-
-                            // Create directories if they don't exist
-                            file.parentFile?.takeIf { !it.exists() }?.mkdirs()
-
-                            // Overwrite existing file
-                            if (file.exists()) file.delete()
+                            val file = directory.createFile("application/epub+zip", "0.epub")
+                                ?: throw Exception("File not created")
 
                             //download cover
                             task.coverUrl?.let {
                                 file.parentFile?.let { it1 -> downloadImage(it, it1, "cover.jpg") }
                             }
+                            val outputStream =
+                                this@NovelDownloaderService.contentResolver.openOutputStream(file.uri)
+                                    ?: throw Exception("Could not open OutputStream")
 
-                            val sink = file.sink().buffer()
+                            val sink = outputStream.sink().buffer()
                             val responseBody = response.body
                             val totalBytes = responseBody.contentLength()
                             var downloadedBytes = 0L
@@ -342,8 +346,7 @@ class NovelDownloaderService : Service() {
             }
         } catch (e: Exception) {
             Logger.log("Exception while downloading .epub: ${e.message}")
-            snackString("Exception while downloading .epub: ${e.message}")
-            Logger.log(e)
+            snackString(getString(R.string.epub_download_exception, e.message))
             broadcastDownloadFailed(task.originalLink)
         }
     }
@@ -351,13 +354,16 @@ class NovelDownloaderService : Service() {
     @OptIn(DelicateCoroutinesApi::class)
     private fun saveMediaInfo(task: DownloadTask) {
         launchIO {
-            val directory = File(
-                getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "Dantotsu/Novel/${task.title}"
-            )
-            if (!directory.exists()) directory.mkdirs()
-
-            val file = File(directory, "media.json")
+            val directory =
+                getSubDirectory(
+                    this@NovelDownloaderService,
+                    MediaType.NOVEL,
+                    false,
+                    task.title
+                ) ?: throw Exception("Directory not found")
+            directory.findFile("media.json")?.forceDelete(this@NovelDownloaderService)
+            val file = directory.createFile("application/json", "media.json")
+                ?: throw Exception("File not created")
             val gson = GsonBuilder()
                 .registerTypeAdapter(SChapter::class.java, InstanceCreator<SChapter> {
                     SChapterImpl() // Provide an instance of SChapterImpl
@@ -371,33 +377,47 @@ class NovelDownloaderService : Service() {
 
                 val jsonString = gson.toJson(media)
                 withContext(Dispatchers.Main) {
-                    file.writeText(jsonString)
+                    try {
+                        file.openOutputStream(this@NovelDownloaderService, false).use { output ->
+                            if (output == null) throw Exception("Output stream is null")
+                            output.write(jsonString.toByteArray())
+                        }
+                    } catch (e: android.system.ErrnoException) {
+                        e.printStackTrace()
+                        Toast.makeText(
+                            this@NovelDownloaderService,
+                            "Error while saving: ${e.localizedMessage}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
         }
     }
 
 
-    private suspend fun downloadImage(url: String, directory: File, name: String): String? =
+    private suspend fun downloadImage(url: String, directory: DocumentFile, name: String): String? =
         withContext(
             Dispatchers.IO
         ) {
             var connection: HttpURLConnection? = null
-            println("Downloading url $url")
+            Logger.log("Downloading url $url")
             try {
                 connection = URL(url).openConnection() as HttpURLConnection
                 connection.connect()
                 if (connection.responseCode != HttpURLConnection.HTTP_OK) {
                     throw Exception("Server returned HTTP ${connection.responseCode} ${connection.responseMessage}")
                 }
-
-                val file = File(directory, name)
-                FileOutputStream(file).use { output ->
+                directory.findFile(name)?.forceDelete(this@NovelDownloaderService)
+                val file =
+                    directory.createFile("image/jpeg", name) ?: throw Exception("File not created")
+                file.openOutputStream(this@NovelDownloaderService, false).use { output ->
+                    if (output == null) throw Exception("Output stream is null")
                     connection.inputStream.use { input ->
                         input.copyTo(output)
                     }
                 }
-                return@withContext file.absolutePath
+                return@withContext file.uri.toString()
             } catch (e: Exception) {
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
