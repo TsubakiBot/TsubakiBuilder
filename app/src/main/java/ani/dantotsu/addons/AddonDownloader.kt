@@ -62,19 +62,12 @@ class AddonDownloader {
             }
             MainScope().launch(Dispatchers.IO) {
                 try {
-                    val apks =
-                        client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
-                            .parsed<AppUpdater.GithubResponse>().assets?.filter {
-                                it.browserDownloadURL.endsWith(
-                                    ".apk"
-                                )
-                            }
-                    val apkToDownload =
-                        apks?.find { it.browserDownloadURL.contains(getCurrentABI()) }
-                            ?: apks?.find { it.browserDownloadURL.contains("universal") }
-                            ?: apks?.first()
-                    apkToDownload?.browserDownloadURL.apply {
-                        if (this != null) {
+                    client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
+                        .parsed<AppUpdater.GithubResponse>().assets?.run {
+                            find { it.browserDownloadURL.contains(getCurrentABI()) }
+                                ?: find { it.browserDownloadURL.contains("universal") }
+                                ?: first { it.browserDownloadURL.endsWith(".apk") }
+                        }?.browserDownloadURL?.apply {
                             val notificationManager =
                                 activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                             val installerSteps = InstallerSteps(notificationManager, activity)
@@ -85,8 +78,7 @@ class AddonDownloader {
                                     { error -> installerSteps.onError(error) {} },
                                     { installerSteps.onComplete {} }
                                 )
-                        } else openLinkInBrowser("https://github.com/repos/$repo/releases/tag/v$version")
-                    }
+                        } ?: openLinkInBrowser("https://github.com/repos/$repo/releases/tag/v$version")
                 } catch (e: Exception) {
                     logError(e)
                 }
