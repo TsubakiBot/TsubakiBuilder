@@ -221,8 +221,7 @@ class MainActivity : AppCompatActivity() {
         var doubleBackToExitPressedOnce = false
         onBackPressedDispatcher.addCallback(this) {
             if (binding.viewpager.currentItem != 1) {
-                binding.includedNavbar.navbar.selectTabAt(selectedOption)
-                binding.viewpager.setCurrentItem(1, true)
+                binding.includedNavbar.navbar.selectTabAt(1)
             } else {
                 if (doubleBackToExitPressedOnce) {
                     finish()
@@ -379,12 +378,6 @@ class MainActivity : AppCompatActivity() {
                             })
                             if (mainViewPager.currentItem != selectedOption) {
                                 navbar.selectTabAt(selectedOption)
-                                mainViewPager.post {
-                                    mainViewPager.setCurrentItem(
-                                        selectedOption,
-                                        false
-                                    )
-                                }
                             }
                         } else {
                             binding.mainProgressBar.visibility = View.GONE
