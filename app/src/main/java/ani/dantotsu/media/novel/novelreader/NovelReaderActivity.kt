@@ -23,6 +23,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.webkit.WebViewCompat
@@ -30,9 +32,8 @@ import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.currContext
-import ani.dantotsu.databinding.ActivityNovelReaderBinding
+import ani.dantotsu.databinding.ActivityMangaReaderBinding
 import ani.dantotsu.hideSystemBars
-import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.CurrentNovelReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings
@@ -42,6 +43,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.dialog.ImageViewDialog
 import com.google.android.material.slider.Slider
 import com.vipulog.ebookreader.Book
 import com.vipulog.ebookreader.EbookReaderEventListener
@@ -64,7 +66,7 @@ import kotlin.properties.Delegates
 
 
 class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
-    private lateinit var binding: ActivityNovelReaderBinding
+    private lateinit var binding: ActivityMangaReaderBinding
     private val scope = lifecycleScope
 
     private var notchHeight: Int? = null
@@ -176,7 +178,13 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
 
 
         ThemeManager(this).applyTheme()
-        binding = ActivityNovelReaderBinding.inflate(layoutInflater)
+        binding = ActivityMangaReaderBinding.inflate(layoutInflater).apply {
+            bookReader.isVisible = true
+            mangaReaderSwipy.isGone = true
+            edgeSwipeFramework.isGone = true
+            mangaReaderPageNumber.isGone = true
+            progress.isVisible = true
+        }
         setContentView(binding.root)
 
         controllerDuration = (PrefManager.getVal<Float>(PrefName.AnimationSpeed) * 200).toLong()
@@ -191,8 +199,8 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
         scope.launch { binding.bookReader.openBook(intent.data!!) }
         binding.bookReader.setEbookReaderListener(this)
 
-        binding.novelReaderBack.setOnClickListener { finish() }
-        binding.novelReaderSettings.setSafeOnClickListener {
+        binding.mangaReaderBack.setOnClickListener { finish() }
+        binding.mangaReaderSettings.setSafeOnClickListener {
             NovelReaderSettingsDialogFragment.newInstance()
                 .show(supportFragmentManager, NovelReaderSettingsDialogFragment.TAG)
         }
@@ -208,12 +216,12 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
             else false
         }
 
-        binding.novelReaderNextChap.setOnClickListener { binding.novelReaderNextChapter.performClick() }
-        binding.novelReaderNextChapter.setOnClickListener { binding.bookReader.next() }
-        binding.novelReaderPrevChap.setOnClickListener { binding.novelReaderPreviousChapter.performClick() }
-        binding.novelReaderPreviousChapter.setOnClickListener { binding.bookReader.prev() }
+        binding.mangaReaderNextChap.setOnClickListener { binding.mangaReaderNextChapter.performClick() }
+        binding.mangaReaderNextChapter.setOnClickListener { binding.bookReader.next() }
+        binding.mangaReaderPrevChap.setOnClickListener { binding.mangaReaderPreviousChapter.performClick() }
+        binding.mangaReaderPreviousChapter.setOnClickListener { binding.bookReader.prev() }
 
-        binding.novelReaderSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+        binding.mangaReaderSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: Slider) {
             }
 
@@ -222,9 +230,9 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
             }
         })
 
-        onVolumeUp = { binding.novelReaderNextChapter.performClick() }
+        onVolumeUp = { binding.mangaReaderNextChapter.performClick() }
 
-        onVolumeDown = { binding.novelReaderPreviousChapter.performClick() }
+        onVolumeDown = { binding.mangaReaderPreviousChapter.performClick() }
     }
 
     private fun setupBackPressedHandler() {
@@ -262,13 +270,13 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
         val illegalCharsRegex = Regex("[^a-zA-Z0-9._-]")
         sanitizedBookId = bookId.replace(illegalCharsRegex, "_")
 
-        binding.novelReaderTitle.text = book.title
-        binding.novelReaderSource.text = book.author?.joinToString(", ")
+        binding.mangaReaderTitle.text = book.title
+        binding.mangaReaderSource.text = book.author?.joinToString(", ")
 
         val tocLabels = book.toc.map { it.label ?: "" }
-        binding.novelReaderChapterSelect.adapter =
+        binding.mangaReaderChapterSelect.adapter =
             NoPaddingArrayAdapter(this, R.layout.item_dropdown, tocLabels)
-        binding.novelReaderChapterSelect.onItemSelectedListener =
+        binding.mangaReaderChapterSelect.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -304,9 +312,9 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
 
     override fun onProgressChanged(info: RelocationInfo) {
         currentCfi = info.cfi
-        binding.novelReaderSlider.value = info.fraction.toFloat()
+        binding.mangaReaderSlider.value = info.fraction.toFloat()
         val pos = info.tocItem?.let { item -> toc.indexOfFirst { it == item } }
-        if (pos != null) binding.novelReaderChapterSelect.setSelection(pos)
+        if (pos != null) binding.mangaReaderChapterSelect.setSelection(pos)
         PrefManager.setCustomVal("${sanitizedBookId}_progress", info.cfi)
     }
 
@@ -422,8 +430,8 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
         goneTimer.purge()
         val timerTask: TimerTask = object : TimerTask() {
             override fun run() {
-                if (!isContVisible) binding.novelReaderCont.post {
-                    binding.novelReaderCont.visibility = View.GONE
+                if (!isContVisible) binding.mangaReaderCont.post {
+                    binding.mangaReaderCont.visibility = View.GONE
                     isAnimating = false
                 }
             }
@@ -445,22 +453,22 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
             isContVisible = false
             if (!isAnimating) {
                 isAnimating = true
-                ObjectAnimator.ofFloat(binding.novelReaderCont, "alpha", 1f, 0f)
+                ObjectAnimator.ofFloat(binding.mangaReaderCont, "alpha", 1f, 0f)
                     .setDuration(controllerDuration).start()
-                ObjectAnimator.ofFloat(binding.novelReaderBottomCont, "translationY", 0f, 128f)
+                ObjectAnimator.ofFloat(binding.mangaReaderBottomCont, "translationY", 0f, 128f)
                     .apply { interpolator = overshoot;duration = controllerDuration;start() }
-                ObjectAnimator.ofFloat(binding.novelReaderTopLayout, "translationY", 0f, -128f)
+                ObjectAnimator.ofFloat(binding.mangaReaderTopLayout, "translationY", 0f, -128f)
                     .apply { interpolator = overshoot;duration = controllerDuration;start() }
             }
             gone()
         } else {
             isContVisible = true
-            binding.novelReaderCont.visibility = View.VISIBLE
-            ObjectAnimator.ofFloat(binding.novelReaderCont, "alpha", 0f, 1f)
+            binding.mangaReaderCont.visibility = View.VISIBLE
+            ObjectAnimator.ofFloat(binding.mangaReaderCont, "alpha", 0f, 1f)
                 .setDuration(controllerDuration).start()
-            ObjectAnimator.ofFloat(binding.novelReaderTopLayout, "translationY", -128f, 0f)
+            ObjectAnimator.ofFloat(binding.mangaReaderTopLayout, "translationY", -128f, 0f)
                 .apply { interpolator = overshoot;duration = controllerDuration;start() }
-            ObjectAnimator.ofFloat(binding.novelReaderBottomCont, "translationY", 128f, 0f)
+            ObjectAnimator.ofFloat(binding.mangaReaderBottomCont, "translationY", 128f, 0f)
                 .apply { interpolator = overshoot;duration = controllerDuration;start() }
         }
     }
@@ -484,7 +492,7 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
 
 
     private fun applyNotchMargin() {
-        binding.novelReaderTopLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        binding.mangaReaderTopLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin = notchHeight ?: return
         }
     }

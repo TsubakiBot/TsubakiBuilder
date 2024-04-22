@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".media.manga.mangareader.MangaReaderActivity">
 
+    <com.vipulog.ebookreader.EbookReaderView
+        android:id="@+id/bookReader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <ani.dantotsu.media.manga.mangareader.Swipy
         android:id="@+id/mangaReaderSwipy"
         android:layout_width="match_parent"
@@ -39,155 +45,162 @@
     </ani.dantotsu.media.manga.mangareader.Swipy>
 
     <FrameLayout
-        android:id="@+id/BottomSwipeContainer"
+        android:id="@+id/edgeSwipeFramework"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:layout_gravity="bottom"
-        android:alpha="0">
+        android:layout_height="match_parent">
 
-        <ImageView
+        <FrameLayout
+            android:id="@+id/BottomSwipeContainer"
             android:layout_width="match_parent"
+            android:layout_height="192dp"
+            android:layout_gravity="bottom"
+            android:alpha="0">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/linear_gradient_black"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:contentPadding="8dp"
+                app:strokeColor="?attr/colorSecondary"
+                app:strokeWidth="2dp">
+
+                <TextView
+                    android:id="@+id/BottomSwipeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/TopSwipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            android:alpha="0">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:rotation="180"
+                app:srcCompat="@drawable/linear_gradient_black"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:contentPadding="8dp"
+                app:strokeColor="?attr/colorSecondary"
+                app:strokeWidth="2dp">
+
+                <TextView
+                    android:id="@+id/TopSwipeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/RightSwipeContainer"
+            android:layout_width="192dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/linear_gradient_black"
-            tools:ignore="ContentDescription" />
+            android:layout_gravity="right"
+            android:alpha="0"
+            tools:ignore="RtlHardcoded">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="16dp"
-            app:contentPadding="8dp"
-            app:strokeColor="?attr/colorSecondary"
-            app:strokeWidth="2dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:rotation="180"
+                app:srcCompat="@drawable/linear_gradient_black_horizontal"
+                tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/BottomSwipeText"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/app_name"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:contentPadding="8dp"
+                app:strokeColor="?attr/colorSecondary"
+                app:strokeWidth="2dp">
 
-    </FrameLayout>
+                <TextView
+                    android:id="@+id/RightSwipeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp" />
+            </com.google.android.material.card.MaterialCardView>
 
-    <FrameLayout
-        android:id="@+id/TopSwipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:alpha="0">
+        </FrameLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:id="@+id/LeftSwipeContainer"
+            android:layout_width="192dp"
             android:layout_height="match_parent"
-            android:rotation="180"
-            app:srcCompat="@drawable/linear_gradient_black"
-            tools:ignore="ContentDescription" />
+            android:alpha="0">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="16dp"
-            app:contentPadding="8dp"
-            app:strokeColor="?attr/colorSecondary"
-            app:strokeWidth="2dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/linear_gradient_black_horizontal"
+                tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/TopSwipeText"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/app_name"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:contentPadding="8dp"
+                app:strokeColor="?attr/colorSecondary"
+                app:strokeWidth="2dp">
 
-    </FrameLayout>
+                <TextView
+                    android:id="@+id/LeftSwipeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp" />
+            </com.google.android.material.card.MaterialCardView>
 
-    <FrameLayout
-        android:id="@+id/RightSwipeContainer"
-        android:layout_width="192dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:alpha="0"
-        tools:ignore="RtlHardcoded">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:rotation="180"
-            app:srcCompat="@drawable/linear_gradient_black_horizontal"
-            tools:ignore="ContentDescription" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="16dp"
-            app:contentPadding="8dp"
-            app:strokeColor="?attr/colorSecondary"
-            app:strokeWidth="2dp">
-
-            <TextView
-                android:id="@+id/RightSwipeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/app_name"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/LeftSwipeContainer"
-        android:layout_width="192dp"
-        android:layout_height="match_parent"
-        android:alpha="0">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/linear_gradient_black_horizontal"
-            tools:ignore="ContentDescription" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="16dp"
-            app:contentPadding="8dp"
-            app:strokeColor="?attr/colorSecondary"
-            app:strokeWidth="2dp">
-
-            <TextView
-                android:id="@+id/LeftSwipeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/app_name"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
 
     </FrameLayout>
 
@@ -499,4 +512,11 @@
         app:outlineColor="#A9000000"
         app:outlineWidth="1"
         tools:text="1/10" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 </FrameLayout>

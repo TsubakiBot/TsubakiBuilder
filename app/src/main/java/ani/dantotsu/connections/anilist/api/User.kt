@@ -3,7 +3,6 @@ package ani.dantotsu.connections.anilist.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class User(
     // The id of the user

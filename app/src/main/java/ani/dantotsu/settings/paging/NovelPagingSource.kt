@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
+import androidx.core.view.isGone
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -17,7 +18,7 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.databinding.ItemExtensionAllBinding
+import ani.dantotsu.databinding.ItemExtensionBinding
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
@@ -153,8 +154,14 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NovelExtensionViewHolder {
-        val binding =
-            ItemExtensionAllBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemExtensionBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        ).apply {
+            extensionPinImageView.isGone = true
+            searchImageView.isGone = true
+            settingsImageView.isGone = true
+            closeTextView.setImageResource(R.drawable.ic_download_24)
+        }
         return NovelExtensionViewHolder(binding)
     }
 
@@ -170,7 +177,7 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
         }
     }
 
-    inner class NovelExtensionViewHolder(private val binding: ItemExtensionAllBinding) :
+    inner class NovelExtensionViewHolder(private val binding: ItemExtensionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         private val job = Job()

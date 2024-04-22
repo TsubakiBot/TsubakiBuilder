@@ -24,7 +24,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistMangaViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.connections.anilist.getUserId
-import ani.dantotsu.databinding.FragmentMangaBinding
+import ani.dantotsu.databinding.FragmentAnimeBinding
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.navBarHeight
@@ -42,7 +42,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 class MangaFragment : Fragment() {
-    private var _binding: FragmentMangaBinding? = null
+    private var _binding: FragmentAnimeBinding? = null
     private val binding get() = _binding!!
     private lateinit var mangaPageAdapter: MangaPageAdapter
 
@@ -53,7 +53,7 @@ class MangaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMangaBinding.inflate(inflater, container, false)
+        _binding = FragmentAnimeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -81,14 +81,14 @@ class MangaFragment : Fragment() {
                 }
             }
         }
-        binding.mangaRefresh.setSlingshotDistance(height + 128)
-        binding.mangaRefresh.setProgressViewEndTarget(false, height + 128)
-        binding.mangaRefresh.setOnRefreshListener {
+        binding.animeRefresh.setSlingshotDistance(height + 128)
+        binding.animeRefresh.setProgressViewEndTarget(false, height + 128)
+        binding.animeRefresh.setOnRefreshListener {
             Refresh.activity[this.hashCode()]!!.postValue(true)
         }
 
         // TODO: Investigate hardcoded values
-        binding.mangaPageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160.toPx)
+        binding.animePageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160.toPx)
 
         mangaPageAdapter = MangaPageAdapter()
         var loading = true
@@ -105,33 +105,33 @@ class MangaFragment : Fragment() {
         }
         val popularAdaptor = MediaAdaptor(1, model.searchResults.results, requireActivity())
         val progressAdaptor = ProgressAdapter(searched = model.searched)
-        binding.mangaPageRecyclerView.adapter =
+        binding.animePageRecyclerView.adapter =
             ConcatAdapter(mangaPageAdapter, popularAdaptor, progressAdaptor)
         val layout = LinearLayoutManager(requireContext())
-        binding.mangaPageRecyclerView.layoutManager = layout
+        binding.animePageRecyclerView.layoutManager = layout
 
         var visible = false
         fun animate() {
             val start = if (visible) 0f else 1f
             val end = if (!visible) 0f else 1f
-            ObjectAnimator.ofFloat(binding.mangaPageScrollTop, "scaleX", start, end).apply {
+            ObjectAnimator.ofFloat(binding.animePageScrollTop, "scaleX", start, end).apply {
                 duration = 300
                 interpolator = OvershootInterpolator(2f)
                 start()
             }
-            ObjectAnimator.ofFloat(binding.mangaPageScrollTop, "scaleY", start, end).apply {
+            ObjectAnimator.ofFloat(binding.animePageScrollTop, "scaleY", start, end).apply {
                 duration = 300
                 interpolator = OvershootInterpolator(2f)
                 start()
             }
         }
 
-        binding.mangaPageScrollTop.setOnClickListener {
-            binding.mangaPageRecyclerView.scrollToPosition(4)
-            binding.mangaPageRecyclerView.smoothScrollToPosition(0)
+        binding.animePageScrollTop.setOnClickListener {
+            binding.animePageRecyclerView.scrollToPosition(4)
+            binding.animePageRecyclerView.smoothScrollToPosition(0)
         }
 
-        binding.mangaPageRecyclerView.addOnScrollListener(object :
+        binding.animePageRecyclerView.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrolled(v: RecyclerView, dx: Int, dy: Int) {
                 if (!v.canScrollVertically(1)) {
@@ -143,7 +143,7 @@ class MangaFragment : Fragment() {
                     }
                 }
                 if (layout.findFirstVisibleItemPosition() > 1 && !visible) {
-                    binding.mangaPageScrollTop.visibility = View.VISIBLE
+                    binding.animePageScrollTop.visibility = View.VISIBLE
                     visible = true
                     animate()
                 }
@@ -153,7 +153,7 @@ class MangaFragment : Fragment() {
                     animate()
                     scope.launch {
                         delay(300)
-                        binding.mangaPageScrollTop.visibility = View.GONE
+                        binding.animePageScrollTop.visibility = View.GONE
                     }
                 }
 
@@ -209,7 +209,7 @@ class MangaFragment : Fragment() {
                         }
                     }
                 }
-                binding.mangaPageScrollTop.translationY =
+                binding.animePageScrollTop.translationY =
                     -(navBarHeight + bottomBar.height + bottomBar.marginBottom).toFloat()
 
             }
@@ -277,7 +277,7 @@ class MangaFragment : Fragment() {
                         )
                     }
                     live.postValue(false)
-                    _binding?.mangaRefresh?.isRefreshing = false
+                    _binding?.animeRefresh?.isRefreshing = false
                 }
             }
         }
