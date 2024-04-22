@@ -1053,4 +1053,7 @@
     
     <string name="reading">READING</string>
     <string name="watching">WATCHING</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Cover]</string>
+    <string name="banner">%1$s\ [Banner]</string>
 </resources>
