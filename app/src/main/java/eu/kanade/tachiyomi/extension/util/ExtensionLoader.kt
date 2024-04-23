@@ -5,10 +5,13 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.graphics.drawable.toDrawable
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.parsers.NovelInterface
 import ani.dantotsu.parsers.novel.NovelExtension
+import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.parsers.novel.NovelLoadResult
+import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.Logger
 import dalvik.system.PathClassLoader
 import eu.kanade.domain.source.service.SourcePreferences
@@ -158,6 +161,25 @@ internal object ExtensionLoader {
         return runBlocking {
             val deferred = extPkgs.map {
                 async { loadNovelExtension(context, it.packageName, it) }
+            }
+            deferred.map { it.await() }
+        }
+    }
+
+    fun loadNovelPlugins(context: Context): List<NovelLoadResult> {
+        val novelExtensionManager: NovelExtensionManager by injectLazy()
+        return runBlocking {
+            val deferred = novelExtensionManager.getPlugins().map {
+                async { val extension = NovelExtension.Installed(
+                    name = it.name,
+                    pkgName = it.pkgName,
+                    versionName = it.versionName,
+                    versionCode = it.versionCode,
+                    sources = emptyList(),
+                    isUnofficial = true,
+                    icon = BitmapUtil.downloadImageAsBitmap(it.iconUrl)?.toDrawable(context.resources),
+                )
+                    NovelLoadResult.Success(extension) }
             }
             deferred.map { it.await() }
         }

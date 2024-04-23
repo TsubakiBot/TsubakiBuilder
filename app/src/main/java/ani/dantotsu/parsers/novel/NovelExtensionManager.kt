@@ -220,6 +220,10 @@ class NovelExtensionManager(private val context: Context) {
         }
     }
 
+    fun getPlugins(): List<NovelExtension.Available> {
+        return _availableNovelExtensionsFlow.value.filter { it.pkgName.startsWith("plugin:") }
+    }
+
     /**
      * AnimeExtension method to set the update field of an installed anime extension.
      */

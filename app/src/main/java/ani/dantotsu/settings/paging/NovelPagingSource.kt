@@ -189,6 +189,7 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
                 val extension = getItem(bindingAdapterPosition)
                 if (extension != null) {
                     clickListener.onInstallClick(extension)
+                    if (!extension.pkgName.startsWith("plugin:")) return@setOnClickListener
                     binding.closeTextView.setImageResource(R.drawable.ic_sync)
                     scope.launch {
                         while (isActive) {

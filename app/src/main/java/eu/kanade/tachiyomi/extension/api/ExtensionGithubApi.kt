@@ -288,7 +288,7 @@ internal class ExtensionGithubApi {
                 )
             NovelExtension.Available(
                 extension.name,
-                extension.id,
+                "plugin:${extension.id}",
                 extension.version,
                 extension.version.replace(".", "").toLong(),
                 sources.toNovelSources(),

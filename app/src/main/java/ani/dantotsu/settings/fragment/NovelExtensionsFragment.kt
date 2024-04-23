@@ -78,6 +78,11 @@ class NovelExtensionsFragment : Fragment(),
             val notificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val installerSteps = InstallerSteps(notificationManager, context)
+
+            if (pkg.pkgName.startsWith("plugin:")) {
+                
+                return
+            }
             // Start the installation process
             novelExtensionManager.installExtension(pkg)
                 .observeOn(AndroidSchedulers.mainThread())
