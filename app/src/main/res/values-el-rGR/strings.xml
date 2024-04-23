@@ -735,7 +735,6 @@
     <string name="button_restore">Επαναφορά</string>
     <string name="button_backup">Αντίγραφο ασφαλείας</string>
     <string name="no_location_selected">Δεν έχει επιλεγεί τοποθεσία</string>
-    <string name="consider_donating">Σκεφτείτε να κάνετε δωρεά!</string>
     <string name="do_it">Κάνε το!</string>
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="search_title">Αναζήτηση %1$s</string>

@@ -733,7 +733,6 @@
     <string name="button_restore">Restaurar</string>
     <string name="button_backup">Copia de seguridad</string>
     <string name="no_location_selected">Ubicación no seleccionada</string>
-    <string name="consider_donating">¡Considere la posibilidad de donar!</string>
     <string name="do_it">¡Hazlo!</string>
     <string name="password">Contraseña</string>
     <string name="search_title">Buscar %1$s</string>
