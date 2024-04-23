@@ -377,7 +377,7 @@
     <string name="other">Other</string>
     <string name="total_repeats">TOTAL REPEATS</string>
     <string name="custom_lists">Custom Lists</string>
-    <string name="donate_desc">Want to support Mr. Matagi?\nConsider Donating</string>
+    <string name="donate_desc">Want to support Himitsu?\nConsider Donating</string>
     <string name="donate_goal">No donation goal atm</string>
     <string name="filter">Filter</string>
     <string name="year">Year</string>
@@ -511,7 +511,7 @@
     <string name="deleted_from_list">Deleted from List</string>
     <string name="no_list_id">No List ID found…</string>
 
-    <string name="matagi_update">Mr. Matagi Himitsu %1$s</string>
+    <string name="matagi_update">Himitsu %1$s</string>
     <string name="matagi_dont_show">Don\'t notify again for %1$s</string>
     <string name="matagi_downloading">Downloading Himitsu %1$s</string>
 
@@ -757,10 +757,10 @@
     <string name="restore_settings_underline"><u>Restore Settings</u></string>
     <string name="try_internal_cast_experimental">Try Internal Cast (Experimental)</string>
 
-    <string name="faq_desc">General questions about Mr. Matagi</string>
+    <string name="faq_desc">General questions about Himitsu</string>
     <string name="check_app_updates_desc">Check Github for app updates</string>
     <string name="share_username_in_logs_desc">Include username in crash reports</string>
-    <string name="devs_desc">Mr. Matagi\'s very own unpaid laborers</string>
+    <string name="devs_desc">Himitsu\'s very own unpaid laborers</string>
     <string name="forks_desc">Projects derived from Dantotsu</string>
     <string name="disclaimer_desc">Something to keep in mind</string>
 
@@ -955,7 +955,7 @@
     <string name="manga_desc">Choose how you read</string>
     <string name="notifications_desc">Customize news and updates</string>
     <string name="system_desc">Updates and useful utilities</string>
-    <string name="about_desc">Learn more about Mr. Matagi</string>
+    <string name="about_desc">Learn more about Himitsu</string>
 
     <string name="addons">Addons</string>
     <string name="addons_desc">Addons are Dantotsu extra feature modules.</string>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Mr. Matagi</string>
+    <string name="app_name">Himitsu</string>
 
     <string name="repo">RepoDevil/Mr.Matagi</string>
-    <string name="token_repo">RepoDevil/Himitsu</string>
+    <string name="token_repo">RepoDevil/Himitsu-Matagi</string>
 
     <string name="preference_file_key">dantotsuprefs</string>
 
-    <string name="git_issue_title">[Logcat]: Mr. Matagi #%1$s</string>
+    <string name="git_issue_title">[Logcat]: Himitsu #%1$s</string>
 
     <string name="dantotsu" >https://dantotsu.app/</string>
     <string name="discord">https://discord.gg/vnrhgrt</string>

@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
     }
 }
-rootProject.name = "Mr.Matagi"
+rootProject.name = "Himitsu"
 include(":app")

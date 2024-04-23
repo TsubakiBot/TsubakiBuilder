@@ -48,7 +48,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
-        repository: RepoDevil/Himitsu
+        repository: RepoDevil/Himitsu-Matagi
         token: ${{ secrets.ORG_TOKEN }}
         fetch-depth: 0
 
@@ -111,9 +111,9 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
-          name: Mr. Matagi Himitsu ${{ env.GIT_HASH }}
+          name: Himitsu ${{ env.GIT_HASH }}
           retention-days: 1
-          path: "app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk"
+          path: "app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk"
 
     - name: Purge past releases
       uses: keyfactor/action-delete-prereleases@main
@@ -125,13 +125,13 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: ${{ env.GIT_HASH }}
         prerelease: true
-        title: Mr. Matagi Himitsu ${{ env.GIT_HASH }}
+        title: Himitsu ${{ env.GIT_HASH }}
         files: |
-          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-universal-matagi.apk
-          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk
-          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
-          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
-          app/build/outputs/apk/google/matagi/Mr.Matagi-${{ env.GIT_HASH }}-google-x86-matagi.apk
+          app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-universal-matagi.apk
+          app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-arm64-v8a-matagi.apk
+          app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-armeabi-v7a-matagi.apk
+          app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-x86_64-matagi.apk
+          app/build/outputs/apk/google/matagi/Himitsu-${{ env.GIT_HASH }}-google-x86-matagi.apk
 
   dry:
     needs: wash

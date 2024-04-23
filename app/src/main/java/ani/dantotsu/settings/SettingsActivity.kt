@@ -203,7 +203,7 @@ class SettingsActivity : AppCompatActivity() {
     companion object {
         fun getDeviceInfo(): String {
             return """
-                Mr. Matagi Himitsu ${BuildConfig.COMMIT}
+                Himitsu ${BuildConfig.COMMIT}
                 Device: $BRAND $DEVICE
                 Architecture: ${getArch()}
                 OS Version: $CODENAME $RELEASE ($SDK_INT)

@@ -1,5 +1,5 @@
 <p align="center">
-   
+
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
@@ -9,18 +9,15 @@
 </p>
 <br />
 
-# **Mr. Matagi** 💦
+# **Himitsu** 💦
 
-Dantotsu is (mostly) an [Anilist](https://anilist.co/) only client.
-<br />
-Mr. Matagi is aimed at improving upon it.
+> **Himitsu (秘密; Him-itsu)** means "secret" in Japanese. *Shhh*
 
-> **Matagi (又木; Ma-ta-gi)** means "forked branch" in Japanese.
-> A copy of a project is a fork and a collection of changes is a branch.
+Dantotsu is (mostly) an [Anilist](https://anilist.co/) client. Himitsu aims to improve it.
 
-### 🚀 STAR THIS REPO TO SUPPORT THE DEVELOPER AND HELP OTHERS DISCOVER MR. MATAGI!  
+### 🚀 STAR THIS REPO TO SUPPORT THE FORK AND HELP OTHERS DISCOVER HIMITSU!  
 
-## Mr. Matagi Modifications
+## Himitsu Modifications
 
 - Torrent support (thanks to [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
 - Embedded audio and subtitle support
@@ -65,18 +62,18 @@ Mr. Matagi is aimed at improving upon it.
 - [Code optimization and fixes throughout](https://github.com/rebelonion/Dantotsu/pull/271)
 - [Other bits and pieces I likely forgot](https://github.com/rebelonion/Dantotsu/pulls?q=is%3Apr+author%3AAbandonedCart)
 </details>
-  
+
 ## WANT TO CONTRIBUTE? 🤝
 
 All contributions are welcome, from code to documentation to graphics to design suggestions to bug reports. Please use GitHub to its fullest; contribute Pull Requests, contribute tutorials or other content - whatever you have to offer, we can use!
 <br />
-  
+
 ## LICENSE 📜
 
 Dantotsu is licensed under the [GNU General Public License v3.0](LICENSE.md)  
 *Note: I am not a Dantotsu collaborator, nor member of its Discord.*
 <br />
-  
+
 ## VISITORS
 
 <p align="center">
