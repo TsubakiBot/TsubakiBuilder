@@ -132,7 +132,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             }
 
             fun processUserInput(input: String, mediaType: MediaType, view: ViewGroup) {
-                val entry = if (input.endsWith("/") || input.endsWith("index.min.json"))
+                val entry = if (input.endsWith("/") || input.endsWith(".min.json"))
                     input.substring(0, input.lastIndexOf("/")) else input
                 when (mediaType) {
                     MediaType.ANIME -> {

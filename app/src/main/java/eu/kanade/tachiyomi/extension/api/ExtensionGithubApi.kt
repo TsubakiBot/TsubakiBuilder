@@ -81,7 +81,7 @@ internal class ExtensionGithubApi {
 
                     val response = githubResponse ?: run {
                         networkService.client
-                            .newCall(GET(fallbackRepoUrl(it) + "/index.min.json"))
+                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
                             .awaitSuccess()
                     }
 
@@ -170,7 +170,7 @@ internal class ExtensionGithubApi {
 
                     val response = githubResponse ?: run {
                         networkService.client
-                            .newCall(GET(fallbackRepoUrl(it) + "/index.min.json"))
+                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
                             .awaitSuccess()
                     }
 
@@ -219,7 +219,7 @@ internal class ExtensionGithubApi {
 
                     val response = githubResponse ?: run {
                         networkService.client
-                            .newCall(GET(fallbackRepoUrl(it) + "/index.min.json"))
+                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
                             .awaitSuccess()
                     }
 
@@ -229,10 +229,24 @@ internal class ExtensionGithubApi {
                             .toNovelExtensions(it)
                     }
 
-                    extensions.addAll(repoExtensions)
+                    extensions.addAll(0, repoExtensions)
                 } catch (e: Throwable) {
-                    Logger.log("Failed to get extensions from GitHub")
-                    Logger.log(e)
+                    try {
+                        val response = networkService.client
+                                .newCall(GET("${it}/plugins.min.json"))
+                                .awaitSuccess()
+
+                        val repoExtensions = with(json) {
+                            response
+                                .parseAs<List<PluginJsonObject>>()
+                                .toNovelPlugins(it)
+                        }
+
+                        extensions.addAll(repoExtensions)
+                    } catch (ex: Throwable) {
+                        Logger.log("Failed to get extensions from GitHub")
+                        Logger.log(ex)
+                    }
                 }
             }
             extensions
@@ -257,6 +271,29 @@ internal class ExtensionGithubApi {
                 sources?.toNovelSources() ?: emptyList(),
                 repository = repository,
                 iconUrl = "${repository}/icon/${extension.pkg}.png",
+            )
+        }
+    }
+
+    private fun List<PluginJsonObject>.toNovelPlugins(repository: String): List<NovelExtension.Available> {
+        return mapNotNull { extension ->
+            val sources =
+                listOf(
+                    ExtensionSourceJsonObject(
+                        extension.id.hashCode().toLong(),
+                        extension.lang,
+                        extension.name,
+                        extension.url,
+                    )
+                )
+            NovelExtension.Available(
+                extension.name,
+                extension.id,
+                extension.version,
+                extension.version.replace(".", "").toLong(),
+                sources.toNovelSources(),
+                repository = repository,
+                iconUrl = extension.iconUrl,
             )
         }
     }
@@ -314,6 +351,17 @@ private data class ExtensionJsonObject(
     val hasReadme: Int = 0,
     val hasChangelog: Int = 0,
     val sources: List<ExtensionSourceJsonObject>?,
+)
+
+@Serializable
+private data class PluginJsonObject(
+    val id: String,
+    val name: String,
+    val site: String,
+    val lang: String,
+    val version: String,
+    val url: String,
+    val iconUrl: String,
 )
 
 @Serializable
