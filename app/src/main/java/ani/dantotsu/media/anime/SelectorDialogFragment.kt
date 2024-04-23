@@ -251,14 +251,6 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun launchWithExternalPlayer(episode: Episode, video: Video) {
-        try {
-            startActivity(exportMagnetIntent(episode, video))
-        } catch (e: ActivityNotFoundException) {
-            openInGooglePlay("com.amnis")
-        }
-    }
-
     @androidx.annotation.OptIn(UnstableApi::class)
     private suspend fun launchWithTorrentServer(video: Video) = withContext(Dispatchers.IO) {
         ExoplayerView.torrent?.hash?.let {
@@ -308,7 +300,11 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                 }
             } else {
                 dismiss()
-                launchWithExternalPlayer(ep, video)
+                try {
+                    startActivity(exportMagnetIntent(ep, video))
+                } catch (e: ActivityNotFoundException) {
+                    openInGooglePlay("com.amnis")
+                }
                 return true
             }
         }

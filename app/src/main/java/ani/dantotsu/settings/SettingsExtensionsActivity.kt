@@ -101,16 +101,12 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                             MediaType.ANIME -> {
                                                 animeExtensionManager.findAvailableExtensions()
                                             }
-
                                             MediaType.MANGA -> {
                                                 mangaExtensionManager.findAvailableExtensions()
                                             }
-
                                             MediaType.NOVEL -> {
                                                 novelExtensionManager.findAvailableExtensions()
                                             }
-
-                                            else -> {}
                                         }
                                     }
                                     dialog.dismiss()

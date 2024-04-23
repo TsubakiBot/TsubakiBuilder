@@ -257,7 +257,7 @@
             android:layout_height="56dp"
             android:layout_gravity="bottom"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="24dp"
             android:transitionName="@string/extension_search"
             app:boxBackgroundColor="@color/bg"
             app:boxBackgroundMode="outline"
