@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/no_internet_offline"
+                    android:contentDescription="@string/no_internet_connection"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_round_heart_broken_24" />
 

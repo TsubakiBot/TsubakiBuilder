@@ -334,7 +334,7 @@ class MainActivity : AppCompatActivity() {
         }
         val offlineMode: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         if (!isOnline(this)) {
-            snackString(this@MainActivity.getString(R.string.no_internet))
+            snackString(this@MainActivity.getString(R.string.no_internet_connection))
             startActivity(Intent(this, NoInternet::class.java))
         } else {
             if (offlineMode) {
