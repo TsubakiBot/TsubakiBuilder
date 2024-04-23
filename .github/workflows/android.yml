@@ -22,7 +22,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.ORG_TOKEN }}
-          repository: RepoDevil/Mr.Matagi
+          repository: RepoDevil/Himitsu
           event-type: matagi
 
   rinse:

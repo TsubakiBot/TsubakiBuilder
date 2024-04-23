@@ -113,7 +113,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                 openLinkInBrowser(getString(R.string.discord))
             }
             loginGithub.setOnClickListener {
-                openLinkInBrowser(getString(R.string.github))
+                openLinkInBrowser(getString(R.string.github, getString(R.string.repo)))
             }
             loginTelegram.setOnClickListener {
                 openLinkInBrowser(getString(R.string.telegram))

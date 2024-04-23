@@ -3,8 +3,8 @@
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
-   <a href="https://github.com/RepoDevil/Mr.Matagi/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Mr.Matagi/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
-   <a href="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi"><img src="https://www.codefactor.io/repository/github/RepoDevil/Mr.Matagi/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
+   <a href="https://github.com/RepoDevil/Himitsu/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Himitsu/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
+   <a href="https://www.codefactor.io/repository/github/RepoDevil/Himitsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Himitsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
 <br />
