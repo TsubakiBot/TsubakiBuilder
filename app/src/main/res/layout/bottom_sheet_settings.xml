@@ -28,6 +28,7 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="8dp"
                     android:backgroundTint="@color/nav_bg_inv"
                     app:cardCornerRadius="26dp">
 
@@ -44,7 +45,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:minHeight="64dp"
@@ -75,7 +76,6 @@
 
                 </LinearLayout>
 
-
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +85,6 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="52dp"
                         android:layout_height="52dp"
-
                         android:backgroundTint="@color/nav_bg_inv"
                         app:cardCornerRadius="26dp">
 

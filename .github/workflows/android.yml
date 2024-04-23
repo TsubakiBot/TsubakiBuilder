@@ -65,6 +65,9 @@ jobs:
     - name: Download server.aar
       shell: bash
       run: |
+        if [ ! -d app/libs ]; then
+          mkdir app/libs
+        fi
         curl -H "Authorization: Token ${{ secrets.ORG_TOKEN }}" \
         -H 'Accept: application/vnd.github.v3.raw' \
         -o "app/libs/server.aar" \
