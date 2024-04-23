@@ -122,9 +122,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginHorizontal="24dp"
                 android:transitionName="@string/extension_search"
                 app:boxBackgroundColor="@color/bg"
                 app:boxBackgroundMode="outline"
@@ -246,30 +246,10 @@
                 app:iconSize="24dp" />
 
             <Button
-                android:id="@+id/settingsSettings"
-                style="@style/Widget.Material3.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:fontFamily="@font/poppins_bold"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
-                android:text="@string/settings"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="?attr/colorOnBackground"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/ic_round_settings_24"
-                app:iconPadding="16dp"
-                app:iconSize="24dp" />
-
-            <Button
                 android:id="@+id/settingsExtensionSettings"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:layout_marginBottom="24dp"
                 android:fontFamily="@font/poppins_bold"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -281,6 +261,26 @@
                 android:textColor="?attr/colorOnBackground"
                 app:cornerRadius="0dp"
                 app:icon="@drawable/ic_extension"
+                app:iconPadding="16dp"
+                app:iconSize="24dp" />
+
+            <Button
+                android:id="@+id/settingsSettings"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/settings"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnBackground"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_round_settings_24"
                 app:iconPadding="16dp"
                 app:iconSize="24dp" />
         </LinearLayout>
