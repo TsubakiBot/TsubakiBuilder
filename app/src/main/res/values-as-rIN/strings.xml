@@ -632,7 +632,7 @@
     <string name="purge_manga_downloads">সকলো মাঙ্গা ডাউনল\'ডসমূহ মচি পেলাওক</string>
     <string name="purge_novel_downloads">সকলো উপন্যাস ডাউনল\'ডসমূহ মচি পেলাওক</string>
     <string name="requires_android_12">Android 12+ বিলোপ কৰে</string>
-    <string name="share_username_in_crash_reports">দ্ৰুতিতে প্ৰবন্ধসমূহত ইউজাৰৰ নাম ভাগ কৰক</string>
+    <string name="share_username_in_logs">দ্ৰুতিতে প্ৰবন্ধসমূহত ইউজাৰৰ নাম ভাগ কৰক</string>
     <string name="pinned_sources">পিন কৰা উৎসসমূহ</string>
     <string name="backup_restore">Backup and Restore</string>
     <string name="restore_settings">Import Settings</string>
@@ -734,9 +734,6 @@
     <string name="no_location_selected">কোনো অৱস্থান নিৰ্বাচিত নহয়</string>
     <string name="enjoying_app">এপ্পটো ভাল লাগিছে?</string>
     <string name="consider_donating">দান কৰিব!</string>
-    <string name="no_moners">কোনো টকা নাই :(</string>
-    <string name="you_be_rich">ঠিক আছে, তুমি শীঘ্ৰত ধনী হবা :prayge:</string>
-    <string name="donate">দান কৰক :)</string>
     <string name="do_it">এইটো কৰা!</string>
     <string name="password">পাছৱাৰ্ড</string>
     <string name="search_title">অনুসন্ধান %1$s</string>
@@ -793,11 +790,11 @@
     <string name="about_desc">ডান্তত্সুৰ বিষয়ে অধিক জানক</string>
     <string name="faq_desc">ডান্তত্সুৰ সাধাৰণ প্ৰশ্নসমূহ</string>
     <string name="check_app_updates_desc">এপ্প আপডেটসমূহ সমীক্ষা কৰিবলৈ Github চাওক</string>
-    <string name="share_username_in_crash_reports_desc">ক্রাশ ৰিপ\'ৰ্টত ব্যৱহাৰকাৰীৰ নাম শ্বেয়াৰ কৰক</string>
+    <string name="share_username_in_logs_desc">ক্রাশ ৰিপ\'ৰ্টত ব্যৱহাৰকাৰীৰ নাম শ্বেয়াৰ কৰক</string>
     <string name="devs_desc">ডান্তত্সুৰ স্বনিশ্পন্ন শ্রমিকসমূহ</string>
     <string name="forks_desc">বেছিদুলৈ ডান্তত্সু</string>
     <string name="disclaimer_desc">ধ্যানধাৰক হ\'বলৈ এটা কিছু</string>
-    <string name="enable_torrent_desc">ই বেকগ্ৰাউণ্ডত এটা টৰেন্ট চাৰ্ভাৰ চলাব</string>
+    <string name="enable_server_desc">ই বেকগ্ৰাউণ্ডত এটা টৰেন্ট চাৰ্ভাৰ চলাব</string>
     <string name="player_settings_desc">সকলো প্লেয়াৰ সম্পৰ্কীয় ছেটিংছ</string>
     <string name="purge_anime_downloads_desc">সকলো ডাউনলোড কৰা এনিম ডিলিট কৰক</string>
     <string name="prefer_dub_desc">ডিফল্ট ভাৱে ডাব মিডিয়াক চিলেক্ট কৰক</string>
@@ -832,7 +829,7 @@
     <string name="use_custom_theme_desc">থোৱাৰ বাবে আপোনাৰ নিজৰ ৰং ব্যৱহাৰ কৰক</string>
     <string name="color_picker_desc">এটি ৰং বাছনি কৰক</string>
     <string name="torrent_addon">টৰেণ্ট অ‍্যাড-অন</string>
-    <string name="enable_torrent">টৰেণ্ট সক্ৰিয় কৰক</string>
+    <string name="enable_server">টৰেণ্ট সক্ৰিয় কৰক</string>
     <string name="anime_downloader_addon">আনিমে ডাউনল\'ডাৰ অ‍্যাড-অন</string>
     <string name="install_torrent_addon">টৰেণ্ট অ‍্যাড-অন ইণ্স্টল কৰক</string>
     <string name="loaded_successfully">সফলতাত ল\'ড হৈছে</string>

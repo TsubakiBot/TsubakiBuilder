@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,6 +61,7 @@ class BookDialog : BottomSheetDialogFragment() {
             if (it != null) {
                 binding.itemBookTitle.text = it.name
                 binding.bookRecyclerView.adapter = UrlAdapter(it.links, it, novelName, callback)
+                binding.progress.isGone = true
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {

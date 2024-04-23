@@ -633,7 +633,7 @@
     <string name="purge_manga_downloads">Eliminar todas las descargas de manga</string>
     <string name="purge_novel_downloads">Eliminar todas las descargas de novelas</string>
     <string name="requires_android_12">Requiere Android 12+</string>
-    <string name="share_username_in_crash_reports">Compartir nombre de usuario en informes de errores</string>
+    <string name="share_username_in_logs">Compartir nombre de usuario en informes de errores</string>
     <string name="pinned_sources">Fuentes fijadas</string>
     <string name="backup_restore">Respaldo y restauración</string>
     <string name="restore_settings">Importar configuración</string>
@@ -735,9 +735,6 @@
     <string name="no_location_selected">Ubicación no seleccionada</string>
     <string name="enjoying_app">¿Disfruta de la aplicación?</string>
     <string name="consider_donating">¡Considere la posibilidad de donar!</string>
-    <string name="no_moners">sin monedero :(</string>
-    <string name="you_be_rich">Está bien, pronto serás rico :prayge:</string>
-    <string name="donate">dona :)</string>
     <string name="do_it">¡Hazlo!</string>
     <string name="password">Contraseña</string>
     <string name="search_title">Buscar %1$s</string>
@@ -794,11 +791,11 @@
     <string name="about_desc">Más sobre Dantotsu</string>
     <string name="faq_desc">Preguntas generales sobre Dantotsu</string>
     <string name="check_app_updates_desc">Consulta Github para actualizar la aplicación</string>
-    <string name="share_username_in_crash_reports_desc">Compartir el nombre de usuario en los informes de accidentes</string>
+    <string name="share_username_in_logs_desc">Compartir el nombre de usuario en los informes de accidentes</string>
     <string name="devs_desc">El trabajo no remunerado de Dantotsu </string>
     <string name="forks_desc">Más como Dantotsu</string>
     <string name="disclaimer_desc">A tener en cuenta</string>
-    <string name="enable_torrent_desc">This will run a torrent server in the background</string>
+    <string name="enable_server_desc">This will run a torrent server in the background</string>
     <string name="player_settings_desc">All the player related settings</string>
     <string name="purge_anime_downloads_desc">Delete all downloaded Anime</string>
     <string name="prefer_dub_desc">Select Dub media by default</string>
@@ -833,7 +830,7 @@
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
     <string name="torrent_addon">Complemento Torrent</string>
-    <string name="enable_torrent">Activar torrent</string>
+    <string name="enable_server">Activar torrent</string>
     <string name="anime_downloader_addon">Complemento descargador de anime</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
     <string name="loaded_successfully">Cargado correctamente</string>

@@ -636,7 +636,7 @@
     <string name="purge_manga_downloads">Supprimer tous les téléchargements de Manga</string>
     <string name="purge_novel_downloads">Supprimer tous les téléchargements de Roman</string>
     <string name="requires_android_12">Nécessite Android 12+</string>
-    <string name="share_username_in_crash_reports">Partager le nom d\'utilisateur dans les rapports de plantage</string>
+    <string name="share_username_in_logs">Partager le nom d\'utilisateur dans les rapports de plantage</string>
     <string name="pinned_sources">Sources Épinglées</string>
     <string name="backup_restore">Sauvegarder et restaurer</string>
     <string name="restore_settings">Importer les paramètres</string>
@@ -738,9 +738,6 @@
     <string name="no_location_selected">Pas d\'emplacement sélectionné</string>
     <string name="enjoying_app">Vous appréciez l\'application?</string>
     <string name="consider_donating">Pensez à faire un don!</string>
-    <string name="no_moners">pas d\'argent :(</string>
-    <string name="you_be_rich">Ce n\'est pas grave, vous serez bientôt un homme riche :prayge:</string>
-    <string name="donate">faire un don :)</string>
     <string name="do_it">Faites-le!</string>
     <string name="password">Mot de passe</string>
     <string name="search_title">Rechercher %1$s</string>
@@ -797,11 +794,11 @@
     <string name="about_desc">En savoir plus sur Dantotsu</string>
     <string name="faq_desc">Questions générales sur Dantotsu</string>
     <string name="check_app_updates_desc">Vérifiez GitHub pour les mises à jour de l\'application</string>
-    <string name="share_username_in_crash_reports_desc">Partager le nom d\'utilisateur dans les rapports d\'erreur</string>
+    <string name="share_username_in_logs_desc">Partager le nom d\'utilisateur dans les rapports d\'erreur</string>
     <string name="devs_desc">Les contributeurs non rémunérés de Dantotsu </string>
     <string name="forks_desc">Plutôt comme Dantotsu</string>
     <string name="disclaimer_desc">Quelque chose à garder à l\'esprit</string>
-    <string name="enable_torrent_desc">Cela lancera un serveur torrent en arrière-plan</string>
+    <string name="enable_server_desc">Cela lancera un serveur torrent en arrière-plan</string>
     <string name="player_settings_desc">Tous les paramètres liés au lecteur vidéo</string>
     <string name="purge_anime_downloads_desc">Supprimer tous les anime téléchargés</string>
     <string name="prefer_dub_desc">Sélectionner les médias doublés par défaut</string>
@@ -836,7 +833,7 @@
     <string name="use_custom_theme_desc">Utilise la couleur que vous choisissez pour le thème</string>
     <string name="color_picker_desc">Choisissez une couleur</string>
     <string name="torrent_addon">Add-on pour les Torrents</string>
-    <string name="enable_torrent">Activer les torrents</string>
+    <string name="enable_server">Activer les torrents</string>
     <string name="anime_downloader_addon">Add-on pour le téléchargement d\'anime</string>
     <string name="install_torrent_addon">Installer l\'add-on pour les Torrents</string>
     <string name="loaded_successfully">Chargé avec succès</string>

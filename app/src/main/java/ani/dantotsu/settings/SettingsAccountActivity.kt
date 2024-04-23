@@ -120,7 +120,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     } else {
                         settingsMALAvatar.setImageResource(R.drawable.ic_round_person_32)
                         settingsMALUsername.visibility = View.GONE
-                        settingsMALLogin.setText(R.string.sign_in)
+                        settingsMALLogin.setText(R.string.login)
                         settingsMALLogin.setOnClickListener {
                             MAL.loginIntent(context)
                         }
@@ -128,7 +128,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                 } else {
                     settingsAnilistAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsAnilistUsername.visibility = View.GONE
-                    settingsAnilistLogin.setText(R.string.sign_in)
+                    settingsAnilistLogin.setText(R.string.login)
                     settingsAnilistLogin.setOnClickListener {
                         Anilist.loginIntent(context)
                     }
@@ -204,7 +204,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsImageSwitcher.visibility = View.GONE
                     settingsDiscordAvatar.setImageResource(R.drawable.ic_round_person_32)
                     settingsDiscordUsername.visibility = View.GONE
-                    settingsDiscordLogin.setText(R.string.sign_in)
+                    settingsDiscordLogin.setText(R.string.login)
                     settingsDiscordLogin.setOnClickListener {
                         Discord.warning(context)
                             .show(supportFragmentManager, "dialog")

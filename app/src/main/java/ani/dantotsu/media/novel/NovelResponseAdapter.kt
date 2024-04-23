@@ -92,12 +92,6 @@ class NovelResponseAdapter(
                             novel.link
                         )
                     )
-//                    val intent = Intent(binding.root.context, NovelReaderActivity::class.java).apply {
-//                        action = Intent.ACTION_VIEW
-//                        setDataAndType(Uri.parse(link), "application/epub+zip")
-//                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-//                    }
-//                    binding.root.context.startActivity(intent)
                     bookDialog.dismiss()
                 }
             })

@@ -635,7 +635,7 @@
     <string name="purge_manga_downloads">Διαγράψτε όλες τις λήψεις Manga</string>
     <string name="purge_novel_downloads">Διαγραφή όλων των λήψεων μυθιστορημάτων</string>
     <string name="requires_android_12">Απαιτεί Android 12+</string>
-    <string name="share_username_in_crash_reports">Κοινή χρήση ονόματος χρήστη</string>
+    <string name="share_username_in_logs">Κοινή χρήση ονόματος χρήστη</string>
     <string name="pinned_sources">Καρφιτσωμένες πηγές</string>
     <string name="backup_restore">Δημιουργία αντιγράφων ασφαλείας και επαναφορά</string>
     <string name="restore_settings">Εισαγωγή ρυθμίσεων</string>
@@ -737,9 +737,6 @@
     <string name="no_location_selected">Δεν έχει επιλεγεί τοποθεσία</string>
     <string name="enjoying_app">Απολαμβάνετε την εφαρμογή;</string>
     <string name="consider_donating">Σκεφτείτε να κάνετε δωρεά!</string>
-    <string name="no_moners">οχι λεφτα :(</string>
-    <string name="you_be_rich">Δεν πειράζει, σύντομα θα γίνεις πλούσιος :prayge:</string>
-    <string name="donate">δωρεά :)</string>
     <string name="do_it">Κάνε το!</string>
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="search_title">Αναζήτηση %1$s</string>
@@ -796,11 +793,11 @@
     <string name="about_desc">Μάθετε περισσότερα για το Dantotsu</string>
     <string name="faq_desc">Γενικές ερωτήσεις για το Dantotsu</string>
     <string name="check_app_updates_desc">Ελέγξτε το Github για ενημερώσεις εφαρμογών</string>
-    <string name="share_username_in_crash_reports_desc">Κοινή χρήση ονόματος χρήστη στις αναφορές σφαλμάτων</string>
+    <string name="share_username_in_logs_desc">Κοινή χρήση ονόματος χρήστη στις αναφορές σφαλμάτων</string>
     <string name="devs_desc">Η ίδιοι απλήρωτη εργάτες του Dantotsu </string>
     <string name="forks_desc">Περισσότερο σαν Dantotsu</string>
     <string name="disclaimer_desc">Κάτι που πρέπει να έχετε κατά νου</string>
-    <string name="enable_torrent_desc">Αυτό θα τρέξει έναν διακομιστή torrent στο παρασκήνιο</string>
+    <string name="enable_server_desc">Αυτό θα τρέξει έναν διακομιστή torrent στο παρασκήνιο</string>
     <string name="player_settings_desc">Όλες οι ρυθμίσεις που σχετίζονται με τη συσκευή αναπαραγωγής</string>
     <string name="purge_anime_downloads_desc">Διαγραφή όλων των ληφθέντων Anime</string>
     <string name="prefer_dub_desc">Επιλέξτε Μεταγλωττισμένα πολυμέσα από προεπιλογή</string>
@@ -835,7 +832,7 @@
     <string name="use_custom_theme_desc">Χρησιμοποιήστε το δικό σας χρώμα για το θέμα</string>
     <string name="color_picker_desc">Επιλέξτε ένα χρώμα</string>
     <string name="torrent_addon">Torrent Addon</string>
-    <string name="enable_torrent">Ενεργοποίηση torrent</string>
+    <string name="enable_server">Ενεργοποίηση torrent</string>
     <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Εγκαταστήστε το Torrent Addon</string>
     <string name="loaded_successfully">Φορτώθηκε με επιτυχία</string>

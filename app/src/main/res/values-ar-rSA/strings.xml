@@ -634,7 +634,7 @@
     <string name="purge_manga_downloads">حذف جميع التنزيلات المانجا</string>
     <string name="purge_novel_downloads">حذف جميع التنزيلات للرويات</string>
     <string name="requires_android_12">يطالب Android 12+</string>
-    <string name="share_username_in_crash_reports">مشاركة اسم المستخدم</string>
+    <string name="share_username_in_logs">مشاركة اسم المستخدم</string>
     <string name="pinned_sources">مصادر مثبّتة</string>
     <string name="backup_restore">نسخ احتياطي واستعادة</string>
     <string name="restore_settings">استيراد الإعدادات</string>
@@ -736,9 +736,6 @@
     <string name="no_location_selected">لم يتم تحديد الموقع</string>
     <string name="enjoying_app">هل تستمتع بالتطبيق؟</string>
     <string name="consider_donating">Consider donating!</string>
-    <string name="no_moners">no moners :(</string>
-    <string name="you_be_rich">لا بأس, ستصبح غني قريبًا :prayge:</string>
-    <string name="donate">تبرع :)</string>
     <string name="do_it">افعلها!</string>
     <string name="password">كلمة السر</string>
     <string name="search_title">Search %1$s</string>
@@ -795,11 +792,11 @@
     <string name="about_desc">أعرف المزيد عن Dantotsu</string>
     <string name="faq_desc">أسئلة عامة حول \"Dantotsu\"</string>
     <string name="check_app_updates_desc">Check Github for app updates</string>
-    <string name="share_username_in_crash_reports_desc">مشاركة اسم المستخدم في تقارير الأعطال</string>
+    <string name="share_username_in_logs_desc">مشاركة اسم المستخدم في تقارير الأعطال</string>
     <string name="devs_desc">Dantotsu\'s very own unpaid labours </string>
     <string name="forks_desc">مثل Dantotsu</string>
     <string name="disclaimer_desc">Something to keep in mind</string>
-    <string name="enable_torrent_desc">This will run a torrent server in the background</string>
+    <string name="enable_server_desc">This will run a torrent server in the background</string>
     <string name="player_settings_desc">All the player related settings</string>
     <string name="purge_anime_downloads_desc">Delete all downloaded Anime</string>
     <string name="prefer_dub_desc">Select Dub media by default</string>
@@ -834,7 +831,7 @@
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
     <string name="torrent_addon">أضافة Torrent</string>
-    <string name="enable_torrent">تفعيل Torrent</string>
+    <string name="enable_server">تفعيل Torrent</string>
     <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
     <string name="loaded_successfully">تم التحميل بنجاح</string>

@@ -636,7 +636,7 @@
     <string name="purge_manga_downloads">Alle Manga-Downloads löschen</string>
     <string name="purge_novel_downloads">Alle Roman-Downloads löschen</string>
     <string name="requires_android_12">Benötigt Android 12+</string>
-    <string name="share_username_in_crash_reports">Benutzernamen in Absturzberichten teilen</string>
+    <string name="share_username_in_logs">Benutzernamen in Absturzberichten teilen</string>
     <string name="pinned_sources">Angepinnte Quellen</string>
     <string name="backup_restore">Sichern und Wiederherstellen</string>
     <string name="restore_settings">Einstellungen importieren</string>
@@ -738,9 +738,6 @@
     <string name="no_location_selected">Kein Ort ausgewählt</string>
     <string name="enjoying_app">Gefällt Ihnen die App?</string>
     <string name="consider_donating">Erwägen Sie eine Spende!</string>
-    <string name="no_moners">kein Geld :(</string>
-    <string name="you_be_rich">Das macht nichts, du wirst bald ein reicher Mann sein :prayge:</string>
-    <string name="donate">spenden :)</string>
     <string name="do_it">Tun Sie es!</string>
     <string name="password">Passwort</string>
     <string name="search_title">Suche %1$s</string>
@@ -797,11 +794,11 @@
     <string name="about_desc">Erfahren Sie mehr über Dantotsu</string>
     <string name="faq_desc">Allgemeine Fragen zu Dantotsu</string>
     <string name="check_app_updates_desc">Prüfen Sie Github auf App-Updates</string>
-    <string name="share_username_in_crash_reports_desc">Benutzernamen in Unfallberichten freigeben</string>
+    <string name="share_username_in_logs_desc">Benutzernamen in Unfallberichten freigeben</string>
     <string name="devs_desc">Dantotsu\'s eigene unbezahlte Arbeit </string>
     <string name="forks_desc">Mehr wie Dantotsu</string>
     <string name="disclaimer_desc">Etwas, das man im Hinterkopf behalten sollte</string>
-    <string name="enable_torrent_desc">This will run a torrent server in the background</string>
+    <string name="enable_server_desc">This will run a torrent server in the background</string>
     <string name="player_settings_desc">All the player related settings</string>
     <string name="purge_anime_downloads_desc">Delete all downloaded Anime</string>
     <string name="prefer_dub_desc">Select Dub media by default</string>
@@ -836,7 +833,7 @@
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
     <string name="torrent_addon">Torrent Addon</string>
-    <string name="enable_torrent">Torrent freischalten</string>
+    <string name="enable_server">Torrent freischalten</string>
     <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
     <string name="loaded_successfully">Erfolgreich geladen</string>

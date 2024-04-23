@@ -632,7 +632,7 @@
     <string name="purge_manga_downloads">सभी मंगा डाउनलोड को हटाएं</string>
     <string name="purge_novel_downloads">सभी उपन्यास डाउनलोड को हटाएं</string>
     <string name="requires_android_12">Android 12+ की आवश्यकता है</string>
-    <string name="share_username_in_crash_reports">क्रैश रिपोर्ट्स में उपयोगकर्ता नाम साझा करें</string>
+    <string name="share_username_in_logs">क्रैश रिपोर्ट्स में उपयोगकर्ता नाम साझा करें</string>
     <string name="pinned_sources">पिन की गई स्रोत</string>
     <string name="backup_restore">Backup and Restore</string>
     <string name="restore_settings">Import Settings</string>
@@ -734,9 +734,6 @@
     <string name="no_location_selected">कोई स्थान नहीं चुना गया है</string>
     <string name="enjoying_app">ऐप का आनंद ले रहे हैं?</string>
     <string name="consider_donating">दान करने का विचार करें!</string>
-    <string name="no_moners">कोई पैसे नहीं :(</string>
-    <string name="you_be_rich">ठीक है, आप जल्दी ही धनवान बन जाएंगे :prayge:</string>
-    <string name="donate">दान करें :)</string>
     <string name="do_it">करें!</string>
     <string name="password">पासवर्ड</string>
     <string name="search_title">%1$s खोजें</string>
@@ -793,11 +790,11 @@
     <string name="about_desc">Dantotsu के बारे में और अधिक जानें</string>
     <string name="faq_desc">Dantotsu के बारे में सामान्य प्रश्न</string>
     <string name="check_app_updates_desc">ऐप्प के अपडेट के लिए GitHub की जाँच करें</string>
-    <string name="share_username_in_crash_reports_desc">क्रैश रिपोर्ट में उपयोगकर्ता नाम साझा करें</string>
+    <string name="share_username_in_logs_desc">क्रैश रिपोर्ट में उपयोगकर्ता नाम साझा करें</string>
     <string name="devs_desc">Dantotsu का अपना निःप्रतिष्ठ श्रमिक </string>
     <string name="forks_desc">और जैसे कि Dantotsu</string>
     <string name="disclaimer_desc">ध्यान में रखने के लिए कुछ</string>
-    <string name="enable_torrent_desc">यह पीछे में एक टोरेंट सर्वर चलाएगा</string>
+    <string name="enable_server_desc">यह पीछे में एक टोरेंट सर्वर चलाएगा</string>
     <string name="player_settings_desc">सभी प्लेयर संबंधित सेटिंग्स</string>
     <string name="purge_anime_downloads_desc">सभी डाउनलोड किए गए एनिमे को हटाएं</string>
     <string name="prefer_dub_desc">डिफ़ॉल्ट रूप से डब मीडिया का चयन करें</string>
@@ -832,7 +829,7 @@
     <string name="use_custom_theme_desc">थीम के लिए अपने रंग का उपयोग करें</string>
     <string name="color_picker_desc">एक रंग चुनें</string>
     <string name="torrent_addon">टोरेंट एडऑन</string>
-    <string name="enable_torrent">टोरेंट सक्षम करें</string>
+    <string name="enable_server">टोरेंट सक्षम करें</string>
     <string name="anime_downloader_addon">एनिमे डाउनलोडर एडऑन</string>
     <string name="install_torrent_addon">टोरेंट एडऑन इंस्टॉल करें</string>
     <string name="loaded_successfully">सफलतापूर्वक लोड हुआ</string>

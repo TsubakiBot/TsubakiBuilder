@@ -98,7 +98,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             binding.settingsUserAvatar.loadImage(Anilist.avatar)
         } else {
             binding.settingsUsername.visibility = View.GONE
-            binding.settingsLogin.setText(R.string.sign_in)
+            binding.settingsLogin.setText(R.string.login)
             binding.settingsLogin.setOnClickListener {
                 dismiss()
                 Anilist.loginIntent(requireActivity())

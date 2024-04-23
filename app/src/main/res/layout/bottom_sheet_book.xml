@@ -24,9 +24,14 @@
             android:textSize="20sp"
             tools:text="@string/empty" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="true" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -43,16 +48,6 @@
                     tools:listitem="@layout/item_url" />
 
             </androidx.cardview.widget.CardView>
-
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="16dp"
-                android:indeterminate="true" />
-
-        </FrameLayout>
 
     </LinearLayout>
 
