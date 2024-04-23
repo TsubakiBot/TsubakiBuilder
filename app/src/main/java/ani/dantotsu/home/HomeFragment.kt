@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
                     LayoutAnimationController(setSlideIn(), 0.25f)
             }
             else {
-                snackString(currContext().getString(R.string.please_reload))
+                snackString(R.string.please_reload)
             }
         }
         binding.homeUserAvatarContainer.setSafeOnClickListener {

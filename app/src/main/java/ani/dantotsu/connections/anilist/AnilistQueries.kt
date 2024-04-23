@@ -2,6 +2,7 @@ package ani.dantotsu.connections.anilist
 
 import android.util.Base64
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.checkGenreTime
 import ani.dantotsu.checkId
 import ani.dantotsu.connections.anilist.Anilist.authorRoles
@@ -137,9 +138,9 @@ class AnilistQueries {
                                             banner = media.banner ?: media.cover,
                                             isFav = i.node?.isFavourite ?: false,
                                             role = when (i.role.toString()) {
-                                                "MAIN" -> currContext().getString(R.string.main_role)
+                                                "MAIN" -> getString(R.string.main_role)
 
-                                                "SUPPORTING" -> currContext().getString(R.string.supporting_role)
+                                                "SUPPORTING" -> getString(R.string.supporting_role)
 
                                                 else -> i.role.toString()
                                             },
@@ -166,9 +167,9 @@ class AnilistQueries {
                                             name = i.node?.name?.userPreferred,
                                             image = i.node?.image?.large,
                                             role = when (i.role.toString()) {
-                                                "MAIN" -> currContext().getString(R.string.main_role)
+                                                "MAIN" -> getString(R.string.main_role)
 
-                                                "SUPPORTING" -> currContext().getString(R.string.supporting_role)
+                                                "SUPPORTING" -> getString(R.string.supporting_role)
 
                                                 else -> i.role.toString()
                                             }
@@ -306,14 +307,14 @@ class AnilistQueries {
 
                     if (response.data?.media != null) parse()
                     else {
-                        snackString(currContext().getString(R.string.adult_stuff))
+                        snackString(R.string.adult_stuff)
                         response = executeQuery(query, force = true, useToken = false)
                         if (response?.data?.media != null) parse()
-                        else snackString(currContext().getString(R.string.what_did_you_open))
+                        else snackString(R.string.what_did_you_open)
                     }
                 } else {
                     if (isOnline(currContext())) {
-                        snackString(currContext().getString(R.string.error_getting_data))
+                        snackString(R.string.error_getting_data)
                     } else {
                     }
                 }

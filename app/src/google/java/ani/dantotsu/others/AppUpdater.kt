@@ -18,7 +18,6 @@ import ani.dantotsu.Mapper
 import ani.dantotsu.R
 import ani.dantotsu.buildMarkwon
 import ani.dantotsu.client
-import ani.dantotsu.currContext
 import ani.dantotsu.logError
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.view.dialog.CustomBottomDialog
@@ -39,7 +38,7 @@ import java.util.Locale
 
 object AppUpdater {
     suspend fun check(activity: FragmentActivity, post: Boolean = false) {
-        if (post) snackString(currContext().getString(R.string.checking_for_update))
+        if (post) snackString(R.string.checking_for_update)
         val repo = activity.getString(R.string.repo)
         tryWithSuspend {
             val (md, version) = if (BuildConfig.DEBUG) {
@@ -64,9 +63,7 @@ object AppUpdater {
             if (compareVersion(version) && !dontShow && !activity.isDestroyed) activity.runOnUiThread {
                 CustomBottomDialog.newInstance().apply {
                     setTitleText(
-                        "${if (BuildConfig.DEBUG) "Beta " else ""}Update " + currContext().getString(
-                            R.string.available
-                        )
+                        "${if (BuildConfig.DEBUG) getString(R.string.beta_update) else ""}${getString(R.string.update_available)}"
                     )
                     addView(
                         TextView(activity).apply {
@@ -76,14 +73,14 @@ object AppUpdater {
                     )
 
                     setCheck(
-                        currContext().getString(R.string.dont_show_again, version),
+                        getString(R.string.dont_show_again, version),
                         false
                     ) { isChecked ->
                         if (isChecked) {
                             PrefManager.setCustomVal("dont_ask_for_update_$version", true)
                         }
                     }
-                    setPositiveButton(currContext().getString(R.string.lets_go)) {
+                    setPositiveButton(getString(R.string.lets_go)) {
                         MainScope().launch(Dispatchers.IO) {
                             try {
                                 client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
@@ -99,14 +96,14 @@ object AppUpdater {
                         }
                         dismiss()
                     }
-                    setNegativeButton(currContext().getString(R.string.cope)) {
+                    setNegativeButton(getString(R.string.cope)) {
                         dismiss()
                     }
                     show(activity.supportFragmentManager, "dialog")
                 }
             }
             else {
-                if (post) snackString(currContext().getString(R.string.no_update_found))
+                if (post) snackString(R.string.no_update_found)
             }
         }
     }

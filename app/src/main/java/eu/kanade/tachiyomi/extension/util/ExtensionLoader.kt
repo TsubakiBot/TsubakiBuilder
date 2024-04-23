@@ -182,6 +182,8 @@ internal object ExtensionLoader {
                     NovelLoadResult.Success(extension) }
             }
             deferred.map { it.await() }
+
+            // searchNovels
         }
     }
 

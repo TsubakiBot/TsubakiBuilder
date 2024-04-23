@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.currContext
@@ -200,7 +201,7 @@ object Anilist {
                     throw Exception("Rate limited after $retry seconds")
                 }
                 if (!json.text.startsWith("{")) {
-                    throw Exception(currContext().getString(R.string.anilist_down))
+                    throw Exception(getString(R.string.anilist_down))
                 }
                 if (show) Logger.log("Anilist Response: ${json.text}")
                 json.parsed()

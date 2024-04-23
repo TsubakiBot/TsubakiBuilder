@@ -212,7 +212,8 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
             val nsfw = ""
             val lang = LanguageMapper.mapLanguageCodeToName("all")
             binding.extensionNameTextView.text = extension.name
-            binding.extensionVersionTextView.text = "$lang ${extension.versionName} $nsfw"
+            val text = "$lang ${extension.versionName} $nsfw"
+            binding.extensionVersionTextView.text = text
         }
 
         fun clear() {

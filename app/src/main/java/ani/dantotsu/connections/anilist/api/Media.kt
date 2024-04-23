@@ -3,6 +3,7 @@
 package ani.dantotsu.connections.anilist.api
 
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.currContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -206,11 +207,11 @@ enum class MediaStatus {
 
     override fun toString(): String {
         return when (super.toString()) {
-            "FINISHED" -> currContext().getString(R.string.status_finished)
-            "RELEASING" -> currContext().getString(R.string.status_releasing)
-            "NOT_YET_RELEASED" -> currContext().getString(R.string.status_not_yet_released)
-            "CANCELLED" -> currContext().getString(R.string.status_cancelled)
-            "HIATUS" -> currContext().getString(R.string.status_hiatus)
+            "FINISHED" -> getString(R.string.status_finished)
+            "RELEASING" -> getString(R.string.status_releasing)
+            "NOT_YET_RELEASED" -> getString(R.string.status_not_yet_released)
+            "CANCELLED" -> getString(R.string.status_cancelled)
+            "HIATUS" -> getString(R.string.status_hiatus)
             else -> ""
         }
 
@@ -446,14 +447,14 @@ enum class MediaRelation {
 
     override fun toString(): String {
         return when (super.toString()) {
-            "ADAPTATION" -> currContext().getString(R.string.type_adaptation)
-            "PARENT" -> currContext().getString(R.string.type_parent)
-            "CHARACTER" -> currContext().getString(R.string.type_character)
-            "SUMMARY" -> currContext().getString(R.string.type_summary)
-            "ALTERNATIVE" -> currContext().getString(R.string.type_alternative)
-            "OTHER" -> currContext().getString(R.string.type_other)
-            "SOURCE" -> currContext().getString(R.string.type_source)
-            "CONTAINS" -> currContext().getString(R.string.type_contains)
+            "ADAPTATION" -> getString(R.string.type_adaptation)
+            "PARENT" -> getString(R.string.type_parent)
+            "CHARACTER" -> getString(R.string.type_character)
+            "SUMMARY" -> getString(R.string.type_summary)
+            "ALTERNATIVE" -> getString(R.string.type_alternative)
+            "OTHER" -> getString(R.string.type_other)
+            "SOURCE" -> getString(R.string.type_source)
+            "CONTAINS" -> getString(R.string.type_contains)
             else -> super.toString().replace("_", " ")
         }
     }

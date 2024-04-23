@@ -1,6 +1,7 @@
 package ani.dantotsu.connections.anilist
 
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.currContext
 import ani.dantotsu.media.Media
 import java.io.Serializable
@@ -42,16 +43,16 @@ data class SearchResults(
             )
         }
         status?.let {
-            list.add(SearchChip("STATUS", currContext().getString(R.string.filter_status, it)))
+            list.add(SearchChip("STATUS", getString(R.string.filter_status, it)))
         }
         source?.let {
-            list.add(SearchChip("SOURCE", currContext().getString(R.string.filter_source, it)))
+            list.add(SearchChip("SOURCE", getString(R.string.filter_source, it)))
         }
         format?.let {
-            list.add(SearchChip("FORMAT", currContext().getString(R.string.filter_format, it)))
+            list.add(SearchChip("FORMAT", getString(R.string.filter_format, it)))
         }
         countryOfOrigin?.let {
-            list.add(SearchChip("COUNTRY", currContext().getString(R.string.filter_country, it)))
+            list.add(SearchChip("COUNTRY", getString(R.string.filter_country, it)))
         }
         season?.let {
             list.add(SearchChip("SEASON", it))
@@ -69,7 +70,7 @@ data class SearchResults(
             list.add(
                 SearchChip(
                     "EXCLUDED_GENRE",
-                    currContext().getString(R.string.filter_exclude, it)
+                    getString(R.string.filter_exclude, it)
                 )
             )
         }
@@ -80,7 +81,7 @@ data class SearchResults(
             list.add(
                 SearchChip(
                     "EXCLUDED_TAG",
-                    currContext().getString(R.string.filter_exclude, it)
+                    getString(R.string.filter_exclude, it)
                 )
             )
         }

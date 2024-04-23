@@ -43,7 +43,7 @@ fun updateProgress(media: Media, number: String) {
                 Refresh.all()
             }
         } else {
-            toast(currContext().getString(R.string.login_anilist_account))
+            toast(R.string.login_anilist_account)
         }
     } else {
         toast("Sneaky sneaky :3")

@@ -61,7 +61,7 @@ object Download {
     }
 
     fun download(context: Context, book: Book, pos: Int, novelTitle: String) {
-        toast(currContext().getString(R.string.downloading))
+        toast(R.string.downloading)
         val regex = "[\\\\/:*?\"<>|]".toRegex()
         val nTitle = novelTitle.replace(regex, "")
         val title = book.name.replace(regex, "")
@@ -132,7 +132,7 @@ object Download {
                 ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
                 null
             )
-            toast(currContext().getString(R.string.install_1dm))
+            toast(R.string.install_1dm)
         }
     }
 
@@ -158,7 +158,7 @@ object Download {
                 ),
                 null
             )
-            toast(currContext().getString(R.string.install_adm))
+            toast(R.string.install_adm)
         }
     }
 }

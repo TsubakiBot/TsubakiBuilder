@@ -1,5 +1,8 @@
 package ani.dantotsu.others
 
+import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
+import ani.dantotsu.currContext
 import eu.kanade.tachiyomi.animesource.AnimeSource
 import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
 import eu.kanade.tachiyomi.source.ConfigurableSource
@@ -25,7 +28,7 @@ object LanguageMapper {
     }
 
     fun mapLanguageCodeToName(code: String): String {
-        if (code == "all") return "Multi"
+        if (code == "all") return getString(R.string.multi)
         val locale = getLocalFromCode(code)
         return locale?.displayName ?: code
     }

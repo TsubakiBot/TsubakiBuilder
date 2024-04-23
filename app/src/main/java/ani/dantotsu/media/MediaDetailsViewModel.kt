@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currContext
 import ani.dantotsu.media.anime.Episode
@@ -242,7 +243,7 @@ class MediaDetailsViewModel : ViewModel() {
                 if (media.anime?.episodes?.get(i) != null) {
                     media.anime.selectedEpisode = i
                 } else {
-                    snackString(currContext().getString(R.string.episode_not_found, i))
+                    snackString(getString(R.string.episode_not_found, i))
                     return@post
                 }
                 media.selected = this.loadSelected(media)

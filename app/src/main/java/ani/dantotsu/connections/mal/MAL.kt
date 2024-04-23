@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.Base64
 import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.currContext
 import ani.dantotsu.openLinkInBrowser
@@ -48,7 +49,7 @@ object MAL {
     private suspend fun refreshToken(): ResponseToken? {
         return tryWithSuspend {
             val token = PrefManager.getNullableVal<ResponseToken>(PrefName.MALToken, null)
-                ?: throw Exception(currContext().getString(R.string.refresh_token_load_failed))
+                ?: throw Exception(getString(R.string.refresh_token_load_failed))
             val res = client.post(
                 "https://myanimelist.net/v1/oauth2/token",
                 data = mapOf(
@@ -70,7 +71,7 @@ object MAL {
                     ?: return@tryWithSuspend false
             if (System.currentTimeMillis() > res.expiresIn)
                 res = refreshToken()
-                    ?: throw Exception(currContext().getString(R.string.refreshing_token_failed))
+                    ?: throw Exception(getString(R.string.refreshing_token_failed))
             token = res.accessToken
             return@tryWithSuspend true
         } ?: false

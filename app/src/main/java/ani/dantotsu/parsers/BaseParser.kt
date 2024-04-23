@@ -2,6 +2,7 @@ package ani.dantotsu.parsers
 
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.currContext
 import ani.dantotsu.media.Media
 import ani.dantotsu.settings.saving.PrefManager
@@ -149,9 +150,7 @@ abstract class BaseParser {
             checkIfVariablesAreEmpty()
             setUserText(
                 "${
-                    if (selected) currContext().getString(R.string.selected) else currContext().getString(
-                        R.string.found
-                    )
+                    if (selected) getString(R.string.selected) else getString(R.string.found)
                 } : ${response.name}"
             )
             PrefManager.setCustomVal("${saveName}_$mediaId", response)

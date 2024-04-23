@@ -275,6 +275,7 @@ internal class ExtensionGithubApi {
         }
     }
 
+    // https://github.com/LNReader/lnreader-plugins/blob/master/docs/plugin-template.ts
     private fun List<PluginJsonObject>.toNovelPlugins(repository: String): List<NovelExtension.Available> {
         return mapNotNull { extension ->
             val sources =
