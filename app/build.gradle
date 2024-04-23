@@ -10,10 +10,6 @@ def gitCommitHash = providers.exec {
     commandLine("git", "rev-parse", "--verify", "--short", "HEAD")
 }.standardOutput.asText.get().trim()
 
-def gitBranchName = providers.exec {
-    commandLine("git", "rev-parse", "--abbrev-ref", "HEAD")
-}.standardOutput.asText.get().trim()
-
 android {
     compileSdk 34
 
@@ -56,8 +52,8 @@ android {
     buildTypes {
         matagi {
             isDefault true
-            minifyEnabled (gitBranchName != "himitsu")
-            shrinkResources = (gitBranchName != "himitsu")
+            minifyEnabled System.getenv("CI") != null
+            shrinkResources = System.getenv("CI") != null
             applicationIdSuffix ".matagi"
             versionNameSuffix "-matagi"
             manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"

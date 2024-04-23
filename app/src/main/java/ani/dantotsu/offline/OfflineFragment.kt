@@ -28,8 +28,7 @@ class OfflineFragment : Fragment() {
             bottomMargin = navBarHeight
         }
         offline = PrefManager.getVal(PrefName.OfflineMode)
-        binding.noInternet.text =
-            if (offline) getString(R.string.offline_mode) else getString(R.string.no_internet_connection)
+        if (offline) binding.noInternet.text = getString(R.string.offline_mode)
         binding.refreshButton.visibility = if (offline) View.GONE else View.VISIBLE
         binding.refreshButton.setOnClickListener {
             if (isOnline(requireContext())) {
