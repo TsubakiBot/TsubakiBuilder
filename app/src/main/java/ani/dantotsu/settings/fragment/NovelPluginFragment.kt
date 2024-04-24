@@ -1,7 +1,5 @@
 package ani.dantotsu.settings.fragment
 
-import android.app.NotificationManager
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,31 +9,30 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.FragmentExtensionsBinding
+import ani.dantotsu.others.webview.WebBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
-import ani.dantotsu.settings.InstallerSteps
 import ani.dantotsu.settings.SearchQueryHandler
-import ani.dantotsu.settings.paging.NovelExtensionAdapter
-import ani.dantotsu.settings.paging.NovelExtensionsViewModel
-import ani.dantotsu.settings.paging.NovelExtensionsViewModelFactory
-import ani.dantotsu.settings.paging.OnNovelInstallClickListener
+import ani.dantotsu.settings.paging.NovelPluginsAdapter
+import ani.dantotsu.settings.paging.NovelPluginsViewModel
+import ani.dantotsu.settings.paging.NovelPluginssViewModelFactory
+import ani.dantotsu.settings.paging.OnNovelViewClickListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import rx.android.schedulers.AndroidSchedulers
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class NovelExtensionsFragment : Fragment(),
-    SearchQueryHandler, OnNovelInstallClickListener {
+class NovelPluginsFragment : Fragment(),
+    SearchQueryHandler, OnNovelViewClickListener {
     private var _binding: FragmentExtensionsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: NovelExtensionsViewModel by viewModels {
-        NovelExtensionsViewModelFactory(novelExtensionManager)
+    private val viewModel: NovelPluginsViewModel by viewModels {
+        NovelPluginssViewModelFactory(novelExtensionManager)
     }
 
     private val adapter by lazy {
-        NovelExtensionAdapter(this)
+        NovelPluginsAdapter(this)
     }
 
     private val novelExtensionManager: NovelExtensionManager = Injekt.get()
@@ -72,31 +69,19 @@ class NovelExtensionsFragment : Fragment(),
         viewModel.invalidatePager()
     }
 
-    override fun onInstallClick(pkg: NovelExtension.Available) {
+    override fun onViewClick(plugin: NovelExtension.Plugin) {
         if (isAdded) {  // Check if the fragment is currently added to its activity
-            val context = requireContext()
-            val notificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            val installerSteps = InstallerSteps(notificationManager, context)
-
-            if (pkg.pkgName.startsWith("plugin:")) {
-                
-                return
+            if (plugin.pkgName.startsWith("plugin:")) {
+                parentFragmentManager.let {
+                    WebBottomDialog.newInstance(plugin.sources[0].baseUrl).apply {
+                        show(it, "dialog")
+                    }
+                }
             }
-            // Start the installation process
-            novelExtensionManager.installExtension(pkg)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { installStep -> installerSteps.onInstallStep(installStep) {} },
-                    { error -> installerSteps.onError(error) {} },
-                    { installerSteps.onComplete { viewModel.invalidatePager() } }
-                )
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView();_binding = null
     }
-
-
 }

@@ -30,6 +30,16 @@ sealed class NovelExtension {
         val iconUrl: String,
         val repository: String
     ) : NovelExtension()
+
+    data class Plugin(
+        override val name: String,
+        override val pkgName: String,
+        override val versionName: String,
+        override val versionCode: Long,
+        val sources: List<AvailableNovelSources>,
+        val iconUrl: String,
+        val repository: String
+    ) : NovelExtension()
 }
 
 data class AvailableNovelSources(

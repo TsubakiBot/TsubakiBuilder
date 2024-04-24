@@ -42,6 +42,12 @@ class NovelExtensionManager(private val context: Context) {
 
     private var availableNovelExtensionsSourcesData: Map<Long, NovelSourceData> = emptyMap()
 
+    private val _availableNovelPluginsFlow =
+        MutableStateFlow(emptyList<NovelExtension.Plugin>())
+    val availablePluginsFlow = _availableNovelPluginsFlow.asStateFlow()
+
+    private var availableNovelPluginsSourcesData: Map<Long, NovelSourceData> = emptyMap()
+
     private fun setupAvailableNovelExtensionsSourcesDataMap(novelExtensions: List<NovelExtension.Available>) {
         if (novelExtensions.isEmpty()) return
         availableNovelExtensionsSourcesData = novelExtensions
@@ -49,8 +55,11 @@ class NovelExtensionManager(private val context: Context) {
             .associateBy { it.id }
     }
 
-    fun getPlugins(): List<NovelExtension.Available> {
-        return _availableNovelExtensionsFlow.value.filter { it.pkgName.startsWith("plugin:") }
+    private fun setupAvailableNovelPluginsSourcesDataMap(novelPlugins: List<NovelExtension.Plugin>) {
+        if (novelPlugins.isEmpty()) return
+        availableNovelPluginsSourcesData = novelPlugins
+            .flatMap { ext -> ext.sources.map { it.toNovelSourceData() } }
+            .associateBy { it.id }
     }
 
     fun getSourceData(id: Long) = availableNovelExtensionsSourcesData[id]
@@ -85,6 +94,19 @@ class NovelExtensionManager(private val context: Context) {
         _availableNovelExtensionsFlow.value = extensions
         updatedInstalledNovelExtensionsStatuses(extensions)
         setupAvailableNovelExtensionsSourcesDataMap(extensions)
+    }
+
+    suspend fun findAvailablePlugins() {
+        val plugins: List<NovelExtension.Plugin> = try {
+            api.findNovelPlugins()
+        } catch (e: Exception) {
+            Logger.log("Error finding plugins: ${e.message}")
+            withUIContext { snackString("Failed to get Novel plugin list") }
+            emptyList()
+        }
+
+        _availableNovelPluginsFlow.value = plugins
+        setupAvailableNovelPluginsSourcesDataMap(plugins)
     }
 
     private fun updatedInstalledNovelExtensionsStatuses(availableNovelExtensions: List<NovelExtension.Available>) {

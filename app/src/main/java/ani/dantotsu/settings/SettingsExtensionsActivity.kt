@@ -106,6 +106,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                             }
                                             MediaType.NOVEL -> {
                                                 novelExtensionManager.findAvailableExtensions()
+                                                novelExtensionManager.findAvailablePlugins()
                                             }
                                         }
                                     }

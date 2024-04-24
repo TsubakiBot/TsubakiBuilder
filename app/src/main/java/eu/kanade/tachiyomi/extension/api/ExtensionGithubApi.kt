@@ -14,6 +14,8 @@ import eu.kanade.tachiyomi.network.GET
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.network.awaitSuccess
 import eu.kanade.tachiyomi.network.parseAs
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import tachiyomi.core.util.lang.withIOContext
@@ -67,43 +69,44 @@ internal class ExtensionGithubApi {
             val repos =
                 PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).toMutableList()
 
-            repos.forEach {
-                try {
-                    val githubResponse = try {
-                        networkService.client
-                            .newCall(GET("${it}/index.min.json"))
-                            .awaitSuccess()
+            repos.map {
+                async {
+                    try {
+                        val githubResponse = try {
+                            networkService.client
+                                .newCall(GET("${it}/index.min.json"))
+                                .awaitSuccess()
+                        } catch (e: Throwable) {
+                            Logger.log("Failed to get repo: $it")
+                            Logger.log(e)
+                            null
+                        }
+
+                        val response = githubResponse ?: run {
+                            networkService.client
+                                .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
+                                .awaitSuccess()
+                        }
+
+                        val repoExtensions = with(json) {
+                            response
+                                .parseAs<List<ExtensionJsonObject>>()
+                                .toAnimeExtensions(it)
+                        }
+
+                        // Sanity check - a small number of extensions probably means something broke
+                        // with the repo generator
+                        if (repoExtensions.size < 10) {
+                            throw Exception()
+                        }
+
+                        extensions.addAll(repoExtensions)
                     } catch (e: Throwable) {
-                        Logger.log("Failed to get repo: $it")
+                        Logger.log("Failed to get extensions from GitHub")
                         Logger.log(e)
-                        null
                     }
-
-                    val response = githubResponse ?: run {
-                        networkService.client
-                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
-                            .awaitSuccess()
-                    }
-
-                    val repoExtensions = with(json) {
-                        response
-                            .parseAs<List<ExtensionJsonObject>>()
-                            .toAnimeExtensions(it)
-                    }
-
-                    // Sanity check - a small number of extensions probably means something broke
-                    // with the repo generator
-                    if (repoExtensions.size < 10) {
-                        throw Exception()
-                    }
-
-                    extensions.addAll(repoExtensions)
-                } catch (e: Throwable) {
-                    Logger.log("Failed to get extensions from GitHub")
-                    Logger.log(e)
                 }
-            }
-
+            }.awaitAll()
             extensions
         }
     }
@@ -156,100 +159,60 @@ internal class ExtensionGithubApi {
             val repos =
                 PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).toMutableList()
 
-            repos.forEach {
-                try {
-                    val githubResponse = try {
-                        networkService.client
-                            .newCall(GET("${it}/index.min.json"))
-                            .awaitSuccess()
+            repos.map {
+                async {
+                    try {
+                        val githubResponse = try {
+                            networkService.client
+                                .newCall(GET("${it}/index.min.json"))
+                                .awaitSuccess()
+                        } catch (e: Throwable) {
+                            Logger.log("Failed to get repo: $it")
+                            Logger.log(e)
+                            null
+                        }
+
+                        val response = githubResponse ?: run {
+                            networkService.client
+                                .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
+                                .awaitSuccess()
+                        }
+
+                        val repoExtensions = with(json) {
+                            response
+                                .parseAs<List<ExtensionJsonObject>>()
+                                .toMangaExtensions(it)
+                        }
+
+                        // Sanity check - a small number of extensions probably means something broke
+                        // with the repo generator
+                        if (repoExtensions.size < 10) {
+                            throw Exception()
+                        }
+
+                        extensions.addAll(repoExtensions)
                     } catch (e: Throwable) {
-                        Logger.log("Failed to get repo: $it")
+                        Logger.log("Failed to get extensions from GitHub")
                         Logger.log(e)
-                        null
                     }
-
-                    val response = githubResponse ?: run {
-                        networkService.client
-                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
-                            .awaitSuccess()
-                    }
-
-                    val repoExtensions = with(json) {
-                        response
-                            .parseAs<List<ExtensionJsonObject>>()
-                            .toMangaExtensions(it)
-                    }
-
-                    // Sanity check - a small number of extensions probably means something broke
-                    // with the repo generator
-                    if (repoExtensions.size < 10) {
-                        throw Exception()
-                    }
-
-                    extensions.addAll(repoExtensions)
-                } catch (e: Throwable) {
-                    Logger.log("Failed to get extensions from GitHub")
-                    Logger.log(e)
                 }
-            }
-
+            }.awaitAll()
             extensions
         }
     }
 
-    suspend fun findNovelExtensions(): List<NovelExtension.Available> {
-        return withIOContext {
+    fun getMangaApkUrl(extension: MangaExtension.Available): String {
+        return "${extension.repository}/apk/${extension.apkName}"
+    }
 
-            val extensions: ArrayList<NovelExtension.Available> = arrayListOf()
-
-            val repos =
-                PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).toMutableList()
-
-            repos.forEach {
-                try {
-                    val githubResponse = try {
-                        networkService.client
-                            .newCall(GET("${it}/index.min.json"))
-                            .awaitSuccess()
-                    } catch (e: Throwable) {
-                        Logger.log("Failed to get repo: $it")
-                        Logger.log(e)
-                        null
-                    }
-
-                    val response = githubResponse ?: run {
-                        networkService.client
-                            .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
-                            .awaitSuccess()
-                    }
-
-                    val repoExtensions = with(json) {
-                        response
-                            .parseAs<List<ExtensionJsonObject>>()
-                            .toNovelExtensions(it)
-                    }
-
-                    extensions.addAll(0, repoExtensions)
-                } catch (e: Throwable) {
-                    try {
-                        val response = networkService.client
-                                .newCall(GET("${it}/plugins.min.json"))
-                                .awaitSuccess()
-
-                        val repoExtensions = with(json) {
-                            response
-                                .parseAs<List<PluginJsonObject>>()
-                                .toNovelPlugins(it)
-                        }
-
-                        extensions.addAll(repoExtensions)
-                    } catch (ex: Throwable) {
-                        Logger.log("Failed to get extensions from GitHub")
-                        Logger.log(ex)
-                    }
-                }
-            }
-            extensions
+    private fun List<ExtensionSourceJsonObject>.toNovelSources(): List<AvailableNovelSources> {
+        return map { source ->
+            AvailableNovelSources(
+                source.id,
+                source.lang,
+                source.name,
+                source.baseUrl,
+            )
         }
     }
 
@@ -275,8 +238,52 @@ internal class ExtensionGithubApi {
         }
     }
 
+    suspend fun findNovelExtensions(): List<NovelExtension.Available> {
+        return withIOContext {
+
+            val extensions: ArrayList<NovelExtension.Available> = arrayListOf()
+
+            val repos =
+                PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).toMutableList()
+
+            repos.map {
+                async {
+                    try {
+                        val githubResponse = try {
+                            networkService.client
+                                .newCall(GET("${it}/index.min.json"))
+                                .awaitSuccess()
+                        } catch (e: Throwable) {
+                            Logger.log("Failed to get repo: $it")
+                            Logger.log(e)
+                            null
+                        }
+
+                        val response = githubResponse ?: run {
+                            networkService.client
+                                .newCall(GET("${fallbackRepoUrl(it)}/index.min.json"))
+                                .awaitSuccess()
+                        }
+
+                        val repoExtensions = with(json) {
+                            response
+                                .parseAs<List<ExtensionJsonObject>>()
+                                .toNovelExtensions(it)
+                        }
+
+                        extensions.addAll(repoExtensions)
+                    } catch (e: Throwable) {
+                        Logger.log("Failed to get extension. Possibly a plugin.")
+                        Logger.log(e)
+                    }
+                }
+            }.awaitAll()
+            extensions
+        }
+    }
+
     // https://github.com/LNReader/lnreader-plugins/blob/master/docs/plugin-template.ts
-    private fun List<PluginJsonObject>.toNovelPlugins(repository: String): List<NovelExtension.Available> {
+    private fun List<PluginJsonObject>.toNovelPlugins(repository: String): List<NovelExtension.Plugin> {
         return mapNotNull { extension ->
             val sources =
                 listOf(
@@ -293,7 +300,7 @@ internal class ExtensionGithubApi {
                         extension.url,
                     )
                 )
-            NovelExtension.Available(
+            NovelExtension.Plugin(
                 extension.name,
                 "plugin:${extension.id}",
                 extension.version,
@@ -305,23 +312,40 @@ internal class ExtensionGithubApi {
         }
     }
 
-    private fun List<ExtensionSourceJsonObject>.toNovelSources(): List<AvailableNovelSources> {
-        return map { source ->
-            AvailableNovelSources(
-                source.id,
-                source.lang,
-                source.name,
-                source.baseUrl,
-            )
+    suspend fun findNovelPlugins(): List<NovelExtension.Plugin> {
+        return withIOContext {
+
+            val plugins: ArrayList<NovelExtension.Plugin> = arrayListOf()
+
+            val repos =
+                PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).toMutableList()
+
+            repos.forEach {
+                    try {
+                        val response = networkService.client
+                            .newCall(GET("${it}/plugins.min.json"))
+                            .awaitSuccess()
+
+                        val repoExtensions = with(json) {
+                            response
+                                .parseAs<List<PluginJsonObject>>()
+                                .toNovelPlugins(it)
+                        }
+
+                        plugins.addAll(repoExtensions)
+                    } catch (ex: Throwable) {
+                        Logger.log("Failed to get plugin. Possibly an extension.")
+                        Logger.log(ex)
+                    }
+                }
+            plugins
         }
     }
 
+
+
     fun getNovelApkUrl(extension: NovelExtension.Available): String {
         return "${extension.repository}/apk/${extension.pkgName}.apk"
-    }
-
-    fun getMangaApkUrl(extension: MangaExtension.Available): String {
-        return "${extension.repository}/apk/${extension.apkName}"
     }
 
 

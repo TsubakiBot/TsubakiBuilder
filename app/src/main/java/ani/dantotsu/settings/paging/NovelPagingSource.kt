@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.core.view.isGone
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -19,13 +18,8 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemExtensionBinding
-import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.LanguageMapper
-import ani.dantotsu.others.webview.CloudFlare
-import ani.dantotsu.others.webview.WebBottomDialog
-import ani.dantotsu.others.webview.WebViewBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
@@ -135,7 +129,6 @@ class NovelExtensionPagingSource(
 }
 
 class NovelExtensionAdapter(
-    private val manager: FragmentManager,
     private val clickListener: OnNovelInstallClickListener) :
     PagingDataAdapter<NovelExtension.Available, NovelExtensionAdapter.NovelExtensionViewHolder>(
         DIFF_CALLBACK
@@ -198,12 +191,6 @@ class NovelExtensionAdapter(
                 val extension = getItem(bindingAdapterPosition)
                 if (extension != null) {
                     clickListener.onInstallClick(extension)
-                    if (extension.pkgName.startsWith("plugin:")) {
-                        WebBottomDialog.newInstance(extension.sources[0].baseUrl).apply {
-                            show(manager, "dialog")
-                        }
-                        return@setOnClickListener
-                    }
                     binding.closeTextView.setImageResource(R.drawable.ic_sync)
                     scope.launch {
                         while (isActive) {
@@ -239,6 +226,182 @@ class NovelExtensionAdapter(
         super.onViewRecycled(holder)
         holder.clear()
     }
+}
+
+class NovelPluginssViewModelFactory(
+    private val novelExtensionManager: NovelExtensionManager
+) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return NovelPluginsViewModel(novelExtensionManager) as T
+    }
+}
+
+class NovelPluginsViewModel(
+    novelExtensionManager: NovelExtensionManager
+) : ViewModel() {
+    private val searchQuery = MutableStateFlow("")
+    private var currentPagingSource: NovelPluginPagingSource? = null
+
+    fun setSearchQuery(query: String) {
+        searchQuery.value = query
+    }
+
+    fun invalidatePager() {
+        currentPagingSource?.invalidate()
+
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val pagerFlow: Flow<PagingData<NovelExtension.Plugin>> = combine(
+        novelExtensionManager.availablePluginsFlow,
+        searchQuery
+    ) { available, query ->
+        Pair(available, query)
+    }.flatMapLatest { (available, query) ->
+        Pager(
+            PagingConfig(
+                pageSize = 15,
+                initialLoadSize = 15,
+                prefetchDistance = 15
+            )
+        ) {
+            val nEPS = NovelPluginPagingSource(available, query)
+            currentPagingSource = nEPS
+            nEPS
+        }.flow
+    }.cachedIn(viewModelScope)
+}
+
+
+class NovelPluginPagingSource(
+    private val availablePluginsFlow: List<NovelExtension.Plugin>,
+    private val searchQuery: String
+) : PagingSource<Int, NovelExtension.Plugin>() {
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NovelExtension.Plugin> {
+        val position = params.key ?: 0
+        val availablePlugins = availablePluginsFlow
+        val query = searchQuery
+        val filteredExtensions = if (query.isEmpty()) {
+            availablePlugins
+        } else {
+            availablePlugins.filter { it.name.contains(query, ignoreCase = true) }
+        }
+        /*val filternfsw = if(isNsfwEnabled) {  currently not implemented
+            filteredExtensions
+        } else {
+            filteredExtensions.filterNot { it.isNsfw }
+        }*/
+        return try {
+            val sublist = filteredExtensions.subList(
+                fromIndex = position,
+                toIndex = (position + params.loadSize).coerceAtMost(filteredExtensions.size)
+            )
+            LoadResult.Page(
+                data = sublist,
+                prevKey = if (position == 0) null else position - params.loadSize,
+                nextKey = if (position + params.loadSize >= filteredExtensions.size) null else position + params.loadSize
+            )
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, NovelExtension.Plugin>): Int? {
+        return null
+    }
+}
+
+class NovelPluginsAdapter(
+    private val clickListener: OnNovelViewClickListener) :
+    PagingDataAdapter<NovelExtension.Plugin, NovelPluginsAdapter.NovelPluginViewHolder>(
+        DIFF_CALLBACK
+    ) {
+
+    private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<NovelExtension.Plugin>() {
+            override fun areItemsTheSame(
+                oldItem: NovelExtension.Plugin,
+                newItem: NovelExtension.Plugin
+            ): Boolean {
+                return oldItem.pkgName == newItem.pkgName
+            }
+
+            override fun areContentsTheSame(
+                oldItem: NovelExtension.Plugin,
+                newItem: NovelExtension.Plugin
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NovelPluginViewHolder {
+        val binding = ItemExtensionBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        ).apply {
+            extensionPinImageView.isGone = true
+            searchImageView.isGone = true
+            settingsImageView.isGone = true
+            closeTextView.setImageResource(R.drawable.ic_globe_24)
+        }
+        return NovelPluginViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: NovelPluginViewHolder, position: Int) {
+        val extension = getItem(position)
+        if (extension != null) {
+            if (!skipIcons) {
+                Glide.with(holder.itemView.context)
+                    .load(extension.iconUrl)
+                    .into(holder.extensionIconImageView)
+            }
+            holder.bind(extension)
+        }
+    }
+
+    inner class NovelPluginViewHolder(
+        private val binding: ItemExtensionBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        private val job = Job()
+        private val scope = CoroutineScope(Dispatchers.Main + job)
+
+        init {
+            binding.closeTextView.setOnClickListener {
+                if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
+                val extension = getItem(bindingAdapterPosition)
+                if (extension != null) {
+                    clickListener.onViewClick(extension)
+                }
+            }
+        }
+
+        val extensionIconImageView: ImageView = binding.extensionIconImageView
+        fun bind(extension: NovelExtension.Plugin) {
+            val nsfw = ""
+            val lang = LanguageMapper.mapLanguageCodeToName("all")
+            binding.extensionNameTextView.text = extension.name
+            val text = "$lang ${extension.versionName} $nsfw"
+            binding.extensionVersionTextView.text = text
+        }
+
+        fun clear() {
+            job.cancel() // Cancel the coroutine when the view is recycled
+        }
+    }
+
+    override fun onViewRecycled(holder: NovelPluginViewHolder) {
+        super.onViewRecycled(holder)
+        holder.clear()
+    }
+}
+
+interface OnNovelViewClickListener {
+    fun onViewClick(plugin: NovelExtension.Plugin)
 }
 
 interface OnNovelInstallClickListener {

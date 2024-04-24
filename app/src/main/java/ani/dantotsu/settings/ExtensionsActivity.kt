@@ -36,6 +36,7 @@ import ani.dantotsu.settings.fragment.InstalledMangaExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledNovelExtensionsFragment
 import ani.dantotsu.settings.fragment.MangaExtensionsFragment
 import ani.dantotsu.settings.fragment.NovelExtensionsFragment
+import ani.dantotsu.settings.fragment.NovelPluginsFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -88,7 +89,7 @@ class ExtensionsActivity : AppCompatActivity() {
         viewPager.offscreenPageLimit = 1
 
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = 6
+            override fun getItemCount(): Int = 7
 
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
@@ -98,6 +99,7 @@ class ExtensionsActivity : AppCompatActivity() {
                     3 -> MangaExtensionsFragment()
                     4 -> InstalledNovelExtensionsFragment()
                     5 -> NovelExtensionsFragment()
+                    6 -> NovelPluginsFragment()
                     else -> AnimeExtensionsFragment()
                 }
             }
@@ -156,6 +158,7 @@ class ExtensionsActivity : AppCompatActivity() {
                 3 -> getString(R.string.available_extensions, MediaType.MANGA.asText())
                 4 -> getString(R.string.installed_extensions, MediaType.NOVEL.asText())
                 5 -> getString(R.string.available_extensions, MediaType.NOVEL.asText())
+                6 -> getString(R.string.available_plugins, MediaType.NOVEL.asText())
                 else -> null
             }
         }.attach()
@@ -235,6 +238,7 @@ class ExtensionsActivity : AppCompatActivity() {
                 PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
                 CoroutineScope(Dispatchers.IO).launch {
                     novelExtensionManager.findAvailableExtensions()
+                    novelExtensionManager.findAvailablePlugins()
                 }
             }
         }
@@ -281,6 +285,7 @@ class ExtensionsActivity : AppCompatActivity() {
 
                                     MediaType.NOVEL -> {
                                         novelExtensionManager.findAvailableExtensions()
+                                        novelExtensionManager.findAvailablePlugins()
                                     }
                                 }
                             }
