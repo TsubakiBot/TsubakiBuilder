@@ -30,7 +30,8 @@
     <string name="memory_petabyte">PB</string>
     <string name="memory_exabyte">EB</string>
 
-    <string name="you_cursed">youwu have been cuwsed</string>
+    <string name="mimetype_zip" translatable="false">application/zip</string>
+
     <string name="cursed_yt" translatable="false">https://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
 
     <string name="lorem_ipsum" translatable="false">

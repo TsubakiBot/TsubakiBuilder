@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.core.view.isGone
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -18,9 +19,13 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
+import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemExtensionBinding
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.LanguageMapper
+import ani.dantotsu.others.webview.CloudFlare
+import ani.dantotsu.others.webview.WebBottomDialog
+import ani.dantotsu.others.webview.WebViewBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
@@ -129,7 +134,9 @@ class NovelExtensionPagingSource(
     }
 }
 
-class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListener) :
+class NovelExtensionAdapter(
+    private val manager: FragmentManager,
+    private val clickListener: OnNovelInstallClickListener) :
     PagingDataAdapter<NovelExtension.Available, NovelExtensionAdapter.NovelExtensionViewHolder>(
         DIFF_CALLBACK
     ) {
@@ -178,8 +185,9 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
         }
     }
 
-    inner class NovelExtensionViewHolder(private val binding: ItemExtensionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class NovelExtensionViewHolder(
+        private val binding: ItemExtensionBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private val job = Job()
         private val scope = CoroutineScope(Dispatchers.Main + job)
@@ -191,7 +199,9 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
                 if (extension != null) {
                     clickListener.onInstallClick(extension)
                     if (extension.pkgName.startsWith("plugin:")) {
-                        openLinkInBrowser(extension.sources[0].baseUrl)
+                        WebBottomDialog.newInstance(extension.sources[0].baseUrl).apply {
+                            show(manager, "dialog")
+                        }
                         return@setOnClickListener
                     }
                     binding.closeTextView.setImageResource(R.drawable.ic_sync)

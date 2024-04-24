@@ -35,7 +35,7 @@ class NovelExtensionsFragment : Fragment(),
     }
 
     private val adapter by lazy {
-        NovelExtensionAdapter(this)
+        NovelExtensionAdapter(parentFragmentManager, this)
     }
 
     private val novelExtensionManager: NovelExtensionManager = Injekt.get()
