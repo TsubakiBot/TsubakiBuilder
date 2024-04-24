@@ -399,8 +399,9 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         if (!model.loaded) Refresh.activity[1]!!.postValue(true)
         if (_binding != null) {
-            binding.homeNotificationCount.isVisible = Anilist.unreadNotificationCount > 0
-            binding.homeNotificationCount.text = Anilist.unreadNotificationCount.toString()
+            val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+            binding.homeNotificationCount.isVisible = count > 0
+            binding.homeNotificationCount.text = count.toString()
         }
         super.onResume()
     }

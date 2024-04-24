@@ -267,8 +267,9 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
     fun updateNotificationCount() {
         if (this::binding.isInitialized) {
-            trendingBinding.notificationCount.isVisible = Anilist.unreadNotificationCount > 0
-            trendingBinding.notificationCount.text = Anilist.unreadNotificationCount.toString()
+            val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+            trendingBinding.notificationCount.isVisible = count > 0
+            trendingBinding.notificationCount.text = count.toString()
         }
     }
 
