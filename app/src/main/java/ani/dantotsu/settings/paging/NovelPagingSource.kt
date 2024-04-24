@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemExtensionBinding
+import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
@@ -189,7 +190,10 @@ class NovelExtensionAdapter(private val clickListener: OnNovelInstallClickListen
                 val extension = getItem(bindingAdapterPosition)
                 if (extension != null) {
                     clickListener.onInstallClick(extension)
-                    if (!extension.pkgName.startsWith("plugin:")) return@setOnClickListener
+                    if (extension.pkgName.startsWith("plugin:")) {
+                        openLinkInBrowser(extension.sources[0].baseUrl)
+                        return@setOnClickListener
+                    }
                     binding.closeTextView.setImageResource(R.drawable.ic_sync)
                     scope.launch {
                         while (isActive) {

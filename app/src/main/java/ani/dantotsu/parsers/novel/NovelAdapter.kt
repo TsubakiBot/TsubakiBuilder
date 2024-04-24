@@ -31,10 +31,10 @@ class DynamicNovelParser(extension: NovelExtension.Installed) : NovelParser() {
 
     override suspend fun loadBook(link: String, extra: Map<String, String>?): Book {
         val source = extension.sources.firstOrNull()
-        if (source is NovelInterface) {
-            return source.loadBook(link, extra, client)
+        return if (source is NovelInterface) {
+            source.loadBook(link, extra, client)
         } else {
-            return Book("", "", "", emptyList())
+            Book("", "", "", emptyList())
         }
     }
 

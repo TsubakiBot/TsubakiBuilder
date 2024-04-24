@@ -49,6 +49,10 @@ class NovelExtensionManager(private val context: Context) {
             .associateBy { it.id }
     }
 
+    fun getPlugins(): List<NovelExtension.Available> {
+        return _availableNovelExtensionsFlow.value.filter { it.pkgName.startsWith("plugin:") }
+    }
+
     fun getSourceData(id: Long) = availableNovelExtensionsSourcesData[id]
 
     init {
@@ -218,10 +222,6 @@ class NovelExtensionManager(private val context: Context) {
         override fun onPackageUninstalled(pkgName: String) {
             unregisterNovelExtension(pkgName)
         }
-    }
-
-    fun getPlugins(): List<NovelExtension.Available> {
-        return _availableNovelExtensionsFlow.value.filter { it.pkgName.startsWith("plugin:") }
     }
 
     /**

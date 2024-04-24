@@ -284,6 +284,12 @@ internal class ExtensionGithubApi {
                         extension.id.hashCode().toLong(),
                         extension.lang,
                         extension.name,
+                        extension.site,
+                    ),
+                    ExtensionSourceJsonObject(
+                        extension.id.hashCode().toLong(),
+                        extension.lang,
+                        extension.name,
                         extension.url,
                     )
                 )

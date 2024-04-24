@@ -1063,4 +1063,6 @@
     <string name="webview_not_found_version">Could not find WebView version %1$s</string>
     <string name="webview_not_found">Could not find an installed WebView library</string>
     <string name="multi">Multi</string>
+    <string name="installed_extensions">Installed %1$s</string>
+    <string name="available_extensions">Available %1$s</string>
 </resources>

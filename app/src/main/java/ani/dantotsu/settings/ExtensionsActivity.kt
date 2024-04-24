@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -111,21 +112,23 @@ class ExtensionsActivity : AppCompatActivity() {
                     searchView.setText("")
                     searchView.clearFocus()
                     tabLayout.clearFocus()
-                    if (tab.text?.contains("Installed") == true) binding.languageselect.visibility =
-                        View.GONE
-                    else binding.languageselect.visibility = View.VISIBLE
+                    binding.languageselect.isGone =
+                        tab.text?.contains(getString(R.string.installed_extensions)) == true
                     viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
                     }
 
-                    if (tab.text?.contains("Anime") == true) {
-                        generateRepositoryButton(MediaType.ANIME)
-                    }
-                    if (tab.text?.contains("Manga") == true) {
-                        generateRepositoryButton(MediaType.MANGA)
-                    }
-                    if (tab.text?.contains("Novel") == true) {
-                        generateRepositoryButton(MediaType.NOVEL)
+                    when {
+                        tab.text?.contains(MediaType.ANIME.asText()) == true -> {
+                            generateRepositoryButton(MediaType.ANIME)
+                        }
+                        tab.text?.contains(MediaType.MANGA.asText()) == true -> {
+                            generateRepositoryButton(MediaType.MANGA)
+                        }
+                        tab.text?.contains(MediaType.NOVEL.asText()) == true -> {
+                            generateRepositoryButton(MediaType.NOVEL)
+                        }
+                        else -> {}
                     }
                 }
 
@@ -147,12 +150,12 @@ class ExtensionsActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Installed Anime"
-                1 -> "Available Anime"
-                2 -> "Installed Manga"
-                3 -> "Available Manga"
-                4 -> "Installed Novels"
-                5 -> "Available Novels"
+                0 -> getString(R.string.installed_extensions, MediaType.ANIME.asText())
+                1 -> getString(R.string.available_extensions, MediaType.ANIME.asText())
+                2 -> getString(R.string.installed_extensions, MediaType.MANGA.asText())
+                3 -> getString(R.string.available_extensions, MediaType.MANGA.asText())
+                4 -> getString(R.string.installed_extensions, MediaType.NOVEL.asText())
+                5 -> getString(R.string.available_extensions, MediaType.NOVEL.asText())
                 else -> null
             }
         }.attach()
