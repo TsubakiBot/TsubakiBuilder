@@ -184,6 +184,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             doc.selectFirst("div.nav-next")?.let {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.post {
+                        mWebView?.clearHistory()
                         mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
                     }
                 }
@@ -225,6 +226,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 mWebView?.post { mWebView?.loadUrl(page) }
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
                 mWebView?.post {
+                    mWebView?.clearHistory()
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
                 }
             }
