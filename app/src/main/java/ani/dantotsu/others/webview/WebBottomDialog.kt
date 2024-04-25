@@ -14,6 +14,7 @@
 package ani.dantotsu.others.webview
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.net.http.SslError
 import android.os.*
 import android.util.Base64
@@ -26,6 +27,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
+import androidx.activity.addCallback
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewAssetLoader
@@ -34,11 +36,14 @@ import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetWebBinding
+import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
+import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+
 
 class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
@@ -59,6 +64,15 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mWebView = binding.webviewContent
+        (dialog as androidx.activity.ComponentDialog)
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner) {
+                if (mWebView?.canGoBack() == true) {
+                    mWebView?.goBack()
+                } else {
+                    dismiss()
+                }
+            }
         configureWebView(mWebView)
     }
 
@@ -76,29 +90,26 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         webViewSettings.cacheMode = WebSettings.LOAD_NO_CACHE
         if (Version.isLollipop) {
             val assetLoader = WebViewAssetLoader.Builder().addPathHandler(
-                "/assets/",
-                AssetsPathHandler(requireContext())
+                "/assets/", AssetsPathHandler(requireContext())
             ).build()
             webView.webViewClient = object : WebViewClientCompat() {
+                private val loadedUrls: HashMap<Uri, Boolean> = hashMapOf()
                 override fun shouldInterceptRequest(
                     view: WebView, request: WebResourceRequest
                 ): WebResourceResponse? {
-                    return assetLoader.shouldInterceptRequest(request.url)
-                }
+                    val ad: Boolean =
+                    if (!loadedUrls.containsKey(request.url)) {
+                        isAd(request.url).also { loadedUrls[request.url] = it }
+                    } else {
+                        loadedUrls[request.url] == true
+                    }
+                    return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
 
-                override fun shouldOverrideUrlLoading(
-                    view: WebView,
-                    request: WebResourceRequest
-                ): Boolean {
-                    return super.shouldOverrideUrlLoading(view, request)
-                }
+                 }
 
                 override fun onReceivedSslError(
                     view: WebView?, handler: SslErrorHandler, error: SslError?
-                ) {
-                    // handler.proceed()
-                    handler.cancel()
-                }
+                ) { handler.cancel() }
             }
             if (WebViewFeature.isFeatureSupported(WebViewFeature.SERVICE_WORKER_BASIC_USAGE)) {
                 ServiceWorkerControllerCompat.getInstance().setServiceWorkerClient(
@@ -133,15 +144,6 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             webViewSettings.builtInZoomControls = true
             it.loadUrl(address)
         } ?: webHandler.postDelayed({ loadWebsite(address) }, 50L)
-    }
-
-    fun hasGoneBack() : Boolean {
-        return if (mWebView?.canGoBack() == true) {
-            mWebView?.goBack()
-            true
-        } else {
-            false
-        }
     }
 
     @Suppress("unused")
