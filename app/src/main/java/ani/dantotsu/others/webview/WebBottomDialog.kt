@@ -29,6 +29,7 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.addCallback
+import androidx.core.view.isInvisible
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewAssetLoader
@@ -102,20 +103,20 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     view: WebView, request: WebResourceRequest
                 ): WebResourceResponse? {
                     val ad: Boolean =
-                    if (!loadedUrls.containsKey(request.url)) {
-                        isAd(request.url).also { loadedUrls[request.url] = it }
-                    } else {
-                        loadedUrls[request.url] == true
-                    }
+                        if (!loadedUrls.containsKey(request.url)) {
+                            isAd(request.url).also { loadedUrls[request.url] = it }
+                        } else {
+                            loadedUrls[request.url] == true
+                        }
                     return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
-                 }
+                }
 
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
                     request: WebResourceRequest
                 ): Boolean {
                     return request.url?.toString()?.let {
-                        val address = it.substringAfter("/novel/") ?: ""
+                        val address = it.substringAfter("/novel/")
                         if (address.split("/").size - 1 == 1) {
                             webView.loadUrl("${it}chapter-01/")
                             return true
@@ -125,13 +126,13 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 }
 
                 override fun onPageFinished(view: WebView?, url: String?) {
-                        val address = url?.substringAfter("/novel/") ?: ""
-                            if (address.split("/").size - 1 > 1) {
-                            webView.loadUrl("javascript:window.Android.handleHtml" +
-                                    "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
-                        } else {
-                            super.onPageFinished(view, url)
-                        }
+                    val address = url?.substringAfter("/novel/") ?: ""
+                    if (address.split("/").size - 1 > 1) {
+                        webView.loadUrl("javascript:window.Android.handleHtml" +
+                                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+                    } else {
+                        super.onPageFinished(view, url)
+                    }
                 }
 
                 override fun onReceivedSslError(
@@ -180,39 +181,48 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             val doc = Jsoup.parse(html)
             val novel = doc.selectFirst("h1#chapter-heading")?.text()
                 ?.substringBefore(" - Chapter")
-            doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
-                val content = doc.selectFirst("div.reading-content")
-                val text = content?.selectFirst("div.text-left")
-                val title = text?.selectFirst("h1, h2, h3, h4")?.text()
-                var chapter = (title ?: "") + "\n"
-                text?.select("p")?.forEach { paragraph ->
-                    if (paragraph.text() == "&nbsp;") {
-                        chapter += "\n"
-                    } else {
-                        val span = paragraph.select("span")
-                        if (span.isEmpty()) {
-                            chapter += "\n${paragraph.text()}"
-                        } else {
-                            span.forEach { chapter += "\n${it.text()}" }
-                        }
+            doc.selectFirst("div.nav-next")?.let {
+                doc.selectFirst("a.prev_page")?.attr("href")?.let {
+                    mWebView?.post {
+                        mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
                     }
                 }
+            }
+            doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
                 novel?.let { dir ->
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                         "Dantotsu/Novel/${dir.utf8}"
                     )
+                    val content = doc.selectFirst("div.reading-content")
+                    val text = content?.selectFirst("div.text-left")
+                    val title = text?.selectFirst("h1, h2, h3, h4")?.text()?.also {
+                        if (File(directory, it.utf8).exists()) {
+                            mWebView?.post { mWebView?.loadUrl(page) }
+                            return
+                        }
+                    }
+                    var chapter = (title ?: "") + "\n"
+                    text?.select("p")?.forEach { paragraph ->
+                        if (paragraph.text() == "&nbsp;") {
+                            chapter += "\n"
+                        } else {
+                            val span = paragraph.select("span")
+                            if (span.isEmpty()) {
+                                chapter += "\n${paragraph.text()}"
+                            } else {
+                                span.forEach { chapter += "\n${it.text()}" }
+                            }
+                        }
+                    }
                     if (!directory.exists()) directory.mkdirs()
                     title?.let { f ->
-                        val file = File(directory, f.utf8)
-                        FileOutputStream(file).use {
+                        FileOutputStream(File(directory, f.utf8)).use {
                             it.write(chapter.toByteArray())
                         }
                     }
                 }
-                mWebView?.post {
-                    mWebView?.loadUrl(page)
-                }
+                mWebView?.post { mWebView?.loadUrl(page) }
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
                 mWebView?.post {
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
