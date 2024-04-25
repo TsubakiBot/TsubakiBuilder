@@ -127,7 +127,7 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        
+
         <receiver
             android:name=".widgets.statistics.ProfileStatsWidget"
             android:exported="false">
@@ -170,6 +170,9 @@
         <activity android:name=".settings.PlayerSettingsActivity" />
         <activity
             android:name=".settings.SettingsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".home.StatusActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".settings.SettingsAccountActivity"

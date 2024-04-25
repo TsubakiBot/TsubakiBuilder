@@ -68,7 +68,7 @@ data class User(
     // The user's previously used names.
     // @SerialName("previousNames") var previousNames: List<UserPreviousName>?,
 
-)
+): java.io.Serializable
 
 @Serializable
 data class UserOptions(
