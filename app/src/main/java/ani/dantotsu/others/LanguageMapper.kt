@@ -2,7 +2,6 @@ package ani.dantotsu.others
 
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
-import ani.dantotsu.currContext
 import eu.kanade.tachiyomi.animesource.AnimeSource
 import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
 import eu.kanade.tachiyomi.source.ConfigurableSource
@@ -31,6 +30,27 @@ object LanguageMapper {
         if (code == "all") return getString(R.string.multi)
         val locale = getLocalFromCode(code)
         return locale?.displayName ?: code
+    }
+
+    fun mapLanguageNameToCode(name: String): String {
+        return when (name) {
+            "العربية" -> Language.ARABIC.code
+            "中文, 汉语, 漢語" -> Language.CHINESE.code
+            "English" -> Language.ENGLISH.code
+            "Français" -> Language.FRENCH.code
+            "Bahasa Indonesia" -> Language.INDONESIAN.code
+            "日本語" -> Language.JAPANESE.code
+            "조선말, 한국어" -> Language.KOREAN.code
+            "Polski" -> Language.POLISH.code
+            "Português" -> Language.PORTUGUESE_BRAZIL.code
+            "Русский" -> Language.RUSSIAN.code
+            "Español" -> Language.SPANISH.code
+            "ไทย" -> Language.THAI.code
+            "Türkçe" -> Language.TURKISH.code
+            "Українська" -> Language.UKRAINIAN.code
+            "Tiếng Việt" -> Language.VIETNAMESE.code
+            else -> Language.ALL.code
+        }
     }
 
     fun getExtensionItem(source: ConfigurableAnimeSource): String {
@@ -73,7 +93,7 @@ object LanguageMapper {
         UKRAINIAN("uk"),
         VIETNAMESE("vi"),
         CHINESE("zh"),
-        CHINESE_SIMPLIFIED("zh-Hans")
+        CHINESE_SIMPLIFIED("zh-Hans");
     }
 }
 

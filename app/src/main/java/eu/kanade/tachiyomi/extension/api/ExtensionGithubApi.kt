@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.extension.api
 
+import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.novel.AvailableNovelSources
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.settings.saving.PrefManager
@@ -305,6 +306,7 @@ internal class ExtensionGithubApi {
                 "plugin:${extension.id}",
                 extension.version,
                 extension.version.replace(".", "").toLong(),
+                LanguageMapper.mapLanguageNameToCode(extension.lang),
                 sources.toNovelSources(),
                 repository = repository,
                 iconUrl = extension.iconUrl,

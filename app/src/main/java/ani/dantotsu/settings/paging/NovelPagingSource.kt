@@ -383,7 +383,7 @@ class NovelPluginsAdapter(
         val extensionIconImageView: ImageView = binding.extensionIconImageView
         fun bind(extension: NovelExtension.Plugin) {
             val nsfw = ""
-            val lang = LanguageMapper.mapLanguageCodeToName("all")
+            val lang = LanguageMapper.mapLanguageCodeToName(extension.lang)
             binding.extensionNameTextView.text = extension.name
             val text = "$lang ${extension.versionName} $nsfw"
             binding.extensionVersionTextView.text = text

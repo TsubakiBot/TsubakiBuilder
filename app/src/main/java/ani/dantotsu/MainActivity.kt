@@ -369,6 +369,9 @@ class MainActivity : AppCompatActivity() {
                             })
                             if (mainViewPager.currentItem != selectedOption) {
                                 navbar.selectTabAt(selectedOption)
+                                mainViewPager.post {
+                                    mainViewPager.setCurrentItem(selectedOption, false)
+                                }
                             }
                         } else {
                             binding.mainProgressBar.visibility = View.GONE
