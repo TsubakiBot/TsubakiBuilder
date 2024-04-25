@@ -36,9 +36,11 @@ import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
 import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetWebBinding
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
+import ani.dantotsu.utf8
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import org.jsoup.Jsoup
@@ -108,6 +110,20 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
                  }
 
+                override fun shouldOverrideUrlLoading(
+                    view: WebView,
+                    request: WebResourceRequest
+                ): Boolean {
+                    return request.url?.toString()?.let {
+                        val address = it.substringAfter("/novel/") ?: ""
+                        if (address.split("/").size - 1 == 1) {
+                            webView.loadUrl("${it}chapter-01/")
+                            return true
+                        }
+                        super.shouldOverrideUrlLoading(view, request)
+                    } ?: super.shouldOverrideUrlLoading(view, request)
+                }
+
                 override fun onPageFinished(view: WebView?, url: String?) {
                         val address = url?.substringAfter("/novel/") ?: ""
                             if (address.split("/").size - 1 > 1) {
@@ -162,26 +178,46 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         @JavascriptInterface
         fun handleHtml(html: String) {
             val doc = Jsoup.parse(html)
-            val next = doc.selectFirst("a.next_page")?.attr("href")
-            next?.let { Log.d("NEXT", it) }
-            val prev = doc.selectFirst("a.prev_page")?.attr("href")
-            prev?.let { Log.d("NEXT", it) }
-            val content = doc.selectFirst("div.reading-content")
-            val text = content?.selectFirst("div.text-left")
-            var chapter = ""
-            text?.select("p")?.forEach { paragraph ->
-                if (paragraph.text() == "&nbsp;") {
-                    chapter += "\n"
-                } else {
-                    val span = paragraph.select("span")
-                    if (span.isEmpty()) {
-                        chapter += "\n${paragraph.text()}"
+            val novel = doc.selectFirst("h1#chapter-heading")?.text()
+                ?.substringBefore(" - Chapter")
+            doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
+                val content = doc.selectFirst("div.reading-content")
+                val text = content?.selectFirst("div.text-left")
+                val title = text?.selectFirst("h1, h2, h3, h4")?.text()
+                var chapter = (title ?: "") + "\n"
+                text?.select("p")?.forEach { paragraph ->
+                    if (paragraph.text() == "&nbsp;") {
+                        chapter += "\n"
                     } else {
-                        span.forEach { chapter += "\n${it.text()}" }
+                        val span = paragraph.select("span")
+                        if (span.isEmpty()) {
+                            chapter += "\n${paragraph.text()}"
+                        } else {
+                            span.forEach { chapter += "\n${it.text()}" }
+                        }
                     }
                 }
+                novel?.let { dir ->
+                    val directory = File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                        "Dantotsu/Novel/${dir.utf8}"
+                    )
+                    if (!directory.exists()) directory.mkdirs()
+                    title?.let { f ->
+                        val file = File(directory, f.utf8)
+                        FileOutputStream(file).use {
+                            it.write(chapter.toByteArray())
+                        }
+                    }
+                }
+                mWebView?.post {
+                    mWebView?.loadUrl(page)
+                }
+            } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
+                mWebView?.post {
+                    mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
+                }
             }
-            Log.d("CHAPTER", chapter.trimStart())
         }
 
         @JavascriptInterface

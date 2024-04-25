@@ -10,7 +10,6 @@ import android.os.Environment
 import androidx.core.content.ContextCompat
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import ani.dantotsu.currContext
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.parsers.Book
@@ -30,7 +29,7 @@ object Download {
         }
     }
 
-    private fun getDownloadDir(context: Context): File {
+    private fun getDownloadDir(): File {
         val downloads = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_DOWNLOADS
         )
@@ -145,7 +144,7 @@ object Download {
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 component = ComponentName("com.dv.adm", "com.dv.adm.AEditor")
                 putExtra("com.dv.get.ACTION_LIST_ADD", "${file.url}<info>$fileName")
-                putExtra("com.dv.get.ACTION_LIST_PATH", "${getDownloadDir(context)}$folder")
+                putExtra("com.dv.get.ACTION_LIST_PATH", "${getDownloadDir()}$folder")
                 putExtra("android.media.intent.extra.HTTP_HEADERS", bundle)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
