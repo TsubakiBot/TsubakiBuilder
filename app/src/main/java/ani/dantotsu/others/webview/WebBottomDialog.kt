@@ -18,6 +18,7 @@ import android.net.Uri
 import android.net.http.SslError
 import android.os.*
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
+import org.jsoup.Jsoup
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -64,15 +66,15 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mWebView = binding.webviewContent
-        (dialog as androidx.activity.ComponentDialog)
-            .onBackPressedDispatcher
-            .addCallback(viewLifecycleOwner) {
+        with (dialog as androidx.activity.ComponentDialog) {
+            onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 if (mWebView?.canGoBack() == true) {
                     mWebView?.goBack()
                 } else {
-                    dismiss()
+                    this@WebBottomDialog.dismiss()
                 }
             }
+        }
         configureWebView(mWebView)
     }
 
@@ -104,8 +106,17 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         loadedUrls[request.url] == true
                     }
                     return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
-
                  }
+
+                override fun onPageFinished(view: WebView?, url: String?) {
+                        val address = url?.substringAfter("/novel/") ?: ""
+                            if (address.split("/").size - 1 > 1) {
+                            webView.loadUrl("javascript:window.Android.handleHtml" +
+                                    "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+                        } else {
+                            super.onPageFinished(view, url)
+                        }
+                }
 
                 override fun onReceivedSslError(
                     view: WebView?, handler: SslErrorHandler, error: SslError?
@@ -148,6 +159,31 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
     @Suppress("unused")
     private inner class JavaScriptInterface {
+        @JavascriptInterface
+        fun handleHtml(html: String) {
+            val doc = Jsoup.parse(html)
+            val next = doc.selectFirst("a.next_page")?.attr("href")
+            next?.let { Log.d("NEXT", it) }
+            val prev = doc.selectFirst("a.prev_page")?.attr("href")
+            prev?.let { Log.d("NEXT", it) }
+            val content = doc.selectFirst("div.reading-content")
+            val text = content?.selectFirst("div.text-left")
+            var chapter = ""
+            text?.select("p")?.forEach { paragraph ->
+                if (paragraph.text() == "&nbsp;") {
+                    chapter += "\n"
+                } else {
+                    val span = paragraph.select("span")
+                    if (span.isEmpty()) {
+                        chapter += "\n${paragraph.text()}"
+                    } else {
+                        span.forEach { chapter += "\n${it.text()}" }
+                    }
+                }
+            }
+            Log.d("CHAPTER", chapter.trimStart())
+        }
+
         @JavascriptInterface
         @Throws(IOException::class)
         fun getBase64FromBlobData(base64Data: String) {

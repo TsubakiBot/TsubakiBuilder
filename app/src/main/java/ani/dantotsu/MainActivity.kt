@@ -511,7 +511,7 @@ class MainActivity : AppCompatActivity() {
                 dialog.dismiss()
                 callback(password)
             } else {
-                toast("Password cannot be empty")
+                toast(R.string.password_cannot_be_empty)
             }
         }
     }
