@@ -37,9 +37,9 @@ import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetWebBinding
-import ani.dantotsu.sanitized
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
+import ani.dantotsu.sanitized
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import org.jsoup.Jsoup
@@ -108,21 +108,10 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
                 }
 
-                override fun shouldOverrideUrlLoading(
-                    view: WebView,
-                    request: WebResourceRequest
-                ): Boolean {
-                    return request.url?.toString()?.let {
-                        if (it.substringAfter("/novel/").split("/").size - 1 == 1) {
-                            return false
-                        }
-                        super.shouldOverrideUrlLoading(view, request)
-                    } ?: super.shouldOverrideUrlLoading(view, request)
-                }
-
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     val address = url?.substringAfter("/novel/") ?: ""
                     if (address.split("/").size - 1 < 1) {
+                        webView.keepScreenOn = false
                         webView.clearHistory()
                     }
                     super.onPageStarted(view, url, favicon)
@@ -131,6 +120,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     val address = url?.substringAfter("/novel/") ?: ""
                     if (address.split("/").size - 1 > 1) {
+                        webView.keepScreenOn = true
                         webView.loadUrl("javascript:window.Android.handleHtml" +
                                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
                     } else {
