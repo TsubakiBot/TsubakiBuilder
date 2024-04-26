@@ -41,6 +41,8 @@ import ani.dantotsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.sanitized
+import ani.dantotsu.saveImage
+import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import org.jsoup.Jsoup
@@ -120,9 +122,12 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     val address = url?.substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 > 1) {
+                    if (address.split("/").size - 1 == 1) {
+                        webView.loadUrl("javascript:window.Android.handleNovel" +
+                                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+                    } else if (address.split("/").size - 1 > 1) {
                         webView.keepScreenOn = true
-                        webView.loadUrl("javascript:window.Android.handleHtml" +
+                        webView.loadUrl("javascript:window.Android.handleChapter" +
                                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
                     } else {
                         super.onPageFinished(view, url)
@@ -170,10 +175,27 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
     @Suppress("unused")
     private inner class JavaScriptInterface {
+
         @JavascriptInterface
-        fun handleHtml(html: String) {
+        fun handleNovel(html: String) {
             val doc = Jsoup.parse(html)
-            val novel = doc.selectFirst("h1#chapter-heading")?.text()
+            doc.selectFirst("div.post-title")?.selectFirst("h1")?.text()?.let { novel ->
+                val directory = File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                    "Dantotsu/Novel/${novel.sanitized}"
+                ).apply { if (!exists()) mkdirs() }
+                doc.selectFirst("div.summary_image")
+                    ?.selectFirst("img")?.attr("src")?.let {
+                    BitmapUtil.downloadImageAsBitmap(it)?.let { bitmap ->
+                        saveImage(bitmap, directory.absolutePath, it.substringAfterLast("/"))
+                    }
+                }
+            }
+        }
+
+        @JavascriptInterface
+        fun handleChapter(html: String) {
+            val doc = Jsoup.parse(html)
             doc.selectFirst("div.nav-next.premium")?.let {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.postDelayed( {
@@ -182,16 +204,16 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 }
             }
             doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
-                novel?.let { name ->
+                doc.selectFirst("h1#chapter-heading")?.text()?.let { novel ->
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                        "Dantotsu/Novel/${name.substringBefore(" - Ch").sanitized}"
+                        "Dantotsu/Novel/${novel.substringBefore(" - Ch").sanitized}"
                     ).apply { if (!exists()) mkdirs() }
                     val content = doc.selectFirst("div.reading-content")
                     val text = content?.selectFirst("div.text-left")
                     val title = text?.selectFirst("h1, h2, h3, h4")?.text()
-                        ?: "Ch${name.substringAfter(" - Ch", )}"
-                    val chapter = StringBuilder(title ?: "").append(lineSeparator)
+                        ?: "Ch${novel.substringAfter(" - Ch")}"
+                    val chapter = StringBuilder(title).append(lineSeparator)
                     text?.select("p")?.forEach { paragraph ->
                         chapter.append(lineSeparator)
                         if (paragraph.text() == "&nbsp;") {
