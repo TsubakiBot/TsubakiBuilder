@@ -873,9 +873,9 @@ fun shareImage(title: String, bitmap: Bitmap, context: Context) {
 fun saveImage(image: Bitmap, path: String, imageFileName: String): File? {
     val imageFile = File(path, "$imageFileName.png")
     return try {
-        val fOut: OutputStream = FileOutputStream(imageFile)
-        image.compress(Bitmap.CompressFormat.PNG, 0, fOut)
-        fOut.close()
+        FileOutputStream(imageFile).use {
+            image.compress(Bitmap.CompressFormat.PNG, 0, it)
+        }
         scanFile(imageFile.absolutePath, currContext())
         toast(String.format(currContext().getString(R.string.saved_to_path, path)))
         imageFile

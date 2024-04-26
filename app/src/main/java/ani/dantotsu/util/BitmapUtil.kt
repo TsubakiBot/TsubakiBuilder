@@ -11,7 +11,6 @@ import androidx.collection.LruCache
 import ani.himitsu.io.Memory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.math.min
@@ -32,31 +31,38 @@ object BitmapUtil {
     private val cacheSize = (Memory.maxMemory() / 1024 / 12).toInt()
     private val bitmapCache = LruCache<String, Bitmap>(cacheSize)
 
+    fun downloadBitmap(imageUrl: String): Bitmap? {
+        var bitmap: Bitmap? = null
+        runBlocking(Dispatchers.IO) {
+            var urlConnection: HttpURLConnection? = null
+            try {
+                urlConnection = URL(imageUrl).openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "GET"
+                urlConnection.connect()
+
+                if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
+                    urlConnection.inputStream.use {
+                        bitmap = BitmapFactory.decodeStream(it)
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                urlConnection?.disconnect()
+            }
+        }
+        return bitmap
+    }
+
     fun downloadImageAsBitmap(imageUrl: String): Bitmap? {
         var bitmap: Bitmap?
         runBlocking(Dispatchers.IO) {
             val cacheName = imageUrl.substringAfterLast("/")
             bitmap = bitmapCache[cacheName]
             if (bitmap != null) return@runBlocking
-            var inputStream: InputStream? = null
-            var urlConnection: HttpURLConnection? = null
-            try {
-                val url = URL(imageUrl)
-                urlConnection = url.openConnection() as HttpURLConnection
-                urlConnection.requestMethod = "GET"
-                urlConnection.connect()
 
-                if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = urlConnection.inputStream
-                    bitmap = BitmapFactory.decodeStream(inputStream)
-                    bitmap?.let { bitmapCache.put(cacheName, it) }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                inputStream?.close()
-                urlConnection?.disconnect()
-            }
+            bitmap = downloadBitmap(imageUrl)
+            bitmap?.let { bitmapCache.put(cacheName, it) }
         }
         return bitmap?.let { roundCorners(it) }
     }

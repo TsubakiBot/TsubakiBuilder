@@ -41,7 +41,6 @@ import ani.dantotsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.sanitized
-import ani.dantotsu.saveImage
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
@@ -113,7 +112,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     val address = url?.substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 < 1) {
+                    if (address.split("/").size - 1 == 0) {
                         webView.keepScreenOn = false
                         webView.clearHistory()
                     }
@@ -122,15 +121,20 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     val address = url?.substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 == 1) {
-                        webView.loadUrl("javascript:window.Android.handleNovel" +
-                                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
-                    } else if (address.split("/").size - 1 > 1) {
-                        webView.keepScreenOn = true
-                        webView.loadUrl("javascript:window.Android.handleChapter" +
-                                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
-                    } else {
-                        super.onPageFinished(view, url)
+                    val slashes = address.split("/").size - 1
+                    when {
+                        slashes == 1 -> {
+                            webView.loadUrl("javascript:window.Android.handleNovel" +
+                                    "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+                        }
+                        slashes > 1 -> {
+                            webView.keepScreenOn = true
+                            webView.loadUrl("javascript:window.Android.handleChapter" +
+                                    "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+                        }
+                        else -> {
+                            super.onPageFinished(view, url)
+                        }
                     }
                 }
 
@@ -185,9 +189,11 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     "Dantotsu/Novel/${novel.sanitized}"
                 ).apply { if (!exists()) mkdirs() }
                 doc.selectFirst("div.summary_image")
-                    ?.selectFirst("img")?.attr("src")?.let {
-                    BitmapUtil.downloadImageAsBitmap(it)?.let { bitmap ->
-                        saveImage(bitmap, directory.absolutePath, it.substringAfterLast("/"))
+                    ?.selectFirst("img")?.attr("data-src")?.also { url ->
+                    BitmapUtil.downloadBitmap(url)?.let { bitmap ->
+                        FileOutputStream(File(directory, "$novel.png")).use {
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 0, it)
+                        }
                     }
                 }
             }
