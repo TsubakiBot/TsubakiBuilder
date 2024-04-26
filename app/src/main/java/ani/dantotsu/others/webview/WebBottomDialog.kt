@@ -37,6 +37,7 @@ import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetWebBinding
+import ani.dantotsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.sanitized
@@ -190,22 +191,24 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     val text = content?.selectFirst("div.text-left")
                     val title = text?.selectFirst("h1, h2, h3, h4")?.text()
                         ?: "Ch${name.substringAfter(" - Ch", )}"
-                    var chapter = (title ?: "") + "\n"
+                    val chapter = StringBuilder(title ?: "").append(lineSeparator)
                     text?.select("p")?.forEach { paragraph ->
+                        chapter.append(lineSeparator)
                         if (paragraph.text() == "&nbsp;") {
-                            chapter += "\n"
+                            chapter.append(" ")
                         } else {
                             val span = paragraph.select("span")
                             if (span.isEmpty()) {
-                                chapter += "\n${paragraph.text()}"
+                                chapter.append(paragraph.text())
                             } else {
-                                span.forEach { chapter += "\n${it.text()}" }
+                                span.forEach { chapter.append(it.text()) }
                             }
                         }
+                        chapter.append(lineSeparator)
                     }
-                    title?.let { chap ->
+                    title.let { chap ->
                         FileOutputStream(File(directory, chap.sanitized)).use {
-                            it.write(chapter.toByteArray())
+                            it.write(chapter.toString().toByteArray())
                         }
                     }
                 }
