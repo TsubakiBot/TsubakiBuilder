@@ -66,6 +66,11 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                 dialog.window?.setDimAmount(0.8f)
             }
 
+            uiSettingsStories.isChecked = PrefManager.getVal(PrefName.Stories)
+            uiSettingsStories.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.Stories, isChecked)
+            }
+
             uiSettingsSmallView.isChecked = PrefManager.getVal(PrefName.SmallView)
             uiSettingsSmallView.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.SmallView, isChecked)

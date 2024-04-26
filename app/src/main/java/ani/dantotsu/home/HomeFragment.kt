@@ -316,30 +316,33 @@ class HomeFragment : Fragment() {
             binding.homeRecommendedEmpty,
             binding.homeRecommended
         )
-        binding.homeUserStatusContainer.visibility = View.VISIBLE
-        binding.homeUserStatusProgressBar.visibility = View.VISIBLE
+        val stories =  PrefManager.getVal<Boolean>(PrefName.Stories)
+        binding.homeUserStatusContainer.isVisible = stories
+        binding.homeUserStatusProgressBar.isVisible = stories
         binding.homeUserStatusRecyclerView.visibility = View.GONE
-        binding.homeUserStatus.visibility = View.INVISIBLE
-        model.getUserStatus().observe(viewLifecycleOwner) {
-            binding.homeUserStatusRecyclerView.visibility = View.GONE
-            if (it != null) {
-                if (it.isNotEmpty()) {
-                    binding.homeUserStatusRecyclerView.adapter = UserStatus(it)
-                    binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
-                        requireContext(),
-                        LinearLayoutManager.HORIZONTAL,
-                        false
-                    )
-                    binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
-                    binding.homeUserStatusRecyclerView.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
+        binding.homeUserStatus.visibility = if (stories) View.INVISIBLE else View.GONE
+        if (stories) {
+            model.getUserStatus().observe(viewLifecycleOwner) {
+                binding.homeUserStatusRecyclerView.visibility = View.GONE
+                if (it != null) {
+                    if (it.isNotEmpty()) {
+                        binding.homeUserStatusRecyclerView.adapter = UserStatus(it)
+                        binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
+                        binding.homeUserStatusRecyclerView.layoutAnimation =
+                            LayoutAnimationController(setSlideIn(), 0.25f)
 
-                } else {
-                    binding.homeUserStatusContainer.visibility = View.GONE
+                    } else {
+                        binding.homeUserStatusContainer.visibility = View.GONE
+                    }
+                    binding.homeUserStatus.visibility = View.VISIBLE
+                    binding.homeUserStatus.startAnimation(setSlideUp())
+                    binding.homeUserStatusProgressBar.visibility = View.GONE
                 }
-                binding.homeUserStatus.visibility = View.VISIBLE
-                binding.homeUserStatus.startAnimation(setSlideUp())
-                binding.homeUserStatusProgressBar.visibility = View.GONE
             }
         }
 

@@ -322,6 +322,7 @@
     </string-array>
 
     <string name="startUpTab">Default Start Up Tab</string>
+    <string name="stories">Show stories on home page</string>
     <string name="small_view">Small View in Trending Shows</string>
     <string name="animations">Animations</string>
     <string name="banner_animations">Banner Animations</string>
