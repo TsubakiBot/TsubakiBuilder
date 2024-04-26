@@ -206,7 +206,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                             chapter += "\n"
                         } else {
                             val span = paragraph.select("span")
-                            if (span.isEmpty()) {
+                            if (span.isNullOrEmpty()) {
                                 chapter += "\n${paragraph.text()}"
                             } else {
                                 span.forEach { chapter += "\n${it.text()}" }
