@@ -11,14 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="32dp">
+        android:paddingHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="-16dp"
+            android:layout_marginEnd="-8dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -55,6 +54,7 @@
             android:id="@+id/settingsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
             android:layout_marginBottom="32dp"
             android:nestedScrollingEnabled="true"
             android:requiresFadingEdge="vertical"

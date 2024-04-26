@@ -28,7 +28,6 @@ import ani.dantotsu.bottomBar
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.connections.anilist.getUserId
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media

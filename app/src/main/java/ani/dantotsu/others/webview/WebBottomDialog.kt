@@ -14,11 +14,11 @@
 package ani.dantotsu.others.webview
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.net.Uri
 import android.net.http.SslError
 import android.os.*
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +29,6 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.addCallback
-import androidx.core.view.isInvisible
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewAssetLoader
@@ -37,11 +36,10 @@ import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
 import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetWebBinding
+import ani.dantotsu.sanitized
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
-import ani.dantotsu.utf8
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import org.jsoup.Jsoup
@@ -116,13 +114,18 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     request: WebResourceRequest
                 ): Boolean {
                     return request.url?.toString()?.let {
-                        val address = it.substringAfter("/novel/")
-                        if (address.split("/").size - 1 == 1) {
+                        if (it.substringAfter("/novel/").split("/").size - 1 == 1) {
                             webView.loadUrl("${it}chapter-01/")
                             return true
                         }
                         super.shouldOverrideUrlLoading(view, request)
                     } ?: super.shouldOverrideUrlLoading(view, request)
+                }
+
+                override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                    val address = url?.substringAfter("/novel/") ?: ""
+                    if (address.split("/").size - 1 == 0) webView.clearHistory()
+                    super.onPageStarted(view, url, favicon)
                 }
 
                 override fun onPageFinished(view: WebView?, url: String?) {
@@ -185,15 +188,14 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.post {
                         mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                        mWebView?.clearHistory()
                     }
                 }
             }
             doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
-                novel?.let { dir ->
+                novel?.let { name ->
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                        "Dantotsu/Novel/${dir.replace("\\W+", "_")}"
+                        "Dantotsu/Novel/${name.sanitized}"
                     )
                     val content = doc.selectFirst("div.reading-content")
                     val text = content?.selectFirst("div.text-left")
@@ -212,8 +214,8 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         }
                     }
                     if (!directory.exists()) directory.mkdirs()
-                    title?.let { f ->
-                        FileOutputStream(File(directory, f.replace("\\W+", "_"))).use {
+                    title?.let { chap ->
+                        FileOutputStream(File(directory, chap.sanitized)).use {
                             it.write(chapter.toByteArray())
                         }
                     }
@@ -222,7 +224,6 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
                 mWebView?.post {
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                    mWebView?.clearHistory()
                 }
             }
         }
