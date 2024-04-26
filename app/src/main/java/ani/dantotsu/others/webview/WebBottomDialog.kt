@@ -86,7 +86,6 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         webView.isScrollbarFadingEnabled = true
         webViewSettings.loadWithOverviewMode = true
         webViewSettings.useWideViewPort = true
-        webViewSettings.allowFileAccess = true
         webViewSettings.allowContentAccess = false
         webViewSettings.javaScriptEnabled = true
         webViewSettings.domStorageEnabled = true
@@ -115,8 +114,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 ): Boolean {
                     return request.url?.toString()?.let {
                         if (it.substringAfter("/novel/").split("/").size - 1 == 1) {
-                            webView.loadUrl("${it}chapter-01/")
-                            return true
+                            return false
                         }
                         super.shouldOverrideUrlLoading(view, request)
                     } ?: super.shouldOverrideUrlLoading(view, request)
@@ -124,7 +122,9 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     val address = url?.substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 == 0) webView.clearHistory()
+                    if (address.split("/").size - 1 < 1) {
+                        webView.clearHistory()
+                    }
                     super.onPageStarted(view, url, favicon)
                 }
 
@@ -183,12 +183,12 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         fun handleHtml(html: String) {
             val doc = Jsoup.parse(html)
             val novel = doc.selectFirst("h1#chapter-heading")?.text()
-                ?.substringBefore(" - Chapter")
-            doc.selectFirst("div.nav-next")?.let {
+                ?.substringBefore(" - Ch")
+            doc.selectFirst("div.nav-next.premium")?.let {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
-                    mWebView?.post {
+                    mWebView?.postDelayed( {
                         mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                    }
+                    }, 1000L)
                 }
             }
             doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
@@ -220,11 +220,11 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         }
                     }
                 }
-                mWebView?.post { mWebView?.loadUrl(page) }
+                mWebView?.postDelayed( { mWebView?.loadUrl(page) }, 1000L)
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
-                mWebView?.post {
+                mWebView?.postDelayed( {
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                }
+                }, 1000L)
             }
         }
 
