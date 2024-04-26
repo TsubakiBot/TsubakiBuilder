@@ -184,8 +184,8 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             doc.selectFirst("div.nav-next")?.let {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.post {
-                        mWebView?.clearHistory()
                         mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
+                        mWebView?.clearHistory()
                     }
                 }
             }
@@ -193,16 +193,11 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 novel?.let { dir ->
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                        "Dantotsu/Novel/${dir.utf8}"
+                        "Dantotsu/Novel/${dir.replace("\\W+", "_")}"
                     )
                     val content = doc.selectFirst("div.reading-content")
                     val text = content?.selectFirst("div.text-left")
-                    val title = text?.selectFirst("h1, h2, h3, h4")?.text()?.also {
-                        if (File(directory, it.utf8).exists()) {
-                            mWebView?.post { mWebView?.loadUrl(page) }
-                            return
-                        }
-                    }
+                    val title = text?.selectFirst("h1, h2, h3, h4")?.text()
                     var chapter = (title ?: "") + "\n"
                     text?.select("p")?.forEach { paragraph ->
                         if (paragraph.text() == "&nbsp;") {
@@ -218,7 +213,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     }
                     if (!directory.exists()) directory.mkdirs()
                     title?.let { f ->
-                        FileOutputStream(File(directory, f.utf8)).use {
+                        FileOutputStream(File(directory, f.replace("\\W+", "_"))).use {
                             it.write(chapter.toByteArray())
                         }
                     }
@@ -226,8 +221,8 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 mWebView?.post { mWebView?.loadUrl(page) }
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
                 mWebView?.post {
-                    mWebView?.clearHistory()
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
+                    mWebView?.clearHistory()
                 }
             }
         }
