@@ -29,6 +29,7 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.addCallback
+import androidx.core.content.FileProvider
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewAssetLoader
@@ -191,8 +192,16 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 doc.selectFirst("div.summary_image")
                     ?.selectFirst("img")?.attr("data-src")?.also { url ->
                     BitmapUtil.downloadBitmap(url)?.let { bitmap ->
-                        FileOutputStream(File(directory, "$novel.png")).use {
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 0, it)
+                        requireContext().run {
+                            FileProvider.getUriForFile(
+                                this,
+                                "${packageName}.provider",
+                                File(directory, "cover.png")
+                            ).let {
+                                contentResolver.openOutputStream(it)?.use { out ->
+                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+                                }
+                            }
                         }
                     }
                 }
