@@ -183,7 +183,6 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         fun handleHtml(html: String) {
             val doc = Jsoup.parse(html)
             val novel = doc.selectFirst("h1#chapter-heading")?.text()
-                ?.substringBefore(" - Ch")
             doc.selectFirst("div.nav-next.premium")?.let {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.postDelayed( {
@@ -195,25 +194,25 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 novel?.let { name ->
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                        "Dantotsu/Novel/${name.sanitized}"
-                    )
+                        "Dantotsu/Novel/${name.substringBefore(" - Ch").sanitized}"
+                    ).apply { if (!exists()) mkdirs() }
                     val content = doc.selectFirst("div.reading-content")
                     val text = content?.selectFirst("div.text-left")
                     val title = text?.selectFirst("h1, h2, h3, h4")?.text()
+                        ?: "Ch${name.substringAfter(" - Ch", )}"
                     var chapter = (title ?: "") + "\n"
                     text?.select("p")?.forEach { paragraph ->
                         if (paragraph.text() == "&nbsp;") {
                             chapter += "\n"
                         } else {
                             val span = paragraph.select("span")
-                            if (span.isNullOrEmpty()) {
+                            if (span.isEmpty()) {
                                 chapter += "\n${paragraph.text()}"
                             } else {
                                 span.forEach { chapter += "\n${it.text()}" }
                             }
                         }
                     }
-                    if (!directory.exists()) directory.mkdirs()
                     title?.let { chap ->
                         FileOutputStream(File(directory, chap.sanitized)).use {
                             it.write(chapter.toByteArray())
