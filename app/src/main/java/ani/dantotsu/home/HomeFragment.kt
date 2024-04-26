@@ -201,6 +201,7 @@ class HomeFragment : Fragment() {
 
         //Function For Recycler Views
         fun initRecyclerView(
+            isEnabled: Boolean,
             mode: LiveData<ArrayList<Media>>,
             container: View,
             recyclerView: RecyclerView,
@@ -208,11 +209,13 @@ class HomeFragment : Fragment() {
             empty: View,
             title: View
         ) {
-            container.visibility = View.VISIBLE
-            progress.visibility = View.VISIBLE
+            container.isVisible = isEnabled
+            progress.isVisible = isEnabled
             recyclerView.visibility = View.GONE
             empty.visibility = View.GONE
-            title.visibility = View.INVISIBLE
+            title.visibility = if (isEnabled) View.INVISIBLE else View.GONE
+
+            if (!isEnabled) return
 
             mode.observe(viewLifecycleOwner) {
                 recyclerView.visibility = View.GONE
@@ -242,6 +245,7 @@ class HomeFragment : Fragment() {
 
         // Recycler Views
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[0],
             model.getAnimeContinue(),
             binding.homeContinueWatchingContainer,
             binding.homeWatchingRecyclerView,
@@ -254,6 +258,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[1],
             model.getAnimeFav(),
             binding.homeFavAnimeContainer,
             binding.homeFavAnimeRecyclerView,
@@ -263,6 +268,7 @@ class HomeFragment : Fragment() {
         )
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[2],
             model.getAnimePlanned(),
             binding.homePlannedAnimeContainer,
             binding.homePlannedAnimeRecyclerView,
@@ -275,6 +281,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[3],
             model.getMangaContinue(),
             binding.homeContinueReadingContainer,
             binding.homeReadingRecyclerView,
@@ -287,6 +294,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[4],
             model.getMangaFav(),
             binding.homeFavMangaContainer,
             binding.homeFavMangaRecyclerView,
@@ -296,6 +304,7 @@ class HomeFragment : Fragment() {
         )
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[5],
             model.getMangaPlanned(),
             binding.homePlannedMangaContainer,
             binding.homePlannedMangaRecyclerView,
@@ -308,6 +317,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[6],
             model.getRecommendation(),
             binding.homeRecommendedContainer,
             binding.homeRecommendedRecyclerView,
@@ -315,11 +325,11 @@ class HomeFragment : Fragment() {
             binding.homeRecommendedEmpty,
             binding.homeRecommended
         )
-        val stories =  PrefManager.getVal<Boolean>(PrefName.Stories)
+
+        val stories = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7]
         binding.homeUserStatusContainer.isVisible = stories
         binding.homeUserStatusProgressBar.isVisible = stories
         binding.homeUserStatusRecyclerView.visibility = View.GONE
-        binding.homeUserStatus.visibility = if (stories) View.INVISIBLE else View.GONE
         if (stories) {
             model.getUserStatus().observe(viewLifecycleOwner) {
                 binding.homeUserStatusRecyclerView.visibility = View.GONE
@@ -338,13 +348,10 @@ class HomeFragment : Fragment() {
                     } else {
                         binding.homeUserStatusContainer.visibility = View.GONE
                     }
-                    binding.homeUserStatus.visibility = View.VISIBLE
-                    binding.homeUserStatus.startAnimation(setSlideUp())
                     binding.homeUserStatusProgressBar.visibility = View.GONE
                 }
             }
         }
-
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
 
         model.empty.observe(viewLifecycleOwner)
@@ -375,7 +382,7 @@ class HomeFragment : Fragment() {
             binding.homeContinueReadingContainer,
             binding.homeFavMangaContainer,
             binding.homePlannedMangaContainer,
-            binding.homeRecommendedContainer
+            binding.homeRecommendedContainer,
         )
 
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }
@@ -396,9 +403,9 @@ class HomeFragment : Fragment() {
                         model.setListImages()
                         var empty = true
                         val homeLayoutShow: List<Boolean> =
-                            PrefManager.getVal(PrefName.HomeLayoutShow)
+                            PrefManager.getVal(PrefName.HomeLayout)
                         runBlocking {
-                            model.initUserStatus()
+                            if (homeLayoutShow.getOrNull(7) == true) model.initUserStatus()
                             model.initHomePage()
                         }
                         (array.indices).forEach { i ->

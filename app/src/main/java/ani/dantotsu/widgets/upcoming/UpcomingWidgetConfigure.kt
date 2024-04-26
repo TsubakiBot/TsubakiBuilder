@@ -41,9 +41,9 @@ class UpcomingWidgetConfigure : AppCompatActivity(),
     }
     private lateinit var binding: UpcomingWidgetConfigureBinding
 
-    public override fun onCreate(icicle: Bundle?) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager(this).applyTheme()
-        super.onCreate(icicle)
+        super.onCreate(savedInstanceState)
         setResult(RESULT_CANCELED)
 
         binding = UpcomingWidgetConfigureBinding.inflate(layoutInflater)
