@@ -1053,7 +1053,7 @@
     <string name="download_started">Download started</string>
     <string name="downloads_completed">All downloads completed</string>
     <string name="pending_downloads">Pending downloads: %1$d</string>
-    
+
     <string name="reading">READING</string>
     <string name="watching">WATCHING</string>
     <string name="avatar">%1$s\ [Avatar]</string>
@@ -1069,4 +1069,6 @@
     <string name="installed_extensions">Installed %1$s</string>
     <string name="available_extensions">Available %1$s</string>
     <string name="available_plugins">%1$s Plugins</string>
+    
+    <string name="your_story">Your Story</string>
 </resources>
