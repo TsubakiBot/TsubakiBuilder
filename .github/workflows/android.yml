@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       release:
-        description: 'Release?'
+        description: 'Release'
         required: true
         type: boolean
 

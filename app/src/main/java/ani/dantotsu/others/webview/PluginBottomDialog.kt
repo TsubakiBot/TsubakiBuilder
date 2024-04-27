@@ -282,6 +282,9 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         FileOutputStream(File(directory, chap.sanitized)).use {
                             it.write(chapter.toString().toByteArray())
                         }
+                        FileOutputStream(File(directory, "contents.txt"), true).use {
+                            it.write("${chap.sanitized}${lineSeparator}".toByteArray())
+                        }
                     }
                 }
                 mWebView?.postDelayed( { mWebView?.loadUrl(page) }, 1000L)
