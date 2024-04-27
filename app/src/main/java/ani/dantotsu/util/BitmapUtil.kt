@@ -31,7 +31,7 @@ object BitmapUtil {
     private val cacheSize = (Memory.maxMemory() / 1024 / 12).toInt()
     private val bitmapCache = LruCache<String, Bitmap>(cacheSize)
 
-    fun downloadBitmap(imageUrl: String): Bitmap? {
+    private fun downloadBitmap(imageUrl: String): Bitmap? {
         var bitmap: Bitmap? = null
         runBlocking(Dispatchers.IO) {
             var urlConnection: HttpURLConnection? = null
@@ -41,9 +41,7 @@ object BitmapUtil {
                 urlConnection.connect()
 
                 if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                    urlConnection.inputStream.use {
-                        bitmap = BitmapFactory.decodeStream(it)
-                    }
+                    bitmap = BitmapFactory.decodeStream(urlConnection.inputStream)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

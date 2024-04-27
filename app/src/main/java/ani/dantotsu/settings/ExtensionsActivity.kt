@@ -93,13 +93,13 @@ class ExtensionsActivity : AppCompatActivity() {
 
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
-                    0 -> NovelPluginsFragment()
-                    1 -> InstalledAnimeExtensionsFragment()
-                    2 -> AnimeExtensionsFragment()
-                    3 -> InstalledMangaExtensionsFragment()
-                    4 -> MangaExtensionsFragment()
-                    5 -> InstalledNovelExtensionsFragment()
-                    6 -> NovelExtensionsFragment()
+                    0 -> InstalledAnimeExtensionsFragment()
+                    1 -> AnimeExtensionsFragment()
+                    2 -> InstalledMangaExtensionsFragment()
+                    3 -> MangaExtensionsFragment()
+                    4 -> InstalledNovelExtensionsFragment()
+                    5 -> NovelExtensionsFragment()
+                    6 -> NovelPluginsFragment()
                     else -> AnimeExtensionsFragment()
                 }
             }
@@ -152,13 +152,13 @@ class ExtensionsActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> getString(R.string.available_plugins, MediaType.NOVEL.asText())
-                1 -> getString(R.string.installed_extensions, MediaType.ANIME.asText())
-                2 -> getString(R.string.available_extensions, MediaType.ANIME.asText())
-                3 -> getString(R.string.installed_extensions, MediaType.MANGA.asText())
-                4 -> getString(R.string.available_extensions, MediaType.MANGA.asText())
-                5 -> getString(R.string.installed_extensions, MediaType.NOVEL.asText())
-                6 -> getString(R.string.available_extensions, MediaType.NOVEL.asText())
+                0 -> getString(R.string.installed_extensions, MediaType.ANIME.asText())
+                1 -> getString(R.string.available_extensions, MediaType.ANIME.asText())
+                2 -> getString(R.string.installed_extensions, MediaType.MANGA.asText())
+                3 -> getString(R.string.available_extensions, MediaType.MANGA.asText())
+                4 -> getString(R.string.installed_extensions, MediaType.NOVEL.asText())
+                5 -> getString(R.string.available_extensions, MediaType.NOVEL.asText())
+                6 -> getString(R.string.available_plugins, MediaType.NOVEL.asText())
                 else -> null
             }
         }.attach()

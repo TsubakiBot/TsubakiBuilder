@@ -15,13 +15,16 @@ package ani.dantotsu.others.webview
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.net.http.SslError
 import android.os.*
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
 import android.webkit.SslErrorHandler
 import android.webkit.WebResourceRequest
@@ -29,7 +32,6 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.addCallback
-import androidx.core.content.FileProvider
 import androidx.webkit.ServiceWorkerClientCompat
 import androidx.webkit.ServiceWorkerControllerCompat
 import androidx.webkit.WebViewAssetLoader
@@ -42,13 +44,22 @@ import ani.dantotsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.sanitized
-import ani.dantotsu.util.BitmapUtil
+import ani.dantotsu.settings.saving.PrefManager
+import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
+import eu.kanade.tachiyomi.network.NetworkHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
@@ -57,6 +68,11 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
     val binding get() = _binding!!
     private val webHandler = Handler(Looper.getMainLooper())
     private var mWebView: WebView? = null
+
+    val cookies: CookieManager? = Injekt.get<NetworkHelper>().cookieJar.manager
+    val cfTag = "cf_clearance"
+    var cfCookie = ""
+    var cfHeaders = mutableMapOf<String, String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -111,7 +127,22 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
                 }
 
+                override fun shouldOverrideUrlLoading(
+                    view: WebView,
+                    request: WebResourceRequest
+                ): Boolean {
+                    val address = request.url.toString().substringAfter("/novel/") ?: ""
+                    if (address.split("/").size - 1 == 1) {
+                        cfHeaders = request.requestHeaders
+                    }
+                    return super.shouldOverrideUrlLoading(view, request)
+                }
+
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                    val cookie = cookies?.getCookie(url)
+                    if (cookie?.contains(cfTag) == true) {
+                        cfCookie = cookie.substringAfter("$cfTag=").substringBefore(";")
+                    }
                     val address = url?.substringAfter("/novel/") ?: ""
                     if (address.split("/").size - 1 == 0) {
                         webView.keepScreenOn = false
@@ -178,6 +209,25 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         } ?: webHandler.postDelayed({ loadWebsite(address) }, 50L)
     }
 
+    private fun downloadCover(url: String, directory: File) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val urlConnection = URL(url).openConnection() as HttpURLConnection
+            urlConnection.setRequestProperty(
+                "User-Agent", PrefManager.getVal<String>(PrefName.DefaultUserAgent)
+            )
+            urlConnection.setRequestProperty("Cookie", "${cfTag}=${cfCookie};")
+            cfHeaders.forEach { urlConnection.addRequestProperty(it.key, it.value) }
+            urlConnection.connect()
+            Log.w("IMAGE", urlConnection.responseCode.toString())
+            if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
+                val bitmap = BitmapFactory.decodeStream(urlConnection.inputStream)
+                FileOutputStream(File(directory, "cover.png")).use {
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
+                }
+            }
+        }
+    }
+
     @Suppress("unused")
     private inner class JavaScriptInterface {
 
@@ -189,22 +239,8 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                     "Dantotsu/Novel/${novel.sanitized}"
                 ).apply { if (!exists()) mkdirs() }
-                doc.selectFirst("div.summary_image")
-                    ?.selectFirst("img")?.attr("data-src")?.also { url ->
-                    BitmapUtil.downloadBitmap(url)?.let { bitmap ->
-                        requireContext().run {
-                            FileProvider.getUriForFile(
-                                this,
-                                "${packageName}.provider",
-                                File(directory, "cover.png")
-                            ).let {
-                                contentResolver.openOutputStream(it)?.use { out ->
-                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-                                }
-                            }
-                        }
-                    }
-                }
+                doc.selectFirst("div.summary_image")?.selectFirst("img")
+                    ?.attr("data-src")?.also { url -> downloadCover(url, directory) }
             }
         }
 
