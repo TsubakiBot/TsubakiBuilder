@@ -28,7 +28,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import ani.himitsu.extension.SourceDialogFragment
+import ani.himitsu.extension.ReverseSearchDialogFragment
 import eu.kanade.tachiyomi.data.notification.Notifications
 import kotlinx.coroutines.launch
 import rx.android.schedulers.AndroidSchedulers
@@ -102,7 +102,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         },
         { extension ->
-            SourceDialogFragment(extension).show(
+            ReverseSearchDialogFragment(extension).show(
                 requireActivity().supportFragmentManager, null
             )
         },

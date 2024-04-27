@@ -26,7 +26,7 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
-import ani.himitsu.extension.SourceDialogFragment
+import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.profile.ProfileActivity
@@ -224,7 +224,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
 
         fun search(query: String) {
-            SourceDialogFragment(query).show(
+            ReverseSearchDialogFragment(query).show(
                 requireActivity().supportFragmentManager, null
             )
             dismiss()

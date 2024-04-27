@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.FragmentExtensionsBinding
-import ani.dantotsu.others.webview.WebBottomDialog
+import ani.dantotsu.others.webview.PluginBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.SearchQueryHandler
@@ -73,7 +73,7 @@ class NovelPluginsFragment : Fragment(),
         if (isAdded) {  // Check if the fragment is currently added to its activity
             if (plugin.pkgName.startsWith("plugin:")) {
                 parentFragmentManager.let {
-                    WebBottomDialog.newInstance(plugin.sources[0].baseUrl).apply {
+                    PluginBottomDialog.newInstance(plugin.sources[0].baseUrl).apply {
                         show(it, "dialog")
                     }
                 }

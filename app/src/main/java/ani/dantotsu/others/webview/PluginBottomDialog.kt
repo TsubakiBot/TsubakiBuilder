@@ -62,12 +62,14 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
-class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
+class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetWebBinding? = null
     val binding get() = _binding!!
     private val webHandler = Handler(Looper.getMainLooper())
     private var mWebView: WebView? = null
+
+    private var novelTitle = ""
 
     val cookies: CookieManager? = Injekt.get<NetworkHelper>().cookieJar.manager
     val cfTag = "cf_clearance"
@@ -91,7 +93,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 if (mWebView?.canGoBack() == true) {
                     mWebView?.goBack()
                 } else {
-                    this@WebBottomDialog.dismiss()
+                    this@PluginBottomDialog.dismiss()
                 }
             }
         }
@@ -229,6 +231,7 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
         fun handleNovel(html: String) {
             val doc = Jsoup.parse(html)
             doc.selectFirst("div.post-title")?.selectFirst("h1")?.text()?.let { novel ->
+                novelTitle = novel
                 val directory = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                     "Dantotsu/Novel/${novel.sanitized}"
@@ -250,14 +253,15 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
             }
             doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
                 doc.selectFirst("h1#chapter-heading")?.text()?.let { novel ->
+                    novelTitle = novelTitle.ifBlank { novel.substringBefore(" - Ch") }
                     val directory = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                        "Dantotsu/Novel/${novel.substringBefore(" - Ch").sanitized}"
+                        "Dantotsu/Novel/${novelTitle.sanitized}"
                     ).apply { if (!exists()) mkdirs() }
                     val content = doc.selectFirst("div.reading-content")
                     val text = content?.selectFirst("div.text-left")
                     val title = text?.selectFirst("h1, h2, h3, h4")?.text()
-                        ?: "Ch${novel.substringAfter(" - Ch")}"
+                        ?: novel.substringAfter("$novelTitle - ")
                     val chapter = StringBuilder(title).append(lineSeparator)
                     text?.select("p")?.forEach { paragraph ->
                         chapter.append(lineSeparator)
@@ -338,6 +342,6 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
     }
 
     companion object {
-        fun newInstance(url: String) = WebBottomDialog(url)
+        fun newInstance(url: String) = PluginBottomDialog(url)
     }
 }

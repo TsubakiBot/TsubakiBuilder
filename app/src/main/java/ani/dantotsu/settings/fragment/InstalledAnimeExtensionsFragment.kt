@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
-import ani.himitsu.extension.SourceDialogFragment
+import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.settings.ExtensionsActivity
@@ -177,7 +177,7 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         },
         { extension ->
-            SourceDialogFragment(extension).show(
+            ReverseSearchDialogFragment(extension).show(
                 requireActivity().supportFragmentManager, null
             )
         },
