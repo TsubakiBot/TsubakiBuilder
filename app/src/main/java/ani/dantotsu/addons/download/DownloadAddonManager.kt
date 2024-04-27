@@ -57,7 +57,7 @@ class DownloadAddonManager(
                 _isInitialized.value = true
             }
         } catch (e: Exception) {
-            Logger.log("Error initializing Download extension")
+            Logger.log("Error initializing Download addon")
             Logger.log(e)
             error = e.message
         }
@@ -129,6 +129,6 @@ class DownloadAddonManager(
 
         const val DOWNLOAD_PACKAGE = "dantotsu.downloadAddon"
         const val DOWNLOAD_CLASS = "ani.dantotsu.downloadAddon.DownloadAddon"
-        const val REPO = "rebelonion/Dantotsu-Download-Addon"
+        const val REPO = "RepoDevil/Himitsu-Addon-ffmpeg"
     }
 }
