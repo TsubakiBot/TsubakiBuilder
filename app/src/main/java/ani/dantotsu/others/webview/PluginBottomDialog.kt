@@ -73,8 +73,7 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
 
     val cookies: CookieManager? = Injekt.get<NetworkHelper>().cookieJar.manager
     val cfTag = "cf_clearance"
-    var cfCookie = ""
-    var cfHeaders = mutableMapOf<String, String>()
+    var cfCookie: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -129,20 +128,21 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     return if (ad) {
                         createEmptyResource()
                     } else {
-                        cfHeaders = request.requestHeaders
                         assetLoader.shouldInterceptRequest(request.url)
                     }
                 }
 
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                    val cookie = cookies?.getCookie(url)
-                    if (cookie?.contains(cfTag) == true) {
-                        cfCookie = cookie.substringAfter("$cfTag=").substringBefore(";")
-                    }
                     val address = url?.substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 == 0) {
+                    val slashes = address.split("/").size - 1
+                    if (slashes == 0) {
                         webView.keepScreenOn = false
                         webView.clearHistory()
+                    } else if (slashes == 1) {
+                        val cookie = cookies?.getCookie(url)
+                        if (cookie?.contains(cfTag) == true) {
+                            cfCookie = cookie.substringAfter("$cfTag=").substringBefore(";")
+                        }
                     }
                     super.onPageStarted(view, url, favicon)
                 }
@@ -209,12 +209,12 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val urlConnection = URL(url).openConnection() as HttpURLConnection
             urlConnection.setRequestProperty(
-                "User-Agent", PrefManager.getVal<String>(PrefName.DefaultUserAgent)
+                "User-Agent", NetworkHelper.defaultUserAgentProvider()
             )
-            urlConnection.setRequestProperty("Cookie", "${cfTag}=${cfCookie};")
-            cfHeaders.forEach { urlConnection.addRequestProperty(it.key, it.value) }
+            cfCookie?.let {
+                urlConnection.setRequestProperty("Cookie", "${cfTag}=${it};")
+            }
             urlConnection.connect()
-            Log.w("IMAGE", urlConnection.responseCode.toString())
             if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
                 val bitmap = BitmapFactory.decodeStream(urlConnection.inputStream)
                 FileOutputStream(File(directory, "cover.png")).use {
