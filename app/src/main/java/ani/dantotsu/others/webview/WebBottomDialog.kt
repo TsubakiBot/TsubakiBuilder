@@ -124,18 +124,12 @@ class WebBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         } else {
                             loadedUrls[request.url] == true
                         }
-                    return if (ad) createEmptyResource() else assetLoader.shouldInterceptRequest(request.url)
-                }
-
-                override fun shouldOverrideUrlLoading(
-                    view: WebView,
-                    request: WebResourceRequest
-                ): Boolean {
-                    val address = request.url.toString().substringAfter("/novel/") ?: ""
-                    if (address.split("/").size - 1 == 1) {
+                    return if (ad) {
+                        createEmptyResource()
+                    } else {
                         cfHeaders = request.requestHeaders
+                        assetLoader.shouldInterceptRequest(request.url)
                     }
-                    return super.shouldOverrideUrlLoading(view, request)
                 }
 
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
