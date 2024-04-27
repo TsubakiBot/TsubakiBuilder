@@ -2,9 +2,15 @@ name: Matagi Dispatch
 
 on:
   push:
-    branches: [ matagi, himitsu ]
+    branches: [ matagi ]
     paths-ignore:
       - '**/README.md'
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Release?'
+        required: true
+        type: boolean
 
 permissions: write-all
 
@@ -26,7 +32,7 @@ jobs:
           event-type: matagi
 
   rinse:
-    if: github.ref == 'refs/heads/himitsu'
+    if: github.ref == 'refs/heads/himitsu' && ${{ github.event.inputs.release }}
     runs-on: ubuntu-latest
     env:
       CI: true

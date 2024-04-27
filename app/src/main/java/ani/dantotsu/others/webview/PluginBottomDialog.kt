@@ -236,8 +236,9 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                     "Dantotsu/Novel/${novel.sanitized}"
                 ).apply { if (!exists()) mkdirs() }
-                doc.selectFirst("div.summary_image")?.selectFirst("img")
-                    ?.absUrl("data-src")?.also { url -> downloadCover(url, directory) }
+                val img =  doc.selectFirst("div.summary_image")?.selectFirst("img")
+                img?.absUrl("data-src")?.ifBlank { img.absUrl("src") }
+                    ?.also { url -> downloadCover(url, directory) }
             }
         }
 
