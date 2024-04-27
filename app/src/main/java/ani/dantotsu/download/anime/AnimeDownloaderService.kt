@@ -37,10 +37,6 @@ import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import com.anggrayudi.storage.file.forceDelete
 import com.anggrayudi.storage.file.openOutputStream
-import com.arthenica.ffmpegkit.FFmpegKit
-import com.arthenica.ffmpegkit.FFmpegKitConfig
-import com.arthenica.ffmpegkit.FFprobeKit
-import com.arthenica.ffmpegkit.SessionState
 import com.google.gson.GsonBuilder
 import com.google.gson.InstanceCreator
 import eu.kanade.tachiyomi.animesource.model.SAnime
@@ -85,6 +81,11 @@ class AnimeDownloaderService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        if (ffExtension == null) {
+            toast(getString(R.string.download_addon_not_found))
+            stopSelf()
+            return
+        }
         notificationManager = NotificationManagerCompat.from(this)
         builder =
             NotificationCompat.Builder(this, Notifications.CHANNEL_DOWNLOADER_PROGRESS).apply {
@@ -166,7 +167,7 @@ class AnimeDownloaderService : Service() {
                 .map { it.sessionId }.toMutableList()
         sessionIds.addAll(currentTasks.filter { it.getTaskName() == taskName }.map { it.sessionId })
         sessionIds.forEach {
-            ffExtension?.cancelDownload(it) ?: FFmpegKit.cancel(it)
+            ffExtension!!.cancelDownload(it)
         }
         currentTasks.removeAll { it.getTaskName() == taskName }
         CoroutineScope(Dispatchers.Default).launch {
@@ -230,10 +231,7 @@ class AnimeDownloaderService : Service() {
 
                 var percent = 0
                 var totalLength = 0.0
-                val path = ffExtension?.setDownloadPath(
-                    this@AnimeDownloaderService,
-                    outputFile.uri
-                ) ?: FFmpegKitConfig.getSafParameterForWrite(
+                val path = ffExtension!!.setDownloadPath(
                     this@AnimeDownloaderService,
                     outputFile.uri
                 )
@@ -247,61 +245,27 @@ class AnimeDownloaderService : Service() {
                 }
                 val probeRequest =
                     "-headers $headersStringBuilder -i ${task.video.file.url} -show_entries format=duration -v quiet -of csv=\"p=0\""
-                ffExtension?.executeFFProbe(
+                ffExtension.executeFFProbe(
                     probeRequest
                 ) {
                     if (it.toDoubleOrNull() != null) {
                         totalLength = it.toDouble()
                     }
-                } ?: FFprobeKit.executeAsync(
-                    probeRequest,
-                    {
-                        Logger.log("FFprobeKit: $it")
-                    }, {
-                        if (it.message.toDoubleOrNull() != null) {
-                            totalLength = it.message.toDouble()
-                        }
-                    })
+                }
 
                 val headers = headersStringBuilder.toString()
                 var request = "-headers $headers "
                 request += "-i ${task.video.file.url} -c copy -bsf:a aac_adtstoasc -tls_verify 0 $path -v trace"
                 Logger.log("Request: $request")
-                val ffTask = if (ffExtension == null) {
-                    FFmpegKit.executeAsync(request,
-                        { session ->
-                            val state: SessionState = session.state
-                            val returnCode = session.returnCode
-                            // CALLED WHEN SESSION IS EXECUTED
-                            Logger.log(
-                                java.lang.String.format(
-                                    "FFmpeg process exited with state %s and rc %s.%s",
-                                    state,
-                                    returnCode,
-                                    session.failStackTrace
-                                )
-                            )
-
-                        }, {
-                            // CALLED WHEN SESSION PRINTS LOGS
-                            Logger.log(it.message)
-                        }) {
+                val sessionId  =
+                    ffExtension.executeFFMpeg(request) {
                         // CALLED WHEN SESSION GENERATES STATISTICS
-                        val timeInMilliseconds = it.time
+                        val timeInMilliseconds = it
                         if (timeInMilliseconds > 0 && totalLength > 0) {
-                            percent = ((it.time / 1000) / totalLength * 100).toInt()
+                            percent = ((it / 1000) / totalLength * 100).toInt()
                         }
                         Logger.log("Statistics: $it")
                     }
-                } else null
-                val sessionId = ffExtension?.executeFFMpeg(request) {
-                    // CALLED WHEN SESSION GENERATES STATISTICS
-                    val timeInMilliseconds = it
-                    if (timeInMilliseconds > 0 && totalLength > 0) {
-                        percent = ((it / 1000) / totalLength * 100).toInt()
-                    }
-                    Logger.log("Statistics: $it")
-                } ?: ffTask!!.sessionId
                 task.sessionId = sessionId
                 currentTasks.find { it.getTaskName() == task.getTaskName() }?.sessionId =
                     sessionId
@@ -320,12 +284,8 @@ class AnimeDownloaderService : Service() {
                 }
 
                 // periodically check if the download is complete
-                while ((ffExtension?.getState(sessionId)
-                        ?: ffTask?.state) != SessionState.COMPLETED
-                ) {
-                    if ((ffExtension?.getState(sessionId)
-                            ?: ffTask?.state) == SessionState.FAILED
-                    ) {
+                while (ffExtension.getState(sessionId ) != "COMPLETED") {
+                    if (ffExtension.getState(sessionId ) == "FAILED") {
                         Logger.log("Download failed")
                         builder.setContentText(
                             "${
@@ -337,12 +297,7 @@ class AnimeDownloaderService : Service() {
                         )
                         notificationManager.notify(NOTIFICATION_ID, builder.build())
                         toast("${getTaskName(task.title, task.episode)} Download failed")
-                        Logger.log(
-                            "Download failed: ${
-                                ffExtension?.getStackTrace(sessionId)
-                                    ?: ffTask!!.failStackTrace
-                            }"
-                        )
+                        Logger.log("Download failed: ${ffExtension.getStackTrace(sessionId )}")
                         downloadsManager.removeDownload(
                             DownloadedType(
                                 task.title,
@@ -377,8 +332,8 @@ class AnimeDownloaderService : Service() {
                     }
                     kotlinx.coroutines.delay(2000)
                 }
-                if ((ffExtension?.getState(sessionId) ?: ffTask?.state) == SessionState.COMPLETED) {
-                    if (ffExtension?.hadError(sessionId) ?: ffTask!!.returnCode.isValueError) {
+                if (ffExtension.getState(sessionId ) == "COMPLETED") {
+                    if (ffExtension.hadError(sessionId )) {
                         Logger.log("Download failed")
                         builder.setContentText(
                             "${
@@ -442,7 +397,7 @@ class AnimeDownloaderService : Service() {
             if (e.message?.contains("Coroutine was cancelled") == false) { // wut
                 Logger.log("Exception while downloading file: ${e.message}")
                 snackString("Exception while downloading file: ${e.message}")
-                Logger.log(e)
+                e.printStackTrace()
             }
             broadcastDownloadFailed(task.episode)
         }
