@@ -512,7 +512,7 @@
     <string name="no_list_id">No List ID found…</string>
 
     <string name="matagi_update">Himitsu Shirase %1$s</string>
-    <string name="matagi_dont_show">Skip %1$s (Don\'t notify)</string>
+    <string name="matagi_dont_show">Skip %1$s</string>
     <string name="matagi_downloading">Downloading Himitsu %1$s</string>
 
     <string name="checking_for_update">Checking for Update</string>

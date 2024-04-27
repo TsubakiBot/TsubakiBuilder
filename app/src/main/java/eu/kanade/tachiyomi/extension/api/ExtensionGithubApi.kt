@@ -285,33 +285,37 @@ internal class ExtensionGithubApi {
 
     // https://github.com/LNReader/lnreader-plugins/blob/master/docs/plugin-template.ts
     private fun List<PluginJsonObject>.toNovelPlugins(repository: String): List<NovelExtension.Plugin> {
-        return mapNotNull { extension ->
-            val sources =
-                listOf(
-                    ExtensionSourceJsonObject(
-                        extension.id.hashCode().toLong(),
-                        extension.lang,
-                        extension.name,
-                        extension.site,
-                    ),
-                    ExtensionSourceJsonObject(
-                        extension.id.hashCode().toLong(),
-                        extension.lang,
-                        extension.name,
-                        extension.url,
+        return this
+            .filter {
+                it.url.endsWith("[madara].js") || it.iconUrl.contains("/madara/")
+            }
+            .map { extension ->
+                val sources =
+                    listOf(
+                        ExtensionSourceJsonObject(
+                            extension.id.hashCode().toLong(),
+                            extension.lang,
+                            extension.name,
+                            extension.site,
+                        ),
+                        ExtensionSourceJsonObject(
+                            extension.id.hashCode().toLong(),
+                            extension.lang,
+                            extension.name,
+                            extension.url,
+                        )
                     )
+                NovelExtension.Plugin(
+                    extension.name,
+                    "plugin:${extension.id}",
+                    extension.version,
+                    extension.version.replace(".", "").toLong(),
+                    LanguageMapper.mapLanguageNameToCode(extension.lang),
+                    sources.toNovelSources(),
+                    repository = repository,
+                    iconUrl = extension.iconUrl,
                 )
-            NovelExtension.Plugin(
-                extension.name,
-                "plugin:${extension.id}",
-                extension.version,
-                extension.version.replace(".", "").toLong(),
-                LanguageMapper.mapLanguageNameToCode(extension.lang),
-                sources.toNovelSources(),
-                repository = repository,
-                iconUrl = extension.iconUrl,
-            )
-        }
+            }
     }
 
     suspend fun findNovelPlugins(): List<NovelExtension.Plugin> {

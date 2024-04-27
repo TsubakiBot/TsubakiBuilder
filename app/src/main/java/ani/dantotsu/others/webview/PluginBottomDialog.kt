@@ -237,7 +237,7 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                     "Dantotsu/Novel/${novel.sanitized}"
                 ).apply { if (!exists()) mkdirs() }
                 doc.selectFirst("div.summary_image")?.selectFirst("img")
-                    ?.attr("data-src")?.also { url -> downloadCover(url, directory) }
+                    ?.absUrl("data-src")?.also { url -> downloadCover(url, directory) }
             }
         }
 
