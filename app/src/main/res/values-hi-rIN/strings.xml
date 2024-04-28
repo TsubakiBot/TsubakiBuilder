@@ -390,7 +390,6 @@
     <string name="error_loading_data">डेटा लोड करने में त्रुटि %1$s</string>
     <string name="long_click_to_check_update">आप ऐप अपडेट के लिए जोड़े गए बटन पर लंबी चिंटी दबाएं</string>
     <string name="saved_to_path">सहेजा गया:\n%s</string>
-    <string name="setting_progress">प्रगति %1$d पर सेट करना</string>
     <string name="login_anilist_account">कृपया Anilist खाते में लॉगिन करें!</string>
     <string name="congrats_vro">बधाई हो भाई</string>
     <string name="please_reload">कृपया पुनः लोड करें।</string>

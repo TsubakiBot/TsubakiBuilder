@@ -390,7 +390,6 @@
     <string name="error_loading_data">%1$s 데이터 로드 중 오류 발생</string>
     <string name="long_click_to_check_update">앱 업데이트를 확인하려면 버튼을 길게 누르세요</string>
     <string name="saved_to_path">저장 위치:\n%s</string>
-    <string name="setting_progress">진행 상태를 %1$d(으)로 설정 중</string>
     <string name="login_anilist_account">Anilist 계정에 로그인하세요!</string>
     <string name="congrats_vro">축하합니다 Vro</string>
     <string name="please_reload">다시 로드하세요.</string>

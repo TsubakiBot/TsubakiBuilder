@@ -390,7 +390,6 @@
     <string name="error_loading_data">%1$s ডাটা লোড কৰাৰ সময়ত ত্ৰুটি হৈছে</string>
     <string name="long_click_to_check_update">অ্যাপ আপডেট পৰীক্ষা কৰিবলৈ আপুনি বুটামটো দীঘল ক্লিক কৰক</string>
     <string name="saved_to_path">পথত সংৰক্ষিত হ\'ল:\n%s</string>
-    <string name="setting_progress">%1$d প্ৰগতি সেট কৰা হৈছে</string>
     <string name="login_anilist_account">অনিলিস্ট একাউণ্টত লগ ইন কৰক!</string>
     <string name="congrats_vro">অভিনন্দন ভ্ৰো</string>
     <string name="please_reload">অনুগ্ৰহ কৰি পুনৰ লোড কৰক।</string>

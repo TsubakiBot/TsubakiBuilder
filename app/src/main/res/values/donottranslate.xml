@@ -22,6 +22,8 @@
     <string name="update_banner">https://raw.githubusercontent.com/RepoDevil/Himitsu/matagi/png/banner.png</string>
     <string name="update_icon">https://raw.githubusercontent.com/RepoDevil/Himitsu/matagi/png/icon.png</string>
 
+    <string name="setting_progress">✔ [%1$s] %2$d</string>
+
     <string name="memory_byte">Byte</string>
     <string name="memory_kilobyte">KB</string>
     <string name="memory_megabyte">MB</string>

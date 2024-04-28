@@ -390,7 +390,6 @@
     <string name="error_loading_data">Ошибка загрузки данных %1$s</string>
     <string name="long_click_to_check_update">Длительное нажатие на кнопку для проверки обновления приложения</string>
     <string name="saved_to_path">Сохранено в:\n%s</string>
-    <string name="setting_progress">Установка прогресса на %1$d</string>
     <string name="login_anilist_account">Пожалуйста, войдите в аккаунт Anilist!</string>
     <string name="congrats_vro">Поздравляю, чувак</string>
     <string name="please_reload">Пожалуйста, перезагрузите.</string>

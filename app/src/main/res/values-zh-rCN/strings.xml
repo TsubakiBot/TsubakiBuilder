@@ -390,7 +390,6 @@
     <string name="error_loading_data">加载数据出错 %1$s</string>
     <string name="long_click_to_check_update">您长按按钮以检查应用更新</string>
     <string name="saved_to_path">保存到：\n%s</string>
-    <string name="setting_progress">设置进度为 %1$d</string>
     <string name="login_anilist_account">请登录Anilist帐户！</string>
     <string name="congrats_vro">恭喜，伙计</string>
     <string name="please_reload">请重新加载。</string>

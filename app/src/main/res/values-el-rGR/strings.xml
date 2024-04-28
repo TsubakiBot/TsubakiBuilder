@@ -390,7 +390,6 @@
     <string name="error_loading_data">Σφάλμα φόρτωσης δεδομένων %1$s</string>
     <string name="long_click_to_check_update">Κάντε παρατεταμένο κλικ για να ελέγξετε για ενημερώσεις εφαρμογών</string>
     <string name="saved_to_path">Αποθηκεύτηκε σε:\n%s</string>
-    <string name="setting_progress">Ρύθμιση προόδου σε %1$d</string>
     <string name="login_anilist_account">Παρακαλούμε συνδεθείτε στο λογαριασμό AniList!</string>
     <string name="congrats_vro">Συγχαρητήρια Vro</string>
     <string name="please_reload">Παρακαλώ Κάντε Ανανέωση.</string>

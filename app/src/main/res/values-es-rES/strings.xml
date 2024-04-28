@@ -388,7 +388,6 @@
     <string name="error_loading_data">Error al cargar datos %1$s</string>
     <string name="long_click_to_check_update">Haz clic largo en el botón para verificar la actualización de la aplicación</string>
     <string name="saved_to_path">Guardado en:\n%s</string>
-    <string name="setting_progress">Estableciendo progreso al %1$d</string>
     <string name="login_anilist_account">¡Inicia sesión en la cuenta de Anilist!</string>
     <string name="congrats_vro">Felicidades, Vro</string>
     <string name="please_reload">Por favor, recarga.</string>

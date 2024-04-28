@@ -390,7 +390,6 @@
     <string name="error_loading_data">%1$sのデータの読み込みエラー</string>
     <string name="long_click_to_check_update">ボタンを長押ししてアプリの更新を確認してください</string>
     <string name="saved_to_path">保存先：%s</string>
-    <string name="setting_progress">進行状況を%1$dに設定</string>
     <string name="login_anilist_account">Anilistアカウントにログインしてください！</string>
     <string name="congrats_vro">おめでとうVro</string>
     <string name="please_reload">再読み込みしてください。</string>

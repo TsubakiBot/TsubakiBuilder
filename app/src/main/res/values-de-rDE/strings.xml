@@ -391,7 +391,6 @@
     <string name="error_loading_data">Fehler beim Laden der Daten %1$s</string>
     <string name="long_click_to_check_update">Langes Drücken der Schaltfläche, um nach App-Updates zu suchen</string>
     <string name="saved_to_path">Gespeichert unter:\n%s</string>
-    <string name="setting_progress">Fortschritt auf %1$d setzen</string>
     <string name="login_anilist_account">Bitte melden Sie sich bei Ihrem Anilist-Konto an!</string>
     <string name="congrats_vro">Herzlichen Glückwunsch Vro</string>
     <string name="please_reload">Bitte neu laden.</string>

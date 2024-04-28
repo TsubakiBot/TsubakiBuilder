@@ -391,7 +391,6 @@
     <string name="error_loading_data">%1$s তথ্য লোড করার সময় ত্রুটি</string>
     <string name="long_click_to_check_update">অ্যাপ আপডেট চেক করতে বাটনটি দীর্ঘ ক্লিক করুন</string>
     <string name="saved_to_path">পাথে সংরক্ষিত হয়েছে:\n%s</string>
-    <string name="setting_progress">%1$d এ অগ্রগতি সেট করা হচ্ছে</string>
     <string name="login_anilist_account">Anilist অ্যাকাউন্টে লগইন করুন!</string>
     <string name="congrats_vro">অভিনন্দন ভ্রো</string>
     <string name="please_reload">অনুগ্রহ করে পুনরায় লোড করুন।</string>
