@@ -11,12 +11,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
-import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import nl.joery.animatedbottombar.AnimatedBottomBar
 

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.connections.github.Forks
 import ani.dantotsu.databinding.BottomSheetDevelopersBinding
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.DevelopersAdapter
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class ForksDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetDevelopersBinding? = null

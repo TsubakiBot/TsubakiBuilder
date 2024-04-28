@@ -1,7 +1,5 @@
 package ani.dantotsu.media.novel
 
-import android.content.Intent
-import android.net.Uri
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemNovelResponseBinding
 import ani.dantotsu.loadImage
-import ani.dantotsu.media.novel.novelreader.NovelReaderActivity
 import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString

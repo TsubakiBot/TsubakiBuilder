@@ -829,7 +829,7 @@
     <string name="blur">Blur</string>
     <string name="hide_scroll_bar">Hide Scroll Bar</string>
     <string name="view_on_anilist">View on AniList</string>
-    <string name="anilist_notification_filters">Choose category to ignore</string>
+    <string name="anilist_notification_filters">Filter Notifications</string>
     <string name="anilist_notifications_checking_time">Anilist notifications update frequency : %1$s</string>
     <string name="comment_notification_checking_time">Comment notifications update frequency : %1$s</string>
     <string name="activities">Activities</string>
@@ -1068,6 +1068,6 @@
     <string name="installed_extensions">Installed %1$s</string>
     <string name="available_extensions">Available %1$s</string>
     <string name="available_plugins">%1$s Plugins</string>
-    
+
     <string name="your_story">Your Story</string>
 </resources>

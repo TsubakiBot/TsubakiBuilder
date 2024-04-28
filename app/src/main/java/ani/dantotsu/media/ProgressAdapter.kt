@@ -12,7 +12,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.R
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemProgressbarBinding
 import ani.dantotsu.snackString
 

@@ -11,7 +11,6 @@ import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.media.Media
 import ani.dantotsu.profile.User
-import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString

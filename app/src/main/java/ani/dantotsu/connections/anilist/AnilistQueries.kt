@@ -376,7 +376,6 @@ class AnilistQueries {
         }
         return media
     }
-
     private fun continueMediaQuery(type: String, status: String): String {
         return """ MediaListCollection(userId: ${Anilist.userid}, type: $type, status: $status , sort: UPDATED_TIME ) { lists { entries { progress private score(format:POINT_100) status media { id idMal type isAdult status chapters episodes nextAiringEpisode {episode} meanScore isFavourite format bannerImage coverImage{large} title { english romaji userPreferred } } } } } """
     }
@@ -407,41 +406,6 @@ class AnilistQueries {
 
     private fun favMediaQuery(anime: Boolean, page: Int, id: Int? = Anilist.userid): String {
         return """User(id:${id}){id favourites{${if (anime) "anime" else "manga"}(page:$page){pageInfo{hasNextPage}edges{favouriteOrder node{id idMal isAdult mediaListEntry{ progress private score(format:POINT_100) status } chapters isFavourite format episodes nextAiringEpisode{episode}meanScore isFavourite format startDate{year month day} title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}}}"""
-    }
-
-    suspend fun recommendations(): ArrayList<Media> {
-        val response = executeQuery<Query.Page>("""{${recommendationQuery()}}""")
-        val map = mutableMapOf<Int, Media>()
-        response?.data?.page?.apply {
-            recommendations?.onEach {
-                val json = it.mediaRecommendation
-                if (json != null) {
-                    val m = Media(json)
-                    m.relation = json.type?.toString()
-                    map[m.id] = m
-                }
-            }
-        }
-
-        val types = arrayOf("ANIME", "MANGA")
-        suspend fun repeat(type: String) {
-            val res =
-                executeQuery<Query.MediaListCollection>("""{${recommendationPlannedQuery(type)}}""")
-            res?.data?.mediaListCollection?.lists?.forEach { li ->
-                li.entries?.forEach {
-                    val m = Media(it)
-                    if (m.status == "RELEASING" || m.status == "FINISHED") {
-                        m.relation = it.media?.type?.toString()
-                        map[m.id] = m
-                    }
-                }
-            }
-        }
-        types.forEach { repeat(it) }
-
-        val list = ArrayList(map.values.toList())
-        list.sortByDescending { it.meanScore }
-        return list
     }
 
     private fun recommendationQuery(): String {
@@ -1605,8 +1569,8 @@ Page(page:$page,perPage:50) {
         )
     }
 
-    private fun userFavMediaQuery(anime: Boolean, page: Int, id: Int): String {
-        return """User(id:${id}){id favourites{${if (anime) "anime" else "manga"}(page:$page){pageInfo{hasNextPage}edges{favouriteOrder node{id idMal isAdult mediaListEntry{ progress private score(format:POINT_100) status } chapters isFavourite format episodes nextAiringEpisode{episode}meanScore isFavourite format startDate{year month day} title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}}}"""
+    private fun userFavMediaQuery(anime: Boolean, id: Int): String {
+        return """User(id:${id}){id favourites{${if (anime) "anime" else "manga"}(page:1){pageInfo{hasNextPage}edges{favouriteOrder node{id idMal isAdult mediaListEntry{ progress private score(format:POINT_100) status } chapters isFavourite format episodes nextAiringEpisode{episode}meanScore isFavourite format startDate{year month day} title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}}}"""
     }
 
     suspend fun userFollowing(id: Int): Query.Following? {
@@ -1626,8 +1590,8 @@ Page(page:$page,perPage:50) {
     suspend fun initProfilePage(id: Int): Query.ProfilePageMedia? {
         return executeQuery<Query.ProfilePageMedia>(
             """{
-            favoriteAnime:${userFavMediaQuery(true, 1, id)}
-            favoriteManga:${userFavMediaQuery(false, 1, id)}
+            favoriteAnime:${userFavMediaQuery(true, id)}
+            favoriteManga:${userFavMediaQuery(false, id)}
             }""".trimIndent(), force = true
         )
     }

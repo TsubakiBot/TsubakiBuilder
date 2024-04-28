@@ -49,7 +49,6 @@ import ani.dantotsu.home.NoInternet
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
-import ani.dantotsu.view.dialog.CustomBottomDialog
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -62,6 +61,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText

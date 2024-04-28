@@ -12,11 +12,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.LinearInterpolator
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
@@ -262,7 +258,7 @@ constructor(
     }
 
     private fun resetProgressBar(storyIndex: Int) {
-        for (i in storyIndex until activityList.size) {
+        for (i in storyIndex until activityList.size + 1) {
             val progressBar = findViewWithTag<ProgressBar>("story${i}")
             progressBar?.let {
                 it.progress = 0
@@ -317,7 +313,7 @@ constructor(
         }
         userClicked = true
         animation.end()
-        if (storyIndex < activityList.size)
+        if (storyIndex <= activityList.size)
             storyIndex += 1
         showStory()
     }
@@ -360,7 +356,7 @@ constructor(
 
         val key = "activities"
         val set = PrefManager.getCustomVal<Set<Int>>(key, setOf()).plus((story.id))
-        val newList = set.sorted().takeLast(120).toSet()
+        val newList = set.sorted().takeLast(200).toSet()
         PrefManager.setCustomVal(key, newList)
         binding.statusUserAvatar.loadImage(story.user?.avatar?.large)
         binding.statusUserName.text = story.user?.name
@@ -395,15 +391,16 @@ constructor(
                         it.toString()
                     }
                 }} ${story.progress ?: story.media?.title?.userPreferred} " +
-                    if (story.status?.contains("completed") == false) {
+                    if (story.status?.contains("completed") == false && !story.status.contains("plans") && !story.status.contains("repeating")) {
                         "of ${story.media?.title?.userPreferred}"
                     }else {
                         ""
                     }
                 binding.infoText.text = text
                 val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
-                    imageContentViewKen
-                else imageContentView
+                    binding.contentImageViewKen
+                else
+                    binding.contentImageView
                 banner.blurImage(story.media?.bannerImage ?: story.media?.coverImage?.extraLarge)
                 binding.coverImage.loadImage(story.media?.coverImage?.extraLarge)
                 binding.coverImage.setOnClickListener{

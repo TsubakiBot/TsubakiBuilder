@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.currContext
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.media.anime.SelectorDialogFragment
 import ani.dantotsu.media.manga.MangaChapter

@@ -5,7 +5,6 @@ import ani.dantotsu.FileUrl
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.asyncMap
-import ani.dantotsu.currContext
 import ani.dantotsu.others.MalSyncBackup
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.tryWithSuspend

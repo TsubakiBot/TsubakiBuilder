@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.connections.github.Contributors
 import ani.dantotsu.databinding.BottomSheetDevelopersBinding
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.settings.DevelopersAdapter
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class DevelopersDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetDevelopersBinding? = null

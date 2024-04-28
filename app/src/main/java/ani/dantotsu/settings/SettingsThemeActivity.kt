@@ -25,7 +25,6 @@ import eltos.simpledialogfragment.color.SimpleColorDialog
 
 class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListener {
     private lateinit var binding: ActivitySettingsThemeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()

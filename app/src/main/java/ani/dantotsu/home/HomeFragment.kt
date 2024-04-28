@@ -378,7 +378,8 @@ class HomeFragment : Fragment() {
             "MangaContinue",
             "MangaFav",
             "MangaPlanned",
-            "Recommendation"
+            "Recommendation",
+            "UserStatus"
         )
 
         val containers = arrayOf(
@@ -389,6 +390,7 @@ class HomeFragment : Fragment() {
             binding.homeFavMangaContainer,
             binding.homePlannedMangaContainer,
             binding.homeRecommendedContainer,
+            binding.homeUserStatusContainer,
         )
 
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }

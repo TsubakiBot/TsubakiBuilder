@@ -4,7 +4,6 @@ package ani.dantotsu.connections.anilist.api
 
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
-import ani.dantotsu.currContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

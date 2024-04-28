@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
-import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.settings.ExtensionsActivity
@@ -36,6 +35,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import ani.himitsu.extension.ReverseSearchDialogFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import eu.kanade.tachiyomi.data.notification.Notifications

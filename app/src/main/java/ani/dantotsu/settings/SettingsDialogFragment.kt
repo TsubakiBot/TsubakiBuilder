@@ -26,15 +26,15 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.incognitoNotification
 import ani.dantotsu.loadImage
-import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.dantotsu.offline.OfflineFragment
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.himitsu.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import eu.kanade.tachiyomi.util.system.getSerializableCompat

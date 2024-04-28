@@ -3,7 +3,6 @@ package ani.dantotsu.parsers
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
-import ani.dantotsu.currContext
 import ani.dantotsu.media.Media
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.util.Logger

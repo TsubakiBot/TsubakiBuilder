@@ -270,7 +270,6 @@ class AnimeFragment : Fragment() {
             true
         }
 
-        var serverDown = false
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
             if (it) {

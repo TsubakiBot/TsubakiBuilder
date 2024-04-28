@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemQuestionBinding
-import ani.dantotsu.view.dialog.CustomBottomDialog
 import ani.dantotsu.setAnimation
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 

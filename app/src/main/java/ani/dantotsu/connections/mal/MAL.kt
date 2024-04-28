@@ -8,7 +8,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.client
-import ani.dantotsu.currContext
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

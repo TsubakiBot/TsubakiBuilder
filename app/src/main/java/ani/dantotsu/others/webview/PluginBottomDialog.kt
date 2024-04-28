@@ -20,7 +20,6 @@ import android.net.Uri
 import android.net.http.SslError
 import android.os.*
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,8 +43,6 @@ import ani.dantotsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.sanitized
-import ani.dantotsu.settings.saving.PrefManager
-import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.os.Version
 import eu.kanade.tachiyomi.network.NetworkHelper

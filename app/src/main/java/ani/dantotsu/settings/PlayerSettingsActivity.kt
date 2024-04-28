@@ -19,7 +19,6 @@ import ani.dantotsu.databinding.ActivityPlayerSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.view.Xpandable
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
@@ -28,6 +27,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
+import ani.dantotsu.view.Xpandable
 import com.google.android.material.slider.Slider.OnChangeListener
 import kotlin.math.roundToInt
 

@@ -4,7 +4,6 @@ import android.os.Environment
 import ani.dantotsu.currContext
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.media.MediaNameAdapter
-import ani.dantotsu.media.MediaType
 import ani.dantotsu.util.Logger
 import me.xdrop.fuzzywuzzy.FuzzySearch
 import uy.kohesive.injekt.Injekt
