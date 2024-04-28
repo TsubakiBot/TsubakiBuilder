@@ -76,7 +76,7 @@ class App : MultiDexApplication() {
                 error.printStackTrace(PrintWriter(this))
             }
             try {
-                Debug.clipException(this, exception.toString())
+                Debug.saveException(this, exception.toString())
             } catch (ignored: Exception) {
             }
             android.os.Process.killProcess(android.os.Process.myPid())
