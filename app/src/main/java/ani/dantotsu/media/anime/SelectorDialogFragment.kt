@@ -321,8 +321,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             }?.videos?.getOrNull(ep.selectedVideo)
             val isExportedOrUnavailable = video?.file?.url?.let { videoUrl ->
                 parseMagnetLink(video, ep, videoUrl)
-            }
-            if (isExportedOrUnavailable == true) return
+            } ?: false
+            if (isExportedOrUnavailable) return
         }
         dismiss()
 
@@ -488,8 +488,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     val activity = currActivity() ?: requireActivity()
                     val isExportedOrUnavailable = selectedVideo?.file?.url?.let { videoUrl ->
                         parseMagnetLink(video, episode, videoUrl)
-                    }
-                    if (isExportedOrUnavailable == true) return@setSafeOnClickListener
+                    } ?: false
+                    if (isExportedOrUnavailable) return@setSafeOnClickListener
                     if (subtitles.isNotEmpty()) {
                         val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
                             .setTitle("Download Subtitle")
@@ -540,7 +540,6 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             }
                             .show()
                         alertDialog.window?.setDimAmount(0.8f)
-
                     } else {
                         if (selectedVideo != null) {
                             Helper.startAnimeDownloadService(

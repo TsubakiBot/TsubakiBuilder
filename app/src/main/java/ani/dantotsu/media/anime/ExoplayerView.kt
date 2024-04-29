@@ -1543,7 +1543,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             if (exoItem != null) {
                 exoItem
             } else {
-
                 val directory =
                     getSubDirectory(this, MediaType.ANIME, false, titleName, episodeName)
                 if (directory != null) {
@@ -1556,11 +1555,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         val uri = docFile.uri
                         MediaItem.Builder().setUri(uri).setMimeType(mimeType).build()
                     } else {
-                        snackString("File not found")
+                        snackString(getString(R.string.file_not_found))
                         null
                     }
                 } else {
-                    snackString("Directory not found")
+                    snackString(getString(R.string.directory_not_found))
                     null
                 }
             }
@@ -1575,7 +1574,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         } else {
             if (sub.isNotEmpty()) {
                 val addedSubsDownloadedMediaItem = downloadedMediaItem.buildUpon()
-                val addLanguage = sub[0].buildUpon().setLanguage("en").build()
+                val addLanguage = sub[0].buildUpon().setLanguage(Locale.getDefault().language).build()
                 addedSubsDownloadedMediaItem.setSubtitleConfigurations(listOf(addLanguage))
                 episode.selectedSubtitle = 0
                 addedSubsDownloadedMediaItem.build()
@@ -1671,6 +1670,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 seekTo(playbackPosition)
             }
         playerView.player = exoPlayer
+
+//        if (video?.format == VideoType.M3U8) {
+//            exoPlayer.setMediaSource(
+//                HlsMediaSource.Factory(cacheFactory).createMediaSource(mediaItem)
+//            )
+//        }
 
         try {
             val rightNow = Calendar.getInstance()

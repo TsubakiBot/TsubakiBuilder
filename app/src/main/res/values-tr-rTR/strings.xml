@@ -636,7 +636,7 @@
     <string name="discord_logout_success">Başarıyla Oturum Kapatıldı</string>
     <string name="discord_try_again">Yeniden giriş yapmayı deneyin</string>
     <string name="error_loading_discord_user_data">Discord Kullanıcı Verileri Yüklenirken Hata Oluştu</string>
-    <string name="discord_warning"><![CDATA[Giriş yaparak, Discord'un Dantotsu'da izlediğiniz ve okuduğunuz şeyleri gösterecektir\n\nEğer görünmez moddaysanız, Dantotsu'yu açtığınızda çevrimiçi olacaksınız.\n\nBu Discord Kullanım Şartlarını ihlal eder. \nDiscord, özel Zengin Varlık Kullanımı'nı (Dantotsu'nun kullandığı şey) kullanan hiç kimseyi yasaklamamış olsa da, yine de uyarılmış olursunuz.\n\nDantotsu, hesabınıza ne olursa olsun sorumlu değildir.]]></string>
+    <string name="discord_warning"><![CDATA[Giriş yaparak, Discord\'un Dantotsu\'da izlediğiniz ve okuduğunuz şeyleri gösterecektir\n\nEğer görünmez moddaysanız, Dantotsu\'yu açtığınızda çevrimiçi olacaksınız.\n\nBu Discord Kullanım Şartlarını ihlal eder. \nDiscord, özel Zengin Varlık Kullanımı\'nı (Dantotsu\'nun kullandığı şey) kullanan hiç kimseyi yasaklamamış olsa da, yine de uyarılmış olursunuz.\n\nDantotsu, hesabınıza ne olursa olsun sorumlu değildir.]]></string>
     <string name="warning">Uyarı</string>
     <string name="view_anime">Anime\'yi Görüntüle</string>
     <string name="view_manga">Manga\'yı Görüntüle</string>

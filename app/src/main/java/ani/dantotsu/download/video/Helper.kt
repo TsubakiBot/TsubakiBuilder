@@ -157,16 +157,22 @@ object Helper {
                         download: Download,
                         finalException: Exception?
                     ) {
-                        if (download.state == Download.STATE_COMPLETED) {
-                            Logger.log("Download Completed")
-                        } else if (download.state == Download.STATE_FAILED) {
-                            Logger.log("Download Failed")
-                        } else if (download.state == Download.STATE_STOPPED) {
-                            Logger.log("Download Stopped")
-                        } else if (download.state == Download.STATE_QUEUED) {
-                            Logger.log("Download Queued")
-                        } else if (download.state == Download.STATE_DOWNLOADING) {
-                            Logger.log("Download Downloading")
+                        when (download.state) {
+                            Download.STATE_COMPLETED -> {
+                                Logger.log("Download Completed")
+                            }
+                            Download.STATE_FAILED -> {
+                                Logger.log("Download Failed")
+                            }
+                            Download.STATE_STOPPED -> {
+                                Logger.log("Download Stopped")
+                            }
+                            Download.STATE_QUEUED -> {
+                                Logger.log("Download Queued")
+                            }
+                            Download.STATE_DOWNLOADING -> {
+                                Logger.log("Download Downloading")
+                            }
                         }
                     }
                 }
