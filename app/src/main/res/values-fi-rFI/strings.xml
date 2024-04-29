@@ -421,7 +421,6 @@
     <string name="error_loading_data">Virhe ladattaessa tietoja %1$s</string>
     <string name="long_click_to_check_update">Pitkä klikkaa tarkistaaksesi päivitykset</string>
     <string name="saved_to_path">Tallennettu:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Ole hyvä ja kirjaudu Anilist-tilille!</string>
     <string name="congrats_vro">Congrats Vro</string>
     <string name="please_reload">Lataa Uudelleen.</string>

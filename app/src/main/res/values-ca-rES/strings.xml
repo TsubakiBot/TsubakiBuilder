@@ -415,7 +415,6 @@
     <string name="error_loading_data">Error en carregar les dades %1$s</string>
     <string name="long_click_to_check_update">Fes una pulsació llarga per comprovar les actualitzacions</string>
     <string name="saved_to_path">Guardat a:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Si us plau, inicia la sessió al compte d\'AniList!</string>
     <string name="congrats_vro">Felicitats Vro</string>
     <string name="please_reload">Si us plau, torna a carregar.</string>

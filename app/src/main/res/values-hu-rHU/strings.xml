@@ -421,7 +421,6 @@
     <string name="error_loading_data">Adatok betöltési hibája %1$s</string>
     <string name="long_click_to_check_update">Hosszú kattintás az frissítések ellenőrzéséhez</string>
     <string name="saved_to_path">Mentve ide:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Kérlek jelentkezz be az AniList fiókodba!</string>
     <string name="congrats_vro">Gratulálok Vro</string>
     <string name="please_reload">Kérlek töltsd újra.</string>

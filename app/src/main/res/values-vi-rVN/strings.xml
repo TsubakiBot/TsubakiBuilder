@@ -421,7 +421,6 @@
     <string name="error_loading_data">Lỗi tải dữ liệu %1$s</string>
     <string name="long_click_to_check_update">Nhấn và giữ để kiểm tra cập nhật</string>
     <string name="saved_to_path">Đã lưu vào:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Vui lòng đăng nhập vào tài khoản AniList!</string>
     <string name="congrats_vro">Xin chúc mừng Vro</string>
     <string name="please_reload">Vui lòng tải lại.</string>

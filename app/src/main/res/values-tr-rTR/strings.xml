@@ -421,7 +421,6 @@
     <string name="error_loading_data">Veri yüklenirken hata oluştu %1$s</string>
     <string name="long_click_to_check_update">Güncellemeleri kontrol etmek için uzun basın</string>
     <string name="saved_to_path">Kaydedildi:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Lütfen AniList hesabına giriş yapın!</string>
     <string name="congrats_vro">Tebrikler Vro</string>
     <string name="please_reload">Lütfen Yeniden Yükleyin.</string>

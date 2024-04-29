@@ -421,7 +421,6 @@
     <string name="error_loading_data">Fout met die laai van data %1$s</string>
     <string name="long_click_to_check_update">Lange druk om vir opdaterings te kyk</string>
     <string name="saved_to_path">Gestoor na:\n%s</string>
-    <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="login_anilist_account">Meld asseblief aan by AniList-rekening!</string>
     <string name="congrats_vro">Geluk Vro</string>
     <string name="please_reload">Laai asseblief weer in.</string>

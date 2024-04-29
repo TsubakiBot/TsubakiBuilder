@@ -421,7 +421,6 @@
     <string name="error_loading_data">Błąd ładowania danych %1$s</string>
     <string name="long_click_to_check_update">Przytrzymaj aby sprawdzić dostępność aktualizacji</string>
     <string name="saved_to_path">Zapisano do:\n%s</string>
-    <string name="setting_progress">✔️ [%1$s] %2$d</string>
     <string name="login_anilist_account">Zaloguj się na konto AniList!</string>
     <string name="congrats_vro">Congrats Vro</string>
     <string name="please_reload">Proszę załadować ponownie.</string>
