@@ -51,7 +51,6 @@ import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
@@ -412,10 +411,8 @@ class HomeFragment : Fragment() {
                         var empty = true
                         val homeLayoutShow: List<Boolean> =
                             PrefManager.getVal(PrefName.HomeLayout)
-                        runBlocking {
-                            if (homeLayoutShow.getOrNull(7) == true) model.initUserStatus()
-                            model.initHomePage()
-                        }
+                        model.initHomePage()
+
                         (array.indices).forEach { i ->
                             if (homeLayoutShow.elementAt(i)) {
                                 empty = false

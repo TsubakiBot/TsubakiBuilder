@@ -25,7 +25,9 @@ import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -56,6 +58,7 @@ class App : MultiDexApplication() {
 
     val mFTActivityLifecycleCallbacks = FTActivityLifecycleCallbacks()
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate() {
         super.onCreate()
 
@@ -107,9 +110,10 @@ class App : MultiDexApplication() {
             CoroutineScope(Dispatchers.Default).launch { CommentsAPI.fetchAuthToken() }
         }
 
-        val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
-        val scheduler = TaskScheduler.create(this, useAlarmManager)
-        scheduler.scheduleAllTasks(this)
+            val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
+            val scheduler = TaskScheduler.create(this@App, useAlarmManager)
+            scheduler.scheduleAllTasks(this@App)
+        }
     }
 
     private suspend fun loadAnimeExtensions() = withContext(Dispatchers.IO) {

@@ -1635,8 +1635,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
                 }.show()
             dialog.window?.setDimAmount(0.8f)
-        }
-        if (!this::exoPlayer.isInitialized) buildExoplayer()
+        } else buildExoplayer()
     }
 
     private fun buildExoplayer() {
