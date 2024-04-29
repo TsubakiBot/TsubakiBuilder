@@ -128,7 +128,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 Intent(it.context, SearchActivity::class.java)
                     .putExtra("type", "MANGA")
                     .putExtra("sortBy", Anilist.sortBy[0])
-                    .putExtra("search", true),
+                    .putExtra("hideKeyboard", true),
                 null
             )
         }

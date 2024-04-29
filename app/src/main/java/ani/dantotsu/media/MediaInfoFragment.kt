@@ -418,7 +418,7 @@ class MediaInfoFragment : Fragment() {
                                     .putExtra("type", type)
                                     .putExtra("sortBy", Anilist.sortBy[2])
                                     .putExtra("tag", media.tags[position].substringBefore(" :"))
-                                    .putExtra("search", true)
+                                    .putExtra("hideKeyboard", true)
                                     .also {
                                         if (media.isAdult) {
                                             if (!Anilist.adult) Toast.makeText(
@@ -498,7 +498,7 @@ class MediaInfoFragment : Fragment() {
                                 val query = Intent(requireContext(), SearchActivity::class.java)
                                     .putExtra("type", "ANIME")
                                     .putExtra("query", media.mainName())
-                                    .putExtra("search", true)
+                                    .putExtra("hideKeyboard", true)
                                 ContextCompat.startActivity(requireContext(), query, null)
                             }
 

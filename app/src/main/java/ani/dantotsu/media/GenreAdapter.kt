@@ -47,7 +47,7 @@ class GenreAdapter(
                         .putExtra("type", type)
                         .putExtra("genre", pos[bindingAdapterPosition])
                         .putExtra("sortBy", Anilist.sortBy[2])
-                        .putExtra("search", true)
+                        .putExtra("hideKeyboard", true)
                         .also {
                             if (pos[bindingAdapterPosition].lowercase() == "hentai") {
                                 if (!Anilist.adult) Toast.makeText(

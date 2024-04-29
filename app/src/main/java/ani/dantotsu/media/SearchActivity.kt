@@ -173,7 +173,7 @@ class SearchActivity : AppCompatActivity() {
                 } else
                     headerAdaptor.requestFocus?.run()
 
-                if (intent.getBooleanExtra("search", false)) {
+                if (intent.getBooleanExtra("hideKeyboard", false)) {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED)
                     search()
                 }

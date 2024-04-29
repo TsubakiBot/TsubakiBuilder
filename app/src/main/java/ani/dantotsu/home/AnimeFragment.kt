@@ -264,7 +264,7 @@ class AnimeFragment : Fragment() {
                     .putExtra("type", "ANIME")
                     .putExtra("season", season)
                     .putExtra("seasonYear", year.toString())
-                    .putExtra("search", true),
+                    .putExtra("hideKeyboard", true),
                 null
             )
             true
