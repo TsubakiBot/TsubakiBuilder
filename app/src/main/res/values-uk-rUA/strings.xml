@@ -284,6 +284,7 @@
         <item>Улюблена манга</item>
         <item>Планова манга</item>
         <item>Рекомендовані</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">За промовчанням Початкова Вкладка</string>
     <string name="small_view">Вид у актуальних повідомленнях</string>

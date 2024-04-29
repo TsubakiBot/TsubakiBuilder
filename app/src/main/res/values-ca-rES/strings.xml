@@ -278,6 +278,7 @@
         <item>Manga Favorit</item>
         <item>Manga Planificat</item>
         <item>Recomanat</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
     <string name="small_view">Vista Petita en Mostrats Trending</string>

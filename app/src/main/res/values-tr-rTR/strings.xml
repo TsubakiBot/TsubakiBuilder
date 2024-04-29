@@ -284,6 +284,7 @@
         <item>Favori Manga</item>
         <item>Planlanmış Manga</item>
         <item>Tavsiye Edilenler</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Varsayılan Başlangıç Sekmesi</string>
     <string name="small_view">Trend Olan Gösterilerde Küçük Görünüm</string>

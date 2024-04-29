@@ -284,6 +284,7 @@
         <item>Manga Preferita</item>
         <item>Manga Pianificata</item>
         <item>Raccomandati</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Scheda Di Avvio Predefinita</string>
     <string name="small_view">Piccola vista negli spettacoli di tendenza</string>

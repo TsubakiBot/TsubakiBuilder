@@ -284,6 +284,7 @@
         <item>Manga Favorita</item>
         <item>Manga Planejada</item>
         <item>Recomendados</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Guia inicial padrão</string>
     <string name="small_view">Visualização pequena nos programas de alta</string>

@@ -284,6 +284,7 @@
         <item>Favoritt Manga</item>
         <item>Planlagt manga</item>
         <item>Anbefalt</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standard start-opp fane</string>
     <string name="small_view">Liten visning i populære serier</string>

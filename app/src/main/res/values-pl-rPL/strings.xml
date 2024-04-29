@@ -284,6 +284,7 @@
         <item>Ulubione Manga</item>
         <item>Planowana Manga</item>
         <item>Rekomendowane</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Domyślna zakładka startowa</string>
     <string name="small_view">Mały widok w popularnych serialach</string>

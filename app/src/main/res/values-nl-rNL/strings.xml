@@ -284,6 +284,7 @@
         <item>Favoriete Manga</item>
         <item>Geplande Manga</item>
         <item>Aanbevolen</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standaard Start Tab</string>
     <string name="small_view">Kleine weergave in populaire TV-series</string>

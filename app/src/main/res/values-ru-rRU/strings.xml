@@ -284,6 +284,7 @@
         <item>Любимая манга</item>
         <item>Запланированная манга</item>
         <item>Рекомендации</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Вкладка при запуске по умолчанию</string>
     <string name="small_view">Маленькая секция популярных шоу</string>

@@ -284,6 +284,7 @@
         <item>Favorit Manga</item>
         <item>Planerad Manga</item>
         <item>Rekommenderad</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standardflik för uppstart</string>
     <string name="small_view">Liten vy i trendande serier</string>

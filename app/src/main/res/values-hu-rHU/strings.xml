@@ -284,6 +284,7 @@
         <item>Kedvenc Manga</item>
         <item>Tervezett Manga</item>
         <item>Ajánlott</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Alapértelmezett indítási lap</string>
     <string name="small_view">Kis nézet a Trendi Műsoroknál</string>

@@ -284,6 +284,7 @@
         <item>Suosikki Manga</item>
         <item>Suunniteltu Manga</item>
         <item>Suositeltu</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Oletus Käynnistysvälilehti</string>
     <string name="small_view">Pieni näkymä trendissä</string>

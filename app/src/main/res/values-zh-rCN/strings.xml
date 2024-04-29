@@ -284,6 +284,7 @@
         <item>喜欢的漫画</item>
         <item>计划中的漫画</item>
         <item>推荐</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">默认启动选项卡</string>
     <string name="small_view">在热门节目中显示小视图</string>

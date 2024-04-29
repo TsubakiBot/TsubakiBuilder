@@ -284,6 +284,7 @@
         <item>Manga favorită</item>
         <item>Manga Planificată</item>
         <item>Recomandat</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Fila de pornire implicită</string>
     <string name="small_view">Vizualizare mică în emisiuni populare</string>

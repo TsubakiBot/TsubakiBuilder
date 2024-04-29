@@ -284,6 +284,7 @@
         <item>Oblíbená Manga</item>
         <item>Plánovaná Manga</item>
         <item>Doporučené</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Výchozí panel Start Up</string>
     <string name="small_view">Malé zobrazení v populárních seriálech</string>

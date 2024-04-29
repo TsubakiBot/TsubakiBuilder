@@ -284,6 +284,7 @@
         <item>Manga Yêu thích</item>
         <item>Manga Đã lên kế hoạch</item>
         <item>Đề xuất</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Tab Khởi đầu Mặc định</string>
     <string name="small_view">Xem Nhỏ trong Các chương trình đang thịnh hành</string>

@@ -280,7 +280,9 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         }
 
         search = Runnable { searchTitle() }
-        requestFocus = Runnable { binding.searchBarText.requestFocus() }
+        requestFocus = Runnable {
+            binding.searchBarText.postDelayed({ binding.searchBarText.requestFocus() }, 200)
+        }
     }
 
     fun setHistoryVisibility(visible: Boolean) {
