@@ -119,9 +119,11 @@ class MediaAdaptor(
                                 R.drawable.ic_round_movie_filter_24
                             )
                         )
-                        val episodes = " | ${if (media.anime.nextAiringEpisode != null) 
-                                (media.anime.nextAiringEpisode.toString() + " | " + (media.anime.totalEpisodes ?: "~").toString()) 
-                        else (media.anime.totalEpisodes ?: "~").toString()}"
+                        val episodes = " | ${media.anime.totalEpisodes ?: "~"}${
+                            if (media.anime.nextAiringEpisode != null) 
+                                " | ${media.anime.nextAiringEpisode.toString()}"
+                            else ""
+                        }"
                         b.itemCompactTotal.text = episodes
 
                     } else if (media.manga != null) {
@@ -162,10 +164,12 @@ class MediaAdaptor(
                             R.string.episode_singular
                         )
                         b.itemTotal.text = itemTotal
-                        b.itemCompactTotal.text =
-                            if (media.anime.nextAiringEpisode != null) (media.anime.nextAiringEpisode.toString() + " / " + (media.anime.totalEpisodes
-                                ?: "??").toString()) else (media.anime.totalEpisodes
-                                ?: "??").toString()
+                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
+                            if (media.anime.nextAiringEpisode != null)
+                            " / ${media.anime.nextAiringEpisode.toString()}"
+                            else ""
+                        }"
+                        b.itemCompactTotal.text = episodes
                     } else if (media.manga != null) {
                         val itemTotal = " " + if ((media.manga.totalChapters ?: 0) != 1)
                             currActivity()!!.getString(R.string.chapter_plural)
@@ -215,10 +219,12 @@ class MediaAdaptor(
                             currActivity()!!.getString(R.string.episode_plural)
                         else currActivity()!!.getString(R.string.episode_singular)
                         b.itemTotal.text = episode
-                        b.itemCompactTotal.text =
-                            if (media.anime.nextAiringEpisode != null) (media.anime.nextAiringEpisode.toString() + " / " + (media.anime.totalEpisodes
-                                ?: "??").toString()) else (media.anime.totalEpisodes
-                                ?: "??").toString()
+                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
+                            if (media.anime.nextAiringEpisode != null)
+                                " / ${media.anime.nextAiringEpisode.toString()}"
+                            else ""
+                        }"
+                        b.itemCompactTotal.text = episodes
                     } else if (media.manga != null) {
                         val chapter =  " " + if ((media.manga.totalChapters ?: 0) != 1)
                             currActivity()!!.getString(R.string.chapter_plural)
@@ -274,10 +280,12 @@ class MediaAdaptor(
                             currActivity()!!.getString(R.string.episode_plural)
                         else currActivity()!!.getString(R.string.episode_singular)
                         b.itemTotal.text = episode
-                        b.itemCompactTotal.text =
-                            if (media.anime.nextAiringEpisode != null) (media.anime.nextAiringEpisode.toString() + " / " + (media.anime.totalEpisodes
-                                ?: "??").toString()) else (media.anime.totalEpisodes
-                                ?: "??").toString()
+                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
+                            if (media.anime.nextAiringEpisode != null)
+                                " / ${media.anime.nextAiringEpisode.toString()}"
+                            else ""
+                        }"
+                        b.itemCompactTotal.text = episodes
                     } else if (media.manga != null) {
                         val chapter =  " " + if ((media.manga.totalChapters ?: 0) != 1)
                             currActivity()!!.getString(R.string.chapter_plural)
