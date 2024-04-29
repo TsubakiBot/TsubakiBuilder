@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="vi">
+    <string name="slogan">Ứng dụng Anime &amp; Manga Mới Nhất cho Android.</string>
+    <string name="login">Đăng nhập</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="conversion_title">Chào mừng trở lại!</string>
+    <string name="conversion_message">Có vẻ như bạn đã cài đặt một phiên bản cũ hơn.\nVui lòng chọn \"Sao lưu\" để mở phiên bản cũ hơn và thực hiện sao lưu. Sau đó, bạn có thể quay lại ứng dụng này và sử dụng \"Khôi phục cài đặt\".</string>
+    <string name="backup">Sao lưu</string>
+    <string name="home">Trang chủ</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Duyệt Anime</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Duyệt Manga</string>
+    <string name="novels">Tiểu thuyết</string>
+    <string name="info">Thông tin</string>
+    <string name="watch">Xem</string>
+    <string name="read">Đọc</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="anime_list">Danh sách Anime</string>
+    <string name="manga_list">Danh sách Manga</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Không có kết nối internet</string>
+    <string name="no_internet_connection">Không có kết nối internet\nChế độ ngoại tuyến có sẵn</string>
+    <string name="refresh">Làm mới</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="extension_search">Tìm kiếm Nguồn Ngược</string>
+    <string name="search_results">Kết quả Tìm kiếm</string>
+    <string name="sort_by">Sắp xếp theo</string>
+    <string name="genre">Thể loại</string>
+    <string name="top_score">Điểm cao nhất</string>
+    <string name="updated">Đã cập nhật gần đây</string>
+    <string name="trending_anime">Anime đang hot</string>
+    <string name="popular_anime">Anime phổ biến</string>
+    <string name="trending_manga">Manga đang hot</string>
+    <string name="trending_novel">Tiểu thuyết đang hot</string>
+    <string name="popular_manga">Manga phổ biến</string>
+    <string name="username">Tên người dùng</string>
+    <string name="chapters_read">Số chương đã đọc</string>
+    <string name="episodes_watched">Số tập đã xem</string>
+    <string name="continue_reading">Tiếp tục đọc</string>
+    <string name="continue_watching">Tiếp tục xem</string>
+    <string name="continue_media">Tiếp tục…</string>
+    <string name="recommended">Đề xuất</string>
+    <string name="get_recommendations">Xem/Đọc một số Anime hoặc Manga để nhận Đề xuất</string>
+    <string name="empty">Đã đuổi kịp, khi mới?</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="add">Thêm vào danh sách</string>
+    <string name="list_editor">Trình soạn thảo danh sách</string>
+    <string name="add_fav">Thêm vào Mục yêu thích</string>
+    <string name="notifications">Thông báo</string>
+    <string-array name="keys">
+        <item>Đang đọc</item>
+        <item>Đang xem</item>
+        <item>Đã hoàn thành</item>
+        <item>Tạm dừng</item>
+        <item>Bỏ cuộc</item>
+        <item>Đang lên kế hoạch</item>
+        <item>Yêu thích</item>
+        <item>Xem lại</item>
+        <item>Đọc lại</item>
+        <item>Tất cả</item>
+    </string-array>
+    <string name="no_notifications">Không có thông báo nào nữa</string>
+    <string name="followers">Người theo dõi</string>
+    <string name="social_in_media">Thống kê xã hội trong phương tiện truyền thông</string>
+    <string name="social_in_media_desc">Hiển thị đánh giá và tiến độ của bạn bè</string>
+    <string name="status">TRẠNG THÁI</string>
+    <string-array name="status_anime">
+        <item>LẬP KẾ HOẠCH</item>
+        <item>ĐANG XEM</item>
+        <item>HOÀN THÀNH</item>
+        <item>XEM LẠI</item>
+        <item>TẠM DỪNG</item>
+        <item>BỎ CUỘC</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>LẬP KẾ HOẠCH</item>
+        <item>ĐANG ĐỌC</item>
+        <item>HOÀN THÀNH</item>
+        <item>ĐỌC LẠI</item>
+        <item>TẠM DỪNG</item>
+        <item>BỎ CUỘC</item>
+    </string-array>
+    <string name="progress">TIẾN ĐỘ</string>
+    <string name="score">ĐIỂM</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">BẮT ĐẦU TỪ</string>
+    <string name="completed_at">HOÀN THÀNH VÀO</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="remove">Xóa</string>
+    <string name="name">Tên</string>
+    <string name="name_romaji">Tên Romaji</string>
+    <string name="mean_score">Điểm Trung Bình</string>
+    <string name="format">Định Dạng</string>
+    <string name="status_title">Trạng Thái</string>
+    <string name="total_eps">Tổng Số Tập</string>
+    <string name="episodes"> Tập</string>
+    <string name="chapters"> Chương</string>
+    <string name="total_divider"> | %1$s</string>
+    <string name="total_chaps">Tổng Số Chương</string>
+    <string name="ep_duration">Thời Lượng Trung Bình</string>
+    <string name="min">" phút"</string>
+    <string name="season">Mùa</string>
+    <string name="start_date">Ngày Bắt Đầu</string>
+    <string name="end_date">Ngày Kết Thúc</string>
+    <string name="source">Nguồn</string>
+    <string name="main_studio">Studio</string>
+    <string name="genres">Thể Loại</string>
+    <string name="description">Tóm Tắt</string>
+    <string name="characters">Nhân Vật</string>
+    <string name="relations">Mối Quan Hệ</string>
+    <string name="staff">Nhân Sự</string>
+    <string name="favourites">Yêu thích</string>
+    <string name="popularity">Phổ Biến</string>
+    <string name="roles">Vai Trò</string>
+    <string name="details">Chi Tiết</string>
+    <string name="play_yt">Xem trên Youtube</string>
+    <string name="eps">Tập</string>
+    <string name="ep">Tập</string>
+    <string name="chaps">Chương</string>
+    <string name="chap">Chương</string>
+    <string name="wrong"><u>Tiêu Đề Sai?</u></string>
+    <string name="source_not_found">        Không tìm thấy gì X( \n
+        Hãy thử nguồn khác.
+    </string>
+    <string name="not_supported">%1$s không được hỗ trợ!</string>
+    <string name="server_selector">Chọn Máy Chủ</string>
+    <string name="auto_select_server">Tự Động Chọn Máy Chủ</string>
+    <string name="make_default">Đặt Mặc Định</string>
+    <string name="filler">Điền</string>
+    <string name="adult">Người Lớn</string>
+    <string name="list_only">Chỉ Danh Sách</string>
+    <string name="tag">Thẻ</string>
+    <string name="tags">Thẻ</string>
+    <string name="synonyms">Từ Đồng Nghĩa</string>
+    <string name="trailer">Trailer</string>
+    <string name="opening">Mở đầu</string>
+    <string name="ending">Kết thúc</string>
+    <string name="prequel">Tiền truyện</string>
+    <string name="sequel">Phần tiếp theo</string>
+    <string name="installed">Đã cài đặt</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Máy chủ đang chạy…</string>
+    <string name="settings_torrent">TorrServer Nội bộ</string>
+    <string name="enable_server">Kích hoạt TorrServer</string>
+    <string name="enable_server_desc">Kích hoạt việc sử dụng máy chủ cục bộ theo yêu cầu</string>
+    <string name="torrent_port">Số cổng máy chủ</string>
+    <string name="torrents">torrents</string>
+    <string name="active_torrents">Torrents đang hoạt động</string>
+    <string name="remove_torrent">Xóa torrent này?</string>
+    <string name="invalid_port">Số cổng không hợp lệ!</string>
+    <string name="port_range">Cổng phải là cổng TCP hợp lệ (0 – 65535)</string>
+    <string name="server_disabled">TorrServer đã bị vô hiệu hóa!</string>
+    <string name="server_enabled">Đang bắt đầu TorrServer</string>
+    <string name="enable_server_temp">Bạn có muốn tạm thời kích hoạt TorrServer (vô hiệu hóa khi đóng ứng dụng)?</string>
+    <string name="anilist_settings">Cài đặt Anilist</string>
+    <string name="extension_settings">Tiện ích mở rộng</string>
+    <string name="downloads">Tải xuống</string>
+    <string name="offline_mode">Chế độ ngoại tuyến</string>
+    <string name="settings">Cài đặt</string>
+    <string name="extensions">Tiện ích mở rộng</string>
+    <string name="extension_updates_available">Có cập nhật tiện ích mở rộng</string>
+    <string name="player_settings">Cài đặt người chơi</string>
+    <string name="recentlyListOnly">Chỉ hiển thị nội dung của tôi trong \"Cập nhật gần đây\"</string>
+    <string name="download_manager_select">Quản lý Tải xuống</string>
+    <string name="downloadInSd">Tải xuống vào thẻ SD</string>
+    <string name="noSdFound">Không tìm thấy thẻ SD.</string>
+    <string name="reader_settings">Cài đặt Đọc giả</string>
+    <string name="default_source">Nguồn Mặc Định</string>
+    <string name="show_yt">Hiển Thị Liên Kết Youtube</string>
+    <string name="default_ep_view">Bố Cục Tập Mặc Định</string>
+    <string name="default_chp_view">Bố Cục Chương Mặc Định</string>
+    <string name="ui">Giao Diện Người Dùng</string>
+    <string name="common">Chung</string>
+    <string name="theme">Chủ Đề</string>
+    <string name="theme_ui">Chủ Đề / Giao Diện Người Dùng</string>
+    <string name="day_night">Chủ Đề Sáng / Tối</string>
+    <string name="ui_settings">Cài Đặt Giao Diện Người Dùng</string>
+    <string name="system">Hệ Thống</string>
+    <string name="about">Về Ứng Dụng</string>
+    <string name="desc">"Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cũng cho phép bạn xem-tải xuống Anime thông qua các tiện ích &amp; Manga.\nDantotsu có nghĩa là \"tốt nhất trong tốt nhất\" trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, bạn nghĩ sao?"</string>
+    <string name="devs">Người Đóng Góp</string>
+    <string name="disclaimer">Miễn Trừ Trách Nhiệm</string>
+    <string name="full_disclaimer">         - Dantotsu chỉ cung cấp một công cụ theo dõi anime và manga và không cung cấp khả năng xem hoặc tải xuống bất kỳ anime hoặc manga nào.
+        \n\n - Dantotsu hoặc bất kỳ nhà phát triển/nhân viên nào của nó đều không lưu trữ bất kỳ nội dung nào được tìm thấy bên trong Dantotsu. Bất kỳ hình ảnh và thông tin anime/manga nào được tìm thấy trong ứng dụng đều được lấy từ các API công cộng khác nhau (AniList, MyAnimeList, Kitsu).
+        \n\n - Hơn nữa, tất cả các liên kết anime/manga được tìm thấy trong Dantotsu đều được lấy từ các tiện ích bên thứ ba khác nhau và không có liên kết nào với Dantotsu hoặc nhân viên của nó.
+        \n\n - Dantotsu hoặc chủ sở hữu của nó không chịu trách nhiệm về bất kỳ việc sử dụng sai mục đích nào của bất kỳ nội dung nào được tìm thấy bên trong hoặc bên ngoài ứng dụng và không thể chịu trách nhiệm về việc phân phối bất kỳ nội dung nào được tìm thấy trong ứng dụng.
+        \n\n - Bằng cách sử dụng Dantotsu, bạn đồng ý với việc nhà phát triển ứng dụng không chịu trách nhiệm về bất kỳ nội dung nào được tìm thấy trong ứng dụng. Bạn cũng đồng ý với việc bạn không thể sử dụng Dantotsu để tải xuống hoặc xem bất kỳ nội dung bản quyền nào.
+        \n\n - Nếu có vấn đề về vi phạm internet, vui lòng liên hệ với trang web nguồn. Nhà phát triển không chịu trách nhiệm pháp lý nào.
+    </string>
+    <string name="version_current">Phiên Bản %1$s</string>
+    <string-array name="tips">
+        <item>Bạn có thể Nhấn và Giữ một tập/chương để Đánh Dấu đã Đọc.</item>
+        <item>Nhấn và Giữ các Show có thể mở Trình Chỉnh Sửa Danh Sách ngay lập tức.</item>
+        <item>Còn một số bí mật ẩn trong Ứng Dụng.</item>
+        <item>Thách Thức: Hãy đi tới đáy cùng của Anime &amp; Manga Phổ Biến</item>
+        <item>Thử Nhấn và Giữ Tiêu Đề Show.</item>
+        <item>Chết tiệt, tại sao bạn đang lãng phí thời gian?</item>
+        <item>Bạn có thể nhấn và giữ để sao chép tin nhắn này.</item>
+        <item>Ôi, NHÌN XEM! BẠN TÌM THẤY MỘT BÍ MẬT ẨN!?</item>
+        <item>Bạn biết ai cũng thích Animation này không?</item>
+        <item>Hỗ trợ MAL? Ôi.</item>
+        <item>Tiểu thuyết? chứ không phải NO vels.</item>
+        <item>Nhấn và giữ biểu tượng để kiểm tra cập nhật</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Mặc Định</item>
+        <item>Chủ đề 1</item>
+        <item>Chủ đề 2</item>
+        <item>Chủ đề 3</item>
+        <item> Chủ đề 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Hiển thị Thông tin Video</string>
+    <string name="source_info">Hiển thị Tên Nguồn</string>
+    <string name="video_info_info">Hiển thị Độ phân giải của video đang phát hiện tại, hữu ích cho các máy chủ <b>\"Multi Quality\"</b>.</string>
+    <string name="default_quality">Tự động Chọn Chất lượng</string>
+    <string name="height">Chiều Cao</string>
+    <string name="width">Chiều Rộng</string>
+    <string name="default_quality_info">Tự động sử dụng chất lượng gần nhất được cung cấp theo mặc định, CHỈ áp dụng cho các máy chủ \"Multi Quality\". Tự đổi khi phát video.</string>
+    <string name="default_playback_speed">Tốc độ Phát mặc định: %1$s</string>
+    <string name="cursed_speeds">Tốc độ Cursed</string>
+    <string name="resize_mode_button">Chế Độ Thay Đổi Kích Thước Mặc định</string>
+    <string name="subtitles">Phụ Đề</string>
+    <string name="subtitle_toggle">Phụ Đề</string>
+    <string name="primary_sub_color_select">Màu Phụ Đề</string>
+    <string name="secondary_sub_color_select">Màu Viền Phụ Đề</string>
+    <string name="secondary_sub_outline_type_select">Loại Viền Phụ Đề</string>
+    <string name="sub_background_color_select">Màu Nền Phụ Đề</string>
+    <string name="sub_window_color_select">Màu Cửa Sổ Phụ Đề</string>
+    <string name="sub_window_color_info">"Cửa sổ phụ đề là phần bên trái và phải của chúng. (nơi nền không phải)"</string>
+    <string name="sub_color_info"><b>Lưu ý:</b> Thay đổi cài đặt trên chỉ ảnh hưởng đến Phụ Đề Mềm!</string>
+    <string name="sub_alpha">Độ Mờ Phụ Đề</string>
+    <string name="sub_text_example">Ví dụ Phụ Đề</string>
+    <string name="sub_font_select">Font Phụ Đề</string>
+    <string name="subtitle_font_size">Kích Thước Phụ Đề</string>
+    <string name="no_subs_available">Không có Phụ Đề</string>
+    <string name="auto">Tự động</string>
+    <string name="auto_play_next_episode">Tự động Phát Tập Tiếp Theo</string>
+    <string name="auto_play_next_episode_info">Tự động vô hiệu nếu không tương tác với người chơi sau 1 giờ.</string>
+    <string name="auto_skip_fillers">Tự động Bỏ qua Mục lấp đầy</string>
+    <string name="auto_skip_fillers_info">Bỏ qua các tập lấp đầy khi chuyển sang tập tiếp theo.</string>
+    <string name="update_progress">Cập nhật Tiến độ</string>
+    <string name="ask_update_progress_anime">Hỏi cho mỗi Anime \"Một cách riêng lẻ\"</string>
+    <string name="ask_update_progress_manga">Hỏi cho mỗi Manga \"Một cách riêng lẻ\"</string>
+    <string name="ask_update_progress_info_ep">Tắt sẽ luôn tự động cập nhật tiến độ khi xem xong tập.</string>
+    <string name="ask_update_progress_info_chap">Tắt sẽ luôn tự động cập nhật tiến độ khi đọc xong chương.</string>
+    <string name="ask_update_progress_chapter_zero">Cập nhật Tiến độ cho Chương 0</string>
+    <string name="ask_update_progress_info_zero">Bật sẽ thêm các mục mới bắt đầu vào Anilist với tiến trình được đặt là chương 0.</string>
+    <string name="ask_update_progress_hentai">Cập nhật Tiến độ cho Hentai</string>
+    <string name="ask_update_progress_doujin">Cập nhật Tiến độ cho Doujins</string>
+    <string name="very_bold">Rất táo bạo của bạn sar</string>
+    <string name="watch_complete_percentage">Xem Cập nhật Phần trăm</string>
+    <string name="watch_complete_percentage_info">Phần trăm mà tiến độ Anilist của bạn nên được cập nhật sau khi xem xong một tập. \nĐiều này cũng đặt \% để khi nào tải trước liên kết cho tập tiếp theo.</string>
+    <string name="behaviour">Hành vi</string>
+    <string name="always_continue">Luôn tiếp tục từ thời điểm dừng</string>
+    <string name="pause_video_focus">Tạm dừng khi không tập trung</string>
+    <string name="gestures">Cử chỉ Âm lượng &amp; Độ sáng</string>
+    <string name="double_tap">Nhấn đôi để Tìm kiếm</string>
+    <string name="fast_forward">Chuyển tiếp Nhanh</string>
+    <string name="double_tap_info">Tắt sẽ hiển thị nút chuyển tiếp nhanh &amp; tua lại</string>
+    <string name="seek_time">Thời Gian Tìm kiếm</string>
+    <string name="seek_time_info">Số giây để tua nhanh &amp; tua lại.</string>
+    <string name="skip_time">Thời Gian Bỏ qua</string>
+    <string name="skip_time_info">Thiết lập thành 0, ẩn Nút Bỏ qua.</string>
+    <string name="show_cast_button">Hiển thị Nút Cast</string>
+    <string name="show_cast_button_info">Yêu cầu ứng dụng \"Web Video Caster\" để cast.</string>
+    <string name="picture_in_picture">Hình trong Hình</string>
+    <string name="always_minimize">Luôn Thu nhỏ</string>
+    <string name="always_minimize_info">Yêu cầu PiP được kích hoạt, làm cho trình phát hoạt động giống như Trình phát Youtube nhưng tốt hơn.\nCũng ẩn nút PiP.</string>
+    <string name="app">Ứng dụng</string>
+    <string name="immersive_mode">Ẩn Thanh trạng thái</string>
+    <string name="immersive_modelist">Ẩn Thanh trạng thái cho danh sách</string>
+    <string name="immersive_mode_info">Yêu cầu khởi động lại ứng dụng để áp dụng hoàn toàn.</string>
+    <string name="home_layout_show">Hiển thị/Ẩn Bố cục trên Màn hình chính</string>
+    <string-array name="home_layouts">
+        <item>Tiếp tục xem</item>
+        <item>Anime Yêu thích</item>
+        <item>Anime Đã lên kế hoạch</item>
+        <item>Tiếp tục đọc</item>
+        <item>Manga Yêu thích</item>
+        <item>Manga Đã lên kế hoạch</item>
+        <item>Đề xuất</item>
+    </string-array>
+    <string name="startUpTab">Tab Khởi đầu Mặc định</string>
+    <string name="small_view">Xem Nhỏ trong Các chương trình đang thịnh hành</string>
+    <string name="animations">Hoạt hình</string>
+    <string name="banner_animations">Hoạt hình Banner</string>
+    <string name="layout_animations">Hoạt hình Bố cục</string>
+    <string name="trending_scroller">Cuộn Thịnh hành</string>
+    <string name="animation_speed">Tốc độ Tổng thể</string>
+    <string name="empty_fav">Dường như bạn không thích gì,\nHãy thử thích một chương trình để giữ nó ở đây.</string>
+    <string name="fav_anime">Anime Yêu thích</string>
+    <string name="fav_manga">Manga Yêu thích</string>
+    <string name="restart_app">Khởi động lại ứng dụng?</string>
+    <string name="next">Tiếp theo</string>
+    <string name="previous">Trước</string>
+    <string name="current_page">Trang Hiện tại</string>
+    <string name="dubbed">Phụ đề</string>
+    <string name="subbed">Phụ đề</string>
+    <string name="prefer_dub">Ưu tiên Anime Phụ đề</string>
+    <string name="none">Không</string>
+    <string name="selected_dns">DNS Được Chọn</string>
+    <string name="dns_info">Thay đổi nếu nhà cung cấp dịch vụ Internet của bạn chặn bất kỳ nguồn nào</string>
+    <string name="keep_screen_on">Giữ Màn hình Bật</string>
+    <string name="layout">Bố cục</string>
+    <string name="spaced_pages">Trang Cách</string>
+    <string name="direction">Hướng</string>
+    <string name="comments_api">API Bình Luận (Riêng Tư)</string>
+    <string name="disable_mitm">Ngăn Chặn Tiêm Nhiễm (\"Trò Đùa\")</string>
+    <string name="general">Chung</string>
+    <string name="show_system_bars">Hiển Thị Thanh Trạng Thái &amp; Thanh Điều Hướng</string>
+    <string name="auto_detect_webtoon">Tự Động Phát Hiện Webtoon</string>
+    <string name="auto_detect_webtoon_info">Nếu Manga không phải từ Nhật Bản, trình đọc sẽ mặc định là Cài Đặt Đọc Webtoon</string>
+    <string name="default_settings">Cài Đặt Mặc Định</string>
+    <string name="horizontal_scroll_bar">Thanh Cuộn Ngang</string>
+    <string name="dual_page">Trang Đôi</string>
+    <string name="dual_page_info">Hiển Thị 2 Hình Ảnh trong 1 trang, sẽ trông lạ nếu hình ảnh không cùng kích thước</string>
+    <string name="true_colors">Màu Sắc Chân Thực</string>
+    <string name="true_colors_info">(Chế Độ Màu 32-bit) Giảm Thiểu Sự Chuyển Động trên hình ảnh, có thể ảnh hưởng đến hiệu suất.</string>
+    <string name="image_rotation">Xoay Hình Ảnh</string>
+    <string name="hide_page_numbers">Ẩn Số Trang</string>
+    <string name="sort_by_title">Sắp Xếp theo Tiêu Đề</string>
+    <string name="sort_by_last_updated">Sắp Xếp theo Cập Nhật Cuối Cùng</string>
+    <string name="sort_by_score">Sắp Xếp theo Điểm</string>
+    <string name="sort_by_airing">Sắp Xếp theo Phát Sóng Tiếp Theo</string>
+    <string name="over_scroll">Cuộn Quá Trang Để Đến/Về Chương Tiếp/Trước</string>
+    <string name="volume_buttons">Thay Đổi trang với Nút Âm Lượng</string>
+    <string name="list_private">Riêng Tư</string>
+    <string name="wrap_images">Bọc Hình Ảnh</string>
+    <string name="wrap_images_info">Chủ yếu hữu ích cho các thiết bị lớn, loại bỏ khoảng cách giữa hình ảnh, nếu có.</string>
+    <string name="reload">Tải Lại</string>
+    <string name="share">Chia Sẻ</string>
+    <string name="skip">Bỏ Qua</string>
+    <string name="other">Khác</string>
+    <string name="total_repeats">TỔNG SỐ LẶP LẠI</string>
+    <string name="custom_lists">Danh sách tùy chỉnh</string>
+    <string name="donate_desc">Muốn hỗ trợ Himitsu?\nHãy xem xét việc quyên góp</string>
+    <string name="donate_goal">Hiện không có mục tiêu quyên góp</string>
+    <string name="filter">Bộ lọc</string>
+    <string name="year">Năm</string>
+    <string name="apply">Áp dụng</string>
+    <string name="cancel">Hủy</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="this_season">Mùa này</string>
+    <string name="next_season">Mùa sau</string>
+    <string name="previous_season">Mùa trước</string>
+    <string name="include_media_in_list">Bao gồm danh sách</string>
+    <string name="release_calendar">Lịch</string>
+    <string name="planned_anime">Anime Đã lên kế hoạch</string>
+    <string name="planned_manga">Manga Đã lên kế hoạch</string>
+    <string name="image_long_clicking">Nhấn và giữ để mở hình ảnh</string>
+    <string name="always_continue_content">Tiếp tục mở các mục đã mở trước đó</string>
+    <string name="search_source_list">Tìm kiếm nguồn khả dụng tiếp theo</string>
+    <string name="timestamp_proxy_desc">Hữu ích nếu bạn gặp sự cố Handshake Fails</string>
+    <string name="timestamp_proxy">Sử dụng Proxy cho Timestamps</string>
+    <string name="check_app_updates">Kiểm tra cập nhật</string>
+    <string name="author">Tác giả</string>
+    <string name="forks">Phiên bản</string>
+    <string name="faq">Câu hỏi thường gặp</string>
+    <string name="accounts">Tài khoản</string>
+    <string name="myanimelist">MyAnimeList</string>
+    <string name="login_with_anilist">Đăng nhập bằng Anilist</string>
+    <string name="anilist">Anilist</string>
+    <string name="account_help">Làm thế nào để hoạt động này\?</string>
+    <string name="full_account_help">        Dantotsu là ứng dụng Dựa trên Anilist, vì vậy để đồng bộ hóa với Tài khoản MAL của bạn, nó cần phải đăng nhập bằng một tài khoản Anilist.
+        \nKhi đã đăng nhập với cả hai tài khoản Anilist và MAL, ứng dụng sẽ tự động cập nhật tài khoản MAL của bạn mỗi khi:
+        \n- Thêm phương tiện mới
+        \n- Chỉnh sửa phương tiện
+        \n- Xóa phương tiện
+
+        \n\nLưu ý: Ứng dụng sẽ không đồng bộ hóa các phương tiện cũ từ Anilist sang MAL, Đề nghị đồng bộ hóa chúng.
+        \n- Kiểm tra __Câu hỏi thường gặp__ để _Phương pháp Dễ dàng_
+
+        \n\nVà đối với _Trung cấp_ :
+        \n- [Làm thế nào để đồng bộ dữ liệu Anilist với MAL](https://anilist.co/forum/thread/2654)
+        \n- [Làm thế nào để đồng bộ dữ liệu MAL với Anilist](https://anilist.co/forum/thread/3393)
+
+        \n\n_Không cần phải đồng bộ hóa cả hai tài khoản MAL và Anilist._
+    </string>
+    <string name="notification_for_checking_subscriptions">Hiển thị thông báo để kiểm tra đăng ký</string>
+    <string name="use_alarm_manager">Sử dụng Quản lý báo thức</string>
+    <string name="use_alarm_manager_reliable">Sử dụng Trình quản lý báo thức (Thông báo đáng tin cậy)</string>
+    <string name="use_alarm_manager_confirm">Việc sử dụng Trình quản lý báo thức có thể giúp chống lại việc tối ưu hóa pin, nhưng có thể tiêu tốn nhiều pin hơn. Nó cũng yêu cầu quyền Trình quản lý báo thức.</string>
+    <string name="use">Sử dụng</string>
+    <string name="checking_subscriptions">Kiểm tra Thông báo Đăng ký</string>
+    <string name="subscriptions_checking_time_s">Tần suất Cập nhật Đăng ký: %1$s</string>
+    <string name="subscriptions_checking_time">Tần suất Cập nhật Đăng ký</string>
+    <string name="subscriptions_info">Thời gian cho Dantotsu kiểm tra tập mới / chương mới\n(Thời gian ít hơn tiêu tốn nhiều pin hơn)</string>
+    <string name="do_not_update">Không Cập nhật</string>
+    <string name="loading_chap_number">Đang Tải Chương %1$s</string>
+    <string name="sort_by_release_date">Sắp xếp theo Ngày phát hành</string>
+    <string name="crop_borders">Cắt Biên</string>
+    <string name="note">Ghi chú</string>
+    <string name="manage_extension_repos">Quản lý Kho mở rộng</string>
+    <string name="installing_extension">Đang cài đặt tiện ích mở rộng</string>
+    <string name="installation_failed">Cài đặt thất bại: %1$s</string>
+    <string name="installation_complete">Cài đặt hoàn tất</string>
+    <string name="extension_has_been_installed">Tiện ích mở rộng đã được cài đặt thành công.</string>
+    <string name="extension_installed">Tiện ích mở rộng đã được cài đặt</string>
+    <string name="error_message">Lỗi: %1$s</string>
+    <string name="install_step">Bước: %1$s</string>
+    <string name="review">Đánh giá</string>
+    <string name="select_source">Chọn một Nguồn</string>
+    <string name="update_notice">Dantotsu cập nhật %1$s</string>
+    <string name="install_update">Cài đặt cập nhật %1$s?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Cập nhật Có sẵn</string>
+    <string name="discord_nothing_button">Chỉ hiển thị nút đầu tiên</string>
+    <string name="discord_dantotsu_button">Hiển thị dantotsu trong nút thứ hai</string>
+    <string name="discord_anilist_button">Hiển thị hồ sơ AniList của bạn thay vì</string>
+    <string name="discord_rich_presence">Hiển thị Trạng thái Phong phú Discord</string>
+    <string name="stream_on_dantotsu">Phát trực tiếp trên Dantotsu</string>
+    <string name="view_my_anilist">Xem My AniList</string>
+    <string name="jobless_message">ĐỒ CHƠI! BẠN THỰC SỰ LÀ THẤT NGHIỆP\nBẠN ĐÃ ĐẾN CUỐI CÙNG</string>
+    <string name="file_manager_not_found">Không thể tìm thấy Trình quản lý Tập tin để mở thẻ SD</string>
+    <string name="error_loading_data">Lỗi tải dữ liệu %1$s</string>
+    <string name="long_click_to_check_update">Nhấn và giữ để kiểm tra cập nhật</string>
+    <string name="saved_to_path">Đã lưu vào:\n%s</string>
+    <string name="setting_progress">✔ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Vui lòng đăng nhập vào tài khoản AniList!</string>
+    <string name="congrats_vro">Xin chúc mừng Vro</string>
+    <string name="please_reload">Vui lòng tải lại.</string>
+    <string name="copied_text">Đã sao chép \"%1$s\"</string>
+    <string name="back_to_exit">Nhấn NÚT QUAY LẠI lần nữa để thoát</string>
+    <string name="back_button">Nút Quay Lại</string>
+    <string name="anilist_not_found">Dường như không tìm thấy trên Anilist.</string>
+    <string name="disabled_auto_skip">Tắt Tự động Bỏ qua OP &amp; ED</string>
+    <string name="auto_skip">Tự động Bỏ qua OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Hiển thị Nút Bỏ qua [Đoạn]</string>
+    <string name="always_load_time_stamps">Luôn Tải Đánh Dấu Thời gian</string>
+    <string name="auto_hide_time_stamps">>Tự động Ẩn Nút Bỏ qua [Đoạn]</string>
+    <string name="timestamps">Đoạn</string>
+    <string name="auto_skip_op_ed">Tự động Bỏ qua OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Yêu cầu Bật Đánh dấu Thời gian</string>
+    <string name="hide_skip_button">Làm cho nút bỏ qua thời gian biến mất sau 5 giây</string>
+    <string name="copied_to_clipboard">Đã sao chép vào Clipboard</string>
+    <string name="first_episode">Đây là Tập 1!</string>
+    <string name="reset_auto_update">Nhấn và giữ nút \"Trình chỉnh sửa Danh sách\" để đặt lại Cập nhật Tự động</string>
+    <string name="autoplay_cancelled">Tự động phát bị hủy, không tương tác trong hơn 1 Giờ.</string>
+    <string name="auto_select_server_error">Không thể tự động chọn máy chủ, Vui lòng thử lại!</string>
+    <string name="stream_selection_empty">Không có luồng nào khả dụng! Hãy thử nguồn khác.</string>
+    <string name="logging_in_mal">Đăng nhập vào MAL</string>
+    <string name="getting_user_data">Nhận dữ liệu người dùng</string>
+    <string name="no_next_episode">Không tìm thấy tập tiếp theo!</string>
+    <string name="enable_banner_animations">Hãy thử bật \"Hiệu ứng Banner\" trong cài đặt</string>
+    <string name="please_login_anilist">Vui lòng đăng nhập bằng Anilist!</string>
+    <string name="auto_update_reset">Tiến trình Cập nhật tự động đã được đặt lại</string>
+    <string name="cant_wait">Không thể đợi, huh? fine X(</string>
+    <string name="downloading">Đang tải…</string>
+    <string name="next_chapter_not_found">Không tìm thấy Chương tiếp theo</string>
+    <string name="first_chapter">Đây là chương đầu tiên!</string>
+    <string name="adult_stuff">Nội dung Người lớn?( ͡° ͜ʖ ͡° )</string>
+    <string name="what_did_you_open">Bạn đã mở cái gì vậy?</string>
+    <string name="error_getting_data">Lỗi khi lấy dữ liệu từ Anilist.</string>
+    <string name="empty_response">Phản hồi trống! Internet của bạn có vấn đề chăng?</string>
+    <string name="error_loading_mal_user_data">Lỗi khi tải dữ liệu người dùng MAL</string>
+    <string name="error_loading_mal_data">Không thể tải dữ liệu từ MAL</string>
+    <string name="error_loading_anilist_user_data">Lỗi khi tải dữ liệu người dùng Anilist</string>
+    <string name="episode_not_found">Không thể tìm thấy tập : %1$s</string>
+    <string name="list_updated">Danh sách đã được cập nhật</string>
+    <string name="deleted_from_list">Đã xóa khỏi Danh sách</string>
+    <string name="no_list_id">Không tìm thấy ID Danh sách…</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">Không thông báo lại cho %1$s</string>
+    <string name="matagi_downloading">Đang tải Himitsu %1$s</string>
+    <string name="checking_for_update">Kiểm tra cập nhật</string>
+    <string name="dont_show_again">Không thông báo lại cho phiên bản %1$s</string>
+    <string name="no_update_found">Không tìm thấy cập nhật</string>
+    <string name="downloading_update">Đang tải Dantotsu %1$s</string>
+    <string name="permission_required">Vui lòng cấp quyền truy cập vào Tệp &amp; Thư mục từ Cài đặt, &amp; Thử lại.</string>
+    <string name="started_downloading">Bắt đầu Tải về\n%1$s</string>
+    <string name="install_1dm">Vui lòng cài đặt 1DM</string>
+    <string name="install_adm">Vui lòng cài đặt ADM</string>
+    <string name="error_getting_image_data">Lỗi khi lấy dữ liệu hình ảnh</string>
+    <string name="loading_image_failed">Tải ảnh thất bại</string>
+    <string name="copied_device_info">Đã sao chép thông tin thiết bị</string>
+    <string name="anilist_down">Dường như Anilist đang gặp sự cố, có thể thử sử dụng VPN hoặc bạn có thể chờ đợi cho đến khi nó trở lại.</string>
+    <string name="failed_to_load_data">Không thể tải dữ liệu đã lưu của %1$d</string>
+    <string name="access_not_available">Không thể truy cập</string>
+    <string name="mal_login_uri_not_found">Đăng nhập Mal : Uri không tìm thấy</string>
+    <string name="mal_login_code_challenge_not_found">Đăng nhập Mal : codeChallenge không tìm thấy</string>
+    <string name="mal_login_code_not_present">Đăng nhập Mal : Code không xuất hiện trong URI được chuyển hướng</string>
+    <string name="refresh_token_load_failed">Làm mới Token : Không thể tải token đã lưu</string>
+    <string name="refreshing_token_failed">Làm mới Token thất bại</string>
+    <string name="episode_release_countdown">Tập %1$d sẽ được phát hành trong</string>
+    <string name="chapter_number">Chương %1$d</string>
+    <string name="chapter_release_timeout">%1$s đã có sẵn trong</string>
+    <string name="time_format">%1$d ngày %2$d giờ %3$d phút %4$d giây</string>
+    <string name="chapter_predication">Dự kiến có Chương Mới %1$s</string>
+    <string name="chapter_delayed">Chương Mới dường như bị trì hoãn</string>
+    <string-array name="sort_by">
+        <item>Điểm</item>
+        <item>Phổ biến</item>
+        <item>Đang thịnh hành</item>
+        <item>Phát hành Mới</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Chỉ là nỗi đau</item>
+    </string-array>
+    <string name="main_role">CHÍNH</string>
+    <string name="supporting_role">HỖ TRỢ</string>
+    <string name="status_finished">HOÀN THÀNH</string>
+    <string name="status_releasing">ĐANG PHÁT HÀNH</string>
+    <string name="status_not_yet_released">CHƯA PHÁT HÀNH</string>
+    <string name="status_cancelled">HỦY BỎ</string>
+    <string name="status_hiatus">TẠM NGƯNG</string>
+    <string name="type_adaptation">CHUYỂN THỂ</string>
+    <string name="type_parent">PHỤ HUYNH</string>
+    <string name="type_character">NHÂN VẬT</string>
+    <string name="type_summary">TÓM TẮT</string>
+    <string name="type_alternative">ALTERNATIVE</string>
+    <string name="type_other">KHÁC</string>
+    <string name="type_source">NGUỒN</string>
+    <string name="type_contains">CHỨA</string>
+    <string name="read_on_dantotsu">Đọc trên Dantotsu</string>
+    <string name="watch_on_dantotsu">Xem trên Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Xem Hồ Sơ trên Dantotsu</string>
+    <string name="continue_episode">Tiếp tục : Tập %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Độc chiếm</string>
+    <string name="continue_chapter">Tiếp tục : %1$s\n%2$s</string>
+    <string name="episode">"Tập "</string>
+    <string name="episode_num">"Tập %1$s"</string>
+    <string name="chapter">"Chương "</string>
+    <string name="chapter_num">"Chương %1$s"</string>
+    <string name="just_released">- Vừa phát hành!</string>
+    <string name="checking_subscriptions_title">Kiểm tra Đăng ký</string>
+    <string name="user_list">Danh Sách %2$s của %1$s</string>
+    <string name="speed">Tốc độ</string>
+    <string name="auto_update">Cập nhật tự động tiến độ cho %1$s?</string>
+    <string name="continue_from">Tiếp tục từ %1$s?</string>
+    <string name="title_update_progress">Cập nhật tiến độ trên AniList?</string>
+    <string name="incognito_will_not_update">Chế độ Ẩn danh vẫn sẽ bỏ qua tiến độ.</string>
+    <string name="dont_ask_again">"Không hỏi lại cho %1$s"</string>
+    <string name="default_speed">Tốc độ Mặc định</string>
+    <string name="default_resize_mode">Chế Độ Thay Đổi Kích Thước Mặc định</string>
+    <string name="primary_sub_color">Màu Phụ Chính</string>
+    <string name="outline_sub_color">Màu Viền Phụ</string>
+    <string name="outline_type">Loại Viền</string>
+    <string name="subtitle_font">Font Phụ Đề</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="ok">OK</string>
+    <string name="reset">Đặt lại</string>
+    <string name="close">Đóng</string>
+    <string name="no_chapter">Không có Chương</string>
+    <string name="content_18">Bật nội dung 18+ từ cài đặt Anilist của bạn</string>
+    <string name="available">Có sẵn</string>
+    <string name="lets_go">Chúng ta đi</string>
+    <string name="cope">Đối phó</string>
+    <string name="watched_num">"Đã xem "</string>
+    <string name="read_num">"Đã đọc "</string>
+    <string name="episodes_out_of">" trên "</string>
+    <string name="chapters_out_of">" trên "</string>
+    <string name="episodes_total_of">"Tổng cộng "</string>
+    <string name="chapters_total_of">"Tổng cộng "</string>
+    <string name="no_description_available">"Không có Mô tả"</string>
+    <string-array name="manga_directions">
+        <item>Từ trên xuống dưới</item>
+        <item>Từ phải sang trái</item>
+        <item>Từ dưới lên trên</item>
+        <item>Từ trái sang phải</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Trang</item>
+        <item>Liên tục Trang</item>
+        <item>Liên tục</item>
+    </string-array>
+    <string name="selected">Đã chọn</string>
+    <string name="found">Đã tìm thấy</string>
+    <string name="age">"__Tuổi:__ "</string>
+    <string name="birthday">\n\"__Sinh nhật:__ \"</string>
+    <string name="gender">\n\"__Giới tính:__ \"</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="question_1">Dantotsu là gì?</string>
+    <string name="answer_1">Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cho phép bạn xem &amp; tải Anime / Manga thông qua các tiện ích mở rộng. \n>Dantotsu (断トツ; Dan-totsu) có nghĩa là tốt nhất trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, nhưng hãy tự thử &amp; đánh giá!</string>
+    <string name="question_2">Những tính năng nổi bật của Dantotsu là gì?</string>
+    <string name="answer_2">Một số tính năng đáng chú ý của Dantotsu bao gồm\n\n- Cách dễ dàng và chức năng để xem anime và đọc manga và light novels, không có quảng cáo.\n- Một ứng dụng mã nguồn mở hoàn toàn với giao diện người dùng đẹp &amp; hiệu ứng\n- Hỗ trợ plugin từ bên thứ ba \n- Đồng bộ anime và manga theo thời gian thực với AniList. Dễ dàng phân loại anime và manga dựa trên trạng thái hiện tại của bạn. (Được hỗ trợ bởi AniList)\n- Tìm tất cả các chương trình sử dụng danh sách được cập nhật kỹ lưỡng và thường xuyên của tất cả các anime đang hot, phổ biến và đang phát sóng dựa trên điểm số.\n- Xem thông tin chi tiết về chương trình anime, phim và tiêu đề manga. Nó cũng có khả năng đếm ngược đến tập phim tiếp theo của anime đang phát sóng. (Được hỗ trợ bởi AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Sự khác biệt giữa các phiên bản Stable, Beta &amp; Alpha là gì?</string>
+    <string name="answer_3">Nhánh này không cung cấp các phiên bản riêng lẻ. Phiên bản bạn tải xuống từ [kho lưu trữ](https://github.com/RepoDevil/Himitsu) là phiên bản mà [AbandonedCart](https://github.com/AbandonedCart) đang chạy. Nếu bạn gặp lỗi và đã cập nhật lên phiên bản mới nhất, hãy tự do gửi một [vấn đề](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Dantotsu có sẵn cho PC không?</string>
+    <string name="answer_4">Hiện tại không (cho cả Windows và Linux). Không có ước lượng nào khi nó sẽ sẵn có. Nhưng bạn có thể tải bất kỳ trình giả lập Android nào và chạy Dantotsu trên đó. Đối với người dùng Windows 11, họ có thể sử dụng Windows Subsystem for Android (WSA) để chạy Dantotsu trên Windows.</string>
+    <string name="question_5">Dantotsu có sẵn cho iOS không?</string>
+    <string name="answer_5">Không, điều tốt nhất chúng tôi có thể là khắc Dantotsu lên một quả táo.</string>
+    <string name="question_6">Tại sao thống kê của tôi không cập nhật?</string>
+    <string name="answer_6">Điều này là do nó cập nhật mỗi 48 giờ một cách tự động (bởi Anilist). Nếu bạn thực sự cần cập nhật thống kê của mình, bạn có thể buộc cập nhật thống kê của mình sau khi đến [liên kết này](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Làm thế nào để tải Anime?</string>
+    <string name="answer_7">Hiện có hai phương pháp tải xuống. Một là nội bộ và một là bên ngoài. Nếu bạn tải xuống nội bộ, thì nó có thể được xem trong ứng dụng nhưng chỉ ứng dụng mới có thể mở tập đó, bạn không thể di chuyển hoặc chia sẻ nó. Lựa chọn khác là sử dụng chức năng tải xuống bên ngoài. Nó yêu cầu một trình quản lý tải xuống để tải xuống và một trình phát video riêng để xem. Tải xuống bên ngoài có thể được chia sẻ nhưng bạn không thể xem nó trong ứng dụng Dantotsu.\n\n•Để tải nội bộ:\n\n1. Chạm vào nút tải xuống.\n2. Chọn máy chủ và chất lượng video.\n3. Lời lãi.\n\n•Để tải xuống bên ngoài:\n\n 1. Tải 1DM hoặc ADM từ Cửa hàng Play của Google.
+        \n2. Mở ứng dụng, cấp quyền truy cập bộ nhớ và thiết lập các tùy chọn của bạn (tốc độ tải xuống, đường dẫn tải xuống vv (tùy chọn))
+        \n3. Bây giờ đi đến \`Dantotsu > Cài đặt > Chung > Trình quản lý Tải xuống\` và chọn trình quản lý tải xuống bạn vừa thiết lập.
+        \n4. Đi đến tập phim mong muốn và nhấn vào biểu tượng tải xuống của bất kỳ máy chủ nào. Có thể xuất hiện một cửa sổ bật lên để thiết lập tùy chọn của bạn một lần nữa, chỉ cần nhấn vào \"Tải xuống\" và nó sẽ được lưu trữ tại đường dẫn chỉ định.
+
+        \n\nLưu ý: Tải xuống trực tiếp cũng có thể được thực hiện mà không cần một trình quản lý nhưng không được khuyến khích.
+\n\nGhi chú Nerd: Các tập phim được tải nội bộ được lưu trữ trong \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nBạn không thể phát các tập tin đó vì chúng ở định dạng \`.exo\`, chia thành hàng trăm mảnh và được mã hóa.</string>
+    <string name="question_9">Làm thế nào để kích hoạt nội dung NSFW?</string>
+    <string name="answer_9">Bạn có thể kích hoạt nội dung NSFW bằng cách bật nội dung 18+ từ [liên kết này](https://anilist.co/settings/media). Bạn cũng phải bật các tiện ích NSFW trong \`Cài đặt > Tiện ích > Tiện ích NSFW\` </string>
+    <string name="question_10">Làm thế nào để nhập danh sách MAL/Kitsu của tôi vào Anilist?</string>
+    <string name="answer_10">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net).\n2. Nhập tên người dùng Kitsu/MAL của bạn và tải xuống cả danh sách anime và manga. (Chúng sẽ ở định dạng XML)\nGhi chú: Bạn phải viết tên người dùng của bộ theo dõi bạn đã chọn\n\nNhập:\n\n1. Sau khi xuất danh sách anime và manga từ Kitsu/MAL của bạn, hãy đến [đây](https://anilist.co/settings/import) \n2. Chọn/thả tệp XML anime vào ô phía trên.\n|→Chọn/thả tệp XML manga vào ô phía dưới.</string>
+    <string name="question_11">Làm thế nào để nhập danh sách Anilist/Kitsu của tôi vào MAL?</string>
+    <string name="answer_11">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net/). \n2. Nhập tên người dùng Anilist/Kitsu của bạn vào ô \'Tên người dùng/Kitsu ID\' . \n3. Chọn loại danh sách và bật \'cập nhật khi nhập\'. \n4. Tải tệp xuống; nó sẽ ở định dạng .xml. Hãy chắc chắn tải cả danh sách Anime và Manga.\n\nNhập:\n1. Để nhập nó vào tài khoản MAL của bạn, hãy đến [liên kết này](https://myanimelist.net/import.php) và chọn \'Nhập MyAnimeList\' làm loại nhập. \n2. Nhấn vào \'Chọn Tệp\' và chọn tệp XML danh sách anime/manga đã tải xuống. \n3. Nhấn vào \'Nhập Dữ Liệu\'. \nChúc mừng, bạn vừa nhập danh sách đã chọn vào tài khoản MAL của bạn.</string>
+    <string name="question_12">Tại sao tôi không thể tìm thấy một tiêu đề anime/manga cụ thể?</string>
+    <string name="answer_12">Hãy nói rằng bạn đang tìm Castlevania trong Dantotsu. Nhưng Anilist không có nó, vì vậy Dantotsu cũng không có.\nMột giải pháp cho vấn đề trên như sau:\n1) Đi đến bất kỳ anime nào không có trong danh sách của bạn.\n2) Đi đến phần xem.\n3) Chọn bất kỳ nguồn nào và nhấn vào \'Tiêu đề sai?\'.\n4) Bây giờ tìm kiếm Castlevania (Anime bạn đang tìm kiếm) và chọn nó.\n5) THƯỞNG THỨC!\n\nNếu bạn không thể tìm thấy anime ngay cả qua các bước này, thì đó là xui xẻo đối với bạn, bạn ạ. Ngay cả nguồn đó cũng không có. Hãy thử một nguồn khác.</string>
+    <string name="question_13">Làm thế nào để sửa chọn nguồn hiển thị một tiêu đề hoàn toàn sai lầm?</string>
+    <string name="answer_13">Dantotsu chính nó không lưu trữ gì mà phụ thuộc vào các nguồn khác. Khi hiển thị các tập phim, nó chọn kết quả đầu tiên được nguồn đưa ra sau khi tìm kiếm tiêu đề. Dantotsu không cách nào phát hiện xem đó có hợp lệ hay không. Vì vậy, để giải quyết vấn đề này, chúng tôi có \'Tiêu đề sai?\' ngay dưới tên nguồn (trên bố cục). Bạn có thể chọn kết quả/tiêu đề chính xác bằng cách nhấn vào đó và thưởng thức các tập phim.</string>
+    <string name="question_14">Làm thế nào để đọc manga màu?</string>
+    <string name="answer_14">Bạn đang tìm kiếm manga màu? Xin lỗi vì phải nói nhưng một lượng rất nhỏ manga có phiên bản màu. Những manga có phiên bản màu cũng có sẵn trong Dantotsu. Hãy nói rằng bạn muốn đọc phiên bản màu của chainsaw man. Sau đây là các bước ↓\n\n1) Đi đến Chainsaw Man\n2) Nhấn vào \'Đọc\'\n3) Chọn bất kỳ nguồn hoạt động nào\n4) Nhấn vào \'Tiêu đề sai\'\n5) Chọn phiên bản màu của chainsaw man\n6) Thưởng thức\n\nGhi chú: Nhiều nguồn không có phiên bản màu có sẵn ngay cả khi nó có ở nơi nào đó trên internet. Vì vậy hãy thử một nguồn khác. Nếu không có nguồn nào có, thì phiên bản màu của manga mong muốn của bạn đơn giản không tồn tại.</string>
+    <string name="question_15">Handshake thất bại? Tại sao không có thời gian đánh dấu nào được tải?</string>
+    <string name="answer_15">Bạn có thể khắc phục vấn đề này bằng cách kích hoạt \'Proxy\' từ \n\`Cài Đặt > Anime > Cài Đặt Trình Phát > Dấu Thời Gian > Proxy\`.\nNếu dấu thời gian vẫn không tải nhưng cửa sổ thông báo lỗi đã được sửa, thì tập phim bạn đang xem chỉ đơn giản không có dấu thời gian cho nó.</string>
+    <string name="question_16">Không thể tìm thấy thông tin trong nguồn?</string>
+    <string name="answer_16">Một số cách khắc phục cơ bản sẽ là: \n\n• Cập nhật các tiện ích mở rộng nếu có. \n• Mở Xem Web và đợi cho nó tải. Sau khi tải hoàn tất, quay lại. (Nếu Xem Web hiển thị lỗi 404 hoặc một cái gì đó tương tự, có khả năng nguồn của bạn đang tắt)\n• Sử dụng một DNS khác từ cài đặt của bạn, ưu tiên, Libre. \n• Thử một VPN đáng tin cậy. (Bạn sẽ phải lặp lại bước 1 sau điều này) \n\nNếu không có bước nào ở trên hoạt động thì hãy sử dụng một nguồn khác hoặc tham gia vào [discord](https://discord.gg/invite/4HPZ5nAWwM) của chúng tôi để được trợ giúp.</string>
+    <string name="question_17">Một số mẹo và thủ thuật hữu ích</string>
+    <string name="answer_17">Dưới đây là một số mẹo và thủ thuật bạn có thể biết hoặc không - \n \n \n - Bằng cách giữ logo Dantotsu trong cài đặt, bạn có thể kiểm tra xem có bất kỳ cập nhật mới nào thủ công hay không. \n \n - Giữ một thông báo lỗi/thẻ/synonym hoặc tiêu đề sẽ sao chép nó. \n \n - Bạn có thể mở một tập phim với các ứng dụng khác bằng cách giữ bất kỳ máy chủ nào cho tập đó. Điều này giúp trong việc phát tập phim bằng các trình phát video khác hoặc tải tập phim bằng các trình quản lý tải về. \n \n - Bạn có thể thiết lập danh sách tùy chỉnh bằng cách sử dụng [liên kết này](https://anilist.co/settings/lists). (bạn cần đăng nhập) \n \n - Nếu tập phim/chương của bạn không tiến triển tự động sau khi bạn xem/xem xong nó, sau đó giữ thanh trạng thái (lập kế hoạch/lặp lại/nút xem) của anime/manga đó. Lần tiếp theo bạn bắt đầu một chương/kết thúc một tập phim, bạn sẽ gặp phải một cửa sổ thông báo. Nhấn \'có\' ở đó.</string>
+    <string name="subscribed_notification">Đã đăng ký! Nhận thông báo, khi tập mới được phát hành trên %1$s.</string>
+    <string name="unsubscribed_notification">Đã hủy đăng ký, bạn sẽ không nhận bất kỳ thông báo nào.</string>
+    <string name="episode_plural">Tập</string>
+    <string name="episode_singular">Tập</string>
+    <string name="chapter_singular">Chương</string>
+    <string name="chapter_plural">Chương</string>
+    <string name="filter_status">"Trạng thái: %1$s"</string>
+    <string name="filter_source">"Nguồn: %1$s"</string>
+    <string name="filter_format">"Định dạng: %1$s"</string>
+    <string name="filter_country">"Quốc gia: %1$s"</string>
+    <string name="filter_sort">"Sắp xếp: %1$s"</string>
+    <string name="filter_exclude">"Không phải %1$s"</string>
+    <string name="search_by_image">Tìm kiếm bằng Hình Ảnh</string>
+    <string name="upload_image">Tải Hình Ảnh lên</string>
+    <string name="similarity_text">Tương đồng: %1$s %%</string>
+    <string name="time_range">Từ %1$s đến %2$s</string>
+    <string name="invalid_url">URL không hợp lệ</string>
+    <string name="no_anilist_id_found">Không tìm thấy ID Anilist</string>
+    <string name="error_loading_image">Lỗi tải hình ảnh</string>
+    <string name="discord_logout_success">Đã Đăng Xuất Thành Công</string>
+    <string name="discord_try_again">Hãy Thử Đăng Nhập Lại</string>
+    <string name="error_loading_discord_user_data">Lỗi Tải Dữ Liệu Người Dùng Discord</string>
+    <string name="discord_warning"><![CDATA[Bằng cách đăng nhập, discord của bạn sẽ hiển thị những gì bạn đang xem & đọc trên Dantotsu\n\nNếu bạn đang ở chế độ ẩn, đăng nhập sẽ làm cho bạn trực tuyến, khi bạn mở Dantotsu.\n\nĐiều này vi phạm Điều Khoản Dịch Vụ của Discord. \nMặc dù Discord chưa bao giờ cấm ai vì sử dụng Custom Rich Presence (Dantotsu sử dụng), nhưng bạn vẫn đã được cảnh báo.\n\nDantotsu không chịu trách nhiệm về bất cứ điều gì xảy ra với tài khoản của bạn.]]></string>
+    <string name="warning">Cảnh Báo</string>
+    <string name="view_anime">Xem Anime</string>
+    <string name="view_manga">Xem Manga</string>
+    <string name="force_legacy_installer">Bắt Buộc Cài Đặt Kế Thừa</string>
+    <string name="extensions_settings">Tiện ích mở rộng</string>
+    <string name="NSFWExtention">Tiện Ích NSFW</string>
+    <string name="skip_loading_extension_icons">Bỏ Qua Tải Biểu Tượng Tiện Ích</string>
+    <string name="use_material_you">Chất liệu của bạn</string>
+    <string name="use_app_theme">Sử dụng Chủ đề Ứng dụng</string>
+    <string name="extension_specific_dns">DNS Cụ thể cho Tiện ích mở rộng</string>
+    <string name="theme_">Chủ đề:</string>
+    <string name="user_agent">Người dùng Đại lý</string>
+    <string name="custom_theme">Chủ đề Tùy chỉnh:</string>
+    <string name="use_custom_theme">Chủ đề Tùy chỉnh</string>
+    <string name="use_unique_theme_for_each_item">Chủ đề như Anime/Manga </string>
+    <string name="oled_theme_variant">Biến thể chủ đề OLED</string>
+    <string name="installed_anime">Anime Đã cài đặt</string>
+    <string name="available_anime">Anime Có sẵn</string>
+    <string name="installed_manga">Manga Đã cài đặt</string>
+    <string name="color_picker">Bảng chọn Màu</string>
+    <string name="random_selection">Lựa chọn Ngẫu nhiên</string>
+    <string name="incognito_mode">Chế độ Ẩn danh</string>
+    <string name="appwidget_text">VÍ DỤ</string>
+    <string name="configure">Cấu hình</string>
+    <string name="add_widget">Thêm tiện ích</string>
+    <string name="app_widget_description">Đây là mô tả tiện ích ứng dụng</string>
+    <string name="upcoming_anime">Anime Sắp tới</string>
+    <string name="airing_image">Hình ảnh Phát sóng</string>
+    <string name="anime_downloads">Tải về Anime</string>
+    <string name="purge_anime_downloads">Xóa tất cả Tải về Anime</string>
+    <string name="purge_manga_downloads">Xóa tất cả Tải về Manga</string>
+    <string name="purge_novel_downloads">Xóa tất cả Tải về Tiểu thuyết</string>
+    <string name="requires_android_12">Yêu cầu Android 12+</string>
+    <string name="share_username_in_logs">Chia sẻ tên người dùng trong nhật ký</string>
+    <string name="pinned_sources">Nguồn Ghim</string>
+    <string name="backup_restore">Sao lưu và Khôi phục</string>
+    <string name="restore_settings">Nhập Cài đặt</string>
+    <string name="restore_settings_underline"><u>Khôi phục Cài đặt</u></string>
+    <string name="try_internal_cast_experimental">Thử Cast Nội bộ (Thử nghiệm)</string>
+    <string name="faq_desc">Câu hỏi chung về Himitsu</string>
+    <string name="check_app_updates_desc">Kiểm tra Github để cập nhật ứng dụng</string>
+    <string name="share_username_in_logs_desc">Bao gồm tên người dùng trong báo cáo sự cố</string>
+    <string name="devs_desc">Những người lao động không lương của Himitsu</string>
+    <string name="forks_desc">Các dự án phát sinh từ Dantotsu</string>
+    <string name="disclaimer_desc">Một điều cần nhớ</string>
+    <string name="use_foldable">Sử dụng bố cục gập</string>
+    <string name="use_foldable_desc">Nội dung thích nghi với cấu hình bản lề</string>
+    <string name="add_shortcuts">Thêm phím tắt vào bộ khởi chạy</string>
+    <string name="add_shortcuts_desc">Thêm mục tiếp tục vào việc nhấp dài vào biểu tượng</string>
+    <string name="comments">Bình luận</string>
+    <string name="newest">Mới nhất</string>
+    <string name="oldest">Cũ nhất</string>
+    <string name="highest_rated">Được xếp hạng cao nhất</string>
+    <string name="lowest_rated">Được xếp hạng thấp nhất</string>
+    <string name="compare"><u>So sánh</u></string>
+    <string name="view_following">Xem Theo dõi</string>
+    <string name="menu">menu</string>
+    <string name="view_followers">Xem Người theo dõi</string>
+    <string name="no_fav_anime">Người dùng không có Anime yêu thích</string>
+    <string name="no_fav_manga">Người dùng không có Manga yêu thích</string>
+    <string name="fav_character">Nhân vật Yêu thích</string>
+    <string name="fav_staff">Nhân viên Yêu thích</string>
+    <string name="stats">Thống kê</string>
+    <string name="days_watched">Ngày đã xem</string>
+    <string name="total_anime">Tổng số Anime</string>
+    <string name="anime_mean_score">Điểm trung bình Anime</string>
+    <string name="volume_read">Số lượng đọc</string>
+    <string name="total_manga">Tổng cộng Manga</string>
+    <string name="manga_mean_score">Điểm Trung Bình Manga</string>
+    <string name="about_me">Về tôi</string>
+    <string name="follow">Theo dõi</string>
+    <string name="following">Đang theo dõi</string>
+    <string name="unfollow">Bỏ theo dõi</string>
+    <string name="follows_you">Theo dõi bạn</string>
+    <string name="mutual">Chung</string>
+    <string name="success">Thành công</string>
+    <string name="error">Đã xảy ra lỗi</string>
+    <string name="error_msg">Lỗi: %1$s</string>
+    <string name="please_wait">Vui lòng đợi</string>
+    <string name="upcoming">Sắp tới</string>
+    <string name="no_shows_to_display">Không có chương trình để hiển thị</string>
+    <string name="no_media_to_display">Không có phương tiện để hiển thị</string>
+    <string name="extension_name">Tên Phần Mở Rộng</string>
+    <string name="extension_version">phiên bản</string>
+    <string name="enter_password_to_decrypt_file">Nhập mật khẩu của bạn để giải mã tệp</string>
+    <string name="show_rotate_button">Hiển thị Nút Xoay</string>
+    <string name="default_manga_settings">Cài Đặt Mặc Định Manga</string>
+    <string name="use_dark_theme">Sử Dụng Chủ Đề Tối</string>
+    <string name="use_oled_theme">Sử Dụng Chủ Đề OLED</string>
+    <string name="scanlators">Nhóm Dịch</string>
+    <string name="exporting_requires_encryption">Xuất thông tin đăng nhập yêu cầu mật khẩu để mã hóa.</string>
+    <string name="manga_queue">Hàng đợi Manga (Đang Phát Triển)</string>
+    <string name="anime_queue">Hàng đợi Anime (Đang Phát Triển)</string>
+    <string name="no_offline_manga_found">Không tìm thấy manga ngoại tuyến</string>
+    <string name="sort">Sắp xếp</string>
+    <string name="download">Tải về</string>
+    <string name="scanlator">Nhóm Dịch</string>
+    <string name="set_cookies">Đặt Cookies</string>
+    <string name="open_website">Mở trang web</string>
+    <string name="log_to_file">Ghi vào tệp</string>
+    <string name="logging_warning">Có thể gây lag. Chỉ kích hoạt khi gặp sự cố.</string>
+    <string name="share_log">Nhấn để chia sẻ tệp nhật ký hiện tại</string>
+    <string name="radius">Bán kính</string>
+    <string name="sampling">Lấy mẫu</string>
+    <string name="blur_banners">Mờ Banners</string>
+    <string name="blur">Mờ</string>
+    <string name="hide_scroll_bar">Ẩn thanh cuộn</string>
+    <string name="view_on_anilist">Xem trên AniList</string>
+    <string name="anilist_notification_filters">Chọn danh mục để bỏ qua</string>
+    <string name="anilist_notifications_checking_time">Tần suất cập nhật thông báo Anilist: %1$s</string>
+    <string name="comment_notification_checking_time">Tần suất cập nhật thông báo bình luận: %1$s</string>
+    <string name="activities">Hoạt động</string>
+    <string name="incorrect_password">Mật khẩu không chính xác</string>
+    <string name="password_cannot_be_empty">Mật khẩu không thể để trống</string>
+    <string name="unknown_file_type">Loại tệp không xác định</string>
+    <string name="error_importing_settings">Lỗi khi nhập cài đặt</string>
+    <string name="download_manager">Quản lý Tải xuống</string>
+    <string name="enter_password">Nhập Mật khẩu</string>
+    <string name="invalid_file_type">Loại tệp không hợp lệ</string>
+    <string name="purge_confirm">Bạn có chắc chắn muốn xóa tất cả %1$s tải về không?</string>
+    <string name="delete_fail_reason">Xóa không thành công vì… %1$s</string>
+    <string name="hide_replies">Ẩn trả lời</string>
+    <string name="view_reply">Xem trả lời</string>
+    <string name="view_replies">Xem trả lời</string>
+    <string name="view_replies_count">Xem %1$d trả lời</string>
+    <string name="replying_to">Đang trả lời cho %1$s</string>
+    <string name="delete_comment">Xóa Bình luận</string>
+    <string name="delete_comment_confirm">Bạn có chắc chắn muốn xóa bình luận này không?</string>
+    <string name="comment_deleted">Bình luận Đã xóa</string>
+    <string name="ban_user">Cấm Người Dùng</string>
+    <string name="ban_user_confirm">Bạn chắc chắn muốn cấm người dùng này chứ?</string>
+    <string name="user_banned">Người Dùng Đã Bị Cấm</string>
+    <string name="report_comment">Báo Cáo Bình Luận</string>
+    <string name="report_comment_confirm">Chỉ báo cáo những bình luận vi phạm quy định. Bạn chắc chắn muốn báo cáo bình luận này chứ?</string>
+    <string name="comment_reported">Bình Luận Đã Được Báo Cáo</string>
+    <string name="list">Danh Sách</string>
+    <string name="grid">Lưới</string>
+    <string name="compact">Gọn Gàng</string>
+    <string name="webview_not_installed">WebView chưa được cài đặt</string>
+    <string name="video_quality">Chất Lượng: %1$dp</string>
+    <string name="size_unknown">Kích Thước Không Xác Định</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Khôi Phục</string>
+    <string name="button_backup">Sao lưu</string>
+    <string name="no_location_selected">Chưa Chọn Vị Trí</string>
+    <string name="do_it">Làm Đi!</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="anilist_broken_title">Lỗi Máy Chủ Nội Bộ!</string>
+    <string name="anilist_broken">AniList có vẻ không phản hồi và chức năng sẽ bị hạn chế nghiêm trọng. Bạn có muốn đóng ứng dụng và thử lại sau không?\n</string>
+    <string name="search_title">Tìm Kiếm %1$s</string>
+    <string name="profile_stats_widget">Theo Dõi Tiến Độ Trực Tiếp Từ Màn Hình Trang Chủ Của Bạn</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Chương</string>
+    <string name="episodes_watched_n">Tập</string>
+    <string name="loading">Đang Tải…</string>
+    <string name="user_stats">Thống Kê Của %1$s</string>
+    <string name="please">Vui lòng</string>
+    <string name="log_in">đăng nhập</string>
+    <string name="or_join">hoặc tham gia</string>
+    <string name="audio_tracks">Danh Sách Âm Thanh</string>
+    <string name="disabled_track">\[💬\] Tắt</string>
+    <string name="invalid_track">\[⁉️\] Không Hợp Lệ</string>
+    <string name="unknown_track">\[%1$s\] Không Xác Định</string>
+    <string name="top_background_color">Màu nền đầu trang</string>
+    <string name="bottom_background_color">Màu nền cuối trang</string>
+    <string name="countdown_text_color">Màu văn bản đếm ngược</string>
+    <string name="title_color">Màu tiêu đề</string>
+    <string name="stat_text_color">Màu văn bản thống kê</string>
+    <string name="flipper_color">Màu lật</string>
+    <string name="placeholder">Địa chỉ tạm</string>
+    <string name="anime_add_repository">Thêm kho Anime</string>
+    <string name="manga_add_repository">Thêm kho Manga</string>
+    <string name="novel_add_repository">Thêm kho tiểu thuyết</string>
+    <string name="edit_repositories">Chỉnh sửa kho</string>
+    <string name="rem_repository">Xóa kho?</string>
+    <string name="trending_movies">Phim đang hot</string>
+    <string name="include_list">Bao gồm danh sách</string>
+    <string name="top_rated">Được đánh giá cao nhất</string>
+    <string name="most_favourite">Phổ biến nhất</string>
+    <string name="trending_manhwa">Manhwa đang hot</string>
+    <string name="liked_by">Được thích bởi</string>
+    <string name="adult_only_content">Nội dung chỉ dành cho người trưởng thành</string>
+    <string name="report">Báo cáo</string>
+    <string name="ban">Cấm</string>
+    <string name="activity_label">Hoạt động</string>
+    <string name="dir_error">Đường dẫn của bạn không thể được thiết lập</string>
+    <string name="dir_access">Truy cập Tải về</string>
+    <string name="dir_access_msg">Vui lòng chọn một thư mục để lưu trữ tải về của bạn</string>
+    <string name="download_subtitle">Tải phụ đề</string>
+    <string name="change_download_location">Thay đổi vị trí tải về</string>
+    <string name="download_location_msg">Bạn có chắc chắn muốn thay đổi vị trí tải về?\nCác tải về cũ có thể không còn truy cập được.</string>
+    <string name="voice_actors">Diễn viên lồng tiếng</string>
+    <string name="download_permission_required">Yêu cầu cấp quyền để tải về</string>
+    <string name="media">Phương tiện truyền thông</string>
+    <string name="users">Người dùng</string>
+    <string name="social">Xã hội</string>
+    <string name="auto_skip_recap">Tự động Bỏ qua Tóm tắt</string>
+    <string name="use_anilist_icon">Sử dụng Biểu tượng AniList</string>
+    <string name="exo_source_exception">Ngoại lệ Nguồn: %1$s</string>
+    <string name="exo_decoding_failed">Giải mã thất bại: %1$s</string>
+    <string name="exo_player_error">Lỗi Trình phát: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL và Discord.\nBạn cần gì hơn nữa?</string>
+    <string name="theme_desc">Thay đổi không khí của ứng dụng của bạn</string>
+    <string name="extensions_desc">Quản lý bộ sưu tập kho lưu trữ của bạn</string>
+    <string name="common_desc">Tải xuống, DNS và mặc định</string>
+    <string name="anime_desc">Chọn cách xem của bạn</string>
+    <string name="manga_desc">Chọn cách đọc của bạn</string>
+    <string name="notifications_desc">Tùy chỉnh tin tức và cập nhật</string>
+    <string name="system_desc">Cập nhật và tiện ích hữu ích</string>
+    <string name="about_desc">Tìm hiểu thêm về Himitsu</string>
+    <string name="addons">Tiện ích mở rộng</string>
+    <string name="addons_desc">Tiện ích mở rộng là các mô-đun tính năng phụ Dantotsu.</string>
+    <string name="torrent_addon">Tiện ích Torrent</string>
+    <string name="enable">Kích hoạt</string>
+    <string name="anime_downloader_addon">Tiện ích Tải xuống Anime</string>
+    <string name="loaded_successfully">Tải thành công</string>
+    <string name="not_installed">Chưa Cài đặt</string>
+    <string name="torrent_extension_not_supported">Tiện ích Torrent không được hỗ trợ trên thiết bị này</string>
+    <string name="update_addon">Cập nhật Tiện ích mở rộng</string>
+    <string name="install_addon">Cài đặt Tiện ích mở rộng</string>
+    <string name="download_addon_not_found">Không tìm thấy tiện ích tải xuống</string>
+    <string name="default_novel_settings">Cài đặt Mặc định Tiểu thuyết</string>
+    <string name="line_height">Độ cao dòng</string>
+    <string name="margin">Lề</string>
+    <string name="maximum_inline_size">Kích thước Nội dung Tối đa</string>
+    <string name="maximum_column_width">Chiều rộng cột tối đa (viết ngang) hoặc chiều cao (viết dọc)</string>
+    <string name="maximum_block_size">Kích thước Khối Tối đa</string>
+    <string name="maximum_height">Chiều cao tối đa (viết ngang) hoặc chiều rộng (viết dọc)</string>
+    <string name="global">Toàn cầu</string>
+    <string name="china">Trung Quốc</string>
+    <string name="south_korea">Hàn Quốc</string>
+    <string name="japan">Nhật Bản</string>
+    <string name="taiwan">Đài Loan</string>
+    <string name="something">Điều gì đó</string>
+    <string name="image">Hình ảnh</string>
+    <string name="sort_score">Điểm</string>
+    <string name="popular">Phổ biến</string>
+    <string name="trending">Đang thịnh hành</string>
+    <string name="new_releases">Phát hành Mới</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Đau Đớn Tinh Khiết</string>
+    <string name="add_a_comment">Thêm bình luận…</string>
+    <string name="type">Loại</string>
+    <string name="view">Xem</string>
+    <string name="count">SỐ LƯỢNG</string>
+    <string name="open">Mở</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Trả lời</string>
+    <string name="time">Thời gian</string>
+    <string name="player_settings_desc">Tất cả các thiết lập liên quan đến người chơi</string>
+    <string name="purge_anime_downloads_desc">Xóa tất cả Anime đã tải về</string>
+    <string name="prefer_dub_desc">Chọn phương tiện có phụ đề theo mặc định</string>
+    <string name="show_yt_desc">Hiển thị liên kết YouTube cho phương tiện được hỗ trợ</string>
+    <string name="include_list_anime_desc">Bao gồm mục danh sách trong trang khám phá Anime</string>
+    <string name="ui_settings_desc">Tất cả các thiết lập liên quan đến giao diện người dùng</string>
+    <string name="download_manager_select_desc">Quản lý mặc định để tải về Anime</string>
+    <string name="backup_restore_desc">Tạo và khôi phục sao lưu của các thiết lập đã chọn</string>
+    <string name="change_download_location_desc">Thay đổi vị trí lưu trữ tải về</string>
+    <string name="always_continue_content_desc">Tiếp tục các mục mà bạn đã bỏ lại</string>
+    <string name="search_source_list_desc">Chuyển sang máy chủ tiếp theo nếu không tìm thấy nội dung</string>
+    <string name="recentlyListOnly_desc">Chỉ hiển thị các mục trong danh sách của bạn trên tab gần đây</string>
+    <string name="adult_only_content_desc">Chỉ hiển thị nội dung dành cho người lớn trên trang khám phá</string>
+    <string name="anime_add_repository_desc">Thêm các kho lưu trữ tiện ích mở rộng Anime vào bộ sưu tập</string>
+    <string name="manga_add_repository_desc">Thêm các kho lưu trữ tiện ích mở rộng Manga vào bộ sưu tập</string>
+    <string name="user_agent_desc">Thay đổi user agent mặc định của bạn</string>
+    <string name="force_legacy_installer_desc">Sử dụng intents để yêu cầu cài đặt gói</string>
+    <string name="skip_loading_extension_icons_desc">Không tải biểu tượng tiện ích mở rộng trong trình quản lý</string>
+    <string name="NSFWExtention_desc">Vô hiệu hóa chặn bất kỳ tiện ích mở rộng nào chứa nội dung 18+</string>
+    <string name="reader_settings_desc">Tất cả các cài đặt liên quan đến Người đọc</string>
+    <string name="purge_manga_downloads_desc">Xóa tất cả Manga đã tải về</string>
+    <string name="purge_novel_downloads_desc">Xóa tất cả tiểu thuyết đã tải về</string>
+    <string name="include_list_desc">Bao gồm các mục trong danh sách trên trang khám phá Manga</string>
+    <string name="anilist_notification_filters_desc">Chọn danh mục để Bỏ qua</string>
+    <string name="anilist_notifications_checking_time_desc">Thiết lập tần suất bạn muốn ứng dụng kiểm tra thông báo Anilist</string>
+    <string name="comment_notification_checking_time_desc">Thiết lập tần suất bạn muốn ứng dụng kiểm tra thông báo Bình luận</string>
+    <string name="notification_for_checking_subscriptions_desc">Hiển thị thông báo để kiểm tra Đăng ký</string>
+    <string name="use_alarm_manager_reliable_desc">Sử dụng để bypass trình tối ưu pin của điện thoại</string>
+    <string name="oled_theme_variant_desc">Tối đen như thế nào</string>
+    <string name="use_material_you_desc">Sử dụng cùng màu với hình nền của bạn</string>
+    <string name="use_unique_theme_for_each_item_desc">Sử dụng màu từ banner của phương tiện</string>
+    <string name="use_custom_theme_desc">Sử dụng màu của riêng bạn cho chủ đề</string>
+    <string name="color_picker_desc">Chọn một màu</string>
+    <string name="install_torrent_addon">Cài đặt Tiện ích mở rộng Torrent</string>
+    <string name="failed_ext_install_conflict">Không thể cài đặt tiện ích mở rộng do xung đột</string>
+    <string name="no_video_selected">Không có Video được chọn</string>
+    <string name="download_extension_not_available">Tiện ích mở rộng Tải xuống không khả dụng</string>
+    <string name="feed">Dữ liệu</string>
+    <string name="profile">Hồ sơ</string>
+    <string name="epub_download_exception">Ngoại lệ khi tải xuống .epub: %1$s</string>
+    <string name="novel_download_progress">Tiến trình Tải Truyện Mới</string>
+    <string name="download_started">Bắt đầu tải xuống</string>
+    <string name="downloads_completed">Tất cả các tải xuống đã hoàn tất</string>
+    <string name="pending_downloads">Các tải xuống đang chờ: %1$d</string>
+    <string name="reading">ĐANG ĐỌC</string>
+    <string name="watching">ĐANG XEM</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Bìa]</string>
+    <string name="banner">%1$s\ [Bảng quảng cáo]</string>
+    <string name="update_webview">Vui lòng cập nhật WebView từ Google Play</string>
+    <string name="update_webview_version">Phiên bản WebView %1$d cần được cập nhật</string>
+    <string name="webview_not_found_version">Không thể tìm thấy phiên bản WebView %1$s</string>
+    <string name="webview_not_found">Không thể tìm thấy thư viện WebView đã cài đặt</string>
+    <string name="multi">Nhiều</string>
+</resources>

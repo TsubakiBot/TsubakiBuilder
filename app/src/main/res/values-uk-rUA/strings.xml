@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="uk">
+    <string name="slogan">НОВИЙ Найкращий додаток для аніме та манги для Android.</string>
+    <string name="login">Увійти</string>
+    <string name="logout">Вихід із системи</string>
+    <string name="conversion_title">З поверненням!</string>
+    <string name="conversion_message">Здається, встановлено стару версію пакета.\nБудь ласка, виберіть \"Резервне копіювання\", щоб відкрити попередню версію та виконати резервне копіювання. Після цього ви можете повернутися до цього додатка та використовувати \"Відновлення налаштувань\".</string>
+    <string name="backup">Резервне копіювання</string>
+    <string name="home">Домашній екран</string>
+    <string name="anime">Аніме</string>
+    <string name="browse_anime">Перегляд аніме</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Перегляд Манги</string>
+    <string name="novels">Новелс</string>
+    <string name="info">Інформація</string>
+    <string name="watch">Дивитися</string>
+    <string name="read">Прочитано</string>
+    <string name="language">Мова:</string>
+    <string name="anime_list">Список аніме</string>
+    <string name="manga_list">Список манг</string>
+    <string name="sad">Х(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Немає з\'єднання з Інтернетом</string>
+    <string name="no_internet_connection">Немає підключення до Інтернету\nДоступний автономний режим</string>
+    <string name="refresh">Оновити</string>
+    <string name="search">Пошук</string>
+    <string name="extension_search">Зворотній вихідний пошук</string>
+    <string name="search_results">Результати пошуку</string>
+    <string name="sort_by">Сортувати за</string>
+    <string name="genre">Жанр</string>
+    <string name="top_score">Найпопулярніший результат</string>
+    <string name="updated">Нещодавно оновлені</string>
+    <string name="trending_anime">Популярні аніме</string>
+    <string name="popular_anime">Популярні аніме</string>
+    <string name="trending_manga">Trending Manga</string>
+    <string name="trending_novel">Популярний роман</string>
+    <string name="popular_manga">Популярна манга</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="chapters_read">Читання символів</string>
+    <string name="episodes_watched">Епізоди переглянуті</string>
+    <string name="continue_reading">Читати далі</string>
+    <string name="continue_watching">Продовжити перегляд</string>
+    <string name="continue_media">Продовжити...</string>
+    <string name="recommended">Рекомендовані</string>
+    <string name="get_recommendations">Сторож/читайте деякі аніме або Манга для отримання рекомендацій</string>
+    <string name="empty">Всі охопили, коли нові?</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="add">Додати до списку</string>
+    <string name="list_editor">Редактор списку</string>
+    <string name="add_fav">Додати до Уподобань</string>
+    <string name="notifications">Сповіщення</string>
+    <string-array name="keys">
+        <item>Читання</item>
+        <item>Дивиться</item>
+        <item>Завершені</item>
+        <item>Призупинено</item>
+        <item>Втрачено</item>
+        <item>Планування</item>
+        <item>Закладки</item>
+        <item>Передивляючись</item>
+        <item>Перекриття</item>
+        <item>Всі</item>
+    </string-array>
+    <string name="no_notifications">Немає більше сповіщень</string>
+    <string name="followers">Підписники</string>
+    <string name="social_in_media">Соціальна статистика у медіа</string>
+    <string name="social_in_media_desc">Показувати рейтинг і поступ</string>
+    <string name="status">СТАТУС</string>
+    <string-array name="status_anime">
+        <item>ПЛАНУВАННЯ</item>
+        <item>ПЕРЕВАГЛЕННЯ</item>
+        <item>ЗАВЕРШЕНО</item>
+        <item>ПОВЕРНУТИСЯ</item>
+        <item>ПРИЗУПИНЕНО</item>
+        <item>ВІДМІНЕНО</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>ПЛАНУВАННЯ</item>
+        <item>ЧИТАННЯ</item>
+        <item>ЗАВЕРШЕНО</item>
+        <item>ЧИТАННЯ</item>
+        <item>ПРИЗУПИНЕНО</item>
+        <item>ВІДМІНЕНО</item>
+    </string-array>
+    <string name="progress">СТВОРЕНЬ</string>
+    <string name="score">РАХУНОК</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">РОЗПОЧАТИ ПТ</string>
+    <string name="completed_at">ЗАВЕРШЕНО</string>
+    <string name="save">Зберегти</string>
+    <string name="delete">Видалити</string>
+    <string name="remove">Видалити</string>
+    <string name="name">Ім\'я</string>
+    <string name="name_romaji">Назва Ромаджі</string>
+    <string name="mean_score">Середній результат</string>
+    <string name="format">Форматувати</string>
+    <string name="status_title">Статус</string>
+    <string name="total_eps">Кількість серій</string>
+    <string name="episodes"> Епізод(и)</string>
+    <string name="chapters"> Глава(и)</string>
+    <string name="total_divider"> | %1$s</string>
+    <string name="total_chaps">Розділи Всього</string>
+    <string name="ep_duration">Середня тривалість</string>
+    <string name="min">" хв"</string>
+    <string name="season">Сезон</string>
+    <string name="start_date">Дата початку</string>
+    <string name="end_date">Дата закінчення</string>
+    <string name="source">Джерело</string>
+    <string name="main_studio">Студія</string>
+    <string name="genres">Genres</string>
+    <string name="description">Синопсис</string>
+    <string name="characters">Символи</string>
+    <string name="relations">Зв\'язки</string>
+    <string name="staff">Персонал</string>
+    <string name="favourites">Закладки</string>
+    <string name="popularity">Популярність</string>
+    <string name="roles">Ролі</string>
+    <string name="details">Подробиці</string>
+    <string name="play_yt">Грати на Youtube</string>
+    <string name="eps">Епізоди</string>
+    <string name="ep">Епізод</string>
+    <string name="chaps">Глави</string>
+    <string name="chap">Глава</string>
+    <string name="wrong"><u>Невірний заголовок?</u></string>
+    <string name="source_not_found">        Не можу знайти нічого X( \n
+        Спробуйте інше джерело.
+    </string>
+    <string name="not_supported">%1$s не підтримується!</string>
+    <string name="server_selector">Виберіть сервер</string>
+    <string name="auto_select_server">Сервер автовибору</string>
+    <string name="make_default">Зробити типовим</string>
+    <string name="filler">Філер</string>
+    <string name="adult">Дорослий</string>
+    <string name="list_only">Лише список</string>
+    <string name="tag">Тег</string>
+    <string name="tags">Мітки</string>
+    <string name="synonyms">Синоніми</string>
+    <string name="trailer">Трейлер</string>
+    <string name="opening">Відкриття</string>
+    <string name="ending">Закінчення</string>
+    <string name="prequel">Приквел</string>
+    <string name="sequel">Сиквел</string>
+    <string name="installed">Встановлено</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Сервер працює…</string>
+    <string name="settings_torrent">Внутрішній TorrServer</string>
+    <string name="enable_server">Увімкнути TorrServer</string>
+    <string name="enable_server_desc">Дозволяє користуватися локальним сервером</string>
+    <string name="torrent_port">Номер порту сервера</string>
+    <string name="torrents">торренти</string>
+    <string name="active_torrents">Активні роздачі</string>
+    <string name="remove_torrent">Видалити цей торрент?</string>
+    <string name="invalid_port">Введено невірний порт!</string>
+    <string name="port_range">Порт має бути коректним порт TCP (0 – 65535)</string>
+    <string name="server_disabled">TorrServer вимкнений!</string>
+    <string name="server_enabled">Запуск TorrServer</string>
+    <string name="enable_server_temp">Бажаєте тимчасово ввімкнути TorrServer (вимкнуто через закриття додатка)?</string>
+    <string name="anilist_settings">Налаштування Anilist</string>
+    <string name="extension_settings">Розширення</string>
+    <string name="downloads">Завантажень</string>
+    <string name="offline_mode">Автономний режим</string>
+    <string name="settings">Налаштування</string>
+    <string name="extensions">Розширення</string>
+    <string name="extension_updates_available">Доступні оновлення розширень</string>
+    <string name="player_settings">Налаштування плеєра</string>
+    <string name="recentlyListOnly">Тільки мій контент в \"Нещодавно оновлено\"</string>
+    <string name="download_manager_select">Менеджер завантажень</string>
+    <string name="downloadInSd">Завантажити на SD карту</string>
+    <string name="noSdFound">SD карта не була знайдена.</string>
+    <string name="reader_settings">Параметри читання</string>
+    <string name="default_source">Джерело за промовчанням</string>
+    <string name="show_yt">Показати посилання Youtube</string>
+    <string name="default_ep_view">Типовий макет епізоду</string>
+    <string name="default_chp_view">Стандартний макет Глави</string>
+    <string name="ui">Інтерфейс користувача</string>
+    <string name="common">Коммон</string>
+    <string name="theme">Тема</string>
+    <string name="theme_ui">Тема / UI</string>
+    <string name="day_night">Світла / темна тема</string>
+    <string name="ui_settings">Налаштування інтерфейсу користувача</string>
+    <string name="system">Система</string>
+    <string name="about">Про програму</string>
+    <string name="desc">"    Dantotsu створено з попелу Saikou та базується на простоті та сучасній елегантності. Це клієнт лише для Anilist, який також дозволяє вам стріминг та завантаження аніме через розширення та мангу.\nDantotsu буквально означає \"найкращий з найкращих\" у японській мові. Ну, ми хотіли б сказати, що це найкращий відкритий додаток з відкритим вихідним кодом для аніме та манги на Android, що ви скажете?"</string>
+    <string name="devs">Учасники проекту</string>
+    <string name="disclaimer">Умови обмеженої відповідальності</string>
+    <string name="full_disclaimer">         - Dantotsu сам за себе надає лише трекер аніме та манги і не надає можливостей стрімінгу чи завантаження аніме чи манги.
+        \n\n - Dantotsu або будь-який з його розробників/персонал не хостять жодного вмісту, знайденого всередині Dantotsu. Будь-які та всі зображення та інформація про аніме/мангу, знайдені в додатку, взяті з різних публічних API (AniList, MyAnimeList, Kitsu).
+        \n\n - Крім того, всі посилання на аніме/мангу, знайдені в Dantotsu, взяті з різних плагінів сторонніх розробників і не мають стосунку до Dantotsu або його персоналу.
+        \n\n - Dantotsu або його власники не несуть відповідальності за будь-яке недозволене використання будь-якого змісту, знайденого всередині або поза додатком, та не можуть бути притягнуті до відповідальності за поширення будь-якого змісту, знайденого всередині додатку.
+        \n\n - Користуючись Dantotsu, ви погоджуєтесь з тим, що розробник додатка не несе відповідальності за будь-який вміст, знайдений у додатку. Ви також погоджуєтеся з тим, що ви не можете використовувати Dantotsu для завантаження або стрімінгу будь-якого захищеного авторським правом вмісту.
+        \n\n - У разі виникнення проблем з порушенням авторських прав у Інтернеті, будь ласка, зв\'яжіться з веб-сайтом-джерелом. Розробник не несе жодної правової відповідальності.
+    </string>
+    <string name="version_current">Версія %1$s</string>
+    <string-array name="tips">
+        <item>Ви можете натиснути на серію/розділ, щоб позначити його як перегляд.</item>
+        <item>Тривале натискання на дисплеї може відкривати редактор списка.</item>
+        <item>У додатку ховаються ще кілька пасхальних яєць.</item>
+        <item>Виклик: Перейдіть на саме дно популярного аніме та манги</item>
+        <item>Спробуйте довгий клік по Назві Показ.</item>
+        <item>Чорт, чому ти марнуєш свій час?</item>
+        <item>Для довгого натискання воно скопіює це повідомлення.</item>
+        <item>УВІЙТИ ЗАЛИШ! ВИ ЗНАЙДЕНІ СПОЖИТЬСЯ EASTER EG!?</item>
+        <item>Ви знаєте, кому ще подобається ця анімація?</item>
+        <item>Підтримка MAL? блюдка.</item>
+        <item>Більше як NO vels.</item>
+        <item>Довге натискання на логотип для перевірки оновлень</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Типово</item>
+        <item>Тема 1</item>
+        <item>Тема 2</item>
+        <item>Тема 3</item>
+        <item> Тема 4</item>
+    </string-array>
+    <string name="video">Відео</string>
+    <string name="video_info">Показати інформацію про відео</string>
+    <string name="source_info">Показувати ім\'я джерела</string>
+    <string name="video_info_info">Показує значення роздільної здатності поточного відтворення відео, що корисне для <b>\"Multi Якість\"</b> серверів.</string>
+    <string name="default_quality">Автоматичний вибір якості</string>
+    <string name="height">Висота</string>
+    <string name="width">Width</string>
+    <string name="default_quality_info">Автоматично використовує найближчу якість, надану за замовчуванням, тільки LY застосовується до \"Багатоякість\" серверів. Автоматично змінює зміни при відтворенні відео.</string>
+    <string name="default_playback_speed">Швидкість відтворення за замовчуванням: %1$s</string>
+    <string name="cursed_speeds">Прокляті швидкості</string>
+    <string name="resize_mode_button">Типовий режим зміни розміру</string>
+    <string name="subtitles">Субтитри</string>
+    <string name="subtitle_toggle">Субтитри</string>
+    <string name="primary_sub_color_select">Колір субтитрів</string>
+    <string name="secondary_sub_color_select">Колір контуру субтитрів</string>
+    <string name="secondary_sub_outline_type_select">Тип обрису субтитрів</string>
+    <string name="sub_background_color_select">Колір фону субтитрів</string>
+    <string name="sub_window_color_select">Колір вікна субтитрів</string>
+    <string name="sub_window_color_info">"Вікно субтитрів є частиною та зліва від них. (фон відсутній)"</string>
+    <string name="sub_color_info"><b>Примітка.</b> Зміна вище параметрів впливає тільки на програмні субтитри!</string>
+    <string name="sub_alpha">Прозорість субтитрів</string>
+    <string name="sub_text_example">Зразок нижньої частини</string>
+    <string name="sub_font_select">Шрифт субтитрів</string>
+    <string name="subtitle_font_size">Розмір субтитрів</string>
+    <string name="no_subs_available">Доступні субтитри відсутні</string>
+    <string name="auto">Авто</string>
+    <string name="auto_play_next_episode">Автовідтворення наступного епізод</string>
+    <string name="auto_play_next_episode_info">Автоматичне відключення, якщо немає взаємодії з гравцем протягом 1 години.</string>
+    <string name="auto_skip_fillers">Автопропуск заповнення</string>
+    <string name="auto_skip_fillers_info">Пропускає епізоди Філера, коли наступає наступний епізод.</string>
+    <string name="update_progress">Прогрес оновлення</string>
+    <string name="ask_update_progress_anime">Запитайте кожного аніме \"Індивідуально\"</string>
+    <string name="ask_update_progress_manga">Запитайте кожен Мангу \"Індивідуально\"</string>
+    <string name="ask_update_progress_info_ep">Вимкнення завжди оновить прогрес, коли за цим наглядом епізод.</string>
+    <string name="ask_update_progress_info_chap">Вимкнення автоматично оновить прогрес при зчитуванні розділу.</string>
+    <string name="ask_update_progress_chapter_zero">Оновлення прогресу для розділу 0</string>
+    <string name="ask_update_progress_info_zero">Вмикаючи - додасть нові пункти, які починаються в Аніліст з прогресом, встановленим у главі 0.</string>
+    <string name="ask_update_progress_hentai">Прогрес оновлення для Хентай</string>
+    <string name="ask_update_progress_doujin">Процес оновлення для Doujins</string>
+    <string name="very_bold">дуже сміливо з вас сар</string>
+    <string name="watch_complete_percentage">Дивитися відсоток оновлення</string>
+    <string name="watch_complete_percentage_info">Відсоток, на якому повинен оновлюватися ваш прогрес Anilist після перегляду епізоду. \nЦе також встановлює \% для попереднього завантаження посилань на наступний епізод.</string>
+    <string name="behaviour">Поведінка</string>
+    <string name="always_continue">Завжди відновлювати з часової мітки</string>
+    <string name="pause_video_focus">Пауза, коли не в фокусі</string>
+    <string name="gestures">Том &amp; Жести яскравості</string>
+    <string name="double_tap">Подвійне натискання для Пошуку</string>
+    <string name="fast_forward">Перемотати вперед</string>
+    <string name="double_tap_info">Вимкнення покаже кнопки перемотування вперед та назад</string>
+    <string name="seek_time">Час прокручування</string>
+    <string name="seek_time_info">Час у секундах для перемотування вперед та назад.</string>
+    <string name="skip_time">Пропустити час</string>
+    <string name="skip_time_info">Налаштування на 0, приховує Пропускову кнопку.</string>
+    <string name="show_cast_button">Показати кнопку \"Транслювати</string>
+    <string name="show_cast_button_info">Потрібен додаток \"Web Video Caster\".</string>
+    <string name="picture_in_picture">Зображення в картинці</string>
+    <string name="always_minimize">Завжди згорнути</string>
+    <string name="always_minimize_info">Потрібно включити PiP, щоб гравець поводився як Youtube Player але краще.\nТакож приховує кнопку PiP.</string>
+    <string name="app">Застосунок</string>
+    <string name="immersive_mode">Приховати панель стану</string>
+    <string name="immersive_modelist">Сховати стрічку статусу для списку</string>
+    <string name="immersive_mode_info">Для повного застосування необхідне перезавантаження програми.</string>
+    <string name="home_layout_show">Показати/приховати розкладки на головній</string>
+    <string-array name="home_layouts">
+        <item>Продовжити перегляд</item>
+        <item>Вибраний аніме</item>
+        <item>Планування аніме</item>
+        <item>Читати далі</item>
+        <item>Улюблена манга</item>
+        <item>Планова манга</item>
+        <item>Рекомендовані</item>
+    </string-array>
+    <string name="startUpTab">За промовчанням Початкова Вкладка</string>
+    <string name="small_view">Вид у актуальних повідомленнях</string>
+    <string name="animations">Анімація</string>
+    <string name="banner_animations">Анімації банеру</string>
+    <string name="layout_animations">Анімація макету</string>
+    <string name="trending_scroller">Популярна прокрутка</string>
+    <string name="animation_speed">Загальна швидкість</string>
+    <string name="empty_fav">Схоже, вам нічого не подобається,\nСпробуйте вивести шоу, щоб залишити його тут.</string>
+    <string name="fav_anime">Вибраний аніме</string>
+    <string name="fav_manga">Улюблена манга</string>
+    <string name="restart_app">Перезавантажити програму?</string>
+    <string name="next">Уперед</string>
+    <string name="previous">Попереднє</string>
+    <string name="current_page">Поточна сторінка</string>
+    <string name="dubbed">Дубед</string>
+    <string name="subbed">Субліжко</string>
+    <string name="prefer_dub">Бажаний дубел аніме</string>
+    <string name="none">Без ефекту</string>
+    <string name="selected_dns">Обраний DNS</string>
+    <string name="dns_info">Змінити якщо ваш провайдер блокує будь-яке джерело</string>
+    <string name="keep_screen_on">Тримати екран увімкненим</string>
+    <string name="layout">Макет</string>
+    <string name="spaced_pages">Розділені сторінки</string>
+    <string name="direction">Напрямок</string>
+    <string name="comments_api">Коментарі API (приватний)</string>
+    <string name="disable_mitm">Запобігти зануренню (\"Прак\")</string>
+    <string name="general">Загальні налаштування</string>
+    <string name="show_system_bars">Показати статус: &amp; Панель навігації</string>
+    <string name="auto_detect_webtoon">Автоматично визначати Webtoon</string>
+    <string name="auto_detect_webtoon_info">Якщо манга не з Японії, за замовчуванням читач</string>
+    <string name="default_settings">Типові параметри</string>
+    <string name="horizontal_scroll_bar">Горизонтальна смуга прокручування</string>
+    <string name="dual_page">Подвійна сторінка</string>
+    <string name="dual_page_info">Показує 2 зображення на одній сторінці, виглядає дивно, якщо зображення не однаковий розмір</string>
+    <string name="true_colors">Справжні кольори</string>
+    <string name="true_colors_info">(32-бітний режим кольору) зменшує навантаження на зображення, може вплинути на продуктивність.</string>
+    <string name="image_rotation">Обертання зображення</string>
+    <string name="hide_page_numbers">Приховати номери сторінок</string>
+    <string name="sort_by_title">Сортувати за назвою</string>
+    <string name="sort_by_last_updated">Сортувати за останнім оновленим</string>
+    <string name="sort_by_score">За оцінками</string>
+    <string name="sort_by_airing">Впорядкувати за наступним авіаційним режимом</string>
+    <string name="over_scroll">Через прокручування до Далі/Попереднього Глави</string>
+    <string name="volume_buttons">Зміна сторінок за допомогою кнопок гучності</string>
+    <string name="list_private">Приватний</string>
+    <string name="wrap_images">Wrap Images</string>
+    <string name="wrap_images_info">Якщо вони існують, то в основному корисні для пристроїв, видаляє простір між зображеннями.</string>
+    <string name="reload">Reload</string>
+    <string name="share">Поділитись</string>
+    <string name="skip">Пропустити</string>
+    <string name="other">Інше</string>
+    <string name="total_repeats">УСЬОГО ПОВІДОМЛЕННЯ</string>
+    <string name="custom_lists">Користувацькі списки</string>
+    <string name="donate_desc">Хочете підтримати Himitsu?\nРозгляньте пожертвування</string>
+    <string name="donate_goal">Немає мети пожертвування</string>
+    <string name="filter">Фільтр</string>
+    <string name="year">Рік</string>
+    <string name="apply">Прийняти</string>
+    <string name="cancel">Скасувати</string>
+    <string name="edit">Редагувати</string>
+    <string name="this_season">Цей сезон</string>
+    <string name="next_season">Наступний сезон</string>
+    <string name="previous_season">Попередній сезон</string>
+    <string name="include_media_in_list">Включити список</string>
+    <string name="release_calendar">Календар</string>
+    <string name="planned_anime">Планування аніме</string>
+    <string name="planned_manga">Планова манга</string>
+    <string name="image_long_clicking">Тривале натискання відкриє зображення</string>
+    <string name="always_continue_content">Продовжити раніше відкриті елементи</string>
+    <string name="search_source_list">Пошук наступного доступного джерела</string>
+    <string name="timestamp_proxy_desc">Корисно, якщо ви отримуєте помилки рукостискання</string>
+    <string name="timestamp_proxy">Використовувати проксі для часових міток</string>
+    <string name="check_app_updates">Перевірити наявність оновлень</string>
+    <string name="author">Автор</string>
+    <string name="forks">Версії</string>
+    <string name="faq">ЧАП</string>
+    <string name="accounts">Облікові записи</string>
+    <string name="myanimelist">Міанімеліст</string>
+    <string name="login_with_anilist">Увійти за допомогою Аніліста</string>
+    <string name="anilist">Аніліст</string>
+    <string name="account_help">Як це працює?</string>
+    <string name="full_account_help">        Dantotsu - це додаток на основі Anilist, тому для синхронізації з вашим обліковим записом MAL потрібен обліковий запис Anilist.
+        \nПісля входу в обліковий запис як на Anilist, так і на MAL, додаток автоматично оновить ваш обліковий запис MAL, коли:
+        \n- Додати нове медіа
+        \n- Редагувати медіа
+        \n- Видалити медіа
+
+        \n\nПримітка: додаток не буде синхронізувати старі медіа з Anilist на MAL, рекомендується їх синхронізувати.
+        \n- Перевірте __Часті питання__ для _Простого методу_
+
+        \n\nА для _Середніх_ :
+        \n- [Як синхронізувати дані Anilist з MAL](https://anilist.co/forum/thread/2654)
+        \n- [Як синхронізувати дані MAL з Anilist](https://anilist.co/forum/thread/3393)
+
+        \n\n_Не потрібно синхронізувати облікові записи MAL та Anilist одночасно._
+    </string>
+    <string name="notification_for_checking_subscriptions">Показувати сповіщення про перевірки підписок</string>
+    <string name="use_alarm_manager">Використовувати диспетчер будильника</string>
+    <string name="use_alarm_manager_reliable">Використовувати диспетчер будильників (надійні сповіщення)</string>
+    <string name="use_alarm_manager_confirm">Використання сигналізації Manger може допомогти боротися з оптимізацією батареї, але може споживати більше заряду акумулятора. Також потрібно дозвіл менеджера сигналу.</string>
+    <string name="use">Використати</string>
+    <string name="checking_subscriptions">Підписка перевіряє повідомлення</string>
+    <string name="subscriptions_checking_time_s">Частота оновлення передплат: %1$s</string>
+    <string name="subscriptions_checking_time">Частота оновлення передплат</string>
+    <string name="subscriptions_info">Час для Dantotsu перевірити наявність нових епізодів / розділів\n(Менше часу споживає більше батареї)</string>
+    <string name="do_not_update">Не оновлювати</string>
+    <string name="loading_chap_number">Завантаження групи %1$s</string>
+    <string name="sort_by_release_date">Впорядкувати за датою випуску</string>
+    <string name="crop_borders">Обрізати кордон</string>
+    <string name="note">ПРИМІТКА</string>
+    <string name="manage_extension_repos">Управління репутаціями розширень</string>
+    <string name="installing_extension">Встановлення розширення</string>
+    <string name="installation_failed">Помилка встановлення: %1$s</string>
+    <string name="installation_complete">Встановлення завершено</string>
+    <string name="extension_has_been_installed">Розширення успішно встановлено.</string>
+    <string name="extension_installed">Розширення встановлено</string>
+    <string name="error_message">Помилка: %1$s</string>
+    <string name="install_step">Крок: %1$s</string>
+    <string name="review">Рецензія</string>
+    <string name="select_source">Виберіть джерело</string>
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="install_update">Встановити оновлення %1$s?</string>
+    <string name="beta_update">Бета </string>
+    <string name="update_available">Доступне оновлення</string>
+    <string name="discord_nothing_button">Показувати лише першу кнопку</string>
+    <string name="discord_dantotsu_button">Відображати dantotsu в другій кнопці</string>
+    <string name="discord_anilist_button">Замість цього показувати ваш профіль AniList</string>
+    <string name="discord_rich_presence">Rich Presence Discord</string>
+    <string name="stream_on_dantotsu">Потік на Дантоцу</string>
+    <string name="view_my_anilist">Переглянути мій AniList</string>
+    <string name="jobless_message">ЧОРТ! ТИ СПРАВДІ ТРУДОВИЙ\nТИ ДОСЯГНУВ КІНЦЯ</string>
+    <string name="file_manager_not_found">Не вдалося знайти файловий менеджер для відкриття SD карти</string>
+    <string name="error_loading_data">Помилка завантаження даних %1$s</string>
+    <string name="long_click_to_check_update">Довге натискання щоб перевірити наявність оновлень</string>
+    <string name="saved_to_path">Збережено в:\n%s</string>
+    <string name="setting_progress">✔️ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Будь ласка, увійдіть до облікового запису AniList !</string>
+    <string name="congrats_vro">Congrats Vro</string>
+    <string name="please_reload">Будь ласка, перезавантажте.</string>
+    <string name="copied_text">Скопійовано \"%1$s\"</string>
+    <string name="back_to_exit">Натисніть ще раз, щоб вийти</string>
+    <string name="back_button">Кнопка Назад</string>
+    <string name="anilist_not_found">Схоже, такого не було знайдено в Анілісті.</string>
+    <string name="disabled_auto_skip">Вимкнено автопропуск OP &amp; ED</string>
+    <string name="auto_skip">Auto Skipping OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Показати кнопки пропуску [сегменту]</string>
+    <string name="always_load_time_stamps">Завжди завантажувати часові мітки</string>
+    <string name="auto_hide_time_stamps">>Автоматично приховувати кнопки пропуску [сегменту]</string>
+    <string name="timestamps">Стрічки</string>
+    <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Вимагає увімкнених позначок часу</string>
+    <string name="hide_skip_button">Кнопка пропуску позначки зникне через 5 секунд</string>
+    <string name="copied_to_clipboard">Скопійовано до буфера обміну</string>
+    <string name="first_episode">Це перший епізод!</string>
+    <string name="reset_auto_update">Довгий тап на кнопку \"Редактор списку\", щоб скинути автооновлення</string>
+    <string name="autoplay_cancelled">Автовідтворення скасовано, взаємодії не з більш, ніж 1 хурка.</string>
+    <string name="auto_select_server_error">Не вдалося автоматично вибрати сервер, будь ласка, спробуйте ще раз!</string>
+    <string name="stream_selection_empty">Немає доступних потоків! Спробуйте інше джерело.</string>
+    <string name="logging_in_mal">Вхід до MAL</string>
+    <string name="getting_user_data">Отримання даних користувача</string>
+    <string name="no_next_episode">Не знайдено наступної серії!</string>
+    <string name="enable_banner_animations">Спробуйте ввімкнути \"Анімації банерів\" в налаштуваннях</string>
+    <string name="please_login_anilist">Будь ласка, увійдіть за допомогою Anilist!</string>
+    <string name="auto_update_reset">Прогрес автооновлення був скинутий</string>
+    <string name="cant_wait">Не можна чекати, чи не так? штраф Х (</string>
+    <string name="downloading">Завантажується…</string>
+    <string name="next_chapter_not_found">Наступний розділ не знайдено</string>
+    <string name="first_chapter">Це перший розділ!</string>
+    <string name="adult_stuff">Дорослий контент?( ͡° ͜ʖ ͡° )</string>
+    <string name="what_did_you_open">Що ви навіть відкрили?</string>
+    <string name="error_getting_data">Помилка отримання даних від програми Anilist.</string>
+    <string name="empty_response">Порожня відповідь! Можливо, Ваш Інтернет досяг успіху?</string>
+    <string name="error_loading_mal_user_data">Помилка при завантаженні даних користувача MAL</string>
+    <string name="error_loading_mal_data">Не вдалося завантажити дані з MAL</string>
+    <string name="error_loading_anilist_user_data">Помилка при завантаженні даних користувача Anilist</string>
+    <string name="episode_not_found">Не вдалося знайти епізод: %1$s</string>
+    <string name="list_updated">Список оновлено</string>
+    <string name="deleted_from_list">Видалено зі списку</string>
+    <string name="no_list_id">Не знайдено ID списку...</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">Не повідомляти знову про %1$s</string>
+    <string name="matagi_downloading">Завантаження Himitsu %1$s</string>
+    <string name="checking_for_update">Перевірка наявності оновлень</string>
+    <string name="dont_show_again">Не повідомляти знову для версії %1$s</string>
+    <string name="no_update_found">Оновлення не знайдено</string>
+    <string name="downloading_update">Завантаження Dantotsu %1$s</string>
+    <string name="permission_required">Будь ласка, дайте дозвіл на доступ до файлів та папок у налаштуваннях, та спробуйте ще раз.</string>
+    <string name="started_downloading">Почалося завантаження\n%1$s</string>
+    <string name="install_1dm">Будь ласка, встановіть 1ДМ</string>
+    <string name="install_adm">Встановіть ADM</string>
+    <string name="error_getting_image_data">Помилка отримання даних зображення</string>
+    <string name="loading_image_failed">Помилка завантаження зображення</string>
+    <string name="copied_device_info">Скопійовано інформацію про пристрій</string>
+    <string name="anilist_down">Схоже на те, що Аніліст не працює, спробуйте використати VPN, або можете зачекати поки він повернеться.</string>
+    <string name="failed_to_load_data">Не вдалося завантажити збережені дані %1$d</string>
+    <string name="access_not_available">Не вдалося отримати доступ</string>
+    <string name="mal_login_uri_not_found">Логін Mal : Uri не знайдено</string>
+    <string name="mal_login_code_challenge_not_found">Mal Login : codeChallenge не знайдено</string>
+    <string name="mal_login_code_not_present">Mal Login : Код не перенаправлений у URI</string>
+    <string name="refresh_token_load_failed">Ключ оновлення: Не вдалося завантажити збережений токен</string>
+    <string name="refreshing_token_failed">Оновити токен не вдалося</string>
+    <string name="episode_release_countdown">Епізод %1$d буде випущено через</string>
+    <string name="chapter_number">Глава %1$d</string>
+    <string name="chapter_release_timeout">%1$s доступний для</string>
+    <string name="time_format">%1$d днів %2$d hrs %3$d хв %4$d сек</string>
+    <string name="chapter_predication">New Chapter Мало бути %1$s</string>
+    <string name="chapter_delayed">Нова глава, здається, затримується</string>
+    <string-array name="sort_by">
+        <item>Рахунок</item>
+        <item>Популярне</item>
+        <item>У тренді</item>
+        <item>Нові релізи</item>
+        <item>А-Я</item>
+        <item>Я-А</item>
+        <item>Чистий біль</item>
+    </string-array>
+    <string name="main_role">ПРИЙНЯТИ</string>
+    <string name="supporting_role">ПІДТРИМУВАТИ</string>
+    <string name="status_finished">ЗАВЕРШЕНО</string>
+    <string name="status_releasing">ВИДАЛЕННЯ</string>
+    <string name="status_not_yet_released">НЕ ВИ ОНОВЛЕНО</string>
+    <string name="status_cancelled">СКАСУВАТИ</string>
+    <string name="status_hiatus">HIATUS</string>
+    <string name="type_adaptation">АДАПТАЦІЯ</string>
+    <string name="type_parent">ПАРЕНТ</string>
+    <string name="type_character">ПЕРСОНАЖА</string>
+    <string name="type_summary">SUMMARY</string>
+    <string name="type_alternative">АЛЬТЕРНАТО</string>
+    <string name="type_other">ІНШІ</string>
+    <string name="type_source">СУРЦІЯ</string>
+    <string name="type_contains">КОНТЕЙНИ</string>
+    <string name="read_on_dantotsu">Читати на Дантоцу</string>
+    <string name="watch_on_dantotsu">Дивитися на Дантоцу</string>
+    <string name="view_profile_in_dantotsu">Переглянути профіль у Dantotsu</string>
+    <string name="continue_episode">Продовжити: Епізод %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Філер</string>
+    <string name="continue_chapter">Продовжити : %1$s\n%2$s</string>
+    <string name="episode">"Епізод "</string>
+    <string name="episode_num">"Епізод %1$s"</string>
+    <string name="chapter">"Глава "</string>
+    <string name="chapter_num">"Глава %1$s"</string>
+    <string name="just_released">- Нові реліз!</string>
+    <string name="checking_subscriptions_title">Перевірка передплати</string>
+    <string name="user_list">Список %1$sз %2$s</string>
+    <string name="speed">Швидкість</string>
+    <string name="auto_update">Автоматичне оновлення прогресу для %1$s?</string>
+    <string name="continue_from">Продовжити з %1$s?</string>
+    <string name="title_update_progress">Оновити прогрес у AniList?</string>
+    <string name="incognito_will_not_update">Режим інкогніто все одно ігноруватиме прогрес.</string>
+    <string name="dont_ask_again">"Не питати знову для %1$s"</string>
+    <string name="default_speed">Швидкість за замовчуванням</string>
+    <string name="default_resize_mode">Типовий режим зміни розміру</string>
+    <string name="primary_sub_color">Основний колір</string>
+    <string name="outline_sub_color">Колір вкладеного обрису</string>
+    <string name="outline_type">Тип обрису</string>
+    <string name="subtitle_font">Шрифт субтитрів</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="ok">Гаразд</string>
+    <string name="reset">Reset</string>
+    <string name="close">Закрити</string>
+    <string name="no_chapter">Без розділу</string>
+    <string name="content_18">Увімкніть 18+ контент від налаштувань анілістів</string>
+    <string name="available">Доступно</string>
+    <string name="lets_go">Ходімо</string>
+    <string name="cope">Каппа</string>
+    <string name="watched_num">"Переглянуто "</string>
+    <string name="read_num">"Прочитано "</string>
+    <string name="episodes_out_of">" з "</string>
+    <string name="chapters_out_of">" з "</string>
+    <string name="episodes_total_of">"Всього "</string>
+    <string name="chapters_total_of">"Всього "</string>
+    <string name="no_description_available">"Опис недоступний"</string>
+    <string-array name="manga_directions">
+        <item>Верхня донизу</item>
+        <item>Справа наліво</item>
+        <item>Знизу вгору</item>
+        <item>Зліва направо</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Вивантажені</item>
+        <item>Безперервна сторінка</item>
+        <item>Безперервний</item>
+    </string-array>
+    <string name="selected">Вибрано</string>
+    <string name="found">Знайдено</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">\n\"__Birthday:__ \"</string>
+    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="male">Чоловік</string>
+    <string name="female">Жінка</string>
+    <string name="question_1">Що таке Дантоцу?</string>
+    <string name="answer_1">Dantotsu створено з попелу Saikou та базується на простоті та сучасній елегантності. Це клієнт лише для Anilist, який також дозволяє вам стрімінг та завантаження аніме / манги через розширення. \n>Dantotsu (断トツ; Dan-totsu) буквально означає найкращий з найкращих японською мовою. Ну, ми хотіли б сказати, що це найкращий відкритий додаток з відкритим вихідним кодом для аніме та манги на Android, але, ей, Спробуйте самі та судіть!</string>
+    <string name="question_2">Які особливості Дантоцу?</string>
+    <string name="answer_2">Деякі згадані особливості Дантоцу мають\n\n- легкий та функціональний спосіб до обох дивитися аніме і читати манга та світлі романи, Ad Free.\n- Повністю відкрита програма з відкритим кодом з хорошим інтерфейсом &amp; Анімації\n- Плагін сторонніх розробників підтримує \n- синхронізація аніме та манга в режимі реального часу з AniList. Легка категоризація аніме і манга на основі поточного статусу. (Підтримується AniList)\n- Всі шоу, що використовують ретельно і часто оновлюються список усіх трендів, популярних і поточних аніме на основі балів.\n- перегляд обширної інформації про аніме шоу, фільми та заголовки манги. Він також включає можливість відліку переходу до наступного епізоду аніме повітряного польоту. (Підтримується AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Яка різниця між стабільними, бета та альфа версіями?</string>
+    <string name="answer_3">У цьому форку немає окремих треків. Завантажена версія з [repository](https://github.com/RepoDevil/Himitsu) є однаковою з [AbandonedCart](https://github. om/AbandonedCart) запущено. Якщо ви знайшли помилки і вже оновилися до останньої версії, можете відправити [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Дантоцу доступний для ПК?</string>
+    <string name="answer_4">В даний час немає (для Windows та Linux). Немає жодної оцінки, коли вона буде доступна. Але ви можете завантажити будь-який емулятор Android і запустити Dantotsu на ньому. Для користувачів Windows 11 вони можуть використовувати підсистему Windows для Android (WSA) для запуску Dantotsu в Windows.</string>
+    <string name="question_5">Дантоцу доступний для iOS?</string>
+    <string name="answer_5">Ні, найкраще, що ми можемо зробити, це перенести Дантоцу на яблуко.</string>
+    <string name="question_6">Чому моя статистика не оновлюється?</string>
+    <string name="answer_6">Це тому, що він автоматично оновлюється кожні 48 годин (за допомогою Anilist). Якщо вам дійсно потрібно оновити свою статистику, ви можете примусово оновити її після переходу за цим [посиланням](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Як завантажити анімацію?</string>
+    <string name="answer_7">Є два методи завантаження наразі. Один внутрішній, а інший зовнішній. Якщо ви завантажуєте внутрішньо, то його можна переглянути у програмі, але лише програма може відкрити цю серію, ви не можете перемістити її або поділитися нею. Інша опція - використовувати зовнішнє завантаження. Для цього потрібен менеджер завантажень для завантаження та окремий відеопрогравач для перегляду. Зовнішні завантаження можна поділитися, але ви не можете переглянути їх у програмі Dantotsu.\n\n•Для внутрішнього завантаження:\n\n1. Натисніть кнопку завантаження.\n2. Виберіть сервер та якість відео.\n3. Отримайте задоволення.\n\n•Для зовнішнього завантаження:\n\n1. Завантажте 1DM або ADM з Google Play Store.
+        \n2. Увійдіть у програму, надайте доступ до сховища та встановіть свої уподобання (швидкість завантаження, шлях для завантаження тощо(опціонально))
+        \n3. Тепер перейдіть до \`Dantotsu > Налаштування > Загальні > Менеджери завантаження\` та виберіть менеджер завантаження, який ви щойно налаштували.
+        \n4. Перейдіть до потрібної серії та натисніть на значок завантаження будь-якого сервера. Може з\'явитися спливаюче вікно, щоб знову встановити свої уподобання, просто натисніть \"Завантажити\" та воно буде збережено за вказаним шляхом.
+
+        \n\nПримітка: Прямі завантаження також можливі без менеджера, але це не рекомендується.
+\n\nNerd Note: Внутрішньо завантажені серії зберігаються в \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nВи не можете відтворювати ці файли, оскільки вони у форматі \`.exo\`, розбиті на сотні частин та зашифровані.</string>
+    <string name="question_9">Як увімкнути NSFW вміст?</string>
+    <string name="answer_9">Ви можете увімкнути NSFW вміст, включивши з цього [link](https://anilist.co/settings/media). Ви також повинні увімкнути розширення NSFW в \`Налаштування &gt; Розширення &gt; NSFW розширень\` </string>
+    <string name="question_10">Як імпортувати мої списки MAL/KitSу до Anilist?</string>
+    <string name="answer_10">Ось як це зробити,\n\nЕкспорт:\n\n1. Перейдіть за цим [посиланням](https://malscraper.azurewebsites.net).\n2. Вкажіть своє ім\'я користувача Kitsu/MAL та завантажте як список аніме, так і мангу. (Вони будуть у форматі XML)\nПримітка: Ви повинні вказати ім\'я користувача вибраного вами трекера\n\nІмпорт:\n\n1. Після експорту списку аніме та манги з Kitsu/MAL, перейдіть за цим [посиланням](https://anilist.co/settings/import) \n2. Виберіть/перетягніть файл XML аніме у відповідне поле вище.\n|→Виберіть/перетягніть файл XML манги у відповідне поле нижче.</string>
+    <string name="question_11">Як імпортувати мої списки Anilist/Kitsu до MAL?</string>
+    <string name="answer_11">Ось як це зробити,\n\nЕкспорт:\n\n1. Перейдіть за цим [посиланням](https://malscraper.azurewebsites.net/). \n2. Вкажіть своє ім\'я користувача Anilist/Kitsu у полі \'Ім\'я користувача/Kitsu ID\'. \n3. Виберіть тип списку та увімкніть \'оновлення при імпорті\'. \n4. Завантажте файл; він буде у форматі .xml. Будьте впевнені, що завантажили як список аніме, так і манги.\n\nІмпорт:\n1. Щоб імпортувати його у свій обліковий запис MAL, перейдіть за цим [посиланням](https://myanimelist.net/import.php) та виберіть \'Імпорт з MyAnimeList\' як тип імпорту. \n2. Натисніть \'Оберіть файл\' та виберіть завантажений файл XML аніме/манги. \n3. Натисніть \'Імпортувати дані\'. \nВітаємо, ви щойно імпортували обраний список у свій обліковий запис MAL.</string>
+    <string name="question_12">Чому я не можу знайти певну назву аніме/манга?</string>
+    <string name="answer_12">Скажімо, ви шукаєте Кастлеванії в Дантоцу. Але Аніліст її не має, тому Дантоцу теж не є.\nРішення даної проблеми є таким чином:\n1) Перейдіть до будь-якого аніме у вашому списку.\n2) Перейти в розділ \"Так\".\n3) Виберіть будь-яке джерело та натисніть на \'Неправильний заголовк?\'.\n4) Тепер пошукайте Каслванію (аніме, що ви шукали) та виберіть його.\n5) ENJOY!\n\nЯкщо ви не можете знайти аніме навіть через ці кроки, тоді це погана удача для вас, будування. Навіть джерело не має його. Спробуйте інше джерело.</string>
+    <string name="question_13">Як виправити джерела, обравши абсолютно неправильний заголовок?</string>
+    <string name="answer_13">Дантоцу не хостило нічого, крім покладатися на інші джерела. При відображенні епізодів, він вибирає 1-й результат, який дає джерело після пошуку назви. Дантоцу не виявляє, чи це законно, чи ні. Отже, за це ми маємо \"Невірний Title?\" якраз під назвою джерела (над макетами). Ви можете вибрати правильний результат/title натиснувши на нього і насолоджуйтеся його епізодами.</string>
+    <string name="question_14">Як читати кольорові мангази?</string>
+    <string name="answer_14">Ви шукаєте кольорову мангу? Вибачте, але дуже мала кількість манги має кольорову версію. Ті, у яких є кольорова версія, також доступні в Dantotsu. Скажімо, ви хочете прочитати кольорову версію Chainsaw Man. Тоді слідуйте нижченаведеним крокам ↓\n\n1) Перейдіть до Chainsaw Man\n2) Натисніть \'Читати\'\n3) Виберіть будь-який працюючий джерело\n4) Натисніть \'Неправильний заголовок\'\n5) Виберіть кольорову версію Chainsaw Man\n6) Насолоджуйтесь\n\nПримітка: Багато джерел не мають доступної кольорової версії, навіть якщо вона доступна десь в Інтернеті. Так що спробуйте інше джерело. Якщо ні одне з джерел не має її, то кольорова версія вашої бажаної манги просто не існує.</string>
+    <string name="question_15">Помилка рукостискання? Чому немає завантаження часів?</string>
+    <string name="answer_15">Ви можете виправити цю проблему, увімкнувши \'Проксі\' у \n\`Налаштування > Аніме > Налаштування плеєра > Відмітки часу > Проксі\`.\nЯкщо відмітки часу все ще не завантажуються, але спливає вікно з помилкою з рукостисканням виправлено, то епізод, який ви дивитеся, просто ще не має відміток часу для нього.</string>
+    <string name="question_16">Хіба не знайдено нічого з джерела?</string>
+    <string name="answer_16">Деякі базові виправлення: \n\n• Оновіть ваші розширення, якщо вони є. \n• Відкрийте Веб-вид і зачекайте, доки він завантажиться. Після завершення завантаження поверніться назад. (Якщо Веб-вид показує помилку 404 або щось подібне, ймовірно, ваше джерело не працює)\n• Використовуйте інший DNS з вашими налаштуваннями, краще, Libre. \n• Спробуйте довірчий VPN. (Вам доведеться повторити крок 1 після цього) \n\nЯкщо жоден з вищезазначених кроків не допомагає, то використовуйте інше джерело або приєднуйтесь до нашого [discord](https://discord.gg/invite/4HPZ5nAWwM) за допомогою.</string>
+    <string name="question_17">Деякі корисні поради і хитрощі</string>
+    <string name="answer_17">Наступне представляє деякі поради та фішки, які ви можете знати або не знати про - \n \n \n - Натискаючи та утримуючи логотип Dantotsu в налаштуваннях, ви можете перевірити, чи є які-небудь нові оновлення вручну. \n \n - Утримуючи повідомлення про помилку/тег/синонім або заголовок, ви можете скопіювати його. \n \n - Ви можете відкрити епізод іншими програмами, утримуючи будь-який сервер для цього епізоду. Це допомагає відтворювати епізод за допомогою інших відеопрогравачів або завантажувати епізод за допомогою менеджерів завантаження. \n \n - Ви можете налаштувати власні списки за допомогою цього [посилання](https://anilist.co/settings/lists). (вам потрібно увійти) \n \n - Якщо ваш епізод/глава не продовжується автоматично після того, як ви завершили перегляд/читання його, тоді утримуйте статус-смужку (планування/повторення/перегляд кнопки) тієї аніме/манги. Наступного разу, коли ви почнете главу/закінчите епізод, ви натрапите на спливаюче вікно. Натисніть там так.</string>
+    <string name="subscribed_notification">Підписатися! Отримання повідомлень, коли нові серії будуть випущено на %1$s.</string>
+    <string name="unsubscribed_notification">Відписатись від підписки, ви не отримаєте ніяких сповіщень.</string>
+    <string name="episode_plural">Епізоди</string>
+    <string name="episode_singular">Епізод</string>
+    <string name="chapter_singular">Глава</string>
+    <string name="chapter_plural">Глави</string>
+    <string name="filter_status">"Статус : %1$s"</string>
+    <string name="filter_source">"Джерело: %1$s"</string>
+    <string name="filter_format">"Формат : %1$s"</string>
+    <string name="filter_country">"Країна : %1$s"</string>
+    <string name="filter_sort">"Сортувати: %1$s"</string>
+    <string name="filter_exclude">"Не %1$s"</string>
+    <string name="search_by_image">Пошук за зображенням</string>
+    <string name="upload_image">Завантажити зображення</string>
+    <string name="similarity_text">Схожість: %1$s %%</string>
+    <string name="time_range">Від %1$s до %2$s</string>
+    <string name="invalid_url">Недопустимий URL</string>
+    <string name="no_anilist_id_found">Не знайдено Anilist ID</string>
+    <string name="error_loading_image">Помилка при завантаженні зображення</string>
+    <string name="discord_logout_success">Ви успішно вийшли</string>
+    <string name="discord_try_again">Спробуйте увійти знову</string>
+    <string name="error_loading_discord_user_data">Помилка при завантаженні даних користувача Discord</string>
+    <string name="discord_warning"><![CDATA[Увійшовши в систему, ваш Discord тепер буде показувати, що ви дивитеся та читаєте на Dantotsu\n\nЯкщо ви у невидимому режимі, увійшовши в систему, ви станете онлайн, коли відкриєте Dantotsu.\n\nЦе порушує правила Discord. \nХоча Discord ніколи не забороняв нікого за використання власного Custom Rich Presence (що використовує Dantotsu), ви все ще попереджені.\n\nDantotsu не несе відповідальності за будь-які наслідки для вашого облікового запису.]]></string>
+    <string name="warning">Застереження</string>
+    <string name="view_anime">Перегляд аніме</string>
+    <string name="view_manga">Перегляд Манги</string>
+    <string name="force_legacy_installer">Примусовий встановлювач імітацій</string>
+    <string name="extensions_settings">Розширення</string>
+    <string name="NSFWExtention">NSFW розширення</string>
+    <string name="skip_loading_extension_icons">Пропустити завантаження піктограм розширень</string>
+    <string name="use_material_you">Виготовлення матеріалу</string>
+    <string name="use_app_theme">Використовувати тему</string>
+    <string name="extension_specific_dns">Розширюваний DNS</string>
+    <string name="theme_">Тема:</string>
+    <string name="user_agent">Ідентифікатор браузера</string>
+    <string name="custom_theme">Спеціальна тема:</string>
+    <string name="use_custom_theme">Задана тема</string>
+    <string name="use_unique_theme_for_each_item">Тема як аніме/манга </string>
+    <string name="oled_theme_variant">OLED тема</string>
+    <string name="installed_anime">Аніме</string>
+    <string name="available_anime">Доступ аніме</string>
+    <string name="installed_manga">Встановлена манга</string>
+    <string name="color_picker">Палітра кольорів</string>
+    <string name="random_selection">Випадкове виділення</string>
+    <string name="incognito_mode">Анонімний режим</string>
+    <string name="appwidget_text">ПРИКЛАД</string>
+    <string name="configure">Настроїти</string>
+    <string name="add_widget">Додати віджет</string>
+    <string name="app_widget_description">Це опис віджету</string>
+    <string name="upcoming_anime">Наступного аніме</string>
+    <string name="airing_image">Авіаційне зображення</string>
+    <string name="anime_downloads">аніме-завантаження</string>
+    <string name="purge_anime_downloads">Видалити всі аніме завантаження</string>
+    <string name="purge_manga_downloads">Видалити всі завантаження манги</string>
+    <string name="purge_novel_downloads">Видалити всі Завантаження Новачок</string>
+    <string name="requires_android_12">Потрібно Android 12+</string>
+    <string name="share_username_in_logs">Поширити ім\'я користувача в логах</string>
+    <string name="pinned_sources">Закріплені джерела</string>
+    <string name="backup_restore">Резервне копіювання та відновлення</string>
+    <string name="restore_settings">Імпортувати налаштування</string>
+    <string name="restore_settings_underline"><u>Відновити налаштування</u></string>
+    <string name="try_internal_cast_experimental">Спробуйте внутрішній запис (експериментальний)</string>
+    <string name="faq_desc">Загальні питання щодо Хімітсу</string>
+    <string name="check_app_updates_desc">Перевірити Github на оновлення додатку</string>
+    <string name="share_username_in_logs_desc">Включити ім\'я користувача до звіту про аварії</string>
+    <string name="devs_desc">Хіміцу є власними, неоплаченими працівниками</string>
+    <string name="forks_desc">Проекти, отримані від Дантоцу</string>
+    <string name="disclaimer_desc">Щось, що майте на увазі</string>
+    <string name="use_foldable">Використання складених макетів</string>
+    <string name="use_foldable_desc">Контент адаптується до конфігурації шарніра</string>
+    <string name="add_shortcuts">Додайте ярлики в запускач</string>
+    <string name="add_shortcuts_desc">Додає значок до іконки довгого натискання</string>
+    <string name="comments">Коментарі</string>
+    <string name="newest">Найновіші</string>
+    <string name="oldest">Найдавніші</string>
+    <string name="highest_rated">Найвищий рейтинг</string>
+    <string name="lowest_rated">Найнижчий рейтинг</string>
+    <string name="compare"><u>Порівняти</u></string>
+    <string name="view_following">Дивитись слідування</string>
+    <string name="menu">меню</string>
+    <string name="view_followers">Переглянути підписників</string>
+    <string name="no_fav_anime">У користувача немає улюблених аніме</string>
+    <string name="no_fav_manga">Користувач не має улюбленої манги</string>
+    <string name="fav_character">Улюблені символи</string>
+    <string name="fav_staff">Улюблений персонал</string>
+    <string name="stats">Статистика</string>
+    <string name="days_watched">Днів переглянуто</string>
+    <string name="total_anime">Аніме</string>
+    <string name="anime_mean_score">Аніме середній бал</string>
+    <string name="volume_read">Звук прочитаний</string>
+    <string name="total_manga">Тотальна манга</string>
+    <string name="manga_mean_score">Манга середній бал</string>
+    <string name="about_me">Про мене</string>
+    <string name="follow">Слідкувати</string>
+    <string name="following">Слідкую</string>
+    <string name="unfollow">Не стежити</string>
+    <string name="follows_you">Спостерігає за вами</string>
+    <string name="mutual">Взаємно</string>
+    <string name="success">Успіх</string>
+    <string name="error">Сталася помилка</string>
+    <string name="error_msg">Помилка: %1$s</string>
+    <string name="please_wait">Будь ласка, зачекайте</string>
+    <string name="upcoming">Майбутні</string>
+    <string name="no_shows_to_display">Немає серіалів</string>
+    <string name="no_media_to_display">Немає файлів для відображення</string>
+    <string name="extension_name">Ім\'я розширення</string>
+    <string name="extension_version">версія</string>
+    <string name="enter_password_to_decrypt_file">Введіть свій пароль, щоб розшифрувати файл</string>
+    <string name="show_rotate_button">Показувати кнопку повороту</string>
+    <string name="default_manga_settings">Стандартні параметри Manga</string>
+    <string name="use_dark_theme">Використовувати темну тему</string>
+    <string name="use_oled_theme">Використовувати OLED тему</string>
+    <string name="scanlators">Сканери</string>
+    <string name="exporting_requires_encryption">Експорт облікових даних вимагає пароль для шифрування.</string>
+    <string name="manga_queue">Черга манги (через WIP)</string>
+    <string name="anime_queue">Аніме Черга (WIP)</string>
+    <string name="no_offline_manga_found">Не знайдено мережевої манги</string>
+    <string name="sort">Упорядкувати</string>
+    <string name="download">Звантажити</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Встановлювати куки</string>
+    <string name="open_website">Відкрити сайт</string>
+    <string name="log_to_file">Записувати лог у файл</string>
+    <string name="logging_warning">Може викликати відставання. Увімкніть, лише якщо виникають проблеми.</string>
+    <string name="share_log">Натисніть, щоб поділитися поточним файлом журналу</string>
+    <string name="radius">Radius</string>
+    <string name="sampling">Вибірка</string>
+    <string name="blur_banners">Розмиття банерів</string>
+    <string name="blur">Blur</string>
+    <string name="hide_scroll_bar">Сховати панель Прокрутки</string>
+    <string name="view_on_anilist">Переглянути у Анілісті</string>
+    <string name="anilist_notification_filters">Виберіть категорію, щоб ігнорувати</string>
+    <string name="anilist_notifications_checking_time">Частота оновлення сповіщень %1$s</string>
+    <string name="comment_notification_checking_time">Частота оновлення сповіщень %1$s</string>
+    <string name="activities">Події</string>
+    <string name="incorrect_password">Неправильний пароль</string>
+    <string name="password_cannot_be_empty">Пароль не може бути порожнім</string>
+    <string name="unknown_file_type">Невідомий тип файлу</string>
+    <string name="error_importing_settings">Помилка імпорту налаштувань</string>
+    <string name="download_manager">Менеджер завантажень</string>
+    <string name="enter_password">Введіть пароль</string>
+    <string name="invalid_file_type">Неприпустимий тип файлу</string>
+    <string name="purge_confirm">Ви дійсно бажаєте очистити всі завантаження %1$s?</string>
+    <string name="delete_fail_reason">Не вдалося видалити через… %1$s</string>
+    <string name="hide_replies">Приховати відповіді</string>
+    <string name="view_reply">Перегляд відповіді</string>
+    <string name="view_replies">Подивитися відповіді</string>
+    <string name="view_replies_count">Переглянути відповіді %1$d</string>
+    <string name="replying_to">Відповідь до %1$s</string>
+    <string name="delete_comment">Видалити коментар</string>
+    <string name="delete_comment_confirm">Ви впевнені, що хочете видалити цей коментар?</string>
+    <string name="comment_deleted">Коментар видалено</string>
+    <string name="ban_user">Забанити</string>
+    <string name="ban_user_confirm">Ви впевнені, що хочете заблокувати цього користувача?</string>
+    <string name="user_banned">Користувача заблоковано</string>
+    <string name="report_comment">Поскаржитися на коментар</string>
+    <string name="report_comment_confirm">Повідомляти про тільки коментарі, які порушують правила. Ви впевнені, що хочете повідомити про цей коментар?</string>
+    <string name="comment_reported">Коментар повідомлено</string>
+    <string name="list">Список</string>
+    <string name="grid">Сітка</string>
+    <string name="compact">Компактний</string>
+    <string name="webview_not_installed">WebView не встановлено</string>
+    <string name="video_quality">Якість: %1$dp</string>
+    <string name="size_unknown">Невідомий розмір</string>
+    <string name="mb_size">%1$s МБ</string>
+    <string name="button_restore">Відновити</string>
+    <string name="button_backup">Резервне копіювання</string>
+    <string name="no_location_selected">Не вибрано жодного розташування</string>
+    <string name="do_it">Зробіть це!</string>
+    <string name="password">Пароль</string>
+    <string name="anilist_broken_title">Внутрішня помилка сервера!</string>
+    <string name="anilist_broken">AniList, схоже, не реагує і функціональність будуть надто обмежені. Ви б хотіли закрити додаток та спробувати ще раз?\n</string>
+    <string name="search_title">Шукати %1$s</string>
+    <string name="profile_stats_widget">Відстежуйте поступ безпосередньо з головного екрану</string>
+    <string name="anime_watched">Аніме</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Глави</string>
+    <string name="episodes_watched_n">Епізоди</string>
+    <string name="loading">Завантаження…</string>
+    <string name="user_stats">Статистика %1$s</string>
+    <string name="please">Будь ласка</string>
+    <string name="log_in">увійти в</string>
+    <string name="or_join">або приєднайтеся</string>
+    <string name="audio_tracks">Аудіотреки</string>
+    <string name="disabled_track">\[💬\] Вимкнено</string>
+    <string name="invalid_track">\[!?\] Неприпустимий</string>
+    <string name="unknown_track">\[%1$s\] Невідомий</string>
+    <string name="top_background_color">Колір верхнього фону</string>
+    <string name="bottom_background_color">Колір тла внизу</string>
+    <string name="countdown_text_color">Колір тексту зворотнього відліку</string>
+    <string name="title_color">Колір заголовку</string>
+    <string name="stat_text_color">Колір тексту статистики</string>
+    <string name="flipper_color">Колір Flipper</string>
+    <string name="placeholder">Мітка-заповнювач</string>
+    <string name="anime_add_repository">Додати аніме репозиторій</string>
+    <string name="manga_add_repository">Додати мангу Репо</string>
+    <string name="novel_add_repository">Додати новий Репо</string>
+    <string name="edit_repositories">Редагувати репозиторії</string>
+    <string name="rem_repository">Видалити репозиторій?</string>
+    <string name="trending_movies">Популярні фільми</string>
+    <string name="include_list">Включити список</string>
+    <string name="top_rated">Найвищий рейтинг</string>
+    <string name="most_favourite">Найулюбленіші</string>
+    <string name="trending_manhwa">Популярна Манхва</string>
+    <string name="liked_by">Сподобалося</string>
+    <string name="adult_only_content">Лише для дорослих</string>
+    <string name="report">Доповісти</string>
+    <string name="ban">Бан</string>
+    <string name="activity_label">Активність</string>
+    <string name="dir_error">Не вдалося встановити ваш шлях</string>
+    <string name="dir_access">Доступ до завантажень</string>
+    <string name="dir_access_msg">Будь ласка виберіть теку для збереження завантажень</string>
+    <string name="download_subtitle">Завантажити субтитри</string>
+    <string name="change_download_location">Змінити розташування для завантажень</string>
+    <string name="download_location_msg">Ви впевнені, що хочете змінити розташування завантаження?\nСтарі завантаження більше недоступні.</string>
+    <string name="voice_actors">Голосові актори</string>
+    <string name="download_permission_required">Для завантаження необхідний дозвіл</string>
+    <string name="media">Медіа</string>
+    <string name="users">Спільноти</string>
+    <string name="social">Соціальні мережі</string>
+    <string name="auto_skip_recap">Auto Skip Recap</string>
+    <string name="use_anilist_icon">Використовувати піктограму AniList</string>
+    <string name="exo_source_exception">Виняток джерела: %1$s</string>
+    <string name="exo_decoding_failed">Декодування не вдалося: %1$s</string>
+    <string name="exo_player_error">Помилка гравця: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL і Discord.\nЩо ще вам знадобиться?</string>
+    <string name="theme_desc">Змініть яскравість вашої програми</string>
+    <string name="extensions_desc">Керуйте вашим колекцією репозиторіїв</string>
+    <string name="common_desc">Звантаження, DNS, і за замовчуванням</string>
+    <string name="anime_desc">Виберіть, як ви дивитеся</string>
+    <string name="manga_desc">Виберіть, як ви читали</string>
+    <string name="notifications_desc">Налаштування новин та оновлень</string>
+    <string name="system_desc">Оновлення та корисні утиліти</string>
+    <string name="about_desc">Дізнатися більше про Хімітсу</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Доповнення - це додаткові модулі функцій DantotS.</string>
+    <string name="torrent_addon">Торент-Аддон</string>
+    <string name="enable">Увімкнено</string>
+    <string name="anime_downloader_addon">Додаток для завантаження Anime</string>
+    <string name="loaded_successfully">Завантажено успішно</string>
+    <string name="not_installed">Не встановлено</string>
+    <string name="torrent_extension_not_supported">Розширення торенту не підтримується на цьому пристрої</string>
+    <string name="update_addon">Оновити додаток</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Додаток для завантаження не знайдено</string>
+    <string name="default_novel_settings">Типові параметри листопада</string>
+    <string name="line_height">Висота лінії</string>
+    <string name="margin">Відступ</string>
+    <string name="maximum_inline_size">Максимальний розмір вбудованого</string>
+    <string name="maximum_column_width">Максимальна ширина колонки (по горизонтальній писемності) або висоті (вертикальне записування)</string>
+    <string name="maximum_block_size">Максимальний розмір блоку</string>
+    <string name="maximum_height">Максимальна висота (по горизонтальній писемності) або ширині (вертикальне записування)</string>
+    <string name="global">Глобальний</string>
+    <string name="china">Китай</string>
+    <string name="south_korea">Південна Корея</string>
+    <string name="japan">Японія</string>
+    <string name="taiwan">Тайвань</string>
+    <string name="something">Щось</string>
+    <string name="image">Зображення</string>
+    <string name="sort_score">Рахунок</string>
+    <string name="popular">Популярне</string>
+    <string name="trending">У тренді</string>
+    <string name="new_releases">Нові релізи</string>
+    <string name="a_z">А-Я</string>
+    <string name="z_a">Я-А</string>
+    <string name="pure_pain">Чистий біль</string>
+    <string name="add_a_comment">Додати коментар...</string>
+    <string name="type">Тип</string>
+    <string name="view">Дивитись</string>
+    <string name="count">КОУНТ</string>
+    <string name="open">Відкриті</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Відповідь</string>
+    <string name="time">Час</string>
+    <string name="player_settings_desc">Всі налаштування пов\'язані з гравцем</string>
+    <string name="purge_anime_downloads_desc">Видалити всі завантажені аніме</string>
+    <string name="prefer_dub_desc">Виберіть медіа, що отримала назву за замовчуванням</string>
+    <string name="show_yt_desc">Відображати посилання на YouTube для підтримуваних медіа</string>
+    <string name="include_list_anime_desc">Внести елементи списку у програму вивчення аніме</string>
+    <string name="ui_settings_desc">Всі налаштування, пов\'язані з інтерфейсом</string>
+    <string name="download_manager_select_desc">Менеджер за замовчуванням для завантаження аніме</string>
+    <string name="backup_restore_desc">Створити та відновити резервні копії вибраних налаштувань</string>
+    <string name="change_download_location_desc">Змінювати місцезнаходження при збереженні завантажень</string>
+    <string name="always_continue_content_desc">Продовжити предмети де ви зупинилися</string>
+    <string name="search_source_list_desc">Переміститися на наступний сервер, якщо вміст не знайдено</string>
+    <string name="recentlyListOnly_desc">Показувати лише елементи списку в останній вкладці</string>
+    <string name="adult_only_content_desc">Показувати лише матеріали для дорослих на сторінці вивчення</string>
+    <string name="anime_add_repository_desc">Додати репозиторії розширень Anime до колекції</string>
+    <string name="manga_add_repository_desc">Додати репозиторії розширення Manga до колекції</string>
+    <string name="user_agent_desc">Змінити агент користувача за замовчуванням</string>
+    <string name="force_legacy_installer_desc">Використовувати наміри для запиту на встановлення пакунка</string>
+    <string name="skip_loading_extension_icons_desc">Не завантажувати піктограми розширень в менеджері</string>
+    <string name="NSFWExtention_desc">Вимкнення блоків будь-якого розширення з будь-яким вмістом 18+</string>
+    <string name="reader_settings_desc">Всі налаштування, пов\'язані з Читачем</string>
+    <string name="purge_manga_downloads_desc">Видалити всі завантажені манги</string>
+    <string name="purge_novel_downloads_desc">Видалити всі завантажені Новелі</string>
+    <string name="include_list_desc">Включити елементи списку у Manga перегляд</string>
+    <string name="anilist_notification_filters_desc">Виберіть категорію для ігнорування</string>
+    <string name="anilist_notifications_checking_time_desc">Встановити частоту для перевірки повідомлень Anilist</string>
+    <string name="comment_notification_checking_time_desc">Встановити частоту, яку слід перевірити для коментарів</string>
+    <string name="notification_for_checking_subscriptions_desc">Показувати сповіщення про перевірку підписок</string>
+    <string name="use_alarm_manager_reliable_desc">Використовувати для обходу оптимізатора батареї</string>
+    <string name="oled_theme_variant_desc">темрява, коли надходить</string>
+    <string name="use_material_you_desc">Використовуйте той же колір, що і ваші шпалери</string>
+    <string name="use_unique_theme_for_each_item_desc">Використовувати колір з банера медіа</string>
+    <string name="use_custom_theme_desc">Використовувати свій власний колір для теми</string>
+    <string name="color_picker_desc">Виберіть колір</string>
+    <string name="install_torrent_addon">Встановити Торрент Аддон</string>
+    <string name="failed_ext_install_conflict">Не вдалося встановити розширення через конфлікт</string>
+    <string name="no_video_selected">Відео не вибране</string>
+    <string name="download_extension_not_available">Завантажити розширення недоступне</string>
+    <string name="feed">Стрічка подій</string>
+    <string name="profile">Анкета</string>
+    <string name="epub_download_exception">Виключення під час завантаження .epub: %1$s</string>
+    <string name="novel_download_progress">Прогрес завантаження Novel</string>
+    <string name="download_started">Завантаження розпочато</string>
+    <string name="downloads_completed">Всі завантаження завершено</string>
+    <string name="pending_downloads">Очікувані завантаження: %1$d</string>
+    <string name="reading">ЧИТАННЯ</string>
+    <string name="watching">ПЕРЕВАГЛЕННЯ</string>
+    <string name="avatar">%1$s\ [Аватар]</string>
+    <string name="cover">%1$s\ [Обкладинка]</string>
+    <string name="banner">%1$s\ [Банер]</string>
+    <string name="update_webview">Будь ласка, оновіть WebView з Google Play</string>
+    <string name="update_webview_version">Необхідно оновити Webview версії %1$d</string>
+    <string name="webview_not_found_version">Не вдалося знайти версію WebView %1$s</string>
+    <string name="webview_not_found">Не вдалося знайти інстальовану бібліотеку WebView</string>
+    <string name="multi">Мульти</string>
+</resources>

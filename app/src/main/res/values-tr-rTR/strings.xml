@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="tr">
+    <string name="slogan">Android için YENİ En İyi Anime ve Manga uygulaması.</string>
+    <string name="login">Oturum Aç</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="conversion_title">Tekrar Hoş Geldiniz!</string>
+    <string name="conversion_message">Eski bir paketiniz olduğu görünüyor.\nLütfen \"Yedekle\" seçeneğini seçerek eski sürümü açın ve yedekleme işlemi yapın. Daha sonra bu uygulamaya geri dönüp \"Ayarları Geri Yükle\" seçeneğini kullanabilirsiniz.</string>
+    <string name="backup">Yedekle</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Anime\'ye Göz At</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Manga\'ya Göz At</string>
+    <string name="novels">Romanlar</string>
+    <string name="info">Bilgi</string>
+    <string name="watch">İzle</string>
+    <string name="read">Oku</string>
+    <string name="language">Dil</string>
+    <string name="anime_list">Anime Listesi</string>
+    <string name="manga_list">Manga Listesi</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">İnternet Bağlantısı Yok</string>
+    <string name="no_internet_connection">İnternet Bağlantısı Yok\nÇevrimdışı mod mevcut</string>
+    <string name="refresh">Yenile</string>
+    <string name="search">Ara</string>
+    <string name="extension_search">Ters Kaynak Arama</string>
+    <string name="search_results">Arama Sonuçları</string>
+    <string name="sort_by">Şuna Göre Sırala</string>
+    <string name="genre">Tür</string>
+    <string name="top_score">En Yüksek Puan</string>
+    <string name="updated">Son Güncellenenler</string>
+    <string name="trending_anime">Trend Olan Anime</string>
+    <string name="popular_anime">Popüler Anime</string>
+    <string name="trending_manga">Trend Olan Manga</string>
+    <string name="trending_novel">Trend Olan Roman</string>
+    <string name="popular_manga">Popüler Manga</string>
+    <string name="username">Kullanıcı Adı</string>
+    <string name="chapters_read">Okunan Bölümler</string>
+    <string name="episodes_watched">İzlenen Bölümler</string>
+    <string name="continue_reading">Okumaya Devam Et</string>
+    <string name="continue_watching">İzlemeye Devam Et</string>
+    <string name="continue_media">Devam Et…</string>
+    <string name="recommended">Tavsiye Edilenler</string>
+    <string name="get_recommendations">Tavsiyeler Almak İçin Bir Anime veya Manga İzle/Oku</string>
+    <string name="empty">Tüm Bölümleri İzlediniz, Yeni Ne Zaman?</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="add">Listeye Ekle</string>
+    <string name="list_editor">Liste Düzenleyici</string>
+    <string name="add_fav">Favorilere Ekle</string>
+    <string name="notifications">Bildirimler</string>
+    <string-array name="keys">
+        <item>Okuyor</item>
+        <item>İzliyor</item>
+        <item>Tamamlandı</item>
+        <item>Duraklatıldı</item>
+        <item>Bırakıldı</item>
+        <item>Planlanıyor</item>
+        <item>Favoriler</item>
+        <item>Yeniden İzleme</item>
+        <item>Yeniden Okuma</item>
+        <item>Hepsi</item>
+    </string-array>
+    <string name="no_notifications">Daha fazla bildirim yok</string>
+    <string name="followers">Takipçiler</string>
+    <string name="social_in_media">Medyada sosyal istatistikler</string>
+    <string name="social_in_media_desc">Arkadaş derecelendirmelerini ve ilerlemeyi görüntüle</string>
+    <string name="status">DURUM</string>
+    <string-array name="status_anime">
+        <item>PLANLAMA</item>
+        <item>İZLENİYOR</item>
+        <item>TAMAMLANDI</item>
+        <item>TEKRAR İZLENİYOR</item>
+        <item>BEKLETİLDİ</item>
+        <item>VAZGEÇİLDİ</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>PLANLAMA</item>
+        <item>OKUNUYOR</item>
+        <item>TAMAMLANDI</item>
+        <item>TEKRAR OKUNUYOR</item>
+        <item>BEKLETİLDİ</item>
+        <item>VAZGEÇİLDİ</item>
+    </string-array>
+    <string name="progress">İLERLEME</string>
+    <string name="score">PUAN</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">BAŞLANGIÇ TARİHİ</string>
+    <string name="completed_at">TAMAMLAMA TARİHİ</string>
+    <string name="save">Kaydet</string>
+    <string name="delete">Sil</string>
+    <string name="remove">Kaldır</string>
+    <string name="name">Ad</string>
+    <string name="name_romaji">Ad Romaji</string>
+    <string name="mean_score">Ortalama Puan</string>
+    <string name="format">Format</string>
+    <string name="status_title">Durum</string>
+    <string name="total_eps">Toplam Bölümler</string>
+    <string name="episodes"> Bölüm(ler)</string>
+    <string name="chapters"> Bölüm</string>
+    <string name="total_divider"> | %1$s</string>
+    <string name="total_chaps">Toplam Bölümler</string>
+    <string name="ep_duration">Ortalama Süre</string>
+    <string name="min">" dk"</string>
+    <string name="season">Sezon</string>
+    <string name="start_date">Başlangıç Tarihi</string>
+    <string name="end_date">Bitiş Tarihi</string>
+    <string name="source">Kaynak</string>
+    <string name="main_studio">Stüdyo</string>
+    <string name="genres">Türler</string>
+    <string name="description">Özet</string>
+    <string name="characters">Karakterler</string>
+    <string name="relations">İlişkiler</string>
+    <string name="staff">Personel</string>
+    <string name="favourites">Favoriler</string>
+    <string name="popularity">Popülerlik</string>
+    <string name="roles">Roller</string>
+    <string name="details">Detaylar</string>
+    <string name="play_yt">Youtube\'da Oynat</string>
+    <string name="eps">Bölümler</string>
+    <string name="ep">Bölüm</string>
+    <string name="chaps">Bölümler</string>
+    <string name="chap">Bölüm</string>
+    <string name="wrong"><u>Yanlış Başlık mı?</u></string>
+    <string name="source_not_found">        Bir şey bulunamadı X( \n
+        Başka bir kaynak deneyin.
+    </string>
+    <string name="not_supported">%1$s desteklenmiyor!</string>
+    <string name="server_selector">Sunucu Seç</string>
+    <string name="auto_select_server">Otomatik Sunucu Seçimi</string>
+    <string name="make_default">Varsayılan Yap</string>
+    <string name="filler">Dolgu</string>
+    <string name="adult">Yetişkin</string>
+    <string name="list_only">Sadece Listele</string>
+    <string name="tag">Etiket</string>
+    <string name="tags">Etiketler</string>
+    <string name="synonyms">Eşanlamlılar</string>
+    <string name="trailer">Fragman</string>
+    <string name="opening">Açılış</string>
+    <string name="ending">Bitiş</string>
+    <string name="prequel">Öncül</string>
+    <string name="sequel">Devam</string>
+    <string name="installed">Yüklü</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Sunucu çalışıyor...</string>
+    <string name="settings_torrent">Dahili TorrServer</string>
+    <string name="enable_server">TorrServer\'ı Etkinleştir</string>
+    <string name="enable_server_desc">Yerel sunucunun talebe bağlı kullanımını etkinleştirir</string>
+    <string name="torrent_port">Sunucu bağlantı nokta numarası</string>
+    <string name="torrents">torrentler</string>
+    <string name="active_torrents">Aktif torrentler</string>
+    <string name="remove_torrent">Bu torrenti kaldırmak mı?</string>
+    <string name="invalid_port">Geçersiz bağlantı noktası girildi!</string>
+    <string name="port_range">Bağlantı noktası geçerli bir TCP bağlantı noktası olmalıdır (0 - 65535)</string>
+    <string name="server_disabled">TorrServer devre dışı bırakıldı!</string>
+    <string name="server_enabled">TorrServer başlatılıyor</string>
+    <string name="enable_server_temp">Geçici olarak TorrServer\'ı etkinleştirmek ister misiniz (uygulama kapatıldığında devre dışı bırakılır)?</string>
+    <string name="anilist_settings">Anilist Ayarları</string>
+    <string name="extension_settings">Uzantılar</string>
+    <string name="downloads">İndirmeler</string>
+    <string name="offline_mode">Çevrimdışı Mod</string>
+    <string name="settings">Ayarlar</string>
+    <string name="extensions">Uzantılar</string>
+    <string name="extension_updates_available">Uzantı güncellemeleri mevcut</string>
+    <string name="player_settings">Oynatıcı Ayarları</string>
+    <string name="recentlyListOnly">\"Son Güncellenenler\"de yalnızca içeriğim</string>
+    <string name="download_manager_select">İndirme Yöneticisi</string>
+    <string name="downloadInSd">SD kartta indir</string>
+    <string name="noSdFound">SD kart bulunamadı.</string>
+    <string name="reader_settings">Okuyucu Ayarları</string>
+    <string name="default_source">Varsayılan Kaynak</string>
+    <string name="show_yt">Youtube Bağlantısını Göster</string>
+    <string name="default_ep_view">Varsayılan Bölüm Düzeni</string>
+    <string name="default_chp_view">Varsayılan Bölüm Düzeni</string>
+    <string name="ui">Kullanıcı Arayüzü</string>
+    <string name="common">Ortak</string>
+    <string name="theme">Tema</string>
+    <string name="theme_ui">Tema / UI</string>
+    <string name="day_night">Açık / Koyu Tema</string>
+    <string name="ui_settings">UI Ayarları</string>
+    <string name="system">Sistem</string>
+    <string name="about">Hakkında</string>
+    <string name="desc">"Dantotsu, Saikou'un küllerinden oluşturulmuş ve basit ancak son derece şık bir zarafete dayanmaktadır. Sadece Anilist istemcisi olan Dantotsu, aynı zamanda uzantılar ve Manga aracılığıyla Anime akışı ve indirme imkanı sunar.\nDantotsu, Japonca'da \"en iyisi\" anlamına gelir. Peki, bu Android'de anime ve manga için en iyi açık kaynaklı uygulama olduğunu söylesek, siz ne dersiniz?"</string>
+    <string name="devs">Katkı Sağlayanlar</string>
+    <string name="disclaimer">Reddiye</string>
+    <string name="full_disclaimer">         - Dantotsu yalnızca bir anime ve manga izleyici sağlar ve herhangi bir anime veya manga akışı veya indirme yeteneği sağlamaz.
+        \n\n - Dantotsu veya herhangi bir geliştiricisi/ekibi, Dantotsu içinde bulunan içeriklerin herhangi birini barındırmaz. Uygulamada bulunan tüm resimler ve anime/manga bilgileri çeşitli genel API\'lerden (AniList, MyAnimeList, Kitsu) alınmıştır.
+        \n\n - Dahası, Dantotsu\'da bulunan tüm anime/manga bağlantıları çeşitli 3. taraf eklentilerden alınmıştır ve Dantotsu veya ekibiyle hiçbir ilişkisi yoktur.
+        \n\n - Dantotsu veya sahipleri, uygulama içinde veya dışında bulunan herhangi bir içeriğin yanlış kullanımından sorumlu tutulamaz ve uygulama içinde bulunan herhangi bir içeriğin dağıtımı için sorumlu tutulamaz.
+        \n\n - Dantotsu\'yu kullanarak, uygulamanın geliştiricisinin uygulama içinde bulunan herhangi bir içeriğin sorumluluğunu üstlenmediğini kabul edersiniz. Ayrıca, telif hakkı içeren içerikleri indirmek veya akış yapmak için Dantotsu\'yu kullanamayacağınızı kabul edersiniz.
+        \n\n - İnternet ihlali konuları dahil olmak üzere, lütfen kaynak web sitesiyle iletişime geçin. Geliştirici, herhangi bir yasal sorumluluk kabul etmez.
+    </string>
+    <string name="version_current">Sürüm %1$s</string>
+    <string-array name="tips">
+        <item>Bir bölümü/bölümü işaretlemek için Uzun Tıklayabilirsiniz.</item>
+        <item>Uzun Tıklama, Gösterileri doğrudan Listeyi Düzenleyici ile açabilir.</item>
+        <item>Uygulamada birkaç daha gizli yumurta var.</item>
+        <item>Meydan Okuma: Popüler Anime &amp; Manga\'nın en altına gidin.</item>
+        <item>Gösterinin Başlığını Uzun Tıklayarak Deneyin.</item>
+        <item>Lanet olsun, neden Zamanınızı boşa harcıyorsunuz?</item>
+        <item>Bu mesajı kopyalamak için uzun tıklayabilirsiniz.</item>
+        <item>Vay Canına! BİR YUMURTA MI BULDUNUZ!?</item>
+        <item>Bu Animasyonu seven başka kim var biliyor musunuz?</item>
+        <item>MAL desteği mi? vay be.</item>
+        <item>Romanlar? daha çok HAYIR romanları.</item>
+        <item>Güncellemeleri kontrol etmek için logoya uzun tıklayın</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Varsayılan</item>
+        <item>Tema 1</item>
+        <item>Tema 2</item>
+        <item>Tema 3</item>
+        <item> Tema 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Video Bilgisini Göster</string>
+    <string name="source_info">Kaynak Adını Göster</string>
+    <string name="video_info_info">Geçerli video çözünürlüğünü gösterir, <b>\"Çoklu Kalite\"</b> sunucuları için faydalıdır.</string>
+    <string name="default_quality">Otomatik Kalite Seçimi</string>
+    <string name="height">Yükseklik</string>
+    <string name="width">Genişlik</string>
+    <string name="default_quality_info">Varsayılan olarak sağlanan en yakın kaliteyi otomatik olarak kullanır, yalnızca \"Çoklu Kalite\" Sunucuları için geçerlidir. Video oynatılırken otomatik olarak değişir.</string>
+    <string name="default_playback_speed">Varsayılan Oynatma Hızı : %1$s</string>
+    <string name="cursed_speeds">Lanetli Hızlar</string>
+    <string name="resize_mode_button">Varsayılan Yeniden Boyutlandırma Modu</string>
+    <string name="subtitles">Altyazılar</string>
+    <string name="subtitle_toggle">Altyazılar</string>
+    <string name="primary_sub_color_select">Altyazı Rengi</string>
+    <string name="secondary_sub_color_select">Altyazı Dış Çizgi Rengi</string>
+    <string name="secondary_sub_outline_type_select">Altyazı Dış Çizgi Türü</string>
+    <string name="sub_background_color_select">Altyazı Arka Plan Rengi</string>
+    <string name="sub_window_color_select">Altyazı Pencere Rengi</string>
+    <string name="sub_window_color_info">"Altyazı penceresi, arka plandan sol ve sağdaki kısımdır. (arka plan olmayan yer)"</string>
+    <string name="sub_color_info"><b>Not:</b> Yukarıdaki ayarları değiştirmek yalnızca Yumuşak-Altyazıları etkiler!</string>
+    <string name="sub_alpha">Altyazı Şeffaflığı</string>
+    <string name="sub_text_example">Örnek Altyazı</string>
+    <string name="sub_font_select">Altyazı Yazı Tipi</string>
+    <string name="subtitle_font_size">Altyazı Boyutu</string>
+    <string name="no_subs_available">Altyazı Yok</string>
+    <string name="auto">Otomatik</string>
+    <string name="auto_play_next_episode">Sonraki Bölümü Otomatik Oynat</string>
+    <string name="auto_play_next_episode_info">Otomatik olarak devre dışı bırakılır eğer oyuncu ile etkileşim olmazsa 1 saat sonra.</string>
+    <string name="auto_skip_fillers">Dolgu Bölümleri Otomatik Atla</string>
+    <string name="auto_skip_fillers_info">Sonraki bölüme geçerken dolgu bölümlerini atlar.</string>
+    <string name="update_progress">İlerlemeyi Güncelle</string>
+    <string name="ask_update_progress_anime">Her Anime için \"Bireysel\" olarak sor</string>
+    <string name="ask_update_progress_manga">Her Manga için \"Bireysel\" olarak sor</string>
+    <string name="ask_update_progress_info_ep">Bölüm izlendiğinde ilerlemeyi her zaman otomatik olarak güncelleyecektir.</string>
+    <string name="ask_update_progress_info_chap">Bölüm okunduğunda ilerlemeyi her zaman otomatik olarak güncelleyecektir.</string>
+    <string name="ask_update_progress_chapter_zero">0. Bölüm için İlerlemeyi Güncelle</string>
+    <string name="ask_update_progress_info_zero">Açık olduğunda başlatılan öğeleri Anilist\'e ekler ve ilerlemeyi 0. bölüme ayarlar.</string>
+    <string name="ask_update_progress_hentai">Hentai için İlerlemeyi Güncelle</string>
+    <string name="ask_update_progress_doujin">Doujinlar için İlerlemeyi Güncelle</string>
+    <string name="very_bold">Cesurca davrandın sar</string>
+    <string name="watch_complete_percentage">İzleme Güncelleme Yüzdesi</string>
+    <string name="watch_complete_percentage_info">Bir bölüm izledikten sonra Anilist ilerlemenizin güncellenmesi gereken yüzde. \nAyrıca, bir sonraki bölüm için bağlantıları önceden yüklemek için \%\'yi ayarlar.</string>
+    <string name="behaviour">Davranış</string>
+    <string name="always_continue">Her zaman zaman damgasından devam et</string>
+    <string name="pause_video_focus">Odak dışında ise duraklat</string>
+    <string name="gestures">Ses ve Parlaklık Jestleri</string>
+    <string name="double_tap">İleri gitmek için çift dokunma</string>
+    <string name="fast_forward">Hızlı İleri</string>
+    <string name="double_tap_info">Kapatıldığında hızlı ileri ve geri sarma düğmelerini gösterir</string>
+    <string name="seek_time">Arama Zamanı</string>
+    <string name="seek_time_info">Hızlı ileri ve geri sarma için saniye cinsinden zaman miktarı.</string>
+    <string name="skip_time">Atla Zamanı</string>
+    <string name="skip_time_info">0\'a ayarlandığında Atla Düğmesini gizler.</string>
+    <string name="show_cast_button">Oyuncu Düğmesini Göster</string>
+    <string name="show_cast_button_info">Yansıtmak için \"Web Video Caster\" uygulaması gereklidir.</string>
+    <string name="picture_in_picture">Resim içinde Resim</string>
+    <string name="always_minimize">Her zaman Küçült</string>
+    <string name="always_minimize_info">PiP\'nin etkin olmasını gerektirir, oynatıcıyı Youtube Oynatıcı gibi davranmaya zorlar, ancak daha iyidir. Ayrıca PiP düğmesini gizler.</string>
+    <string name="app">Uygulama</string>
+    <string name="immersive_mode">Durum Çubuğunu Gizle</string>
+    <string name="immersive_modelist">Liste için Durum Çubuğunu Gizle</string>
+    <string name="immersive_mode_info">Tam olarak uygulanması için Uygulamanın yeniden başlatılmasını gerektirir.</string>
+    <string name="home_layout_show">Ana Sayfada Düzenleri Göster/Gizle</string>
+    <string-array name="home_layouts">
+        <item>İzlemeye Devam Et</item>
+        <item>Favori Anime</item>
+        <item>Planlanmış Anime</item>
+        <item>Okumaya Devam Et</item>
+        <item>Favori Manga</item>
+        <item>Planlanmış Manga</item>
+        <item>Tavsiye Edilenler</item>
+    </string-array>
+    <string name="startUpTab">Varsayılan Başlangıç Sekmesi</string>
+    <string name="small_view">Trend Olan Gösterilerde Küçük Görünüm</string>
+    <string name="animations">Animasyonlar</string>
+    <string name="banner_animations">Banner Animasyonları</string>
+    <string name="layout_animations">Düzen Animasyonları</string>
+    <string name="trending_scroller">Trend Olan Kaydırıcı</string>
+    <string name="animation_speed">Genel Hız</string>
+    <string name="empty_fav">Hiçbir şey beğendiğin yok gibi görünüyor,\nBir gösteriyi beğenmeyi deneyin, burada tutmak için.</string>
+    <string name="fav_anime">Favori Anime</string>
+    <string name="fav_manga">Favori Manga</string>
+    <string name="restart_app">Uygulamayı yeniden başlatmak mı?</string>
+    <string name="next">Sonraki</string>
+    <string name="previous">Önceki</string>
+    <string name="current_page">Mevcut Sayfa</string>
+    <string name="dubbed">Dublajlı</string>
+    <string name="subbed">Altyazılı</string>
+    <string name="prefer_dub">Dublajlı Anime\'leri Tercih Et</string>
+    <string name="none">Hiçbiri</string>
+    <string name="selected_dns">Seçilen DNS</string>
+    <string name="dns_info">İnternet Servis Sağlayıcınız kaynağı engellerse değiştirin</string>
+    <string name="keep_screen_on">Ekranı Açık Tut</string>
+    <string name="layout">Düzen</string>
+    <string name="spaced_pages">Boş Sayfalar</string>
+    <string name="direction">Yön</string>
+    <string name="comments_api">Yorumlar API (Özel)</string>
+    <string name="disable_mitm">Enjeksiyonu Önle (\"Şakalar\")</string>
+    <string name="general">Genel</string>
+    <string name="show_system_bars">Durum ve Gezinme Çubuklarını Göster</string>
+    <string name="auto_detect_webtoon">Webtoon Otomatik Algılama</string>
+    <string name="auto_detect_webtoon_info">Manga Japonya\'dan değilse, okuyucu Webtoon Okuyucu Ayarlarına varsayılan olarak geçer</string>
+    <string name="default_settings">Varsayılan Ayarlar</string>
+    <string name="horizontal_scroll_bar">Yatay Kaydırma Çubuğu</string>
+    <string name="dual_page">Çift Sayfa</string>
+    <string name="dual_page_info">1 sayfada 2 resim gösterir, resimler aynı boyutta değilse garip görünebilir</string>
+    <string name="true_colors">Gerçek Renkler</string>
+    <string name="true_colors_info">(32-bit renk Modu) Görüntülerde Banding\'i Azaltır, performansı etkileyebilir.</string>
+    <string name="image_rotation">Resim Döndürme</string>
+    <string name="hide_page_numbers">Sayfa Numaralarını Gizle</string>
+    <string name="sort_by_title">Başlığa Göre Sırala</string>
+    <string name="sort_by_last_updated">Son Güncelleme Tarihine Göre Sırala</string>
+    <string name="sort_by_score">Puanına Göre Sırala</string>
+    <string name="sort_by_airing">Sonraki Yayın Tarihine Göre Sırala</string>
+    <string name="over_scroll">Sonraki/Önceki Bölüme Aşırı Kaydır</string>
+    <string name="volume_buttons">Sayfaları Ses Düğmeleriyle Değiştir</string>
+    <string name="list_private">Özel</string>
+    <string name="wrap_images">Resimleri Sar</string>
+    <string name="wrap_images_info">Genellikle daha büyük cihazlar için kullanışlıdır, resimler arasındaki boşluğu kaldırır, varsa</string>
+    <string name="reload">Yeniden Yükle</string>
+    <string name="share">Paylaş</string>
+    <string name="skip">Atla</string>
+    <string name="other">Diğer</string>
+    <string name="total_repeats">TOPLAM TEKRARLAR</string>
+    <string name="custom_lists">Özel Listeler</string>
+    <string name="donate_desc">Himitsu\'yu desteklemek ister misiniz?\nBağış yapmayı düşünün</string>
+    <string name="donate_goal">Şu anda bağış hedefi yok</string>
+    <string name="filter">Filtre</string>
+    <string name="year">Yıl</string>
+    <string name="apply">Uygula</string>
+    <string name="cancel">İptal</string>
+    <string name="edit">Düzenle</string>
+    <string name="this_season">Bu Sezon</string>
+    <string name="next_season">Gelecek Sezon</string>
+    <string name="previous_season">Önceki Sezon</string>
+    <string name="include_media_in_list">Listeye Dahil Et</string>
+    <string name="release_calendar">Takvim</string>
+    <string name="planned_anime">Planlanmış Anime</string>
+    <string name="planned_manga">Planlanmış Manga</string>
+    <string name="image_long_clicking">Resmi açmak için uzun süre basılı tutun</string>
+    <string name="always_continue_content">Daha önce açılan öğeleri sürekli devam ettir</string>
+    <string name="search_source_list">Sonraki mevcut kaynağı arayın</string>
+    <string name="timestamp_proxy_desc">Handshake Hataları alıyorsanız faydalıdır</string>
+    <string name="timestamp_proxy">Zaman Damgaları İçin Proxy Kullan</string>
+    <string name="check_app_updates">Güncellemeleri kontrol et</string>
+    <string name="author">Yazar</string>
+    <string name="forks">Sürümler</string>
+    <string name="faq">SSS</string>
+    <string name="accounts">Hesaplar</string>
+    <string name="myanimelist">MyAnimeList</string>
+    <string name="login_with_anilist">Anilist ile giriş yap</string>
+    <string name="anilist">Anilist</string>
+    <string name="account_help">Bu nasıl çalışıyor\?</string>
+    <string name="full_account_help">        Dantotsu, Anilist Tabanlı bir Uygulamadır, bu nedenle MAL Hesabınızla senkronize etmek için, Anilist hesabına giriş yapılması gerekir.
+        \nAnilist ve MAL hesaplarıyla giriş yaptıktan sonra, uygulama otomatik olarak MAL hesabınızı günceller:
+        \n- Yeni bir Medya eklediğinizde
+        \n- Bir Medya\'yı düzenlediğinizde
+        \n- Bir Medya\'yı sildiğinizde
+
+        \n\nNot: Uygulama, eski Medya\'ları Anilist\'ten MAL\'a senkronize etmeyecektir, bunları senkronize etmeniz önerilir.
+        \n- _Kolay Yöntem_ için __SSS__\'ye bakın
+
+        \n\nVe _Orta Düzey_ için:
+        \n- [Anilist verilerini MAL ile nasıl senkronize edilir](https://anilist.co/forum/thread/2654)
+        \n- [MAL verilerini Anilist ile nasıl senkronize edilir](https://anilist.co/forum/thread/3393)
+
+        \n\n_Hem MAL hem de Anilist hesaplarını senkronize etmek zorunlu değildir._
+    </string>
+    <string name="notification_for_checking_subscriptions">Abonelikleri kontrol etmek için bildirim göster</string>
+    <string name="use_alarm_manager">Alarm Yöneticisi Kullan</string>
+    <string name="use_alarm_manager_reliable">Alarm Yöneticisini Kullan (Güvenilir Bildirimler)</string>
+    <string name="use_alarm_manager_confirm">Alarm Yöneticisini Kullanmak pil optimizasyonuna karşı savaşmaya yardımcı olabilir, ancak daha fazla pil tüketebilir. Ayrıca Alarm Yöneticisi izni gerektirir.</string>
+    <string name="use">Kullan</string>
+    <string name="checking_subscriptions">Abonelik Kontrol Bildirimleri</string>
+    <string name="subscriptions_checking_time_s">Abonelik Güncelleme Sıklığı: %1$s</string>
+    <string name="subscriptions_checking_time">Abonelik Güncelleme Sıklığı</string>
+    <string name="subscriptions_info">Yeni bölümleri / bölümleri kontrol etmek için Dantotsu\'nun harcadığı süre miktarı\n(Daha az süre daha fazla pil tüketir)</string>
+    <string name="do_not_update">Güncelleme Yapma</string>
+    <string name="loading_chap_number">%1$s Bölüm Yükleniyor</string>
+    <string name="sort_by_release_date">Yayın Tarihine Göre Sırala</string>
+    <string name="crop_borders">Kenarları Kırp</string>
+    <string name="note">NOT</string>
+    <string name="manage_extension_repos">Uzantı Depolarını Yönet</string>
+    <string name="installing_extension">Uzantı Yükleme</string>
+    <string name="installation_failed">Yükleme başarısız oldu: %1$s</string>
+    <string name="installation_complete">Yükleme tamamlandı</string>
+    <string name="extension_has_been_installed">Uzantı başarıyla yüklendi.</string>
+    <string name="extension_installed">Uzantı yüklendi</string>
+    <string name="error_message">Hata: %1$s</string>
+    <string name="install_step">Adım: %1$s</string>
+    <string name="review">İncele</string>
+    <string name="select_source">Bir Kaynak Seç</string>
+    <string name="update_notice">Dantotsu %1$s güncellemesi</string>
+    <string name="install_update">%1$s güncellemesini yüklemek istiyor musunuz?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Güncelleme Mevcut</string>
+    <string name="discord_nothing_button">Sadece ilk düğmeyi göster</string>
+    <string name="discord_dantotsu_button">Dantotsu\'yu ikinci düğmede göster</string>
+    <string name="discord_anilist_button">AniList profilinizi göster</string>
+    <string name="discord_rich_presence">Discord Zengin Varlık</string>
+    <string name="stream_on_dantotsu">Dantotsu üzerinde akış yapın</string>
+    <string name="view_my_anilist">AniList\'im\'i Görüntüle</string>
+    <string name="jobless_message">LANET OLSUN! GERÇEKTEN İŞSİZSİN\nSONA ULAŞTIN</string>
+    <string name="file_manager_not_found">SD kartı açmak için bir Dosya Yöneticisi bulunamadı</string>
+    <string name="error_loading_data">Veri yüklenirken hata oluştu %1$s</string>
+    <string name="long_click_to_check_update">Güncellemeleri kontrol etmek için uzun basın</string>
+    <string name="saved_to_path">Kaydedildi:\n%s</string>
+    <string name="setting_progress">✔ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Lütfen AniList hesabına giriş yapın!</string>
+    <string name="congrats_vro">Tebrikler Vro</string>
+    <string name="please_reload">Lütfen Yeniden Yükleyin.</string>
+    <string name="copied_text">Kopyalandı \"%1$s\"</string>
+    <string name="back_to_exit">Çıkmak için TEKRAR GERİ tuşuna basın</string>
+    <string name="back_button">Geri Tuşu</string>
+    <string name="anilist_not_found">Anilist\'te bulunamadı gibi görünüyor.</string>
+    <string name="disabled_auto_skip">Otomatik OP ve ED Atlama Devre Dışı</string>
+    <string name="auto_skip">Otomatik OP ve ED Atlama</string>
+    <string name="show_skip_time_stamp_button">Atla [Segment] Düğmelerini Göster</string>
+    <string name="always_load_time_stamps">Her zaman Zaman Damgalarını Yükle</string>
+    <string name="auto_hide_time_stamps">>Otomatik Gizle Atla [Segment] Düğmeleri</string>
+    <string name="timestamps">Segmentler</string>
+    <string name="auto_skip_op_ed">Otomatik OP / ED Atlama</string>
+    <string name="requires_time_stamps_to_be_enabled">Zaman Damgalarının Etkinleştirilmesi Gerekiyor</string>
+    <string name="hide_skip_button">Atla düğmesini 5 saniye sonra kaybet</string>
+    <string name="copied_to_clipboard">Panoya Kopyalandı</string>
+    <string name="first_episode">Bu 1. Bölüm!</string>
+    <string name="reset_auto_update">Otomatik Güncellemeyi sıfırlamak için \"Liste Düzenleyici\" düğmesine uzun basın</string>
+    <string name="autoplay_cancelled">Otomatik oynatma iptal edildi, 1 saatten fazla etkileşim yok.</string>
+    <string name="auto_select_server_error">Sunucuyu otomatik seçemedim, Lütfen tekrar deneyin!</string>
+    <string name="stream_selection_empty">Akışlar mevcut değil! Başka bir kaynağı deneyin.</string>
+    <string name="logging_in_mal">MAL\'a giriş yapılıyor</string>
+    <string name="getting_user_data">Kullanıcı Verileri Alınıyor</string>
+    <string name="no_next_episode">Bir sonraki bölüm bulunamadı!</string>
+    <string name="enable_banner_animations">Ayarlar\'da \"Banner Animasyonları\"nı etkinleştirmeyi deneyin</string>
+    <string name="please_login_anilist">Lütfen Anilist ile giriş yapın!</string>
+    <string name="auto_update_reset">Otomatik Güncelleme ilerlemesi şimdi sıfırlandı</string>
+    <string name="cant_wait">Sabırsızlanıyor musun? Tamam X(</string>
+    <string name="downloading">İndiriliyor…</string>
+    <string name="next_chapter_not_found">Sonraki Bölüm Bulunamadı</string>
+    <string name="first_chapter">Bu 1. bölüm!</string>
+    <string name="adult_stuff">Yetişkin İçerik?( ͡° ͜ʖ ͡° )</string>
+    <string name="what_did_you_open">Ne açtın ki sen?</string>
+    <string name="error_getting_data">Anilist\'ten veri alınırken hata oluştu.</string>
+    <string name="empty_response">Boş yanıt! İnternetiniz belki kötü mü?</string>
+    <string name="error_loading_mal_user_data">MAL kullanıcı verileri yüklenirken hata oluştu</string>
+    <string name="error_loading_mal_data">MAL\'dan veri yüklenemedi</string>
+    <string name="error_loading_anilist_user_data">Anilist kullanıcı verileri yüklenirken hata oluştu</string>
+    <string name="episode_not_found">Bölüm bulunamadı: %1$s</string>
+    <string name="list_updated">Liste Güncellendi</string>
+    <string name="deleted_from_list">Listeden Silindi</string>
+    <string name="no_list_id">Liste Kimliği bulunamadı…</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">%1$s için tekrar bildirim gönderme</string>
+    <string name="matagi_downloading">Himitsu %1$s İndiriliyor</string>
+    <string name="checking_for_update">Güncelleme Kontrol Ediliyor</string>
+    <string name="dont_show_again">%1$s sürümü için tekrar gösterme</string>
+    <string name="no_update_found">Güncelleme Bulunamadı</string>
+    <string name="downloading_update">Dantotsu %1$s İndiriliyor</string>
+    <string name="permission_required">Dosyalara ve Klasörlere erişim izni verin ve Ayarlardan tekrar deneyin.</string>
+    <string name="started_downloading">İndirilmeye Başlandı\n%1$s</string>
+    <string name="install_1dm">Lütfen 1DM\'i yükleyin</string>
+    <string name="install_adm">Lütfen ADM\'i yükleyin</string>
+    <string name="error_getting_image_data">Resim verileri alınırken hata oluştu</string>
+    <string name="loading_image_failed">Resim Yüklenemedi</string>
+    <string name="copied_device_info">Cihaz bilgisi kopyalandı</string>
+    <string name="anilist_down">Anilist\'in kapalı olduğu görünüyor, belki bir VPN kullanmayı deneyin ya da geri gelmesini bekleyebilirsiniz.</string>
+    <string name="failed_to_load_data">%1$d\'in kayıtlı verileri yüklenemedi</string>
+    <string name="access_not_available">Erişim alınamadı</string>
+    <string name="mal_login_uri_not_found">Mal Girişi: Uri bulunamadı</string>
+    <string name="mal_login_code_challenge_not_found">Mal Girişi: codeChallenge bulunamadı</string>
+    <string name="mal_login_code_not_present">Mal Girişi: Yönlendirilen URI\'da kod bulunamadı</string>
+    <string name="refresh_token_load_failed">Yenileme Tokenı: Kayıtlı token yüklenemedi</string>
+    <string name="refreshing_token_failed">Token Yenileme Başarısız</string>
+    <string name="episode_release_countdown">Bölüm %1$d şu süre içinde yayınlanacak</string>
+    <string name="chapter_number">Bölüm %1$d</string>
+    <string name="chapter_release_timeout">%1$s şu süre içinde mevcut oldu</string>
+    <string name="time_format">%1$d gün %2$d saat %3$d dakika %4$d saniye</string>
+    <string name="chapter_predication">Yeni Bölüm Bekleniyor %1$s</string>
+    <string name="chapter_delayed">Yeni Bölümün görünüşe göre gecikti</string>
+    <string-array name="sort_by">
+        <item>Puan</item>
+        <item>Popüler</item>
+        <item>Trend</item>
+        <item>Yeni Çıkışlar</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Saf acı</item>
+    </string-array>
+    <string name="main_role">ANA</string>
+    <string name="supporting_role">DESTEKLEYİCİ</string>
+    <string name="status_finished">TAMAMLANDI</string>
+    <string name="status_releasing">YAYIMLANIYOR</string>
+    <string name="status_not_yet_released">HENÜZ YAYINLANMADI</string>
+    <string name="status_cancelled">İPTAL EDİLDİ</string>
+    <string name="status_hiatus">ARA</string>
+    <string name="type_adaptation">UYARLAMA</string>
+    <string name="type_parent">EBEVEYN</string>
+    <string name="type_character">KARAKTER</string>
+    <string name="type_summary">ÖZET</string>
+    <string name="type_alternative">ALTERNATİF</string>
+    <string name="type_other">DİĞER</string>
+    <string name="type_source">KAYNAK</string>
+    <string name="type_contains">İÇERİR</string>
+    <string name="read_on_dantotsu">Dantotsu\'da Oku</string>
+    <string name="watch_on_dantotsu">Dantotsu\'da İzle</string>
+    <string name="view_profile_in_dantotsu">Dantotsu\'da Profili Görüntüle</string>
+    <string name="continue_episode">Devam Et : Bölüm %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Dolgu</string>
+    <string name="continue_chapter">Devam Et : %1$s\n%2$s</string>
+    <string name="episode">"Bölüm "</string>
+    <string name="episode_num">"Bölüm %1$s"</string>
+    <string name="chapter">"Bölüm "</string>
+    <string name="chapter_num">"Bölüm %1$s"</string>
+    <string name="just_released">- Yeni yayınlandı!</string>
+    <string name="checking_subscriptions_title">Abonelikler Kontrol Ediliyor</string>
+    <string name="user_list">%1$s\'in %2$s Listesi</string>
+    <string name="speed">Hız</string>
+    <string name="auto_update">%1$s için Otomatik Güncelleme İlerlemesi?</string>
+    <string name="continue_from">%1$s\'den Devam Etmek İstiyor musunuz?</string>
+    <string name="title_update_progress">AniList\'te İlerlemeyi Güncelle?</string>
+    <string name="incognito_will_not_update">Gizli mod hala ilerlemeyi yok sayacak.</string>
+    <string name="dont_ask_again">"Tekrar Sorma %1$s İçin"</string>
+    <string name="default_speed">Varsayılan Hız</string>
+    <string name="default_resize_mode">Varsayılan Yeniden Boyutlandırma Modu</string>
+    <string name="primary_sub_color">Birincil Alt Renk</string>
+    <string name="outline_sub_color">Dış Çizgi Alt Renk</string>
+    <string name="outline_type">Dış Çizgi Türü</string>
+    <string name="subtitle_font">Altyazı Yazı Tipi</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="ok">Tamam</string>
+    <string name="reset">Sıfırla</string>
+    <string name="close">Kapat</string>
+    <string name="no_chapter">Bölüm Yok</string>
+    <string name="content_18">Anilist ayarlarınızdan 18+ içeriği açın</string>
+    <string name="available">Mevcut</string>
+    <string name="lets_go">Haydi</string>
+    <string name="cope">Başa Çık</string>
+    <string name="watched_num">"İzlenen "</string>
+    <string name="read_num">"Okunan "</string>
+    <string name="episodes_out_of">" dışında "</string>
+    <string name="chapters_out_of">" dışında "</string>
+    <string name="episodes_total_of">"Toplam "</string>
+    <string name="chapters_total_of">"Toplam "</string>
+    <string name="no_description_available">"Açıklama Mevcut Değil"</string>
+    <string-array name="manga_directions">
+        <item>Yukarıdan Aşağıya</item>
+        <item>Sağdan Sola</item>
+        <item>Aşağıdan Yukarıya</item>
+        <item>Soldan Sağa</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Sayfalı</item>
+        <item>Sürekli Sayfalı</item>
+        <item>Sürekli</item>
+    </string-array>
+    <string name="selected">Seçilen</string>
+    <string name="found">Bulunan</string>
+    <string name="age">"__Yaş:__ "</string>
+    <string name="birthday">\n\"__Doğum Günü:__ \"</string>
+    <string name="gender">\n\"__Cinsiyet:__ \"</string>
+    <string name="male">Erkek</string>
+    <string name="female">Kadın</string>
+    <string name="question_1">Dantotsu nedir?</string>
+    <string name="answer_1">Dantotsu, Saikou\'un küllerinden oluşturulmuş ve basit ancak son teknoloji zarafetine dayanan bir yapıdır. Bu sadece Anilist istemcisi olan Dantotsu, aynı zamanda uzantılar aracılığıyla Anime / Manga akışını ve indirmesini de sağlar. \n>Dantotsu (断トツ; Dan-totsu), Japonca\'da en iyisinin en iyisi anlamına gelir. Bu, Android\'de anime ve manga için en iyi açık kaynaklı uygulama olduğunu söylemek isterdik, ama hey, Kendiniz deneyin ve karar verin!</string>
+    <string name="question_2">Dantotsu\'nun bazı özellikleri nelerdir?</string>
+    <string name="answer_2">Dantotsu\'nun bazı bahsedilebilir özellikleri şunlardır\n\n- Anime izlemek ve manga ve hafif roman okumak için kolay ve işlevsel bir yol, Reklamsız.\n- Güzel bir UI ve Animasyonlarla tamamen açık kaynaklı bir uygulama\n- 3. taraf eklenti desteği \n- Anime ve manga\'yı AniList ile gerçek zamanlı senkronize edin. AniList tarafından desteklenen anime ve manga\'yı mevcut durumunuza göre kolayca kategorize edin.\n- Puanlara dayalı olarak tüm popüler ve devam eden anime\'lerin sürekli güncellenen listesini kullanarak tüm şovları bulun.\n- Anime şovları, filmler ve manga başlıkları hakkında detaylı bilgileri görüntüleyin. Ayrıca, yayınlanan anime\'nin bir sonraki bölümüne geri sayım yapma özelliğine sahiptir. (AniList ve MyAnimeList tarafından desteklenmektedir)</string>
+    <string name="question_3">Kararlı, Beta ve Alfa sürümleri arasındaki farklar nelerdir?</string>
+    <string name="answer_3">Bu çatal ayrı parçalar sağlamaz. [Depodan](https://github.com/RepoDevil/Himitsu) indirdiğiniz sürüm, [AbandonedCart](https://github.com/AbandonedCart) tarafından çalıştırılan sürümle aynıdır. Eğer hatalar bulursanız ve zaten en son sürüme güncellediyseniz, [sorun](https://github.com/RepoDevil/Himitsu/issues) göndermekten çekinmeyin</string>
+    <string name="question_4">Dantotsu PC için mevcut mu?</string>
+    <string name="answer_4">Şu anda hayır (hem Windows hem de Linux için). Ne zaman mevcut olacağına dair bir tahmin yok. Ancak herhangi bir Android emülatörü indirebilir ve Dantotsu\'yu çalıştırabilirsiniz. Windows 11 kullanıcıları, Windows Alt Sistemini (WSA) kullanarak Dantotsu\'yu Windows\'ta çalıştırabilirler.</string>
+    <string name="question_5">Dantotsu iOS için mevcut mu?</string>
+    <string name="answer_5">Hayır, en iyisi Dantotsu\'yu bir elma üzerine oymaktır.</string>
+    <string name="question_6">Neden istatistiklerim güncellenmiyor?</string>
+    <string name="answer_6">Bu, her 48 saatte bir otomatik olarak güncellenmesinden kaynaklanmaktadır (Anilist tarafından). Gerçekten istatistiklerinizi güncellemek istiyorsanız, [bu bağlantıya](https://anilist.co/settings/lists) giderek istatistiklerinizi zorla güncelleyebilirsiniz.</string>
+    <string name="question_7">Anime nasıl indirilir?</string>
+    <string name="answer_7">Şu anda iki indirme yöntemi bulunmaktadır. Bir tanesi dahili, diğeri harici. Dahili olarak indirirseniz, o zaman uygulama içinde görüntülenebilir ancak yalnızca uygulama o bölümü açabilir, taşıyamaz veya paylaşamazsınız. Diğer seçenek harici indirme kullanmaktır. İndirmek için bir indirme yöneticisine ve izlemek için ayrı bir video oynatıcıya ihtiyaç duyar. Harici indirmeler paylaşılabilir ancak Dantotsu uygulaması içinde görüntülenemez.\n\n•Dahili olarak indirmek için:\n\n1. İndirme düğmesine dokunun.\n2. Sunucuyu ve video kalitesini seçin.\n3. Karlı olun.\n\n•Harici olarak indirmek için:\n\n 1. Google Play Store\'dan 1DM veya ADM\'yi indirin.
+        \n2. Uygulamaya girin, depolama erişimi verin ve tercihlerinizi belirleyin (indirme hızı, indirme yolunu vb. (isteğe bağlı))
+        \n3. Şimdi \`Dantotsu > Ayarlar > Ortak > İndirme Yöneticileri\`\'ne gidin ve yüklediğiniz indirme yöneticisini seçin.
+        \n4. İstenilen bölüme gidin ve herhangi bir sunucunun indirme simgesine basın. Tekrar tercihlerinizi belirlemek için bir popup olabilir, sadece \"İndir\"\'e basın ve yönlendirilen yolda saklanacaktır.
+
+        \n\nNot: Doğrudan indirmeler yönetici olmadan da mümkündür ancak önerilmez.
+\n\nNerd Notu: Dahili olarak indirilen bölümler \`Android/data/ani.dantotsu.*/files/Anime_İndirilenler\` içinde saklanır\nBu dosyaları oynatamazsınız çünkü \`.exo\` formatında, yüzlerce parçaya bölünmüş ve şifrelenmiş olarak bulunmaktadır.</string>
+    <string name="question_9">NSFW içeriği nasıl etkinleştirilir?</string>
+    <string name="answer_9">NSFW içeriğini etkinleştirebilirsiniz, 18+ içeriklerini [bu bağlantıdan](https://anilist.co/settings/media) etkinleştirerek. Ayrıca NSFW uzantılarını \`Ayarlar > Uzantılar > NSFW uzantıları\`\'ndan etkinleştirmeniz gerekmektedir.</string>
+    <string name="question_10">MAL/Kitsu listelerimi Anilist\'e nasıl aktarabilirim?</string>
+    <string name="answer_10">İşte nasıl yapılır,\n\nDışa Aktar:\n\n1. Bu [bağlantıya](https://malscraper.azurewebsites.net) gidin.\n2. Kitsu/MAL kullanıcı adınızı girin ve hem anime hem de manga listesini indirin. (XML formatında olacaklar)\nNot: Seçtiğiniz izleyici kullanıcı adını yazmanız gerekmektedir\n\nİçe Aktar:\n\n1. Kitsu/MAL\'den anime ve manga listenizi dışa aktardıktan sonra şimdi [buraya](https://anilist.co/settings/import) gidin \n2. Yukarıdaki kutuya anime XML dosyasını seçin/bırakın.\n|→Aşağıdaki kutuya manga XML dosyasını seçin/bırakın.</string>
+    <string name="question_11">Anilist/Kitsu listelerimi MAL\'e nasıl aktarabilirim?</string>
+    <string name="answer_11">İşte nasıl yapılır,\n\nDışa Aktar:\n\n1. Bu [bağlantıya](https://malscraper.azurewebsites.net/) gidin. \n2. Anilist kullanıcı adınız/Kitsu Kimliğinizi \'Kullanıcı Adı/Kitsu Kullanıcı Kimliği\' kutusuna girin. \n3. Liste türünü seçin ve \'ithalatta güncelle\'yi etkinleştirin. \n4. Dosyayı indirin; .xml formatında olacaktır. Anime ve Manga listelerini indirdiğinizden emin olun.\n\nİçe Aktar:\n1. MAL hesabınıza aktarmak için, bu [bağlantıya](https://myanimelist.net/import.php) gidin ve \'MyAnimeList İçe Aktar\'ı ithalat türü olarak seçin. \n2. \'Dosya Seç\' düğmesine basın ve indirilen anime/manga listesi XML dosyasını seçin. \n3. \'Verileri İçe Aktar\'ı seçin. \nTebrikler, seçilen listeyi MAL hesabınıza başarıyla aktardınız.</string>
+    <string name="question_12">Belirli bir anime/manga başlığını neden bulamıyorum?</string>
+    <string name="answer_12">Diyelim ki Dantotsu\'da Castlevania\'yı arıyorsunuz. Ancak Anilist\'te yoksa, Dantotsu\'da da yok demektir. Yukarıdaki soruna bir çözüm şöyle:\n1) Listenizde olmayan herhangi bir animeye gidin.\n2) İzleme bölümüne gidin.\n3) Herhangi bir kaynak seçin ve \'Yanlış Başlık?\'a basın.\n4) Şimdi Castlevania\'yı (Aramakta olduğunuz anime) arayın ve seçin.\n5) KEYFİNİ ÇIKARIN!\n\nBu adımlarla bile animenizi bulamazsanız, o zaman bu sizin için kötü şans demektir, dostum. O kaynak bile onu bulamaz. Farklı bir kaynak deneyin.</string>
+    <string name="question_13">Kaynaklar tamamen yanlış başlık seçerse nasıl düzeltilir?</string>
+    <string name="answer_13">Dantotsu kendisi hiçbir şey barındırmaz, ancak diğer kaynaklara güvenir. Bölümleri gösterirken, başlığı aradıktan sonra kaynaktan gelen ilk sonucu seçer. Dantotsu\'nun bunun doğru veya yanlış olduğunu tespit etme yolu yoktur. Bu nedenle, bunun için kaynağın hemen altında \'Yanlış Başlık?\' seçeneğimiz vardır (düzenlerin üstünde). Doğru sonucu/başlığı seçerek keyfinize bakabilirsiniz.</string>
+    <string name="question_14">Renkli mangalar nasıl okunur?</string>
+    <string name="answer_14">Renkli manga mı arıyorsunuz? Üzgünüm ama renkli versiyona sahip çok az manga bulunmaktadır. Renkli bir versiyona sahip olanlar da Dantotsu\'da mevcuttur. Diyelim ki chainsaw man\'ın renkli versiyonunu okumak istiyorsunuz. O zaman aşağıdaki adımları izleyin ↓\n\n1) Chainsaw Man\'a gidin\n2) \'Oku\'ya basın\n3) Çalışan bir kaynak seçin\n4) \'Yanlış Başlık\' seçeneğine basın\n5) Renkli versiyon chainsaw man\'ı seçin\n6) Keyfini çıkarın\n\nNot: Birçok kaynak, internette mevcut olsa bile renkli versiyonu bulundurmamaktadır. Yani istediğiniz manga için renkli versiyon mevcut değilse, o zaman istediğiniz renkli manga versiyonu mevcut değildir.</string>
+    <string name="question_15">El sıkışması başarısız oldu mu? Neden zaman damgaları yüklenmiyor?</string>
+    <string name="answer_15">Bu sorunu çözebilirsiniz \'Proxy\'yi etkinleştirerek \n\`Ayarlar > Anime > Oynatıcı Ayarları > Zaman Damgaları > Proxy\` sekmesinden.\nZaman damgaları hala yüklenmiyorsa ancak el sıkışma hatası popup\'ı düzeltildiyse, izlediğiniz bölümün henüz zaman damgaları olmadığını gösterir.</string>
+    <string name="question_16">Kaynakta bir şey bulamıyor musunuz?</string>
+    <string name="answer_16">Bazı temel düzeltmeler şunlar olacaktır: \n\n• Uzantılarınızı güncelleyin varsa. \n• Web Görünümünü açın ve yüklenmesini bekleyin. Yükleme tamamlandıktan sonra geri dönün. (Web Görünümü 404 hatası veya benzer bir şey gösteriyorsa, kaynağınızın kapalı olduğu olasılığı yüksektir)\n• Ayarlarınızdan farklı bir DNS kullanın, tercihen, Libre. \n• Güvenilir bir VPN kullanın. (Bunun ardından adım 1\'i tekrarlamak zorunda kalacaksınız) \n\nYukarıdaki adımların hiçbiri işe yaramazsa farklı bir kaynak kullanın veya yardım için [discord](https://discord.gg/invite/4HPZ5nAWwM) kanalımıza katılın.</string>
+    <string name="question_17">Bazı kullanışlı ipuçları ve püf noktaları</string>
+    <string name="answer_17">Aşağıdakiler, belki de bilmediğiniz bazı ipuçları ve püf noktalarını sunmaktadır - \n \n \n - Ayarlar\'daki Dantotsu logosuna basılı tutarak yeni güncellemeler olup olmadığını manuel olarak kontrol edebilirsiniz. \n \n - Bir hata mesajı/etiket/eş anlamlı veya başlık üzerine basılı tutarak kopyalayabilirsiniz. \n \n - Bir bölümü başka uygulamalarla açabilirsiniz, bu, bölümü başka video oynatıcılarını kullanarak veya bölümü indirerek akış halinde izlemenize yardımcı olur. \n \n - Bu [bağlantıyı](https://anilist.co/settings/lists) kullanarak özel listeler oluşturabilirsiniz. (oturum açmış olmanız gerekmektedir) \n \n - Bölüm/chapter otomatik olarak ilerlemiyorsa, izledikten/okuduktan sonra, o anime/manga\'nın durum çubuğuna basılı tutun. Bir sonraki bölüm/episode\'yi başlattığınızda, bir popup ile karşılaşacaksınız. Orada evet\'e basın.</string>
+    <string name="subscribed_notification">Abone olundu! Yeni bölümler %1$s üzerinde yayınlandığında bildirim alacaksınız.</string>
+    <string name="unsubscribed_notification">Abonelikten çıkıldı, artık herhangi bir bildirim almayacaksınız.</string>
+    <string name="episode_plural">Bölümler</string>
+    <string name="episode_singular">Bölüm</string>
+    <string name="chapter_singular">Bölüm</string>
+    <string name="chapter_plural">Bölümler</string>
+    <string name="filter_status">"Durum : %1$s"</string>
+    <string name="filter_source">"Kaynak : %1$s"</string>
+    <string name="filter_format">"Biçim : %1$s"</string>
+    <string name="filter_country">"Ülke : %1$s"</string>
+    <string name="filter_sort">"Sırala : %1$s"</string>
+    <string name="filter_exclude">"%1$s Değil"</string>
+    <string name="search_by_image">Görüntü ile Arama</string>
+    <string name="upload_image">Görüntü Yükle</string>
+    <string name="similarity_text">Benzerlik: %1$s %%</string>
+    <string name="time_range">%1$s den %2$s\'ye</string>
+    <string name="invalid_url">Geçersiz URL</string>
+    <string name="no_anilist_id_found">Anilist ID bulunamadı</string>
+    <string name="error_loading_image">Resim yüklenirken hata oluştu</string>
+    <string name="discord_logout_success">Başarıyla Oturum Kapatıldı</string>
+    <string name="discord_try_again">Yeniden giriş yapmayı deneyin</string>
+    <string name="error_loading_discord_user_data">Discord Kullanıcı Verileri Yüklenirken Hata Oluştu</string>
+    <string name="discord_warning"><![CDATA[Giriş yaparak, Discord'un Dantotsu'da izlediğiniz ve okuduğunuz şeyleri gösterecektir\n\nEğer görünmez moddaysanız, Dantotsu'yu açtığınızda çevrimiçi olacaksınız.\n\nBu Discord Kullanım Şartlarını ihlal eder. \nDiscord, özel Zengin Varlık Kullanımı'nı (Dantotsu'nun kullandığı şey) kullanan hiç kimseyi yasaklamamış olsa da, yine de uyarılmış olursunuz.\n\nDantotsu, hesabınıza ne olursa olsun sorumlu değildir.]]></string>
+    <string name="warning">Uyarı</string>
+    <string name="view_anime">Anime\'yi Görüntüle</string>
+    <string name="view_manga">Manga\'yı Görüntüle</string>
+    <string name="force_legacy_installer">Eski Sürüm Yükleyiciyi Zorla</string>
+    <string name="extensions_settings">Uzantılar</string>
+    <string name="NSFWExtention">NSFW Uzantıları</string>
+    <string name="skip_loading_extension_icons">Uzantı Simgelerini Yükleme</string>
+    <string name="use_material_you">Malzeme Senin</string>
+    <string name="use_app_theme">Uygulama Temasını Kullan</string>
+    <string name="extension_specific_dns">Uzantıya Özgü DNS</string>
+    <string name="theme_">Tema:</string>
+    <string name="user_agent">Kullanıcı Aracısı</string>
+    <string name="custom_theme">Özel Tema:</string>
+    <string name="use_custom_theme">Özel Tema</string>
+    <string name="use_unique_theme_for_each_item">Her Öğe İçin Benzersiz Tema</string>
+    <string name="oled_theme_variant">OLED tema varyantı</string>
+    <string name="installed_anime">Yüklü Anime</string>
+    <string name="available_anime">Mevcut Anime</string>
+    <string name="installed_manga">Yüklü Manga</string>
+    <string name="color_picker">Renk Seçici</string>
+    <string name="random_selection">Rastgele Seçim</string>
+    <string name="incognito_mode">Gizli Mod</string>
+    <string name="appwidget_text">ÖRNEK</string>
+    <string name="configure">Yapılandır</string>
+    <string name="add_widget">Widget Ekle</string>
+    <string name="app_widget_description">Bu bir uygulama widget açıklamasıdır</string>
+    <string name="upcoming_anime">Yaklaşan Anime</string>
+    <string name="airing_image">Yayınlanan Görüntü</string>
+    <string name="anime_downloads">anime İndirmeleri</string>
+    <string name="purge_anime_downloads">Tüm Anime indirmelerini Sil</string>
+    <string name="purge_manga_downloads">Tüm Manga İndirmelerini Sil</string>
+    <string name="purge_novel_downloads">Tüm Roman İndirmelerini Sil</string>
+    <string name="requires_android_12">Android 12+ Gerektirir</string>
+    <string name="share_username_in_logs">Kullanıcı adını günlüklerde paylaş</string>
+    <string name="pinned_sources">Sabitleme Kaynakları</string>
+    <string name="backup_restore">Yedekle ve Geri Yükle</string>
+    <string name="restore_settings">Ayarları İçe Aktar</string>
+    <string name="restore_settings_underline"><u>Ayarları Geri Yükle</u></string>
+    <string name="try_internal_cast_experimental">Dahili Dökümünü Dene (Deneysel)</string>
+    <string name="faq_desc">Himitsu hakkında genel sorular</string>
+    <string name="check_app_updates_desc">Uygulama güncellemeleri için Github\'ı kontrol edin</string>
+    <string name="share_username_in_logs_desc">Çökmelerle ilgili kullanıcı adını dahil et</string>
+    <string name="devs_desc">Himitsu\'nun kendi ücretsiz işçileri</string>
+    <string name="forks_desc">Dantotsu\'dan türetilen projeler</string>
+    <string name="disclaimer_desc">Aklınızda bulundurmanız gereken bir şey</string>
+    <string name="use_foldable">Katlanabilir düzenleri kullan</string>
+    <string name="use_foldable_desc">İçerik menteşe yapılandırmasına uyum sağlar</string>
+    <string name="add_shortcuts">Kısayolları başlatıcıya ekle</string>
+    <string name="add_shortcuts_desc">Simgeye uzun tıklayarak devam öğeleri ekler</string>
+    <string name="comments">Yorumlar</string>
+    <string name="newest">En yeni</string>
+    <string name="oldest">En eski</string>
+    <string name="highest_rated">En yüksek puan alan</string>
+    <string name="lowest_rated">En düşük puan alan</string>
+    <string name="compare"><u>Karşılaştır</u></string>
+    <string name="view_following">Takip Edilenleri Görüntüle</string>
+    <string name="menu">menü</string>
+    <string name="view_followers">Takipçileri Görüntüle</string>
+    <string name="no_fav_anime">Kullanıcının favori Anime\'si yok</string>
+    <string name="no_fav_manga">Kullanıcının favori Manga\'sı yok</string>
+    <string name="fav_character">Favori Karakterler</string>
+    <string name="fav_staff">Favori Personel</string>
+    <string name="stats">İstatistikler</string>
+    <string name="days_watched">İzlenen Günler</string>
+    <string name="total_anime">Toplam Anime</string>
+    <string name="anime_mean_score">Anime Ortalama Puanı</string>
+    <string name="volume_read">Okunan Cilt</string>
+    <string name="total_manga">Toplam Manga</string>
+    <string name="manga_mean_score">Manga Ortalama Puanı</string>
+    <string name="about_me">Hakkımda</string>
+    <string name="follow">Takip Et</string>
+    <string name="following">Takip Edilen</string>
+    <string name="unfollow">Takibi Bırak</string>
+    <string name="follows_you">Seni Takip Ediyor</string>
+    <string name="mutual">Karşılıklı</string>
+    <string name="success">Başarılı</string>
+    <string name="error">Bir hata oluştu</string>
+    <string name="error_msg">Hata: %1$s</string>
+    <string name="please_wait">Lütfen bekleyin</string>
+    <string name="upcoming">Yakında</string>
+    <string name="no_shows_to_display">Gösterilecek gösteri yok</string>
+    <string name="no_media_to_display">Gösterilecek medya yok</string>
+    <string name="extension_name">Uzantı Adı</string>
+    <string name="extension_version">sürüm</string>
+    <string name="enter_password_to_decrypt_file">Dosyayı şifrelemek için şifrenizi girin</string>
+    <string name="show_rotate_button">Döndürme Düğmesini Göster</string>
+    <string name="default_manga_settings">Varsayılan Manga Ayarları</string>
+    <string name="use_dark_theme">Koyu Tema Kullan</string>
+    <string name="use_oled_theme">OLED Tema Kullan</string>
+    <string name="scanlators">Scanlatorler</string>
+    <string name="exporting_requires_encryption">Kimlik bilgilerini dışa aktarma şifreleme gerektirir.</string>
+    <string name="manga_queue">Manga Kuyruğu (Devam Ediyor)</string>
+    <string name="anime_queue">Anime Kuyruğu (Devam Ediyor)</string>
+    <string name="no_offline_manga_found">Çevrimdışı manga bulunamadı</string>
+    <string name="sort">Sırala</string>
+    <string name="download">İndir</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Çerezleri Ayarla</string>
+    <string name="open_website">Web Sitesini Aç</string>
+    <string name="log_to_file">Dosyaya Kaydet</string>
+    <string name="logging_warning">Gecikmeye neden olabilir. Yalnızca sorun yaşıyorsanız etkinleştirin.</string>
+    <string name="share_log">Mevcut günlüğü paylaşmak için tıklayın</string>
+    <string name="radius">Yarıçap</string>
+    <string name="sampling">Örnekleme</string>
+    <string name="blur_banners">Bannerları Bulanıklaştır</string>
+    <string name="blur">Bulanıklaştır</string>
+    <string name="hide_scroll_bar">Kaydırma Çubuğunu Gizle</string>
+    <string name="view_on_anilist">AniList\'te Görüntüle</string>
+    <string name="anilist_notification_filters">Yoksayılacak kategoriyi seç</string>
+    <string name="anilist_notifications_checking_time">Anilist bildirimleri güncelleme sıklığı: %1$s</string>
+    <string name="comment_notification_checking_time">Yorum bildirimleri güncelleme sıklığı: %1$s</string>
+    <string name="activities">Etkinlikler</string>
+    <string name="incorrect_password">Geçersiz parola</string>
+    <string name="password_cannot_be_empty">Parola boş olamaz</string>
+    <string name="unknown_file_type">Bilinmeyen dosya türü</string>
+    <string name="error_importing_settings">Ayarları içe aktarma hatası</string>
+    <string name="download_manager">İndirme Yöneticisi</string>
+    <string name="enter_password">Parolayı Girin</string>
+    <string name="invalid_file_type">Geçersiz dosya türü</string>
+    <string name="purge_confirm">Tüm %1$s indirimi silmek istediğinizden emin misiniz?</string>
+    <string name="delete_fail_reason">Şu nedenle silinemedi... %1$s</string>
+    <string name="hide_replies">Yanıtları Gizle</string>
+    <string name="view_reply">Yanıtı Görüntüle</string>
+    <string name="view_replies">Yanıtları Görüntüle</string>
+    <string name="view_replies_count">%1$d yanıtı görüntüle</string>
+    <string name="replying_to">%1$s yanıtı yanıtlıyorsunuz</string>
+    <string name="delete_comment">Yorumu Sil</string>
+    <string name="delete_comment_confirm">Bu yorumu silmek istediğinizden emin misiniz?</string>
+    <string name="comment_deleted">Yorum Silindi</string>
+    <string name="ban_user">Kullanıcıyı Yasakla</string>
+    <string name="ban_user_confirm">Bu kullanıcıyı yasaklamak istediğinizden emin misiniz?</string>
+    <string name="user_banned">Kullanıcı Yasaklandı</string>
+    <string name="report_comment">Yorumu Bildir</string>
+    <string name="report_comment_confirm">Sadece kuralları ihlal eden yorumları bildirin. Bu yorumu bildirmek istediğinizden emin misiniz?</string>
+    <string name="comment_reported">Yorum Bildirildi</string>
+    <string name="list">Liste</string>
+    <string name="grid">Izgara</string>
+    <string name="compact">Kompakt</string>
+    <string name="webview_not_installed">WebView yüklü değil</string>
+    <string name="video_quality">Kalite: %1$dp</string>
+    <string name="size_unknown">Bilinmeyen Boyut</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Geri Yükle</string>
+    <string name="button_backup">Yedekle</string>
+    <string name="no_location_selected">Konum seçilmedi</string>
+    <string name="do_it">Yap!</string>
+    <string name="password">Şifre</string>
+    <string name="anilist_broken_title">Dahili Sunucu Hatası!</string>
+    <string name="anilist_broken">AniList yanıt vermiyor gibi görünüyor ve işlevsellik ciddi şekilde sınırlı olacak. Uygulamayı kapatıp daha sonra tekrar denemek ister misiniz?\n</string>
+    <string name="search_title">%1$s\'i Ara</string>
+    <string name="profile_stats_widget">İlerlemenizi doğrudan ana ekranınızdan takip edin</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Bölümler</string>
+    <string name="episodes_watched_n">Bölümler</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="user_stats">%1$s\'in İstatistikleri</string>
+    <string name="please">Lütfen</string>
+    <string name="log_in">oturum açın</string>
+    <string name="or_join">veya katılın</string>
+    <string name="audio_tracks">Ses Parçaları</string>
+    <string name="disabled_track">\[💬\] Devre Dışı</string>
+    <string name="invalid_track">\[⁉️\] Geçersiz</string>
+    <string name="unknown_track">\[%1$s\] Bilinmeyen</string>
+    <string name="top_background_color">Üst arka plan rengi</string>
+    <string name="bottom_background_color">Alt Arka Plan Rengi</string>
+    <string name="countdown_text_color">Geri Sayım Metin Rengi</string>
+    <string name="title_color">Başlık Rengi</string>
+    <string name="stat_text_color">İstatistik Metin Rengi</string>
+    <string name="flipper_color">Flipper Rengi</string>
+    <string name="placeholder">Yer Tutucu</string>
+    <string name="anime_add_repository">Anime Deposu Ekle</string>
+    <string name="manga_add_repository">Manga Deposu Ekle</string>
+    <string name="novel_add_repository">Roman Deposu Ekle</string>
+    <string name="edit_repositories">Depoları Düzenle</string>
+    <string name="rem_repository">Depoyu Kaldır?</string>
+    <string name="trending_movies">Trend Olan Filmler</string>
+    <string name="include_list">Listeye Dahil Et</string>
+    <string name="top_rated">En Yüksek Puanlı</string>
+    <string name="most_favourite">En Favori</string>
+    <string name="trending_manhwa">Trend Olan Manhwa\'lar</string>
+    <string name="liked_by">Tarafından Beğenilen</string>
+    <string name="adult_only_content">Sadece Yetişkin İçeriği</string>
+    <string name="report">Rapor</string>
+    <string name="ban">Yasakla</string>
+    <string name="activity_label">Etkinlik</string>
+    <string name="dir_error">Yolunuz belirlenemedi</string>
+    <string name="dir_access">İndirme Erişimi</string>
+    <string name="dir_access_msg">İndirmelerinizi kaydetmek için bir dizin seçin</string>
+    <string name="download_subtitle">Altyazıyı İndir</string>
+    <string name="change_download_location">İndirme Konumunu Değiştir</string>
+    <string name="download_location_msg">İndirme konumunu değiştirmek istediğinizden emin misiniz?\nEski indirmelere artık erişilemeyebilir.</string>
+    <string name="voice_actors">Seslendirme Sanatçıları</string>
+    <string name="download_permission_required">İndirmek için izin gereklidir</string>
+    <string name="media">Medya</string>
+    <string name="users">Kullanıcılar</string>
+    <string name="social">Sosyal</string>
+    <string name="auto_skip_recap">Otomatik Atla Özeti</string>
+    <string name="use_anilist_icon">AniList İkonu Kullan</string>
+    <string name="exo_source_exception">Kaynak İstisnası: %1$s</string>
+    <string name="exo_decoding_failed">Çözme Başarısız Oldu: %1$s</string>
+    <string name="exo_player_error">Oynatıcı Hatası: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL ve Discord.\nDaha ne isteyebilirsin?</string>
+    <string name="theme_desc">Uygulamanızın havasını değiştirin</string>
+    <string name="extensions_desc">Depo koleksiyonunuzu yönetin</string>
+    <string name="common_desc">İndirmeler, DNS ve varsayılanlar</string>
+    <string name="anime_desc">İzleme şeklinizi seçin</string>
+    <string name="manga_desc">Okuma şeklinizi seçin</string>
+    <string name="notifications_desc">Haberleri ve güncellemeleri özelleştirin</string>
+    <string name="system_desc">Güncellemeler ve kullanışlı araçlar</string>
+    <string name="about_desc">Himitsu hakkında daha fazla bilgi edinin</string>
+    <string name="addons">Eklentiler</string>
+    <string name="addons_desc">Eklentiler Dantotsu ek özellik modülleri.</string>
+    <string name="torrent_addon">Torrent Eklentisi</string>
+    <string name="enable">Etkinleştir</string>
+    <string name="anime_downloader_addon">Anime İndirme Eklentisi</string>
+    <string name="loaded_successfully">Başarılı bir şekilde yüklendi</string>
+    <string name="not_installed">Yüklenmedi</string>
+    <string name="torrent_extension_not_supported">Torrent uzantısı bu cihazda desteklenmiyor</string>
+    <string name="update_addon">Eklentiyi Güncelle</string>
+    <string name="install_addon">Eklenti Yükle</string>
+    <string name="download_addon_not_found">İndirme eklentisi bulunamadı</string>
+    <string name="default_novel_settings">Varsayılan Roman Ayarları</string>
+    <string name="line_height">Satır Yüksekliği</string>
+    <string name="margin">Kenar Boşluğu</string>
+    <string name="maximum_inline_size">Maksimum İçerik Boyutu</string>
+    <string name="maximum_column_width">Maksimum sütun genişliği (yatay yazma) veya yüksekliği (dikey yazma)</string>
+    <string name="maximum_block_size">Maksimum Blok Boyutu</string>
+    <string name="maximum_height">Maksimum yükseklik (yatay yazma) veya genişlik (dikey yazma)</string>
+    <string name="global">Küresel</string>
+    <string name="china">Çin</string>
+    <string name="south_korea">Güney Kore</string>
+    <string name="japan">Japonya</string>
+    <string name="taiwan">Tayvan</string>
+    <string name="something">Bir şey</string>
+    <string name="image">Görüntü</string>
+    <string name="sort_score">Puan</string>
+    <string name="popular">Popüler</string>
+    <string name="trending">Trend</string>
+    <string name="new_releases">Yeni Çıkışlar</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Saf Acı</string>
+    <string name="add_a_comment">Yorum ekle…</string>
+    <string name="type">Tür</string>
+    <string name="view">Görünüm</string>
+    <string name="count">SAYIM</string>
+    <string name="open">Açık</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Yanıtla</string>
+    <string name="time">Zaman</string>
+    <string name="player_settings_desc">Tüm oyuncu ile ilgili ayarlar</string>
+    <string name="purge_anime_downloads_desc">İndirilen Tüm Anime\'leri Sil</string>
+    <string name="prefer_dub_desc">Varsayılan olarak dublajlı medyayı seç</string>
+    <string name="show_yt_desc">Desteklenen medya için YouTube bağlantılarını göster</string>
+    <string name="include_list_anime_desc">Anime keşfetme sayfasında liste öğelerini dahil et</string>
+    <string name="ui_settings_desc">Tüm UI ile ilgili ayarlar</string>
+    <string name="download_manager_select_desc">Anime indirmek için varsayılan yöneticiyi seç</string>
+    <string name="backup_restore_desc">Seçilen ayarların yedeklerini oluştur ve geri yükle</string>
+    <string name="change_download_location_desc">İndirilenlerin tutulduğu konumu değiştir</string>
+    <string name="always_continue_content_desc">Kaldığınız yerden öğeleri devam ettirin</string>
+    <string name="search_source_list_desc">İçerik bulunamadığında bir sonraki sunucuya geçer</string>
+    <string name="recentlyListOnly_desc">Son sekmesinde yalnızca listenizdeki öğeleri göster</string>
+    <string name="adult_only_content_desc">Keşfet sayfasında yalnızca yetişkin içeriği göster</string>
+    <string name="anime_add_repository_desc">Anime uzantı depolarını koleksiyona ekle</string>
+    <string name="manga_add_repository_desc">Manga uzantı depolarını koleksiyona ekle</string>
+    <string name="user_agent_desc">Varsayılan kullanıcı ajanınızı değiştirin</string>
+    <string name="force_legacy_installer_desc">Paket yüklemesi istemek için niyetleri kullanın</string>
+    <string name="skip_loading_extension_icons_desc">Yöneticide uzantı simgelerini yükleme</string>
+    <string name="NSFWExtention_desc">Yetişkin içeriğe sahip herhangi bir uzantıyı devre dışı bırakma</string>
+    <string name="reader_settings_desc">Tüm Okuyucu ile ilgili ayarlar</string>
+    <string name="purge_manga_downloads_desc">Tüm indirilen Manga\'ları sil</string>
+    <string name="purge_novel_downloads_desc">Tüm indirilen Romanları sil</string>
+    <string name="include_list_desc">Manga keşfetme sayfasında liste öğelerini dahil et</string>
+    <string name="anilist_notification_filters_desc">Yoksayılacak kategoriyi seçin</string>
+    <string name="anilist_notifications_checking_time_desc">Uygulamanın Anilist bildirimlerini kontrol etmek istediğiniz sıklığı ayarlayın</string>
+    <string name="comment_notification_checking_time_desc">Yorum bildirimlerini kontrol etmek istediğiniz sıklığı ayarlayın</string>
+    <string name="notification_for_checking_subscriptions_desc">Abonelikleri kontrol etmek için bildirim göster</string>
+    <string name="use_alarm_manager_reliable_desc">Telefonun pil optimizasyonunu atlamak için kullanın</string>
+    <string name="oled_theme_variant_desc">Mümkün olan en koyu</string>
+    <string name="use_material_you_desc">Duvar kağıdınızla aynı rengi kullanın</string>
+    <string name="use_unique_theme_for_each_item_desc">Medyanın bannerından renk kullanın</string>
+    <string name="use_custom_theme_desc">Tema için kendi renginizi kullanın</string>
+    <string name="color_picker_desc">Bir renk seçin</string>
+    <string name="install_torrent_addon">Torrent Eklentisi Yükleyin</string>
+    <string name="failed_ext_install_conflict">Çakışma nedeniyle uzantı yüklenemedi</string>
+    <string name="no_video_selected">Seçili Video Yok</string>
+    <string name="download_extension_not_available">İndirme Uzantısı mevcut değil</string>
+    <string name="feed">Besleme</string>
+    <string name="profile">Profil</string>
+    <string name="epub_download_exception">.epub indirilirken istisna oluştu: %1$s</string>
+    <string name="novel_download_progress">Roman İndirme İlerlemesi</string>
+    <string name="download_started">İndirme başladı</string>
+    <string name="downloads_completed">Tüm indirmeler tamamlandı</string>
+    <string name="pending_downloads">Bekleyen indirmeler: %1$d</string>
+    <string name="reading">OKUNUYOR</string>
+    <string name="watching">İZLENİYOR</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Kapak]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Lütfen WebView\'i Google Play\'den güncelleyin</string>
+    <string name="update_webview_version">WebView sürümü %1$d güncelleme gerektiriyor</string>
+    <string name="webview_not_found_version">WebView sürümü %1$s bulunamadı</string>
+    <string name="webview_not_found">Yüklü bir WebView kütüphanesi bulunamadı</string>
+    <string name="multi">Çoklu</string>
+</resources>

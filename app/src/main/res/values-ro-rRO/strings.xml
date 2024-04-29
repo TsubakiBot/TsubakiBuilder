@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ro">
+    <string name="slogan">Aplicația NOUĂ Cea mai bună Anime &amp; Manga pentru Android.</string>
+    <string name="login">Conectare în cont</string>
+    <string name="logout">Deconectare</string>
+    <string name="conversion_title">Bine ai revenit!</string>
+    <string name="conversion_message">Se pare că aveți un pachet mai vechi instalat.\nSelectați \"Backup\" pentru a deschide versiunea mai veche și a efectua o copie de rezervă. Poți apoi să te întorci la această aplicație și să folosești \"Restaurează Setările\".</string>
+    <string name="backup">Backup</string>
+    <string name="home">Acasă</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Răsfoiește Anime</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Răsfoiește Manga</string>
+    <string name="novels">Noutăți</string>
+    <string name="info">Info</string>
+    <string name="watch">Vizionează</string>
+    <string name="read">Citește</string>
+    <string name="language">Limba</string>
+    <string name="anime_list">Lista Anime</string>
+    <string name="manga_list">Listă Manga</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Lipsă conexiune la internet</string>
+    <string name="no_internet_connection">Nu există conexiune la internet\ndisponibil modul offline</string>
+    <string name="refresh">Împrospătează</string>
+    <string name="search">Caută</string>
+    <string name="extension_search">Căutare sursă inversă</string>
+    <string name="search_results">Rezultatele căutării</string>
+    <string name="sort_by">Sortează după</string>
+    <string name="genre">Gen</string>
+    <string name="top_score">Top Scor</string>
+    <string name="updated">Recent actualizate</string>
+    <string name="trending_anime">Anime populare</string>
+    <string name="popular_anime">Anime populare</string>
+    <string name="trending_manga">Trending Manga</string>
+    <string name="trending_novel">Tendințe de nod</string>
+    <string name="popular_manga">Manga populară</string>
+    <string name="username">Nume</string>
+    <string name="chapters_read">Capitole citite</string>
+    <string name="episodes_watched">Episoade vizionate</string>
+    <string name="continue_reading">Continuă lectura</string>
+    <string name="continue_watching">Continuă urmărirea</string>
+    <string name="continue_media">Continuă…</string>
+    <string name="recommended">Recomandat</string>
+    <string name="get_recommendations">Urmărește/Citește câteva Anime sau Manga pentru a obține recomandări</string>
+    <string name="empty">Totul a fost prins, când a fost nou?</string>
+    <string name="action_settings">Setări</string>
+    <string name="add">Adaugă la listă</string>
+    <string name="list_editor">Editor Listă</string>
+    <string name="add_fav">Adaugă la Favorite</string>
+    <string name="notifications">Notificări</string>
+    <string-array name="keys">
+        <item>Citire</item>
+        <item>Urmărire</item>
+        <item>Completat</item>
+        <item>Pauză</item>
+        <item>Eliminat</item>
+        <item>Planificare</item>
+        <item>Favorite</item>
+        <item>Recuperare</item>
+        <item>Reîncărcare</item>
+        <item>Toate</item>
+    </string-array>
+    <string name="no_notifications">Nu mai sunt notificări</string>
+    <string name="followers">Urmăritori</string>
+    <string name="social_in_media">Statistici sociale în media</string>
+    <string name="social_in_media_desc">Afișează evaluările prietenilor și progresul</string>
+    <string name="status">Stare</string>
+    <string-array name="status_anime">
+        <item>PLANIFICARE</item>
+        <item>AȘTEPTARE</item>
+        <item>COMPLETAT</item>
+        <item>REAPLICARE</item>
+        <item>ÎN PAUZĂ</item>
+        <item>ABANDONAT</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>PLANIFICARE</item>
+        <item>CREARE</item>
+        <item>COMPLETAT</item>
+        <item>READACTIVARE</item>
+        <item>ÎN PAUZĂ</item>
+        <item>ABANDONAT</item>
+    </string-array>
+    <string name="progress">PROGRESELE</string>
+    <string name="score">COREAZĂ</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">ÎNCET AT</string>
+    <string name="completed_at">FINALIZAT LA</string>
+    <string name="save">Salvează</string>
+    <string name="delete">Ștergere</string>
+    <string name="remove">Elimină</string>
+    <string name="name">Nume</string>
+    <string name="name_romaji">Nume Romaji</string>
+    <string name="mean_score">Scor mediu</string>
+    <string name="format">Format</string>
+    <string name="status_title">Status</string>
+    <string name="total_eps">Total episoade</string>
+    <string name="episodes"> Episod</string>
+    <string name="chapters"> Capitol (capitole)</string>
+    <string name="total_divider"> %1$s</string>
+    <string name="total_chaps">Total capitole</string>
+    <string name="ep_duration">Durata medie</string>
+    <string name="min">" min."</string>
+    <string name="season">Sezon</string>
+    <string name="start_date">Data de început</string>
+    <string name="end_date">Data de încheiere</string>
+    <string name="source">Sursa</string>
+    <string name="main_studio">Studio</string>
+    <string name="genres">Genres</string>
+    <string name="description">Sinodă</string>
+    <string name="characters">Caractere</string>
+    <string name="relations">Relaţii</string>
+    <string name="staff">Personal</string>
+    <string name="favourites">Favorite</string>
+    <string name="popularity">Popularitate</string>
+    <string name="roles">Roluri</string>
+    <string name="details">Detalii</string>
+    <string name="play_yt">Joacă pe YouTube</string>
+    <string name="eps">Episoade</string>
+    <string name="ep">Episod</string>
+    <string name="chaps">Capitole</string>
+    <string name="chap">Capitol</string>
+    <string name="wrong"><u>Titlu greșit?</u></string>
+    <string name="source_not_found">        Nu s-a putut găsi nimic X( \n
+        Încearcă altă sursă.
+    </string>
+    <string name="not_supported">%1$s nu este acceptat!</string>
+    <string name="server_selector">Selectare server</string>
+    <string name="auto_select_server">Server de selectare automată</string>
+    <string name="make_default">Setează ca implicit</string>
+    <string name="filler">Filler</string>
+    <string name="adult">Adulţi</string>
+    <string name="list_only">Doar lista</string>
+    <string name="tag">Etichetă</string>
+    <string name="tags">Etichete</string>
+    <string name="synonyms">Simbol</string>
+    <string name="trailer">Remorcă</string>
+    <string name="opening">Deschiderea</string>
+    <string name="ending">Terminare</string>
+    <string name="prequel">Prequel</string>
+    <string name="sequel">Secvență</string>
+    <string name="installed">Instalat</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Serverul rulează…</string>
+    <string name="settings_torrent">TorrServer Intern</string>
+    <string name="enable_server">Activează TorrServer</string>
+    <string name="enable_server_desc">Permite utilizarea la cerere a unui server local</string>
+    <string name="torrent_port">Numar port server</string>
+    <string name="torrents">torente</string>
+    <string name="active_torrents">Torente active</string>
+    <string name="remove_torrent">Elimină torentul?</string>
+    <string name="invalid_port">Portul introdus este invalid!</string>
+    <string name="port_range">Portul trebuie să fie un port TCP valabil (0 – 65535)</string>
+    <string name="server_disabled">TorrServer este dezactivat!</string>
+    <string name="server_enabled">Pornire TorrServer</string>
+    <string name="enable_server_temp">Doriţi să activaţi temporar TorrServer (dezactivat la închiderea aplicaţiei)?</string>
+    <string name="anilist_settings">Setări Anilist</string>
+    <string name="extension_settings">Extensii</string>
+    <string name="downloads">Descărcări</string>
+    <string name="offline_mode">Mod offline</string>
+    <string name="settings">Setări</string>
+    <string name="extensions">Extensii</string>
+    <string name="extension_updates_available">Actualizări de extensie disponibile</string>
+    <string name="player_settings">Setările jucătorului</string>
+    <string name="recentlyListOnly">Doar conținutul meu din \"Actualizări recente\"</string>
+    <string name="download_manager_select">Manager descărcări</string>
+    <string name="downloadInSd">Descărcați pe cardul SD</string>
+    <string name="noSdFound">Nu a fost găsit niciun card SD.</string>
+    <string name="reader_settings">Setări cititor</string>
+    <string name="default_source">Sursa Implicită</string>
+    <string name="show_yt">Arată Link-ul YouTube</string>
+    <string name="default_ep_view">Aspect Episod implicit</string>
+    <string name="default_chp_view">Structura implicita a capitolului</string>
+    <string name="ui">Interfață utilizator</string>
+    <string name="common">Frecvente</string>
+    <string name="theme">Tema</string>
+    <string name="theme_ui">Temă / UI</string>
+    <string name="day_night">Temă luminoasă / întunecată</string>
+    <string name="ui_settings">Setări UI</string>
+    <string name="system">Sistem</string>
+    <string name="about">Despre</string>
+    <string name="desc">"    Dantotsu este creat din cenuşa lui Saikou şi se bazează pe eleganţa simplistă, dar de ultimă generaţie. Este doar un client Anilist, ceea ce îți permite și să descarci Anime prin extensii &amp; Manga.\nDantotsu literalmente înseamnă \"cel mai bun dintre cele mai bune\" din japanese. Ei bine, am vrea să spunem că aceasta este cea mai bună aplicație open source pentru anime și manga pe Android, ce ați spune?"</string>
+    <string name="devs">Colaboratori</string>
+    <string name="disclaimer">Notificare</string>
+    <string name="full_disclaimer">         - Dantotsu singur oferă doar un anime și manga tracker și nu oferă nicio capabilitate de streaming sau de descărcare de mangă.
+        \n\n - Dantotsu sau oricare dintre dezvoltatorii/personalul său nu poate găzdui niciun conținut găsit în Dantotsu. Oricare și toate imaginile și informațiile anime/manga găsite în aplicație sunt preluate din diverse API publice (AniList, MyAnimeList, Kitsu).
+        \n\n - Mai mult, toate link-urile anime/manga găsite în Dantotsu sunt preluate din diferite plugin-uri terțe și nu au afiliere la Dantotsu sau personalul său.
+        \n\n - Dantotsu sau proprietarii acestuia nu sunt răspunzători pentru utilizarea abuzivă a niciunuia dintre conținuturile găsite în interiorul sau în afara aplicației și nu pot fi trase la răspundere pentru distribuirea niciunuia dintre conținutul găsit în interiorul aplicației.
+        \n\n - Folosind Dantotsu, respectați faptul că dezvoltatorul aplicației nu este responsabil pentru niciunul dintre conținutul găsit în aplicație. De asemenea, ești de acord cu faptul că nu poți folosi Dantotsu pentru a descărca sau a transmite conținut protejat de autor.
+        \n\n - În cazul în care sunt implicate probleme legate de încălcarea dispoziţiilor de pe internet, Vă rugăm să contactaţi site-ul sursă. Dezvoltatorul nu își asumă nicio responsabilitate legală.
+    </string>
+    <string name="version_current">Versiunea %1$s</string>
+    <string-array name="tips">
+        <item>Puteți face clic lung pe un episod/capitol pentru a-l marca ca citit.</item>
+        <item>Afișările cu click-uri lungi pot deschide direct Lista Editor.</item>
+        <item>Sunt câteva ouă mai estice ascunse în aplicaţie.</item>
+        <item>Provocare: Mergi în partea de jos a Anime &amp; Manga Populară</item>
+        <item>Încearcă să dai click pe titlul emisiunii.</item>
+        <item>La naiba, de ce îți pierzi timpul?</item>
+        <item>Puteți da click lung pentru a copia acest mesaj.</item>
+        <item>ÎNCĂRCAȚI MUNCĂ! AI FOST UN EGOS DE EASTER!?</item>
+        <item>Ştiţi cine îi place această animaţie?</item>
+        <item>Suport MAL? periuță.</item>
+        <item>Noutăți? Mai mult ca NO romane.</item>
+        <item>Apăsați lung pe logo pentru a verifica dacă există actualizări</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Implicit</item>
+        <item>Tema 1</item>
+        <item>Tema 2</item>
+        <item>Tema 3</item>
+        <item> Tema 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Arată informații video</string>
+    <string name="source_info">Arată numele sursei</string>
+    <string name="video_info_info">Arată ce Rezoluție a redării video curente, folositoare pentru serverele <b>\"Multi Quality\"</b>.</string>
+    <string name="default_quality">Selectarea automată a calității</string>
+    <string name="height">Înălțime</string>
+    <string name="width">Width</string>
+    <string name="default_quality_info">Utilizează automat cea mai apropiată calitate furnizată implicit, aplicată NUMAI pentru serverele \"Calitate multiplă\". Modificări automate la redarea unui videoclip.</string>
+    <string name="default_playback_speed">Viteza de redare implicită : %1$s</string>
+    <string name="cursed_speeds">Viteze curbate</string>
+    <string name="resize_mode_button">Mod redimensionare implicit</string>
+    <string name="subtitles">Subtitrări</string>
+    <string name="subtitle_toggle">Subtitrări</string>
+    <string name="primary_sub_color_select">Culoare subtitrare</string>
+    <string name="secondary_sub_color_select">Culoare contur subtitrare</string>
+    <string name="secondary_sub_outline_type_select">Tip contur subtitrare</string>
+    <string name="sub_background_color_select">Culoare fundal subtitrare</string>
+    <string name="sub_window_color_select">Culoare fereastră subtitrare</string>
+    <string name="sub_window_color_info">"Fereastra de subtitrare este partea stanga si dreapta de la ele. (unde fundalul nu este)"</string>
+    <string name="sub_color_info"><b>Notă:</b> Modificarea de mai sus afectează doar subtitrările Soft-!</string>
+    <string name="sub_alpha">Transparență subtitrare</string>
+    <string name="sub_text_example">Exemplu de subsol</string>
+    <string name="sub_font_select">Font subtitrare</string>
+    <string name="subtitle_font_size">Dimensiune subtitrare</string>
+    <string name="no_subs_available">Nu există subtitrări disponibile</string>
+    <string name="auto">Automat</string>
+    <string name="auto_play_next_episode">Auto-play următorul episod</string>
+    <string name="auto_play_next_episode_info">Dezactivează automat dacă nu există interacțiune cu jucătorul după o oră.</string>
+    <string name="auto_skip_fillers">Omitere automată Fillere</string>
+    <string name="auto_skip_fillers_info">Săriți episoadele de umplere atunci când mergeți la următorul episod.</string>
+    <string name="update_progress">Progresul actualizării</string>
+    <string name="ask_update_progress_anime">Întreabă pentru fiecare Anime \"Individual\"</string>
+    <string name="ask_update_progress_manga">Întreabă pentru fiecare Manga \"Individual\"</string>
+    <string name="ask_update_progress_info_ep">Dezactivarea va actualiza întotdeauna automat progresul atunci când episodul este vizionat.</string>
+    <string name="ask_update_progress_info_chap">Dezactivarea va actualiza întotdeauna automat progresul atunci când capitolul este citit.</string>
+    <string name="ask_update_progress_chapter_zero">Progresul actualizat pentru capitolul 0</string>
+    <string name="ask_update_progress_info_zero">Activarea va adăuga noi elemente în Anilist cu progres setat la capitolul 0.</string>
+    <string name="ask_update_progress_hentai">Progresul actualizat pentru Hentai</string>
+    <string name="ask_update_progress_doujin">Progresul actualizării pentru Dublini</string>
+    <string name="very_bold">foarte îndrăzneț din partea ta sar</string>
+    <string name="watch_complete_percentage">Procent actualizare ceas</string>
+    <string name="watch_complete_percentage_info">Procentul la care progresul analist ar trebui actualizat după urmărirea unui episod. \nAcest lucru stabilește, de asemenea, \% pentru momentul preîncărcării link-urilor pentru următorul episod.</string>
+    <string name="behaviour">Comportament</string>
+    <string name="always_continue">Se reia întotdeauna marcajul de timp</string>
+    <string name="pause_video_focus">Pauză când nu este în Focus</string>
+    <string name="gestures">Volum &amp; Gesturi de luminozitate</string>
+    <string name="double_tap">Atingeți de două ori pentru a căuta</string>
+    <string name="fast_forward">Înaintare rapidă</string>
+    <string name="double_tap_info">Dezactivarea va arăta butoanele de derulare înainte înainte de &amp;</string>
+    <string name="seek_time">Timp de căutare</string>
+    <string name="seek_time_info">Cantitatea de timp în secunde pentru înaintarea mai rapidă &amp; derulare.</string>
+    <string name="skip_time">Omite timpul</string>
+    <string name="skip_time_info">Setare la 0, ascunde butonul de sărit.</string>
+    <string name="show_cast_button">Arată butonul în distribuție</string>
+    <string name="show_cast_button_info">Necesită aplicația \"Web Video Caster\" pentru a fi difuzată.</string>
+    <string name="picture_in_picture">Imagine în imagine</string>
+    <string name="always_minimize">Minimizează întotdeauna</string>
+    <string name="always_minimize_info">Necesită ca PiP să fie activat, face ca jucătorul să se comporte ca Youtube Player, dar mai bine.\nascunde și butonul PiP.</string>
+    <string name="app">Aplicație</string>
+    <string name="immersive_mode">Ascunde bara de stare</string>
+    <string name="immersive_modelist">Ascunde bara de stare pentru listă</string>
+    <string name="immersive_mode_info">Necesită repornirea aplicației pentru a aplica pe deplin.</string>
+    <string name="home_layout_show">Arată/Ascunde Schemele de Acasă</string>
+    <string-array name="home_layouts">
+        <item>Continuă urmărirea</item>
+        <item>Anime preferate</item>
+        <item>Anime planificate</item>
+        <item>Continuă lectura</item>
+        <item>Manga favorită</item>
+        <item>Manga Planificată</item>
+        <item>Recomandat</item>
+    </string-array>
+    <string name="startUpTab">Fila de pornire implicită</string>
+    <string name="small_view">Vizualizare mică în emisiuni populare</string>
+    <string name="animations">Animații</string>
+    <string name="banner_animations">Animaţii Banner</string>
+    <string name="layout_animations">Animații aspect</string>
+    <string name="trending_scroller">Papirus popular</string>
+    <string name="animation_speed">Viteza Globală</string>
+    <string name="empty_fav">Se pare că nu îți place nimic,\nÎncearcă să îți placă o emisiune pentru a o păstra aici.</string>
+    <string name="fav_anime">Anime preferate</string>
+    <string name="fav_manga">Manga favorită</string>
+    <string name="restart_app">Reporniți aplicația?</string>
+    <string name="next">Următoarea</string>
+    <string name="previous">Anterior</string>
+    <string name="current_page">Pagina Curentă</string>
+    <string name="dubbed">Dezrădăcinat</string>
+    <string name="subbed">Subscris</string>
+    <string name="prefer_dub">Preferă Anime Dubbed</string>
+    <string name="none">Niciunul</string>
+    <string name="selected_dns">DNS selectat</string>
+    <string name="dns_info">Schimbă în cazul în care furnizorul tău de internet blochează orice sursă</string>
+    <string name="keep_screen_on">Menține ecranul aprins</string>
+    <string name="layout">Aspect</string>
+    <string name="spaced_pages">Pagini spațiate</string>
+    <string name="direction">Direcție</string>
+    <string name="comments_api">Comentarii API (Privat)</string>
+    <string name="disable_mitm">Previne injectarea (\"Pranks\")</string>
+    <string name="general">Generalități</string>
+    <string name="show_system_bars">Arată Stare &amp; Bare de Navigare</string>
+    <string name="auto_detect_webtoon">Detectare automată Webtoon</string>
+    <string name="auto_detect_webtoon_info">În cazul în care Manga nu este din Japonia, cititorul va accesa implicit Setările Cititorului Webtoon</string>
+    <string name="default_settings">Setări implicite</string>
+    <string name="horizontal_scroll_bar">Bară de scroll orizontală</string>
+    <string name="dual_page">Pagină dublă</string>
+    <string name="dual_page_info">Arată 2 imagini într-o pagină, va arăta ciudat dacă imaginile nu sunt de aceeași dimensiune</string>
+    <string name="true_colors">Culori Adevărate</string>
+    <string name="true_colors_info">Modul de culori (32-bit) Reduce configurarea imaginilor, poate afecta performanța.</string>
+    <string name="image_rotation">Rotire imagine</string>
+    <string name="hide_page_numbers">Ascunde numerele de pagină</string>
+    <string name="sort_by_title">Sortează după titlu</string>
+    <string name="sort_by_last_updated">Sortează după ultima actualizare</string>
+    <string name="sort_by_score">Sortează după scor</string>
+    <string name="sort_by_airing">Sortează după următoarea aeronavă</string>
+    <string name="over_scroll">Peste parcurgerea capitolului următor/anterior</string>
+    <string name="volume_buttons">Schimbă paginile cu butoane de volum</string>
+    <string name="list_private">Privat</string>
+    <string name="wrap_images">Wrap Images</string>
+    <string name="wrap_images_info">Utilă în mare parte pentru dispozitive mai mari, elimină spațiul dintre imagini, dacă există.</string>
+    <string name="reload">Reload</string>
+    <string name="share">Distribuie</string>
+    <string name="skip">Omitere</string>
+    <string name="other">Altele</string>
+    <string name="total_repeats">TOTAL REPEAT</string>
+    <string name="custom_lists">Liste personalizate</string>
+    <string name="donate_desc">Doriți să sprijiniți Himitsu?\nluați în considerare donarea</string>
+    <string name="donate_goal">Nici un atm donator</string>
+    <string name="filter">Filtrare</string>
+    <string name="year">An</string>
+    <string name="apply">Aplică</string>
+    <string name="cancel">Anulează</string>
+    <string name="edit">Editare</string>
+    <string name="this_season">Acest sezon</string>
+    <string name="next_season">Următorul sezon</string>
+    <string name="previous_season">Sezonul anterior</string>
+    <string name="include_media_in_list">Include lista</string>
+    <string name="release_calendar">Calendar</string>
+    <string name="planned_anime">Anime planificate</string>
+    <string name="planned_manga">Manga Planificată</string>
+    <string name="image_long_clicking">Clic lung pentru a deschide imaginea</string>
+    <string name="always_continue_content">Continuați articolele deschise anterior</string>
+    <string name="search_source_list">Caută următoarea sursă disponibilă</string>
+    <string name="timestamp_proxy_desc">Util dacă vi se face Manşonul Eşecului</string>
+    <string name="timestamp_proxy">Folosește Proxy pentru marcaje de timp</string>
+    <string name="check_app_updates">Verifică pentru actualizări</string>
+    <string name="author">Autor</string>
+    <string name="forks">Versiuni</string>
+    <string name="faq">Întrebări</string>
+    <string name="accounts">Conturi</string>
+    <string name="myanimelist">Listă</string>
+    <string name="login_with_anilist">Autentificare cu Anilist</string>
+    <string name="anilist">Anilist</string>
+    <string name="account_help">Cum funcționează acest lucru?</string>
+    <string name="full_account_help">        Dantotsu este o aplicație bazată pe anilism, pentru sincronizare cu contul tău MAL, are nevoie de un cont Anilist pentru a fi autentificat.
+        \nOdată autentificat atât cu conturile Aniliste, cât şi cu cele MAL, aplicația vă va actualiza automat contul MAL atunci când:
+        \n- Adăugați un nou
+        \n- Editați o media
+        \n- Ștergeți un Media
+
+        \n\nNotă: Aplicația nu va sincroniza vechile Medii de la Anilist la MAL, Este recomandat să le sincronizăm.
+        \n- Verifică __FAQs__ pentru _Easy Method_
+
+        \n\nși pentru _Intermediates_ :
+        \n- [Cum să sincronizezi datele aniliste cu MAL](https://anilist. o/forum/thread/2654)
+        \n- [Cum să sincronizezi datele MAL cu Anilist](https://anilist. o/forum/thread/thread/3393)
+
+        \n\n_Nu este necesar să sincronizezi atât conturile MAL cât şi conturile Aniliste.
+    </string>
+    <string name="notification_for_checking_subscriptions">Arată notificare pentru verificarea abonamentelor</string>
+    <string name="use_alarm_manager">Utilizați Alarmă Manager</string>
+    <string name="use_alarm_manager_reliable">Utilizați Alarm Manager (Reliable Notifications)</string>
+    <string name="use_alarm_manager_confirm">Folosind Alarmă Manger poate ajuta la lupta împotriva optimizării bateriei, dar poate consuma mai multe baterii. De asemenea, necesită permisiunea managerului de alarmă.</string>
+    <string name="use">Utilizare</string>
+    <string name="checking_subscriptions">Verificare notificări abonament</string>
+    <string name="subscriptions_checking_time_s">Frecvența de actualizare a abonamentelor: %1$s</string>
+    <string name="subscriptions_checking_time">Frecvența de actualizare a abonamentelor</string>
+    <string name="subscriptions_info">Cantitatea de timp pentru Dantotsu pentru a verifica pentru noi episoade / capitole\n(mai puțin timp consumă mai multă baterie)</string>
+    <string name="do_not_update">Nu actualiza</string>
+    <string name="loading_chap_number">Se încarcă capitolul %1$s</string>
+    <string name="sort_by_release_date">Sortează după data lansării</string>
+    <string name="crop_borders">Tăiați granițele</string>
+    <string name="note">NOTĂ</string>
+    <string name="manage_extension_repos">Gestionare Repo-uri Extensii</string>
+    <string name="installing_extension">Instalare extensie</string>
+    <string name="installation_failed">Instalare esuata: %1$s</string>
+    <string name="installation_complete">Instalare completă</string>
+    <string name="extension_has_been_installed">Extensia a fost instalată cu succes.</string>
+    <string name="extension_installed">Extensie instalată</string>
+    <string name="error_message">Eroare: %1$s</string>
+    <string name="install_step">Pas: %1$s</string>
+    <string name="review">Revizuire</string>
+    <string name="select_source">Selectați o sursă</string>
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="install_update">Instalează actualizarea %1$s?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Actualizare disponibilă</string>
+    <string name="discord_nothing_button">Afişează doar primul buton</string>
+    <string name="discord_dantotsu_button">Afișează dantotsu în al doilea buton</string>
+    <string name="discord_anilist_button">Afișează în schimb profilul AniList</string>
+    <string name="discord_rich_presence">Prezență Discord Rich</string>
+    <string name="stream_on_dantotsu">Streaming pe Dantotsu</string>
+    <string name="view_my_anilist">Vezi Lista mea de Anilist</string>
+    <string name="jobless_message">DAMĂ! TRULEȘTE SUNTEȚI JOBLESTII\nAI ÎNDEPLINAT</string>
+    <string name="file_manager_not_found">Nu s-a putut găsi un Manager de fişiere pentru a deschide cardul SD</string>
+    <string name="error_loading_data">Eroare la încărcarea datelor %1$s</string>
+    <string name="long_click_to_check_update">Click lung pentru a verifica actualizările</string>
+    <string name="saved_to_path">Salvat în:\n%s</string>
+    <string name="setting_progress">✔️ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Vă rugăm să vă autentificați în contul AniList!</string>
+    <string name="congrats_vro">Congrats Vro</string>
+    <string name="please_reload">Vă rugăm reîncărcați.</string>
+    <string name="copied_text">A copiat \"%1$s\"</string>
+    <string name="back_to_exit">Apăsați din nou pentru a ieși</string>
+    <string name="back_button">Butonul Înapoi</string>
+    <string name="anilist_not_found">Se pare că asta nu a fost găsită în Anilist.</string>
+    <string name="disabled_auto_skip">Dezactivarea opțiunii de auto-saltare a OP &amp; ED</string>
+    <string name="auto_skip">Auto Skipping OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Arată butoanele Omitere [Segment]</string>
+    <string name="always_load_time_stamps">Încarcă întotdeauna ștampilele de timp</string>
+    <string name="auto_hide_time_stamps">&gt;Ascunde automat butoanele de Skip [Segment]</string>
+    <string name="timestamps">Segmente</string>
+    <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Necesită timbre de timp pentru a fi activate</string>
+    <string name="hide_skip_button">Faceți ca butonul de omitere a timpului de timbru să dispară după 5 secunde</string>
+    <string name="copied_to_clipboard">Copiat în clipboard</string>
+    <string name="first_episode">Acesta este Episodul 1!</string>
+    <string name="reset_auto_update">Apăsați lung pe butonul \"Lista Editor\" pentru a reseta actualizarea automată</string>
+    <string name="autoplay_cancelled">Autoplay anulat, nici o interacţiune pentru mai mult de o oră.</string>
+    <string name="auto_select_server_error">Serverul nu a putut fi selectat automat, încercați din nou!</string>
+    <string name="stream_selection_empty">Nu există fluxuri disponibile! Încercați altă sursă.</string>
+    <string name="logging_in_mal">Logare în MAL</string>
+    <string name="getting_user_data">Obținerea datelor utilizatorului</string>
+    <string name="no_next_episode">Nu s-a găsit niciun episod următor!</string>
+    <string name="enable_banner_animations">Încercați să activați \"Animații banner\" în setări</string>
+    <string name="please_login_anilist">Te rugăm să te autentifici cu Anilist!</string>
+    <string name="auto_update_reset">Progresul actualizării automate a fost resetat acum</string>
+    <string name="cant_wait">Nu puteți aștepta, nu? fin X(</string>
+    <string name="downloading">Se descarcă…</string>
+    <string name="next_chapter_not_found">Următorul capitol nu a fost găsit</string>
+    <string name="first_chapter">Acesta este primul capitol</string>
+    <string name="adult_stuff">Adulţi Stuff?&#40; &#865;&#176; &#860;&#662; &#865;&#176; &#41;</string>
+    <string name="what_did_you_open">Ce chiar ai deschis?</string>
+    <string name="error_getting_data">Eroare la obținerea datelor de la Anilist.</string>
+    <string name="empty_response">Răspuns goal! Internetul tău nu dispare, poate?</string>
+    <string name="error_loading_mal_user_data">Eroare la încărcarea datelor utilizatorului MAL</string>
+    <string name="error_loading_mal_data">Încărcarea datelor de la MAL a eșuat</string>
+    <string name="error_loading_anilist_user_data">Eroare la încărcarea datelor utilizatorului Anilist</string>
+    <string name="episode_not_found">Nu s-a putut găsi episodul: %1$s</string>
+    <string name="list_updated">Listă actualizată</string>
+    <string name="deleted_from_list">Șters din listă</string>
+    <string name="no_list_id">Nu s-a găsit nici un ID din listă…</string>
+    <string name="matagi_update">Shirase Himitsu %1$s</string>
+    <string name="matagi_dont_show">Nu mai notifica pentru %1$s</string>
+    <string name="matagi_downloading">Se descarcă Himitsu %1$s</string>
+    <string name="checking_for_update">Verificare actualizare</string>
+    <string name="dont_show_again">Nu notifica din nou pentru versiunea %1$s</string>
+    <string name="no_update_found">Nicio actualizare găsită</string>
+    <string name="downloading_update">Se descarcă Dantotsu %1$s</string>
+    <string name="permission_required">Vă rugăm să permiteţi accesarea fişierelor &amp; dosare din Setări, &amp; Încercaţi din nou.</string>
+    <string name="started_downloading">A început descărcarea\n%1$s</string>
+    <string name="install_1dm">Instalați 1DM</string>
+    <string name="install_adm">Te rugăm să instalezi ADM</string>
+    <string name="error_getting_image_data">Eroare la obținerea datelor imaginii</string>
+    <string name="loading_image_failed">Încărcarea imaginii a eșuat</string>
+    <string name="copied_device_info">Informații dispozitiv copiate</string>
+    <string name="anilist_down">Se pare că Anilistul e închis, poate că încearcă să folosești un VPN sau poți aștepta ca acesta să se întoarcă.</string>
+    <string name="failed_to_load_data">Încărcarea datelor salvate de %1$d a eșuat</string>
+    <string name="access_not_available">Nu s-a putut obține acces</string>
+    <string name="mal_login_uri_not_found">Login Mal : Uri nu a fost găsit</string>
+    <string name="mal_login_code_challenge_not_found">Login Mal : codeChallenge nu a fost găsit</string>
+    <string name="mal_login_code_not_present">Login Mal : Codul nu este prezent în URI redirecționat</string>
+    <string name="refresh_token_load_failed">Reîmprospătare token esuat la încărcarea tokenului salvat</string>
+    <string name="refreshing_token_failed">Reîmprospătare Token eșuată</string>
+    <string name="episode_release_countdown">Episod %1$d va fi lansat în</string>
+    <string name="chapter_number">Capitolul %1$d</string>
+    <string name="chapter_release_timeout">%1$s a fost disponibil pentru</string>
+    <string name="time_format">%1$d zile %2$d ore %3$d min %4$d secunde</string>
+    <string name="chapter_predication">Capitol nou așteptat %1$s</string>
+    <string name="chapter_delayed">Noul capitol pare să fie întârziat</string>
+    <string-array name="sort_by">
+        <item>Scor</item>
+        <item>Populare</item>
+        <item>Populare</item>
+        <item>Lansări noi</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Durere pură</item>
+    </string-array>
+    <string name="main_role">PRINCIPAL</string>
+    <string name="supporting_role">SPRIJIN</string>
+    <string name="status_finished">FINALIZAT</string>
+    <string name="status_releasing">RETRODUCERE</string>
+    <string name="status_not_yet_released">NU ESTE REDUCET</string>
+    <string name="status_cancelled">ANULAT</string>
+    <string name="status_hiatus">HIATUS</string>
+    <string name="type_adaptation">ADAPTAREA</string>
+    <string name="type_parent">MÂNT</string>
+    <string name="type_character">CARACTER</string>
+    <string name="type_summary">SUMMARY</string>
+    <string name="type_alternative">ALTERNATIVĂ</string>
+    <string name="type_other">ALTELE</string>
+    <string name="type_source">SURSE</string>
+    <string name="type_contains">CONŢINUTUL</string>
+    <string name="read_on_dantotsu">Citește pe Dantotsu</string>
+    <string name="watch_on_dantotsu">Uită-te la Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Vezi profilul în Dantotsu</string>
+    <string name="continue_episode">Continuă : Episod %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Filler</string>
+    <string name="continue_chapter">Continuă : %1$s\n%2$s</string>
+    <string name="episode">"Episod "</string>
+    <string name="episode_num">"Episod %1$s"</string>
+    <string name="chapter">"Capitol "</string>
+    <string name="chapter_num">"Capitolul %1$s"</string>
+    <string name="just_released">- Versiuni noi!</string>
+    <string name="checking_subscriptions_title">Verificare abonamente</string>
+    <string name="user_list">Lista %1$sa lui %2$s</string>
+    <string name="speed">Viteză</string>
+    <string name="auto_update">Actualizare automată a progresului pentru %1$s?</string>
+    <string name="continue_from">Continuați de la %1$s?</string>
+    <string name="title_update_progress">Actualizați progresul pe AniList?</string>
+    <string name="incognito_will_not_update">Modul incognito va ignora în continuare progresul.</string>
+    <string name="dont_ask_again">"Nu mai cere %1$s"</string>
+    <string name="default_speed">Viteza implicită</string>
+    <string name="default_resize_mode">Mod redimensionare implicit</string>
+    <string name="primary_sub_color">Culoare secundară principală</string>
+    <string name="outline_sub_color">Contur culoare</string>
+    <string name="outline_type">Tip contur</string>
+    <string name="subtitle_font">Font subtitrare</string>
+    <string name="yes">Da</string>
+    <string name="no">Nr</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Reset</string>
+    <string name="close">Inchide</string>
+    <string name="no_chapter">Niciun capitol</string>
+    <string name="content_18">Porniți conținutul de 18+ din setările Anilist</string>
+    <string name="available">Disponibil</string>
+    <string name="lets_go">Să mergem</string>
+    <string name="cope">Copie</string>
+    <string name="watched_num">"Vizionat "</string>
+    <string name="read_num">"Citește "</string>
+    <string name="episodes_out_of">" din "</string>
+    <string name="chapters_out_of">" din "</string>
+    <string name="episodes_total_of">"Total de "</string>
+    <string name="chapters_total_of">"Total de "</string>
+    <string name="no_description_available">"Nici o descriere disponibilă"</string>
+    <string-array name="manga_directions">
+        <item>Sus spre jos</item>
+        <item>De la dreapta la stânga</item>
+        <item>Jos sus</item>
+        <item>Stânga la dreapta</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Îmblânzit</item>
+        <item>Pagină continuă</item>
+        <item>Continuu</item>
+    </string-array>
+    <string name="selected">Selectate</string>
+    <string name="found">Găsit</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">\n\"__naștere:__ \"</string>
+    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="male">Bărbat</string>
+    <string name="female">Femeie</string>
+    <string name="question_1">Ce este Dantotsu?</string>
+    <string name="answer_1">Dantotsu este creat din cenuşa lui Saikou şi se bazează pe eleganţa simplistă, dar de ultimă generaţie. Este doar un client Anilist, care îți permite să faci streaming &amp; să descarci Anime / Manga prin extensii. \n&gt;Dantotsu (&lt;unk&gt; ; Dan-totsu) înseamnă literalmente cel mai bun dintre cele mai bune din japoneză. Ei bine, am dori să spunem că aceasta este cea mai bună aplicație open source pentru anime și manga pe Android, dar hei, încearcă-l tu însuți &amp; judecător!</string>
+    <string name="question_2">Care sunt unele caracteristici ale Dantotsu?</string>
+    <string name="answer_2">Unele caracteristici menționate ale Dantotsu sunt\n\n- mod ușor și funcțional către ambele, urmăreşte anime şi citeşte romane şi manga uşoare, fără reclame.\n- O aplicație cu sursă complet deschisă cu un UI drăguț &amp; Animații\n- \n- Sincronizare anime și manga în timp real cu AniList. Categorizează cu ușurință anime și manga în funcție de starea ta curentă. (Powered by AniList)\n- Găsește toate emisiunile folosind o listă actualizată în detaliu și în mod frecvent a tuturor animelor aflate în desfășurare, populare și în curs pe baza scorurilor.\n- Vezi detalii detaliate despre anime show-uri, filme şi titluri manga. Funcționează și abilitatea de a număra numărătoarea la următorul episod de animație aeriană. (Powered by AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Care este diferența dintre versiunile Stabil, Beta &amp; Alpha?</string>
+    <string name="answer_3">Această furcă nu oferă piese separate. Versiunea pe care o descărcați de la [repository](https://github.com/RepoDevil/Himitsu) este aceeași cu [AbandonedCart](https://github. om/AbandonedCart) se execută. Dacă găsești erori și ai actualizat deja la ultima versiune, poți trimite un [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Dantotsu este disponibil pentru PC?</string>
+    <string name="answer_4">Momentan nu există nici pentru Windows și Linux). Nu există nici o estimare când va fi disponibilă. Dar poți descărca orice emulator Android și să rulezi Dantotsu pe el. Pentru utilizatorii de Windows 11, ei pot utiliza subsistemul Windows pentru Android (WSA) pentru a rula Dantotsu în Windows.</string>
+    <string name="question_5">Dantotsu este disponibil pentru iOS?</string>
+    <string name="answer_5">Nu, tot ce putem face este să sculptăm Dantotsu pe un măr.</string>
+    <string name="question_6">De ce nu se actualizează statisticile mele?</string>
+    <string name="answer_6">Acest lucru se datorează faptului că se actualizează automat la fiecare 48 de ore (de către Anilist). Dacă chiar ai nevoie să îți actualizezi statisticile, poți să îți actualizezi statisticile după ce mergi la acest [link](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Cum se descarcă Anime?</string>
+    <string name="answer_7">În prezent există două metode de descărcare. Una este internă, iar cealaltă este externă. Dacă descărcați intern, atunci acesta poate fi vizualizat în aplicație, dar numai aplicația poate deschide acel episod, nu o poți muta sau distribui. Cealaltă opțiune este de a utiliza descărcarea externă. Necesită un manager de descărcări pentru a descărca și un video player separat pentru a viziona. Descărcările externe pot fi partajate, dar nu le puteți vedea în aplicația Dantotsu.\n\n• Pentru a descărca intern:\n\n1. Apăsați butonul de descărcare.\n2. Alege serverul şi calitatea video-ului.\n3. Profit.\n\n• Pentru a descărca extern:\n\n 1. Descărcați 1DM sau ADM din Google Play Store.
+        \n2. Introduceți aplicația, dați acces la stocare și setați preferințele dvs. (viteza de descărcare, descărcare cale etc(opţional))
+        \n3. Acum mergeți la \`Dantotsu &gt; Settings &gt; Common &gt; Download Managers\` și alegeți managerul de descărcări pe care tocmai l-ați configurat.
+        \n4. Mergeți la episodul dorit și apăsați pe pictograma de descărcare a oricărui server. Este posibil să fie un pop-up pentru a seta din nou preferințele, doar apăsați pe \"Descărcare\" și va fi salvat în calea de direcție.
+
+        \n\nNotă: Descărcările directe sunt, de asemenea, posibile fără un administrator, dar nu este recomandat.
+\n\nNotă: episoadele descărcate intern sunt stocate în \`Android/data/ani. antotsu.*/files/Anime_Downloads\`\nNu puteţi reda aceste fişiere aşa cum sunt în formatul \`.exo\`, împărţite în sute de piese şi sunt criptate.</string>
+    <string name="question_9">Cum se activează conținutul NSFW?</string>
+    <string name="answer_9">Puteți activa conținutul NSFW prin activarea conținutului de 18 + de la acest [link](https://anilist.co/settings/media). De asemenea, trebuie să activați extensiile NSFW în \`Settings &gt; Extensions &gt; NSFW extensions\` </string>
+    <string name="question_10">Cum să imporți listele mele MAL/Kitsu în Anilist?</string>
+    <string name="answer_10">Iată cum să faci asta,\n\nExport:\n\n1. Mergi la acest [link](https://malscraper.azurewebsites.net).\n2. Introdu numele tău de utilizator Kitsu/MAL și descarcă atât lista de anime, cât și de manga. (Acestea vor fi în format XML)\nNotă: Trebuie să scrii numele de utilizator al tracker-ului pe care l-ai selectat\n\nImport:\n\n1. După ce ai exportat lista ta de anime și manga din Kitsu/MAL, mergi acum [aici](https://anilist.co/settings/import) \n2. Selectează/lasează fișierul XML de anime în caseta de mai sus.\n|→Selectează/lasează fișierul XML de manga în caseta de mai jos.</string>
+    <string name="question_11">Cum să imporți listele mele Anilist/Kitsu în MAL?</string>
+    <string name="answer_11">Iată cum o faceți,\n\nExport:\n\n1. Mergeți la acest [link](https://malscraper. zurewebsites.net/). \n2. Dă-i numele tău de utilizator/Kitsu în căsuța \'Utilizator/ID de utilizator Kitsu. \n3. Selectați tipul listei și activați \'update_on_import\'. \n4. Descărcați fișierul; acesta va fi în format .xml. Asigurați-vă că descărcați atât lista Anime, cât și lista Manga.\n\nImport:\n1. Pentru a o importa în contul tău MAL, mergi la acest [link](https://myanimelist. et/import.php) și alege \'MyAnimeList Import\' ca tip de import. \n2. Apăsați pe \'Choose File\'și selectați anime/manga list XML fișier. \n3. Apăsaţi pe \"Importă date\". Felicitări \n, tocmai aţi importat lista selectată în contul dvs. MAL.</string>
+    <string name="question_12">De ce nu pot găsi un anumit titlu/manga?</string>
+    <string name="answer_12">Să presupunem că căutați Castlevania în Dantotsu. Dar Anilistul nu o are, așa că nici Dantotsu nu au.\nO soluție la problema de mai sus este următoarea:\n1) Du-te la orice anime care nu este în lista ta.\n2) Mergeți la secțiunea ceas.\n3) Selectați orice sursă și apăsați pe \'Titlu greșit?\'.\n4) Acum caută Castlevania (anime căutați) și selectați-o.\n5) ENJOY!\n\nDacă nu găsești animul nici măcar prin acești pași, atunci ăsta e norocul pentru tine, autobuz. Nici măcar acea sursă nu are ea. Încearcă o sursă diferită.</string>
+    <string name="question_13">Cum să repari sursele selectând un titlu complet greșit?</string>
+    <string name="answer_13">Dantotsu însuşi nu găzduieşte nimic, ci se bazează pe alte surse. Când arată episoadele, se alege primul rezultat dat de sursă după căutarea titlului. Dantotsu nu are nici o modalitate de a detecta dacă asta e picior sau nu. Deci, pentru asta, avem \'Titlu Greșit?\' chiar sub numele sursei (deasupra formatelor). Puteți alege rezultatul/titlul corect apăsând pe acesta și bucurându-se de episoadele sale.</string>
+    <string name="question_14">Cum se citesc manga colorată?</string>
+    <string name="answer_14">Eşti în căutare de mangă colorată? Ne pare rău că ţi-l sparge, dar o cantitate extrem de mică de mangă au colorat versiunea. Cei care au o versiune colorată sunt de asemenea disponibili în Dantotsu. Să presupunem că vreți să citiți versiunea colorată a omului din lanț. Apoi urmează pașii de mai jos ↓\n\n1) Mergeți la Chainsaw Man\n2) Apăsați pe \'Read\'\n3) Selectați orice sursă de lucru\n4) Apăsați pe \'Wrong Title\'\n5) Selectați lanțul colorat de versiuni\n6) Bucurați-vă de\n\nNotă: multe surse nu au disponibilă versiunea colorată chiar dacă este disponibilă undeva pe internet. Deci încercaţi o sursă diferită. Dacă niciuna dintre surse nu o are, atunci o versiune colorată a mangei dorite pur şi simplu nu există.</string>
+    <string name="question_15">Manipulare eșuată? De ce nu se încarcă nici un marcaj de timp?</string>
+    <string name="answer_15">Poți rezolva această problemă activând \'Proxy\' de la \n\`Setări &gt; Anime &gt; Setări jucător &gt; Marcaje de timp &gt; Proxy\`.\nÎn cazul în care marcajele de timp încă nu se încarcă, dar se fixează fereastra popup eșuată, apoi episodul pe care îl urmăriți nu are încă semne de timp.</string>
+    <string name="question_16">Nu poți găsi nimic într-o sursă?</string>
+    <string name="answer_16">Unele remedii de bază ar fi: \n\n• Actualizează extensiile dacă există. \n• Deschideți Web View și așteptați să se încarce. După ce încărcarea s-a terminat, reveniți. (Dacă Vizualizarea Web arată eroarea 404 sau ceva similar, Șansele sunt ca sursa ta să fie scăzută)\n• Folosește un DNS diferit de setări, preferabil, Libre. \n• Încercați un VPN de încredere. (Va trebui să repeți pasul 1 după aceasta) \n\nDacă niciunul dintre pașii de mai sus nu funcționează atunci folosește o sursă diferită sau alătură-te la [discord]nostru (https://discord. g/invitație/4HPZ5nAWwM) pentru ajutor.</string>
+    <string name="question_17">Câteva sfaturi și trucuri utile</string>
+    <string name="answer_17">Următoarele prezintă câteva sfaturi şi trucuri despre care puteţi sau nu să ştiţi - \n \n \n - Prin apăsarea logo-ului Dantotsu în setări, puteţi verifica dacă există actualizări noi manual. \n \n - Ține apăsat un mesaj/etichetă/sinonimă sau titlul îl vor copia. \n \n - Puteți deschide un episod cu alte aplicații apăsând orice server pentru acel episod. Acest lucru ajută la redarea episodului folosind alți playere video sau descarcă episodul folosind managerii de descărcare. \n \n - Puteți configura liste personalizate folosind acest [link](https://anilist.co/settings/lists). (trebuie să fii conectat) \n \n - În cazul în care episodul/capitolul nu progresează automat după ce îl urmărești/citești, apoi ţineţi apăsat butonul de stare (butonul de planificare/repetare/urmărire) al animului/mangei respective. Data viitoare când începi un capitol/termină un episod, vei da peste o fereastră popup. Apasă da acolo. </string>
+    <string name="subscribed_notification">Abonat! Primire notificări, când episoade noi sunt lansate pe %1$s.</string>
+    <string name="unsubscribed_notification">Dezabonat, nu vei primi notificări.</string>
+    <string name="episode_plural">Episoade</string>
+    <string name="episode_singular">Episod</string>
+    <string name="chapter_singular">Capitol</string>
+    <string name="chapter_plural">Capitole</string>
+    <string name="filter_status">"Stare: %1$s"</string>
+    <string name="filter_source">"Sursă: %1$s"</string>
+    <string name="filter_format">"Format: %1$s"</string>
+    <string name="filter_country">"Țară: %1$s"</string>
+    <string name="filter_sort">"Sorteză după: %1$s"</string>
+    <string name="filter_exclude">"Nu %1$s"</string>
+    <string name="search_by_image">Căutare după imagine</string>
+    <string name="upload_image">Încarcă imaginea</string>
+    <string name="similarity_text">Similaritate: %1$s %%</string>
+    <string name="time_range">De la %1$s la %2$s</string>
+    <string name="invalid_url">URL invalid</string>
+    <string name="no_anilist_id_found">Nici un ID Anilist găsit</string>
+    <string name="error_loading_image">Eroare la încărcarea imaginii</string>
+    <string name="discord_logout_success">Deconectat cu succes</string>
+    <string name="discord_try_again">Încearcă să te conectezi din nou</string>
+    <string name="error_loading_discord_user_data">Eroare la încărcarea datelor utilizatorului Discord</string>
+    <string name="discord_warning"><![CDATA[Prin autentificare, discord-ul tău va arăta acum ce vizionezi și citești pe Dantotsu\n\nDacă ești în modul invizibil, autentificarea te va face online, când deschizi Dantotsu.\n\nAsta nu întrerupe Discord TOS. \nDeși Discord nu a interzis niciodată utilizarea de Rich Presence(ceea ce folosește Dantotsu), ai fost încă avertizat.\n\nDantotsu nu este responsabil pentru nimic ce se întâmplă în contul tău.]]></string>
+    <string name="warning">Avertizare</string>
+    <string name="view_anime">Vezi Anime</string>
+    <string name="view_manga">Vezi Manga</string>
+    <string name="force_legacy_installer">Forțează Instalatorul Legacy</string>
+    <string name="extensions_settings">Extensii</string>
+    <string name="NSFWExtention">Extensii NSFW</string>
+    <string name="skip_loading_extension_icons">Omite pictogramele extensiei de încărcare</string>
+    <string name="use_material_you">Materiale cu tine</string>
+    <string name="use_app_theme">Folosește tema aplicației</string>
+    <string name="extension_specific_dns">DNS specific extensiei</string>
+    <string name="theme_">Temă:</string>
+    <string name="user_agent">Agent utilizator</string>
+    <string name="custom_theme">Temă personalizată:</string>
+    <string name="use_custom_theme">Temă personalizată</string>
+    <string name="use_unique_theme_for_each_item">Tema Anime/Manga </string>
+    <string name="oled_theme_variant">Temă OLED variantă</string>
+    <string name="installed_anime">Anime instalate</string>
+    <string name="available_anime">Anime Disponibile</string>
+    <string name="installed_manga">Manga instalată</string>
+    <string name="color_picker">Selector culoare</string>
+    <string name="random_selection">Selecție aleatorie</string>
+    <string name="incognito_mode">Mod Incognito</string>
+    <string name="appwidget_text">EXEMPLU</string>
+    <string name="configure">Configurare</string>
+    <string name="add_widget">Adaugă widget</string>
+    <string name="app_widget_description">Aceasta este o descriere a widget-ului</string>
+    <string name="upcoming_anime">Viitoare Anime</string>
+    <string name="airing_image">Imagine Aeronautică</string>
+    <string name="anime_downloads">animeDescărcări</string>
+    <string name="purge_anime_downloads">Șterge toate descărcările Anime</string>
+    <string name="purge_manga_downloads">Șterge toate descărcările de pe Manga</string>
+    <string name="purge_novel_downloads">Șterge toate descărcările noi</string>
+    <string name="requires_android_12">Necesită Android 12+</string>
+    <string name="share_username_in_logs">Distribuie numele de utilizator în jurnale</string>
+    <string name="pinned_sources">Surse fixate</string>
+    <string name="backup_restore">Backup și Restaurare</string>
+    <string name="restore_settings">Importă setări</string>
+    <string name="restore_settings_underline"><u>Restaurează setările</u></string>
+    <string name="try_internal_cast_experimental">Încearcă Interne Cast (Experimental)</string>
+    <string name="faq_desc">Întrebări generale despre Himitsu</string>
+    <string name="check_app_updates_desc">Verificați Github pentru actualizări ale aplicației</string>
+    <string name="share_username_in_logs_desc">Includeți numele de utilizator în rapoartele de defecțiuni</string>
+    <string name="devs_desc">Himitsu, personal neplătit</string>
+    <string name="forks_desc">Proiecte derivate din Dantotsu</string>
+    <string name="disclaimer_desc">Ceva de ținut minte</string>
+    <string name="use_foldable">Folosește aspecte împăturite</string>
+    <string name="use_foldable_desc">Conținutul se adaptează la configurația hinge</string>
+    <string name="add_shortcuts">Adaugă comenzi rapide în lansator</string>
+    <string name="add_shortcuts_desc">Adaugă în continuare elemente la pictogramă apăsând lung</string>
+    <string name="comments">Comentarii</string>
+    <string name="newest">Cele mai noi</string>
+    <string name="oldest">Cele mai vechi</string>
+    <string name="highest_rated">Cele mai apreciate</string>
+    <string name="lowest_rated">Cel mai mic rating</string>
+    <string name="compare"><u>Compară</u></string>
+    <string name="view_following">Vizualizați următoarele</string>
+    <string name="menu">meniu</string>
+    <string name="view_followers">Vezi Urmaritorii</string>
+    <string name="no_fav_anime">Utilizatorul nu are Anime Favorite</string>
+    <string name="no_fav_manga">Utilizatorul nu are Manga favorită</string>
+    <string name="fav_character">Caractere favorite</string>
+    <string name="fav_staff">Personalul Favorit</string>
+    <string name="stats">Statistici</string>
+    <string name="days_watched">Zile vizionate</string>
+    <string name="total_anime">Total Anime</string>
+    <string name="anime_mean_score">Scor mediu Anime</string>
+    <string name="volume_read">Volum citit</string>
+    <string name="total_manga">Total Manga</string>
+    <string name="manga_mean_score">Scor mediu Manga</string>
+    <string name="about_me">Despre mine</string>
+    <string name="follow">Urmărește</string>
+    <string name="following">Urmăriți</string>
+    <string name="unfollow">Anulează</string>
+    <string name="follows_you">Te urmărește</string>
+    <string name="mutual">Comune</string>
+    <string name="success">Succes</string>
+    <string name="error">S-a produs o eroare</string>
+    <string name="error_msg">Eroare: %1$s</string>
+    <string name="please_wait">Vă rugăm așteptați</string>
+    <string name="upcoming">Urmează</string>
+    <string name="no_shows_to_display">Nicio emisiune de afișat</string>
+    <string name="no_media_to_display">Niciun fișier media de afișat</string>
+    <string name="extension_name">Nume Extensie</string>
+    <string name="extension_version">versiune</string>
+    <string name="enter_password_to_decrypt_file">Introduceți parola pentru a decripta fișierul</string>
+    <string name="show_rotate_button">Arată butonul de rotaţie</string>
+    <string name="default_manga_settings">Setări implicite Manga</string>
+    <string name="use_dark_theme">Folosește tema întunecată</string>
+    <string name="use_oled_theme">Folosește tema OLED</string>
+    <string name="scanlators">Scanatoare</string>
+    <string name="exporting_requires_encryption">Exportarea acreditărilor necesită o parolă pentru criptare.</string>
+    <string name="manga_queue">Coada Manga (WIP)</string>
+    <string name="anime_queue">Coada Anime (WIP)</string>
+    <string name="no_offline_manga_found">Nu s-a găsit niciun manga offline</string>
+    <string name="sort">Sortează</string>
+    <string name="download">Descărcare</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Setează cookie-urile</string>
+    <string name="open_website">Deschide site-ul</string>
+    <string name="log_to_file">Jurnal în fișier</string>
+    <string name="logging_warning">Poate cauza întârziere. Activați numai în cazul în care întâmpinați probleme.</string>
+    <string name="share_log">Faceţi clic pentru a partaja fişierul jurnal curent</string>
+    <string name="radius">Radius</string>
+    <string name="sampling">Eşantionare</string>
+    <string name="blur_banners">Bannere Blur</string>
+    <string name="blur">Blur</string>
+    <string name="hide_scroll_bar">Ascunde bara de scroll</string>
+    <string name="view_on_anilist">Vezi pe AniList</string>
+    <string name="anilist_notification_filters">Alege categoria de ignorat</string>
+    <string name="anilist_notifications_checking_time">Frecvența actualizării notificărilor aniliste: %1$s</string>
+    <string name="comment_notification_checking_time">Frecvența actualizărilor notificărilor de comentarii: %1$s</string>
+    <string name="activities">Activităţi</string>
+    <string name="incorrect_password">Parolă incorectă</string>
+    <string name="password_cannot_be_empty">Parola nu poate fi goală</string>
+    <string name="unknown_file_type">Tip de fișier necunoscut</string>
+    <string name="error_importing_settings">Eroare la importarea setărilor</string>
+    <string name="download_manager">Manager descărcări</string>
+    <string name="enter_password">Introduceți parola</string>
+    <string name="invalid_file_type">Tip de fișier nevalid</string>
+    <string name="purge_confirm">Sunteţi sigur că doriţi să ştergeţi toate descărcările %1$s?</string>
+    <string name="delete_fail_reason">Ștergerea a eșuat din cauza… %1$s</string>
+    <string name="hide_replies">Ascunde răspunsurile</string>
+    <string name="view_reply">Vizualizare răspuns</string>
+    <string name="view_replies">Vezi răspunsurile</string>
+    <string name="view_replies_count">Vezi răspunsurile %1$d</string>
+    <string name="replying_to">Răspuns la %1$s</string>
+    <string name="delete_comment">Ștergere comentariu</string>
+    <string name="delete_comment_confirm">Sunteţi sigur că doriţi să ştergeţi acest comentariu?</string>
+    <string name="comment_deleted">Comentariu șters</string>
+    <string name="ban_user">Interzice utilizatorul</string>
+    <string name="ban_user_confirm">Ești sigur că vrei să blochezi acest utilizator?</string>
+    <string name="user_banned">Utilizator interzis</string>
+    <string name="report_comment">Raport comentariu</string>
+    <string name="report_comment_confirm">Raportează doar comentariile care încalcă regulile. Ești sigur că vrei să raportezi acest comentariu?</string>
+    <string name="comment_reported">Comentariu raportat</string>
+    <string name="list">Listă</string>
+    <string name="grid">Grilă</string>
+    <string name="compact">Compact</string>
+    <string name="webview_not_installed">WebView neinstalat</string>
+    <string name="video_quality">Calitate: %1$dp</string>
+    <string name="size_unknown">Dimensiune necunoscută</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Restaurează</string>
+    <string name="button_backup">Backup</string>
+    <string name="no_location_selected">Nicio locație selectată</string>
+    <string name="do_it">Fă asta!</string>
+    <string name="password">Parolă</string>
+    <string name="anilist_broken_title">Eroare internă de server!</string>
+    <string name="anilist_broken">AniList pare a fi inresponsiv și funcționalitatea va fi foarte limitată. Doriți să închideți aplicația și să încercați din nou mai târziu?\n</string>
+    <string name="search_title">Căutare %1$s</string>
+    <string name="profile_stats_widget">Urmărește progresul direct din ecranul de pornire</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Capitole</string>
+    <string name="episodes_watched_n">Episoade</string>
+    <string name="loading">Se încarcă…</string>
+    <string name="user_stats">Statistici %1$s</string>
+    <string name="please">Te rog</string>
+    <string name="log_in">Autentificare</string>
+    <string name="or_join">sau alătură-te</string>
+    <string name="audio_tracks">Piese audio</string>
+    <string name="disabled_track">\[💬\] Dezactivat</string>
+    <string name="invalid_track">\[!?\] Nevalid</string>
+    <string name="unknown_track">\[%1$s\] Necunoscut</string>
+    <string name="top_background_color">Culoare fundal sus</string>
+    <string name="bottom_background_color">Culoare fundal jos</string>
+    <string name="countdown_text_color">Culoare text numărătoare inversă</string>
+    <string name="title_color">Culoare titlu</string>
+    <string name="stat_text_color">Culoare Text Statistici</string>
+    <string name="flipper_color">Culoare Flipper</string>
+    <string name="placeholder">Substituent</string>
+    <string name="anime_add_repository">Adaugă revizie Anime</string>
+    <string name="manga_add_repository">Adaugă Manga Repo</string>
+    <string name="novel_add_repository">Adaugă Novel Repo</string>
+    <string name="edit_repositories">Editare depozite</string>
+    <string name="rem_repository">Eliminați repozitoriul?</string>
+    <string name="trending_movies">Filme populare</string>
+    <string name="include_list">Include lista</string>
+    <string name="top_rated">Cele mai evaluate</string>
+    <string name="most_favourite">Cele mai favorite</string>
+    <string name="trending_manhwa">Trezire Manhwa</string>
+    <string name="liked_by">Apreciat de</string>
+    <string name="adult_only_content">Conținut numai pentru adulți</string>
+    <string name="report">Raport</string>
+    <string name="ban">Baneaza</string>
+    <string name="activity_label">Activitate</string>
+    <string name="dir_error">Calea dvs. nu a putut fi setată</string>
+    <string name="dir_access">Acces descchar@@0rcchar@@1ri</string>
+    <string name="dir_access_msg">Te rugăm să alegi un director pentru a salva descărcările</string>
+    <string name="download_subtitle">Descarcă subtitrare</string>
+    <string name="change_download_location">Schimbă locația de descărcare</string>
+    <string name="download_location_msg">Sigur doriți să schimbați locația de descărcare?\nEste posibil ca descărcările vechi să nu mai fie accesibile.</string>
+    <string name="voice_actors">Actori vocali</string>
+    <string name="download_permission_required">Permisiunea este necesară pentru descărcare</string>
+    <string name="media">Media</string>
+    <string name="users">Utilizatori</string>
+    <string name="social">Sociale</string>
+    <string name="auto_skip_recap">Auto Skip Recap</string>
+    <string name="use_anilist_icon">Folosește pictograma AniList</string>
+    <string name="exo_source_exception">Excepție sursă: %1$s</string>
+    <string name="exo_decoding_failed">Decodare esuata: %1$s</string>
+    <string name="exo_player_error">Eroare jucător: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL și Discord.\nCe mai poți avea nevoie?</string>
+    <string name="theme_desc">Schimbă vizionarea aplicației tale</string>
+    <string name="extensions_desc">Gestionează colecția repo</string>
+    <string name="common_desc">Descărcări, DNS, și valori implicite</string>
+    <string name="anime_desc">Alege cum vizionezi</string>
+    <string name="manga_desc">Alege cum citești</string>
+    <string name="notifications_desc">Personalizați știri și actualizări</string>
+    <string name="system_desc">Actualizări și utilități</string>
+    <string name="about_desc">Aflaţi mai multe despre Himitsu</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons sunt module extra de caracteristici Dantotsu.</string>
+    <string name="torrent_addon">Addon Torent</string>
+    <string name="enable">Activare</string>
+    <string name="anime_downloader_addon">Adaugă Downloader Anime</string>
+    <string name="loaded_successfully">Încărcat cu succes</string>
+    <string name="not_installed">Nu este instalat</string>
+    <string name="torrent_extension_not_supported">Extensia torent nu este suportată pe acest dispozitiv</string>
+    <string name="update_addon">Actualizare Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Descărcarea suplimentului nu a fost găsită</string>
+    <string name="default_novel_settings">Setări implicite pentru începători</string>
+    <string name="line_height">Înălțime linie</string>
+    <string name="margin">Marjă</string>
+    <string name="maximum_inline_size">Dimensiunea maximă în linie</string>
+    <string name="maximum_column_width">Lățimea maximă a coloanei (scriere orizontală) sau înălțimea (scriere verticală)</string>
+    <string name="maximum_block_size">Mărimea maximă a blocului</string>
+    <string name="maximum_height">Înălțimea maximă (scriere orizontală) sau lățimea (scriere verticală)</string>
+    <string name="global">Global</string>
+    <string name="china">China</string>
+    <string name="south_korea">Coreea de Sud</string>
+    <string name="japan">Japonia</string>
+    <string name="taiwan">Taiwan</string>
+    <string name="something">Ceva</string>
+    <string name="image">Imagine</string>
+    <string name="sort_score">Scor</string>
+    <string name="popular">Populare</string>
+    <string name="trending">Populare</string>
+    <string name="new_releases">Lansări noi</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Durere pură</string>
+    <string name="add_a_comment">Adaugă un comentariu…</string>
+    <string name="type">Tip</string>
+    <string name="view">Vizualizare</string>
+    <string name="count">CONT</string>
+    <string name="open">Deschideți</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Răspuns</string>
+    <string name="time">Timp</string>
+    <string name="player_settings_desc">Toate setările legate de jucător</string>
+    <string name="purge_anime_downloads_desc">Ștergeți toate descărcările de pe ecran</string>
+    <string name="prefer_dub_desc">Selectaţi implicit duplicat media</string>
+    <string name="show_yt_desc">Arată link-uri YouTube pentru media suportată</string>
+    <string name="include_list_anime_desc">Includeți elemente de listă în pagina de explorare Anime</string>
+    <string name="ui_settings_desc">Toate setările legate de interfața interfeței</string>
+    <string name="download_manager_select_desc">Manager implicit pentru a descărca Anime</string>
+    <string name="backup_restore_desc">Creați și restaurați copii de rezervă ale setărilor selectate</string>
+    <string name="change_download_location_desc">Schimbă locul unde sunt păstrate descărcările</string>
+    <string name="always_continue_content_desc">Continuă elementele de unde ai rămas</string>
+    <string name="search_source_list_desc">Se mută la următorul server dacă conținutul nu este găsit</string>
+    <string name="recentlyListOnly_desc">Arată doar elementele din listă în fila recentă</string>
+    <string name="adult_only_content_desc">Arată doar conținutul pentru adulți în pagina de explorare</string>
+    <string name="anime_add_repository_desc">Adaugă depozite de extensii Anime la colecție</string>
+    <string name="manga_add_repository_desc">Adaugă depozite de extensii Manga la colecție</string>
+    <string name="user_agent_desc">Schimbă agentul implicit al utilizatorului</string>
+    <string name="force_legacy_installer_desc">Utilizați intențiile pentru a solicita instalarea pachetului</string>
+    <string name="skip_loading_extension_icons_desc">Nu încărca pictogramele extensiei în manager</string>
+    <string name="NSFWExtention_desc">Dezactivarea blochează orice extensie cu orice conținut 18+</string>
+    <string name="reader_settings_desc">Toate setările legate de cititor</string>
+    <string name="purge_manga_downloads_desc">Şterge toate descărcările de manga</string>
+    <string name="purge_novel_downloads_desc">Șterge toate Notițele descărcate</string>
+    <string name="include_list_desc">Include elemente de listă în pagina de explorare Manga</string>
+    <string name="anilist_notification_filters_desc">Alege categoria de Ignorat</string>
+    <string name="anilist_notifications_checking_time_desc">Setați frecvența pe care doriți ca aplicația să o verifice pentru notificări Anilist</string>
+    <string name="comment_notification_checking_time_desc">Setați frecvența pe care doriți ca aplicația să o verifice pentru notificările comentariilor</string>
+    <string name="notification_for_checking_subscriptions_desc">Arată notificare pentru verificarea abonamentelor</string>
+    <string name="use_alarm_manager_reliable_desc">Folosiți pentru a ocoli optimizatorul de baterie al telefonului</string>
+    <string name="oled_theme_variant_desc">Cât de întunecat poate fi</string>
+    <string name="use_material_you_desc">Utilizați aceeași culoare ca și imaginea de fundal</string>
+    <string name="use_unique_theme_for_each_item_desc">Utilizaţi culoarea de la banner-ul media</string>
+    <string name="use_custom_theme_desc">Folosește culoarea ta proprie pentru tema</string>
+    <string name="color_picker_desc">Alege o culoare</string>
+    <string name="install_torrent_addon">Instalează Addon Torent</string>
+    <string name="failed_ext_install_conflict">Nu s-a reușit instalarea extensiei din cauza conflictului</string>
+    <string name="no_video_selected">Niciun videoclip selectat</string>
+    <string name="download_extension_not_available">Extensia de descărcare nu este disponibilă</string>
+    <string name="feed">Flux</string>
+    <string name="profile">Profil</string>
+    <string name="epub_download_exception">Excepție în timpul descărcării .epub: %1$s</string>
+    <string name="novel_download_progress">Progres descărcare nouă</string>
+    <string name="download_started">Descărcare începută</string>
+    <string name="downloads_completed">Toate descărcările finalizate</string>
+    <string name="pending_downloads">Descărcări în aşteptare: %1$d</string>
+    <string name="reading">CREARE</string>
+    <string name="watching">AȘTEPTARE</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Cover]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Vă rugăm să actualizați WebView din Google Play</string>
+    <string name="update_webview_version">Versiunea Webview %1$d necesită actualizare</string>
+    <string name="webview_not_found_version">Nu s-a putut găsi versiunea WebView %1$s</string>
+    <string name="webview_not_found">Nu s-a putut găsi o bibliotecă instalată WebView</string>
+    <string name="multi">Multi</string>
+</resources>

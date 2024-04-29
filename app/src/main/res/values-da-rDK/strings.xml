@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="da">
+    <string name="slogan">Den NYE Bedste Anime &amp; Manga app til Android.</string>
+    <string name="login">Log Ind</string>
+    <string name="logout">Log Ud</string>
+    <string name="conversion_title">Velkommen tilbage!</string>
+    <string name="conversion_message">Det ser ud til at du har en ældre pakke installeret.\nVælg venligst \"Backup\" for at åbne den ældre version og udføre en sikkerhedskopi. Du kan derefter vende tilbage til denne app og bruge \"Gendan Indstillinger\".</string>
+    <string name="backup">Sikkerhedskopi</string>
+    <string name="home">Hjem</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Gennemse Anime</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Gennemse Manga</string>
+    <string name="novels">Romaner</string>
+    <string name="info">Info</string>
+    <string name="watch">Se</string>
+    <string name="read">Læs</string>
+    <string name="language">Sprog</string>
+    <string name="anime_list">Anime Liste</string>
+    <string name="manga_list">Manga Liste</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Ingen Internetforbindelse</string>
+    <string name="no_internet_connection">Ingen internetforbindelse\nOffline tilstand tilgængelig</string>
+    <string name="refresh">Opdater</string>
+    <string name="search">Søg</string>
+    <string name="extension_search">Omvendt Kildesøgning</string>
+    <string name="search_results">Søge Resultater</string>
+    <string name="sort_by">Sortér Efter</string>
+    <string name="genre">Genre</string>
+    <string name="top_score">Top Score</string>
+    <string name="updated">Nyligt Opdateret</string>
+    <string name="trending_anime">Populære Anime</string>
+    <string name="popular_anime">Populære Anime</string>
+    <string name="trending_manga">Trending Manga</string>
+    <string name="trending_novel">Populære Novel</string>
+    <string name="popular_manga">Populær Manga</string>
+    <string name="username">Brugernavn</string>
+    <string name="chapters_read">Kapitel Læst</string>
+    <string name="episodes_watched">Episoder Set</string>
+    <string name="continue_reading">Fortsæt Læsning</string>
+    <string name="continue_watching">Fortsæt Overvågning</string>
+    <string name="continue_media">Fortsæt…</string>
+    <string name="recommended">Anbefalet</string>
+    <string name="get_recommendations">Watch/Læs nogle Anime eller Manga for at få anbefalinger</string>
+    <string name="empty">Alle fanget op, når nyt?</string>
+    <string name="action_settings">Indstillinger</string>
+    <string name="add">Tilføj til liste</string>
+    <string name="list_editor">Liste Editor</string>
+    <string name="add_fav">Føj til favoritter</string>
+    <string name="notifications">Notifikationer</string>
+    <string-array name="keys">
+        <item>Læser</item>
+        <item>Ser</item>
+        <item>Afsluttet</item>
+        <item>Pauset</item>
+        <item>Droppet</item>
+        <item>Planlægning</item>
+        <item>Favoritter</item>
+        <item>Gensyn</item>
+        <item>Genlæser</item>
+        <item>Alle</item>
+    </string-array>
+    <string name="no_notifications">Ikke flere notifikationer</string>
+    <string name="followers">Følgere</string>
+    <string name="social_in_media">Social statistik i medier</string>
+    <string name="social_in_media_desc">Vis vennebedømmelser og fremskridt</string>
+    <string name="status">STATUS</string>
+    <string-array name="status_anime">
+        <item>PLANLÆGNING</item>
+        <item>VAND</item>
+        <item>FULDFØRT</item>
+        <item>RE-WATCHING</item>
+        <item>PAUSET</item>
+        <item>OPGIVET</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>PLANLÆGNING</item>
+        <item>LÆS</item>
+        <item>FULDFØRT</item>
+        <item>LÆS</item>
+        <item>PAUSET</item>
+        <item>OPGIVET</item>
+    </string-array>
+    <string name="progress">PROGRESS</string>
+    <string name="score">SCORE</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">STARTET AT</string>
+    <string name="completed_at">FULDT AT</string>
+    <string name="save">Gem</string>
+    <string name="delete">Slet</string>
+    <string name="remove">Fjern</string>
+    <string name="name">Navn</string>
+    <string name="name_romaji">Navn Romaji</string>
+    <string name="mean_score">Gennemsnitlig Score</string>
+    <string name="format">Formatér</string>
+    <string name="status_title">Status</string>
+    <string name="total_eps">Samlede Episoder</string>
+    <string name="episodes"> Episode(r)</string>
+    <string name="chapters"> Kapitler</string>
+    <string name="total_divider"> Øverste %1$s</string>
+    <string name="total_chaps">Kapitler I Alt</string>
+    <string name="ep_duration">Gennemsnitlig Varighed</string>
+    <string name="min">" min."</string>
+    <string name="season">Sæson</string>
+    <string name="start_date">Start Dato</string>
+    <string name="end_date">Slut Dato</string>
+    <string name="source">Kilde</string>
+    <string name="main_studio">Studie</string>
+    <string name="genres">Genres</string>
+    <string name="description">Synopsis</string>
+    <string name="characters">Tegn</string>
+    <string name="relations">Relationer</string>
+    <string name="staff">Personale</string>
+    <string name="favourites">Favoritter</string>
+    <string name="popularity">Popularitet</string>
+    <string name="roles">Roller</string>
+    <string name="details">Detaljer</string>
+    <string name="play_yt">Spil på Youtube</string>
+    <string name="eps">Episoder</string>
+    <string name="ep">Episode</string>
+    <string name="chaps">Kapitler</string>
+    <string name="chap">Kapitel</string>
+    <string name="wrong"><u>Forkert Titel?</u></string>
+    <string name="source_not_found">        Kunne ikke finde noget X( \n
+        Prøv en anden kilde.
+    </string>
+    <string name="not_supported">%1$s understøttes ikke!</string>
+    <string name="server_selector">Vælg Server</string>
+    <string name="auto_select_server">Automatisk Valg Af Server</string>
+    <string name="make_default">Gør Til Standard</string>
+    <string name="filler">Fyldstof</string>
+    <string name="adult">Voksen</string>
+    <string name="list_only">Kun Liste</string>
+    <string name="tag">Mærke</string>
+    <string name="tags">Mærker</string>
+    <string name="synonyms">Synonymer</string>
+    <string name="trailer">Trailer</string>
+    <string name="opening">Åbning</string>
+    <string name="ending">Afslutter</string>
+    <string name="prequel">Prequel</string>
+    <string name="sequel">Sequel</string>
+    <string name="installed">Installeret</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Serveren kører…</string>
+    <string name="settings_torrent">Intern TorrServer</string>
+    <string name="enable_server">Aktiver TorrServer</string>
+    <string name="enable_server_desc">Aktiverer on-demand brug af en lokal server</string>
+    <string name="torrent_port">Server portnummer</string>
+    <string name="torrents">torrents</string>
+    <string name="active_torrents">Aktive torrents</string>
+    <string name="remove_torrent">Fjern denne torrent?</string>
+    <string name="invalid_port">Ugyldig port indtastet!</string>
+    <string name="port_range">Port skal være en gyldig TCP-port (0 – 65535)</string>
+    <string name="server_disabled">TorrServer i deaktiveret!</string>
+    <string name="server_enabled">Starter TorrServer</string>
+    <string name="enable_server_temp">Vil du midlertidigt aktivere TorrServer (deaktiveret ved app-lukning)?</string>
+    <string name="anilist_settings">Annilist Indstillinger</string>
+    <string name="extension_settings">Udvidelser</string>
+    <string name="downloads">Downloads</string>
+    <string name="offline_mode">Offline Tilstand</string>
+    <string name="settings">Indstillinger</string>
+    <string name="extensions">Udvidelser</string>
+    <string name="extension_updates_available">Udvidelse opdateringer tilgængelige</string>
+    <string name="player_settings">Spiller Indstillinger</string>
+    <string name="recentlyListOnly">Kun mit indhold i \"Nyligt opdateret\"</string>
+    <string name="download_manager_select">Download Manager</string>
+    <string name="downloadInSd">Download på SD-kort</string>
+    <string name="noSdFound">Intet SD-kort blev fundet.</string>
+    <string name="reader_settings">Læser Indstillinger</string>
+    <string name="default_source">Standard Kilde</string>
+    <string name="show_yt">Vis Youtube Link</string>
+    <string name="default_ep_view">Standard Episode Layout</string>
+    <string name="default_chp_view">Standard Kapitel Layout</string>
+    <string name="ui">Brugergrænseflade</string>
+    <string name="common">Almindelig</string>
+    <string name="theme">Tema</string>
+    <string name="theme_ui">Tema / Brugerflade</string>
+    <string name="day_night">Lys / Mørkt Tema</string>
+    <string name="ui_settings">UI Indstillinger</string>
+    <string name="system">System</string>
+    <string name="about">Om</string>
+    <string name="desc">"    Dantotsu er fremstillet af asken fra Saikou og baseret på forenklet, men alligevel state-of-the-art elegance. Det er en Anilist kun klient, som også lader dig stream-downloade Anime gennem udvidelser &amp; Manga.\nDantotsu betyder bogstaveligt talt det \"bedste af det bedste\" på japansk. Nå, vi vil gerne sige, at dette er den bedste open source app til anime og manga på Android, hvad ville du sige?"</string>
+    <string name="devs">Bidragydere</string>
+    <string name="disclaimer">Ansvarsfraskrivelse</string>
+    <string name="full_disclaimer">         - Dantotsu i sig selv giver kun en anime og manga tracker og giver ikke nogen anime eller manga streaming eller downloading kapaciteter.
+        \n\n - Dantotsu eller nogen af dets udviklere/medarbejdere er ikke vært for noget af det indhold, der findes i Dantotsu. Alle billeder og alle billeder og anime/manga oplysninger fundet i app\'en er taget fra forskellige offentlige API\'er (AniList, MyAnimeList, Kitsu).
+        \n\n - Endvidere, alle de anime/manga-links fundet i Dantotsu er taget fra forskellige 3. parts plugins og har ingen tilknytning til Dantotsu eller dens personale.
+        \n\n - Dantotsu eller ejerne af Dantotsu hæfter ikke for misbrug af noget af det indhold, der findes i eller uden for appen, og kan ikke holdes ansvarlig for distributionen af noget af det indhold, der findes i appen.
+        \n\n - Ved brug af Dantotsu, du overholder det faktum, at udvikleren af app\'en ikke er ansvarlig for nogen af de indhold, der findes i appen. Du accepterer også, at du ikke må bruge Dantotsu til at downloade eller streame noget ophavsretligt indhold.
+        \n\n - Hvis der er problemer med internetovertrædelsen, kontakt venligst kildehjemmesiden. Udvikleren påtager sig ikke noget juridisk ansvar.
+    </string>
+    <string name="version_current">Version %1$s</string>
+    <string-array name="tips">
+        <item>Du kan længe klikke på en episode/kapitel for at markere det som læst.</item>
+        <item>Lange klikkende shows kan direkte åbne Liste Editor.</item>
+        <item>Der er få flere påskeæg skjult i appen.</item>
+        <item>Udfordring: Gå til bunden af den populære Anime &amp; Manga</item>
+        <item>Prøv at klikke længe på seriens titel.</item>
+        <item>Damn, hvorfor spilder du din tid?</item>
+        <item>Du kan længe klikke for at kopiere denne besked.</item>
+        <item>OMG LOOK! DU FUNDER EN ØJELSÆG!?</item>
+        <item>Du ved, hvem der ellers kan lide denne Animation?</item>
+        <item>MAL- understøttelse? bruh.</item>
+        <item>Novels? mere som NO vels.</item>
+        <item>Langt Klik på logoet for at søge efter opdateringer</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Standard</item>
+        <item>Tema 1</item>
+        <item>Tema 2</item>
+        <item>Tema 3</item>
+        <item> Tema 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Vis Videoinfo</string>
+    <string name="source_info">Vis Kildenavn</string>
+    <string name="video_info_info">Viser hvad opløsningen af den aktuelle videoafspilning, nyttigt for <b>\"Multi Quality\"</b> -servere.</string>
+    <string name="default_quality">Valg Af Automatisk Kvalitet</string>
+    <string name="height">Højde</string>
+    <string name="width">Width</string>
+    <string name="default_quality_info">Bruger automatisk den tætteste kvalitet, der leveres som standard, KUN anvendt til \"Multi Quality\" Servere. Auto-ændringer ved afspilning af en video.</string>
+    <string name="default_playback_speed">Standard Afspilningshastighed: %1$s</string>
+    <string name="cursed_speeds">Forbandede Hastigheder</string>
+    <string name="resize_mode_button">Standard Ændr Størrelsestilstand</string>
+    <string name="subtitles">Undertekster</string>
+    <string name="subtitle_toggle">Undertekster</string>
+    <string name="primary_sub_color_select">Undertekst Farve</string>
+    <string name="secondary_sub_color_select">Undertekst Omrids Farve</string>
+    <string name="secondary_sub_outline_type_select">Undertekst Omrids Type</string>
+    <string name="sub_background_color_select">Undertekst Baggrundsfarve</string>
+    <string name="sub_window_color_select">Undertekst Vinduesfarve</string>
+    <string name="sub_window_color_info">"Undertekst vinduet er den del venstre og højre fra dem. (hvor baggrunden ikke er )"</string>
+    <string name="sub_color_info"><b>Bemærk:</b> Ændring over indstillinger påvirker kun Soft-Undertitler!</string>
+    <string name="sub_alpha">Undertekst Gennemsigtighed</string>
+    <string name="sub_text_example">Eksempel Under</string>
+    <string name="sub_font_select">Undertekst Skrifttype</string>
+    <string name="subtitle_font_size">Undertekststørrelse</string>
+    <string name="no_subs_available">Ingen Undertekster Tilgængelige</string>
+    <string name="auto">Automatisk</string>
+    <string name="auto_play_next_episode">Autoplay Næste Episode</string>
+    <string name="auto_play_next_episode_info">Deaktiverer automatisk, hvis der ikke er interaktion med spilleren efter 1 time.</string>
+    <string name="auto_skip_fillers">Spring Udfyldninger Over Automatisk</string>
+    <string name="auto_skip_fillers_info">Springer fyldningsepisoder over, når du går til næste episode.</string>
+    <string name="update_progress">Opdatering Fremskridt</string>
+    <string name="ask_update_progress_anime">Bed om hvert Anime \"Individuelt\"</string>
+    <string name="ask_update_progress_manga">Bed for hver Manga \"individuelt\"</string>
+    <string name="ask_update_progress_info_ep">Slår fra vil altid automatisk opdatere fremskridt, når episoden overvåges.</string>
+    <string name="ask_update_progress_info_chap">At slå fra vil altid automatisk opdatere fremskridt, når kapitlet er læst.</string>
+    <string name="ask_update_progress_chapter_zero">Opdater fremskridt for kapitel 0</string>
+    <string name="ask_update_progress_info_zero">Slår til vil tilføje nystartede elementer til Anilist med fremskridt sat til kapitel 0.</string>
+    <string name="ask_update_progress_hentai">Opdater fremskridt for Hentai</string>
+    <string name="ask_update_progress_doujin">Opdater fremskridt for Doujins</string>
+    <string name="very_bold">meget fed af jer sar</string>
+    <string name="watch_complete_percentage">Se Opdatering Procentdel</string>
+    <string name="watch_complete_percentage_info">Den procentdel, hvor din Anilist fremskridt skal opdateres efter at have set en episode. \nDette indstiller også \% for hvornår links skal forhåndsindlæses til den næste episode.</string>
+    <string name="behaviour">Opførsel</string>
+    <string name="always_continue">Genoptag altid fra tidsstempel</string>
+    <string name="pause_video_focus">Pause når der ikke er fokus</string>
+    <string name="gestures">Lydstyrke &amp; Lysstyrke Fagter</string>
+    <string name="double_tap">Dobbelttryk for at søge</string>
+    <string name="fast_forward">Hurtigt Fremad</string>
+    <string name="double_tap_info">Slået fra vil vise hurtigt fremad &amp; tilbage knapper</string>
+    <string name="seek_time">Søg Tid</string>
+    <string name="seek_time_info">Tidsmængde i sekunder for hurtig fremad &amp; spole tilbage.</string>
+    <string name="skip_time">Overspring Tid</string>
+    <string name="skip_time_info">Indstilling til 0, skjuler Skip - knappen.</string>
+    <string name="show_cast_button">Vis Cast Knap</string>
+    <string name="show_cast_button_info">Kræver \"Web Video Caster\" app til at cast.</string>
+    <string name="picture_in_picture">Billede i billede</string>
+    <string name="always_minimize">Minimér Altid</string>
+    <string name="always_minimize_info">Kræver at PiP er aktiveret, får spilleren til at opføre sig som Youtube Player men bedre.\nskjuler også PiP knappen.</string>
+    <string name="app">App</string>
+    <string name="immersive_mode">Skjul Statuslinje</string>
+    <string name="immersive_modelist">Skjul statuslinje for liste</string>
+    <string name="immersive_mode_info">Kræver genstart af appen for fuldt ud at anvende.</string>
+    <string name="home_layout_show">Vis/Skjul layout på startsiden</string>
+    <string-array name="home_layouts">
+        <item>Fortsæt Overvågning</item>
+        <item>Foretrukne Anime</item>
+        <item>Planlagt Anime</item>
+        <item>Fortsæt Læsning</item>
+        <item>Favorit Manga</item>
+        <item>Planlagt Manga</item>
+        <item>Anbefalet</item>
+    </string-array>
+    <string name="startUpTab">Standard Start Faneblad</string>
+    <string name="small_view">Lille visning i aktuelle serier</string>
+    <string name="animations">Animationer</string>
+    <string name="banner_animations">Banner Animationer</string>
+    <string name="layout_animations">Layout Animationer</string>
+    <string name="trending_scroller">Populære Scroller</string>
+    <string name="animation_speed">Samlet Hastighed</string>
+    <string name="empty_fav">Ser ud til, at du ikke kan lide noget,\nPrøv at lide et show for at holde det her.</string>
+    <string name="fav_anime">Foretrukne Anime</string>
+    <string name="fav_manga">Favorit Manga</string>
+    <string name="restart_app">Genstart appen?</string>
+    <string name="next">Næste</string>
+    <string name="previous">Forrige</string>
+    <string name="current_page">Nuværende Side</string>
+    <string name="dubbed">Døbt</string>
+    <string name="subbed">Subbed</string>
+    <string name="prefer_dub">Foretrækker Døbt Anime</string>
+    <string name="none">Ingen</string>
+    <string name="selected_dns">Valgt DNS</string>
+    <string name="dns_info">Ændre hvis din internetudbyder blokerer en kilde</string>
+    <string name="keep_screen_on">Hold Skærmen Tændt</string>
+    <string name="layout">Layout</string>
+    <string name="spaced_pages">Mellemrum Sider</string>
+    <string name="direction">Retning</string>
+    <string name="comments_api">Kommentarer API (privat)</string>
+    <string name="disable_mitm">Undgå Injektion (\"Pranks\")</string>
+    <string name="general">Generelt</string>
+    <string name="show_system_bars">Vis Status &amp; Navigationsbjælker</string>
+    <string name="auto_detect_webtoon">Automatisk Detektér Webtoon</string>
+    <string name="auto_detect_webtoon_info">Hvis Manga ikke er fra Japan, vil læseren som standard til indstillingerne for Webtoon Reader</string>
+    <string name="default_settings">Standard Indstillinger</string>
+    <string name="horizontal_scroll_bar">Vandret Rullelinje</string>
+    <string name="dual_page">Dobbelt Side</string>
+    <string name="dual_page_info">Viser 2 billeder på 1 side, vil se mærkeligt ud, hvis billederne ikke er den samme størrelse</string>
+    <string name="true_colors">Sande Farver</string>
+    <string name="true_colors_info">(32-bit farvetilstand) Reducerer Banding på billederne, kan påvirke ydeevnen.</string>
+    <string name="image_rotation">Rotation Af Billede</string>
+    <string name="hide_page_numbers">Skjul Sidetal</string>
+    <string name="sort_by_title">Sorter efter titel</string>
+    <string name="sort_by_last_updated">Sorter efter senest opdateret</string>
+    <string name="sort_by_score">Sorter efter score</string>
+    <string name="sort_by_airing">Sorter efter næste luftning</string>
+    <string name="over_scroll">Over Scroll til Næste/forrige kapitel</string>
+    <string name="volume_buttons">Skift sider med lydstyrkeknapper</string>
+    <string name="list_private">Privat</string>
+    <string name="wrap_images">Wrap Images</string>
+    <string name="wrap_images_info">For det meste nyttigt for større enheder, fjerner plads mellem billeder, hvis de findes.</string>
+    <string name="reload">Reload</string>
+    <string name="share">Del</string>
+    <string name="skip">Overspring</string>
+    <string name="other">Andet</string>
+    <string name="total_repeats">SAMLEDE OPTAGER</string>
+    <string name="custom_lists">Brugerdefinerede Lister</string>
+    <string name="donate_desc">Vil du støtte Himitsu?\nOvervej at donere</string>
+    <string name="donate_goal">Intet donationsmål</string>
+    <string name="filter">Filtrer</string>
+    <string name="year">År</string>
+    <string name="apply">Anvend</string>
+    <string name="cancel">Annuller</string>
+    <string name="edit">Rediger</string>
+    <string name="this_season">Denne Sæson</string>
+    <string name="next_season">Næste Sæson</string>
+    <string name="previous_season">Forrige Sæson</string>
+    <string name="include_media_in_list">Inkludér Liste</string>
+    <string name="release_calendar">Kalender</string>
+    <string name="planned_anime">Planlagt Anime</string>
+    <string name="planned_manga">Planlagt Manga</string>
+    <string name="image_long_clicking">Langt klik for at åbne billedet</string>
+    <string name="always_continue_content">Fortsæt tidligere åbnede emner</string>
+    <string name="search_source_list">Søg næste tilgængelige kilde</string>
+    <string name="timestamp_proxy_desc">Nyttigt, hvis du får Handshake Mislykkes</string>
+    <string name="timestamp_proxy">Brug Proxy til tidsstempler</string>
+    <string name="check_app_updates">Søg efter opdateringer</string>
+    <string name="author">Forfatter</string>
+    <string name="forks">Versioner</string>
+    <string name="faq">OSS</string>
+    <string name="accounts">Konti</string>
+    <string name="myanimelist">MyanimeList</string>
+    <string name="login_with_anilist">Log ind med Anilist</string>
+    <string name="anilist">Annonceliste</string>
+    <string name="account_help">Hvordan virker dette\?</string>
+    <string name="full_account_help">        Dantotsu er en Anilist baseret App, så for at synkronisere med din MAL-konto, skal den have en Anilist konto for at blive logget ind.
+        \nNår du er logget ind med både Anilist og MAL konti, app\'en opdaterer automatisk din MAL-konto når:
+        \n- Tilføj et nyt medie
+        \n- Rediger et medie
+        \n- Slet et medie
+
+        \n\nBemærk: Appen synkroniserer ikke gamle mediers fra Anilist til MAL, Det anbefales at synkronisere dem.
+        \n- Check __FAQs__ for _Easy Method_
+
+        \n\nOg for _Intermediates_ :
+        \n- [How to sync Anilist data with MAL](https://anilist. o/forum/thread/2654)
+        \n- [Sådan synkroniseres MAL data med Anilist](https://anilist. o/forum/thread/3393)
+
+        \n\n_It is not required to sync both MAL and Anilist accounts. (Automatic Copy)
+    </string>
+    <string name="notification_for_checking_subscriptions">Vis notifikation til kontrol af abonnementer</string>
+    <string name="use_alarm_manager">Brug Alarmhåndtering</string>
+    <string name="use_alarm_manager_reliable">Brug Alarmstyring (Pålidelige Meddelelser)</string>
+    <string name="use_alarm_manager_confirm">Brug af Alarm Manger kan hjælpe med at bekæmpe batterioptimering, men kan forbruge mere batteri. Det kræver også tilladelse til Alarmhåndtering.</string>
+    <string name="use">Brug</string>
+    <string name="checking_subscriptions">Abonnement Tjek Notifikationer</string>
+    <string name="subscriptions_checking_time_s">Abonnementer Opdatering Frekvens: %1$s</string>
+    <string name="subscriptions_checking_time">Abonnementer Opdater Frekvens</string>
+    <string name="subscriptions_info">Mængden af tid for Dantotsu til at tjekke for nye episoder / kapitler\n(Less tid bruger mere batteri)</string>
+    <string name="do_not_update">Opdater Ikke</string>
+    <string name="loading_chap_number">Indlæser Kapitel %1$s</string>
+    <string name="sort_by_release_date">Sorter efter udgivelsesdato</string>
+    <string name="crop_borders">Afgrødekanter</string>
+    <string name="note">BEMÆRKNING</string>
+    <string name="manage_extension_repos">Administrer Udvidelse Genkøbsforretninger</string>
+    <string name="installing_extension">Installerer udvidelse</string>
+    <string name="installation_failed">Installation fejlede: %1$s</string>
+    <string name="installation_complete">Installation fuldført</string>
+    <string name="extension_has_been_installed">Udvidelsen er blevet installeret.</string>
+    <string name="extension_installed">Udvidelse installeret</string>
+    <string name="error_message">Fejl: %1$s</string>
+    <string name="install_step">Trin: %1$s</string>
+    <string name="review">Revision</string>
+    <string name="select_source">Vælg en kilde</string>
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="install_update">Installer opdatering %1$s?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Opdatering Tilgængelig</string>
+    <string name="discord_nothing_button">Vis kun den første knap</string>
+    <string name="discord_dantotsu_button">Vis dantotsu i den anden knap</string>
+    <string name="discord_anilist_button">Vis din AniList profil i stedet</string>
+    <string name="discord_rich_presence">Discord Rig Tilstedeværelse</string>
+    <string name="stream_on_dantotsu">Stream på Dantotsu</string>
+    <string name="view_my_anilist">Se Min Annonjliste</string>
+    <string name="jobless_message">DAMN! DU SKULE ER JOBLESS\nDU REACHED END</string>
+    <string name="file_manager_not_found">Kunne ikke finde en filhåndtering til at åbne SD-kort</string>
+    <string name="error_loading_data">Fejl under indlæsning af data %1$s</string>
+    <string name="long_click_to_check_update">Langt klik for at søge efter opdateringer</string>
+    <string name="saved_to_path">Gemt til:\n%s</string>
+    <string name="setting_progress">✔️ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Log venligst ind på AniList konto!</string>
+    <string name="congrats_vro">Congrats Vro</string>
+    <string name="please_reload">Genindlæs.</string>
+    <string name="copied_text">Kopieret \"%1$s\"</string>
+    <string name="back_to_exit">Tryk TILBAGE igen for at afslutte</string>
+    <string name="back_button">Knappen Tilbage</string>
+    <string name="anilist_not_found">Det ser ud til at det ikke blev fundet på Anilist.</string>
+    <string name="disabled_auto_skip">Deaktiveret Automatisk Spring OP &amp; ED</string>
+    <string name="auto_skip">Auto Skipping OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Vis Spring Over [Segment] Knapper</string>
+    <string name="always_load_time_stamps">Indlæs Altid Frimærker</string>
+    <string name="auto_hide_time_stamps">&gt;Auto Skjul Skip [Segment] Knapper</string>
+    <string name="timestamps">Segmenter</string>
+    <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Kræver tidsfrimærker for at være aktiveret</string>
+    <string name="hide_skip_button">Få springe tidsstempel knappen til at forsvinde efter 5 sekunder</string>
+    <string name="copied_to_clipboard">Kopieret til udklipsholder</string>
+    <string name="first_episode">Dette er den 1. Episode!</string>
+    <string name="reset_auto_update">Langt klik på knappen \"List Editor\" for at nulstille automatisk opdatering</string>
+    <string name="autoplay_cancelled">Autoplay annulleret, ingen interaktion for mere end 1 Hour.</string>
+    <string name="auto_select_server_error">Kunne ikke auto vælge serveren, Prøv igen!</string>
+    <string name="stream_selection_empty">Ingen tilgængelige streams! Prøv en anden kilde.</string>
+    <string name="logging_in_mal">Logger ind på MAL</string>
+    <string name="getting_user_data">Henter Brugerdata</string>
+    <string name="no_next_episode">Ingen næste episode fundet!</string>
+    <string name="enable_banner_animations">Prøv at aktivere \"Banner Animations\" i indstillinger</string>
+    <string name="please_login_anilist">Log ind med Anilist!</string>
+    <string name="auto_update_reset">Auto-opdaterings fremskridt er nu blevet nulstillet</string>
+    <string name="cant_wait">Kan ikke vente, huh? fine X (</string>
+    <string name="downloading">Downloader…</string>
+    <string name="next_chapter_not_found">Næste Kapitel Ikke Fundet</string>
+    <string name="first_chapter">Dette er det første kapitel!</string>
+    <string name="adult_stuff">Voksne Stuff?&#40; &#865;&#176; &#860;&#662; &#865;&#176; &#41;</string>
+    <string name="what_did_you_open">Hvad åbnede du så?</string>
+    <string name="error_getting_data">Fejl ved hentning af data fra Anilist.</string>
+    <string name="empty_response">Tøm svar! Suger din internet måske?</string>
+    <string name="error_loading_mal_user_data">Fejl ved indlæsning af MAL brugerdata</string>
+    <string name="error_loading_mal_data">Kunne ikke indlæse data fra MAL</string>
+    <string name="error_loading_anilist_user_data">Fejl ved indlæsning af Anilist brugerdata</string>
+    <string name="episode_not_found">Episoden kunne ikke findes: %1$s</string>
+    <string name="list_updated">Liste Opdateret</string>
+    <string name="deleted_from_list">Slettet fra liste</string>
+    <string name="no_list_id">Intet liste-id fundet…</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">Giv ikke besked igen for %1$s</string>
+    <string name="matagi_downloading">Downloader Himitsu %1$s</string>
+    <string name="checking_for_update">Søger efter opdatering</string>
+    <string name="dont_show_again">Giv ikke besked igen for version %1$s</string>
+    <string name="no_update_found">Ingen Opdatering Fundet</string>
+    <string name="downloading_update">Downloader Dantotsu %1$s</string>
+    <string name="permission_required">Giv venligst tilladelse til at få adgang til filer &amp; Mapper fra Indstillinger, &amp; Prøv igen.</string>
+    <string name="started_downloading">Startede Downloading\n%1$s</string>
+    <string name="install_1dm">Installér venligst 1DM</string>
+    <string name="install_adm">Installér ADM</string>
+    <string name="error_getting_image_data">Fejl ved hentning af billeddata</string>
+    <string name="loading_image_failed">Indlæsning Af Billede Mislykkedes</string>
+    <string name="copied_device_info">Kopierede enhedsoplysninger</string>
+    <string name="anilist_down">Synes at Anilist er nede, måske prøve at bruge en VPN eller du kan vente på, at den kommer tilbage.</string>
+    <string name="failed_to_load_data">Kunne ikke indlæse gemte data fra %1$d</string>
+    <string name="access_not_available">Kunne ikke få adgang</string>
+    <string name="mal_login_uri_not_found">Mal Login : Uri ikke fundet</string>
+    <string name="mal_login_code_challenge_not_found">Mal Login : codeChallenge ikke fundet</string>
+    <string name="mal_login_code_not_present">Mal Login : Kode ikke til stede i omdirigeret URI</string>
+    <string name="refresh_token_load_failed">Genopfrisk Token: Kunne ikke indlæse gemt token</string>
+    <string name="refreshing_token_failed">Opdatering Af Token Mislykkedes</string>
+    <string name="episode_release_countdown">Episode %1$d vil blive frigivet om</string>
+    <string name="chapter_number">Kapitel %1$d</string>
+    <string name="chapter_release_timeout">%1$s er tilgængelig for</string>
+    <string name="time_format">%1$d dage %2$d timer %3$d minutter %4$d sek.</string>
+    <string name="chapter_predication">Nyt Kapitel Forventede %1$s</string>
+    <string name="chapter_delayed">Det nye kapitel synes at være forsinket</string>
+    <string-array name="sort_by">
+        <item>Score</item>
+        <item>Populær</item>
+        <item>Populære</item>
+        <item>Nye Udgivelser</item>
+        <item>A-Z</item>
+        <item>Å-A</item>
+        <item>Ren smerte</item>
+    </string-array>
+    <string name="main_role">INDSTILLING</string>
+    <string name="supporting_role">STØTTE</string>
+    <string name="status_finished">FINISHED</string>
+    <string name="status_releasing">FRIGIVELSE</string>
+    <string name="status_not_yet_released">IKKE YET RELEASED</string>
+    <string name="status_cancelled">ANNULLERET</string>
+    <string name="status_hiatus">HIATUS</string>
+    <string name="type_adaptation">TILPASNING</string>
+    <string name="type_parent">PARENT</string>
+    <string name="type_character">KARAKTER</string>
+    <string name="type_summary">SUMMARY</string>
+    <string name="type_alternative">ALTERNATIV</string>
+    <string name="type_other">ANDET</string>
+    <string name="type_source">KILDE</string>
+    <string name="type_contains">KONTAINER</string>
+    <string name="read_on_dantotsu">Læs på Dantotsu</string>
+    <string name="watch_on_dantotsu">Se på Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Se profil i Dantotsu</string>
+    <string name="continue_episode">Fortsæt : Episode %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Fyldstof</string>
+    <string name="continue_chapter">Fortsæt : %1$s\n%2$s</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">"Episode %1$s"</string>
+    <string name="chapter">"Kapitel "</string>
+    <string name="chapter_num">"Kapitel %1$s"</string>
+    <string name="just_released">- Nyligt frigivet!</string>
+    <string name="checking_subscriptions_title">Kontrollerer Abonnementer</string>
+    <string name="user_list">%1$s\'s %2$s Liste</string>
+    <string name="speed">Hastighed</string>
+    <string name="auto_update">Auto-opdaterings fremskridt for %1$s?</string>
+    <string name="continue_from">Fortsæt fra %1$s?</string>
+    <string name="title_update_progress">Opdater fremskridt på AniList?</string>
+    <string name="incognito_will_not_update">Inkognitotilstand vil stadig ignorere fremskridt.</string>
+    <string name="dont_ask_again">"Spørg ikke igen om %1$s"</string>
+    <string name="default_speed">Standard Hastighed</string>
+    <string name="default_resize_mode">Standard Ændr Størrelsestilstand</string>
+    <string name="primary_sub_color">Primær Sub Farve</string>
+    <string name="outline_sub_color">Omrids Underfarve</string>
+    <string name="outline_type">Omrids Type</string>
+    <string name="subtitle_font">Undertekst Skrifttype</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Reset</string>
+    <string name="close">Luk</string>
+    <string name="no_chapter">Intet Kapitel</string>
+    <string name="content_18">Slå 18+ indhold fra dine Anilist indstillinger til</string>
+    <string name="available">Tilgængelig</string>
+    <string name="lets_go">Lad Os Kør</string>
+    <string name="cope">Hope</string>
+    <string name="watched_num">"Set "</string>
+    <string name="read_num">"Læs "</string>
+    <string name="episodes_out_of">" ud af "</string>
+    <string name="chapters_out_of">" ud af "</string>
+    <string name="episodes_total_of">"I alt af "</string>
+    <string name="chapters_total_of">"I alt af "</string>
+    <string name="no_description_available">"Ingen Beskrivelse Tilgængelig"</string>
+    <string-array name="manga_directions">
+        <item>Top til bunden</item>
+        <item>Højre til venstre</item>
+        <item>Nederst til toppen</item>
+        <item>Venstre mod højre</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Sidestillet</item>
+        <item>Kontinuerlig Side</item>
+        <item>Fortsat</item>
+    </string-array>
+    <string name="selected">Valgt</string>
+    <string name="found">Fundet</string>
+    <string name="age">"__Alder:__ "</string>
+    <string name="birthday">\n\"__Birthday:__ \"</string>
+    <string name="gender">\n\"__køn:__ \"</string>
+    <string name="male">Mand</string>
+    <string name="female">Kvinde</string>
+    <string name="question_1">Hvad er Dantotsu?</string>
+    <string name="answer_1">Dantotsu er fremstillet af asken fra Saikou og baseret på forenklet, men alligevel state-of-the-art elegance. Det er en Anilist kun klient, som også lader dig streame &amp; downloade Anime / Manga gennem udvidelser. \n&gt;Dantotsu (° ; Dan-totsu) betyder bogstaveligt talt det bedste af de bedste i japansk. Nå, vi vil gerne sige, at dette er den bedste open source app til anime og manga på Android, men hey, Prøv det selv &amp; dommer!</string>
+    <string name="question_2">Hvad er nogle træk ved Dantotsu?</string>
+    <string name="answer_2">Nogle bemærkelsesværdige træk ved Dantotsu er\n\n- Nem og funktionel måde at begge, se anime og læse manga og lette romaner, Ad Free.\n- En helt open source app med en flot UI &amp; Animations\n- 3. parts plugin support \n- Synkroniser anime og manga i realtid med AniList. Kategorisér nemt anime og manga baseret på din aktuelle status. (Powered by AniList)\n- Find alle shows ved hjælp grundigt og ofte opdateret liste over alle trending, populære og igangværende anime baseret på scores.\n- Se omfattende detaljer om anime shows, film og manga titler. Det er også udstyret med evnen til at nedtælle til den næste episode af luftning anime. (Powered af AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Hvad er forskellen mellem Stabil, Beta &amp; Alpha versioner?</string>
+    <string name="answer_3">Denne gaffel giver ikke separate spor. Den version du downloader fra [repository](https://github.com/RepoDevil/Himitsu) er den samme [AbandonedCart](https://github. om/AbandonedCart) kører. Hvis du finder fejl og allerede har opdateret til den nyeste version, er du velkommen til at indsende en [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Er Dantotsu tilgængelig for PC?</string>
+    <string name="answer_4">I øjeblikket er ingen (for både Windows og Linux). Der er ikke nogen estimering, når den vil være tilgængelig. Men du kan downloade enhver Android emulator og køre Dantotsu på det. Til Windows 11-brugere kan de bruge Windows-delsystemet til Android (WSA) til at køre Dantotsu i Windows.</string>
+    <string name="question_5">Er Dantotsu tilgængelig for iOS?</string>
+    <string name="answer_5">Nej, det bedste vi kan gøre, er at udskære Dantotsu på et æble.</string>
+    <string name="question_6">Hvorfor opdaterer min statistik ikke?</string>
+    <string name="answer_6">Dette skyldes, at det opdaterer hver 48 timer automatisk (af Anilist). Hvis du virkelig har brug for at opdatere dine statistikker, kan du tvinge til at opdatere dine statistikker, når du går til dette [link](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Hvordan downloades Anime?</string>
+    <string name="answer_7">Der er to metoder til at downloade i øjeblikket. Den ene er intern og den anden er eksternt. Hvis du downloader internt, så kan det ses i appen, men kun den app kan åbne den episode, du kan ikke flytte den eller dele den. Den anden mulighed er at bruge ekstern downloading. Det kræver en download manager til at downloade og en separat videoafspiller til at se. Eksterne downloads kan deles, men du kan ikke se det i Dantotsu appen.\n\n•For at downloade internt:\n\n1. Tryk på download-knappen.\n2. Vælg serveren og videokvaliteten.\n3. Profit.\n\n•For at downloade eksternt:\n\n 1. Download 1DM eller ADM fra Google Play Butik.
+        \n2. Indtast appen, giv lageradgang og indstil dine præferencer (download hastighed, download af sti etc(valgfrit))
+        \n3. Gå nu til \`Dantotsu &gt; Indstillinger &gt; Common &gt; Download Managers\` og vælg den download-manager, du lige har opsat.
+        \n4. Gå til din ønskede episode og tryk på download-ikonet for enhver server. Der kan være en popup til at indstille dine præferencer igen, bare tryk på \"Download\" og det vil blive gemt i den dirigerede sti.
+
+        \n\nBemærk: Direkte downloads er også mulige uden en manager, men det anbefales ikke.
+\n\nNerd Bemærk: Internt downloadede episoder gemmes i \`Android/data/ani. antotsu.*/files/Anime_Downloads\`\nDu kan ikke afspille disse filer, da de er i \`.exo\` format, opdelt i hundredvis af stykker og er krypterede.</string>
+    <string name="question_9">Sådan aktiveres NSFW indhold?</string>
+    <string name="answer_9">Du kan aktivere NSFW indhold ved at aktivere 18+ indhold fra denne [link](https://anilist.co/settings/media). Du skal også aktivere NSFW udvidelser i \`Indstillinger &gt; Udvidelser &gt; NSFW udvidelser\` </string>
+    <string name="question_10">Hvordan importeres mine MAL/Kitsu lister til Anilist?</string>
+    <string name="answer_10">Her er hvordan du gør det,\n\nEksport:\n\n1. Gå til denne [link](https://malscraper. zurewebsites.net).\n2. Giv dit Kitsu/MAL brugernavn og download både anime og manga liste. (De vil være i XML-format)\nBemærk: Du skal skrive brugernavnet på den tracker du valgte\n\nImport:\n\n1. Efter at have eksporteret din anime og manga liste fra Kitsu/MAL, skal du nu gå [here](https://anilist.co/settings/import) \n2. Vælg / slip anime XML-fil i boksen ovenfor.\n→Vælg/slip manga XML-filen i boksen nedenfor.</string>
+    <string name="question_11">Hvordan importeres mine Anilist/Kitsu lister til MAL?</string>
+    <string name="answer_11">Her er hvordan du gør det,\n\nEksport:\n\n1. Gå til denne [link](https://malscraper. zurewebsites.net/). \n2. Giv dit Anilist brugernavn/Kitsu ID i boksen \'Brugernavn/Kitsu brugernavn\'. \n3. Vælg listetype og aktivér \'update_on_import\'. \n4. Download filen; den vil være i .xml-format. Sørg for at downloade både Anime- og Manga-lister.\n\nImport:\n1. For at importere den til din MAL-konto, gå til [link](https://myanimelist. et/import.php) og vælg \'MyAnimeList Import\' som importtype. \n2. Tryk på \'Vælg fil\', og vælg den downloadede anime/manga-liste XML-fil. \n3. Tryk på \'Importér data\'. \nTillykke, du har lige importeret den valgte liste til din MAL-konto.</string>
+    <string name="question_12">Hvorfor kan jeg ikke finde en bestemt anime/manga-titel?</string>
+    <string name="answer_12">Lad os sige, at du er på udkig efter Castlevania i Dantotsu. Men Anilist har det ikke, så Dantotsu heller ikke.\nEn løsning på ovenstående problem er som følger:\n1) Gå til enhver anime, der ikke er på din liste.\n2) Gå til overvågningssektionen.\n3) Vælg en hvilken som helst kilde og tryk på \'Forkert titel?\'.\n4) Søg nu efter Castlevania (anime du ledte efter) og vælg den.\n5) ENJOY!\n\nHvis du ikke kan finde anime selv gennem disse trin, så er det uheldigt for dig, knoppe. Selv denne kilde har ikke det. Prøv en anden kilde.</string>
+    <string name="question_13">Sådan retter du kilder ved at vælge en helt forkert titel?</string>
+    <string name="answer_13">Dantotsu er selv ikke vært for andet end at være afhængig af andre kilder. Når der vises episoder, det vælger det 1. resultat givet af kilden efter søgning efter titlen. Dantotsu har ingen måde at opdage hvis det er legit eller ej. Så derfor har vi \'Forkert titel?\' lige under kildenavnet (over layout). Du kan vælge den korrekte resultat/titel ved at trykke på den og nyde dens episoder.</string>
+    <string name="question_14">Hvordan man læser farvet mangas?</string>
+    <string name="answer_14">Er du på jagt efter farvet manga? Beklager at bryde det til dig, men en ekstremt lille mængde mangas har farvet version. De der har en farvet version findes også i Dantotsu. Lad os sige, at du ønsker at læse den farvede version af motorsav mand. Følg derefter nedenstående trin ↓\n\n1) Gå til motorsav Man\n2) Tryk på \'Læse\'\n3) Vælg enhver arbejdskilde\n4) Tryk på \'Forkert titel\'\n5) Vælg den farvede version motorsav mand\n6) Nyd\n\nBemærk: Mange kilder har ikke den farvede version tilgængelig, selvom den er tilgængelig et eller andet sted på internettet. Så prøv en anden kilde. Hvis ingen af kilderne har det, så eksisterer en farvet version af din ønskede manga simpelthen ikke.</string>
+    <string name="question_15">Handshake mislykkedes? Hvorfor indlæses ingen tidsstempler?</string>
+    <string name="answer_15">Du kan løse dette problem ved at aktivere \'Proxy\' fra \n\`Settings &gt; Anime &gt; Player Settings &gt; Timestamps &gt; Proxy\`.\nHvis tidsstemplerne stadig ikke indlæses, men håndtrykket mislykkedes popup er rettet, så episoden du ser bare ikke har tidsstempler endnu for det.</string>
+    <string name="question_16">Kan du ikke finde noget i en kilde?</string>
+    <string name="answer_16">Nogle grundlæggende rettelser vil være: \n\n• Opdater dine udvidelser, hvis der er nogen. \n• Åbn webvisning og vent på at den indlæses. Efter indlæsning er fuldført, gå tilbage. (Hvis webvisning viser fejl 404 eller noget lignende, chancerne er, at din kilde er ned)\n• Brug en anden DNS fra dine indstillinger, helst, Libre. \n• Prøv en troværdig VPN. (Du skal gentage trin 1 efter dette) \n\nHvis ingen af trinene ovenfor virker, så brug en anden kilde eller deltag i vores [discord](https://discord. g/invite/4HPZ5nAWwM) til hjælp.</string>
+    <string name="question_17">Nogle nyttige tips og tricks</string>
+    <string name="answer_17">Følgende giver nogle tips og tricks du måske ikke ved om - \n \n \n - Ved at trykke på Dantotsu logoet i indstillinger, du kan kontrollere, om der er nogen nye opdateringer manuelt. \n \n - Hold på tryk på en fejlmeddelelse/tag/synonym eller titel vil kopiere den. \n \n - Du kan åbne en episode med andre apps ved at holde på enhver server for den episode. Dette hjælper med at streame episoden ved hjælp af andre videoafspillere eller downloade episoden ved hjælp af download managere. \n \n - Du kan oprette brugerdefinerede lister ved hjælp af denne [link](https://anilist.co/settings/lists). (du skal være logget på) \n \n - Hvis din episode/kapitel ikke sker automatisk, når du er færdig med at kigge/læse den, hold derefter ved at trykke på statusbjælken (planlægning/gentagelse/iagttagelse) på denne anime/manga. Næste gang du starter et kapitel/afslutter en episode, vil du snuble over en popup. Tryk på ja der. </string>
+    <string name="subscribed_notification">Abonnér! Modtagelse af notifikationer, når nye episoder er udgivet på %1$s.</string>
+    <string name="unsubscribed_notification">Afmeldt vil du ikke modtage nogen notifikationer.</string>
+    <string name="episode_plural">Episoder</string>
+    <string name="episode_singular">Episode</string>
+    <string name="chapter_singular">Kapitel</string>
+    <string name="chapter_plural">Kapitler</string>
+    <string name="filter_status">"Status : %1$s"</string>
+    <string name="filter_source">"Kilde : %1$s"</string>
+    <string name="filter_format">"Format : %1$s"</string>
+    <string name="filter_country">"Land : %1$s"</string>
+    <string name="filter_sort">"Sortér : %1$s"</string>
+    <string name="filter_exclude">"Ikke %1$s"</string>
+    <string name="search_by_image">Søg efter billede</string>
+    <string name="upload_image">Upload Billede</string>
+    <string name="similarity_text">Lighed: %1$s %%</string>
+    <string name="time_range">Fra %1$s til %2$s</string>
+    <string name="invalid_url">Ugyldig URL</string>
+    <string name="no_anilist_id_found">Intet anilist ID fundet</string>
+    <string name="error_loading_image">Fejl under indlæsning af billede</string>
+    <string name="discord_logout_success">Logget Ud</string>
+    <string name="discord_try_again">Prøv at logge ind igen</string>
+    <string name="error_loading_discord_user_data">Fejl under indlæsning af Discord brugerdata</string>
+    <string name="discord_warning"><![CDATA[Ved at logge ind, vil din uenighed nu vise, hvad du ser og læser på Dantotsu\n\nHvis du er på usynlig tilstand, logge ind vil gøre dig online, når du åbner Dantotsu.\n\nDette bryder Discord TOS. \nSelvom Discord aldrig har forbudt nogen for at bruge Custom Rich Presence(hvad Dantotsu bruger), Du er stadig blevet advaret.\n\nDantotsu er ikke ansvarlig for noget, der sker med din konto.]]></string>
+    <string name="warning">Advarsel</string>
+    <string name="view_anime">Vis Anime</string>
+    <string name="view_manga">Se Manga</string>
+    <string name="force_legacy_installer">Gennemtving Ældste Installer</string>
+    <string name="extensions_settings">Udvidelser</string>
+    <string name="NSFWExtention">NSFW Udvidelser</string>
+    <string name="skip_loading_extension_icons">Overspring indlæsning af udvidelser</string>
+    <string name="use_material_you">Materiale Dig</string>
+    <string name="use_app_theme">Brug App Tema</string>
+    <string name="extension_specific_dns">Udvidelsesspecifikt DNS</string>
+    <string name="theme_">Tema:</string>
+    <string name="user_agent">Bruger Agent</string>
+    <string name="custom_theme">Brugerdefineret Tema:</string>
+    <string name="use_custom_theme">Brugerdefineret Tema</string>
+    <string name="use_unique_theme_for_each_item">Tema som Anime/Manga </string>
+    <string name="oled_theme_variant">OLED tema variant</string>
+    <string name="installed_anime">Installerede Anime</string>
+    <string name="available_anime">Tilgængelig Anime</string>
+    <string name="installed_manga">Installeret Manga</string>
+    <string name="color_picker">Farvevælger</string>
+    <string name="random_selection">Tilfældigt Markering</string>
+    <string name="incognito_mode">Inkognito Tilstand</string>
+    <string name="appwidget_text">EKSEMPEL</string>
+    <string name="configure">Konfigurer</string>
+    <string name="add_widget">Tilføj widget</string>
+    <string name="app_widget_description">Dette er en beskrivelse af app-widget</string>
+    <string name="upcoming_anime">Kommende Anime</string>
+    <string name="airing_image">Airing Billede</string>
+    <string name="anime_downloads">animeDownloads</string>
+    <string name="purge_anime_downloads">Slet alle Anime downloads</string>
+    <string name="purge_manga_downloads">Slet alle Manga-downloads</string>
+    <string name="purge_novel_downloads">Slet alle nye downloads</string>
+    <string name="requires_android_12">Kræver Android 12+</string>
+    <string name="share_username_in_logs">Del brugernavn i logs</string>
+    <string name="pinned_sources">Fastgjorte Kilder</string>
+    <string name="backup_restore">Sikkerhedskopiering og gendannelse</string>
+    <string name="restore_settings">Importér Indstillinger</string>
+    <string name="restore_settings_underline"><u>Gendan Indstillinger</u></string>
+    <string name="try_internal_cast_experimental">Prøv Intern Cast (Eksperimentel)</string>
+    <string name="faq_desc">Generelle spørgsmål om Himitsu</string>
+    <string name="check_app_updates_desc">Tjek Github for appopdateringer</string>
+    <string name="share_username_in_logs_desc">Inkluder brugernavn i nedbrudsrapporter</string>
+    <string name="devs_desc">Himitsu\'s helt egne ulønnede arbejdere</string>
+    <string name="forks_desc">Projekter fra Dantotsu</string>
+    <string name="disclaimer_desc">Noget at huske på</string>
+    <string name="use_foldable">Brug foldbare layouts</string>
+    <string name="use_foldable_desc">Indhold tilpasser sig til hængselskonfiguration</string>
+    <string name="add_shortcuts">Tilføj genveje til launcher</string>
+    <string name="add_shortcuts_desc">Tilføjer fortsætte elementer til ikonet langt klik</string>
+    <string name="comments">Kommentarer</string>
+    <string name="newest">Nyeste</string>
+    <string name="oldest">Ældste</string>
+    <string name="highest_rated">Højeste bedømmelse</string>
+    <string name="lowest_rated">Laveste bedømmelse</string>
+    <string name="compare"><u>Sammenlign</u></string>
+    <string name="view_following">Vis Følger</string>
+    <string name="menu">menu</string>
+    <string name="view_followers">Vis Følgere</string>
+    <string name="no_fav_anime">Bruger har ingen favorit anime</string>
+    <string name="no_fav_manga">Bruger har ingen favorit Manga</string>
+    <string name="fav_character">Favorit Tegn</string>
+    <string name="fav_staff">Favorit Personale</string>
+    <string name="stats">Statistik</string>
+    <string name="days_watched">Overvågede dage</string>
+    <string name="total_anime">Total Anime</string>
+    <string name="anime_mean_score">Anime Middel Score</string>
+    <string name="volume_read">Lydstyrke læst</string>
+    <string name="total_manga">Manga I Alt</string>
+    <string name="manga_mean_score">Manga Middel Score</string>
+    <string name="about_me">Om mig</string>
+    <string name="follow">Følg</string>
+    <string name="following">Følger</string>
+    <string name="unfollow">Affølg</string>
+    <string name="follows_you">Følger dig</string>
+    <string name="mutual">Gensidig</string>
+    <string name="success">Succes</string>
+    <string name="error">Der opstod en fejl</string>
+    <string name="error_msg">Fejl: %1$s</string>
+    <string name="please_wait">Vent venligst</string>
+    <string name="upcoming">Kommende</string>
+    <string name="no_shows_to_display">Ingen serier at vise</string>
+    <string name="no_media_to_display">Intet medie at vise</string>
+    <string name="extension_name">Udvidelse Navn</string>
+    <string name="extension_version">version</string>
+    <string name="enter_password_to_decrypt_file">Indtast din adgangskode for at dekryptere filen</string>
+    <string name="show_rotate_button">Vis Rotér Knap</string>
+    <string name="default_manga_settings">Standard Manga Indstillinger</string>
+    <string name="use_dark_theme">Brug Mørkt Tema</string>
+    <string name="use_oled_theme">Brug OLED Tema</string>
+    <string name="scanlators">Scannere</string>
+    <string name="exporting_requires_encryption">Eksporterer legitimationsoplysninger kræver en adgangskode til kryptering.</string>
+    <string name="manga_queue">Manga Kø (WIP)</string>
+    <string name="anime_queue">Anime Kø (WIP)</string>
+    <string name="no_offline_manga_found">Ingen offline manga fundet</string>
+    <string name="sort">Sortér</string>
+    <string name="download">Hent</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Sæt Cookies</string>
+    <string name="open_website">Åbn Hjemmeside</string>
+    <string name="log_to_file">Log til fil</string>
+    <string name="logging_warning">Kan forårsage forsinkelse. Aktiver kun hvis du oplever problemer.</string>
+    <string name="share_log">Klik for at dele aktuelle logfil</string>
+    <string name="radius">Radius</string>
+    <string name="sampling">Stikprøveudtagning</string>
+    <string name="blur_banners">Slør Bannere</string>
+    <string name="blur">Blur</string>
+    <string name="hide_scroll_bar">Skjul Scroll Bjælke</string>
+    <string name="view_on_anilist">Vis på Annonneliste</string>
+    <string name="anilist_notification_filters">Vælg kategori at ignorere</string>
+    <string name="anilist_notifications_checking_time">Anilist notifikationer opdateringsfrekvens : %1$s</string>
+    <string name="comment_notification_checking_time">Opdateringsfrekvens for kommentarer : %1$s</string>
+    <string name="activities">Aktiviteter</string>
+    <string name="incorrect_password">Forkert adgangskode</string>
+    <string name="password_cannot_be_empty">Adgangskoden må ikke være tom</string>
+    <string name="unknown_file_type">Ukendt filtype</string>
+    <string name="error_importing_settings">Fejl ved import af indstillinger</string>
+    <string name="download_manager">Download Manager</string>
+    <string name="enter_password">Indtast Adgangskode</string>
+    <string name="invalid_file_type">Ugyldig filtype</string>
+    <string name="purge_confirm">Er du sikker på, at du vil rense alle %1$s downloads?</string>
+    <string name="delete_fail_reason">Mislykkedes at slette på grund af… %1$s</string>
+    <string name="hide_replies">Skjul svar</string>
+    <string name="view_reply">Se svar</string>
+    <string name="view_replies">Se svar</string>
+    <string name="view_replies_count">Se %1$d svar</string>
+    <string name="replying_to">Svar til %1$s</string>
+    <string name="delete_comment">Slet Kommentar</string>
+    <string name="delete_comment_confirm">Er du sikker på, at du vil slette denne kommentar?</string>
+    <string name="comment_deleted">Kommentar Slettet</string>
+    <string name="ban_user">Udeluk Bruger</string>
+    <string name="ban_user_confirm">Er du sikker på du vil udelukke denne bruger?</string>
+    <string name="user_banned">Bruger Banned</string>
+    <string name="report_comment">Rapporter Kommentar</string>
+    <string name="report_comment_confirm">Rapportér kun kommentarer, der overtræder reglerne. Er du sikker på, at du vil rapportere denne kommentar?</string>
+    <string name="comment_reported">Kommentar Rapporteret</string>
+    <string name="list">Liste</string>
+    <string name="grid">Gitter</string>
+    <string name="compact">Kompakt</string>
+    <string name="webview_not_installed">WebView ikke installeret</string>
+    <string name="video_quality">Kvalitet: %1$dp</string>
+    <string name="size_unknown">Ukendt Størrelse</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Gendan</string>
+    <string name="button_backup">Sikkerhedskopi</string>
+    <string name="no_location_selected">Ingen placering valgt</string>
+    <string name="do_it">Gør det!</string>
+    <string name="password">Adgangskode</string>
+    <string name="anilist_broken_title">Intern Serverfejl!</string>
+    <string name="anilist_broken">AniList ser ud til at være afvisende og funktionalitet vil blive stærkt begrænset. Vil du lukke app\'en og prøve igen senere?\n</string>
+    <string name="search_title">Søg %1$s</string>
+    <string name="profile_stats_widget">Spor fremskridt direkte fra din startskærm</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Kapitler</string>
+    <string name="episodes_watched_n">Episoder</string>
+    <string name="loading">Indlæser…</string>
+    <string name="user_stats">%1$s\'s Statistik</string>
+    <string name="please">Venligst</string>
+    <string name="log_in">log ind</string>
+    <string name="or_join">eller tilmeld</string>
+    <string name="audio_tracks">Lyd Spor</string>
+    <string name="disabled_track">\[:speech_ballon:\] Deaktiveret</string>
+    <string name="invalid_track">\[!?\] Ugyldig</string>
+    <string name="unknown_track">\[%1$s\] Ukendt</string>
+    <string name="top_background_color">Top baggrundsfarve</string>
+    <string name="bottom_background_color">Nederste Baggrundsfarve</string>
+    <string name="countdown_text_color">Nedtælling Tekstfarve</string>
+    <string name="title_color">Titel Farve</string>
+    <string name="stat_text_color">Statistik Tekstfarve</string>
+    <string name="flipper_color">Flipper Farve</string>
+    <string name="placeholder">Pladsholder</string>
+    <string name="anime_add_repository">Tilføj Anime Repo</string>
+    <string name="manga_add_repository">Tilføj Manga Repo</string>
+    <string name="novel_add_repository">Tilføj Novel Repo</string>
+    <string name="edit_repositories">Rediger repositorier</string>
+    <string name="rem_repository">Fjern repository?</string>
+    <string name="trending_movies">Populære Film</string>
+    <string name="include_list">Inkludér liste</string>
+    <string name="top_rated">Bedst bedømte</string>
+    <string name="most_favourite">Mest Favorit</string>
+    <string name="trending_manhwa">Populære Manhwa</string>
+    <string name="liked_by">Syntes Af</string>
+    <string name="adult_only_content">Kun indhold for voksne</string>
+    <string name="report">Rapport</string>
+    <string name="ban">Udeluk</string>
+    <string name="activity_label">Aktivitet</string>
+    <string name="dir_error">Din sti kunne ikke angives</string>
+    <string name="dir_access">Adgang til downloads</string>
+    <string name="dir_access_msg">Vælg venligst en mappe til at gemme dine downloads</string>
+    <string name="download_subtitle">Download Undertekst</string>
+    <string name="change_download_location">Skift Downloadadresse</string>
+    <string name="download_location_msg">Er du sikker på, at du vil ændre download-placeringen?\nGamle downloads kan ikke længere være tilgængelige.</string>
+    <string name="voice_actors">Stemmeskuespillere</string>
+    <string name="download_permission_required">Tilladelse kræves for at downloade</string>
+    <string name="media">Medier</string>
+    <string name="users">Brugere</string>
+    <string name="social">Social</string>
+    <string name="auto_skip_recap">Auto Skip Recap</string>
+    <string name="use_anilist_icon">Brug AniList Ikon</string>
+    <string name="exo_source_exception">Kildeundtagelse: %1$s</string>
+    <string name="exo_decoding_failed">Afkodning mislykkedes: %1$s</string>
+    <string name="exo_player_error">Spillerfejl: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL og Discord.\nHvad mere kan du have brug for?</string>
+    <string name="theme_desc">Ændre vibe for din app</string>
+    <string name="extensions_desc">Administrer din repo samling</string>
+    <string name="common_desc">Downloads, DNS, og standardindstillinger</string>
+    <string name="anime_desc">Vælg hvordan du ser</string>
+    <string name="manga_desc">Vælg hvordan du læser</string>
+    <string name="notifications_desc">Tilpas nyheder og opdateringer</string>
+    <string name="system_desc">Opdateringer og nyttige værktøjer</string>
+    <string name="about_desc">Lær mere om Himitsu</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Tilføjelser er Dantotsu ekstra feature moduler.</string>
+    <string name="torrent_addon">Torrent Addon</string>
+    <string name="enable">Aktiver</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
+    <string name="loaded_successfully">Indlæst Succesfuldt</string>
+    <string name="not_installed">Ikke Installeret</string>
+    <string name="torrent_extension_not_supported">Torrent udvidelse understøttes ikke på denne enhed</string>
+    <string name="update_addon">Opdater Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Download tilføjelsen blev ikke fundet</string>
+    <string name="default_novel_settings">Standard Nye Indstillinger</string>
+    <string name="line_height">Linje Højde</string>
+    <string name="margin">Margen</string>
+    <string name="maximum_inline_size">Maksimal Indlejret Størrelse</string>
+    <string name="maximum_column_width">Maksimal kolonne bredde (vandret skrivning) eller højde (lodret skrivning)</string>
+    <string name="maximum_block_size">Maksimal Blok Størrelse</string>
+    <string name="maximum_height">Maksimal højde (vandret skrivning) eller bredde (lodret skrivning)</string>
+    <string name="global">Globalt</string>
+    <string name="china">Kina</string>
+    <string name="south_korea">Sydkorea</string>
+    <string name="japan">Japan</string>
+    <string name="taiwan">Taiwan</string>
+    <string name="something">Noget</string>
+    <string name="image">Billede</string>
+    <string name="sort_score">Score</string>
+    <string name="popular">Populær</string>
+    <string name="trending">Populære</string>
+    <string name="new_releases">Nye Udgivelser</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Å-A</string>
+    <string name="pure_pain">Ren Smerter</string>
+    <string name="add_a_comment">Tilføj en kommentar…</string>
+    <string name="type">Type</string>
+    <string name="view">Vis</string>
+    <string name="count">LAND</string>
+    <string name="open">Åbn</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Svar</string>
+    <string name="time">Tid</string>
+    <string name="player_settings_desc">Alle spillerrelaterede indstillinger</string>
+    <string name="purge_anime_downloads_desc">Slet alle downloadede anime</string>
+    <string name="prefer_dub_desc">Vælg som standard døbt medie</string>
+    <string name="show_yt_desc">Vis YouTube-links til understøttede medier</string>
+    <string name="include_list_anime_desc">Inkluder liste elementer i Anime udforske siden</string>
+    <string name="ui_settings_desc">Alle brugergrænseflade relaterede indstillinger</string>
+    <string name="download_manager_select_desc">Standard manager til download af Anime</string>
+    <string name="backup_restore_desc">Opret og gendan sikkerhedskopier af valgte indstillinger</string>
+    <string name="change_download_location_desc">Ændre placering, hvor downloads holdes</string>
+    <string name="always_continue_content_desc">Fortsæt varer, hvor du slukkede</string>
+    <string name="search_source_list_desc">Flytter til den næste server, hvis indholdet ikke findes</string>
+    <string name="recentlyListOnly_desc">Vis kun dine listeelementer i det seneste faneblad</string>
+    <string name="adult_only_content_desc">Vis kun voksent indhold på udforskningssiden</string>
+    <string name="anime_add_repository_desc">Tilføj Anime udvidelsesdepoter til samling</string>
+    <string name="manga_add_repository_desc">Tilføj Manga-udvidelsesdepoter til samling</string>
+    <string name="user_agent_desc">Skift din standard brugeragent</string>
+    <string name="force_legacy_installer_desc">Brug hensigter til at anmode om pakkeinstallation</string>
+    <string name="skip_loading_extension_icons_desc">Indlæs ikke udvidelsesikoner i manager</string>
+    <string name="NSFWExtention_desc">Deaktivering blokerer enhver udvidelse med 18+ indhold</string>
+    <string name="reader_settings_desc">Alle læserrelaterede indstillinger</string>
+    <string name="purge_manga_downloads_desc">Slet alle downloadede Manga</string>
+    <string name="purge_novel_downloads_desc">Slet alle downloadede romaner</string>
+    <string name="include_list_desc">Inkludér liste elementer i Manga udforsknings siden</string>
+    <string name="anilist_notification_filters_desc">Vælg kategori at ignorere</string>
+    <string name="anilist_notifications_checking_time_desc">Angiv den frekvens, du vil have appen til at tjekke for Anilist notifikationer</string>
+    <string name="comment_notification_checking_time_desc">Angiv den frekvens, du vil have appen til at tjekke for Kommentar meddelelser</string>
+    <string name="notification_for_checking_subscriptions_desc">Vis notifikation til kontrol af abonnementer</string>
+    <string name="use_alarm_manager_reliable_desc">Brug til at omgå telefonens batteri optimizer</string>
+    <string name="oled_theme_variant_desc">Så mørk som det bliver</string>
+    <string name="use_material_you_desc">Brug samme farve som din baggrund</string>
+    <string name="use_unique_theme_for_each_item_desc">Brug farve fra mediernes banner</string>
+    <string name="use_custom_theme_desc">Brug din egen farve til temaet</string>
+    <string name="color_picker_desc">Vælg en farve</string>
+    <string name="install_torrent_addon">Installer Torrent Addon</string>
+    <string name="failed_ext_install_conflict">Kunne ikke installere udvidelse på grund af konflikt</string>
+    <string name="no_video_selected">Ingen Video Valgt</string>
+    <string name="download_extension_not_available">Downloadudvidelse ikke tilgængelig</string>
+    <string name="feed">Feed</string>
+    <string name="profile">Profil</string>
+    <string name="epub_download_exception">Undtagelse, mens du henter .epub: %1$s</string>
+    <string name="novel_download_progress">Fremskridt Med Nye Download</string>
+    <string name="download_started">Download startet</string>
+    <string name="downloads_completed">Alle downloads fuldført</string>
+    <string name="pending_downloads">Afventende downloads: %1$d</string>
+    <string name="reading">LÆS</string>
+    <string name="watching">VAND</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Cover]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Opdater venligst WebView fra Google Play</string>
+    <string name="update_webview_version">Webview version %1$d kræver opdatering</string>
+    <string name="webview_not_found_version">Kunne ikke finde WebView version %1$s</string>
+    <string name="webview_not_found">Kunne ikke finde et installeret WebView bibliotek</string>
+    <string name="multi">Multi</string>
+</resources>

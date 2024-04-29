@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ca">
+    <string name="slogan">La millor aplicació d\'Anime i Manga per a Android.</string>
+    <string name="login">Inicia la sessió</string>
+    <string name="logout">Tanca la sessió</string>
+    <string name="conversion_title">Benvingut/da de nou!</string>
+    <string name="conversion_message">Sembla que tens instal·lat un paquet més antic.\nSi us plau, selecciona \"Còpia de seguretat\" per obrir la versió anterior i fer una còpia de seguretat. Després pots tornar a aquesta aplicació i utilitzar \"Restaura la configuració\".</string>
+    <string name="backup">Còpia de seguretat</string>
+    <string name="home">Inici</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Explora l\'Anime</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Explora el Manga</string>
+    <string name="novels">Novelles</string>
+    <string name="info">Informació</string>
+    <string name="watch">Mira</string>
+    <string name="read">Llegeix</string>
+    <string name="language">Idioma</string>
+    <string name="anime_list">Llista d\'Anime</string>
+    <string name="manga_list">Llista de Manga</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Sense connexió a Internet</string>
+    <string name="no_internet_connection">Sense connexió a Internet\nMode sense connexió disponible</string>
+    <string name="refresh">Actualitza</string>
+    <string name="search">Cerca</string>
+    <string name="extension_search">Cerca inversa de fonts</string>
+    <string name="search_results">Resultats de la cerca</string>
+    <string name="sort_by">Ordena per</string>
+    <string name="genre">Gènere</string>
+    <string name="top_score">Puntuació màxima</string>
+    <string name="updated">Recentment actualitzat</string>
+    <string name="trending_anime">Anime en tendència</string>
+    <string name="popular_anime">Anime popular</string>
+    <string name="trending_manga">Manga en tendència</string>
+    <string name="trending_novel">Novel·la en tendència</string>
+    <string name="popular_manga">Manga popular</string>
+    <string name="username">Nom d\'usuari</string>
+    <string name="chapters_read">Capítols llegits</string>
+    <string name="episodes_watched">Episodis vistos</string>
+    <string name="continue_reading">Continua llegint</string>
+    <string name="continue_watching">Continua mirant</string>
+    <string name="continue_media">Continua...</string>
+    <string name="recommended">Recomanat</string>
+    <string name="get_recommendations">Veure/Llegir algun Anime o Manga per obtenir recomanacions</string>
+    <string name="empty">Al dia, quan hi haurà de nou?</string>
+    <string name="action_settings">Configuració</string>
+    <string name="add">Afegir a la llista</string>
+    <string name="list_editor">Editor de llistes</string>
+    <string name="add_fav">Afegir a preferits</string>
+    <string name="notifications">Notificacions</string>
+    <string-array name="keys">
+        <item>Lectura</item>
+        <item>Visualització</item>
+        <item>Completat</item>
+        <item>Pausat</item>
+        <item>Abandonat</item>
+        <item>Planificant</item>
+        <item>Preferits</item>
+        <item>Revisualitzant</item>
+        <item>Rellegint</item>
+        <item>Tot</item>
+    </string-array>
+    <string name="no_notifications">Sense més notificacions</string>
+    <string name="followers">Seguidors</string>
+    <string name="social_in_media">Estadístiques socials als mitjans de comunicació</string>
+    <string name="social_in_media_desc">Mostra les puntuacions i el progrés dels amics</string>
+    <string name="status">ESTAT</string>
+    <string-array name="status_anime">
+        <item>PLANIFICACIÓ</item>
+        <item>VEIENT</item>
+        <item>COMPLETAT</item>
+        <item>REVISANT</item>
+        <item>EN PAUSA</item>
+        <item>ABANDONAT</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>PLANIFICACIÓ</item>
+        <item>LENT</item>
+        <item>COMPLETAT</item>
+        <item>REVISANT</item>
+        <item>EN PAUSA</item>
+        <item>ABANDONAT</item>
+    </string-array>
+    <string name="progress">PROGRÉS</string>
+    <string name="score">PUNTUACIÓ</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">INICIAT EL</string>
+    <string name="completed_at">COMPLETAT EL</string>
+    <string name="save">Desa</string>
+    <string name="delete">Elimina</string>
+    <string name="remove">Elimina</string>
+    <string name="name">Nom</string>
+    <string name="name_romaji">Nom en romaji</string>
+    <string name="mean_score">Puntuació mitjana</string>
+    <string name="format">Format</string>
+    <string name="status_title">Estat</string>
+    <string name="total_eps">Episodis totals</string>
+    <string name="episodes"> Episodi(s)</string>
+    <string name="chapters"> Capítol(s)</string>
+    <string name="total_divider"> | %1$s</string>
+    <string name="total_chaps">Total de capítols</string>
+    <string name="ep_duration">Durada mitjana</string>
+    <string name="min">" min"</string>
+    <string name="season">Temporada</string>
+    <string name="start_date">Data d\'inici</string>
+    <string name="end_date">Data de finalització</string>
+    <string name="source">Font</string>
+    <string name="main_studio">Estudi</string>
+    <string name="genres">Gèneres</string>
+    <string name="description">Sinopsi</string>
+    <string name="characters">Personatges</string>
+    <string name="relations">Relacions</string>
+    <string name="staff">Personal</string>
+    <string name="favourites">Preferits</string>
+    <string name="popularity">Popularitat</string>
+    <string name="roles">Rols</string>
+    <string name="details">Detalls</string>
+    <string name="play_yt">Reproduir a Youtube</string>
+    <string name="eps">Episodis</string>
+    <string name="ep">Episodi</string>
+    <string name="chaps">Capítols</string>
+    <string name="chap">Capítol</string>
+    <string name="wrong"><u>Títol incorrecte?</u></string>
+    <string name="source_not_found">        No s\'ha trobat res X( \n
+        Prova amb una altra font.
+    </string>
+    <string name="not_supported">%1$s no és compatible!</string>
+    <string name="server_selector">Seleccionar Servidor</string>
+    <string name="auto_select_server">Selecció Automàtica de Servidor</string>
+    <string name="make_default">Fer predeterminat</string>
+    <string name="filler">Omplem</string>
+    <string name="adult">Adult</string>
+    <string name="list_only">Només llistar</string>
+    <string name="tag">Etiqueta</string>
+    <string name="tags">Etiquetes</string>
+    <string name="synonyms">Sinònims</string>
+    <string name="trailer">Tràiler</string>
+    <string name="opening">Obertura</string>
+    <string name="ending">Final</string>
+    <string name="prequel">Precuela</string>
+    <string name="sequel">Secuela</string>
+    <string name="installed">Instal·lat</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">El servidor està en execució…</string>
+    <string name="settings_torrent">TorrServer intern</string>
+    <string name="enable_server">Activar TorrServer</string>
+    <string name="enable_server_desc">Permet l\'ús a demanda d\'un servidor local</string>
+    <string name="torrent_port">Nombre de port del servidor</string>
+    <string name="torrents">torrents</string>
+    <string name="active_torrents">Torrents actius</string>
+    <string name="remove_torrent">Voleu eliminar aquest torrent?</string>
+    <string name="invalid_port">Port no vàlid introduït!</string>
+    <string name="port_range">El port ha de ser un port TCP vàlid (0 - 65535)</string>
+    <string name="server_disabled">TorrServer desactivat!</string>
+    <string name="server_enabled">Iniciant TorrServer</string>
+    <string name="enable_server_temp">Voleu activar temporalment TorrServer (desactivat en tancar l\'aplicació)?</string>
+    <string name="anilist_settings">Configuració d\'Anilist</string>
+    <string name="extension_settings">Extensions</string>
+    <string name="downloads">Descàrregues</string>
+    <string name="offline_mode">Mode fora de línia</string>
+    <string name="settings">Configuració</string>
+    <string name="extensions">Extensions</string>
+    <string name="extension_updates_available">Actualitzacions d\'extensions disponibles</string>
+    <string name="player_settings">Configuració del reproductor</string>
+    <string name="recentlyListOnly">Només el meu contingut a \"Recentment actualitzat\"</string>
+    <string name="download_manager_select">Gestor de descàrregues</string>
+    <string name="downloadInSd">Descarregar a la targeta SD</string>
+    <string name="noSdFound">No s\'ha trobat cap targeta SD.</string>
+    <string name="reader_settings">Configuració del lector</string>
+    <string name="default_source">Font per defecte</string>
+    <string name="show_yt">Mostra l\'enllaç de Youtube</string>
+    <string name="default_ep_view">Disseny d\'episodi per defecte</string>
+    <string name="default_chp_view">Disseny de capítol per defecte</string>
+    <string name="ui">Interfície d\'usuari</string>
+    <string name="common">Comú</string>
+    <string name="theme">Tema</string>
+    <string name="theme_ui">Tema / UI</string>
+    <string name="day_night">Tema clar / fosc</string>
+    <string name="ui_settings">Configuració de la UI</string>
+    <string name="system">Sistema</string>
+    <string name="about">Sobre</string>
+    <string name="desc">"Dantotsu està elaborat a partir de les cendres de Saikou i es basa en una elegància simplista però de darrera generació. És un client exclusiu d'Anilist, que també et permet veure i descarregar anime a través d'extensions i manga.\nDantotsu significa literalment \"el millor dels millors\" en japonès. Bé, ens agradaria dir que aquesta és la millor aplicació de codi obert per a anime i manga a Android, què en diries tu?"</string>
+    <string name="devs">Contribuents</string>
+    <string name="disclaimer">Avís legal</string>
+    <string name="full_disclaimer">         - Dantotsu en si mateix només proporciona un rastrejador d\'anime i manga i no ofereix cap capacitat de visualització o descàrrega d\'anime o manga.\n\n - Dantotsu o qualsevol dels seus desenvolupadors / personal no allotgen cap dels continguts trobats dins de Dantotsu. Totes les imatges i informació d\'anime / manga trobades a l\'aplicació provenen de diverses APIs públiques (AniList, MyAnimeList, Kitsu).\n\n - A més, tots els enllaços d\'anime / manga trobats a Dantotsu provenen de diversos connectors de tercers i no tenen cap relació amb Dantotsu o el seu personal.\n\n - Dantotsu o els seus propietaris no són responsables de cap ús indegut de cap dels continguts trobats dins o fora de l\'aplicació i no poden ser considerats responsables de la distribució de cap dels continguts trobats a l\'aplicació.\n\n - En utilitzar Dantotsu, accepteu el fet que el desenvolupador de l\'aplicació no és responsable de cap dels continguts trobats a l\'aplicació. També esteu d\'acord amb el fet que no podeu utilitzar Dantotsu per descarregar o veure cap contingut amb drets d\'autor.\n\n - Si hi ha problemes d\'infracció d\'internet involucrats, si us plau, poseu-vos en contacte amb el lloc web font. El desenvolupador no assumeix cap responsabilitat legal.\n    </string>
+    <string name="version_current">Versió %1$s</string>
+    <string-array name="tips">
+        <item>Podeu fer una pulsació llarga en un episodi / capítol per marcar-lo com a llegit.</item>
+        <item>Fent una pulsació llarga a les sèries podeu obrir directament l\'editor de llistes.</item>
+        <item>Hi ha alguns ous de Pasqua amagats a l\'aplicació.</item>
+        <item>Desafiament: Vés fins al final de l\'anime i manga popular</item>
+        <item>Prova de fer una pulsació llarga al títol de la sèrie.</item>
+        <item>Ostres, per què estàs malgastant el teu temps?</item>
+        <item>Podeu fer una pulsació llarga per copiar aquest missatge.</item>
+        <item>OMG MIRA! HAS TROBAT UN OU DE PASQUA!?</item>
+        <item>Saps qui més li agrada aquesta animació?</item>
+        <item>Suport per a MAL? vaja.</item>
+        <item>Novel·les? més aviat NO vel·les.</item>
+        <item>Fes una pulsació llarga al logotip per comprovar si hi ha actualitzacions</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Per defecte</item>
+        <item>Tema 1</item>
+        <item>Tema 2</item>
+        <item>Tema 3</item>
+        <item>Tema 4</item>
+    </string-array>
+    <string name="video">Vídeo</string>
+    <string name="video_info">Mostra Informació del Vídeo</string>
+    <string name="source_info">Mostra el Nom de la Font</string>
+    <string name="video_info_info">Mostra la Resolució del vídeo actualment reproduït, útil per a servidors <b>\"Multi Qualitat\"</b>.</string>
+    <string name="default_quality">Selecció Automàtica de Qualitat</string>
+    <string name="height">Alçada</string>
+    <string name="width">Amplada</string>
+    <string name="default_quality_info">Utilitza automàticament la qualitat més propera proporcionada per defecte, NOMÉS aplicable als servidors \"Multi Qualitat\". Canvia automàticament en reproduir un vídeo.</string>
+    <string name="default_playback_speed">Velocitat de Reproducció per Defecte: %1$s</string>
+    <string name="cursed_speeds">Velocitats Maldites</string>
+    <string name="resize_mode_button">Mode de Redimensionament per Defecte</string>
+    <string name="subtitles">Subtítols</string>
+    <string name="subtitle_toggle">Subtítols</string>
+    <string name="primary_sub_color_select">Color dels Subtítols</string>
+    <string name="secondary_sub_color_select">Color de Contorn dels Subtítols</string>
+    <string name="secondary_sub_outline_type_select">Tipus de Contorn dels Subtítols</string>
+    <string name="sub_background_color_select">Color de Fons dels Subtítols</string>
+    <string name="sub_window_color_select">Color de la Finestra dels Subtítols</string>
+    <string name="sub_window_color_info">"La finestra dels subtítols és la part esquerra i dreta d'ells. (on no hi ha fons)"</string>
+    <string name="sub_color_info"><b>Nota:</b> Canviar la configuració anterior només afecta els Subtítols Soft!</string>
+    <string name="sub_alpha">Transparència dels Subtítols</string>
+    <string name="sub_text_example">Exemple de Subtítol</string>
+    <string name="sub_font_select">Tipus de Lletra dels Subtítols</string>
+    <string name="subtitle_font_size">Mida dels Subtítols</string>
+    <string name="no_subs_available">No hi ha Subtítols Disponibles</string>
+    <string name="auto">Automàtic</string>
+    <string name="auto_play_next_episode">Reproducció Automàtica de l\'Episodi Següent</string>
+    <string name="auto_play_next_episode_info">Es desactiva automàticament si no hi ha interacció amb el jugador després d\'1 hora.</string>
+    <string name="auto_skip_fillers">Omet automàticament les escenes de farciment</string>
+    <string name="auto_skip_fillers_info">Omet els episodis de farciment quan es passa a l\'episodi següent.</string>
+    <string name="update_progress">Actualitza el progrés</string>
+    <string name="ask_update_progress_anime">Demana per cada Anime \"Individualment\"</string>
+    <string name="ask_update_progress_manga">Demana per cada Manga \"Individualment\"</string>
+    <string name="ask_update_progress_info_ep">Desactivar-ho actualitzarà sempre automàticament el progrés quan s\'hagi vist l\'episodi.</string>
+    <string name="ask_update_progress_info_chap">Desactivar-ho actualitzarà sempre automàticament el progrés quan s\'hagi llegit el capítol.</string>
+    <string name="ask_update_progress_chapter_zero">Actualitza el progrés per al Capítol 0</string>
+    <string name="ask_update_progress_info_zero">Activar-ho afegirà elements nous començats a Anilist amb el progrés establert al capítol 0.</string>
+    <string name="ask_update_progress_hentai">Actualitza el progrés per a Hentai</string>
+    <string name="ask_update_progress_doujin">Actualitza el progrés per a Doujins</string>
+    <string name="very_bold">Molt valent de part teva sar</string>
+    <string name="watch_complete_percentage">Observa el percentatge d\'actualització</string>
+    <string name="watch_complete_percentage_info">El percentatge al qual s\'hauria d\'actualitzar el teu progrés a Anilist després de veure un episodi. \nAixò també estableix el \% per saber quan pre-carregar enllaços per a l\'episodi següent.</string>
+    <string name="behaviour">Comportament</string>
+    <string name="always_continue">Sempre reprendre des del marcador de temps</string>
+    <string name="pause_video_focus">Pausa quan no estigui en focus</string>
+    <string name="gestures">Gestos de volum i brillantor</string>
+    <string name="double_tap">Toqueu dues vegades per cercar</string>
+    <string name="fast_forward">Avanç ràpid</string>
+    <string name="double_tap_info">Desactivar-ho mostrarà botons d\'avanç ràpid i retrocés</string>
+    <string name="seek_time">Temps de cerca</string>
+    <string name="seek_time_info">Quantitat de temps en segons per a l\'avanç ràpid i retrocés.</string>
+    <string name="skip_time">Temps de salt</string>
+    <string name="skip_time_info">Establir a 0, amaga el botó de salt.</string>
+    <string name="show_cast_button">Mostrar botó de llançament</string>
+    <string name="show_cast_button_info">Requereix l\'aplicació \"Web Video Caster\" per llançar.</string>
+    <string name="picture_in_picture">Imatge en imatge</string>
+    <string name="always_minimize">Minimitzar sempre</string>
+    <string name="always_minimize_info">Requereix que PiP estigui habilitat, fa que el reproductor es comporti com el reproductor de Youtube però millor.\nTambé amaga el botó de PiP.</string>
+    <string name="app">Aplicació</string>
+    <string name="immersive_mode">Amagar la Barra d\'Estat</string>
+    <string name="immersive_modelist">Amagar la Barra d\'Estat per a la llista</string>
+    <string name="immersive_mode_info">Requereix reiniciar l\'aplicació per aplicar-ho completament.</string>
+    <string name="home_layout_show">Mostrar/Amagar dissenys a la pàgina d\'inici</string>
+    <string-array name="home_layouts">
+        <item>Continua mirant</item>
+        <item>Anime Favorit</item>
+        <item>Anime Planificat</item>
+        <item>Continua llegint</item>
+        <item>Manga Favorit</item>
+        <item>Manga Planificat</item>
+        <item>Recomanat</item>
+    </string-array>
+    <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
+    <string name="small_view">Vista Petita en Mostrats Trending</string>
+    <string name="animations">Animacions</string>
+    <string name="banner_animations">Animacions de Banner</string>
+    <string name="layout_animations">Animacions de Disseny</string>
+    <string name="trending_scroller">Explorador de Tendències</string>
+    <string name="animation_speed">Velocitat Global</string>
+    <string name="empty_fav">Sembla que no t\'agrada res,\nProva a marcar un programa per mantenir-lo aquí.</string>
+    <string name="fav_anime">Anime Favorit</string>
+    <string name="fav_manga">Manga Favorit</string>
+    <string name="restart_app">Reiniciar l\'aplicació?</string>
+    <string name="next">Següent</string>
+    <string name="previous">Anterior</string>
+    <string name="current_page">Pàgina Actual</string>
+    <string name="dubbed">Doblat</string>
+    <string name="subbed">Subtitulat</string>
+    <string name="prefer_dub">Prefereix Anime Doblat</string>
+    <string name="none">Cap</string>
+    <string name="selected_dns">DNS Seleccionat</string>
+    <string name="dns_info">Canvia si el teu proveïdor de serveis d\'Internet bloqueja alguna font</string>
+    <string name="keep_screen_on">Mantenir la pantalla encesa</string>
+    <string name="layout">Disseny</string>
+    <string name="spaced_pages">Pàgines Espaiades</string>
+    <string name="direction">Direcció</string>
+    <string name="comments_api">API de Comentaris (Privada)</string>
+    <string name="disable_mitm">Prevenir Injecció (\"Bromes\")</string>
+    <string name="general">General</string>
+    <string name="show_system_bars">Mostrar Barres d\'Estat i de Navegació</string>
+    <string name="auto_detect_webtoon">Auto Detectar Webtoon</string>
+    <string name="auto_detect_webtoon_info">Si el Manga no és del Japó, el lector es posarà per defecte a la Configuració del Lector Webtoon</string>
+    <string name="default_settings">Configuració per Defecte</string>
+    <string name="horizontal_scroll_bar">Barra de Desplaçament Horitzontal</string>
+    <string name="dual_page">Doble Pàgina</string>
+    <string name="dual_page_info">Mostra 2 Imatges en 1 pàgina, semblarà estrany si les imatges no són del mateix tamany</string>
+    <string name="true_colors">Colors Reals</string>
+    <string name="true_colors_info">(Mode de color de 32 bits) Redueix les bandes de les imatges, pot afectar el rendiment.</string>
+    <string name="image_rotation">Rotació d\'Imatges</string>
+    <string name="hide_page_numbers">Amagar Números de Pàgina</string>
+    <string name="sort_by_title">Ordenar per Títol</string>
+    <string name="sort_by_last_updated">Ordenar per Última Actualització</string>
+    <string name="sort_by_score">Ordenar per Puntuació</string>
+    <string name="sort_by_airing">Ordenar per Propera Emisió</string>
+    <string name="over_scroll">Sobre Desplaçar-se al Següent/Anterior Capítol</string>
+    <string name="volume_buttons">Canviar pàgines amb els Botons de Volum</string>
+    <string name="list_private">Privat</string>
+    <string name="wrap_images">Embolicar Imatges</string>
+    <string name="wrap_images_info">Principalment útil per a dispositius més grans, elimina l\'espai entre les imatges, si existeix.</string>
+    <string name="reload">Recarregar</string>
+    <string name="share">Compartir</string>
+    <string name="skip">Ometre</string>
+    <string name="other">Altres</string>
+    <string name="total_repeats">REPETICIONS TOTALS</string>
+    <string name="custom_lists">Llistes personalitzades</string>
+    <string name="donate_desc">Vols donar suport a Himitsu?\nConsidera fer una donació</string>
+    <string name="donate_goal">Cap objectiu de donació ara mateix</string>
+    <string name="filter">Filtre</string>
+    <string name="year">Any</string>
+    <string name="apply">Aplica</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="edit">Edita</string>
+    <string name="this_season">Aquesta temporada</string>
+    <string name="next_season">Pròxima temporada</string>
+    <string name="previous_season">Temporada anterior</string>
+    <string name="include_media_in_list">Inclou a la llista</string>
+    <string name="release_calendar">Calendari</string>
+    <string name="planned_anime">Anime Planificat</string>
+    <string name="planned_manga">Manga Planificat</string>
+    <string name="image_long_clicking">Fes una pulsació llarga per obrir la imatge</string>
+    <string name="always_continue_content">Continua amb els elements oberts anteriorment</string>
+    <string name="search_source_list">Cerca la següent font disponible</string>
+    <string name="timestamp_proxy_desc">Útil si tens problemes amb els Handshake Fails</string>
+    <string name="timestamp_proxy">Utilitza un proxy per als timestamps</string>
+    <string name="check_app_updates">Comprova les actualitzacions</string>
+    <string name="author">Autor</string>
+    <string name="forks">Versions</string>
+    <string name="faq">FAQ</string>
+    <string name="accounts">Comptes</string>
+    <string name="myanimelist">MyAnimeList</string>
+    <string name="login_with_anilist">Inicia la sessió amb Anilist</string>
+    <string name="anilist">Anilist</string>
+    <string name="account_help">Com funciona això\?</string>
+    <string name="full_account_help">        Dantotsu és una aplicació basada en Anilist, per tant, per sincronitzar amb el teu compte de MAL, necessita que hi hagi un compte d\'Anilist iniciat la sessió.
+        \nUn cop iniciada la sessió amb els comptes d\'Anilist i MAL, l\'aplicació actualitzarà automàticament el teu compte de MAL sempre que:
+        \n- Afegiu un nou mitjà
+        \n- Editeu un mitjà
+        \n- Elimineu un mitjà
+
+        \n\nNota: L\'aplicació no sincronitzarà mitjans antics d\'Anilist a MAL, es recomana sincronitzar-los.
+        \n- Consulta __FAQs__ per a un _Mètode Fàcil_
+
+        \n\nI per a _Intermedis_:
+        \n- [Com sincronitzar les dades d\'Anilist amb MAL](https://anilist.co/forum/thread/2654)
+        \n- [Com sincronitzar les dades de MAL amb Anilist](https://anilist.co/forum/thread/3393)
+
+        \n\n_No cal sincronitzar els comptes de MAL i Anilist._
+    </string>
+    <string name="notification_for_checking_subscriptions">Mostra la notificació per comprovar les subscripcions</string>
+    <string name="use_alarm_manager">Utilitza el Gestor d\'Alarms</string>
+    <string name="use_alarm_manager_reliable">Utilitzeu Alarm Manager (Notificacions Fiables)</string>
+    <string name="use_alarm_manager_confirm">L\'ús de l\'Alarm Manager pot ajudar a combatre l\'optimització de la bateria, però pot consumir més bateria. També requereix el permís de l\'Alarm Manager.</string>
+    <string name="use">Utilitza</string>
+    <string name="checking_subscriptions">Comprovacions de Subscripció de Notificacions</string>
+    <string name="subscriptions_checking_time_s">Freqüència de Actualització de Subscripcions : %1$s</string>
+    <string name="subscriptions_checking_time">Freqüència de Actualització de Subscripcions</string>
+    <string name="subscriptions_info">Quantitat de temps per a Dantotsu per comprovar nous episodis / capítols\n(Menys temps consumeix més bateria)</string>
+    <string name="do_not_update">No Actualitzar</string>
+    <string name="loading_chap_number">Carregant Capítol %1$s</string>
+    <string name="sort_by_release_date">Ordena per Data de Llançament</string>
+    <string name="crop_borders">Retalla Marges</string>
+    <string name="note">NOTA</string>
+    <string name="manage_extension_repos">Gestiona Repositoris d\'Extensió</string>
+    <string name="installing_extension">Instal·lant extensió</string>
+    <string name="installation_failed">La instal·lació ha fallat: %1$s</string>
+    <string name="installation_complete">Instal·lació completada</string>
+    <string name="extension_has_been_installed">L\'extensió s\'ha instal·lat correctament.</string>
+    <string name="extension_installed">Extensió instal·lada</string>
+    <string name="error_message">Error: %1$s</string>
+    <string name="install_step">Pas: %1$s</string>
+    <string name="review">Revisió</string>
+    <string name="select_source">Selecciona una Font</string>
+    <string name="update_notice">Actualització de Dantotsu %1$s</string>
+    <string name="install_update">Instal·lar actualització %1$s?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Actualització Disponible</string>
+    <string name="discord_nothing_button">Mostra només el primer botó</string>
+    <string name="discord_dantotsu_button">Mostra dantotsu en el segon botó</string>
+    <string name="discord_anilist_button">Mostra el teu perfil d\'AniList en lloc</string>
+    <string name="discord_rich_presence">Presència Rica de Discord</string>
+    <string name="stream_on_dantotsu">Reproduir a Dantotsu</string>
+    <string name="view_my_anilist">Veure el meu AniList</string>
+    <string name="jobless_message">MARE MEVA! ETS REALMENT DESOCUPAT\nHAS ARIBAT A LA FI</string>
+    <string name="file_manager_not_found">No s\'ha trobat cap gestor de fitxers per obrir la targeta SD</string>
+    <string name="error_loading_data">Error en carregar les dades %1$s</string>
+    <string name="long_click_to_check_update">Fes una pulsació llarga per comprovar les actualitzacions</string>
+    <string name="saved_to_path">Guardat a:\n%s</string>
+    <string name="setting_progress">✔ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Si us plau, inicia la sessió al compte d\'AniList!</string>
+    <string name="congrats_vro">Felicitats Vro</string>
+    <string name="please_reload">Si us plau, torna a carregar.</string>
+    <string name="copied_text">Copiat \"%1$s\"</string>
+    <string name="back_to_exit">Prem BACK de nou per sortir</string>
+    <string name="back_button">Botó enrere</string>
+    <string name="anilist_not_found">Sembla que això no es troba a Anilist.</string>
+    <string name="disabled_auto_skip">S\'ha desactivat l\'Auto Salta OP &amp; ED</string>
+    <string name="auto_skip">Auto Salta OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Mostra els botons de Salta [Segment]</string>
+    <string name="always_load_time_stamps">Carrega sempre els marcadors de temps</string>
+    <string name="auto_hide_time_stamps">>Amaga automàticament els botons de Salta [Segment]</string>
+    <string name="timestamps">Segments</string>
+    <string name="auto_skip_op_ed">Salta automàticament OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Es requereix que els marcadors de temps estiguin habilitats</string>
+    <string name="hide_skip_button">Fes desaparèixer el botó de salta marcador de temps després de 5 segons</string>
+    <string name="copied_to_clipboard">Copiat al porta-retalls</string>
+    <string name="first_episode">Aquest és el 1r episodi!</string>
+    <string name="reset_auto_update">Pulsa llargament el botó \"Editor de llista\" per restablir l\'actualització automàtica</string>
+    <string name="autoplay_cancelled">Reproducció automàtica cancel·lada, cap interacció durant més de 1 hora.</string>
+    <string name="auto_select_server_error">No s\'ha pogut seleccionar automàticament el servidor, Si us plau, intenta-ho de nou!</string>
+    <string name="stream_selection_empty">No hi ha transmissió disponible! Prova una altra font.</string>
+    <string name="logging_in_mal">Inici de sessió a MAL</string>
+    <string name="getting_user_data">Obtenció de dades d\'usuari</string>
+    <string name="no_next_episode">No s\'ha trobat cap episodi següent!</string>
+    <string name="enable_banner_animations">Proveu d\'activar les \"Animacions de banner\" a la configuració</string>
+    <string name="please_login_anilist">Si us plau, inicieu la sessió amb Anilist!</string>
+    <string name="auto_update_reset">La actualització automàtica del progrés s\'ha reiniciat</string>
+    <string name="cant_wait">No pots esperar, eh? bé X(</string>
+    <string name="downloading">Descarregant…</string>
+    <string name="next_chapter_not_found">No s\'ha trobat el següent capítol</string>
+    <string name="first_chapter">Aquest és el primer capítol!</string>
+    <string name="adult_stuff">Coses d\'adults?( ͡° ͜ʖ ͡° )</string>
+    <string name="what_did_you_open">Què has obert, exactament?</string>
+    <string name="error_getting_data">Error en obtenir les dades d\'Anilist.</string>
+    <string name="empty_response">Resposta buida! Potser la vostra connexió a internet és dolenta?</string>
+    <string name="error_loading_mal_user_data">Error en carregar les dades de l\'usuari de MAL</string>
+    <string name="error_loading_mal_data">Error en carregar les dades de MAL</string>
+    <string name="error_loading_anilist_user_data">Error en carregar les dades de l\'usuari d\'Anilist</string>
+    <string name="episode_not_found">No s\'ha pogut trobar l\'episodi : %1$s</string>
+    <string name="list_updated">Llista actualitzada</string>
+    <string name="deleted_from_list">Eliminat de la llista</string>
+    <string name="no_list_id">No s\'ha trobat cap ID de llista…</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">No tornis a notificar per %1$s</string>
+    <string name="matagi_downloading">Descarregant Himitsu %1$s</string>
+    <string name="checking_for_update">Comprovant actualització</string>
+    <string name="dont_show_again">No tornis a notificar per la versió %1$s</string>
+    <string name="no_update_found">No s\'ha trobat cap actualització</string>
+    <string name="downloading_update">Descarregant Dantotsu %1$s</string>
+    <string name="permission_required">Si us plau, doneu permís per accedir a Fitxers i Carpetes des de Configuració, i torneu-ho a provar.</string>
+    <string name="started_downloading">Iniciant la descàrrega\n%1$s</string>
+    <string name="install_1dm">Si us plau, instal·la 1DM</string>
+    <string name="install_adm">Si us plau, instal·la ADM</string>
+    <string name="error_getting_image_data">Error en obtenir les dades de la imatge</string>
+    <string name="loading_image_failed">Error en carregar la imatge</string>
+    <string name="copied_device_info">Informació del dispositiu copiada</string>
+    <string name="anilist_down">Sembla que Anilist està caigut, potser prova d\'utilitzar una VPN o pots esperar que torni.</string>
+    <string name="failed_to_load_data">Error en carregar les dades desades de %1$d</string>
+    <string name="access_not_available">No s\'ha pogut accedir</string>
+    <string name="mal_login_uri_not_found">Mal Login: Uri no trobat</string>
+    <string name="mal_login_code_challenge_not_found">Mal Login: codeChallenge no trobat</string>
+    <string name="mal_login_code_not_present">Mal Login: Codi no present a la URI redirigida</string>
+    <string name="refresh_token_load_failed">Actualització del token: Error en carregar el token desat</string>
+    <string name="refreshing_token_failed">Error en refrescar el token</string>
+    <string name="episode_release_countdown">L\'episodi %1$d es llançarà en</string>
+    <string name="chapter_number">Capítol %1$d</string>
+    <string name="chapter_release_timeout">%1$s ha estat disponible durant</string>
+    <string name="time_format">%1$d dies %2$d hores %3$d minuts %4$d segons</string>
+    <string name="chapter_predication">Esperat nou capítol %1$s</string>
+    <string name="chapter_delayed">Sembla que el nou capítol està retardat</string>
+    <string-array name="sort_by">
+        <item>Puntuació</item>
+        <item>Popular</item>
+        <item>Tendència</item>
+        <item>Noves publicacions</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Dolor pur</item>
+    </string-array>
+    <string name="main_role">PRINCIPAL</string>
+    <string name="supporting_role">DE SUPORT</string>
+    <string name="status_finished">ACABAT</string>
+    <string name="status_releasing">EN LANÇAMENT</string>
+    <string name="status_not_yet_released">ENCARA NO S\'HA LLANÇAT</string>
+    <string name="status_cancelled">CANCEL·LAT</string>
+    <string name="status_hiatus">PAUSA</string>
+    <string name="type_adaptation">ADAPTACIÓ</string>
+    <string name="type_parent">PARE</string>
+    <string name="type_character">PERSONATGE</string>
+    <string name="type_summary">RESUM</string>
+    <string name="type_alternative">ALTERNATIU</string>
+    <string name="type_other">ALTRE</string>
+    <string name="type_source">FONT</string>
+    <string name="type_contains">CONTÉ</string>
+    <string name="read_on_dantotsu">Llegir a Dantotsu</string>
+    <string name="watch_on_dantotsu">Veure a Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Veure perfil a Dantotsu</string>
+    <string name="continue_episode">Continuar: Episodi %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Filler</string>
+    <string name="continue_chapter">Continuar: %1$s\n%2$s</string>
+    <string name="episode">"Episodi "</string>
+    <string name="episode_num">"Episodi %1$s"</string>
+    <string name="chapter">"Capítol "</string>
+    <string name="chapter_num">"Capítol %1$s"</string>
+    <string name="just_released">- Acabat de llançar!</string>
+    <string name="checking_subscriptions_title">Comprovant subscripcions</string>
+    <string name="user_list">Llista de %1$s %2$s</string>
+    <string name="speed">Velocitat</string>
+    <string name="auto_update">Actualitzar automàticament el progrés de %1$s?</string>
+    <string name="continue_from">Continuar des de %1$s?</string>
+    <string name="title_update_progress">Actualitzar progrés a AniList?</string>
+    <string name="incognito_will_not_update">El mode incògnit encara ignorarà el progrés.</string>
+    <string name="dont_ask_again">"No tornis a preguntar per %1$s"</string>
+    <string name="default_speed">Velocitat per defecte</string>
+    <string name="default_resize_mode">Mode de Redimensionament per Defecte</string>
+    <string name="primary_sub_color">Color secundari principal</string>
+    <string name="outline_sub_color">Color de contorn secundari</string>
+    <string name="outline_type">Tipus de contorn</string>
+    <string name="subtitle_font">Tipus de Lletra dels Subtítols</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="ok">D\'acord</string>
+    <string name="reset">Restablir</string>
+    <string name="close">Tancar</string>
+    <string name="no_chapter">Sense capítol</string>
+    <string name="content_18">Activau el contingut per a adults des de la configuració del vostre Anilist</string>
+    <string name="available">Disponible</string>
+    <string name="lets_go">Anem-hi</string>
+    <string name="cope">Enfrontar-se</string>
+    <string name="watched_num">"Vist "</string>
+    <string name="read_num">"Llegit "</string>
+    <string name="episodes_out_of">" de "</string>
+    <string name="chapters_out_of">" de "</string>
+    <string name="episodes_total_of">"Total de "</string>
+    <string name="chapters_total_of">"Total de "</string>
+    <string name="no_description_available">"Cap descripció disponible"</string>
+    <string-array name="manga_directions">
+        <item>Dalt a baix</item>
+        <item>Dreta a esquerra</item>
+        <item>De baix a dalt</item>
+        <item>D\'esquerra a dreta</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Paginat</item>
+        <item>Paginat continu</item>
+        <item>Continu</item>
+    </string-array>
+    <string name="selected">Seleccionat</string>
+    <string name="found">Trobat</string>
+    <string name="age">"__Edat:__ "</string>
+    <string name="birthday">\n\"__Aniversari:__ \"</string>
+    <string name="gender">\n\"__Gènere:__ \"</string>
+    <string name="male">Masculí</string>
+    <string name="female">Femení</string>
+    <string name="question_1">Què és Dantotsu?</string>
+    <string name="answer_1">Dantotsu està creat a partir de les cendres de Saikou i es basa en una elegància simplista però d\'avantguarda. És un client exclusiu d\'Anilist, que també et permet veure i descarregar Anime / Manga a través d\'extensions. \n>Dantotsu (断トツ; Dan-totsu) significa literalment el millor dels millors en japonès. Bé, ens agradaria dir que aquesta és la millor aplicació de codi obert per a anime i manga a Android, però eh, Prova-ho tu mateix i jutja!</string>
+    <string name="question_2">Quines són algunes característiques de Dantotsu?</string>
+    <string name="answer_2">Algunes característiques destacables de Dantotsu són\n\n- Forma fàcil i funcional de veure anime i llegir manga i novel·les lleugeres, Sense publicitat.\n- Una aplicació de codi obert completament amb una interfície d\'usuari agradable i animacions\n- Suport per a extensions de tercers \n- Sincronitza anime i manga en temps real amb AniList. Categoritza fàcilment anime i manga segons el teu estat actual. (Impulsat per AniList)\n- Troba tots els programes utilitzant una llista totalment actualitzada de tots els anime més populars, de tendència i en curs basats en puntuacions.\n- Visualitza detalls extensos sobre programes d\'anime, pel·lícules i títols de manga. També té la capacitat de fer una compte enrere fins al pròxim episodi de l\'anime que s\'emet. (Impulsat per AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Quina és la diferència entre les versions Estable, Beta i Alfa?</string>
+    <string name="answer_3">Aquest fork no proporciona pistes separades. La versió que descarreguis del [repositori](https://github.com/RepoDevil/Himitsu) és la mateixa que [AbandonedCart](https://github.com/AbandonedCart) està utilitzant. Si trobes errors i ja t\'has actualitzat a l\'última versió, no dubtis a enviar un [problema](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Dantotsu està disponible per a PC?</string>
+    <string name="answer_4">Actualment no (tant per a Windows com per a Linux). No hi ha cap estimació de quan estarà disponible. Però pots descarregar qualsevol emulador d\'Android i executar Dantotsu en ell. Per als usuaris de Windows 11, poden utilitzar el Subsistema de Windows per a Android (WSA) per executar Dantotsu a Windows.</string>
+    <string name="question_5">Dantotsu està disponible per a iOS?</string>
+    <string name="answer_5">No, el millor que podem fer és tallar Dantotsu en una poma.</string>
+    <string name="question_6">Per què les meves estadístiques no s\'actualitzen?</string>
+    <string name="answer_6">Això és perquè s\'actualitza automàticament cada 48 hores (per Anilist). Si realment necessites actualitzar les teves estadístiques, pots forçar l\'actualització de les teves estadístiques després d\'anar a aquest [enllaç](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Com descarregar Anime?</string>
+    <string name="answer_7">Actualment hi ha dos mètodes de descàrrega. Un és intern i l\'altre és extern. Si descarregues internament, llavors es pot veure dins de l\'aplicació, però només l\'aplicació pot obrir aquest episodi, no el pots moure ni compartir. L\'altra opció és utilitzar la descàrrega externa. Requereix un gestor de descàrregues per descarregar i un reproductor de vídeo separat per veure. Les descàrregues externes es poden compartir però no es poden veure dins de l\'aplicació Dantotsu.\n\n•Per descarregar internament:\n\n1. Premeu el botó de descàrrega.\n2. Trieu el servidor i la qualitat del vídeo.\n3. Guanyeu.\n\n•Per descarregar externament:\n\n 1. Descarregueu 1DM o ADM des de Google Play Store.
+        \n2. Entreu a l\'aplicació, doneu accés a l\'emmagatzematge i configureu les vostres preferències (velocitat de descàrrega, ruta de descàrrega, etc. (opcional))
+        \n3. Ara aneu a \`Dantotsu > Configuració > Comú > Gestors de descàrregues\` i trieu el gestor de descàrregues que heu configurat.
+        \n4. Aniu al capítol desitjat i premeu sobre la icona de descàrrega de qualsevol servidor. Pot aparèixer un popup per configurar les vostres preferències de nou, simplement premeu \"Descàrrega\" i es guardarà a la ruta indicada.
+
+        \n\nNota: Les descàrregues directes també són possibles sense un gestor però no es recomana.
+\n\nNota de Nerd: Els episodis descarregats internament s\'emmagatzemen a \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nNo podeu reproduir aquests fitxers ja que estan en format \`.exo\`, dividits en centenars de peces i xifrats.</string>
+    <string name="question_9">Com habilitar contingut NSFW?</string>
+    <string name="answer_9">Pots habilitar el contingut NSFW activant els continguts 18+ des d\'aquest [enllaç](https://anilist.co/settings/media). També has d\'habilitar les extensions NSFW a \`Configuració > Extensions > Extensions NSFW\` </string>
+    <string name="question_10">Com importar les meves llistes de MAL/Kitsu a Anilist?</string>
+    <string name="answer_10">Aquí tens com fer-ho,\n\nExporta:\n\n1. Vés a aquest [enllaç](https://malscraper.azurewebsites.net).\n2. Introdueix el teu nom d\'usuari de Kitsu/MAL i descarrega tant la llista d\'anime com de manga. (Estaran en format XML)\nNota: Has d\'escriure el nom d\'usuari del rastrejador que has seleccionat\n\nImporta:\n\n1. Després d\'exportar la teva llista d\'anime i manga de Kitsu/MAL, ara ves [aquí](https://anilist.co/settings/import) \n2. Selecciona/deixa anar el fitxer XML d\'anime a la casella de dalt.\n|→Selecciona/deixa anar el fitxer XML de manga a la casella de sota.</string>
+    <string name="question_11">Com importar les meves llistes d\'Anilist/Kitsu a MAL?</string>
+    <string name="answer_11">Aquí tens com fer-ho,\n\nExporta:\n\n1. Vés a aquest [enllaç](https://malscraper.azurewebsites.net/). \n2. Introdueix el teu nom d\'usuari d\'Anilist/Kitsu a la casella \'Nom d\'usuari/ID d\'usuari Kitsu\'. \n3. Selecciona el tipus de llista i habilita \'actualitzar_en_la_importació\'. \n4. Descarrega el fitxer; estarà en format .xml. Assegura\'t de descarregar les llistes d\'anime i manga.\n\nImporta:\n1. Per importar-ho al teu compte de MAL, ves a aquest [enllaç](https://myanimelist.net/import.php) i tria \'Importació de MyAnimeList\' com a tipus d\'importació. \n2. Premeu \'Tria el fitxer\' i seleccioneu el fitxer XML de llistes d\'anime/manga descarregat. \n3. Premeu \'Importa dades\'. \nFelicitats, acabes d\'importar la llista seleccionada al teu compte de MAL.</string>
+    <string name="question_12">Per què no puc trobar un títol d\'anime/manga específic?</string>
+    <string name="answer_12">Digues que busques Castlevania a Dantotsu. Però Anilist no el té, així que Dantotsu tampoc.\nUna solució al problema anterior és la següent:\n1) Vés a qualsevol anime que no estigui a la teva llista.\n2) Vés a la secció de visualització.\n3) Selecciona qualsevol font i prem \'Títol equivocat?\'.\n4) Ara busca Castlevania (l\'anime que estaves buscant) i selecciona\'l.\n5) GAUDEIX!\n\nSi no pots trobar l\'anime fins i tot seguint aquests passos, llavors és mala sort per a tu, amic. Ni tan sols aquesta font el té. Prova una font diferent.</string>
+    <string name="question_13">Com solucionar que les fonts seleccionin un títol completament equivocat?</string>
+    <string name="answer_13">Dantotsu mateix no allotja res, sinó que es basa en altres fonts. En mostrar els episodis, tria el 1r resultat donat per la font després de cercar el títol. Dantotsu no té cap manera de detectar si això és legítim o no. Per això, tenim el \'Títol equivocat?\' just sota el nom de la font (sobre les disposicions). Pots triar el resultat/títol correcte prement sobre ell i gaudir dels seus episodis.</string>
+    <string name="question_14">Com llegir mangues en color?</string>
+    <string name="answer_14">Estàs buscant mangues en color? Lamentem comunicar-te que una quantitat extremadament petita de mangues té una versió en color. Aquelles que tenen una versió en color també estan disponibles a Dantotsu. Digues que vols llegir la versió en color de chainsaw man. Llavors segueix els passos següents ↓\n\n1) Vés a Chainsaw Man\n2) Premeu \'Llegeix\'\n3) Selecciona qualsevol font que funcioni\n4) Premeu \'Títol equivocat\'\n5) Selecciona la versió en color de chainsaw man\n6) Gaudeix\n\nNota: Moltes fonts no tenen disponible la versió en color encara que estigui disponible en algun lloc a internet. Així que prova una font diferent. Si cap de les fonts ho té, llavors una versió en color del teu manga desitjat simplement no existeix.</string>
+    <string name="question_15">L\'apretó de mans falla? Per què no es carreguen els segells temporals?</string>
+    <string name="answer_15">Podeu solucionar aquest problema habilitant \'Proxy\' des de \n\`Configuració > Anime > Configuració del reproductor > Marques de temps > Proxy\`.\nSi les marques de temps encara no es carreguen però el missatge emergent de fallida de l\'establiment de connexió està solucionat, llavors l\'episodi que esteu veient simplement encara no té marques de temps per a ell.</string>
+    <string name="question_16">No podeu trobar res en una font?</string>
+    <string name="answer_16">Algunes correccions bàsiques serien : \n\n• Actualitzeu les vostres extensions si n\'hi ha. \n• Obriu la visualització web i espereu que es carregui. Després que s\'hagi completat la càrrega, torneu enrere. (Si la visualització web mostra error 404 o alguna cosa similar, les probabilitats són que la vostra font no estigui disponible)\n• Utilitzeu un DNS diferent de la vostra configuració, preferiblement, Libre. \n• Proveu un VPN de confiança. (Haureu de repetir el pas 1 després d\'això) \n\nSi cap dels passos anteriors funciona, llavors utilitzeu una font diferent o uniu-vos al nostre [discord](https://discord.gg/invite/4HPZ5nAWwM) per obtenir ajuda.</string>
+    <string name="question_17">Alguns consells i trucs útils</string>
+    <string name="answer_17">El següent presenta alguns consells i trucs que podeu o no conèixer - \n \n \n - Premre en mantenir el logo de Dantotsu a la configuració, podeu comprovar manualment si hi ha alguna actualització nova. \n \n - Premre en mantenir un missatge d\'error/etiqueta/sinònim o títol el copiarà. \n \n - Podeu obrir un episodi amb altres aplicacions prement en mantenir qualsevol servidor per a aquest episodi. Això ajuda a transmetre l\'episodi utilitzant altres reproductors de vídeo o descarregar l\'episodi utilitzant gestors de descàrregues. \n \n - Podeu configurar llistes personalitzades utilitzant aquest [enllaç](https://anilist.co/settings/lists). (heu d\'estar connectat) \n \n - Si el vostre episodi/capítol no es progrés automàticament després de veure\'l/ llegir-lo, llavors premeu en mantenir la barra d\'estat (planificant/repetint/botó de visualització) d\'aquest anime/manga. La propera vegada que comenceu un capítol/ acabeu un episodi, us trobareu amb un missatge emergent. Premeu sí allà.</string>
+    <string name="subscribed_notification">Subscrit! Rebreu notificacions quan es llancin nous episodis a %1$s.</string>
+    <string name="unsubscribed_notification">Desinscrit, no rebrà cap notificació.</string>
+    <string name="episode_plural">Episodis</string>
+    <string name="episode_singular">Episodi</string>
+    <string name="chapter_singular">Capítol</string>
+    <string name="chapter_plural">Capítols</string>
+    <string name="filter_status">"Estat: %1$s"</string>
+    <string name="filter_source">"Font: %1$s"</string>
+    <string name="filter_format">"Format: %1$s"</string>
+    <string name="filter_country">"País: %1$s"</string>
+    <string name="filter_sort">"Ordenar: %1$s"</string>
+    <string name="filter_exclude">"No %1$s"</string>
+    <string name="search_by_image">Cerca per imatge</string>
+    <string name="upload_image">Pujar imatge</string>
+    <string name="similarity_text">Similaritat: %1$s %%</string>
+    <string name="time_range">Des de %1$s a %2$s</string>
+    <string name="invalid_url">URL no vàlida</string>
+    <string name="no_anilist_id_found">No s\'ha trobat cap ID d\'Anilist</string>
+    <string name="error_loading_image">Error en la càrrega de la imatge</string>
+    <string name="discord_logout_success">S\'ha tancat la sessió correctament</string>
+    <string name="discord_try_again">Proveu d\'iniciar sessió de nou</string>
+    <string name="error_loading_discord_user_data">Error en la càrrega de les dades de l\'usuari de Discord</string>
+    <string name="discord_warning"><![CDATA[En iniciar sessió, el vostre discord mostrarà ara el que esteu veient i llegint a Dantotsu\n\nSi esteu en mode invisible, iniciar sessió us farà aparèixer en línia quan obriu Dantotsu.\n\nAixò infringeix els TOS de Discord. \nTot i que Discord mai ha prohibit ningú per utilitzar la Presència Personalitzada(que utilitza Dantotsu), Us heu avisat.\n\nDantotsu no es fa responsable de res que li pugui passar al vostre compte.]]></string>
+    <string name="warning">Advertència</string>
+    <string name="view_anime">Veure Anime</string>
+    <string name="view_manga">Veure Manga</string>
+    <string name="force_legacy_installer">Forçar Instal·lador Antic</string>
+    <string name="extensions_settings">Extensions</string>
+    <string name="NSFWExtention">Extensions NSFW</string>
+    <string name="skip_loading_extension_icons">Saltar la càrrega d\'icones d\'extensió</string>
+    <string name="use_material_you">Material You</string>
+    <string name="use_app_theme">Utilitza el tema de l\'aplicació</string>
+    <string name="extension_specific_dns">DNS específic de l\'extensió</string>
+    <string name="theme_">Tema:</string>
+    <string name="user_agent">Agent d\'usuari</string>
+    <string name="custom_theme">Tema personalitzat:</string>
+    <string name="use_custom_theme">Tema personalitzat</string>
+    <string name="use_unique_theme_for_each_item">Tema com a anime/manga</string>
+    <string name="oled_theme_variant">Variant de tema OLED</string>
+    <string name="installed_anime">Anime instal·lat</string>
+    <string name="available_anime">Anime disponible</string>
+    <string name="installed_manga">Manga instal·lat</string>
+    <string name="color_picker">Selector de color</string>
+    <string name="random_selection">Selecció aleatòria</string>
+    <string name="incognito_mode">Mode incògnit</string>
+    <string name="appwidget_text">EXEMPLE</string>
+    <string name="configure">Configurar</string>
+    <string name="add_widget">Afegir widget</string>
+    <string name="app_widget_description">Aquesta és una descripció del widget de l\'aplicació</string>
+    <string name="upcoming_anime">Anime proper</string>
+    <string name="airing_image">Imatge en emisió</string>
+    <string name="anime_downloads">Descàrregues d\'anime</string>
+    <string name="purge_anime_downloads">Eliminar totes les descàrregues d\'anime</string>
+    <string name="purge_manga_downloads">Eliminar totes les descàrregues de manga</string>
+    <string name="purge_novel_downloads">Eliminar totes les descàrregues de novel·la</string>
+    <string name="requires_android_12">Requereix Android 12+</string>
+    <string name="share_username_in_logs">Compartir nom d\'usuari als registres</string>
+    <string name="pinned_sources">Fonts fixades</string>
+    <string name="backup_restore">Còpia de seguretat i restauració</string>
+    <string name="restore_settings">Importar configuració</string>
+    <string name="restore_settings_underline"><u>Restaurar la configuració</u></string>
+    <string name="try_internal_cast_experimental">Prova Cast Intern (Experimental)</string>
+    <string name="faq_desc">Preguntes generals sobre Himitsu</string>
+    <string name="check_app_updates_desc">Comprova Github per actualitzacions de l\'app</string>
+    <string name="share_username_in_logs_desc">Inclou el nom d\'usuari en els informes d\'errors</string>
+    <string name="devs_desc">Els treballadors no remunerats propis de Himitsu</string>
+    <string name="forks_desc">Projectes derivats de Dantotsu</string>
+    <string name="disclaimer_desc">Alguna cosa a tenir en compte</string>
+    <string name="use_foldable">Utilitza dissenys plegables</string>
+    <string name="use_foldable_desc">El contingut s\'adapta a la configuració de la bisagra</string>
+    <string name="add_shortcuts">Afegeix accessos directes al llançador</string>
+    <string name="add_shortcuts_desc">Afegeix elements de continuació a la icona de clic llarg</string>
+    <string name="comments">Comentaris</string>
+    <string name="newest">Més recent</string>
+    <string name="oldest">Més antic</string>
+    <string name="highest_rated">Més ben valorat</string>
+    <string name="lowest_rated">Menys ben valorat</string>
+    <string name="compare"><u>Comparar</u></string>
+    <string name="view_following">Veure Seguints</string>
+    <string name="menu">menú</string>
+    <string name="view_followers">Veure Seguidors</string>
+    <string name="no_fav_anime">L\'usuari no té cap Anime favorit</string>
+    <string name="no_fav_manga">L\'usuari no té cap Manga favorit</string>
+    <string name="fav_character">Personatges favorits</string>
+    <string name="fav_staff">Personal favorit</string>
+    <string name="stats">Estadístiques</string>
+    <string name="days_watched">Dies vistos</string>
+    <string name="total_anime">Total d\'Anime</string>
+    <string name="anime_mean_score">Puntuació mitjana d\'Anime</string>
+    <string name="volume_read">Volum llegit</string>
+    <string name="total_manga">Total Manga</string>
+    <string name="manga_mean_score">Puntuació Mitjana del Manga</string>
+    <string name="about_me">Sobre mi</string>
+    <string name="follow">Segueix</string>
+    <string name="following">Seguint</string>
+    <string name="unfollow">Deixa de seguir</string>
+    <string name="follows_you">Et segueix</string>
+    <string name="mutual">Mutu</string>
+    <string name="success">Èxit</string>
+    <string name="error">S\'ha produït un error</string>
+    <string name="error_msg">Error: %1$s</string>
+    <string name="please_wait">Si us plau, esperi</string>
+    <string name="upcoming">Properament</string>
+    <string name="no_shows_to_display">No hi ha espectacles per mostrar</string>
+    <string name="no_media_to_display">No hi ha mitjans per mostrar</string>
+    <string name="extension_name">Nom de l\'extensió</string>
+    <string name="extension_version">versió</string>
+    <string name="enter_password_to_decrypt_file">Introduïu la vostra contrasenya per desxifrar el fitxer</string>
+    <string name="show_rotate_button">Mostra el botó de rotació</string>
+    <string name="default_manga_settings">Configuració predeterminada del Manga</string>
+    <string name="use_dark_theme">Utilitza el tema fosc</string>
+    <string name="use_oled_theme">Utilitza el tema OLED</string>
+    <string name="scanlators">Scanlators</string>
+    <string name="exporting_requires_encryption">Exportar credencials requereix una contrasenya per encriptar.</string>
+    <string name="manga_queue">Cua de Manga (WIP)</string>
+    <string name="anime_queue">Cua d\'Anime (WIP)</string>
+    <string name="no_offline_manga_found">No s\'ha trobat cap manga fora de línia</string>
+    <string name="sort">Ordena</string>
+    <string name="download">Descarregar</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Estableix les cookies</string>
+    <string name="open_website">Obre el lloc web</string>
+    <string name="log_to_file">Inicia la sessió al fitxer</string>
+    <string name="logging_warning">Pot causar retard. Només activa-ho si tens problemes.</string>
+    <string name="share_log">Feu clic per compartir el fitxer de registre actual</string>
+    <string name="radius">Radi</string>
+    <string name="sampling">Mostreig</string>
+    <string name="blur_banners">Desenfoca les pancartes</string>
+    <string name="blur">Desenfocar</string>
+    <string name="hide_scroll_bar">Amaga la barra de desplaçament</string>
+    <string name="view_on_anilist">Visualitza a AniList</string>
+    <string name="anilist_notification_filters">Trieu la categoria a ignorar</string>
+    <string name="anilist_notifications_checking_time">Freqüència d\'actualització de les notificacions d\'Anilist: %1$s</string>
+    <string name="comment_notification_checking_time">Freqüència d\'actualització de les notificacions de comentaris: %1$s</string>
+    <string name="activities">Activitats</string>
+    <string name="incorrect_password">Contrasenya incorrecta</string>
+    <string name="password_cannot_be_empty">La contrasenya no pot estar buida</string>
+    <string name="unknown_file_type">Tipus de fitxer desconegut</string>
+    <string name="error_importing_settings">Error en importar la configuració</string>
+    <string name="download_manager">Gestor de descàrregues</string>
+    <string name="enter_password">Introduïu la contrasenya</string>
+    <string name="invalid_file_type">Tipus de fitxer no vàlid</string>
+    <string name="purge_confirm">Esteu segur que voleu purgar totes les descàrregues de %1$s?</string>
+    <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de... %1$s</string>
+    <string name="hide_replies">Amaga les respostes</string>
+    <string name="view_reply">Visualitza la resposta</string>
+    <string name="view_replies">Visualitza les respostes</string>
+    <string name="view_replies_count">Visualitza %1$d respostes</string>
+    <string name="replying_to">Responent a %1$s</string>
+    <string name="delete_comment">Elimina el comentari</string>
+    <string name="delete_comment_confirm">Esteu segur que voleu eliminar aquest comentari?</string>
+    <string name="comment_deleted">Comentari eliminat</string>
+    <string name="ban_user">Bloqueja l\'usuari</string>
+    <string name="ban_user_confirm">Esteu segur que voleu bloquejar aquest usuari?</string>
+    <string name="user_banned">Usuari Bloquejat</string>
+    <string name="report_comment">Informa del comentari</string>
+    <string name="report_comment_confirm">Només informa dels comentaris que incompleixen les normes. Esteu segur que voleu informar d\'aquest comentari?</string>
+    <string name="comment_reported">Comentari informat</string>
+    <string name="list">Llista</string>
+    <string name="grid">Graella</string>
+    <string name="compact">Compacte</string>
+    <string name="webview_not_installed">WebView no està instal·lat</string>
+    <string name="video_quality">Qualitat: %1$dp</string>
+    <string name="size_unknown">Mida desconeguda</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Restaura</string>
+    <string name="button_backup">Còpia de seguretat</string>
+    <string name="no_location_selected">Cap ubicació seleccionada</string>
+    <string name="do_it">Fes-ho!</string>
+    <string name="password">Contrasenya</string>
+    <string name="anilist_broken_title">Error intern del servidor!</string>
+    <string name="anilist_broken">Sembla que AniList no respon i la funcionalitat serà severament limitada. Voleu tancar l\'aplicació i provar-ho més tard?\n</string>
+    <string name="search_title">Cerca %1$s</string>
+    <string name="profile_stats_widget">Seguiu el progrés directament des de la vostra pantalla d\'inici</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Capítols</string>
+    <string name="episodes_watched_n">Episodis</string>
+    <string name="loading">Carregant…</string>
+    <string name="user_stats">Estadístiques de %1$s</string>
+    <string name="please">Si us plau</string>
+    <string name="log_in">inicia la sessió</string>
+    <string name="or_join">o uneix-te</string>
+    <string name="audio_tracks">Pistes d\'àudio</string>
+    <string name="disabled_track">\[💬\] Desactivat</string>
+    <string name="invalid_track">\[⁉️\] Invàlid</string>
+    <string name="unknown_track">\[%1$s\] Desconegut</string>
+    <string name="top_background_color">Color de fons superior</string>
+    <string name="bottom_background_color">Color de fons inferior</string>
+    <string name="countdown_text_color">Color del text del compte enrere</string>
+    <string name="title_color">Color del títol</string>
+    <string name="stat_text_color">Color del text de les estadístiques</string>
+    <string name="flipper_color">Color del flipper</string>
+    <string name="placeholder">Marcador de posició</string>
+    <string name="anime_add_repository">Afegir repositori d\'anime</string>
+    <string name="manga_add_repository">Afegir repositori de manga</string>
+    <string name="novel_add_repository">Afegir repositori de novel·la</string>
+    <string name="edit_repositories">Editar repositoris</string>
+    <string name="rem_repository">Eliminar repositori?</string>
+    <string name="trending_movies">Pel·lícules de tendència</string>
+    <string name="include_list">Incloure llista</string>
+    <string name="top_rated">Més ben valorat</string>
+    <string name="most_favourite">Més favorit</string>
+    <string name="trending_manhwa">Manhwa de tendència</string>
+    <string name="liked_by">Agradat per</string>
+    <string name="adult_only_content">Contingut només per adults</string>
+    <string name="report">Informar</string>
+    <string name="ban">Prohibir</string>
+    <string name="activity_label">Activitat</string>
+    <string name="dir_error">No s\'ha pogut establir la vostra ruta</string>
+    <string name="dir_access">Accés a descàrregues</string>
+    <string name="dir_access_msg">Si us plau, trieu un directori per desar les vostres descàrregues</string>
+    <string name="download_subtitle">Descarregar subtítol</string>
+    <string name="change_download_location">Canviar ubicació de descàrrega</string>
+    <string name="download_location_msg">Esteu segur que voleu canviar la ubicació de descàrrega?\nLes descàrregues antigues poden deixar de ser accessibles.</string>
+    <string name="voice_actors">Actors de veu</string>
+    <string name="download_permission_required">Es requereix permís per descarregar</string>
+    <string name="media">Mitjans</string>
+    <string name="users">Usuaris</string>
+    <string name="social">Social</string>
+    <string name="auto_skip_recap">Salt automàtic de recapitulació</string>
+    <string name="use_anilist_icon">Utilitza la icona d\'AniList</string>
+    <string name="exo_source_exception">Excepció de font: %1$s</string>
+    <string name="exo_decoding_failed">Decodificació fallida: %1$s</string>
+    <string name="exo_player_error">Error del reproductor: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL i Discord.\nQuè més necessites?</string>
+    <string name="theme_desc">Canvia l\'ambient de la teva aplicació</string>
+    <string name="extensions_desc">Gestiona la teva col·lecció de repositoris</string>
+    <string name="common_desc">Descàrregues, DNS i valors per defecte</string>
+    <string name="anime_desc">Tria com vols veure</string>
+    <string name="manga_desc">Tria com vols llegir</string>
+    <string name="notifications_desc">Personalitza les notícies i les actualitzacions</string>
+    <string name="system_desc">Actualitzacions i utilitats útils</string>
+    <string name="about_desc">Coneix més sobre Himitsu</string>
+    <string name="addons">Complements</string>
+    <string name="addons_desc">Els complements són mòduls d\'extra funcionalitats Dantotsu.</string>
+    <string name="torrent_addon">Complement de Torrent</string>
+    <string name="enable">Habilita</string>
+    <string name="anime_downloader_addon">Complement de descàrrega d\'anime</string>
+    <string name="loaded_successfully">Carregat amb èxit</string>
+    <string name="not_installed">No instal·lat</string>
+    <string name="torrent_extension_not_supported">L\'extensió de Torrent no és compatible amb aquest dispositiu</string>
+    <string name="update_addon">Actualitza el complement</string>
+    <string name="install_addon">Instal·la el complement</string>
+    <string name="download_addon_not_found">No s\'ha trobat el complement de descàrrega</string>
+    <string name="default_novel_settings">Configuracions de novel·la per defecte</string>
+    <string name="line_height">Alçada de línia</string>
+    <string name="margin">Marge</string>
+    <string name="maximum_inline_size">Mida màxima en línia</string>
+    <string name="maximum_column_width">Amplada màxima de la columna (escriptura horitzontal) o alçada (escriptura vertical)</string>
+    <string name="maximum_block_size">Mida de bloc màxima</string>
+    <string name="maximum_height">Alçada màxima (escriptura horitzontal) o amplada (escriptura vertical)</string>
+    <string name="global">Global</string>
+    <string name="china">Xina</string>
+    <string name="south_korea">Corea del Sud</string>
+    <string name="japan">Japó</string>
+    <string name="taiwan">Taiwan</string>
+    <string name="something">Alguna cosa</string>
+    <string name="image">Imatge</string>
+    <string name="sort_score">Puntuació</string>
+    <string name="popular">Popular</string>
+    <string name="trending">Tendència</string>
+    <string name="new_releases">Noves publicacions</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Dolor pur</string>
+    <string name="add_a_comment">Afegir un comentari…</string>
+    <string name="type">Tipus</string>
+    <string name="view">Vista</string>
+    <string name="count">COMPTAR</string>
+    <string name="open">Obert</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Respondre</string>
+    <string name="time">Temps</string>
+    <string name="player_settings_desc">Tots els paràmetres relacionats amb el jugador</string>
+    <string name="purge_anime_downloads_desc">Eliminar tots els animes descarregats</string>
+    <string name="prefer_dub_desc">Seleccionar mitjans doblats per defecte</string>
+    <string name="show_yt_desc">Mostrar enllaços de YouTube per als mitjans compatibles</string>
+    <string name="include_list_anime_desc">Incloure elements de llista a la pàgina d\'exploració d\'anime</string>
+    <string name="ui_settings_desc">Tots els paràmetres relacionats amb la interfície d\'usuari</string>
+    <string name="download_manager_select_desc">Gestor per defecte per descarregar animes</string>
+    <string name="backup_restore_desc">Crear i restaurar còpies de seguretat de paràmetres seleccionats</string>
+    <string name="change_download_location_desc">Canviar la ubicació on es conserven les descàrregues</string>
+    <string name="always_continue_content_desc">Continua els elements on els vas deixar</string>
+    <string name="search_source_list_desc">Passa al següent servidor si no es troba el contingut</string>
+    <string name="recentlyListOnly_desc">Mostra només els teus elements de llista a la pestanya recent</string>
+    <string name="adult_only_content_desc">Mostra només contingut per adults a la pàgina d\'exploració</string>
+    <string name="anime_add_repository_desc">Afegeix repositoris d\'extensió d\'Anime a la col·lecció</string>
+    <string name="manga_add_repository_desc">Afegeix repositoris d\'extensió de Manga a la col·lecció</string>
+    <string name="user_agent_desc">Canvia el teu agent d\'usuari per defecte</string>
+    <string name="force_legacy_installer_desc">Utilitza intencions per sol·licitar la instal·lació de paquets</string>
+    <string name="skip_loading_extension_icons_desc">No carreguis icones d\'extensió al gestor</string>
+    <string name="NSFWExtention_desc">La desactivació bloqueja qualsevol extensió amb contingut per adults</string>
+    <string name="reader_settings_desc">Tots els ajustos relacionats amb el Lector</string>
+    <string name="purge_manga_downloads_desc">Esborra tot el Manga descarregat</string>
+    <string name="purge_novel_downloads_desc">Esborra tots els Novel·les descarregats</string>
+    <string name="include_list_desc">Inclou elements de llista a la pàgina d\'exploració de Manga</string>
+    <string name="anilist_notification_filters_desc">Selecciona la categoria a ignorar</string>
+    <string name="anilist_notifications_checking_time_desc">Estableix la freqüència amb la qual vols que l\'aplicació comprovi les notificacions d\'Anilist</string>
+    <string name="comment_notification_checking_time_desc">Estableix la freqüència amb la qual vols que l\'aplicació comprovi les notificacions de comentaris</string>
+    <string name="notification_for_checking_subscriptions_desc">Mostra la notificació per comprovar les subscripcions</string>
+    <string name="use_alarm_manager_reliable_desc">Utilitza per evitar l\'optimitzador de bateria del telèfon</string>
+    <string name="oled_theme_variant_desc">Tan fosc com sigui possible</string>
+    <string name="use_material_you_desc">Utilitza el mateix color que el teu fons de pantalla</string>
+    <string name="use_unique_theme_for_each_item_desc">Utilitza el color de la capçalera dels mitjans</string>
+    <string name="use_custom_theme_desc">Utilitza el teu propi color per al tema</string>
+    <string name="color_picker_desc">Selecciona un color</string>
+    <string name="install_torrent_addon">Instal·la l\'Add-on de Torrent</string>
+    <string name="failed_ext_install_conflict">No s\'ha pogut instal·lar l\'extensió a causa d\'un conflicte</string>
+    <string name="no_video_selected">Cap vídeo seleccionat</string>
+    <string name="download_extension_not_available">L\'extensió de descàrrega no està disponible</string>
+    <string name="feed">Feed</string>
+    <string name="profile">Perfil</string>
+    <string name="epub_download_exception">Excepció en descarregar .epub: %1$s</string>
+    <string name="novel_download_progress">Progrés de la descàrrega de novel·la</string>
+    <string name="download_started">Descàrrega iniciada</string>
+    <string name="downloads_completed">Totes les descàrregues completades</string>
+    <string name="pending_downloads">Descàrregues pendents: %1$d</string>
+    <string name="reading">LENT</string>
+    <string name="watching">VEIENT</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Portada]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Actualitza WebView des de Google Play</string>
+    <string name="update_webview_version">La versió de WebView %1$d requereix una actualització</string>
+    <string name="webview_not_found_version">No s\'ha pogut trobar la versió %1$s de WebView</string>
+    <string name="webview_not_found">No s\'ha pogut trobar cap llibreria WebView instal·lada</string>
+    <string name="multi">Múltiple</string>
+</resources>

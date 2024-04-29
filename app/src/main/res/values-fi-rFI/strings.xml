@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fi">
+    <string name="slogan">UUSI Best Anime &amp; Manga sovellus Androidille.</string>
+    <string name="login">Kirjaudu Sisään</string>
+    <string name="logout">Kirjaudu Ulos</string>
+    <string name="conversion_title">Tervetuloa takaisin!</string>
+    <string name="conversion_message">Näyttää siltä, että sinulla on vanhempi paketti.\nValitse \"Varmuuskopio\" avataksesi vanhemman version ja suorittaaksesi varmuuskopion. Tämän jälkeen voit palata tähän sovellukseen ja käyttää \"Palauta asetukset\".</string>
+    <string name="backup">Varmuuskopio</string>
+    <string name="home">Koti</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Selaa Animea</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Selaa Mangaa</string>
+    <string name="novels">Rovelit</string>
+    <string name="info">Tiedot</string>
+    <string name="watch">Tarkkaile</string>
+    <string name="read">Lue</string>
+    <string name="language">Kieli</string>
+    <string name="anime_list">Anime Lista</string>
+    <string name="manga_list">Mangan Luettelo</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Ei Internet-yhteyttä</string>
+    <string name="no_internet_connection">Ei Internet-yhteyttä\nOffline-tilaa saatavilla</string>
+    <string name="refresh">Päivitä</string>
+    <string name="search">Etsi</string>
+    <string name="extension_search">Käänteinen Lähdehaku</string>
+    <string name="search_results">Hakutulokset</string>
+    <string name="sort_by">Järjestä Mukaan</string>
+    <string name="genre">Lajityyppi</string>
+    <string name="top_score">Suosituimmat Pisteet</string>
+    <string name="updated">Äskettäin Päivitetty</string>
+    <string name="trending_anime">Nousussa Anime</string>
+    <string name="popular_anime">Suosittu Anime</string>
+    <string name="trending_manga">Trending Manga</string>
+    <string name="trending_novel">Novel Novel</string>
+    <string name="popular_manga">Suosittu Manga</string>
+    <string name="username">Käyttäjätunnus</string>
+    <string name="chapters_read">Luetut Luvut</string>
+    <string name="episodes_watched">Jaksot Katsottu</string>
+    <string name="continue_reading">Jatka Lukemista</string>
+    <string name="continue_watching">Jatka Katselua</string>
+    <string name="continue_media">Jatka…</string>
+    <string name="recommended">Suositeltu</string>
+    <string name="get_recommendations">Katso / Lue joitakin Anime tai Manga saada suosituksia</string>
+    <string name="empty">Kaikki kiinni, milloin Uusi?</string>
+    <string name="action_settings">Asetukset</string>
+    <string name="add">Lisää luetteloon</string>
+    <string name="list_editor">Listan Muokkain</string>
+    <string name="add_fav">Lisää suosikkeihin</string>
+    <string name="notifications">Ilmoitukset</string>
+    <string-array name="keys">
+        <item>Luetaan</item>
+        <item>Katsotaan</item>
+        <item>Valmis</item>
+        <item>Keskeytetty</item>
+        <item>Pudotettu</item>
+        <item>Suunnittelu</item>
+        <item>Suosikit</item>
+        <item>Katsele</item>
+        <item>Luetaan Uudelleen</item>
+        <item>Kaikki</item>
+    </string-array>
+    <string name="no_notifications">Ei enää ilmoituksia</string>
+    <string name="followers">Seuraajat</string>
+    <string name="social_in_media">Sosiaaliset tilastot mediassa</string>
+    <string name="social_in_media_desc">Näytä ystäväarvostelut ja edistyminen</string>
+    <string name="status">TILA</string>
+    <string-array name="status_anime">
+        <item>SUUNNITTELU</item>
+        <item>VAROITUS</item>
+        <item>VALMISTUNUT</item>
+        <item>RE-WATCHING</item>
+        <item>TAUKO</item>
+        <item>KESKEYTETTY</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>SUUNNITTELU</item>
+        <item>LUE</item>
+        <item>VALMISTUNUT</item>
+        <item>RE-READING</item>
+        <item>TAUKO</item>
+        <item>KESKEYTETTY</item>
+    </string-array>
+    <string name="progress">PROGRESS</string>
+    <string name="score">SOVELTAMINEN</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">ALOITU KAIKKI</string>
+    <string name="completed_at">HYVÄKSYTTY</string>
+    <string name="save">Tallenna</string>
+    <string name="delete">Poista</string>
+    <string name="remove">Poista</string>
+    <string name="name">Nimi</string>
+    <string name="name_romaji">Nimi Romaji</string>
+    <string name="mean_score">Keskimääräinen Pistemäärä</string>
+    <string name="format">Muoto</string>
+    <string name="status_title">Tila</string>
+    <string name="total_eps">Jaksot Yhteensä</string>
+    <string name="episodes"> Jaksot(t)</string>
+    <string name="chapters"> Luku(t)</string>
+    <string name="total_divider"> Â %1$s</string>
+    <string name="total_chaps">Lukuja Yhteensä</string>
+    <string name="ep_duration">Kesto Kesto</string>
+    <string name="min">" min"</string>
+    <string name="season">Kausi</string>
+    <string name="start_date">Aloitus Päivämäärä</string>
+    <string name="end_date">Loppu Päivämäärä</string>
+    <string name="source">Lähde</string>
+    <string name="main_studio">Studio</string>
+    <string name="genres">Genres</string>
+    <string name="description">Synopsis</string>
+    <string name="characters">Merkit</string>
+    <string name="relations">Suhteet</string>
+    <string name="staff">Henkilökunta</string>
+    <string name="favourites">Suosikit</string>
+    <string name="popularity">Suosio</string>
+    <string name="roles">Roolit</string>
+    <string name="details">Yksityiskohdat</string>
+    <string name="play_yt">Pelaa Youtubessa</string>
+    <string name="eps">Jaksot</string>
+    <string name="ep">Jakso</string>
+    <string name="chaps">Luvut</string>
+    <string name="chap">Luku</string>
+    <string name="wrong"><u>Väärä Otsikko?</u></string>
+    <string name="source_not_found">        ei löytänyt mitään X( \n
+        Kokeile toista lähdettä.
+    </string>
+    <string name="not_supported">%1$s ei ole tuettu!</string>
+    <string name="server_selector">Valitse Palvelin</string>
+    <string name="auto_select_server">Automaattinen Palvelimen Valinta</string>
+    <string name="make_default">Aseta Oletukseksi</string>
+    <string name="filler">Täyteaine</string>
+    <string name="adult">Aikuinen</string>
+    <string name="list_only">Vain Luettelo</string>
+    <string name="tag">Tunniste</string>
+    <string name="tags">Tunnisteet</string>
+    <string name="synonyms">Synonyymit</string>
+    <string name="trailer">Perävaunu</string>
+    <string name="opening">Avaus</string>
+    <string name="ending">Päättyy</string>
+    <string name="prequel">Prequel</string>
+    <string name="sequel">Juokseva</string>
+    <string name="installed">Asennettu</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Palvelin on käynnissä…</string>
+    <string name="settings_torrent">Sisäinen TorrServer</string>
+    <string name="enable_server">Ota TorrServer Käyttöön</string>
+    <string name="enable_server_desc">Mahdollistaa paikallisen palvelimen tilauksen käytön</string>
+    <string name="torrent_port">Palvelimen portin numero</string>
+    <string name="torrents">torrentit</string>
+    <string name="active_torrents">Aktiiviset torrentit</string>
+    <string name="remove_torrent">Poistetaanko tämä torrent?</string>
+    <string name="invalid_port">Virheellinen portti!</string>
+    <string name="port_range">Portin on oltava kelvollinen TCP-portti (0 – 65535)</string>
+    <string name="server_disabled">TorrServer poistettu käytöstä!</string>
+    <string name="server_enabled">Käynnistetään TorrServer</string>
+    <string name="enable_server_temp">Haluatko ottaa TorrServer väliaikaisesti käyttöön (pois päältä sovelluksen sulkeutuessa)?</string>
+    <string name="anilist_settings">Anilismin Asetukset</string>
+    <string name="extension_settings">Laajennukset</string>
+    <string name="downloads">Lataukset</string>
+    <string name="offline_mode">Offline-Tila</string>
+    <string name="settings">Asetukset</string>
+    <string name="extensions">Laajennukset</string>
+    <string name="extension_updates_available">Lisäosien päivitykset saatavilla</string>
+    <string name="player_settings">Pelaajan Asetukset</string>
+    <string name="recentlyListOnly">Vain minun sisältö \"Äskettäin päivitetty\"</string>
+    <string name="download_manager_select">Latausten Hallinta</string>
+    <string name="downloadInSd">Lataa SD-kortilla</string>
+    <string name="noSdFound">SD-korttia ei löytynyt.</string>
+    <string name="reader_settings">Lukijan Asetukset</string>
+    <string name="default_source">Oletus Lähde</string>
+    <string name="show_yt">Näytä Youtube Linkki</string>
+    <string name="default_ep_view">Jakson Oletusasettelu</string>
+    <string name="default_chp_view">Oletus Kappaleen Asettelu</string>
+    <string name="ui">Käyttöliittymä</string>
+    <string name="common">Yleinen</string>
+    <string name="theme">Teema</string>
+    <string name="theme_ui">Teema / Käyttöliittymä</string>
+    <string name="day_night">Valo / Tumma Teema</string>
+    <string name="ui_settings">Käyttöliittymän Asetukset</string>
+    <string name="system">Järjestelmä</string>
+    <string name="about">Tietoja</string>
+    <string name="desc">"    Dantotsu on valmistettu Saikoun tuhkasta ja perustuu yksinkertaistettuun mutta state-of-the-art eleganssiin. Se on Anilist vain asiakas, jonka avulla voit myös stream-download Anime kautta laajennuksia &amp; Manga.\nDantotsu tarkoittaa kirjaimellisesti \"parasta parasta\" japanissa. No, haluaisimme sanoa, että tämä on paras avoimen lähdekoodin sovellus anime ja manga Android, mitä sanoisit?"</string>
+    <string name="devs">Avustajat</string>
+    <string name="disclaimer">Vastuuvapauslauseke</string>
+    <string name="full_disclaimer">         - Dantotsu itsessään tarjoaa vain anime ja manga tracker ja ei tarjoa mitään anime tai manga streaming tai lataus ominaisuuksia.
+        \n\n - Dantotsu tai sen kehittäjä/henkilökunta eivät isännöi mitään Dantotsun sisältä löytyvästä sisällöstä. Kaikki ja kaikki sovelluksesta löydetyt kuvat ja anime/manga tiedot otetaan eri julkisista API-ohjelmista (AniList, MyAnimeList, Kitsu).
+        \n\n - Lisäksi. kaikki anime/manga linkit löytyvät Dantotsu otetaan eri kolmannen osapuolen plugins ja ei liity Dantotsu tai sen henkilökuntaan.
+        \n\n - Dantotsu tai sen omistajat eivät ole vastuussa minkään sovelluksen sisällä tai ulkopuolella löydetyn sisällön väärinkäytöstä eikä niitä voida pitää tilivelvollisina minkään sovelluksen sisällä löydetyn sisällön jakelusta.
+        \n\n - Käyttämällä Dantotsua, noudatat sitä tosiseikkaa, että sovelluksen kehittäjä ei ole vastuussa mistään sovelluksessa löydetystä sisällöstä. Hyväksyt myös sen, että et saa käyttää Dantotsu ladata tai suoratoistaa mitään tekijänoikeudella suojattua sisältöä.
+        \n\n - Jos asiaan liittyy internetissä esiintyviä rikkomusongelmia, ole hyvä ja ota yhteyttä lähdekoodiin. Kehittäjä ei ota mitään oikeudellista vastuuta.
+    </string>
+    <string name="version_current">Versio %1$s</string>
+    <string-array name="tips">
+        <item>Voit pitkällä klikkaamalla jaksoa / lukua Merkitäksesi sen luetuksi.</item>
+        <item>Pitkä Klikkausohjelmat voivat avata Listan editorin.</item>
+        <item>On olemassa muutamia enemmän pääsiäismunia piilotettu App.</item>
+        <item>Haaste: Mene alareunaan Suosittu Anime &amp; Manga</item>
+        <item>Kokeile pitkään Klikkaamalla Show otsikkoa.</item>
+        <item>Hylkäät, miksi olet tuhlaamassa aikaa?</item>
+        <item>Voit pitkään kopioida tämän viestin.</item>
+        <item>OMG LOOK! SINÄ LÖYTYT ITÄISEN MUNA!?</item>
+        <item>Tiedät kuka muu tykkää tästä animaatiosta?</item>
+        <item>MAL tuki? bruh.</item>
+        <item>Rovels? enemmän kuin EI vels.</item>
+        <item>Pitkä klikkaa logoa tarkistaaksesi päivitykset</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Oletus</item>
+        <item>Teema 1</item>
+        <item>Teema 2</item>
+        <item>Teema 3</item>
+        <item> Teema 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Näytä Videon Tiedot</string>
+    <string name="source_info">Näytä Lähteen Nimi</string>
+    <string name="video_info_info">Näyttää mitä resoluutio nykyisestä videonäytöksestä, hyödyllinen <b>\"Multi Quality\"</b> palvelimille.</string>
+    <string name="default_quality">Automaattinen Laadun Valinta</string>
+    <string name="height">Korkeus</string>
+    <string name="width">Width</string>
+    <string name="default_quality_info">Käytä automaattisesti oletuksena tarjottavaa lähintä laatua, VAIN \"Multi Quality\" Servereille. Automaattinen muutos kun toistetaan video.</string>
+    <string name="default_playback_speed">Toiston Oletusnopeus: %1$s</string>
+    <string name="cursed_speeds">Kierretyt Nopeudet</string>
+    <string name="resize_mode_button">Oletus Muuta Kokoa</string>
+    <string name="subtitles">Tekstitykset</string>
+    <string name="subtitle_toggle">Tekstitykset</string>
+    <string name="primary_sub_color_select">Tekstityksen Väri</string>
+    <string name="secondary_sub_color_select">Tekstityksen Ääriviivat</string>
+    <string name="secondary_sub_outline_type_select">Tekstityksen Ääriviivan Tyyppi</string>
+    <string name="sub_background_color_select">Tekstityksen Taustaväri</string>
+    <string name="sub_window_color_select">Tekstityksen Ikkunan Väri</string>
+    <string name="sub_window_color_info">"Tekstitysikkuna on vasemmalla ja oikealla oleva osa (jossa tausta ei ole)"</string>
+    <string name="sub_color_info"><b>Huomautus:</b> Edellä olevien asetusten muuttaminen vaikuttaa vain Soft-Tekstityksiin!</string>
+    <string name="sub_alpha">Tekstityksen Läpinäkyvyys</string>
+    <string name="sub_text_example">Esimerkki Sub</string>
+    <string name="sub_font_select">Tekstityksen Kirjasin</string>
+    <string name="subtitle_font_size">Tekstityksen Koko</string>
+    <string name="no_subs_available">Tekstityksiä Ei Saatavilla</string>
+    <string name="auto">Automaattinen</string>
+    <string name="auto_play_next_episode">Toista Seuraava Jakso Automaattisesti</string>
+    <string name="auto_play_next_episode_info">Poistaa käytöstä automaattisesti, jos pelaajan kanssa ei ole vuorovaikutusta tunnin kuluttua.</string>
+    <string name="auto_skip_fillers">Ohita Täyttölaitteet Automaattisesti</string>
+    <string name="auto_skip_fillers_info">Ohita täyttökerrat seuraavaan jaksoon mentäessä.</string>
+    <string name="update_progress">Päivityksen Edistyminen</string>
+    <string name="ask_update_progress_anime">Pyydä jokaista anime \"Yksilöllään\"</string>
+    <string name="ask_update_progress_manga">Kysy jokaisen Manga \"Yksilöllään\"</string>
+    <string name="ask_update_progress_info_ep">Poistuminen käytöstä päivittyy aina automaattisesti, kun jaksoa seurataan.</string>
+    <string name="ask_update_progress_info_chap">Poistaminen käytöstä päivittyy aina automaattisesti, kun lukua lukee.</string>
+    <string name="ask_update_progress_chapter_zero">Ajantasainen edistyminen luvun 0 osalta</string>
+    <string name="ask_update_progress_info_zero">Kytke päälle lisää uusia aloitettuja kohteita Anilistiin, jonka edistyminen on asetettu lukuun 0.</string>
+    <string name="ask_update_progress_hentai">Päivitä Hentai</string>
+    <string name="ask_update_progress_doujin">Päivitä edistyminen Doujinille</string>
+    <string name="very_bold">hyvin rohkea teistä sar</string>
+    <string name="watch_complete_percentage">Katso Päivityksen Prosenttiosuus</string>
+    <string name="watch_complete_percentage_info">Prosentuaalinen osuus, jolla Anilistin edistyminen pitäisi päivittää jakson katselun jälkeen. \nTämä asettaa myös \% kun esilataa linkkejä seuraavalle jaksolle.</string>
+    <string name="behaviour">Käyttäytyminen</string>
+    <string name="always_continue">Jatka aina aikaleimasta</string>
+    <string name="pause_video_focus">Keskeytä kun ei ole tarkennusta</string>
+    <string name="gestures">Äänenvoimakkuus &amp; Kirkkauden Eleet</string>
+    <string name="double_tap">Napauta kahdesti etsiäksesi</string>
+    <string name="fast_forward">Nopea Eteenpäin</string>
+    <string name="double_tap_info">Sammutus näyttää nopeasti eteenpäin &amp; rewind-painikkeet</string>
+    <string name="seek_time">Siirry Aikaan</string>
+    <string name="seek_time_info">Aika sekunteina nopeasti eteenpäin &amp; rewind.</string>
+    <string name="skip_time">Ohita Aika</string>
+    <string name="skip_time_info">Asetus 0, piilottaa Ohita -painikkeen.</string>
+    <string name="show_cast_button">Näytä Cast Painike</string>
+    <string name="show_cast_button_info">Vaatii \"Web Video Caster\" -sovelluksen.</string>
+    <string name="picture_in_picture">Kuva kuvassa</string>
+    <string name="always_minimize">Pienennä Aina</string>
+    <string name="always_minimize_info">Vaatii PiP otettavaksi käyttöön, saa pelaajan käyttäytymään kuin Youtube Player, mutta parempi.\nPiilottaa myös PiP-painikkeen.</string>
+    <string name="app">Sovellus</string>
+    <string name="immersive_mode">Piilota Tilapalkki</string>
+    <string name="immersive_modelist">Piilota tilapalkki listalle</string>
+    <string name="immersive_mode_info">Sovelluksen uudelleenkäynnistys vaaditaan, jotta sovellus voidaan ottaa käyttöön.</string>
+    <string name="home_layout_show">Näytä tai piilota asettelut kotiin</string>
+    <string-array name="home_layouts">
+        <item>Jatka Katselua</item>
+        <item>Suosikki Anime</item>
+        <item>Suunniteltu Anime</item>
+        <item>Jatka Lukemista</item>
+        <item>Suosikki Manga</item>
+        <item>Suunniteltu Manga</item>
+        <item>Suositeltu</item>
+    </string-array>
+    <string name="startUpTab">Oletus Käynnistysvälilehti</string>
+    <string name="small_view">Pieni näkymä trendissä</string>
+    <string name="animations">Animaatiot</string>
+    <string name="banner_animations">Bannerin Animaatiot</string>
+    <string name="layout_animations">Asettelun Animaatiot</string>
+    <string name="trending_scroller">Nousussa Vieritä</string>
+    <string name="animation_speed">Yleinen Nopeus</string>
+    <string name="empty_fav">Näyttää siltä, että et pidä mitään,\nYritä pitää show pitää täällä.</string>
+    <string name="fav_anime">Suosikki Anime</string>
+    <string name="fav_manga">Suosikki Manga</string>
+    <string name="restart_app">Käynnistä sovellus uudelleen?</string>
+    <string name="next">Seuraava</string>
+    <string name="previous">Edellinen</string>
+    <string name="current_page">Nykyinen Sivu</string>
+    <string name="dubbed">Pehmustettu</string>
+    <string name="subbed">Alavuoto</string>
+    <string name="prefer_dub">Suosi Dubbed Anime</string>
+    <string name="none">Ei Mitään</string>
+    <string name="selected_dns">Valittu DNS</string>
+    <string name="dns_info">Vaihda jos ISP estää jonkin lähteen</string>
+    <string name="keep_screen_on">Pidä Näyttö Päällä</string>
+    <string name="layout">Asettelu</string>
+    <string name="spaced_pages">Välilyönnit Sivut</string>
+    <string name="direction">Suunta</string>
+    <string name="comments_api">Kommentit API (Private)</string>
+    <string name="disable_mitm">Estä Injektio (\"Prank\")</string>
+    <string name="general">Yleiset</string>
+    <string name="show_system_bars">Näytä Tila &amp; Navigointipalkit</string>
+    <string name="auto_detect_webtoon">Tunnista Webtoon Automaattisesti</string>
+    <string name="auto_detect_webtoon_info">Jos Manga ei ole Japanista, lukija on oletuksena Webtoon Reader asetukset</string>
+    <string name="default_settings">Oletus Asetukset</string>
+    <string name="horizontal_scroll_bar">Vaakasuora Vierityspalkki</string>
+    <string name="dual_page">Kaksoissivu</string>
+    <string name="dual_page_info">Näyttää 2 kuvaa 1 sivun, näyttää oudolta, jos kuvat eivät ole samankokoisia</string>
+    <string name="true_colors">Todelliset Värit</string>
+    <string name="true_colors_info">(32-bittinen väritila) Vähentää kuvissa esiintyvää banding voi vaikuttaa suorituskykyyn.</string>
+    <string name="image_rotation">Kuvan Kierto</string>
+    <string name="hide_page_numbers">Piilota Sivunumerot</string>
+    <string name="sort_by_title">Järjestä otsikon mukaan</string>
+    <string name="sort_by_last_updated">Järjestä viimeisimmän päivitetyn mukaan</string>
+    <string name="sort_by_score">Järjestä pisteiden mukaan</string>
+    <string name="sort_by_airing">Järjestä seuraavan latauksen mukaan</string>
+    <string name="over_scroll">Vieritä seuraavan/edellisen luvun yli</string>
+    <string name="volume_buttons">Vaihda sivuja äänenvoimakkuuden painikkeilla</string>
+    <string name="list_private">Yksityinen</string>
+    <string name="wrap_images">Wrap Images</string>
+    <string name="wrap_images_info">Enimmäkseen hyödyllinen suuremmille laitteille, poistaa tilaa kuvien välillä, jos ne ovat olemassa.</string>
+    <string name="reload">Reload</string>
+    <string name="share">Jaa</string>
+    <string name="skip">Ohita</string>
+    <string name="other">Muu</string>
+    <string name="total_repeats">YHTEENSÄ PÄIVÄT</string>
+    <string name="custom_lists">Mukautetut Listat</string>
+    <string name="donate_desc">Haluatko tukea Häntä?\nHarkitse lahjoittamista</string>
+    <string name="donate_goal">Ei lahjoituksen tavoitetta</string>
+    <string name="filter">Suodatin</string>
+    <string name="year">Vuosi</string>
+    <string name="apply">Käytä</string>
+    <string name="cancel">Peruuta</string>
+    <string name="edit">Muokkaa</string>
+    <string name="this_season">Tänä Kautena</string>
+    <string name="next_season">Seuraava Kausi</string>
+    <string name="previous_season">Edellinen Kausi</string>
+    <string name="include_media_in_list">Sisällytä Luettelo</string>
+    <string name="release_calendar">Kalenteri</string>
+    <string name="planned_anime">Suunniteltu Anime</string>
+    <string name="planned_manga">Suunniteltu Manga</string>
+    <string name="image_long_clicking">Avaa kuva pitkällä painikkeella</string>
+    <string name="always_continue_content">Jatka aiemmin avattuja kohteita</string>
+    <string name="search_source_list">Hae seuraavasta saatavilla olevasta lähteestä</string>
+    <string name="timestamp_proxy_desc">Hyödyllinen, jos saat Handshake Fails</string>
+    <string name="timestamp_proxy">Käytä välityspalvelinta Timestampeille</string>
+    <string name="check_app_updates">Tarkista päivitykset</string>
+    <string name="author">Tekijä</string>
+    <string name="forks">Versiot</string>
+    <string name="faq">UKK</string>
+    <string name="accounts">Tilit</string>
+    <string name="myanimelist">MyAnimeList</string>
+    <string name="login_with_anilist">Kirjaudu sisään Anilistilla</string>
+    <string name="anilist">Anilisti</string>
+    <string name="account_help">Miten tämä toimii?</string>
+    <string name="full_account_help">        Dantotsu on Anilist-pohjainen sovellus, joten synkronointia varten MAL-tilisi kanssa se vaatii Anilist-tilin kirjautumisen.
+        \nKirjauduttuasi sekä Anilist- että MAL-tilillesi, sovellus päivittää automaattisesti MAL-tilisi aina, kun:
+        \n- Lisäät uuden Median
+        \n- Muokkaat Mediaa
+        \n- Poistat Median
+
+        \n\nHuom: Sovellus ei synkronoi vanhoja Medioita Anilistista MALiin, suositellaan synkronoimaan ne.
+        \n- Tarkista __UKK__ _Helppo metodi_
+
+        \n\nJa _Edistyneille_ :
+        \n- [Kuinka synkronoida Anilist-tietoja MALin kanssa](https://anilist.co/forum/thread/2654)
+        \n- [Kuinka synkronoida MAL-tietoja Anilistin kanssa](https://anilist.co/forum/thread/3393)
+
+        \n\n_Ei ole pakollista synkronoida sekä MAL- että Anilist-tiliä._
+    </string>
+    <string name="notification_for_checking_subscriptions">Näytä ilmoitus tilausten tarkistamisesta</string>
+    <string name="use_alarm_manager">Käytä Hälytysten Hallintaa.</string>
+    <string name="use_alarm_manager_reliable">Käytä Hälytysten Hallinta (Luotettavia Ilmoituksia)</string>
+    <string name="use_alarm_manager_confirm">Alarm Mangerin käyttö voi auttaa torjumaan akun optimointia, mutta se voi kuluttaa enemmän akkua. Se vaatii myös Alarm Manager -luvan.</string>
+    <string name="use">Käytä</string>
+    <string name="checking_subscriptions">Tilauksen Tarkistusilmoitukset</string>
+    <string name="subscriptions_checking_time_s">Tilausten Päivitystiheys : %1$s</string>
+    <string name="subscriptions_checking_time">Tilausten Päivityksen Taajuus</string>
+    <string name="subscriptions_info">Ajan määrä Dantotsu tarkistaa uusia jaksoja / lukuja\n(Vähemmän aikaa kuluttaa enemmän akkua)</string>
+    <string name="do_not_update">Älä Päivitä</string>
+    <string name="loading_chap_number">Ladataan Luku %1$s</string>
+    <string name="sort_by_release_date">Järjestä julkaisupäivän mukaan</string>
+    <string name="crop_borders">Rajaa Reunat</string>
+    <string name="note">HUOMAUTUS</string>
+    <string name="manage_extension_repos">Hallitse Lisäosien Repoja</string>
+    <string name="installing_extension">Asennetaan lisäosaa</string>
+    <string name="installation_failed">Asennus epäonnistui: %1$s</string>
+    <string name="installation_complete">Asennus valmis</string>
+    <string name="extension_has_been_installed">Lisäosa on asennettu onnistuneesti.</string>
+    <string name="extension_installed">Laajennus asennettu</string>
+    <string name="error_message">Virhe: %1$s</string>
+    <string name="install_step">Vaihe: %1$s</string>
+    <string name="review">Arvostelu</string>
+    <string name="select_source">Valitse lähde</string>
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="install_update">Asenna päivitys %1$s?</string>
+    <string name="beta_update">Beeta </string>
+    <string name="update_available">Päivitys Saatavilla</string>
+    <string name="discord_nothing_button">Näytä vain ensimmäinen painike</string>
+    <string name="discord_dantotsu_button">Näytä dantotsu toisessa painikkeessa</string>
+    <string name="discord_anilist_button">Näytä AniList-profiilisi sen sijaan</string>
+    <string name="discord_rich_presence">Discord Rich Presence</string>
+    <string name="stream_on_dantotsu">Virta Dantotsussa</string>
+    <string name="view_my_anilist">Näytä Animaatiot</string>
+    <string name="jobless_message">HITTO! OLET OIKEASTI TYÖTÖN\nSAVOTTA LOPPU</string>
+    <string name="file_manager_not_found">Ei löytynyt tiedostonhallintaohjelmaa SD-kortin avaamiseen</string>
+    <string name="error_loading_data">Virhe ladattaessa tietoja %1$s</string>
+    <string name="long_click_to_check_update">Pitkä klikkaa tarkistaaksesi päivitykset</string>
+    <string name="saved_to_path">Tallennettu:\n%s</string>
+    <string name="setting_progress">✔ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Ole hyvä ja kirjaudu Anilist-tilille!</string>
+    <string name="congrats_vro">Congrats Vro</string>
+    <string name="please_reload">Lataa Uudelleen.</string>
+    <string name="copied_text">Kopioitu \"%1$s\"</string>
+    <string name="back_to_exit">Paina TAKAISIN uudelleen poistuaksesi</string>
+    <string name="back_button">Takaisin -painike</string>
+    <string name="anilist_not_found">Näyttäisi siltä, että ei löytynyt Anilististä.</string>
+    <string name="disabled_auto_skip">Pois Käytöstä Automaattinen Ohitus Op &amp; ED</string>
+    <string name="auto_skip">Auto Skipping OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Näytä Ohita [Segment] -painikkeet</string>
+    <string name="always_load_time_stamps">Lataa Aina Postimerkit</string>
+    <string name="auto_hide_time_stamps">&gt;Piilota Ohita [Segment] Painikkeet Automaattisesti</string>
+    <string name="timestamps">Segmentit</string>
+    <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Edellyttää aikaleimoja jotka on otettava käyttöön</string>
+    <string name="hide_skip_button">Tee leimasinappi poistettavaksi 5 sekunnin kuluttua</string>
+    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="first_episode">Tämä on ensimmäinen isodi!</string>
+    <string name="reset_auto_update">Paina pitkään \"Listan muokkaus\" -painiketta nollataksesi automaattisen päivityksen</string>
+    <string name="autoplay_cancelled">Automaattinen toisto peruutettu, ei vuorovaikutusta yli 1 tunti.</string>
+    <string name="auto_select_server_error">Palvelimen automaattinen valinta epäonnistui, yritä uudelleen!</string>
+    <string name="stream_selection_empty">Ei virtoja saatavilla! Kokeile toista lähdettä.</string>
+    <string name="logging_in_mal">Kirjaudutaan MAL</string>
+    <string name="getting_user_data">Haetaan Käyttäjätietoja</string>
+    <string name="no_next_episode">Seuraavaa jaksoa ei löytynyt!</string>
+    <string name="enable_banner_animations">Kokeile ottaa käyttöön \"Banner Animations\" asetuksista</string>
+    <string name="please_login_anilist">Kirjaudu sisään Anilistilla!</string>
+    <string name="auto_update_reset">Automaattinen päivitys on nyt nollattu</string>
+    <string name="cant_wait">Ei voi odottaa, huh? hieno X(</string>
+    <string name="downloading">Ladataan…</string>
+    <string name="next_chapter_not_found">Seuraava Luku Ei Löytynyt</string>
+    <string name="first_chapter">Tämä on ensimmäinen luku!</string>
+    <string name="adult_stuff">Aikuisten Stuff?&#40; &#865;&#176; &#860;&#662; &#865;&#176; &#41;</string>
+    <string name="what_did_you_open">Mitä sinä edes aukaisit?</string>
+    <string name="error_getting_data">Virhe haettaessa tietoja Anilististä.</string>
+    <string name="empty_response">Tyhjä vastaus! Onko internet imevä, ehkä?</string>
+    <string name="error_loading_mal_user_data">Virhe ladattaessa MAL käyttäjätietoja</string>
+    <string name="error_loading_mal_data">Tietojen lataaminen MAL:ltä epäonnistui</string>
+    <string name="error_loading_anilist_user_data">Virhe ladattaessa Anilist käyttäjätietoja</string>
+    <string name="episode_not_found">Jaksoa ei löytynyt: %1$s</string>
+    <string name="list_updated">Lista Päivitetty</string>
+    <string name="deleted_from_list">Poistettu listalta</string>
+    <string name="no_list_id">Ei löytynyt listatunnusta…</string>
+    <string name="matagi_update">Himitsu Paita %1$s</string>
+    <string name="matagi_dont_show">Älä ilmoita uudelleen %1$s</string>
+    <string name="matagi_downloading">Ladataan Himitsu %1$s</string>
+    <string name="checking_for_update">Tarkistetaan päivitystä</string>
+    <string name="dont_show_again">Älä ilmoita uudelleen versiolle %1$s</string>
+    <string name="no_update_found">Päivityksiä Ei Löytynyt</string>
+    <string name="downloading_update">Ladataan Dantotsu %1$s</string>
+    <string name="permission_required">Anna käyttöoikeus tiedostoihin &amp; Kansiot Asetuksista, &amp; Yritä uudelleen.</string>
+    <string name="started_downloading">Aloitettu\n%1$s</string>
+    <string name="install_1dm">Asenna 1DM</string>
+    <string name="install_adm">Asenna ADM</string>
+    <string name="error_getting_image_data">Virhe haettaessa kuvatietoja</string>
+    <string name="loading_image_failed">Kuvan Lataaminen Epäonnistui</string>
+    <string name="copied_device_info">Kopioitavan laitteen tiedot</string>
+    <string name="anilist_down">Näyttää siltä, että Anilist on alas, ehkä yritä käyttää VPN tai voit odottaa, että se tulee takaisin.</string>
+    <string name="failed_to_load_data">Tallennetun tiedon lataaminen ei onnistunut %1$d</string>
+    <string name="access_not_available">Ei voitu saada käyttöoikeuksia</string>
+    <string name="mal_login_uri_not_found">Mal kirjautuminen : Uri ei löytynyt</string>
+    <string name="mal_login_code_challenge_not_found">Mal Login : codeChallenge ei löytynyt</string>
+    <string name="mal_login_code_not_present">Mal Login : Code not present in redirected URI</string>
+    <string name="refresh_token_load_failed">Tokenin päivitys: Tallennetun tokenin lataaminen epäonnistui</string>
+    <string name="refreshing_token_failed">Tokenin Päivitys Epäonnistui</string>
+    <string name="episode_release_countdown">Jakso %1$d vapautetaan paikassa</string>
+    <string name="chapter_number">Luku %1$d</string>
+    <string name="chapter_release_timeout">%1$s on ollut saatavilla</string>
+    <string name="time_format">%1$d päivää %2$d tuntia %3$d minuuttia %4$d sekuntia</string>
+    <string name="chapter_predication">Uusi Luku Odotettu %1$s</string>
+    <string name="chapter_delayed">Uusi luku näyttää olevan viivästynyt</string>
+    <string-array name="sort_by">
+        <item>Pisteet</item>
+        <item>Suosittu</item>
+        <item>Nousussa</item>
+        <item>Uudet Julkaisut</item>
+        <item>AZ</item>
+        <item>Z-A</item>
+        <item>Pelkkä kipu</item>
+    </string-array>
+    <string name="main_role">PÄÄLLÄ</string>
+    <string name="supporting_role">TUKI</string>
+    <string name="status_finished">LOPETA</string>
+    <string name="status_releasing">VAHVISTAMINEN</string>
+    <string name="status_not_yet_released">EI VUOSI LUOTETTAVA</string>
+    <string name="status_cancelled">PERUUTA</string>
+    <string name="status_hiatus">HIATUS</string>
+    <string name="type_adaptation">LISÄYS</string>
+    <string name="type_parent">JULKINEN</string>
+    <string name="type_character">PERUSTELUT</string>
+    <string name="type_summary">SUMMARY</string>
+    <string name="type_alternative">VAIHTOEHTO</string>
+    <string name="type_other">MUUT</string>
+    <string name="type_source">LÄHETÄ</string>
+    <string name="type_contains">SISÄLTÄÄ</string>
+    <string name="read_on_dantotsu">Lue Dantotsussa</string>
+    <string name="watch_on_dantotsu">Katso Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Näytä profiili Dantotsussa</string>
+    <string name="continue_episode">Jatka : Jakso %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Filler</string>
+    <string name="continue_chapter">Jatka : %1$s\n%2$s</string>
+    <string name="episode">"Jakso "</string>
+    <string name="episode_num">"Jakso %1$s"</string>
+    <string name="chapter">"Luku "</string>
+    <string name="chapter_num">"Luku %1$s"</string>
+    <string name="just_released">- Hiljattain julkaistu!</string>
+    <string name="checking_subscriptions_title">Tarkistetaan Tilauksia</string>
+    <string name="user_list">%1$s %2$s -luettelo</string>
+    <string name="speed">Nopeus</string>
+    <string name="auto_update">Päivitä %1$s automaattisesti eteenpäin?</string>
+    <string name="continue_from">Jatketaanko kohteesta %1$s?</string>
+    <string name="title_update_progress">Päivitä edistyminen animaatiolistalla?</string>
+    <string name="incognito_will_not_update">Incognito-tila jättää silti huomiotta edistymisen.</string>
+    <string name="dont_ask_again">"Älä kysy uudelleen %1$s"</string>
+    <string name="default_speed">Oletus Nopeus</string>
+    <string name="default_resize_mode">Oletus Muuta Kokoa</string>
+    <string name="primary_sub_color">Ensisijainen Alaväri</string>
+    <string name="outline_sub_color">Ääriviivan Alaväri</string>
+    <string name="outline_type">Ääriviivan Tyyppi</string>
+    <string name="subtitle_font">Tekstityksen Kirjasin</string>
+    <string name="yes">Kyllä</string>
+    <string name="no">Ei</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Reset</string>
+    <string name="close">Sulje</string>
+    <string name="no_chapter">Ei Lukua</string>
+    <string name="content_18">Ota käyttöön 18+ sisältö Anilisti-asetuksistasi</string>
+    <string name="available">Saatavilla</string>
+    <string name="lets_go">Mennään</string>
+    <string name="cope">Kavi</string>
+    <string name="watched_num">"Katsottu "</string>
+    <string name="read_num">"Lue "</string>
+    <string name="episodes_out_of">" ulkona "</string>
+    <string name="chapters_out_of">" ulkona "</string>
+    <string name="episodes_total_of">"Yhteensä "</string>
+    <string name="chapters_total_of">"Yhteensä "</string>
+    <string name="no_description_available">"Ei Kuvausta Saatavilla"</string>
+    <string-array name="manga_directions">
+        <item>Ylhäältä alas</item>
+        <item>Oikealta vasemmalle</item>
+        <item>Alhaalta ylös</item>
+        <item>Vasemmalta oikealle</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Pannettu</item>
+        <item>Jatkuva Sivutettu</item>
+        <item>Jatkuva</item>
+    </string-array>
+    <string name="selected">Valittu</string>
+    <string name="found">Löytyi</string>
+    <string name="age">"__Ikä:__ "</string>
+    <string name="birthday">\n\"__Syntymäpäivä:__ \"</string>
+    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="male">Mies</string>
+    <string name="female">Nainen</string>
+    <string name="question_1">Mitä Dantotsu?</string>
+    <string name="answer_1">Dantotsu on valmistettu Saikoun tuhkasta ja perustuu yksinkertaistettuun mutta state-of-the-art eleganssiin. Se on Anilist vain asiakas, jonka avulla voit myös stream &amp; Lataa Anime / Manga kautta laajennuksia. \n&gt;Dantotsu (¶ DUC; Dan-totsu) tarkoittaa kirjaimellisesti parhaita japanilaisten parhaita. No, haluamme sanoa, että tämä on paras avoimen lähdekoodin sovellus anime ja manga Android, mutta hei, Kokeile sitä itse &amp; tuomari!</string>
+    <string name="question_2">Mitkä ovat joitakin piirteitä Dantotsu?</string>
+    <string name="answer_2">Jotkin Dantotsun tunnetut ominaisuudet ovat\n\n- Helppo ja toimiva tapa molempiin, katsella anime ja lukea manga ja kevyt romaanit, Mainosvapaa.\n- Täysin avoimen lähdekoodin sovellus, jossa on mukava käyttöliittymä &amp; Animaatiot\n- kolmannen osapuolen lisäosan tuki \n- Synkronoi anime ja manga reaaliajassa AniListin kanssa. Luokittele helposti anime ja manga nykyisen tilan perusteella. (Powered by AniList)\n- Etsi kaikki ohjelmat käyttäen perusteellisesti ja usein päivitetty luettelo kaikista trendikkäistä, suosittu ja jatkuva anime perustuvat pisteisiin.\n- Näytä laajat yksityiskohdat anime esityksistä, elokuvista ja manga otsikoista. Siinä on myös kyky lähtölaskentaan seuraavan jakson airing anime. (Powered by AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Mitä eroa Stable, Beta &amp; Alpha versiot?</string>
+    <string name="answer_3">Tämä haarukka ei tarjoa erillisiä kappaleita. Lataa versio [repository](https://github.com/RepoDevil/Himitsu) on sama kuin [AbandonedCart](https://github. om/AbandonedCart) on käynnissä. Jos löydät vikoja ja olet jo päivittänyt uusimpaan versioon, voit lähettää [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Onko Dantotsu saatavilla PC:lle?</string>
+    <string name="answer_4">Tällä hetkellä ei (sekä Windowsille että Linuxille). Ei arviota, milloin se on käytettävissä. Mutta voit ladata minkä tahansa Android emulaattori ja ajaa Dantotsu siitä. Windows 11 -käyttäjille he voivat käyttää Windows-osajärjestelmää Androidille (WSA) Dantotsun käyttöön Windowsissa.</string>
+    <string name="question_5">Onko Dantotsu saatavilla iOS:lle?</string>
+    <string name="answer_5">Ei, parasta voimme tehdä on veistää Dantotsu omena.</string>
+    <string name="question_6">Miksi minun tilastojani ei päivitetä?</string>
+    <string name="answer_6">Tämä johtuu siitä, että se päivittyy 48 tunnin välein (Anilist). Jos haluat päivittää tilastojasi, voit pakottaa tilastojesi päivityksen sen jälkeen, kun olet mennyt tähän [link](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Miten Animea ladataan?</string>
+    <string name="answer_7">On olemassa kaksi tapaa ladata tällä hetkellä. Toinen on sisäinen ja toinen ulkoinen. Jos lataat sisäisesti, sitä voidaan tarkastella sovelluksessa, mutta vain sovellus voi avata tuon jakson, et voi siirtää sitä tai jakaa sitä. Toinen vaihtoehto on käyttää ulkoista latausta. Se vaatii latausmanagerin lataamaan ja erillisen videosoittimen katseltavaksi. Ulkoisia latauksia voidaan jakaa, mutta sitä ei voi tarkastella Dantotsu sovelluksessa.\n\n•Lataa sisäisesti:\n\n1. Napauta latauspainiketta.\n2. Valitse palvelin ja videon laatu.\n3. Voitto.\n\n•Lataa ulkoisesti:\n\n 1. Lataa 1DM tai ADM Google Play kaupasta.
+        \n2. Syötä sovellus, anna tallennustilan käyttöoikeus ja aseta asetukset (latausnopeus, lataaminen polku jne(valinnainen))
+        \n3. Mene nyt \`Dantotsu &gt; Asetukset &gt; Common &gt; Download Managers\` ja valitse juuri määrittämäsi latausohjelma.
+        \n4. Mene haluamaasi jaksoon ja paina minkä tahansa palvelimen latauskuvaketta. Voi olla ponnahdusikkuna, joka asettaa asetuksesi uudelleen, paina vain \"Lataa\" ja se tallennetaan ohjatulle polulle.
+
+        \n\nHuomautus: Suora lataus on mahdollista myös ilman manageria, mutta sitä ei suositella.
+\n\nNerd Huomautus: Sisäisesti ladattuja jaksoja tallennetaan \`Android/data/ani. antotsu.*/files/Anime_Downloads\`\nEt voi toistaa näitä tiedostoja, koska ne ovat \`.exo\` -muodossa, jaettuna satoihin kappaleisiin ja ne ovat salattuja.</string>
+    <string name="question_9">Miten ottaa NSFW-sisältö käyttöön?</string>
+    <string name="answer_9">Voit ottaa NSFW-sisällön käyttöön ottamalla käyttöön 18 + sisällön tästä [link](https://anilist.co/settings/media). Sinun on myös otettava käyttöön NSFW-laajennukset \`Settings &gt; Extensions &gt; NSFW extensions\` </string>
+    <string name="question_10">Miten minun MAL/Kitsu -listani tuodaan Anilistiin?</string>
+    <string name="answer_10">Tässä on miten teet sen,\n\nvienti:\n\n1. Mene tähän [link](https://malscraper. zurewebsites.net).\n2. Anna Kitsu/MAL käyttäjänimi ja lataa sekä anime että manga lista. (Ne ovat XML-muodossa)\nHuomautus: Sinun täytyy kirjoittaa valitsemasi seurantaohjelman käyttäjänimi\n\nTuo:\n\n1. Kun olet vienyt anime- ja manga-listasi Kitsu/MAL:ista, siirry nyt [here](https://anilist.co/settings/import) \n2. Valitse / pudota anime XML tiedosto laatikkoon edellä.\n→Valinta / pudota manga XML tiedosto alla olevaan ruutuun.</string>
+    <string name="question_11">Miten Anilistini / Kitsu -listojen tuonti MAL:iin?</string>
+    <string name="answer_11">Tässä on miten teet sen,\n\nvienti:\n\n1. Mene tähän [link](https://malscraper. zurewebsites.net/). \n2. Anna Anilist käyttäjänimesi/Kitsu tunnus \'Käyttäjänimi/Kitsu Käyttäjätunniste\' -laatikossa. \n3. Valitse listan tyyppi ja ota käyttöön \'update_on_import\'. \n4. Lataa tiedosto; se on .xml-muodossa. Muista ladata sekä Anime että Manga listat.\n\nTuo:\n1. Voit tuoda sen MAL tililläsi, mene tähän [link](https://myanimelist. et/import.php) ja valitse \'MyAnimeList Tuonti\' tuontityypiksi. \n2. Paina \'Valitse tiedosto \'Valitse tiedosto \'ja valitse ladatut anime/manga lista XML-tiedosto. \n3. Paina \'Tuo tietoja\'. \nOnnittelut, olet juuri tuonut valitun listan MAL tilillesi.</string>
+    <string name="question_12">Miksi en löydä tiettyä anime/manga-otsikkoa?</string>
+    <string name="answer_12">Sanotaan, että etsit Castlevaniaa Dantotsussa. Mutta Anilistilla ei ole sitä, joten Dantotsu ei myöskään.\nRatkaisu edellä mainittuun ongelmaan on seuraava:\n1) Mene mihin tahansa animeen, joka ei ole luettelossa.\n2) Mene katsella osioon.\n3) Valitse mikä tahansa lähde ja paina \'Väärä otsikko?\'.\n4) Etsi nyt Castlevania (anime jota etsit) ja valitse se.\n5) LIITTY!\n\nJos anime ei löydä näiden vaiheiden läpi, niin se on huono onni sinulle, bud. Tälläkään lähteellä ei ole sitä. Kokeile toista lähdettä.</string>
+    <string name="question_13">Miten korjata lähteet, jotka valitsevat täysin väärän nimen?</string>
+    <string name="answer_13">Dantotsu itsessään ei isännöi mitään, vaan luottaa muihin lähteisiin. Kun näytetään jaksoja, se valitsee lähteen antaman ensimmäisen tuloksen etsimisen jälkeen otsikko. Dantotsulla ei ole mitään tapaa havaita, onko se legit vai ei. Eli tässä, meillä on \'Väärä otsikko?\' aivan lähdekoodin nimen alapuolella (yläpuolella asetteluja). Voit valita oikean tuloksen / otsikon painamalla sitä ja nauttia sen jaksoista.</string>
+    <string name="question_14">Miten lukea värillinen mangas?</string>
+    <string name="answer_14">Etsitkö värillistä mangaa? Pahoittelemme, että katkaiset sen sinulle, mutta erittäin pieni määrä mangaa on värjätty versio. Ne, joilla on värillinen versio on saatavilla myös Dantotsu. Sanotaan, että haluat lukea värillisen version moottorisahamies. Seuraa sitten alla olevia ohjeita ↓\n\n1) Mene Chainsaw Man\n2) Paina \'Luettu\'\n3) Valitse mikä tahansa työlähde\n4) Paina \'Väärä nimi\'\n5) Valitse värillinen versio chainsaw mies\n6) Nauti\n\nHuomautus: Monilla lähteillä ei ole saatavilla olevaa väriversiota, vaikka se olisi saatavilla jossain Internetissä. Joten kokeile eri lähteen. Jos mikään lähteistä ei ole sitä, niin värillistä versiota haluamastasi mangasta ei yksinkertaisesti ole olemassa.</string>
+    <string name="question_15">Kädenpuristus epäonnistui? Miksi aikaleimia ei ladata?</string>
+    <string name="answer_15">Voit korjata tämän ongelman ottamalla käyttöön \'Proxy\' \n\`Settings &gt; Anime &gt; Player Settings &gt; Timestamps &gt; Proxy\`.\nJos aikaleimat eivät vielä ole ladattavissa, mutta kättelyponnahdusikkuna on korjattu, sitten episodi olet katsomassa vain ei ole aikaleimat vielä sitä.</string>
+    <string name="question_16">Etkö löydä mitään lähteestä?</string>
+    <string name="answer_16">Joitakin peruskorjauksia olisivat : \n\n• Päivitä laajennukset, jos niitä on. \n• Avaa Web View ja odota latausta. Lataamisen jälkeen mene takaisin. (Jos Web View näyttää virheen 404 tai jotain vastaavaa, Mahdollisuudet ovat, että lähde on alhaalla)\n• Käytä eri DNS asetuksista, mieluiten Libre. \n• Kokeile luotettava VPN. (Tämän jälkeen on toistettava vaihe 1) \n\nJos mikään yllä olevista vaiheista ei toimi, käytä toista lähdettä tai liity [discord](https://discord. g/invite/4HPZ5nAWwM) avun saamiseksi.</string>
+    <string name="question_17">Joitakin hyödyllisiä vinkkejä ja temppuja</string>
+    <string name="answer_17">Seuraavassa on muutamia vinkkejä ja temppuja, joita saatat tietää tai et ehkä tiedä - \n \n \n - Painamalla Dantotsu logoa asetuksissa, voit tarkistaa, onko uusia päivityksiä manuaalisesti. \n \n - Virheviestin tai tag/synonyymin painaminen kopioi sen. \n \n - Voit avata jakson muiden sovellusten kanssa pitämällä painettuna mitä tahansa palvelinta kyseisellä jaksolla. Tämä auttaa streaming episodi käyttämällä muita videosoittimia tai ladata episodi käyttäen latausten managerit. \n \n - Voit luoda mukautettuja listoja käyttämällä tätä [link](https://anilist.co/settings/lists). (sinun täytyy kirjautua sisään) \n \n - Jos jaksosi/luku ei etene automaattisesti sen jälkeen, kun olet nähnyt tai lukenut sen, sen jälkeen pidä painettuna kyseisen ankin/mangan tilapalkkia (suunnittelu/toistaminen/katseleminen/katseleminen). Seuraavan kerran aloitat luvun / lopettaa jakson, voit kompastua kun ponnahdusikkuna. Paina kyllä siellä. </string>
+    <string name="subscribed_notification">Tilataan! Vastaanotetaan ilmoituksia, kun uudet jaksot julkaistaan %1$s</string>
+    <string name="unsubscribed_notification">Tilauksen peruuttaminen, et saa mitään ilmoituksia.</string>
+    <string name="episode_plural">Jaksot</string>
+    <string name="episode_singular">Jakso</string>
+    <string name="chapter_singular">Luku</string>
+    <string name="chapter_plural">Luvut</string>
+    <string name="filter_status">"Tila : %1$s"</string>
+    <string name="filter_source">"Lähde : %1$s"</string>
+    <string name="filter_format">"Muoto : %1$s"</string>
+    <string name="filter_country">"Maa : %1$s"</string>
+    <string name="filter_sort">"Lajittele: %1$s"</string>
+    <string name="filter_exclude">"Ei %1$s"</string>
+    <string name="search_by_image">Hae kuvan mukaan</string>
+    <string name="upload_image">Lataa Kuva</string>
+    <string name="similarity_text">Yhtäläisyys: %1$s %%</string>
+    <string name="time_range">Alkaen %1$s ja %2$s</string>
+    <string name="invalid_url">Virheellinen URL</string>
+    <string name="no_anilist_id_found">Anilistitunnusta ei löytynyt</string>
+    <string name="error_loading_image">Virhe ladattaessa kuvaa</string>
+    <string name="discord_logout_success">Onnistuneesti Kirjautunut Ulos</string>
+    <string name="discord_try_again">Yritä kirjautua uudelleen</string>
+    <string name="error_loading_discord_user_data">Virhe ladattaessa Discordin käyttäjätietoja</string>
+    <string name="discord_warning"><![CDATA[Kirjautumalla sisään discordisi näyttää nyt mitä katselet ja luet Dantotsu\n\nJos olet näkymättömässä tilassa, kirjautuminen tekee sinut verkossa, kun avaat Dantotsun.\n\nTämä rikkoo Discordin TOS. \nVaikka Discord ei ole koskaan kieltänyt ketään käyttämästä Custom Rich Presence(mitä Dantotsu käyttää), sinua on silti varoitettu.\n\nDantotsu ei ole vastuussa mistään tapahtuneesta tilillesi.]]></string>
+    <string name="warning">Varoitus</string>
+    <string name="view_anime">Näytä Anime</string>
+    <string name="view_manga">Näytä Manga</string>
+    <string name="force_legacy_installer">Pakota Vanha Asentaja</string>
+    <string name="extensions_settings">Laajennukset</string>
+    <string name="NSFWExtention">Nsw- Laajennukset</string>
+    <string name="skip_loading_extension_icons">Ohita lisäosien kuvakkeiden lataus</string>
+    <string name="use_material_you">Materiaali Sinä</string>
+    <string name="use_app_theme">Käytä Sovelluksen Teemaa</string>
+    <string name="extension_specific_dns">Laajennuskohtainen DNS</string>
+    <string name="theme_">Teema:</string>
+    <string name="user_agent">Käyttäjän Agentti</string>
+    <string name="custom_theme">Mukautettu Teema:</string>
+    <string name="use_custom_theme">Muokattu Teema</string>
+    <string name="use_unique_theme_for_each_item">Teema Anime/Manga </string>
+    <string name="oled_theme_variant">OLED teemavaihtoehdot</string>
+    <string name="installed_anime">Asennettu Anime</string>
+    <string name="available_anime">Saatavilla Anime</string>
+    <string name="installed_manga">Asennettu Manga</string>
+    <string name="color_picker">Värin Valitsin</string>
+    <string name="random_selection">Satunnainen Valinta</string>
+    <string name="incognito_mode">Incognito-tila</string>
+    <string name="appwidget_text">ESIMERKKI</string>
+    <string name="configure">Määritä</string>
+    <string name="add_widget">Lisää widget</string>
+    <string name="app_widget_description">Tämä on sovelluswidgetin kuvaus</string>
+    <string name="upcoming_anime">Tuleva Anime</string>
+    <string name="airing_image">Lähetetään Kuvaa</string>
+    <string name="anime_downloads">animeDownloads</string>
+    <string name="purge_anime_downloads">Poista kaikki Anime lataukset</string>
+    <string name="purge_manga_downloads">Poista kaikki Manga Lataukset</string>
+    <string name="purge_novel_downloads">Poista kaikki Novel Downloads</string>
+    <string name="requires_android_12">Vaatii Android 12+ -version</string>
+    <string name="share_username_in_logs">Jaa käyttäjänimi lokeissa</string>
+    <string name="pinned_sources">Kiinnitetyt Lähteet</string>
+    <string name="backup_restore">Varmuuskopiointi ja palautus</string>
+    <string name="restore_settings">Tuo Asetukset</string>
+    <string name="restore_settings_underline"><u>Palauta Asetukset</u></string>
+    <string name="try_internal_cast_experimental">Kokeile Sisäistä Suoritusta (Kokeellinen)</string>
+    <string name="faq_desc">Yleisiä kysymyksiä Himitsusta</string>
+    <string name="check_app_updates_desc">Tarkista Github sovelluspäivityksiä varten</string>
+    <string name="share_username_in_logs_desc">Sisällytä käyttäjänimi kaatumisraportteihin</string>
+    <string name="devs_desc">Himitsun omat palkattomat työläiset</string>
+    <string name="forks_desc">Dantotsusta johdetut hankkeet</string>
+    <string name="disclaimer_desc">Jotain joka pitää mielessä</string>
+    <string name="use_foldable">Käytä taitettavia asetteluja</string>
+    <string name="use_foldable_desc">Sisältö mukautuu saranan kokoonpanoon</string>
+    <string name="add_shortcuts">Lisää pikakuvakkeita käynnistimelle</string>
+    <string name="add_shortcuts_desc">Lisää kohteita jatkaaksesi kuvaketta pitkään napsauttamalla</string>
+    <string name="comments">Kommentit</string>
+    <string name="newest">Uusin</string>
+    <string name="oldest">Vanhin</string>
+    <string name="highest_rated">Korkein arvostettu</string>
+    <string name="lowest_rated">Matalin pisteytys</string>
+    <string name="compare"><u>Vertaa</u></string>
+    <string name="view_following">Näytä Seuratut</string>
+    <string name="menu">valikko</string>
+    <string name="view_followers">Näytä Seuraajat</string>
+    <string name="no_fav_anime">Käyttäjällä ei ole suosikki Anime</string>
+    <string name="no_fav_manga">Käyttäjällä ei ole suosikki Manga</string>
+    <string name="fav_character">Suosikki Merkit</string>
+    <string name="fav_staff">Suosikki Henkilökunta</string>
+    <string name="stats">Tilastot</string>
+    <string name="days_watched">Katsotut päivät</string>
+    <string name="total_anime">Anime Yhteensä</string>
+    <string name="anime_mean_score">Anime Keskimääräinen Pistemäärä</string>
+    <string name="volume_read">Luettu äänenvoimakkuus</string>
+    <string name="total_manga">Manga Yhteensä</string>
+    <string name="manga_mean_score">Mangan Keskiarvo Pisteet</string>
+    <string name="about_me">Tietoja minusta</string>
+    <string name="follow">Seuraa</string>
+    <string name="following">Seurataan</string>
+    <string name="unfollow">Lopeta</string>
+    <string name="follows_you">Seuraa sinua</string>
+    <string name="mutual">Keskinäinen</string>
+    <string name="success">Onnistui</string>
+    <string name="error">Tapahtui virhe</string>
+    <string name="error_msg">Virhe: %1$s</string>
+    <string name="please_wait">Odota hetki</string>
+    <string name="upcoming">Tulevat</string>
+    <string name="no_shows_to_display">Ei näytettäviä ohjelmia</string>
+    <string name="no_media_to_display">Ei näytettävää mediaa</string>
+    <string name="extension_name">Lisäosan Nimi</string>
+    <string name="extension_version">versio</string>
+    <string name="enter_password_to_decrypt_file">Kirjoita salasanasi purkaaksesi tiedoston salauksen</string>
+    <string name="show_rotate_button">Näytä Kierrä Painike</string>
+    <string name="default_manga_settings">Mangan Oletusasetukset</string>
+    <string name="use_dark_theme">Käytä Tummaa Teemaa</string>
+    <string name="use_oled_theme">Käytä Oled-Teemaa</string>
+    <string name="scanlators">Scanlaattorit</string>
+    <string name="exporting_requires_encryption">Käyttäjätunnusten vienti vaatii salasanan salausta varten.</string>
+    <string name="manga_queue">Manga Jono (WIP)</string>
+    <string name="anime_queue">Anime Jono (WIP)</string>
+    <string name="no_offline_manga_found">Offline mangaa ei löytynyt</string>
+    <string name="sort">Järjestä</string>
+    <string name="download">Lataa</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Aseta Evästeet</string>
+    <string name="open_website">Avaa Sivusto</string>
+    <string name="log_to_file">Loki tiedostoon</string>
+    <string name="logging_warning">Voi aiheuttaa viipeen. Ota käyttöön vain, jos kohtaat ongelmia.</string>
+    <string name="share_log">Klikkaa jakaaksesi nykyisen lokitiedoston</string>
+    <string name="radius">Radius</string>
+    <string name="sampling">Näytteenotto</string>
+    <string name="blur_banners">Sumennusbannerit</string>
+    <string name="blur">Blur</string>
+    <string name="hide_scroll_bar">Piilota Vierityspalkki</string>
+    <string name="view_on_anilist">Näytä animaatiolistalla</string>
+    <string name="anilist_notification_filters">Valitse kategoria ohittaaksesi</string>
+    <string name="anilist_notifications_checking_time">Anilistien ilmoitusten päivityksen tiheys : %1$s</string>
+    <string name="comment_notification_checking_time">Kommentti ilmoitusten päivityksen taajuus : %1$s</string>
+    <string name="activities">Toiminnot</string>
+    <string name="incorrect_password">Virheellinen salasana</string>
+    <string name="password_cannot_be_empty">Salasana ei voi olla tyhjä</string>
+    <string name="unknown_file_type">Tuntematon tiedostotyyppi</string>
+    <string name="error_importing_settings">Virhe tuotaessa asetuksia</string>
+    <string name="download_manager">Latausten Hallinta</string>
+    <string name="enter_password">Anna Salasana</string>
+    <string name="invalid_file_type">Virheellinen tiedostotyyppi</string>
+    <string name="purge_confirm">Oletko varma, että haluat puhdistaa kaikki %1$s lataukset?</string>
+    <string name="delete_fail_reason">Poistaminen epäonnistui, koska… %1$s</string>
+    <string name="hide_replies">Piilota vastaukset</string>
+    <string name="view_reply">Näytä vastaus</string>
+    <string name="view_replies">Näytä vastaukset</string>
+    <string name="view_replies_count">Näytä %1$d vastausta</string>
+    <string name="replying_to">Vastataan %1$s</string>
+    <string name="delete_comment">Poista Kommentti</string>
+    <string name="delete_comment_confirm">Oletko varma, että haluat poistaa tämän kommentin?</string>
+    <string name="comment_deleted">Kommentti Poistettu</string>
+    <string name="ban_user">Estä Käyttäjä</string>
+    <string name="ban_user_confirm">Oletko varma, että haluat porttikiellon tälle käyttäjälle?</string>
+    <string name="user_banned">Käyttäjä Bannattu</string>
+    <string name="report_comment">Raportoi Kommentti</string>
+    <string name="report_comment_confirm">Ilmoita vain kommentit, jotka rikkovat sääntöjä. Oletko varma, että haluat raportoida tämän kommentin?</string>
+    <string name="comment_reported">Raportoitu Kommentti</string>
+    <string name="list">Lista</string>
+    <string name="grid">Ruudukko</string>
+    <string name="compact">Kompakti</string>
+    <string name="webview_not_installed">WebView ei asennettu</string>
+    <string name="video_quality">Laatu: %1$d</string>
+    <string name="size_unknown">Tuntematon Koko</string>
+    <string name="mb_size">%1$s Mt</string>
+    <string name="button_restore">Palauta</string>
+    <string name="button_backup">Varmuuskopio</string>
+    <string name="no_location_selected">Sijaintia ei ole valittu</string>
+    <string name="do_it">Tee se!</string>
+    <string name="password">Salasana</string>
+    <string name="anilist_broken_title">Sisäinen Palvelinvirhe!</string>
+    <string name="anilist_broken">AniList näyttää olevan reagoimaton ja toiminnallisuus on vakavasti rajoitettu. Haluatko sulkea sovelluksen ja yrittää myöhemmin uudelleen?\n</string>
+    <string name="search_title">Hae %1$s</string>
+    <string name="profile_stats_widget">Seuraa edistymistä suoraan aloitusnäytöstäsi</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Luvut</string>
+    <string name="episodes_watched_n">Jaksot</string>
+    <string name="loading">Ladataan…</string>
+    <string name="user_stats">%1$s:n Tilastot</string>
+    <string name="please">Ole hyvä</string>
+    <string name="log_in">kirjaudu sisään</string>
+    <string name="or_join">tai liity</string>
+    <string name="audio_tracks">Ääni Kappaleet</string>
+    <string name="disabled_track">\[💬\] Poistettu Käytöstä</string>
+    <string name="invalid_track">\[!?\] Virheellinen</string>
+    <string name="unknown_track">\[%1$s\] Tuntematon</string>
+    <string name="top_background_color">Ylin taustaväri</string>
+    <string name="bottom_background_color">Alaosan Taustaväri</string>
+    <string name="countdown_text_color">Lähtölaskenta Tekstin Väri</string>
+    <string name="title_color">Otsikon Väri</string>
+    <string name="stat_text_color">Tilastojen Tekstin Väri</string>
+    <string name="flipper_color">Flipperin Väri</string>
+    <string name="placeholder">Paikkamerkki</string>
+    <string name="anime_add_repository">Lisää Anime Repo</string>
+    <string name="manga_add_repository">Lisää Manga Repo</string>
+    <string name="novel_add_repository">Lisää Novel Repo</string>
+    <string name="edit_repositories">Muokkaa repoja</string>
+    <string name="rem_repository">Poistetaanko repo?</string>
+    <string name="trending_movies">Suositut Elokuvat</string>
+    <string name="include_list">Sisällytä luettelo</string>
+    <string name="top_rated">Paras pisteytetty</string>
+    <string name="most_favourite">Suosikki</string>
+    <string name="trending_manhwa">Nousussa Manhwassa</string>
+    <string name="liked_by">Tykätty</string>
+    <string name="adult_only_content">Vain aikuisten sisältö</string>
+    <string name="report">Raportoi</string>
+    <string name="ban">Estä</string>
+    <string name="activity_label">Toiminta</string>
+    <string name="dir_error">Polkua ei voitu asettaa</string>
+    <string name="dir_access">Latausten käyttöoikeus</string>
+    <string name="dir_access_msg">Ole hyvä ja valitse kansio, jolla voit tallentaa latauksia</string>
+    <string name="download_subtitle">Lataa Tekstitys</string>
+    <string name="change_download_location">Muuta Latauspaikkaa</string>
+    <string name="download_location_msg">Oletko varma, että haluat muuttaa lataussijaintia?\nVanhat lataukset eivät välttämättä ole enää käytettävissä.</string>
+    <string name="voice_actors">Äänioperaattorit</string>
+    <string name="download_permission_required">Lupa tarvitaan ladattavaksi</string>
+    <string name="media">Media</string>
+    <string name="users">Käyttäjät</string>
+    <string name="social">Sosiaalinen</string>
+    <string name="auto_skip_recap">Auto Skip Recap</string>
+    <string name="use_anilist_icon">Käytä Animaatiokuvaketta</string>
+    <string name="exo_source_exception">Lähdepoikkeus: %1$s</string>
+    <string name="exo_decoding_failed">Purkaminen epäonnistui: %1$s</string>
+    <string name="exo_player_error">Pelaajan Virhe: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilist, MAL ja Discord.\nMitä muuta tarvitset?</string>
+    <string name="theme_desc">Vaihda sovelluksesi väriä</string>
+    <string name="extensions_desc">Hallitse repokokoelmaa</string>
+    <string name="common_desc">Lataukset, DNS ja oletukset</string>
+    <string name="anime_desc">Valitse, miten katsot</string>
+    <string name="manga_desc">Valitse, miten luet</string>
+    <string name="notifications_desc">Muokkaa uutisia ja päivityksiä</string>
+    <string name="system_desc">Päivitykset ja hyödylliset apuohjelmat</string>
+    <string name="about_desc">Lue lisää Himitsusta</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Lisäosat ovat Dantotsu lisäominaisuuksia moduuleja.</string>
+    <string name="torrent_addon">Torrent-Lisäosa</string>
+    <string name="enable">Aktivoi</string>
+    <string name="anime_downloader_addon">Anime Lataja Lisäosa</string>
+    <string name="loaded_successfully">Ladattu Onnistuneesti</string>
+    <string name="not_installed">Ei Asennettu</string>
+    <string name="torrent_extension_not_supported">Torrent- laajennusta ei tueta tällä laitteella</string>
+    <string name="update_addon">Päivitä Lisäosa</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Latausta ei löytynyt</string>
+    <string name="default_novel_settings">Novel Oletusasetukset</string>
+    <string name="line_height">Rivin Korkeus</string>
+    <string name="margin">Liikkumavara</string>
+    <string name="maximum_inline_size">Suurin Sisäinen Koko</string>
+    <string name="maximum_column_width">Sarakkeen suurin leveys (vaakasuora kirjoitus) tai korkeus (pystysuora kirjoitus)</string>
+    <string name="maximum_block_size">Lohkon Enimmäiskoko</string>
+    <string name="maximum_height">Enimmäiskorkeus (vaakasuora kirjoitus) tai leveys (pystysuora)</string>
+    <string name="global">Globaali</string>
+    <string name="china">Kiina</string>
+    <string name="south_korea">Etelä-Korea</string>
+    <string name="japan">Japani</string>
+    <string name="taiwan">Taiwan</string>
+    <string name="something">Jotain</string>
+    <string name="image">Kuva</string>
+    <string name="sort_score">Pisteet</string>
+    <string name="popular">Suosittu</string>
+    <string name="trending">Nousussa</string>
+    <string name="new_releases">Uudet Julkaisut</string>
+    <string name="a_z">AZ</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Puhdas Kipu</string>
+    <string name="add_a_comment">Lisää kommentti…</string>
+    <string name="type">Tyyppi</string>
+    <string name="view">Näytä</string>
+    <string name="count">MAA</string>
+    <string name="open">Avaa</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Vastaa</string>
+    <string name="time">Aika</string>
+    <string name="player_settings_desc">Kaikki soittimeen liittyvät asetukset</string>
+    <string name="purge_anime_downloads_desc">Poista kaikki ladatut Anime</string>
+    <string name="prefer_dub_desc">Valitse oletusarvoisesti duboitu media</string>
+    <string name="show_yt_desc">Näytä YouTube-linkit tuetulle medialle</string>
+    <string name="include_list_anime_desc">Sisällytä listan kohteita Anime Tapa sivulle</string>
+    <string name="ui_settings_desc">Kaikki käyttöliittymään liittyvät asetukset</string>
+    <string name="download_manager_select_desc">Oletus manageri ladata Anime</string>
+    <string name="backup_restore_desc">Luo ja palauta varmuuskopiot valituista asetuksista</string>
+    <string name="change_download_location_desc">Muuta sijaintia, jossa lataukset pidetään</string>
+    <string name="always_continue_content_desc">Jatka kohteita, joista jätit pois</string>
+    <string name="search_source_list_desc">Siirtyy seuraavalle palvelimelle, jos sisältöä ei löydy</string>
+    <string name="recentlyListOnly_desc">Näytä vain luettelosi kohteet viimeisessä välilehdessä</string>
+    <string name="adult_only_content_desc">Näytä vain aikuisen sisältö tutkimussivulla</string>
+    <string name="anime_add_repository_desc">Lisää Anime laajennuksen repot kokoelmaan</string>
+    <string name="manga_add_repository_desc">Lisää Manga lisäosien varastot kokoelmaan</string>
+    <string name="user_agent_desc">Vaihda oletuskäyttäjän agenttia</string>
+    <string name="force_legacy_installer_desc">Käytä aikeita pyytääksesi paketin asennusta</string>
+    <string name="skip_loading_extension_icons_desc">Älä lataa lisäosien kuvakkeita managerissa</string>
+    <string name="NSFWExtention_desc">Poista lohkot käytöstä kaikki laajennukset millä tahansa 18+ sisällöllä</string>
+    <string name="reader_settings_desc">Kaikki lukijaan liittyvät asetukset</string>
+    <string name="purge_manga_downloads_desc">Poista kaikki ladatut Manga</string>
+    <string name="purge_novel_downloads_desc">Poista kaikki ladatut romaanit</string>
+    <string name="include_list_desc">Sisällytä listan kohteet Manga -tutkimussivulle</string>
+    <string name="anilist_notification_filters_desc">Valitse kategoria joka jätetään huomiotta</string>
+    <string name="anilist_notifications_checking_time_desc">Määritä taajuus, jonka haluat sovelluksen tarkistavan Anilistin ilmoitukset</string>
+    <string name="comment_notification_checking_time_desc">Määritä taajuus, jonka haluat sovelluksen tarkistavan Kommentin ilmoitukset</string>
+    <string name="notification_for_checking_subscriptions_desc">Näytä ilmoitus tilausten tarkistamiseen</string>
+    <string name="use_alarm_manager_reliable_desc">Käytä puhelimen akun optimoinnin ohittamiseen</string>
+    <string name="oled_theme_variant_desc">Niin tumma kuin se saa</string>
+    <string name="use_material_you_desc">Käytä samaa väriä kuin taustakuva</string>
+    <string name="use_unique_theme_for_each_item_desc">Käytä väriä median bannerista</string>
+    <string name="use_custom_theme_desc">Käytä teeman omaa väriä</string>
+    <string name="color_picker_desc">Valitse väri</string>
+    <string name="install_torrent_addon">Asenna Torrent- Lisäosa</string>
+    <string name="failed_ext_install_conflict">Laajennuksen asennus epäonnistui konfliktin vuoksi</string>
+    <string name="no_video_selected">Videota Ei Valittu</string>
+    <string name="download_extension_not_available">Latauslaajennus ei ole käytettävissä</string>
+    <string name="feed">Syöte</string>
+    <string name="profile">Profiili</string>
+    <string name="epub_download_exception">Poikkeus .epubin latauksessa: %1$s</string>
+    <string name="novel_download_progress">Uutta Latausta Edistyminen</string>
+    <string name="download_started">Lataus aloitettu</string>
+    <string name="downloads_completed">Kaikki lataukset valmiit</string>
+    <string name="pending_downloads">Odottavat lataukset: %1$d</string>
+    <string name="reading">LUE</string>
+    <string name="watching">VAROITUS</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Cover]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Päivitä WebView Google Playsta</string>
+    <string name="update_webview_version">Webview versio %1$d vaatii päivityksen</string>
+    <string name="webview_not_found_version">WebView-versiota %1$s ei löydy</string>
+    <string name="webview_not_found">Asennettua WebView-kirjastoa ei löytynyt</string>
+    <string name="multi">Moni</string>
+</resources>

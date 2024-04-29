@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="cs">
+    <string name="slogan">NEW Best Anime &amp; Manga app pro Android.</string>
+    <string name="login">Přihlásit se</string>
+    <string name="logout">Odhlásit se</string>
+    <string name="conversion_title">Vítejte zpět!</string>
+    <string name="conversion_message">Zdá se, že máte nainstalovaný starší balíček.\nProsím vyberte \"Zálohovat\" pro otevření starší verze a proveďte zálohu. Poté se můžete vrátit do této aplikace a použít \"Nastavení obnovení\".</string>
+    <string name="backup">Záloha</string>
+    <string name="home">Domů</string>
+    <string name="anime">Anime</string>
+    <string name="browse_anime">Procházet Anime</string>
+    <string name="manga">Manga</string>
+    <string name="browse_manga">Procházet Manga</string>
+    <string name="novels">Novinky</string>
+    <string name="info">Info</string>
+    <string name="watch">Sledujte</string>
+    <string name="read">Číst</string>
+    <string name="language">Jazyk</string>
+    <string name="anime_list">Anime seznam</string>
+    <string name="manga_list">Seznam Manga</string>
+    <string name="sad">X(</string>
+    <string name="oh">:o</string>
+    <string name="colon">" : "</string>
+    <string name="no_internet">Žádné připojení k Internetu</string>
+    <string name="no_internet_connection">Není k dispozici žádné připojení k Internetu\nOffline režim</string>
+    <string name="refresh">Aktualizovat</string>
+    <string name="search">Hledat</string>
+    <string name="extension_search">Reverzní hledání zdroje</string>
+    <string name="search_results">Výsledky hledání</string>
+    <string name="sort_by">Seřadit podle</string>
+    <string name="genre">Žánr</string>
+    <string name="top_score">Nejlepší skóre</string>
+    <string name="updated">Nedávno aktualizováno</string>
+    <string name="trending_anime">Populární Anime</string>
+    <string name="popular_anime">Populární Anime</string>
+    <string name="trending_manga">Trending Manga</string>
+    <string name="trending_novel">Populární Novel</string>
+    <string name="popular_manga">Populární Manga</string>
+    <string name="username">Uživatelské jméno</string>
+    <string name="chapters_read">Kapitoly čteny</string>
+    <string name="episodes_watched">Epizody sledovány</string>
+    <string name="continue_reading">Pokračovat ve čtení</string>
+    <string name="continue_watching">Pokračovat ve sledování</string>
+    <string name="continue_media">Pokračovat…</string>
+    <string name="recommended">Doporučené</string>
+    <string name="get_recommendations">Sledujte / Číst nějaké Anime nebo Manga pro získání doporučení</string>
+    <string name="empty">Vše bylo zachyceno, když nové?</string>
+    <string name="action_settings">Nastavení</string>
+    <string name="add">Přidat do seznamu</string>
+    <string name="list_editor">Editor seznamů</string>
+    <string name="add_fav">Přidat do Oblíbených</string>
+    <string name="notifications">Oznámení</string>
+    <string-array name="keys">
+        <item>Čtení</item>
+        <item>Sledování</item>
+        <item>Dokončeno</item>
+        <item>Pozastaveno</item>
+        <item>Zrušeno</item>
+        <item>Plánování</item>
+        <item>Oblíbené</item>
+        <item>Přepínání</item>
+        <item>Opakování</item>
+        <item>Vše</item>
+    </string-array>
+    <string name="no_notifications">Žádné další oznámení</string>
+    <string name="followers">Sledující</string>
+    <string name="social_in_media">Sociální statistiky v médiích</string>
+    <string name="social_in_media_desc">Zobrazit hodnocení přátel a postup</string>
+    <string name="status">STAV</string>
+    <string-array name="status_anime">
+        <item>PLÁNOVÁNÍ</item>
+        <item>WATCHING</item>
+        <item>DOKONČENO</item>
+        <item>ZPĚTNÁ ÚPRAVA</item>
+        <item>POZASTAVENO</item>
+        <item>ZRUŠENO</item>
+    </string-array>
+    <string-array name="status_manga">
+        <item>PLÁNOVÁNÍ</item>
+        <item>ČTENÍ</item>
+        <item>DOKONČENO</item>
+        <item>ČTENÍ</item>
+        <item>POZASTAVENO</item>
+        <item>ZRUŠENO</item>
+    </string-array>
+    <string name="progress">PROGRAM</string>
+    <string name="score">SLEVA</string>
+    <string name="score_suffix">" / 10"</string>
+    <string name="started_at">ZASTAVENO V</string>
+    <string name="completed_at">VYPLNĚN v</string>
+    <string name="save">Uložit</string>
+    <string name="delete">Vymazat</string>
+    <string name="remove">Odebrat</string>
+    <string name="name">Název</string>
+    <string name="name_romaji">Jméno Romaji</string>
+    <string name="mean_score">Střední skóre</string>
+    <string name="format">Formát</string>
+    <string name="status_title">Stav</string>
+    <string name="total_eps">Epizody celkem</string>
+    <string name="episodes"> Epizody</string>
+    <string name="chapters"> Kapitola (kapitoly)</string>
+    <string name="total_divider"> | %1$s</string>
+    <string name="total_chaps">Kapitoly celkem</string>
+    <string name="ep_duration">Průměrná doba trvání</string>
+    <string name="min">" minuty"</string>
+    <string name="season">Sezóna</string>
+    <string name="start_date">Datum zahájení</string>
+    <string name="end_date">Datum ukončení</string>
+    <string name="source">Zdroj</string>
+    <string name="main_studio">Studio</string>
+    <string name="genres">Genres</string>
+    <string name="description">Synopsis</string>
+    <string name="characters">Znaky</string>
+    <string name="relations">Vztahy</string>
+    <string name="staff">Zaměstnanci</string>
+    <string name="favourites">Oblíbené</string>
+    <string name="popularity">Oblíbenost</string>
+    <string name="roles">Role</string>
+    <string name="details">Detaily</string>
+    <string name="play_yt">Hrát na YouTube</string>
+    <string name="eps">Epizody</string>
+    <string name="ep">Epizoda</string>
+    <string name="chaps">Kapitola</string>
+    <string name="chap">KAPITOLA 1 1 —</string>
+    <string name="wrong"><u>Špatný název?</u></string>
+    <string name="source_not_found">        Nelze najít žádný X( \n
+        Zkuste jiný zdroj.
+    </string>
+    <string name="not_supported">%1$s není podporován!</string>
+    <string name="server_selector">Vybrat server</string>
+    <string name="auto_select_server">Automatický výběr serveru</string>
+    <string name="make_default">Nastavit výchozí</string>
+    <string name="filler">Vyplňovat</string>
+    <string name="adult">Dospělý</string>
+    <string name="list_only">Pouze seznam</string>
+    <string name="tag">Značka</string>
+    <string name="tags">Štítky</string>
+    <string name="synonyms">Synonyma</string>
+    <string name="trailer">Přípojný vůz</string>
+    <string name="opening">Otevírání</string>
+    <string name="ending">Ukončení</string>
+    <string name="prequel">Frekvence</string>
+    <string name="sequel">Posloupnost</string>
+    <string name="installed">Nainstalováno</string>
+    <string name="torrserver">TorrServer</string>
+    <string name="torrent_running">Server běží…</string>
+    <string name="settings_torrent">Interní TorrServer</string>
+    <string name="enable_server">Povolit TorrServer</string>
+    <string name="enable_server_desc">Umožňuje používání místního serveru na vyžádání</string>
+    <string name="torrent_port">Číslo portu serveru</string>
+    <string name="torrents">torrenty</string>
+    <string name="active_torrents">Aktivní torrenty</string>
+    <string name="remove_torrent">Odstranit tento torrent?</string>
+    <string name="invalid_port">Zadán neplatný port!</string>
+    <string name="port_range">Přístav musí být platný TCP port (0 – 65535)</string>
+    <string name="server_disabled">TorrServer je zakázán!</string>
+    <string name="server_enabled">Spouštění TorrServer</string>
+    <string name="enable_server_temp">Chcete dočasně povolit TorrServer (zakázáno při uzavření aplikace)?</string>
+    <string name="anilist_settings">Nastavení Anilistu</string>
+    <string name="extension_settings">Rozšíření</string>
+    <string name="downloads">Stahování</string>
+    <string name="offline_mode">Offline režim</string>
+    <string name="settings">Nastavení</string>
+    <string name="extensions">Rozšíření</string>
+    <string name="extension_updates_available">Aktualizace rozšíření jsou k dispozici</string>
+    <string name="player_settings">Nastavení přehrávače</string>
+    <string name="recentlyListOnly">Pouze můj obsah v \"Nedávno aktualizovaný\"</string>
+    <string name="download_manager_select">Správce stahování</string>
+    <string name="downloadInSd">Stáhnout na SD kartu</string>
+    <string name="noSdFound">Nebyla nalezena žádná SD karta.</string>
+    <string name="reader_settings">Nastavení čtečky</string>
+    <string name="default_source">Výchozí zdroj</string>
+    <string name="show_yt">Zobrazit odkaz na Youtube</string>
+    <string name="default_ep_view">Výchozí rozložení epizody</string>
+    <string name="default_chp_view">Výchozí rozložení kapitoly</string>
+    <string name="ui">Uživatelské rozhraní</string>
+    <string name="common">Běžný</string>
+    <string name="theme">Téma</string>
+    <string name="theme_ui">Šablona / UI</string>
+    <string name="day_night">Světlý / tmavý motiv</string>
+    <string name="ui_settings">Nastavení uživatelského rozhraní</string>
+    <string name="system">Systém</string>
+    <string name="about">O aplikaci</string>
+    <string name="desc">"    Dantotsu se vyrábí z popela Saiku a je založen na zjednodušující, ale nejmodernější eleganci. Je to Anilist pouze klient, který vám také umožní stream-download Anime prostřednictvím rozšíření &amp; Manga.\nDantotsu doslova znamená \"nejlepší z nejlepších\" v japanech. No, rádi bychom řekli, že je to nejlepší open source aplikace pro anime a manga na Android, co byste řekli?"</string>
+    <string name="devs">Přispěvatelé</string>
+    <string name="disclaimer">Odmítnutí odpovědnosti</string>
+    <string name="full_disclaimer">         - Dantotsu sám poskytuje pouze anime a manga tracker a neposkytuje žádné anime nebo manga streamování nebo stahování.
+        \n\n - Dantotsu nebo žádný jeho vývojář/personál nehostí žádný obsah nalezený v Dantotsu. Jakékoliv a všechny obrázky a informace o animech/mangě nalezené v aplikaci jsou převzaty z různých veřejných API (AniList, MyAnimeList, Kitsu).
+        \n\n - kromě toho všechny anime/manga odkazy nalezené v Dantotsu jsou odebrány z různých pluginů třetích stran a nemají žádné přičlenění s Dantotsu nebo jeho zaměstnanci.
+        \n\n - Dantotsu nebo jeho majitelé neodpovídají za zneužití žádného obsahu nacházejícího se uvnitř nebo vně aplikace a nelze je hnát k odpovědnosti za distribuci žádného obsahu nacházejícího se v aplikaci.
+        \n\n - Používáním Dantotsu, dodržíte skutečnost, že vývojář aplikace není odpovědný za žádný obsah v aplikaci. Souhlasíte také se skutečností, že nemůžete používat Dantotsu ke stažení nebo vysílání jakéhokoli obsahu chráněného autorskými právy.
+        \n\n – Pokud se jedná o porušení internetu, kontaktujte prosím zdrojovou stránku. Vývojář nepřevezme žádnou právní odpovědnost.
+    </string>
+    <string name="version_current">Verze %1$s</string>
+    <string-array name="tips">
+        <item>Můžete dlouhým kliknutím na epizodu/kapitolu označit ji jako přečtenou.</item>
+        <item>Dlouhým kliknutím můžete přímo otevřít Editor seznamu.</item>
+        <item>V aplikaci je ukryto několik více východních vajec.</item>
+        <item>Výzva: Jděte na konec Populární Anime &amp; Manga</item>
+        <item>Zkuste dlouze kliknout na název seriálu.</item>
+        <item>Zatracený, proč ztrácíte svůj čas?</item>
+        <item>Dlouhým kliknutím můžete zkopírovat tuto zprávu.</item>
+        <item>OMG LOOK! NEMŮŽE ZOBRAZIT EASTERE!?</item>
+        <item>Víte, komu se tato animace líbí?</item>
+        <item>Podpora MAL?</item>
+        <item>Novely? Více jako Ne.</item>
+        <item>Pro kontrolu aktualizací klikněte na logo</item>
+    </string-array>
+    <string-array name="themes">
+        <item>Výchozí</item>
+        <item>Šablona 1</item>
+        <item>Šablona 2</item>
+        <item>Šablona 3</item>
+        <item> Šablona 4</item>
+    </string-array>
+    <string name="video">Video</string>
+    <string name="video_info">Zobrazit informace o videu</string>
+    <string name="source_info">Zobrazit název zdroje</string>
+    <string name="video_info_info">Zobrazuje, jaké rozlišení aktuálního přehrávání videa, užitečné pro <b>\"Multi Quality\"</b>.</string>
+    <string name="default_quality">Automatický výběr kvality</string>
+    <string name="height">Výška</string>
+    <string name="width">Width</string>
+    <string name="default_quality_info">Automaticky používá nejbližší kvalitu poskytnutou ve výchozím nastavení, pouze pokud se používá pro \"Multi Quality\" servery. Automaticky se změní při přehrávání videa.</string>
+    <string name="default_playback_speed">Výchozí rychlost přehrávání: %1$s</string>
+    <string name="cursed_speeds">Zakřivené rychlosti</string>
+    <string name="resize_mode_button">Výchozí režim změny velikosti</string>
+    <string name="subtitles">Titulky</string>
+    <string name="subtitle_toggle">Titulky</string>
+    <string name="primary_sub_color_select">Barva titulků</string>
+    <string name="secondary_sub_color_select">Barva obrysu titulků</string>
+    <string name="secondary_sub_outline_type_select">Typ titulku</string>
+    <string name="sub_background_color_select">Barva pozadí titulků</string>
+    <string name="sub_window_color_select">Barva okna titulků</string>
+    <string name="sub_window_color_info">"Okno titulků je část vlevo a vpravo od nich (kde je pozadí n't)"</string>
+    <string name="sub_color_info"><b>Poznámka:</b> Změna výše uvedeného nastavení ovlivňuje pouze Soft-Subtitles!</string>
+    <string name="sub_alpha">Průhlednost titulků</string>
+    <string name="sub_text_example">Příklad podb</string>
+    <string name="sub_font_select">Písmo titulků</string>
+    <string name="subtitle_font_size">Velikost titulků</string>
+    <string name="no_subs_available">Nejsou k dispozici žádné titulky</string>
+    <string name="auto">Automaticky</string>
+    <string name="auto_play_next_episode">Automaticky přehrát další epizodu</string>
+    <string name="auto_play_next_episode_info">Automaticky zakáže pokud po 1 hodině nedojde k žádné interakci s přehrávačem.</string>
+    <string name="auto_skip_fillers">Automaticky přeskočit Fillery</string>
+    <string name="auto_skip_fillers_info">Přeskočí výplňové epizody při přechodu na další epizodu.</string>
+    <string name="update_progress">Probíhá aktualizace</string>
+    <string name="ask_update_progress_anime">Zeptat se na každou dobu \"individuálně\"</string>
+    <string name="ask_update_progress_manga">Zeptat se na každou Mangu \"individuálně\"</string>
+    <string name="ask_update_progress_info_ep">Vypnutí vždy automaticky aktualizuje průběh epizody.</string>
+    <string name="ask_update_progress_info_chap">Vypnutí automaticky aktualizuje průběh při čtení kapitoly.</string>
+    <string name="ask_update_progress_chapter_zero">Průběh aktualizace pro kapitolu 0</string>
+    <string name="ask_update_progress_info_zero">Zapnutí přidá nově zahájené položky do Anilisty s postupem nastaveným v kapitole 0.</string>
+    <string name="ask_update_progress_hentai">Průběh aktualizace pro Hentai</string>
+    <string name="ask_update_progress_doujin">Průběh aktualizace pro Dougjins</string>
+    <string name="very_bold">velmi tučné od vás</string>
+    <string name="watch_complete_percentage">Procento aktualizace</string>
+    <string name="watch_complete_percentage_info">Procento vašeho anilistického postupu by mělo být aktualizováno po sledování epizody. \nTo také nastaví \% pro kdy načíst odkazy pro další epizodu.</string>
+    <string name="behaviour">Chování</string>
+    <string name="always_continue">Vždy pokračovat z časové značky</string>
+    <string name="pause_video_focus">Pozastavit, pokud není v ostření</string>
+    <string name="gestures">Hlasitost &amp; Gesta jasu</string>
+    <string name="double_tap">Dvojitým poklepáním posoudíte</string>
+    <string name="fast_forward">Rychlé vpřed</string>
+    <string name="double_tap_info">Vypnutí zobrazí rychle dopředu &amp; tlačítka rewind</string>
+    <string name="seek_time">Čas hledání</string>
+    <string name="seek_time_info">Doba v sekundách pro rychlý dopředu &amp; rewind.</string>
+    <string name="skip_time">Čas přeskočení</string>
+    <string name="skip_time_info">Nastavení na 0, skryje tlačítko Přeskočit.</string>
+    <string name="show_cast_button">Zobrazit tlačítko přehrávání</string>
+    <string name="show_cast_button_info">Vyžaduje aplikaci \"Web Video Caster\" k odeslání.</string>
+    <string name="picture_in_picture">Obrázek v obrázku</string>
+    <string name="always_minimize">Vždy minimalizovat</string>
+    <string name="always_minimize_info">Vyžaduje povolení PiP, dělá hráč chovat se jako YouTube Player ale lepší.\nTaké skryje tlačítko PiP.</string>
+    <string name="app">Aplikace</string>
+    <string name="immersive_mode">Skrýt stavovou lištu</string>
+    <string name="immersive_modelist">Skrýt stavovou lištu pro seznam</string>
+    <string name="immersive_mode_info">Pro úplné použití vyžaduje restart aplikace.</string>
+    <string name="home_layout_show">Zobrazit/skrýt rozložení na domovské stránce</string>
+    <string-array name="home_layouts">
+        <item>Pokračovat ve sledování</item>
+        <item>Oblíbená Anime</item>
+        <item>Plánované Anime</item>
+        <item>Pokračovat ve čtení</item>
+        <item>Oblíbená Manga</item>
+        <item>Plánovaná Manga</item>
+        <item>Doporučené</item>
+    </string-array>
+    <string name="startUpTab">Výchozí panel Start Up</string>
+    <string name="small_view">Malé zobrazení v populárních seriálech</string>
+    <string name="animations">Animace</string>
+    <string name="banner_animations">Animace banneru</string>
+    <string name="layout_animations">Animace rozložení</string>
+    <string name="trending_scroller">Právě populární rolník</string>
+    <string name="animation_speed">Celková rychlost</string>
+    <string name="empty_fav">Vypadá to, že se vám nic nelíbí,\nZkuste se líbit seriál, abyste si ho udrželi zde.</string>
+    <string name="fav_anime">Oblíbená Anime</string>
+    <string name="fav_manga">Oblíbená Manga</string>
+    <string name="restart_app">Restartovat aplikaci?</string>
+    <string name="next">Další</string>
+    <string name="previous">Předchozí</string>
+    <string name="current_page">Aktuální stránka</string>
+    <string name="dubbed">Dubovaný</string>
+    <string name="subbed">Podložené</string>
+    <string name="prefer_dub">Preferovat Dubbed Anime</string>
+    <string name="none">Nic</string>
+    <string name="selected_dns">Vybrané DNS</string>
+    <string name="dns_info">Změnit, pokud váš ISP blokuje zdroj</string>
+    <string name="keep_screen_on">Ponechat obrazovku zapnutou</string>
+    <string name="layout">Rozložení</string>
+    <string name="spaced_pages">Mezery stránek</string>
+    <string name="direction">Směr</string>
+    <string name="comments_api">API komentářů (soukromý)</string>
+    <string name="disable_mitm">Zabránit vniknutí (\"Pranks\")</string>
+    <string name="general">Obecná ustanovení</string>
+    <string name="show_system_bars">Zobrazit stav &amp; Navigační lišty</string>
+    <string name="auto_detect_webtoon">Automaticky rozpoznat webtoon</string>
+    <string name="auto_detect_webtoon_info">Pokud Manga není z Japonska, čtečka bude výchozí v nastavení Webtoon Reader</string>
+    <string name="default_settings">Výchozí nastavení</string>
+    <string name="horizontal_scroll_bar">Horizontální posuvná lišta</string>
+    <string name="dual_page">Dvojitá stránka</string>
+    <string name="dual_page_info">Zobrazí 2 obrázky na jedné stránce, budou vypadat podivně, pokud obrázky nejsou stejné velikosti</string>
+    <string name="true_colors">Skutečné barvy</string>
+    <string name="true_colors_info">(32-bitový barevný režim) Sníží Banding na obrázcích, může ovlivnit výkon.</string>
+    <string name="image_rotation">Otáčení obrázku</string>
+    <string name="hide_page_numbers">Skrýt čísla stránky</string>
+    <string name="sort_by_title">Seřadit podle názvu</string>
+    <string name="sort_by_last_updated">Seřadit podle poslední aktualizace</string>
+    <string name="sort_by_score">Seřadit podle skóre</string>
+    <string name="sort_by_airing">Seřadit podle dalšího létání</string>
+    <string name="over_scroll">Přeskočit na další/předchozí kapitolu</string>
+    <string name="volume_buttons">Změnit stránky pomocí tlačítek hlasitosti</string>
+    <string name="list_private">Soukromé</string>
+    <string name="wrap_images">Wrap Images</string>
+    <string name="wrap_images_info">Většinou užitečné pro větší zařízení, odebere prostor mezi obrázky, pokud existují.</string>
+    <string name="reload">Reload</string>
+    <string name="share">Sdílet</string>
+    <string name="skip">Přeskočit</string>
+    <string name="other">Ostatní</string>
+    <string name="total_repeats">CELKOVÉ ZRUŠENÍ</string>
+    <string name="custom_lists">Vlastní seznamy</string>
+    <string name="donate_desc">Chcete podpořit Himitsu?\nZvažte darování</string>
+    <string name="donate_goal">Žádný darovací cíl</string>
+    <string name="filter">Filtr</string>
+    <string name="year">Rok</string>
+    <string name="apply">Použít</string>
+    <string name="cancel">Zrušit</string>
+    <string name="edit">Upravit</string>
+    <string name="this_season">Tato sezóna</string>
+    <string name="next_season">Další sezóna</string>
+    <string name="previous_season">Předchozí sezóna</string>
+    <string name="include_media_in_list">Zahrnout seznam</string>
+    <string name="release_calendar">Kalendář</string>
+    <string name="planned_anime">Plánované Anime</string>
+    <string name="planned_manga">Plánovaná Manga</string>
+    <string name="image_long_clicking">Dlouhým klepnutím otevřete obrázek</string>
+    <string name="always_continue_content">Pokračovat v dříve otevřených položkách</string>
+    <string name="search_source_list">Hledat další dostupný zdroj</string>
+    <string name="timestamp_proxy_desc">Užitečné, pokud se vám nedaří ručně ovládat</string>
+    <string name="timestamp_proxy">Použít proxy pro časová razítka</string>
+    <string name="check_app_updates">Zkontrolovat aktualizace</string>
+    <string name="author">Autor</string>
+    <string name="forks">Verze</string>
+    <string name="faq">Nejčastější dotazy</string>
+    <string name="accounts">Účty</string>
+    <string name="myanimelist">MyAnimeList</string>
+    <string name="login_with_anilist">Přihlásit se pomocí Anilist</string>
+    <string name="anilist">Anilista</string>
+    <string name="account_help">Jak to funguje\?</string>
+    <string name="full_account_help">        Dantotsu je antilistická aplikace, takže pro synchronizaci s Vaším MAL účtem potřebuje anonymistický účet.
+        \nPo přihlášení s Anilistickými i MAL účty, aplikace automaticky aktualizuje váš MAL účet kdykoli:
+        \n- Přidat nové Médium
+        \n- Upravit Médium
+        \n- Odstranit Médium
+
+        \n\nPoznámka: Aplikace nebude synchronizovat staré Médium z Anilist do MAL, Je doporučeno je synchronizovat.
+        \n- Zkontrolujte __FAQs__ pro _Snadnou metodu_
+
+        \n\na pro _Intermediates_ :
+        \n- [Jak synchronizovat anonymní data s MAL](https://anilist. o/forum/thread/2654)
+        \n- [Jak synchronizovat MAL data s Anilistem](https://anilist. o/forum/thread/3393)
+
+        \n\n_Není nutné synchronizovat MAL i Anilist účty.
+    </string>
+    <string name="notification_for_checking_subscriptions">Zobrazit oznámení pro kontrolu předplatného</string>
+    <string name="use_alarm_manager">Použít správce alarmu</string>
+    <string name="use_alarm_manager_reliable">Použít správce alarmu (Relable Notifications)</string>
+    <string name="use_alarm_manager_confirm">Použití Poplašného zařízení může pomoci v boji proti optimalizaci baterie, ale může spotřebovávat více baterie. Vyžaduje to také oprávnění pro správce poplachů.</string>
+    <string name="use">Použití</string>
+    <string name="checking_subscriptions">Oznámení o kontrole předplatného</string>
+    <string name="subscriptions_checking_time_s">Frekvence aktualizace předplatného : %1$s</string>
+    <string name="subscriptions_checking_time">Frekvence aktualizace předplatného</string>
+    <string name="subscriptions_info">Čas Dantotsu na kontrolu nových epizod / kapitol\n(méně času spotřebovává více baterie)</string>
+    <string name="do_not_update">Neaktualizovat</string>
+    <string name="loading_chap_number">Načítání kapitoly %1$s</string>
+    <string name="sort_by_release_date">Seřadit podle data vydání</string>
+    <string name="crop_borders">Oříznout hranice</string>
+    <string name="note">POZNÁMKA</string>
+    <string name="manage_extension_repos">Správa repozitářů rozšíření</string>
+    <string name="installing_extension">Instalace rozšíření</string>
+    <string name="installation_failed">Instalace se nezdařila: %1$s</string>
+    <string name="installation_complete">Instalace dokončena</string>
+    <string name="extension_has_been_installed">Rozšíření bylo úspěšně nainstalováno.</string>
+    <string name="extension_installed">Rozšíření nainstalováno</string>
+    <string name="error_message">Chyba: %1$s</string>
+    <string name="install_step">Krok: %1$s</string>
+    <string name="review">Přezkum</string>
+    <string name="select_source">Vyberte zdroj</string>
+    <string name="update_notice">Dantotsu update %1$s</string>
+    <string name="install_update">Instalovat aktualizaci %1$s?</string>
+    <string name="beta_update">Beta </string>
+    <string name="update_available">Dostupná aktualizace</string>
+    <string name="discord_nothing_button">Zobrazit pouze první tlačítko</string>
+    <string name="discord_dantotsu_button">Zobrazit dantotsu v druhém tlačítku</string>
+    <string name="discord_anilist_button">Místo toho zobrazit váš AniList profil</string>
+    <string name="discord_rich_presence">Discord Rich Presence</string>
+    <string name="stream_on_dantotsu">Stream na Dantotsu</string>
+    <string name="view_my_anilist">Zobrazit můj AniList</string>
+    <string name="jobless_message">VZDÁLENO! JSTE OBLASTI\nVÁŠ SE VÁM</string>
+    <string name="file_manager_not_found">Nelze najít správce souborů pro otevření SD karty</string>
+    <string name="error_loading_data">Chyba při načítání dat %1$s</string>
+    <string name="long_click_to_check_update">Dlouhým kliknutím zjistíte dostupnost aktualizací</string>
+    <string name="saved_to_path">Uloženo do:\n%s</string>
+    <string name="setting_progress">✔️ [%1$s] %2$d</string>
+    <string name="login_anilist_account">Přihlaste se prosím do AniList účtu!</string>
+    <string name="congrats_vro">Congrats Vro</string>
+    <string name="please_reload">Prosím znovu otevřete.</string>
+    <string name="copied_text">Zkopírováno \"%1$s\"</string>
+    <string name="back_to_exit">Stiskněte znovu ZPĚT pro ukončení</string>
+    <string name="back_button">Tlačítko Zpět</string>
+    <string name="anilist_not_found">Zdá se, že to nebylo nalezeno v Anilistě.</string>
+    <string name="disabled_auto_skip">Zakázáno automatické přeskakování OP &amp; ED</string>
+    <string name="auto_skip">Auto Skipping OP &amp; ED</string>
+    <string name="show_skip_time_stamp_button">Zobrazit Přeskočit [Segment] Tlačítka</string>
+    <string name="always_load_time_stamps">Vždy načíst časová razítka</string>
+    <string name="auto_hide_time_stamps">&gt;Automaticky skrýt přeskočit [Segment] tlačítka</string>
+    <string name="timestamps">Segment</string>
+    <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
+    <string name="requires_time_stamps_to_be_enabled">Vyžaduje časová razítka pro povolení</string>
+    <string name="hide_skip_button">Zmizí po 5 sekundách tlačítko přeskočit časové razítko</string>
+    <string name="copied_to_clipboard">Zkopírováno do schránky</string>
+    <string name="first_episode">To je první epizoda!</string>
+    <string name="reset_auto_update">Dlouhým klepnutím na tlačítko \"Editor seznamů\" obnovíte automatické aktualizace</string>
+    <string name="autoplay_cancelled">Automatické přehrávání zrušeno, žádná interakce netrvá déle než 1 hodinu.</string>
+    <string name="auto_select_server_error">Nelze automaticky vybrat server, zkuste to prosím znovu!</string>
+    <string name="stream_selection_empty">Žádné streamy nejsou k dispozici! Zkuste jiný zdroj.</string>
+    <string name="logging_in_mal">Přihlášení do MAL</string>
+    <string name="getting_user_data">Získávání uživatelských dat</string>
+    <string name="no_next_episode">Nebyla nalezena žádná další epizoda!</string>
+    <string name="enable_banner_animations">Zkuste povolit \"Banner Animations\" v nastavení</string>
+    <string name="please_login_anilist">Přihlaste se prosím pomocí Anilistu!</string>
+    <string name="auto_update_reset">Průběh automatické aktualizace byl resetován</string>
+    <string name="cant_wait">Nemůžeš počkat, co? v pořádku X(</string>
+    <string name="downloading">Stahování…</string>
+    <string name="next_chapter_not_found">Další kapitola nenalezena</string>
+    <string name="first_chapter">To je první kapitola!</string>
+    <string name="adult_stuff">Dospělé věci?&#40; &#865;&#176; &#860;&#662; &#865;&#176; &#41;</string>
+    <string name="what_did_you_open">Co jste dokonce otevřel?</string>
+    <string name="error_getting_data">Chyba při získávání dat z Anilistu.</string>
+    <string name="empty_response">Prázdná odpověď! Napadá váš internet?</string>
+    <string name="error_loading_mal_user_data">Chyba při načítání MAL uživatelských dat</string>
+    <string name="error_loading_mal_data">Nepodařilo se načíst data z MAL</string>
+    <string name="error_loading_anilist_user_data">Chyba při načítání uživatelských dat Anilist</string>
+    <string name="episode_not_found">Nelze najít epizodu: %1$s</string>
+    <string name="list_updated">Seznam aktualizován</string>
+    <string name="deleted_from_list">Odstraněno ze seznamu</string>
+    <string name="no_list_id">Nebylo nalezeno žádné ID seznamu…</string>
+    <string name="matagi_update">Himitsu Shirase %1$s</string>
+    <string name="matagi_dont_show">Znovu neupozorňovat na %1$s</string>
+    <string name="matagi_downloading">Stahování Himitsu %1$s</string>
+    <string name="checking_for_update">Kontrola aktualizací</string>
+    <string name="dont_show_again">Znovu neupozorňovat na verzi %1$s</string>
+    <string name="no_update_found">Nebyla nalezena žádná aktualizace</string>
+    <string name="downloading_update">Stahování Dantotsu %1$s</string>
+    <string name="permission_required">Prosím povolte přístup k souborům &amp; Složkám z nastavení, &amp; Zkuste to znovu.</string>
+    <string name="started_downloading">Stahování\n%1$s začalo</string>
+    <string name="install_1dm">Nainstalujte prosím 1DM</string>
+    <string name="install_adm">Nainstalujte prosím ADM</string>
+    <string name="error_getting_image_data">Chyba při načítání obrázkových dat</string>
+    <string name="loading_image_failed">Načítání obrázku se nezdařilo</string>
+    <string name="copied_device_info">Informace o zařízení zkopírováno</string>
+    <string name="anilist_down">Zdá se, že Anilist je vypnutý, možná zkuste použít VPN nebo můžete počkat, až se vrátíte.</string>
+    <string name="failed_to_load_data">Nepodařilo se načíst uložená data z %1$d</string>
+    <string name="access_not_available">Nebylo možné získat přístup</string>
+    <string name="mal_login_uri_not_found">Mal přihlášení: Uri nenalezeno</string>
+    <string name="mal_login_code_challenge_not_found">Mal přihlášení : CodeChallenge nenalezena</string>
+    <string name="mal_login_code_not_present">Mal přihlášení : Kód není přítomen v přesměrovaném URI</string>
+    <string name="refresh_token_load_failed">Obnovovací token : Nepodařilo se načíst uložený token</string>
+    <string name="refreshing_token_failed">Obnovení tokenu se nezdařilo</string>
+    <string name="episode_release_countdown">Epizoda %1$d bude uvolněna v</string>
+    <string name="chapter_number">Kapitola %1$d</string>
+    <string name="chapter_release_timeout">%1$s byl k dispozici pro</string>
+    <string name="time_format">%1$d dní %2$d hod %3$d min %4$d sekund</string>
+    <string name="chapter_predication">Nová kapitola očekávaná %1$s</string>
+    <string name="chapter_delayed">Zdá se, že nová kapitola je opožděna</string>
+    <string-array name="sort_by">
+        <item>Skóre</item>
+        <item>Oblíbené</item>
+        <item>Populární</item>
+        <item>Nové vydání</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Čistá bolest</item>
+    </string-array>
+    <string name="main_role">HLAVNÍ</string>
+    <string name="supporting_role">PODPORA</string>
+    <string name="status_finished">ZÁVĚREČNÁ</string>
+    <string name="status_releasing">ZRUŠENÍ</string>
+    <string name="status_not_yet_released">NEZAČÍTNUTÉ</string>
+    <string name="status_cancelled">ZRUŠENÉ</string>
+    <string name="status_hiatus">HIATUS</string>
+    <string name="type_adaptation">ADAPTACE</string>
+    <string name="type_parent">SOUBOR</string>
+    <string name="type_character">CHARAKTERT</string>
+    <string name="type_summary">SUMMARY</string>
+    <string name="type_alternative">ALTERNATIVNÍ</string>
+    <string name="type_other">OSTATNÍ</string>
+    <string name="type_source">ZDROJE</string>
+    <string name="type_contains">OBSAH</string>
+    <string name="read_on_dantotsu">Přečtěte si na Dantotsu</string>
+    <string name="watch_on_dantotsu">Sledujte na Dantotsu</string>
+    <string name="view_profile_in_dantotsu">Zobrazit profil v Dantotsu</string>
+    <string name="continue_episode">Pokračovat : Epizoda %1$s%2$s\n%3$s</string>
+    <string name="filler_tag"> - Vyplňování</string>
+    <string name="continue_chapter">Pokračovat : %1$s\n%2$s</string>
+    <string name="episode">"Epizoda "</string>
+    <string name="episode_num">"Epizoda %1$s"</string>
+    <string name="chapter">"KAPITOLA 1 1 — "</string>
+    <string name="chapter_num">"Kapitola %1$s"</string>
+    <string name="just_released">- Nově vydáno!</string>
+    <string name="checking_subscriptions_title">Kontrola předplatného</string>
+    <string name="user_list">Seznam %1$s %2$s</string>
+    <string name="speed">Rychlost</string>
+    <string name="auto_update">Průběh automatické aktualizace pro %1$s?</string>
+    <string name="continue_from">Pokračovat z %1$s?</string>
+    <string name="title_update_progress">Aktualizovat průběh na AniListu?</string>
+    <string name="incognito_will_not_update">Anonymní režim stále ignoruje pokrok.</string>
+    <string name="dont_ask_again">"Znovu se neptat na %1$s"</string>
+    <string name="default_speed">Výchozí rychlost</string>
+    <string name="default_resize_mode">Výchozí režim změny velikosti</string>
+    <string name="primary_sub_color">Primární podbarva</string>
+    <string name="outline_sub_color">Obrys podbarvy</string>
+    <string name="outline_type">Typ obrysu</string>
+    <string name="subtitle_font">Písmo titulků</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="close">Zavřít</string>
+    <string name="no_chapter">Bez kapitoly</string>
+    <string name="content_18">Zapněte 18+ obsah z nastavení Anilist</string>
+    <string name="available">Dostupné</string>
+    <string name="lets_go">Jdeme</string>
+    <string name="cope">Kopie</string>
+    <string name="watched_num">"Zhlédnuto "</string>
+    <string name="read_num">"Číst "</string>
+    <string name="episodes_out_of">" z "</string>
+    <string name="chapters_out_of">" z "</string>
+    <string name="episodes_total_of">"Celkem z "</string>
+    <string name="chapters_total_of">"Celkem z "</string>
+    <string name="no_description_available">"Není k dispozici žádný popis"</string>
+    <string-array name="manga_directions">
+        <item>Nahoře dolů</item>
+        <item>Zprava doleva</item>
+        <item>Dolů nahoru</item>
+        <item>Zleva doprava</item>
+    </string-array>
+    <string-array name="manga_layouts">
+        <item>Stránka</item>
+        <item>Kontinuální stránky</item>
+        <item>Kontinuální</item>
+    </string-array>
+    <string name="selected">Vybrané</string>
+    <string name="found">Nalezeno</string>
+    <string name="age">"__Věk:__ "</string>
+    <string name="birthday">\n\"__Narozené:__ \"</string>
+    <string name="gender">\n\"__Pohlaví:_\"</string>
+    <string name="male">Muž</string>
+    <string name="female">Samice</string>
+    <string name="question_1">Co je to Dantotsu?</string>
+    <string name="answer_1">Dantotsu se vyrábí z popela Saiku a je založen na zjednodušující, ale nejmodernější eleganci. Je to Anilist pouze klient, který vám také umožňuje streamovat &amp; stáhnout Anime / Manga prostřednictvím rozšíření. \n&gt;Dantotsu (&lt;unk&gt; &lt;unk&gt; ; Dan-totsu) doslova znamená nejlepší z nejlepších v japonštině. No, rádi bychom řekli, že je to nejlepší open source aplikace pro anime a manga na Android, ale vyzkoušejte si to sami &amp; soudce!</string>
+    <string name="question_2">Jaké jsou některé vlastnosti Dantotsu?</string>
+    <string name="answer_2">Některé zmíněné funkce Dantotsu jsou\n\n- Snadný a funkční způsob, jak obojí, sledovat animace a číst manga a lehké romány, Red Free.\n- Kompletně open source aplikace s pěkným UI &amp; Animace\n- Podpora pluginu třetí strany \n- Synchronizujte anime a manga v reálném čase s AniList. Jednoduše kategorizovat anime a manga podle vašeho aktuálního stavu. (Powered by AniList)\n- Najděte všechny seriály pomocí důkladného a často aktualizovaného seznamu všech trendů, populárních a průběžných animů na základě skóre.\n- Zobrazit rozsáhlé detaily o anime shows, filmech a titulcích manga. Je také schopen odpočítávat se do další epizody vzduchových anim. (Powered by AniList &amp; MyAnimeList)</string>
+    <string name="question_3">Jaký je rozdíl mezi stabilní, Beta &amp; alfa verzemi?</string>
+    <string name="answer_3">Toto fork neposkytuje samostatné stopy. Verze kterou stahujete z [repository](https://github.com/RepoDevil/Himitsu) je stejná jako [AbandonedCart](https://github. om/AbandonedCart) běží. Pokud najdete chyby a máte již aktualizované na nejnovější verzi, neváhejte odeslat [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="question_4">Je Dantotsu k dispozici pro PC?</string>
+    <string name="answer_4">Momentálně ne (pro Windows i Linux). Není k dispozici žádný odhad. Ale můžete stáhnout jakýkoli Android emulátor a spustit Dantotsu na něm. Pro uživatele s Windows 11 mohou používat systém Windows Subsystem pro Android (WSA) ke spuštění Dantotsu v Windows.</string>
+    <string name="question_5">Je Dantotsu k dispozici pro iOS?</string>
+    <string name="answer_5">Ne, nejlepší můžeme udělat je carve Dantotsu na jablku.</string>
+    <string name="question_6">Proč se mé statistiky neaktualizují?</string>
+    <string name="answer_6">To proto, že se aktualizuje každých 48 hodin automaticky (od Anilistu). Pokud opravdu potřebujete aktualizovat statistiky, můžete si vynutit aktualizaci statistik poté, co přejdete na tento [link](https://anilist.co/settings/lists).</string>
+    <string name="question_7">Jak stáhnout anim?</string>
+    <string name="answer_7">V současné době existují dvě metody stahování. Jedna je interní a druhá je externální. Pokud si stáhnete interně, pak ji lze zobrazit v aplikaci, ale tuto epizodu může otevřít pouze aplikace, nemůžete jej přesunout ani sdílet. Další možností je použít externí stahování. Vyžaduje to ke stažení správce stahování a samostatného přehrávače pro sledování. Externí stahování lze sdílet, ale nemůžete ji zobrazit v aplikaci Dantotsu.\n\n• Pro interní stahování:\n\n1. Klepněte na tlačítko Stáhnout.\n2. Vyberte server a kvalitu videa.\n3. Profit.\n\n• Chcete-li stáhnout zvnějšku:\n\n 1. Stáhněte si 1DM nebo ADM z Google Play Store.
+        \n2. Zadejte aplikaci, povolte přístup k úložišti a nastavte předvolby (rychlost stahování, cesta stahování atd..(volitelné))
+        \n3. Nyní přejděte do \`Dantotsu &gt; Nastavení &gt; Společná &gt; Správce stahování\` a vyberte si právě nastavený správce stahování.
+        \n4. Přejděte na požadovanou epizodu a stiskněte ikonu stahování na libovolném serveru. Může zde být vyskakovací okno pro opětovné nastavení vašich preferencí, stačí stisknout tlačítko \"Stáhnout\" a bude uloženo v adresované cestě.
+
+        \n\nPoznámka: Přímé stahování je také možné bez manažera, ale není to doporučeno.
+\n\nNerd Poznámka: Interně stažené epizody jsou uloženy v \`Android/data/ani. antotsu.*/files/Anime_Downloads\`\nTyto soubory nelze přehrát, protože jsou ve formátu \`.exo\` rozděleném na stovky kusů a šifrované.</string>
+    <string name="question_9">Jak povolit obsah NSFW?</string>
+    <string name="answer_9">Můžete povolit NSFW obsah povolením 18+ obsahu z tohoto [link](https://anilist.co/settings/media). Musíte také povolit NSFW rozšíření v \`Settings &gt; Rozšíření &gt; NSFW rozšíření\` </string>
+    <string name="question_10">Jak importovat mé seznamy MAL/Kitsu do Anilistu?</string>
+    <string name="answer_10">Zde je jak to uděláte,\n\nExport:\n\n1. Jděte na tento [link](https://malscraper. zurewebsites.net).\n2. Dej své uživatelské jméno Kitsu/MAL a stáhni si anime i manga. (Budou ve formátu XML)\nPoznámka: Musíte napsat uživatelské jméno trackeru, který jste vybrali\n\nImport:\n\n1. Po exportu vašeho anime a manga ze seznamu Kitsu/MAL, přejděte nyní [here](https://anilist.co/settings/import) \n2. Vybrat/přetáhněte soubor anime XML na výše uvedené pole.\n|→Vybrat/přetáhněte soubor manga XML do níže uvedeného pole.</string>
+    <string name="question_11">Jak importovat mé Anilisty/Kitsu seznamy na MAL?</string>
+    <string name="answer_11">Zde je jak to uděláte,\n\nExport:\n\n1. Jděte na tento [link](https://malscraper. zurewebsites.net/). \n2. Přidejte své anonymní uživatelské jméno/Kitsu ID do pole \'Uživatelské jméno/Kitsu ID uživatele\'. \n3. Vyberte typ seznamu a povolte \'update_on_import\'. \n4. Stáhněte si soubor; bude ve formátu .xml. Nezapomeňte stáhnout seznam Anime i Manga.\n\nImport:\n1. Chcete-li jej importovat do vašeho MAL účtu, přejděte na tento [link](https://myanimelist. et/import.php) a zvolte \'MyAnimeList Import\' jako typ importu. \n2. Stiskněte \'Vybrat soubor\' a vyberte stažený XML soubor anime/manga. \n3. Stiskněte \'Importovat data\'. \nGratulujeme, právě jste importovali vybraný seznam do vašeho MAL účtu.</string>
+    <string name="question_12">Proč nemohu najít specifický název anime/manga?</string>
+    <string name="answer_12">Řekněme, že hledáš Castlevanii v Dantotsu. Ale Anilista ji nemá, takže ani Dantotsu to nemá.\nŘešení výše uvedeného problému je následující:\n1) Přejděte na jakékoliv anime, které nejsou na tvém seznamu.\n2) Přejděte do sekce hodinek.\n3) Vyberte libovolný zdroj a stiskněte \'Špatný název?\'.\n4) Nyní hledat Castlevania (anime jste hledali) a vybrat to.\n5) ENJOY!\n\nPokud nemůžete najít anime ani skrze tyto kroky, pak je to pro tebe smůla. I tento zdroj jej nemá. Zkuste jiný zdroj.</string>
+    <string name="question_13">Jak opravit zdroje výběru zcela špatného názvu?</string>
+    <string name="answer_13">Samotná Dantotsu nehostí nic jiného než spoléhá na jiné zdroje. Při zobrazování epizod zvolí první výsledek zadaný zdrojovým kódem po hledání titulku. Dantotsu nemá způsob, jak zjistit, jestli je to legit nebo ne. Takže pro to máme \'Špatný titulek?\' těsně pod zdrojovým jménem (nad rozvržením). Můžete si vybrat správný výsledek/titulek kliknutím na něj a vychutnat jeho epizody.</string>
+    <string name="question_14">Jak si přečíst barevný hnůj?</string>
+    <string name="answer_14">Hledáte barevný mang? Omlouváme se, ale velmi malé množství manganu má barevnou verzi. Ti, které mají barevnou verzi, jsou také k dispozici v Dantotsu. Řekněme si, že chcete přečíst barevnou verzi řetězové pily. Poté postupujte podle níže uvedených kroků, tj.\n\n1) Přejít na Chainsaw Man\n2) Stiskněte tlačítko \'Přečtěte\'\n3) Vyberte libovolný pracovní zdroj\n4) stiskněte tlačítko \'Špatný Title\'\n5) Vyberte barevnou verzi řetězové pily\n6) Užijte si\n\nPoznámka: Mnoho zdrojů nemá k dispozici barevnou verzi, i když je k dispozici někde na internetu. Vyzkoušejte tedy jiný zdroj. Pokud jej nemá žádný zdroj, pak barevná verze požadovaného manga jednoduše neexistuje.</string>
+    <string name="question_15">Selhání ruky? Proč nejsou načítána žádná časová razítka?</string>
+    <string name="answer_15">Tento problém můžete vyřešit povolením \'Proxy\' v \n\`Settings &gt; Anime &gt; Nastavení přehrávače &gt; Timestamps &gt; Proxy\`.\nPokud se časová razítka stále nenačítají, ale inicializační vyskakovací okno je opraveno, potom epizoda, kterou sledujete, pro ni zatím nemá časové značky.</string>
+    <string name="question_16">Nelze najít nic ve zdroji?</string>
+    <string name="answer_16">Některé základní opravy by byly: \n\n• Aktualizujte vaše rozšíření, pokud nějaké existují. \n• Otevřete Web View a počkejte na jeho načtení. Po dokončení načítání se vraťte zpět. (Pokud je na webu zobrazena chyba 404 nebo něco podobného, šance je, že váš zdroj je vypnutý)\n• Použijte jiný DNS než vaše nastavení, pokud možno Libre. \n• Vyzkoušejte důvěryhodné VPN. (Po tom budete muset opakovat krok 1) \n\nPokud žádný z výše uvedených kroků nefunguje, pak použijte jiný zdroj nebo se připojte k našemu [discord](https://discord. g/pozvána/4HPZ5nAWwM) pro pomoc.</string>
+    <string name="question_17">Některé užitečné tipy a triky</string>
+    <string name="answer_17">Následující představuje několik tipů a triků, které můžete nebo nemusí vědět o - \n \n \n - Podržením klávesy Dantotsu v nastavení, můžete zkontrolovat, zda existují nějaké nové aktualizace ručně. \n \n - Podržením tlačítka chybové zprávy/tag/synonymum nebo titulek ji zkopíruje. \n \n - Můžete otevřít epizodu s jinými aplikacemi podržením jakéhokoliv serveru pro tuto epizodu. To pomáhá streamovat epizodu pomocí jiných video přehrávačů nebo stahovat epizodu pomocí Správce stahování. \n \n - Vlastní seznamy můžete nastavit pomocí tohoto [link](https://anilist.co/settings/lists). (musíte být podepsán) \n \n - Pokud vaše epizoda/kapitola není po dokončení sledování/čtení automaticky postupována, pak podržte stisknutí stavové lišty (plánování/opakování/sledování) tohoto anime/manga. Když příště začnete kapitolu/dokončit epizodu, narazíte na vyskakovací okno. Stiskněte ano tam. </string>
+    <string name="subscribed_notification">Předplaceno! Přijímání oznámení, když jsou uvolněny nové epizody na %1$s.</string>
+    <string name="unsubscribed_notification">Odhlásit, nebudete dostávat žádná oznámení.</string>
+    <string name="episode_plural">Epizody</string>
+    <string name="episode_singular">Epizoda</string>
+    <string name="chapter_singular">KAPITOLA 1 1 —</string>
+    <string name="chapter_plural">Kapitola</string>
+    <string name="filter_status">"Stav: %1$s"</string>
+    <string name="filter_source">"Zdroj: %1$s"</string>
+    <string name="filter_format">"Formát: %1$s"</string>
+    <string name="filter_country">"Země : %1$s"</string>
+    <string name="filter_sort">"Řazení: %1$s"</string>
+    <string name="filter_exclude">"Není %1$s"</string>
+    <string name="search_by_image">Hledat podle obrázku</string>
+    <string name="upload_image">Nahrát obrázek</string>
+    <string name="similarity_text">Podobnost: %1$s %%</string>
+    <string name="time_range">Od %1$s do %2$s</string>
+    <string name="invalid_url">Neplatná URL</string>
+    <string name="no_anilist_id_found">Nebylo nalezeno žádné anilistické ID</string>
+    <string name="error_loading_image">Chyba při načítání obrázku</string>
+    <string name="discord_logout_success">Odhlášení proběhlo úspěšně</string>
+    <string name="discord_try_again">Zkuste se znovu přihlásit</string>
+    <string name="error_loading_discord_user_data">Chyba při načítání Discord uživatelských dat</string>
+    <string name="discord_warning"><![CDATA[Přihlášením tvůj discord nyní ukáže, co sleduješ a čtete na Dantotsu\n\nPokud jsi na neviditelném režimu, Přihlášení tě učiní online, když otevřete Dantotsu.\n\nTo porušuje Discord TOS. \nI když Discord nikdy nikoho nezabanoval za používání vlastního Rich Presence(co používá Dantotsu), byl jsi stále varován.\n\nDantotsu není zodpovědný za cokoliv, co se děje na vašem účtu.]]></string>
+    <string name="warning">Varování</string>
+    <string name="view_anime">Zobrazit Anime</string>
+    <string name="view_manga">Zobrazit Manga</string>
+    <string name="force_legacy_installer">Vynutit starší instalátor</string>
+    <string name="extensions_settings">Rozšíření</string>
+    <string name="NSFWExtention">NSFW rozšíření</string>
+    <string name="skip_loading_extension_icons">Přeskočit načítání ikon rozšíření</string>
+    <string name="use_material_you">Váš materiál</string>
+    <string name="use_app_theme">Použít motiv aplikace</string>
+    <string name="extension_specific_dns">DNS specifické pro rozšíření</string>
+    <string name="theme_">Motiv:</string>
+    <string name="user_agent">Uživatelský agent</string>
+    <string name="custom_theme">Vlastní vzhled:</string>
+    <string name="use_custom_theme">Vlastní šablona</string>
+    <string name="use_unique_theme_for_each_item">Motiv jako anime/Manga </string>
+    <string name="oled_theme_variant">Varianta OLED motivu</string>
+    <string name="installed_anime">Nainstalované Anime</string>
+    <string name="available_anime">Dostupné Anime</string>
+    <string name="installed_manga">Nainstalovaná Manga</string>
+    <string name="color_picker">Výběr barvy</string>
+    <string name="random_selection">Náhodný výběr</string>
+    <string name="incognito_mode">Anonymní režim</string>
+    <string name="appwidget_text">PŘÍKLAD</string>
+    <string name="configure">Konfigurace</string>
+    <string name="add_widget">Přidat widget</string>
+    <string name="app_widget_description">Toto je popis widgetu aplikace</string>
+    <string name="upcoming_anime">Nadcházející Anime</string>
+    <string name="airing_image">Vzduchový obrázek</string>
+    <string name="anime_downloads">Stahování animací</string>
+    <string name="purge_anime_downloads">Odstranit všechna stažená data</string>
+    <string name="purge_manga_downloads">Odstranit všechny soubory Manga</string>
+    <string name="purge_novel_downloads">Odstranit všechny Novelové soubory</string>
+    <string name="requires_android_12">Vyžaduje Android 12+</string>
+    <string name="share_username_in_logs">Sdílet uživatelské jméno v logu</string>
+    <string name="pinned_sources">Připnuté zdroje</string>
+    <string name="backup_restore">Zálohování a obnovení</string>
+    <string name="restore_settings">Importovat nastavení</string>
+    <string name="restore_settings_underline"><u>Obnovení nastavení</u></string>
+    <string name="try_internal_cast_experimental">Vyzkoušet interní (experimentální)</string>
+    <string name="faq_desc">Obecné otázky o Himitsu</string>
+    <string name="check_app_updates_desc">Zkontrolovat aktualizace aplikace Github</string>
+    <string name="share_username_in_logs_desc">Zahrnout uživatelské jméno do přehledu chyb</string>
+    <string name="devs_desc">Himitsu\'s velmi neplacený pracovník</string>
+    <string name="forks_desc">Projekty odvozené z Dantotsu</string>
+    <string name="disclaimer_desc">Něco na paměti</string>
+    <string name="use_foldable">Použít sklopné rozložení</string>
+    <string name="use_foldable_desc">Přizpůsobení obsahu konfiguraci závěsu</string>
+    <string name="add_shortcuts">Přidat zástupce do launcheru</string>
+    <string name="add_shortcuts_desc">Přidá položky do ikony dlouhým kliknutím</string>
+    <string name="comments">Komentáře</string>
+    <string name="newest">Nejnovější</string>
+    <string name="oldest">Nejstarší</string>
+    <string name="highest_rated">Nejvyšší hodnocení</string>
+    <string name="lowest_rated">Nejnižší hodnocení</string>
+    <string name="compare"><u>Porovnat</u></string>
+    <string name="view_following">Zobrazit následující</string>
+    <string name="menu">Menu</string>
+    <string name="view_followers">Zobrazit sledující</string>
+    <string name="no_fav_anime">Uživatel nemá žádné oblíbené Anime</string>
+    <string name="no_fav_manga">Uživatel nemá žádnou oblíbenou Mangu</string>
+    <string name="fav_character">Oblíbené znaky</string>
+    <string name="fav_staff">Oblíbený personál</string>
+    <string name="stats">Statistiky</string>
+    <string name="days_watched">Dny zhlédnutí</string>
+    <string name="total_anime">Celkem Anime</string>
+    <string name="anime_mean_score">Anime střední skóre</string>
+    <string name="volume_read">Hlasitost čtení</string>
+    <string name="total_manga">Manga celkem</string>
+    <string name="manga_mean_score">Manga střední skóre</string>
+    <string name="about_me">O mně</string>
+    <string name="follow">Sledovat</string>
+    <string name="following">Sledovat</string>
+    <string name="unfollow">Přestat sledovat</string>
+    <string name="follows_you">Sleduje vás</string>
+    <string name="mutual">Vzájemné</string>
+    <string name="success">Úspěšně</string>
+    <string name="error">Došlo k chybě</string>
+    <string name="error_msg">Chyba: %1$s</string>
+    <string name="please_wait">Počkejte prosím</string>
+    <string name="upcoming">Nadcházející</string>
+    <string name="no_shows_to_display">Žádné seriály k zobrazení</string>
+    <string name="no_media_to_display">Žádná média k zobrazení</string>
+    <string name="extension_name">Název rozšíření</string>
+    <string name="extension_version">verze</string>
+    <string name="enter_password_to_decrypt_file">Zadejte své heslo pro dešifrování souboru</string>
+    <string name="show_rotate_button">Zobrazit tlačítko otáčení</string>
+    <string name="default_manga_settings">Výchozí nastavení Mangy</string>
+    <string name="use_dark_theme">Použít tmavý motiv</string>
+    <string name="use_oled_theme">Použít OLED motiv</string>
+    <string name="scanlators">Skenery</string>
+    <string name="exporting_requires_encryption">Exportování přihlašovacích údajů vyžaduje heslo pro šifrování.</string>
+    <string name="manga_queue">Fronta Manga (WIP)</string>
+    <string name="anime_queue">Kdykoliv fronta (WIP)</string>
+    <string name="no_offline_manga_found">Nenalezen žádný offline manga</string>
+    <string name="sort">Seřadit</string>
+    <string name="download">Stáhnout</string>
+    <string name="scanlator">Scanlator</string>
+    <string name="set_cookies">Nastavit soubory cookie</string>
+    <string name="open_website">Otevřít web</string>
+    <string name="log_to_file">Protokol do souboru</string>
+    <string name="logging_warning">Může způsobit zpoždění. Povolte pouze pokud máte problémy.</string>
+    <string name="share_log">Klikněte pro sdílení aktuálního souboru protokolu</string>
+    <string name="radius">Radius</string>
+    <string name="sampling">Výběr vzorku</string>
+    <string name="blur_banners">Rozostřit banery</string>
+    <string name="blur">Blur</string>
+    <string name="hide_scroll_bar">Skrýt posuvník</string>
+    <string name="view_on_anilist">Zobrazit na AniList</string>
+    <string name="anilist_notification_filters">Vyberte kategorii, kterou chcete ignorovat</string>
+    <string name="anilist_notifications_checking_time">Frekvence aktualizace Anilist oznámení: %1$s</string>
+    <string name="comment_notification_checking_time">Četnost aktualizace oznámení komentáře: %1$s</string>
+    <string name="activities">Aktivity</string>
+    <string name="incorrect_password">Nesprávné heslo</string>
+    <string name="password_cannot_be_empty">Heslo nemůže být prázdné</string>
+    <string name="unknown_file_type">Neznámý typ souboru</string>
+    <string name="error_importing_settings">Chyba při importu nastavení</string>
+    <string name="download_manager">Správce stahování</string>
+    <string name="enter_password">Zadejte heslo</string>
+    <string name="invalid_file_type">Neplatný typ souboru</string>
+    <string name="purge_confirm">Jste si jisti, že chcete odstranit všechna stahování %1$s?</string>
+    <string name="delete_fail_reason">Odstranění se nezdařilo z důvodu… %1$s</string>
+    <string name="hide_replies">Skrýt odpovědi</string>
+    <string name="view_reply">Zobrazit odpověď</string>
+    <string name="view_replies">Zobrazit odpovědi</string>
+    <string name="view_replies_count">Zobrazit %1$d odpovědí</string>
+    <string name="replying_to">Odpověď na %1$s</string>
+    <string name="delete_comment">Odstranit komentář</string>
+    <string name="delete_comment_confirm">Jste si jisti, že chcete odstranit tento komentář?</string>
+    <string name="comment_deleted">Komentář odstraněn</string>
+    <string name="ban_user">Zablokovat uživatele</string>
+    <string name="ban_user_confirm">Opravdu chcete zabanovat tohoto uživatele?</string>
+    <string name="user_banned">Uživatel zabanován</string>
+    <string name="report_comment">Nahlásit komentář</string>
+    <string name="report_comment_confirm">Nahlásit pouze komentáře, které porušují pravidla. Jste si jisti, že chcete nahlásit tento komentář?</string>
+    <string name="comment_reported">Komentář nahlášen</string>
+    <string name="list">Seznam</string>
+    <string name="grid">Mřížka</string>
+    <string name="compact">Kompaktní</string>
+    <string name="webview_not_installed">WebView není nainstalován</string>
+    <string name="video_quality">Kvalita: %1$dp</string>
+    <string name="size_unknown">Neznámá velikost</string>
+    <string name="mb_size">%1$s MB</string>
+    <string name="button_restore">Obnovit</string>
+    <string name="button_backup">Záloha</string>
+    <string name="no_location_selected">Není vybrána žádná poloha</string>
+    <string name="do_it">Udělejte to!</string>
+    <string name="password">Heslo</string>
+    <string name="anilist_broken_title">Interní chyba serveru!</string>
+    <string name="anilist_broken">AniList se zdá být nereagující a funkce budou přísně omezené. Chcete aplikaci zavřít a zkuste to později?\n</string>
+    <string name="search_title">Hledat %1$s</string>
+    <string name="profile_stats_widget">Sledovat průběh přímo na domovské obrazovce</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Kapitola</string>
+    <string name="episodes_watched_n">Epizody</string>
+    <string name="loading">Načítání…</string>
+    <string name="user_stats">Statistiky %1$s</string>
+    <string name="please">Prosím</string>
+    <string name="log_in">Přihlásit se</string>
+    <string name="or_join">nebo se připojit</string>
+    <string name="audio_tracks">Zvukové stopy</string>
+    <string name="disabled_track">\[💬\] Zakázáno</string>
+    <string name="invalid_track">\[!?\] Neplatné</string>
+    <string name="unknown_track">\[%1$s\] Neznámé</string>
+    <string name="top_background_color">Nejvyšší barva pozadí</string>
+    <string name="bottom_background_color">Barva spodního pozadí</string>
+    <string name="countdown_text_color">Barva textu odpočítávání</string>
+    <string name="title_color">Barva titulku</string>
+    <string name="stat_text_color">Barva textu statistik</string>
+    <string name="flipper_color">Barva flipperu</string>
+    <string name="placeholder">Zástupný symbol</string>
+    <string name="anime_add_repository">Přidat Anime repozitář</string>
+    <string name="manga_add_repository">Přidat repozitář Manga</string>
+    <string name="novel_add_repository">Přidat nový repozitář</string>
+    <string name="edit_repositories">Upravit repozitáře</string>
+    <string name="rem_repository">Odstranit repozitář?</string>
+    <string name="trending_movies">Populární filmy</string>
+    <string name="include_list">Zahrnout seznam</string>
+    <string name="top_rated">Nejlépe hodnocené</string>
+    <string name="most_favourite">Nejoblíbenější</string>
+    <string name="trending_manhwa">Populární Manhwa</string>
+    <string name="liked_by">Líbí se vám</string>
+    <string name="adult_only_content">Pouze obsah pro dospělé</string>
+    <string name="report">Nahlásit</string>
+    <string name="ban">Zakázat</string>
+    <string name="activity_label">Aktivita</string>
+    <string name="dir_error">Vaši cestu nelze nastavit</string>
+    <string name="dir_access">Přístup ke stažení</string>
+    <string name="dir_access_msg">Vyberte prosím adresář pro uložení stahování</string>
+    <string name="download_subtitle">Stáhnout titulky</string>
+    <string name="change_download_location">Změnit umístění stahování</string>
+    <string name="download_location_msg">Opravdu chcete změnit umístění stahování?\nStará stahování již nemusí být přístupná.</string>
+    <string name="voice_actors">Hlasoví herci</string>
+    <string name="download_permission_required">Ke stažení je vyžadováno oprávnění</string>
+    <string name="media">Média</string>
+    <string name="users">Uživatelé</string>
+    <string name="social">Sociální</string>
+    <string name="auto_skip_recap">Auto Skip Recap</string>
+    <string name="use_anilist_icon">Použít ikonu AniList</string>
+    <string name="exo_source_exception">Zdrojová výjimka: %1$s</string>
+    <string name="exo_decoding_failed">Dekódování selhalo: %1$s</string>
+    <string name="exo_player_error">Chyba přehrávače: %1$d %2$s: %3$s</string>
+    <string name="accounts_desc">Anilisté, MAL a Discord.\nCo budeš potřebovat?</string>
+    <string name="theme_desc">Změňte náhled aplikace</string>
+    <string name="extensions_desc">Spravovat vaši repozitář</string>
+    <string name="common_desc">Stažení, DNS a výchozí hodnoty</string>
+    <string name="anime_desc">Vyberte si, jak sledujete</string>
+    <string name="manga_desc">Vyberte si, jak čtete</string>
+    <string name="notifications_desc">Přizpůsobit novinky a aktualizace</string>
+    <string name="system_desc">Aktualizace a užitečné nástroje</string>
+    <string name="about_desc">Další informace o Himitsu</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons jsou moduly funkce Dantotsu.</string>
+    <string name="torrent_addon">Doplňek torrentu</string>
+    <string name="enable">Povolit</string>
+    <string name="anime_downloader_addon">Anime ke stažení doplněk</string>
+    <string name="loaded_successfully">Načteno úspěšně</string>
+    <string name="not_installed">Nenainstalováno</string>
+    <string name="torrent_extension_not_supported">Rozšíření Torrentu není na tomto zařízení podporováno</string>
+    <string name="update_addon">Aktualizovat doplněk</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Doplněk ke stažení nebyl nalezen</string>
+    <string name="default_novel_settings">Výchozí nastavení Novelu</string>
+    <string name="line_height">Výška řádku</string>
+    <string name="margin">Okraj</string>
+    <string name="maximum_inline_size">Maximální velikost řádku</string>
+    <string name="maximum_column_width">Maximální šířka sloupce (horizontální zápis) nebo výška (vertikální zápis)</string>
+    <string name="maximum_block_size">Maximální velikost bloku</string>
+    <string name="maximum_height">Maximální výška (horizontální zápis) nebo šířka (vertikální zápis)</string>
+    <string name="global">Globální</string>
+    <string name="china">Čísla</string>
+    <string name="south_korea">Jižní Korea</string>
+    <string name="japan">Japonsko</string>
+    <string name="taiwan">Thajsko</string>
+    <string name="something">Něco</string>
+    <string name="image">Obrázek</string>
+    <string name="sort_score">Skóre</string>
+    <string name="popular">Oblíbené</string>
+    <string name="trending">Populární</string>
+    <string name="new_releases">Nové vydání</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <string name="pure_pain">Čisté dno</string>
+    <string name="add_a_comment">Přidat komentář…</string>
+    <string name="type">Typ</string>
+    <string name="view">Zobrazit</string>
+    <string name="count">ÚŘAD</string>
+    <string name="open">Otevřít</string>
+    <string name="hentai">HENTAI?????</string>
+    <string name="reply">Odpověď</string>
+    <string name="time">Čas</string>
+    <string name="player_settings_desc">Nastavení týkající se všech hráčů</string>
+    <string name="purge_anime_downloads_desc">Odstranit všechny stažené Anime</string>
+    <string name="prefer_dub_desc">Vybrat přezdívaná média ve výchozím nastavení</string>
+    <string name="show_yt_desc">Zobrazit YouTube odkazy pro podporovaná média</string>
+    <string name="include_list_anime_desc">Zahrnout položky seznamu ve stránce Anime</string>
+    <string name="ui_settings_desc">Všechna nastavení související s uživatelským rozhraním</string>
+    <string name="download_manager_select_desc">Výchozí správce ke stažení Anime</string>
+    <string name="backup_restore_desc">Vytvořit a obnovit zálohy vybraných nastavení</string>
+    <string name="change_download_location_desc">Změnit umístění, kde jsou uchována stahování</string>
+    <string name="always_continue_content_desc">Pokračovat v položkách, kde jste skončili</string>
+    <string name="search_source_list_desc">Přesune na další server, pokud není obsah nalezen</string>
+    <string name="recentlyListOnly_desc">Zobrazit pouze seznam položek v panelu nedávných</string>
+    <string name="adult_only_content_desc">Zobrazit pouze obsah pro dospělé v průzkumné stránce</string>
+    <string name="anime_add_repository_desc">Přidat Anime rozšíření repozitáře do kolekce</string>
+    <string name="manga_add_repository_desc">Přidat repozitáře rozšíření Manga do sbírky</string>
+    <string name="user_agent_desc">Změnit výchozí uživatelský agent</string>
+    <string name="force_legacy_installer_desc">Použít záměry k žádosti o instalaci balíčku</string>
+    <string name="skip_loading_extension_icons_desc">Nezobrazovat ikony rozšíření ve správci</string>
+    <string name="NSFWExtention_desc">Zakázání blokuje jakékoliv rozšíření s jakýmkoliv 18+ obsahem</string>
+    <string name="reader_settings_desc">Všechna nastavení související s čtečkou</string>
+    <string name="purge_manga_downloads_desc">Odstranit všechny stažené Manga</string>
+    <string name="purge_novel_downloads_desc">Odstranit všechny stažené Novely</string>
+    <string name="include_list_desc">Zahrnout položky seznamu v Manga průzkumné stránce</string>
+    <string name="anilist_notification_filters_desc">Vyberte kategorii, kterou chcete ignorovat</string>
+    <string name="anilist_notifications_checking_time_desc">Nastavte frekvenci, kterou chcete, aby aplikace kontrolovala oznámení o Anilistech</string>
+    <string name="comment_notification_checking_time_desc">Nastavte frekvenci, kterou chcete, aby aplikace kontrolovala oznámení Komentáře</string>
+    <string name="notification_for_checking_subscriptions_desc">Zobrazit oznámení pro kontrolu odebírání</string>
+    <string name="use_alarm_manager_reliable_desc">Použít k obejití optimalizátoru baterie telefonu</string>
+    <string name="oled_theme_variant_desc">Tak tmavé, jak to získá</string>
+    <string name="use_material_you_desc">Použít stejnou barvu jako vaši tapetu</string>
+    <string name="use_unique_theme_for_each_item_desc">Použít barvu z banneru médií</string>
+    <string name="use_custom_theme_desc">Použít vlastní barvu pro motiv</string>
+    <string name="color_picker_desc">Vyberte barvu</string>
+    <string name="install_torrent_addon">Instalovat Torrent doplněk</string>
+    <string name="failed_ext_install_conflict">Nepodařilo se nainstalovat rozšíření z důvodu konfliktu</string>
+    <string name="no_video_selected">Nevybráno žádné video</string>
+    <string name="download_extension_not_available">Stáhnout rozšíření není k dispozici</string>
+    <string name="feed">Zdroj</string>
+    <string name="profile">Profil</string>
+    <string name="epub_download_exception">Výjimka při stahování .epub: %1$s</string>
+    <string name="novel_download_progress">Průběh stahování Novelu</string>
+    <string name="download_started">Stahování zahájeno</string>
+    <string name="downloads_completed">Všechna stahování dokončena</string>
+    <string name="pending_downloads">Čeká na stažení: %1$d</string>
+    <string name="reading">ČTENÍ</string>
+    <string name="watching">WATCHING</string>
+    <string name="avatar">%1$s\ [Avatar]</string>
+    <string name="cover">%1$s\ [Cover]</string>
+    <string name="banner">%1$s\ [Banner]</string>
+    <string name="update_webview">Prosím aktualizujte WebView z Google Play</string>
+    <string name="update_webview_version">Webview verze %1$d vyžaduje aktualizaci</string>
+    <string name="webview_not_found_version">Nepodařilo se najít WebView verzi %1$s</string>
+    <string name="webview_not_found">Nepodařilo se najít nainstalovanou WebView knihovnu</string>
+    <string name="multi">Vícenásobné</string>
+</resources>
