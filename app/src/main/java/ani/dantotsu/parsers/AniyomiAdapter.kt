@@ -524,7 +524,9 @@ class VideoServerPassthrough(private val videoServer: VideoServer) : VideoExtrac
         val number = Regex("""\d+""").find(aniVideo.quality)?.value?.toInt() ?: 0
 
         // Check for null video URL
-        val videoUrl = aniVideo.videoUrl ?: throw Exception("Video URL is null")
+        val videoUrl = aniVideo.videoUrl?.let {
+            if (it.startsWith("/")) aniVideo.url + it else it
+        } ?: throw Exception("Video URL is null")
 
         var format: VideoType?
 
@@ -573,7 +575,9 @@ class VideoServerPassthrough(private val videoServer: VideoServer) : VideoExtrac
             number,
             format!!,
             FileUrl(videoUrl, headersMap),
-            if (aniVideo.totalContentLength == 0L) null else aniVideo.bytesDownloaded.toDouble()
+            if (aniVideo.totalContentLength == 0L) null else aniVideo.bytesDownloaded.toDouble(),
+            audioTracks = aniVideo.audioTracks,
+            subtitleTracks = aniVideo.subtitleTracks
         )
     }
 

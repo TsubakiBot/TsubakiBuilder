@@ -1,6 +1,8 @@
 package ani.dantotsu.parsers
 
+import androidx.media3.common.Tracks
 import ani.dantotsu.FileUrl
+import eu.kanade.tachiyomi.animesource.model.Track
 import java.io.Serializable
 
 /**
@@ -124,7 +126,22 @@ data class Video(
      * Ex: "Backup" which could be used if the site provides some
      * **/
     val extraNote: String? = null,
+
+    val audioTracks: List<Track>? = emptyList(),
+
+    val subtitleTracks: List<Track>? = emptyList()
 ) : Serializable {
+
+    constructor(
+        quality: Int? = null,
+        videoType: VideoType,
+        url: String,
+        size: Double?,
+        extraNote: String? = null,
+        audioTracks: List<Track>,
+        subtitleTracks: List<Track>
+    )
+            : this(quality, videoType, FileUrl(url), size, extraNote, audioTracks, subtitleTracks)
 
     constructor(
         quality: Int? = null,
