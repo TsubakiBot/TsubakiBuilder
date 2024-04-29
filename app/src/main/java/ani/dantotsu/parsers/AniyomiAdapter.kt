@@ -525,7 +525,7 @@ class VideoServerPassthrough(private val videoServer: VideoServer) : VideoExtrac
 
         // Check for null video URL
         val videoUrl = aniVideo.videoUrl?.let {
-            if (it.startsWith("/")) aniVideo.url + it else it
+            if (it.startsWith("/")) aniVideo.url.removeSuffix("/") + it else it
         } ?: throw Exception("Video URL is null")
 
         var format: VideoType?
