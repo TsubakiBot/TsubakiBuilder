@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Base64
+import android.view.GestureDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -20,7 +21,6 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -202,7 +202,7 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
                 .show(supportFragmentManager, NovelReaderSettingsDialogFragment.TAG)
         }
 
-        val gestureDetector = GestureDetectorCompat(this, object : GesturesListener() {
+        val gestureDetector = GestureDetector(this, object : GesturesListener() {
             override fun onSingleClick(event: MotionEvent) {
                 handleController()
             }

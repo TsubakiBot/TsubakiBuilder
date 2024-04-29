@@ -10,6 +10,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.KeyEvent.ACTION_DOWN
@@ -30,7 +31,6 @@ import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.math.MathUtils.clamp
-import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -639,7 +639,7 @@ class MangaReaderActivity : AppCompatActivity() {
             binding.mangaReaderRecyclerContainer.controller.settings.isRotationEnabled =
                 defaultSettings.rotation
 
-            val detector = GestureDetectorCompat(this, object : GesturesListener() {
+            val detector = GestureDetector(this, object : GesturesListener() {
                 override fun onLongPress(e: MotionEvent) {
                     if (binding.mangaReaderRecycler.findChildViewUnder(e.x, e.y).let { child ->
                             child ?: return@let false

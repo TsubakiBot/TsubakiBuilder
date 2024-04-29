@@ -1073,4 +1073,6 @@
 
     <string name="file_not_found">File not found</string>
     <string name="directory_not_found">Directory not found</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
 </resources>

@@ -40,6 +40,7 @@ import java.io.File
 import java.util.concurrent.Executors
 
 @SuppressLint("UnsafeOptInUsageError")
+@Suppress("DEPRECATION")
 object Helper {
     @OptIn(UnstableApi::class)
     fun startAnimeDownloadService(
@@ -119,9 +120,9 @@ object Helper {
         return true
     }
 
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     @Synchronized
     @UnstableApi
-    @Deprecated("exoplayer download manager is no longer used")
     fun downloadManager(context: Context): DownloadManager {
         return download ?: let {
             val database = Injekt.get<StandaloneDatabaseProvider>()
@@ -181,7 +182,7 @@ object Helper {
             downloadManager
         }
     }
-    @Deprecated("exoplayer download manager is no longer used")
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     @OptIn(UnstableApi::class)
     fun getSimpleCache(context: Context): SimpleCache {
         return if (simpleCache == null) {
@@ -193,8 +194,8 @@ object Helper {
             simpleCache!!
         }
     }
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     @Synchronized
-    @Deprecated("exoplayer download manager is no longer used")
     private fun getDownloadDirectory(context: Context): File {
         if (downloadDirectory == null) {
             downloadDirectory = context.getExternalFilesDir(null)
@@ -204,12 +205,14 @@ object Helper {
         }
         return downloadDirectory!!
     }
-    @Deprecated("exoplayer download manager is no longer used")
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     private var download: DownloadManager? = null
-    @Deprecated("exoplayer download manager is no longer used")
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     private const val DOWNLOAD_CONTENT_DIRECTORY = "Anime_Downloads"
-    @Deprecated("exoplayer download manager is no longer used")
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     private var simpleCache: SimpleCache? = null
-    @Deprecated("exoplayer download manager is no longer used")
+    @Deprecated(DOWNLOAD_MANAGER_OBSOLETE)
     private var downloadDirectory: File? = null
+
+    private const val DOWNLOAD_MANAGER_OBSOLETE = "ExoPlayer download manager is obsolete"
 }

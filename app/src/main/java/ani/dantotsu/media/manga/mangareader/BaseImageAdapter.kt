@@ -5,11 +5,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
+import android.view.GestureDetector
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -102,7 +102,7 @@ abstract class BaseImageAdapter(
                 }
             }
         } else {
-            val detector = GestureDetectorCompat(view.context, object : GesturesListener() {
+            val detector = GestureDetector(view.context, object : GesturesListener() {
                 override fun onSingleClick(event: MotionEvent) =
                     activity.handleController(event = event)
             })

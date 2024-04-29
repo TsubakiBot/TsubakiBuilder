@@ -4,8 +4,8 @@ import android.content.Context
 import android.media.MediaScannerConnection
 import android.net.Uri
 import androidx.documentfile.provider.DocumentFile
-import ani.dantotsu.download.DownloadCompat.Companion.removeDownloadCompat
-import ani.dantotsu.download.DownloadCompat.Companion.removeMediaCompat
+import ani.dantotsu.download.DownloadCompat.removeDownloadCompat
+import ani.dantotsu.download.DownloadCompat.removeMediaCompat
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.settings.saving.PrefManager

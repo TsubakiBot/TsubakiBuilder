@@ -1,8 +1,8 @@
 package ani.dantotsu.parsers
 
 import android.app.Application
-import ani.dantotsu.download.DownloadCompat.Companion.loadChaptersCompat
-import ani.dantotsu.download.DownloadCompat.Companion.loadImagesCompat
+import ani.dantotsu.download.DownloadCompat.loadChaptersCompat
+import ani.dantotsu.download.DownloadCompat.loadImagesCompat
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.media.MediaNameAdapter
