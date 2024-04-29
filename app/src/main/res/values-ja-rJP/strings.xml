@@ -421,7 +421,7 @@
     <string name="error_loading_data">データ %1$sの読み込みエラー</string>
     <string name="long_click_to_check_update">長押しでアップデートを確認</string>
     <string name="saved_to_path">保存先：%s</string>
-    <string name="login_anilist_account">Anilistアカウントにログインしてください！</string>
+    <string name="login_anilist_account">AniListアカウントにログインしてください！</string>
     <string name="congrats_vro">おめでとうVro</string>
     <string name="please_reload">再読み込みしてください。</string>
     <string name="copied_text">\"%1$s\" をコピーしました</string>
