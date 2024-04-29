@@ -2,8 +2,8 @@ package ani.dantotsu.parsers
 
 import android.app.Application
 import ani.dantotsu.currContext
-import ani.dantotsu.download.DownloadCompat.Companion.loadEpisodesCompat
-import ani.dantotsu.download.DownloadCompat.Companion.loadSubtitleCompat
+import ani.dantotsu.download.DownloadCompat.loadEpisodesCompat
+import ani.dantotsu.download.DownloadCompat.loadSubtitleCompat
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.anime.AnimeDownloaderService.AnimeDownloadTask.Companion.getTaskName
@@ -137,26 +137,24 @@ class OfflineVideoExtractor(private val videoServer: VideoServer) : VideoExtract
     }
 
     private fun getSubtitle(title: String, episode: String): List<Subtitle>? {
-        currContext().let {
-            getSubDirectory(
-                it,
-                MediaType.ANIME,
-                false,
-                title,
-                episode
-            )?.listFiles()?.forEach { file ->
-                if (file.name?.contains("subtitle") == true) {
-                    return listOf(
-                        Subtitle(
-                            "Downloaded Subtitle",
-                            file.uri.toString(),
-                            determineSubtitleType(file.name ?: "")
-                        )
+        getSubDirectory(
+            currContext(),
+            MediaType.ANIME,
+            false,
+            title,
+            episode
+        )?.listFiles()?.forEach { file ->
+            if (file.name?.contains("subtitle") == true) {
+                return listOf(
+                    Subtitle(
+                        "Downloaded Subtitle",
+                        file.uri.toString(),
+                        determineSubtitleType(file.name ?: "")
                     )
-                }
+                )
             }
-            loadSubtitleCompat(title, episode)?.let { return it }
         }
+        loadSubtitleCompat(title, episode)?.let { return it }
         return null
     }
 

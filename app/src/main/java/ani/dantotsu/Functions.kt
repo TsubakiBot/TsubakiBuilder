@@ -932,7 +932,7 @@ fun countDown(media: Media, view: ViewGroup) {
         v.mediaCountdownText.text =
             currActivity()?.getString(
                 R.string.episode_release_countdown,
-                media.anime.nextAiringEpisode!! + 1
+                media.anime.nextAiringEpisode!!
             )
 
         object : CountDownTimer(

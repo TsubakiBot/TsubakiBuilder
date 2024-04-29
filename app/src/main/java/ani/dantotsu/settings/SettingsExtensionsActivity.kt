@@ -68,7 +68,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                     MediaType.MANGA -> { PrefName.MangaExtensionRepos }
                     MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
                 }
-                prefName?.let { repoList ->
+                prefName.let { repoList ->
                     PrefManager.getVal<Set<String>>(repoList).forEach { item ->
                         val view = ItemRepositoryBinding.inflate(
                             LayoutInflater.from(repoInventory.context), repoInventory, true
@@ -89,9 +89,11 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                             MediaType.ANIME -> {
                                                 animeExtensionManager.findAvailableExtensions()
                                             }
+
                                             MediaType.MANGA -> {
                                                 mangaExtensionManager.findAvailableExtensions()
                                             }
+
                                             MediaType.NOVEL -> {
                                                 novelExtensionManager.findAvailableExtensions()
                                                 novelExtensionManager.findAvailablePlugins()

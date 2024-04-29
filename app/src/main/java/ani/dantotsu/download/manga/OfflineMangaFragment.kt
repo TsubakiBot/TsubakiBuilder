@@ -28,7 +28,7 @@ import ani.dantotsu.bottomBar
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.download.DownloadCompat
-import ani.dantotsu.download.DownloadCompat.Companion.loadOfflineMangaModelCompat
+import ani.dantotsu.download.DownloadCompat.loadOfflineMangaModelCompat
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.compareName
@@ -313,7 +313,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
      * @param downloadedType DownloadedType object
      * @return Media object
      */
-    private suspend fun getMedia(downloadedType: DownloadedType): Media? {
+    private fun getMedia(downloadedType: DownloadedType): Media? {
         return try {
             val directory = getSubDirectory(
                 context ?: currContext(), downloadedType.type,
@@ -338,7 +338,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         }
     }
 
-    private suspend fun loadOfflineMangaModel(downloadedType: DownloadedType): OfflineMangaModel {
+    private fun loadOfflineMangaModel(downloadedType: DownloadedType): OfflineMangaModel {
         val type = downloadedType.type.asText()
         //load media.json and convert to media class with gson
         try {

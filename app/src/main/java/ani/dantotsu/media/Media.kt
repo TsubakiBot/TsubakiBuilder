@@ -102,8 +102,8 @@ data class Media(
         favourites = apiMedia.favourites,
         timeUntilAiring = apiMedia.nextAiringEpisode?.timeUntilAiring?.let { it.toLong() * 1000 },
         anime = if (apiMedia.type == MediaType.ANIME) Anime(
-            totalEpisodes = apiMedia.episodes,
-            nextAiringEpisode = apiMedia.nextAiringEpisode?.episode?.minus(1)
+            totalEpisodes = apiMedia.episodes ?: apiMedia.nextAiringEpisode?.episode?.minus(1),
+            nextAiringEpisode = apiMedia.nextAiringEpisode?.episode
         ) else null,
         manga = if (apiMedia.type == MediaType.MANGA) Manga(totalChapters = apiMedia.chapters) else null,
         format = apiMedia.format?.toString(),

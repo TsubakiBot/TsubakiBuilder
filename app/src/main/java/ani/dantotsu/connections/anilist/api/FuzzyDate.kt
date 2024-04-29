@@ -18,7 +18,7 @@ data class FuzzyDate(
     }
 
     override fun toString(): String {
-        return if (isEmpty()) "??" else toStringOrEmpty()
+        return toStringOrEmpty().ifBlank { "??" }
     }
 
     fun toStringOrEmpty(): String {

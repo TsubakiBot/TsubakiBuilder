@@ -260,7 +260,6 @@ class AnilistQueries {
                             media.anime.episodeDuration = fetchedMedia.duration
                             media.anime.season = fetchedMedia.season?.toString()
                             media.anime.seasonYear = fetchedMedia.seasonYear
-                            media.anime.totalEpisodes = fetchedMedia.episodes
 
                             fetchedMedia.studios?.nodes?.apply {
                                 if (isNotEmpty()) {
@@ -294,7 +293,6 @@ class AnilistQueries {
                                 }
                             }
                         } else if (media.manga != null) {
-                            media.manga.totalChapters = fetchedMedia.chapters
                             fetchedMedia.staff?.edges?.find { authorRoles.contains(it.role?.trim()) }?.node?.let {
                                 media.manga.author = Author(
                                     it.id,

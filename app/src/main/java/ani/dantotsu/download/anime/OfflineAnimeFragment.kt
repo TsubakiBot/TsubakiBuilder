@@ -30,8 +30,8 @@ import ani.dantotsu.R
 import ani.dantotsu.bottomBar
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
-import ani.dantotsu.download.DownloadCompat.Companion.loadMediaCompat
-import ani.dantotsu.download.DownloadCompat.Companion.loadOfflineAnimeModelCompat
+import ani.dantotsu.download.DownloadCompat.loadMediaCompat
+import ani.dantotsu.download.DownloadCompat.loadOfflineAnimeModelCompat
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.compareName

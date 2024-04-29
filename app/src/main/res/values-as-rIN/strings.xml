@@ -453,7 +453,7 @@
     <string name="mal_login_code_not_present">MAL লগইন: নিৰ্দিষ্ট ক\'ড পৰিচ্ছন্নত উপস্থিত নাই</string>
     <string name="refresh_token_load_failed">নবাৰ টোকেন: সংৰক্ষিত টোকেন লোড কৰা ব্যৰ্থ হৈছে</string>
     <string name="refreshing_token_failed">টোকেন পুনৰ্নিৰ্দিষ্ট কৰা ব্যৰ্থ হৈছে</string>
-    <string name="episode_release_countdown">%1$d এপিস\'ড %2$d দিন %3$d ঘণ্টা %4$d মিনিট %5$d সেকেণ্ডত মুক্তি প্ৰাপ্ত হ\'ব</string>
+    <string name="episode_release_countdown">%1$d এপিস\'ড মুক্তি প্ৰাপ্ত হ\'ব</string>
     <string name="chapter_number">চাপ্তেৰ %1$d</string>
     <string name="chapter_release_timeout">%1$s বাবে উপলব্ধ</string>
     <string name="time_format">%1$d দিন %2$d ঘণ্টা %3$d মিনিট %4$d সেকেণ্ড</string>
