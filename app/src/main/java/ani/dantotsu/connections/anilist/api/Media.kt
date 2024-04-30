@@ -211,9 +211,8 @@ enum class MediaStatus {
             "NOT_YET_RELEASED" -> getString(R.string.status_not_yet_released)
             "CANCELLED" -> getString(R.string.status_cancelled)
             "HIATUS" -> getString(R.string.status_hiatus)
-            else -> ""
+            else -> super.toString().replace("_", " ")
         }
-
     }
 }
 
