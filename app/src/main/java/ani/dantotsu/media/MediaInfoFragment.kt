@@ -186,10 +186,11 @@ class MediaInfoFragment : Fragment() {
                         }
                     }
                     binding.mediaInfoTotalTitle.setText(R.string.total_eps)
-                    val infoTotal = if (media.anime.nextAiringEpisode != null)
-                        "${media.anime.nextAiringEpisode} | ${media.anime.totalEpisodes ?: "~"}"
-                    else
-                        (media.anime.totalEpisodes ?: "~").toString()
+                    val infoTotal = "${media.anime.totalEpisodes ?: "~"}${
+                        if (media.anime.nextAiringEpisode != null)
+                            " | ${media.anime.nextAiringEpisode}"
+                        else ""
+                    }"
                     binding.mediaInfoTotal.text = infoTotal
 
                 } else if (media.manga != null) {

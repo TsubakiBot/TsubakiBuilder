@@ -244,7 +244,7 @@ class MediaAdaptor(
                 else ""
             }"
         } else if (media.manga != null) {
-            " ${media.manga.totalChapters ?: "??"}"
+            "${media.manga.totalChapters ?: emptyText}"
         } else ""
     }
 
