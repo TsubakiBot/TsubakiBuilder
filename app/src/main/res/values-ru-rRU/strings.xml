@@ -18,9 +18,6 @@
     <string name="language">Язык</string>
     <string name="anime_list">Аниме список</string>
     <string name="manga_list">Манга список</string>
-    <string name="sad">X (</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Нет подключения к интернету</string>
     <string name="no_internet_connection">Нет интернет-соединения</string>
     <string name="refresh">Перезагрузить</string>
@@ -552,10 +549,8 @@
     <string name="cope">Справиться</string>
     <string name="watched_num">"Просмотрено "</string>
     <string name="read_num">"Прочитано "</string>
-    <string name="episodes_out_of">" из "</string>
-    <string name="chapters_out_of">" из "</string>
-    <string name="episodes_total_of">"Всего "</string>
-    <string name="chapters_total_of">"Всего "</string>
+    <string name="items_out_of">" из "</string>
+    <string name="items_total_of">"Всего "</string>
     <string name="no_description_available">"Описание отсутствует"</string>
     <string-array name="manga_directions">
         <item>Сверху вниз</item>

@@ -261,14 +261,14 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     )
                     bold { color(typedValue.data) { append("${media.userProgress}") } }
                     append(
-                        if (media.anime != null) getString(R.string.episodes_out_of) else getString(
-                            R.string.chapters_out_of
+                        if (media.anime != null) getString(R.string.items_out_of) else getString(
+                            R.string.items_out_of
                         )
                     )
                 } else {
                     append(
-                        if (media.anime != null) getString(R.string.episodes_total_of) else getString(
-                            R.string.chapters_total_of
+                        if (media.anime != null) getString(R.string.items_total_of) else getString(
+                            R.string.items_total_of
                         )
                     )
                 }

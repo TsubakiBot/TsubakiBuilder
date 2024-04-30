@@ -18,9 +18,6 @@
     <string name="language">Γλώσσα</string>
     <string name="anime_list">Λίστα Anime</string>
     <string name="manga_list">Λίστα Manga</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
     <string name="no_internet_connection">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
     <string name="refresh">Ανανέωση</string>
@@ -552,10 +549,8 @@
     <string name="cope">Αντιμετωπίζω</string>
     <string name="watched_num">"Παρακολούθησα "</string>
     <string name="read_num">"Διάβασα "</string>
-    <string name="episodes_out_of">" από "</string>
-    <string name="chapters_out_of">" από "</string>
-    <string name="episodes_total_of">"Συνολικά "</string>
-    <string name="chapters_total_of">"Συνολικά "</string>
+    <string name="items_out_of">" από "</string>
+    <string name="items_total_of">"Συνολικά "</string>
     <string name="no_description_available">"Δεν υπάρχει διαθέσιμη περιγραφή"</string>
     <string-array name="manga_directions">
         <item>Από πάνω προς τα κάτω</item>

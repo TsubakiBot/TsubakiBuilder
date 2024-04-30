@@ -15,9 +15,6 @@
     <string name="language">Idioma</string>
     <string name="anime_list">Mis Animes</string>
     <string name="manga_list">Mis Mangas</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Sin conexión a Internet</string>
     <string name="refresh">Actualizar</string>
     <string name="search">Buscar</string>
@@ -515,10 +512,8 @@
     <string name="cope">Lidiar</string>
     <string name="watched_num">"Visto "</string>
     <string name="read_num">"Leído "</string>
-    <string name="episodes_out_of">" de "</string>
-    <string name="chapters_out_of">" de "</string>
-    <string name="episodes_total_of">"Total de "</string>
-    <string name="chapters_total_of">"Total de "</string>
+    <string name="items_out_of">" de "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">"Descripción no disponible"</string>
     <string-array name="manga_directions">
         <item>De arriba hacia abajo</item>

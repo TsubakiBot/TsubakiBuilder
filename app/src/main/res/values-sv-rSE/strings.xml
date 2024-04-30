@@ -18,9 +18,6 @@
     <string name="language">Språk</string>
     <string name="anime_list">Anime lista</string>
     <string name="manga_list">Manga lista</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Ingen internetanslutning</string>
     <string name="no_internet_connection">Ingen internetanslutning\nOffline-läge tillgängligt</string>
     <string name="refresh">Uppdatera</string>
@@ -552,10 +549,8 @@
     <string name="cope">Sopa</string>
     <string name="watched_num">"Sedd "</string>
     <string name="read_num">"Läsa "</string>
-    <string name="episodes_out_of">" av "</string>
-    <string name="chapters_out_of">" av "</string>
-    <string name="episodes_total_of">"Totalt av "</string>
-    <string name="chapters_total_of">"Totalt av "</string>
+    <string name="items_out_of">" av "</string>
+    <string name="items_total_of">"Totalt av "</string>
     <string name="no_description_available">"Ingen beskrivning tillgänglig"</string>
     <string-array name="manga_directions">
         <item>Topp till botten</item>

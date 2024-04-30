@@ -18,9 +18,6 @@
     <string name="language">IDIOMA</string>
     <string name="anime_list">Lista de anime</string>
     <string name="manga_list">Lista Manga</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Sem conexão à internet</string>
     <string name="no_internet_connection">Sem Conexão à Internet\nModo offline disponível</string>
     <string name="refresh">atualizar</string>
@@ -552,10 +549,8 @@
     <string name="cope">Copa</string>
     <string name="watched_num">"Assistido "</string>
     <string name="read_num">"Lido "</string>
-    <string name="episodes_out_of">" fora de "</string>
-    <string name="chapters_out_of">" fora de "</string>
-    <string name="episodes_total_of">"Total de "</string>
-    <string name="chapters_total_of">"Total de "</string>
+    <string name="items_out_of">" fora de "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">"Nenhuma descrição disponível"</string>
     <string-array name="manga_directions">
         <item>De cima para baixo</item>

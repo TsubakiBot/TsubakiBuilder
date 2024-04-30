@@ -18,9 +18,6 @@
     <string name="language">Sprog</string>
     <string name="anime_list">Anime Liste</string>
     <string name="manga_list">Manga Liste</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Ingen Internetforbindelse</string>
     <string name="no_internet_connection">Ingen internetforbindelse\nOffline tilstand tilgængelig</string>
     <string name="refresh">Opdater</string>
@@ -552,10 +549,8 @@
     <string name="cope">Hope</string>
     <string name="watched_num">"Set "</string>
     <string name="read_num">"Læs "</string>
-    <string name="episodes_out_of">" ud af "</string>
-    <string name="chapters_out_of">" ud af "</string>
-    <string name="episodes_total_of">"I alt af "</string>
-    <string name="chapters_total_of">"I alt af "</string>
+    <string name="items_out_of">" ud af "</string>
+    <string name="items_total_of">"I alt af "</string>
     <string name="no_description_available">"Ingen Beskrivelse Tilgængelig"</string>
     <string-array name="manga_directions">
         <item>Top til bunden</item>

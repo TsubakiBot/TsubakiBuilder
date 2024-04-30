@@ -15,9 +15,6 @@
     <string name="language">ভাষা</string>
     <string name="anime_list">এনিমেৰ তালিকা</string>
     <string name="manga_list">মাংগাৰ তালিকা</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">ইণ্টাৰনেট সংযোগ নাই</string>
     <string name="refresh">আকৌ লোড কৰক</string>
     <string name="search">সন্ধান</string>
@@ -517,10 +514,8 @@
     <string name="cope">সাহায্য কৰা</string>
     <string name="watched_num">"চালিব "</string>
     <string name="read_num">"পঢ়া হৈছে "</string>
-    <string name="episodes_out_of">" এৰ পৰা "</string>
-    <string name="chapters_out_of">" এৰ পৰা "</string>
-    <string name="episodes_total_of">"মুঠ প্ৰকৰণ "</string>
-    <string name="chapters_total_of">"মুঠ চাপ্তেৰ "</string>
+    <string name="items_out_of">" এৰ পৰা "</string>
+    <string name="items_total_of">"মুঠ প্ৰকৰণ "</string>
     <string name="no_description_available">"বৰ্ণনা অস্তিত্বত নাই"</string>
     <string-array name="manga_directions">
         <item>ওপৰৰ পৰা তললৈ</item>

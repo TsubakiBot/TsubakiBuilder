@@ -18,9 +18,6 @@
     <string name="language">Limba</string>
     <string name="anime_list">Lista Anime</string>
     <string name="manga_list">Listă Manga</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Lipsă conexiune la internet</string>
     <string name="no_internet_connection">Nu există conexiune la internet\ndisponibil modul offline</string>
     <string name="refresh">Împrospătează</string>
@@ -552,10 +549,8 @@
     <string name="cope">Copie</string>
     <string name="watched_num">"Vizionat "</string>
     <string name="read_num">"Citește "</string>
-    <string name="episodes_out_of">" din "</string>
-    <string name="chapters_out_of">" din "</string>
-    <string name="episodes_total_of">"Total de "</string>
-    <string name="chapters_total_of">"Total de "</string>
+    <string name="items_out_of">" din "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">"Nici o descriere disponibilă"</string>
     <string-array name="manga_directions">
         <item>Sus spre jos</item>

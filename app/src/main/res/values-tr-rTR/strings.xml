@@ -18,9 +18,6 @@
     <string name="language">Dil</string>
     <string name="anime_list">Anime Listesi</string>
     <string name="manga_list">Manga Listesi</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">İnternet Bağlantısı Yok</string>
     <string name="no_internet_connection">İnternet Bağlantısı Yok\nÇevrimdışı mod mevcut</string>
     <string name="refresh">Yenile</string>
@@ -552,10 +549,8 @@
     <string name="cope">Başa Çık</string>
     <string name="watched_num">"İzlenen "</string>
     <string name="read_num">"Okunan "</string>
-    <string name="episodes_out_of">" dışında "</string>
-    <string name="chapters_out_of">" dışında "</string>
-    <string name="episodes_total_of">"Toplam "</string>
-    <string name="chapters_total_of">"Toplam "</string>
+    <string name="items_out_of">" dışında "</string>
+    <string name="items_total_of">"Toplam "</string>
     <string name="no_description_available">"Açıklama Mevcut Değil"</string>
     <string-array name="manga_directions">
         <item>Yukarıdan Aşağıya</item>

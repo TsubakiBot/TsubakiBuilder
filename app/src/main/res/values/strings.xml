@@ -25,10 +25,6 @@
     <string name="anime_list">Anime List</string>
     <string name="manga_list">Manga List</string>
 
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon"> : </string>
-
     <string name="no_internet">No Internet Connection</string>
     <string name="no_internet_connection">No Internet Connection\nOffline mode available</string>
     <string name="refresh">Refresh</string>
@@ -572,10 +568,10 @@
     <string name="continue_episode">Continue : Episode %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continue : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
-    <string name="episode_num">"Episode %1$s"</string>
-    <string name="chapter">"Chapter "</string>
-    <string name="chapter_num">"Chapter %1$s"</string>
+    <string name="episode">Episode\u0020</string>
+    <string name="episode_num">Episode %1$s</string>
+    <string name="chapter">Chapter\u0020</string>
+    <string name="chapter_num">Chapter %1$s</string>
     <string name="just_released">- Newly released!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
     <string name="user_list">%1$s\'s %2$s List</string>
@@ -605,13 +601,11 @@
     <string name="lets_go">Let\'s Go</string>
     <string name="cope">Cope</string>
 
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">Watched\u0020</string>
     <string name="read_num">"Read "</string>
-    <string name="episodes_out_of">" out of "</string>
-    <string name="chapters_out_of">" out of "</string>
-    <string name="episodes_total_of">"Total of "</string>
-    <string name="chapters_total_of">"Total of "</string>
-    <string name="no_description_available">"No Description Available"</string>
+    <string name="items_out_of">" out of "</string>
+    <string name="items_total_of">Total of\u0020</string>
+    <string name="no_description_available">No Description Available</string>
 
     <string-array name="manga_directions">
         <item>Top to Bottom</item>
@@ -629,9 +623,9 @@
     <string name="selected">Selected</string>
     <string name="found">Found</string>
 
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">\n"__Birthday:__ "</string>
-    <string name="gender">\n"__Gender:__ "</string>"
+    <string name="age">__Age:__\u0020</string>
+    <string name="birthday">\n__Birthday:__\u0020</string>
+    <string name="gender">\n__Gender:__\u0020</string>
 
     <string name="male">Male</string>
     <string name="female">Female</string>

@@ -18,9 +18,6 @@
     <string name="language">اللغة</string>
     <string name="anime_list">قائمة الانمي</string>
     <string name="manga_list">قائمة المانجا</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">لا يوجد اتصال بالإنترنت</string>
     <string name="no_internet_connection">لا يوجد اتصال بالإنترنت</string>
     <string name="refresh">إعادة التحميل</string>
@@ -551,10 +548,8 @@
     <string name="cope">البابا</string>
     <string name="watched_num">"تم المشاهدة "</string>
     <string name="read_num">"قراءة "</string>
-    <string name="episodes_out_of">" خالي من "</string>
-    <string name="chapters_out_of">" خالي من "</string>
-    <string name="episodes_total_of">"المجموع "</string>
-    <string name="chapters_total_of">"المجموع "</string>
+    <string name="items_out_of">" خالي من "</string>
+    <string name="items_total_of">"المجموع "</string>
     <string name="no_description_available">"لا يوجد وصف متوفر"</string>
     <string-array name="manga_directions">
         <item>أعلى إلى الأسفل</item>

@@ -18,9 +18,6 @@
     <string name="language">Kieli</string>
     <string name="anime_list">Anime Lista</string>
     <string name="manga_list">Mangan Luettelo</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Ei Internet-yhteyttä</string>
     <string name="no_internet_connection">Ei Internet-yhteyttä\nOffline-tilaa saatavilla</string>
     <string name="refresh">Päivitä</string>
@@ -552,10 +549,8 @@
     <string name="cope">Kavi</string>
     <string name="watched_num">"Katsottu "</string>
     <string name="read_num">"Lue "</string>
-    <string name="episodes_out_of">" ulkona "</string>
-    <string name="chapters_out_of">" ulkona "</string>
-    <string name="episodes_total_of">"Yhteensä "</string>
-    <string name="chapters_total_of">"Yhteensä "</string>
+    <string name="items_out_of">" ulkona "</string>
+    <string name="items_total_of">"Yhteensä "</string>
     <string name="no_description_available">"Ei Kuvausta Saatavilla"</string>
     <string-array name="manga_directions">
         <item>Ylhäältä alas</item>

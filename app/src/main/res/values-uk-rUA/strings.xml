@@ -18,9 +18,6 @@
     <string name="language">Мова:</string>
     <string name="anime_list">Список аніме</string>
     <string name="manga_list">Список манг</string>
-    <string name="sad">Х(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Немає з\'єднання з Інтернетом</string>
     <string name="no_internet_connection">Немає підключення до Інтернету\nДоступний автономний режим</string>
     <string name="refresh">Оновити</string>
@@ -552,10 +549,8 @@
     <string name="cope">Каппа</string>
     <string name="watched_num">"Переглянуто "</string>
     <string name="read_num">"Прочитано "</string>
-    <string name="episodes_out_of">" з "</string>
-    <string name="chapters_out_of">" з "</string>
-    <string name="episodes_total_of">"Всього "</string>
-    <string name="chapters_total_of">"Всього "</string>
+    <string name="items_out_of">" з "</string>
+    <string name="items_total_of">"Всього "</string>
     <string name="no_description_available">"Опис недоступний"</string>
     <string-array name="manga_directions">
         <item>Верхня донизу</item>

@@ -18,9 +18,6 @@
     <string name="language">Språk</string>
     <string name="anime_list">Anime liste</string>
     <string name="manga_list">Manga liste</string>
-    <string name="sad">X(</string>
-    <string name="oh">:o</string>
-    <string name="colon">" : "</string>
     <string name="no_internet">Ingen Internettilkobling</string>
     <string name="no_internet_connection">Ingen Internett-tilkobling\nFrakoblet modus er tilgjengelig</string>
     <string name="refresh">Oppdater</string>
@@ -552,10 +549,8 @@
     <string name="cope">Kutt</string>
     <string name="watched_num">"Sett "</string>
     <string name="read_num">"Les "</string>
-    <string name="episodes_out_of">" ut av "</string>
-    <string name="chapters_out_of">" ut av "</string>
-    <string name="episodes_total_of">"Totalt av "</string>
-    <string name="chapters_total_of">"Totalt av "</string>
+    <string name="items_out_of">" ut av "</string>
+    <string name="items_total_of">"Totalt av "</string>
     <string name="no_description_available">"Ingen beskrivelse tilgjengelig"</string>
     <string-array name="manga_directions">
         <item>Topp til bunn</item>
