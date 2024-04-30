@@ -2,6 +2,8 @@ package ani.dantotsu.media
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.Parcelable
 import android.view.View
 import android.view.WindowManager
@@ -170,8 +172,11 @@ class SearchActivity : AppCompatActivity() {
                         model.searched = true
                         headerAdaptor.search?.run()
                     }
-                } else
-                    headerAdaptor.requestFocus?.run()
+                } else {
+                    headerAdaptor.requestFocus?.let { focus ->
+                        Handler(Looper.getMainLooper()).postDelayed(focus, 150)
+                    }
+                }
 
                 if (intent.getBooleanExtra("hideKeyboard", false)) {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED)
