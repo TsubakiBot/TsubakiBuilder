@@ -27,6 +27,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.himitsu.os.Version
+import ani.dantotsu.util.customAlertDialog
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
@@ -184,33 +185,31 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_github,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-                            val editText =
-                                dialogView.userAgentTextBox.apply {
-                                    hint = getString(R.string.anime_add_repository)
+                            val editText = dialogView.userAgentTextBox.apply {
+                                hint = getString(R.string.anime_add_repository)
+                            }
+                            context.customAlertDialog().apply {
+                                setTitle(R.string.anime_add_repository)
+                                setCustomView(dialogView.root)
+                                setPosButton(getString(R.string.ok)) {
+                                    if (!editText.text.isNullOrBlank())
+                                    processUserInput(
+                                        editText.text.toString(),
+                                        MediaType.ANIME,
+                                        it.attachView
+                                    )
                                 }
-                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                                .setTitle(R.string.anime_add_repository).setView(dialogView.root)
-                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                                    if (!editText.text.isNullOrBlank()) {
-                                        processUserInput(
-                                            editText.text.toString(),
-                                            MediaType.ANIME,
-                                            it.attachView
-                                        )
-                                    }
-                                    dialog.dismiss()
-                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                                    dialog.dismiss()
-                                }.create()
-
-                            processEditorAction(
-                                alertDialog,
-                                editText,
-                                MediaType.ANIME,
-                                it.attachView
-                            )
-                            alertDialog.show()
-                            alertDialog.window?.setDimAmount(0.8f)
+                                setNegButton(getString(R.string.cancel))
+                                attach { dialog ->
+                                    processEditorAction(
+                                        dialog,
+                                        editText,
+                                        MediaType.ANIME,
+                                        it.attachView
+                                    )
+                                }
+                                show()
+                            }
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.ANIME)

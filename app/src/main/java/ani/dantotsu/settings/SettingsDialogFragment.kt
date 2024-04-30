@@ -1,6 +1,5 @@
 package ani.dantotsu.settings
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -33,6 +32,7 @@ import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.himitsu.extension.ReverseSearchDialogFragment
 import ani.himitsu.update.MatagiUpdater
@@ -81,18 +81,17 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         if (Anilist.token != null) {
             binding.settingsLogin.setText(R.string.logout)
             binding.settingsLogin.setOnClickListener {
-                val alertDialog = AlertDialog.Builder(requireContext(), R.style.MyPopup)
-                    .setTitle("Logout")
-                    .setMessage("Are you sure you want to logout?")
-                    .setPositiveButton("Yes") { _, _ ->
+                requireContext().customAlertDialog().apply{
+                    setTitle(R.string.logout)
+                    setMessage(R.string.logout_confirm)
+                    setPosButton(R.string.yes) {
                         Anilist.removeSavedToken()
                         dismiss()
                         requireActivity().recreate()
                     }
-                    .setNegativeButton("No") { _, _ -> }
-                    .create()
-                alertDialog.window?.setDimAmount(0.8f)
-                alertDialog.show()
+                    setNegButton(R.string.no)
+                    show()
+                }
             }
             binding.settingsUsername.text = Anilist.username
             binding.settingsUserAvatar.loadImage(Anilist.avatar)

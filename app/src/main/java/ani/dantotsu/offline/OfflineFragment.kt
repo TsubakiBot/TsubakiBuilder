@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import ani.dantotsu.R
@@ -28,11 +29,17 @@ class OfflineFragment : Fragment() {
             bottomMargin = navBarHeight
         }
         offline = PrefManager.getVal(PrefName.OfflineMode)
-        if (offline) binding.noInternet.text = getString(R.string.offline_mode)
-        binding.refreshButton.visibility = if (offline) View.GONE else View.VISIBLE
+        binding.noInternet.text =
+            if (offline) getString(R.string.offline_mode) else getString(R.string.no_internet)
+        binding.refreshButton.text = if (offline) "Go Online" else getString(R.string.refresh)
         binding.refreshButton.setOnClickListener {
-            if (isOnline(requireContext())) {
+            if (offline && isOnline(requireContext())) {
+                PrefManager.setVal(PrefName.OfflineMode, false)
                 startMainActivity(requireActivity())
+            } else {
+                if (isOnline(requireContext()) ) {
+                    startMainActivity(requireActivity())
+                }
             }
         }
         return binding.root
