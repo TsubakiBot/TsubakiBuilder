@@ -246,7 +246,7 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                 doc.selectFirst("a.prev_page")?.attr("href")?.let {
                     mWebView?.postDelayed( {
                         mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                    }, 1000L)
+                    }, 500L)
                 }
             }
             doc.selectFirst("a.next_page")?.attr("href")?.let { page ->
@@ -275,20 +275,18 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         }
                         chapter.append(lineSeparator)
                     }
-                    title.let { chap ->
-                        FileOutputStream(File(directory, chap.sanitized)).use {
+                    chapter.append(lineSeparator)
+                    novelTitle.let { file ->
+                        FileOutputStream(File(directory, file.sanitized), true).use {
                             it.write(chapter.toString().toByteArray())
-                        }
-                        FileOutputStream(File(directory, "contents.txt"), true).use {
-                            it.write("${chap.sanitized}${lineSeparator}".toByteArray())
                         }
                     }
                 }
-                mWebView?.postDelayed( { mWebView?.loadUrl(page) }, 1000L)
+                mWebView?.postDelayed( { mWebView?.loadUrl(page) }, 500L)
             } ?: doc.selectFirst("a.prev_page")?.attr("href")?.let {
                 mWebView?.postDelayed( {
                     mWebView?.loadUrl("${it.substringBefore("/novel/")}/novel/")
-                }, 1000L)
+                }, 500L)
             }
         }
 
