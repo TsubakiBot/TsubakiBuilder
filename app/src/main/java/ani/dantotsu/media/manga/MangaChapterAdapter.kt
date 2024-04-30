@@ -10,6 +10,7 @@ import android.widget.NumberPicker
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemChapterListBinding
@@ -225,8 +226,8 @@ class MangaChapterAdapter(
                         return@setOnClickListener
                     } else if (downloadedChapters.contains(chapterNumber)) {
                         it.context.customAlertDialog().apply {
-                            setTitle("Delete Chapter")
-                            setMessage("Are you sure you want to delete ${chapterNumber}?")
+                            setTitle(R.string.delete_chapter)
+                            setMessage(getString(R.string.delete_content, chapterNumber))
                             setPosButton(R.string.delete) {
                                 fragment.onMangaChapterRemoveDownloadClick(chapterNumber)
                             }
@@ -243,17 +244,17 @@ class MangaChapterAdapter(
             binding.itemDownload.setOnLongClickListener {
                 //Alert dialog asking for the number of chapters to download
                 it.context.customAlertDialog().apply {
-                    setTitle("Multi Chapter Downloader")
-                    setMessage("Enter the number of chapters to download")
+                    setTitle(R.string.multi_download_chapter)
+                    setMessage(R.string.multi_download_chapter_count)
                     val input = NumberPicker(currContext())
                     input.minValue = 1
                     input.maxValue = itemCount - bindingAdapterPosition
                     input.value = 1
                     setCustomView(input)
-                    setPosButton("OK") {
+                    setPosButton(R.string.ok) {
                         downloadNChaptersFrom(bindingAdapterPosition, input.value)
                     }
-                    setNegButton("Cancel")
+                    setNegButton(R.string.cancel)
                     show()
                 }
                 true
