@@ -240,7 +240,7 @@ class MediaAdaptor(
         return if (media.anime != null) {
             "${media.anime.totalEpisodes ?: emptyText}${
                 if (media.anime.nextAiringEpisode != null)
-                    " $divider ${media.anime.nextAiringEpisode.toString()}"
+                    " $divider ${media.anime.nextAiringEpisode}"
                 else ""
             }"
         } else if (media.manga != null) {

@@ -275,7 +275,7 @@ class PluginBottomDialog(val location: String) : BottomSheetDialogFragment() {
                         }
                         chapter.append(lineSeparator)
                     }
-                    chapter.append(lineSeparator)
+                    chapter.append(lineSeparator).append(lineSeparator)
                     novelTitle.let { file ->
                         FileOutputStream(File(directory, file.sanitized), true).use {
                             it.write(chapter.toString().toByteArray())
