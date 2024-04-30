@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.blurImage
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemMediaCompactBinding
@@ -87,12 +88,12 @@ class MediaAdaptor(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (viewType) {
-            0 -> {
-                val b = (holder as MediaViewHolder).binding
-                setAnimation(activity, b.root)
-                val media = mediaList?.getOrNull(position)
-                if (media != null) {
+        val media = mediaList?.getOrNull(position)
+        if (media != null) {
+            when (viewType) {
+                0 -> {
+                    val b = (holder as MediaViewHolder).binding
+                    setAnimation(activity, b.root)
                     b.itemCompactImage.loadImage(media.cover)
                     b.itemCompactOngoing.isVisible =
                         media.status == currActivity()!!.getString(R.string.status_releasing)
@@ -119,13 +120,6 @@ class MediaAdaptor(
                                 R.drawable.ic_round_movie_filter_24
                             )
                         )
-                        val episodes = " | ${media.anime.totalEpisodes ?: "~"}${
-                            if (media.anime.nextAiringEpisode != null) 
-                                " | ${media.anime.nextAiringEpisode.toString()}"
-                            else ""
-                        }"
-                        b.itemCompactTotal.text = episodes
-
                     } else if (media.manga != null) {
                         if (media.relation != null) b.itemCompactTypeImage.setImageDrawable(
                             AppCompatResources.getDrawable(
@@ -133,18 +127,18 @@ class MediaAdaptor(
                                 R.drawable.ic_round_import_contacts_24
                             )
                         )
-                        val chapters = " | ${media.manga.totalChapters ?: "~"}"
-                        b.itemCompactTotal.text = chapters
                     }
+                    b.itemCompactTotal.text = getString(
+                        R.string.total_divider,
+                        getItemTotal(media, '|', "~")
+                    )
+
                     b.itemCompactProgressContainer.visibility = if (fav) View.GONE else View.VISIBLE
                 }
-            }
 
-            1 -> {
-                val b = (holder as MediaLargeViewHolder).binding
-                setAnimation(activity, b.root)
-                val media = mediaList?.get(position)
-                if (media != null) {
+                1 -> {
+                    val b = (holder as MediaLargeViewHolder).binding
+                    setAnimation(activity, b.root)
                     b.itemCompactImage.loadImage(media.cover)
                     b.itemCompactBanner.blurImage(media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
@@ -157,28 +151,8 @@ class MediaAdaptor(
                         b.root.context,
                         (if (media.userScore != 0) R.drawable.item_user_score else R.drawable.item_score)
                     )
-                    if (media.anime != null) {
-                        val itemTotal = " " + if ((media.anime.totalEpisodes ?: 0) != 1)
-                            currActivity()!!.getString(R.string.episode_plural)
-                        else currActivity()!!.getString(
-                            R.string.episode_singular
-                        )
-                        b.itemTotal.text = itemTotal
-                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
-                            if (media.anime.nextAiringEpisode != null)
-                            " / ${media.anime.nextAiringEpisode.toString()}"
-                            else ""
-                        }"
-                        b.itemCompactTotal.text = episodes
-                    } else if (media.manga != null) {
-                        val itemTotal = " " + if ((media.manga.totalChapters ?: 0) != 1)
-                            currActivity()!!.getString(R.string.chapter_plural)
-                        else currActivity()!!.getString(
-                            R.string.chapter_singular
-                        )
-                        b.itemTotal.text = itemTotal
-                        b.itemCompactTotal.text = "${media.manga.totalChapters ?: "??"}"
-                    }
+                    b.itemTotal.text = getItemTotal(media, '/', "??")
+                    b.itemCompactTotal.text = getItemCompactTitle(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val start = mediaList.size
                         mediaList.addAll(mediaList)
@@ -186,13 +160,9 @@ class MediaAdaptor(
                         notifyItemRangeInserted(start, end)
                     }
                 }
-            }
 
-            2 -> {
-                val b = (holder as MediaPageViewHolder).binding
-                val media = mediaList?.get(position)
-                if (media != null) {
-
+                2 -> {
+                    val b = (holder as MediaPageViewHolder).binding
                     val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                     b.itemCompactImage.loadImage(media.cover)
                     if (bannerAnimations)
@@ -214,37 +184,17 @@ class MediaAdaptor(
                         b.root.context,
                         (if (media.userScore != 0) R.drawable.item_user_score else R.drawable.item_score)
                     )
-                    if (media.anime != null) {
-                        val episode = " " + if ((media.anime.totalEpisodes ?: 0) != 1)
-                            currActivity()!!.getString(R.string.episode_plural)
-                        else currActivity()!!.getString(R.string.episode_singular)
-                        b.itemTotal.text = episode
-                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
-                            if (media.anime.nextAiringEpisode != null)
-                                " / ${media.anime.nextAiringEpisode.toString()}"
-                            else ""
-                        }"
-                        b.itemCompactTotal.text = episodes
-                    } else if (media.manga != null) {
-                        val chapter =  " " + if ((media.manga.totalChapters ?: 0) != 1)
-                            currActivity()!!.getString(R.string.chapter_plural)
-                        else currActivity()!!.getString(R.string.chapter_singular)
-                        b.itemTotal.text = chapter
-                        b.itemCompactTotal.text = "${media.manga.totalChapters ?: "??"}"
-                    }
-                    @SuppressLint("NotifyDataSetChanged")
+                    b.itemTotal.text = getItemTotal(media, '/', "??")
+                    b.itemCompactTotal.text = getItemCompactTitle(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val size = mediaList.size
                         mediaList.addAll(mediaList)
                         notifyItemRangeInserted(size - 1, mediaList.size)
                     }
                 }
-            }
 
-            3 -> {
-                val b = (holder as MediaPageSmallViewHolder).binding
-                val media = mediaList?.get(position)
-                if (media != null) {
+                3 -> {
+                    val b = (holder as MediaPageSmallViewHolder).binding
                     val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                     b.itemCompactImage.loadImage(media.cover)
                     if (bannerAnimations)
@@ -274,26 +224,8 @@ class MediaAdaptor(
                             b.itemCompactGenres.text = genres
                         }
                     }
-                    b.itemCompactStatus.text = media.status ?: ""
-                    if (media.anime != null) {
-                        val episode = " " + if ((media.anime.totalEpisodes ?: 0) != 1)
-                            currActivity()!!.getString(R.string.episode_plural)
-                        else currActivity()!!.getString(R.string.episode_singular)
-                        b.itemTotal.text = episode
-                        val episodes = "${media.anime.totalEpisodes ?: "??"}${
-                            if (media.anime.nextAiringEpisode != null)
-                                " / ${media.anime.nextAiringEpisode.toString()}"
-                            else ""
-                        }"
-                        b.itemCompactTotal.text = episodes
-                    } else if (media.manga != null) {
-                        val chapter =  " " + if ((media.manga.totalChapters ?: 0) != 1)
-                            currActivity()!!.getString(R.string.chapter_plural)
-                        else currActivity()!!.getString(R.string.chapter_singular)
-                        b.itemTotal.text = chapter
-                        b.itemCompactTotal.text = "${media.manga.totalChapters ?: "??"}"
-                    }
-                    @SuppressLint("NotifyDataSetChanged")
+                    b.itemTotal.text = getItemTotal(media, '/', "??")
+                    b.itemCompactTotal.text = getItemCompactTitle(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val size = mediaList.size
                         mediaList.addAll(mediaList)
@@ -302,6 +234,32 @@ class MediaAdaptor(
                 }
             }
         }
+    }
+
+    private fun getItemTotal(media: Media, divider: Char, emptyText: String): String {
+        return if (media.anime != null) {
+            "${media.anime.totalEpisodes ?: emptyText}${
+                if (media.anime.nextAiringEpisode != null)
+                    " $divider ${media.anime.nextAiringEpisode.toString()}"
+                else ""
+            }"
+        } else if (media.manga != null) {
+            " ${media.manga.totalChapters ?: "??"}"
+        } else ""
+    }
+
+    private fun getItemCompactTitle(media: Media): String {
+        return if (media.anime != null) {
+            " " + if ((media.anime.totalEpisodes ?: 0) != 1)
+                getString(R.string.episode_plural)
+            else
+                getString(R.string.episode_singular)
+        } else if (media.manga != null) {
+            " " + if ((media.manga.totalChapters ?: 0) != 1)
+                getString(R.string.chapter_plural)
+            else
+                getString(R.string.chapter_singular)
+        } else ""
     }
 
     override fun getItemCount() = mediaList!!.size
