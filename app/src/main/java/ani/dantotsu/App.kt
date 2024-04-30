@@ -96,20 +96,21 @@ class App : MultiDexApplication() {
         animeExtensionManager = Injekt.get()
         mangaExtensionManager = Injekt.get()
         novelExtensionManager = Injekt.get()
-        torrentAddonManager = Injekt.get()
-        downloadAddonManager = Injekt.get()
 
         CoroutineScope(Dispatchers.IO).launch { loadAnimeExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadMangaExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadNovelExtensions() }
         CoroutineScope(Dispatchers.IO).launch {
-            torrentAddonManager.init()
+            downloadAddonManager = Injekt.get()
             downloadAddonManager.init()
+            torrentAddonManager = Injekt.get()
+            torrentAddonManager.init()
         }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            CoroutineScope(Dispatchers.Default).launch { CommentsAPI.fetchAuthToken() }
+            CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken() }
         }
 
+        GlobalScope.launch {
             val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
             val scheduler = TaskScheduler.create(this@App, useAlarmManager)
             scheduler.scheduleAllTasks(this@App)
