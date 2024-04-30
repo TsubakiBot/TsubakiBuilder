@@ -93,7 +93,6 @@
     <string name="total_eps">মোট পর্ব</string>
     <string name="episodes"> পর্ব</string>
     <string name="chapters"> অধ্যায়</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">মোট অধ্যায়</string>
     <string name="ep_duration">গড় সময়</string>
     <string name="min">" মিনিট"</string>
@@ -421,7 +420,7 @@
     <string name="please_login_anilist">অনুগ্রহ করে Anilist এ লগইন করুন!</string>
     <string name="auto_update_reset">অটো আপডেট প্রগ্রেস এখন রিসেট করা হয়েছে</string>
     <string name="cant_wait">অপেক্ষা করতে পারছি না, হ্যাঁ? ঠিক আছে X(</string>
-    <string name="downloading">ডাউনলোড করা হচ্ছে...</string>
+    <string name="downloading">ডাউনলোড করা হচ্ছে…</string>
     <string name="next_chapter_not_found">পরবর্তী অধ্যায় পাওয়া যায়নি</string>
     <string name="first_chapter">এটা প্রথম অধ্যায়!</string>
     <string name="adult_stuff">প্রাপ্ত বয়স্ক বস্তু? ( ͡° ͜ʖ ͡°)</string>
@@ -434,7 +433,7 @@
     <string name="episode_not_found">%1$s পর্ব পাওয়া যায়নি</string>
     <string name="list_updated">তালিকা আপডেট করা হয়েছে</string>
     <string name="deleted_from_list">তালিকা থেকে মুছে ফেলা হয়েছে</string>
-    <string name="no_list_id">কোনও তালিকা আইডি পাওয়া যায়নি...</string>
+    <string name="no_list_id">কোনও তালিকা আইডি পাওয়া যায়নি…</string>
     <string name="checking_for_update">আপডেট চেক করা হচ্ছে</string>
     <string name="dont_show_again">%1$s এর জন্য আর প্রদর্শন না করুন</string>
     <string name="no_update_found">কোনও আপডেট পাওয়া যায়নি</string>

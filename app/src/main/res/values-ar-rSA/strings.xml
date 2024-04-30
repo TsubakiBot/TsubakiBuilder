@@ -99,7 +99,6 @@
     <string name="total_eps">مجموع الحلقات</string>
     <string name="episodes"> الحلقة (الحلَقات)</string>
     <string name="chapters"> الفصل (الفصول)</string>
-    <string name="total_divider"> &lt;unk&gt; %1$s</string>
     <string name="total_chaps">مجموع الفصول</string>
     <string name="ep_duration">متوسط ​​مدة الحلقة</string>
     <string name="min">" دقيقة"</string>

@@ -99,7 +99,6 @@
     <string name="total_eps">Totaal afleveringen</string>
     <string name="episodes"> Aflevering(en)</string>
     <string name="chapters"> Hoofdstuk(en)</string>
-    <string name="total_divider"> Februari %1$s</string>
     <string name="total_chaps">Totaal hoofdstuk</string>
     <string name="ep_duration">Gemiddelde duur</string>
     <string name="min">" min."</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">Actieve torrents</string>
     <string name="remove_torrent">Deze torrent verwijderen?</string>
     <string name="invalid_port">Ongeldige poort ingevoerd.</string>
-    <string name="port_range">Poort moet een geldige TCP-poort zijn (0 - 65535)</string>
+    <string name="port_range">Poort moet een geldige TCP–poort zijn (0 - 65535)</string>
     <string name="server_disabled">TorrServer is uitgeschakeld!</string>
     <string name="server_enabled">TorrServer starten</string>
     <string name="enable_server_temp">Wilt u TorrServer tijdelijk inschakelen (uitgeschakeld bij het sluiten van app)?</string>

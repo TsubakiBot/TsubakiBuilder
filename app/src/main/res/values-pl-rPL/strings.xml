@@ -99,7 +99,6 @@
     <string name="total_eps">Całkowite odcinki</string>
     <string name="episodes"> Odcinek(y)</string>
     <string name="chapters"> Rozdział(-y)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Rozdział ogółem</string>
     <string name="ep_duration">Średni czas trwania</string>
     <string name="min">" min."</string>

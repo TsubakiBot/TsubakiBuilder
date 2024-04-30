@@ -99,7 +99,6 @@
     <string name="total_eps">Totale Episodes</string>
     <string name="episodes"> Episode(s)</string>
     <string name="chapters"> Hoofstuk(ke)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Totale Hoofstukke</string>
     <string name="ep_duration">Gemiddelde Duur</string>
     <string name="min">" min"</string>
@@ -757,7 +756,7 @@
     <string name="enter_password">Voer Wagwoord In</string>
     <string name="invalid_file_type">Ongeldige lêertipe</string>
     <string name="purge_confirm">Is jy seker jy wil al %1$s aflaaibestande skoonmaak?</string>
-    <string name="delete_fail_reason">Kon nie verwyder nie as gevolg van... %1$s</string>
+    <string name="delete_fail_reason">Kon nie verwyder nie as gevolg van… %1$s</string>
     <string name="hide_replies">Versteek antwoorde</string>
     <string name="view_reply">Sien antwoord</string>
     <string name="view_replies">Sien antwoorde</string>

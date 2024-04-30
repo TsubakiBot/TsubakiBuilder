@@ -99,7 +99,6 @@
     <string name="total_eps">Totalt avsnitt</string>
     <string name="episodes"> Avsnitt</string>
     <string name="chapters"> Kapitel</string>
-    <string name="total_divider"> &lt;unk&gt; %1$s</string>
     <string name="total_chaps">Totalt kapitel</string>
     <string name="ep_duration">Genomsnittlig varaktighet</string>
     <string name="min">" min"</string>

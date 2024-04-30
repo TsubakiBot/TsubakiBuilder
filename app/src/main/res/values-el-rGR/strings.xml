@@ -99,7 +99,6 @@
     <string name="total_eps">Σύνολο επεισοδίων</string>
     <string name="episodes"> Επεισόδι(ο/α)</string>
     <string name="chapters"> Κεφάλαι(ο/α)</string>
-    <string name="total_divider"> \" %1$s</string>
     <string name="total_chaps">Σύνολο Κεφαλαίων</string>
     <string name="ep_duration">Μέση Διάρκεια</string>
     <string name="min">" λεπτά"</string>

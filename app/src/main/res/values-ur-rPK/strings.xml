@@ -93,7 +93,6 @@
     <string name="total_eps">Total Episodes</string>
     <string name="episodes"> Episode(s)</string>
     <string name="chapters"> Chapter(s)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Total Chapters</string>
     <string name="ep_duration">Average Duration</string>
     <string name="min">" min"</string>

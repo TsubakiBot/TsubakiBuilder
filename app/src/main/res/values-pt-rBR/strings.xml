@@ -99,7 +99,6 @@
     <string name="total_eps">Episódios totais</string>
     <string name="episodes"> Episódio(s)</string>
     <string name="chapters"> Capítulo(s)</string>
-    <string name="total_divider"> %1$s</string>
     <string name="total_chaps">Capítulos totais</string>
     <string name="ep_duration">Duração média</string>
     <string name="min">" min."</string>
@@ -107,7 +106,7 @@
     <string name="start_date">Data Inicial</string>
     <string name="end_date">Data de Término</string>
     <string name="source">fonte</string>
-    <string name="main_studio">Estudio</string>
+    <string name="main_studio">Estúdio</string>
     <string name="genres">Genres</string>
     <string name="description">Sinopse</string>
     <string name="characters">Personagens</string>
@@ -267,7 +266,7 @@
     <string name="skip_time">Ignorar Tempo</string>
     <string name="skip_time_info">Definindo para 0, oculta o botão que está pulando.</string>
     <string name="show_cast_button">Mostrar botão de transmissão</string>
-    <string name="show_cast_button_info">Requer o aplicativo \"Web Video Caster\" para transmitir.</string>
+    <string name="show_cast_button_info">Requer o aplicativo \"Web Vídeo Caster\" para transmitir.</string>
     <string name="picture_in_picture">Imagem de imagem</string>
     <string name="always_minimize">Sempre minimizar</string>
     <string name="always_minimize_info">Requer PiP para estar ativado, faz com que o jogador se comporte como Youtube Player mas melhor.\nTambém oculta o botão PiP.</string>

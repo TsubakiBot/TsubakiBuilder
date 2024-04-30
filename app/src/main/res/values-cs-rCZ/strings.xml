@@ -99,7 +99,6 @@
     <string name="total_eps">Epizody celkem</string>
     <string name="episodes"> Epizody</string>
     <string name="chapters"> Kapitola (kapitoly)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Kapitoly celkem</string>
     <string name="ep_duration">Průměrná doba trvání</string>
     <string name="min">" minuty"</string>

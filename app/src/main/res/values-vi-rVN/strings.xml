@@ -99,7 +99,6 @@
     <string name="total_eps">Tổng Số Tập</string>
     <string name="episodes"> Tập</string>
     <string name="chapters"> Chương</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Tổng Số Chương</string>
     <string name="ep_duration">Thời Lượng Trung Bình</string>
     <string name="min">" phút"</string>

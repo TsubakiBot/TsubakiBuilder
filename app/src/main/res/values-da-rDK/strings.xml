@@ -99,7 +99,6 @@
     <string name="total_eps">Samlede Episoder</string>
     <string name="episodes"> Episode(r)</string>
     <string name="chapters"> Kapitler</string>
-    <string name="total_divider"> Øverste %1$s</string>
     <string name="total_chaps">Kapitler I Alt</string>
     <string name="ep_duration">Gennemsnitlig Varighed</string>
     <string name="min">" min."</string>

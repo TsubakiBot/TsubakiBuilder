@@ -41,7 +41,7 @@
     <string name="episodes_watched">視聴されたエピソード</string>
     <string name="continue_reading">読書を続ける</string>
     <string name="continue_watching">視聴を続ける</string>
-    <string name="continue_media">続行...</string>
+    <string name="continue_media">続行…</string>
     <string name="recommended">Recommended</string>
     <string name="get_recommendations">おすすめを入手するには、いくつかのアニメやマンガを見て/読んでください</string>
     <string name="empty">新時に、すべてが捕まりましたか?</string>
@@ -99,7 +99,6 @@
     <string name="total_eps">総エピソード数</string>
     <string name="episodes"> エピソード</string>
     <string name="chapters"> 章</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">合計章</string>
     <string name="ep_duration">平均期間</string>
     <string name="min">" 分"</string>
@@ -143,7 +142,7 @@
     <string name="sequel">シーケンス</string>
     <string name="installed">インストール済み</string>
     <string name="torrserver">TorrServer</string>
-    <string name="torrent_running">サーバーが稼働中です...</string>
+    <string name="torrent_running">サーバーが稼働中です…</string>
     <string name="settings_torrent">内部 TorrServer</string>
     <string name="enable_server">Enable torrent</string>
     <string name="enable_server_desc">This will run a torrent server in the background</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">有効な Torrent</string>
     <string name="remove_torrent">このトレントを削除しますか？</string>
     <string name="invalid_port">無効なポートが入力されました！</string>
-    <string name="port_range">ポートは有効なTCPポートである必要があります(0 - 65535)</string>
+    <string name="port_range">ポートは有効なTCPポートである必要があります(0 – 65535)</string>
     <string name="server_disabled">TorrServer は無効になっています！</string>
     <string name="server_enabled">TorrServer を起動しています</string>
     <string name="enable_server_temp">TorrServerを一時的に有効にしますか（アプリを閉じると無効になります）？</string>
@@ -691,7 +690,7 @@
     <string name="oldest">古い</string>
     <string name="highest_rated">最高評価</string>
     <string name="lowest_rated">最低評価</string>
-    <string name="compare"><u></u> を比較する</string>
+    <string name="compare">を比較する</string>
     <string name="view_following">フォロー中の表示</string>
     <string name="menu">メニュー</string>
     <string name="view_followers">フォロワーを表示</string>
@@ -792,7 +791,7 @@
     <string name="manga_read">Manga\nRead</string>
     <string name="chapters_read_n">Chapters\nRead</string>
     <string name="episodes_watched_n">Episodes\nWatched</string>
-    <string name="loading">読み込み中...</string>
+    <string name="loading">読み込み中…</string>
     <string name="user_stats">%1$sの統計</string>
     <string name="please">ください</string>
     <string name="log_in">ログイン</string>
@@ -880,7 +879,7 @@
     <string name="a_z">A-Z</string>
     <string name="z_a">Z-A</string>
     <string name="pure_pain">純粋な痛み</string>
-    <string name="add_a_comment">コメントを追加...</string>
+    <string name="add_a_comment">コメントを追加…</string>
     <string name="type">タイプ</string>
     <string name="view">表示</string>
     <string name="count">カウント</string>

@@ -99,7 +99,6 @@
     <string name="total_eps">总集数</string>
     <string name="episodes"> Episode(s)</string>
     <string name="chapters"> 章 次</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">总章节数</string>
     <string name="ep_duration">平均持续时间</string>
     <string name="min">" 分钟"</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">活动种子</string>
     <string name="remove_torrent">删除此种种子吗？</string>
     <string name="invalid_port">输入的端口无效！</string>
-    <string name="port_range">端口必须是有效的 TCP 端口(0-65535)</string>
+    <string name="port_range">端口必须是有效的 TCP 端口(0–65535)</string>
     <string name="server_disabled">TorrServer 已禁用！</string>
     <string name="server_enabled">启动 TorrServer</string>
     <string name="enable_server_temp">您想要暂时启用 TorrServer (在应用程序关闭时禁用)吗？</string>

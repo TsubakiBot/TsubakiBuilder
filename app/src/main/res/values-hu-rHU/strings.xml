@@ -99,7 +99,6 @@
     <string name="total_eps">Összes Epizód</string>
     <string name="episodes"> Epizód</string>
     <string name="chapters"> Fejezet</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Összes Fejezet</string>
     <string name="ep_duration">Átlagos Időtartam</string>
     <string name="min">" perc"</string>
@@ -143,7 +142,7 @@
     <string name="sequel">Folytatás</string>
     <string name="installed">Telepítve</string>
     <string name="torrserver">TorrServer</string>
-    <string name="torrent_running">A szerver fut...</string>
+    <string name="torrent_running">A szerver fut…</string>
     <string name="settings_torrent">Belső TorrServer</string>
     <string name="enable_server">TorrServer engedélyezése</string>
     <string name="enable_server_desc">Engedélyezi a helyi szerver on-demand használatát</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">Aktív torrentek</string>
     <string name="remove_torrent">Törölni szeretné ezt a torrentet?</string>
     <string name="invalid_port">Érvénytelen port lett megadva!</string>
-    <string name="port_range">A portnak érvényes TCP portnak kell lennie (0 - 65535)</string>
+    <string name="port_range">A portnak érvényes TCP portnak kell lennie (0 – 65535)</string>
     <string name="server_disabled">TorrServer kikapcsolva!</string>
     <string name="server_enabled">TorrServer indítása</string>
     <string name="enable_server_temp">Szeretné ideiglenesen engedélyezni a TorrServert (alkalmazás bezárásakor kikapcsolva)?</string>

@@ -99,7 +99,6 @@
     <string name="total_eps">Épisodes totaux</string>
     <string name="episodes"> Épisode(s)</string>
     <string name="chapters">Chapitre(s)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Chapitres totaux</string>
     <string name="ep_duration">Durée moyenne</string>
     <string name="min">" min"</string>

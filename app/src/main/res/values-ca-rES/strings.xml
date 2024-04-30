@@ -41,7 +41,7 @@
     <string name="episodes_watched">Episodis vistos</string>
     <string name="continue_reading">Continua llegint</string>
     <string name="continue_watching">Continua mirant</string>
-    <string name="continue_media">Continua...</string>
+    <string name="continue_media">Continua…</string>
     <string name="recommended">Recomanat</string>
     <string name="get_recommendations">Veure/Llegir algun Anime o Manga per obtenir recomanacions</string>
     <string name="empty">Al dia, quan hi haurà de nou?</string>
@@ -99,7 +99,6 @@
     <string name="total_eps">Episodis totals</string>
     <string name="episodes"> Episodi(s)</string>
     <string name="chapters"> Capítol(s)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Total de capítols</string>
     <string name="ep_duration">Durada mitjana</string>
     <string name="min">" min"</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">Torrents actius</string>
     <string name="remove_torrent">Voleu eliminar aquest torrent?</string>
     <string name="invalid_port">Port no vàlid introduït!</string>
-    <string name="port_range">El port ha de ser un port TCP vàlid (0 - 65535)</string>
+    <string name="port_range">El port ha de ser un port TCP vàlid (0 – 65535)</string>
     <string name="server_disabled">TorrServer desactivat!</string>
     <string name="server_enabled">Iniciant TorrServer</string>
     <string name="enable_server_temp">Voleu activar temporalment TorrServer (desactivat en tancar l\'aplicació)?</string>
@@ -751,7 +750,7 @@
     <string name="enter_password">Introduïu la contrasenya</string>
     <string name="invalid_file_type">Tipus de fitxer no vàlid</string>
     <string name="purge_confirm">Esteu segur que voleu purgar totes les descàrregues de %1$s?</string>
-    <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de... %1$s</string>
+    <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de… %1$s</string>
     <string name="hide_replies">Amaga les respostes</string>
     <string name="view_reply">Visualitza la resposta</string>
     <string name="view_replies">Visualitza les respostes</string>

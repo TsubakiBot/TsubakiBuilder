@@ -93,7 +93,6 @@
     <string name="total_eps">कुल एपिसोड</string>
     <string name="episodes"> वृतान्त</string>
     <string name="chapters"> अध्याय)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">कुल अध्याय</string>
     <string name="ep_duration">औसत अवधि</string>
     <string name="min">" मिनट"</string>
@@ -420,7 +419,7 @@
     <string name="please_login_anilist">कृपया Anilist के साथ लॉगिन करें!</string>
     <string name="auto_update_reset">ऑटो अपडेट प्रगति को अब रीसेट कर दिया गया है</string>
     <string name="cant_wait">इंतजार नहीं कर सकते, हाँ? ठीक है X(</string>
-    <string name="downloading">डाउनलोड हो रहा है...</string>
+    <string name="downloading">डाउनलोड हो रहा है…</string>
     <string name="next_chapter_not_found">अगला अध्याय नहीं मिला</string>
     <string name="first_chapter">यह पहला अध्याय है!</string>
     <string name="adult_stuff">वयस्क सामग्री?&#40; &#865;&#176; &#860;&#662; &#865;&#176; &#41;</string>
@@ -433,7 +432,7 @@
     <string name="episode_not_found">एपिसोड नहीं मिला : %1$s</string>
     <string name="list_updated">सूची अपडेट की गई</string>
     <string name="deleted_from_list">सूची से हटा दिया गया</string>
-    <string name="no_list_id">कोई सूची आईडी नहीं मिली...</string>
+    <string name="no_list_id">कोई सूची आईडी नहीं मिली…</string>
     <string name="checking_for_update">अपडेट की जाँच हो रही है</string>
     <string name="dont_show_again">संस्करण %1$s के लिए पुनः प्रदर्शित न करें</string>
     <string name="no_update_found">कोई अपडेट नहीं मिला</string>
@@ -738,7 +737,7 @@
     <string name="profile_stats_widget">अपने होम स्क्रीन से प्रगति को सीधे ट्रैक करें</string>
     <string name="anime_watched">एनिमे\nदेखा गया</string>
     <string name="manga_read">मंगा\nपढ़ा गया</string>
-    <string name="loading">लोड हो रहा है...</string>
+    <string name="loading">लोड हो रहा है…</string>
     <string name="user_stats">%1$s की आँकड़े</string>
     <string name="please">कृपया</string>
     <string name="log_in">लॉग इन करें</string>

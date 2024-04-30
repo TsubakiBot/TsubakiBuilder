@@ -99,7 +99,6 @@
     <string name="total_eps">Jaksot Yhteensä</string>
     <string name="episodes"> Jaksot(t)</string>
     <string name="chapters"> Luku(t)</string>
-    <string name="total_divider"> Â %1$s</string>
     <string name="total_chaps">Lukuja Yhteensä</string>
     <string name="ep_duration">Kesto Kesto</string>
     <string name="min">" min"</string>

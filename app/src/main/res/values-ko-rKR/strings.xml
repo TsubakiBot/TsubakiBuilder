@@ -99,7 +99,6 @@
     <string name="total_eps">전체 에피소드</string>
     <string name="episodes"> 에피소드</string>
     <string name="chapters"> 챕터</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">전체 챕터</string>
     <string name="ep_duration">평균 지속 시간</string>
     <string name="min">" 분"</string>
@@ -881,7 +880,7 @@
     <string name="a_z">다나가순</string>
     <string name="z_a">순수한 고통</string>
     <string name="pure_pain">순수한 고통</string>
-    <string name="add_a_comment">댓글 추가...</string>
+    <string name="add_a_comment">댓글 추가…</string>
     <string name="type">유형</string>
     <string name="view">보기</string>
     <string name="count">수</string>

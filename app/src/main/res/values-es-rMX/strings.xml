@@ -93,7 +93,6 @@
     <string name="total_eps">Episodios totales</string>
     <string name="episodes"> Episodio(s)</string>
     <string name="chapters"> Capítulo(s)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Capítulos totales</string>
     <string name="ep_duration">Duración promedio</string>
     <string name="min">" min"</string>
@@ -678,14 +677,14 @@
     <string name="default_manga_settings">Ajustes por defecto de manga</string>
     <string name="use_dark_theme">Usar tema oscuro</string>
     <string name="use_oled_theme">Usar tema OLED</string>
-    <string name="scanlators"></string>
+    <string name="scanlators">Escaneadores</string>
     <string name="exporting_requires_encryption">La exportación de credenciales requiere una contraseña para el cifrado.</string>
     <string name="manga_queue">Cola de Manga (WIP)</string>
     <string name="anime_queue">Cola de anime (WIP)</string>
     <string name="no_offline_manga_found">No se ha encontrado ningún manga descargado</string>
     <string name="sort">Ordenar</string>
     <string name="download">Descargar</string>
-    <string name="scanlator"></string>
+    <string name="scanlator">Escanear</string>
     <string name="set_cookies">Establecer cookies</string>
     <string name="open_website">Abrir sitio web</string>
     <string name="log_to_file">Guardar en archivo</string>
@@ -708,7 +707,7 @@
     <string name="enter_password">Introducir contraseña</string>
     <string name="you_cursed">has sido mald*to :pwayge:</string>
     <string name="purge_confirm">¿Estás seguro de que quieres purgar todas las descargas de %1$s?</string>
-    <string name="delete_fail_reason">Error al borrar debido a... %1$s</string>
+    <string name="delete_fail_reason">Error al borrar debido a… %1$s</string>
     <string name="hide_replies">Ocultar respuestas</string>
     <string name="view_reply">Ver respuesta</string>
     <string name="view_replies">Ver las respuestas</string>

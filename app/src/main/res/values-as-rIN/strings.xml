@@ -93,7 +93,6 @@
     <string name="total_eps">মুঠ এপিষদছ</string>
     <string name="episodes">খণ্ড(বোৰ)</string>
     <string name="chapters">অধ্যায়(বোৰ)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">মুঠ চাপ্তেৰ</string>
     <string name="ep_duration">গড় সময়কাল</string>
     <string name="min">" মিনিট"</string>

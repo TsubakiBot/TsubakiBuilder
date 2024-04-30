@@ -99,7 +99,6 @@
     <string name="total_eps">Toplam Bölümler</string>
     <string name="episodes"> Bölüm(ler)</string>
     <string name="chapters"> Bölüm</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Toplam Bölümler</string>
     <string name="ep_duration">Ortalama Süre</string>
     <string name="min">" dk"</string>
@@ -143,7 +142,7 @@
     <string name="sequel">Devam</string>
     <string name="installed">Yüklü</string>
     <string name="torrserver">TorrServer</string>
-    <string name="torrent_running">Sunucu çalışıyor...</string>
+    <string name="torrent_running">Sunucu çalışıyor…</string>
     <string name="settings_torrent">Dahili TorrServer</string>
     <string name="enable_server">TorrServer\'ı Etkinleştir</string>
     <string name="enable_server_desc">Yerel sunucunun talebe bağlı kullanımını etkinleştirir</string>
@@ -152,7 +151,7 @@
     <string name="active_torrents">Aktif torrentler</string>
     <string name="remove_torrent">Bu torrenti kaldırmak mı?</string>
     <string name="invalid_port">Geçersiz bağlantı noktası girildi!</string>
-    <string name="port_range">Bağlantı noktası geçerli bir TCP bağlantı noktası olmalıdır (0 - 65535)</string>
+    <string name="port_range">Bağlantı noktası geçerli bir TCP bağlantı noktası olmalıdır (0 – 65535)</string>
     <string name="server_disabled">TorrServer devre dışı bırakıldı!</string>
     <string name="server_enabled">TorrServer başlatılıyor</string>
     <string name="enable_server_temp">Geçici olarak TorrServer\'ı etkinleştirmek ister misiniz (uygulama kapatıldığında devre dışı bırakılır)?</string>
@@ -757,7 +756,7 @@
     <string name="enter_password">Parolayı Girin</string>
     <string name="invalid_file_type">Geçersiz dosya türü</string>
     <string name="purge_confirm">Tüm %1$s indirimi silmek istediğinizden emin misiniz?</string>
-    <string name="delete_fail_reason">Şu nedenle silinemedi... %1$s</string>
+    <string name="delete_fail_reason">Şu nedenle silinemedi… %1$s</string>
     <string name="hide_replies">Yanıtları Gizle</string>
     <string name="view_reply">Yanıtı Görüntüle</string>
     <string name="view_replies">Yanıtları Görüntüle</string>

@@ -41,7 +41,7 @@
     <string name="episodes_watched">Епізоди переглянуті</string>
     <string name="continue_reading">Читати далі</string>
     <string name="continue_watching">Продовжити перегляд</string>
-    <string name="continue_media">Продовжити...</string>
+    <string name="continue_media">Продовжити…</string>
     <string name="recommended">Рекомендовані</string>
     <string name="get_recommendations">Сторож/читайте деякі аніме або Манга для отримання рекомендацій</string>
     <string name="empty">Всі охопили, коли нові?</string>
@@ -99,7 +99,6 @@
     <string name="total_eps">Кількість серій</string>
     <string name="episodes"> Епізод(и)</string>
     <string name="chapters"> Глава(и)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Розділи Всього</string>
     <string name="ep_duration">Середня тривалість</string>
     <string name="min">" хв"</string>
@@ -463,7 +462,7 @@
     <string name="episode_not_found">Не вдалося знайти епізод: %1$s</string>
     <string name="list_updated">Список оновлено</string>
     <string name="deleted_from_list">Видалено зі списку</string>
-    <string name="no_list_id">Не знайдено ID списку...</string>
+    <string name="no_list_id">Не знайдено ID списку…</string>
     <string name="matagi_update">Himitsu Shirase %1$s</string>
     <string name="matagi_dont_show">Не повідомляти знову про %1$s</string>
     <string name="matagi_downloading">Завантаження Himitsu %1$s</string>
@@ -880,7 +879,7 @@
     <string name="a_z">А-Я</string>
     <string name="z_a">Я-А</string>
     <string name="pure_pain">Чистий біль</string>
-    <string name="add_a_comment">Додати коментар...</string>
+    <string name="add_a_comment">Додати коментар…</string>
     <string name="type">Тип</string>
     <string name="view">Дивитись</string>
     <string name="count">КОУНТ</string>

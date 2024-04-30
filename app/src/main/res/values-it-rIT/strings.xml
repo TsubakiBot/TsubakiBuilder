@@ -99,7 +99,6 @@
     <string name="total_eps">Episodi Totali</string>
     <string name="episodes"> Episodio(i)</string>
     <string name="chapters"> Capitolo(i)</string>
-    <string name="total_divider"> &lt;unk&gt; %1$s</string>
     <string name="total_chaps">Capitoli Totali</string>
     <string name="ep_duration">Durata Media</string>
     <string name="min">" min"</string>

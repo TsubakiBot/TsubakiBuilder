@@ -99,7 +99,6 @@
     <string name="total_eps">Всего эпизодов</string>
     <string name="episodes"> Эпизод</string>
     <string name="chapters"> Глава(и)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Всего глав</string>
     <string name="ep_duration">Средняя длительность</string>
     <string name="min">" мин"</string>

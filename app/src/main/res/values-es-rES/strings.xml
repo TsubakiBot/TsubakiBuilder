@@ -99,7 +99,6 @@
     <string name="total_eps">Episodios totales</string>
     <string name="episodes"> Episodio(s)</string>
     <string name="chapters"> Capítulo(s)</string>
-    <string name="total_divider"> | %1$s</string>
     <string name="total_chaps">Capítulos totales</string>
     <string name="ep_duration">Duración promedio</string>
     <string name="min">" min"</string>
@@ -755,7 +754,7 @@
     <string name="enter_password">Introducir contraseña</string>
     <string name="invalid_file_type">Tipo de archivo no válido</string>
     <string name="purge_confirm">¿Estás seguro de que quieres purgar todas las descargas de %1$s?</string>
-    <string name="delete_fail_reason">Error al borrar debido a... %1$s</string>
+    <string name="delete_fail_reason">Error al borrar debido a… %1$s</string>
     <string name="hide_replies">Ocultar respuestas</string>
     <string name="view_reply">Ver respuesta</string>
     <string name="view_replies">Ver las respuestas</string>
