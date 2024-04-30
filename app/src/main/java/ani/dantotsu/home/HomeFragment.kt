@@ -33,6 +33,7 @@ import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
+import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.profile.ProfileActivity
@@ -207,14 +208,16 @@ class HomeFragment : Fragment() {
             recyclerView: RecyclerView,
             progress: View,
             empty: View,
-            title: View
+            title: View,
+            more: View,
+            string: String
         ) {
             container.isVisible = isEnabled
             progress.isVisible = isEnabled
             recyclerView.visibility = View.GONE
             empty.visibility = View.GONE
             title.visibility = if (isEnabled) View.INVISIBLE else View.GONE
-
+            more.visibility = if (isEnabled) View.INVISIBLE else View.GONE
             if (!isEnabled) return
 
             mode.observe(viewLifecycleOwner) {
@@ -228,6 +231,14 @@ class HomeFragment : Fragment() {
                             LinearLayoutManager.HORIZONTAL,
                             false
                         )
+                        more.setOnClickListener { _ ->
+                            MediaListViewActivity.mediaList = it
+                            ContextCompat.startActivity(
+                                requireActivity(), Intent(requireActivity(), MediaListViewActivity::class.java)
+                                    .putExtra("title", string),
+                                null
+                            )
+                        }
                         recyclerView.visibility = View.VISIBLE
                         recyclerView.layoutAnimation =
                             LayoutAnimationController(setSlideIn(), 0.25f)
@@ -235,6 +246,7 @@ class HomeFragment : Fragment() {
                     } else {
                         empty.visibility = View.VISIBLE
                     }
+                    more.visibility = View.VISIBLE
                     title.visibility = View.VISIBLE
                     title.startAnimation(setSlideUp())
                     progress.visibility = View.GONE
@@ -251,7 +263,9 @@ class HomeFragment : Fragment() {
             binding.homeWatchingRecyclerView,
             binding.homeWatchingProgressBar,
             binding.homeWatchingEmpty,
-            binding.homeContinueWatch
+            binding.homeContinueWatch,
+            binding.homeContinueWatchMore,
+            getString(R.string.continue_watching)
         )
         binding.homeWatchingBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
@@ -264,7 +278,10 @@ class HomeFragment : Fragment() {
             binding.homeFavAnimeRecyclerView,
             binding.homeFavAnimeProgressBar,
             binding.homeFavAnimeEmpty,
-            binding.homeFavAnime
+            binding.homeFavAnime,
+            binding.homeFavAnimeMore,
+            getString(R.string.fav_anime)
+
         )
 
         initRecyclerView(
@@ -274,7 +291,9 @@ class HomeFragment : Fragment() {
             binding.homePlannedAnimeRecyclerView,
             binding.homePlannedAnimeProgressBar,
             binding.homePlannedAnimeEmpty,
-            binding.homePlannedAnime
+            binding.homePlannedAnime,
+            binding.homePlannedAnimeMore,
+            getString(R.string.planned_anime)
         )
         binding.homePlannedAnimeBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
@@ -287,7 +306,9 @@ class HomeFragment : Fragment() {
             binding.homeReadingRecyclerView,
             binding.homeReadingProgressBar,
             binding.homeReadingEmpty,
-            binding.homeContinueRead
+            binding.homeContinueRead,
+            binding.homeContinueReadMore,
+            getString(R.string.continue_reading)
         )
         binding.homeReadingBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
@@ -300,7 +321,9 @@ class HomeFragment : Fragment() {
             binding.homeFavMangaRecyclerView,
             binding.homeFavMangaProgressBar,
             binding.homeFavMangaEmpty,
-            binding.homeFavManga
+            binding.homeFavManga,
+            binding.homeFavMangaMore,
+            getString(R.string.fav_manga)
         )
 
         initRecyclerView(
@@ -310,7 +333,9 @@ class HomeFragment : Fragment() {
             binding.homePlannedMangaRecyclerView,
             binding.homePlannedMangaProgressBar,
             binding.homePlannedMangaEmpty,
-            binding.homePlannedManga
+            binding.homePlannedManga,
+            binding.homePlannedMangaMore,
+            getString(R.string.planned_manga)
         )
         binding.homePlannedMangaBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
@@ -323,7 +348,9 @@ class HomeFragment : Fragment() {
             binding.homeRecommendedRecyclerView,
             binding.homeRecommendedProgressBar,
             binding.homeRecommendedEmpty,
-            binding.homeRecommended
+            binding.homeRecommended,
+            binding.homeRecommendedMore,
+            getString(R.string.recommended)
         )
 
         val stories = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7]

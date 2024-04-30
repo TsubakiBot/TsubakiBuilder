@@ -412,7 +412,7 @@ constructor(
                             binding.coverImage,
                             ViewCompat.getTransitionName(binding.coverImage)!!
                         ).toBundle()
-                        )
+                    )
 
                 }
 
