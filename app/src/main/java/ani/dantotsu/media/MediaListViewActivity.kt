@@ -13,6 +13,7 @@ import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.showSystemBarsRetractView
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import eu.kanade.tachiyomi.util.system.getThemeColor
@@ -24,6 +25,18 @@ class MediaListViewActivity: AppCompatActivity() {
         binding = ActivityMediaListViewBinding.inflate(layoutInflater)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        if (PrefManager.getVal(PrefName.ImmersiveMode)) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            hideSystemBarsExtendView()
+            binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = statusBarHeight
+            }
+        } else {
+            showSystemBarsRetractView()
+            this.window.statusBarColor =
+                ContextCompat.getColor(this, R.color.nav_bg_inv)
+
+        }
         setContentView(binding.root)
 
         val primaryColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
@@ -33,19 +46,6 @@ class MediaListViewActivity: AppCompatActivity() {
         window.navigationBarColor = primaryColor
         binding.listAppBar.setBackgroundColor(primaryColor)
         binding.listTitle.setTextColor(primaryTextColor)
-        if (!PrefManager.getVal<Boolean>(PrefName.ImmersiveMode)) {
-            this.window.statusBarColor =
-                ContextCompat.getColor(this, R.color.nav_bg_inv)
-            binding.root.fitsSystemWindows = true
-
-        } else {
-            binding.root.fitsSystemWindows = false
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
-            hideSystemBarsExtendView()
-            binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-            }
-        }
         val screenWidth = resources.displayMetrics.run { widthPixels / density }
         binding.listTitle.text = intent.getStringExtra("title")
         binding.mediaRecyclerView.adapter = MediaAdaptor(0, mediaList, this)
