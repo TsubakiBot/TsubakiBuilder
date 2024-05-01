@@ -325,8 +325,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             if (isExportedOrUnavailable) return
         }
         dismiss()
-
-        if (launch!! || model.watchSources!!.isDownloadedSource(media.selected!!.sourceIndex)) {
+        if (launch!!) {
             stopAddingToList()
             val intent = Intent(activity, ExoplayerView::class.java)
             ExoplayerView.media = media
@@ -384,7 +383,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         }
 
         fun performClick(position: Int) {
-            try { //bandaid fix for crash
+            try {
                 val extractor = links[position]
                 media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]?.selectedExtractor =
                     extractor.server.name

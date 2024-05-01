@@ -151,6 +151,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import com.anggrayudi.storage.file.extension
 import com.bumptech.glide.Glide
 import com.google.android.gms.cast.framework.CastButtonFactory
 import com.google.android.gms.cast.framework.CastContext
@@ -1553,7 +1554,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
                     if (docFile != null) {
                         val uri = docFile.uri
-                        MediaItem.Builder().setUri(uri).setMimeType(mimeType).build()
+                        val downloadedMimeType = when (docFile.extension) {
+                            "mp4" -> MimeTypes.APPLICATION_MP4
+                            "mkv" -> MimeTypes.APPLICATION_MATROSKA
+                            else -> MimeTypes.APPLICATION_MP4
+                        }
+                        MediaItem.Builder().setUri(uri).setMimeType(downloadedMimeType).build()
                     } else {
                         snackString(getString(R.string.file_not_found))
                         null
