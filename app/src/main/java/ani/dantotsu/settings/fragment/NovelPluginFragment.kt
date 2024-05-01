@@ -72,7 +72,7 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
 
     override fun updateContentBasedOnQuery(query: String?) {
         pluginsAdapter.filter(
-            query ?: "",
+            query,
             novelExtensionManager.availablePluginsFlow.value
         )
     }
@@ -80,7 +80,8 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
     override fun notifyDataChanged() {}
 
     override fun onDestroyView() {
-        super.onDestroyView();_binding = null
+        super.onDestroyView()
+        _binding = null
     }
 
     private class NovelPluginsAdapter(
@@ -109,10 +110,9 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val plugin = getItem(position)
             if (plugin != null) {
-                val nsfw = ""
                 val lang = LanguageMapper.mapLanguageCodeToName(plugin.lang)
                 holder.extensionNameTextView.text = plugin.name
-                val text = "$lang ${plugin.versionName} $nsfw"
+                val text = "$lang ${plugin.versionName}"
                 holder.extensionVersionTextView.text = text
                 if (!skipIcons) {
                     Glide.with(holder.itemView.context)
@@ -125,15 +125,11 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
             }
         }
 
-        fun filter(query: String, currentList: List<NovelExtension.Plugin>) {
-            val filteredList = ArrayList<NovelExtension.Plugin>()
-            for (extension in currentList) {
-                if (extension.name.lowercase().contains(query.lowercase())) {
-                    filteredList.add(extension)
-                }
-            }
-            if (filteredList != currentList)
-                submitList(filteredList)
+        fun filter(query: String?, currentList: List<NovelExtension.Plugin>) {
+            val filteredList = if (!query.isNullOrBlank()) {
+                currentList.filter { it.name.lowercase().contains(query.lowercase()) }
+            } else { currentList }
+            if (filteredList != currentList) submitList(filteredList)
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

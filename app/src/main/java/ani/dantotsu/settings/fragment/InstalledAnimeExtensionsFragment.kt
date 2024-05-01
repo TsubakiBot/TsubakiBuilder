@@ -184,7 +184,6 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
         skipIcons
     )
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -251,7 +250,6 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
         return binding.root
     }
 
-
     private fun sortToAnimeSourcesList(inpt: List<AnimeExtension.Installed>): List<AnimeExtension.Installed> {
         val sourcesMap = inpt.associateBy { it.name }
         val orderedSources = AnimeSources.pinnedAnimeSources.mapNotNull { name ->
@@ -266,13 +264,12 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
 
     override fun updateContentBasedOnQuery(query: String?) {
         extensionsAdapter.filter(
-            query ?: "",
+            query,
             sortToAnimeSourcesList(animeExtensionManager.installedExtensionsFlow.value)
         )
     }
 
-    override fun notifyDataChanged() { // Do nothing
-    }
+    override fun notifyDataChanged() {}
 
     private class AnimeExtensionsAdapter(
         private val onSettingsClicked: (AnimeExtension.Installed) -> Unit,
@@ -331,15 +328,11 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         }
 
-        fun filter(query: String, currentList: List<AnimeExtension.Installed>) {
-            val filteredList = ArrayList<AnimeExtension.Installed>()
-            for (extension in currentList) {
-                if (extension.name.lowercase().contains(query.lowercase())) {
-                    filteredList.add(extension)
-                }
-            }
-            if (filteredList != currentList)
-                submitList(filteredList)
+        fun filter(query: String?, currentList: List<AnimeExtension.Installed>) {
+            val filteredList = if (!query.isNullOrBlank()) {
+                currentList.filter { it.name.lowercase().contains(query.lowercase()) }
+            } else { currentList }
+            if (filteredList != currentList) submitList(filteredList)
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

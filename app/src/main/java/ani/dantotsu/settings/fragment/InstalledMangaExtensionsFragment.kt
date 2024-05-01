@@ -263,7 +263,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
 
     override fun updateContentBasedOnQuery(query: String?) {
         extensionsAdapter.filter(
-            query ?: "",
+            query,
             sortToMangaSourcesList(mangaExtensionManager.installedExtensionsFlow.value)
         )
     }
@@ -324,15 +324,11 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         }
 
-        fun filter(query: String, currentList: List<MangaExtension.Installed>) {
-            val filteredList = ArrayList<MangaExtension.Installed>()
-            for (extension in currentList) {
-                if (extension.name.lowercase().contains(query.lowercase())) {
-                    filteredList.add(extension)
-                }
-            }
-            if (filteredList != currentList)
-                submitList(filteredList)
+        fun filter(query: String?, currentList: List<MangaExtension.Installed>) {
+            val filteredList = if (!query.isNullOrBlank()) {
+                currentList.filter { it.name.lowercase().contains(query.lowercase()) }
+            } else { currentList }
+            if (filteredList != currentList) submitList(filteredList)
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

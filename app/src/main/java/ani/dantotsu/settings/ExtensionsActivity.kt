@@ -13,6 +13,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -113,8 +114,9 @@ class ExtensionsActivity : AppCompatActivity() {
                     searchView.setText("")
                     searchView.clearFocus()
                     tabLayout.clearFocus()
-                    binding.languageselect.isGone =
-                        tab.text?.contains(getString(R.string.installed_extensions)) == true
+                    binding.languageselect.isVisible = tab.text?.contains(
+                        getString(R.string.available_extensions, "")
+                    ) == true
                     viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
                     }

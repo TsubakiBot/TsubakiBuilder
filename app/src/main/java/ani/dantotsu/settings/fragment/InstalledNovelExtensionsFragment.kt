@@ -36,7 +36,6 @@ import rx.android.schedulers.AndroidSchedulers
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.util.Collections
-import java.util.Locale
 
 class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
     private var _binding: FragmentExtensionsBinding? = null
@@ -185,12 +184,13 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView();_binding = null
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun updateContentBasedOnQuery(query: String?) {
         extensionsAdapter.filter(
-            query ?: "",
+            query,
             sortToNovelSourcesList(novelExtensionManager.installedExtensionsFlow.value)
         )
     }
@@ -253,15 +253,11 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         }
 
-        fun filter(query: String, currentList: List<NovelExtension.Installed>) {
-            val filteredList = ArrayList<NovelExtension.Installed>()
-            for (extension in currentList) {
-                if (extension.name.lowercase().contains(query.lowercase())) {
-                    filteredList.add(extension)
-                }
-            }
-            if (filteredList != currentList)
-                submitList(filteredList)
+        fun filter(query: String?, currentList: List<NovelExtension.Installed>) {
+            val filteredList = if (!query.isNullOrBlank()) {
+                currentList.filter { it.name.lowercase().contains(query.lowercase()) }
+            } else { currentList }
+            if (filteredList != currentList) submitList(filteredList)
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
