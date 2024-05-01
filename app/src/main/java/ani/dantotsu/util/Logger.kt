@@ -99,7 +99,7 @@ object Logger {
         file?.delete()
         file = null
     }
-    fun getDeviceAndAppInfo(context: Context): String {
+    private fun getDeviceAndAppInfo(context: Context): String {
         val pm = context.packageManager
         val pkgInfo = pm.getPackageInfo(context.packageName, 0)
         val versionName = pkgInfo.versionName

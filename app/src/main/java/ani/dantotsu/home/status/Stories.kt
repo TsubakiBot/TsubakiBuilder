@@ -34,6 +34,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.AniMarkdown
 import ani.dantotsu.util.Logger
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -397,11 +398,11 @@ class Stories @JvmOverloads constructor(
                     ""
                 }
                 binding.infoText.text = text
-                val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
-                blurImage(
-                    if (bannerAnimations) binding.contentImageViewKen else binding.contentImageView,
-                    story.media?.bannerImage ?: story.media?.coverImage?.extraLarge
-                )
+                val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
+                    binding.contentImageViewKen
+                else
+                    binding.contentImageView
+                banner.blurImage(story.media?.bannerImage ?: story.media?.coverImage?.extraLarge)
                 binding.coverImage.loadImage(story.media?.coverImage?.extraLarge)
                 binding.coverImage.setOnClickListener {
                     ContextCompat.startActivity(

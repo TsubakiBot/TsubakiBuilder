@@ -107,7 +107,7 @@ class App : MultiDexApplication() {
             torrentAddonManager.init()
         }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken() }
+            CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken(this@App) }
         }
 
         GlobalScope.launch {

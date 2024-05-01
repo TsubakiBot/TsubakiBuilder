@@ -74,13 +74,12 @@ fun ImageView.loadLocalImage(file: File?, size: Int = 0) {
 
 fun ImageView.blurImage(banner: String?) {
     if (banner != null) {
-        val context = context
         if ((context as Activity).isDestroyed) return
         val url = geUrlOrTrolled(banner)
         if (PrefManager.getVal(PrefName.BlurBanners)) {
             val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
             val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
-            Glide.with(context as Context)
+            Glide.with(context)
                 .load(
                     if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith(
                             "content://"
@@ -99,7 +98,7 @@ fun ImageView.blurImage(banner: String?) {
                 )
                 .into(this)
         } else {
-            Glide.with(context as Context)
+            Glide.with(context)
                 .load(
                     if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith("content://")) Uri.parse(
                         url
