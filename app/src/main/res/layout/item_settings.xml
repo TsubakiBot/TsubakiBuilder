@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <LinearLayout 
         android:id="@+id/settingsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:gravity="center_vertical|start"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UselessParent">
 
@@ -18,7 +18,8 @@
             android:id="@+id/settingsIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginVertical="16dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="24dp"
             android:layout_marginEnd="24dp"
             app:srcCompat="@drawable/ic_round_settings_24"
             app:tint="?attr/colorPrimary"
@@ -28,7 +29,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical"
             android:minHeight="44sp"
             android:orientation="vertical">
 
@@ -45,16 +45,18 @@
                 android:id="@+id/settingsDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingEnd="28dp"
                 android:alpha="0.66"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/slogan"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:ignore="RtlSymmetry" />
 
             <LinearLayout
                 android:id="@+id/attachView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:orientation="vertical"
                 android:visibility="gone"
                 tools:ignore="RtlSymmetry" />
@@ -64,6 +66,7 @@
             android:id="@+id/settingsIconRight"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginVertical="24dp"
             android:rotation="180"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
