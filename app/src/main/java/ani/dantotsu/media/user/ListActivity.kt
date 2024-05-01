@@ -15,8 +15,10 @@ import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityListBinding
 import ani.dantotsu.hideSystemBarsExtendView
+import ani.dantotsu.initActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.showSystemBarsRetractView
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import com.google.android.material.tabs.TabLayout
@@ -34,8 +36,23 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ThemeManager(this).applyTheme()
         binding = ActivityListBinding.inflate(layoutInflater)
+        ThemeManager(this).applyTheme()
+        initActivity(this)
+
+        if (PrefManager.getVal(PrefName.ImmersiveMode)) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            hideSystemBarsExtendView()
+            binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = statusBarHeight
+            }
+        } else {
+            showSystemBarsRetractView()
+            this.window.statusBarColor =
+                ContextCompat.getColor(this, R.color.nav_bg_inv)
+
+        }
+        setContentView(binding.root)
 
         binding.listBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -51,20 +68,6 @@ class ListActivity : AppCompatActivity() {
         binding.listAppBar.setBackgroundColor(primaryColor)
         binding.listTabLayout.setTabTextColors(secondaryTextColor, primaryTextColor)
         binding.listTabLayout.setSelectedTabIndicatorColor(primaryTextColor)
-        if (!PrefManager.getVal<Boolean>(PrefName.ImmersiveMode)) {
-            this.window.statusBarColor =
-                ContextCompat.getColor(this, R.color.nav_bg_inv)
-            binding.root.fitsSystemWindows = true
-
-        } else {
-            binding.root.fitsSystemWindows = false
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
-            hideSystemBarsExtendView()
-            binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-            }
-        }
-        setContentView(binding.root)
 
         val anime = intent.getBooleanExtra("anime", true)
         binding.listTitle.text = getString(

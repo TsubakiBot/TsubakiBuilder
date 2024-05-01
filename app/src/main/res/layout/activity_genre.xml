@@ -24,7 +24,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/back_button"
             app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
-            app:tint="?attr/colorOnBackground" />
+            app:tint="?attr/colorPrimary" />
 
         <TextView
             android:layout_width="match_parent"

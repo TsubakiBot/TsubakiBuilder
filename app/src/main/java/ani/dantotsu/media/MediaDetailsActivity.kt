@@ -104,7 +104,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         binding = ActivityMediaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        screenWidth = resources.displayMetrics.widthPixels.toFloat()
+        screenWidth = resources.displayMetrics.run { widthPixels / density }
         navBar = binding.mediaBottomBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }

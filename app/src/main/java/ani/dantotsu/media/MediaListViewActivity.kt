@@ -22,9 +22,11 @@ class MediaListViewActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMediaListViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMediaListViewBinding.inflate(layoutInflater)
         ThemeManager(this).applyTheme()
         initActivity(this)
+
         if (PrefManager.getVal(PrefName.ImmersiveMode)) {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             hideSystemBarsExtendView()
@@ -39,13 +41,15 @@ class MediaListViewActivity: AppCompatActivity() {
         }
         setContentView(binding.root)
 
+        binding.listBackButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         val primaryColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
-        val primaryTextColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
 
         window.statusBarColor = primaryColor
         window.navigationBarColor = primaryColor
         binding.listAppBar.setBackgroundColor(primaryColor)
-        binding.listTitle.setTextColor(primaryTextColor)
         val screenWidth = resources.displayMetrics.run { widthPixels / density }
         binding.listTitle.text = intent.getStringExtra("title")
         binding.mediaRecyclerView.adapter = MediaAdaptor(0, mediaList, this)

@@ -59,7 +59,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val context = this
-        screenWidth = resources.displayMetrics.widthPixels.toFloat()
+        screenWidth = resources.displayMetrics.run { widthPixels / density }
         navBar = binding.profileNavBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
