@@ -1,7 +1,6 @@
 package ani.dantotsu.media
 
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
@@ -10,15 +9,13 @@ import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.GridLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityMediaListViewBinding
-import ani.dantotsu.getThemeColor
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import java.util.ArrayList
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 class MediaListViewActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMediaListViewBinding
@@ -31,7 +28,6 @@ class MediaListViewActivity: AppCompatActivity() {
 
         val primaryColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
         val primaryTextColor = getThemeColor(com.google.android.material.R.attr.colorPrimary)
-        val secondaryTextColor = getThemeColor(com.google.android.material.R.attr.colorOutline)
 
         window.statusBarColor = primaryColor
         window.navigationBarColor = primaryColor

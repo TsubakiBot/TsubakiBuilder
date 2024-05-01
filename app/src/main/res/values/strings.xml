@@ -1069,6 +1069,7 @@
     <string name="available_plugins">%1$s Plugins</string>
 
     <string name="your_story">Your Story</string>
+    <string name="your_progress">Your Progress</string>
 
     <string name="file_not_found">File not found</string>
     <string name="directory_not_found">Directory not found</string>

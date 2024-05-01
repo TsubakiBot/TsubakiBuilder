@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
@@ -23,7 +24,6 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -151,7 +151,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                                             toast(getString(R.string.please_wait))
                                             val newUri =
                                                 PrefManager.getVal<String>(PrefName.DownloadsDir)
-                                            GlobalScope.launch(Dispatchers.IO) {
+                                            lifecycleScope.launch(Dispatchers.IO) {
                                                 Injekt.get<DownloadsManager>().moveDownloadsDir(
                                                     context, Uri.parse(oldUri), Uri.parse(newUri)
                                                 ) { finished, message ->

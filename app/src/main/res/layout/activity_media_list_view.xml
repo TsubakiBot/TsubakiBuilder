@@ -37,7 +37,7 @@
             </LinearLayout>
 
 
-            <ani.dantotsu.FadingEdgeRecyclerView
+            <ani.dantotsu.view.FadingEdgeRecyclerView
                 android:id="@+id/mediaRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -35,7 +35,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.UnstableApi
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.work.OneTimeWorkRequest
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.ActivityMainBinding
@@ -48,9 +47,6 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.notifications.TaskScheduler
-import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
-import ani.dantotsu.notifications.comment.CommentNotificationWorker
-import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
