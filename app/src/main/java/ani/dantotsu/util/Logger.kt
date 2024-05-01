@@ -22,13 +22,15 @@ object Logger {
             if (!PrefManager.getVal<Boolean>(PrefName.LogToFile) || file != null) return
             file = File(context.getExternalFilesDir(null), "log.txt")
             if (file?.exists() == true) {
-                val oldFile = File(context.getExternalFilesDir(null), "old_log.txt")
-                file?.copyTo(oldFile, true)
+                if (file!!.length() > 1024 * 1024 * 10) { // 10MB
+                    file?.delete()
+                    file?.createNewFile()
+                }
             } else {
                 file?.createNewFile()
             }
             file?.let {
-                it.writeText("log started\n")
+                it.appendText("log started\n")
                 it.appendText("date/time: ${Date()}\n")
                 it.appendText("device: ${Build.MODEL}\n")
                 it.appendText("os version: ${Build.VERSION.RELEASE}\n")
@@ -123,13 +125,6 @@ object Logger {
             snackString("No log file found")
             return
         }
-        val oldFile = File(context.getExternalFilesDir(null), "old_log.txt")
-        val fileToUse = if (oldFile.exists()) {
-            file?.readText()?.let { oldFile.appendText(it) }
-            oldFile
-        } else {
-            file
-        }
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = "text/plain"
         shareIntent.putExtra(
@@ -137,13 +132,18 @@ object Logger {
             FileProvider.getUriForFile(
                 context,
                 "${BuildConfig.APPLICATION_ID}.provider",
-                fileToUse!!
+                file!!
             )
         )
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Log file")
         shareIntent.putExtra(Intent.EXTRA_TEXT, "Log file")
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         context.startActivity(Intent.createChooser(shareIntent, "Share log file"))
+    }
+
+    fun clearLog() {
+        file?.delete()
+        file = null
     }
 }
 
