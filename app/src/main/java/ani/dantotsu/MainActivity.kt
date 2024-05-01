@@ -50,6 +50,7 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
+import ani.dantotsu.others.CustomBottomDialog
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.profile.activity.NotificationActivity
@@ -447,16 +448,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        /*lifecycleScope.launch(Dispatchers.IO) {  //simple cleanup
-            val index = Helper.downloadManager(this@MainActivity).downloadIndex
-            val downloadCursor = index.getDownloads()
-            while (downloadCursor.moveToNext()) {
-                val download = downloadCursor.download
-                if (download.state == Download.STATE_FAILED) {
-                    Helper.downloadManager(this@MainActivity).removeDownload(download.request.id)
-                }
-            }
-        }*/ //TODO: remove this
     }
 
     override fun onRestart() {

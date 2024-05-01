@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.addons.AddonDownloader
 import ani.dantotsu.addons.download.DownloadAddonManager
-import ani.dantotsu.addons.torrent.ServerService
+import ani.dantotsu.addons.torrent.TorrentServerService
 import ani.dantotsu.addons.torrent.TorrentAddonManager
 import ani.dantotsu.databinding.ActivitySettingsAddonsBinding
 import ani.dantotsu.databinding.ItemSettingsBinding
@@ -143,7 +143,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                             }
                             it.settingsIconRight.setOnClickListener { _ ->
                                 if (it.settingsDesc.text == getString(R.string.installed)) {
-                                    ServerService.stop()
+                                    TorrentServerService.stop()
                                     torrentAddonManager.uninstall()
                                     return@setOnClickListener
                                 } else {
