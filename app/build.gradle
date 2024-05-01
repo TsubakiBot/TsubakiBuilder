@@ -6,7 +6,7 @@ plugins {
     id 'com.google.devtools.ksp'
 }
 
-def gitCommitHash = providers.exec {
+def gitCommitHash = System.getenv("VERSION_SHA") ?: providers.exec {
     commandLine("git", "rev-parse", "--verify", "--short", "HEAD")
 }.standardOutput.asText.get().trim()
 

@@ -13,12 +13,24 @@ stages:
     - docker build --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
+updateContainer:
+  extends: .updateContainerJob
+  only:
+    changes:
+      - Dockerfile
+
 .buildReleaseJob:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: assemble
+  variables:
+    CURL_SERVER_COMMAND: 'curl -H "Authorization: Token $ORG_TOKEN" -H "Accept: application/vnd.github.v3.raw" -o app/libs/server.aar -L https://api.github.com/repos/RepoDevil/TorrServer/contents/server.aar'
+    CURL_SOURCES_COMMAND: 'curl -H "Authorization: Token $ORG_TOKEN" -H "Accept: application/vnd.github.v3.raw" -o app/libs/server-sources.jar -L https://api.github.com/repos/RepoDevil/TorrServer/contents/server-sources.jar'
   before_script:
     - chmod +x gradlew
     - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
+    - "[ ! -d app/libs ] && mkdir app/libs"
+    - 'eval "$CURL_SERVER_COMMAND"'
+    - 'eval "$CURL_SOURCES_COMMAND"'
   artifacts:
     paths:
       - app/build/outputs
@@ -27,5 +39,3 @@ buildRelease:
   extends: .buildReleaseJob
   script:
     - ./gradlew --configure-on-demand assembleGoogleMatagi
-  environment:
-    name: production

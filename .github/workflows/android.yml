@@ -78,7 +78,7 @@ jobs:
         curl -H "Authorization: Token ${{ secrets.ORG_TOKEN }}" \
         -H 'Accept: application/vnd.github.v3.raw' \
         -o "app/libs/server.aar" \
-        -L "${{ secrets.TORRSERVER_URL }}server.aar"
+        -L "https://api.github.com/repos/RepoDevil/TorrServer/contents/server.aar"
 
     - name: Download server-sources.jar
       shell: bash
@@ -86,7 +86,7 @@ jobs:
         curl -H "Authorization: Token ${{ secrets.ORG_TOKEN }}" \
         -H 'Accept: application/vnd.github.v3.raw' \
         -o "app/libs/server-sources.jar" \
-        -L "${{ secrets.TORRSERVER_URL }}server-sources.jar"
+        -L "https://api.github.com/repos/RepoDevil/TorrServer/contents/server-sources.jar"
 
     - name: Setup JDK 17
       uses: actions/setup-java@v4
