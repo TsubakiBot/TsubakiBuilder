@@ -20,7 +20,7 @@ class SearchHistoryAdapter(private val type: String, private val searchClicked: 
     ) {
     private var searchHistoryLiveData: SharedPreferenceStringSetLiveData? = null
     private var searchHistory: MutableSet<String>? = null
-    private var historyType: PrefName = when (type.lowercase(Locale.ROOT)) {
+    private var historyType: PrefName = when (type.lowercase()) {
         "anime" -> PrefName.AnimeSearchHistory
         "manga" -> PrefName.MangaSearchHistory
         else -> throw IllegalArgumentException("Invalid type")

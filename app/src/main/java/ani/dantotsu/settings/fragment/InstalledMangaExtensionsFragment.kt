@@ -328,7 +328,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
         fun filter(query: String, currentList: List<MangaExtension.Installed>) {
             val filteredList = ArrayList<MangaExtension.Installed>()
             for (extension in currentList) {
-                if (extension.name.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT))) {
+                if (extension.name.lowercase().contains(query.lowercase())) {
                     filteredList.add(extension)
                 }
             }

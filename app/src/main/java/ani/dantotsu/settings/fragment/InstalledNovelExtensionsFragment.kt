@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
+import ani.dantotsu.databinding.ItemExtensionBinding
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.NovelSources
 import ani.dantotsu.parsers.novel.NovelExtension
@@ -183,7 +184,6 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         return orderedSources + inpt.filter { !NovelSources.pinnedNovelSources.contains(it.name) }
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView();_binding = null
     }
@@ -195,8 +195,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         )
     }
 
-    override fun notifyDataChanged() { // do nothing
-    }
+    override fun notifyDataChanged() {}
 
     private class NovelExtensionsAdapter(
         private val onSettingsClicked: (NovelExtension.Installed) -> Unit,
@@ -219,10 +218,9 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_extension, parent, false)
-            Logger.log("onCreateViewHolder: $view")
-            return ViewHolder(view)
+            val binding = ItemExtensionBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false)
+            return ViewHolder(binding.root)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -259,7 +257,7 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         fun filter(query: String, currentList: List<NovelExtension.Installed>) {
             val filteredList = ArrayList<NovelExtension.Installed>()
             for (extension in currentList) {
-                if (extension.name.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT))) {
+                if (extension.name.lowercase().contains(query.lowercase())) {
                     filteredList.add(extension)
                 }
             }
@@ -296,6 +294,4 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
                 }
         }
     }
-
-
 }

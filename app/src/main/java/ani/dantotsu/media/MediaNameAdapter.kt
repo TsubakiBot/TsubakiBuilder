@@ -48,7 +48,7 @@ object MediaNameAdapter {
         val subdubMatcher: Matcher = subdubPattern.matcher(text)
 
         return if (subdubMatcher.find()) {
-            val subdub = subdubMatcher.group(2)?.lowercase(Locale.ROOT)
+            val subdub = subdubMatcher.group(2)?.lowercase()
             when (subdub) {
                 "sub" -> SubDubType.SUB
                 "dub" -> SubDubType.DUB

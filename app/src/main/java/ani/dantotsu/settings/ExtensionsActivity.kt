@@ -187,7 +187,7 @@ class ExtensionsActivity : AppCompatActivity() {
             val listOrder: String = PrefManager.getVal(PrefName.LangSort)
             val index = LanguageMapper.Language.entries.toTypedArray()
                 .indexOfFirst { it.code == listOrder }
-            builder.setTitle("Language")
+            builder.setTitle(R.string.language)
             builder.setSingleChoiceItems(languageOptions, index) { dialog, i ->
                 PrefManager.setVal(
                     PrefName.LangSort,

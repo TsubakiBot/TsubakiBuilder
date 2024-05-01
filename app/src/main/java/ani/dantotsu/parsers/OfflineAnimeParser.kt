@@ -160,8 +160,8 @@ class OfflineVideoExtractor(private val videoServer: VideoServer) : VideoExtract
 
     private fun determineSubtitleType(url: String): SubtitleType {
         return when {
-            url.lowercase(Locale.ROOT).endsWith("ass") -> SubtitleType.ASS
-            url.lowercase(Locale.ROOT).endsWith("vtt") -> SubtitleType.VTT
+            url.lowercase().endsWith("ass") -> SubtitleType.ASS
+            url.lowercase().endsWith("vtt") -> SubtitleType.VTT
             else -> SubtitleType.SRT
         }
     }
