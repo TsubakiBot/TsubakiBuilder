@@ -268,8 +268,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
         )
     }
 
-    override fun notifyDataChanged() { // Do nothing
-    }
+    override fun notifyDataChanged() {}
 
     private class MangaExtensionsAdapter(
         private val onSettingsClicked: (MangaExtension.Installed) -> Unit,

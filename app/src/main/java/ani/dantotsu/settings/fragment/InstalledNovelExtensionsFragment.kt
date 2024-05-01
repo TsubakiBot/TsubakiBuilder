@@ -248,7 +248,6 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
                 onUninstallClicked(extension, true)
                 true
             }
-
             holder.searchImageView.setOnClickListener {
                 onSearchClicked(extension)
             }
@@ -278,20 +277,20 @@ class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
         companion object {
             val DIFF_CALLBACK_INSTALLED =
                 object : DiffUtil.ItemCallback<NovelExtension.Installed>() {
-                    override fun areItemsTheSame(
-                        oldItem: NovelExtension.Installed,
-                        newItem: NovelExtension.Installed
-                    ): Boolean {
-                        return oldItem.pkgName == newItem.pkgName
-                    }
-
-                    override fun areContentsTheSame(
-                        oldItem: NovelExtension.Installed,
-                        newItem: NovelExtension.Installed
-                    ): Boolean {
-                        return oldItem == newItem
-                    }
+                override fun areItemsTheSame(
+                    oldItem: NovelExtension.Installed,
+                    newItem: NovelExtension.Installed
+                ): Boolean {
+                    return oldItem.pkgName == newItem.pkgName
                 }
+
+                override fun areContentsTheSame(
+                    oldItem: NovelExtension.Installed,
+                    newItem: NovelExtension.Installed
+                ): Boolean {
+                    return oldItem == newItem
+                }
+            }
         }
     }
 }
