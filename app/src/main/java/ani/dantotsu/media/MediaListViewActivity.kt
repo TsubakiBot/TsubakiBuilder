@@ -11,6 +11,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityMediaListViewBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
+import ani.dantotsu.others.getSerialized
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.showSystemBarsRetractView
@@ -50,15 +51,14 @@ class MediaListViewActivity: AppCompatActivity() {
         window.statusBarColor = primaryColor
         window.navigationBarColor = primaryColor
         binding.listAppBar.setBackgroundColor(primaryColor)
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
         binding.listTitle.text = intent.getStringExtra("title")
+        val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()
+
         binding.mediaRecyclerView.adapter = MediaAdaptor(0, mediaList, this)
+        val screenWidth = resources.displayMetrics.run { widthPixels / density }
         binding.mediaRecyclerView.layoutManager = GridLayoutManager(
             this,
             (screenWidth / 120f).toInt()
         )
-    }
-    companion object{
-        var mediaList: ArrayList<Media> = arrayListOf()
     }
 }

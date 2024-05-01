@@ -74,33 +74,39 @@ fun ImageView.loadLocalImage(file: File?, size: Int = 0) {
 
 fun ImageView.blurImage(banner: String?) {
     if (banner != null) {
-        val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
-        val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
+        val context = context
+        if ((context as Activity).isDestroyed) return
+        val url = geUrlOrTrolled(banner)
         if (PrefManager.getVal(PrefName.BlurBanners)) {
-            val context = context
-            if (!(context as Activity).isDestroyed) {
-                val url = geUrlOrTrolled(banner)
-                Glide.with(context as Context)
-                    .load(
-                        if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith(
-                                "content://"
-                            )
-                        ) Uri.parse(
-                            url
-                        ) else File(url)
-                    )
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
-                    .apply(
-                        if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
-                            RequestOptions.noTransformation()
-                        } else {
-                            RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
-                        }
-                    )
-                    .into(this)
-            }
+            val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
+            val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
+            Glide.with(context as Context)
+                .load(
+                    if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith(
+                            "content://"
+                        )
+                    ) Uri.parse(
+                        url
+                    ) else File(url)
+                )
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
+                .apply(
+                    if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
+                        RequestOptions.noTransformation()
+                    } else {
+                        RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
+                    }
+                )
+                .into(this)
         } else {
-            loadImage(banner)
+            Glide.with(context as Context)
+                .load(
+                    if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith("content://")) Uri.parse(
+                        url
+                    ) else File(url)
+                )
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
+                .into(this)
         }
     } else {
         setImageResource(R.drawable.linear_gradient_bg)
