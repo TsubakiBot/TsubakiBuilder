@@ -31,7 +31,7 @@ class CommentNotificationTask : Task {
                 PrefManager.init(context) // make sure prefs are initialized
                 if (!PrefManager.getVal<Boolean>(PrefName.CommentsOptIn)) return@withContext
                 val client = OkHttpClient()
-                CommentsAPI.fetchAuthToken(client)
+                CommentsAPI.fetchAuthToken(context, client)
                 val notificationResponse = CommentsAPI.getNotifications(client)
                 var notifications = notificationResponse?.notifications?.toMutableList()
                 //if we have at least one reply notification, we need to fetch the media titles

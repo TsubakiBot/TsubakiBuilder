@@ -4,7 +4,6 @@
 
     <string name="login">Sign In</string>
     <string name="logout">Logout</string>
-    <string name="logout_confirm">Are you sure you want to log out?</string>
 
     <string name="conversion_title">Welcome back!</string>
     <string name="conversion_message">It appears you have an older package installed.\nPlease select \"Backup\" to open the older version and perform a backup. You can then return to this app and use \"Restore Settings\".</string>
@@ -1073,4 +1072,9 @@
     <string name="directory_not_found">Directory not found</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
 </resources>

@@ -113,7 +113,12 @@ class App : MultiDexApplication() {
         GlobalScope.launch {
             val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
             val scheduler = TaskScheduler.create(this@App, useAlarmManager)
-            scheduler.scheduleAllTasks(this@App)
+            try {
+                scheduler.scheduleAllTasks(this@App)
+            } catch (e: IllegalStateException) {
+                Logger.log("Failed to schedule tasks")
+                Logger.log(e)
+            }
         }
     }
 
