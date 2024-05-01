@@ -5,19 +5,13 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.content.FileProvider
-import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
-
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.util.Logger.getDeviceAndAppInfo
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import java.io.File
 import java.util.Date
 import java.util.concurrent.Executors
-import kotlin.system.exitProcess
 
 object Logger {
     var file: File? = null
@@ -144,41 +138,5 @@ object Logger {
             append("Is emulator: ${Build.FINGERPRINT.contains("generic")}\n")
             append("--------------------------------\n")
         }
-    }
-}
-
-class FinalExceptionHandler : Thread.UncaughtExceptionHandler {
-    private val defaultUEH = Thread.getDefaultUncaughtExceptionHandler()
-    private val MAX_STACK_TRACE_SIZE = 131071 //128 KB - 1
-
-    override fun uncaughtException(t: Thread, e: Throwable) {
-        val stackTraceString = Log.getStackTraceString(e)
-
-        if (App.instance?.applicationContext != null) {
-            App.instance?.applicationContext?.let {
-                val report = StringBuilder()
-                report.append(getDeviceAndAppInfo(it))
-                report.append("Thread: ${t.name}\n")
-                report.append("Exception: ${e.message}\n")
-                report.append("Stack trace:\n")
-                report.append(stackTraceString)
-                val reportString = report.toString()
-                Logger.uncaughtException(t, Error(reportString))
-                val intent = Intent(it, CrashActivity::class.java)
-                if (reportString.length > MAX_STACK_TRACE_SIZE) {
-                    val subStr = reportString.substring(0, MAX_STACK_TRACE_SIZE)
-                    intent.putExtra("stackTrace", subStr)
-                } else intent.putExtra("stackTrace", reportString)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                it.startActivity(intent)
-            }
-        } else {
-            Logger.log("App context is null")
-            Logger.uncaughtException(t, e)
-        }
-
-        defaultUEH?.uncaughtException(t, e)
-        android.os.Process.killProcess(android.os.Process.myPid())
-        exitProcess(10)
     }
 }
