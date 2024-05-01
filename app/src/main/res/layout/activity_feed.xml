@@ -19,7 +19,7 @@
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="12dp"
             android:src="@drawable/ic_round_arrow_back_ios_new_24"
-            app:tint="?attr/colorOnBackground"
+            app:tint="?attr/colorPrimary"
             tools:ignore="ContentDescription" />
 
         <TextView
