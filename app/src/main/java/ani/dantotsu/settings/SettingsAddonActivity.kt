@@ -191,6 +191,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                                 }
                             }
                         },
+                        isVisible = torrentAddonManager.isAvailable(false)
                     )
                 )
             )

@@ -71,8 +71,10 @@ class TorrentAddonManager(
         }
     }
 
-    override fun isAvailable(): Boolean {
-        return extension?.extension != null && PrefManager.getVal(PrefName.TorrServerEnabled)
+    override fun isAvailable(andEnabled: Boolean): Boolean {
+        return extension?.extension != null && if (andEnabled) {
+            PrefManager.getVal(PrefName.TorrServerEnabled)
+        } else true
     }
 
     override fun getVersion(): String? {
