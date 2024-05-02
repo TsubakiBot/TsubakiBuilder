@@ -43,6 +43,7 @@ import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
@@ -66,6 +67,10 @@ class AnimeWatchAdapter(
 
     private var nestedDialog: AlertDialog? = null
 
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.binding.youtubePlayerView.release()
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
@@ -92,6 +97,22 @@ class AnimeWatchAdapter(
                         binding.animeSourceYT.visibility = View.GONE
                         binding.youtubePlayerView.visibility = View.VISIBLE
                         youTubePlayer.loadVideo(it, 0f)
+                        youTubePlayer.mute()
+                        youTubePlayer.play()
+                    } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
+                        binding.animeSourceYT.visibility = View.GONE
+                        binding.youtubePlayerView.visibility = View.VISIBLE
+                        // youTubePlayer.loadPlaylist(it, "playlist", 0, 0f)
+                        youTubePlayerView.enableAutomaticInitialization = false
+                        youTubePlayerView.initialize(
+                            this,
+                            handleNetworkEvents = true,
+                            IFramePlayerOptions.Builder()
+                                .controls(1)
+                                .listType("playlist")
+                                .list(it)
+                                .build()
+                        )
                         youTubePlayer.mute()
                         youTubePlayer.play()
                     }
