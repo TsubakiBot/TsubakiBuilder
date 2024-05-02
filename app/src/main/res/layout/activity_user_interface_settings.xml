@@ -30,7 +30,7 @@
                 app:cardElevation="0dp">
 
                 <ImageButton
-                    android:id="@+id/themeSettingsBack"
+                    android:id="@+id/uiSettingsBack"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@color/nav_bg_inv"
