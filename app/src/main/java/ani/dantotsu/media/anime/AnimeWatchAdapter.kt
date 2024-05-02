@@ -97,16 +97,15 @@ class AnimeWatchAdapter(
                         binding.animeSourceYT.visibility = View.GONE
                         binding.youtubePlayerView.visibility = View.VISIBLE
                         youTubePlayer.loadVideo(it, 0f)
+                        youTubePlayerView.initialize(this)
                         youTubePlayer.mute()
                         youTubePlayer.play()
                     } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
                         binding.animeSourceYT.visibility = View.GONE
                         binding.youtubePlayerView.visibility = View.VISIBLE
                         // youTubePlayer.loadPlaylist(it, "playlist", 0, 0f)
-                        youTubePlayerView.enableAutomaticInitialization = false
                         youTubePlayerView.initialize(
                             this,
-                            handleNetworkEvents = true,
                             IFramePlayerOptions.Builder()
                                 .controls(1)
                                 .listType("playlist")
