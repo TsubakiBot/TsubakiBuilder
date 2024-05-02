@@ -48,12 +48,11 @@ class MediaListViewActivity: AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        val primaryColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
+        val surfaceColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
 
-        window.statusBarColor = primaryColor
-        window.navigationBarColor = primaryColor
-        binding.listAppBar.setBackgroundColor(primaryColor)
-        binding.listTitle.setTextColor(primaryTextColor)
+        window.statusBarColor = surfaceColor
+        window.navigationBarColor = surfaceColor
+        binding.listAppBar.setBackgroundColor(surfaceColor)
         val screenWidth = resources.displayMetrics.run { widthPixels / density }
         val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()
         val view = PrefManager.getCustomVal("mediaView", 0)
@@ -71,7 +70,7 @@ class MediaListViewActivity: AppCompatActivity() {
             binding.mediaRecyclerView.adapter = MediaAdaptor(mode, mediaList, this)
             binding.mediaRecyclerView.layoutManager = GridLayoutManager(
                 this,
-                if (mode == 1) 1 else (screenWidth / 120.toPx)
+                if (mode == 1) 1 else (screenWidth / 120.toPx).toInt()
             )
         }
         binding.mediaList.setOnClickListener {
