@@ -227,7 +227,6 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 media
             )
         }
-
     }
 
     fun updateTopRated(adaptor: MediaAdaptor, media: MutableList<Media>) {
@@ -260,7 +259,15 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         }
     }
 
-    fun init(adaptor: MediaAdaptor, recyclerView: RecyclerView, progress: View, title: View , more: View , string: String,  media : MutableList<Media>) {
+    fun init(
+        adaptor: MediaAdaptor,
+        recyclerView: RecyclerView,
+        progress: View,
+        title: View ,
+        more: View ,
+        string: String,
+        media : MutableList<Media>
+    ) {
         progress.visibility = View.GONE
         recyclerView.adapter = adaptor
         recyclerView.layoutManager =

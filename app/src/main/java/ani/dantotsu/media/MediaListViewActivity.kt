@@ -1,6 +1,7 @@
 package ani.dantotsu.media
 
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
@@ -52,14 +53,39 @@ class MediaListViewActivity: AppCompatActivity() {
         window.statusBarColor = primaryColor
         window.navigationBarColor = primaryColor
         binding.listAppBar.setBackgroundColor(primaryColor)
-        binding.listTitle.text = intent.getStringExtra("title")
+        binding.listTitle.setTextColor(primaryTextColor)
+        val screenWidth = resources.displayMetrics.run { widthPixels / density }
         val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()
+        val view = PrefManager.getCustomVal("mediaView", 0)
+        var mediaView: View = when (view) {
+            1 -> binding.mediaList
+            0 -> binding.mediaGrid
+            else -> binding.mediaGrid
+        }
+        mediaView.alpha = 1f
+        fun changeView(mode: Int, current: View) {
+            mediaView.alpha = 0.33f
+            mediaView = current
+            current.alpha = 1f
+            PrefManager.setCustomVal("mediaView", mode)
+            binding.mediaRecyclerView.adapter = MediaAdaptor(mode, mediaList, this)
+            binding.mediaRecyclerView.layoutManager = GridLayoutManager(
+                this,
+                if (mode == 1) 1 else (screenWidth / 120.toPx)
+            )
+        }
+        binding.mediaList.setOnClickListener {
+            changeView(1, binding.mediaList)
+        }
+        binding.mediaGrid.setOnClickListener {
+            changeView(0, binding.mediaGrid)
+        }
 
-        binding.mediaRecyclerView.adapter = MediaAdaptor(0, mediaList, this)
-        val screenWidth = resources.displayMetrics.widthPixels
+        binding.listTitle.text = intent.getStringExtra("title")
+        binding.mediaRecyclerView.adapter = MediaAdaptor(view, mediaList, this)
         binding.mediaRecyclerView.layoutManager = GridLayoutManager(
             this,
-            (screenWidth / 120.toPx)
+            if (view == 1) 1 else (screenWidth / 120f).toInt()
         )
     }
 }
