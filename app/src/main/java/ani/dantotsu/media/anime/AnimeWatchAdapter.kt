@@ -91,32 +91,25 @@ class AnimeWatchAdapter(
             binding.animeSourceYT.setOnClickListener {
                 openLinkInYouTube(media.anime.youtube)
             }
-            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
+                    binding.animeSourceYT.visibility = View.GONE
+                    binding.youtubePlayerView.visibility = View.VISIBLE
                     Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                        binding.animeSourceYT.visibility = View.GONE
-                        binding.youtubePlayerView.visibility = View.VISIBLE
                         youTubePlayer.loadVideo(it, 0f)
-                        youTubePlayerView.initialize(this)
-                        youTubePlayer.mute()
-                        youTubePlayer.play()
-                    } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
-                        binding.animeSourceYT.visibility = View.GONE
-                        binding.youtubePlayerView.visibility = View.VISIBLE
-                        // youTubePlayer.loadPlaylist(it, "playlist", 0, 0f)
-                        youTubePlayerView.initialize(
-                            this,
-                            IFramePlayerOptions.Builder()
-                                .controls(1)
-                                .listType("playlist")
-                                .list(it)
-                                .build()
-                        )
-                        youTubePlayer.mute()
-                        youTubePlayer.play()
                     }
+                    youTubePlayer.mute()
+                    youTubePlayer.play()
                 }
-            })
+            }
+            Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+                youTubePlayerView.initialize(youTubePlayerListener)
+            } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
+                youTubePlayerView.initialize(
+                    youTubePlayerListener,
+                    IFramePlayerOptions.Builder().controls(1).listType("playlist").list(it).build()
+                )
+            }
         }
         binding.animeSourceDubbed.isChecked = media.selected!!.preferDub
         binding.animeSourceDubbedText.text =

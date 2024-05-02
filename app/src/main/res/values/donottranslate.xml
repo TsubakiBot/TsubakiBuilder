@@ -4,7 +4,6 @@
 
     <string name="repo">RepoDevil/Himitsu</string>
     <string name="token_repo">RepoDevil/Himitsu-Matagi</string>
-    <string name="glance_repo">RepoDevil/Himitsu-Ichimoku</string>
 
     <string name="preference_file_key">dantotsuprefs</string>
 
