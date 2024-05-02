@@ -58,6 +58,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         android:layout_gravity="bottom"
                         android:orientation="horizontal"
                         android:layout_weight="1">
@@ -120,9 +121,8 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="start"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginVertical="20dp"
-                    android:layout_marginEnd="20dp"
                     android:translationZ="2dp"
                     app:cardBackgroundColor="@color/nav_bg"
                     app:cardCornerRadius="16dp">

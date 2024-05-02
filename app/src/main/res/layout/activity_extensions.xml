@@ -56,7 +56,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="@string/sort_by"
                 app:srcCompat="@drawable/ic_github"
-                app:tint="?attr/colorOnBackground" />
+                app:tint="?attr/colorPrimary" />
 
             <ImageButton
                 android:id="@+id/languageselect"
@@ -65,7 +65,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="@string/sort_by"
                 app:srcCompat="@drawable/ic_round_translate_24"
-                app:tint="?attr/colorOnBackground" />
+                app:tint="?attr/colorPrimary" />
 
         </LinearLayout>
 

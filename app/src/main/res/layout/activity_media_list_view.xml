@@ -52,7 +52,7 @@
                     android:alpha="0.33"
                     android:padding="8dp"
                     app:srcCompat="@drawable/ic_round_view_list_24"
-                    app:tint="?attr/colorOnBackground"
+                    app:tint="?attr/colorPrimary"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <ImageView
@@ -64,7 +64,7 @@
                     android:padding="8dp"
                     android:layout_marginEnd="12dp"
                     app:srcCompat="@drawable/ic_round_grid_view_24"
-                    app:tint="?attr/colorOnBackground"
+                    app:tint="?attr/colorPrimary"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
             </LinearLayout>
 

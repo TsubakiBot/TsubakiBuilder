@@ -61,7 +61,7 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:contentDescription="@string/random_selection"
                     app:srcCompat="@drawable/ic_shuffle_24"
-                    app:tint="?attr/colorOnBackground" />
+                    app:tint="?attr/colorPrimary" />
 
                 <ImageButton
                     android:id="@+id/filter"
@@ -70,7 +70,7 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:contentDescription="@string/filter"
                     app:srcCompat="@drawable/ic_round_filter_alt_24"
-                    app:tint="?attr/colorOnBackground" />
+                    app:tint="?attr/colorPrimary" />
 
                 <ImageButton
                     android:id="@+id/listSort"
@@ -80,7 +80,7 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:contentDescription="@string/sort_by"
                     app:srcCompat="@drawable/ic_round_sort_24"
-                    app:tint="?attr/colorOnBackground" />
+                    app:tint="?attr/colorPrimary" />
 
             </LinearLayout>
         </LinearLayout>
