@@ -17,6 +17,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.showSystemBarsRetractView
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import eu.kanade.tachiyomi.util.system.getThemeColor
 
 class MediaListViewActivity: AppCompatActivity() {
@@ -55,10 +56,10 @@ class MediaListViewActivity: AppCompatActivity() {
         val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()
 
         binding.mediaRecyclerView.adapter = MediaAdaptor(0, mediaList, this)
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
+        val screenWidth = resources.displayMetrics.widthPixels
         binding.mediaRecyclerView.layoutManager = GridLayoutManager(
             this,
-            (screenWidth / 120f).toInt()
+            (screenWidth / 120.toPx)
         )
     }
 }

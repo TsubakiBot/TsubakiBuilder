@@ -44,7 +44,7 @@ class AuthorActivity : AppCompatActivity() {
         initActivity(this)
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.nav_bg)
 
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
+        val screenWidth = resources.displayMetrics.widthPixels
 
         binding.root.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         // TODO: Investigate hardcoded values
@@ -72,7 +72,7 @@ class AuthorActivity : AppCompatActivity() {
                 val keys = map.keys.toTypedArray()
                 var pos = 0
 
-                val gridSize = (screenWidth / 124f).toInt()
+                val gridSize = (screenWidth / 124.toPx)
                 val gridLayoutManager = GridLayoutManager(this, gridSize)
                 gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {

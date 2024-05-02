@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.countDown
 import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.DialogLayoutBinding
@@ -410,10 +411,9 @@ class AnimeWatchAdapter(
                     )
                     if (ep.filler) binding.itemEpisodeFillerView.visibility = View.VISIBLE
 
-                    binding.animeSourceContinueText.text =
-                        currActivity()!!.getString(
+                    binding.animeSourceContinueText.text = getString(
                             R.string.continue_episode, ep.number, if (ep.filler)
-                                currActivity()!!.getString(R.string.filler_tag)
+                                getString(R.string.filler_tag)
                             else
                                 "", cleanedTitle
                         )

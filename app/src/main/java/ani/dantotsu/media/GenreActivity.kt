@@ -17,6 +17,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -37,8 +38,11 @@ class GenreActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.genreContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight;bottomMargin += navBarHeight }
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
+        binding.genreContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin += statusBarHeight
+            bottomMargin += navBarHeight
+        }
+        val screenWidth = resources.displayMetrics.widthPixels
         val type = intent.getStringExtra("type")
         if (type != null) {
             val adapter = GenreAdapter(type, true)
@@ -55,7 +59,7 @@ class GenreActivity : AppCompatActivity() {
             }
             binding.mediaInfoGenresRecyclerView.adapter = adapter
             binding.mediaInfoGenresRecyclerView.layoutManager =
-                GridLayoutManager(this, (screenWidth / 156f).toInt())
+                GridLayoutManager(this, (screenWidth / 156.toPx))
 
             lifecycleScope.launch(Dispatchers.IO) {
                 model.loadGenres(

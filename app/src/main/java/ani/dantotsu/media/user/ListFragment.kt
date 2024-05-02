@@ -11,6 +11,7 @@ import ani.dantotsu.databinding.FragmentListBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.OtherDetailsViewModel
+import ani.dantotsu.toPx
 
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
@@ -38,7 +39,7 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
+        val screenWidth = resources.displayMetrics.widthPixels
 
         fun update() {
             if (grid != null && list != null) {
@@ -46,7 +47,7 @@ class ListFragment : Fragment() {
                 binding.listRecyclerView.layoutManager =
                     GridLayoutManager(
                         requireContext(),
-                        if (grid!!) (screenWidth / 120f).toInt() else 1
+                        if (grid!!) (screenWidth / 120.toPx) else 1
                     )
                 binding.listRecyclerView.adapter = adapter
             }

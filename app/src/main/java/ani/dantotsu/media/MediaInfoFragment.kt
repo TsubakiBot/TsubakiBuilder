@@ -235,7 +235,7 @@ class MediaInfoFragment : Fragment() {
                 }
                 displayTimer(media, binding.mediaInfoContainer)
                 val parent = _binding?.mediaInfoContainer!!
-                val screenWidth = resources.displayMetrics.run { widthPixels / density }
+                val screenWidth = resources.displayMetrics.widthPixels
 
                 if (media.synonyms.isNotEmpty()) {
                     val bind = ItemTitleChipgroupBinding.inflate(
@@ -387,7 +387,7 @@ class MediaInfoFragment : Fragment() {
                     }
                     bind.mediaInfoGenresRecyclerView.adapter = adapter
                     bind.mediaInfoGenresRecyclerView.layoutManager =
-                        GridLayoutManager(requireActivity(), (screenWidth / 156f).toInt())
+                        GridLayoutManager(requireActivity(), (screenWidth / 156.toPx))
 
                     lifecycleScope.launch(Dispatchers.IO) {
                         genreModel.loadGenres(media.genres) {

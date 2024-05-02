@@ -54,7 +54,7 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initActivity(this)
-        screenWidth = resources.displayMetrics.run { widthPixels / density }
+        screenWidth = resources.displayMetrics.widthPixels.toFloat()
 
         // TODO: Investigate hardcoded values
         binding.searchRecyclerView.updatePaddingRelative(
@@ -100,7 +100,7 @@ class SearchActivity : AppCompatActivity() {
         }
         headerAdaptor = SearchAdapter(this, model.searchResults.type)
 
-        val gridSize = (screenWidth / 120f).toInt()
+        val gridSize = (screenWidth / 120.toPx).toInt()
         val gridLayoutManager = GridLayoutManager(this, gridSize)
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {

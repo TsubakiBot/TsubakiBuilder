@@ -17,7 +17,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.currActivity
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.DialogLayoutBinding
 import ani.dantotsu.databinding.ItemAnimeWatchBinding
@@ -474,12 +474,11 @@ class MangaReadAdapter(
                     }
                     val ep = media.manga.chapters!![continueEp]!!
                     binding.itemEpisodeImage.loadImage(media.banner ?: media.cover)
-                    binding.animeSourceContinueText.text =
-                        currActivity()!!.getString(
-                            R.string.continue_chapter,
-                            ep.number,
-                            if (!ep.title.isNullOrEmpty()) ep.title else ""
-                        )
+                    binding.animeSourceContinueText.text = getString(
+                        R.string.continue_chapter,
+                        ep.number,
+                        if (!ep.title.isNullOrEmpty()) ep.title else ""
+                    )
                     binding.animeSourceContinue.setOnClickListener {
                         fragment.onMangaChapterClick(continueEp)
                     }

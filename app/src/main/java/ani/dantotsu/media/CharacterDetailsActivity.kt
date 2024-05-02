@@ -53,7 +53,7 @@ class CharacterDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChang
         setContentView(binding.root)
 
         initActivity(this)
-        screenWidth = resources.displayMetrics.run { widthPixels / density }
+        screenWidth = resources.displayMetrics.widthPixels
         if (PrefManager.getVal(PrefName.ImmersiveMode)) this.window.statusBarColor =
             ContextCompat.getColor(this, R.color.transparent)
 
@@ -130,7 +130,7 @@ class CharacterDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChang
                     val concatAdaptor =
                         ConcatAdapter(CharacterDetailsAdapter(character, this), mediaAdaptor)
 
-                    val gridSize = (screenWidth / 124f).toInt()
+                    val gridSize = (screenWidth / 124.toPx)
                     val gridLayoutManager = GridLayoutManager(this, gridSize)
                     gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(position: Int): Int {
