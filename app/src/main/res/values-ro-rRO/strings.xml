@@ -113,6 +113,7 @@
     <string name="popularity">Popularitate</string>
     <string name="roles">Roluri</string>
     <string name="details">Detalii</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Joacă pe YouTube</string>
     <string name="eps">Episoade</string>
     <string name="ep">Episod</string>
@@ -279,10 +280,11 @@
         <item>Manga favorită</item>
         <item>Manga Planificată</item>
         <item>Recomandat</item>
-        <item>Social Feeds</item>
+        <item>Feed-uri Sociale</item>
     </string-array>
     <string name="startUpTab">Fila de pornire implicită</string>
     <string name="small_view">Vizualizare mică în emisiuni populare</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animații</string>
     <string name="banner_animations">Animaţii Banner</string>
     <string name="layout_animations">Animații aspect</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versiuni</string>
     <string name="faq">Întrebări</string>
     <string name="accounts">Conturi</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons sunt module extra de caracteristici Dantotsu.</string>
     <string name="myanimelist">Listă</string>
     <string name="login_with_anilist">Autentificare cu Anilist</string>
     <string name="anilist">Anilist</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Continuă : Episod %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continuă : %1$s\n%2$s</string>
-    <string name="episode">"Episod "</string>
-    <string name="episode_num">"Episod %1$s"</string>
-    <string name="chapter">"Capitol "</string>
-    <string name="chapter_num">"Capitolul %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Episod %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Capitolul %1$s</string>
     <string name="just_released">- Versiuni noi!</string>
     <string name="checking_subscriptions_title">Verificare abonamente</string>
     <string name="user_list">Lista %1$sa lui %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Disponibil</string>
     <string name="lets_go">Să mergem</string>
     <string name="cope">Copie</string>
-    <string name="watched_num">"Vizionat "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Citește "</string>
     <string name="items_out_of">" din "</string>
-    <string name="items_total_of">"Total de "</string>
-    <string name="no_description_available">"Nici o descriere disponibilă"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Nici o descriere disponibilă</string>
     <string-array name="manga_directions">
         <item>Sus spre jos</item>
         <item>De la dreapta la stânga</item>
@@ -565,8 +569,8 @@
     <string name="selected">Selectate</string>
     <string name="found">Găsit</string>
     <string name="age">"__Age:__ "</string>
-    <string name="birthday">\n\"__naștere:__ \"</string>
-    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Bărbat</string>
     <string name="female">Femeie</string>
     <string name="question_1">Ce este Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Eroare la importarea setărilor</string>
     <string name="download_manager">Manager descărcări</string>
     <string name="enter_password">Introduceți parola</string>
+    <string name="you_cursed">youwu ai fost blestemat</string>
     <string name="invalid_file_type">Tip de fișier nevalid</string>
     <string name="purge_confirm">Sunteţi sigur că doriţi să ştergeţi toate descărcările %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Ștergerea a eșuat din cauza… %1$s</string>
     <string name="hide_replies">Ascunde răspunsurile</string>
     <string name="view_reply">Vizualizare răspuns</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Personalizați știri și actualizări</string>
     <string name="system_desc">Actualizări și utilități</string>
     <string name="about_desc">Aflaţi mai multe despre Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons sunt module extra de caracteristici Dantotsu.</string>
-    <string name="torrent_addon">Addon Torent</string>
     <string name="enable">Activare</string>
-    <string name="anime_downloader_addon">Adaugă Downloader Anime</string>
-    <string name="loaded_successfully">Încărcat cu succes</string>
-    <string name="not_installed">Nu este instalat</string>
-    <string name="torrent_extension_not_supported">Extensia torent nu este suportată pe acest dispozitiv</string>
-    <string name="update_addon">Actualizare Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Descărcarea suplimentului nu a fost găsită</string>
     <string name="default_novel_settings">Setări implicite pentru începători</string>
     <string name="line_height">Înălțime linie</string>
     <string name="margin">Marjă</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japonia</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Ceva</string>
-    <string name="image">Imagine</string>
     <string name="sort_score">Scor</string>
     <string name="popular">Populare</string>
     <string name="trending">Populare</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Utilizaţi culoarea de la banner-ul media</string>
     <string name="use_custom_theme_desc">Folosește culoarea ta proprie pentru tema</string>
     <string name="color_picker_desc">Alege o culoare</string>
+    <string name="torrent_addon">Addon Torent</string>
+    <string name="anime_downloader_addon">Adaugă Downloader Anime</string>
     <string name="install_torrent_addon">Instalează Addon Torent</string>
+    <string name="loaded_successfully">Încărcat cu succes</string>
+    <string name="not_installed">Nu este instalat</string>
+    <string name="torrent_extension_not_supported">Extensia torent nu este suportată pe acest dispozitiv</string>
+    <string name="update_addon">Actualizare Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Descărcarea suplimentului nu a fost găsită</string>
+    <string name="image">Imagine</string>
     <string name="failed_ext_install_conflict">Nu s-a reușit instalarea extensiei din cauza conflictului</string>
     <string name="no_video_selected">Niciun videoclip selectat</string>
     <string name="download_extension_not_available">Extensia de descărcare nu este disponibilă</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Nu s-a putut găsi versiunea WebView %1$s</string>
     <string name="webview_not_found">Nu s-a putut găsi o bibliotecă instalată WebView</string>
     <string name="multi">Multi</string>
+    <string name="installed_extensions">Instalat %1$s</string>
+    <string name="available_extensions">Disponibil %1$s</string>
+    <string name="available_plugins">Pluginuri %1$s</string>
+    <string name="your_story">Povestea Ta</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Fișierul nu a fost găsit</string>
+    <string name="directory_not_found">Directorul nu a fost găsit</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

@@ -113,6 +113,7 @@
     <string name="popularity">Phổ Biến</string>
     <string name="roles">Vai Trò</string>
     <string name="details">Chi Tiết</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Xem trên Youtube</string>
     <string name="eps">Tập</string>
     <string name="ep">Tập</string>
@@ -283,6 +284,7 @@
     </string-array>
     <string name="startUpTab">Tab Khởi đầu Mặc định</string>
     <string name="small_view">Xem Nhỏ trong Các chương trình đang thịnh hành</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Hoạt hình</string>
     <string name="banner_animations">Hoạt hình Banner</string>
     <string name="layout_animations">Hoạt hình Bố cục</string>
@@ -358,6 +360,8 @@
     <string name="forks">Phiên bản</string>
     <string name="faq">Câu hỏi thường gặp</string>
     <string name="accounts">Tài khoản</string>
+    <string name="addons">Tiện ích mở rộng</string>
+    <string name="addons_desc">Tiện ích mở rộng là các mô-đun tính năng phụ Dantotsu.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Đăng nhập bằng Anilist</string>
     <string name="anilist">Anilist</string>
@@ -427,7 +431,7 @@
     <string name="auto_skip">Tự động Bỏ qua OP &amp; ED</string>
     <string name="show_skip_time_stamp_button">Hiển thị Nút Bỏ qua [Đoạn]</string>
     <string name="always_load_time_stamps">Luôn Tải Đánh Dấu Thời gian</string>
-    <string name="auto_hide_time_stamps">>Tự động Ẩn Nút Bỏ qua [Đoạn]</string>
+    <string name="auto_hide_time_stamps">&gt;Tự động Ẩn Nút Bỏ qua [Đoạn]</string>
     <string name="timestamps">Đoạn</string>
     <string name="auto_skip_op_ed">Tự động Bỏ qua OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Yêu cầu Bật Đánh dấu Thời gian</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Tiếp tục : Tập %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Độc chiếm</string>
     <string name="continue_chapter">Tiếp tục : %1$s\n%2$s</string>
-    <string name="episode">"Tập "</string>
-    <string name="episode_num">"Tập %1$s"</string>
-    <string name="chapter">"Chương "</string>
-    <string name="chapter_num">"Chương %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Tập %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Chương %1$s</string>
     <string name="just_released">- Vừa phát hành!</string>
     <string name="checking_subscriptions_title">Kiểm tra Đăng ký</string>
     <string name="user_list">Danh Sách %2$s của %1$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Có sẵn</string>
     <string name="lets_go">Chúng ta đi</string>
     <string name="cope">Đối phó</string>
-    <string name="watched_num">"Đã xem "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Đã đọc "</string>
     <string name="items_out_of">" trên "</string>
-    <string name="items_total_of">"Tổng cộng "</string>
-    <string name="no_description_available">"Không có Mô tả"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Không có Mô tả</string>
     <string-array name="manga_directions">
         <item>Từ trên xuống dưới</item>
         <item>Từ phải sang trái</item>
@@ -564,13 +568,13 @@
     </string-array>
     <string name="selected">Đã chọn</string>
     <string name="found">Đã tìm thấy</string>
-    <string name="age">"__Tuổi:__ "</string>
-    <string name="birthday">\n\"__Sinh nhật:__ \"</string>
-    <string name="gender">\n\"__Giới tính:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
     <string name="question_1">Dantotsu là gì?</string>
-    <string name="answer_1">Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cho phép bạn xem &amp; tải Anime / Manga thông qua các tiện ích mở rộng. \n>Dantotsu (断トツ; Dan-totsu) có nghĩa là tốt nhất trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, nhưng hãy tự thử &amp; đánh giá!</string>
+    <string name="answer_1">Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cho phép bạn xem &amp; tải Anime / Manga thông qua các tiện ích mở rộng. \n&gt;Dantotsu (断トツ; Dan-totsu) có nghĩa là tốt nhất trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, nhưng hãy tự thử &amp; đánh giá!</string>
     <string name="question_2">Những tính năng nổi bật của Dantotsu là gì?</string>
     <string name="answer_2">Một số tính năng đáng chú ý của Dantotsu bao gồm\n\n- Cách dễ dàng và chức năng để xem anime và đọc manga và light novels, không có quảng cáo.\n- Một ứng dụng mã nguồn mở hoàn toàn với giao diện người dùng đẹp &amp; hiệu ứng\n- Hỗ trợ plugin từ bên thứ ba \n- Đồng bộ anime và manga theo thời gian thực với AniList. Dễ dàng phân loại anime và manga dựa trên trạng thái hiện tại của bạn. (Được hỗ trợ bởi AniList)\n- Tìm tất cả các chương trình sử dụng danh sách được cập nhật kỹ lưỡng và thường xuyên của tất cả các anime đang hot, phổ biến và đang phát sóng dựa trên điểm số.\n- Xem thông tin chi tiết về chương trình anime, phim và tiêu đề manga. Nó cũng có khả năng đếm ngược đến tập phim tiếp theo của anime đang phát sóng. (Được hỗ trợ bởi AniList &amp; MyAnimeList)</string>
     <string name="question_3">Sự khác biệt giữa các phiên bản Stable, Beta &amp; Alpha là gì?</string>
@@ -584,13 +588,13 @@
     <string name="question_7">Làm thế nào để tải Anime?</string>
     <string name="answer_7">Hiện có hai phương pháp tải xuống. Một là nội bộ và một là bên ngoài. Nếu bạn tải xuống nội bộ, thì nó có thể được xem trong ứng dụng nhưng chỉ ứng dụng mới có thể mở tập đó, bạn không thể di chuyển hoặc chia sẻ nó. Lựa chọn khác là sử dụng chức năng tải xuống bên ngoài. Nó yêu cầu một trình quản lý tải xuống để tải xuống và một trình phát video riêng để xem. Tải xuống bên ngoài có thể được chia sẻ nhưng bạn không thể xem nó trong ứng dụng Dantotsu.\n\n•Để tải nội bộ:\n\n1. Chạm vào nút tải xuống.\n2. Chọn máy chủ và chất lượng video.\n3. Lời lãi.\n\n•Để tải xuống bên ngoài:\n\n 1. Tải 1DM hoặc ADM từ Cửa hàng Play của Google.
         \n2. Mở ứng dụng, cấp quyền truy cập bộ nhớ và thiết lập các tùy chọn của bạn (tốc độ tải xuống, đường dẫn tải xuống vv (tùy chọn))
-        \n3. Bây giờ đi đến \`Dantotsu > Cài đặt > Chung > Trình quản lý Tải xuống\` và chọn trình quản lý tải xuống bạn vừa thiết lập.
+        \n3. Bây giờ đi đến \`Dantotsu &gt; Cài đặt &gt; Chung &gt; Trình quản lý Tải xuống\` và chọn trình quản lý tải xuống bạn vừa thiết lập.
         \n4. Đi đến tập phim mong muốn và nhấn vào biểu tượng tải xuống của bất kỳ máy chủ nào. Có thể xuất hiện một cửa sổ bật lên để thiết lập tùy chọn của bạn một lần nữa, chỉ cần nhấn vào \"Tải xuống\" và nó sẽ được lưu trữ tại đường dẫn chỉ định.
 
         \n\nLưu ý: Tải xuống trực tiếp cũng có thể được thực hiện mà không cần một trình quản lý nhưng không được khuyến khích.
 \n\nGhi chú Nerd: Các tập phim được tải nội bộ được lưu trữ trong \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nBạn không thể phát các tập tin đó vì chúng ở định dạng \`.exo\`, chia thành hàng trăm mảnh và được mã hóa.</string>
     <string name="question_9">Làm thế nào để kích hoạt nội dung NSFW?</string>
-    <string name="answer_9">Bạn có thể kích hoạt nội dung NSFW bằng cách bật nội dung 18+ từ [liên kết này](https://anilist.co/settings/media). Bạn cũng phải bật các tiện ích NSFW trong \`Cài đặt > Tiện ích > Tiện ích NSFW\` </string>
+    <string name="answer_9">Bạn có thể kích hoạt nội dung NSFW bằng cách bật nội dung 18+ từ [liên kết này](https://anilist.co/settings/media). Bạn cũng phải bật các tiện ích NSFW trong \`Cài đặt &gt; Tiện ích &gt; Tiện ích NSFW\` </string>
     <string name="question_10">Làm thế nào để nhập danh sách MAL/Kitsu của tôi vào Anilist?</string>
     <string name="answer_10">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net).\n2. Nhập tên người dùng Kitsu/MAL của bạn và tải xuống cả danh sách anime và manga. (Chúng sẽ ở định dạng XML)\nGhi chú: Bạn phải viết tên người dùng của bộ theo dõi bạn đã chọn\n\nNhập:\n\n1. Sau khi xuất danh sách anime và manga từ Kitsu/MAL của bạn, hãy đến [đây](https://anilist.co/settings/import) \n2. Chọn/thả tệp XML anime vào ô phía trên.\n|→Chọn/thả tệp XML manga vào ô phía dưới.</string>
     <string name="question_11">Làm thế nào để nhập danh sách Anilist/Kitsu của tôi vào MAL?</string>
@@ -602,7 +606,7 @@
     <string name="question_14">Làm thế nào để đọc manga màu?</string>
     <string name="answer_14">Bạn đang tìm kiếm manga màu? Xin lỗi vì phải nói nhưng một lượng rất nhỏ manga có phiên bản màu. Những manga có phiên bản màu cũng có sẵn trong Dantotsu. Hãy nói rằng bạn muốn đọc phiên bản màu của chainsaw man. Sau đây là các bước ↓\n\n1) Đi đến Chainsaw Man\n2) Nhấn vào \'Đọc\'\n3) Chọn bất kỳ nguồn hoạt động nào\n4) Nhấn vào \'Tiêu đề sai\'\n5) Chọn phiên bản màu của chainsaw man\n6) Thưởng thức\n\nGhi chú: Nhiều nguồn không có phiên bản màu có sẵn ngay cả khi nó có ở nơi nào đó trên internet. Vì vậy hãy thử một nguồn khác. Nếu không có nguồn nào có, thì phiên bản màu của manga mong muốn của bạn đơn giản không tồn tại.</string>
     <string name="question_15">Handshake thất bại? Tại sao không có thời gian đánh dấu nào được tải?</string>
-    <string name="answer_15">Bạn có thể khắc phục vấn đề này bằng cách kích hoạt \'Proxy\' từ \n\`Cài Đặt > Anime > Cài Đặt Trình Phát > Dấu Thời Gian > Proxy\`.\nNếu dấu thời gian vẫn không tải nhưng cửa sổ thông báo lỗi đã được sửa, thì tập phim bạn đang xem chỉ đơn giản không có dấu thời gian cho nó.</string>
+    <string name="answer_15">Bạn có thể khắc phục vấn đề này bằng cách kích hoạt \'Proxy\' từ \n\`Cài Đặt &gt; Anime &gt; Cài Đặt Trình Phát &gt; Dấu Thời Gian &gt; Proxy\`.\nNếu dấu thời gian vẫn không tải nhưng cửa sổ thông báo lỗi đã được sửa, thì tập phim bạn đang xem chỉ đơn giản không có dấu thời gian cho nó.</string>
     <string name="question_16">Không thể tìm thấy thông tin trong nguồn?</string>
     <string name="answer_16">Một số cách khắc phục cơ bản sẽ là: \n\n• Cập nhật các tiện ích mở rộng nếu có. \n• Mở Xem Web và đợi cho nó tải. Sau khi tải hoàn tất, quay lại. (Nếu Xem Web hiển thị lỗi 404 hoặc một cái gì đó tương tự, có khả năng nguồn của bạn đang tắt)\n• Sử dụng một DNS khác từ cài đặt của bạn, ưu tiên, Libre. \n• Thử một VPN đáng tin cậy. (Bạn sẽ phải lặp lại bước 1 sau điều này) \n\nNếu không có bước nào ở trên hoạt động thì hãy sử dụng một nguồn khác hoặc tham gia vào [discord](https://discord.gg/invite/4HPZ5nAWwM) của chúng tôi để được trợ giúp.</string>
     <string name="question_17">Một số mẹo và thủ thuật hữu ích</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Lỗi khi nhập cài đặt</string>
     <string name="download_manager">Quản lý Tải xuống</string>
     <string name="enter_password">Nhập Mật khẩu</string>
+    <string name="you_cursed">Bạn đã bị nguyền rủa</string>
     <string name="invalid_file_type">Loại tệp không hợp lệ</string>
     <string name="purge_confirm">Bạn có chắc chắn muốn xóa tất cả %1$s tải về không?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Xóa không thành công vì… %1$s</string>
     <string name="hide_replies">Ẩn trả lời</string>
     <string name="view_reply">Xem trả lời</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Tùy chỉnh tin tức và cập nhật</string>
     <string name="system_desc">Cập nhật và tiện ích hữu ích</string>
     <string name="about_desc">Tìm hiểu thêm về Himitsu</string>
-    <string name="addons">Tiện ích mở rộng</string>
-    <string name="addons_desc">Tiện ích mở rộng là các mô-đun tính năng phụ Dantotsu.</string>
-    <string name="torrent_addon">Tiện ích Torrent</string>
     <string name="enable">Kích hoạt</string>
-    <string name="anime_downloader_addon">Tiện ích Tải xuống Anime</string>
-    <string name="loaded_successfully">Tải thành công</string>
-    <string name="not_installed">Chưa Cài đặt</string>
-    <string name="torrent_extension_not_supported">Tiện ích Torrent không được hỗ trợ trên thiết bị này</string>
-    <string name="update_addon">Cập nhật Tiện ích mở rộng</string>
-    <string name="install_addon">Cài đặt Tiện ích mở rộng</string>
-    <string name="download_addon_not_found">Không tìm thấy tiện ích tải xuống</string>
     <string name="default_novel_settings">Cài đặt Mặc định Tiểu thuyết</string>
     <string name="line_height">Độ cao dòng</string>
     <string name="margin">Lề</string>
@@ -865,7 +864,6 @@
     <string name="japan">Nhật Bản</string>
     <string name="taiwan">Đài Loan</string>
     <string name="something">Điều gì đó</string>
-    <string name="image">Hình ảnh</string>
     <string name="sort_score">Điểm</string>
     <string name="popular">Phổ biến</string>
     <string name="trending">Đang thịnh hành</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Sử dụng màu từ banner của phương tiện</string>
     <string name="use_custom_theme_desc">Sử dụng màu của riêng bạn cho chủ đề</string>
     <string name="color_picker_desc">Chọn một màu</string>
+    <string name="torrent_addon">Tiện ích Torrent</string>
+    <string name="anime_downloader_addon">Tiện ích Tải xuống Anime</string>
     <string name="install_torrent_addon">Cài đặt Tiện ích mở rộng Torrent</string>
+    <string name="loaded_successfully">Tải thành công</string>
+    <string name="not_installed">Chưa Cài đặt</string>
+    <string name="torrent_extension_not_supported">Tiện ích Torrent không được hỗ trợ trên thiết bị này</string>
+    <string name="update_addon">Cập nhật Tiện ích mở rộng</string>
+    <string name="install_addon">Cài đặt Tiện ích mở rộng</string>
+    <string name="download_addon_not_found">Không tìm thấy tiện ích tải xuống</string>
+    <string name="image">Hình ảnh</string>
     <string name="failed_ext_install_conflict">Không thể cài đặt tiện ích mở rộng do xung đột</string>
     <string name="no_video_selected">Không có Video được chọn</string>
     <string name="download_extension_not_available">Tiện ích mở rộng Tải xuống không khả dụng</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Không thể tìm thấy phiên bản WebView %1$s</string>
     <string name="webview_not_found">Không thể tìm thấy thư viện WebView đã cài đặt</string>
     <string name="multi">Nhiều</string>
+    <string name="installed_extensions">Đã cài đặt %1$s</string>
+    <string name="available_extensions">Có sẵn %1$s</string>
+    <string name="available_plugins">%1$s Cắm trên</string>
+    <string name="your_story">Câu chuyện của bạn</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Không tìm thấy tập tin</string>
+    <string name="directory_not_found">Thư mục không tồn tại</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

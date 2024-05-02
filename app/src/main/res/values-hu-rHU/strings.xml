@@ -113,6 +113,7 @@
     <string name="popularity">Népszerűség</string>
     <string name="roles">Szerepek</string>
     <string name="details">Részletek</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Lejátszás a YouTube-on</string>
     <string name="eps">Epizódok</string>
     <string name="ep">Epizód</string>
@@ -279,10 +280,11 @@
         <item>Kedvenc Manga</item>
         <item>Tervezett Manga</item>
         <item>Ajánlott</item>
-        <item>Social Feeds</item>
+        <item>Társadalmi hírcsatornák</item>
     </string-array>
     <string name="startUpTab">Alapértelmezett indítási lap</string>
     <string name="small_view">Kis nézet a Trendi Műsoroknál</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animációk</string>
     <string name="banner_animations">Banner animációk</string>
     <string name="layout_animations">Elrendezési animációk</string>
@@ -358,6 +360,8 @@
     <string name="forks">Verziók</string>
     <string name="faq">GYIK</string>
     <string name="accounts">Fiókok</string>
+    <string name="addons">Kiegészítők</string>
+    <string name="addons_desc">A kiegészítők Dantotsu extra funkciómódulok.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Bejelentkezés Anilisttel</string>
     <string name="anilist">Anilist</string>
@@ -427,7 +431,7 @@
     <string name="auto_skip">Automatikus OP &amp; ED Átugrás</string>
     <string name="show_skip_time_stamp_button">Mutasd az Átugrási [Szegmens] Gombokat</string>
     <string name="always_load_time_stamps">Mindig Töltse be az Időbélyegeket</string>
-    <string name="auto_hide_time_stamps">>Automatikusan Elrejt Szegmens Átugrás Gombokat</string>
+    <string name="auto_hide_time_stamps">&gt;Automatikusan Elrejt Szegmens Átugrás Gombokat</string>
     <string name="timestamps">Szegmensek</string>
     <string name="auto_skip_op_ed">Automatikus Átugrás OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Az Időbélyegek Engedélyezve kell legyenek</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Folytatás: Epizód %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Folytatás: %1$s\n%2$s</string>
-    <string name="episode">"Epizód "</string>
-    <string name="episode_num">"Epizód %1$s"</string>
-    <string name="chapter">"Fejezet "</string>
-    <string name="chapter_num">"Fejezet %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Epizód %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Fejezet %1$s</string>
     <string name="just_released">- Újonnan kiadva!</string>
     <string name="checking_subscriptions_title">Előfizetések ellenőrzése</string>
     <string name="user_list">%1$s %2$s listája</string>
@@ -546,11 +550,11 @@
     <string name="available">Elérhető</string>
     <string name="lets_go">Gyerünk</string>
     <string name="cope">Megküzd</string>
-    <string name="watched_num">"Megtekintve "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Olvasva "</string>
     <string name="items_out_of">" az összesből "</string>
-    <string name="items_total_of">"Összesen "</string>
-    <string name="no_description_available">"Nincs leírás elérhető"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Nincs leírás elérhető</string>
     <string-array name="manga_directions">
         <item>Fentről lefelé</item>
         <item>Jobbról balra</item>
@@ -564,13 +568,13 @@
     </string-array>
     <string name="selected">Kiválasztott</string>
     <string name="found">Megtalálva</string>
-    <string name="age">"__Kor:__ "</string>
-    <string name="birthday">\n\"__Születésnap:__ \"</string>
-    <string name="gender">\n\"__Nem:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Férfi</string>
     <string name="female">Nő</string>
     <string name="question_1">Mi az a Dantotsu?</string>
-    <string name="answer_1">A Dantotsu a Saikou hamvaiból készült, egyszerű mégis state-of-the-art elegancián alapul. Ez egy Anilist csak kliens, amely lehetővé teszi az Anime / Manga streamelését és letöltését kiterjesztések segítségével. \n>Dantotsu (断トツ; Dan-totsu) szó szerint a legjobb a legjobbak között japánul. Nos, azt mondanánk, hogy ez a legjobb nyílt forráskódú alkalmazás az anime és manga számára Androidon, de hát, próbáld ki magad &amp; ítélj meg!</string>
+    <string name="answer_1">A Dantotsu a Saikou hamvaiból készült, egyszerű mégis state-of-the-art elegancián alapul. Ez egy Anilist csak kliens, amely lehetővé teszi az Anime / Manga streamelését és letöltését kiterjesztések segítségével. \n&gt;Dantotsu (断トツ; Dan-totsu) szó szerint a legjobb a legjobbak között japánul. Nos, azt mondanánk, hogy ez a legjobb nyílt forráskódú alkalmazás az anime és manga számára Androidon, de hát, próbáld ki magad &amp; ítélj meg!</string>
     <string name="question_2">Milyen jellemzői vannak a Dantotsu-nak?</string>
     <string name="answer_2">Néhány említésre méltó Dantotsu jellemző:\n\n- Könnyű és funkcionális módja az anime nézésének és a manga és könnyű regények olvasásának, Hirdetésmentes.\n- Egy teljesen nyílt forráskódú alkalmazás szép felhasználói felülettel és animációkkal\n- 3. fél által támogatott bővítmények \n- Szinkronizálja az anime-t és a manga-t valós időben az AniList segítségével. Egyszerűen kategorizálhatja az anime-t és a manga-t az aktuális állapotának megfelelően. (Az AniList által támogatva)\n- Találja meg az összes show-t alaposan és gyakran frissített listával az összes trendi, népszerű és folyamatban lévő anime alapján pontszámok szerint.\n- Tekintse meg az anime show-ok, filmek és manga címek részletes adatait. Lehetőséget biztosít az élő anime epizódok visszaszámlálására is. (Az AniList &amp; MyAnimeList által támogatva)</string>
     <string name="question_3">Mi a különbség a Stabil, Béta &amp; Alfa verziók között?</string>
@@ -584,13 +588,13 @@
     <string name="question_7">Hogyan lehet letölteni az Anime-t?</string>
     <string name="answer_7">Jelenleg két módszer van letöltésre. Az egyik belső, a másik külső. Ha belsőn keresztül töltöd le, akkor az alkalmazáson belül megtekinthető, de csak az alkalmazás nyithatja meg azt a epizódot, nem lehet áthelyezni vagy megosztani. A másik lehetőség az külső letöltés használata. Ehhez egy letöltéskezelőre van szükség a letöltéshez és egy külön videolejátszóra a nézéshez. A külső letöltéseket megoszthatod, de nem tekintheted meg azokat a Dantotsu alkalmazáson belül.\n\n•Belső letöltéshez:\n\n1. Nyomd meg a letöltés gombot.\n2. Válaszd ki a szervert és a videó minőségét.\n3. Profit.\n\n•Külső letöltéshez:\n\n1. Töltsd le az 1DM vagy ADM-t a Google Play Áruházból.
         \n2. Nyisd meg az alkalmazást, adj hozzáférést a tárhelyhez és állítsd be a preferenciáidat (letöltési sebesség, letöltési útvonal stb.(opcionális))
-        \n3. Most menj a \`Dantotsu > Beállítások > Általános > Letöltési kezelők\` részre és válassza ki a letöltési kezelőt, amit éppen beállítottál.
+        \n3. Most menj a \`Dantotsu &gt; Beállítások &gt; Általános &gt; Letöltési kezelők\` részre és válassza ki a letöltési kezelőt, amit éppen beállítottál.
         \n4. Menj a kívánt epizódra és nyomj a letöltés ikonra bármelyik szerveren. Lehet, hogy felugrik egy ablak a preferenciák újra beállítására, csak nyomj a \"Letöltés\" gombra és a megadott útvonalon lesz mentve.
 
         \n\nMegjegyzés: Közvetlen letöltések is lehetségesek letöltéskezelő nélkül, de nem ajánlott.
 \n\nNerd Megjegyzés: Belsőleg letöltött epizódok tárolódnak a \`Android/data/ani.dantotsu.*/files/Anime_Downloads\` mappában\nAzokat a fájlokat nem tudod lejátszani, mivel \`.exo\` formátumban vannak, száz darabra szakítva és titkosítva.</string>
     <string name="question_9">Hogyan lehet engedélyezni a 18+ tartalmakat?</string>
-    <string name="answer_9">Engedélyezheted a 18+ tartalmakat a 18+ tartalmak engedélyezésével ezen a [link](https://anilist.co/settings/media) címen. A NSFW bővítményeket is engedélyezned kell a \`Beállítások > Bővítmények > NSFW bővítmények\` részen.</string>
+    <string name="answer_9">Engedélyezheted a 18+ tartalmakat a 18+ tartalmak engedélyezésével ezen a [link](https://anilist.co/settings/media) címen. A NSFW bővítményeket is engedélyezned kell a \`Beállítások &gt; Bővítmények &gt; NSFW bővítmények\` részen.</string>
     <string name="question_10">Hogyan importálhatom a MAL/Kitsu listáimat az Anilist-re?</string>
     <string name="answer_10">Így teheted meg:\n\nExportálás:\n\n1. Menj erre a [link](https://malscraper.azurewebsites.net) címre.\n2. Add meg a Kitsu/MAL felhasználóneved és töltsd le mindkét anime és manga listát. (XML formátumban lesznek)\nMegjegyzés: A kiválasztott nyomkövető felhasználónevének megadása szükséges\n\nImportálás:\n\n1. Miután exportáltad az anime és manga listádat a Kitsu/MAL-ról, most menj [ide](https://anilist.co/settings/import) \n2. Válaszd ki/dobd le az anime XML fájlt a fenti dobozba.\n|→Válaszd ki/dobd le az manga XML fájlt az alábbi dobozba.</string>
     <string name="question_11">Hogyan importálhatom az Anilist/Kitsu listáimat a MAL-ra?</string>
@@ -602,7 +606,7 @@
     <string name="question_14">Hogyan lehet színes mangákat olvasni?</string>
     <string name="answer_14">Színes mangákat keresel? Sajnáljuk, de nagyon kevés manga van színes verzióban. Azok, amelyeknek van színes változata, azok is elérhetők a Dantotsu-ban. Mondjuk így, ha a Chainsaw Man színes verzióját szeretnéd olvasni, akkor kövesd az alábbi lépéseket ↓\n\n1) Menj a Chainsaw Man-hoz\n2) Nyomj a \'Olvasás\' gombra\n3) Válassz ki egy működő forrást\n4) Nyomj a \'Rossz Cím\' gombra\n5) Válaszd ki a színes verziót a Chainsaw Man-ből\n6) ÉLVEZD\n\nMegjegyzés: Sok forrásnak nincs színes verziója, még akkor sem, ha valahol az interneten elérhető. Tehát próbálj más forrást. Ha egyik forrásnak sincs, akkor egyszerűen nem létezik a kívánt manga színes verziója.</string>
     <string name="question_15">Miért nem sikerül a kézfogás? Miért nem töltődnek be az időbélyegzők?</string>
-    <string name="answer_15">Ezt a problémát javíthatja a \'Proxy\' engedélyezésével a \n\`Beállítások > Anime > Lejátszó beállítások > Időbélyegek > Proxy\` menüpontban.\nHa az időbélyegek még mindig nem töltődnek be, de a kézfogás sikertelen ablakot javították, akkor az a rész, amit nézel, még nem rendelkezik időbélyegekkel.</string>
+    <string name="answer_15">Ezt a problémát javíthatja a \'Proxy\' engedélyezésével a \n\`Beállítások &gt; Anime &gt; Lejátszó beállítások &gt; Időbélyegek &gt; Proxy\` menüpontban.\nHa az időbélyegek még mindig nem töltődnek be, de a kézfogás sikertelen ablakot javították, akkor az a rész, amit nézel, még nem rendelkezik időbélyegekkel.</string>
     <string name="question_16">Nem talál semmit a forrásban?</string>
     <string name="answer_16">Néhány alapvető javítás lehet: \n\n• Frissítse a bővítményeit, ha vannak. \n• Nyissa meg a Web nézetet, és várja meg, amíg betöltődik. Miután a betöltés befejeződött, lépjen vissza. (Ha a Web nézet 404-es hibát vagy hasonlót mutat, akkor az esélyes, hogy a forrása nem elérhető)\n• Használjon más DNS-t a beállításokból, lehetőleg a Libre-t. \n• Próbáljon megbízható VPN-t. (Ezt követően ismételje meg az 1. lépést) \n\nHa egyik fenti lépés sem működik, akkor használjon más forrást, vagy csatlakozzon a [discord](https://discord.gg/invite/4HPZ5nAWwM) csatornánkhoz segítségért.</string>
     <string name="question_17">Néhány hasznos tipp és trükk</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Beállítások importálási hiba</string>
     <string name="download_manager">Letöltéskezelő</string>
     <string name="enter_password">Adja meg a jelszót</string>
+    <string name="you_cursed">youwu been cuwsed</string>
     <string name="invalid_file_type">Érvénytelen fájltípus</string>
     <string name="purge_confirm">Biztosan törölni szeretné az összes %1$s letöltést?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Nem sikerült törölni a következő ok miatt: %1$s</string>
     <string name="hide_replies">Válaszok elrejtése</string>
     <string name="view_reply">Válasz megtekintése</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Testreszabott hírek és frissítések</string>
     <string name="system_desc">Frissítések és hasznos segédprogramok</string>
     <string name="about_desc">Tudj meg többet a Himitsu-ról</string>
-    <string name="addons">Kiegészítők</string>
-    <string name="addons_desc">A kiegészítők Dantotsu extra funkciómódulok.</string>
-    <string name="torrent_addon">Torrent Kiegészítő</string>
     <string name="enable">Engedélyezés</string>
-    <string name="anime_downloader_addon">Anime Letöltő Kiegészítő</string>
-    <string name="loaded_successfully">Sikeresen Betöltve</string>
-    <string name="not_installed">Nincs Telepítve</string>
-    <string name="torrent_extension_not_supported">Torrent kiterjesztés nem támogatott ezen az eszközön</string>
-    <string name="update_addon">Kiegészítő Frissítése</string>
-    <string name="install_addon">Kiegészítő Telepítése</string>
-    <string name="download_addon_not_found">Letöltési kiegészítő nem található</string>
     <string name="default_novel_settings">Alapértelmezett Regény Beállítások</string>
     <string name="line_height">Sor Magasság</string>
     <string name="margin">Margó</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japán</string>
     <string name="taiwan">Tajvan</string>
     <string name="something">Valami</string>
-    <string name="image">Kép</string>
     <string name="sort_score">Pontszám</string>
     <string name="popular">Népszerű</string>
     <string name="trending">Trendi</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Használja a média bannerének színét</string>
     <string name="use_custom_theme_desc">Használja saját színét a téma számára</string>
     <string name="color_picker_desc">Válasszon egy színt</string>
+    <string name="torrent_addon">Torrent Kiegészítő</string>
+    <string name="anime_downloader_addon">Anime Letöltő Kiegészítő</string>
     <string name="install_torrent_addon">Torrent kiegészítő telepítése</string>
+    <string name="loaded_successfully">Sikeresen Betöltve</string>
+    <string name="not_installed">Nincs Telepítve</string>
+    <string name="torrent_extension_not_supported">Torrent kiterjesztés nem támogatott ezen az eszközön</string>
+    <string name="update_addon">Kiegészítő Frissítése</string>
+    <string name="install_addon">Kiegészítő Telepítése</string>
+    <string name="download_addon_not_found">Letöltési kiegészítő nem található</string>
+    <string name="image">Kép</string>
     <string name="failed_ext_install_conflict">Nem sikerült a kiterjesztés telepítése konfliktus miatt</string>
     <string name="no_video_selected">Nincs kiválasztott videó</string>
     <string name="download_extension_not_available">Letöltési kiterjesztés nem elérhető</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Nem található a WebView %1$s verziója</string>
     <string name="webview_not_found">Nem található telepített WebView könyvtár</string>
     <string name="multi">Több</string>
+    <string name="installed_extensions">Telepített %1$s</string>
+    <string name="available_extensions">Elérhető %1$s</string>
+    <string name="available_plugins">%1$s Bővítmények</string>
+    <string name="your_story">A te történeted</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Fájl nem található</string>
+    <string name="directory_not_found">Könyvtár nem található</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

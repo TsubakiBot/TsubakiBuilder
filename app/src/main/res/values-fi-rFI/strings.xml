@@ -113,6 +113,7 @@
     <string name="popularity">Suosio</string>
     <string name="roles">Roolit</string>
     <string name="details">Yksityiskohdat</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Pelaa Youtubessa</string>
     <string name="eps">Jaksot</string>
     <string name="ep">Jakso</string>
@@ -279,10 +280,11 @@
         <item>Suosikki Manga</item>
         <item>Suunniteltu Manga</item>
         <item>Suositeltu</item>
-        <item>Social Feeds</item>
+        <item>Sosiaaliset syötteet</item>
     </string-array>
     <string name="startUpTab">Oletus Käynnistysvälilehti</string>
     <string name="small_view">Pieni näkymä trendissä</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animaatiot</string>
     <string name="banner_animations">Bannerin Animaatiot</string>
     <string name="layout_animations">Asettelun Animaatiot</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versiot</string>
     <string name="faq">UKK</string>
     <string name="accounts">Tilit</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Lisäosat ovat Dantotsu lisäominaisuuksia moduuleja.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Kirjaudu sisään Anilistilla</string>
     <string name="anilist">Anilisti</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Jatka : Jakso %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Jatka : %1$s\n%2$s</string>
-    <string name="episode">"Jakso "</string>
-    <string name="episode_num">"Jakso %1$s"</string>
-    <string name="chapter">"Luku "</string>
-    <string name="chapter_num">"Luku %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Jakso %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Luku %1$s</string>
     <string name="just_released">- Hiljattain julkaistu!</string>
     <string name="checking_subscriptions_title">Tarkistetaan Tilauksia</string>
     <string name="user_list">%1$s %2$s -luettelo</string>
@@ -546,11 +550,11 @@
     <string name="available">Saatavilla</string>
     <string name="lets_go">Mennään</string>
     <string name="cope">Kavi</string>
-    <string name="watched_num">"Katsottu "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Lue "</string>
     <string name="items_out_of">" ulkona "</string>
-    <string name="items_total_of">"Yhteensä "</string>
-    <string name="no_description_available">"Ei Kuvausta Saatavilla"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Ei Kuvausta Saatavilla</string>
     <string-array name="manga_directions">
         <item>Ylhäältä alas</item>
         <item>Oikealta vasemmalle</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Valittu</string>
     <string name="found">Löytyi</string>
-    <string name="age">"__Ikä:__ "</string>
-    <string name="birthday">\n\"__Syntymäpäivä:__ \"</string>
-    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Mies</string>
     <string name="female">Nainen</string>
     <string name="question_1">Mitä Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Virhe tuotaessa asetuksia</string>
     <string name="download_manager">Latausten Hallinta</string>
     <string name="enter_password">Anna Salasana</string>
+    <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">Virheellinen tiedostotyyppi</string>
     <string name="purge_confirm">Oletko varma, että haluat puhdistaa kaikki %1$s lataukset?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Poistaminen epäonnistui, koska… %1$s</string>
     <string name="hide_replies">Piilota vastaukset</string>
     <string name="view_reply">Näytä vastaus</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Muokkaa uutisia ja päivityksiä</string>
     <string name="system_desc">Päivitykset ja hyödylliset apuohjelmat</string>
     <string name="about_desc">Lue lisää Himitsusta</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Lisäosat ovat Dantotsu lisäominaisuuksia moduuleja.</string>
-    <string name="torrent_addon">Torrent-Lisäosa</string>
     <string name="enable">Aktivoi</string>
-    <string name="anime_downloader_addon">Anime Lataja Lisäosa</string>
-    <string name="loaded_successfully">Ladattu Onnistuneesti</string>
-    <string name="not_installed">Ei Asennettu</string>
-    <string name="torrent_extension_not_supported">Torrent- laajennusta ei tueta tällä laitteella</string>
-    <string name="update_addon">Päivitä Lisäosa</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Latausta ei löytynyt</string>
     <string name="default_novel_settings">Novel Oletusasetukset</string>
     <string name="line_height">Rivin Korkeus</string>
     <string name="margin">Liikkumavara</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japani</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Jotain</string>
-    <string name="image">Kuva</string>
     <string name="sort_score">Pisteet</string>
     <string name="popular">Suosittu</string>
     <string name="trending">Nousussa</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Käytä väriä median bannerista</string>
     <string name="use_custom_theme_desc">Käytä teeman omaa väriä</string>
     <string name="color_picker_desc">Valitse väri</string>
+    <string name="torrent_addon">Torrent-Lisäosa</string>
+    <string name="anime_downloader_addon">Anime Lataja Lisäosa</string>
     <string name="install_torrent_addon">Asenna Torrent- Lisäosa</string>
+    <string name="loaded_successfully">Ladattu Onnistuneesti</string>
+    <string name="not_installed">Ei Asennettu</string>
+    <string name="torrent_extension_not_supported">Torrent- laajennusta ei tueta tällä laitteella</string>
+    <string name="update_addon">Päivitä Lisäosa</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Latausta ei löytynyt</string>
+    <string name="image">Kuva</string>
     <string name="failed_ext_install_conflict">Laajennuksen asennus epäonnistui konfliktin vuoksi</string>
     <string name="no_video_selected">Videota Ei Valittu</string>
     <string name="download_extension_not_available">Latauslaajennus ei ole käytettävissä</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">WebView-versiota %1$s ei löydy</string>
     <string name="webview_not_found">Asennettua WebView-kirjastoa ei löytynyt</string>
     <string name="multi">Moni</string>
+    <string name="installed_extensions">Asennettu %1$s</string>
+    <string name="available_extensions">Saatavilla %1$s</string>
+    <string name="available_plugins">%1$s Liitännäiset</string>
+    <string name="your_story">Sinun tarinasi</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Tiedostoa ei löydy</string>
+    <string name="directory_not_found">Hakemistoa ei löydy</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

@@ -113,6 +113,7 @@
     <string name="popularity">Δημοτικότητα</string>
     <string name="roles">Ρόλοι</string>
     <string name="details">Λεπτομέρειές</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Παίξτε στο Youtube</string>
     <string name="eps">Επεισόδια</string>
     <string name="ep">Επεισόδιο</string>
@@ -279,10 +280,11 @@
         <item>Αγαπημένα Manga</item>
         <item>Σχεδιασμένα Manga</item>
         <item>Προτεινόμενα</item>
-        <item>Social Feeds</item>
+        <item>Κοινωνικά Feeds</item>
     </string-array>
     <string name="startUpTab">Προεπιλεγμένη καρτέλα εκκίνησης</string>
     <string name="small_view">Small View σε Trending Shows</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Εφέ</string>
     <string name="banner_animations">Εφέ Διαφήμισης</string>
     <string name="layout_animations">Animations διάταξης</string>
@@ -358,6 +360,8 @@
     <string name="forks">Έκδοσης</string>
     <string name="faq">Συχνές</string>
     <string name="accounts">Λογαριασμοί</string>
+    <string name="addons">Πρόσθετα</string>
+    <string name="addons_desc">Τα πρόσθετα είναι επεκτάσεις που παρέχουν πρόσθετη λειτουργικότητα.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Συνδεθείτε με το Anilist!</string>
     <string name="anilist">Anilist</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Συνέχεια : Επεισόδιο %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Γεμιστικό</string>
     <string name="continue_chapter">Συνέχεια : %1$s\n%2$s</string>
-    <string name="episode">"Επεισόδιο "</string>
-    <string name="episode_num">"Επεισόδιο %1$s"</string>
-    <string name="chapter">"Κεφάλαιο "</string>
-    <string name="chapter_num">"Κεφάλαιο %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Επεισόδιο %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Κεφάλαιο %1$s</string>
     <string name="just_released">- Νέα κυκλοφορία!</string>
     <string name="checking_subscriptions_title">Έλεγχος συνδρομών</string>
     <string name="user_list">Του %1$s Η Λίστα %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Διαθέσιμος</string>
     <string name="lets_go">Πάμε</string>
     <string name="cope">Αντιμετωπίζω</string>
-    <string name="watched_num">"Παρακολούθησα "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Διάβασα "</string>
     <string name="items_out_of">" από "</string>
-    <string name="items_total_of">"Συνολικά "</string>
-    <string name="no_description_available">"Δεν υπάρχει διαθέσιμη περιγραφή"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Δεν υπάρχει διαθέσιμη περιγραφή</string>
     <string-array name="manga_directions">
         <item>Από πάνω προς τα κάτω</item>
         <item>Δεξιά προς τα αριστερά</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Επιλεγμένο</string>
     <string name="found">Βρέθηκαν</string>
-    <string name="age">"__Ηλικία:__ "</string>
-    <string name="birthday">\n\"__Γενέθλια:__\"</string>
-    <string name="gender">\n\"__Φύλο:__\"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Αρσενικό</string>
     <string name="female">Θηλυκό</string>
     <string name="question_1">Τι είναι το Dantotsu;</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Σφάλμα κατά την εισαγωγή ρυθμίσεων</string>
     <string name="download_manager">Διαχειριστής Λήψεων</string>
     <string name="enter_password">Εισάγετε τον κωδικό πρόσβασης</string>
+    <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">Μη έγκυρος τύπος αρχείου</string>
     <string name="purge_confirm">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις λήψεις %1$s;</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Η διαγραφή απέτυχε λόγω… %1$s</string>
     <string name="hide_replies">Απόκρυψη απαντήσεων</string>
     <string name="view_reply">Προβολή απάντησης</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Προσαρμόστε τα νέα και τις ενημερώσεις σας</string>
     <string name="system_desc">Ενημερώσεις και χρήσιμα βοηθητικά προγράμματα</string>
     <string name="about_desc">Μάθετε περισσότερα για το Dantotsu</string>
-    <string name="addons">Πρόσθετα</string>
-    <string name="addons_desc">Τα πρόσθετα είναι επεκτάσεις που παρέχουν πρόσθετη λειτουργικότητα.</string>
-    <string name="torrent_addon">Πρόσθετο Torrent</string>
     <string name="enable">Ενεργοποίηση</string>
-    <string name="anime_downloader_addon">Πρόσθετο Λήψης Anime</string>
-    <string name="loaded_successfully">Φορτώθηκε με επιτυχία</string>
-    <string name="not_installed">Μη εγκατεστημενο</string>
-    <string name="torrent_extension_not_supported">Η επέκταση torrent δεν υποστηρίζεται σε αυτήν τη συσκευή</string>
-    <string name="update_addon">Ενημερώστε το πρόσθετο</string>
-    <string name="install_addon">Εγκαταστήστε το Addon</string>
-    <string name="download_addon_not_found">Δεν βρέθηκε το πρόσθετο λήψης</string>
     <string name="default_novel_settings">Προεπιλεγμένες Ρυθμίσεις Novel</string>
     <string name="line_height">Ύψος Γραμμής</string>
     <string name="margin">Περιθώριο</string>
@@ -865,7 +864,6 @@
     <string name="japan">Ιαπωνία</string>
     <string name="taiwan">Ταϊβάν</string>
     <string name="something">Κάτι</string>
-    <string name="image">Εικόνα</string>
     <string name="sort_score">Σκορ</string>
     <string name="popular">Δημοφιλής</string>
     <string name="trending">Τάσεις</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Χρησιμοποιήστε χρώμα από το banner των πολυμέσων</string>
     <string name="use_custom_theme_desc">Χρησιμοποιήστε το δικό σας χρώμα για το θέμα</string>
     <string name="color_picker_desc">Επιλέξτε ένα χρώμα</string>
+    <string name="torrent_addon">Πρόσθετο Torrent</string>
+    <string name="anime_downloader_addon">Πρόσθετο Λήψης Anime</string>
     <string name="install_torrent_addon">Εγκαταστήστε το Torrent Addon</string>
+    <string name="loaded_successfully">Φορτώθηκε με επιτυχία</string>
+    <string name="not_installed">Μη εγκατεστημενο</string>
+    <string name="torrent_extension_not_supported">Η επέκταση torrent δεν υποστηρίζεται σε αυτήν τη συσκευή</string>
+    <string name="update_addon">Ενημερώστε το πρόσθετο</string>
+    <string name="install_addon">Εγκαταστήστε το Addon</string>
+    <string name="download_addon_not_found">Δεν βρέθηκε το πρόσθετο λήψης</string>
+    <string name="image">Εικόνα</string>
     <string name="failed_ext_install_conflict">Η εγκατάσταση της επέκτασης απέτυχε λόγω διένεξης</string>
     <string name="no_video_selected">Δεν Επιλέχθηκε Βίντεο</string>
     <string name="download_extension_not_available">Η επέκταση λήψης δεν είναι διαθέσιμη</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Αδυναμία εύρεσης της έκδοσης WebView %1$s</string>
     <string name="webview_not_found">Αδυναμία εύρεσης εγκατεστημένης βιβλιοθήκης WebView</string>
     <string name="multi">Πολλαπλές</string>
+    <string name="installed_extensions">Εγκατεστημένο %1$s</string>
+    <string name="available_extensions">Διαθέσιμος %1$s</string>
+    <string name="available_plugins">%1$s Πρόσθετα</string>
+    <string name="your_story">Η Ιστορία σας</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Αρχείο δεν βρέθηκε</string>
+    <string name="directory_not_found">Κατάλογος δεν βρέθηκε</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

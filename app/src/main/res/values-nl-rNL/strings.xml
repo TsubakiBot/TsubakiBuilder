@@ -113,6 +113,7 @@
     <string name="popularity">Populariteit</string>
     <string name="roles">Rollen</string>
     <string name="details">Beschrijving</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Speel op Youtube</string>
     <string name="eps">Afleveringen</string>
     <string name="ep">Aflevering</string>
@@ -279,10 +280,11 @@
         <item>Favoriete Manga</item>
         <item>Geplande Manga</item>
         <item>Aanbevolen</item>
-        <item>Social Feeds</item>
+        <item>Sociale Feeds</item>
     </string-array>
     <string name="startUpTab">Standaard Start Tab</string>
     <string name="small_view">Kleine weergave in populaire TV-series</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animaties</string>
     <string name="banner_animations">Banner Animaties</string>
     <string name="layout_animations">Lay-out animaties</string>
@@ -358,6 +360,8 @@
     <string name="forks">versies</string>
     <string name="faq">FAQ</string>
     <string name="accounts">Rekeningen</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons zijn Dantotsu extra feature modules.</string>
     <string name="myanimelist">MyAnimeLijst</string>
     <string name="login_with_anilist">Login with Anilist!</string>
     <string name="anilist">Anilist</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Doorgaan: Aflevering %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - vuller</string>
     <string name="continue_chapter">Doorgaan: %1$s\n%2$s</string>
-    <string name="episode">"Aflevering "</string>
-    <string name="episode_num">"Aflevering %1$s"</string>
-    <string name="chapter">"Hoofdstuk "</string>
-    <string name="chapter_num">"Hoofdstuk %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Aflevering %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Hoofdstuk %1$s</string>
     <string name="just_released">- Nieuw vrijgegeven!</string>
     <string name="checking_subscriptions_title">Abonnementen controleren</string>
     <string name="user_list">%1$s\'s %2$s lijst</string>
@@ -546,11 +550,11 @@
     <string name="available">Beschikbaar</string>
     <string name="lets_go">Laten we gaan</string>
     <string name="cope">Hoop</string>
-    <string name="watched_num">"Bekeken "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Lezen "</string>
     <string name="items_out_of">" van de "</string>
-    <string name="items_total_of">"Totaal van "</string>
-    <string name="no_description_available">"Geen beschrijving beschikbaar"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Geen beschrijving beschikbaar</string>
     <string-array name="manga_directions">
         <item>Van boven naar beneden</item>
         <item>Rechts naar links</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Geselecteerd</string>
     <string name="found">Gevonden</string>
-    <string name="age">"__Leef:__ "</string>
-    <string name="birthday">\n\"__verjaardag:__ \"</string>
-    <string name="gender">\n\"__Geslacht:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Mannelijk</string>
     <string name="female">Vrouwelijk</string>
     <string name="question_1">Wat is Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Fout bij importeren instellingen</string>
     <string name="download_manager">Download beheerder</string>
     <string name="enter_password">Voer wachtwoord in</string>
+    <string name="you_cursed">youwu zijn vervloekt</string>
     <string name="invalid_file_type">Ongeldig bestandstype</string>
     <string name="purge_confirm">Weet u zeker dat u alle %1$s downloads wilt verwijderen?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Verwijderen mislukt vanwege… %1$s</string>
     <string name="hide_replies">Antwoorden verbergen</string>
     <string name="view_reply">Antwoord bekijken</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Nieuws en updates aanpassen</string>
     <string name="system_desc">Updates en nuttige toepassingen</string>
     <string name="about_desc">Meer informatie over Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons zijn Dantotsu extra feature modules.</string>
-    <string name="torrent_addon">Torrent Addon</string>
     <string name="enable">Inschakelen</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
-    <string name="loaded_successfully">Succesvol geladen</string>
-    <string name="not_installed">Niet geïnstalleerd</string>
-    <string name="torrent_extension_not_supported">Torrent extensie wordt niet ondersteund op dit apparaat</string>
-    <string name="update_addon">Bijwerken Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Addon niet gevonden</string>
     <string name="default_novel_settings">Standaard novel instellingen</string>
     <string name="line_height">Lijn hoogte</string>
     <string name="margin">Marge</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japans</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Iets</string>
-    <string name="image">Afbeelding</string>
     <string name="sort_score">Beoordeling</string>
     <string name="popular">Populair</string>
     <string name="trending">Populair</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Kleur van media\'s banner gebruiken</string>
     <string name="use_custom_theme_desc">Gebruik uw eigen kleur voor het thema</string>
     <string name="color_picker_desc">Kies een kleur</string>
+    <string name="torrent_addon">Torrent Addon</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Installeer Torrent Addon</string>
+    <string name="loaded_successfully">Succesvol geladen</string>
+    <string name="not_installed">Niet geïnstalleerd</string>
+    <string name="torrent_extension_not_supported">Torrent extensie wordt niet ondersteund op dit apparaat</string>
+    <string name="update_addon">Bijwerken Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Addon niet gevonden</string>
+    <string name="image">Afbeelding</string>
     <string name="failed_ext_install_conflict">Installatie van de extensie is mislukt vanwege een conflict</string>
     <string name="no_video_selected">Geen video geselecteerd</string>
     <string name="download_extension_not_available">Download extensie niet beschikbaar</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Kan de WebView versie %1$s niet vinden</string>
     <string name="webview_not_found">Kan geen geïnstalleerde WebView bibliotheek vinden</string>
     <string name="multi">Meervoudig</string>
+    <string name="installed_extensions">Geïnstalleerd %1$s</string>
+    <string name="available_extensions">Beschikbaar %1$s</string>
+    <string name="available_plugins">%1$s Plugins</string>
+    <string name="your_story">Jouw Verhaal</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Bestand niet gevonden</string>
+    <string name="directory_not_found">Map niet gevonden</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

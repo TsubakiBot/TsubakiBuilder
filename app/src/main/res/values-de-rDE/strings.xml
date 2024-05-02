@@ -113,6 +113,7 @@
     <string name="popularity">Beliebtheit</string>
     <string name="roles">Rollen</string>
     <string name="details">Details</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Auf Youtube abspielen</string>
     <string name="eps">Episoden</string>
     <string name="ep">Folge</string>
@@ -280,10 +281,11 @@
         <item>Lieblingsmanga</item>
         <item>Geplante Manga</item>
         <item>Empfohlen</item>
-        <item>Social Feeds</item>
+        <item>Soziale Feeds</item>
     </string-array>
     <string name="startUpTab">Standard Start-Tab</string>
     <string name="small_view">Kleine Ansicht bei beliebten Shows</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animationen</string>
     <string name="banner_animations">Banner-Animationen</string>
     <string name="layout_animations">Layout-Animationen</string>
@@ -359,6 +361,8 @@
     <string name="forks">Versionen</string>
     <string name="faq">FAQ</string>
     <string name="accounts">Konten</string>
+    <string name="addons">Zusätze</string>
+    <string name="addons_desc">Addons sind Erweiterungen, die zusätzliche Funktionen bieten.</string>
     <string name="myanimelist">MyAnime-Liste</string>
     <string name="login_with_anilist">Mit Anilist anmelden!</string>
     <string name="anilist">Anilist</string>
@@ -518,10 +522,10 @@
     <string name="continue_episode">Fortsetzen: Episode </string>
     <string name="filler_tag"> - Füller</string>
     <string name="continue_chapter">Fortsetzen: </string>
-    <string name="episode">"Folge "</string>
-    <string name="episode_num">"Folge %1$s"</string>
-    <string name="chapter">"Kapitel "</string>
-    <string name="chapter_num">"Kapitel %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Folge %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Kapitel %1$s</string>
     <string name="just_released">- wurde gerade veröffentlicht!</string>
     <string name="checking_subscriptions_title">Abonnements überprüfen</string>
     <string name="user_list">%1$s\'s %2$s Liste</string>
@@ -547,11 +551,11 @@
     <string name="available">Verfügbar</string>
     <string name="lets_go">Los Geht\'s</string>
     <string name="cope">Nö, Danke</string>
-    <string name="watched_num">"Gesehen "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Gelesen "</string>
     <string name="items_out_of">" von "</string>
-    <string name="items_total_of">"Insgesamt "</string>
-    <string name="no_description_available">"Keine Beschreibung verfügbar"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Keine Beschreibung verfügbar</string>
     <string-array name="manga_directions">
         <item>Von oben nach unten</item>
         <item>Von rechts nach links</item>
@@ -565,9 +569,9 @@
     </string-array>
     <string name="selected">Ausgewählt</string>
     <string name="found">Gefunden</string>
-    <string name="age">"__Alter:__ "</string>
-    <string name="birthday">\n\"__Geburtstag:__ \"</string>
-    <string name="gender">\n\"__Geschlecht:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Männlich</string>
     <string name="female">Weiblich</string>
     <string name="question_1">Was ist Dantotsu?</string>
@@ -739,7 +743,7 @@
     <string name="blur">Blur</string>
     <string name="hide_scroll_bar">Bildlaufleiste verstecken</string>
     <string name="view_on_anilist">Auf Anilist ansehen</string>
-    <string name="anilist_notification_filters">Filter Notifications</string>
+    <string name="anilist_notification_filters">Benachrichtigungen filtern</string>
     <string name="anilist_notifications_checking_time">Anilist-Benachrichtigungen Aktualisierungs-Frequenz : %1$s</string>
     <string name="comment_notification_checking_time">Kommentar-Benachrichtigungen Aktualisierungs-Frequenz : %1$s</string>
     <string name="activities">Aktivitäten</string>
@@ -749,8 +753,13 @@
     <string name="error_importing_settings">Fehler beim Importieren von Einstellungen</string>
     <string name="download_manager">Download-Manager</string>
     <string name="enter_password">Passwort eingeben</string>
+    <string name="you_cursed">youwu wurde verflucht</string>
     <string name="invalid_file_type">Ungültiger Dateityp</string>
     <string name="purge_confirm">Sind Sie sicher, dass Sie alle %1$s Downloads löschen wollen?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Löschen fehlgeschlagen aufgrund von… %1$s</string>
     <string name="hide_replies">Antworten ausblenden</string>
     <string name="view_reply">Antwort anzeigen</string>
@@ -842,17 +851,7 @@
     <string name="notifications_desc">Passen Sie Ihre Nachrichten und Updates an</string>
     <string name="system_desc">Updates und nützliche Hilfsprogramme</string>
     <string name="about_desc">Erfahren Sie mehr über Dantotsu</string>
-    <string name="addons">Zusätze</string>
-    <string name="addons_desc">Addons sind Erweiterungen, die zusätzliche Funktionen bieten.</string>
-    <string name="torrent_addon">Torrent-Addon</string>
     <string name="enable">Aktivieren</string>
-    <string name="anime_downloader_addon">Anime-Downloader-Addon</string>
-    <string name="loaded_successfully">Erfolgreich geladen</string>
-    <string name="not_installed">Nicht installiert</string>
-    <string name="torrent_extension_not_supported">Torrent-Erweiterung wird von diesem Gerät nicht unterstützt</string>
-    <string name="update_addon">Addon aktualisieren</string>
-    <string name="install_addon">Addon installieren</string>
-    <string name="download_addon_not_found">Addon nicht gefunden</string>
     <string name="default_novel_settings">Standard Novel Einstellungen</string>
     <string name="line_height">Zeilenhöhe</string>
     <string name="margin">Abstand</string>
@@ -866,7 +865,6 @@
     <string name="japan">Japan</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Etwas</string>
-    <string name="image">Bild</string>
     <string name="sort_score">Wertung</string>
     <string name="popular">Beliebtheit</string>
     <string name="trending">Beliebt</string>
@@ -915,7 +913,16 @@
     <string name="use_unique_theme_for_each_item_desc">Farbe vom Banner der Medien verwenden</string>
     <string name="use_custom_theme_desc">Verwende deine eigene Farbe für das Theme</string>
     <string name="color_picker_desc">Farbe auswählen</string>
+    <string name="torrent_addon">Torrent-Addon</string>
+    <string name="anime_downloader_addon">Anime-Downloader-Addon</string>
     <string name="install_torrent_addon">Torrent-Addon installieren</string>
+    <string name="loaded_successfully">Erfolgreich geladen</string>
+    <string name="not_installed">Nicht installiert</string>
+    <string name="torrent_extension_not_supported">Torrent-Erweiterung wird von diesem Gerät nicht unterstützt</string>
+    <string name="update_addon">Addon aktualisieren</string>
+    <string name="install_addon">Addon installieren</string>
+    <string name="download_addon_not_found">Addon nicht gefunden</string>
+    <string name="image">Bild</string>
     <string name="failed_ext_install_conflict">Erweiterung konnte wegen Konflikt nicht installiert werden</string>
     <string name="no_video_selected">Kein Video ausgewählt</string>
     <string name="download_extension_not_available">Download-Erweiterung nicht verfügbar</string>
@@ -936,4 +943,20 @@
     <string name="webview_not_found_version">WebView Version %1$s konnte nicht gefunden werden</string>
     <string name="webview_not_found">Konnte keine installierte WebView-Bibliothek finden</string>
     <string name="multi">Multi</string>
+    <string name="installed_extensions">Installiert %1$s</string>
+    <string name="available_extensions">Verfügbar %1$s</string>
+    <string name="available_plugins">%1$s Plugins</string>
+    <string name="your_story">Deine Geschichte</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Datei nicht gefunden</string>
+    <string name="directory_not_found">Verzeichnis nicht gefunden</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

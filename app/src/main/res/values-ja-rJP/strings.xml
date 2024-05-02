@@ -113,6 +113,7 @@
     <string name="popularity">人気</string>
     <string name="roles">ロール</string>
     <string name="details">詳細</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Youtube で再生</string>
     <string name="eps">エピソード</string>
     <string name="ep">エピソード</string>
@@ -279,10 +280,11 @@
         <item>好きなマンガ</item>
         <item>計画されたマンガ</item>
         <item>おすすめ</item>
-        <item>Social Feeds</item>
+        <item>ソーシャルフィード</item>
     </string-array>
     <string name="startUpTab">デフォルトの起動タブ</string>
     <string name="small_view">トレンド番組の小さいビュー</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">アニメーション</string>
     <string name="banner_animations">バナーアニメーション</string>
     <string name="layout_animations">レイアウトアニメーション</string>
@@ -358,6 +360,8 @@
     <string name="forks">バージョン</string>
     <string name="faq">FAQ</string>
     <string name="accounts">アカウント</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">アドオンはダントツの追加機能モジュールです。</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Anilist でログイン</string>
     <string name="anilist">Anilist</string>
@@ -417,7 +421,7 @@
     <string name="long_click_to_check_update">長押しでアップデートを確認</string>
     <string name="saved_to_path">保存先：%s</string>
     <string name="login_anilist_account">AniListアカウントにログインしてください！</string>
-    <string name="congrats_vro">おめでとうVro</string>
+    <string name="congrats_vro">Congrats Vro</string>
     <string name="please_reload">再読み込みしてください。</string>
     <string name="copied_text">\"%1$s\" をコピーしました</string>
     <string name="back_to_exit">もう一度バックを押して終了します</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Continue : エピソード %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - フィラー</string>
     <string name="continue_chapter">Continue : %1$s\n%2$s</string>
-    <string name="episode">"エピソード "</string>
-    <string name="episode_num">"エピソード %1$s"</string>
-    <string name="chapter">"章 "</string>
-    <string name="chapter_num">"チャプター %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">エピソード %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">チャプター %1$s</string>
     <string name="just_released">- 新しくリリース！</string>
     <string name="checking_subscriptions_title">サブスクリプションを確認中</string>
     <string name="user_list">%1$sの %2$s リスト</string>
@@ -546,11 +550,11 @@
     <string name="available">利用可能です</string>
     <string name="lets_go">始めましょう</string>
     <string name="cope">対処する</string>
-    <string name="watched_num">"視聴済み "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"既読にする "</string>
     <string name="items_out_of">" のうち "</string>
-    <string name="items_total_of">"合計： "</string>
-    <string name="no_description_available">"説明はありません"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">説明はありません</string>
     <string-array name="manga_directions">
         <item>上から下へ</item>
         <item>右から左</item>
@@ -565,8 +569,8 @@
     <string name="selected">選択済み</string>
     <string name="found">見つかりました</string>
     <string name="age">"__Age:__ "</string>
-    <string name="birthday">\n\"__誕生日:__ \"</string>
-    <string name="gender">\n\"__性別:__ \"</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">男性</string>
     <string name="female">女性</string>
     <string name="question_1">ダントツとは?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">設定のインポートエラー</string>
     <string name="download_manager">ダウンロードマネージャ</string>
     <string name="enter_password">パスワードを入力</string>
+    <string name="you_cursed">youwuは呪われています</string>
     <string name="invalid_file_type">無効なファイルタイプ</string>
     <string name="purge_confirm">すべての %1$s ダウンロードを削除してもよろしいですか？</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">… %1$s のため削除に失敗しました</string>
     <string name="hide_replies">返信を非表示</string>
     <string name="view_reply">返信を表示</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">ニュースと更新を編集する</string>
     <string name="system_desc">アップデートと有用なユーティリティ</string>
     <string name="about_desc">秘密についてもっと知る</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">アドオンはダントツの追加機能モジュールです。</string>
-    <string name="torrent_addon">Torrent アドオン</string>
     <string name="enable">有効にする</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
-    <string name="loaded_successfully">読み込まれました</string>
-    <string name="not_installed">インストールされていない</string>
-    <string name="torrent_extension_not_supported">この端末ではトレント拡張機能はサポートされていません</string>
-    <string name="update_addon">アドオンを更新</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">ダウンロードアドオンが見つかりません</string>
     <string name="default_novel_settings">既定のノベル設定</string>
     <string name="line_height">行の高さ</string>
     <string name="margin">マージン（マージン）</string>
@@ -865,7 +864,6 @@
     <string name="japan">日本</string>
     <string name="taiwan">台湾</string>
     <string name="something">Something</string>
-    <string name="image">画像</string>
     <string name="sort_score">スコア</string>
     <string name="popular">人気</string>
     <string name="trending">トレンド</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">メディアのバナーの色を使用</string>
     <string name="use_custom_theme_desc">テーマに独自の色を使用する</string>
     <string name="color_picker_desc">色を選択</string>
+    <string name="torrent_addon">Torrent アドオン</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Torrentアドオンをインストール</string>
+    <string name="loaded_successfully">読み込まれました</string>
+    <string name="not_installed">インストールされていない</string>
+    <string name="torrent_extension_not_supported">この端末ではトレント拡張機能はサポートされていません</string>
+    <string name="update_addon">アドオンを更新</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">ダウンロードアドオンが見つかりません</string>
+    <string name="image">画像</string>
     <string name="failed_ext_install_conflict">競合のため拡張機能のインストールに失敗しました</string>
     <string name="no_video_selected">ビデオが選択されていません</string>
     <string name="download_extension_not_available">ダウンロードエクステンションは利用できません</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">WebViewのバージョン %1$sが見つかりませんでした</string>
     <string name="webview_not_found">インストールされた WebView ライブラリが見つかりませんでした</string>
     <string name="multi">マルチ</string>
+    <string name="installed_extensions">%1$sがインストールされました</string>
+    <string name="available_extensions">利用可能な%1$s</string>
+    <string name="available_plugins">%1$sプラグイン</string>
+    <string name="your_story">あなたのストーリー</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">ファイルが見つかりません</string>
+    <string name="directory_not_found">ディレクトリが見つかりません</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

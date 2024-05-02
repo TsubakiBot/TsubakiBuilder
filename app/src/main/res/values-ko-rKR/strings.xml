@@ -113,6 +113,7 @@
     <string name="popularity">인기도</string>
     <string name="roles">역할</string>
     <string name="details">세부 정보</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">유튜브에서 재생</string>
     <string name="eps">에피소드</string>
     <string name="ep">에피소드</string>
@@ -279,10 +280,11 @@
         <item>좋아하는 만화</item>
         <item>계획된 만화</item>
         <item>추천</item>
-        <item>Social Feeds</item>
+        <item>소셜 피드</item>
     </string-array>
     <string name="startUpTab">기본 시작 탭</string>
     <string name="small_view">인기 있는 쇼에서 작은 보기</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">애니메이션</string>
     <string name="banner_animations">배너 애니메이션</string>
     <string name="layout_animations">레이아웃 애니메이션</string>
@@ -358,6 +360,8 @@
     <string name="forks">버전</string>
     <string name="faq">FAQ</string>
     <string name="accounts">계정</string>
+    <string name="addons">애드온</string>
+    <string name="addons_desc">Addons are extensions that provide additional functionality.</string>
     <string name="myanimelist">내 애니메이션 리스트</string>
     <string name="login_with_anilist">Anilist로 로그인!</string>
     <string name="anilist">Anilist</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">계속하기: 에피소드</string>
     <string name="filler_tag"> - 채우기</string>
     <string name="continue_chapter">계속하기:</string>
-    <string name="episode">"에피소드"</string>
-    <string name="episode_num">"에피소드 %1$s"</string>
-    <string name="chapter">"챕터"</string>
-    <string name="chapter_num">"챕터 %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">에피소드 %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">챕터 %1$s</string>
     <string name="just_released">- 방금 출시되었습니다!</string>
     <string name="checking_subscriptions_title">구독 확인 중</string>
     <string name="user_list">%1$s의 %2$s 목록</string>
@@ -546,11 +550,11 @@
     <string name="available">사용 가능</string>
     <string name="lets_go">시작합시다</string>
     <string name="cope">대처하세요</string>
-    <string name="watched_num">"시청 완료 "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"읽기 완료 "</string>
     <string name="items_out_of">" / "</string>
-    <string name="items_total_of">"총 "</string>
-    <string name="no_description_available">"사용 가능한 설명이 없습니다"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">사용 가능한 설명이 없습니다</string>
     <string-array name="manga_directions">
         <item>위에서 아래로</item>
         <item>오른쪽에서 왼쪽으로</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">선택됨</string>
     <string name="found">발견됨</string>
-    <string name="age">"__나이:__ "</string>
-    <string name="birthday">\n__생일:__ </string>
-    <string name="gender">\n__성별:__ </string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">남성</string>
     <string name="female">여성</string>
     <string name="question_1">Dantotsu란 무엇인가요?</string>
@@ -739,7 +743,7 @@
     <string name="blur">흐리게하기</string>
     <string name="hide_scroll_bar">스크롤 막대 숨기기</string>
     <string name="view_on_anilist">AniList에서 보기</string>
-    <string name="anilist_notification_filters">Filter Notifications</string>
+    <string name="anilist_notification_filters">알림 필터링</string>
     <string name="anilist_notifications_checking_time">AniList 알림 업데이트 주기: %1$s</string>
     <string name="comment_notification_checking_time">댓글 알림 업데이트 주기: %1$s</string>
     <string name="activities">활동</string>
@@ -749,8 +753,13 @@
     <string name="error_importing_settings">설정 가져오기 오류</string>
     <string name="download_manager">다운로드 관리자</string>
     <string name="enter_password">암호 입력</string>
+    <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">잘못된 파일 형식</string>
     <string name="purge_confirm">모든 %1$s 다운로드를 삭제하시겠습니까?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">%1$s 때문에 삭제 실패</string>
     <string name="hide_replies">답글 숨기기</string>
     <string name="view_reply">답글 보기</string>
@@ -842,17 +851,7 @@
     <string name="notifications_desc">Customise your news and updates</string>
     <string name="system_desc">업데이트 및 유용한 유틸리티</string>
     <string name="about_desc">Learn more about Dantotsu</string>
-    <string name="addons">애드온</string>
-    <string name="addons_desc">Addons are extensions that provide additional functionality.</string>
-    <string name="torrent_addon">토렌트 애드온</string>
     <string name="enable">활성화</string>
-    <string name="anime_downloader_addon">애니메이션 다운로더 애드온</string>
-    <string name="loaded_successfully">로드됨</string>
-    <string name="not_installed">설치되지 않음</string>
-    <string name="torrent_extension_not_supported">이 장치에서 토렌트 확장이 지원되지 않음</string>
-    <string name="update_addon">애드온 업데이트</string>
-    <string name="install_addon">애드온 설치</string>
-    <string name="download_addon_not_found">다운로드 애드온을 찾을 수 없음</string>
     <string name="default_novel_settings">기본 소설 설정</string>
     <string name="line_height">줄 높이</string>
     <string name="margin">여백</string>
@@ -866,7 +865,6 @@
     <string name="japan">일본</string>
     <string name="taiwan">대만</string>
     <string name="something">무언가</string>
-    <string name="image">이미지</string>
     <string name="sort_score">평점</string>
     <string name="popular">인기</string>
     <string name="trending">트렌드</string>
@@ -915,7 +913,16 @@
     <string name="use_unique_theme_for_each_item_desc">미디어 배너에서 색상 사용</string>
     <string name="use_custom_theme_desc">테마에 자체 색상 사용</string>
     <string name="color_picker_desc">색상 선택</string>
+    <string name="torrent_addon">토렌트 애드온</string>
+    <string name="anime_downloader_addon">애니메이션 다운로더 애드온</string>
     <string name="install_torrent_addon">토렌트 애드온 설치</string>
+    <string name="loaded_successfully">로드됨</string>
+    <string name="not_installed">설치되지 않음</string>
+    <string name="torrent_extension_not_supported">이 장치에서 토렌트 확장이 지원되지 않음</string>
+    <string name="update_addon">애드온 업데이트</string>
+    <string name="install_addon">애드온 설치</string>
+    <string name="download_addon_not_found">다운로드 애드온을 찾을 수 없음</string>
+    <string name="image">이미지</string>
     <string name="failed_ext_install_conflict">충돌로 인해 확장 프로그램 설치 실패</string>
     <string name="no_video_selected">선택된 비디오 없음</string>
     <string name="download_extension_not_available">확장 프로그램 다운로드를 사용할 수 없습니다</string>
@@ -936,4 +943,20 @@
     <string name="webview_not_found_version">WebView 버전 %1$s을(를) 찾을 수 없습니다</string>
     <string name="webview_not_found">설치된 WebView 라이브러리를 찾을 수 없습니다</string>
     <string name="multi">다중</string>
+    <string name="installed_extensions">설치됨 %1$s</string>
+    <string name="available_extensions">사용 가능 %1$s</string>
+    <string name="available_plugins">%1$s 플러그인</string>
+    <string name="your_story">당신의 이야기</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">파일을 찾을 수 없습니다</string>
+    <string name="directory_not_found">디렉토리를 찾을 수 없습니다</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

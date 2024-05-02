@@ -113,6 +113,7 @@
     <string name="popularity">Popularitet</string>
     <string name="roles">Roller</string>
     <string name="details">Detaljer</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Spill på Youtube</string>
     <string name="eps">Episoder</string>
     <string name="ep">Episode</string>
@@ -279,10 +280,11 @@
         <item>Favoritt Manga</item>
         <item>Planlagt manga</item>
         <item>Anbefalt</item>
-        <item>Social Feeds</item>
+        <item>Sosiale Feeds</item>
     </string-array>
     <string name="startUpTab">Standard start-opp fane</string>
     <string name="small_view">Liten visning i populære serier</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animasjoner</string>
     <string name="banner_animations">Banner animasjoner</string>
     <string name="layout_animations">Oppsett animasjoner</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versjoner</string>
     <string name="faq">OSS</string>
     <string name="accounts">Kontoer</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Utvidelser er Dantotsu ekstra moduler.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Logg inn med Anilist</string>
     <string name="anilist">Anilist</string>
@@ -518,9 +522,9 @@
     <string name="filler_tag"> - Skjøt</string>
     <string name="continue_chapter">Fortsett : %1$s\n%2$s</string>
     <string name="episode">"Episode "</string>
-    <string name="episode_num">"Episode %1$s"</string>
-    <string name="chapter">"Kapittel "</string>
-    <string name="chapter_num">"Kapittel %1$s"</string>
+    <string name="episode_num">Episode %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Kapittel %1$s</string>
     <string name="just_released">- Nylig utgitt!</string>
     <string name="checking_subscriptions_title">Sjekker abonnementer</string>
     <string name="user_list">%1$ssin %2$s liste</string>
@@ -546,11 +550,11 @@
     <string name="available">Tilgjengelig</string>
     <string name="lets_go">La oss gå</string>
     <string name="cope">Kutt</string>
-    <string name="watched_num">"Sett "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Les "</string>
     <string name="items_out_of">" ut av "</string>
-    <string name="items_total_of">"Totalt av "</string>
-    <string name="no_description_available">"Ingen beskrivelse tilgjengelig"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Ingen beskrivelse tilgjengelig</string>
     <string-array name="manga_directions">
         <item>Topp til bunn</item>
         <item>Høyre til venstre</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Valgt</string>
     <string name="found">Funnet</string>
-    <string name="age">"__oppe:__ "</string>
-    <string name="birthday">\n\"__Birthday:__ \"</string>
-    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Mann</string>
     <string name="female">Kvinne</string>
     <string name="question_1">Hva er Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Feil ved import av innstillinger</string>
     <string name="download_manager">Nedlastingshjelper</string>
     <string name="enter_password">Skriv inn passord</string>
+    <string name="you_cursed">youwu har blitt cuwsed</string>
     <string name="invalid_file_type">Ugyldig filtype</string>
     <string name="purge_confirm">Er du sikker på at du ønsker å fjerne alle %1$s nedlastinger?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Kunne ikke slette på grunn av… %1$s</string>
     <string name="hide_replies">Skjul svar</string>
     <string name="view_reply">Vis svar</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Tilpass nyheter og oppdateringer</string>
     <string name="system_desc">Oppdateringer og nyttige verktøy</string>
     <string name="about_desc">Lær mer om Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Utvidelser er Dantotsu ekstra moduler.</string>
-    <string name="torrent_addon">Torrent tillegg</string>
     <string name="enable">Aktiver</string>
-    <string name="anime_downloader_addon">Anime nedlaster tillegg</string>
-    <string name="loaded_successfully">Lastet vellykket</string>
-    <string name="not_installed">Ikke installert</string>
-    <string name="torrent_extension_not_supported">Torrent-utvidelse er ikke støttet på denne enheten</string>
-    <string name="update_addon">Oppdater tillegg</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Last ned ikke funnet</string>
     <string name="default_novel_settings">Standard reiseinnstillinger</string>
     <string name="line_height">Linje høyde</string>
     <string name="margin">Marg</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japan</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Noe</string>
-    <string name="image">Bilde</string>
     <string name="sort_score">Poeng</string>
     <string name="popular">Populær</string>
     <string name="trending">Populært</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Bruk farge fra media-banner</string>
     <string name="use_custom_theme_desc">Bruk din egen farge for temaet</string>
     <string name="color_picker_desc">Velg en farge</string>
+    <string name="torrent_addon">Torrent tillegg</string>
+    <string name="anime_downloader_addon">Anime nedlaster tillegg</string>
     <string name="install_torrent_addon">Installer Torrent tillegg</string>
+    <string name="loaded_successfully">Lastet vellykket</string>
+    <string name="not_installed">Ikke installert</string>
+    <string name="torrent_extension_not_supported">Torrent-utvidelse er ikke støttet på denne enheten</string>
+    <string name="update_addon">Oppdater tillegg</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Last ned ikke funnet</string>
+    <string name="image">Bilde</string>
     <string name="failed_ext_install_conflict">Kunne ikke installere utvidelse på grunn av konflikt</string>
     <string name="no_video_selected">Ingen video valgt</string>
     <string name="download_extension_not_available">Nedlastingsutvidelsen er ikke tilgjengelig</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Fant ikke WebView versjon %1$s</string>
     <string name="webview_not_found">Kunne ikke finne et installert webView bibliotek</string>
     <string name="multi">Multikill</string>
+    <string name="installed_extensions">Installert %1$s</string>
+    <string name="available_extensions">Tilgjengelig %1$s</string>
+    <string name="available_plugins">%1$s Tillegg</string>
+    <string name="your_story">Din Historie</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Fil ikke funnet</string>
+    <string name="directory_not_found">Mappe ikke funnet</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

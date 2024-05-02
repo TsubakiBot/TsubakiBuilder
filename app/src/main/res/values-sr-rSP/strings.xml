@@ -113,6 +113,7 @@
     <string name="popularity">Popularity</string>
     <string name="roles">Roles</string>
     <string name="details">Details</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Play on Youtube</string>
     <string name="eps">Episodes</string>
     <string name="ep">Episode</string>
@@ -283,6 +284,7 @@
     </string-array>
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="small_view">Small View in Trending Shows</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animations</string>
     <string name="banner_animations">Banner Animations</string>
     <string name="layout_animations">Layout Animations</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versions</string>
     <string name="faq">FAQ</string>
     <string name="accounts">Accounts</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons are Dantotsu extra feature modules.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Log in with Anilist</string>
     <string name="anilist">Anilist</string>
@@ -518,9 +522,9 @@
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continue : %1$s\n%2$s</string>
     <string name="episode">"Episode "</string>
-    <string name="episode_num">"Episode %1$s"</string>
+    <string name="episode_num">Episode %1$s</string>
     <string name="chapter">"Chapter "</string>
-    <string name="chapter_num">"Chapter %1$s"</string>
+    <string name="chapter_num">Chapter %1$s</string>
     <string name="just_released">- Newly released!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
     <string name="user_list">%1$s\'s %2$s List</string>
@@ -550,7 +554,7 @@
     <string name="read_num">"Read "</string>
     <string name="items_out_of">" out of "</string>
     <string name="items_total_of">"Total of "</string>
-    <string name="no_description_available">"No Description Available"</string>
+    <string name="no_description_available">No Description Available</string>
     <string-array name="manga_directions">
         <item>Top to Bottom</item>
         <item>Right to Left</item>
@@ -565,8 +569,8 @@
     <string name="selected">Selected</string>
     <string name="found">Found</string>
     <string name="age">"__Age:__ "</string>
-    <string name="birthday">\n\"__Birthday:__ \"</string>
-    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="question_1">What is Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Error importing settings</string>
     <string name="download_manager">Менаџер преузимања</string>
     <string name="enter_password">Enter Password</string>
+    <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">Invalid file type</string>
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Failed to delete because of… %1$s</string>
     <string name="hide_replies">Hide replies</string>
     <string name="view_reply">View reply</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Customize news and updates</string>
     <string name="system_desc">Updates and useful utilities</string>
     <string name="about_desc">Learn more about Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons are Dantotsu extra feature modules.</string>
-    <string name="torrent_addon">Torrent Addon</string>
     <string name="enable">Enable</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
-    <string name="loaded_successfully">Loaded Successfully</string>
-    <string name="not_installed">Not Installed</string>
-    <string name="torrent_extension_not_supported">Torrent extension not supported on this device</string>
-    <string name="update_addon">Update Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Download addon not found</string>
     <string name="default_novel_settings">Default Novel Settings</string>
     <string name="line_height">Line Height</string>
     <string name="margin">Margin</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japan</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Something</string>
-    <string name="image">Image</string>
     <string name="sort_score">Оцена</string>
     <string name="popular">Популарно</string>
     <string name="trending">Тренд</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Use color from media\'s banner</string>
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
+    <string name="torrent_addon">Torrent Addon</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Install Torrent Addon</string>
+    <string name="loaded_successfully">Loaded Successfully</string>
+    <string name="not_installed">Not Installed</string>
+    <string name="torrent_extension_not_supported">Torrent extension not supported on this device</string>
+    <string name="update_addon">Update Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Download addon not found</string>
+    <string name="image">Image</string>
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
     <string name="no_video_selected">No Video Selected</string>
     <string name="download_extension_not_available">Download Extension not available</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Could not find WebView version %1$s</string>
     <string name="webview_not_found">Could not find an installed WebView library</string>
     <string name="multi">Multi</string>
+    <string name="installed_extensions">Installed %1$s</string>
+    <string name="available_extensions">Available %1$s</string>
+    <string name="available_plugins">%1$s Plugins</string>
+    <string name="your_story">Your Story</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">File not found</string>
+    <string name="directory_not_found">Directory not found</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

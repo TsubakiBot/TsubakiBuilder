@@ -113,6 +113,7 @@
     <string name="popularity">Oblíbenost</string>
     <string name="roles">Role</string>
     <string name="details">Detaily</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Hrát na YouTube</string>
     <string name="eps">Epizody</string>
     <string name="ep">Epizoda</string>
@@ -279,10 +280,11 @@
         <item>Oblíbená Manga</item>
         <item>Plánovaná Manga</item>
         <item>Doporučené</item>
-        <item>Social Feeds</item>
+        <item>Sociální zdroje</item>
     </string-array>
     <string name="startUpTab">Výchozí panel Start Up</string>
     <string name="small_view">Malé zobrazení v populárních seriálech</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animace</string>
     <string name="banner_animations">Animace banneru</string>
     <string name="layout_animations">Animace rozložení</string>
@@ -358,6 +360,8 @@
     <string name="forks">Verze</string>
     <string name="faq">Nejčastější dotazy</string>
     <string name="accounts">Účty</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons jsou moduly funkce Dantotsu.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Přihlásit se pomocí Anilist</string>
     <string name="anilist">Anilista</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Pokračovat : Epizoda %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Vyplňování</string>
     <string name="continue_chapter">Pokračovat : %1$s\n%2$s</string>
-    <string name="episode">"Epizoda "</string>
-    <string name="episode_num">"Epizoda %1$s"</string>
-    <string name="chapter">"KAPITOLA 1 1 — "</string>
-    <string name="chapter_num">"Kapitola %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Epizoda %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Kapitola %1$s</string>
     <string name="just_released">- Nově vydáno!</string>
     <string name="checking_subscriptions_title">Kontrola předplatného</string>
     <string name="user_list">Seznam %1$s %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Dostupné</string>
     <string name="lets_go">Jdeme</string>
     <string name="cope">Kopie</string>
-    <string name="watched_num">"Zhlédnuto "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Číst "</string>
     <string name="items_out_of">" z "</string>
-    <string name="items_total_of">"Celkem z "</string>
-    <string name="no_description_available">"Není k dispozici žádný popis"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Není k dispozici žádný popis</string>
     <string-array name="manga_directions">
         <item>Nahoře dolů</item>
         <item>Zprava doleva</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Vybrané</string>
     <string name="found">Nalezeno</string>
-    <string name="age">"__Věk:__ "</string>
-    <string name="birthday">\n\"__Narozené:__ \"</string>
-    <string name="gender">\n\"__Pohlaví:_\"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Muž</string>
     <string name="female">Samice</string>
     <string name="question_1">Co je to Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Chyba při importu nastavení</string>
     <string name="download_manager">Správce stahování</string>
     <string name="enter_password">Zadejte heslo</string>
+    <string name="you_cursed">youwu byl proklet</string>
     <string name="invalid_file_type">Neplatný typ souboru</string>
     <string name="purge_confirm">Jste si jisti, že chcete odstranit všechna stahování %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Odstranění se nezdařilo z důvodu… %1$s</string>
     <string name="hide_replies">Skrýt odpovědi</string>
     <string name="view_reply">Zobrazit odpověď</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Přizpůsobit novinky a aktualizace</string>
     <string name="system_desc">Aktualizace a užitečné nástroje</string>
     <string name="about_desc">Další informace o Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons jsou moduly funkce Dantotsu.</string>
-    <string name="torrent_addon">Doplňek torrentu</string>
     <string name="enable">Povolit</string>
-    <string name="anime_downloader_addon">Anime ke stažení doplněk</string>
-    <string name="loaded_successfully">Načteno úspěšně</string>
-    <string name="not_installed">Nenainstalováno</string>
-    <string name="torrent_extension_not_supported">Rozšíření Torrentu není na tomto zařízení podporováno</string>
-    <string name="update_addon">Aktualizovat doplněk</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Doplněk ke stažení nebyl nalezen</string>
     <string name="default_novel_settings">Výchozí nastavení Novelu</string>
     <string name="line_height">Výška řádku</string>
     <string name="margin">Okraj</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japonsko</string>
     <string name="taiwan">Thajsko</string>
     <string name="something">Něco</string>
-    <string name="image">Obrázek</string>
     <string name="sort_score">Skóre</string>
     <string name="popular">Oblíbené</string>
     <string name="trending">Populární</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Použít barvu z banneru médií</string>
     <string name="use_custom_theme_desc">Použít vlastní barvu pro motiv</string>
     <string name="color_picker_desc">Vyberte barvu</string>
+    <string name="torrent_addon">Doplňek torrentu</string>
+    <string name="anime_downloader_addon">Anime ke stažení doplněk</string>
     <string name="install_torrent_addon">Instalovat Torrent doplněk</string>
+    <string name="loaded_successfully">Načteno úspěšně</string>
+    <string name="not_installed">Nenainstalováno</string>
+    <string name="torrent_extension_not_supported">Rozšíření Torrentu není na tomto zařízení podporováno</string>
+    <string name="update_addon">Aktualizovat doplněk</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Doplněk ke stažení nebyl nalezen</string>
+    <string name="image">Obrázek</string>
     <string name="failed_ext_install_conflict">Nepodařilo se nainstalovat rozšíření z důvodu konfliktu</string>
     <string name="no_video_selected">Nevybráno žádné video</string>
     <string name="download_extension_not_available">Stáhnout rozšíření není k dispozici</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Nepodařilo se najít WebView verzi %1$s</string>
     <string name="webview_not_found">Nepodařilo se najít nainstalovanou WebView knihovnu</string>
     <string name="multi">Vícenásobné</string>
+    <string name="installed_extensions">Nainstalováno %1$s</string>
+    <string name="available_extensions">Dostupné %1$s</string>
+    <string name="available_plugins">%1$s Pluginy</string>
+    <string name="your_story">Vaše příběh</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Soubor nenalezen</string>
+    <string name="directory_not_found">Adresář nenalezen</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

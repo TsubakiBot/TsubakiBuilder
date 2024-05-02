@@ -113,6 +113,7 @@
     <string name="popularity">Popularność</string>
     <string name="roles">Role</string>
     <string name="details">Szczegóły</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Odtwarzaj na YouTube</string>
     <string name="eps">Odcinki</string>
     <string name="ep">Odcinek</string>
@@ -279,10 +280,11 @@
         <item>Ulubione Manga</item>
         <item>Planowana Manga</item>
         <item>Rekomendowane</item>
-        <item>Social Feeds</item>
+        <item>Kanały społecznościowe</item>
     </string-array>
     <string name="startUpTab">Domyślna zakładka startowa</string>
     <string name="small_view">Mały widok w popularnych serialach</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animacje</string>
     <string name="banner_animations">Animacje banerów</string>
     <string name="layout_animations">Animacje układu</string>
@@ -358,6 +360,8 @@
     <string name="forks">Wersje</string>
     <string name="faq">Często zadawane pytania</string>
     <string name="accounts">Konta</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Dodatki są dodatkowymi modułami funkcji Dantotsu.</string>
     <string name="myanimelist">Lista MyAnimeList</string>
     <string name="login_with_anilist">Zaloguj się za pomocą anilisty</string>
     <string name="anilist">Animacja</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Kontynuuj: Odcinek %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Wypełnij</string>
     <string name="continue_chapter">Kontynuuj: %1$s\n%2$s</string>
-    <string name="episode">"Odcinek "</string>
-    <string name="episode_num">"Odcinek %1$s"</string>
-    <string name="chapter">"Rozdział "</string>
-    <string name="chapter_num">"Rozdział %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Odcinek %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Rozdział %1$s</string>
     <string name="just_released">- Nowo wydane!</string>
     <string name="checking_subscriptions_title">Sprawdzanie subskrypcji</string>
     <string name="user_list">Lista %1$s %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Dostępny</string>
     <string name="lets_go">Chodźmy</string>
     <string name="cope">Papierosy</string>
-    <string name="watched_num">"Obejrzane "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Czytaj "</string>
     <string name="items_out_of">" z "</string>
-    <string name="items_total_of">"Łącznie "</string>
-    <string name="no_description_available">"Brak dostępnego opisu"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Brak dostępnego opisu</string>
     <string-array name="manga_directions">
         <item>Od góry do dołu</item>
         <item>Od prawej do lewej</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Wybrane</string>
     <string name="found">Znaleziono</string>
-    <string name="age">"__Wiek: __ "</string>
-    <string name="birthday">\n\"__Urodziny:__ \"</string>
-    <string name="gender">\n\"__Płeć:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Mężczyzna</string>
     <string name="female">Kobieta</string>
     <string name="question_1">Co to jest Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Błąd importowania ustawień</string>
     <string name="download_manager">Menedżer pobierania</string>
     <string name="enter_password">Wprowadź hasło</string>
+    <string name="you_cursed">Zostałeś przeklęty</string>
     <string name="invalid_file_type">Nieprawidłowy typ pliku</string>
     <string name="purge_confirm">Czy na pewno chcesz wyczyścić wszystkie pobrania %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Nie udało się usunąć z powodu… %1$s</string>
     <string name="hide_replies">Ukryj odpowiedzi</string>
     <string name="view_reply">Zobacz odpowiedź</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Dostosuj aktualności i aktualizacje</string>
     <string name="system_desc">Aktualizacje i użyteczne narzędzia</string>
     <string name="about_desc">Dowiedz się więcej o Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Dodatki są dodatkowymi modułami funkcji Dantotsu.</string>
-    <string name="torrent_addon">Dodatek Torrent</string>
     <string name="enable">Włącz</string>
-    <string name="anime_downloader_addon">Dodatek do pobierania anime</string>
-    <string name="loaded_successfully">Załadowano pomyślnie</string>
-    <string name="not_installed">Nie zainstalowano</string>
-    <string name="torrent_extension_not_supported">Rozszerzenie torrent nie jest obsługiwane na tym urządzeniu</string>
-    <string name="update_addon">Aktualizuj dodatek</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Nie znaleziono dodatku do pobrania</string>
     <string name="default_novel_settings">Domyślne ustawienia nowości</string>
     <string name="line_height">Wysokość linii</string>
     <string name="margin">Margines</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japonia</string>
     <string name="taiwan">Tajwan</string>
     <string name="something">Coś</string>
-    <string name="image">Obraz</string>
     <string name="sort_score">Wynik</string>
     <string name="popular">Popularne</string>
     <string name="trending">Popularne</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Użyj koloru z banera multimediów</string>
     <string name="use_custom_theme_desc">Użyj własnego koloru dla motywu</string>
     <string name="color_picker_desc">Wybierz kolor</string>
+    <string name="torrent_addon">Dodatek Torrent</string>
+    <string name="anime_downloader_addon">Dodatek do pobierania anime</string>
     <string name="install_torrent_addon">Zainstaluj dodatek Torrent</string>
+    <string name="loaded_successfully">Załadowano pomyślnie</string>
+    <string name="not_installed">Nie zainstalowano</string>
+    <string name="torrent_extension_not_supported">Rozszerzenie torrent nie jest obsługiwane na tym urządzeniu</string>
+    <string name="update_addon">Aktualizuj dodatek</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Nie znaleziono dodatku do pobrania</string>
+    <string name="image">Obraz</string>
     <string name="failed_ext_install_conflict">Nie udało się zainstalować rozszerzenia z powodu konfliktu</string>
     <string name="no_video_selected">Nie wybrano filmu</string>
     <string name="download_extension_not_available">Rozszerzenie pobierania nie jest dostępne</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Nie można odnaleźć wersji WebView %1$s</string>
     <string name="webview_not_found">Nie można znaleźć zainstalowanej biblioteki WebView</string>
     <string name="multi">Wielokrotne</string>
+    <string name="installed_extensions">Zainstalowane %1$s</string>
+    <string name="available_extensions">Dostępne %1$s</string>
+    <string name="available_plugins">Wtyczki %1$s</string>
+    <string name="your_story">Twoja historia</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Nie znaleziono pliku</string>
+    <string name="directory_not_found">Nie znaleziono katalogu</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

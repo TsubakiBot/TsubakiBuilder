@@ -113,6 +113,7 @@
     <string name="popularity">Популярность</string>
     <string name="roles">Роли</string>
     <string name="details">Детали</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Воспроизвести на YouTube</string>
     <string name="eps">Эпизоды</string>
     <string name="ep">Эпизод</string>
@@ -279,10 +280,11 @@
         <item>Любимая манга</item>
         <item>Запланированная манга</item>
         <item>Рекомендации</item>
-        <item>Social Feeds</item>
+        <item>Лента активности</item>
     </string-array>
     <string name="startUpTab">Вкладка при запуске по умолчанию</string>
     <string name="small_view">Маленькая секция популярных шоу</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Анимации</string>
     <string name="banner_animations">Анимации баннера</string>
     <string name="layout_animations">Анимации макета</string>
@@ -358,6 +360,8 @@
     <string name="forks">Версии</string>
     <string name="faq">ЧАВО</string>
     <string name="accounts">Аккаунты</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Дополнения являются дополнительными модулями функций Dantotsu.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Войти через Anilist!</string>
     <string name="anilist">Анилист</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Продолжить: Эпизод </string>
     <string name="filler_tag"> - Заполнитель</string>
     <string name="continue_chapter">Продолжить: </string>
-    <string name="episode">"Эпизод "</string>
-    <string name="episode_num">"Эпизод %1$s"</string>
-    <string name="chapter">"Глава "</string>
-    <string name="chapter_num">"Глава %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Эпизод %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Глава %1$s</string>
     <string name="just_released">- только что вышло!</string>
     <string name="checking_subscriptions_title">Проверка подписок</string>
     <string name="user_list">Список %1$sдля %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Доступно</string>
     <string name="lets_go">Поехали</string>
     <string name="cope">Справиться</string>
-    <string name="watched_num">"Просмотрено "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Прочитано "</string>
     <string name="items_out_of">" из "</string>
-    <string name="items_total_of">"Всего "</string>
-    <string name="no_description_available">"Описание отсутствует"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Описание отсутствует</string>
     <string-array name="manga_directions">
         <item>Сверху вниз</item>
         <item>Справа налево</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Выбрано</string>
     <string name="found">Найдено</string>
-    <string name="age">"__Возраст:__ "</string>
-    <string name="birthday">\n\"__День рождения:__ \"</string>
-    <string name="gender">\n\"__Пол:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Мужской</string>
     <string name="female">Женский</string>
     <string name="question_1">Что такое Dantotsu?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Ошибка импорта настроек</string>
     <string name="download_manager">Менеджер загрузок</string>
     <string name="enter_password">Введите пароль</string>
+    <string name="you_cursed">youwu был проклят</string>
     <string name="invalid_file_type">Неверный тип файла</string>
     <string name="purge_confirm">Вы уверены, что хотите удалить все загрузки %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Не удалось удалить из-за… %1$s</string>
     <string name="hide_replies">Скрыть ответы</string>
     <string name="view_reply">Посмотреть ответ</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Настройка новостей и обновлений</string>
     <string name="system_desc">Обновления и полезные утилиты</string>
     <string name="about_desc">Узнайте больше о Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Дополнения являются дополнительными модулями функций Dantotsu.</string>
-    <string name="torrent_addon">Дополнение к торренту</string>
     <string name="enable">Включить</string>
-    <string name="anime_downloader_addon">Дополнение для загрузчика аниме</string>
-    <string name="loaded_successfully">Загружено успешно</string>
-    <string name="not_installed">Не установлен</string>
-    <string name="torrent_extension_not_supported">Расширение торрента не поддерживается на этом устройстве</string>
-    <string name="update_addon">Обновить аддон</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Дополнение для загрузки не найдено</string>
     <string name="default_novel_settings">Настройки романа по умолчанию</string>
     <string name="line_height">Высота линии</string>
     <string name="margin">Граница</string>
@@ -865,7 +864,6 @@
     <string name="japan">Япония</string>
     <string name="taiwan">Тайвань</string>
     <string name="something">Что-то</string>
-    <string name="image">Изображение</string>
     <string name="sort_score">Рейтинг</string>
     <string name="popular">Популярность</string>
     <string name="trending">Тренды</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Использовать цвет из баннера медианы</string>
     <string name="use_custom_theme_desc">Используйте свой собственный цвет для темы</string>
     <string name="color_picker_desc">Выберите цвет</string>
+    <string name="torrent_addon">Дополнение к торренту</string>
+    <string name="anime_downloader_addon">Дополнение для загрузчика аниме</string>
     <string name="install_torrent_addon">Установить Torrent Addon</string>
+    <string name="loaded_successfully">Загружено успешно</string>
+    <string name="not_installed">Не установлен</string>
+    <string name="torrent_extension_not_supported">Расширение торрента не поддерживается на этом устройстве</string>
+    <string name="update_addon">Обновить аддон</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Дополнение для загрузки не найдено</string>
+    <string name="image">Изображение</string>
     <string name="failed_ext_install_conflict">Не удалось установить расширение из-за конфликта</string>
     <string name="no_video_selected">Видео не выбрано</string>
     <string name="download_extension_not_available">Скачать расширение не доступно</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Не удалось найти версию WebView %1$s</string>
     <string name="webview_not_found">Не удалось найти установленную библиотеку WebView</string>
     <string name="multi">Мульти</string>
+    <string name="installed_extensions">Установлено %1$s</string>
+    <string name="available_extensions">Доступное %1$s</string>
+    <string name="available_plugins">Плагины %1$s</string>
+    <string name="your_story">Ваш рассказ</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Файл не найден</string>
+    <string name="directory_not_found">Каталог не найден</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

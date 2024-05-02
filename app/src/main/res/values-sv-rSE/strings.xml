@@ -113,6 +113,7 @@
     <string name="popularity">Popularitet</string>
     <string name="roles">Roller</string>
     <string name="details">Detaljer</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Spela på Youtube</string>
     <string name="eps">Avsnitt</string>
     <string name="ep">Avsnitt</string>
@@ -279,10 +280,11 @@
         <item>Favorit Manga</item>
         <item>Planerad Manga</item>
         <item>Rekommenderad</item>
-        <item>Social Feeds</item>
+        <item>Sociala flöden</item>
     </string-array>
     <string name="startUpTab">Standardflik för uppstart</string>
     <string name="small_view">Liten vy i trendande serier</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animationer</string>
     <string name="banner_animations">Animationer för banner</string>
     <string name="layout_animations">Layout Animationer</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versioner</string>
     <string name="faq">Vanliga frågor</string>
     <string name="accounts">Konton</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Tillägg är Dantotsu extra funktionsmoduler.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Logga in med Anilist</string>
     <string name="anilist">Anilist</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Fortsätt : Avsnitt %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Fyllare</string>
     <string name="continue_chapter">Fortsätt : %1$s\n%2$s</string>
-    <string name="episode">"Avsnitt "</string>
-    <string name="episode_num">"Avsnitt %1$s"</string>
-    <string name="chapter">"Kapitel "</string>
-    <string name="chapter_num">"Kapitel %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Avsnitt %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Kapitel %1$s</string>
     <string name="just_released">- Nysläppt!</string>
     <string name="checking_subscriptions_title">Kontrollerar prenumerationer</string>
     <string name="user_list">%1$ss %2$s lista</string>
@@ -546,11 +550,11 @@
     <string name="available">Tillgänglig</string>
     <string name="lets_go">Låt oss gå</string>
     <string name="cope">Sopa</string>
-    <string name="watched_num">"Sedd "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Läsa "</string>
     <string name="items_out_of">" av "</string>
-    <string name="items_total_of">"Totalt av "</string>
-    <string name="no_description_available">"Ingen beskrivning tillgänglig"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Ingen beskrivning tillgänglig</string>
     <string-array name="manga_directions">
         <item>Topp till botten</item>
         <item>Höger till vänster</item>
@@ -564,13 +568,13 @@
     </string-array>
     <string name="selected">Vald</string>
     <string name="found">Hittad</string>
-    <string name="age">"__Ålder:__ "</string>
-    <string name="birthday">\n\"__Födelsedag:__ \"</string>
-    <string name="gender">\n\"__Kön:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Man</string>
     <string name="female">Kvinna</string>
     <string name="question_1">Vad är Dantotsu?</string>
-    <string name="answer_1">Dantotsu är skapat från askan av Saikou och baserat på enkel men toppmodern elegans. Det är enbart en klient för Anilist, som också låter dig strömma &amp; ladda ner Anime / Manga genom tillägg. \n>Dantotsu (断トツ; Dan-totsu) betyder bokstavligen den bästa av de bästa på japanska. Vi skulle vilja säga att detta är den bästa öppen källkods-appen för anime och manga på Android, men hej, prova själv &amp; bedöm!</string>
+    <string name="answer_1">Dantotsu är skapat från askan av Saikou och baserat på enkel men toppmodern elegans. Det är enbart en klient för Anilist, som också låter dig strömma &amp; ladda ner Anime / Manga genom tillägg. \n&gt;Dantotsu (断トツ; Dan-totsu) betyder bokstavligen den bästa av de bästa på japanska. Vi skulle vilja säga att detta är den bästa öppen källkods-appen för anime och manga på Android, men hej, prova själv &amp; bedöm!</string>
     <string name="question_2">Vad är några funktioner i Dantotsu?</string>
     <string name="answer_2">Några nämnbara funktioner i Dantotsu är\n\n- Enkelt och funktionellt sätt att båda, titta på anime och läsa manga och ljus romaner, Ad Free.\n- En helt öppen källkodsapp med ett trevligt UI &amp; Animationer\n- tredjepartsstöd \n- Synkronisera anime och manga i realtid med AniList. Kategorisera enkelt anime och manga baserat på din nuvarande status. (Powered by AniList)\n- Finn alla serier med hjälp av noggrant och ofta uppdaterad lista över alla trendiga, populära och pågående anime baserat på resultat.\n- Se omfattande detaljer om animeprogram, filmer och manga-titlar. Det har också möjlighet att nedräkning till nästa avsnitt av vädring anime. (Powered av AniList &amp; MyAnimeList)</string>
     <string name="question_3">Vad är skillnaden mellan Stable, Beta &amp; Alpha-versioner?</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Fel vid import av inställningar</string>
     <string name="download_manager">Ladda ner hanteraren</string>
     <string name="enter_password">Ange lösenord</string>
+    <string name="you_cursed">youwu har blivit förbannad</string>
     <string name="invalid_file_type">Ogiltig filtyp</string>
     <string name="purge_confirm">Är du säker på att du vill rensa alla %1$s nedladdningar?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Misslyckades att ta bort på grund av… %1$s</string>
     <string name="hide_replies">Dölj svar</string>
     <string name="view_reply">Visa svar</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Anpassa nyheter och uppdateringar</string>
     <string name="system_desc">Uppdateringar och användbara verktyg</string>
     <string name="about_desc">Läs mer om Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Tillägg är Dantotsu extra funktionsmoduler.</string>
-    <string name="torrent_addon">Torrent Addon</string>
     <string name="enable">Aktivera</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
-    <string name="loaded_successfully">Laddades framgångsrikt</string>
-    <string name="not_installed">Inte installerad</string>
-    <string name="torrent_extension_not_supported">Torrent tillägg stöds inte på denna enhet</string>
-    <string name="update_addon">Uppdatera Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Ladda ner addon hittades inte</string>
     <string name="default_novel_settings">Standardinställningar för nya</string>
     <string name="line_height">Linje höjd</string>
     <string name="margin">Marginal</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japan</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Något</string>
-    <string name="image">Bild</string>
     <string name="sort_score">Poäng</string>
     <string name="popular">Populär</string>
     <string name="trending">Trendande</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Använd färg från medias banner</string>
     <string name="use_custom_theme_desc">Använd din egen färg för temat</string>
     <string name="color_picker_desc">Välj en färg</string>
+    <string name="torrent_addon">Torrent Addon</string>
+    <string name="anime_downloader_addon">Anime Downloader Addon</string>
     <string name="install_torrent_addon">Installera Torrent Addon</string>
+    <string name="loaded_successfully">Laddades framgångsrikt</string>
+    <string name="not_installed">Inte installerad</string>
+    <string name="torrent_extension_not_supported">Torrent tillägg stöds inte på denna enhet</string>
+    <string name="update_addon">Uppdatera Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Ladda ner addon hittades inte</string>
+    <string name="image">Bild</string>
     <string name="failed_ext_install_conflict">Det gick inte att installera tillägg på grund av konflikt</string>
     <string name="no_video_selected">Ingen video vald</string>
     <string name="download_extension_not_available">Ladda ner tillägget är inte tillgängligt</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Kunde inte hitta WebView version %1$s</string>
     <string name="webview_not_found">Kunde inte hitta ett installerat WebView-bibliotek</string>
     <string name="multi">Flera</string>
+    <string name="installed_extensions">Installerad %1$s</string>
+    <string name="available_extensions">Tillgänglig %1$s</string>
+    <string name="available_plugins">%1$s Tillägg</string>
+    <string name="your_story">Din historia</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Fil hittades inte</string>
+    <string name="directory_not_found">Katalogen hittades inte</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

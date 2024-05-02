@@ -113,6 +113,7 @@
     <string name="popularity">Популярність</string>
     <string name="roles">Ролі</string>
     <string name="details">Подробиці</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Грати на Youtube</string>
     <string name="eps">Епізоди</string>
     <string name="ep">Епізод</string>
@@ -279,10 +280,11 @@
         <item>Улюблена манга</item>
         <item>Планова манга</item>
         <item>Рекомендовані</item>
-        <item>Social Feeds</item>
+        <item>Соціальні стрічки</item>
     </string-array>
     <string name="startUpTab">За промовчанням Початкова Вкладка</string>
     <string name="small_view">Вид у актуальних повідомленнях</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Анімація</string>
     <string name="banner_animations">Анімації банеру</string>
     <string name="layout_animations">Анімація макету</string>
@@ -358,6 +360,8 @@
     <string name="forks">Версії</string>
     <string name="faq">ЧАП</string>
     <string name="accounts">Облікові записи</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Доповнення - це додаткові модулі функцій DantotS.</string>
     <string name="myanimelist">Міанімеліст</string>
     <string name="login_with_anilist">Увійти за допомогою Аніліста</string>
     <string name="anilist">Аніліст</string>
@@ -427,7 +431,7 @@
     <string name="auto_skip">Auto Skipping OP &amp; ED</string>
     <string name="show_skip_time_stamp_button">Показати кнопки пропуску [сегменту]</string>
     <string name="always_load_time_stamps">Завжди завантажувати часові мітки</string>
-    <string name="auto_hide_time_stamps">>Автоматично приховувати кнопки пропуску [сегменту]</string>
+    <string name="auto_hide_time_stamps">&gt;Автоматично приховувати кнопки пропуску [сегменту]</string>
     <string name="timestamps">Стрічки</string>
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Вимагає увімкнених позначок часу</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Продовжити: Епізод %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Філер</string>
     <string name="continue_chapter">Продовжити : %1$s\n%2$s</string>
-    <string name="episode">"Епізод "</string>
-    <string name="episode_num">"Епізод %1$s"</string>
-    <string name="chapter">"Глава "</string>
-    <string name="chapter_num">"Глава %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Епізод %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Глава %1$s</string>
     <string name="just_released">- Нові реліз!</string>
     <string name="checking_subscriptions_title">Перевірка передплати</string>
     <string name="user_list">Список %1$sз %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Доступно</string>
     <string name="lets_go">Ходімо</string>
     <string name="cope">Каппа</string>
-    <string name="watched_num">"Переглянуто "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Прочитано "</string>
     <string name="items_out_of">" з "</string>
-    <string name="items_total_of">"Всього "</string>
-    <string name="no_description_available">"Опис недоступний"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Опис недоступний</string>
     <string-array name="manga_directions">
         <item>Верхня донизу</item>
         <item>Справа наліво</item>
@@ -565,12 +569,12 @@
     <string name="selected">Вибрано</string>
     <string name="found">Знайдено</string>
     <string name="age">"__Age:__ "</string>
-    <string name="birthday">\n\"__Birthday:__ \"</string>
-    <string name="gender">\n\"__Gender:__ \"</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Чоловік</string>
     <string name="female">Жінка</string>
     <string name="question_1">Що таке Дантоцу?</string>
-    <string name="answer_1">Dantotsu створено з попелу Saikou та базується на простоті та сучасній елегантності. Це клієнт лише для Anilist, який також дозволяє вам стрімінг та завантаження аніме / манги через розширення. \n>Dantotsu (断トツ; Dan-totsu) буквально означає найкращий з найкращих японською мовою. Ну, ми хотіли б сказати, що це найкращий відкритий додаток з відкритим вихідним кодом для аніме та манги на Android, але, ей, Спробуйте самі та судіть!</string>
+    <string name="answer_1">Dantotsu створено з попелу Saikou та базується на простоті та сучасній елегантності. Це клієнт лише для Anilist, який також дозволяє вам стрімінг та завантаження аніме / манги через розширення. \n&gt;Dantotsu (断トツ; Dan-totsu) буквально означає найкращий з найкращих японською мовою. Ну, ми хотіли б сказати, що це найкращий відкритий додаток з відкритим вихідним кодом для аніме та манги на Android, але, ей, Спробуйте самі та судіть!</string>
     <string name="question_2">Які особливості Дантоцу?</string>
     <string name="answer_2">Деякі згадані особливості Дантоцу мають\n\n- легкий та функціональний спосіб до обох дивитися аніме і читати манга та світлі романи, Ad Free.\n- Повністю відкрита програма з відкритим кодом з хорошим інтерфейсом &amp; Анімації\n- Плагін сторонніх розробників підтримує \n- синхронізація аніме та манга в режимі реального часу з AniList. Легка категоризація аніме і манга на основі поточного статусу. (Підтримується AniList)\n- Всі шоу, що використовують ретельно і часто оновлюються список усіх трендів, популярних і поточних аніме на основі балів.\n- перегляд обширної інформації про аніме шоу, фільми та заголовки манги. Він також включає можливість відліку переходу до наступного епізоду аніме повітряного польоту. (Підтримується AniList &amp; MyAnimeList)</string>
     <string name="question_3">Яка різниця між стабільними, бета та альфа версіями?</string>
@@ -584,7 +588,7 @@
     <string name="question_7">Як завантажити анімацію?</string>
     <string name="answer_7">Є два методи завантаження наразі. Один внутрішній, а інший зовнішній. Якщо ви завантажуєте внутрішньо, то його можна переглянути у програмі, але лише програма може відкрити цю серію, ви не можете перемістити її або поділитися нею. Інша опція - використовувати зовнішнє завантаження. Для цього потрібен менеджер завантажень для завантаження та окремий відеопрогравач для перегляду. Зовнішні завантаження можна поділитися, але ви не можете переглянути їх у програмі Dantotsu.\n\n•Для внутрішнього завантаження:\n\n1. Натисніть кнопку завантаження.\n2. Виберіть сервер та якість відео.\n3. Отримайте задоволення.\n\n•Для зовнішнього завантаження:\n\n1. Завантажте 1DM або ADM з Google Play Store.
         \n2. Увійдіть у програму, надайте доступ до сховища та встановіть свої уподобання (швидкість завантаження, шлях для завантаження тощо(опціонально))
-        \n3. Тепер перейдіть до \`Dantotsu > Налаштування > Загальні > Менеджери завантаження\` та виберіть менеджер завантаження, який ви щойно налаштували.
+        \n3. Тепер перейдіть до \`Dantotsu &gt; Налаштування &gt; Загальні &gt; Менеджери завантаження\` та виберіть менеджер завантаження, який ви щойно налаштували.
         \n4. Перейдіть до потрібної серії та натисніть на значок завантаження будь-якого сервера. Може з\'явитися спливаюче вікно, щоб знову встановити свої уподобання, просто натисніть \"Завантажити\" та воно буде збережено за вказаним шляхом.
 
         \n\nПримітка: Прямі завантаження також можливі без менеджера, але це не рекомендується.
@@ -602,7 +606,7 @@
     <string name="question_14">Як читати кольорові мангази?</string>
     <string name="answer_14">Ви шукаєте кольорову мангу? Вибачте, але дуже мала кількість манги має кольорову версію. Ті, у яких є кольорова версія, також доступні в Dantotsu. Скажімо, ви хочете прочитати кольорову версію Chainsaw Man. Тоді слідуйте нижченаведеним крокам ↓\n\n1) Перейдіть до Chainsaw Man\n2) Натисніть \'Читати\'\n3) Виберіть будь-який працюючий джерело\n4) Натисніть \'Неправильний заголовок\'\n5) Виберіть кольорову версію Chainsaw Man\n6) Насолоджуйтесь\n\nПримітка: Багато джерел не мають доступної кольорової версії, навіть якщо вона доступна десь в Інтернеті. Так що спробуйте інше джерело. Якщо ні одне з джерел не має її, то кольорова версія вашої бажаної манги просто не існує.</string>
     <string name="question_15">Помилка рукостискання? Чому немає завантаження часів?</string>
-    <string name="answer_15">Ви можете виправити цю проблему, увімкнувши \'Проксі\' у \n\`Налаштування > Аніме > Налаштування плеєра > Відмітки часу > Проксі\`.\nЯкщо відмітки часу все ще не завантажуються, але спливає вікно з помилкою з рукостисканням виправлено, то епізод, який ви дивитеся, просто ще не має відміток часу для нього.</string>
+    <string name="answer_15">Ви можете виправити цю проблему, увімкнувши \'Проксі\' у \n\`Налаштування &gt; Аніме &gt; Налаштування плеєра &gt; Відмітки часу &gt; Проксі\`.\nЯкщо відмітки часу все ще не завантажуються, але спливає вікно з помилкою з рукостисканням виправлено, то епізод, який ви дивитеся, просто ще не має відміток часу для нього.</string>
     <string name="question_16">Хіба не знайдено нічого з джерела?</string>
     <string name="answer_16">Деякі базові виправлення: \n\n• Оновіть ваші розширення, якщо вони є. \n• Відкрийте Веб-вид і зачекайте, доки він завантажиться. Після завершення завантаження поверніться назад. (Якщо Веб-вид показує помилку 404 або щось подібне, ймовірно, ваше джерело не працює)\n• Використовуйте інший DNS з вашими налаштуваннями, краще, Libre. \n• Спробуйте довірчий VPN. (Вам доведеться повторити крок 1 після цього) \n\nЯкщо жоден з вищезазначених кроків не допомагає, то використовуйте інше джерело або приєднуйтесь до нашого [discord](https://discord.gg/invite/4HPZ5nAWwM) за допомогою.</string>
     <string name="question_17">Деякі корисні поради і хитрощі</string>
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Помилка імпорту налаштувань</string>
     <string name="download_manager">Менеджер завантажень</string>
     <string name="enter_password">Введіть пароль</string>
+    <string name="you_cursed">Ви були прокляті</string>
     <string name="invalid_file_type">Неприпустимий тип файлу</string>
     <string name="purge_confirm">Ви дійсно бажаєте очистити всі завантаження %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Не вдалося видалити через… %1$s</string>
     <string name="hide_replies">Приховати відповіді</string>
     <string name="view_reply">Перегляд відповіді</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Налаштування новин та оновлень</string>
     <string name="system_desc">Оновлення та корисні утиліти</string>
     <string name="about_desc">Дізнатися більше про Хімітсу</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Доповнення - це додаткові модулі функцій DantotS.</string>
-    <string name="torrent_addon">Торент-Аддон</string>
     <string name="enable">Увімкнено</string>
-    <string name="anime_downloader_addon">Додаток для завантаження Anime</string>
-    <string name="loaded_successfully">Завантажено успішно</string>
-    <string name="not_installed">Не встановлено</string>
-    <string name="torrent_extension_not_supported">Розширення торенту не підтримується на цьому пристрої</string>
-    <string name="update_addon">Оновити додаток</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Додаток для завантаження не знайдено</string>
     <string name="default_novel_settings">Типові параметри листопада</string>
     <string name="line_height">Висота лінії</string>
     <string name="margin">Відступ</string>
@@ -865,7 +864,6 @@
     <string name="japan">Японія</string>
     <string name="taiwan">Тайвань</string>
     <string name="something">Щось</string>
-    <string name="image">Зображення</string>
     <string name="sort_score">Рахунок</string>
     <string name="popular">Популярне</string>
     <string name="trending">У тренді</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Використовувати колір з банера медіа</string>
     <string name="use_custom_theme_desc">Використовувати свій власний колір для теми</string>
     <string name="color_picker_desc">Виберіть колір</string>
+    <string name="torrent_addon">Торент-Аддон</string>
+    <string name="anime_downloader_addon">Додаток для завантаження Anime</string>
     <string name="install_torrent_addon">Встановити Торрент Аддон</string>
+    <string name="loaded_successfully">Завантажено успішно</string>
+    <string name="not_installed">Не встановлено</string>
+    <string name="torrent_extension_not_supported">Розширення торенту не підтримується на цьому пристрої</string>
+    <string name="update_addon">Оновити додаток</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Додаток для завантаження не знайдено</string>
+    <string name="image">Зображення</string>
     <string name="failed_ext_install_conflict">Не вдалося встановити розширення через конфлікт</string>
     <string name="no_video_selected">Відео не вибране</string>
     <string name="download_extension_not_available">Завантажити розширення недоступне</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Не вдалося знайти версію WebView %1$s</string>
     <string name="webview_not_found">Не вдалося знайти інстальовану бібліотеку WebView</string>
     <string name="multi">Мульти</string>
+    <string name="installed_extensions">Встановлено %1$s</string>
+    <string name="available_extensions">Доступно %1$s</string>
+    <string name="available_plugins">Плагіни %1$s</string>
+    <string name="your_story">Ваш розповідь</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Файл не знайдено</string>
+    <string name="directory_not_found">Каталог не знайдено</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

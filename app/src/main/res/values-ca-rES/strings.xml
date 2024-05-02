@@ -113,6 +113,7 @@
     <string name="popularity">Popularitat</string>
     <string name="roles">Rols</string>
     <string name="details">Detalls</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Reproduir a Youtube</string>
     <string name="eps">Episodis</string>
     <string name="ep">Episodi</string>
@@ -273,10 +274,11 @@
         <item>Manga Favorit</item>
         <item>Manga Planificat</item>
         <item>Recomanat</item>
-        <item>Social Feeds</item>
+        <item>Alimentacions Socials</item>
     </string-array>
     <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
     <string name="small_view">Vista Petita en Mostrats Trending</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animacions</string>
     <string name="banner_animations">Animacions de Banner</string>
     <string name="layout_animations">Animacions de Disseny</string>
@@ -352,6 +354,8 @@
     <string name="forks">Versions</string>
     <string name="faq">FAQ</string>
     <string name="accounts">Comptes</string>
+    <string name="addons">Complements</string>
+    <string name="addons_desc">Els complements són mòduls d\'extra funcionalitats Dantotsu.</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Inicia la sessió amb Anilist</string>
     <string name="anilist">Anilist</string>
@@ -421,7 +425,7 @@
     <string name="auto_skip">Auto Salta OP &amp; ED</string>
     <string name="show_skip_time_stamp_button">Mostra els botons de Salta [Segment]</string>
     <string name="always_load_time_stamps">Carrega sempre els marcadors de temps</string>
-    <string name="auto_hide_time_stamps">>Amaga automàticament els botons de Salta [Segment]</string>
+    <string name="auto_hide_time_stamps">&gt;Amaga automàticament els botons de Salta [Segment]</string>
     <string name="timestamps">Segments</string>
     <string name="auto_skip_op_ed">Salta automàticament OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Es requereix que els marcadors de temps estiguin habilitats</string>
@@ -511,10 +515,10 @@
     <string name="continue_episode">Continuar: Episodi %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continuar: %1$s\n%2$s</string>
-    <string name="episode">"Episodi "</string>
-    <string name="episode_num">"Episodi %1$s"</string>
-    <string name="chapter">"Capítol "</string>
-    <string name="chapter_num">"Capítol %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Episodi %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Capítol %1$s</string>
     <string name="just_released">- Acabat de llançar!</string>
     <string name="checking_subscriptions_title">Comprovant subscripcions</string>
     <string name="user_list">Llista de %1$s %2$s</string>
@@ -540,11 +544,11 @@
     <string name="available">Disponible</string>
     <string name="lets_go">Anem-hi</string>
     <string name="cope">Enfrontar-se</string>
-    <string name="watched_num">"Vist "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Llegit "</string>
     <string name="items_out_of">" de "</string>
-    <string name="items_total_of">"Total de "</string>
-    <string name="no_description_available">"Cap descripció disponible"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Cap descripció disponible</string>
     <string-array name="manga_directions">
         <item>Dalt a baix</item>
         <item>Dreta a esquerra</item>
@@ -558,13 +562,13 @@
     </string-array>
     <string name="selected">Seleccionat</string>
     <string name="found">Trobat</string>
-    <string name="age">"__Edat:__ "</string>
-    <string name="birthday">\n\"__Aniversari:__ \"</string>
-    <string name="gender">\n\"__Gènere:__ \"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Masculí</string>
     <string name="female">Femení</string>
     <string name="question_1">Què és Dantotsu?</string>
-    <string name="answer_1">Dantotsu està creat a partir de les cendres de Saikou i es basa en una elegància simplista però d\'avantguarda. És un client exclusiu d\'Anilist, que també et permet veure i descarregar Anime / Manga a través d\'extensions. \n>Dantotsu (断トツ; Dan-totsu) significa literalment el millor dels millors en japonès. Bé, ens agradaria dir que aquesta és la millor aplicació de codi obert per a anime i manga a Android, però eh, Prova-ho tu mateix i jutja!</string>
+    <string name="answer_1">Dantotsu està creat a partir de les cendres de Saikou i es basa en una elegància simplista però d\'avantguarda. És un client exclusiu d\'Anilist, que també et permet veure i descarregar Anime / Manga a través d\'extensions. \n&gt;Dantotsu (断トツ; Dan-totsu) significa literalment el millor dels millors en japonès. Bé, ens agradaria dir que aquesta és la millor aplicació de codi obert per a anime i manga a Android, però eh, Prova-ho tu mateix i jutja!</string>
     <string name="question_2">Quines són algunes característiques de Dantotsu?</string>
     <string name="answer_2">Algunes característiques destacables de Dantotsu són\n\n- Forma fàcil i funcional de veure anime i llegir manga i novel·les lleugeres, Sense publicitat.\n- Una aplicació de codi obert completament amb una interfície d\'usuari agradable i animacions\n- Suport per a extensions de tercers \n- Sincronitza anime i manga en temps real amb AniList. Categoritza fàcilment anime i manga segons el teu estat actual. (Impulsat per AniList)\n- Troba tots els programes utilitzant una llista totalment actualitzada de tots els anime més populars, de tendència i en curs basats en puntuacions.\n- Visualitza detalls extensos sobre programes d\'anime, pel·lícules i títols de manga. També té la capacitat de fer una compte enrere fins al pròxim episodi de l\'anime que s\'emet. (Impulsat per AniList &amp; MyAnimeList)</string>
     <string name="question_3">Quina és la diferència entre les versions Estable, Beta i Alfa?</string>
@@ -578,13 +582,13 @@
     <string name="question_7">Com descarregar Anime?</string>
     <string name="answer_7">Actualment hi ha dos mètodes de descàrrega. Un és intern i l\'altre és extern. Si descarregues internament, llavors es pot veure dins de l\'aplicació, però només l\'aplicació pot obrir aquest episodi, no el pots moure ni compartir. L\'altra opció és utilitzar la descàrrega externa. Requereix un gestor de descàrregues per descarregar i un reproductor de vídeo separat per veure. Les descàrregues externes es poden compartir però no es poden veure dins de l\'aplicació Dantotsu.\n\n•Per descarregar internament:\n\n1. Premeu el botó de descàrrega.\n2. Trieu el servidor i la qualitat del vídeo.\n3. Guanyeu.\n\n•Per descarregar externament:\n\n 1. Descarregueu 1DM o ADM des de Google Play Store.
         \n2. Entreu a l\'aplicació, doneu accés a l\'emmagatzematge i configureu les vostres preferències (velocitat de descàrrega, ruta de descàrrega, etc. (opcional))
-        \n3. Ara aneu a \`Dantotsu > Configuració > Comú > Gestors de descàrregues\` i trieu el gestor de descàrregues que heu configurat.
+        \n3. Ara aneu a \`Dantotsu &gt; Configuració &gt; Comú &gt; Gestors de descàrregues\` i trieu el gestor de descàrregues que heu configurat.
         \n4. Aniu al capítol desitjat i premeu sobre la icona de descàrrega de qualsevol servidor. Pot aparèixer un popup per configurar les vostres preferències de nou, simplement premeu \"Descàrrega\" i es guardarà a la ruta indicada.
 
         \n\nNota: Les descàrregues directes també són possibles sense un gestor però no es recomana.
 \n\nNota de Nerd: Els episodis descarregats internament s\'emmagatzemen a \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nNo podeu reproduir aquests fitxers ja que estan en format \`.exo\`, dividits en centenars de peces i xifrats.</string>
     <string name="question_9">Com habilitar contingut NSFW?</string>
-    <string name="answer_9">Pots habilitar el contingut NSFW activant els continguts 18+ des d\'aquest [enllaç](https://anilist.co/settings/media). També has d\'habilitar les extensions NSFW a \`Configuració > Extensions > Extensions NSFW\` </string>
+    <string name="answer_9">Pots habilitar el contingut NSFW activant els continguts 18+ des d\'aquest [enllaç](https://anilist.co/settings/media). També has d\'habilitar les extensions NSFW a \`Configuració &gt; Extensions &gt; Extensions NSFW\` </string>
     <string name="question_10">Com importar les meves llistes de MAL/Kitsu a Anilist?</string>
     <string name="answer_10">Aquí tens com fer-ho,\n\nExporta:\n\n1. Vés a aquest [enllaç](https://malscraper.azurewebsites.net).\n2. Introdueix el teu nom d\'usuari de Kitsu/MAL i descarrega tant la llista d\'anime com de manga. (Estaran en format XML)\nNota: Has d\'escriure el nom d\'usuari del rastrejador que has seleccionat\n\nImporta:\n\n1. Després d\'exportar la teva llista d\'anime i manga de Kitsu/MAL, ara ves [aquí](https://anilist.co/settings/import) \n2. Selecciona/deixa anar el fitxer XML d\'anime a la casella de dalt.\n|→Selecciona/deixa anar el fitxer XML de manga a la casella de sota.</string>
     <string name="question_11">Com importar les meves llistes d\'Anilist/Kitsu a MAL?</string>
@@ -596,7 +600,7 @@
     <string name="question_14">Com llegir mangues en color?</string>
     <string name="answer_14">Estàs buscant mangues en color? Lamentem comunicar-te que una quantitat extremadament petita de mangues té una versió en color. Aquelles que tenen una versió en color també estan disponibles a Dantotsu. Digues que vols llegir la versió en color de chainsaw man. Llavors segueix els passos següents ↓\n\n1) Vés a Chainsaw Man\n2) Premeu \'Llegeix\'\n3) Selecciona qualsevol font que funcioni\n4) Premeu \'Títol equivocat\'\n5) Selecciona la versió en color de chainsaw man\n6) Gaudeix\n\nNota: Moltes fonts no tenen disponible la versió en color encara que estigui disponible en algun lloc a internet. Així que prova una font diferent. Si cap de les fonts ho té, llavors una versió en color del teu manga desitjat simplement no existeix.</string>
     <string name="question_15">L\'apretó de mans falla? Per què no es carreguen els segells temporals?</string>
-    <string name="answer_15">Podeu solucionar aquest problema habilitant \'Proxy\' des de \n\`Configuració > Anime > Configuració del reproductor > Marques de temps > Proxy\`.\nSi les marques de temps encara no es carreguen però el missatge emergent de fallida de l\'establiment de connexió està solucionat, llavors l\'episodi que esteu veient simplement encara no té marques de temps per a ell.</string>
+    <string name="answer_15">Podeu solucionar aquest problema habilitant \'Proxy\' des de \n\`Configuració &gt; Anime &gt; Configuració del reproductor &gt; Marques de temps &gt; Proxy\`.\nSi les marques de temps encara no es carreguen però el missatge emergent de fallida de l\'establiment de connexió està solucionat, llavors l\'episodi que esteu veient simplement encara no té marques de temps per a ell.</string>
     <string name="question_16">No podeu trobar res en una font?</string>
     <string name="answer_16">Algunes correccions bàsiques serien : \n\n• Actualitzeu les vostres extensions si n\'hi ha. \n• Obriu la visualització web i espereu que es carregui. Després que s\'hagi completat la càrrega, torneu enrere. (Si la visualització web mostra error 404 o alguna cosa similar, les probabilitats són que la vostra font no estigui disponible)\n• Utilitzeu un DNS diferent de la vostra configuració, preferiblement, Libre. \n• Proveu un VPN de confiança. (Haureu de repetir el pas 1 després d\'això) \n\nSi cap dels passos anteriors funciona, llavors utilitzeu una font diferent o uniu-vos al nostre [discord](https://discord.gg/invite/4HPZ5nAWwM) per obtenir ajuda.</string>
     <string name="question_17">Alguns consells i trucs útils</string>
@@ -742,8 +746,13 @@
     <string name="error_importing_settings">Error en importar la configuració</string>
     <string name="download_manager">Gestor de descàrregues</string>
     <string name="enter_password">Introduïu la contrasenya</string>
+    <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">Tipus de fitxer no vàlid</string>
     <string name="purge_confirm">Esteu segur que voleu purgar totes les descàrregues de %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de… %1$s</string>
     <string name="hide_replies">Amaga les respostes</string>
     <string name="view_reply">Visualitza la resposta</string>
@@ -835,17 +844,7 @@
     <string name="notifications_desc">Personalitza les notícies i les actualitzacions</string>
     <string name="system_desc">Actualitzacions i utilitats útils</string>
     <string name="about_desc">Coneix més sobre Himitsu</string>
-    <string name="addons">Complements</string>
-    <string name="addons_desc">Els complements són mòduls d\'extra funcionalitats Dantotsu.</string>
-    <string name="torrent_addon">Complement de Torrent</string>
     <string name="enable">Habilita</string>
-    <string name="anime_downloader_addon">Complement de descàrrega d\'anime</string>
-    <string name="loaded_successfully">Carregat amb èxit</string>
-    <string name="not_installed">No instal·lat</string>
-    <string name="torrent_extension_not_supported">L\'extensió de Torrent no és compatible amb aquest dispositiu</string>
-    <string name="update_addon">Actualitza el complement</string>
-    <string name="install_addon">Instal·la el complement</string>
-    <string name="download_addon_not_found">No s\'ha trobat el complement de descàrrega</string>
     <string name="default_novel_settings">Configuracions de novel·la per defecte</string>
     <string name="line_height">Alçada de línia</string>
     <string name="margin">Marge</string>
@@ -859,7 +858,6 @@
     <string name="japan">Japó</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Alguna cosa</string>
-    <string name="image">Imatge</string>
     <string name="sort_score">Puntuació</string>
     <string name="popular">Popular</string>
     <string name="trending">Tendència</string>
@@ -908,7 +906,16 @@
     <string name="use_unique_theme_for_each_item_desc">Utilitza el color de la capçalera dels mitjans</string>
     <string name="use_custom_theme_desc">Utilitza el teu propi color per al tema</string>
     <string name="color_picker_desc">Selecciona un color</string>
+    <string name="torrent_addon">Complement de Torrent</string>
+    <string name="anime_downloader_addon">Complement de descàrrega d\'anime</string>
     <string name="install_torrent_addon">Instal·la l\'Add-on de Torrent</string>
+    <string name="loaded_successfully">Carregat amb èxit</string>
+    <string name="not_installed">No instal·lat</string>
+    <string name="torrent_extension_not_supported">L\'extensió de Torrent no és compatible amb aquest dispositiu</string>
+    <string name="update_addon">Actualitza el complement</string>
+    <string name="install_addon">Instal·la el complement</string>
+    <string name="download_addon_not_found">No s\'ha trobat el complement de descàrrega</string>
+    <string name="image">Imatge</string>
     <string name="failed_ext_install_conflict">No s\'ha pogut instal·lar l\'extensió a causa d\'un conflicte</string>
     <string name="no_video_selected">Cap vídeo seleccionat</string>
     <string name="download_extension_not_available">L\'extensió de descàrrega no està disponible</string>
@@ -929,4 +936,20 @@
     <string name="webview_not_found_version">No s\'ha pogut trobar la versió %1$s de WebView</string>
     <string name="webview_not_found">No s\'ha pogut trobar cap llibreria WebView instal·lada</string>
     <string name="multi">Múltiple</string>
+    <string name="installed_extensions">Instal·lat %1$s</string>
+    <string name="available_extensions">Disponible %1$s</string>
+    <string name="available_plugins">%1$s Connectors</string>
+    <string name="your_story">La Teva Història</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Fitxer no trobat</string>
+    <string name="directory_not_found">Directori no trobat</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>

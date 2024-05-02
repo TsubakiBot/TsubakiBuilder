@@ -113,6 +113,7 @@
     <string name="popularity">Popularidade</string>
     <string name="roles">Papéis</string>
     <string name="details">detalhes</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Reproduzir no Youtube</string>
     <string name="eps">Episódios</string>
     <string name="ep">Episódio</string>
@@ -279,10 +280,11 @@
         <item>Manga Favorita</item>
         <item>Manga Planejada</item>
         <item>Recomendados</item>
-        <item>Social Feeds</item>
+        <item>Feeds Sociais</item>
     </string-array>
     <string name="startUpTab">Guia inicial padrão</string>
     <string name="small_view">Visualização pequena nos programas de alta</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animações</string>
     <string name="banner_animations">Animações de Estandarte</string>
     <string name="layout_animations">Animações de layout</string>
@@ -358,6 +360,8 @@
     <string name="forks">Versões</string>
     <string name="faq">Perguntas Frequentes</string>
     <string name="accounts">Organizações</string>
+    <string name="addons">Addons</string>
+    <string name="addons_desc">Addons são módulos extras Dantotsu com recursos.</string>
     <string name="myanimelist">MeuAnimeList</string>
     <string name="login_with_anilist">Fazer login com Anilist</string>
     <string name="anilist">Anilista</string>
@@ -517,10 +521,10 @@
     <string name="continue_episode">Continuar : Episódio %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Preenchimento</string>
     <string name="continue_chapter">Continuar : %1$s\n%2$s</string>
-    <string name="episode">"Episódio "</string>
-    <string name="episode_num">"Episódio %1$s"</string>
-    <string name="chapter">"Capítulo "</string>
-    <string name="chapter_num">"Capítulo %1$s"</string>
+    <string name="episode">"Episode "</string>
+    <string name="episode_num">Episódio %1$s</string>
+    <string name="chapter">"Chapter "</string>
+    <string name="chapter_num">Capítulo %1$s</string>
     <string name="just_released">- Recentemente lançado!</string>
     <string name="checking_subscriptions_title">Verificando Assinaturas</string>
     <string name="user_list">Lista %1$sde %2$s</string>
@@ -546,11 +550,11 @@
     <string name="available">Disponível</string>
     <string name="lets_go">Vamos lá</string>
     <string name="cope">Copa</string>
-    <string name="watched_num">"Assistido "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Lido "</string>
     <string name="items_out_of">" fora de "</string>
-    <string name="items_total_of">"Total de "</string>
-    <string name="no_description_available">"Nenhuma descrição disponível"</string>
+    <string name="items_total_of">"Total of "</string>
+    <string name="no_description_available">Nenhuma descrição disponível</string>
     <string-array name="manga_directions">
         <item>De cima para baixo</item>
         <item>Direita para Esquerda</item>
@@ -564,9 +568,9 @@
     </string-array>
     <string name="selected">Selecionado</string>
     <string name="found">Encontrado</string>
-    <string name="age">"__Idade:__ "</string>
-    <string name="birthday">\n\"__Aniversário:__ \"</string>
-    <string name="gender">\n\"__Sexo:_\"</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Masculino</string>
     <string name="female">Feminino</string>
     <string name="question_1">O que é Dantotsu?</string>
@@ -584,7 +588,7 @@
     <string name="question_7">Como baixar o Anime?</string>
     <string name="answer_7">Existem dois métodos de download atualmente. Um é interno e o outro é externo. Se você baixar internamente, então pode ser visualizado dentro do aplicativo, mas apenas o aplicativo pode abrir esse episódio, você não pode movê-lo ou compartilhá-lo. A outra opção é usar o download externo. Isso requer um gerenciador de downloads para baixar e um player de vídeo separado para assistir. Os downloads externos podem ser compartilhados, mas você não pode visualizá-los dentro do aplicativo Dantotsu.\n\n•Para baixar internamente:\n\n1. Toque no botão de download.\n2. Escolha o servidor e a qualidade do vídeo.\n3. Lucro.\n\n•Para baixar externamente:\n\n 1. Baixe 1DM ou ADM na Google Play Store.
         \n2. Entre no aplicativo, dê acesso ao armazenamento e defina suas preferências (velocidade de download, caminho de download etc (opcional))
-        \n3. Agora vá para \`Dantotsu > Configurações > Comum > Gerenciadores de Download\` e escolha o gerenciador de download que você acabou de configurar.
+        \n3. Agora vá para \`Dantotsu &gt; Configurações &gt; Comum &gt; Gerenciadores de Download\` e escolha o gerenciador de download que você acabou de configurar.
         \n4. Vá para o episódio desejado e pressione o ícone de download de qualquer servidor. Pode haver um pop-up para definir suas preferências novamente, basta pressionar em \"Download\" e ele será salvo no caminho direcionado.
 
         \n\nNota: Downloads diretos também são possíveis sem um gerenciador, mas não é recomendado.
@@ -748,8 +752,13 @@
     <string name="error_importing_settings">Erro ao importar configurações</string>
     <string name="download_manager">Gerenciador de Transferências</string>
     <string name="enter_password">Digite a senha</string>
+    <string name="you_cursed">youwu foi amaldiçoado</string>
     <string name="invalid_file_type">Tipo de arquivo inválido</string>
     <string name="purge_confirm">Tem certeza de que deseja limpar todos os downloads do %1$s?</string>
+    <string name="delete_content">Are you sure you want to delete %1$s?</string>
+    <string name="delete_chapter">Delete Chapter</string>
+    <string name="multi_download_chapter">Multi Chapter Downloader</string>
+    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Falha ao excluir devido a… %1$s</string>
     <string name="hide_replies">Ocultar respostas</string>
     <string name="view_reply">Ver resposta</string>
@@ -841,17 +850,7 @@
     <string name="notifications_desc">Personalizar notícias e atualizações</string>
     <string name="system_desc">Atualizações e utilitários úteis</string>
     <string name="about_desc">Saiba mais sobre Himitsu</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons são módulos extras Dantotsu com recursos.</string>
-    <string name="torrent_addon">Complemento para Torrent</string>
     <string name="enable">Habilitado</string>
-    <string name="anime_downloader_addon">Adição de Anime Downloader</string>
-    <string name="loaded_successfully">Carregado com sucesso</string>
-    <string name="not_installed">Não Instalado</string>
-    <string name="torrent_extension_not_supported">Extensão para torrent não suportada neste dispositivo</string>
-    <string name="update_addon">Atualizar Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Extensão de download não encontrada</string>
     <string name="default_novel_settings">Configurações padrão do romance</string>
     <string name="line_height">Altura da linha</string>
     <string name="margin">Margem</string>
@@ -865,7 +864,6 @@
     <string name="japan">Japão</string>
     <string name="taiwan">Formosa</string>
     <string name="something">Algo</string>
-    <string name="image">Imagem:</string>
     <string name="sort_score">Pontuação</string>
     <string name="popular">Populares</string>
     <string name="trending">Tendências</string>
@@ -914,7 +912,16 @@
     <string name="use_unique_theme_for_each_item_desc">Use a cor do estandarte de mídia</string>
     <string name="use_custom_theme_desc">Use sua própria cor para o tema</string>
     <string name="color_picker_desc">Escolha uma cor</string>
+    <string name="torrent_addon">Complemento para Torrent</string>
+    <string name="anime_downloader_addon">Adição de Anime Downloader</string>
     <string name="install_torrent_addon">Instalar Torrent Addon</string>
+    <string name="loaded_successfully">Carregado com sucesso</string>
+    <string name="not_installed">Não Instalado</string>
+    <string name="torrent_extension_not_supported">Extensão para torrent não suportada neste dispositivo</string>
+    <string name="update_addon">Atualizar Addon</string>
+    <string name="install_addon">Install Addon</string>
+    <string name="download_addon_not_found">Extensão de download não encontrada</string>
+    <string name="image">Imagem:</string>
     <string name="failed_ext_install_conflict">Falha ao instalar a extensão devido a conflitos</string>
     <string name="no_video_selected">Nenhum vídeo selecionado</string>
     <string name="download_extension_not_available">Baixar extensão não disponível</string>
@@ -935,4 +942,20 @@
     <string name="webview_not_found_version">Não foi possível encontrar a versão %1$s do WebView</string>
     <string name="webview_not_found">Não foi possível encontrar uma biblioteca WebView instalada</string>
     <string name="multi">Múltiplos</string>
+    <string name="installed_extensions">Instalado %1$s</string>
+    <string name="available_extensions">Disponível %1$s</string>
+    <string name="available_plugins">%1$s Plugins</string>
+    <string name="your_story">Sua História</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="file_not_found">Arquivo não encontrado</string>
+    <string name="directory_not_found">Diretório não encontrado</string>
+    <string name="successfully_deleted">Successfully deleted</string>
+    <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="you">You</string>
+    <string name="logout_confirm">Are you sure you want to logout?</string>
+    <string name="app_died">APP DIED</string>
+    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
+    <string name="copy_report">Copy Report</string>
+    <string name="share_as_file">Share as file</string>
+    <string name="hidden">Hidden</string>
 </resources>
