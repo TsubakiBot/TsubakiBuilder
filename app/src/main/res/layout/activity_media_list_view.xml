@@ -34,6 +34,7 @@
                     android:id="@+id/listTitle"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
+                    android:layout_marginStart="24dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins_bold"
@@ -62,7 +63,7 @@
                     android:layout_gravity="end"
                     android:alpha="0.33"
                     android:padding="8dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="24dp"
                     app:srcCompat="@drawable/ic_round_grid_view_24"
                     app:tint="?attr/colorPrimary"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
