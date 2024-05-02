@@ -32,7 +32,7 @@
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="12dp"
             android:src="@drawable/ic_round_arrow_back_ios_new_24"
-            app:tint="?attr/colorOnBackground"
+            app:tint="?attr/colorPrimary"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -67,7 +67,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:scaleX="-1"
                 app:srcCompat="@drawable/ic_round_view_list_24"
-                app:tint="?attr/colorOnBackground"
+                app:tint="?attr/colorPrimary"
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
         </androidx.cardview.widget.CardView>
 
@@ -87,7 +87,7 @@
                 android:alpha="0.33"
                 android:background="?android:attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_round_grid_view_24"
-                app:tint="?attr/colorOnBackground"
+                app:tint="?attr/colorPrimary"
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
         </androidx.cardview.widget.CardView>
 
