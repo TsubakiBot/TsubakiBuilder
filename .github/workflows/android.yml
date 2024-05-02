@@ -2,7 +2,7 @@ name: Matagi Dispatch
 
 on:
   push:
-    branches: [ matagi ]
+    branches: [ matagi, himitsu ]
     paths-ignore:
       - '**/README.md'
   workflow_dispatch:
@@ -21,10 +21,17 @@ concurrency:
 
 jobs:
   soak:
-    if: github.ref == 'refs/heads/matagi'
     runs-on: ubuntu-latest
     steps:
-      - name: Execute dispatch event
+      - name: Execute himitsu dispatch
+        if: contains(github.ref, 'himitsu')
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ORG_TOKEN }}
+          repository: RepoDevil/Himitsu-Ichimoku
+          event-type: matagi
+
+      - name: Execute matagi dispatch
         if: contains(github.ref, 'matagi')
         uses: peter-evans/repository-dispatch@v3
         with:
@@ -33,7 +40,7 @@ jobs:
           event-type: matagi
 
   rinse:
-    if: github.ref == 'refs/heads/himitsu' && github.event.inputs.release
+    if: github.event.inputs.release
     runs-on: ubuntu-latest
     env:
       CI: true
