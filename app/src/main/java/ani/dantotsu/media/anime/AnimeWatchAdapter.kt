@@ -29,6 +29,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
+import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.webview.CookieCatcher
@@ -40,6 +41,9 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.util.system.WebViewUtil
@@ -76,11 +80,23 @@ class AnimeWatchAdapter(
         }
         //Youtube
         if (media.anime?.youtube != null && PrefManager.getVal(PrefName.ShowYtButton)) {
+            val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
+            fragment.lifecycle.addObserver(youTubePlayerView)
             binding.animeSourceYT.visibility = View.VISIBLE
             binding.animeSourceYT.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(media.anime.youtube))
-                fragment.requireContext().startActivity(intent)
+                openLinkInYouTube(media.anime.youtube)
             }
+            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+                        binding.animeSourceYT.visibility = View.GONE
+                        binding.youtubePlayerView.visibility = View.VISIBLE
+                        youTubePlayer.loadVideo(it, 0f)
+                        youTubePlayer.mute()
+                        youTubePlayer.play()
+                    }
+                }
+            })
         }
         binding.animeSourceDubbed.isChecked = media.selected!!.preferDub
         binding.animeSourceDubbedText.text =
