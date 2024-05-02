@@ -172,7 +172,6 @@
     <string name="ui">Benutzeroberfläche</string>
     <string name="common">Allgemein</string>
     <string name="theme">Farbschema</string>
-    <string name="theme_ui">Theme / UI</string>
     <string name="day_night">Helles / Dunkles Thema</string>
     <string name="ui_settings">Benutzeroberflächen-Einstellungen</string>
     <string name="system">System</string>

@@ -172,7 +172,6 @@
     <string name="ui">Interfaccia Utente</string>
     <string name="common">Comune</string>
     <string name="theme">Tema</string>
-    <string name="theme_ui">Tema / UI</string>
     <string name="day_night">Tema Chiaro / Scuro</string>
     <string name="ui_settings">Impostazioni UI</string>
     <string name="system">Sistema</string>

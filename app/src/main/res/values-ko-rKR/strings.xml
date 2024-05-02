@@ -172,7 +172,6 @@
     <string name="ui">사용자 인터페이스</string>
     <string name="common">일반</string>
     <string name="theme">테마</string>
-    <string name="theme_ui">테마 / UI</string>
     <string name="day_night">라이트 / 다크 테마</string>
     <string name="ui_settings">UI 설정</string>
     <string name="system">시스템</string>

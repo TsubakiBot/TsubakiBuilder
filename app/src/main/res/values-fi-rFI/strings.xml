@@ -172,7 +172,6 @@
     <string name="ui">Käyttöliittymä</string>
     <string name="common">Yleinen</string>
     <string name="theme">Teema</string>
-    <string name="theme_ui">Teema / Käyttöliittymä</string>
     <string name="day_night">Valo / Tumma Teema</string>
     <string name="ui_settings">Käyttöliittymän Asetukset</string>
     <string name="system">Järjestelmä</string>

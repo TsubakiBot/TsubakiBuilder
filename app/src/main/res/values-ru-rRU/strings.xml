@@ -172,7 +172,6 @@
     <string name="ui">Пользовательский интерфейс</string>
     <string name="common">Общие</string>
     <string name="theme">Тема</string>
-    <string name="theme_ui">Тема / UI</string>
     <string name="day_night">Светлая / тёмная тема</string>
     <string name="ui_settings">Настройки интерфейса</string>
     <string name="system">Система</string>

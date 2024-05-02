@@ -172,7 +172,6 @@
     <string name="ui">User Interface</string>
     <string name="common">Common</string>
     <string name="theme">Theme</string>
-    <string name="theme_ui">Theme / UI</string>
     <string name="day_night">Light / Dark Theme</string>
     <string name="ui_settings">UI Settings</string>
     <string name="system">System</string>

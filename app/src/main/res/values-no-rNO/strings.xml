@@ -172,7 +172,6 @@
     <string name="ui">Brukers grensesnitt</string>
     <string name="common">Felles</string>
     <string name="theme">Tema</string>
-    <string name="theme_ui">Tema / UI</string>
     <string name="day_night">Lys / mørkt tema</string>
     <string name="ui_settings">UI innstillinger</string>
     <string name="system">Systemadministrasjon</string>

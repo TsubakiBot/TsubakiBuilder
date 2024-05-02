@@ -78,7 +78,23 @@ class SettingsActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
-                        name = getString(R.string.theme_ui),
+                        name = getString(R.string.ui_settings),
+                        desc = getString(R.string.ui_settings_desc),
+                        icon = R.drawable.ic_round_auto_awesome_24,
+                        onClick = {
+                            startActivity(
+                                Intent(
+                                    context,
+                                    UserInterfaceSettingsActivity::class.java
+                                )
+                            )
+                            finish()
+                        },
+                        isActivity = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.theme),
                         desc = getString(R.string.theme_desc),
                         icon = R.drawable.ic_palette,
                         onClick = {

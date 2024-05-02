@@ -172,7 +172,6 @@
     <string name="ui">Interfície d\'usuari</string>
     <string name="common">Comú</string>
     <string name="theme">Tema</string>
-    <string name="theme_ui">Tema / UI</string>
     <string name="day_night">Tema clar / fosc</string>
     <string name="ui_settings">Configuració de la UI</string>
     <string name="system">Sistema</string>

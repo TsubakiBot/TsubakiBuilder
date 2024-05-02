@@ -172,7 +172,6 @@
     <string name="ui">用户界面</string>
     <string name="common">通用</string>
     <string name="theme">主题</string>
-    <string name="theme_ui">主题 / 界面</string>
     <string name="day_night">亮/暗主题</string>
     <string name="ui_settings">UI 设置</string>
     <string name="system">系统</string>

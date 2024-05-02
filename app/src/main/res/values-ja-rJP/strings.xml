@@ -172,7 +172,6 @@
     <string name="ui">ユーザー インターフェイス</string>
     <string name="common">一般的な</string>
     <string name="theme">テーマ</string>
-    <string name="theme_ui">テーマ / UI</string>
     <string name="day_night">ライト/ダークテーマ</string>
     <string name="ui_settings">UI の設定</string>
     <string name="system">システム</string>

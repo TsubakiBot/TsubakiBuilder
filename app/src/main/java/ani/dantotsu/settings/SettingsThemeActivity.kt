@@ -50,22 +50,6 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
-                        name = getString(R.string.ui_settings),
-                        desc = getString(R.string.ui_settings_desc),
-                        icon = R.drawable.ic_round_auto_awesome_24,
-                        onClick = {
-                            startActivity(
-                                Intent(
-                                    context,
-                                    UserInterfaceSettingsActivity::class.java
-                                )
-                            )
-                            finish()
-                        },
-                        isActivity = true
-                    ),
-                    Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.oled_theme_variant),
                         desc = getString(R.string.oled_theme_variant_desc),
