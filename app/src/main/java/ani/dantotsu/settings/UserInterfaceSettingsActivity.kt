@@ -34,11 +34,7 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
             }
 
             onBackPressedDispatcher.addCallback(this@UserInterfaceSettingsActivity) {
-                startActivity(
-                    Intent(
-                        this@UserInterfaceSettingsActivity, SettingsThemeActivity::class.java
-                    )
-                )
+                startActivity(Intent(this@UserInterfaceSettingsActivity, SettingsActivity::class.java))
                 finish()
             }
 
