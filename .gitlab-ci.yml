@@ -22,28 +22,20 @@ updateContainer:
 .buildReleaseJob:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: assemble
+  variables:
+    SECURE_FILES_DOWNLOAD_PATH: './'
   before_script:
     - chmod +x gradlew
     - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
     - "[ ! -d app/libs ] && mkdir app/libs"
     - 'curl -H "Authorization: Token $ORG_TOKEN" -H "Accept: application/vnd.github.v3.raw" -o app/libs/server.aar -L https://api.github.com/repos/RepoDevil/TorrServer/contents/server.aar'
     - 'curl -H "Authorization: Token $ORG_TOKEN" -H "Accept: application/vnd.github.v3.raw" -o app/libs/server-sources.jar -L https://api.github.com/repos/RepoDevil/TorrServer/contents/server-sources.jar'
-
-downloadSecure:
-  extends: .buildReleaseJob
-  variables:
-    SECURE_FILES_DOWNLOAD_PATH: './'
-  script:
     - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
 
 buildRelease:
-  extends: downloadSecure
+  extends: .buildReleaseJob
   script:
     - ./gradlew --configure-on-demand assembleGoogleMatagi
   artifacts:
     paths:
-      - app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-universal-matagi.apk
       - app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-arm64-v8a-matagi.apk
-      - app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-armeabi-v7a-matagi.apk
-      - app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-x86_64-matagi.apk
-      - app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-x86-matagi.apk
