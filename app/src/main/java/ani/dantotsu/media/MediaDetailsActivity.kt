@@ -327,6 +327,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         model.getMedia().observe(this) {
             if (it != null) {
                 media = it
+                if (PrefManager.getVal(PrefName.YouTubeBanners)) getTrailerBanner(media.trailer)
                 scope.launch {
                     if (media.isFav != favButton?.clicked) favButton?.clicked()
                 }
@@ -344,7 +345,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 binding.mediaCover.setOnClickListener {
                     openLinkInBrowser(media.shareLink)
                 }
-                if (PrefManager.getVal(PrefName.YouTubeBanners)) getTrailerBanner(media.trailer)
                 progress()
             }
         }
