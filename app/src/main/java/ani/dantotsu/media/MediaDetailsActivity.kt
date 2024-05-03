@@ -139,7 +139,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         binding.mediaBanner.updateLayoutParams { height += statusBarHeight }
         binding.mediaBannerNoKen.updateLayoutParams { height += statusBarHeight }
-        binding.youTubeBanner?.updateLayoutParams { height += statusBarHeight }
+        binding.youTubeBanner.updateLayoutParams { height += statusBarHeight }
         binding.mediaClose.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         binding.incognito.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         binding.mediaCollapsing.minimumHeight = statusBarHeight
@@ -437,48 +437,44 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     private fun getTrailerBanner(trailer: String?) {
         if (trailer == null) return
         updateVideoScale()
-        binding.youTubeBanner?.let {
-            val youTubePlayerView: YouTubePlayerView = it
-            lifecycle.addObserver(youTubePlayerView)
-            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-                var isVideoMuted = true
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    it.visibility = View.VISIBLE
-                    binding.mediaMute?.let { mute ->
-                        mute.setOnClickListener {
-                            if (isVideoMuted) youTubePlayer.unMute() else youTubePlayer.mute()
-                            isVideoMuted = !isVideoMuted
-                            binding.mediaMuteImage?.setImageDrawable(
-                                ContextCompat.getDrawable(this@MediaDetailsActivity,
-                                    if (isVideoMuted)
-                                        R.drawable.ic_round_volume_up_24
-                                    else
-                                        R.drawable.ic_round_volume_off_24
-                                )
-                            )
-                        }
-                        mute.visibility = View.VISIBLE
-                    }
-                    tubePlayer = youTubePlayer.apply {
-                        loadVideo(trailer, 0f)
-                        mute()
-                        play()
-                        setLoop(true)
-                    }
-                    binding.mediaBanner.pause()
+        val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner
+        lifecycle.addObserver(youTubePlayerView)
+        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+            var isVideoMuted = true
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                binding.youTubeBanner.visibility = View.VISIBLE
+                binding.mediaMute.setOnClickListener {
+                    if (isVideoMuted) youTubePlayer.unMute() else youTubePlayer.mute()
+                    isVideoMuted = !isVideoMuted
+                    binding.mediaMuteImage.setImageDrawable(
+                        ContextCompat.getDrawable(this@MediaDetailsActivity,
+                            if (isVideoMuted)
+                                R.drawable.ic_round_volume_off_24
+                            else
+                                R.drawable.ic_round_volume_up_24
+                        )
+                    )
                 }
-
-                override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                    binding.mediaBanner.resume()
-                    it.visibility = View.GONE
-                    binding.mediaMute?.visibility = View.GONE
+                binding.mediaMute.visibility = View.VISIBLE
+                tubePlayer = youTubePlayer.apply {
+                    loadVideo(trailer, 0f)
+                    mute()
+                    play()
+                    setLoop(true)
                 }
+                binding.mediaBanner.pause()
             }
-            youTubePlayerView.initialize(
-                youTubePlayerListener,
-                IFramePlayerOptions.Builder().controls(0).build()
-            )
+
+            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                binding.mediaBanner.resume()
+                binding.youTubeBanner.visibility = View.GONE
+                binding.mediaMute.visibility = View.GONE
+            }
         }
+        youTubePlayerView.initialize(
+            youTubePlayerListener,
+            IFramePlayerOptions.Builder().controls(0).build()
+        )
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -490,15 +486,13 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     }
 
     private fun updateVideoScale() {
-        binding.youTubeBanner?.let {
-            val videoScale = if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                336.toPx / ((screenWidth / 1280) * 720)
-            } else {
-                (screenWidth - navBarHeight) / ((288.toPx / 720) * 1280)
-            }.toFloat()
-            it.scaleX = videoScale
-            it.scaleY = videoScale
-        }
+        val videoScale = if (this.resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
+            336.toPx / ((screenWidth / 1280) * 720)
+        } else {
+            binding.youTubeBanner.width / ((288.toPx / 720) * 1280)
+        }.toFloat()
+        binding.youTubeBanner.scaleX = videoScale
+        binding.youTubeBanner.scaleY = videoScale
     }
 
     override fun onStop() {
@@ -512,7 +506,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     }
 
     override fun onDestroy() {
-        binding.youTubeBanner?.release()
+        binding.youTubeBanner.release()
         super.onDestroy()
     }
 

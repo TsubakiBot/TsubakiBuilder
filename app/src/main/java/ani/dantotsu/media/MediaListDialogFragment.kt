@@ -218,7 +218,6 @@ class MediaListDialogFragment : BottomSheetDialogFragment() {
                     }
                 }
 
-
                 binding.mediaListSave.setOnClickListener {
                     scope.launch {
                         withContext(Dispatchers.IO) {
