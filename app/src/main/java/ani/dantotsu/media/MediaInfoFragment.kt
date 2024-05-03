@@ -255,7 +255,43 @@ class MediaInfoFragment : Fragment() {
                     }
                     parent.addView(bind.root)
                 }
-
+                if (PrefManager.getVal<Boolean>(PrefName.SocialInMedia)) {
+                    if (!media.users.isNullOrEmpty() && !offline) {
+                        val users: ArrayList<User> = media.users ?: arrayListOf()
+                        if (Anilist.token != null && media.userStatus != null) {
+                            users.add(
+                                0,
+                                User(
+                                    id = Anilist.userid!!,
+                                    name = getString(R.string.you),
+                                    pfp = Anilist.avatar,
+                                    banner = "",
+                                    status = media.userStatus,
+                                    score = media.userScore.toFloat(),
+                                    progress = media.userProgress,
+                                    totalEpisodes = media.anime?.totalEpisodes
+                                        ?: media.manga?.totalChapters,
+                                    nextAiringEpisode = media.anime?.nextAiringEpisode
+                                )
+                            )
+                        }
+                        ItemTitleRecyclerBinding.inflate(
+                            LayoutInflater.from(context),
+                            parent,
+                            false
+                        ).apply {
+                            itemTitle.visibility = View.GONE
+                            itemRecycler.adapter =
+                                MediaSocialAdapter(users, type, requireActivity())
+                            itemRecycler.layoutManager = LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                            parent.addView(root)
+                        }
+                    }
+                }
                 if (media.trailer != null) {
                     binding.animeTrailerYT.visibility = View.VISIBLE
                     binding.animeTrailerYT.setOnClickListener {
@@ -526,41 +562,6 @@ class MediaInfoFragment : Fragment() {
                             false
                         )
                         parent.addView(root)
-                    }
-                }
-                if (PrefManager.getVal<Boolean>(PrefName.SocialInMedia)) {
-                    if (!media.users.isNullOrEmpty() && !offline) {
-                        val users: ArrayList<User> = media.users ?: arrayListOf()
-                        if (Anilist.token != null && media.userStatus != null) {
-                            users.add(0,
-                                User(
-                                    id = Anilist.userid!!,
-                                    name = getString(R.string.your_progress),
-                                    pfp = Anilist.avatar,
-                                    banner = "",
-                                    status = media.userStatus,
-                                    score = media.userScore.toFloat(),
-                                    progress = media.userProgress,
-                                    totalEpisodes = media.anime?.totalEpisodes ?: media.manga?.totalChapters,
-                                    nextAiringEpisode = media.anime?.nextAiringEpisode
-                                )
-                            )
-                        }
-                        ItemTitleRecyclerBinding.inflate(
-                            LayoutInflater.from(context),
-                            parent,
-                            false
-                        ).apply {
-                            itemTitle.setText(R.string.social)
-                            itemRecycler.adapter =
-                                MediaSocialAdapter(users, type, requireActivity())
-                            itemRecycler.layoutManager = LinearLayoutManager(
-                                requireContext(),
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
-                            parent.addView(root)
-                        }
                     }
                 }
             }
