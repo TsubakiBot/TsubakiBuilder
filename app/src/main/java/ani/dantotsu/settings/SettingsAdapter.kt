@@ -63,7 +63,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                     true
                 }
                 b.settingsLayout.isVisible = settings.isVisible
-                b.settingsIconRight.isVisible = settings.isActivity
+                b.settingsIconRight.isVisible = settings.hasTransition
                 b.attachView.isVisible = settings.attach != null
                 settings.attach?.invoke(b)
             }

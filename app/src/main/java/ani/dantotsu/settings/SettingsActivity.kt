@@ -74,7 +74,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsAccountActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -90,7 +90,7 @@ class SettingsActivity : AppCompatActivity() {
                             )
                             finish()
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -100,7 +100,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsThemeActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -110,7 +110,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsCommonActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -120,7 +120,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsAnimeActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -130,7 +130,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsMangaActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -140,7 +140,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsExtensionsActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -150,7 +150,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsAddonActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -160,7 +160,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsNotificationActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -170,7 +170,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsSystemActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -180,7 +180,7 @@ class SettingsActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, SettingsAboutActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     )
                 )
             )

@@ -1,6 +1,5 @@
 package ani.dantotsu.settings
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -54,7 +53,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, ReaderSettingsActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,

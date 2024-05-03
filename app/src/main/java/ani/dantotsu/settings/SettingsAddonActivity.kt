@@ -64,7 +64,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                         name = getString(R.string.anime_downloader_addon),
                         desc = getString(R.string.not_installed),
                         icon = R.drawable.ic_download_24,
-                        isActivity = true,
+                        hasTransition = true,
                         attach = {
                             setStatus(
                                 view = it,
@@ -121,7 +121,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                         name = getString(R.string.torrent_addon),
                         desc = getString(R.string.not_installed),
                         icon = R.drawable.ic_round_magnet_24,
-                        isActivity = true,
+                        hasTransition = true,
                         attach = {
                             setStatus(
                                 view = it,

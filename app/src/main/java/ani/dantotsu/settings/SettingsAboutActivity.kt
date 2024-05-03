@@ -54,7 +54,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, FAQActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,

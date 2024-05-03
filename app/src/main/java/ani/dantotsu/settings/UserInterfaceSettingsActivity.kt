@@ -12,8 +12,6 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityUserInterfaceSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.settings.fragment.DevelopersDialogFragment
-import ani.dantotsu.settings.fragment.ForksDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -50,14 +48,12 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.immersive_mode),
-                        desc = getString(R.string.immersive_mode),
                         icon = R.drawable.ic_round_fullscreen_24,
                         pref = PrefName.ImmersiveMode
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.small_view),
-                        desc = getString(R.string.small_view),
                         icon = R.drawable.ic_round_art_track_24,
                         pref = PrefName.SmallView
                     ),
@@ -65,7 +61,6 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.home_layout_show),
-                        desc = getString(R.string.home_layout_show),
                         icon = R.drawable.ic_round_playlist_add_24,
                         onClick = {
                             val set = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toMutableList()
@@ -84,33 +79,29 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                                 }.show()
                             dialog.window?.setDimAmount(0.8f)
                         },
-                        isActivity = false
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.trailer_banners),
-                        desc = getString(R.string.trailer_banners),
                         icon = R.drawable.ic_round_photo_size_select_actual_24,
                         pref = PrefName.YouTubeBanners
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.banner_animations),
-                        desc = getString(R.string.banner_animations),
                         icon = R.drawable.ic_round_photo_size_select_actual_24,
                         pref = PrefName.BannerAnimations
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.layout_animations),
-                        desc = getString(R.string.layout_animations),
                         icon = R.drawable.ic_round_animation_24,
                         pref = PrefName.LayoutAnimations
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.trending_scroller),
-                        desc = getString(R.string.trending_scroller),
                         icon = R.drawable.trail_length_short,
                         pref = PrefName.TrendingScroller
                     )

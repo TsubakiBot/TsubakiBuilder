@@ -59,7 +59,7 @@ class SettingsAnimeActivity : AppCompatActivity() {
                         onClick = {
                             startActivity(Intent(context, PlayerSettingsActivity::class.java))
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,

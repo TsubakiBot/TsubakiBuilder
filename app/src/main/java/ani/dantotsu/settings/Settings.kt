@@ -8,7 +8,7 @@ import ani.dantotsu.settings.saving.PrefName
 data class Settings(
     val type: SettingsView,
     val name: String,
-    val desc: String,
+    val desc: String = "",
     val icon: Int,
     val pref: PrefName? = null,
     val onClick: ((ItemSettingsBinding) -> Unit)? = null,
@@ -18,7 +18,7 @@ data class Settings(
     val attach: ((ItemSettingsBinding) -> Unit)? = null,
     val attachToSwitch: ((ItemSettingsSwitchBinding) -> Unit)? = null,
     val isVisible: Boolean = true,
-    val isActivity: Boolean = false,
+    val hasTransition: Boolean = false,
     var isChecked: Boolean = pref?.let { PrefManager.getVal(it) } ?: false
 )
 enum class SettingsView {
