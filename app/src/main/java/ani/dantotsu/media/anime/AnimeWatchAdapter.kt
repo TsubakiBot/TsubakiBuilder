@@ -41,6 +41,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
@@ -318,6 +319,10 @@ class AnimeWatchAdapter(
                 Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
                     youTubePlayer.loadVideo(it, 0f)
                 }
+            }
+            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                binding.youtubePlayerView.visibility = View.GONE
+                binding.animeSourceYT.visibility = View.VISIBLE
             }
         }
         Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {

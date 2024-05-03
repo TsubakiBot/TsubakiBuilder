@@ -60,6 +60,7 @@ import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
@@ -462,9 +463,16 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                         mute.visibility = View.VISIBLE
                     }
                     youTubePlayer.loadVideo(trailer.substringAfterLast("/"), 0f)
-                    youTubePlayer.setLoop(true)
                     youTubePlayer.mute()
                     youTubePlayer.play()
+                    youTubePlayer.setLoop(true)
+                    binding.mediaBanner.pause()
+                }
+
+                override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                    binding.mediaBanner.resume()
+                    it.visibility = View.GONE
+                    binding.mediaMute?.visibility = View.GONE
                 }
             }
             youTubePlayerView.initialize(
