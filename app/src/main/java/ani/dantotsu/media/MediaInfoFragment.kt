@@ -36,11 +36,11 @@ import ani.dantotsu.databinding.ItemTitleChipgroupBinding
 import ani.dantotsu.databinding.ItemTitleRecyclerBinding
 import ani.dantotsu.databinding.ItemTitleSearchBinding
 import ani.dantotsu.databinding.ItemTitleTextBinding
-import ani.dantotsu.databinding.ItemTitleTrailerBinding
 import ani.dantotsu.displayTimer
 import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.profile.User
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
@@ -256,58 +256,11 @@ class MediaInfoFragment : Fragment() {
                     parent.addView(bind.root)
                 }
 
-                if (media.trailer != null && !offline) {
-                    @Suppress("DEPRECATION")
-                    class MyChrome : WebChromeClient() {
-                        private var mCustomView: View? = null
-                        private var mCustomViewCallback: CustomViewCallback? = null
-                        private var mOriginalSystemUiVisibility = 0
-
-                        override fun onHideCustomView() {
-                            (requireActivity().window.decorView as FrameLayout).removeView(
-                                mCustomView
-                            )
-                            mCustomView = null
-                            requireActivity().window.decorView.systemUiVisibility =
-                                mOriginalSystemUiVisibility
-                            mCustomViewCallback!!.onCustomViewHidden()
-                            mCustomViewCallback = null
-                        }
-
-                        override fun onShowCustomView(
-                            paramView: View,
-                            paramCustomViewCallback: CustomViewCallback
-                        ) {
-                            if (mCustomView != null) {
-                                onHideCustomView()
-                                return
-                            }
-                            mCustomView = paramView
-                            mOriginalSystemUiVisibility =
-                                requireActivity().window.decorView.systemUiVisibility
-                            mCustomViewCallback = paramCustomViewCallback
-                            (requireActivity().window.decorView as FrameLayout).addView(
-                                mCustomView,
-                                FrameLayout.LayoutParams(-1, -1)
-                            )
-                            requireActivity().window.decorView.systemUiVisibility =
-                                3846 or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        }
+                if (media.trailer != null) {
+                    binding.animeTrailerYT.visibility = View.VISIBLE
+                    binding.animeTrailerYT.setOnClickListener {
+                        openLinkInYouTube("https://www.youtube.com/watch?v=${media.trailer}")
                     }
-
-                    val bind = ItemTitleTrailerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    )
-                    bind.mediaInfoTrailer.apply {
-                        visibility = View.VISIBLE
-                        settings.javaScriptEnabled = true
-                        isSoundEffectsEnabled = true
-                        webChromeClient = MyChrome()
-                        loadUrl(media.trailer!!)
-                    }
-                    parent.addView(bind.root)
                 }
 
                 if (media.anime != null && (media.anime.op.isNotEmpty() || media.anime.ed.isNotEmpty()) && !offline) {

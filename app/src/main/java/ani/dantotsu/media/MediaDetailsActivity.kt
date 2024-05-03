@@ -459,7 +459,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                         }
                         mute.visibility = View.VISIBLE
                     }
-                    youTubePlayer.loadVideo(trailer.substringAfterLast("/"), 0f)
+                    youTubePlayer.loadVideo(trailer, 0f)
                     youTubePlayer.mute()
                     youTubePlayer.play()
                     youTubePlayer.setLoop(true)
