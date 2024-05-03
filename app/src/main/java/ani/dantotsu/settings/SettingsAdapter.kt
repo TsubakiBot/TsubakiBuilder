@@ -107,7 +107,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 setAnimation(b.root.context, b.root)
 
                 b.settingsButton.text = settings.name
-                b.settingsButton.setCompoundDrawables(
+                b.settingsButton.setCompoundDrawablesWithIntrinsicBounds(
                     ContextCompat.getDrawable(
                         b.root.context, settings.icon
                     ), null, null, null
