@@ -43,9 +43,9 @@
                 android:id="@+id/youTubeBanner"
                 android:layout_width="match_parent"
                 android:layout_height="336dp"
+                android:visibility="gone"
                 app:enableAutomaticInitialization="false"
                 app:layout_collapseMode="parallax"
-                android:visibility="gone"
                 tools:visibility="visible" />
 
             <ImageView
@@ -123,13 +123,13 @@
                             android:id="@+id/mediaMute"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
+                            android:layout_gravity="end"
                             android:layout_marginStart="8dp"
                             android:layout_weight="0"
-                            android:layout_gravity="end"
                             android:translationZ="7dp"
+                            android:visibility="gone"
                             app:cardBackgroundColor="@color/nav_bg"
                             app:cardCornerRadius="16dp"
-                            android:visibility="gone"
                             tools:visibility="visible" >
 
                             <androidx.constraintlayout.utils.widget.ImageFilterView
