@@ -52,6 +52,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import ani.dantotsu.torrServerStart
 import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
@@ -432,50 +433,56 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     }
 
     private fun getTrailerBanner(trailer: String?) {
-        if (binding.youTubeBanner == null || trailer == null) return
-        val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner!!
-        lifecycle.addObserver(youTubePlayerView)
-        var isVideoMuted = true
-        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                binding.youTubeBanner!!.visibility = View.VISIBLE
-                binding.mediaMute?.let {
-                    it.setOnClickListener {
-                        if (isVideoMuted) {
-                            youTubePlayer.unMute()
-                        } else {
-                            youTubePlayer.mute()
-                        }
-                        isVideoMuted = !isVideoMuted
-                        binding.mediaMuteImage?.setImageDrawable(
-                            ContextCompat.getDrawable(this@MediaDetailsActivity,
-                            if (isVideoMuted)
-                                R.drawable.ic_round_volume_up_24
-                            else
-                                R.drawable.ic_round_volume_off_24
-                            )
-                        )
-                    }
+        if (trailer == null) return
+
+        binding.youTubeBanner?.let {
+            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
+            it.scaleX = videoScale
+            it.scaleY = videoScale
+
+            val youTubePlayerView: YouTubePlayerView = it
+            lifecycle.addObserver(youTubePlayerView)
+            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+                var isVideoMuted = true
+                override fun onReady(youTubePlayer: YouTubePlayer) {
                     it.visibility = View.VISIBLE
+                    binding.mediaMute?.let { mute ->
+                        mute.setOnClickListener {
+                            if (isVideoMuted) youTubePlayer.unMute() else youTubePlayer.mute()
+                            isVideoMuted = !isVideoMuted
+                            binding.mediaMuteImage?.setImageDrawable(
+                                ContextCompat.getDrawable(this@MediaDetailsActivity,
+                                    if (isVideoMuted)
+                                        R.drawable.ic_round_volume_up_24
+                                    else
+                                        R.drawable.ic_round_volume_off_24
+                                )
+                            )
+                        }
+                        mute.visibility = View.VISIBLE
+                    }
+                    youTubePlayer.loadVideo(trailer.substringAfterLast("/"), 0f)
+                    youTubePlayer.setLoop(true)
+                    youTubePlayer.mute()
+                    youTubePlayer.play()
                 }
-                youTubePlayer.loadVideo(
-                    trailer.removePrefix("https://www.youtube.com/embed/"), 0f
-                )
-                youTubePlayer.setLoop(true)
-                youTubePlayer.mute()
-                youTubePlayer.play()
             }
+            youTubePlayerView.initialize(
+                youTubePlayerListener,
+                IFramePlayerOptions.Builder().controls(0).build()
+            )
         }
-        youTubePlayerView.initialize(
-            youTubePlayerListener,
-            IFramePlayerOptions.Builder().controls(0).build()
-        )
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
+        }
+        binding.youTubeBanner?.let {
+            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
+            it.scaleX = videoScale
+            it.scaleY = videoScale
         }
     }
 
