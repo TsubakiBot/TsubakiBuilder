@@ -59,6 +59,9 @@ import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -132,6 +135,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         binding.mediaBanner.updateLayoutParams { height += statusBarHeight }
         binding.mediaBannerNoKen.updateLayoutParams { height += statusBarHeight }
+        binding.youTubeBanner?.updateLayoutParams { height += statusBarHeight }
         binding.mediaClose.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         binding.incognito.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
         binding.mediaCollapsing.minimumHeight = statusBarHeight
@@ -154,12 +158,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             )
             binding.mediaBanner.setTransitionGenerator(generator)
         }
-        val banner =
-            if (bannerAnimations) binding.mediaBanner else binding.mediaBannerNoKen
+        val banner = if (bannerAnimations) binding.mediaBanner else binding.mediaBannerNoKen
         val viewPager = binding.mediaViewPager
         viewPager.isUserInputEnabled = false
         viewPager.setPageTransformer(ZoomOutPageTransformer())
-
 
         val isDownload = intent.getBooleanExtra("download", false)
         media.selected = model.loadSelected(media, isDownload)
@@ -195,7 +197,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 banner.performClick()
             }
         })
-        banner.setOnTouchListener { _, motionEvent -> gestureDetector.onTouchEvent(motionEvent);true }
+        banner.setOnTouchListener { _, motionEvent ->
+            gestureDetector.onTouchEvent(motionEvent)
+            true
+        }
+
         if (PrefManager.getVal(PrefName.Incognito)) {
             val mediaTitle = "    ${media.userPreferredName}"
             binding.mediaTitle.text = mediaTitle
@@ -338,6 +344,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 binding.mediaCover.setOnClickListener {
                     openLinkInBrowser(media.shareLink)
                 }
+                if (PrefManager.getVal(PrefName.YouTubeBanners)) getTrailerBanner(media.trailer)
                 progress()
             }
         }
@@ -423,11 +430,34 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
     }
 
+    private fun getTrailerBanner(trailer: String?) {
+        if (binding.youTubeBanner == null || trailer == null) return
+        val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner!!
+        lifecycle.addObserver(youTubePlayerView)
+        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                binding.youTubeBanner!!.visibility = View.VISIBLE
+                youTubePlayer.loadVideo(
+                    trailer.removePrefix("https://www.youtube.com/embed/"), 0f
+                )
+                youTubePlayer.setLoop(true)
+                youTubePlayer.mute()
+                youTubePlayer.play()
+            }
+        }
+        youTubePlayerView.initialize(youTubePlayerListener)
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }
+    }
+
+    override fun onDestroy() {
+        binding.youTubeBanner?.release()
+        super.onDestroy()
     }
 
     override fun onRestart() {

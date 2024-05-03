@@ -70,6 +70,13 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                 PrefManager.setVal(PrefName.ImmersiveMode, isChecked)
                 recreate()
             }
+
+            uiSettingsYouTubeBanner.isChecked =
+                PrefManager.getVal(PrefName.YouTubeBanners)
+            uiSettingsYouTubeBanner.setOnCheckedChangeListener { _, isChecked ->
+                PrefManager.setVal(PrefName.YouTubeBanners, isChecked)
+            }
+
             uiSettingsBannerAnimation.isChecked =
                 PrefManager.getVal(PrefName.BannerAnimations)
             uiSettingsBannerAnimation.setOnCheckedChangeListener { _, isChecked ->

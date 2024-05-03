@@ -79,6 +79,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
         )
     ),
     BannerAnimations(Pref(Location.UI, Boolean::class, true)),
+    YouTubeBanners(Pref(Location.UI, Boolean::class, true)),
     LayoutAnimations(Pref(Location.UI, Boolean::class, true)),
     TrendingScroller(Pref(Location.UI, Boolean::class, true)),
     AnimationSpeed(Pref(Location.UI, Float::class, 1f)),

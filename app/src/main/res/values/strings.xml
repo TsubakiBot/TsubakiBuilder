@@ -318,6 +318,7 @@
 
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="small_view">Small View in Trending Shows</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animations</string>
     <string name="banner_animations">Banner Animations</string>
     <string name="layout_animations">Layout Animations</string>
