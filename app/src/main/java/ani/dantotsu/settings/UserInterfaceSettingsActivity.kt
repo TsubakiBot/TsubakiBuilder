@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityUserInterfaceSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.settings.fragment.DevelopersDialogFragment
+import ani.dantotsu.settings.fragment.ForksDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
@@ -42,58 +45,81 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            uiSettingsHomeLayout.setOnClickListener {
-                val set = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toMutableList()
-                val views = resources.getStringArray(R.array.home_layouts)
-                val dialog = AlertDialog.Builder(this@UserInterfaceSettingsActivity, R.style.MyPopup)
-                    .setTitle(getString(R.string.home_layout_show)).apply {
-                        setMultiChoiceItems(
-                            views,
-                            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toBooleanArray()
-                        ) { _, i, value ->
-                            set[i] = value
-                        }
-                        setPositiveButton("Done") { _, _ ->
-                            PrefManager.setVal(PrefName.HomeLayout, set)
-                        }
-                    }.show()
-                dialog.window?.setDimAmount(0.8f)
-            }
+            settingsRecyclerView.adapter = SettingsAdapter(
+                arrayListOf(
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.immersive_mode),
+                        desc = getString(R.string.immersive_mode),
+                        icon = R.drawable.ic_round_fullscreen_24,
+                        pref = PrefName.ImmersiveMode
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.small_view),
+                        desc = getString(R.string.small_view),
+                        icon = R.drawable.ic_round_art_track_24,
+                        pref = PrefName.SmallView
+                    ),
 
-            uiSettingsSmallView.isChecked = PrefManager.getVal(PrefName.SmallView)
-            uiSettingsSmallView.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.SmallView, isChecked)
-            }
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.home_layout_show),
+                        desc = getString(R.string.home_layout_show),
+                        icon = R.drawable.ic_round_playlist_add_24,
+                        onClick = {
+                            val set = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toMutableList()
+                            val views = resources.getStringArray(R.array.home_layouts)
+                            val dialog = AlertDialog.Builder(this@UserInterfaceSettingsActivity, R.style.MyPopup)
+                                .setTitle(getString(R.string.home_layout_show)).apply {
+                                    setMultiChoiceItems(
+                                        views,
+                                        PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toBooleanArray()
+                                    ) { _, i, value ->
+                                        set[i] = value
+                                    }
+                                    setPositiveButton("Done") { _, _ ->
+                                        PrefManager.setVal(PrefName.HomeLayout, set)
+                                    }
+                                }.show()
+                            dialog.window?.setDimAmount(0.8f)
+                        },
+                        isActivity = false
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.trailer_banners),
+                        desc = getString(R.string.trailer_banners),
+                        icon = R.drawable.ic_round_photo_size_select_actual_24,
+                        pref = PrefName.YouTubeBanners
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.banner_animations),
+                        desc = getString(R.string.banner_animations),
+                        icon = R.drawable.ic_round_photo_size_select_actual_24,
+                        pref = PrefName.BannerAnimations
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.layout_animations),
+                        desc = getString(R.string.layout_animations),
+                        icon = R.drawable.ic_round_animation_24,
+                        pref = PrefName.LayoutAnimations
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.trending_scroller),
+                        desc = getString(R.string.trending_scroller),
+                        icon = R.drawable.trail_length_short,
+                        pref = PrefName.TrendingScroller
+                    )
+                )
+            )
 
-            uiSettingsImmersive.isChecked = PrefManager.getVal(PrefName.ImmersiveMode)
-            uiSettingsImmersive.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.ImmersiveMode, isChecked)
-                recreate()
-            }
-
-            uiSettingsYouTubeBanner.isChecked =
-                PrefManager.getVal(PrefName.YouTubeBanners)
-            uiSettingsYouTubeBanner.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.YouTubeBanners, isChecked)
-            }
-
-            uiSettingsBannerAnimation.isChecked =
-                PrefManager.getVal(PrefName.BannerAnimations)
-            uiSettingsBannerAnimation.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.BannerAnimations, isChecked)
-            }
-
-            uiSettingsLayoutAnimation.isChecked =
-                PrefManager.getVal(PrefName.LayoutAnimations)
-            uiSettingsLayoutAnimation.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.LayoutAnimations, isChecked)
-                recreate()
-            }
-
-            uiSettingsTrendingScroller.isChecked =
-                PrefManager.getVal(PrefName.TrendingScroller)
-            uiSettingsTrendingScroller.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.TrendingScroller, isChecked)
+            settingsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                setHasFixedSize(true)
             }
 
             val map = mapOf(

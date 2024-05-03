@@ -94,30 +94,21 @@ class SettingsCommonActivity : AppCompatActivity() {
                         name = getString(R.string.always_continue_content),
                         desc = getString(R.string.always_continue_content_desc),
                         icon = R.drawable.ic_round_delete_24,
-                        isChecked = PrefManager.getVal(PrefName.ContinueMedia),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.ContinueMedia, isChecked)
-                        }
+                        pref = PrefName.ContinueMedia
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.search_source_list),
                         desc = getString(R.string.search_source_list_desc),
                         icon = R.drawable.ic_round_search_sources_24,
-                        isChecked = PrefManager.getVal(PrefName.SearchSources),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.SearchSources, isChecked)
-                        }
+                        pref = PrefName.SearchSources
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.recentlyListOnly),
                         desc = getString(R.string.recentlyListOnly_desc),
                         icon = R.drawable.ic_round_new_releases_24,
-                        isChecked = PrefManager.getVal(PrefName.RecentlyListOnly),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.RecentlyListOnly, isChecked)
-                        }
+                        pref = PrefName.RecentlyListOnly
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -180,10 +171,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                         name = getString(R.string.social_in_media),
                         desc = getString(R.string.social_in_media),
                         icon = R.drawable.ic_emoji_people_24,
-                        isChecked = PrefManager.getVal(PrefName.SocialInMedia),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.SocialInMedia, isChecked)
-                        }
+                        pref = PrefName.SocialInMedia
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

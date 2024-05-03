@@ -187,10 +187,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         name = getString(R.string.use_foldable),
                         desc = getString(R.string.use_foldable_desc),
                         icon = R.drawable.ic_devices_fold_24,
-                        isChecked = PrefManager.getVal(PrefName.UseFoldable),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.UseFoldable, isChecked)
-                        },
+                        pref = PrefName.UseFoldable,
                         isVisible = hasFoldingFeature
                     ),
                     Settings(
@@ -228,10 +225,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         name = getString(R.string.share_username_in_logs),
                         desc = getString(R.string.share_username_in_logs_desc),
                         icon = R.drawable.ic_round_search_24,
-                        isChecked = PrefManager.getVal(PrefName.SharedUserID),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.SharedUserID, isChecked)
-                        },
+                        pref = PrefName.SharedUserID,
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
                     ),
                     Settings(

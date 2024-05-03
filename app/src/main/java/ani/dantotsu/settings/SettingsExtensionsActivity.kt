@@ -342,20 +342,14 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         name = getString(R.string.skip_loading_extension_icons),
                         desc = getString(R.string.skip_loading_extension_icons_desc),
                         icon = R.drawable.ic_round_no_icon_24,
-                        isChecked = PrefManager.getVal(PrefName.SkipExtensionIcons),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.SkipExtensionIcons, isChecked)
-                        }
+                        pref = PrefName.SkipExtensionIcons
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.NSFWExtention),
                         desc = getString(R.string.NSFWExtention_desc),
                         icon = R.drawable.ic_round_nsfw_24,
-                        isChecked = PrefManager.getVal(PrefName.NSFWExtension),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.NSFWExtension, isChecked)
-                        }
+                        pref = PrefName.NSFWExtension
 
                     )
                 )

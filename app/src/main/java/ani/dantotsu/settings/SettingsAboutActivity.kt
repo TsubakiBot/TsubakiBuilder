@@ -44,7 +44,6 @@ class SettingsAboutActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
-
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
