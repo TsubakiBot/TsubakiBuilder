@@ -199,7 +199,7 @@ class MangaReaderActivity : AppCompatActivity() {
         defaultSettings = loadReaderSettings("reader_settings") ?: defaultSettings
 
         onBackPressedDispatcher.addCallback(this) {
-            if (!::media.isInitialized) {
+            if (!this@MangaReaderActivity::media.isInitialized) {
                 finish()
                 return@addCallback
             }
