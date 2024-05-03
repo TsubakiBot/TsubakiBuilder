@@ -249,17 +249,21 @@ class MediaAdaptor(
     }
 
     private fun getItemCompactTitle(media: Media): String {
-        return if (media.anime != null) {
-            " " + if ((media.anime.totalEpisodes ?: 0) != 1)
-                getString(R.string.episode_plural)
-            else
-                getString(R.string.episode_singular)
-        } else if (media.manga != null) {
-            " " + if ((media.manga.totalChapters ?: 0) != 1)
-                getString(R.string.chapter_plural)
-            else
-                getString(R.string.chapter_singular)
-        } else ""
+        return when {
+            media.anime != null -> {
+                if ((media.anime.totalEpisodes ?: 0) != 1)
+                    getString(R.string.episode_plural)
+                else
+                    getString(R.string.episode_singular)
+            }
+            media.manga != null -> {
+                if ((media.manga.totalChapters ?: 0) != 1)
+                    getString(R.string.chapter_plural)
+                else
+                    getString(R.string.chapter_singular)
+            }
+            else -> ""
+        } + " "
     }
 
     override fun getItemCount() = mediaList!!.size

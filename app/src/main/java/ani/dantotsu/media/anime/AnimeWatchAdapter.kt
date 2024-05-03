@@ -84,32 +84,8 @@ class AnimeWatchAdapter(
             )
         }
         //Youtube
-        if (media.anime?.youtube != null && PrefManager.getVal(PrefName.ShowYtButton)) {
-            val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
-            fragment.lifecycle.addObserver(youTubePlayerView)
-            binding.animeSourceYT.visibility = View.VISIBLE
-            binding.animeSourceYT.setOnClickListener {
-                openLinkInYouTube(media.anime.youtube)
-            }
-            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    binding.animeSourceYT.visibility = View.GONE
-                    binding.youtubePlayerView.visibility = View.VISIBLE
-                    Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                        youTubePlayer.loadVideo(it, 0f)
-                    }
-                    youTubePlayer.mute()
-                    youTubePlayer.play()
-                }
-            }
-            Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                youTubePlayerView.initialize(youTubePlayerListener)
-            } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
-                youTubePlayerView.initialize(
-                    youTubePlayerListener,
-                    IFramePlayerOptions.Builder().controls(1).listType("playlist").list(it).build()
-                )
-            }
+        if (PrefManager.getVal(PrefName.ShowYtButton)) {
+            getTrailerOrVideo(binding)
         }
         binding.animeSourceDubbed.isChecked = media.selected!!.preferDub
         binding.animeSourceDubbedText.text =
@@ -492,6 +468,54 @@ class AnimeWatchAdapter(
                 binding.faqbutton.visibility = View.GONE
                 clearChips()
                 binding.animeSourceProgressBar.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun getTrailerOrVideo(binding: ItemAnimeWatchBinding) {
+        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
+        fragment.lifecycle.addObserver(youTubePlayerView)
+        media.trailer?.let { trailer ->
+            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    binding.animeSourceYT.visibility = View.GONE
+                    binding.youtubePlayerView.visibility = View.VISIBLE
+                    youTubePlayer.loadVideo(
+                        trailer.removePrefix("https://www.youtube.com/embed/"), 0f
+                    )
+                    youTubePlayer.mute()
+                    youTubePlayer.play()
+                }
+            }
+            youTubePlayerView.initialize(youTubePlayerListener)
+            binding.animeSourceYT.visibility = View.VISIBLE
+            binding.animeSourceYT.setOnClickListener {
+                openLinkInYouTube(trailer)
+            }
+        } ?: media.anime?.youtube?.let { youtube ->
+            val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    binding.animeSourceYT.visibility = View.GONE
+                    binding.youtubePlayerView.visibility = View.VISIBLE
+                    Uri.parse(youtube).getQueryParameter("v")?.let {
+                        youTubePlayer.loadVideo(it, 0f)
+                    }
+                    youTubePlayer.mute()
+                    youTubePlayer.play()
+                }
+            }
+            Uri.parse(youtube).getQueryParameter("v")?.let {
+                youTubePlayerView.initialize(youTubePlayerListener)
+            } ?: Uri.parse(youtube).getQueryParameter("list")?.let {
+                youTubePlayerView.initialize(
+                    youTubePlayerListener,
+                    IFramePlayerOptions.Builder().controls(1).listType("playlist").list(it)
+                        .build()
+                )
+            }
+            binding.animeSourceYT.visibility = View.VISIBLE
+            binding.animeSourceYT.setOnClickListener {
+                openLinkInYouTube(youtube)
             }
         }
     }
