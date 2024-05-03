@@ -9,7 +9,7 @@
         android:id="@+id/settingsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UselessParent">
