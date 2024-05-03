@@ -83,6 +83,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     lateinit var navBar: AnimatedBottomBar
     var anime = true
     private var adult = false
+    private var tubePlayer: YouTubePlayer? = null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -435,7 +436,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     private fun getTrailerBanner(trailer: String?) {
         if (trailer == null) return
-
         updateVideoScale()
         binding.youTubeBanner?.let {
             val youTubePlayerView: YouTubePlayerView = it
@@ -459,10 +459,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                         }
                         mute.visibility = View.VISIBLE
                     }
-                    youTubePlayer.loadVideo(trailer, 0f)
-                    youTubePlayer.mute()
-                    youTubePlayer.play()
-                    youTubePlayer.setLoop(true)
+                    tubePlayer = youTubePlayer.apply {
+                        loadVideo(trailer, 0f)
+                        mute()
+                        play()
+                        setLoop(true)
+                    }
                     binding.mediaBanner.pause()
                 }
 
@@ -489,10 +491,24 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     private fun updateVideoScale() {
         binding.youTubeBanner?.let {
-            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
+            val videoScale = if (this.resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
+                336.toPx / ((screenWidth / 1280) * 720)
+            } else {
+                it.width / ((288.toPx / 720) * 1280)
+            }.toFloat()
             it.scaleX = videoScale
             it.scaleY = videoScale
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        tubePlayer?.pause()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        tubePlayer?.play()
     }
 
     override fun onDestroy() {
