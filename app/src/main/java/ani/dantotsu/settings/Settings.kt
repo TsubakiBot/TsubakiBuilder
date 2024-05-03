@@ -1,5 +1,6 @@
 package ani.dantotsu.settings
 
+import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemSettingsBinding
 import ani.dantotsu.databinding.ItemSettingsSliderBinding
 import ani.dantotsu.databinding.ItemSettingsSwitchBinding
@@ -10,7 +11,7 @@ data class Settings(
     val type: SettingsView,
     val name: String,
     val desc: String = "",
-    val icon: Int,
+    val icon: Int = R.drawable.ic_round_settings_24,
     val pref: PrefName? = null,
     val onClick: ((ItemSettingsBinding) -> Unit)? = null,
     val onLongClick: (() -> Unit)? = null,
@@ -36,5 +37,6 @@ data class Settings(
 enum class SettingsView {
     BUTTON,
     SWITCH,
-    SLIDER
+    SLIDER,
+    HEADER
 }

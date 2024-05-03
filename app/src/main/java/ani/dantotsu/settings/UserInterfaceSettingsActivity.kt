@@ -59,6 +59,10 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
+                        type = SettingsView.HEADER,
+                        name = getString(R.string.app)
+                    ),
+                    Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.immersive_mode),
                         icon = R.drawable.ic_round_fullscreen_24,
@@ -101,6 +105,10 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         pref = PrefName.YouTubeBanners
                     ),
                     Settings(
+                        type = SettingsView.HEADER,
+                        name = getString(R.string.animations)
+                    ),
+                    Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.banner_animations),
                         icon = R.drawable.ic_round_photo_size_select_actual_24,
@@ -129,6 +137,10 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         slider = { value, _ ->
                             PrefManager.setVal(PrefName.AnimationSpeed, map[value] ?: 1f)
                         }
+                    ),
+                    Settings(
+                        type = SettingsView.HEADER,
+                        name = getString(R.string.blur)
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

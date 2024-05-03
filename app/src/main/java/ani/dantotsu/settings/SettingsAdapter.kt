@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemSettingsBinding
+import ani.dantotsu.databinding.ItemSettingsHeaderBinding
 import ani.dantotsu.databinding.ItemSettingsSliderBinding
 import ani.dantotsu.databinding.ItemSettingsSwitchBinding
 import ani.dantotsu.setAnimation
@@ -19,6 +20,9 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
         RecyclerView.ViewHolder(binding.root)
 
     inner class SettingsSliderViewHolder(val binding: ItemSettingsSliderBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    inner class SettingsHeaderViewHolder(val binding: ItemSettingsHeaderBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -37,6 +41,12 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
 
             SettingsView.SLIDER.ordinal -> SettingsSliderViewHolder(
                 ItemSettingsSliderBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+
+            SettingsView.HEADER.ordinal -> SettingsHeaderViewHolder(
+                ItemSettingsHeaderBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
@@ -125,6 +135,14 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 settings.attachToSlider?.invoke(b)
+            }
+
+            SettingsView.HEADER -> {
+                val b = (holder as SettingsHeaderViewHolder).binding
+                setAnimation(b.root.context, b.root)
+
+                b.settingsTitle.text = settings.name
+                b.settingsTitle.isVisible = settings.name.isNotBlank()
             }
         }
     }
