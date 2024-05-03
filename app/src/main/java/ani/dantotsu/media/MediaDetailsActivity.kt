@@ -436,11 +436,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     private fun getTrailerBanner(trailer: String?) {
         if (trailer == null) return
 
+        updateVideoScale()
         binding.youTubeBanner?.let {
-            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
-            it.scaleX = videoScale
-            it.scaleY = videoScale
-
             val youTubePlayerView: YouTubePlayerView = it
             lifecycle.addObserver(youTubePlayerView)
             val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
@@ -487,16 +484,20 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         navBar.apply {
             updateMargins(newConfig.orientation)
         }
+        updateVideoScale()
+    }
+
+    private fun updateVideoScale() {
         binding.youTubeBanner?.let {
-            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
+            val videoScale = 360.toPx / ((screenWidth / 1280) * 720)
             it.scaleX = videoScale
             it.scaleY = videoScale
         }
     }
 
-    override fun onUserLeaveHint() {
+    override fun onDestroy() {
         binding.youTubeBanner?.release()
-        super.onUserLeaveHint()
+        super.onDestroy()
     }
 
     override fun onRestart() {
