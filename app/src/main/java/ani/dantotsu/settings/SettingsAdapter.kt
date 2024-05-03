@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemSettingsBinding
+import ani.dantotsu.databinding.ItemSettingsSliderBinding
 import ani.dantotsu.databinding.ItemSettingsSwitchBinding
 import ani.dantotsu.setAnimation
 
@@ -15,6 +16,9 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
         RecyclerView.ViewHolder(binding.root)
 
     inner class SettingsSwitchViewHolder(val binding: ItemSettingsSwitchBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    inner class SettingsSliderViewHolder(val binding: ItemSettingsSliderBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,6 +31,12 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
 
             SettingsView.SWITCH.ordinal -> SettingsSwitchViewHolder(
                 ItemSettingsSwitchBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+
+            SettingsView.SLIDER.ordinal -> SettingsSliderViewHolder(
+                ItemSettingsSliderBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
@@ -90,6 +100,31 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 settings.attachToSwitch?.invoke(b)
+            }
+
+            SettingsView.SLIDER -> {
+                val b = (holder as SettingsSliderViewHolder).binding
+                setAnimation(b.root.context, b.root)
+
+                b.settingsButton.text = settings.name
+                b.settingsButton.setCompoundDrawables(
+                    ContextCompat.getDrawable(
+                        b.root.context, settings.icon
+                    ), null, null, null
+                )
+                b.settingSlider.stepSize = settings.stepSize
+                b.settingSlider.valueFrom = settings.valueFrom
+                b.settingSlider.valueTo = settings.valueTo
+                b.settingSlider.value = settings.value
+                b.settingSlider.addOnChangeListener { _, value, _ ->
+                    settings.slider?.invoke(value, b)
+                }
+                b.settingsLayout.setOnLongClickListener {
+                    settings.onLongClick?.invoke()
+                    true
+                }
+                b.settingsLayout.isVisible = settings.isVisible
+                settings.attachToSlider?.invoke(b)
             }
         }
     }

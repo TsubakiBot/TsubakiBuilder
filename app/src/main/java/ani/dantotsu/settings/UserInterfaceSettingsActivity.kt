@@ -43,6 +43,19 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
 
+            val map = mapOf(
+                2f to 0.5f,
+                1.75f to 0.625f,
+                1.5f to 0.75f,
+                1.25f to 0.875f,
+                1f to 1f,
+                0.75f to 1.25f,
+                0.5f to 1.5f,
+                0.25f to 1.75f,
+                0f to 0f
+            )
+            val mapReverse = map.map { it.value to it.key }.toMap()
+
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
@@ -104,47 +117,45 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         name = getString(R.string.trending_scroller),
                         icon = R.drawable.trail_length_short,
                         pref = PrefName.TrendingScroller
-                    )
+                    ),
+                    Settings(
+                        type = SettingsView.SLIDER,
+                        name = getString(R.string.animation_speed),
+                        icon = R.drawable.adjust,
+                        stepSize = 0.25f,
+                        valueFrom = 0f,
+                        valueTo = 2f,
+                        value = mapReverse[PrefManager.getVal(PrefName.AnimationSpeed)] ?: 1f,
+                        slider = { value, _ ->
+                            PrefManager.setVal(PrefName.AnimationSpeed, map[value] ?: 1f)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.blur_banners),
+                        icon = R.drawable.blur_on,
+                        pref = PrefName.BlurBanners
+                    ),
+                    Settings(
+                        type = SettingsView.SLIDER,
+                        name = getString(R.string.radius),
+                        icon = R.drawable.adjust,
+                        pref = PrefName.BlurRadius,
+                        valueFrom = 1f
+                    ),
+                    Settings(
+                        type = SettingsView.SLIDER,
+                        name = getString(R.string.sampling),
+                        icon = R.drawable.stacks,
+                        pref = PrefName.BlurSampling,
+                        valueFrom = 1f
+                    ),
                 )
             )
 
             settingsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
-            }
-
-            val map = mapOf(
-                2f to 0.5f,
-                1.75f to 0.625f,
-                1.5f to 0.75f,
-                1.25f to 0.875f,
-                1f to 1f,
-                0.75f to 1.25f,
-                0.5f to 1.5f,
-                0.25f to 1.75f,
-                0f to 0f
-            )
-            val mapReverse = map.map { it.value to it.key }.toMap()
-            uiSettingsAnimationSpeed.value =
-                mapReverse[PrefManager.getVal(PrefName.AnimationSpeed)] ?: 1f
-            uiSettingsAnimationSpeed.addOnChangeListener { _, value, _ ->
-                PrefManager.setVal(PrefName.AnimationSpeed, map[value] ?: 1f)
-            }
-
-            uiSettingsBlurBanners.isChecked = PrefManager.getVal(PrefName.BlurBanners)
-            uiSettingsBlurBanners.setOnCheckedChangeListener { _, isChecked ->
-                PrefManager.setVal(PrefName.BlurBanners, isChecked)
-            }
-
-            uiSettingsBlurRadius.value = (PrefManager.getVal(PrefName.BlurRadius) as Float)
-            uiSettingsBlurRadius.addOnChangeListener { _, value, _ ->
-                PrefManager.setVal(PrefName.BlurRadius, value)
-            }
-
-            uiSettingsBlurSampling.value =
-                (PrefManager.getVal(PrefName.BlurSampling) as Float)
-            uiSettingsBlurSampling.addOnChangeListener { _, value, _ ->
-                PrefManager.setVal(PrefName.BlurSampling, value)
             }
         }
     }

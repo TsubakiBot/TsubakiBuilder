@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/radius"
+            app:drawableStartCompat="@drawable/adjust"
+            app:drawableTint="?attr/colorPrimary" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/settingSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="2"
+            android:valueFrom="1.0"
+            android:valueTo="10.0"
+            app:labelBehavior="floating"
+            app:labelStyle="@style/fontTooltip"
+            app:thumbColor="?attr/colorSecondary"
+            app:tickColorInactive="?attr/colorSecondary"
+            app:trackColorActive="?attr/colorSecondary"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+</FrameLayout>

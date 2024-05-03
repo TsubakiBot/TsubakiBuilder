@@ -29,6 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:minHeight="44sp"
             android:orientation="vertical">
 
@@ -36,7 +37,6 @@
                 android:id="@+id/settingsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/name"
                 android:textColor="?attr/colorOnSurface"
@@ -46,7 +46,6 @@
                 android:id="@+id/settingsDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:paddingEnd="28dp"
                 android:alpha="0.66"
                 android:fontFamily="@font/poppins_semi_bold"
@@ -58,7 +57,6 @@
                 android:id="@+id/attachView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_marginTop="4dp"
                 android:orientation="vertical"
                 android:visibility="gone"
