@@ -61,6 +61,7 @@ import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -434,9 +435,29 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         if (binding.youTubeBanner == null || trailer == null) return
         val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner!!
         lifecycle.addObserver(youTubePlayerView)
+        var isVideoMuted = true
         val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 binding.youTubeBanner!!.visibility = View.VISIBLE
+                binding.mediaMute?.let {
+                    it.setOnClickListener {
+                        if (isVideoMuted) {
+                            youTubePlayer.unMute()
+                        } else {
+                            youTubePlayer.mute()
+                        }
+                        isVideoMuted = !isVideoMuted
+                        binding.mediaMuteImage?.setImageDrawable(
+                            ContextCompat.getDrawable(this@MediaDetailsActivity,
+                            if (isVideoMuted)
+                                R.drawable.ic_round_volume_up_24
+                            else
+                                R.drawable.ic_round_volume_off_24
+                            )
+                        )
+                    }
+                    it.visibility = View.VISIBLE
+                }
                 youTubePlayer.loadVideo(
                     trailer.removePrefix("https://www.youtube.com/embed/"), 0f
                 )
@@ -445,7 +466,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 youTubePlayer.play()
             }
         }
-        youTubePlayerView.initialize(youTubePlayerListener)
+        youTubePlayerView.initialize(
+            youTubePlayerListener,
+            IFramePlayerOptions.Builder().controls(0).build()
+        )
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
