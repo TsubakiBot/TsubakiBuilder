@@ -489,7 +489,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     private fun updateVideoScale() {
         binding.youTubeBanner?.let {
-            val videoScale = 360.toPx / ((screenWidth / 1280) * 720)
+            val videoScale = 336.toPx / ((screenWidth / 1280) * 720)
             it.scaleX = videoScale
             it.scaleY = videoScale
         }
