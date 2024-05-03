@@ -455,9 +455,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
     }
 
-    override fun onDestroy() {
+    override fun onUserLeaveHint() {
         binding.youTubeBanner?.release()
-        super.onDestroy()
+        super.onUserLeaveHint()
     }
 
     override fun onRestart() {

@@ -67,11 +67,6 @@ class AnimeWatchAdapter(
 
     private var nestedDialog: AlertDialog? = null
 
-    override fun onViewDetachedFromWindow(holder: ViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        holder.binding.youtubePlayerView.release()
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         _binding = binding
@@ -307,6 +302,39 @@ class AnimeWatchAdapter(
         handleEpisodes()
     }
 
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.binding.youtubePlayerView.release()
+    }
+
+    private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
+        if (media.anime?.youtube == null) return
+        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
+        fragment.lifecycle.addObserver(youTubePlayerView)
+        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                binding.animeSourceYT.visibility = View.GONE
+                binding.youtubePlayerView.visibility = View.VISIBLE
+                Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+                    youTubePlayer.loadVideo(it, 0f)
+                }
+            }
+        }
+        Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+            youTubePlayerView.initialize(youTubePlayerListener)
+        } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
+            youTubePlayerView.initialize(
+                youTubePlayerListener,
+                IFramePlayerOptions.Builder()
+                    .controls(1).listType("playlist").list(it).build()
+            )
+        }
+        binding.animeSourceYT.visibility = View.VISIBLE
+        binding.animeSourceYT.setOnClickListener {
+            openLinkInYouTube(media.anime.youtube)
+        }
+    }
+
     fun subscribeButton(enabled: Boolean) {
         subscribe?.enabled(enabled)
     }
@@ -468,34 +496,6 @@ class AnimeWatchAdapter(
                 clearChips()
                 binding.animeSourceProgressBar.visibility = View.VISIBLE
             }
-        }
-    }
-
-    private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
-        if (media.anime?.youtube == null) return
-        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
-        fragment.lifecycle.addObserver(youTubePlayerView)
-        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                binding.animeSourceYT.visibility = View.GONE
-                binding.youtubePlayerView.visibility = View.VISIBLE
-                Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                    youTubePlayer.loadVideo(it, 0f)
-                }
-            }
-        }
-        Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-            youTubePlayerView.initialize(youTubePlayerListener)
-        } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
-            youTubePlayerView.initialize(
-                youTubePlayerListener,
-                IFramePlayerOptions.Builder()
-                    .controls(1).listType("playlist").list(it).build()
-            )
-        }
-        binding.animeSourceYT.visibility = View.VISIBLE
-        binding.animeSourceYT.setOnClickListener {
-            openLinkInYouTube(media.anime.youtube)
         }
     }
 
