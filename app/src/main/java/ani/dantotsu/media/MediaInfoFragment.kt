@@ -106,19 +106,6 @@ class MediaInfoFragment : Fragment() {
                     }
                 }
 
-                binding.mediaInfoNameContainer.isVisible = media.name != null
-                val infoName = tripleTab + (media.mainName())
-                binding.mediaInfoName.text = infoName
-                binding.mediaInfoName.setOnLongClickListener {
-                    copyToClipboard(media.mainName())
-                    true
-                }
-                val infoNameRomanji = tripleTab + media.nameRomaji
-                binding.mediaInfoNameRomaji.text = infoNameRomanji
-                binding.mediaInfoNameRomaji.setOnLongClickListener {
-                    copyToClipboard(media.nameRomaji)
-                    true
-                }
                 binding.mediaInfoMeanScore.text =
                     if (media.meanScore != null) (media.meanScore / 10.0).toString() else "??"
                 binding.mediaInfoStatus.text = media.status
@@ -243,61 +230,32 @@ class MediaInfoFragment : Fragment() {
                 val parent = _binding?.mediaInfoContainer!!
                 val screenWidth = resources.displayMetrics.widthPixels
 
-                if (media.synonyms.isNotEmpty()) {
+                val synonyms = arrayListOf(media.nameRomaji)
+                synonyms.addAll(media.synonyms)
+                val baseName = media.name ?: media.nameMAL
+                baseName?.let {
+                    synonyms.add(0, it)
+                }
+                if (synonyms.isNotEmpty()) {
                     val bind = ItemTitleChipgroupBinding.inflate(
                         LayoutInflater.from(context),
                         parent,
                         false
                     )
-                    for (position in media.synonyms.indices) {
+                    for (position in synonyms.indices) {
                         val chip = ItemChipBinding.inflate(
                             LayoutInflater.from(context),
                             bind.itemChipGroup,
                             false
                         ).root
-                        chip.text = media.synonyms[position]
-                        chip.setOnLongClickListener { copyToClipboard(media.synonyms[position]);true }
+                        chip.text = synonyms[position]
+                        chip.setOnLongClickListener {
+                            copyToClipboard(synonyms[position])
+                            true
+                        }
                         bind.itemChipGroup.addView(chip)
                     }
                     parent.addView(bind.root)
-                }
-
-                if (PrefManager.getVal(PrefName.SocialInMedia)) {
-                    if (!media.users.isNullOrEmpty() && !offline) {
-                        val users: ArrayList<User> = media.users ?: arrayListOf()
-                        if (Anilist.token != null && media.userStatus != null) {
-                            users.add(
-                                0,
-                                User(
-                                    id = Anilist.userid!!,
-                                    name = getString(R.string.you),
-                                    pfp = Anilist.avatar,
-                                    banner = "",
-                                    status = media.userStatus,
-                                    score = media.userScore.toFloat(),
-                                    progress = media.userProgress,
-                                    totalEpisodes = media.anime?.totalEpisodes
-                                        ?: media.manga?.totalChapters,
-                                    nextAiringEpisode = media.anime?.nextAiringEpisode
-                                )
-                            )
-                        }
-                        ItemTitleRecyclerBinding.inflate(
-                            LayoutInflater.from(context),
-                            parent,
-                            false
-                        ).apply {
-                            itemTitle.visibility = View.GONE
-                            itemRecycler.adapter =
-                                MediaSocialAdapter(users, type, requireActivity())
-                            itemRecycler.layoutManager = LinearLayoutManager(
-                                requireContext(),
-                                LinearLayoutManager.HORIZONTAL,
-                                false
-                            )
-                            parent.addView(root)
-                        }
-                    }
                 }
 
                 if ((media.sequel != null || media.prequel != null) && !offline) {
@@ -386,24 +344,6 @@ class MediaInfoFragment : Fragment() {
                     }
                 }
 
-                if (!media.staff.isNullOrEmpty() && !offline) {
-                    ItemTitleRecyclerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        itemTitle.setText(R.string.staff)
-                        itemRecycler.adapter =
-                            AuthorAdapter(media.staff!!)
-                        itemRecycler.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                        parent.addView(root)
-                    }
-                }
-
                 if (media.anime != null && (media.anime.op.isNotEmpty() || media.anime.ed.isNotEmpty()) && !offline) {
                     val markWon = Markwon.builder(requireContext())
                         .usePlugin(SoftBreakAddsNewLinePlugin.create()).build()
@@ -413,9 +353,7 @@ class MediaInfoFragment : Fragment() {
                         val end = a.indexOf('"', first).let { if (it != -1) it else return a }
                         val name = a.subSequence(first, end).toString()
                         return "${a.subSequence(0, first)}" +
-                                "[$name](https://www.youtube.com/results?search_query=${
-                                    name.utf8
-                                })" +
+                                "[$name](https://www.youtube.com/results?search_query=${name.utf8})" +
                                 "${a.subSequence(end, a.length)}"
                     }
 
@@ -459,6 +397,24 @@ class MediaInfoFragment : Fragment() {
                         bind.itemTitle.setText(R.string.ending)
                         makeText(bind.itemText, media.anime.ed)
                         parent.addView(bind.root)
+                    }
+                }
+
+                if (!media.staff.isNullOrEmpty() && !offline) {
+                    ItemTitleRecyclerBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+                        itemTitle.setText(R.string.staff)
+                        itemRecycler.adapter =
+                            AuthorAdapter(media.staff!!)
+                        itemRecycler.layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        parent.addView(root)
                     }
                 }
 
@@ -534,6 +490,44 @@ class MediaInfoFragment : Fragment() {
                         bind.itemChipGroup.addView(chip)
                     }
                     parent.addView(bind.root)
+                }
+
+                if (PrefManager.getVal(PrefName.SocialInMedia)) {
+                    if (!media.users.isNullOrEmpty() && !offline) {
+                        val users: ArrayList<User> = media.users ?: arrayListOf()
+                        if (Anilist.token != null && media.userStatus != null) {
+                            users.add(
+                                0,
+                                User(
+                                    id = Anilist.userid!!,
+                                    name = getString(R.string.you),
+                                    pfp = Anilist.avatar,
+                                    banner = "",
+                                    status = media.userStatus,
+                                    score = media.userScore.toFloat(),
+                                    progress = media.userProgress,
+                                    totalEpisodes = media.anime?.totalEpisodes
+                                        ?: media.manga?.totalChapters,
+                                    nextAiringEpisode = media.anime?.nextAiringEpisode
+                                )
+                            )
+                        }
+                        ItemTitleRecyclerBinding.inflate(
+                            LayoutInflater.from(context),
+                            parent,
+                            false
+                        ).apply {
+                            itemTitle.visibility = View.GONE
+                            itemRecycler.adapter =
+                                MediaSocialAdapter(users, type, requireActivity())
+                            itemRecycler.layoutManager = LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                            parent.addView(root)
+                        }
+                    }
                 }
 
                 if (!media.recommendations.isNullOrEmpty() && !offline) {

@@ -11,7 +11,6 @@
     tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.core.widget.NestedScrollView
-
         android:id="@+id/mediaInfoScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,13 +57,32 @@
                     tools:ignore="TextContrastCheck"
                     tools:visibility="visible" />
 
+                <TextView
+                    android:id="@+id/mediaInfoDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/description"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/mediaInfoDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="-16dp"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:padding="16dp"
+                    android:text="@string/description" />
+
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingHorizontal="32dp"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingTop="16dp">
 
                     <TableRow
                         android:layout_width="match_parent"
@@ -358,66 +376,7 @@
                             android:fontFamily="@font/poppins_bold"
                             android:textAlignment="textEnd" />
                     </TableRow>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="16dp" />
-
-                    <LinearLayout
-                        android:id="@+id/mediaInfoNameContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.58"
-                            android:text="@string/name"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/mediaInfoName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:breakStrategy="balanced"
-                            android:textStyle="bold"
-                            tools:targetApi="m" />
-
-                        <TextView
-                            android:id="@+id/mediaInfoNameRomaji"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:breakStrategy="balanced"
-                            android:textStyle="bold"
-                            tools:targetApi="m" />
-                    </LinearLayout>
                 </TableLayout>
-
-                <TextView
-                    android:id="@+id/mediaInfoDescriptionText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/description"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/mediaInfoDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:ellipsize="end"
-                    android:maxLines="5"
-                    android:padding="16dp"
-                    android:layout_marginBottom="-16dp"
-                    android:text="@string/description" />
-
             </LinearLayout>
         </FrameLayout>
     </androidx.core.widget.NestedScrollView>
