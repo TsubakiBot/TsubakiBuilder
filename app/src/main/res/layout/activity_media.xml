@@ -121,8 +121,8 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/mediaMute"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="end"
                             android:layout_marginStart="8dp"
                             android:layout_weight="0"
@@ -134,8 +134,8 @@
 
                             <androidx.constraintlayout.utils.widget.ImageFilterView
                                 android:id="@+id/mediaMuteImage"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_round_volume_off_24"
                                 tools:ignore="ContentDescription" />
