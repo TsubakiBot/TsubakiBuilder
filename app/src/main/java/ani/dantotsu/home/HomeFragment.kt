@@ -408,6 +408,7 @@ class HomeFragment : Fragment() {
                         )
                     }
                     binding.homeHiddenItemsTitle.setOnLongClickListener {
+                        it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                         binding.homeHiddenItemsContainer.visibility = View.GONE
                         true
                     }
