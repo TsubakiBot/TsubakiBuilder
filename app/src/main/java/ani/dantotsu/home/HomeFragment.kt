@@ -381,8 +381,8 @@ class HomeFragment : Fragment() {
         binding.homeHiddenItemsContainer.visibility = View.GONE
         model.getHidden().observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty()) {
-                binding.homeContinueWatch.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                binding.homeContinueWatch.setOnLongClickListener { view ->
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     snackString(getString(R.string.no_hidden_items))
                     true
                 }
@@ -393,8 +393,8 @@ class HomeFragment : Fragment() {
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                binding.homeContinueWatch.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                binding.homeContinueWatch.setOnLongClickListener { view ->
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     binding.homeHiddenItemsRecyclerView.layoutAnimation =
                         LayoutAnimationController(setSlideIn(), 0.25f)
                     binding.homeHiddenItemsContainer.visibility = View.VISIBLE
@@ -409,8 +409,8 @@ class HomeFragment : Fragment() {
                         null
                     )
                 }
-                binding.homeHiddenItemsTitle.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                binding.homeHiddenItemsTitle.setOnLongClickListener { view ->
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     binding.homeHiddenItemsContainer.visibility = View.GONE
                     true
                 }

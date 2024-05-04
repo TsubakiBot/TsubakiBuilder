@@ -447,6 +447,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     private fun getTrailerBanner(trailer: String?) {
         if (trailer == null) return
         updateVideoScale()
+        if (tubePlayer != null) return
         val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner
         lifecycle.addObserver(youTubePlayerView)
         val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
@@ -517,6 +518,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onDestroy() {
         binding.youTubeBanner.release()
+        tubePlayer = null
         super.onDestroy()
     }
 
