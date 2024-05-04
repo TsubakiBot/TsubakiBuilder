@@ -74,35 +74,31 @@ fun ImageView.loadLocalImage(file: File?, size: Int = 0) {
 
 fun ImageView.blurImage(banner: String?) {
     if (banner != null) {
-        if ((context as Activity).isDestroyed) return
+        if ((this.context as Activity).isDestroyed) return
         val url = geUrlOrTrolled(banner)
+        val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
+        val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
         if (PrefManager.getVal(PrefName.BlurBanners)) {
-            val radius = PrefManager.getVal<Float>(PrefName.BlurRadius).toInt()
-            val sampling = PrefManager.getVal<Float>(PrefName.BlurSampling).toInt()
-            Glide.with(context)
+            Glide.with(this.context as Context)
                 .load(
-                    if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith(
-                            "content://"
-                        )
-                    ) Uri.parse(
-                        url
-                    ) else File(url)
-                )
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
-                .apply(
-                    if (PrefManager.getVal<String>(PrefName.ImageUrl).isEmpty()) {
-                        RequestOptions.noTransformation()
-                    } else {
-                        RequestOptions.bitmapTransform(BlurTransformation(radius, sampling))
+                    when {
+                        banner.startsWith("http") -> GlideUrl(url)
+                        banner.startsWith("content://") -> Uri.parse(url)
+                        else -> File(url)
                     }
                 )
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(radius, sampling)))
                 .into(this)
+
         } else {
-            Glide.with(context)
+            Glide.with(this.context as Context)
                 .load(
-                    if (banner.startsWith("http")) GlideUrl(url) else if (banner.startsWith("content://")) Uri.parse(
-                        url
-                    ) else File(url)
+                    when {
+                        banner.startsWith("http") -> GlideUrl(url)
+                        banner.startsWith("content://") -> Uri.parse(url)
+                        else -> File(url)
+                    }
                 )
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
                 .into(this)

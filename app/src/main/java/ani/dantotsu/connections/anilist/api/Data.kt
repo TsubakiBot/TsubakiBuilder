@@ -63,6 +63,19 @@ class Query {
     }
 
     @Serializable
+    data class Characters(
+        @SerialName("data")
+        val data: Data?
+    ) {
+
+        @Serializable
+        data class Data(
+            @SerialName("characters")
+            val characters: List<ani.dantotsu.connections.anilist.api.Character>?
+        )
+    }
+
+    @Serializable
     data class Studio(
         @SerialName("data")
         val data: Data?
@@ -72,6 +85,27 @@ class Query {
             @SerialName("Studio")
             val studio: ani.dantotsu.connections.anilist.api.Studio?
         )
+    }
+
+    @Serializable
+    data class Studios(
+        @SerialName("data")
+        val data: Data?
+    ) {
+        @Serializable
+        data class Data(
+            @SerialName("studios")
+            val studios: List<ani.dantotsu.connections.anilist.api.Studio>?
+        ) {
+            data class Media(
+                @SerialName("media")
+                val media: Nodes?
+            )
+            data class Nodes(
+                @SerialName("nodes")
+                val nodes: List<Media>?
+            )
+        }
     }
 
     @Serializable
@@ -93,8 +127,8 @@ class Query {
     ) {
         @Serializable
         data class Data(
-            @SerialName("Staff")
-            val staff: Staff
+            @SerialName("staff")
+            val staff: List<Staff>?
         )
     }
 

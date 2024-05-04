@@ -949,34 +949,42 @@ class AnilistQueries {
     id: Int? = null,
     search: String? = null
     ) {
-
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Character (${"$"}id, search: ${"$"}search) {
-    id
-    name {
-      first
-      middle
-      last
-      full
-      native
-      userPreferred
+  Page(page: 1, perPage: 10) {
+    pageInfo {
+      total
+      perPage
+      currentPage
+      lastPage
+      hasNextPage
     }
-    image {
-      large
-      medium
+    characters(${"$"}id, search: ${"$"}search) {
+      id
+      name {
+        first
+        middle
+        last
+        full
+        native
+        userPreferred
+      }
+      image {
+        large
+        medium
+      }
+      description
+      gender
+      dateOfBirth {
+        year
+        month
+        day
+      }
+      age
+      bloodType
+      isFavourite
     }
-    description
-    gender
-    dateOfBirth {
-      year
-      month
-      day
-    }
-    age
-    bloodType
-    isFavourite
- }
+  }
 }
         """.replace("\n", " ").replace("""  """, "")
         val variables = """{
@@ -984,24 +992,24 @@ query (${"$"}id: Int, ${"$"}search: String) {
             ${if (search != null) ""","search":"$search"""" else ""}
             }"""
 
-        val response = executeQuery<Query.Character>(query, variables, true)?.data
-        response?.character?.let {
-                Character(
-                    it.id,
-                    it.name?.userPreferred,
-                    it.image?.large,
-                    it.image?.medium,
-                    "",
-                    false,
-                    it.description,
-                    it.age,
-                    it.gender,
-                    it.dateOfBirth
-                )
+        val response = executeQuery<Query.Characters>(query, variables, true)?.data
+        val responseArray = arrayListOf<Character>()
+        response?.characters?.forEach {
+            val character = Character(
+                it.id,
+                it.name?.userPreferred,
+                it.image?.large,
+                it.image?.medium,
+                "",
+                false,
+                it.description,
+                it.age,
+                it.gender,
+                it.dateOfBirth
+            )
+            responseArray.add(character)
         }
         return
-
-
     }
 
     suspend fun searchStaff(
@@ -1011,39 +1019,48 @@ query (${"$"}id: Int, ${"$"}search: String) {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Staff (${"$"}id, search: ${"$"}search) {
-    id
-    name {
-      first
-      middle
-      last
-      full
-      native
-      userPreferred
+  Page(page: 1, perPage: 10) {
+    pageInfo {
+      total
+      perPage
+      currentPage
+      lastPage
+      hasNextPage
     }
-    languageV2
-    image {
-      large
-      medium
+    staff(${"$"}id, search: ${"$"}search) {
+      id
+      name {
+        first
+        middle
+        last
+        full
+        native
+        userPreferred
+      }
+      languageV2
+      image {
+        large
+        medium
+      }
+      description
+      primaryOccupations
+      gender
+      dateOfBirth {
+        year
+        month
+        day
+      }
+      dateOfDeath {
+        year
+        month
+        day
+      }
+      age
+      yearsActive
+      homeTown
+      bloodType
     }
-    description
-    primaryOccupations
-    gender
-    dateOfBirth {
-      year
-      month
-      day
-    }
-    dateOfDeath {
-      year
-      month
-      day
-    }
-    age
-    yearsActive
-    homeTown
-    bloodType
- }
+  }
 }
         """.replace("\n", " ").replace("""  """, "")
         val variables = """{
@@ -1052,7 +1069,8 @@ query (${"$"}id: Int, ${"$"}search: String) {
             }"""
 
         val response = executeQuery<Query.Employee>(query, variables, true)?.data
-        response?.staff?.let {
+        val responseArray = arrayListOf<Character>()
+        response?.staff?.forEach {
 
         }
         return
@@ -1065,12 +1083,45 @@ query (${"$"}id: Int, ${"$"}search: String) {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Studio (${"$"}id, search: ${"$"}search) {
-    id
-    name
-    isAnimationStudio
-    isFavourite
- }
+  Page(page: 1, perPage: 10) {
+    pageInfo {
+      total
+      perPage
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    studios(${"$"}id, search: ${"$"}search) {
+      id
+      name
+      isAnimationStudio
+      isFavourite
+      media(page: 1, perPage: 10) {
+        nodes {
+          id
+          idMal
+          isAdult
+          status
+          chapters
+          episodes
+          nextAiringEpisode { episode }
+          type
+          meanScore
+          startDate{ year }
+          isFavourite
+          format
+          bannerImage
+          countryOfOrigin
+          coverImage { large }
+          title {
+              english
+              romaji
+              userPreferred
+          }
+        }
+      }
+    }
+  }
 }
         """.replace("\n", " ").replace("""  """, "")
 
@@ -1079,8 +1130,9 @@ query (${"$"}id: Int, ${"$"}search: String) {
             ${if (search != null) ""","search":"$search"""" else ""}
             }"""
 
-        val response = executeQuery<Query.Studio>(query, variables, true)?.data
-        response?.studio?.let {
+        val response = executeQuery<Query.Studios>(query, variables, true)?.data
+        val responseArray = arrayListOf<Studio>()
+        response?.studios?.forEach {
 
         }
         return
