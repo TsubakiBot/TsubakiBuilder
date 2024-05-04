@@ -12,6 +12,7 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.NotificationResponse
 import ani.dantotsu.connections.anilist.api.Page
 import ani.dantotsu.connections.anilist.api.Query
+import ani.dantotsu.connections.anilist.api.Staff
 import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline
@@ -943,6 +944,147 @@ class AnilistQueries {
             return genres[genre]
         }
         return null
+    }
+
+    suspend fun searchCharacter(
+    id: Int? = null,
+    search: String? = null
+    ) {
+
+        val query = """
+query (${"$"}id: Int, ${"$"}search: String) {
+  Character (${"$"}id, search: ${"$"}search) {
+    id
+    name {
+      first
+      middle
+      last
+      full
+      native
+      userPreferred
+    }
+    image {
+      large
+      medium
+    }
+    description
+    gender
+    dateOfBirth {
+      year
+      month
+      day
+    }
+    age
+    bloodType
+    isFavourite
+ }
+}
+        """.replace("\n", " ").replace("""  """, "")
+        val variables = """{
+            ${if (id != null) ""","id":"$id"""" else ""}
+            ${if (search != null) ""","search":"$search"""" else ""}
+            }"""
+
+        val response = executeQuery<Query.Character>(query, variables, true)?.data
+        response?.character?.let {
+                Character(
+                    it.id,
+                    it.name?.userPreferred,
+                    it.image?.large,
+                    it.image?.medium,
+                    "",
+                    false,
+                    it.description,
+                    it.age,
+                    it.gender,
+                    it.dateOfBirth
+                )
+        }
+        return
+
+
+    }
+
+    suspend fun searchStaff(
+    id: Int? = null,
+    search: String? = null
+    ) {
+
+        val query = """
+query (${"$"}id: Int, ${"$"}search: String) {
+  Staff (${"$"}id, search: ${"$"}search) {
+    id
+    name {
+      first
+      middle
+      last
+      full
+      native
+      userPreferred
+    }
+    languageV2
+    image {
+      large
+      medium
+    }
+    description
+    primaryOccupations
+    gender
+    dateOfBirth {
+      year
+      month
+      day
+    }
+    dateOfDeath {
+      year
+      month
+      day
+    }
+    age
+    yearsActive
+    homeTown
+    bloodType
+ }
+}
+        """.replace("\n", " ").replace("""  """, "")
+        val variables = """{
+            ${if (id != null) ""","id":"$id"""" else ""}
+            ${if (search != null) ""","search":"$search"""" else ""}
+            }"""
+
+        val response = executeQuery<Query.Employee>(query, variables, true)?.data
+        response?.staff?.let {
+
+        }
+        return
+    }
+
+    suspend fun searchStudio(
+        id: Int? = null,
+        search: String? = null
+    ) {
+
+        val query = """
+query (${"$"}id: Int, ${"$"}search: String) {
+  Studio (${"$"}id, search: ${"$"}search) {
+    id
+    name
+    isAnimationStudio
+    isFavourite
+ }
+}
+        """.replace("\n", " ").replace("""  """, "")
+
+        val variables = """{
+            ${if (id != null) ""","id":"$id"""" else ""}
+            ${if (search != null) ""","search":"$search"""" else ""}
+            }"""
+
+        val response = executeQuery<Query.Studio>(query, variables, true)?.data
+        response?.studio?.let {
+
+        }
+        return
     }
 
     suspend fun search(

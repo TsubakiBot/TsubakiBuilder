@@ -74,7 +74,6 @@ class Query {
         )
     }
 
-
     @Serializable
     data class Author(
         @SerialName("data")
@@ -84,6 +83,18 @@ class Query {
         data class Data(
             @SerialName("Staff")
             val author: Staff?
+        )
+    }
+
+    @Serializable
+    data class Employee(
+        @SerialName("data")
+        val data: Data?
+    ) {
+        @Serializable
+        data class Data(
+            @SerialName("Staff")
+            val staff: Staff
         )
     }
 
