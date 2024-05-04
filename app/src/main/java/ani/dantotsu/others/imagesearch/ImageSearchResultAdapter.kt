@@ -38,7 +38,7 @@ class ImageSearchResultAdapter(private val searchResults: List<ImageSearchViewMo
 
         binding.root.context.apply {
             binding.itemCompactTitle.text = searchResult.anilist?.title?.romaji
-            binding.itemTotal.text = getString(
+            binding.itemTotalLabel.text = getString(
                 R.string.similarity_text, String.format("%.1f", searchResult.similarity?.times(100))
             )
 

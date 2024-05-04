@@ -43,6 +43,7 @@ import ani.dantotsu.toPx
 import ani.himitsu.update.MatagiUpdater
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
+import eu.kanade.tachiyomi.util.system.getThemeColor
 
 class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHolder>() {
     val ready = MutableLiveData(false)
@@ -70,17 +71,17 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         val materialCardView =
             holder.itemView.findViewById<MaterialCardView>(R.id.userAvatarContainer)
         materialCardView.setCardBackgroundColor(semiTransparentColor)
-        val typedValue = TypedValue()
-        currContext().theme?.resolveAttribute(android.R.attr.windowBackground, typedValue, true)
-        val color = typedValue.data
+        val color = currContext().getThemeColor(android.R.attr.windowBackground)
 
         textInputLayout.boxBackgroundColor = (color and 0x00FFFFFF) or 0x28000000
         materialCardView.setCardBackgroundColor((color and 0x00FFFFFF) or 0x28000000)
 
         trendingBinding.titleContainer.updatePadding(top = statusBarHeight)
 
-        if (PrefManager.getVal(PrefName.SmallView)) trendingBinding.trendingContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = (-108f).toPx
+        if (PrefManager.getVal(PrefName.SmallView)) {
+            trendingBinding.trendingContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = (-108f).toPx
+            }
         }
 
         updateAvatar()

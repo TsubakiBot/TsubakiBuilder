@@ -22,7 +22,6 @@ import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.blurImage
-import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ItemMediaCompactBinding
 import ani.dantotsu.databinding.ItemMediaLargeBinding
 import ani.dantotsu.databinding.ItemMediaPageBinding
@@ -96,7 +95,7 @@ class MediaAdaptor(
                     setAnimation(activity, b.root)
                     b.itemCompactImage.loadImage(media.cover)
                     b.itemCompactOngoing.isVisible =
-                        media.status == currActivity()!!.getString(R.string.status_releasing)
+                        media.status == getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
                     b.itemCompactScore.text =
                         ((if (media.userScore == 0) (media.meanScore
@@ -142,7 +141,7 @@ class MediaAdaptor(
                     b.itemCompactImage.loadImage(media.cover)
                     b.itemCompactBanner.blurImage(media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
-                        media.status == currActivity()!!.getString(R.string.status_releasing)
+                        media.status == getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
                     b.itemCompactScore.text =
                         ((if (media.userScore == 0) (media.meanScore
@@ -151,8 +150,8 @@ class MediaAdaptor(
                         b.root.context,
                         (if (media.userScore != 0) R.drawable.item_user_score else R.drawable.item_score)
                     )
-                    b.itemTotal.text = getItemTotal(media, '/', "??")
-                    b.itemCompactTotal.text = getItemCompactTitle(media)
+                    b.itemCompactTotal.text = getItemTotal(media, '/', "??")
+                    b.itemTotalLabel.text = getItemTotalLabel(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val start = mediaList.size
                         mediaList.addAll(mediaList)
@@ -172,10 +171,9 @@ class MediaAdaptor(
                                 AccelerateDecelerateInterpolator()
                             )
                         )
-                    (if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen)
-                        .blurImage(media.banner ?: media.cover)
-                    b.itemCompactOngoing.isVisible =
-                        media.status == currActivity()!!.getString(R.string.status_releasing)
+                    val banner = if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen
+                    banner.blurImage(media.banner ?: media.cover)
+                    b.itemCompactOngoing.isVisible = media.status == getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
                     b.itemCompactScore.text =
                         ((if (media.userScore == 0) (media.meanScore
@@ -184,8 +182,8 @@ class MediaAdaptor(
                         b.root.context,
                         (if (media.userScore != 0) R.drawable.item_user_score else R.drawable.item_score)
                     )
-                    b.itemTotal.text = getItemTotal(media, '/', "??")
-                    b.itemCompactTotal.text = getItemCompactTitle(media)
+                    b.itemCompactTotal.text = getItemTotal(media, '/', "??")
+                    b.itemTotalLabel.text = getItemTotalLabel(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val size = mediaList.size
                         mediaList.addAll(mediaList)
@@ -204,10 +202,10 @@ class MediaAdaptor(
                                 AccelerateDecelerateInterpolator()
                             )
                         )
-                    (if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen)
-                        .blurImage(media.banner ?: media.cover)
+                    val banner = if (bannerAnimations) b.itemCompactBanner else b.itemCompactBannerNoKen
+                    banner.blurImage(media.banner ?: media.cover)
                     b.itemCompactOngoing.isVisible =
-                        media.status == currActivity()!!.getString(R.string.status_releasing)
+                        media.status == getString(R.string.status_releasing)
                     b.itemCompactTitle.text = media.userPreferredName
                     b.itemCompactScore.text =
                         ((if (media.userScore == 0) (media.meanScore
@@ -216,6 +214,7 @@ class MediaAdaptor(
                         b.root.context,
                         (if (media.userScore != 0) R.drawable.item_user_score else R.drawable.item_score)
                     )
+                    b.itemCompactStatus.text = media.status
                     media.genres.apply {
                         if (isNotEmpty()) {
                             var genres = ""
@@ -224,8 +223,8 @@ class MediaAdaptor(
                             b.itemCompactGenres.text = genres
                         }
                     }
-                    b.itemTotal.text = getItemTotal(media, '/', "??")
-                    b.itemCompactTotal.text = getItemCompactTitle(media)
+                    b.itemCompactTotal.text = getItemTotal(media, '/', "??")
+                    b.itemTotalLabel.text = getItemTotalLabel(media)
                     if (position == mediaList!!.size - 2 && viewPager != null) viewPager.post {
                         val size = mediaList.size
                         mediaList.addAll(mediaList)
@@ -248,7 +247,7 @@ class MediaAdaptor(
         } else ""
     }
 
-    private fun getItemCompactTitle(media: Media): String {
+    private fun getItemTotalLabel(media: Media): String {
         return when {
             media.anime != null -> {
                 if ((media.anime.totalEpisodes ?: 0) != 1)
@@ -263,7 +262,7 @@ class MediaAdaptor(
                     getString(R.string.chapter_singular)
             }
             else -> ""
-        } + " "
+        }
     }
 
     override fun getItemCount() = mediaList!!.size

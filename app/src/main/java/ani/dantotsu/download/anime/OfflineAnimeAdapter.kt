@@ -57,7 +57,7 @@ class OfflineAnimeAdapter(
 
         if (style == 0) {
             val bannerView = view.findViewById<ImageView>(R.id.itemCompactBanner) // for large view
-            val episodes = view.findViewById<TextView>(R.id.itemTotal)
+            val episodes = view.findViewById<TextView>(R.id.itemTotalLabel)
             episodes.text = context.getString(R.string.episodes)
             bannerView.setImageURI(item.banner ?: item.image)
             totalEpisodes.text = item.totalEpisodeList

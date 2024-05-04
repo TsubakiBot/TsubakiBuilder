@@ -6,14 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.flaviofaria.kenburnsview.KenBurnsView
-        android:id="@+id/itemCompactBanner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription,ImageContrastCheck"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
-
     <ImageView
         android:id="@+id/itemCompactBannerNoKen"
         android:layout_width="match_parent"
@@ -29,6 +21,14 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/itemCompactBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription,ImageContrastCheck"
+            tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -157,21 +157,22 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/itemTotalLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eps"
+                        android:textSize="14dp"
+                        tools:ignore="SpUsage,TextContrastCheck" />
+
+                    <TextView
                         android:id="@+id/itemCompactTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        tools:ignore="SpUsage,TextContrastCheck"
-                        tools:text="/??" />
-
-                    <TextView
-                        android:id="@+id/itemTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         android:alpha="0.66"
-                        android:text="@string/eps"
                         android:textSize="14dp"
-                        tools:ignore="SpUsage" />
+                        tools:ignore="SpUsage"
+                        tools:text="/??" />
 
                 </LinearLayout>
 
