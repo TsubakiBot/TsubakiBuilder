@@ -113,7 +113,7 @@
     <string name="popularity">Gewildheid</string>
     <string name="roles">Rolle</string>
     <string name="details">Besonderhede</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Kyk Trailer op YouTube</string>
     <string name="play_yt">Speel op Youtube</string>
     <string name="eps">Episodes</string>
     <string name="ep">Episode</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Standaard Aanvangsblad</string>
     <string name="small_view">Klein aansig in Tendensvertonings</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Gebruik Trailer as Banier</string>
     <string name="animations">Animasies</string>
     <string name="banner_animations">Banieranimasies</string>
     <string name="layout_animations">Uitleganimasies</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Gaan voort: Aflewering %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Vuller</string>
     <string name="continue_chapter">Gaan voort: %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Aflewering "</string>
     <string name="episode_num">Aflewering %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Hoofstuk "</string>
     <string name="chapter_num">Hoofstuk %1$s</string>
     <string name="just_released">- Nuut vrygestel!</string>
     <string name="checking_subscriptions_title">Toetse van Intekening</string>
@@ -550,10 +550,10 @@
     <string name="available">Beskikbaar</string>
     <string name="lets_go">Laat ons Gaan</string>
     <string name="cope">Hanteer</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Gekyk "</string>
     <string name="read_num">"Gelees "</string>
     <string name="items_out_of">" uit "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Totaal van "</string>
     <string name="no_description_available">Geen Beskrywing Beskikbaar</string>
     <string-array name="manga_directions">
         <item>Bo tot onder</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Gekies</string>
     <string name="found">Gevind</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Ouderdom:__ "</string>
+    <string name="birthday">"\n__Verjaarsdag:__ "</string>
+    <string name="gender">"\n__Geslag:__ "</string>
     <string name="male">Manlik</string>
     <string name="female">Vroulik</string>
     <string name="question_1">Wat is Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Gids nie gevind nie</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Jy</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Versteekte</string>
 </resources>

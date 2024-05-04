@@ -113,7 +113,7 @@
     <string name="popularity">Popularitet</string>
     <string name="roles">Roller</string>
     <string name="details">Detaljer</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Se Trailer på YouTube</string>
     <string name="play_yt">Spil på Youtube</string>
     <string name="eps">Episoder</string>
     <string name="ep">Episode</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Standard Start Faneblad</string>
     <string name="small_view">Lille visning i aktuelle serier</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Brug Trailer som Banner</string>
     <string name="animations">Animationer</string>
     <string name="banner_animations">Banner Animationer</string>
     <string name="layout_animations">Layout Animationer</string>
@@ -523,7 +523,7 @@
     <string name="continue_chapter">Fortsæt : %1$s\n%2$s</string>
     <string name="episode">"Episode "</string>
     <string name="episode_num">Episode %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Kapitel "</string>
     <string name="chapter_num">Kapitel %1$s</string>
     <string name="just_released">- Nyligt frigivet!</string>
     <string name="checking_subscriptions_title">Kontrollerer Abonnementer</string>
@@ -550,10 +550,10 @@
     <string name="available">Tilgængelig</string>
     <string name="lets_go">Lad Os Kør</string>
     <string name="cope">Hope</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Set "</string>
     <string name="read_num">"Læs "</string>
     <string name="items_out_of">" ud af "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"I alt "</string>
     <string name="no_description_available">Ingen Beskrivelse Tilgængelig</string>
     <string-array name="manga_directions">
         <item>Top til bunden</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Valgt</string>
     <string name="found">Fundet</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Alder:__ "</string>
+    <string name="birthday">"\n__Fødselsdag:__ "</string>
+    <string name="gender">"\n__køn:__ "</string>
     <string name="male">Mand</string>
     <string name="female">Kvinde</string>
     <string name="question_1">Hvad er Dantotsu?</string>
@@ -957,5 +957,5 @@
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Skjult</string>
 </resources>

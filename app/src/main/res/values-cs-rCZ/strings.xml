@@ -113,7 +113,7 @@
     <string name="popularity">Oblíbenost</string>
     <string name="roles">Role</string>
     <string name="details">Detaily</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Sledujte Trailer na YouTube</string>
     <string name="play_yt">Hrát na YouTube</string>
     <string name="eps">Epizody</string>
     <string name="ep">Epizoda</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Výchozí panel Start Up</string>
     <string name="small_view">Malé zobrazení v populárních seriálech</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Použijte Trailer jako Banner</string>
     <string name="animations">Animace</string>
     <string name="banner_animations">Animace banneru</string>
     <string name="layout_animations">Animace rozložení</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Pokračovat : Epizoda %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Vyplňování</string>
     <string name="continue_chapter">Pokračovat : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Epizoda "</string>
     <string name="episode_num">Epizoda %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Kapitola "</string>
     <string name="chapter_num">Kapitola %1$s</string>
     <string name="just_released">- Nově vydáno!</string>
     <string name="checking_subscriptions_title">Kontrola předplatného</string>
@@ -550,10 +550,10 @@
     <string name="available">Dostupné</string>
     <string name="lets_go">Jdeme</string>
     <string name="cope">Kopie</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Sledováno "</string>
     <string name="read_num">"Číst "</string>
     <string name="items_out_of">" z "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Celkem "</string>
     <string name="no_description_available">Není k dispozici žádný popis</string>
     <string-array name="manga_directions">
         <item>Nahoře dolů</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Vybrané</string>
     <string name="found">Nalezeno</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Věk:__ "</string>
+    <string name="birthday">"\n__Narozeniny:__ "</string>
+    <string name="gender">"\n__Pohlaví:_"</string>
     <string name="male">Muž</string>
     <string name="female">Samice</string>
     <string name="question_1">Co je to Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Adresář nenalezen</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Ty</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Skryté</string>
 </resources>

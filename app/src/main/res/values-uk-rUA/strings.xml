@@ -113,7 +113,7 @@
     <string name="popularity">Популярність</string>
     <string name="roles">Ролі</string>
     <string name="details">Подробиці</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Дивіться трейлер на YouTube</string>
     <string name="play_yt">Грати на Youtube</string>
     <string name="eps">Епізоди</string>
     <string name="ep">Епізод</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">За промовчанням Початкова Вкладка</string>
     <string name="small_view">Вид у актуальних повідомленнях</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Використовуйте трейлер як банер</string>
     <string name="animations">Анімація</string>
     <string name="banner_animations">Анімації банеру</string>
     <string name="layout_animations">Анімація макету</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Продовжити: Епізод %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Філер</string>
     <string name="continue_chapter">Продовжити : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Епізод "</string>
     <string name="episode_num">Епізод %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Розділ "</string>
     <string name="chapter_num">Глава %1$s</string>
     <string name="just_released">- Нові реліз!</string>
     <string name="checking_subscriptions_title">Перевірка передплати</string>
@@ -550,10 +550,10 @@
     <string name="available">Доступно</string>
     <string name="lets_go">Ходімо</string>
     <string name="cope">Каппа</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Переглянуто "</string>
     <string name="read_num">"Прочитано "</string>
     <string name="items_out_of">" з "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Усього "</string>
     <string name="no_description_available">Опис недоступний</string>
     <string-array name="manga_directions">
         <item>Верхня донизу</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Вибрано</string>
     <string name="found">Знайдено</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Вік:__ "</string>
+    <string name="birthday">"\n__День народження:__ "</string>
+    <string name="gender">"\n__Стать:__ "</string>
     <string name="male">Чоловік</string>
     <string name="female">Жінка</string>
     <string name="question_1">Що таке Дантоцу?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Каталог не знайдено</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Ви</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Приховано</string>
 </resources>

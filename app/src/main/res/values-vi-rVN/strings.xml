@@ -113,7 +113,7 @@
     <string name="popularity">Phổ Biến</string>
     <string name="roles">Vai Trò</string>
     <string name="details">Chi Tiết</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Xem Trailer trên YouTube</string>
     <string name="play_yt">Xem trên Youtube</string>
     <string name="eps">Tập</string>
     <string name="ep">Tập</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Tab Khởi đầu Mặc định</string>
     <string name="small_view">Xem Nhỏ trong Các chương trình đang thịnh hành</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Sử dụng Trailer làm Banner</string>
     <string name="animations">Hoạt hình</string>
     <string name="banner_animations">Hoạt hình Banner</string>
     <string name="layout_animations">Hoạt hình Bố cục</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Tiếp tục : Tập %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Độc chiếm</string>
     <string name="continue_chapter">Tiếp tục : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Tập "</string>
     <string name="episode_num">Tập %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Chương "</string>
     <string name="chapter_num">Chương %1$s</string>
     <string name="just_released">- Vừa phát hành!</string>
     <string name="checking_subscriptions_title">Kiểm tra Đăng ký</string>
@@ -550,10 +550,10 @@
     <string name="available">Có sẵn</string>
     <string name="lets_go">Chúng ta đi</string>
     <string name="cope">Đối phó</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Đã xem "</string>
     <string name="read_num">"Đã đọc "</string>
     <string name="items_out_of">" trên "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Tổng cộng "</string>
     <string name="no_description_available">Không có Mô tả</string>
     <string-array name="manga_directions">
         <item>Từ trên xuống dưới</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Đã chọn</string>
     <string name="found">Đã tìm thấy</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Tuổi:__ "</string>
+    <string name="birthday">"\n__Sinh nhật:__ "</string>
+    <string name="gender">"\n__Giới tính:__ "</string>
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
     <string name="question_1">Dantotsu là gì?</string>
@@ -755,10 +755,10 @@
     <string name="you_cursed">Bạn đã bị nguyền rủa</string>
     <string name="invalid_file_type">Loại tệp không hợp lệ</string>
     <string name="purge_confirm">Bạn có chắc chắn muốn xóa tất cả %1$s tải về không?</string>
-    <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
-    <string name="multi_download_chapter">Multi Chapter Downloader</string>
-    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
+    <string name="delete_content">Bạn có chắc chắn muốn xóa %1$s không?</string>
+    <string name="delete_chapter">Xóa Chương</string>
+    <string name="multi_download_chapter">Trình tải nhiều chương</string>
+    <string name="multi_download_chapter_count">Nhập số lượng chương để tải xuống</string>
     <string name="delete_fail_reason">Xóa không thành công vì… %1$s</string>
     <string name="hide_replies">Ẩn trả lời</string>
     <string name="view_reply">Xem trả lời</string>
@@ -946,16 +946,16 @@
     <string name="available_extensions">Có sẵn %1$s</string>
     <string name="available_plugins">%1$s Cắm trên</string>
     <string name="your_story">Câu chuyện của bạn</string>
-    <string name="your_progress">Your Progress</string>
+    <string name="your_progress">Tiến độ của bạn</string>
     <string name="file_not_found">Không tìm thấy tập tin</string>
     <string name="directory_not_found">Thư mục không tồn tại</string>
-    <string name="successfully_deleted">Successfully deleted</string>
-    <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
-    <string name="logout_confirm">Are you sure you want to logout?</string>
-    <string name="app_died">APP DIED</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
-    <string name="copy_report">Copy Report</string>
-    <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="successfully_deleted">Đã xóa thành công</string>
+    <string name="failed_to_delete_directory">Không thể xóa thư mục</string>
+    <string name="you">Bạn</string>
+    <string name="logout_confirm">Bạn có chắc chắn muốn đăng xuất không?</string>
+    <string name="app_died">Ứng dụng đã dừng</string>
+    <string name="an_unexpected_error_occurred">Đã xảy ra lỗi không mong muốn.\nVui lòng gửi báo cáo lỗi cho nhà phát triển :)</string>
+    <string name="copy_report">Sao chép báo cáo</string>
+    <string name="share_as_file">Chia sẻ dưới dạng tệp</string>
+    <string name="hidden">Ẩn</string>
 </resources>

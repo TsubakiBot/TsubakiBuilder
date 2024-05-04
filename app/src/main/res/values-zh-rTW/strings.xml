@@ -113,7 +113,7 @@
     <string name="popularity">Popularity</string>
     <string name="roles">Roles</string>
     <string name="details">Details</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">在 YouTube 上觀看預告片</string>
     <string name="play_yt">Play on Youtube</string>
     <string name="eps">Episodes</string>
     <string name="ep">Episode</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="small_view">Small View in Trending Shows</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">將預告片用作橫幅</string>
     <string name="animations">Animations</string>
     <string name="banner_animations">Banner Animations</string>
     <string name="layout_animations">Layout Animations</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Continue : Episode %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continue : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"集"</string>
     <string name="episode_num">Episode %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"章"</string>
     <string name="chapter_num">Chapter %1$s</string>
     <string name="just_released">- Newly released!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
@@ -550,10 +550,10 @@
     <string name="available">Available</string>
     <string name="lets_go">Let\'s Go</string>
     <string name="cope">Cope</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"已觀看"</string>
     <string name="read_num">"Read "</string>
     <string name="items_out_of">" out of "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"共 "</string>
     <string name="no_description_available">No Description Available</string>
     <string-array name="manga_directions">
         <item>Top to Bottom</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Selected</string>
     <string name="found">Found</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__年齡:__ "</string>
+    <string name="birthday">"\n__生日:__ "</string>
+    <string name="gender">"\n__性別:__ "</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="question_1">What is Dantotsu?</string>
@@ -755,10 +755,10 @@
     <string name="you_cursed">你被詛咒了</string>
     <string name="invalid_file_type">Invalid file type</string>
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
-    <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
-    <string name="multi_download_chapter">Multi Chapter Downloader</string>
-    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
+    <string name="delete_content">您確定要刪除 %1$s 嗎？</string>
+    <string name="delete_chapter">刪除章節</string>
+    <string name="multi_download_chapter">多章節下載器</string>
+    <string name="multi_download_chapter_count">輸入要下載的章節數量</string>
     <string name="delete_fail_reason">Failed to delete because of… %1$s</string>
     <string name="hide_replies">Hide replies</string>
     <string name="view_reply">View reply</string>
@@ -946,16 +946,16 @@
     <string name="available_extensions">可用 %1$s</string>
     <string name="available_plugins">%1$s 外掛程式</string>
     <string name="your_story">您的故事</string>
-    <string name="your_progress">Your Progress</string>
+    <string name="your_progress">您的進度</string>
     <string name="file_not_found">找不到檔案</string>
     <string name="directory_not_found">找不到目錄</string>
-    <string name="successfully_deleted">Successfully deleted</string>
-    <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
-    <string name="logout_confirm">Are you sure you want to logout?</string>
-    <string name="app_died">APP DIED</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
-    <string name="copy_report">Copy Report</string>
-    <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="successfully_deleted">刪除成功</string>
+    <string name="failed_to_delete_directory">無法刪除目錄</string>
+    <string name="you">您</string>
+    <string name="logout_confirm">您確定要登出嗎？</string>
+    <string name="app_died">應用程式當機</string>
+    <string name="an_unexpected_error_occurred">發生意外錯誤。\n請將崩潰報告發送給開發人員 :)</string>
+    <string name="copy_report">複製報告</string>
+    <string name="share_as_file">分享為文件</string>
+    <string name="hidden">隱藏</string>
 </resources>

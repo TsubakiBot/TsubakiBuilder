@@ -113,7 +113,7 @@
     <string name="popularity">受欢迎度</string>
     <string name="roles">角色</string>
     <string name="details">详情</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">在YouTube上观看预告片</string>
     <string name="play_yt">在 Youtube 上播放</string>
     <string name="eps">集数</string>
     <string name="ep">集</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">默认启动选项卡</string>
     <string name="small_view">在热门节目中显示小视图</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">将预告片用作横幅</string>
     <string name="animations">动画</string>
     <string name="banner_animations">横幅动画</string>
     <string name="layout_animations">布局动画</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">继续：剧集 </string>
     <string name="filler_tag"> - 过滤器</string>
     <string name="continue_chapter">继续：</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"剧集 "</string>
     <string name="episode_num">剧集 %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"章节 "</string>
     <string name="chapter_num">章节 %1$s</string>
     <string name="just_released">- 刚刚发布了！</string>
     <string name="checking_subscriptions_title">检查订阅</string>
@@ -550,10 +550,10 @@
     <string name="available">可用</string>
     <string name="lets_go">开始吧</string>
     <string name="cope">应付</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"已观看 "</string>
     <string name="read_num">"已阅读 "</string>
     <string name="items_out_of">" 共 "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"共 "</string>
     <string name="no_description_available">暂无描述</string>
     <string-array name="manga_directions">
         <item>从上到下</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">已选择</string>
     <string name="found">已找到</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__年龄：__ "</string>
+    <string name="birthday">"\n__生日：__ "</string>
+    <string name="gender">"\n__性别：__ "</string>
     <string name="male">男性</string>
     <string name="female">女性</string>
     <string name="question_1">Dantotsu 是什么？</string>
@@ -749,10 +749,10 @@
     <string name="you_cursed">youwu 已被 cuwsed</string>
     <string name="invalid_file_type">无效的文件类型</string>
     <string name="purge_confirm">您确定要清除所有 %1$s 下载吗？</string>
-    <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
-    <string name="multi_download_chapter">Multi Chapter Downloader</string>
-    <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
+    <string name="delete_content">您确定要删除 %1$s 吗？</string>
+    <string name="delete_chapter">删除章节</string>
+    <string name="multi_download_chapter">多章节下载器</string>
+    <string name="multi_download_chapter_count">输入要下载的章节数</string>
     <string name="delete_fail_reason">由于… %1$s 删除失败</string>
     <string name="hide_replies">隐藏回复</string>
     <string name="view_reply">查看回复</string>
@@ -940,16 +940,16 @@
     <string name="available_extensions">可用的 %1$s</string>
     <string name="available_plugins">%1$s 插件</string>
     <string name="your_story">您的故事</string>
-    <string name="your_progress">Your Progress</string>
+    <string name="your_progress">您的进度</string>
     <string name="file_not_found">文件未找到</string>
     <string name="directory_not_found">目录未找到</string>
-    <string name="successfully_deleted">Successfully deleted</string>
-    <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
-    <string name="logout_confirm">Are you sure you want to logout?</string>
-    <string name="app_died">APP DIED</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
-    <string name="copy_report">Copy Report</string>
-    <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="successfully_deleted">删除成功</string>
+    <string name="failed_to_delete_directory">删除目录失败</string>
+    <string name="you">您</string>
+    <string name="logout_confirm">您确定要注销吗？</string>
+    <string name="app_died">应用程序崩溃</string>
+    <string name="an_unexpected_error_occurred">发生了意外错误。\n请向开发人员发送崩溃报告 :)</string>
+    <string name="copy_report">复制报告</string>
+    <string name="share_as_file">分享为文件</string>
+    <string name="hidden">隐藏</string>
 </resources>

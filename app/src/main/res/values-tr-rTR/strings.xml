@@ -113,7 +113,7 @@
     <string name="popularity">Popülerlik</string>
     <string name="roles">Roller</string>
     <string name="details">Detaylar</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">YouTube\'da Römork İzle</string>
     <string name="play_yt">Youtube\'da Oynat</string>
     <string name="eps">Bölümler</string>
     <string name="ep">Bölüm</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Varsayılan Başlangıç Sekmesi</string>
     <string name="small_view">Trend Olan Gösterilerde Küçük Görünüm</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Banner Olarak Römork Kullan</string>
     <string name="animations">Animasyonlar</string>
     <string name="banner_animations">Banner Animasyonları</string>
     <string name="layout_animations">Düzen Animasyonları</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Devam Et : Bölüm %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Dolgu</string>
     <string name="continue_chapter">Devam Et : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Bölüm "</string>
     <string name="episode_num">Bölüm %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Bölüm "</string>
     <string name="chapter_num">Bölüm %1$s</string>
     <string name="just_released">- Yeni yayınlandı!</string>
     <string name="checking_subscriptions_title">Abonelikler Kontrol Ediliyor</string>
@@ -550,10 +550,10 @@
     <string name="available">Mevcut</string>
     <string name="lets_go">Haydi</string>
     <string name="cope">Başa Çık</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"İzlenen "</string>
     <string name="read_num">"Okunan "</string>
     <string name="items_out_of">" dışında "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Toplam "</string>
     <string name="no_description_available">Açıklama Mevcut Değil</string>
     <string-array name="manga_directions">
         <item>Yukarıdan Aşağıya</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Seçilen</string>
     <string name="found">Bulunan</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Yaş:__ "</string>
+    <string name="birthday">"\n__Doğum Günü:__ "</string>
+    <string name="gender">"\n__Cinsiyet:__ "</string>
     <string name="male">Erkek</string>
     <string name="female">Kadın</string>
     <string name="question_1">Dantotsu nedir?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Dizin bulunamadı</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Sen</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Gizli</string>
 </resources>

@@ -113,7 +113,7 @@
     <string name="popularity">Δημοτικότητα</string>
     <string name="roles">Ρόλοι</string>
     <string name="details">Λεπτομέρειές</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Παρακολουθήστε το Trailer στο YouTube</string>
     <string name="play_yt">Παίξτε στο Youtube</string>
     <string name="eps">Επεισόδια</string>
     <string name="ep">Επεισόδιο</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Προεπιλεγμένη καρτέλα εκκίνησης</string>
     <string name="small_view">Small View σε Trending Shows</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Χρησιμοποιήστε το Trailer ως Πανό</string>
     <string name="animations">Εφέ</string>
     <string name="banner_animations">Εφέ Διαφήμισης</string>
     <string name="layout_animations">Animations διάταξης</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Συνέχεια : Επεισόδιο %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Γεμιστικό</string>
     <string name="continue_chapter">Συνέχεια : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Επεισόδιο "</string>
     <string name="episode_num">Επεισόδιο %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Κεφάλαιο "</string>
     <string name="chapter_num">Κεφάλαιο %1$s</string>
     <string name="just_released">- Νέα κυκλοφορία!</string>
     <string name="checking_subscriptions_title">Έλεγχος συνδρομών</string>
@@ -550,10 +550,10 @@
     <string name="available">Διαθέσιμος</string>
     <string name="lets_go">Πάμε</string>
     <string name="cope">Αντιμετωπίζω</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Παρακολουθήθηκε "</string>
     <string name="read_num">"Διάβασα "</string>
     <string name="items_out_of">" από "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Σύνολο από "</string>
     <string name="no_description_available">Δεν υπάρχει διαθέσιμη περιγραφή</string>
     <string-array name="manga_directions">
         <item>Από πάνω προς τα κάτω</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Επιλεγμένο</string>
     <string name="found">Βρέθηκαν</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Ηλικία:__ "</string>
+    <string name="birthday">"\n__Γενέθλια:__ "</string>
+    <string name="gender">"\n__Φύλο:__ "</string>
     <string name="male">Αρσενικό</string>
     <string name="female">Θηλυκό</string>
     <string name="question_1">Τι είναι το Dantotsu;</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Κατάλογος δεν βρέθηκε</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Εσείς</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Κρυφός</string>
 </resources>

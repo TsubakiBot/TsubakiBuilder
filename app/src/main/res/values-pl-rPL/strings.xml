@@ -113,7 +113,7 @@
     <string name="popularity">Popularność</string>
     <string name="roles">Role</string>
     <string name="details">Szczegóły</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Obejrzyj zwiastun na YouTube</string>
     <string name="play_yt">Odtwarzaj na YouTube</string>
     <string name="eps">Odcinki</string>
     <string name="ep">Odcinek</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Domyślna zakładka startowa</string>
     <string name="small_view">Mały widok w popularnych serialach</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Użyj przyczepy jako baner</string>
     <string name="animations">Animacje</string>
     <string name="banner_animations">Animacje banerów</string>
     <string name="layout_animations">Animacje układu</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Kontynuuj: Odcinek %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Wypełnij</string>
     <string name="continue_chapter">Kontynuuj: %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Odcinek "</string>
     <string name="episode_num">Odcinek %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Rozdział "</string>
     <string name="chapter_num">Rozdział %1$s</string>
     <string name="just_released">- Nowo wydane!</string>
     <string name="checking_subscriptions_title">Sprawdzanie subskrypcji</string>
@@ -550,10 +550,10 @@
     <string name="available">Dostępny</string>
     <string name="lets_go">Chodźmy</string>
     <string name="cope">Papierosy</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Obejrzane "</string>
     <string name="read_num">"Czytaj "</string>
     <string name="items_out_of">" z "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Łącznie "</string>
     <string name="no_description_available">Brak dostępnego opisu</string>
     <string-array name="manga_directions">
         <item>Od góry do dołu</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Wybrane</string>
     <string name="found">Znaleziono</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Wiek:__ "</string>
+    <string name="birthday">"\n__Urodziny:__ "</string>
+    <string name="gender">"\n__Płeć:__ "</string>
     <string name="male">Mężczyzna</string>
     <string name="female">Kobieta</string>
     <string name="question_1">Co to jest Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Nie znaleziono katalogu</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Ty</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Ukryty</string>
 </resources>

@@ -113,7 +113,7 @@
     <string name="popularity">Popularidad</string>
     <string name="roles">Roles</string>
     <string name="details">Detalles</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Ver Remolque en YouTube</string>
     <string name="play_yt">Reproducir en Youtube</string>
     <string name="eps">Episodios</string>
     <string name="ep">Episodio</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Pestaña de inicio predeterminada</string>
     <string name="small_view">Vista pequeña de los programas en tendencia</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Usar Remolque como Banner</string>
     <string name="animations">Animaciones</string>
     <string name="banner_animations">Animaciones de banner</string>
     <string name="layout_animations">Animaciones de diseño</string>
@@ -519,9 +519,9 @@
     <string name="continue_episode">Continuar : Episodio %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Relleno</string>
     <string name="continue_chapter">Continuar : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Episodio "</string>
     <string name="episode_num">Episodio %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Capítulo "</string>
     <string name="chapter_num">Capítulo %1$s</string>
     <string name="just_released">- ¡acaba de ser lanzado!</string>
     <string name="checking_subscriptions_title">Verificando suscripciones</string>
@@ -548,10 +548,10 @@
     <string name="available">Disponible</string>
     <string name="lets_go">¡Vamos!</string>
     <string name="cope">Lidiar</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Visto "</string>
     <string name="read_num">"Leído "</string>
     <string name="items_out_of">"de "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">Descripción no disponible</string>
     <string-array name="manga_directions">
         <item>De arriba hacia abajo</item>
@@ -566,9 +566,12 @@
     </string-array>
     <string name="selected">Seleccionado</string>
     <string name="found">Encontrado</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"
+__Edad:__ "</string>
+    <string name="birthday">"
+__Cumpleaños:__ "</string>
+    <string name="gender">"
+__Género:__ "</string>
     <string name="male">Masculino</string>
     <string name="female">Femenino</string>
     <string name="question_1">¿Qué es Dantotsu?</string>
@@ -949,11 +952,11 @@
     <string name="directory_not_found">Directorio no encontrado</string>
     <string name="successfully_deleted">Eliminado exitosamente</string>
     <string name="failed_to_delete_directory">Error al borrar directorio</string>
-    <string name="you">You</string>
+    <string name="you">Tú</string>
     <string name="logout_confirm">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="app_died">APP MUERTA</string>
     <string name="an_unexpected_error_occurred">Se produjo un error inesperado.\nPor favor, envía un informe de fallo al desarrollador :)</string>
     <string name="copy_report">Copiar Reporte</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Oculto</string>
 </resources>

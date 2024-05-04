@@ -113,7 +113,7 @@
     <string name="popularity">Népszerűség</string>
     <string name="roles">Szerepek</string>
     <string name="details">Részletek</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Nézze meg a Trailer-t a YouTube-on</string>
     <string name="play_yt">Lejátszás a YouTube-on</string>
     <string name="eps">Epizódok</string>
     <string name="ep">Epizód</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Alapértelmezett indítási lap</string>
     <string name="small_view">Kis nézet a Trendi Műsoroknál</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Használja a Trailer-t Bannerként</string>
     <string name="animations">Animációk</string>
     <string name="banner_animations">Banner animációk</string>
     <string name="layout_animations">Elrendezési animációk</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Folytatás: Epizód %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Folytatás: %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Epizód "</string>
     <string name="episode_num">Epizód %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Fejezet "</string>
     <string name="chapter_num">Fejezet %1$s</string>
     <string name="just_released">- Újonnan kiadva!</string>
     <string name="checking_subscriptions_title">Előfizetések ellenőrzése</string>
@@ -550,10 +550,10 @@
     <string name="available">Elérhető</string>
     <string name="lets_go">Gyerünk</string>
     <string name="cope">Megküzd</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Megtekintve "</string>
     <string name="read_num">"Olvasva "</string>
     <string name="items_out_of">" az összesből "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Összesen "</string>
     <string name="no_description_available">Nincs leírás elérhető</string>
     <string-array name="manga_directions">
         <item>Fentről lefelé</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Kiválasztott</string>
     <string name="found">Megtalálva</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Kor:__ "</string>
+    <string name="birthday">"\n__Születésnap:__ "</string>
+    <string name="gender">"\n__Nem:__ "</string>
     <string name="male">Férfi</string>
     <string name="female">Nő</string>
     <string name="question_1">Mi az a Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Könyvtár nem található</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Ön</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Rejtett</string>
 </resources>

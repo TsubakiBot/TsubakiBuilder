@@ -113,7 +113,7 @@
     <string name="popularity">Suosio</string>
     <string name="roles">Roolit</string>
     <string name="details">Yksityiskohdat</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Katso Trailer YouTubesta</string>
     <string name="play_yt">Pelaa Youtubessa</string>
     <string name="eps">Jaksot</string>
     <string name="ep">Jakso</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Oletus Käynnistysvälilehti</string>
     <string name="small_view">Pieni näkymä trendissä</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Käytä Traileria Bannerina</string>
     <string name="animations">Animaatiot</string>
     <string name="banner_animations">Bannerin Animaatiot</string>
     <string name="layout_animations">Asettelun Animaatiot</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Jatka : Jakso %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Jatka : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Jakso "</string>
     <string name="episode_num">Jakso %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Luku "</string>
     <string name="chapter_num">Luku %1$s</string>
     <string name="just_released">- Hiljattain julkaistu!</string>
     <string name="checking_subscriptions_title">Tarkistetaan Tilauksia</string>
@@ -550,10 +550,10 @@
     <string name="available">Saatavilla</string>
     <string name="lets_go">Mennään</string>
     <string name="cope">Kavi</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Katsottu "</string>
     <string name="read_num">"Lue "</string>
     <string name="items_out_of">" ulkona "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Yhteensä "</string>
     <string name="no_description_available">Ei Kuvausta Saatavilla</string>
     <string-array name="manga_directions">
         <item>Ylhäältä alas</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Valittu</string>
     <string name="found">Löytyi</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Ikä:__ "</string>
+    <string name="birthday">"\n__Syntymäpäivä:__ "</string>
+    <string name="gender">"\n__Sukupuoli:__ "</string>
     <string name="male">Mies</string>
     <string name="female">Nainen</string>
     <string name="question_1">Mitä Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Hakemistoa ei löydy</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Sinä</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Piilotettu</string>
 </resources>

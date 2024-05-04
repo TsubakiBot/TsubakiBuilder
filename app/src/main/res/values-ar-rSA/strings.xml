@@ -113,7 +113,7 @@
     <string name="popularity">الشعبية</string>
     <string name="roles">الأدوار</string>
     <string name="details">التفاصيل</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">شاهد المقطورة على يوتيوب</string>
     <string name="play_yt">التشغيل علي يوتيوب</string>
     <string name="eps">الحلَقات</string>
     <string name="ep">الحلَقة</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">الصفحة الافتراضية عند التشغيل</string>
     <string name="small_view">عرض صغير في العروض الشائعة</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">استخدم المقطورة كشعار</string>
     <string name="animations">الحركة (الانيميشن)</string>
     <string name="banner_animations">حركة الخلفيات</string>
     <string name="layout_animations">حركة واجهة الاستخدام</string>
@@ -520,9 +520,9 @@
     <string name="continue_episode">الإستمرار: الحلقة %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - تصفية</string>
     <string name="continue_chapter">الإستمرار: %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"الحلقة"</string>
     <string name="episode_num">الحلقة %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"الفصل"</string>
     <string name="chapter_num">الفصل %1$s</string>
     <string name="just_released">- أفرج عنه حديثاً!</string>
     <string name="checking_subscriptions_title">التحقق من الاشتراكات</string>
@@ -549,10 +549,10 @@
     <string name="available">متوفر</string>
     <string name="lets_go">هيا بنا</string>
     <string name="cope">البابا</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"تم مشاهدته"</string>
     <string name="read_num">"قراءة "</string>
     <string name="items_out_of">" خالي من "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"مجموع"</string>
     <string name="no_description_available">لا يوجد وصف متوفر</string>
     <string-array name="manga_directions">
         <item>أعلى إلى الأسفل</item>
@@ -567,9 +567,9 @@
     </string-array>
     <string name="selected">محدد</string>
     <string name="found">موجود</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__العمر:__ "</string>
+    <string name="birthday">"\n__تاريخ الميلاد:__ "</string>
+    <string name="gender">"\n__الجنس:__ "</string>
     <string name="male">ذكر</string>
     <string name="female">أنثى</string>
     <string name="question_1">ما هو Dantotsu؟</string>
@@ -950,11 +950,11 @@
     <string name="directory_not_found">الدليل غير موجود</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">أنت</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">مخفي</string>
 </resources>

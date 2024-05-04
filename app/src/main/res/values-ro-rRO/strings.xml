@@ -113,7 +113,7 @@
     <string name="popularity">Popularitate</string>
     <string name="roles">Roluri</string>
     <string name="details">Detalii</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Uitați-vă la Trailer pe YouTube</string>
     <string name="play_yt">Joacă pe YouTube</string>
     <string name="eps">Episoade</string>
     <string name="ep">Episod</string>
@@ -284,7 +284,7 @@
     </string-array>
     <string name="startUpTab">Fila de pornire implicită</string>
     <string name="small_view">Vizualizare mică în emisiuni populare</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Folosiți Trailerul ca Banner</string>
     <string name="animations">Animații</string>
     <string name="banner_animations">Animaţii Banner</string>
     <string name="layout_animations">Animații aspect</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Continuă : Episod %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continuă : %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Episod "</string>
     <string name="episode_num">Episod %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Capitol "</string>
     <string name="chapter_num">Capitolul %1$s</string>
     <string name="just_released">- Versiuni noi!</string>
     <string name="checking_subscriptions_title">Verificare abonamente</string>
@@ -550,10 +550,10 @@
     <string name="available">Disponibil</string>
     <string name="lets_go">Să mergem</string>
     <string name="cope">Copie</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Vizionat "</string>
     <string name="read_num">"Citește "</string>
     <string name="items_out_of">" din "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">Nici o descriere disponibilă</string>
     <string-array name="manga_directions">
         <item>Sus spre jos</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Selectate</string>
     <string name="found">Găsit</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Vârstă:__ "</string>
+    <string name="birthday">"\n__Ziua de naștere:__ "</string>
+    <string name="gender">"\n__Gen:__ "</string>
     <string name="male">Bărbat</string>
     <string name="female">Femeie</string>
     <string name="question_1">Ce este Dantotsu?</string>
@@ -951,11 +951,11 @@
     <string name="directory_not_found">Directorul nu a fost găsit</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Tu</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Ascuns</string>
 </resources>

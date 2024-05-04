@@ -113,7 +113,7 @@
     <string name="popularity">Popularitat</string>
     <string name="roles">Rols</string>
     <string name="details">Detalls</string>
-    <string name="trailer_yt">Watch Trailer on YouTube</string>
+    <string name="trailer_yt">Veure el remolcador a YouTube</string>
     <string name="play_yt">Reproduir a Youtube</string>
     <string name="eps">Episodis</string>
     <string name="ep">Episodi</string>
@@ -278,7 +278,7 @@
     </string-array>
     <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
     <string name="small_view">Vista Petita en Mostrats Trending</string>
-    <string name="trailer_banners">Use Trailer as Banner</string>
+    <string name="trailer_banners">Utilitza el remolcador com a pancarta</string>
     <string name="animations">Animacions</string>
     <string name="banner_animations">Animacions de Banner</string>
     <string name="layout_animations">Animacions de Disseny</string>
@@ -515,9 +515,9 @@
     <string name="continue_episode">Continuar: Episodi %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continuar: %1$s\n%2$s</string>
-    <string name="episode">"Episode "</string>
+    <string name="episode">"Episodi "</string>
     <string name="episode_num">Episodi %1$s</string>
-    <string name="chapter">"Chapter "</string>
+    <string name="chapter">"Capítol "</string>
     <string name="chapter_num">Capítol %1$s</string>
     <string name="just_released">- Acabat de llançar!</string>
     <string name="checking_subscriptions_title">Comprovant subscripcions</string>
@@ -544,10 +544,10 @@
     <string name="available">Disponible</string>
     <string name="lets_go">Anem-hi</string>
     <string name="cope">Enfrontar-se</string>
-    <string name="watched_num">"Watched "</string>
+    <string name="watched_num">"Vist "</string>
     <string name="read_num">"Llegit "</string>
     <string name="items_out_of">" de "</string>
-    <string name="items_total_of">"Total of "</string>
+    <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">Cap descripció disponible</string>
     <string-array name="manga_directions">
         <item>Dalt a baix</item>
@@ -562,9 +562,9 @@
     </string-array>
     <string name="selected">Seleccionat</string>
     <string name="found">Trobat</string>
-    <string name="age">"__Age:__ "</string>
-    <string name="birthday">"\n__Birthday:__ "</string>
-    <string name="gender">"\n__Gender:__ "</string>
+    <string name="age">"__Edat:__ "</string>
+    <string name="birthday">"\n__Aniversari:__ "</string>
+    <string name="gender">"\n__Gènere:__ "</string>
     <string name="male">Masculí</string>
     <string name="female">Femení</string>
     <string name="question_1">Què és Dantotsu?</string>
@@ -945,11 +945,11 @@
     <string name="directory_not_found">Directori no trobat</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
-    <string name="you">You</string>
+    <string name="you">Tu</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Hidden</string>
+    <string name="hidden">Ocult</string>
 </resources>
