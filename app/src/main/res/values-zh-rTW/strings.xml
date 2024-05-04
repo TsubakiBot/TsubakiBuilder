@@ -958,4 +958,5 @@
     <string name="copy_report">複製報告</string>
     <string name="share_as_file">分享為文件</string>
     <string name="hidden">隱藏</string>
+    <string name="no_hidden_items">No Hidden Items</string>
 </resources>

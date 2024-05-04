@@ -958,4 +958,5 @@
     <string name="copy_report">Sao chép báo cáo</string>
     <string name="share_as_file">Chia sẻ dưới dạng tệp</string>
     <string name="hidden">Ẩn</string>
+    <string name="no_hidden_items">No Hidden Items</string>
 </resources>

@@ -62,7 +62,7 @@
     <string name="no_notifications">No hay más notificaciones</string>
     <string name="followers">Seguidores</string>
     <string name="social_in_media">Estadísticas sociales en medios</string>
-    <string name="social_in_media_desc">Mostrar valoraciones de amigos y progreso</string>
+    <string name="social_in_media_desc">Mostrar calificaciones de amigos y progreso</string>
     <string name="status">Estado</string>
     <string-array name="status_anime">
         <item>PLANEANDO</item>
@@ -113,7 +113,7 @@
     <string name="popularity">Popularidad</string>
     <string name="roles">Roles</string>
     <string name="details">Detalles</string>
-    <string name="trailer_yt">Ver Remolque en YouTube</string>
+    <string name="trailer_yt">Ver Tráiler en YouTube</string>
     <string name="play_yt">Reproducir en Youtube</string>
     <string name="eps">Episodios</string>
     <string name="ep">Episodio</string>
@@ -167,7 +167,7 @@
     <string name="noSdFound">No se encontró ninguna tarjeta SD.</string>
     <string name="reader_settings">Ajustes del lector</string>
     <string name="default_source">Fuente predeterminada</string>
-    <string name="show_yt">Enlace de Youtube</string>
+    <string name="show_yt">Enlace de YouTube</string>
     <string name="default_ep_view">Diseño de episodio predeterminado</string>
     <string name="default_chp_view">Diseño de capítulo predeterminado</string>
     <string name="ui">Interfaz de usuario</string>
@@ -274,25 +274,25 @@
     <string name="home_layout_show">Mostrar/Ocultar diseños en Inicio</string>
     <string-array name="home_layouts">
         <item>Continuar Viendo</item>
-        <item>Animes Favoritos</item>
+        <item>Anime Favorito</item>
         <item>Anime planeado</item>
         <item>Continuar Leyendo</item>
-        <item>Mangas Favoritos</item>
+        <item>Manga Favorito</item>
         <item>Manga planeado</item>
         <item>Recomendados</item>
         <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Pestaña de inicio predeterminada</string>
     <string name="small_view">Vista pequeña de los programas en tendencia</string>
-    <string name="trailer_banners">Usar Remolque como Banner</string>
+    <string name="trailer_banners">Usar Trailer como Banner</string>
     <string name="animations">Animaciones</string>
     <string name="banner_animations">Animaciones de banner</string>
     <string name="layout_animations">Animaciones de diseño</string>
     <string name="trending_scroller">Desplazador de tendencias</string>
     <string name="animation_speed">Velocidad general</string>
     <string name="empty_fav">Parece que no te gusta nada,\nIntenta darle me gusta a un show para mantenerlo aquí.</string>
-    <string name="fav_anime">Anime favorito</string>
-    <string name="fav_manga">Manga favorito</string>
+    <string name="fav_anime">Anime Favorito</string>
+    <string name="fav_manga">Manga Favorito</string>
     <string name="restart_app">¿Reiniciar la aplicación?</string>
     <string name="next">Siguiente</string>
     <string name="previous">Anterior</string>
@@ -566,12 +566,9 @@
     </string-array>
     <string name="selected">Seleccionado</string>
     <string name="found">Encontrado</string>
-    <string name="age">"
-__Edad:__ "</string>
-    <string name="birthday">"
-__Cumpleaños:__ "</string>
-    <string name="gender">"
-__Género:__ "</string>
+    <string name="age">"__Edad:__ "</string>
+    <string name="birthday">"\n__Cumpleaños:__ "</string>
+    <string name="gender">"\n__Género:__ "</string>
     <string name="male">Masculino</string>
     <string name="female">Femenino</string>
     <string name="question_1">¿Qué es Dantotsu?</string>
@@ -959,4 +956,5 @@ __Género:__ "</string>
     <string name="copy_report">Copiar Reporte</string>
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Oculto</string>
+    <string name="no_hidden_items">No Hidden Items</string>
 </resources>

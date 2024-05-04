@@ -961,4 +961,5 @@ Genre : "</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Caché</string>
+    <string name="no_hidden_items">No Hidden Items</string>
 </resources>
