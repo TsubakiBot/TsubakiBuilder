@@ -15,11 +15,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWithSuspend
-import ani.dantotsu.util.Logger
 import ani.himitsu.update.MatagiUpdater
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 suspend fun getUserId(context: Context, block: () -> Unit) {
     if (Anilist.userid == null && Anilist.token != null) {
@@ -102,7 +98,6 @@ class AnilistHomeViewModel : ViewModel() {
         res["status"]?.let { userStatus.postValue(it as ArrayList<User>?) }
     }
 
-
     suspend fun loadMain(context: FragmentActivity) {
         Anilist.getSavedToken()
         MAL.getSavedToken()
@@ -143,7 +138,6 @@ class AnilistAnimeViewModel : ViewModel() {
         )
     }
 
-
     private val animePopular = MutableLiveData<SearchResults?>(null)
 
     fun getPopular(): LiveData<SearchResults?> = animePopular
@@ -165,7 +159,6 @@ class AnilistAnimeViewModel : ViewModel() {
             )
         )
     }
-
 
     suspend fun loadNextPage(r: SearchResults) = animePopular.postValue(
         Anilist.query.search(
@@ -235,7 +228,6 @@ class AnilistMangaViewModel : ViewModel() {
             )?.results
         )
 
-
     private val mangaPopular = MutableLiveData<SearchResults?>(null)
     fun getPopular(): LiveData<SearchResults?> = mangaPopular
     suspend fun loadPopular(
@@ -256,7 +248,6 @@ class AnilistMangaViewModel : ViewModel() {
             )
         )
     }
-
 
     suspend fun loadNextPage(r: SearchResults) = mangaPopular.postValue(
         Anilist.query.search(

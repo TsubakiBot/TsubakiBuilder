@@ -223,37 +223,33 @@ class HomeFragment : Fragment() {
             mode.observe(viewLifecycleOwner) {
                 recyclerView.visibility = View.GONE
                 empty.visibility = View.GONE
-                if (it != null) {
-                    if (it.isNotEmpty()) {
-                        recyclerView.adapter = MediaAdaptor(0, it, requireActivity())
-                        recyclerView.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
+                if (it.isNullOrEmpty()) {
+                    empty.visibility = View.VISIBLE
+                } else {
+                    recyclerView.adapter = MediaAdaptor(0, it, requireActivity())
+                    recyclerView.layoutManager = LinearLayoutManager(
+                        requireContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                    )
+                    more.setOnClickListener { i ->
+                        ContextCompat.startActivity(
+                            i.context, Intent(i.context, MediaListViewActivity::class.java)
+                                .putExtra("title", string)
+                                .putExtra("media", it),
+                            null
                         )
-                        more.setOnClickListener { i ->
-                            ContextCompat.startActivity(
-                                i.context, Intent(i.context, MediaListViewActivity::class.java)
-                                    .putExtra("title", string)
-                                    .putExtra("media", it),
-                                null
-                            )
-                        }
-                        recyclerView.visibility = View.VISIBLE
-                        recyclerView.layoutAnimation =
-                            LayoutAnimationController(setSlideIn(), 0.25f)
-
-                    } else {
-                        empty.visibility = View.VISIBLE
                     }
+                    recyclerView.visibility = View.VISIBLE
+                    recyclerView.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
                     more.visibility = View.VISIBLE
                     title.visibility = View.VISIBLE
                     more.startAnimation(setSlideUp())
                     title.startAnimation(setSlideUp())
-                    progress.visibility = View.GONE
                 }
+                progress.visibility = View.GONE
             }
-
         }
 
         // Recycler Views
@@ -360,69 +356,62 @@ class HomeFragment : Fragment() {
         if (stories) {
             model.getUserStatus().observe(viewLifecycleOwner) {
                 binding.homeUserStatusRecyclerView.visibility = View.GONE
-                if (it != null) {
-                    if (it.isNotEmpty()) {
-                        PrefManager.getLiveVal(PrefName.RefreshStatus, false).apply {
-                            asLiveBool()
-                            observe(viewLifecycleOwner) { _ ->
-                                binding.homeUserStatusRecyclerView.adapter = UserStatusAdapter(it)
-                            }
+                if (it.isNullOrEmpty()) {
+                    binding.homeUserStatusContainer.visibility = View.GONE
+                } else {
+                    PrefManager.getLiveVal(PrefName.RefreshStatus, false).apply {
+                        asLiveBool()
+                        observe(viewLifecycleOwner) { _ ->
+                            binding.homeUserStatusRecyclerView.adapter = UserStatusAdapter(it)
                         }
-                        binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                        binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
-                        binding.homeUserStatusRecyclerView.layoutAnimation =
-                            LayoutAnimationController(setSlideIn(), 0.25f)
-
-                    } else {
-                        binding.homeUserStatusContainer.visibility = View.GONE
                     }
-                    binding.homeUserStatusProgressBar.visibility = View.GONE
-                }
-            }
-        }
-        binding.homeHiddenItemsContainer.visibility = View.GONE
-        model.getHidden().observe(viewLifecycleOwner) {
-            if (it != null) {
-                if (it.isNotEmpty()) {
-                    binding.homeHiddenItemsRecyclerView.adapter = MediaAdaptor(0, it, requireActivity())
-                    binding.homeHiddenItemsRecyclerView.layoutManager = LinearLayoutManager(
+                    binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
                         requireContext(),
                         LinearLayoutManager.HORIZONTAL,
                         false
                     )
-                    binding.homeContinueWatch.setOnLongClickListener {
-                        binding.homeHiddenItemsContainer.visibility = View.VISIBLE
-                        binding.homeHiddenItemsRecyclerView.layoutAnimation =
-                            LayoutAnimationController(setSlideIn(), 0.25f)
-                        true
-                    }
-                    binding.homeHiddenItemsMore.setSafeOnClickListener { _ ->
-                        ContextCompat.startActivity(
-                            requireActivity(), Intent(requireActivity(), MediaListViewActivity::class.java)
-                                .putExtra("title", getString(R.string.hidden))
-                                .putExtra("media", it),
-                            null
-                        )
-                    }
-                    binding.homeHiddenItemsTitle.setOnLongClickListener {
-                        it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                        binding.homeHiddenItemsContainer.visibility = View.GONE
-                        true
-                    }
+                    binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
+                    binding.homeUserStatusRecyclerView.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+
                 }
-                else {
-                    binding.homeContinueWatch.setOnLongClickListener {
-                        snackString(getString(R.string.no_hidden_items))
-                        true
-                    }
+                binding.homeUserStatusProgressBar.visibility = View.GONE
+            }
+        }
+        binding.homeHiddenItemsContainer.visibility = View.GONE
+        model.getHidden().observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty()) {
+                binding.homeContinueWatch.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    snackString(getString(R.string.no_hidden_items))
+                    true
                 }
             } else {
+                binding.homeHiddenItemsRecyclerView.adapter = MediaAdaptor(0, it, requireActivity())
+                binding.homeHiddenItemsRecyclerView.layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
                 binding.homeContinueWatch.setOnLongClickListener {
-                    snackString(getString(R.string.no_hidden_items))
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    binding.homeHiddenItemsRecyclerView.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+                    binding.homeHiddenItemsContainer.visibility = View.VISIBLE
+                    true
+                }
+                binding.homeHiddenItemsMore.setSafeOnClickListener { _ ->
+                    ContextCompat.startActivity(
+                        requireActivity(),
+                        Intent(requireActivity(), MediaListViewActivity::class.java)
+                            .putExtra("title", getString(R.string.hidden))
+                            .putExtra("media", it),
+                        null
+                    )
+                }
+                binding.homeHiddenItemsTitle.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    binding.homeHiddenItemsContainer.visibility = View.GONE
                     true
                 }
             }
