@@ -364,7 +364,7 @@
                         android:layout_height="16dp" />
 
                     <LinearLayout
-                        android:id="@+id/mediaInfoNameRomajiContainer"
+                        android:id="@+id/mediaInfoNameContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -374,37 +374,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:alpha="0.58"
-                            android:text="@string/name_romaji"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/mediaInfoNameRomaji"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:breakStrategy="balanced"
-                            android:fontFamily="@font/poppins_bold"
-                            tools:targetApi="m" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/mediaInfoNameContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.58"
                             android:text="@string/name"
-                            android:textStyle="bold" />
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/mediaInfoName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:breakStrategy="balanced"
-                            android:fontFamily="@font/poppins_bold"
+                            android:textStyle="bold"
+                            tools:targetApi="m" />
+
+                        <TextView
+                            android:id="@+id/mediaInfoNameRomaji"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:breakStrategy="balanced"
+                            android:textStyle="bold"
                             tools:targetApi="m" />
                     </LinearLayout>
                 </TableLayout>
@@ -426,6 +415,7 @@
                     android:ellipsize="end"
                     android:maxLines="5"
                     android:padding="16dp"
+                    android:layout_marginBottom="-16dp"
                     android:text="@string/description" />
 
             </LinearLayout>

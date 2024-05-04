@@ -27,6 +27,7 @@
             app:tint="?attr/colorPrimary" />
 
         <TextView
+            android:id="@+id/listTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

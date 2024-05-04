@@ -169,7 +169,6 @@ class SettingsCommonActivity : AppCompatActivity() {
                     Settings(
                         type = SettingsView.SWITCH,
                         name = getString(R.string.social_in_media),
-                        desc = getString(R.string.social_in_media),
                         icon = R.drawable.ic_emoji_people_24,
                         pref = PrefName.SocialInMedia
                     ),

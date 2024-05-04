@@ -12,7 +12,6 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.NotificationResponse
 import ani.dantotsu.connections.anilist.api.Page
 import ani.dantotsu.connections.anilist.api.Query
-import ani.dantotsu.connections.anilist.api.Staff
 import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline

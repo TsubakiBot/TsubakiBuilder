@@ -9,8 +9,6 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
-import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -18,6 +16,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -99,14 +98,21 @@ class MediaInfoFragment : Fragment() {
 
                 binding.mediaInfoProgressBar.visibility = View.GONE
                 binding.mediaInfoContainer.visibility = View.VISIBLE
-                val infoName = tripleTab + (media.name ?: media.nameRomaji)
+
+                if (media.trailer != null) {
+                    binding.animeTrailerYT.visibility = View.VISIBLE
+                    binding.animeTrailerYT.setOnClickListener {
+                        openLinkInYouTube("https://www.youtube.com/watch?v=${media.trailer}")
+                    }
+                }
+
+                binding.mediaInfoNameContainer.isVisible = media.name != null
+                val infoName = tripleTab + (media.mainName())
                 binding.mediaInfoName.text = infoName
                 binding.mediaInfoName.setOnLongClickListener {
-                    copyToClipboard(media.name ?: media.nameRomaji)
+                    copyToClipboard(media.mainName())
                     true
                 }
-                if (media.name != null) binding.mediaInfoNameRomajiContainer.visibility =
-                    View.VISIBLE
                 val infoNameRomanji = tripleTab + media.nameRomaji
                 binding.mediaInfoNameRomaji.text = infoNameRomanji
                 binding.mediaInfoNameRomaji.setOnLongClickListener {
@@ -255,7 +261,8 @@ class MediaInfoFragment : Fragment() {
                     }
                     parent.addView(bind.root)
                 }
-                if (PrefManager.getVal<Boolean>(PrefName.SocialInMedia)) {
+
+                if (PrefManager.getVal(PrefName.SocialInMedia)) {
                     if (!media.users.isNullOrEmpty() && !offline) {
                         val users: ArrayList<User> = media.users ?: arrayListOf()
                         if (Anilist.token != null && media.userStatus != null) {
@@ -292,10 +299,108 @@ class MediaInfoFragment : Fragment() {
                         }
                     }
                 }
-                if (media.trailer != null) {
-                    binding.animeTrailerYT.visibility = View.VISIBLE
-                    binding.animeTrailerYT.setOnClickListener {
-                        openLinkInYouTube("https://www.youtube.com/watch?v=${media.trailer}")
+
+                if ((media.sequel != null || media.prequel != null) && !offline) {
+                    ItemQuelsBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+
+                        if (media.sequel != null) {
+                            mediaInfoSequel.visibility = View.VISIBLE
+                            mediaInfoSequelImage.loadImage(
+                                media.sequel!!.banner ?: media.sequel!!.cover
+                            )
+                            mediaInfoSequel.setSafeOnClickListener {
+                                ContextCompat.startActivity(
+                                    requireContext(),
+                                    Intent(
+                                        requireContext(),
+                                        MediaDetailsActivity::class.java
+                                    ).putExtra(
+                                        "media",
+                                        media.sequel as Serializable
+                                    ), null
+                                )
+                            }
+                        }
+                        if (media.prequel != null) {
+                            mediaInfoPrequel.visibility = View.VISIBLE
+                            mediaInfoPrequelImage.loadImage(
+                                media.prequel!!.banner ?: media.prequel!!.cover
+                            )
+                            mediaInfoPrequel.setSafeOnClickListener {
+                                ContextCompat.startActivity(
+                                    requireContext(),
+                                    Intent(
+                                        requireContext(),
+                                        MediaDetailsActivity::class.java
+                                    ).putExtra(
+                                        "media",
+                                        media.prequel as Serializable
+                                    ), null
+                                )
+                            }
+                        }
+                        parent.addView(root)
+                    }
+
+                    ItemTitleSearchBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+
+                        titleSearchImage.loadImage(media.banner ?: media.cover)
+                        titleSearchText.text =
+                            getString(R.string.search_title, media.mainName())
+                        titleSearchCard.setSafeOnClickListener {
+                            val query = Intent(requireContext(), SearchActivity::class.java)
+                                .putExtra("type", "ANIME")
+                                .putExtra("query", media.mainName())
+                                .putExtra("hideKeyboard", true)
+                            ContextCompat.startActivity(requireContext(), query, null)
+                        }
+
+                        parent.addView(root)
+                    }
+                }
+
+
+                if (!media.characters.isNullOrEmpty() && !offline) {
+                    ItemTitleRecyclerBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+                        itemTitle.setText(R.string.characters)
+                        itemRecycler.adapter =
+                            CharacterAdapter(media.characters!!)
+                        itemRecycler.layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        parent.addView(root)
+                    }
+                }
+
+                if (!media.staff.isNullOrEmpty() && !offline) {
+                    ItemTitleRecyclerBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+                        itemTitle.setText(R.string.staff)
+                        itemRecycler.adapter =
+                            AuthorAdapter(media.staff!!)
+                        itemRecycler.layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        parent.addView(root)
                     }
                 }
 
@@ -363,6 +468,8 @@ class MediaInfoFragment : Fragment() {
                         parent,
                         false
                     )
+                    bind.listBackButton.visibility = View.GONE
+                    bind.listTitle.updatePadding(left = 32.toPx, top = 8.toPx)
                     val adapter = GenreAdapter(type)
                     genreModel.doneListener = {
                         MainScope().launch {
@@ -429,124 +536,6 @@ class MediaInfoFragment : Fragment() {
                     parent.addView(bind.root)
                 }
 
-                if (!media.relations.isNullOrEmpty() && !offline) {
-                    if (media.sequel != null || media.prequel != null) {
-                        ItemQuelsBinding.inflate(
-                            LayoutInflater.from(context),
-                            parent,
-                            false
-                        ).apply {
-
-                            if (media.sequel != null) {
-                                mediaInfoSequel.visibility = View.VISIBLE
-                                mediaInfoSequelImage.loadImage(
-                                    media.sequel!!.banner ?: media.sequel!!.cover
-                                )
-                                mediaInfoSequel.setSafeOnClickListener {
-                                    ContextCompat.startActivity(
-                                        requireContext(),
-                                        Intent(
-                                            requireContext(),
-                                            MediaDetailsActivity::class.java
-                                        ).putExtra(
-                                            "media",
-                                            media.sequel as Serializable
-                                        ), null
-                                    )
-                                }
-                            }
-                            if (media.prequel != null) {
-                                mediaInfoPrequel.visibility = View.VISIBLE
-                                mediaInfoPrequelImage.loadImage(
-                                    media.prequel!!.banner ?: media.prequel!!.cover
-                                )
-                                mediaInfoPrequel.setSafeOnClickListener {
-                                    ContextCompat.startActivity(
-                                        requireContext(),
-                                        Intent(
-                                            requireContext(),
-                                            MediaDetailsActivity::class.java
-                                        ).putExtra(
-                                            "media",
-                                            media.prequel as Serializable
-                                        ), null
-                                    )
-                                }
-                            }
-                            parent.addView(root)
-                        }
-
-                        ItemTitleSearchBinding.inflate(
-                            LayoutInflater.from(context),
-                            parent,
-                            false
-                        ).apply {
-
-                            titleSearchImage.loadImage(media.banner ?: media.cover)
-                            titleSearchText.text =
-                                getString(R.string.search_title, media.mainName())
-                            titleSearchCard.setSafeOnClickListener {
-                                val query = Intent(requireContext(), SearchActivity::class.java)
-                                    .putExtra("type", "ANIME")
-                                    .putExtra("query", media.mainName())
-                                    .putExtra("hideKeyboard", true)
-                                ContextCompat.startActivity(requireContext(), query, null)
-                            }
-
-                            parent.addView(root)
-                        }
-                    }
-
-                    ItemTitleRecyclerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-
-                        itemRecycler.adapter =
-                            MediaAdaptor(0, media.relations!!, requireActivity())
-                        itemRecycler.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                        parent.addView(root)
-                    }
-                }
-                if (!media.characters.isNullOrEmpty() && !offline) {
-                    ItemTitleRecyclerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        itemTitle.setText(R.string.characters)
-                        itemRecycler.adapter =
-                            CharacterAdapter(media.characters!!)
-                        itemRecycler.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                        parent.addView(root)
-                    }
-                }
-                if (!media.staff.isNullOrEmpty() && !offline) {
-                    ItemTitleRecyclerBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        itemTitle.setText(R.string.staff)
-                        itemRecycler.adapter =
-                            AuthorAdapter(media.staff!!)
-                        itemRecycler.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                        parent.addView(root)
-                    }
-                }
                 if (!media.recommendations.isNullOrEmpty() && !offline) {
                     ItemTitleRecyclerBinding.inflate(
                         LayoutInflater.from(context),
@@ -556,6 +545,24 @@ class MediaInfoFragment : Fragment() {
                         itemTitle.setText(R.string.recommended)
                         itemRecycler.adapter =
                             MediaAdaptor(0, media.recommendations!!, requireActivity())
+                        itemRecycler.layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                        parent.addView(root)
+                    }
+                }
+
+                if (!media.relations.isNullOrEmpty() && !offline) {
+                    ItemTitleRecyclerBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+
+                        itemRecycler.adapter =
+                            MediaAdaptor(0, media.relations!!, requireActivity())
                         itemRecycler.layoutManager = LinearLayoutManager(
                             requireContext(),
                             LinearLayoutManager.HORIZONTAL,

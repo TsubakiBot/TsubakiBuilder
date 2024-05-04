@@ -470,9 +470,19 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     loadVideo(trailer, 0f)
                     mute()
                     play()
-                    setLoop(true)
                 }
                 binding.mediaBanner.pause()
+            }
+
+            override fun onStateChange(
+                youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState
+            ) {
+                super.onStateChange(youTubePlayer, state)
+                if (state == PlayerConstants.PlayerState.ENDED) {
+                    binding.mediaBanner.resume()
+                    binding.youTubeBanner.visibility = View.GONE
+                    binding.mediaMute.visibility = View.GONE
+                }
             }
 
             override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
