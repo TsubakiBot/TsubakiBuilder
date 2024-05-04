@@ -384,6 +384,7 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+        binding.homeHiddenItemsContainer.visibility = View.GONE
         model.getHidden().observe(viewLifecycleOwner) {
             if (it != null) {
                 if (it.isNotEmpty()) {
@@ -413,6 +414,17 @@ class HomeFragment : Fragment() {
                         true
                     }
                 }
+                else {
+                    binding.homeContinueWatch.setOnLongClickListener {
+                        snackString(getString(R.string.no_hidden_items))
+                        true
+                    }
+                }
+            } else {
+                binding.homeContinueWatch.setOnLongClickListener {
+                    snackString(getString(R.string.no_hidden_items))
+                    true
+                }
             }
         }
 
@@ -437,7 +449,7 @@ class HomeFragment : Fragment() {
             "MangaFav",
             "MangaPlanned",
             "Recommendation",
-            "UserStatus"
+            "UserStatus",
         )
 
         val containers = arrayOf(
@@ -471,7 +483,6 @@ class HomeFragment : Fragment() {
                         val homeLayoutShow: List<Boolean> =
                             PrefManager.getVal(PrefName.HomeLayout)
                         model.initHomePage()
-
                         (array.indices).forEach { i ->
                             if (homeLayoutShow.elementAt(i)) {
                                 empty = false
@@ -494,7 +505,9 @@ class HomeFragment : Fragment() {
                     live.postValue(false)
                     _binding?.homeRefresh?.isRefreshing = false
                 }
+                binding.homeHiddenItemsContainer.visibility = View.GONE
             }
+
         }
     }
 
