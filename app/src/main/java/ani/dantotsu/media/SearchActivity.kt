@@ -173,6 +173,7 @@ class SearchActivity : AppCompatActivity() {
                         headerAdaptor.search?.run()
                     }
                 } else {
+                    headerAdaptor.requestFocus?.run()
                     headerAdaptor.requestFocus?.let { focus ->
                         Handler(Looper.getMainLooper()).postDelayed(focus, 150)
                     }
