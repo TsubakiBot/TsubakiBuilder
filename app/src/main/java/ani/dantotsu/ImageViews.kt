@@ -3,6 +3,7 @@ package ani.dantotsu
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -87,7 +88,8 @@ fun ImageView.blurImage(banner: String?) {
                         else -> File(url)
                     }
                 )
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .override(400)
                 .apply(RequestOptions.bitmapTransform(BlurTransformation(radius, sampling)))
                 .into(this)
 
@@ -100,7 +102,8 @@ fun ImageView.blurImage(banner: String?) {
                         else -> File(url)
                     }
                 )
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(400)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .override(400)
                 .into(this)
         }
     } else {
