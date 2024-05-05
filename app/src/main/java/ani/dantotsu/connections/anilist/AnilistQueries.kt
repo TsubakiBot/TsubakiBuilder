@@ -16,10 +16,12 @@ import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
+import ani.dantotsu.media.Atelier
 import ani.dantotsu.media.Author
 import ani.dantotsu.media.Character
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.Staff
 import ani.dantotsu.media.Studio
 import ani.dantotsu.others.MalScraper
 import ani.dantotsu.profile.User
@@ -745,7 +747,6 @@ class AnilistQueries {
         }
     }
 
-
     private suspend fun bannerImage(type: String): String? {
         val image = BannerImage(
             PrefManager.getCustomVal("banner_${type}_url", ""),
@@ -1083,7 +1084,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
             }"""
 
         val response = executeQuery<Query.Employee>(query, variables, true)?.data
-        val responseArray = arrayListOf<Character>()
+        val responseArray = arrayListOf<Staff>()
         response?.staff?.forEach {
 
         }
@@ -1145,9 +1146,14 @@ query (${"$"}id: Int, ${"$"}search: String) {
             }"""
 
         val response = executeQuery<Query.Studios>(query, variables, true)?.data
-        val responseArray = arrayListOf<Studio>()
+        val responseArray = arrayListOf<Atelier>()
         response?.studios?.forEach {
-
+            val studio = Atelier(
+                it.id,
+                it.name!!,
+                it.isAnimationStudio!!,
+                it.isFavourite!!
+            )
         }
         return
     }
