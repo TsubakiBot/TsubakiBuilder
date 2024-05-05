@@ -115,7 +115,6 @@ import ani.dantotsu.connections.discord.DiscordService
 import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
-import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ActivityExoplayerBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
@@ -2325,7 +2324,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { document: Uri? -> document?.let {
-        val subs = mediaItem.localConfiguration?.subtitleConfigurations
+        val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
         subs += MediaItem.SubtitleConfiguration
             .Builder(it)
