@@ -239,12 +239,14 @@ class HomeFragment : Fragment() {
                         false
                     )
                     more.setOnClickListener { i ->
+                        more.isEnabled = false
                         ContextCompat.startActivity(
                             i.context, Intent(i.context, MediaListViewActivity::class.java)
                                 .putExtra("title", string)
                                 .putExtra("media", it),
                             null
                         )
+                        more.isEnabled = true
                     }
                     recyclerView.visibility = View.VISIBLE
                     recyclerView.layoutAnimation =
