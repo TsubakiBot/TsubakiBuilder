@@ -649,19 +649,17 @@ class AnilistQueries {
                         }
                     }
                 }
-
-
                 list.addAll(0, anilistActivities)
                 returnMap["status"] = ArrayList(list)
             }
-            if (toShow.getOrNull(0) != true) current("Anime")
-            if (toShow.getOrNull(1) != true) favorite("Anime")
-            if (toShow.getOrNull(2) != true) planned("Anime")
-            if (toShow.getOrNull(3) != true) current("Manga")
-            if (toShow.getOrNull(4) != true) favorite("Manga")
-            if (toShow.getOrNull(5) != true) planned("Manga")
-            returnMap["hidden"] = removedMedia.distinctBy { it.id } as ArrayList<Media>
         }
+        if (!returnMap.containsKey("currentAnime")) current("Anime")
+        if (!returnMap.containsKey("favoriteAnime")) favorite("Anime")
+        if (!returnMap.containsKey("plannedAnime")) planned("Anime")
+        if (!returnMap.containsKey("currentManga")) current("Manga")
+        if (!returnMap.containsKey("favoriteManga")) favorite("Manga")
+        if (!returnMap.containsKey("plannedManga")) planned("Manga")
+        returnMap["hidden"] = removedMedia.distinctBy { it.id } as ArrayList<Media>
         return returnMap
     }
 

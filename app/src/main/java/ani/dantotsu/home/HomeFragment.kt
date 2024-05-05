@@ -212,15 +212,18 @@ class HomeFragment : Fragment() {
             more: View,
             string: String
         ) {
-            container.isVisible = isEnabled
-            progress.isVisible = isEnabled
+            container.visibility = View.VISIBLE
+            progress.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
             empty.visibility = View.GONE
-            title.visibility = if (isEnabled) View.INVISIBLE else View.GONE
-            more.visibility = if (isEnabled) View.INVISIBLE else View.GONE
-            if (!isEnabled) return
+            title.visibility = View.INVISIBLE
+            more.visibility = View.INVISIBLE
 
             mode.observe(viewLifecycleOwner) {
+                if (!isEnabled) {
+                    container.isVisible = false
+                    return@observe
+                }
                 recyclerView.visibility = View.GONE
                 empty.visibility = View.GONE
                 if (it.isNullOrEmpty()) {
@@ -247,8 +250,8 @@ class HomeFragment : Fragment() {
                     title.visibility = View.VISIBLE
                     more.startAnimation(setSlideUp())
                     title.startAnimation(setSlideUp())
-                    progress.visibility = View.GONE
                 }
+                progress.visibility = View.GONE
             }
         }
 
@@ -349,43 +352,53 @@ class HomeFragment : Fragment() {
             getString(R.string.recommended)
         )
 
-        val stories = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7]
-        binding.homeUserStatusContainer.isVisible = stories
-        binding.homeUserStatusProgressBar.isVisible = stories
+        binding.homeUserStatusContainer.visibility = View.VISIBLE
+        binding.homeUserStatusProgressBar.visibility = View.VISIBLE
         binding.homeUserStatusRecyclerView.visibility = View.GONE
-        if (stories) {
-            model.getUserStatus().observe(viewLifecycleOwner) {
-                binding.homeUserStatusRecyclerView.visibility = View.GONE
-                if (it.isNullOrEmpty()) {
-                    binding.homeUserStatusContainer.visibility = View.GONE
-                } else {
-                    PrefManager.getLiveVal(PrefName.RefreshStatus, false).apply {
-                        asLiveBool()
-                        observe(viewLifecycleOwner) { _ ->
-                            binding.homeUserStatusRecyclerView.adapter = UserStatusAdapter(it)
-                        }
-                    }
-                    binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
-                        requireContext(),
-                        LinearLayoutManager.HORIZONTAL,
-                        false
-                    )
-                    binding.homeUserStatusRecyclerView.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
-                    binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
-
-                }
-                binding.homeUserStatusProgressBar.visibility = View.GONE
+        model.getUserStatus().observe(viewLifecycleOwner) {
+            if (!PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7]) {
+                binding.homeUserStatusContainer.visibility = View.GONE
+                return@observe
             }
+            binding.homeUserStatusRecyclerView.visibility = View.GONE
+            if (it.isNullOrEmpty()) {
+                binding.homeUserStatusContainer.visibility = View.GONE
+            } else {
+                PrefManager.getLiveVal(PrefName.RefreshStatus, false).apply {
+                    asLiveBool()
+                    observe(viewLifecycleOwner) { _ ->
+                        binding.homeUserStatusRecyclerView.adapter = UserStatusAdapter(it)
+                    }
+                }
+                binding.homeUserStatusRecyclerView.layoutManager = LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                binding.homeUserStatusRecyclerView.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeUserStatusRecyclerView.visibility = View.VISIBLE
+
+            }
+            binding.homeUserStatusProgressBar.visibility = View.GONE
         }
-        binding.homeHiddenItemsContainer.visibility = View.GONE
+
+        fun emptyOnLongClick(view: View) : Boolean {
+            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            snackString(getString(R.string.no_hidden_items))
+            return true
+        }
+
+        fun showOnLongClick(view: View) : Boolean {
+            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            binding.homeHiddenItemsRecyclerView.layoutAnimation =
+                LayoutAnimationController(setSlideIn(), 0.25f)
+            binding.homeHiddenItemsContainer.visibility = View.VISIBLE
+            return true
+        }
+
         model.getHidden().observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty()) {
-                fun emptyOnLongClick(view: View) : Boolean {
-                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    snackString(getString(R.string.no_hidden_items))
-                    return true
-                }
                 binding.homeContinueWatch.setOnLongClickListener { view ->
                     emptyOnLongClick(view)
                 }
@@ -399,13 +412,6 @@ class HomeFragment : Fragment() {
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                fun showOnLongClick(view: View) : Boolean {
-                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    binding.homeHiddenItemsRecyclerView.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
-                    binding.homeHiddenItemsContainer.visibility = View.VISIBLE
-                    return true
-                }
                 binding.homeContinueWatch.setOnLongClickListener { view ->
                     showOnLongClick(view)
                 }
@@ -450,7 +456,7 @@ class HomeFragment : Fragment() {
             "MangaFav",
             "MangaPlanned",
             "Recommendation",
-            "UserStatus",
+            "UserStatus"
         )
 
         val containers = arrayOf(
@@ -462,6 +468,7 @@ class HomeFragment : Fragment() {
             binding.homePlannedMangaContainer,
             binding.homeRecommendedContainer,
             binding.homeUserStatusContainer,
+            binding.homeUserStatusContainer
         )
 
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }
