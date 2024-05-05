@@ -658,10 +658,11 @@ class AnilistQueries {
         if (!returnMap.containsKey("currentAnime")) current("Anime")
         if (!returnMap.containsKey("favoriteAnime")) favorite("Anime")
         if (!returnMap.containsKey("plannedAnime")) planned("Anime")
+        returnMap["hiddenAnime"] = removedMedia.filter { it.anime != null }.distinctBy { it.id } as ArrayList<Media>
         if (!returnMap.containsKey("currentManga")) current("Manga")
         if (!returnMap.containsKey("favoriteManga")) favorite("Manga")
         if (!returnMap.containsKey("plannedManga")) planned("Manga")
-        returnMap["hidden"] = removedMedia.distinctBy { it.id } as ArrayList<Media>
+        returnMap["hiddenManga"] = removedMedia.filter { it.manga != null }.distinctBy { it.id } as ArrayList<Media>
         return returnMap
     }
 

@@ -10,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LayoutAnimationController
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -383,56 +386,71 @@ class HomeFragment : Fragment() {
             binding.homeUserStatusProgressBar.visibility = View.GONE
         }
 
-        fun emptyOnLongClick(view: View) : Boolean {
-            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            snackString(getString(R.string.no_hidden_items))
-            return true
-        }
 
-        fun showOnLongClick(view: View) : Boolean {
-            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.homeHiddenItemsRecyclerView.layoutAnimation =
-                LayoutAnimationController(setSlideIn(), 0.25f)
-            binding.homeHiddenItemsContainer.visibility = View.VISIBLE
-            return true
-        }
-
-        model.getHidden().observe(viewLifecycleOwner) {
-            if (it.isNullOrEmpty()) {
-                binding.homeContinueWatch.setOnLongClickListener { view ->
-                    emptyOnLongClick(view)
-                }
-                binding.homeContinueRead.setOnLongClickListener { view ->
-                    emptyOnLongClick(view)
+        fun getHiddenLayout(
+            items: ArrayList<Media>?,
+            anchorView: TextView,
+            container: LinearLayout,
+            titleView: TextView,
+            recyclerView: RecyclerView,
+            moreButton: ImageView
+        ) {
+            if (items.isNullOrEmpty()) {
+                anchorView.setOnLongClickListener { view ->
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    snackString(getString(R.string.no_hidden_items))
+                    true
                 }
             } else {
-                binding.homeHiddenItemsRecyclerView.adapter = MediaAdaptor(0, it, requireActivity())
-                binding.homeHiddenItemsRecyclerView.layoutManager = LinearLayoutManager(
+                recyclerView.adapter = MediaAdaptor(0, items, requireActivity())
+                recyclerView.layoutManager = LinearLayoutManager(
                     requireContext(),
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                binding.homeContinueWatch.setOnLongClickListener { view ->
-                    showOnLongClick(view)
+                recyclerView.layoutAnimation = LayoutAnimationController(setSlideIn(), 0.25f)
+                anchorView.setOnLongClickListener { view ->
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    container.visibility = View.VISIBLE
+                    true
                 }
-                binding.homeContinueRead.setOnLongClickListener { view ->
-                    showOnLongClick(view)
-                }
-                binding.homeHiddenItemsMore.setSafeOnClickListener { _ ->
+                moreButton.setSafeOnClickListener { _ ->
                     ContextCompat.startActivity(
                         requireActivity(),
                         Intent(requireActivity(), MediaListViewActivity::class.java)
-                            .putExtra("title", getString(R.string.hidden))
-                            .putExtra("media", it),
+                            .putExtra("title", titleView.text)
+                            .putExtra("media", items),
                         null
                     )
                 }
-                binding.homeHiddenItemsTitle.setOnLongClickListener { view ->
+                titleView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    binding.homeHiddenItemsContainer.visibility = View.GONE
+                    container.visibility = View.GONE
                     true
                 }
             }
+        }
+
+        model.getHiddenAnime().observe(viewLifecycleOwner) {
+            getHiddenLayout(
+                it,
+                binding.homeContinueWatch,
+                binding.homeHiddenAnimeContainer,
+                binding.homeHiddenAnimeTitle,
+                binding.homeHiddenAnimeRecyclerView,
+                binding.homeHiddenAnimeMore
+            )
+        }
+
+        model.getHiddenManga().observe(viewLifecycleOwner) {
+            getHiddenLayout(
+                it,
+                binding.homeContinueRead,
+                binding.homeHiddenMangaContainer,
+                binding.homeHiddenMangaTitle,
+                binding.homeHiddenMangaRecyclerView,
+                binding.homeHiddenMangaMore
+            )
         }
 
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())

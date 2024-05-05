@@ -80,10 +80,16 @@ class AnilistHomeViewModel : ViewModel() {
 
     fun getUserStatus(): LiveData<ArrayList<User>> = userStatus
 
-    private val hidden: MutableLiveData<ArrayList<Media>> =
+    private val hiddenAnime: MutableLiveData<ArrayList<Media>> =
         MutableLiveData<ArrayList<Media>>(null)
 
-    fun getHidden(): LiveData<ArrayList<Media>> = hidden
+    fun getHiddenAnime(): LiveData<ArrayList<Media>> = hiddenAnime
+
+    private val hiddenManga: MutableLiveData<ArrayList<Media>> =
+        MutableLiveData<ArrayList<Media>>(null)
+
+    fun getHiddenManga(): LiveData<ArrayList<Media>> = hiddenManga
+
 
     @Suppress("UNCHECKED_CAST")
     suspend fun initHomePage() {
@@ -96,7 +102,8 @@ class AnilistHomeViewModel : ViewModel() {
         res["plannedManga"]?.let { mangaPlanned.postValue(it as ArrayList<Media>?) }
         res["recommendations"]?.let { recommendation.postValue(it as ArrayList<Media>?) }
         res["status"]?.let { userStatus.postValue(it as ArrayList<User>?) }
-        res["hidden"]?.let { hidden.postValue(it as ArrayList<Media>?) }
+        res["hiddenAnime"]?.let { hiddenAnime.postValue(it as ArrayList<Media>?) }
+        res["hiddenManga"]?.let { hiddenManga.postValue(it as ArrayList<Media>?) }
     }
 
     suspend fun loadMain(context: FragmentActivity) {

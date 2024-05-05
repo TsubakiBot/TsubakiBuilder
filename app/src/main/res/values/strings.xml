@@ -1074,6 +1074,9 @@
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
 
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+
     <string name="you">You</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

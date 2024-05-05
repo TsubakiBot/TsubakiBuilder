@@ -3,7 +3,7 @@
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
-   <a href="https://github.com/RepoDevil/Himitsu/releases"><img src="https://img.shields.io/github/downloads/RepoDevil/Himitsu/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
+   <a href="https://github.com/RepoDevil/Himitsu/releases"><img src="https://img.shields.io/github/actions/workflow/status/RepoDevil/Himitsu/android.yml?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
    <a href="https://www.codefactor.io/repository/github/RepoDevil/Himitsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Himitsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
    <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
@@ -19,12 +19,13 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) client. Himitsu aims to i
 
 ## Himitsu Modifications
 
-- Torrent support (thanks to [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
+- Torrent support (c/o [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
 - Embedded audio and subtitle support
+- Trailer banners and YouTube integration
 - Reverse search: Search inside extensions
 - Limited support for [LNReader plugins](https://github.com/LNReader/lnreader-plugins)
 - Continue reading / watching / anything widgets
-- Dynamic launcher icon shortcuts (thanks to [Neko](https://github.com/nekomangaorg/Neko))
+- Dynamic launcher icon shortcuts (c/o [Neko](https://github.com/nekomangaorg/Neko))
 - Picture-in-picture fixed, Foldable support added
 - Fixed upstream widget themes and management
 - Options to disable the comments API and trolling

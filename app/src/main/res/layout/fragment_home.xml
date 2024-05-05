@@ -345,7 +345,7 @@
             </FrameLayout>
 
             <LinearLayout
-                android:id="@+id/homeHiddenItemsContainer"
+                android:id="@+id/homeHiddenAnimeContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -358,18 +358,18 @@
                     tools:ignore="UseCompoundDrawables">
 
                     <TextView
-                        android:id="@+id/homeHiddenItemsTitle"
+                        android:id="@+id/homeHiddenAnimeTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
                         android:padding="8dp"
-                        android:text="@string/hidden"
+                        android:text="@string/hidden_anime"
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/homeHiddenItemsMore"
+                        android:id="@+id/homeHiddenAnimeMore"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="16dp"
@@ -381,7 +381,7 @@
                 </LinearLayout>
 
                 <ani.dantotsu.view.FadingEdgeRecyclerView
-                    android:id="@+id/homeHiddenItemsRecyclerView"
+                    android:id="@+id/homeHiddenAnimeRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
@@ -678,12 +678,61 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/homeContinueReadingContainer"
+                android:id="@+id/homeHiddenMangaContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:visibility="gone">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/homeHiddenMangaTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_bold"
+                        android:padding="8dp"
+                        android:text="@string/hidden_manga"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/homeHiddenMangaMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:padding="8dp"
+                        android:src="@drawable/arrow_mark"
+                        android:textSize="16sp"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <ani.dantotsu.view.FadingEdgeRecyclerView
+                    android:id="@+id/homeHiddenMangaRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:requiresFadingEdge="horizontal"
+                    tools:itemCount="4"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_media_compact"
+                    tools:orientation="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/homeContinueReadingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
