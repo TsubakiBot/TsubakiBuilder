@@ -311,10 +311,58 @@
                         </com.google.android.material.card.MaterialCardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
-
             </FrameLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/homeRandomItem"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="32dp"
+                app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                app:cardCornerRadius="16dp"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/homeRandomItemImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.6"
+                    android:background="@color/bg_black" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/random_item"
+                        android:textAllCaps="true"
+                        android:textColor="@color/bg_white"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="64dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/colorPrimary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
 
             <FrameLayout
                 android:id="@+id/homeUserStatusContainer"

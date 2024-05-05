@@ -33,6 +33,7 @@ import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.home.status.UserStatusAdapter
+import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
@@ -55,9 +56,11 @@ import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -110,6 +113,24 @@ class HomeFragment : Fragment() {
                             .putExtra("username", Anilist.username), null
                     )
                 }
+
+                if (isOnline(requireContext())) {
+                    fun getRandomMedia() : Media {
+                        var media: Media?
+                        do {
+                            runBlocking {
+                                media = Anilist.query.getMedia(Random.nextInt(200000))
+                            }
+                        } while(media == null)
+                        return media!!
+                    }
+                    binding.homeRandomItem.setOnClickListener {
+                        val media = getRandomMedia()
+                        snackString(media.mainName())
+                    }
+                    binding.homeRandomItemImage
+                }
+                binding.homeRandomItem.isVisible = isOnline(requireContext())
 
                 binding.homeUserAvatarContainer.startAnimation(setSlideUp())
                 binding.homeUserDataContainer.visibility = View.VISIBLE
