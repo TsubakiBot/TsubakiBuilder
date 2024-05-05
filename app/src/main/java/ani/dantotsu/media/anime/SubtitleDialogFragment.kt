@@ -14,6 +14,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
 import ani.dantotsu.media.MediaDetailsViewModel
+import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
@@ -24,6 +25,12 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
     val model: MediaDetailsViewModel by activityViewModels()
     private lateinit var episode: Episode
+    private var userSubtitle: Subtitle? = null
+
+    fun addSubtitle(additional: Subtitle) : SubtitleDialogFragment {
+        userSubtitle = additional
+        return this
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +50,9 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
                 episode.extractors?.find { it.server.name == episode.selectedExtractor }
                     ?: return@observe
             binding.subtitlesRecycler.layoutManager = LinearLayoutManager(requireContext())
-            binding.subtitlesRecycler.adapter = SubtitleAdapter(currentExtractor.subtitles)
+            val subtitles = userSubtitle?.let { currentExtractor.subtitles.plus(it) }
+                ?: currentExtractor.subtitles
+            binding.subtitlesRecycler.adapter = SubtitleAdapter(subtitles)
         }
     }
 
@@ -87,27 +96,37 @@ class SubtitleDialogFragment : BottomSheetDialogFragment() {
                     dismiss()
                 }
             } else {
-                binding.subtitleTitle.text = when (subtitles[position - 1].language) {
-                    "ja-JP" -> "[ja-JP] Japanese"
-                    "en-US" -> "[en-US] English"
-                    "de-DE" -> "[de-DE] German"
-                    "es-ES" -> "[es-ES] Spanish"
-                    "es-419" -> "[es-419] Spanish"
-                    "fr-FR" -> "[fr-FR] French"
-                    "it-IT" -> "[it-IT] Italian"
-                    "pt-BR" -> "[pt-BR] Portuguese (Brazil)"
-                    "pt-PT" -> "[pt-PT] Portuguese (Portugal)"
-                    "ru-RU" -> "[ru-RU] Russian"
-                    "zh-CN" -> "[zh-CN] Chinese (Simplified)"
-                    "tr-TR" -> "[tr-TR] Turkish"
-                    "ar-ME" -> "[ar-ME] Arabic"
-                    "ar-SA" -> "[ar-SA] Arabic (Saudi Arabia)"
-                    "uk-UK" -> "[uk-UK] Ukrainian"
-                    "he-IL" -> "[he-IL] Hebrew"
-                    "pl-PL" -> "[pl-PL] Polish"
-                    "ro-RO" -> "[ro-RO] Romanian"
-                    "sv-SE" -> "[sv-SE] Swedish"
-                    else -> if (subtitles[position - 1].language matches Regex("([a-z]{2})-([A-Z]{2}|\\d{3})")) "[${subtitles[position - 1].language}]" else subtitles[position - 1].language
+                when (val language = subtitles[position - 1].language) {
+                    "none" -> {
+                        binding.subtitleTitle.text = getString(R.string.disabled_track)
+                    }
+                    "user" -> {
+                        binding.subtitleTitle.text = getString(R.string.user_subtitle)
+                    }
+                    else -> {
+                        binding.subtitleTitle.text = when (language) {
+                            "ja-JP" -> "[ja-JP] Japanese"
+                            "en-US" -> "[en-US] English"
+                            "de-DE" -> "[de-DE] German"
+                            "es-ES" -> "[es-ES] Spanish"
+                            "es-419" -> "[es-419] Spanish"
+                            "fr-FR" -> "[fr-FR] French"
+                            "it-IT" -> "[it-IT] Italian"
+                            "pt-BR" -> "[pt-BR] Portuguese (Brazil)"
+                            "pt-PT" -> "[pt-PT] Portuguese (Portugal)"
+                            "ru-RU" -> "[ru-RU] Russian"
+                            "zh-CN" -> "[zh-CN] Chinese (Simplified)"
+                            "tr-TR" -> "[tr-TR] Turkish"
+                            "ar-ME" -> "[ar-ME] Arabic"
+                            "ar-SA" -> "[ar-SA] Arabic (Saudi Arabia)"
+                            "uk-UK" -> "[uk-UK] Ukrainian"
+                            "he-IL" -> "[he-IL] Hebrew"
+                            "pl-PL" -> "[pl-PL] Polish"
+                            "ro-RO" -> "[ro-RO] Romanian"
+                            "sv-SE" -> "[sv-SE] Swedish"
+                            else -> getString(R.string.unknown_track, language)
+                        }
+                    }
                 }
                 model.getMedia().observe(viewLifecycleOwner) { media ->
                     val mediaID: Int = media.id

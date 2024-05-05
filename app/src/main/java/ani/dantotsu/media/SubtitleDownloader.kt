@@ -1,6 +1,8 @@
 package ani.dantotsu.media
 
 import android.content.Context
+import androidx.core.util.toAndroidPair
+import androidx.media3.common.MimeTypes
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.parsers.SubtitleType
@@ -33,8 +35,22 @@ class SubtitleDownloader {
                     if (response.isSuccessful) {
                         val responseBody = response.body.string()
 
+                        val formats = arrayOf(MimeTypes.TEXT_VTT,
+                            MimeTypes.APPLICATION_TTML,
+                            MimeTypes.APPLICATION_SUBRIP,
+                            MimeTypes.TEXT_SSA)
 
-                        val subtitleType = when {
+                        val subtitleType = response.headers.find {
+                            it.first == "Content-Type" && formats.contains(it.second)
+                        }?.let {
+                            when (it.second) {
+                                MimeTypes.TEXT_VTT -> SubtitleType.VTT
+                                MimeTypes.APPLICATION_TTML ->  SubtitleType.TTML
+                                MimeTypes.APPLICATION_SUBRIP ->  SubtitleType.SRT
+                                MimeTypes.TEXT_SSA ->  SubtitleType.ASS
+                                else -> SubtitleType.SRT
+                            }
+                        } ?: when {
                             responseBody.contains("[Script Info]") -> SubtitleType.ASS
                             responseBody.contains("WEBVTT") -> SubtitleType.VTT
                             else -> SubtitleType.SRT

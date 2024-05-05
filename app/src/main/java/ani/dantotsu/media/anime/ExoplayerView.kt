@@ -1446,7 +1446,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         //Subtitles
         hasExtSubtitles = ext.subtitles.isNotEmpty()
         if (hasExtSubtitles && !isTorrent) {
-            exoSubtitle.isVisible = hasExtSubtitles
             exoSubtitle.setOnClickListener {
                 subClick()
             }
@@ -2003,7 +2002,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 .show(supportFragmentManager, "dialog")
         }
         if (subsEmbedded) {
-            exoSubtitle.isVisible = subTracks.size > 1
             exoSubtitle.setOnClickListener {
                 TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
                     .show(supportFragmentManager, "dialog")
@@ -2324,20 +2322,38 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { document: Uri? -> document?.let {
-        val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
-            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-        subs += MediaItem.SubtitleConfiguration
-            .Builder(it)
-            .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-            .setMimeType(MimeTypeMap.getSingleton().getMimeTypeFromExtension(it.path))
-            .setId("96")
-            .setLanguage("user")
-            .build()
-        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        it.path?.let { file ->
+            val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
+                ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+            val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(file)
+            subs += MediaItem.SubtitleConfiguration
+                .Builder(it)
+                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                .setMimeType(mimeType)
+                .setId("96")
+                .setLanguage("user")
+                .build()
+            mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+
+            val subType = when (mimeType) {
+                MimeTypes.TEXT_VTT -> SubtitleType.VTT
+                MimeTypes.APPLICATION_TTML ->  SubtitleType.TTML
+                MimeTypes.APPLICATION_SUBRIP ->  SubtitleType.SRT
+                MimeTypes.TEXT_SSA ->  SubtitleType.ASS
+                else -> SubtitleType.SRT
+            }
+            val subtitle = Subtitle("user", file, subType)
+
+            PrefManager.setCustomVal(
+                "${media.id}_${media.anime!!.selectedEpisode}", exoPlayer.currentPosition
+            )
+            model.saveSelected(media.id, media.selected!!)
+            SubtitleDialogFragment().addSubtitle(subtitle).show(supportFragmentManager, "dialog")
+        }
     } }
 
-
     private fun showFileChooser() {
+        exoPlayer.pause()
         try {
             onImportSubtitle.launch(
                 resources.getStringArray(R.array.mimetype_binary).plus(

@@ -74,11 +74,9 @@ class TrackGroupDialogFragment(
                         binding.subtitleTitle.text =
                             getString(R.string.unknown_track, String.format("%02d", position))
                     }
-
                     "none" -> {
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
-
                     else -> {
                         binding.subtitleTitle.text = getLanguageItem(language)
                             ?: getString(R.string.unknown_track, language)
