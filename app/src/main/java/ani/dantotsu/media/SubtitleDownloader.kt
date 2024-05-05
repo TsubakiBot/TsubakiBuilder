@@ -35,10 +35,12 @@ class SubtitleDownloader {
                     if (response.isSuccessful) {
                         val responseBody = response.body.string()
 
-                        val formats = arrayOf(MimeTypes.TEXT_VTT,
+                        val formats = arrayOf(
+                            MimeTypes.TEXT_VTT,
                             MimeTypes.APPLICATION_TTML,
                             MimeTypes.APPLICATION_SUBRIP,
-                            MimeTypes.TEXT_SSA)
+                            MimeTypes.TEXT_SSA
+                        )
 
                         val subtitleType = response.headers.find {
                             it.first == "Content-Type" && formats.contains(it.second)

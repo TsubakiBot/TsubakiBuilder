@@ -28,6 +28,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings.System
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
@@ -176,6 +177,7 @@ import kotlin.collections.set
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+
 
 @UnstableApi
 @SuppressLint("ClickableViewAccessibility")
@@ -2322,34 +2324,21 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { document: Uri? -> document?.let {
-        it.path?.let { file ->
-            val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
-                ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-            val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(file)
-            subs += MediaItem.SubtitleConfiguration
-                .Builder(it)
-                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                .setMimeType(mimeType)
-                .setId("96")
-                .setLanguage("user")
-                .build()
-            mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-
-            val subType = when (mimeType) {
-                MimeTypes.TEXT_VTT -> SubtitleType.VTT
-                MimeTypes.APPLICATION_TTML ->  SubtitleType.TTML
-                MimeTypes.APPLICATION_SUBRIP ->  SubtitleType.SRT
-                MimeTypes.TEXT_SSA ->  SubtitleType.ASS
-                else -> SubtitleType.SRT
-            }
-            val subtitle = Subtitle("user", file, subType)
-
-            PrefManager.setCustomVal(
-                "${media.id}_${media.anime!!.selectedEpisode}", exoPlayer.currentPosition
-            )
-            model.saveSelected(media.id, media.selected!!)
-            SubtitleDialogFragment().addSubtitle(subtitle).show(supportFragmentManager, "dialog")
-        }
+        val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
+            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+        val subConfig = MediaItem.SubtitleConfiguration
+            .Builder(it)
+            .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+            .setMimeType(contentResolver.getType(it))
+            .setId("96")
+            .setLanguage(Locale.getDefault().language)
+            .build()
+        mediaItem.buildUpon().setSubtitleConfigurations(subs + subConfig).build()
+        episode.selectedSubtitle = subs.size
+        hasExtSubtitles = true
+        buildExoplayer()
+        setupSubFormatting(playerView)
+        exoPlayer.play()
     } }
 
     private fun showFileChooser() {
