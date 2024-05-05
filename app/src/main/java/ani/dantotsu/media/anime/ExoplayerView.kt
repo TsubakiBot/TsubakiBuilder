@@ -43,6 +43,7 @@ import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.webkit.MimeTypeMap
 import android.widget.AdapterView
 import android.widget.FrameLayout
 import android.widget.ImageButton
@@ -114,6 +115,7 @@ import ani.dantotsu.connections.discord.DiscordService
 import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
+import ani.dantotsu.currActivity
 import ani.dantotsu.databinding.ActivityExoplayerBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
@@ -1450,6 +1452,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 subClick()
             }
         }
+        exoSubtitle.setOnLongClickListener {
+            showFileChooser()
+            true
+        }
         val sub: MutableList<MediaItem.SubtitleConfiguration> =
             emptyList<MediaItem.SubtitleConfiguration>().toMutableList()
         ext.subtitles.forEach { subtitle ->
@@ -2316,6 +2322,34 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         startExoPlayer()
     }
 
+    private val onImportSubtitle = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { document: Uri? -> document?.let {
+        val subs = mediaItem.localConfiguration?.subtitleConfigurations
+            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+        subs += MediaItem.SubtitleConfiguration
+            .Builder(it)
+            .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+            .setMimeType(MimeTypeMap.getSingleton().getMimeTypeFromExtension(it.path))
+            .setId("96")
+            .setLanguage("user")
+            .build()
+        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+    } }
+
+
+    private fun showFileChooser() {
+        try {
+            onImportSubtitle.launch(
+                resources.getStringArray(R.array.mimetype_binary).plus(
+                    arrayOf(MimeTypes.TEXT_VTT,
+                        MimeTypes.APPLICATION_TTML,
+                        MimeTypes.APPLICATION_SUBRIP,
+                        MimeTypes.TEXT_SSA)
+                )
+            )
+        } catch (ignored: ActivityNotFoundException) { }
+    }
 
     @SuppressLint("ViewConstructor")
     class ExtendedTimeBar(

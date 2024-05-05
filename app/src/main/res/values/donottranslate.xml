@@ -38,6 +38,10 @@
 
     <string name="mimetype_zip" translatable="false">application/zip</string>
 
+    <string-array name="mimetype_binary">
+        <item>application/octet-stream</item>
+    </string-array>
+
     <string name="cursed_yt" translatable="false">https://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
 
     <string name="lorem_ipsum" translatable="false">
