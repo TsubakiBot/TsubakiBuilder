@@ -507,7 +507,6 @@ class AnilistQueries {
                 }
             } else returnArray.addAll(subMap.values)
             returnMap["current$type"] = returnArray
-
         }
 
         fun planned(type: String) {
@@ -667,6 +666,7 @@ class AnilistQueries {
     }
 
     suspend fun initResumable(type: MediaType?): List<Media> {
+        val removeList = PrefManager.getCustomVal("removeList", setOf<Int>())
         var query = """{"""
         if (type == null || type == MediaType.ANIME) {
             query += """currentAnime: ${
@@ -687,7 +687,6 @@ class AnilistQueries {
         query += """}""".trimEnd(',')
 
         val response = executeQuery<Query.HomePageMedia>(query, show = true)
-        Logger.log(response.toString())
         val returnMap = mutableMapOf<String, ArrayList<Media>>()
         fun current(type: MediaType) {
             val subMap = mutableMapOf<Int, Media>()
@@ -699,15 +698,19 @@ class AnilistQueries {
             current?.lists?.forEach { li ->
                 li.entries?.reversed()?.forEach {
                     val m = Media(it)
-                    m.cameFromContinue = true
-                    subMap[m.id] = m
+                    if (m.id !in removeList) {
+                        m.cameFromContinue = true
+                        subMap[m.id] = m
+                    }
                 }
             }
             repeating?.lists?.forEach { li ->
                 li.entries?.reversed()?.forEach {
                     val m = Media(it)
-                    m.cameFromContinue = true
-                    subMap[m.id] = m
+                    if (m.id !in removeList) {
+                        m.cameFromContinue = true
+                        subMap[m.id] = m
+                    }
                 }
             }
             if (type != MediaType.ANIME) {
