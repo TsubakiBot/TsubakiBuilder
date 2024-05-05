@@ -37,6 +37,7 @@ import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
+import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
@@ -58,6 +59,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import java.io.Serializable
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -126,7 +128,11 @@ class HomeFragment : Fragment() {
                     }
                     binding.homeRandomItem.setOnClickListener {
                         val media = getRandomMedia()
-                        snackString(media.mainName())
+                        ContextCompat.startActivity(
+                            requireContext(),
+                            Intent(requireContext(), MediaDetailsActivity::class.java)
+                                .putExtra("media", media as Serializable), null
+                        )
                     }
                     binding.homeRandomItemImage
                 }
