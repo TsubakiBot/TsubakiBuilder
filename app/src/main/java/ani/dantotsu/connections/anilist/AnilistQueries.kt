@@ -500,8 +500,8 @@ class AnilistQueries {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
-                for (i in subMap) {
-                    if (i.value !in returnArray) returnArray.add(i.value)
+                subMap.forEach {
+                    if (it.value !in returnArray) returnArray.add(it.value)
                 }
             } else returnArray.addAll(subMap.values)
             returnMap["current$type"] = returnArray
@@ -534,8 +534,8 @@ class AnilistQueries {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
-                for (i in subMap) {
-                    if (i.value !in returnArray) returnArray.add(i.value)
+                subMap.forEach {
+                    if (it.value !in returnArray) returnArray.add(it.value)
                 }
             } else returnArray.addAll(subMap.values)
             returnMap["planned$type"] = returnArray
@@ -654,6 +654,12 @@ class AnilistQueries {
                 list.addAll(0, anilistActivities)
                 returnMap["status"] = ArrayList(list)
             }
+            if (toShow.getOrNull(0) != true) current("Anime")
+            if (toShow.getOrNull(1) != true) favorite("Anime")
+            if (toShow.getOrNull(2) != true) planned("Anime")
+            if (toShow.getOrNull(3) != true) current("Manga")
+            if (toShow.getOrNull(4) != true) favorite("Manga")
+            if (toShow.getOrNull(5) != true) planned("Manga")
             returnMap["hidden"] = removedMedia.distinctBy { it.id } as ArrayList<Media>
         }
         return returnMap
