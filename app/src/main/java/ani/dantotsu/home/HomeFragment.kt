@@ -91,9 +91,11 @@ class HomeFragment : Fragment() {
                 binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
                 binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
                 binding.homeUserAvatar.loadImage(Anilist.avatar)
-                val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
-                (if (bannerAnimations) binding.homeUserBg else binding.homeUserBgNoKen)
-                    .blurImage(Anilist.bg)
+                val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
+                    binding.homeUserBg
+                else
+                    binding.homeUserBgNoKen
+                banner.blurImage(Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
                 val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
                 binding.homeNotificationCount.isVisible = count > 0
@@ -115,8 +117,18 @@ class HomeFragment : Fragment() {
                             .putExtra("username", Anilist.username), null
                     )
                 }
+                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
+                binding.homeUserDataContainer.visibility = View.VISIBLE
+                binding.homeUserDataContainer.layoutAnimation =
+                    LayoutAnimationController(setSlideUp(), 0.25f)
+                binding.homeAnimeList.visibility = View.VISIBLE
+                binding.homeMangaList.visibility = View.VISIBLE
+                binding.homeListContainer.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
 
                 if (isOnline(requireContext())) {
+                    binding.homeRandomItem.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
                     fun getRandomMedia() : Media {
                         var media: Media?
                         do {
@@ -134,18 +146,8 @@ class HomeFragment : Fragment() {
                                 .putExtra("media", media as Serializable), null
                         )
                     }
-                    binding.homeRandomItemImage
                 }
                 binding.homeRandomItem.isVisible = isOnline(requireContext())
-
-                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
-                binding.homeUserDataContainer.visibility = View.VISIBLE
-                binding.homeUserDataContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideUp(), 0.25f)
-                binding.homeAnimeList.visibility = View.VISIBLE
-                binding.homeMangaList.visibility = View.VISIBLE
-                binding.homeListContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
             }
             else {
                 snackString(R.string.please_reload)
