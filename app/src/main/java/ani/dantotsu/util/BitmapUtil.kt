@@ -44,7 +44,7 @@ object BitmapUtil {
                     bitmap = BitmapFactory.decodeStream(urlConnection.inputStream)
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
             } finally {
                 urlConnection?.disconnect()
             }

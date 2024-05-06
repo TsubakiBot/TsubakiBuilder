@@ -383,7 +383,7 @@ class NovelDownloaderService : Service() {
                             output.write(jsonString.toByteArray())
                         }
                     } catch (e: android.system.ErrnoException) {
-                        e.printStackTrace()
+                        Logger.log(e)
                         Toast.makeText(
                             this@NovelDownloaderService,
                             "Error while saving: ${e.localizedMessage}",
@@ -419,7 +419,7 @@ class NovelDownloaderService : Service() {
                 }
                 return@withContext file.uri.toString()
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         this@NovelDownloaderService,

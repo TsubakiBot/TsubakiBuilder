@@ -298,7 +298,7 @@ object CommentsAPI {
             val parsed = try {
                 Json.decodeFromString<UserResponse>(json.text)
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
                 return null
             }
             isBanned = parsed.user.isBanned ?: false

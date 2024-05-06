@@ -14,6 +14,7 @@ import java.util.Date
 import java.util.concurrent.Executors
 
 object Logger {
+    val disabled = PrefManager.getVal<Boolean>(PrefName.Lightspeed)
     var file: File? = null
     private val loggerExecutor = Executors.newSingleThreadExecutor()
 
@@ -29,7 +30,6 @@ object Logger {
             } else {
                 file?.createNewFile()
             }
-            file?.appendText("log started\n")
             file?.appendText(getDeviceAndAppInfo(context))
 
         } catch (e: Exception) {
@@ -39,6 +39,7 @@ object Logger {
     }
 
     fun log(message: String) {
+        if (disabled) return
         val trace = Thread.currentThread().stackTrace[3]
         loggerExecutor.execute {
             if (file == null) Log.d("Internal Logger", message)
@@ -53,6 +54,7 @@ object Logger {
     }
 
     fun log(e: Exception) {
+        if (disabled) return
         loggerExecutor.execute {
             file?.let {
                 it.appendText("---------------------------Exception---------------------------\n")
@@ -64,6 +66,7 @@ object Logger {
     }
 
     fun log(e: Throwable) {
+        if (disabled) return
         loggerExecutor.execute {
             file?.let {
                 it.appendText("---------------------------Exception---------------------------\n")
@@ -111,6 +114,7 @@ object Logger {
         }
 
         return buildString {
+            append("--------------------------------\n")
             append("Date/time: ${Date()}\n")
             append("Device: ${Build.MODEL}\n")
             append("OS version: ${Build.VERSION.RELEASE}\n")

@@ -1099,7 +1099,6 @@ class MangaReaderActivity : AppCompatActivity() {
                 Logger.log("Failed to delete file $fileName")
                 Logger.log(e)
             }
-            e.printStackTrace()
         }
         return null
     }

@@ -133,7 +133,7 @@ class TorrentServerService : Service() {
                     }
                 Injekt.get<Application>().startService(intent)
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
             }
         }
 
@@ -146,7 +146,7 @@ class TorrentServerService : Service() {
                     }
                 Injekt.get<Application>().startService(intent)
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
             }
         }
 

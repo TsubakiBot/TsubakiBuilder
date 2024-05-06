@@ -190,6 +190,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     FirstComment(Pref(Location.Irrelevant, Boolean::class, true)),
     CommentAuthResponse(Pref(Location.Irrelevant, AuthResponse::class, "")),
     CommentTokenExpiry(Pref(Location.Irrelevant, Long::class, 0L)),
+    Lightspeed(Pref(Location.Irrelevant, Boolean::class, false)),
     LogToFile(Pref(Location.Irrelevant, Boolean::class, false)),
     RecentGlobalNotification(Pref(Location.Irrelevant, Int::class, 0)),
     CommentNotificationStore(Pref(Location.Irrelevant, List::class, listOf<CommentStore>())),

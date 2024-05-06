@@ -88,7 +88,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                             toast(getString(R.string.unknown_file_type))
                         }
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        Logger.log(e)
                         toast(getString(R.string.error_importing_settings))
                     }
                 }
@@ -227,6 +227,19 @@ class SettingsSystemActivity : AppCompatActivity() {
                         icon = R.drawable.ic_round_search_24,
                         pref = PrefName.SharedUserID,
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.disable_debug),
+                        desc = getString(R.string.rogue_warning),
+                        icon = R.drawable.ic_round_superscript_24,
+                        isChecked = PrefManager.getVal(PrefName.Lightspeed),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.Lightspeed, isChecked)
+                            Logger.clearLog()
+                            restartApp()
+                        }
+
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

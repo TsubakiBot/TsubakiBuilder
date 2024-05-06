@@ -524,7 +524,6 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
                 Logger.log("Failed to delete file $fileName")
                 Logger.log(e)
             }
-            e.printStackTrace()
         }
         return null
     }

@@ -400,7 +400,7 @@ class AnimeDownloaderService : Service() {
             if (e.message?.contains("Coroutine was cancelled") == false) { // wut
                 Logger.log("Exception while downloading file: ${e.message}")
                 snackString("Exception while downloading file: ${e.message}")
-                e.printStackTrace()
+                Logger.log(e)
             }
             broadcastDownloadFailed(task.episode)
         }
@@ -463,7 +463,7 @@ class AnimeDownloaderService : Service() {
                             output.write(jsonString.toByteArray())
                         }
                     } catch (e: android.system.ErrnoException) {
-                        e.printStackTrace()
+                        Logger.log(e)
                         Toast.makeText(
                             this@AnimeDownloaderService,
                             "Error while saving: ${e.localizedMessage}",
@@ -497,7 +497,7 @@ class AnimeDownloaderService : Service() {
                 }
                 return@withContext file.uri.toString()
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.log(e)
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         this@AnimeDownloaderService,

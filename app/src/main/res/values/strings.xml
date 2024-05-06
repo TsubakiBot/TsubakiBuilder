@@ -816,6 +816,8 @@
     <string name="set_cookies">Set Cookies</string>
     <string name="open_website">Open Website</string>
 
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Log to File</string>
     <string name="logging_warning">May cause lag. Only enable if experiencing issues.</string>
     <string name="share_log">Click to share current log file</string>

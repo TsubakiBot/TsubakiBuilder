@@ -104,7 +104,7 @@ class SubtitleDownloader {
                 }
             } catch (e: Exception) {
                 snackString("Failed to download subtitle")
-                e.printStackTrace()
+                Logger.log(e)
                 return
             }
 
