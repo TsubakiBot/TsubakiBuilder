@@ -2336,11 +2336,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .Builder(it)
             .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
             .setMimeType(mimeType)
+            .setLanguage(Locale.getDefault().language)
             .setId("user")
             .build()
         subs.add(0, subConfig)
         episode.selectedSubtitle = 0
-        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
         buildExoplayer()
     } }
 
