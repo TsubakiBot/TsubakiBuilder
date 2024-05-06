@@ -75,17 +75,24 @@ class TrackGroupDialogFragment(
                             getString(R.string.unknown_track, String.format("%02d", position))
                     }
 
-                    "user" -> {
-                        binding.subtitleTitle.text = getString(R.string.user_subtitle)
-                    }
-
                     "none" -> {
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
 
+                    "file" -> {
+                        binding.subtitleTitle.text = getString(R.string.user_subtitle)
+                    }
+
+                    "load" -> {
+                        binding.subtitleTitle.text = getString(R.string.load_subtitle)
+                    }
+
                     else -> {
                         binding.subtitleTitle.text = getLanguageItem(language)
-                            ?: getString(R.string.unknown_track, language)
+                            ?: if (language.length > 5)
+                                "[${String.format("%02d", position)}] $language"
+                            else
+                                getString(R.string.unknown_track, language)
                     }
                 }
                 if (trackGroup.isSelected) {

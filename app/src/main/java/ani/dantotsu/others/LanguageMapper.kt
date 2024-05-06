@@ -77,7 +77,7 @@ object LanguageMapper {
                     "japanese" -> "[ja-JP] Japanese"
                     "english" -> "[en-US] English"
                     "german" -> "[de-DE] German"
-                    "spanish" -> "[es-ES] Spanish"
+                    "español" -> "[es-ES] Spanish"
                     "french" -> "[fr-FR] French"
                     "italian" -> "[it-IT] Italian"
                     "portuguese" -> "[pt-PT] Portuguese"

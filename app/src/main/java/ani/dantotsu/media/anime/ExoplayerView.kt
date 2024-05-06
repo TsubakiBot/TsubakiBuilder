@@ -28,7 +28,6 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings.System
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
@@ -45,7 +44,6 @@ import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.webkit.MimeTypeMap
 import android.widget.AdapterView
 import android.widget.FrameLayout
 import android.widget.ImageButton
@@ -1440,11 +1438,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         //Subtitles
         hasExtSubtitles = ext.subtitles.isNotEmpty()
-        exoSubtitle.setOnLongClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            showFileChooser()
-            true
-        }
         val sub: MutableList<MediaItem.SubtitleConfiguration> =
             emptyList<MediaItem.SubtitleConfiguration>().toMutableList()
         ext.subtitles.forEach { subtitle ->
@@ -1689,6 +1682,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoPlayer.addListener(this)
         exoPlayer.addAnalyticsListener(EventLogger())
         isInitialized = true
+        exoSubtitle.isEnabled = true
 
         if (!PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
@@ -1944,11 +1938,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int, index: Int = 0) {
-            val mediaID: Int = media.id
-            PrefManager.setCustomVal(
-                "subLang_${mediaID}",
-                trackGroup.getTrackFormat(0).language
-            )
+        if (trackGroup.getTrackFormat(0).language == "load") {
+            showFileChooser()
+            return
+        }
+        PrefManager.setCustomVal(
+            "subLang_${media.id}",
+            trackGroup.getTrackFormat(0).language
+        )
         val isDisabled = trackGroup.getTrackFormat(0).language == "none"
         exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
             .buildUpon()
@@ -1962,6 +1959,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private val dummyTrack = Tracks.Group(
         TrackGroup("Dummy Track", Format.Builder().apply { setLanguage("none") }.build()),
+        true,
+        intArrayOf(1),
+        booleanArrayOf(false)
+    )
+
+    private val loaderTrack = Tracks.Group(
+        TrackGroup("Sideload", Format.Builder().apply { setLanguage("load") }.build()),
         true,
         intArrayOf(1),
         booleanArrayOf(false)
@@ -1981,6 +1985,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
         }
+        subTracks.add(loaderTrack)
         exoAudioTrack.isVisible = audioTracks.size > 1
         exoAudioTrack.setOnClickListener {
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
@@ -1990,6 +1995,50 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
                 .show(supportFragmentManager, "dialog")
         }
+    }
+
+    private val onImportSubtitle = registerForActivityResult(
+        ActivityResultContracts.OpenMultipleDocuments()
+    ) { documents: List<Uri> ->
+        val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
+            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+        documents.forEach {
+            val mimeType = when (contentResolver.getType(it)) {
+                MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
+                MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
+                MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
+                MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
+                getString(R.string.mimetype_binary) -> MimeTypes.TEXT_SSA
+                else -> MimeTypes.TEXT_UNKNOWN
+            }
+            Logger.log("Sideload subtitle: ${contentResolver.getType(it)}")
+            val subConfig = MediaItem.SubtitleConfiguration
+                .Builder(it)
+                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                .setMimeType(mimeType)
+                .setLanguage("file")
+                .setId("Custom")
+                .build()
+            subs.add(subConfig)
+        }
+        exoSubtitle.isEnabled = false
+        mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        buildExoplayer()
+    }
+
+    private fun showFileChooser() {
+        exoPlayer.pause()
+        try {
+            onImportSubtitle.launch(
+                arrayOf(
+                    MimeTypes.TEXT_VTT,
+                    MimeTypes.APPLICATION_TTML,
+                    MimeTypes.APPLICATION_SUBRIP,
+                    MimeTypes.TEXT_SSA,
+                    getString(R.string.mimetype_binary)
+                )
+            )
+        } catch (ignored: ActivityNotFoundException) { }
     }
 
     private val onChangeSettings = registerForActivityResult(
@@ -2129,38 +2178,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         finishAndRemoveTask()
     }
 
-    // Cast
-    private fun cast() {
-        val videoURL = video?.file?.url ?: return
-        val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle!!.file.url
-        val shareVideo = Intent(Intent.ACTION_VIEW)
-        shareVideo.setDataAndType(Uri.parse(videoURL), "video/*")
-        shareVideo.setPackage("com.instantbits.cast.webvideo")
-        if (subtitle != null) shareVideo.putExtra("subtitle", subtitleUrl)
-        shareVideo.putExtra(
-            "title",
-            media.userPreferredName + " : Ep " + episodeTitleArr[currentEpisodeIndex]
-        )
-        shareVideo.putExtra("poster", episode.thumb?.url ?: media.cover)
-        val headers = Bundle()
-        defaultHeaders.forEach {
-            headers.putString(it.key, it.value)
-        }
-        video?.file?.headers?.forEach {
-            headers.putString(it.key, it.value)
-        }
-        shareVideo.putExtra("android.media.intent.extra.HTTP_HEADERS", headers)
-        shareVideo.putExtra("secure_uri", true)
-        try {
-            startActivity(shareVideo)
-        } catch (ex: ActivityNotFoundException) {
-            val intent = Intent(Intent.ACTION_VIEW)
-            val uriString = "market://details?id=com.instantbits.cast.webvideo"
-            intent.data = Uri.parse(uriString)
-            startActivity(intent)
-        }
-    }
-
     // Enter PiP Mode
     @Suppress("DEPRECATION")
     private fun enterPipMode() {
@@ -2252,6 +2269,37 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
+    // Cast
+    private fun cast() {
+        val videoURL = video?.file?.url ?: return
+        val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle!!.file.url
+        val shareVideo = Intent(Intent.ACTION_VIEW)
+        shareVideo.setDataAndType(Uri.parse(videoURL), "video/*")
+        shareVideo.setPackage("com.instantbits.cast.webvideo")
+        if (subtitle != null) shareVideo.putExtra("subtitle", subtitleUrl)
+        shareVideo.putExtra(
+            "title",
+            media.userPreferredName + " : Ep " + episodeTitleArr[currentEpisodeIndex]
+        )
+        shareVideo.putExtra("poster", episode.thumb?.url ?: media.cover)
+        val headers = Bundle()
+        defaultHeaders.forEach {
+            headers.putString(it.key, it.value)
+        }
+        video?.file?.headers?.forEach {
+            headers.putString(it.key, it.value)
+        }
+        shareVideo.putExtra("android.media.intent.extra.HTTP_HEADERS", headers)
+        shareVideo.putExtra("secure_uri", true)
+        try {
+            startActivity(shareVideo)
+        } catch (ex: ActivityNotFoundException) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            val uriString = "market://details?id=com.instantbits.cast.webvideo"
+            intent.data = Uri.parse(uriString)
+            startActivity(intent)
+        }
+    }
 
     private fun startCastPlayer() {
         if (!isCastApiAvailable) {
@@ -2298,48 +2346,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     override fun onCastSessionUnavailable() {
         startExoPlayer()
-    }
-
-    private val onImportSubtitle = registerForActivityResult(
-        ActivityResultContracts.OpenMultipleDocuments()
-    ) { documents: List<Uri> ->
-        val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
-            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-        documents.forEach {
-            val mimeType = when (contentResolver.getType(it)) {
-                MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
-                MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
-                MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
-                MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
-                else -> MimeTypes.TEXT_UNKNOWN
-            }
-            val subConfig = MediaItem.SubtitleConfiguration
-                .Builder(it)
-                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                .setMimeType(mimeType)
-                .setLanguage("user")
-                .setId("Sideload")
-                .build()
-            subs.add(subConfig)
-        }
-        mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-        buildExoplayer()
-    }
-
-    private fun showFileChooser() {
-        exoPlayer.pause()
-        try {
-            onImportSubtitle.launch(
-                resources.getStringArray(R.array.mimetype_binary).plus(
-                    arrayOf(
-                        MimeTypes.TEXT_VTT,
-                        MimeTypes.APPLICATION_TTML,
-                        MimeTypes.APPLICATION_SUBRIP,
-                        MimeTypes.TEXT_SSA
-                    )
-                )
-            )
-        } catch (ignored: ActivityNotFoundException) { }
     }
 
     @SuppressLint("ViewConstructor")
