@@ -286,11 +286,11 @@ class AnimeWatchAdapter(
             nestedDialog = AlertDialog.Builder(fragment.requireContext(), R.style.MyPopup)
                 .setTitle("Options")
                 .setView(dialogView)
-                .setPositiveButton("OK") { _, _ ->
+                .setPositiveButton(R.string.ok) { _, _ ->
                     if (run) fragment.onIconPressed(style, reversed)
                     if (refresh) fragment.loadEpisodes(source, true)
                 }
-                .setNegativeButton("Cancel") { _, _ ->
+                .setNegativeButton(R.string.cancel) { _, _ ->
                     if (refresh) fragment.loadEpisodes(source, true)
                 }
                 .setOnCancelListener {

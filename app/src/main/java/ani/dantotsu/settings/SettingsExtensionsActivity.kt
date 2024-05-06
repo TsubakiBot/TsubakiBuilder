@@ -189,6 +189,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                 hint = getString(R.string.anime_add_repository)
                             }
                             context.customAlertDialog().apply {
+                                setCancellable(true)
                                 setTitle(R.string.anime_add_repository)
                                 setCustomView(dialogView.root)
                                 setPosButton(getString(R.string.ok)) {
@@ -227,6 +228,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                 hint = getString(R.string.manga_add_repository)
                             }
                             context.customAlertDialog().apply {
+                                setCancellable(true)
                                 setTitle(R.string.manga_add_repository)
                                 setCustomView(dialogView.root)
                                 setPosButton(getString(R.string.ok)) {
@@ -261,13 +263,14 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_github,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-                            val editText =
-                                dialogView.userAgentTextBox.apply {
-                                    hint = getString(R.string.novel_add_repository)
-                                }
-                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                                .setTitle(R.string.novel_add_repository).setView(dialogView.root)
-                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                            val editText = dialogView.userAgentTextBox.apply {
+                                hint = getString(R.string.novel_add_repository)
+                            }
+                            context.customAlertDialog().apply {
+                                setCancellable(true)
+                                setTitle(R.string.novel_add_repository)
+                                setCustomView(dialogView.root)
+                                setPosButton(getString(R.string.ok)) {
                                     if (!editText.text.isNullOrBlank()) {
                                         processUserInput(
                                             editText.text.toString(),
@@ -275,19 +278,18 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                             it.attachView
                                         )
                                     }
-                                    dialog.dismiss()
-                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                                    dialog.dismiss()
-                                }.create()
-
-                            processEditorAction(
-                                alertDialog,
-                                editText,
-                                MediaType.NOVEL,
-                                it.attachView
-                            )
-                            alertDialog.show()
-                            alertDialog.window?.setDimAmount(0.8f)
+                                }
+                                setNegButton(getString(R.string.cancel))
+                                attach { dialog ->
+                                    processEditorAction(
+                                        dialog,
+                                        editText,
+                                        MediaType.NOVEL,
+                                        it.attachView
+                                    )
+                                }
+                                show()
+                            }
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.MANGA)

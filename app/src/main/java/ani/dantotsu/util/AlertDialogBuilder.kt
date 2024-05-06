@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.View
 import ani.dantotsu.R
+import rx.functions.Cancellable
 
 @Suppress("unused")
 class AlertDialogBuilder(private val context: Context) {
     private var title: String? = null
     private var message: String? = null
+    private var cancellable = false
     private var posButtonTitle: String? = null
     private var negButtonTitle: String? = null
     private var neutralButtonTitle: String? = null
@@ -122,6 +124,10 @@ class AlertDialogBuilder(private val context: Context) {
         return this
     }
 
+    fun setCancellable(cancellable: Boolean) {
+        this.cancellable = cancellable
+    }
+
     fun show() {
         val builder = AlertDialog.Builder(context, R.style.MyPopup)
         if (title != null) builder.setTitle(title)
@@ -157,7 +163,7 @@ class AlertDialogBuilder(private val context: Context) {
                 dialog.dismiss()
             }
         }
-        builder.setCancelable(false)
+        builder.setCancelable(cancellable)
         val dialog = builder.create()
         attach?.invoke(dialog)
         dialog.window?.setDimAmount(0.8f)

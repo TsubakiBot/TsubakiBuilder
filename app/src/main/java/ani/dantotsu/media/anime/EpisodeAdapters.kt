@@ -322,10 +322,10 @@ class EpisodeAdapter(
                         val builder = AlertDialog.Builder(currContext(), R.style.MyPopup)
                         builder.setTitle("Delete Episode")
                         builder.setMessage("Are you sure you want to delete Episode ${episodeNumber}?")
-                        builder.setPositiveButton("Yes") { _, _ ->
+                        builder.setPositiveButton(R.string.yes) { _, _ ->
                             fragment.onAnimeEpisodeRemoveDownloadClick(episodeNumber)
                         }
-                        builder.setNegativeButton("No") { _, _ ->
+                        builder.setNegativeButton(R.string.no) { _, _ ->
                         }
                         val dialog = builder.show()
                         dialog.window?.setDimAmount(0.8f)

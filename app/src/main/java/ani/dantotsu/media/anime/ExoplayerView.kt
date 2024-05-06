@@ -2053,6 +2053,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             hint = getString(R.string.subtitle_url)
         }
         customAlertDialog().apply {
+            setCancellable(true)
             setTitle(R.string.subtitle_url)
             setCustomView(dialogView.root)
             setPosButton(R.string.save) {

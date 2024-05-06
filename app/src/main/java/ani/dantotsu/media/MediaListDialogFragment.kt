@@ -130,9 +130,12 @@ class MediaListDialogFragment : BottomSheetDialogFragment() {
                         if (b && !end.dialog.isShowing) end.dialog.show()
                     }
                 }
-                start.dialog.setOnDismissListener { _binding?.mediaListStart?.setText(start.date.toStringOrEmpty()) }
-                end.dialog.setOnDismissListener { _binding?.mediaListEnd?.setText(end.date.toStringOrEmpty()) }
-
+                start.dialog.setOnDismissListener {
+                    _binding?.mediaListStart?.setText(start.date.toStringOrEmpty())
+                }
+                end.dialog.setOnDismissListener {
+                    _binding?.mediaListEnd?.setText(end.date.toStringOrEmpty())
+                }
 
                 fun onComplete() {
                     binding.mediaListProgress.setText(total.toString())

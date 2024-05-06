@@ -422,11 +422,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             val subtitles = extractor.subtitles
             if (subtitles.isNotEmpty()) {
                 binding.urlSub.visibility = View.VISIBLE
-            } else {
-                binding.urlSub.visibility = View.GONE
-            }
-            binding.urlSub.setOnClickListener {
-                if (subtitles.isNotEmpty()) {
+                binding.urlSub.setOnClickListener {
                     val subtitleNames = subtitles.map { it.language }
                     var subtitleToDownload: Subtitle? = null
                     val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
@@ -438,8 +434,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                             subtitleToDownload = subtitles[which]
                         }
                         .setPositiveButton(R.string.download) { dialog, _ ->
-                            scope.launch {
-                                if (subtitleToDownload != null) {
+                            if (subtitleToDownload != null) {
+                                scope.launch {
                                     SubtitleDownloader.downloadSubtitle(
                                         requireContext(),
                                         subtitleToDownload!!.file.url,
@@ -450,6 +446,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                         )
                                     )
                                 }
+                            } else {
+                                snackString(R.string.no_subs_available)
                             }
                             dialog.dismiss()
                         }
@@ -458,9 +456,9 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                         }
                         .show()
                     alertDialog.window?.setDimAmount(0.8f)
-                } else {
-                    snackString(R.string.no_subs_available)
                 }
+            } else {
+                binding.urlSub.visibility = View.GONE
             }
             binding.urlDownload.setSafeOnClickListener {
                 media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!.selectedExtractor =
@@ -491,15 +489,14 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     if (isExportedOrUnavailable) return@setSafeOnClickListener
                     if (subtitles.isNotEmpty()) {
                         val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                            .setTitle("Download Subtitle")
+                            .setTitle(R.string.download_subtitle)
                             .setSingleChoiceItems(
                                 subtitleNames.toTypedArray(),
                                 -1
                             ) { _, which ->
                                 subtitleToDownload = subtitles[which]
                             }
-                            .setPositiveButton("Download") { _, _ ->
-                                dialog?.dismiss()
+                            .setPositiveButton(R.string.download) { dialog, _ ->
                                 if (selectedVideo != null) {
                                     Helper.startAnimeDownloadService(
                                         activity,
@@ -514,6 +511,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                 } else {
                                     snackString(R.string.no_video_selected)
                                 }
+                                dialog.dismiss()
                             }
                             .setNegativeButton(R.string.skip) { dialog, _ ->
                                 subtitleToDownload = null
