@@ -75,6 +75,10 @@ class TrackGroupDialogFragment(
                             getString(R.string.unknown_track, String.format("%02d", position))
                     }
 
+                    "user" -> {
+                        binding.subtitleTitle.text = getString(R.string.user_subtitle)
+                    }
+
                     "none" -> {
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }

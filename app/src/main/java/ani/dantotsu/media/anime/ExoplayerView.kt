@@ -32,6 +32,7 @@ import android.util.Log
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
+import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.KeyEvent.ACTION_UP
 import android.view.KeyEvent.KEYCODE_B
@@ -1453,6 +1454,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
         exoSubtitle.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             showFileChooser()
             true
         }
@@ -2336,7 +2338,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .Builder(it)
             .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
             .setMimeType(mimeType)
-            .setLanguage(Locale.getDefault().language)
+            .setLanguage("user")
             .setId("user")
             .build()
         subs.add(0, subConfig)
