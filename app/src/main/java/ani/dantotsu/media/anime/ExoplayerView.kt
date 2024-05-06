@@ -1719,7 +1719,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             DiscordServiceRunningSingleton.running = false
             stopService(stopIntent)
         }
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -2326,19 +2325,23 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     ) { document: Uri? -> document?.let {
         val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+        val mimeType = when(contentResolver.getType(it)) {
+            MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
+            MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
+            MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
+            MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
+            else -> MimeTypes.TEXT_UNKNOWN
+        }
         val subConfig = MediaItem.SubtitleConfiguration
             .Builder(it)
-            .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-            .setMimeType(contentResolver.getType(it))
-            .setId("96")
-            .setLanguage(Locale.getDefault().language)
+            .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
+            .setMimeType(mimeType)
+            .setId("user")
             .build()
-        mediaItem.buildUpon().setSubtitleConfigurations(subs + subConfig).build()
-        episode.selectedSubtitle = subs.size
-        hasExtSubtitles = true
+        subs.add(0, subConfig)
+        episode.selectedSubtitle = 0
+        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
         buildExoplayer()
-        setupSubFormatting(playerView)
-        exoPlayer.play()
     } }
 
     private fun showFileChooser() {
@@ -2346,10 +2349,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         try {
             onImportSubtitle.launch(
                 resources.getStringArray(R.array.mimetype_binary).plus(
-                    arrayOf(MimeTypes.TEXT_VTT,
+                    arrayOf(
+                        MimeTypes.TEXT_VTT,
                         MimeTypes.APPLICATION_TTML,
                         MimeTypes.APPLICATION_SUBRIP,
-                        MimeTypes.TEXT_SSA)
+                        MimeTypes.TEXT_SSA
+                    )
                 )
             )
         } catch (ignored: ActivityNotFoundException) { }
