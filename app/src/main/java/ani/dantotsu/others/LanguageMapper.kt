@@ -71,7 +71,31 @@ object LanguageMapper {
 
     fun getLanguageItem(code: String): String? {
         val locale = getLocalFromCode(code)
-        return locale?.let { "[${it.language}] ${it.displayName}" }
+        return locale?.let {
+            if (it.language == it.displayName) {
+                when (code.lowercase()) {
+                    "japanese" -> "[ja-JP] Japanese"
+                    "english" -> "[en-US] English"
+                    "german" -> "[de-DE] German"
+                    "spanish" -> "[es-ES] Spanish"
+                    "french" -> "[fr-FR] French"
+                    "italian" -> "[it-IT] Italian"
+                    "portuguese" -> "[pt-PT] Portuguese"
+                    "russian" -> "[ru-RU] Russian"
+                    "chinese" -> "[zh-CN] Chinese (Simplified)"
+                    "turkish" -> "[tr-TR] Turkish"
+                    "arabic" -> "[ar-ME] Arabic"
+                    "ukrainian" -> "[uk-UK] Ukrainian"
+                    "hebrew" -> "[he-IL] Hebrew"
+                    "polish" -> "[pl-PL] Polish"
+                    "romanian" -> "[ro-RO] Romanian"
+                    "swedish" -> "[sv-SE] Swedish"
+                    else -> null
+                }
+            } else {
+                "[${it.language}] ${it.displayName}"
+            }
+        }
     }
 
     enum class Language(val code: String) {
