@@ -192,12 +192,13 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                 setTitle(R.string.anime_add_repository)
                                 setCustomView(dialogView.root)
                                 setPosButton(getString(R.string.ok)) {
-                                    if (!editText.text.isNullOrBlank())
-                                    processUserInput(
-                                        editText.text.toString(),
-                                        MediaType.ANIME,
-                                        it.attachView
-                                    )
+                                    if (!editText.text.isNullOrBlank()) {
+                                        processUserInput(
+                                            editText.text.toString(),
+                                            MediaType.ANIME,
+                                            it.attachView
+                                        )
+                                    }
                                 }
                                 setNegButton(getString(R.string.cancel))
                                 attach { dialog ->
@@ -222,13 +223,13 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_github,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-                            val editText =
-                                dialogView.userAgentTextBox.apply {
-                                    hint = getString(R.string.manga_add_repository)
-                                }
-                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                                .setTitle(R.string.manga_add_repository).setView(dialogView.root)
-                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                            val editText = dialogView.userAgentTextBox.apply {
+                                hint = getString(R.string.manga_add_repository)
+                            }
+                            context.customAlertDialog().apply {
+                                setTitle(R.string.manga_add_repository)
+                                setCustomView(dialogView.root)
+                                setPosButton(getString(R.string.ok)) {
                                     if (!editText.text.isNullOrBlank()) {
                                         processUserInput(
                                             editText.text.toString(),
@@ -236,19 +237,18 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                             it.attachView
                                         )
                                     }
-                                    dialog.dismiss()
-                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                                    dialog.dismiss()
-                                }.create()
-
-                            processEditorAction(
-                                alertDialog,
-                                editText,
-                                MediaType.MANGA,
-                                it.attachView
-                            )
-                            alertDialog.show()
-                            alertDialog.window?.setDimAmount(0.8f)
+                                }
+                                setNegButton(getString(R.string.cancel))
+                                attach { dialog ->
+                                    processEditorAction(
+                                        dialog,
+                                        editText,
+                                        MediaType.MANGA,
+                                        it.attachView
+                                    )
+                                }
+                                show()
+                            }
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.MANGA)
