@@ -28,7 +28,6 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings.System
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
@@ -79,7 +78,6 @@ import androidx.media3.common.Player
 import androidx.media3.common.TrackGroup
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
-import androidx.media3.common.text.CueGroup
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DataSource
 import androidx.media3.datasource.DefaultDataSource
@@ -88,7 +86,6 @@ import androidx.media3.datasource.cache.CacheDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
@@ -119,6 +116,7 @@ import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.databinding.ActivityExoplayerBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.video.Helper
@@ -155,6 +153,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import ani.dantotsu.util.customAlertDialog
 import com.anggrayudi.storage.file.extension
 import com.bumptech.glide.Glide
 import com.google.android.gms.cast.framework.CastButtonFactory
@@ -1511,6 +1510,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 setUpstreamDataSourceFactory(dataSourceFactory)
             }
             setCacheWriteDataSinkFactory(null)
+            setFlags(CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR)
         }
 
         val mimeType = when (video?.format) {
@@ -1935,7 +1935,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int, index: Int = 0) {
         if (trackGroup.getTrackFormat(0).language == "load") {
-            showFileChooser()
+            showSubtitleDialog()
             return
         }
         PrefManager.setCustomVal(
@@ -1993,58 +1993,93 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
+    private fun importSubtitle(uri: Uri, isFile: Boolean): MediaItem.SubtitleConfiguration {
+        val file = if (isFile) DocumentFile.fromSingleUri(this, uri) else null
+        val mimeType = if (isFile) {
+            Logger.log("Sideload MimeType: ${contentResolver.getType(uri)}")
+            when (contentResolver.getType(uri)) {
+                MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
+                MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
+                MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
+                MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
+                getString(R.string.mimetype_binary) -> MimeTypes.TEXT_SSA
+                else ->
+                    file?.let { doc ->
+                        Logger.log("Sideload Extension: ${doc.extension.lowercase()}")
+                        when (doc.extension.lowercase()) {
+                            "vtt" -> MimeTypes.TEXT_VTT
+                            "ttml" -> MimeTypes.APPLICATION_TTML
+                            "srt" -> MimeTypes.APPLICATION_SUBRIP
+                            "ass" -> MimeTypes.TEXT_SSA
+                            else -> MimeTypes.TEXT_UNKNOWN
+                        }
+                    } ?: MimeTypes.TEXT_UNKNOWN
+            }
+        } else {
+            Logger.log("Sideload Extension: ${uri.toString().substringAfterLast(".")}")
+            when (uri.toString().substringAfterLast(".")) {
+                "vtt" -> MimeTypes.TEXT_VTT
+                "ttml" -> MimeTypes.APPLICATION_TTML
+                "srt" -> MimeTypes.APPLICATION_SUBRIP
+                "ass" -> MimeTypes.TEXT_SSA
+                else -> MimeTypes.TEXT_UNKNOWN
+            }
+        }
+        return MediaItem.SubtitleConfiguration
+            .Builder(uri)
+            .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
+            .setMimeType(mimeType)
+            .setLanguage("user")
+            .setId(file?.name ?: mimeType)
+            .build()
+    }
+
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenMultipleDocuments()
     ) { documents: List<Uri> ->
         val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
         documents.forEach {
-            val file = DocumentFile.fromSingleUri(this, it)
-            val mimeType = when (contentResolver.getType(it)) {
-                MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
-                MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
-                MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
-                MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
-                getString(R.string.mimetype_binary) -> MimeTypes.TEXT_SSA
-                else -> file?.let { doc ->
-                    when (doc.extension.lowercase()) {
-                        "vtt" -> MimeTypes.TEXT_VTT
-                        "ttml" -> MimeTypes.APPLICATION_TTML
-                        "srt" -> MimeTypes.APPLICATION_SUBRIP
-                        "ass" -> MimeTypes.TEXT_SSA
-                        else -> MimeTypes.TEXT_UNKNOWN
-                    }
-                } ?: MimeTypes.TEXT_UNKNOWN
-
-            }
-            Logger.log("Sideload MimeType: ${contentResolver.getType(it)}")
-            val subConfig = MediaItem.SubtitleConfiguration
-                .Builder(it)
-                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                .setMimeType(mimeType)
-                .setLanguage("file")
-                .setId(DocumentFile.fromSingleUri(this, it)?.name
-                    ?: mimeType.substringAfter("/"))
-                .build()
-            subs.add(subConfig)
+            subs.add(importSubtitle(it, true))
         }
         mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
         buildExoplayer()
     }
 
-    private fun showFileChooser() {
+    private fun showSubtitleDialog() {
         exoPlayer.pause()
-        try {
-            onImportSubtitle.launch(
-                arrayOf(
-                    MimeTypes.TEXT_VTT,
-                    MimeTypes.APPLICATION_TTML,
-                    MimeTypes.APPLICATION_SUBRIP,
-                    MimeTypes.TEXT_SSA,
-                    getString(R.string.mimetype_binary)
-                )
-            )
-        } catch (ignored: ActivityNotFoundException) { }
+        val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
+        val editText = dialogView.userAgentTextBox.apply {
+            hint = getString(R.string.subtitle_url)
+        }
+        customAlertDialog().apply {
+            setTitle(R.string.subtitle_url)
+            setCustomView(dialogView.root)
+            setPosButton(R.string.save) {
+                if (!editText.text.isNullOrBlank()) {
+                    val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
+                        ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+                    subs.add(importSubtitle(Uri.parse(editText.text.toString()), false))
+                    mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+                    buildExoplayer()
+                }
+            }
+            setNeutralButton(R.string.import_file) {
+                try {
+                    onImportSubtitle.launch(
+                        arrayOf(
+                            MimeTypes.TEXT_VTT,
+                            MimeTypes.APPLICATION_TTML,
+                            MimeTypes.APPLICATION_SUBRIP,
+                            MimeTypes.TEXT_SSA,
+                            getString(R.string.mimetype_binary)
+                        )
+                    )
+                } catch (ignored: ActivityNotFoundException) { }
+            }
+            setNegButton(R.string.cancel)
+            show()
+        }
     }
 
     private val onChangeSettings = registerForActivityResult(

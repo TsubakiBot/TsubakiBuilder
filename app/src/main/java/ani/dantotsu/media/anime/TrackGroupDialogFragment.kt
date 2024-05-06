@@ -80,7 +80,7 @@ class TrackGroupDialogFragment(
                         binding.subtitleTitle.text = getString(R.string.disabled_track)
                     }
 
-                    "file" -> {
+                    "user" -> {
                         binding.subtitleTitle.text =
                             getString(R.string.user_subtitle, trackFormat.id?.substringAfter(":"))
                     }
