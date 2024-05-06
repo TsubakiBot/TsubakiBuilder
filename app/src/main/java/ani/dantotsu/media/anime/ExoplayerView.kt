@@ -31,7 +31,6 @@ import android.util.AttributeSet
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
-import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.KeyEvent.ACTION_UP
 import android.view.KeyEvent.KEYCODE_B
@@ -86,6 +85,7 @@ import androidx.media3.datasource.cache.CacheDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
@@ -416,7 +416,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     font
                 )
             )
-
 
             subtitles.alpha = PrefManager.getVal(PrefName.SubAlpha)
             subtitles.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
@@ -1458,15 +1457,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                 else -> MimeTypes.TEXT_SSA
                             }
                         )
-                        .setId("69")
+                        .setId("Extractor")
                         .setLanguage(subtitle.language)
                         .build()
                 }
-                println("sub: $sub")
+                println("Unknown Subtitle: $sub")
             } else {
-                val subUri = Uri.parse(subtitleUrl)
                 sub += MediaItem.SubtitleConfiguration
-                    .Builder(subUri)
+                    .Builder(Uri.parse(subtitleUrl))
                     .setSelectionFlags(C.SELECTION_FLAG_FORCED)
                     .setMimeType(
                         when (subtitle.type) {
@@ -1476,7 +1474,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                             else -> MimeTypes.TEXT_UNKNOWN
                         }
                     )
-                    .setId("69")
+                    .setId("Extractor")
                     .setLanguage(subtitle.language)
                     .build()
             }
@@ -1561,8 +1559,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         mediaItem = if (downloadedMediaItem == null) {
             val builder = MediaItem.Builder().setUri(video!!.file.url).setMimeType(mimeType)
-            Logger.log("url: ${video!!.file.url}")
-            Logger.log("mimeType: $mimeType")
+            Logger.log("Video URL: ${video!!.file.url}")
+            Logger.log("Video MimeType: $mimeType")
             builder.setSubtitleConfigurations(sub)
             builder.build()
         } else {
@@ -1633,6 +1631,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun buildExoplayer() {
+        exoSubtitle.isEnabled = false
         //Player
         val loadControl = DefaultLoadControl.Builder()
             .setBackBuffer(1000 * 60 * 2, true)
@@ -1663,12 +1662,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 seekTo(playbackPosition)
             }
         playerView.player = exoPlayer
-
-//        if (video?.format == VideoType.M3U8) {
-//            exoPlayer.setMediaSource(
-//                HlsMediaSource.Factory(cacheFactory).createMediaSource(mediaItem)
-//            )
-//        }
 
         try {
             val rightNow = Calendar.getInstance()
@@ -2011,7 +2004,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 getString(R.string.mimetype_binary) -> MimeTypes.TEXT_SSA
                 else -> MimeTypes.TEXT_UNKNOWN
             }
-            Logger.log("Sideload subtitle: ${contentResolver.getType(it)}")
+            Logger.log("Sideload MimeType: ${contentResolver.getType(it)}")
             val subConfig = MediaItem.SubtitleConfiguration
                 .Builder(it)
                 .setSelectionFlags(C.SELECTION_FLAG_FORCED)
@@ -2021,7 +2014,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 .build()
             subs.add(subConfig)
         }
-        exoSubtitle.isEnabled = false
         mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
         buildExoplayer()
     }
