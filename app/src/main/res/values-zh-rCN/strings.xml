@@ -799,7 +799,6 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] 未知</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">顶部背景颜色</string>
     <string name="bottom_background_color">底部背景颜色</string>
     <string name="countdown_text_color">倒计时文本颜色</string>

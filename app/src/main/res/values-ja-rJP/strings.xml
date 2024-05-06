@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] 無効</string>
     <string name="invalid_track">\[!?\" 無効</string>
     <string name="unknown_track">\[%1$s\] 不明</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">上部の背景色</string>
     <string name="bottom_background_color">下部の背景色</string>
     <string name="countdown_text_color">カウントダウンテキストの色</string>

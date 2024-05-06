@@ -69,7 +69,8 @@ class TrackGroupDialogFragment(
         override fun onBindViewHolder(holder: StreamViewHolder, position: Int) {
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
-                when (val language = trackGroup.getTrackFormat(0).language) {
+                val trackFormat = trackGroup.getTrackFormat(0)
+                when (val language = trackFormat.language) {
                     null -> {
                         binding.subtitleTitle.text =
                             getString(R.string.unknown_track, String.format("%02d", position))
@@ -80,7 +81,8 @@ class TrackGroupDialogFragment(
                     }
 
                     "file" -> {
-                        binding.subtitleTitle.text = getString(R.string.user_subtitle)
+                        binding.subtitleTitle.text =
+                            getString(R.string.user_subtitle, trackFormat.id)
                     }
 
                     "load" -> {

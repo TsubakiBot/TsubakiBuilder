@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] Tắt</string>
     <string name="invalid_track">\[⁉️\] Không Hợp Lệ</string>
     <string name="unknown_track">\[%1$s\] Không Xác Định</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Màu nền đầu trang</string>
     <string name="bottom_background_color">Màu nền cuối trang</string>
     <string name="countdown_text_color">Màu văn bản đếm ngược</string>

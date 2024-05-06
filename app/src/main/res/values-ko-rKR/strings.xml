@@ -806,7 +806,6 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] 알 수 없음</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">상단 배경색</string>
     <string name="bottom_background_color">하단 배경색</string>
     <string name="countdown_text_color">카운트다운 텍스트 색상</string>

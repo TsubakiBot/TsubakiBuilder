@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] Выключено</string>
     <string name="invalid_track">\[!?\] Недействителен</string>
     <string name="unknown_track">\[%1$s\] Неизвестен</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Верхний цвет фона</string>
     <string name="bottom_background_color">Цвет фона снизу</string>
     <string name="countdown_text_color">Цвет текста обратного отсчета</string>

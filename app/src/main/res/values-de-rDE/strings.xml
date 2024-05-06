@@ -806,7 +806,6 @@
     <string name="disabled_track">Behinderte</string>
     <string name="invalid_track">Ungültig</string>
     <string name="unknown_track">\[%1$s\] Unbekannt</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Hintergrundfarbe oben</string>
     <string name="bottom_background_color">Untere Hintergrundfarbe</string>
     <string name="countdown_text_color">Countdown Textfarbe</string>

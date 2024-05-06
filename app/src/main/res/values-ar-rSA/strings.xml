@@ -804,7 +804,6 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] غير معروف</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">لون الخلفية العليا</string>
     <string name="bottom_background_color">لون الخلفية السفلي</string>
     <string name="countdown_text_color">لون نص العد التنازلي</string>

@@ -799,7 +799,6 @@
     <string name="disabled_track">\[💬\] Desactivat</string>
     <string name="invalid_track">\[⁉️\] Invàlid</string>
     <string name="unknown_track">\[%1$s\] Desconegut</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Color de fons superior</string>
     <string name="bottom_background_color">Color de fons inferior</string>
     <string name="countdown_text_color">Color del text del compte enrere</string>

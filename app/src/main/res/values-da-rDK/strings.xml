@@ -805,7 +805,6 @@
     <string name="disabled_track">\[:speech_ballon:\] Deaktiveret</string>
     <string name="invalid_track">\[!?\] Ugyldig</string>
     <string name="unknown_track">\[%1$s\] Ukendt</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Top baggrundsfarve</string>
     <string name="bottom_background_color">Nederste Baggrundsfarve</string>
     <string name="countdown_text_color">Nedtælling Tekstfarve</string>

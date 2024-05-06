@@ -37,8 +37,9 @@
     <string name="memory_exabyte">EB</string>
 
     <string name="mimetype_zip" translatable="false">application/zip</string>
-
     <string name="mimetype_binary">application/octet-stream</string>
+
+    <string name="user_subtitle">\[💬\] %1$s</string>
 
     <string name="cursed_yt" translatable="false">https://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
 

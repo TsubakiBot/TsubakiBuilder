@@ -2010,7 +2010,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 .setSelectionFlags(C.SELECTION_FLAG_FORCED)
                 .setMimeType(mimeType)
                 .setLanguage("file")
-                .setId("Custom")
+                .setId(mimeType)
                 .build()
             subs.add(subConfig)
         }

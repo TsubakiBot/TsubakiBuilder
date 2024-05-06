@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] Letiltva</string>
     <string name="invalid_track">\[⁉️\] Érvénytelen</string>
     <string name="unknown_track">\[%1$s\] Ismeretlen</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Felső háttérszín</string>
     <string name="bottom_background_color">Alsó háttérszín</string>
     <string name="countdown_text_color">Visszaszámlálás szövegszín</string>

@@ -808,7 +808,6 @@ Genre : "</string>
     <string name="disabled_track">Désactivée</string>
     <string name="invalid_track">Invalide</string>
     <string name="unknown_track">\[%1$s\] Inconnue</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Couleur d\'arrière-plan supérieure</string>
     <string name="bottom_background_color">Couleur d\'arrière-plan inférieure</string>
     <string name="countdown_text_color">Couleur du texte du compte à rebours</string>

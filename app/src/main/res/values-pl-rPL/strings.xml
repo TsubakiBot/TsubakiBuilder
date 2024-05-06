@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] Wyłączone</string>
     <string name="invalid_track">\[!?\] Nieprawidłowe</string>
     <string name="unknown_track">\[%1$s\] Nieznany</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Kolor górnego tła</string>
     <string name="bottom_background_color">Kolor dolnego tła</string>
     <string name="countdown_text_color">Kolor tekstu odliczania</string>

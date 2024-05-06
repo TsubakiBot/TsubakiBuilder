@@ -805,7 +805,6 @@
     <string name="disabled_track">\[💬\] Poistettu Käytöstä</string>
     <string name="invalid_track">\[!?\] Virheellinen</string>
     <string name="unknown_track">\[%1$s\] Tuntematon</string>
-    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Ylin taustaväri</string>
     <string name="bottom_background_color">Alaosan Taustaväri</string>
     <string name="countdown_text_color">Lähtölaskenta Tekstin Väri</string>
