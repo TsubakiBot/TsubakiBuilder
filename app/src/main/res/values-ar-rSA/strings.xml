@@ -732,6 +732,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">ظبط الCookies</string>
     <string name="open_website">أفتح الموقع</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">تسجيل الدخول إلى ملف</string>
     <string name="logging_warning">Logging to a file will slow down the app. Only enable if you are experiencing issues.</string>
     <string name="share_log">انقر لمشاركة ملف السجل الحالي</string>
@@ -802,6 +804,7 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] غير معروف</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">لون الخلفية العليا</string>
     <string name="bottom_background_color">لون الخلفية السفلي</string>
     <string name="countdown_text_color">لون نص العد التنازلي</string>
@@ -950,6 +953,9 @@
     <string name="directory_not_found">الدليل غير موجود</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">أنت</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

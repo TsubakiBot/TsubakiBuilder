@@ -734,6 +734,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Kekse setzen</string>
     <string name="open_website">Website öffnen</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Protokoll in Datei schreiben</string>
     <string name="logging_warning">Protokolle in eine Datei zu schreiben wird die App langsamer machen. Verwenden Sie dies nur, wenn Sie auf Probleme stoßen.</string>
     <string name="share_log">Klicken, um aktuelle Protokolldatei zu teilen</string>
@@ -804,6 +806,7 @@
     <string name="disabled_track">Behinderte</string>
     <string name="invalid_track">Ungültig</string>
     <string name="unknown_track">\[%1$s\] Unbekannt</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Hintergrundfarbe oben</string>
     <string name="bottom_background_color">Untere Hintergrundfarbe</string>
     <string name="countdown_text_color">Countdown Textfarbe</string>
@@ -952,6 +955,9 @@
     <string name="directory_not_found">Verzeichnis nicht gefunden</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Sie</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

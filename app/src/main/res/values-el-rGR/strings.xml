@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Ορισμός cookies</string>
     <string name="open_website">Ανοίξτε τον ιστότοπο</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Καταγραφή σε αρχείο</string>
     <string name="logging_warning">Το Logging σε ένα αρχείο θα επιβραδύνει την εφαρμογή. Ενεργοποιήστε μόνο εάν αντιμετωπίζετε προβλήματα.</string>
     <string name="share_log">Κάντε κλικ για να μοιραστείτε το τρέχον αρχείο καταγραφής</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">Απενεργοποιημένο</string>
     <string name="invalid_track">Μη έγκυρο</string>
     <string name="unknown_track">\[%1$s\] Άγνωστο</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Κορυφαίο χρώμα φόντου</string>
     <string name="bottom_background_color">Κάτω χρώμα φόντου</string>
     <string name="countdown_text_color">Χρώμα κειμένου αντίστροφης μέτρησης</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Κατάλογος δεν βρέθηκε</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Εσείς</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

@@ -734,6 +734,8 @@
     <string name="scanlator">스캔레이터</string>
     <string name="set_cookies">쿠키 설정</string>
     <string name="open_website">웹사이트 열기</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">파일에 기록</string>
     <string name="logging_warning">파일에 기록하는 것은 앱의 속도를 느리게 만들 수 있습니다. 문제가 발생할 경우에만 활성화하세요.</string>
     <string name="share_log">현재 로그 파일 공유를 클릭하세요</string>
@@ -804,6 +806,7 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] 알 수 없음</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">상단 배경색</string>
     <string name="bottom_background_color">하단 배경색</string>
     <string name="countdown_text_color">카운트다운 텍스트 색상</string>
@@ -952,6 +955,9 @@
     <string name="directory_not_found">디렉토리를 찾을 수 없습니다</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">당신</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

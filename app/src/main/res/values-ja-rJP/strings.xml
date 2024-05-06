@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Cookieの設定</string>
     <string name="open_website">ウェブサイトを開く</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">ファイルにログする</string>
     <string name="logging_warning">ラグを引き起こす可能性があります。問題が発生した場合にのみ有効にしてください。</string>
     <string name="share_log">クリックして現在のログファイルを共有します</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] 無効</string>
     <string name="invalid_track">\[!?\" 無効</string>
     <string name="unknown_track">\[%1$s\] 不明</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">上部の背景色</string>
     <string name="bottom_background_color">下部の背景色</string>
     <string name="countdown_text_color">カウントダウンテキストの色</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">ディレクトリが見つかりません</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">あなた</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

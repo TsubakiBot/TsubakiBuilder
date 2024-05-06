@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Ustaw ciasteczka</string>
     <string name="open_website">Otwórz stronę</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Loguj do pliku</string>
     <string name="logging_warning">Może powodować opóźnienie. Włącz tylko, jeśli występują problemy.</string>
     <string name="share_log">Kliknij, aby udostępnić bieżący plik dziennika</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Wyłączone</string>
     <string name="invalid_track">\[!?\] Nieprawidłowe</string>
     <string name="unknown_track">\[%1$s\] Nieznany</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Kolor górnego tła</string>
     <string name="bottom_background_color">Kolor dolnego tła</string>
     <string name="countdown_text_color">Kolor tekstu odliczania</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Nie znaleziono katalogu</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Ty</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

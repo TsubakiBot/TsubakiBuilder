@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="sr">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="hi">
     <string name="slogan">The NEW Best Anime &amp; Manga app for Android.</string>
     <string name="login">Sign In</string>
     <string name="logout">Logout</string>
@@ -65,20 +65,20 @@
     <string name="social_in_media_desc">Display friend ratings and progress</string>
     <string name="status">STATUS</string>
     <string-array name="status_anime">
-        <item>ПЛАНИРАЊЕ</item>
+        <item>PLANNING</item>
         <item>WATCHING</item>
-        <item>ЗАВРШЕНО</item>
+        <item>COMPLETED</item>
         <item>RE-WATCHING</item>
-        <item>ПАУЗИРАНО</item>
-        <item>ОДУСТАО</item>
+        <item>PAUSED</item>
+        <item>DROPPED</item>
     </string-array>
     <string-array name="status_manga">
-        <item>ПЛАНИРАЊЕ</item>
+        <item>PLANNING</item>
         <item>READING</item>
-        <item>ЗАВРШЕНО</item>
+        <item>COMPLETED</item>
         <item>RE-READING</item>
-        <item>ПАУЗИРАНО</item>
-        <item>ОДУСТАО</item>
+        <item>PAUSED</item>
+        <item>DROPPED</item>
     </string-array>
     <string name="progress">PROGRESS</string>
     <string name="score">SCORE</string>
@@ -109,11 +109,11 @@
     <string name="characters">Characters</string>
     <string name="relations">Relations</string>
     <string name="staff">Staff</string>
-    <string name="favourites">Омиљени</string>
+    <string name="favourites">Favourites</string>
     <string name="popularity">Popularity</string>
     <string name="roles">Roles</string>
     <string name="details">Details</string>
-    <string name="trailer_yt">Погледајте трејлер на Јутубу</string>
+    <string name="trailer_yt">Watch Trailer on YouTube</string>
     <string name="play_yt">Play on Youtube</string>
     <string name="eps">Episodes</string>
     <string name="ep">Episode</string>
@@ -157,8 +157,8 @@
     <string name="extension_settings">Extensions</string>
     <string name="downloads">Downloads</string>
     <string name="offline_mode">Offline Mode</string>
-    <string name="settings">Подешавања</string>
-    <string name="extensions">Екстензије</string>
+    <string name="settings">Settings</string>
+    <string name="extensions">Extensions</string>
     <string name="extension_updates_available">Extension updates available</string>
     <string name="player_settings">Player Settings</string>
     <string name="recentlyListOnly">Only my content in \"Recently Updated\"</string>
@@ -221,7 +221,7 @@
     <string name="cursed_speeds">Cursed Speeds</string>
     <string name="resize_mode_button">Default Resize Mode</string>
     <string name="subtitles">Subtitles</string>
-    <string name="subtitle_toggle">Титлови</string>
+    <string name="subtitle_toggle">Subtitles</string>
     <string name="primary_sub_color_select">Subtitle Color</string>
     <string name="secondary_sub_color_select">Subtitle Outline Color</string>
     <string name="secondary_sub_outline_type_select">Subtitle Outline Type</string>
@@ -273,26 +273,26 @@
     <string name="immersive_mode_info">Requires App restart to fully apply.</string>
     <string name="home_layout_show">Show/Hide Layouts on Home</string>
     <string-array name="home_layouts">
-        <item>Настави гледање</item>
+        <item>Continue Watching</item>
         <item>Favourite Anime</item>
         <item>Planned Anime</item>
-        <item>Настави читање</item>
+        <item>Continue Reading</item>
         <item>Favourite Manga</item>
         <item>Planned Manga</item>
-        <item>Препоручено</item>
+        <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="small_view">Small View in Trending Shows</string>
-    <string name="trailer_banners">Користите трејлер као банер</string>
+    <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animations</string>
     <string name="banner_animations">Banner Animations</string>
     <string name="layout_animations">Layout Animations</string>
     <string name="trending_scroller">Trending Scroller</string>
     <string name="animation_speed">Overall Speed</string>
     <string name="empty_fav">Looks like you don\'t like anything,\nTry liking a show to keep it here.</string>
-    <string name="fav_anime">Омиљени аниме</string>
-    <string name="fav_manga">Омиљени манга</string>
+    <string name="fav_anime">Favourite Anime</string>
+    <string name="fav_manga">Favourite Manga</string>
     <string name="restart_app">Restart the app?</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -348,8 +348,8 @@
     <string name="previous_season">Previous Season</string>
     <string name="include_media_in_list">Include List</string>
     <string name="release_calendar">Calendar</string>
-    <string name="planned_anime">Планирано аниме</string>
-    <string name="planned_manga">Планирано манга</string>
+    <string name="planned_anime">Planned Anime</string>
+    <string name="planned_manga">Planned Manga</string>
     <string name="image_long_clicking">Long click to open image</string>
     <string name="always_continue_content">Continue previously opened items</string>
     <string name="search_source_list">Search next available source</string>
@@ -360,8 +360,8 @@
     <string name="forks">Versions</string>
     <string name="faq">FAQ</string>
     <string name="accounts">Accounts</string>
-    <string name="addons">Addons</string>
-    <string name="addons_desc">Addons are Dantotsu extra feature modules.</string>
+    <string name="addons">Add-ons</string>
+    <string name="addons_desc">Get more features out of your app</string>
     <string name="myanimelist">MyAnimeList</string>
     <string name="login_with_anilist">Log in with Anilist</string>
     <string name="anilist">Anilist</string>
@@ -464,7 +464,7 @@
     <string name="deleted_from_list">Deleted from List</string>
     <string name="no_list_id">No List ID found…</string>
     <string name="matagi_update">Himitsu Shirase %1$s</string>
-    <string name="matagi_dont_show">Don\'t notify again for %1$s</string>
+    <string name="matagi_dont_show">Skip %1$s</string>
     <string name="matagi_downloading">Downloading Himitsu %1$s</string>
     <string name="checking_for_update">Checking for Update</string>
     <string name="dont_show_again">Don\'t notify again for version %1$s</string>
@@ -521,9 +521,9 @@
     <string name="continue_episode">Continue : Episode %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Filler</string>
     <string name="continue_chapter">Continue : %1$s\n%2$s</string>
-    <string name="episode">"Епизода "</string>
+    <string name="episode">"Episode "</string>
     <string name="episode_num">Episode %1$s</string>
-    <string name="chapter">"Поглавље "</string>
+    <string name="chapter">"Chapter "</string>
     <string name="chapter_num">Chapter %1$s</string>
     <string name="just_released">- Newly released!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
@@ -535,11 +535,11 @@
     <string name="incognito_will_not_update">Incognito mode will still ignore progress.</string>
     <string name="dont_ask_again">"Don't ask again for %1$s"</string>
     <string name="default_speed">Default Speed</string>
-    <string name="default_resize_mode">Подразумевани режим промене величине</string>
+    <string name="default_resize_mode">Default Resize Mode</string>
     <string name="primary_sub_color">Primary Sub Color</string>
     <string name="outline_sub_color">Outline Sub Color</string>
     <string name="outline_type">Outline Type</string>
-    <string name="subtitle_font">Фонт титла</string>
+    <string name="subtitle_font">Subtitle Font</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
@@ -550,10 +550,10 @@
     <string name="available">Available</string>
     <string name="lets_go">Let\'s Go</string>
     <string name="cope">Cope</string>
-    <string name="watched_num">"Погледано "</string>
+    <string name="watched_num">"Watched "</string>
     <string name="read_num">"Read "</string>
     <string name="items_out_of">" out of "</string>
-    <string name="items_total_of">"Укупно "</string>
+    <string name="items_total_of">"Total of "</string>
     <string name="no_description_available">No Description Available</string>
     <string-array name="manga_directions">
         <item>Top to Bottom</item>
@@ -568,9 +568,9 @@
     </string-array>
     <string name="selected">Selected</string>
     <string name="found">Found</string>
-    <string name="age">"__Године:__ "</string>
-    <string name="birthday">"\n__Рођендан:__ "</string>
-    <string name="gender">"\n__Пол:__ "</string>
+    <string name="age">"__Age:__ "</string>
+    <string name="birthday">"\n__Birthday:__ "</string>
+    <string name="gender">"\n__Gender:__ "</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="question_1">What is Dantotsu?</string>
@@ -613,10 +613,10 @@
     <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Dantotsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
     <string name="subscribed_notification">Subscribed! Receiving notifications, when new episodes are released on %1$s.</string>
     <string name="unsubscribed_notification">Unsubscribed, you will not receive any notifications.</string>
-    <string name="episode_plural">Епизоде</string>
-    <string name="episode_singular">Епизода</string>
-    <string name="chapter_singular">Поглавље</string>
-    <string name="chapter_plural">Поглавља</string>
+    <string name="episode_plural">Episodes</string>
+    <string name="episode_singular">Episode</string>
+    <string name="chapter_singular">Chapter</string>
+    <string name="chapter_plural">Chapters</string>
     <string name="filter_status">"Status : %1$s"</string>
     <string name="filter_source">"Source : %1$s"</string>
     <string name="filter_format">"Format : %1$s"</string>
@@ -638,7 +638,7 @@
     <string name="view_anime">View Anime</string>
     <string name="view_manga">View Manga</string>
     <string name="force_legacy_installer">Force Legacy Installer</string>
-    <string name="extensions_settings">Екстензије</string>
+    <string name="extensions_settings">Extensions</string>
     <string name="NSFWExtention">NSFW Extensions</string>
     <string name="skip_loading_extension_icons">Skip loading extension icons</string>
     <string name="use_material_you">Material You</string>
@@ -711,7 +711,7 @@
     <string name="mutual">Mutual</string>
     <string name="success">Success</string>
     <string name="error">Some error occurred</string>
-    <string name="error_msg">Грешка: %1$s</string>
+    <string name="error_msg">Error: %1$s</string>
     <string name="please_wait">Please wait</string>
     <string name="upcoming">Upcoming</string>
     <string name="no_shows_to_display">No shows to display</string>
@@ -744,7 +744,7 @@
     <string name="blur">Blur</string>
     <string name="hide_scroll_bar">Hide Scroll Bar</string>
     <string name="view_on_anilist">View on AniList</string>
-    <string name="anilist_notification_filters">Choose category to ignore</string>
+    <string name="anilist_notification_filters">Filter Notifications</string>
     <string name="anilist_notifications_checking_time">Anilist notifications update frequency : %1$s</string>
     <string name="comment_notification_checking_time">Comment notifications update frequency : %1$s</string>
     <string name="activities">Activities</string>
@@ -752,7 +752,7 @@
     <string name="password_cannot_be_empty">Password cannot be empty</string>
     <string name="unknown_file_type">Unknown file type</string>
     <string name="error_importing_settings">Error importing settings</string>
-    <string name="download_manager">Менаџер преузимања</string>
+    <string name="download_manager">Download Manager</string>
     <string name="enter_password">Enter Password</string>
     <string name="you_cursed">youwu have been cuwsed</string>
     <string name="invalid_file_type">Invalid file type</string>
@@ -784,7 +784,7 @@
     <string name="size_unknown">Unknown Size</string>
     <string name="mb_size">%1$s MB</string>
     <string name="button_restore">Restore</string>
-    <string name="button_backup">Резервна копија</string>
+    <string name="button_backup">Backup</string>
     <string name="no_location_selected">No location selected</string>
     <string name="do_it">Do it!</string>
     <string name="password">Password</string>
@@ -792,10 +792,10 @@
     <string name="anilist_broken">AniList appears to be unresponsive and functionality will be severely limited. Would you like to close the app and try again later?\n</string>
     <string name="search_title">Search %1$s</string>
     <string name="profile_stats_widget">Track progress directly from your home screen</string>
-    <string name="anime_watched">Аниме</string>
-    <string name="manga_read">Манга</string>
-    <string name="chapters_read_n">Поглавља</string>
-    <string name="episodes_watched_n">Епизоде</string>
+    <string name="anime_watched">Anime</string>
+    <string name="manga_read">Manga</string>
+    <string name="chapters_read_n">Chapters</string>
+    <string name="episodes_watched_n">Episodes</string>
     <string name="loading">Loading…</string>
     <string name="user_stats">%1$s\'s Stats</string>
     <string name="please">Please</string>
@@ -867,12 +867,12 @@
     <string name="japan">Japan</string>
     <string name="taiwan">Taiwan</string>
     <string name="something">Something</string>
-    <string name="sort_score">Оцена</string>
-    <string name="popular">Популарно</string>
-    <string name="trending">Тренд</string>
-    <string name="new_releases">Нова издања</string>
-    <string name="a_z">А-Ш</string>
-    <string name="z_a">Ш-А</string>
+    <string name="sort_score">Score</string>
+    <string name="popular">Popular</string>
+    <string name="trending">Trending</string>
+    <string name="new_releases">New Releases</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
     <string name="pure_pain">Pure Pain</string>
     <string name="add_a_comment">Add a comment…</string>
     <string name="type">Type</string>
@@ -915,15 +915,15 @@
     <string name="use_unique_theme_for_each_item_desc">Use color from media\'s banner</string>
     <string name="use_custom_theme_desc">Use your own color for the theme</string>
     <string name="color_picker_desc">Choose a color</string>
-    <string name="torrent_addon">Torrent Addon</string>
-    <string name="anime_downloader_addon">Anime Downloader Addon</string>
-    <string name="install_torrent_addon">Install Torrent Addon</string>
+    <string name="torrent_addon">Torrent Add-on</string>
+    <string name="anime_downloader_addon">Anime Downloader Add-on</string>
+    <string name="install_torrent_addon">Install Torrent Add-on</string>
     <string name="loaded_successfully">Loaded Successfully</string>
     <string name="not_installed">Not Installed</string>
-    <string name="torrent_extension_not_supported">Torrent extension not supported on this device</string>
-    <string name="update_addon">Update Addon</string>
-    <string name="install_addon">Install Addon</string>
-    <string name="download_addon_not_found">Download addon not found</string>
+    <string name="torrent_extension_not_supported">Torrent Add-on not supported on this device</string>
+    <string name="update_addon">Add-on update available</string>
+    <string name="install_addon">Install Add-on</string>
+    <string name="download_addon_not_found">Add-on not found</string>
     <string name="image">Image</string>
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
     <string name="no_video_selected">No Video Selected</string>
@@ -935,8 +935,8 @@
     <string name="download_started">Download started</string>
     <string name="downloads_completed">All downloads completed</string>
     <string name="pending_downloads">Pending downloads: %1$d</string>
-    <string name="reading">ЧИТАЊЕ</string>
-    <string name="watching">ГЛЕДАЊЕ</string>
+    <string name="reading">READING</string>
+    <string name="watching">WATCHING</string>
     <string name="avatar">%1$s\ [Avatar]</string>
     <string name="cover">%1$s\ [Cover]</string>
     <string name="banner">%1$s\ [Banner]</string>
@@ -957,12 +957,12 @@
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
     <string name="random_item">Random Anime / Manga</string>
-    <string name="you">Ти</string>
+    <string name="you">You</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
     <string name="an_unexpected_error_occurred">An unexpected error occurred.\nPlease send a crash report to the developer :)</string>
     <string name="copy_report">Copy Report</string>
     <string name="share_as_file">Share as file</string>
-    <string name="hidden">Скривено</string>
+    <string name="hidden">Hidden</string>
     <string name="no_hidden_items">No Hidden Items</string>
 </resources>

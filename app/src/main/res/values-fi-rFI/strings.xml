@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Aseta Evästeet</string>
     <string name="open_website">Avaa Sivusto</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Loki tiedostoon</string>
     <string name="logging_warning">Voi aiheuttaa viipeen. Ota käyttöön vain, jos kohtaat ongelmia.</string>
     <string name="share_log">Klikkaa jakaaksesi nykyisen lokitiedoston</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Poistettu Käytöstä</string>
     <string name="invalid_track">\[!?\] Virheellinen</string>
     <string name="unknown_track">\[%1$s\] Tuntematon</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Ylin taustaväri</string>
     <string name="bottom_background_color">Alaosan Taustaväri</string>
     <string name="countdown_text_color">Lähtölaskenta Tekstin Väri</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Hakemistoa ei löydy</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Sinä</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

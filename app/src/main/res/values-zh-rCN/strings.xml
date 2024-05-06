@@ -727,6 +727,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">设置 Cookie</string>
     <string name="open_website">打开网站</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">记录到文件</string>
     <string name="logging_warning">记录到文件会降低应用速度。只有在遇到问题时才启用。</string>
     <string name="share_log">点击分享当前日志文件</string>
@@ -797,6 +799,7 @@
     <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
     <string name="unknown_track">\[%1$s\] 未知</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">顶部背景颜色</string>
     <string name="bottom_background_color">底部背景颜色</string>
     <string name="countdown_text_color">倒计时文本颜色</string>
@@ -945,6 +948,9 @@
     <string name="directory_not_found">目录未找到</string>
     <string name="successfully_deleted">删除成功</string>
     <string name="failed_to_delete_directory">删除目录失败</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">您</string>
     <string name="logout_confirm">您确定要注销吗？</string>
     <string name="app_died">应用程序崩溃</string>

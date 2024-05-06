@@ -736,6 +736,8 @@ Genre : "</string>
     <string name="scanlator">Scanlateur</string>
     <string name="set_cookies">Définir les Cookies</string>
     <string name="open_website">Ouvrir le site</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Journaliser dans un fichier</string>
     <string name="logging_warning">La journalisation dans un fichier ralentira l\'application. Activez uniquement si vous rencontrez des problèmes.</string>
     <string name="share_log">Cliquez pour partager le fichier journal actuel</string>
@@ -806,6 +808,7 @@ Genre : "</string>
     <string name="disabled_track">Désactivée</string>
     <string name="invalid_track">Invalide</string>
     <string name="unknown_track">\[%1$s\] Inconnue</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Couleur d\'arrière-plan supérieure</string>
     <string name="bottom_background_color">Couleur d\'arrière-plan inférieure</string>
     <string name="countdown_text_color">Couleur du texte du compte à rebours</string>
@@ -954,6 +957,9 @@ Genre : "</string>
     <string name="directory_not_found">Répertoire non trouvé</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Vous</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

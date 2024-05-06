@@ -731,6 +731,8 @@
     <string name="scanlator">Escanear</string>
     <string name="set_cookies">Establecer cookies</string>
     <string name="open_website">Abrir sitio web</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Guardar en archivo</string>
     <string name="logging_warning">Guardar en un archivo ralentizará la aplicación. Actívelo solo si experimenta problemas.</string>
     <string name="share_log">Haga clic para compartir el archivo de registro actual</string>
@@ -801,6 +803,7 @@
     <string name="disabled_track">Desactivado</string>
     <string name="invalid_track">Invalido</string>
     <string name="unknown_track">\[%1$s\] Desconocido</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Color de fondo superior</string>
     <string name="bottom_background_color">Color de fondo inferior</string>
     <string name="countdown_text_color">Color texto cuenta atrás</string>
@@ -949,6 +952,9 @@
     <string name="directory_not_found">Directorio no encontrado</string>
     <string name="successfully_deleted">Eliminado exitosamente</string>
     <string name="failed_to_delete_directory">Error al borrar directorio</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Tú</string>
     <string name="logout_confirm">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="app_died">APP MUERTA</string>

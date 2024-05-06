@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Setează cookie-urile</string>
     <string name="open_website">Deschide site-ul</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Jurnal în fișier</string>
     <string name="logging_warning">Poate cauza întârziere. Activați numai în cazul în care întâmpinați probleme.</string>
     <string name="share_log">Faceţi clic pentru a partaja fişierul jurnal curent</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Dezactivat</string>
     <string name="invalid_track">\[!?\] Nevalid</string>
     <string name="unknown_track">\[%1$s\] Necunoscut</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Culoare fundal sus</string>
     <string name="bottom_background_color">Culoare fundal jos</string>
     <string name="countdown_text_color">Culoare text numărătoare inversă</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Directorul nu a fost găsit</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Tu</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Встановлювати куки</string>
     <string name="open_website">Відкрити сайт</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Записувати лог у файл</string>
     <string name="logging_warning">Може викликати відставання. Увімкніть, лише якщо виникають проблеми.</string>
     <string name="share_log">Натисніть, щоб поділитися поточним файлом журналу</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Вимкнено</string>
     <string name="invalid_track">\[!?\] Неприпустимий</string>
     <string name="unknown_track">\[%1$s\] Невідомий</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Колір верхнього фону</string>
     <string name="bottom_background_color">Колір тла внизу</string>
     <string name="countdown_text_color">Колір тексту зворотнього відліку</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Каталог не знайдено</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Ви</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

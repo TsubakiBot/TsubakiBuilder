@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Sütik beállítása</string>
     <string name="open_website">Weboldal megnyitása</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Naplózás fájlba</string>
     <string name="logging_warning">Lassulást okozhat. Csak akkor engedélyezze, ha problémái vannak.</string>
     <string name="share_log">Kattintson a jelenlegi naplófájl megosztásához</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Letiltva</string>
     <string name="invalid_track">\[⁉️\] Érvénytelen</string>
     <string name="unknown_track">\[%1$s\] Ismeretlen</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Felső háttérszín</string>
     <string name="bottom_background_color">Alsó háttérszín</string>
     <string name="countdown_text_color">Visszaszámlálás szövegszín</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Könyvtár nem található</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Ön</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

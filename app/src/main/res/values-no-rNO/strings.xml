@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Angi informasjonskapsler</string>
     <string name="open_website">Åpne nettsted</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Logg til fil</string>
     <string name="logging_warning">Kan forårsake etterslep bare aktivering dersom du opplever problemer.</string>
     <string name="share_log">Klikk for å dele gjeldende loggfil</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Deaktivert</string>
     <string name="invalid_track">\[!?\] Ugyldig</string>
     <string name="unknown_track">\[%1$s\] Ukjent</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Den øverste bakgrunnsfargen</string>
     <string name="bottom_background_color">Bunn bakgrunnsfarge</string>
     <string name="countdown_text_color">Nedtellings tekstfarge</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Mappe ikke funnet</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Du</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

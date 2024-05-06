@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Nastavit soubory cookie</string>
     <string name="open_website">Otevřít web</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Protokol do souboru</string>
     <string name="logging_warning">Může způsobit zpoždění. Povolte pouze pokud máte problémy.</string>
     <string name="share_log">Klikněte pro sdílení aktuálního souboru protokolu</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Zakázáno</string>
     <string name="invalid_track">\[!?\] Neplatné</string>
     <string name="unknown_track">\[%1$s\] Neznámé</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Nejvyšší barva pozadí</string>
     <string name="bottom_background_color">Barva spodního pozadí</string>
     <string name="countdown_text_color">Barva textu odpočítávání</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Adresář nenalezen</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Ty</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

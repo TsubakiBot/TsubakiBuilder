@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Stel Koekies In</string>
     <string name="open_website">Maak Webwerf Oop</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Stoor na Lêer</string>
     <string name="logging_warning">Kan vertraging veroorsaak. Aktiveer slegs as daar probleme ervaar word.</string>
     <string name="share_log">Kliek om huidige loglêer te deel</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Uitgeschakel</string>
     <string name="invalid_track">\[⁉️\] Ongeldig</string>
     <string name="unknown_track">\[%1$s\] Onbekend</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Boonste agtergrondkleur</string>
     <string name="bottom_background_color">Onderste agtergrondkleur</string>
     <string name="countdown_text_color">Afteltekskleur</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Gids nie gevind nie</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Jy</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>

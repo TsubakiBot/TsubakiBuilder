@@ -733,6 +733,8 @@
     <string name="scanlator">Nhóm Dịch</string>
     <string name="set_cookies">Đặt Cookies</string>
     <string name="open_website">Mở trang web</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Ghi vào tệp</string>
     <string name="logging_warning">Có thể gây lag. Chỉ kích hoạt khi gặp sự cố.</string>
     <string name="share_log">Nhấn để chia sẻ tệp nhật ký hiện tại</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Tắt</string>
     <string name="invalid_track">\[⁉️\] Không Hợp Lệ</string>
     <string name="unknown_track">\[%1$s\] Không Xác Định</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Màu nền đầu trang</string>
     <string name="bottom_background_color">Màu nền cuối trang</string>
     <string name="countdown_text_color">Màu văn bản đếm ngược</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Thư mục không tồn tại</string>
     <string name="successfully_deleted">Đã xóa thành công</string>
     <string name="failed_to_delete_directory">Không thể xóa thư mục</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Bạn</string>
     <string name="logout_confirm">Bạn có chắc chắn muốn đăng xuất không?</string>
     <string name="app_died">Ứng dụng đã dừng</string>

@@ -733,6 +733,8 @@
     <string name="scanlator">Scanlator</string>
     <string name="set_cookies">Установить Cookie</string>
     <string name="open_website">Открыть веб-сайт</string>
+    <string name="disable_debug">Disable Logging</string>
+    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
     <string name="log_to_file">Логировать в файл</string>
     <string name="logging_warning">Может вызвать задержку. Включите только при возникновении проблем.</string>
     <string name="share_log">Нажмите, чтобы поделиться текущим лог-файлом</string>
@@ -803,6 +805,7 @@
     <string name="disabled_track">\[💬\] Выключено</string>
     <string name="invalid_track">\[!?\] Недействителен</string>
     <string name="unknown_track">\[%1$s\] Неизвестен</string>
+    <string name="user_subtitle">\[👤\] User Custom</string>
     <string name="top_background_color">Верхний цвет фона</string>
     <string name="bottom_background_color">Цвет фона снизу</string>
     <string name="countdown_text_color">Цвет текста обратного отсчета</string>
@@ -951,6 +954,9 @@
     <string name="directory_not_found">Каталог не найден</string>
     <string name="successfully_deleted">Successfully deleted</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
+    <string name="hidden_anime">Hidden Anime</string>
+    <string name="hidden_manga">Hidden Manga</string>
+    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Вы</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
