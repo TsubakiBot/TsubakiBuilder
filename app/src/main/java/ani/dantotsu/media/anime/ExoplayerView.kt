@@ -419,16 +419,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 )
             )
 
-            if (subsEmbedded) {
-                subtitles.alpha = PrefManager.getVal(PrefName.SubAlpha)
-            } else {
-                subtitles.alpha =
-                    when (PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
-                        true -> PrefManager.getVal(PrefName.SubAlpha)
-                        false -> 0f
-                    }
-            }
 
+            subtitles.alpha = PrefManager.getVal(PrefName.SubAlpha)
             subtitles.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
         }
     }
@@ -1442,17 +1434,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     }
                 }
 
-                "None" -> ext.subtitles.let { null }
+                "None", "none" -> ext.subtitles.let { null }
                 else -> ext.subtitles.find { it.language == subLang }
             }
 
         //Subtitles
         hasExtSubtitles = ext.subtitles.isNotEmpty()
-        if (hasExtSubtitles && !isTorrent) {
-            exoSubtitle.setOnClickListener {
-                subClick()
-            }
-        }
         exoSubtitle.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             showFileChooser()
@@ -1703,7 +1690,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoPlayer.addAnalyticsListener(EventLogger())
         isInitialized = true
 
-        if (subsEmbedded && !PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
+        if (!PrefManager.getVal<Boolean>(PrefName.Subtitles)) {
             onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         }
     }
@@ -1745,14 +1732,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             media, episode.number, this.supportFragmentManager,
             launch = false
         )
-    }
-
-    private fun subClick() {
-        PrefManager.setCustomVal(
-            "${media.id}_${media.anime!!.selectedEpisode}", exoPlayer.currentPosition
-        )
-        model.saveSelected(media.id, media.selected!!)
-        SubtitleDialogFragment().show(supportFragmentManager, "dialog")
     }
 
     override fun onPause() {
@@ -1965,6 +1944,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int, index: Int = 0) {
+            val mediaID: Int = media.id
+            PrefManager.setCustomVal(
+                "subLang_${mediaID}",
+                trackGroup.getTrackFormat(0).language
+            )
         val isDisabled = trackGroup.getTrackFormat(0).language == "none"
         exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
             .buildUpon()
@@ -1993,9 +1977,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
 
                 TRACK_TYPE_TEXT -> {
-                    if (subsEmbedded) {
-                        if (it.isSupported(true)) subTracks.add(it)
-                    }
+                    if (it.isSupported(true)) subTracks.add(it)
                 }
             }
         }
@@ -2004,30 +1986,26 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)
                 .show(supportFragmentManager, "dialog")
         }
-        if (subsEmbedded) {
-            exoSubtitle.setOnClickListener {
-                TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
-                    .show(supportFragmentManager, "dialog")
-            }
+        exoSubtitle.setOnClickListener {
+            TrackGroupDialogFragment(this, subTracks, TRACK_TYPE_TEXT)
+                .show(supportFragmentManager, "dialog")
         }
     }
 
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
-        if (subsEmbedded) {
-            exoPlayer.currentTracks.groups.forEach { trackGroup ->
-                when (trackGroup.type) {
-                    TRACK_TYPE_TEXT -> {
-                        if (PrefManager.getVal(PrefName.Subtitles)) {
-                            onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
-                        } else {
-                            onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
-                        }
+        exoPlayer.currentTracks.groups.forEach { trackGroup ->
+            when (trackGroup.type) {
+                TRACK_TYPE_TEXT -> {
+                    if (PrefManager.getVal(PrefName.Subtitles)) {
+                        onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
+                    } else {
+                        onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
                     }
-
-                    else -> {}
                 }
+
+                else -> {}
             }
         }
         if (isInitialized) exoPlayer.play()
