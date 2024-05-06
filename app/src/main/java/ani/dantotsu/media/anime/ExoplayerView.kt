@@ -2323,29 +2323,30 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private val onImportSubtitle = registerForActivityResult(
-        ActivityResultContracts.OpenDocument()
-    ) { document: Uri? -> document?.let {
+        ActivityResultContracts.OpenMultipleDocuments()
+    ) { documents: List<Uri> ->
         val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-        val mimeType = when(contentResolver.getType(it)) {
-            MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
-            MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
-            MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
-            MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
-            else -> MimeTypes.TEXT_UNKNOWN
+        documents.forEach {
+            val mimeType = when (contentResolver.getType(it)) {
+                MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
+                MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
+                MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
+                MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
+                else -> MimeTypes.TEXT_UNKNOWN
+            }
+            val subConfig = MediaItem.SubtitleConfiguration
+                .Builder(it)
+                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                .setMimeType(mimeType)
+                .setLanguage("user")
+                .setId("Sideload")
+                .build()
+            subs.add(subConfig)
         }
-        val subConfig = MediaItem.SubtitleConfiguration
-            .Builder(it)
-            .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
-            .setMimeType(mimeType)
-            .setLanguage("user")
-            .setId("user")
-            .build()
-        subs.add(0, subConfig)
-        episode.selectedSubtitle = 0
         mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
         buildExoplayer()
-    } }
+    }
 
     private fun showFileChooser() {
         exoPlayer.pause()
