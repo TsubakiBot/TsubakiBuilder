@@ -33,6 +33,8 @@ object Anilist {
     var genres: ArrayList<String>? = null
     var tags: Map<Boolean, List<String>>? = null
 
+    var initialized = false
+
     var rateLimitReset: Long = 0
 
     val sortBy = listOf(

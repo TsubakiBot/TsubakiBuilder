@@ -27,6 +27,7 @@ import ani.dantotsu.connections.anilist.AnilistAnimeViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentAnimeBinding
+import ani.dantotsu.loadFragment
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
@@ -275,13 +276,7 @@ class AnimeFragment : Fragment() {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        try {
-                            getUserId(requireContext()) {
-                                load()
-                            }
-                        } catch (ignored: Exception) {
-                            serverDownDialog(activity)
-                        }
+                        loadFragment(requireActivity()) { load() }
                         model.loaded = true
                         model.loadTrending(1)
                         model.loadAll()

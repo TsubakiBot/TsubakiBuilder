@@ -16,9 +16,11 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWithSuspend
 import ani.himitsu.update.MatagiUpdater
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 suspend fun getUserId(context: Context, block: () -> Unit) {
-    if (Anilist.userid == null && Anilist.token != null) {
+    if (!Anilist.initialized) {
         if (Anilist.query.getUserData()) {
             tryWithSuspend {
                 if (MAL.token != null && !MAL.query.getUserData())
@@ -112,6 +114,10 @@ class AnilistHomeViewModel : ViewModel() {
         Discord.getSavedToken()
         if (!BuildConfig.FLAVOR.contains("fdroid")) {
             if (PrefManager.getVal(PrefName.CheckUpdate)) MatagiUpdater.check(context)
+        }
+        val ret = Anilist.query.getGenresAndTags()
+        withContext(Dispatchers.Main) {
+            genres.value = ret
         }
         genres.postValue(Anilist.query.getGenresAndTags())
     }

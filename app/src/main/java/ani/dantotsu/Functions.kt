@@ -86,8 +86,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
+import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
@@ -379,6 +381,28 @@ suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatch
                 it.finishAffinity()
             }
             show(it.supportFragmentManager, "dialog")
+        }
+    }
+}
+
+suspend fun loadFragment(activity: FragmentActivity, response: () -> Unit) {
+    Anilist.userid = PrefManager.getNullableVal<String>(PrefName.AnilistUserId, null)
+        ?.toIntOrNull()
+    if (Anilist.userid == null) {
+        try {
+            getUserId(activity) {
+                response.invoke()
+            }
+        } catch (ignored: Exception) {
+            withContext(Dispatchers.IO) {
+                serverDownDialog(activity)
+            }
+        }
+    } else {
+        withContext(Dispatchers.IO) {
+            getUserId(activity) {
+                response.invoke()
+            }
         }
     }
 }

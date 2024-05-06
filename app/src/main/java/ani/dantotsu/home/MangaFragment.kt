@@ -25,6 +25,7 @@ import ani.dantotsu.connections.anilist.AnilistMangaViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentAnimeBinding
+import ani.dantotsu.loadFragment
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.navBarHeight
@@ -260,13 +261,7 @@ class MangaFragment : Fragment() {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        try {
-                            getUserId(requireContext()) {
-                                load()
-                            }
-                        } catch (ignored: Exception) {
-                            serverDownDialog(activity)
-                        }
+                        loadFragment(requireActivity()) { load() }
                         model.loaded = true
                         model.loadTrending()
                         model.loadAll()

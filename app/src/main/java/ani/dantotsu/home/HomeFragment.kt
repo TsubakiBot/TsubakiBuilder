@@ -34,6 +34,7 @@ import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.isOnline
+import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
@@ -55,6 +56,7 @@ import ani.dantotsu.statusBarHeight
 import ani.himitsu.launcher.ResumableShortcuts
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -523,21 +525,16 @@ class HomeFragment : Fragment() {
         )
 
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }
-        live.observe(viewLifecycleOwner)
-        {
+        live.observe(viewLifecycleOwner) {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
                         //Get userData First
-                        try {
-                            getUserId(requireContext()) {
-                                load()
-                            }
-                        } catch (ignored: Exception) {
-                            serverDownDialog(activity)
-                        }
+                        loadFragment(requireActivity()) { load() }
                         model.loaded = true
-                        model.setListImages()
+                        CoroutineScope(Dispatchers.IO).launch {
+                            model.setListImages()
+                        }
                         var empty = true
                         val homeLayoutShow: List<Boolean> =
                             PrefManager.getVal(PrefName.HomeLayout)
