@@ -19,6 +19,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -88,9 +89,11 @@ class FollowActivity : AppCompatActivity() {
 
     private fun fillList() {
         adapter.clear()
+        val screenWidth = resources.displayMetrics.widthPixels
         binding.listRecyclerView.layoutManager = when (getLayoutType(selected)) {
             0 -> LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-            1 -> GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
+            1 -> GridLayoutManager(this,
+                screenWidth / 120f.toPx, GridLayoutManager.VERTICAL, false)
             else -> LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         }
         users?.forEach { user ->
