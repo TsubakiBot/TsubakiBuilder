@@ -57,7 +57,7 @@ class ActivityItem(
             when (binding.activityReplies.visibility) {
                 View.GONE -> {
                     val replyItems = activity.replies?.map {
-                        ActivityReplyItem(it,fragActivity) { id, type ->
+                        ActivityReplyItem(it, fragActivity) { id, type ->
                             clickCallback(
                                 id,
                                 type

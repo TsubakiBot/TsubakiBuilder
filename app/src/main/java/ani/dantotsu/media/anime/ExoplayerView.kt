@@ -28,6 +28,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings.System
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Rational
 import android.util.TypedValue
 import android.view.GestureDetector
@@ -58,6 +59,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -77,6 +79,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.TrackGroup
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
+import androidx.media3.common.text.CueGroup
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DataSource
 import androidx.media3.datasource.DefaultDataSource
@@ -1996,13 +1999,23 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
         documents.forEach {
+            val file = DocumentFile.fromSingleUri(this, it)
             val mimeType = when (contentResolver.getType(it)) {
                 MimeTypes.TEXT_VTT -> MimeTypes.TEXT_VTT
                 MimeTypes.APPLICATION_TTML -> MimeTypes.APPLICATION_TTML
                 MimeTypes.APPLICATION_SUBRIP -> MimeTypes.APPLICATION_SUBRIP
                 MimeTypes.TEXT_SSA -> MimeTypes.TEXT_SSA
                 getString(R.string.mimetype_binary) -> MimeTypes.TEXT_SSA
-                else -> MimeTypes.TEXT_UNKNOWN
+                else -> file?.let { doc ->
+                    when (doc.extension.lowercase()) {
+                        "vtt" -> MimeTypes.TEXT_VTT
+                        "ttml" -> MimeTypes.APPLICATION_TTML
+                        "srt" -> MimeTypes.APPLICATION_SUBRIP
+                        "ass" -> MimeTypes.TEXT_SSA
+                        else -> MimeTypes.TEXT_UNKNOWN
+                    }
+                } ?: MimeTypes.TEXT_UNKNOWN
+
             }
             Logger.log("Sideload MimeType: ${contentResolver.getType(it)}")
             val subConfig = MediaItem.SubtitleConfiguration
@@ -2010,7 +2023,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 .setSelectionFlags(C.SELECTION_FLAG_FORCED)
                 .setMimeType(mimeType)
                 .setLanguage("file")
-                .setId(mimeType)
+                .setId(DocumentFile.fromSingleUri(this, it)?.name
+                    ?: mimeType.substringAfter("/"))
                 .build()
             subs.add(subConfig)
         }

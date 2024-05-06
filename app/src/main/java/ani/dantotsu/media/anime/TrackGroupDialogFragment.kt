@@ -82,7 +82,7 @@ class TrackGroupDialogFragment(
 
                     "file" -> {
                         binding.subtitleTitle.text =
-                            getString(R.string.user_subtitle, trackFormat.id)
+                            getString(R.string.user_subtitle, trackFormat.id?.substringAfter(":"))
                     }
 
                     "load" -> {
