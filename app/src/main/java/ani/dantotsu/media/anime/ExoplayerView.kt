@@ -88,6 +88,7 @@ import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.MergingMediaSource
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
@@ -203,6 +204,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var playbackParameters: PlaybackParameters
     private lateinit var mediaItem: MediaItem
     private var subMediaItem: MediaItem? = null
+    private lateinit var audioSources: Array<MediaSource>
     private lateinit var mediaSource: MergingMediaSource
     private var mediaSession: MediaSession? = null
 
@@ -1596,7 +1598,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             )
         }
 
-        val audioSources = audioMediaItem.map { mediaItem ->
+        audioSources = audioMediaItem.map { mediaItem ->
             if (video?.format == VideoType.M3U8) {
                 HlsMediaSource.Factory(cacheFactory).apply {
                     setAllowChunklessPreparation(false)
@@ -1965,21 +1967,20 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     fun onSetTrackGroupOverride(trackGroup: Tracks.Group, type: @C.TrackType Int, index: Int = 0) {
-        if (trackGroup.getTrackFormat(0).language == "load") {
+        val format = trackGroup.mediaTrackGroup.getFormat(0)
+        if (format.language == "load") {
             showSubtitleDialog()
             return
         }
-        PrefManager.setCustomVal(
-            "subLang_${media.id}",
-            trackGroup.getTrackFormat(0).language
-        )
-        val isDisabled = trackGroup.getTrackFormat(0).language == "none"
+        PrefManager.setCustomVal("subLang_${media.id}", format.language)
+        val isDisabled = format.language == "none"
         exoPlayer.trackSelectionParameters = exoPlayer.trackSelectionParameters
             .buildUpon()
             .setTrackTypeDisabled(TRACK_TYPE_TEXT, isDisabled)
             .setOverrideForType(
                 TrackSelectionOverride(trackGroup.mediaTrackGroup, index)
             )
+            .setSelectUndeterminedTextLanguage(format.containerMimeType == getString(R.string.mimetype_cea))
             .build()
         if (type == TRACK_TYPE_TEXT) setupSubFormatting(playerView)
     }
@@ -2002,7 +2003,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val audioTracks: ArrayList<Tracks.Group> = arrayListOf()
         val subTracks: ArrayList<Tracks.Group> = arrayListOf(dummyTrack)
         tracks.groups.forEach {
-            when (it.type) {
+            when (it.mediaTrackGroup.type) {
                 TRACK_TYPE_AUDIO -> {
                     if (it.isSupported(true)) audioTracks.add(it)
                 }
@@ -2066,32 +2067,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun buildSubtitleMediaItem() {
-        val audioMediaItem = mutableListOf<MediaItem>()
-        audioLanguages.clear()
-        extractor!!.audioTracks.forEach { track ->
-            audioLanguages.add(LanguageMapper.mapLanguageNameToCode(track.lang) ?: track.lang)
-            audioMediaItem.add(
-                MediaItem.Builder()
-                    .setUri(track.url)
-                    .setMimeType(MimeTypes.AUDIO_UNKNOWN)
-                    .setTag(track.lang)
-                    .build()
-            )
-        }
-        val audioSources = audioMediaItem.map { mediaItem ->
-            if (video?.format == VideoType.M3U8) {
-                HlsMediaSource.Factory(cacheFactory).apply {
-                    setAllowChunklessPreparation(false)
-                }.createMediaSource(mediaItem)
-            } else {
-                DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
-            }
-        }.toTypedArray()
         val videoMediaSource = DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
         mediaSource = subMediaItem?.let {
             val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(it)
             MergingMediaSource(videoMediaSource, *audioSources, subtitleSource)
-        } ?: MergingMediaSource(videoMediaSource, *audioSources)
+        } ?: mediaSource
         buildExoplayer()
     }
 
@@ -2111,7 +2091,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             subs.add(importSubtitle(uri, true))
         }
         if (subs.isNotEmpty()) {
-            subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+            subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs.distinctBy { it.uri }).build()
             buildSubtitleMediaItem()
         }
     }
@@ -2162,7 +2142,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
         exoPlayer.currentTracks.groups.forEach { trackGroup ->
-            when (trackGroup.type) {
+            when (trackGroup.mediaTrackGroup.type) {
                 TRACK_TYPE_TEXT -> {
                     if (PrefManager.getVal(PrefName.Subtitles)) {
                         onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)

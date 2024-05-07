@@ -38,6 +38,7 @@
 
     <string name="mimetype_zip" translatable="false">application/zip</string>
     <string name="mimetype_binary">application/octet-stream</string>
+    <string name="mimetype_cea">application/cea-608</string>
 
     <string name="user_subtitle">\[💬\] %1$s</string>
 

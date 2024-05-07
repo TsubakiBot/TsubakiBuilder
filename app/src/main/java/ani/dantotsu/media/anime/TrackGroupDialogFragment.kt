@@ -71,9 +71,9 @@ class TrackGroupDialogFragment(
         override fun onBindViewHolder(holder: StreamViewHolder, position: Int) {
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
-                val trackFormat = trackGroup.getTrackFormat(0)
+                val trackFormat = trackGroup.mediaTrackGroup.getFormat(0)
                 val trackId = trackFormat.id?.substringAfterLast(':')
-                val localeCode = if (trackGroup.type == TRACK_TYPE_AUDIO)
+                val localeCode = if (trackGroup.mediaTrackGroup.type == TRACK_TYPE_AUDIO)
                     languages.getOrNull(position - (trackGroups.size - languages.size))
                 else
                     null
