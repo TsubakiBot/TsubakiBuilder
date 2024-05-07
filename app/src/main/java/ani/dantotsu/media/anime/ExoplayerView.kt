@@ -2065,7 +2065,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .build()
     }
 
-    private fun buildSubtitleMediaItem(subs: MutableList<MediaItem.SubtitleConfiguration>) {
+    private fun buildSubtitleMediaItem() {
         val audioMediaItem = mutableListOf<MediaItem>()
         audioLanguages.clear()
         extractor!!.audioTracks.forEach { track ->
@@ -2075,7 +2075,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     .setUri(track.url)
                     .setMimeType(MimeTypes.AUDIO_UNKNOWN)
                     .setTag(track.lang)
-                    .setSubtitleConfigurations(subs)
                     .build()
             )
         }
@@ -2088,10 +2087,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
             }
         }.toTypedArray()
-        subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-        val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(subMediaItem!!)
         val videoMediaSource = DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
-        mediaSource = MergingMediaSource(videoMediaSource, *audioSources, subtitleSource)
+        mediaSource = subMediaItem?.let {
+            val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(it)
+            MergingMediaSource(videoMediaSource, *audioSources, subtitleSource)
+        } ?: MergingMediaSource(videoMediaSource, *audioSources)
         buildExoplayer()
     }
 
@@ -2103,7 +2103,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         documents.forEach {
             subs.add(importSubtitle(it, true))
         }
-        buildSubtitleMediaItem(subs)
+        subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        buildSubtitleMediaItem()
     }
 
     private fun showSubtitleDialog() {
@@ -2118,10 +2119,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             setCustomView(dialogView.root)
             setPosButton(R.string.save) {
                 if (!editText.text.isNullOrBlank()) {
-                    val subs = subMediaItem?.localConfiguration?.subtitleConfigurations?.toMutableList()
+                    val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
                         ?: mutableListOf<MediaItem.SubtitleConfiguration>()
                     subs.add(importSubtitle(Uri.parse(editText.text.toString()), false))
-                    buildSubtitleMediaItem(subs)
+                    mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+                    buildSubtitleMediaItem()
                 }
             }
             setNeutralButton(R.string.import_file) {
