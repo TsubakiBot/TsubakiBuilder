@@ -307,7 +307,7 @@
     <string name="layout">Layout</string>
     <string name="spaced_pages">Mellemrum Sider</string>
     <string name="direction">Retning</string>
-    <string name="comments_api">Kommentarer API (privat)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Undgå Injektion (\"Pranks\")</string>
     <string name="general">Generelt</string>
     <string name="show_system_bars">Vis Status &amp; Navigationsbjælker</string>
@@ -342,6 +342,7 @@
     <string name="year">År</string>
     <string name="apply">Anvend</string>
     <string name="cancel">Annuller</string>
+    <string name="clear">Clear</string>
     <string name="edit">Rediger</string>
     <string name="this_season">Denne Sæson</string>
     <string name="next_season">Næste Sæson</string>
@@ -802,9 +803,13 @@
     <string name="log_in">log ind</string>
     <string name="or_join">eller tilmeld</string>
     <string name="audio_tracks">Lyd Spor</string>
-    <string name="disabled_track">\[:speech_ballon:\] Deaktiveret</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Ugyldig</string>
-    <string name="unknown_track">\[%1$s\] Ukendt</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Top baggrundsfarve</string>
     <string name="bottom_background_color">Nederste Baggrundsfarve</string>
     <string name="countdown_text_color">Nedtælling Tekstfarve</string>

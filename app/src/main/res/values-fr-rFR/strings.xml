@@ -307,7 +307,7 @@
     <string name="layout">Mise en page</string>
     <string name="spaced_pages">Pages espacées</string>
     <string name="direction">Orientation</string>
-    <string name="comments_api">API de commentaires (Privé)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Empêcher l\'injection (\"Pranks\")</string>
     <string name="general">Général</string>
     <string name="show_system_bars">Afficher les barres d\'état et de navigation</string>
@@ -342,6 +342,7 @@
     <string name="year">Année</string>
     <string name="apply">Appliquer</string>
     <string name="cancel">Annuler</string>
+    <string name="clear">Clear</string>
     <string name="edit">Modifier</string>
     <string name="this_season">Cette saison</string>
     <string name="next_season">Saison suivante</string>
@@ -805,9 +806,13 @@ Genre : "</string>
     <string name="log_in">se connecter</string>
     <string name="or_join">ou s\'inscrire</string>
     <string name="audio_tracks">Pistes audio</string>
-    <string name="disabled_track">Désactivée</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Invalide</string>
-    <string name="unknown_track">\[%1$s\] Inconnue</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Couleur d\'arrière-plan supérieure</string>
     <string name="bottom_background_color">Couleur d\'arrière-plan inférieure</string>
     <string name="countdown_text_color">Couleur du texte du compte à rebours</string>

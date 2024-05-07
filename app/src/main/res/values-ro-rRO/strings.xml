@@ -307,7 +307,7 @@
     <string name="layout">Aspect</string>
     <string name="spaced_pages">Pagini spațiate</string>
     <string name="direction">Direcție</string>
-    <string name="comments_api">Comentarii API (Privat)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Previne injectarea (\"Pranks\")</string>
     <string name="general">Generalități</string>
     <string name="show_system_bars">Arată Stare &amp; Bare de Navigare</string>
@@ -342,6 +342,7 @@
     <string name="year">An</string>
     <string name="apply">Aplică</string>
     <string name="cancel">Anulează</string>
+    <string name="clear">Clear</string>
     <string name="edit">Editare</string>
     <string name="this_season">Acest sezon</string>
     <string name="next_season">Următorul sezon</string>

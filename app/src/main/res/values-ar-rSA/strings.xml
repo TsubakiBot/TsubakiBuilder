@@ -307,7 +307,7 @@
     <string name="layout">التَخطِيط</string>
     <string name="spaced_pages">صفحات متباعدة</string>
     <string name="direction">الاتجاه</string>
-    <string name="comments_api">تعليقات API (خاص)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">منع الحقن (\"Pranks\")</string>
     <string name="general">عام</string>
     <string name="show_system_bars">اظهر الحالة &amp; أدوات التحكم</string>
@@ -342,6 +342,7 @@
     <string name="year">السنة</string>
     <string name="apply">تطبيق</string>
     <string name="cancel">إلغاء</string>
+    <string name="clear">Clear</string>
     <string name="edit">التعديل</string>
     <string name="this_season">هذا الموسم</string>
     <string name="next_season">الموسم القادم</string>
@@ -801,9 +802,13 @@
     <string name="log_in">تسجيل دخول</string>
     <string name="or_join">او اندم</string>
     <string name="audio_tracks">مقاطع أصوات</string>
-    <string name="disabled_track">Disabled</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Invalid</string>
-    <string name="unknown_track">\[%1$s\] غير معروف</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">لون الخلفية العليا</string>
     <string name="bottom_background_color">لون الخلفية السفلي</string>
     <string name="countdown_text_color">لون نص العد التنازلي</string>

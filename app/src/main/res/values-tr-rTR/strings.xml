@@ -307,7 +307,7 @@
     <string name="layout">Düzen</string>
     <string name="spaced_pages">Boş Sayfalar</string>
     <string name="direction">Yön</string>
-    <string name="comments_api">Yorumlar API (Özel)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Enjeksiyonu Önle (\"Şakalar\")</string>
     <string name="general">Genel</string>
     <string name="show_system_bars">Durum ve Gezinme Çubuklarını Göster</string>
@@ -342,6 +342,7 @@
     <string name="year">Yıl</string>
     <string name="apply">Uygula</string>
     <string name="cancel">İptal</string>
+    <string name="clear">Clear</string>
     <string name="edit">Düzenle</string>
     <string name="this_season">Bu Sezon</string>
     <string name="next_season">Gelecek Sezon</string>
@@ -802,9 +803,13 @@
     <string name="log_in">oturum açın</string>
     <string name="or_join">veya katılın</string>
     <string name="audio_tracks">Ses Parçaları</string>
-    <string name="disabled_track">\[💬\] Devre Dışı</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[⁉️\] Geçersiz</string>
-    <string name="unknown_track">\[%1$s\] Bilinmeyen</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Üst arka plan rengi</string>
     <string name="bottom_background_color">Alt Arka Plan Rengi</string>
     <string name="countdown_text_color">Geri Sayım Metin Rengi</string>

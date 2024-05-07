@@ -307,7 +307,7 @@
     <string name="layout">Asettelu</string>
     <string name="spaced_pages">Välilyönnit Sivut</string>
     <string name="direction">Suunta</string>
-    <string name="comments_api">Kommentit API (Private)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Estä Injektio (\"Prank\")</string>
     <string name="general">Yleiset</string>
     <string name="show_system_bars">Näytä Tila &amp; Navigointipalkit</string>
@@ -342,6 +342,7 @@
     <string name="year">Vuosi</string>
     <string name="apply">Käytä</string>
     <string name="cancel">Peruuta</string>
+    <string name="clear">Clear</string>
     <string name="edit">Muokkaa</string>
     <string name="this_season">Tänä Kautena</string>
     <string name="next_season">Seuraava Kausi</string>
@@ -802,9 +803,13 @@
     <string name="log_in">kirjaudu sisään</string>
     <string name="or_join">tai liity</string>
     <string name="audio_tracks">Ääni Kappaleet</string>
-    <string name="disabled_track">\[💬\] Poistettu Käytöstä</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Virheellinen</string>
-    <string name="unknown_track">\[%1$s\] Tuntematon</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Ylin taustaväri</string>
     <string name="bottom_background_color">Alaosan Taustaväri</string>
     <string name="countdown_text_color">Lähtölaskenta Tekstin Väri</string>

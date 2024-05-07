@@ -307,7 +307,7 @@
     <string name="layout">Rozložení</string>
     <string name="spaced_pages">Mezery stránek</string>
     <string name="direction">Směr</string>
-    <string name="comments_api">API komentářů (soukromý)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Zabránit vniknutí (\"Pranks\")</string>
     <string name="general">Obecná ustanovení</string>
     <string name="show_system_bars">Zobrazit stav &amp; Navigační lišty</string>
@@ -342,6 +342,7 @@
     <string name="year">Rok</string>
     <string name="apply">Použít</string>
     <string name="cancel">Zrušit</string>
+    <string name="clear">Clear</string>
     <string name="edit">Upravit</string>
     <string name="this_season">Tato sezóna</string>
     <string name="next_season">Další sezóna</string>
@@ -802,9 +803,13 @@
     <string name="log_in">Přihlásit se</string>
     <string name="or_join">nebo se připojit</string>
     <string name="audio_tracks">Zvukové stopy</string>
-    <string name="disabled_track">\[💬\] Zakázáno</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Neplatné</string>
-    <string name="unknown_track">\[%1$s\] Neznámé</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Nejvyšší barva pozadí</string>
     <string name="bottom_background_color">Barva spodního pozadí</string>
     <string name="countdown_text_color">Barva textu odpočítávání</string>

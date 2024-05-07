@@ -307,7 +307,7 @@
     <string name="layout">Макет</string>
     <string name="spaced_pages">Разделённые страницы</string>
     <string name="direction">Направление</string>
-    <string name="comments_api">API комментариев (приватный)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Предотвратить инъекцию (\"Пранке\")</string>
     <string name="general">Общее</string>
     <string name="show_system_bars">Показать строку состояния и навигационные панели</string>
@@ -342,6 +342,7 @@
     <string name="year">Год</string>
     <string name="apply">Применить</string>
     <string name="cancel">Отмена</string>
+    <string name="clear">Clear</string>
     <string name="edit">Редактировать</string>
     <string name="this_season">Текущий сезон</string>
     <string name="next_season">Следующий сезон</string>
@@ -802,9 +803,13 @@
     <string name="log_in">войти</string>
     <string name="or_join">или присоединиться</string>
     <string name="audio_tracks">Аудио треки</string>
-    <string name="disabled_track">\[💬\] Выключено</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Недействителен</string>
-    <string name="unknown_track">\[%1$s\] Неизвестен</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Верхний цвет фона</string>
     <string name="bottom_background_color">Цвет фона снизу</string>
     <string name="countdown_text_color">Цвет текста обратного отсчета</string>

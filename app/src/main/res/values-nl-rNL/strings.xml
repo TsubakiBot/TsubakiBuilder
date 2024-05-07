@@ -307,7 +307,7 @@
     <string name="layout">Indeling</string>
     <string name="spaced_pages">Afgespeelde pagina\'s</string>
     <string name="direction">Richting</string>
-    <string name="comments_api">Commentaar API (Private)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Voorkom Injectie (\"Pranks\")</string>
     <string name="general">Algemeen</string>
     <string name="show_system_bars">Toon Status &amp; Navigatiebalken</string>
@@ -342,6 +342,7 @@
     <string name="year">jaar</string>
     <string name="apply">Toepassen</string>
     <string name="cancel">annuleren</string>
+    <string name="clear">Clear</string>
     <string name="edit">Bewerken</string>
     <string name="this_season">Deze Seizoen</string>
     <string name="next_season">Volgende Seizoen</string>
@@ -802,9 +803,13 @@
     <string name="log_in">log in</string>
     <string name="or_join">of neem deel</string>
     <string name="audio_tracks">Audio tracks</string>
-    <string name="disabled_track">\[💬\] Uitgeschakeld</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Ongeldig</string>
-    <string name="unknown_track">\[%1$s\] Onbekend</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Bovenste achtergrondkleur</string>
     <string name="bottom_background_color">Achtergrond Kleur Onder</string>
     <string name="countdown_text_color">Tekstkleur aftellen</string>

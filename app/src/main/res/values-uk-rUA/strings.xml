@@ -307,7 +307,7 @@
     <string name="layout">Макет</string>
     <string name="spaced_pages">Розділені сторінки</string>
     <string name="direction">Напрямок</string>
-    <string name="comments_api">Коментарі API (приватний)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Запобігти зануренню (\"Прак\")</string>
     <string name="general">Загальні налаштування</string>
     <string name="show_system_bars">Показати статус: &amp; Панель навігації</string>
@@ -342,6 +342,7 @@
     <string name="year">Рік</string>
     <string name="apply">Прийняти</string>
     <string name="cancel">Скасувати</string>
+    <string name="clear">Clear</string>
     <string name="edit">Редагувати</string>
     <string name="this_season">Цей сезон</string>
     <string name="next_season">Наступний сезон</string>
@@ -802,9 +803,13 @@
     <string name="log_in">увійти в</string>
     <string name="or_join">або приєднайтеся</string>
     <string name="audio_tracks">Аудіотреки</string>
-    <string name="disabled_track">\[💬\] Вимкнено</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Неприпустимий</string>
-    <string name="unknown_track">\[%1$s\] Невідомий</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Колір верхнього фону</string>
     <string name="bottom_background_color">Колір тла внизу</string>
     <string name="countdown_text_color">Колір тексту зворотнього відліку</string>

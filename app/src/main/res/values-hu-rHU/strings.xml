@@ -307,7 +307,7 @@
     <string name="layout">Elrendezés</string>
     <string name="spaced_pages">Térközök</string>
     <string name="direction">Irány</string>
-    <string name="comments_api">Hozzászólások API (Privát)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Beillesztés megakadályozása (\"Tréfák\")</string>
     <string name="general">Általános</string>
     <string name="show_system_bars">Állapot- és Navigációs sávok megjelenítése</string>
@@ -342,6 +342,7 @@
     <string name="year">Év</string>
     <string name="apply">Alkalmaz</string>
     <string name="cancel">Mégse</string>
+    <string name="clear">Clear</string>
     <string name="edit">Szerkesztés</string>
     <string name="this_season">Ez a szezon</string>
     <string name="next_season">Következő szezon</string>
@@ -802,9 +803,13 @@
     <string name="log_in">jelentkezzen be</string>
     <string name="or_join">vagy csatlakozzon</string>
     <string name="audio_tracks">Hangsávok</string>
-    <string name="disabled_track">\[💬\] Letiltva</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[⁉️\] Érvénytelen</string>
-    <string name="unknown_track">\[%1$s\] Ismeretlen</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Felső háttérszín</string>
     <string name="bottom_background_color">Alsó háttérszín</string>
     <string name="countdown_text_color">Visszaszámlálás szövegszín</string>

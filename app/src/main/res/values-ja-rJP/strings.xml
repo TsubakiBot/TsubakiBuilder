@@ -307,7 +307,7 @@
     <string name="layout">レイアウト</string>
     <string name="spaced_pages">間隔ページ</string>
     <string name="direction">方向</string>
-    <string name="comments_api">コメント API (プライベート)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">注入防止 (「いたずら」)</string>
     <string name="general">全般</string>
     <string name="show_system_bars">ステータスバーとナビゲーションバーを表示</string>
@@ -342,6 +342,7 @@
     <string name="year">年</string>
     <string name="apply">適用</string>
     <string name="cancel">キャンセル</string>
+    <string name="clear">Clear</string>
     <string name="edit">編集</string>
     <string name="this_season">このシーズン</string>
     <string name="next_season">次のシーズン</string>
@@ -802,9 +803,13 @@
     <string name="log_in">ログイン</string>
     <string name="or_join">または参加</string>
     <string name="audio_tracks">オーディオトラック</string>
-    <string name="disabled_track">\[💬\] 無効</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\" 無効</string>
-    <string name="unknown_track">\[%1$s\] 不明</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">上部の背景色</string>
     <string name="bottom_background_color">下部の背景色</string>
     <string name="countdown_text_color">カウントダウンテキストの色</string>

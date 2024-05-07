@@ -307,7 +307,7 @@
     <string name="layout">Διάταξη</string>
     <string name="spaced_pages">Διακεκριμένες σελίδες</string>
     <string name="direction">Κατεύθυνση</string>
-    <string name="comments_api">Σχόλια API (Ιδιωτικό)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Αποτρέψτε Την Έγχυση (\"Pranks\")</string>
     <string name="general">Γενικά</string>
     <string name="show_system_bars">Εμφάνιση κατάστασης &amp; Μπάρες πλοήγησης</string>
@@ -342,6 +342,7 @@
     <string name="year">Χρόνος</string>
     <string name="apply">Εφαρμογή</string>
     <string name="cancel">Ακύρωση</string>
+    <string name="clear">Clear</string>
     <string name="edit">Επεξεργασία</string>
     <string name="this_season">Αυτή τη σεζόν</string>
     <string name="next_season">Επόμενη σεζόν</string>
@@ -802,9 +803,13 @@
     <string name="log_in">συνδεθείτε</string>
     <string name="or_join">ή εγγραφείτε</string>
     <string name="audio_tracks">Κομμάτια ήχου</string>
-    <string name="disabled_track">Απενεργοποιημένο</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Μη έγκυρο</string>
-    <string name="unknown_track">\[%1$s\] Άγνωστο</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Κορυφαίο χρώμα φόντου</string>
     <string name="bottom_background_color">Κάτω χρώμα φόντου</string>
     <string name="countdown_text_color">Χρώμα κειμένου αντίστροφης μέτρησης</string>

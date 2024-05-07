@@ -28,10 +28,10 @@
     <string name="genre">Género</string>
     <string name="top_score">Mejor calificado</string>
     <string name="updated">Actualizado recientemente</string>
-    <string name="trending_anime">Anime en tendencia</string>
+    <string name="trending_anime">Anime en Tendencia</string>
     <string name="popular_anime">Anime popular</string>
-    <string name="trending_manga">Mangas en tendencia</string>
-    <string name="trending_novel">Novelas en tendencia</string>
+    <string name="trending_manga">Mangas en Tendencia</string>
+    <string name="trending_novel">Novelas en Tendencia</string>
     <string name="popular_manga">Manga popular</string>
     <string name="username">Nombre de usuario</string>
     <string name="chapters_read">Capítulos Leídos</string>
@@ -307,7 +307,7 @@
     <string name="layout">Diseño</string>
     <string name="spaced_pages">Páginas espaciadas</string>
     <string name="direction">Dirección</string>
-    <string name="comments_api">API de comentarios (Privado)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Prevenir Inyección (\"Bromas\")</string>
     <string name="general">General</string>
     <string name="show_system_bars">Mostrar barras de estado &amp; navegación</string>
@@ -342,6 +342,7 @@
     <string name="year">Año</string>
     <string name="apply">Aplicar</string>
     <string name="cancel">Cancelar</string>
+    <string name="clear">Clear</string>
     <string name="edit">Editar</string>
     <string name="this_season">Esta temporada</string>
     <string name="next_season">Próxima temporada</string>
@@ -523,11 +524,11 @@
     <string name="episode_num">Episodio %1$s</string>
     <string name="chapter">"Capítulo "</string>
     <string name="chapter_num">Capítulo %1$s</string>
-    <string name="just_released">- ¡acaba de ser lanzado!</string>
+    <string name="just_released">- ¡Acaba de ser lanzado!</string>
     <string name="checking_subscriptions_title">Verificando suscripciones</string>
     <string name="user_list">%1$s\'s %2$s Lista</string>
     <string name="speed">Velocidad</string>
-    <string name="auto_update">¿Autoactualizar el progreso de %1$s?</string>
+    <string name="auto_update">¿Autoactualizar el progreso dé %1$s?</string>
     <string name="continue_from">¿Continuar desde %1$s?</string>
     <string name="title_update_progress">¿Actualizar progreso en Anilist?</string>
     <string name="incognito_will_not_update">El modo incógnito seguirá ignorando el progreso.</string>
@@ -550,14 +551,14 @@
     <string name="cope">Lidiar</string>
     <string name="watched_num">"Visto "</string>
     <string name="read_num">"Leído "</string>
-    <string name="items_out_of">"de "</string>
+    <string name="items_out_of">" de "</string>
     <string name="items_total_of">"Total de "</string>
     <string name="no_description_available">Descripción no disponible</string>
     <string-array name="manga_directions">
-        <item>De arriba hacia abajo</item>
-        <item>De derecha a izquierda</item>
-        <item>De abajo hacia arriba</item>
-        <item>De izquierda a derecha</item>
+        <item>Arriba hacia abajo</item>
+        <item>Derecha a izquierda</item>
+        <item>Abajo hacia arriba</item>
+        <item>Izquierda a derecha</item>
     </string-array>
     <string-array name="manga_layouts">
         <item>Paginado</item>
@@ -724,7 +725,7 @@
     <string name="scanlators">Escaneadores</string>
     <string name="exporting_requires_encryption">La exportación de credenciales requiere una contraseña para el cifrado.</string>
     <string name="manga_queue">Cola de Manga (WIP)</string>
-    <string name="anime_queue">Cola de anime (WIP)</string>
+    <string name="anime_queue">Cola de Anime (WIP)</string>
     <string name="no_offline_manga_found">No se ha encontrado ningún manga descargado</string>
     <string name="sort">Ordenar</string>
     <string name="download">Descargar</string>
@@ -800,9 +801,13 @@
     <string name="log_in">iniciar sesión</string>
     <string name="or_join">o únete</string>
     <string name="audio_tracks">Pistas de audio</string>
-    <string name="disabled_track">Desactivado</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Invalido</string>
-    <string name="unknown_track">\[%1$s\] Desconocido</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Color de fondo superior</string>
     <string name="bottom_background_color">Color de fondo inferior</string>
     <string name="countdown_text_color">Color texto cuenta atrás</string>

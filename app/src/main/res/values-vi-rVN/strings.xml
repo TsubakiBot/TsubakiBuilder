@@ -307,7 +307,7 @@
     <string name="layout">Bố cục</string>
     <string name="spaced_pages">Trang Cách</string>
     <string name="direction">Hướng</string>
-    <string name="comments_api">API Bình Luận (Riêng Tư)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Ngăn Chặn Tiêm Nhiễm (\"Trò Đùa\")</string>
     <string name="general">Chung</string>
     <string name="show_system_bars">Hiển Thị Thanh Trạng Thái &amp; Thanh Điều Hướng</string>
@@ -342,6 +342,7 @@
     <string name="year">Năm</string>
     <string name="apply">Áp dụng</string>
     <string name="cancel">Hủy</string>
+    <string name="clear">Clear</string>
     <string name="edit">Chỉnh sửa</string>
     <string name="this_season">Mùa này</string>
     <string name="next_season">Mùa sau</string>
@@ -802,9 +803,13 @@
     <string name="log_in">đăng nhập</string>
     <string name="or_join">hoặc tham gia</string>
     <string name="audio_tracks">Danh Sách Âm Thanh</string>
-    <string name="disabled_track">\[💬\] Tắt</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[⁉️\] Không Hợp Lệ</string>
-    <string name="unknown_track">\[%1$s\] Không Xác Định</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Màu nền đầu trang</string>
     <string name="bottom_background_color">Màu nền cuối trang</string>
     <string name="countdown_text_color">Màu văn bản đếm ngược</string>

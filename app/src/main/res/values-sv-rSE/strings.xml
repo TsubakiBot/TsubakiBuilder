@@ -307,7 +307,7 @@
     <string name="layout">Layout</string>
     <string name="spaced_pages">Mellanslag sidor</string>
     <string name="direction">Riktning</string>
-    <string name="comments_api">API för kommentarer (Private)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Förhindra injektion (\"Pranks\")</string>
     <string name="general">Allmänt</string>
     <string name="show_system_bars">Visa status &amp; navigeringsfält</string>
@@ -342,6 +342,7 @@
     <string name="year">År</string>
     <string name="apply">Tillämpa</string>
     <string name="cancel">Avbryt</string>
+    <string name="clear">Clear</string>
     <string name="edit">Redigera</string>
     <string name="this_season">Den här säsongen</string>
     <string name="next_season">Nästa säsong</string>
@@ -802,9 +803,13 @@
     <string name="log_in">logga in</string>
     <string name="or_join">eller gå med</string>
     <string name="audio_tracks">Ljudspår</string>
-    <string name="disabled_track">\[💬\] Inaktiverad</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Ogiltig</string>
-    <string name="unknown_track">\[%1$s\] Okänd</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Övre bakgrundsfärg</string>
     <string name="bottom_background_color">Nedre bakgrundsfärg</string>
     <string name="countdown_text_color">Nedräkning textfärg</string>

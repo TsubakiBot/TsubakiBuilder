@@ -307,7 +307,7 @@
     <string name="layout">Układ</string>
     <string name="spaced_pages">Spaced Strony</string>
     <string name="direction">Kierunek</string>
-    <string name="comments_api">Komentarze API (prywatne)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">Zapobiegaj wtryskiwaniu (\"Pranks\")</string>
     <string name="general">Ogólny</string>
     <string name="show_system_bars">Pokaż stan &amp; Paski nawigacyjne</string>
@@ -342,6 +342,7 @@
     <string name="year">W związku z tym Komisja stwierdza, że środek 1 stanowi pomoc państwa w rozumieniu art. 107 ust. 1 Traktatu.</string>
     <string name="apply">Zastosuj</string>
     <string name="cancel">Anuluj</string>
+    <string name="clear">Clear</string>
     <string name="edit">Edytuj</string>
     <string name="this_season">Ten sezon</string>
     <string name="next_season">Następny sezon</string>
@@ -802,9 +803,13 @@
     <string name="log_in">zaloguj się</string>
     <string name="or_join">lub dołącz</string>
     <string name="audio_tracks">Ścieżki audio</string>
-    <string name="disabled_track">\[💬\] Wyłączone</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">\[!?\] Nieprawidłowe</string>
-    <string name="unknown_track">\[%1$s\] Nieznany</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">Kolor górnego tła</string>
     <string name="bottom_background_color">Kolor dolnego tła</string>
     <string name="countdown_text_color">Kolor tekstu odliczania</string>

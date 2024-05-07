@@ -307,7 +307,7 @@
     <string name="layout">레이아웃</string>
     <string name="spaced_pages">간격있는 페이지</string>
     <string name="direction">방향</string>
-    <string name="comments_api">댓글 API (비공개)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">주입 방지 (\"장난\")</string>
     <string name="general">일반</string>
     <string name="show_system_bars">상태 및 탐색 바 표시</string>
@@ -342,6 +342,7 @@
     <string name="year">년</string>
     <string name="apply">적용</string>
     <string name="cancel">취소</string>
+    <string name="clear">Clear</string>
     <string name="edit">편집</string>
     <string name="this_season">이번 시즌</string>
     <string name="next_season">다음 시즌</string>
@@ -803,9 +804,13 @@
     <string name="log_in">로그인</string>
     <string name="or_join">또는 가입</string>
     <string name="audio_tracks">오디오 트랙</string>
-    <string name="disabled_track">Disabled</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Invalid</string>
-    <string name="unknown_track">\[%1$s\] 알 수 없음</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">상단 배경색</string>
     <string name="bottom_background_color">하단 배경색</string>
     <string name="countdown_text_color">카운트다운 텍스트 색상</string>

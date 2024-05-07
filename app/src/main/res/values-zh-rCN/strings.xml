@@ -307,7 +307,7 @@
     <string name="layout">布局</string>
     <string name="spaced_pages">间隔页面</string>
     <string name="direction">方向</string>
-    <string name="comments_api">评论 API (私人)</string>
+    <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="disable_mitm">防止注入(\"Pranks\")</string>
     <string name="general">常规</string>
     <string name="show_system_bars">显示状态栏和导航栏</string>
@@ -342,6 +342,7 @@
     <string name="year">年份</string>
     <string name="apply">应用</string>
     <string name="cancel">取消</string>
+    <string name="clear">Clear</string>
     <string name="edit">编辑</string>
     <string name="this_season">本季</string>
     <string name="next_season">下一季</string>
@@ -796,9 +797,13 @@
     <string name="log_in">登录</string>
     <string name="or_join">或加入</string>
     <string name="audio_tracks">音轨</string>
-    <string name="disabled_track">Disabled</string>
+    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
     <string name="invalid_track">Invalid</string>
-    <string name="unknown_track">\[%1$s\] 未知</string>
+    <string name="unknown_track">\[%1$s\] Unknown Language</string>
+    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="subtitle_url">Enter URL or Import File</string>
+    <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
     <string name="top_background_color">顶部背景颜色</string>
     <string name="bottom_background_color">底部背景颜色</string>
     <string name="countdown_text_color">倒计时文本颜色</string>
