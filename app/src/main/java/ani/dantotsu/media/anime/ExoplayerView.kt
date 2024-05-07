@@ -2080,11 +2080,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         userSubtitles.forEach {
             it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
         }
-        documents.forEach { uri ->
+        documents.forEach { uri -
             if (userSubtitles.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
                 return@forEach
             }
+            contentResolver.takePersistableUriPermission(
+                uri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            )
             userSubtitles.add(importSubtitle(uri, true))
         }
         if (userSubtitles.isNotEmpty()) {
