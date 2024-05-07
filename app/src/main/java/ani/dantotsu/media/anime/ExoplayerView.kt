@@ -88,7 +88,6 @@ import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.MergingMediaSource
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
@@ -136,6 +135,7 @@ import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.okHttpClient
 import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.AniSkip.getType
+import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.ResettableTimer
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.AnimeSources
@@ -203,7 +203,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var playbackParameters: PlaybackParameters
     private lateinit var mediaItem: MediaItem
     private lateinit var mediaSource: MergingMediaSource
-    private lateinit var audioSources: Array<MediaSource>
     private var mediaSession: MediaSession? = null
 
     private lateinit var binding: ActivityExoplayerBinding
@@ -259,6 +258,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private var extractor: VideoExtractor? = null
     private var video: Video? = null
     private var subtitle: Subtitle? = null
+    var audioLanguages = mutableListOf<String>()
 
     private var notchHeight: Int = 0
     private var currentWindow = 0
@@ -1582,17 +1582,20 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
 
         val audioMediaItem = mutableListOf<MediaItem>()
-        ext.audioTracks.forEach {
+        audioLanguages.clear()
+        ext.audioTracks.forEach { track ->
+            audioLanguages.add(LanguageMapper.mapLanguageNameToCode(track.lang) ?: track.lang)
             audioMediaItem.add(
                 MediaItem.Builder()
-                    .setUri(it.url)
+                    .setUri(track.url)
                     .setMimeType(MimeTypes.AUDIO_UNKNOWN)
-                    .setTag(it.lang)
+                    .setTag(track.lang)
+                    .setSubtitleConfigurations(sub)
                     .build()
             )
         }
 
-        audioSources = audioMediaItem.map { mediaItem ->
+        val audioSources = audioMediaItem.map { mediaItem ->
             if (video?.format == VideoType.M3U8) {
                 HlsMediaSource.Factory(cacheFactory).apply {
                     setAllowChunklessPreparation(false)
@@ -2057,12 +2060,32 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
             .setMimeType(mimeType)
             .setLanguage("file")
-            .setId(file?.name?.substringAfter(":") ?: mimeType)
+            .setId(file?.name ?: mimeType)
             .build()
     }
 
     private fun buildSubtitleMediaItem(subs: MutableList<MediaItem.SubtitleConfiguration>) {
         mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        val audioMediaItem = mutableListOf<MediaItem>()
+        extractor!!.audioTracks.forEach {
+            audioMediaItem.add(
+                MediaItem.Builder()
+                    .setUri(it.url)
+                    .setMimeType(MimeTypes.AUDIO_UNKNOWN)
+                    .setTag(it.lang)
+                    .setSubtitleConfigurations(subs)
+                    .build()
+            )
+        }
+        val audioSources = audioMediaItem.map { mediaItem ->
+            if (video?.format == VideoType.M3U8) {
+                HlsMediaSource.Factory(cacheFactory).apply {
+                    setAllowChunklessPreparation(false)
+                }.createMediaSource(mediaItem)
+            } else {
+                DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
+            }
+        }.toTypedArray()
         val videoMediaSource = DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
         mediaSource = MergingMediaSource(videoMediaSource, *audioSources)
         buildExoplayer()

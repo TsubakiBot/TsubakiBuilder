@@ -32,24 +32,24 @@ object LanguageMapper {
         return locale?.displayName ?: code
     }
 
-    fun mapLanguageNameToCode(name: String): String {
-        return when (name) {
+    fun mapLanguageNameToCode(name: String): String? {
+        return when (name.lowercase()) {
             "العربية" -> Language.ARABIC.code
             "中文, 汉语, 漢語" -> Language.CHINESE.code
-            "English" -> Language.ENGLISH.code
-            "Français" -> Language.FRENCH.code
-            "Bahasa Indonesia" -> Language.INDONESIAN.code
+            "english" -> Language.ENGLISH.code
+            "français" -> Language.FRENCH.code
+            "bahasa indonesia" -> Language.INDONESIAN.code
             "日本語" -> Language.JAPANESE.code
             "조선말, 한국어" -> Language.KOREAN.code
-            "Polski" -> Language.POLISH.code
-            "Português" -> Language.PORTUGUESE_BRAZIL.code
-            "Русский" -> Language.RUSSIAN.code
-            "Español" -> Language.SPANISH.code
+            "polski" -> Language.POLISH.code
+            "português" -> Language.PORTUGUESE_BRAZIL.code
+            "pусский" -> Language.RUSSIAN.code
+            "español" -> Language.SPANISH.code
             "ไทย" -> Language.THAI.code
-            "Türkçe" -> Language.TURKISH.code
+            "türkçe" -> Language.TURKISH.code
             "Українська" -> Language.UKRAINIAN.code
-            "Tiếng Việt" -> Language.VIETNAMESE.code
-            else -> Language.ALL.code
+            "tiếng việt" -> Language.VIETNAMESE.code
+            else -> null
         }
     }
 
@@ -70,30 +70,11 @@ object LanguageMapper {
     }
 
     fun getLanguageItem(code: String): String? {
-        val locale = getLocalFromCode(code)
-        return locale?.let {
-            if (it.language == it.displayName) {
-                when (code.lowercase()) {
-                    "japanese" -> "[ja-JP] Japanese"
-                    "english" -> "[en-US] English"
-                    "german" -> "[de-DE] German"
-                    "español" -> "[es-ES] Spanish"
-                    "french" -> "[fr-FR] French"
-                    "italian" -> "[it-IT] Italian"
-                    "portuguese" -> "[pt-PT] Portuguese"
-                    "russian" -> "[ru-RU] Russian"
-                    "chinese" -> "[zh-CN] Chinese (Simplified)"
-                    "turkish" -> "[tr-TR] Turkish"
-                    "arabic" -> "[ar-ME] Arabic"
-                    "ukrainian" -> "[uk-UK] Ukrainian"
-                    "hebrew" -> "[he-IL] Hebrew"
-                    "polish" -> "[pl-PL] Polish"
-                    "romanian" -> "[ro-RO] Romanian"
-                    "swedish" -> "[sv-SE] Swedish"
-                    else -> null
-                }
+        return getLocalFromCode(code)?.let { locale ->
+            if (locale.language == locale.displayName) {
+                mapLanguageNameToCode(code)?.let { getLanguageItem(it) }
             } else {
-                "[${it.language}] ${it.displayName}"
+                "[${locale.language}] ${locale.displayName}"
             }
         }
     }

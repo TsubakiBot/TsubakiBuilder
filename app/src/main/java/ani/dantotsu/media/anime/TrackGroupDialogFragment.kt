@@ -28,11 +28,13 @@ class TrackGroupDialogFragment(
     private var instance: ExoplayerView
     private var trackGroups: ArrayList<Tracks.Group>
     private var type: @TrackType Int
+    private var languages = mutableListOf<String>()
 
     init {
         this.instance = instance
         this.trackGroups = trackGroups
         this.type = type
+        languages = instance.audioLanguages
     }
 
     override fun onCreateView(
@@ -70,10 +72,16 @@ class TrackGroupDialogFragment(
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
                 val trackFormat = trackGroup.getTrackFormat(0)
+                val trackId = trackFormat.id?.substringAfter(":")
+                val localeCode = if (trackGroup.type == TRACK_TYPE_AUDIO)
+                    languages.getOrNull(position - (trackGroups.size - languages.size))
+                else
+                    null
                 when (val language = trackFormat.language) {
                     null -> {
-                        binding.subtitleTitle.text =
-                            getString(R.string.unknown_track, String.format("%02d", position))
+                        binding.subtitleTitle.text = localeCode?.let {
+                            getLanguageItem(it) ?: "[${String.format("%02d", position)}] $it"
+                        } ?: getString(R.string.unknown_track, String.format("%02d", position))
                     }
 
                     "none" -> {
@@ -82,7 +90,7 @@ class TrackGroupDialogFragment(
 
                     "file" -> {
                         binding.subtitleTitle.text =
-                            getString(R.string.user_subtitle, trackFormat.id)
+                            getString(R.string.user_subtitle, trackId)
                     }
 
                     "load" -> {
@@ -91,7 +99,7 @@ class TrackGroupDialogFragment(
 
                     else -> {
                         binding.subtitleTitle.text = getLanguageItem(language)
-                            ?: if (language.length > 5)
+                            ?: if (language.length > 2 && !language.contains("-"))
                                 "[${String.format("%02d", position)}] $language"
                             else
                                 getString(R.string.unknown_track, language)

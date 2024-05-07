@@ -17,7 +17,6 @@ import eu.kanade.tachiyomi.animesource.model.SEpisodeImpl
 import me.xdrop.fuzzywuzzy.FuzzySearch
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
-import java.util.Locale
 
 class OfflineAnimeParser : AnimeParser() {
     private val downloadManager = Injekt.get<DownloadsManager>()
