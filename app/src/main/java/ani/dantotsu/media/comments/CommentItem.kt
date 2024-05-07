@@ -69,11 +69,11 @@ class CommentItem(
             val levelColor = getAvatarColor(comment.totalVotes, backgroundColor)
             markwon.setMarkdown(commentText, comment.content)
             commentEdit.visibility = if (isUserComment) View.VISIBLE else View.GONE
-            comment.tag?.let {
-                commentUserTag.text = it.toString()
-                commentUserTagLayout.visibility = View.VISIBLE
-            } ?: {
-                commentUserTagLayout.visibility = View.GONE
+            if (comment.tag == null) {
+                viewBinding.commentUserTagLayout.visibility = View.GONE
+            } else {
+                viewBinding.commentUserTagLayout.visibility = View.VISIBLE
+                viewBinding.commentUserTag.text = comment.tag.toString()
             }
             replying(isReplying) //sets default text
             editing(isEditing)

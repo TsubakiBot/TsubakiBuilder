@@ -168,7 +168,7 @@ class CommentsFragment : Fragment() {
             val alertDialog = AlertDialog.Builder(activity, R.style.MyPopup)
                 .setTitle("Enter a chapter/episode number tag")
                 .setView(R.layout.dialog_edittext)
-                .setPositiveButton("OK") { dialog, _ ->
+                .setPositiveButton(R.string.ok) { dialog, _ ->
                     val editText =
                         (dialog as AlertDialog).findViewById<EditText>(R.id.dialogEditText)
                     val text = editText?.text.toString()
@@ -179,14 +179,14 @@ class CommentsFragment : Fragment() {
 
                     dialog.dismiss()
                 }
-                .setNeutralButton("Clear") { dialog, _ ->
+                .setNeutralButton(R.string.clear) { dialog, _ ->
                     filterTag = null
                     lifecycleScope.launch {
                         loadAndDisplayComments()
                     }
                     dialog.dismiss()
                 }
-                .setNegativeButton("Cancel") { dialog, _ ->
+                .setNegativeButton(R.string.cancel) { dialog, _ ->
                     filterTag = null
                     dialog.dismiss()
                 }
@@ -309,7 +309,7 @@ class CommentsFragment : Fragment() {
                 val alertDialog = AlertDialog.Builder(activity, R.style.MyPopup)
                     .setTitle("Enter a chapter/episode number tag")
                     .setView(R.layout.dialog_edittext)
-                    .setPositiveButton("OK") { dialog, _ ->
+                    .setPositiveButton(R.string.ok) { dialog, _ ->
                         val editText =
                             (dialog as AlertDialog).findViewById<EditText>(R.id.dialogEditText)
                         val text = editText?.text.toString()
@@ -329,7 +329,7 @@ class CommentsFragment : Fragment() {
                         }
                         dialog.dismiss()
                     }
-                    .setNeutralButton("Clear") { dialog, _ ->
+                    .setNeutralButton(R.string.clear) { dialog, _ ->
                         tag = null
                         activity.binding.commentLabel.background = ResourcesCompat.getDrawable(
                             resources,
@@ -338,7 +338,7 @@ class CommentsFragment : Fragment() {
                         )
                         dialog.dismiss()
                     }
-                    .setNegativeButton("Cancel") { dialog, _ ->
+                    .setNegativeButton(R.string.cancel) { dialog, _ ->
                         tag = null
                         activity.binding.commentLabel.background = ResourcesCompat.getDrawable(
                             resources,
