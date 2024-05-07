@@ -88,7 +88,6 @@ import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.MergingMediaSource
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
@@ -203,7 +202,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var cacheFactory: CacheDataSource.Factory
     private lateinit var playbackParameters: PlaybackParameters
     private lateinit var mediaItem: MediaItem
-    private var subtitles: MutableList<MediaItem.SubtitleConfiguration> = mutableListOf()
+    private var userSubtitles: MutableList<MediaItem.SubtitleConfiguration> = mutableListOf()
     private lateinit var mediaSource: MergingMediaSource
     private var mediaSession: MediaSession? = null
 
@@ -2066,7 +2065,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun buildSubtitleSource(mediaItem: MediaItem) {
-        mediaSource = if (subtitles.isNotEmpty()) {
+        mediaSource = if (userSubtitles.isNotEmpty()) {
             val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(mediaItem)
             MergingMediaSource(subtitleSource)
         } else {
@@ -2078,20 +2077,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenMultipleDocuments()
     ) { documents: List<Uri> ->
+        userSubtitles.forEach {
+            it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
+        }
         documents.forEach { uri ->
-            if (subtitles.any { it.uri == uri }) {
+            if (userSubtitles.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
                 return@forEach
             }
-            subtitles.add(importSubtitle(uri, true))
+            userSubtitles.add(importSubtitle(uri, true))
         }
-        if (subtitles.isNotEmpty()) {
-            subtitles.forEach {
-                it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
-            }
-            subtitles.last().buildUpon().setSelectionFlags(C.SELECTION_FLAG_DEFAULT).build()
+        if (userSubtitles.isNotEmpty()) {
             buildSubtitleSource(
-                mediaItem.buildUpon().setSubtitleConfigurations(subtitles).build()
+                mediaItem.buildUpon().setSubtitleConfigurations(userSubtitles).build()
             )
         }
     }
@@ -2114,6 +2112,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     if (subs.any { it.uri == uri }) {
                         snackString(R.string.duplicate_sub)
                         return@setPosButton
+                    }
+                    subs.forEach {
+                        it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
                     }
                     subs.add(importSubtitle(uri, false))
                     buildSubtitleSource(
