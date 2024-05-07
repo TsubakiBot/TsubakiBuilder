@@ -908,6 +908,7 @@
     <string name="load_subtitle">\[👀\] Load User Subtitle</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
+    <string name="duplicate_sub">Subtitle already loaded</string>
 
     <string name="top_background_color">Top background color</string>
     <string name="bottom_background_color">Bottom Background Color</string>

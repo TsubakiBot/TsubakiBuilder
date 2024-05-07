@@ -72,7 +72,7 @@ class TrackGroupDialogFragment(
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
                 val trackFormat = trackGroup.getTrackFormat(0)
-                val trackId = trackFormat.id?.substringAfter(":")
+                val trackId = trackFormat.id?.substringAfterLast(':')
                 val localeCode = if (trackGroup.type == TRACK_TYPE_AUDIO)
                     languages.getOrNull(position - (trackGroups.size - languages.size))
                 else

@@ -2100,11 +2100,17 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     ) { documents: List<Uri> ->
         val subs = subMediaItem?.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-        documents.forEach {
-            subs.add(importSubtitle(it, true))
+        documents.forEach { uri ->
+            if (subs.any { it.uri == uri }) {
+                snackString(R.string.duplicate_sub)
+                return@forEach
+            }
+            subs.add(importSubtitle(uri, true))
         }
-        subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-        buildSubtitleMediaItem()
+        if (subs.isNotEmpty()) {
+            subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+            buildSubtitleMediaItem()
+        }
     }
 
     private fun showSubtitleDialog() {
@@ -2121,7 +2127,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 if (!editText.text.isNullOrBlank()) {
                     val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
                         ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-                    subs.add(importSubtitle(Uri.parse(editText.text.toString()), false))
+                    val uri = Uri.parse(editText.text.toString())
+                    if (subs.any { it.uri == uri }) {
+                        snackString(R.string.duplicate_sub)
+                        return@setPosButton
+                    }
+                    subs.add(importSubtitle(uri, false))
                     mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
                     buildSubtitleMediaItem()
                 }

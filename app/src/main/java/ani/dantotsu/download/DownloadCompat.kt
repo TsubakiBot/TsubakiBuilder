@@ -28,7 +28,6 @@ import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SChapterImpl
 import eu.kanade.tachiyomi.source.model.SManga
 import java.io.File
-import java.util.Locale
 import kotlin.collections.set
 
 fun directory(downloadedType: DownloadedType) = File(
@@ -228,18 +227,16 @@ object DownloadCompat {
         //get all of the folder names and add them to the list
         val chapters = mutableListOf<MangaChapter>()
         if (directory.exists()) {
-            directory.listFiles()?.forEach {
-                if (it.isDirectory) {
-                    val chapter = MangaChapter(
-                        it.name,
-                        "$mangaLink/${it.name}",
-                        it.name,
-                        null,
-                        null,
-                        SChapter.create()
-                    )
-                    chapters.add(chapter)
-                }
+            directory.listFiles()?.filter { it.isDirectory }?.forEach {
+                val chapter = MangaChapter(
+                    it.name,
+                    "$mangaLink/${it.name}",
+                    it.name,
+                    null,
+                    null,
+                    SChapter.create()
+                )
+                chapters.add(chapter)
             }
             chapters.sortBy { MediaNameAdapter.findChapterNumber(it.number) }
             return chapters
@@ -253,11 +250,9 @@ object DownloadCompat {
         val images = mutableListOf<MangaImage>()
         val imageNumberRegex = Regex("""(\d+)\.jpg$""")
         if (directory.exists()) {
-            directory.listFiles()?.forEach {
-                if (it.isFile) {
-                    val image = MangaImage(it.absolutePath, false, null)
-                    images.add(image)
-                }
+            directory.listFiles()?.filter { it.isFile }?.forEach {
+                val image = MangaImage(it.absolutePath, false, null)
+                images.add(image)
             }
             images.sortBy { image ->
                 val matchResult = imageNumberRegex.find(image.url.url)
@@ -274,16 +269,16 @@ object DownloadCompat {
     @Deprecated(EXTERNAL_STORAGE_DEPRECATED)
     fun loadSubtitleCompat(title: String, episode: String): List<Subtitle>? {
         currContext().let {
-            directory(MediaType.ANIME, "$title/$episode").listFiles()?.forEach { file ->
-                if (file.name.contains("subtitle")) {
-                    return listOf(
-                        Subtitle(
-                            "Downloaded Subtitle",
-                            Uri.fromFile(file).toString(),
-                            determineSubtitletype(file.absolutePath)
-                        )
+            directory(MediaType.ANIME, "$title/$episode").listFiles()?.filter {
+                it.name.contains("subtitle")
+            }?.forEach { file ->
+                return listOf(
+                    Subtitle(
+                        "Downloaded Subtitle",
+                        Uri.fromFile(file).toString(),
+                        determineSubtitletype(file.absolutePath)
                     )
-                }
+                )
             }
         }
         return null
