@@ -1609,6 +1609,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .createMediaSource(mediaItem)
         mediaSource = MergingMediaSource(videoMediaSource, *audioSources)
 
+        PrefManager.getCustomVal<Set<String>>(
+            "${media.id}_${episode.number}_subtitles", setOf()
+        ).forEach { userSubtitles.add(importSubtitle(Uri.parse(it), true))  }
+        if (userSubtitles.isNotEmpty()) {
+            mediaSource = MergingMediaSource(DefaultMediaSourceFactory(this).createMediaSource(
+                mediaItem.buildUpon().setSubtitleConfigurations(userSubtitles).build()
+            ))
+        }
+
         //Source
         exoSource.setOnClickListener {
             sourceClick()
@@ -2066,8 +2075,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private fun buildSubtitleSource(mediaItem: MediaItem) {
         mediaSource = if (userSubtitles.isNotEmpty()) {
-            val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(mediaItem)
-            MergingMediaSource(subtitleSource)
+            MergingMediaSource(DefaultMediaSourceFactory(this).createMediaSource(mediaItem))
         } else {
             MergingMediaSource(DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem))
         }
@@ -2080,14 +2088,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         userSubtitles.forEach {
             it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
         }
-        documents.forEach { uri -
+        documents.forEach { uri ->
             if (userSubtitles.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
                 return@forEach
             }
             contentResolver.takePersistableUriPermission(
-                uri,
-                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            )
+            val subs = PrefManager.getCustomVal<Set<String>>(
+                "${media.id}_${episode.number}_subtitles", setOf()
+            ).plus(uri.toString())
+            PrefManager.setCustomVal(
+                "${media.id}_${episode.number}_subtitles", subs
             )
             userSubtitles.add(importSubtitle(uri, true))
         }

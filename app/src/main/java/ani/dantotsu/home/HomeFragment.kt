@@ -30,7 +30,6 @@ import ani.dantotsu.blurImage
 import ani.dantotsu.bottomBar
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
-import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.isOnline
@@ -43,7 +42,6 @@ import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.profile.ProfileActivity
-import ani.dantotsu.serverDownDialog
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
