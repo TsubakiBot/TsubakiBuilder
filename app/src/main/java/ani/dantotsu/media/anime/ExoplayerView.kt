@@ -2113,34 +2113,34 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private fun showSubtitleDialog() {
         exoPlayer.pause()
-        val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-        val editText = dialogView.userAgentTextBox.apply {
-            hint = getString(R.string.subtitle_url)
-        }
-        customAlertDialog().apply {
-            setCancellable(true)
-            setTitle(R.string.subtitle_url)
-            setCustomView(dialogView.root)
-            setPosButton(R.string.save) {
-                if (!editText.text.isNullOrBlank()) {
-                    val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
-                        ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-                    val uri = Uri.parse(editText.text.toString())
-                    if (subs.any { it.uri == uri }) {
-                        snackString(R.string.duplicate_sub)
-                        return@setPosButton
-                    }
-                    subs.forEach {
-                        it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
-                    }
-                    subs.add(importSubtitle(uri, false))
-                    buildSubtitleSource(
-                        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-                    )
-                }
-            }
-            setNeutralButton(R.string.import_file) {
-                try {
+//        val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
+//        val editText = dialogView.userAgentTextBox.apply {
+//            hint = getString(R.string.subtitle_url)
+//        }
+//        customAlertDialog().apply {
+//            setCancellable(true)
+//            setTitle(R.string.subtitle_url)
+//            setCustomView(dialogView.root)
+//            setPosButton(R.string.save) {
+//                if (!editText.text.isNullOrBlank()) {
+//                    val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
+//                        ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+//                    val uri = Uri.parse(editText.text.toString())
+//                    if (subs.any { it.uri == uri }) {
+//                        snackString(R.string.duplicate_sub)
+//                        return@setPosButton
+//                    }
+//                    subs.forEach {
+//                        it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
+//                    }
+//                    subs.add(importSubtitle(uri, false))
+//                    buildSubtitleSource(
+//                        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+//                    )
+//                }
+//            }
+//            setNeutralButton(R.string.import_file) {
+//                try {
                     onImportSubtitle.launch(
                         arrayOf(
                             MimeTypes.TEXT_VTT,
@@ -2150,11 +2150,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                             getString(R.string.mimetype_binary)
                         )
                     )
-                } catch (ignored: ActivityNotFoundException) { }
-            }
-            setNegButton(R.string.cancel)
-            show()
-        }
+//                } catch (ignored: ActivityNotFoundException) { }
+//            }
+//            setNegButton(R.string.cancel)
+//            show()
+//        }
     }
 
     private val onChangeSettings = registerForActivityResult(
@@ -2179,8 +2179,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     override fun onPlayerError(error: PlaybackException) {
         when (error.errorCode) {
             PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
-            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
-            -> {
+            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> {
                 toast(getString(R.string.exo_source_exception, error.message))
                 isPlayerPlaying = true
                 sourceClick()
