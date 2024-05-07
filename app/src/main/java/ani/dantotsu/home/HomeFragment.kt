@@ -135,7 +135,9 @@ class HomeFragment : Fragment() {
                         var media: Media?
                         do {
                             runBlocking {
-                                media = Anilist.query.getMedia(Random.nextInt(200000))
+                                media = Anilist.query.getMedia(
+                                    Random.nextInt(200000)
+                                )?.takeIf { !it.isAdult }
                             }
                         } while(media == null)
                         return media!!
