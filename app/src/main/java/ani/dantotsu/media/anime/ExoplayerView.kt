@@ -2100,6 +2100,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     ) { documents: List<Uri> ->
         val subs = subMediaItem?.localConfiguration?.subtitleConfigurations?.toMutableList()
             ?: mutableListOf<MediaItem.SubtitleConfiguration>()
+        mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()?.let {
+            subs.removeAll(it)
+        }
         documents.forEach { uri ->
             if (subs.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
