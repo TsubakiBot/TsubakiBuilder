@@ -2086,8 +2086,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             subtitles.add(importSubtitle(uri, true))
         }
         if (subtitles.isNotEmpty()) {
+            subtitles.forEach {
+                it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
+            }
+            subtitles.last().buildUpon().setSelectionFlags(C.SELECTION_FLAG_DEFAULT).build()
             buildSubtitleSource(
-                mediaItem.buildUpon().setSubtitleConfigurations(subtitles.distinctBy { it.uri }).build()
+                mediaItem.buildUpon().setSubtitleConfigurations(subtitles).build()
             )
         }
     }
