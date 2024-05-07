@@ -86,7 +86,10 @@ import androidx.media3.datasource.cache.CacheDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.MediaSource
+import androidx.media3.exoplayer.source.MergingMediaSource
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.util.EventLogger
 import androidx.media3.session.MediaSession
@@ -199,6 +202,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var cacheFactory: CacheDataSource.Factory
     private lateinit var playbackParameters: PlaybackParameters
     private lateinit var mediaItem: MediaItem
+    private lateinit var mediaSource: MergingMediaSource
+    private lateinit var audioSources: Array<MediaSource>
     private var mediaSession: MediaSession? = null
 
     private lateinit var binding: ActivityExoplayerBinding
@@ -638,7 +643,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             } else exoPip.visibility = View.GONE
         }
 
-
         //Lock Button
         var locked = false
         val container = playerView.findViewById<View>(R.id.exo_controller_cont)
@@ -818,7 +822,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val forwardText = playerView.findViewById<TextView>(R.id.exo_fast_forward_anim)
         val fastForwardCard = playerView.findViewById<View>(R.id.exo_fast_forward)
         val fastRewindCard = playerView.findViewById<View>(R.id.exo_fast_rewind)
-
 
         //Seeking
         val seekTimerF = ResettableTimer()
@@ -1578,6 +1581,30 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
 
+        val audioMediaItem = mutableListOf<MediaItem>()
+        ext.audioTracks.forEach {
+            audioMediaItem.add(
+                MediaItem.Builder()
+                    .setUri(it.url)
+                    .setMimeType(MimeTypes.AUDIO_UNKNOWN)
+                    .setTag(it.lang)
+                    .build()
+            )
+        }
+
+        audioSources = audioMediaItem.map { mediaItem ->
+            if (video?.format == VideoType.M3U8) {
+                HlsMediaSource.Factory(cacheFactory).apply {
+                    setAllowChunklessPreparation(false)
+                }.createMediaSource(mediaItem)
+            } else {
+                DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
+            }
+        }.toTypedArray()
+        val videoMediaSource = DefaultMediaSourceFactory(cacheFactory)
+            .createMediaSource(mediaItem)
+        mediaSource = MergingMediaSource(videoMediaSource, *audioSources)
+
         //Source
         exoSource.setOnClickListener {
             sourceClick()
@@ -1654,7 +1681,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .build().apply {
                 playWhenReady = true
                 this.playbackParameters = this@ExoplayerView.playbackParameters
-                setMediaItem(mediaItem)
+                setMediaSource(mediaSource)
                 prepare()
                 PrefManager.getCustomVal(
                     "${media.id}_${media.anime!!.selectedEpisode}_max",
@@ -2029,9 +2056,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .Builder(uri)
             .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
             .setMimeType(mimeType)
-            .setLanguage("user")
-            .setId(file?.name ?: mimeType)
+            .setLanguage("file")
+            .setId(file?.name?.substringAfter(":") ?: mimeType)
             .build()
+    }
+
+    private fun buildSubtitleMediaItem(subs: MutableList<MediaItem.SubtitleConfiguration>) {
+        mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+        val videoMediaSource = DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
+        mediaSource = MergingMediaSource(videoMediaSource, *audioSources)
+        buildExoplayer()
     }
 
     private val onImportSubtitle = registerForActivityResult(
@@ -2042,8 +2076,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         documents.forEach {
             subs.add(importSubtitle(it, true))
         }
-        mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-        buildExoplayer()
+        buildSubtitleMediaItem(subs)
     }
 
     private fun showSubtitleDialog() {
@@ -2061,8 +2094,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     val subs = mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()
                         ?: mutableListOf<MediaItem.SubtitleConfiguration>()
                     subs.add(importSubtitle(Uri.parse(editText.text.toString()), false))
-                    mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-                    buildExoplayer()
+                    buildSubtitleMediaItem(subs)
                 }
             }
             setNeutralButton(R.string.import_file) {
