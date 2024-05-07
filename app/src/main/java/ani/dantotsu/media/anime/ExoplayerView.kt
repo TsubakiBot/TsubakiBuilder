@@ -203,8 +203,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var cacheFactory: CacheDataSource.Factory
     private lateinit var playbackParameters: PlaybackParameters
     private lateinit var mediaItem: MediaItem
-    private var subMediaItem: MediaItem? = null
-    private lateinit var audioSources: Array<MediaSource>
+    private var subtitles: MutableList<MediaItem.SubtitleConfiguration> = mutableListOf()
     private lateinit var mediaSource: MergingMediaSource
     private var mediaSession: MediaSession? = null
 
@@ -1598,7 +1597,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             )
         }
 
-        audioSources = audioMediaItem.map { mediaItem ->
+        val audioSources = audioMediaItem.map { mediaItem ->
             if (video?.format == VideoType.M3U8) {
                 HlsMediaSource.Factory(cacheFactory).apply {
                     setAllowChunklessPreparation(false)
@@ -2066,33 +2065,30 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .build()
     }
 
-    private fun buildSubtitleMediaItem() {
-        val videoMediaSource = DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem)
-        mediaSource = subMediaItem?.let {
-            val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(it)
-            MergingMediaSource(videoMediaSource, *audioSources, subtitleSource)
-        } ?: mediaSource
+    private fun buildSubtitleSource(mediaItem: MediaItem) {
+        mediaSource = if (subtitles.isNotEmpty()) {
+            val subtitleSource = DefaultMediaSourceFactory(this).createMediaSource(mediaItem)
+            MergingMediaSource(subtitleSource)
+        } else {
+            MergingMediaSource(DefaultMediaSourceFactory(cacheFactory).createMediaSource(mediaItem))
+        }
         buildExoplayer()
     }
 
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenMultipleDocuments()
     ) { documents: List<Uri> ->
-        val subs = subMediaItem?.localConfiguration?.subtitleConfigurations?.toMutableList()
-            ?: mutableListOf<MediaItem.SubtitleConfiguration>()
-        mediaItem.localConfiguration?.subtitleConfigurations?.toMutableList()?.let {
-            subs.removeAll(it)
-        }
         documents.forEach { uri ->
-            if (subs.any { it.uri == uri }) {
+            if (subtitles.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
                 return@forEach
             }
-            subs.add(importSubtitle(uri, true))
+            subtitles.add(importSubtitle(uri, true))
         }
-        if (subs.isNotEmpty()) {
-            subMediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs.distinctBy { it.uri }).build()
-            buildSubtitleMediaItem()
+        if (subtitles.isNotEmpty()) {
+            buildSubtitleSource(
+                mediaItem.buildUpon().setSubtitleConfigurations(subtitles.distinctBy { it.uri }).build()
+            )
         }
     }
 
@@ -2116,8 +2112,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         return@setPosButton
                     }
                     subs.add(importSubtitle(uri, false))
-                    mediaItem = mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
-                    buildSubtitleMediaItem()
+                    buildSubtitleSource(
+                        mediaItem.buildUpon().setSubtitleConfigurations(subs).build()
+                    )
                 }
             }
             setNeutralButton(R.string.import_file) {
@@ -2313,10 +2310,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             orientationListener?.enable()
         }
         if (isInitialized) {
-            PrefManager.setCustomVal(
-                "${media.id}_${episode.number}",
-                exoPlayer.currentPosition
-            )
+            PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
         }
         if (lifecycle.currentState == Lifecycle.State.CREATED) {
             if (isInPictureInPictureMode) {
