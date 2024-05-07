@@ -1,10 +1,14 @@
 package ani.dantotsu.media
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.SpannableStringBuilder
 import android.util.TypedValue
 import android.view.GestureDetector
@@ -20,6 +24,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.core.text.color
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
 import androidx.core.view.updateLayoutParams
@@ -73,6 +78,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
 import kotlin.math.abs
+
 
 class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
     lateinit var launcher: LauncherWrapper
@@ -469,6 +475,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 binding.mediaMute.visibility = View.VISIBLE
                 tubePlayer = youTubePlayer.apply {
                     loadVideo(trailer, 0f)
+                    setInterfaceTimeout()
                     mute()
                     play()
                 }
@@ -496,6 +503,63 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             youTubePlayerListener,
             IFramePlayerOptions.Builder().controls(0).build()
         )
+    }
+
+    private fun fadeInterface() {
+        binding.mediaCover.animate()
+            .setDuration(300)
+            .alpha(0.0f)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    binding.mediaCover.isInvisible = true
+                    binding.mediaCover.alpha = 1f
+                }
+            })
+        binding.mediaTitleCollapse.animate()
+            .setDuration(300)
+            .alpha(0.0f)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    binding.mediaTitleCollapse.isInvisible = true
+                    binding.mediaTitleCollapse.alpha = 1f
+                }
+            })
+        binding.mediaStatus.animate()
+            .setDuration(300)
+            .alpha(0.0f)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    binding.mediaStatus.isInvisible = true
+                    binding.mediaStatus.alpha = 1f
+                }
+            })
+    }
+
+    private val timeoutHandler = Handler(Looper.getMainLooper())
+    private fun setInterfaceTimeout() {
+        timeoutHandler.removeCallbacksAndMessages(null)
+        timeoutHandler.postDelayed({ fadeInterface() }, (5000).toLong())
+    }
+
+    private var isUserLeaveHint = false
+    public override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        isUserLeaveHint = true
+    }
+
+    override fun onUserInteraction() {
+        super.onUserInteraction()
+        binding.mediaCover.isInvisible = false
+        binding.mediaTitleCollapse.isInvisible = false
+        binding.mediaStatus.isInvisible = false
+        if (isUserLeaveHint) {
+            isUserLeaveHint = false
+            return
+        }
+        setInterfaceTimeout()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
