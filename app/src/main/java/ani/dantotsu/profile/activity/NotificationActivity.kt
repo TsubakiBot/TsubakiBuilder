@@ -107,6 +107,7 @@ class NotificationActivity : AppCompatActivity() {
             binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = navBarHeight
             }
+            binding.notificationNavBar.selectTabAt(0)
             binding.notificationNavBar.onTabSelected = {
                 when (it.id) {
                     R.id.notificationsAll -> filterByType(NotificationCategory.UNDEFINED)
