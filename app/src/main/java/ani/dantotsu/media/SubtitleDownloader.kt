@@ -42,13 +42,7 @@ object SubtitleDownloader {
                         response.headers.find {
                             it.first == "Content-Type" && formats.contains(it.second)
                         }?.let {
-                            when (it.second) {
-                                MimeTypes.TEXT_VTT -> SubtitleType.VTT
-                                MimeTypes.APPLICATION_TTML ->  SubtitleType.TTML
-                                MimeTypes.APPLICATION_SUBRIP ->  SubtitleType.SRT
-                                MimeTypes.TEXT_SSA ->  SubtitleType.ASS
-                                else -> SubtitleType.SRT
-                            }
+                            SubtitleType.fromMimeType(it.second)
                         } ?: when {
                             responseBody.contains("[Script Info]") -> SubtitleType.ASS
                             responseBody.contains("WEBVTT") -> SubtitleType.VTT

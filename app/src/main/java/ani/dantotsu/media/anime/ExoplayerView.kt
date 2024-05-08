@@ -1447,14 +1447,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     sub += MediaItem.SubtitleConfiguration
                         .Builder(fileUri)
                         .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
-                        .setMimeType(
-                            when (type) {
-                                SubtitleType.VTT -> MimeTypes.TEXT_SSA
-                                SubtitleType.ASS -> MimeTypes.TEXT_SSA
-                                SubtitleType.SRT -> MimeTypes.TEXT_SSA
-                                else -> MimeTypes.TEXT_SSA
-                            }
-                        )
+                        .setMimeType(SubtitleType.toMimeType(type))
                         .setId("Extractor")
                         .setLanguage(subtitle.language)
                         .build()
@@ -1464,14 +1457,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 sub += MediaItem.SubtitleConfiguration
                     .Builder(Uri.parse(subtitleUrl))
                     .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                    .setMimeType(
-                        when (subtitle.type) {
-                            SubtitleType.VTT -> MimeTypes.TEXT_VTT
-                            SubtitleType.ASS -> MimeTypes.TEXT_SSA
-                            SubtitleType.SRT -> MimeTypes.APPLICATION_SUBRIP
-                            else -> MimeTypes.TEXT_UNKNOWN
-                        }
-                    )
+                    .setMimeType(SubtitleType.toMimeType(subtitle.type))
                     .setId("Extractor")
                     .setLanguage(subtitle.language)
                     .build()
@@ -2025,6 +2011,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
+    private fun extensionMimeType(extension: String): String {
+        return when (extension) {
+            "vtt" -> MimeTypes.TEXT_VTT
+            "ttml" -> MimeTypes.APPLICATION_TTML
+            "srt" -> MimeTypes.APPLICATION_SUBRIP
+            "ass" -> MimeTypes.TEXT_SSA
+            else -> MimeTypes.TEXT_UNKNOWN
+        }
+    }
+
     private fun importSubtitle(uri: Uri, isFile: Boolean): MediaItem.SubtitleConfiguration {
         val file = if (isFile) DocumentFile.fromSingleUri(this, uri) else null
         val mimeType = if (isFile) {
@@ -2038,24 +2034,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 else ->
                     file?.let { doc ->
                         Logger.log("Sideload Extension: ${doc.extension.lowercase()}")
-                        when (doc.extension.lowercase()) {
-                            "vtt" -> MimeTypes.TEXT_VTT
-                            "ttml" -> MimeTypes.APPLICATION_TTML
-                            "srt" -> MimeTypes.APPLICATION_SUBRIP
-                            "ass" -> MimeTypes.TEXT_SSA
-                            else -> MimeTypes.TEXT_UNKNOWN
-                        }
+                        extensionMimeType(doc.extension.lowercase())
                     } ?: MimeTypes.TEXT_UNKNOWN
             }
         } else {
             Logger.log("Sideload Extension: ${uri.toString().substringAfterLast(".")}")
-            when (uri.toString().substringAfterLast(".")) {
-                "vtt" -> MimeTypes.TEXT_VTT
-                "ttml" -> MimeTypes.APPLICATION_TTML
-                "srt" -> MimeTypes.APPLICATION_SUBRIP
-                "ass" -> MimeTypes.TEXT_SSA
-                else -> MimeTypes.TEXT_UNKNOWN
-            }
+            extensionMimeType(uri.toString().substringAfterLast("."))
         }
         return MediaItem.SubtitleConfiguration
             .Builder(uri)

@@ -1,5 +1,8 @@
 package ani.dantotsu.parsers
 
+import androidx.annotation.OptIn
+import androidx.media3.common.MimeTypes
+import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.FileUrl
 import eu.kanade.tachiyomi.animesource.model.Track
 import java.io.Serializable
@@ -197,5 +200,28 @@ enum class VideoType {
 }
 
 enum class SubtitleType {
-    VTT, TTML, ASS, SRT, UNKNOWN
+    VTT, TTML, ASS, SRT, UNKNOWN;
+
+    companion object {
+        @OptIn(UnstableApi::class)
+        fun toMimeType(type: SubtitleType): String {
+            return when (type) {
+                VTT -> MimeTypes.TEXT_VTT
+                TTML -> MimeTypes.APPLICATION_TTML
+                ASS -> MimeTypes.TEXT_SSA
+                SRT -> MimeTypes.APPLICATION_SUBRIP
+                UNKNOWN -> MimeTypes.TEXT_UNKNOWN
+            }
+        }
+
+        fun fromMimeType(mimeType: String): SubtitleType {
+            return when (mimeType) {
+                MimeTypes.TEXT_VTT -> VTT
+                MimeTypes.APPLICATION_TTML -> TTML
+                MimeTypes.TEXT_SSA -> ASS
+                MimeTypes.APPLICATION_SUBRIP -> SRT
+                else -> UNKNOWN
+            }
+        }
+    }
 }
