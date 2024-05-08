@@ -2076,17 +2076,28 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     fun onRemoveSubtitleFile(uriString: String?) {
-        val subtitlePref = "${media.id}_${episode.number}_subtitles"
-        val subs = PrefManager.getCustomVal<Set<String>>(
-            subtitlePref, setOf()
-        ).minus(uriString)
-        PrefManager.setCustomVal(subtitlePref, subs)
-        //exoPlayer.clearMediaItems()
-        userSubtitles.remove(userSubtitles.find { it.uri == Uri.parse(uriString) })
-        if (isInitialized) {
-            PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
+        AlertDialog.Builder(this@ExoplayerView, R.style.MyPopup).apply {
+            setTitle(R.string.remove_subtitle)
+            setMessage(DocumentFile.fromSingleUri(this@ExoplayerView, Uri.parse(uriString))?.name)
+            setPositiveButton(R.string.delete) { _, _ ->
+                val subtitlePref = "${media.id}_${episode.number}_subtitles"
+                val subs = PrefManager.getCustomVal<Set<String>>(
+                    subtitlePref, setOf()
+                ).minus(uriString)
+                PrefManager.setCustomVal(subtitlePref, subs)
+                userSubtitles.remove(userSubtitles.find { it.uri == Uri.parse(uriString) })
+                if (isInitialized) {
+                    PrefManager.setCustomVal(
+                        "${media.id}_${episode.number}",
+                        exoPlayer.currentPosition
+                    )
+                }
+                model.setEpisode(episode, "Subtitle")
+            }
+            setNegativeButton(R.string.cancel) { _, _ -> }
+            show()
+            window?.setDimAmount(0.8f)
         }
-        model.setEpisode(episode, "Subtitle")
     }
 
     private val onImportSubtitle = registerForActivityResult(

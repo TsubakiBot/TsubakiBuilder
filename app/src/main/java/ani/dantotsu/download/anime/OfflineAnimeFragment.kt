@@ -207,7 +207,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 androidx.appcompat.app.AlertDialog.Builder(requireContext(), R.style.MyPopup)
             builder.setTitle("Delete ${item.title}?")
             builder.setMessage("Are you sure you want to delete ${item.title}?")
-            builder.setPositiveButton("Yes") { _, _ ->
+            builder.setPositiveButton(R.string.yes) { _, _ ->
                 downloadManager.removeMedia(item.title, type)
                 val mediaIds =
                     PrefManager.getAnimeDownloadPreferences().all?.filter { it.key.contains(item.title) }?.values
@@ -217,7 +217,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 }
                 getDownloads()
             }
-            builder.setNegativeButton("No") { _, _ ->
+            builder.setNegativeButton(R.string.no) { _, _ ->
                 // Do nothing
             }
             val dialog = builder.show()
