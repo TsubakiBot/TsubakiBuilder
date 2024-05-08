@@ -481,13 +481,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
 
-        onBackPressedDispatcher.addCallback(this) {
-            torrent?.hash?.let {
-                runBlocking(Dispatchers.IO) { removeTorrent(it) }
-                torrent = null
-            }
-            finishAndRemoveTask()
-        }
+        onBackPressedDispatcher.addCallback(this) { playerTeardown() }
 
         playerView = findViewById(R.id.player_view)
         exoPlay = playerView.findViewById(androidx.media3.ui.R.id.exo_play)
@@ -1726,6 +1720,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private fun releasePlayer() {
         isPlayerPlaying = exoPlayer.playWhenReady
         playbackPosition = exoPlayer.currentPosition
+        isInitialized = false
         disappeared = false
         functionstarted = false
         exoPlayer.release()
@@ -2086,6 +2081,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             subtitlePref, setOf()
         ).minus(uriString)
         PrefManager.setCustomVal(subtitlePref, subs)
+        //exoPlayer.clearMediaItems()
+        userSubtitles.remove(userSubtitles.find { it.uri == Uri.parse(uriString) })
+        if (isInitialized) {
+            PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
+        }
         model.setEpisode(episode, "Subtitle")
     }
 
@@ -2118,7 +2118,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun showSubtitleDialog() {
-        exoPlayer.pause()
 //        val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
 //        val editText = dialogView.userAgentTextBox.apply {
 //            hint = getString(R.string.subtitle_url)
@@ -2274,7 +2273,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         startActivity(intent)
     }
 
-    override fun onDestroy() {
+    private fun playerTeardown() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -2285,8 +2284,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         if (isInitialized) {
             updateAniProgress()
-            disappeared = false
-            functionstarted = false
+            exoPlayer.stop()
             releasePlayer()
         }
 
@@ -2295,8 +2293,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             torrent = null
         }
 
-        super.onDestroy()
         finishAndRemoveTask()
+    }
+
+    override fun onDestroy() {
+        playerTeardown()
+        super.onDestroy()
     }
 
     // Enter PiP Mode
@@ -2317,18 +2319,12 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getPictureInPictureBuilder(): PictureInPictureParams.Builder {
-        val pictureInPictureParamsBuilder = PictureInPictureParams.Builder()
-
-        setPictureInPictureParams(
-            pictureInPictureParamsBuilder
-                .setAspectRatio(aspectRatio)
-                .build()
-        )
-
-        return pictureInPictureParamsBuilder
+        return PictureInPictureParams.Builder().also {
+            setPictureInPictureParams(it.setAspectRatio(aspectRatio).build())
+        }
     }
 
-    private fun onPiPChanged(isInPictureInPictureMode: Boolean) {
+    private fun onPiPChanged(isInPictureInPictureMode: Boolean): Boolean {
         playerView.useController = !isInPictureInPictureMode
         if (isInPictureInPictureMode) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
@@ -2342,22 +2338,24 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         if (lifecycle.currentState == Lifecycle.State.CREATED) {
             if (isInPictureInPictureMode) {
                 onBackPressedDispatcher.onBackPressed()
+                return true
             }
         } else {
             if (wasPlaying) exoPlayer.play()
         }
+        return false
     }
 
     @Deprecated("Deprecated in Java")
     override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean) {
-        onPiPChanged(isInPictureInPictureMode)
-        super.onPictureInPictureModeChanged(isInPictureInPictureMode)
+        if (!onPiPChanged(isInPictureInPictureMode))
+            super.onPictureInPictureModeChanged(isInPictureInPictureMode)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onPictureInPictureUiStateChanged(pipState: PictureInPictureUiState) {
-        onPiPChanged(isInPictureInPictureMode)
-        super.onPictureInPictureUiStateChanged(pipState)
+        if (!onPiPChanged(isInPictureInPictureMode))
+            super.onPictureInPictureUiStateChanged(pipState)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -2365,8 +2363,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         isInPictureInPictureMode: Boolean,
         newConfig: Configuration
     ) {
-        onPiPChanged(isInPictureInPictureMode)
-        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        if (!onPiPChanged(isInPictureInPictureMode))
+            super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
     }
 
     private val keyMap: MutableMap<Int, (() -> Unit)?> = mutableMapOf(

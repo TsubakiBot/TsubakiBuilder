@@ -19,20 +19,23 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) client. Himitsu aims to i
 
 ## Himitsu Modifications
 
-- Torrent support (c/o [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
-- Embedded audio and subtitle support
 - Trailer banners and YouTube integration
+- Torrent support (c/o [TorrServer](https://github.com/YouROK/TorrServer) & [Kuukiyomi](https://github.com/LuftVerbot/kuukiyomi))
+- Load custom subtitles from your device
 - Reverse search: Search inside extensions
+- Random Anime / Manga suggestion generator
 - Limited support for [LNReader plugins](https://github.com/LNReader/lnreader-plugins)
 - Continue reading / watching / anything widgets
 - Dynamic launcher icon shortcuts (c/o [Neko](https://github.com/nekomangaorg/Neko))
-- Picture-in-picture fixed, Foldable support added
-- Fixed upstream widget themes and management
-- Options to disable the comments API and trolling
-- System backup and restore / device transfer
 - Change themes and other UI setting instantly
-- Sort your anime by next upcoming episodes
 - Predictions for upcoming manga chapters
+- Individual hide lists for Anime and Manga
+- Sort your anime by next upcoming episodes
+- Extensive audio and subtitle track support
+- Picture-in-picture fixed, Foldable support
+- Fixed "stock" widget themes and management
+- Options to disable the comments API and pranks
+- System backup and restore / device transfer
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
