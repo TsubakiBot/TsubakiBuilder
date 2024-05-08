@@ -135,35 +135,45 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <LinearLayout
+    <TableLayout
+        android:id="@+id/sections"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:orientation="horizontal">
-        <ImageButton
-            android:id="@+id/all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_volume_off_24" />
-        <ImageButton
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_volume_off_24" />
-        <ImageButton
-            android:id="@+id/media"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_volume_off_24" />
-        <ImageButton
-            android:id="@+id/activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_volume_off_24" />
-        <ImageButton
-            android:id="@+id/thread"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_volume_off_24" />
-    </LinearLayout>
+        android:stretchColumns="*" >
+
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/notificationsAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_round_coronavirus_24" />
+
+            <ImageButton
+                android:id="@+id/notificationsUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_round_notifications_active_24" />
+
+            <ImageButton
+                android:id="@+id/notificationsMedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_round_menu_book_24" />
+
+            <ImageButton
+                android:id="@+id/notificationsActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_round_area_chart_24" />
+
+            <ImageButton
+                android:id="@+id/notificationsThread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_round_comment_24" />
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

@@ -2,13 +2,18 @@ package ani.dantotsu.profile.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
@@ -26,6 +31,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
+import ani.himitsu.os.Version
 import ani.himitsu.update.MatagiUpdater
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
@@ -96,38 +102,75 @@ class NotificationActivity : AppCompatActivity() {
                 MatagiUpdater.notifyOnUpdate(this@NotificationActivity, binding.appUpdateLayout)
             }
         }
+
+        if (Version.isNougat) {
+            binding.sections.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = navBarHeight
+            }
+            binding.notificationsAll.setOnClickListener {
+                filterByType(NotificationCategory.UNDEFINED)
+            }
+            binding.notificationsUser.setOnClickListener {
+                filterByType(NotificationCategory.USER)
+            }
+            binding.notificationsMedia.setOnClickListener {
+                filterByType(NotificationCategory.MEDIA)
+            }
+            binding.notificationsActivity.setOnClickListener {
+                filterByType(NotificationCategory.ACTIVITY)
+            }
+            binding.notificationsThread.setOnClickListener {
+                filterByType(NotificationCategory.THREAD)
+            }
+        } else {
+            binding.sections.visibility = View.GONE
+        }
     }
 
-    fun filterByType() {
-        val userFilter = listOf(
-            NotificationType.FOLLOWING,
-            NotificationType.COMMENT_REPLY
-        )
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun filterByType(category: NotificationCategory) {
+        val filters: List<String>? = when(category) {
+            NotificationCategory.USER -> listOf(
+                NotificationType.FOLLOWING.value,
+                NotificationType.COMMENT_REPLY.value
+            )
+            NotificationCategory.MEDIA -> listOf(
+                NotificationType.AIRING.value,
+                NotificationType.RELATED_MEDIA_ADDITION.value,
+                NotificationType.MEDIA_DATA_CHANGE.value,
+                NotificationType.MEDIA_MERGE.value,
+                NotificationType.MEDIA_DELETION.value
+            )
+            NotificationCategory.ACTIVITY -> listOf(
+                NotificationType.ACTIVITY_MESSAGE.value,
+                NotificationType.ACTIVITY_REPLY.value,
+                NotificationType.ACTIVITY_MENTION.value,
+                NotificationType.ACTIVITY_LIKE.value,
+                NotificationType.ACTIVITY_REPLY_LIKE.value,
+                NotificationType.ACTIVITY_REPLY_SUBSCRIBED.value
+            )
+            NotificationCategory.THREAD -> listOf(
+                NotificationType.THREAD_COMMENT_MENTION.value,
+                NotificationType.THREAD_SUBSCRIBED.value,
+                NotificationType.THREAD_COMMENT_REPLY.value,
+                NotificationType.THREAD_LIKE.value,
+                NotificationType.THREAD_COMMENT_LIKE.value
+            )
 
-        val mediaFilter = listOf(
-            NotificationType.AIRING,
-            NotificationType.RELATED_MEDIA_ADDITION,
-            NotificationType.MEDIA_DATA_CHANGE,
-            NotificationType.MEDIA_MERGE,
-            NotificationType.MEDIA_DELETION
-        )
+            NotificationCategory.UNDEFINED -> null
+        }
 
-        val activityFilter = listOf(
-            NotificationType.ACTIVITY_MESSAGE,
-            NotificationType.ACTIVITY_REPLY,
-            NotificationType.ACTIVITY_MENTION,
-            NotificationType.ACTIVITY_LIKE,
-            NotificationType.ACTIVITY_REPLY_LIKE,
-            NotificationType.ACTIVITY_REPLY_SUBSCRIBED
-        )
+        val newNotifications = filters?.let { list ->
+            notificationList.filter { list.contains(it.notificationType) }
+        } ?: notificationList
 
-        val threadFilter = listOf(
-            NotificationType.THREAD_COMMENT_MENTION,
-            NotificationType.THREAD_SUBSCRIBED,
-            NotificationType.THREAD_COMMENT_REPLY,
-            NotificationType.THREAD_LIKE,
-            NotificationType.THREAD_COMMENT_LIKE
-        )
+        adapter.clear()
+        adapter.addAll(newNotifications.map {
+            NotificationItem(
+                it,
+                ::onNotificationClick
+            )
+        })
     }
 
     private fun loadPage(activityId: Int, onFinish: () -> Unit = {}) {
@@ -226,6 +269,10 @@ class NotificationActivity : AppCompatActivity() {
     companion object {
         enum class NotificationClickType {
             USER, MEDIA, ACTIVITY, COMMENT, UNDEFINED
+        }
+
+        enum class NotificationCategory {
+            USER, MEDIA, ACTIVITY, THREAD, UNDEFINED
         }
     }
 }
