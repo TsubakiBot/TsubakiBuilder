@@ -1,10 +1,13 @@
 package ani.dantotsu.media.anime
 
+import android.net.Uri
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.OptIn
+import androidx.documentfile.provider.DocumentFile
 import androidx.media3.common.C.TRACK_TYPE_AUDIO
 import androidx.media3.common.C.TrackType
 import androidx.media3.common.Tracks
@@ -72,7 +75,6 @@ class TrackGroupDialogFragment(
             val binding = holder.binding
             trackGroups[position].let { trackGroup ->
                 val trackFormat = trackGroup.mediaTrackGroup.getFormat(0)
-                val trackId = trackFormat.id?.substringAfterLast(':')
                 val localeCode = if (trackGroup.mediaTrackGroup.type == TRACK_TYPE_AUDIO)
                     languages.getOrNull(position - (trackGroups.size - languages.size))
                 else
@@ -89,8 +91,11 @@ class TrackGroupDialogFragment(
                     }
 
                     "file" -> {
+                        val document = DocumentFile.fromSingleUri(instance, Uri.parse(
+                            "content:${trackFormat.id?.substringAfter("content:")}"
+                        ))
                         binding.subtitleTitle.text =
-                            getString(R.string.user_subtitle, trackId)
+                            getString(R.string.user_subtitle, document?.name)
                     }
 
                     "load" -> {
@@ -117,6 +122,16 @@ class TrackGroupDialogFragment(
                 binding.root.setOnClickListener {
                     dismiss()
                     instance.onSetTrackGroupOverride(trackGroup, type)
+                }
+                binding.root.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    if (trackFormat.language == "file") {
+                        instance.onRemoveSubtitleFile(
+                            "content:${trackFormat.id?.substringAfter("content:")}"
+                        )
+                        dismiss()
+                        true
+                    } else { false }
                 }
             }
         }

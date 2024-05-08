@@ -118,7 +118,6 @@ import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.databinding.ActivityExoplayerBinding
-import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.video.Helper
@@ -156,7 +155,6 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
-import ani.dantotsu.util.customAlertDialog
 import com.anggrayudi.storage.file.extension
 import com.bumptech.glide.Glide
 import com.google.android.gms.cast.framework.CastButtonFactory
@@ -2069,7 +2067,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             .setSelectionFlags(C.SELECTION_FLAG_DEFAULT)
             .setMimeType(mimeType)
             .setLanguage("file")
-            .setId(file?.name ?: mimeType)
+            .setId(uri.toString())
             .build()
     }
 
@@ -2082,12 +2080,22 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         buildExoplayer()
     }
 
+    fun onRemoveSubtitleFile(uriString: String?) {
+        val subtitlePref = "${media.id}_${episode.number}_subtitles"
+        val subs = PrefManager.getCustomVal<Set<String>>(
+            subtitlePref, setOf()
+        ).minus(uriString)
+        PrefManager.setCustomVal(subtitlePref, subs)
+        model.setEpisode(episode, "Subtitle")
+    }
+
     private val onImportSubtitle = registerForActivityResult(
         ActivityResultContracts.OpenMultipleDocuments()
     ) { documents: List<Uri> ->
         userSubtitles.forEach {
             it.buildUpon().setSelectionFlags(C.SELECTION_FLAG_FORCED).build()
         }
+        val subtitlePref = "${media.id}_${episode.number}_subtitles"
         documents.forEach { uri ->
             if (userSubtitles.any { it.uri == uri }) {
                 snackString(R.string.duplicate_sub)
@@ -2097,11 +2105,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
             )
             val subs = PrefManager.getCustomVal<Set<String>>(
-                "${media.id}_${episode.number}_subtitles", setOf()
+                subtitlePref, setOf()
             ).plus(uri.toString())
-            PrefManager.setCustomVal(
-                "${media.id}_${episode.number}_subtitles", subs
-            )
+            PrefManager.setCustomVal(subtitlePref, subs)
             userSubtitles.add(importSubtitle(uri, true))
         }
         if (userSubtitles.isNotEmpty()) {
