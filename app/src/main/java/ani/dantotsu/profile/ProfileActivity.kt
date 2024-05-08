@@ -63,12 +63,6 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
         navBar = binding.profileNavBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
-        val feedTab = navBar.createTab(R.drawable.ic_round_filter_24, getString(R.string.feed))
-        val profileTab = navBar.createTab(R.drawable.ic_round_person_32, getString(R.string.profile))
-        val statsTab = navBar.createTab(R.drawable.ic_stats_24, getString(R.string.stats))
-        navBar.addTab(profileTab)
-        navBar.addTab(feedTab)
-        navBar.addTab(statsTab)
         navBar.visibility = View.GONE
         binding.profileViewPager.isUserInputEnabled = false
 

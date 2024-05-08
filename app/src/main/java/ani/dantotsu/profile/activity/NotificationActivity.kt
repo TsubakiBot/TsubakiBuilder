@@ -103,6 +103,7 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         if (Version.isNougat) {
+            binding.notificationNavBar.visibility = View.VISIBLE
             binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = navBarHeight
             }
@@ -112,7 +113,7 @@ class NotificationActivity : AppCompatActivity() {
                     R.id.notificationsUser -> filterByType(NotificationCategory.SOCIAL)
                     R.id.notificationsMedia -> filterByType(NotificationCategory.MEDIA)
                     R.id.notificationsActivity -> filterByType(NotificationCategory.ACTIVITY)
-                    R.id.notificationsThread -> filterByType(NotificationCategory.THREAD)
+                    R.id.notificationsThreads -> filterByType(NotificationCategory.THREADS)
                 }
             }
         } else {
@@ -142,7 +143,7 @@ class NotificationActivity : AppCompatActivity() {
                 NotificationType.ACTIVITY_REPLY_LIKE.value,
                 NotificationType.ACTIVITY_REPLY_SUBSCRIBED.value
             )
-            NotificationCategory.THREAD -> listOf(
+            NotificationCategory.THREADS -> listOf(
                 NotificationType.THREAD_COMMENT_MENTION.value,
                 NotificationType.THREAD_SUBSCRIBED.value,
                 NotificationType.THREAD_COMMENT_REPLY.value,
@@ -274,7 +275,7 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         enum class NotificationCategory {
-            SOCIAL, MEDIA, ACTIVITY, THREAD, UNDEFINED
+            SOCIAL, MEDIA, ACTIVITY, THREADS, UNDEFINED
         }
     }
 }

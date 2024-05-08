@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/notificationsUser"
+        android:icon="@drawable/ic_round_person_32"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/notificationsAll"
+        android:icon="@drawable/ic_round_filter_24"
+        android:title="@string/feed" />
+    <item
+        android:id="@+id/notificationsMedia"
+        android:icon="@drawable/ic_stats_24"
+        android:title="@string/stats" />
+</menu>

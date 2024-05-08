@@ -55,6 +55,7 @@
         app:abb_indicatorLocation="top"
         app:abb_isVerticalBar="true"
         app:abb_selectedTabType="icon"
+        app:abb_tabs="@menu/menu_profile_tabs"
         app:abb_textAppearance="@style/NavBarText"
         app:abb_textSize="10sp"
         app:itemActiveIndicatorStyle="@style/BottomNavBar"
