@@ -1441,7 +1441,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             val subtitleUrl = if (subsEmbedded) video!!.file.url else subtitle.file.url
             //var localFile: String? = null
             if (subtitle.type == SubtitleType.UNKNOWN) {
-                runBlocking {
+                runBlocking(Dispatchers.IO) {
                     val type = SubtitleDownloader.loadSubtitleType(subtitleUrl)
                     val fileUri = Uri.parse(subtitleUrl)
                     sub += MediaItem.SubtitleConfiguration

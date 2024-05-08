@@ -136,21 +136,22 @@ class HomeFragment : Fragment() {
                         LayoutAnimationController(setSlideIn(), 0.25f)
                     fun getRandomMedia(type: MediaType) : Media {
                         var media: Media?
-                        do {
-                            runBlocking {
+                        runBlocking(Dispatchers.IO) {
+                            do {
                                 delay(1000)
                                 media = Anilist.query.getMedia(
                                     Random.nextInt(200000)
-                                )?.takeIf { !it.isAdult
-                                        && ((type == MediaType.ANIME && it.anime != null)
-                                        || (type == MediaType.MANGA && it.manga != null))}
-                            }
-                        } while(media == null)
+                                )?.takeIf {
+                                    !it.isAdult
+                                            && ((type == MediaType.ANIME && it.anime != null)
+                                            || (type == MediaType.MANGA && it.manga != null))
+                                }
+                            } while (media == null)
+                        }
                         return media!!
                     }
 
                     fun onRandomLoading(isCompleted: Boolean) {
-                        binding.homeRandomLoading.isVisible = !isCompleted
                         binding.homeRandomAnime.isEnabled = isCompleted
                         binding.homeRandomManga.isEnabled = isCompleted
                     }

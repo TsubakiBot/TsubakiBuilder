@@ -196,9 +196,9 @@
                         android:id="@+id/homeListContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:clipToPadding="false"
-                        android:paddingHorizontal="24dp"
-                        android:layout_marginBottom="16dp">
+                        android:paddingHorizontal="24dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/homeAnimeList"
@@ -314,134 +314,120 @@
                 </LinearLayout>
             </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/homeRandomContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:clipToPadding="false"
-                android:layout_marginBottom="16dp"
                 android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="16dp"
+                android:clipToPadding="false"
+                android:visibility="gone"
                 tools:visibility="visible" >
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/homeRandomAnime"
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginHorizontal="8dp"
-                app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                app:cardCornerRadius="16dp"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/homeRandomManga"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_max="256dp">
-
-                <ImageView
-                    android:id="@+id/homeRandomAnimeImage"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/homeRandomAnime"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    tools:ignore="ContentDescription"
-                    tools:src="@tools:sample/backgrounds/scenic" />
+                    android:layout_height="72dp"
+                    android:layout_marginHorizontal="8dp"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/homeRandomManga"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="256dp">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:alpha="0.6"
-                    android:background="@color/bg_black" />
+                    <ImageView
+                        android:id="@+id/homeRandomAnimeImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"
+                        tools:src="@tools:sample/backgrounds/scenic" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="68dp"
+                        android:alpha="0.6"
+                        android:background="@color/bg_black" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="@string/randome_anime"
-                        android:textAllCaps="true"
-                        android:textColor="@color/bg_white"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/randome_anime"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bg_white"
+                            android:textSize="16sp" />
+
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="2dp"
+                            android:layout_gravity="center"
+                            android:background="?attr/colorPrimary" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/homeRandomManga"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginHorizontal="8dp"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/homeRandomAnime"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="256dp" >
+
+                    <ImageView
+                        android:id="@+id/homeRandomMangaImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"
+                        tools:src="@tools:sample/backgrounds/scenic" />
 
                     <View
-                        android:layout_width="64dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:background="?attr/colorPrimary" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.6"
+                        android:background="@color/bg_black" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/homeRandomManga"
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginHorizontal="8dp"
-                app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                app:cardCornerRadius="16dp"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/homeRandomAnime"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_max="256dp" >
-
-                <ImageView
-                    android:id="@+id/homeRandomMangaImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    tools:ignore="ContentDescription"
-                    tools:src="@tools:sample/backgrounds/scenic" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha="0.6"
-                    android:background="@color/bg_black" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="@string/randome_manga"
-                        android:textAllCaps="true"
-                        android:textColor="@color/bg_white"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
 
-                    <View
-                        android:layout_width="64dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:background="?attr/colorPrimary" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/randome_manga"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bg_white"
+                            android:textSize="16sp" />
+
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="2dp"
+                            android:layout_gravity="center"
+                            android:background="?attr/colorPrimary" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ProgressBar
-                android:id="@+id/homeRandomLoading"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_gravity="center" />
-
-            </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/homeUserStatusContainer"
