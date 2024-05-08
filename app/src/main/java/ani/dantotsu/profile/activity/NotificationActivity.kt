@@ -215,6 +215,15 @@ class NotificationActivity : AppCompatActivity() {
                 })
                 currentPage = res?.data?.page?.pageInfo?.currentPage?.plus(1) ?: 1
                 hasNextPage = res?.data?.page?.pageInfo?.hasNextPage ?: false
+                if (Version.isNougat) {
+                    when (binding.notificationNavBar.selectedTab?.id) {
+                        R.id.notificationsAll -> filterByType(NotificationCategory.UNDEFINED)
+                        R.id.notificationsUser -> filterByType(NotificationCategory.SOCIAL)
+                        R.id.notificationsMedia -> filterByType(NotificationCategory.MEDIA)
+                        R.id.notificationsActivity -> filterByType(NotificationCategory.ACTIVITY)
+                        R.id.notificationsThreads -> filterByType(NotificationCategory.THREADS)
+                    }
+                }
                 binding.followSwipeRefresh.isRefreshing = false
                 onFinish()
             }
