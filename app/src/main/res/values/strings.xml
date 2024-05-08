@@ -1096,4 +1096,8 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Hidden</string>
     <string name="no_hidden_items">No Hidden Items</string>
+
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="thread">Thread</string>
 </resources>

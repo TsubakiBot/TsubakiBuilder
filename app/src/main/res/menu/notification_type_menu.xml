@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/notificationsAll"
+        android:icon="@drawable/ic_round_coronavirus_24"
+        android:title="@string/all" />
+    <item
+        android:id="@+id/notificationsUser"
+        android:icon="@drawable/ic_round_notifications_active_24"
+        android:title="@string/social" />
+    <item
+        android:id="@+id/notificationsMedia"
+        android:icon="@drawable/ic_round_menu_book_24"
+        android:title="@string/media" />
+    <item
+        android:id="@+id/notificationsActivity"
+        android:icon="@drawable/ic_round_area_chart_24"
+        android:title="@string/activity" />
+    <item
+        android:id="@+id/notificationsThread"
+        android:icon="@drawable/ic_round_comment_24"
+        android:title="@string/thread" />
+</menu>

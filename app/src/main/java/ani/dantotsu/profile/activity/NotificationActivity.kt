@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
@@ -104,33 +103,27 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         if (Version.isNougat) {
-            binding.sections.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = navBarHeight
             }
-            binding.notificationsAll.setOnClickListener {
-                filterByType(NotificationCategory.UNDEFINED)
-            }
-            binding.notificationsUser.setOnClickListener {
-                filterByType(NotificationCategory.USER)
-            }
-            binding.notificationsMedia.setOnClickListener {
-                filterByType(NotificationCategory.MEDIA)
-            }
-            binding.notificationsActivity.setOnClickListener {
-                filterByType(NotificationCategory.ACTIVITY)
-            }
-            binding.notificationsThread.setOnClickListener {
-                filterByType(NotificationCategory.THREAD)
+            binding.notificationNavBar.onTabSelected = {
+                when (it.id) {
+                    R.id.notificationsAll -> filterByType(NotificationCategory.UNDEFINED)
+                    R.id.notificationsUser -> filterByType(NotificationCategory.SOCIAL)
+                    R.id.notificationsMedia -> filterByType(NotificationCategory.MEDIA)
+                    R.id.notificationsActivity -> filterByType(NotificationCategory.ACTIVITY)
+                    R.id.notificationsThread -> filterByType(NotificationCategory.THREAD)
+                }
             }
         } else {
-            binding.sections.visibility = View.GONE
+            binding.notificationNavBar.visibility = View.GONE
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun filterByType(category: NotificationCategory) {
         val filters: List<String>? = when(category) {
-            NotificationCategory.USER -> listOf(
+            NotificationCategory.SOCIAL -> listOf(
                 NotificationType.FOLLOWING.value,
                 NotificationType.COMMENT_REPLY.value
             )
@@ -266,13 +259,22 @@ class NotificationActivity : AppCompatActivity() {
         }
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                0
+            else navBarHeight
+        }
+    }
+
     companion object {
         enum class NotificationClickType {
             USER, MEDIA, ACTIVITY, COMMENT, UNDEFINED
         }
 
         enum class NotificationCategory {
-            USER, MEDIA, ACTIVITY, THREAD, UNDEFINED
+            SOCIAL, MEDIA, ACTIVITY, THREAD, UNDEFINED
         }
     }
 }

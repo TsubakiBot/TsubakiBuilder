@@ -135,45 +135,25 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <TableLayout
-        android:id="@+id/sections"
+    <nl.joery.animatedbottombar.AnimatedBottomBar
+        android:id="@+id/notificationNavBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:stretchColumns="*" >
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="?attr/colorSurface"
+        android:padding="0dp"
+        app:abb_animationInterpolator="@anim/over_shoot"
+        app:abb_indicatorAppearance="round"
+        app:abb_indicatorLocation="top"
+        app:abb_selectedTabType="text"
+        app:abb_textAppearance="@style/NavBarText"
+        app:itemActiveIndicatorStyle="@style/BottomNavBar"
+        app:itemIconTint="@color/tab_layout_icon"
+        app:itemRippleColor="#00000000"
+        app:itemTextAppearanceActive="@style/NavBarText"
+        app:itemTextAppearanceInactive="@style/NavBarText"
+        app:itemTextColor="@color/tab_layout_icon"
+        app:abb_tabs="@menu/notification_type_menu"/>
 
-        <TableRow android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/notificationsAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_round_coronavirus_24" />
-
-            <ImageButton
-                android:id="@+id/notificationsUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_round_notifications_active_24" />
-
-            <ImageButton
-                android:id="@+id/notificationsMedia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_round_menu_book_24" />
-
-            <ImageButton
-                android:id="@+id/notificationsActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_round_area_chart_24" />
-
-            <ImageButton
-                android:id="@+id/notificationsThread"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_round_comment_24" />
-        </TableRow>
-    </TableLayout>
 </LinearLayout>
