@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Notification
+import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ActivityFollowBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
@@ -97,6 +98,38 @@ class NotificationActivity : AppCompatActivity() {
         }
     }
 
+    fun filterByType() {
+        val userFilter = listOf(
+            NotificationType.FOLLOWING,
+            NotificationType.COMMENT_REPLY
+        )
+
+        val mediaFilter = listOf(
+            NotificationType.AIRING,
+            NotificationType.RELATED_MEDIA_ADDITION,
+            NotificationType.MEDIA_DATA_CHANGE,
+            NotificationType.MEDIA_MERGE,
+            NotificationType.MEDIA_DELETION
+        )
+
+        val activityFilter = listOf(
+            NotificationType.ACTIVITY_MESSAGE,
+            NotificationType.ACTIVITY_REPLY,
+            NotificationType.ACTIVITY_MENTION,
+            NotificationType.ACTIVITY_LIKE,
+            NotificationType.ACTIVITY_REPLY_LIKE,
+            NotificationType.ACTIVITY_REPLY_SUBSCRIBED
+        )
+
+        val threadFilter = listOf(
+            NotificationType.THREAD_COMMENT_MENTION,
+            NotificationType.THREAD_SUBSCRIBED,
+            NotificationType.THREAD_COMMENT_REPLY,
+            NotificationType.THREAD_LIKE,
+            NotificationType.THREAD_COMMENT_LIKE
+        )
+    }
+
     private fun loadPage(activityId: Int, onFinish: () -> Unit = {}) {
         lifecycleScope.launch(Dispatchers.IO) {
             val resetNotification = activityId == -1
@@ -135,6 +168,7 @@ class NotificationActivity : AppCompatActivity() {
                 }
 
                 notificationList += newNotifications
+
                 adapter.addAll(newNotifications.map {
                     NotificationItem(
                         it,

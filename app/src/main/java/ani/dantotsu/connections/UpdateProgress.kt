@@ -18,8 +18,8 @@ fun updateProgress(media: Media, number: String) {
     if (!incognito) {
         if (Anilist.userid != null) {
             CoroutineScope(Dispatchers.IO).launch {
-                val a = number.toFloatOrNull()?.toInt()
-                if ((a ?: 0) > (media.userProgress ?: -1)) {
+                val a = number.toFloatOrNull()?.toInt() ?: 0
+                if (a > (media.userProgress ?: -1)) {
                     Anilist.mutation.editList(
                         media.id,
                         a,

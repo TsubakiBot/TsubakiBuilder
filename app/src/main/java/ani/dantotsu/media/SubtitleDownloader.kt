@@ -16,10 +16,7 @@ import okhttp3.Request
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SubtitleDownloader {
-
-    companion object {
-        //doesn't really download the subtitles -\_(o_o)_/-
+object SubtitleDownloader {
         suspend fun loadSubtitleType(url: String): SubtitleType =
             withContext(Dispatchers.IO) {
                 return@withContext try {
@@ -42,7 +39,7 @@ class SubtitleDownloader {
                             MimeTypes.TEXT_SSA
                         )
 
-                        val subtitleType = response.headers.find {
+                        response.headers.find {
                             it.first == "Content-Type" && formats.contains(it.second)
                         }?.let {
                             when (it.second) {
@@ -57,8 +54,6 @@ class SubtitleDownloader {
                             responseBody.contains("WEBVTT") -> SubtitleType.VTT
                             else -> SubtitleType.SRT
                         }
-
-                        subtitleType
                     } else {
                         SubtitleType.UNKNOWN
                     }
@@ -68,12 +63,11 @@ class SubtitleDownloader {
                 }
             }
 
-        //actually downloads lol
         suspend fun downloadSubtitle(
             context: Context,
             url: String,
             downloadedType: DownloadedType
-        ) {
+        ) = withContext(Dispatchers.IO) {
             try {
                 val directory = DownloadsManager.getSubDirectory(
                     context,
@@ -93,21 +87,18 @@ class SubtitleDownloader {
 
                 if (!reponse.isSuccessful) {
                     snackString("Failed to download subtitle")
-                    return
+                    return@withContext
                 }
 
-                reponse.body.byteStream().use { input ->
-                    subtitleFile.openOutputStream(context, false).use { output ->
-                        if (output == null) throw Exception("Could not open output stream")
-                        input.copyTo(output)
-                    }
+                context.contentResolver.openOutputStream(subtitleFile.uri).use { output ->
+                    output?.write(reponse.body.bytes())
+                        ?: throw Exception("Could not open output stream")
                 }
             } catch (e: Exception) {
                 snackString("Failed to download subtitle")
                 Logger.log(e)
-                return
+                return@withContext
             }
 
         }
     }
-}
