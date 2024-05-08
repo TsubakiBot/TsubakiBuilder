@@ -1085,7 +1085,8 @@
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
 
-    <string name="random_item">Random Anime / Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
 
     <string name="you">You</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>

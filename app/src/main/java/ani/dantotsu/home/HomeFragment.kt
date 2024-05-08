@@ -39,6 +39,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
+import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.profile.ProfileActivity
@@ -126,30 +127,41 @@ class HomeFragment : Fragment() {
                 binding.homeListContainer.layoutAnimation =
                     LayoutAnimationController(setSlideIn(), 0.25f)
 
-                if (isOnline(requireContext())) {
-                    binding.homeRandomItem.layoutAnimation =
+                val online = isOnline(requireContext())
+                if (online) {
+                    binding.homeRandomAnime.layoutAnimation =
                         LayoutAnimationController(setSlideIn(), 0.25f)
-                    fun getRandomMedia() : Media {
+                    binding.homeRandomManga.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+                    fun getRandomMedia(type: MediaType) : Media {
                         var media: Media?
                         do {
                             runBlocking {
                                 media = Anilist.query.getMedia(
                                     Random.nextInt(200000)
-                                )?.takeIf { !it.isAdult }
+                                )?.takeIf { !it.isAdult
+                                        && ((type == MediaType.ANIME && it.anime != null)
+                                        || (type == MediaType.MANGA && it.manga != null))}
                             }
                         } while(media == null)
                         return media!!
                     }
-                    binding.homeRandomItem.setOnClickListener {
-                        val media = getRandomMedia()
+                    fun onRandomClick(type: MediaType) {
+                        val media = getRandomMedia(type)
                         ContextCompat.startActivity(
                             requireContext(),
                             Intent(requireContext(), MediaDetailsActivity::class.java)
                                 .putExtra("media", media as Serializable), null
                         )
                     }
+                    binding.homeRandomAnime.setOnClickListener {
+                        onRandomClick(MediaType.ANIME)
+                    }
+                    binding.homeRandomManga.setOnClickListener {
+                        onRandomClick(MediaType.MANGA)
+                    }
                 }
-                binding.homeRandomItem.isVisible = isOnline(requireContext())
+                binding.homeRandomContainer.isVisible = online
             }
             else {
                 snackString(R.string.please_reload)

@@ -958,7 +958,6 @@
     <string name="failed_to_delete_directory">Error al borrar directorio</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
-    <string name="random_item">Random Anime / Manga</string>
     <string name="you">Tú</string>
     <string name="logout_confirm">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="app_died">APP MUERTA</string>

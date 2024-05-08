@@ -960,7 +960,6 @@
     <string name="failed_to_delete_directory">無法刪除目錄</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
-    <string name="random_item">Random Anime / Manga</string>
     <string name="you">您</string>
     <string name="logout_confirm">您確定要登出嗎？</string>
     <string name="app_died">應用程式當機</string>
