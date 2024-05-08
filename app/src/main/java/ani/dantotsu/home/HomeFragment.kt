@@ -57,6 +57,7 @@ import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -137,6 +138,7 @@ class HomeFragment : Fragment() {
                         var media: Media?
                         do {
                             runBlocking {
+                                delay(1000)
                                 media = Anilist.query.getMedia(
                                     Random.nextInt(200000)
                                 )?.takeIf { !it.isAdult
@@ -146,13 +148,22 @@ class HomeFragment : Fragment() {
                         } while(media == null)
                         return media!!
                     }
+
+                    fun onRandomLoading(isCompleted: Boolean) {
+                        binding.homeRandomLoading.isVisible = !isCompleted
+                        binding.homeRandomAnime.isEnabled = isCompleted
+                        binding.homeRandomManga.isEnabled = isCompleted
+                    }
+
                     fun onRandomClick(type: MediaType): String? {
+                        onRandomLoading(false)
                         val media = getRandomMedia(type)
                         ContextCompat.startActivity(
                             requireContext(),
                             Intent(requireContext(), MediaDetailsActivity::class.java)
                                 .putExtra("media", media as Serializable), null
                         )
+                        onRandomLoading(true)
                         return media.banner ?: media.cover
                     }
                     binding.homeRandomAnime.setOnClickListener {
