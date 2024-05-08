@@ -2335,7 +2335,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
     }
 
-    private fun onPiPChanged(isInPictureInPictureMode: Boolean): Boolean {
+    private fun onPiPChanged(isInPictureInPictureMode: Boolean) {
         playerView.useController = !isInPictureInPictureMode
         if (isInPictureInPictureMode) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
@@ -2343,30 +2343,26 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         } else {
             orientationListener?.enable()
         }
-        if (isInitialized) {
-            PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
-        }
-        if (lifecycle.currentState == Lifecycle.State.CREATED) {
-            if (isInPictureInPictureMode) {
-                onBackPressedDispatcher.onBackPressed()
-                return true
+        if (lifecycle.currentState == Lifecycle.State.CREATED && !isInPictureInPictureMode) {
+            if (isInitialized) {
+                PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
             }
+            playerTeardown()
         } else {
             if (wasPlaying) exoPlayer.play()
         }
-        return false
     }
 
     @Deprecated("Deprecated in Java")
     override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean) {
-        if (!onPiPChanged(isInPictureInPictureMode))
-            super.onPictureInPictureModeChanged(isInPictureInPictureMode)
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode)
+        onPiPChanged(isInPictureInPictureMode)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onPictureInPictureUiStateChanged(pipState: PictureInPictureUiState) {
-        if (!onPiPChanged(isInPictureInPictureMode))
-            super.onPictureInPictureUiStateChanged(pipState)
+        super.onPictureInPictureUiStateChanged(pipState)
+        onPiPChanged(isInPictureInPictureMode)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -2374,8 +2370,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         isInPictureInPictureMode: Boolean,
         newConfig: Configuration
     ) {
-        if (!onPiPChanged(isInPictureInPictureMode))
-            super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        onPiPChanged(isInPictureInPictureMode)
     }
 
     private val keyMap: MutableMap<Int, (() -> Unit)?> = mutableMapOf(
