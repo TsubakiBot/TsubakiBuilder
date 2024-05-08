@@ -146,19 +146,24 @@ class HomeFragment : Fragment() {
                         } while(media == null)
                         return media!!
                     }
-                    fun onRandomClick(type: MediaType) {
+                    fun onRandomClick(type: MediaType): String? {
                         val media = getRandomMedia(type)
                         ContextCompat.startActivity(
                             requireContext(),
                             Intent(requireContext(), MediaDetailsActivity::class.java)
                                 .putExtra("media", media as Serializable), null
                         )
+                        return media.banner ?: media.cover
                     }
                     binding.homeRandomAnime.setOnClickListener {
-                        onRandomClick(MediaType.ANIME)
+                        onRandomClick(MediaType.ANIME)?.let {
+                            binding.homeRandomAnimeImage.loadImage(it)
+                        }
                     }
                     binding.homeRandomManga.setOnClickListener {
-                        onRandomClick(MediaType.MANGA)
+                        onRandomClick(MediaType.MANGA)?.let {
+                            binding.homeRandomMangaImage.loadImage(it)
+                        }
                     }
                 }
                 binding.homeRandomContainer.isVisible = online
