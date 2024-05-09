@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es-rES">
-    <string name="slogan">La mejor aplicación de Anime &amp; Manga para Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Acceso</string>
     <string name="logout">Cerrar sesión</string>
     <string name="conversion_title">¡Bienvenido de nuevo!</string>
@@ -280,7 +280,7 @@
         <item>Manga Favorito</item>
         <item>Manga planeado</item>
         <item>Recomendados</item>
-        <item>Social Feeds</item>
+        <item>Feeds sociales</item>
     </string-array>
     <string name="startUpTab">Pestaña de inicio predeterminada</string>
     <string name="small_view">Vista pequeña de los programas en tendencia</string>
@@ -288,7 +288,7 @@
     <string name="animations">Animaciones</string>
     <string name="banner_animations">Animaciones de banner</string>
     <string name="layout_animations">Animaciones de diseño</string>
-    <string name="trending_scroller">Desplazador de tendencias</string>
+    <string name="trending_scroller">Desplazador de Tendencias</string>
     <string name="animation_speed">Velocidad general</string>
     <string name="empty_fav">Parece que no te gusta nada,\nIntenta darle me gusta a un show para mantenerlo aquí.</string>
     <string name="fav_anime">Anime Favorito</string>
@@ -307,7 +307,7 @@
     <string name="layout">Diseño</string>
     <string name="spaced_pages">Páginas espaciadas</string>
     <string name="direction">Dirección</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">API de Comentarios (Dantotsu)</string>
     <string name="disable_mitm">Prevenir Inyección (\"Bromas\")</string>
     <string name="general">General</string>
     <string name="show_system_bars">Mostrar barras de estado &amp; navegación</string>
@@ -691,10 +691,10 @@
     <string name="view_following">Ver seguidos</string>
     <string name="menu">menú</string>
     <string name="view_followers">Ver seguidores</string>
-    <string name="no_fav_anime">El usuario no tiene ningún Anime favorito</string>
-    <string name="no_fav_manga">El usuario no tiene ningún Manga favorito</string>
-    <string name="fav_character">Personajes favoritos</string>
-    <string name="fav_staff">Personal favorito</string>
+    <string name="no_fav_anime">El usuario no tiene ningún Anime Favorito</string>
+    <string name="no_fav_manga">El usuario no tiene ningún Manga Favorito</string>
+    <string name="fav_character">Personajes Favoritos</string>
+    <string name="fav_staff">Personal Favorito</string>
     <string name="stats">Estadísticas</string>
     <string name="days_watched">Días vistos</string>
     <string name="total_anime">Total de Animes</string>
@@ -732,8 +732,8 @@
     <string name="scanlator">Escanear</string>
     <string name="set_cookies">Establecer cookies</string>
     <string name="open_website">Abrir sitio web</string>
-    <string name="disable_debug">Disable Logging</string>
-    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
+    <string name="disable_debug">Desactivar registro</string>
+    <string name="rogue_warning">Puede mejorar el rendimiento, pero no puede diagnosticar problemas.</string>
     <string name="log_to_file">Guardar en archivo</string>
     <string name="logging_warning">Guardar en un archivo ralentizará la aplicación. Actívelo solo si experimenta problemas.</string>
     <string name="share_log">Haga clic para compartir el archivo de registro actual</string>
@@ -801,13 +801,14 @@
     <string name="log_in">iniciar sesión</string>
     <string name="or_join">o únete</string>
     <string name="audio_tracks">Pistas de audio</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[⛔\] Desactivar subtítulos</string>
     <string name="invalid_track">Invalido</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
-    <string name="subtitle_url">Enter URL or Import File</string>
-    <string name="import_file">Import file</string>
-    <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="unknown_track">\[%1$s\] Idioma desconocido</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
+    <string name="subtitle_url">Ingrese URL o Importar Archivo</string>
+    <string name="import_file">Importar archivo</string>
+    <string name="duplicate_sub">Subtítulo ya cargado</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Color de fondo superior</string>
     <string name="bottom_background_color">Color de fondo inferior</string>
     <string name="countdown_text_color">Color texto cuenta atrás</string>
@@ -820,11 +821,11 @@
     <string name="novel_add_repository">Añadir nuevo Repo</string>
     <string name="edit_repositories">Editar repositorios</string>
     <string name="rem_repository">¿Remover repositorio?</string>
-    <string name="trending_movies">Películas en tendencia</string>
+    <string name="trending_movies">Películas en Tendencia</string>
     <string name="include_list">Incluir lista</string>
     <string name="top_rated">Mejor valorado</string>
-    <string name="most_favourite">Los más favoritos</string>
-    <string name="trending_manhwa">Manhwa en tendencia</string>
+    <string name="most_favourite">Los más Favoritos</string>
+    <string name="trending_manhwa">Manhwa en Tendencia</string>
     <string name="liked_by">Gustado por</string>
     <string name="adult_only_content">Contenido exclusivo para adultos</string>
     <string name="report">Reportar</string>
@@ -956,14 +957,19 @@
     <string name="directory_not_found">Directorio no encontrado</string>
     <string name="successfully_deleted">Eliminado exitosamente</string>
     <string name="failed_to_delete_directory">Error al borrar directorio</string>
-    <string name="hidden_anime">Hidden Anime</string>
-    <string name="hidden_manga">Hidden Manga</string>
+    <string name="hidden_anime">Anime oculto</string>
+    <string name="hidden_manga">Manga Oculto</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Tú</string>
     <string name="logout_confirm">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="app_died">APP MUERTA</string>
     <string name="an_unexpected_error_occurred">Se produjo un error inesperado.\nPor favor, envía un informe de fallo al desarrollador :)</string>
     <string name="copy_report">Copiar Reporte</string>
-    <string name="share_as_file">Share as file</string>
+    <string name="share_as_file">Compartir como archivo</string>
     <string name="hidden">Oculto</string>
-    <string name="no_hidden_items">No Hidden Items</string>
+    <string name="no_hidden_items">Sin elementos ocultos</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

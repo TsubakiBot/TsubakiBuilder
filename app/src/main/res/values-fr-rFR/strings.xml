@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="fr">
-    <string name="slogan">La nouvelle meilleure application Android pour Anime &amp; Manga.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Connexion</string>
     <string name="logout">Déconnexion</string>
     <string name="conversion_title">Bienvenue!</string>
@@ -307,7 +307,7 @@
     <string name="layout">Mise en page</string>
     <string name="spaced_pages">Pages espacées</string>
     <string name="direction">Orientation</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">API de commentaires (Privé)</string>
     <string name="disable_mitm">Empêcher l\'injection (\"Pranks\")</string>
     <string name="general">Général</string>
     <string name="show_system_bars">Afficher les barres d\'état et de navigation</string>
@@ -806,13 +806,14 @@ Genre : "</string>
     <string name="log_in">se connecter</string>
     <string name="or_join">ou s\'inscrire</string>
     <string name="audio_tracks">Pistes audio</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">Désactivée</string>
     <string name="invalid_track">Invalide</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Inconnue</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Couleur d\'arrière-plan supérieure</string>
     <string name="bottom_background_color">Couleur d\'arrière-plan inférieure</string>
     <string name="countdown_text_color">Couleur du texte du compte à rebours</string>
@@ -963,6 +964,8 @@ Genre : "</string>
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Vous</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -971,4 +974,7 @@ Genre : "</string>
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Caché</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="zh-rCN">
-    <string name="slogan">全新的最佳动漫与漫画应用程序，适用于Android。</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">登录</string>
     <string name="logout">登出</string>
     <string name="conversion_title">欢迎回来！</string>
@@ -307,7 +307,7 @@
     <string name="layout">布局</string>
     <string name="spaced_pages">间隔页面</string>
     <string name="direction">方向</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">评论 API (私人)</string>
     <string name="disable_mitm">防止注入(\"Pranks\")</string>
     <string name="general">常规</string>
     <string name="show_system_bars">显示状态栏和导航栏</string>
@@ -797,13 +797,14 @@
     <string name="log_in">登录</string>
     <string name="or_join">或加入</string>
     <string name="audio_tracks">音轨</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">Disabled</string>
     <string name="invalid_track">Invalid</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] 未知</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">顶部背景颜色</string>
     <string name="bottom_background_color">底部背景颜色</string>
     <string name="countdown_text_color">倒计时文本颜色</string>
@@ -954,6 +955,8 @@
     <string name="failed_to_delete_directory">删除目录失败</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">您</string>
     <string name="logout_confirm">您确定要注销吗？</string>
     <string name="app_died">应用程序崩溃</string>
@@ -962,4 +965,7 @@
     <string name="share_as_file">分享为文件</string>
     <string name="hidden">隐藏</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

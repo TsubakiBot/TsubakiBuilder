@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="as">
-    <string name="slogan">Androidৰ বাবে নতুন শ্ৰেষ্ঠ এনিমে &amp; মাংগাৰ এপ্‌।</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">লগইন</string>
     <string name="logout">লগআউট</string>
     <string name="conversion_title">Welcome back!</string>
@@ -307,7 +307,7 @@
     <string name="layout">লে’আ’উট</string>
     <string name="spaced_pages">স্থানসমূহ পৃষ্ঠা</string>
     <string name="direction">দিশ</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">Comments API (Private)</string>
     <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
     <string name="general">সাধাৰণ</string>
     <string name="show_system_bars">ষ্টেটাছ আৰু পৱথৰ বাৰ দেখুৱাওক</string>
@@ -800,13 +800,14 @@
     <string name="log_in">লগ ইন</string>
     <string name="or_join">অথবা যোগ কৰক।</string>
     <string name="audio_tracks">অডিঅ’ ট্ৰেকসমূহ</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Disabled</string>
     <string name="invalid_track">অবৈধ</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Unknown</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">ওপৰৰ পৃষ্ঠভূমিৰ ৰং</string>
     <string name="bottom_background_color">তলৰ পৃষ্ঠভূমিৰ ৰং</string>
     <string name="countdown_text_color">কাউন্টডাউন পাঠৰ ৰং</string>
@@ -957,6 +958,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">আপুনি</string>
     <string name="logout_confirm">আপুনি লগ আউট কৰিব বিচাৰিছে?</string>
     <string name="app_died">এপি পুলে গৈছিল</string>
@@ -965,4 +968,7 @@
     <string name="share_as_file">ফাইলৰ হিচাপে শ্বেয়াৰ কৰক</string>
     <string name="hidden">লুকুৱা</string>
     <string name="no_hidden_items">কুনু লোকুৱা বস্তু নাই</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

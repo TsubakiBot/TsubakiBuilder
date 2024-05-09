@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="vi">
-    <string name="slogan">Ứng dụng Anime &amp; Manga Mới Nhất cho Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Đăng nhập</string>
     <string name="logout">Đăng xuất</string>
     <string name="conversion_title">Chào mừng trở lại!</string>
@@ -307,7 +307,7 @@
     <string name="layout">Bố cục</string>
     <string name="spaced_pages">Trang Cách</string>
     <string name="direction">Hướng</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">API Bình Luận (Riêng Tư)</string>
     <string name="disable_mitm">Ngăn Chặn Tiêm Nhiễm (\"Trò Đùa\")</string>
     <string name="general">Chung</string>
     <string name="show_system_bars">Hiển Thị Thanh Trạng Thái &amp; Thanh Điều Hướng</string>
@@ -803,13 +803,14 @@
     <string name="log_in">đăng nhập</string>
     <string name="or_join">hoặc tham gia</string>
     <string name="audio_tracks">Danh Sách Âm Thanh</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Tắt</string>
     <string name="invalid_track">\[⁉️\] Không Hợp Lệ</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Không Xác Định</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Màu nền đầu trang</string>
     <string name="bottom_background_color">Màu nền cuối trang</string>
     <string name="countdown_text_color">Màu văn bản đếm ngược</string>
@@ -960,6 +961,8 @@
     <string name="failed_to_delete_directory">Không thể xóa thư mục</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Bạn</string>
     <string name="logout_confirm">Bạn có chắc chắn muốn đăng xuất không?</string>
     <string name="app_died">Ứng dụng đã dừng</string>
@@ -968,4 +971,7 @@
     <string name="share_as_file">Chia sẻ dưới dạng tệp</string>
     <string name="hidden">Ẩn</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ja">
-    <string name="slogan">Android用の新しいベストアニメ &amp; マンガアプリ。</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">サインイン</string>
     <string name="logout">ログアウト</string>
     <string name="conversion_title">おかえりなさい！</string>
@@ -307,7 +307,7 @@
     <string name="layout">レイアウト</string>
     <string name="spaced_pages">間隔ページ</string>
     <string name="direction">方向</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">コメント API (プライベート)</string>
     <string name="disable_mitm">注入防止 (「いたずら」)</string>
     <string name="general">全般</string>
     <string name="show_system_bars">ステータスバーとナビゲーションバーを表示</string>
@@ -803,13 +803,14 @@
     <string name="log_in">ログイン</string>
     <string name="or_join">または参加</string>
     <string name="audio_tracks">オーディオトラック</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] 無効</string>
     <string name="invalid_track">\[!?\" 無効</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] 不明</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">上部の背景色</string>
     <string name="bottom_background_color">下部の背景色</string>
     <string name="countdown_text_color">カウントダウンテキストの色</string>
@@ -960,6 +961,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">あなた</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -968,4 +971,7 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">非表示</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

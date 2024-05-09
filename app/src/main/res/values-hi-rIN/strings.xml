@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="hi">
-    <string name="slogan">एंड्रॉयड के लिए नया सर्वश्रेष्ठ एनिमे और मंगा ऐप।</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">लॉग इन करें</string>
     <string name="logout">लॉग आउट करें</string>
     <string name="conversion_title">Welcome back!</string>
@@ -307,7 +307,7 @@
     <string name="layout">लेआउट</string>
     <string name="spaced_pages">सपेसड पृष्ठ</string>
     <string name="direction">दिशा</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">Comments API (Private)</string>
     <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
     <string name="general">सामान्य</string>
     <string name="show_system_bars">स्थिति और नेविगेशन बार दिखाएं</string>
@@ -800,13 +800,14 @@
     <string name="log_in">लॉग इन करें</string>
     <string name="or_join">या शामिल हों</string>
     <string name="audio_tracks">ऑडियो ट्रैक्स</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Disabled</string>
     <string name="invalid_track">अमान्य</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Unknown</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">ऊपरी पृष्ठभूमि रंग</string>
     <string name="bottom_background_color">निचला पृष्ठभूमि रंग</string>
     <string name="countdown_text_color">गिनती का माप टेक्स्ट का रंग</string>
@@ -957,6 +958,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">तुम</string>
     <string name="logout_confirm">क्या आप वाकई लॉगआउट करना चाहते हैं?</string>
     <string name="app_died">एप डाउन हो गया</string>
@@ -965,4 +968,7 @@
     <string name="share_as_file">फ़ाइल के रूप में साझा करें</string>
     <string name="hidden">छिपा हुआ</string>
     <string name="no_hidden_items">कोई छिपा हुआ सामान नहीं हे</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="cs">
-    <string name="slogan">NEW Best Anime &amp; Manga app pro Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Přihlásit se</string>
     <string name="logout">Odhlásit se</string>
     <string name="conversion_title">Vítejte zpět!</string>
@@ -307,7 +307,7 @@
     <string name="layout">Rozložení</string>
     <string name="spaced_pages">Mezery stránek</string>
     <string name="direction">Směr</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">API komentářů (soukromý)</string>
     <string name="disable_mitm">Zabránit vniknutí (\"Pranks\")</string>
     <string name="general">Obecná ustanovení</string>
     <string name="show_system_bars">Zobrazit stav &amp; Navigační lišty</string>
@@ -803,13 +803,14 @@
     <string name="log_in">Přihlásit se</string>
     <string name="or_join">nebo se připojit</string>
     <string name="audio_tracks">Zvukové stopy</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Zakázáno</string>
     <string name="invalid_track">\[!?\] Neplatné</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Neznámé</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Nejvyšší barva pozadí</string>
     <string name="bottom_background_color">Barva spodního pozadí</string>
     <string name="countdown_text_color">Barva textu odpočítávání</string>
@@ -960,6 +961,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Ty</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -968,4 +971,7 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Skryté</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

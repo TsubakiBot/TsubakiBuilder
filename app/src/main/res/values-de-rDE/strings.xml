@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="de">
-    <string name="slogan">Die NEUE beste Anime- &amp; Manga-App für Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Anmelden</string>
     <string name="logout">Abmelden</string>
     <string name="conversion_title">Willkommen zurück!</string>
@@ -308,7 +308,7 @@
     <string name="layout">Layout</string>
     <string name="spaced_pages">Seitenabstand</string>
     <string name="direction">Richtung</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">Kommentar-API (privat)</string>
     <string name="disable_mitm">Spritzen verhindern (\"Pranks\")</string>
     <string name="general">Allgemein</string>
     <string name="show_system_bars">Status- &amp; Navigationsleisten anzeigen</string>
@@ -804,13 +804,14 @@
     <string name="log_in">sich anmelden</string>
     <string name="or_join">oder beitreten</string>
     <string name="audio_tracks">Audiospuren</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">Behinderte</string>
     <string name="invalid_track">Ungültig</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Unbekannt</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Hintergrundfarbe oben</string>
     <string name="bottom_background_color">Untere Hintergrundfarbe</string>
     <string name="countdown_text_color">Countdown Textfarbe</string>
@@ -961,6 +962,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Sie</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -969,4 +972,7 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Versteckt</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

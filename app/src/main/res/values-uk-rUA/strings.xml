@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="uk">
-    <string name="slogan">НОВИЙ Найкращий додаток для аніме та манги для Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Увійти</string>
     <string name="logout">Вихід із системи</string>
     <string name="conversion_title">З поверненням!</string>
@@ -307,7 +307,7 @@
     <string name="layout">Макет</string>
     <string name="spaced_pages">Розділені сторінки</string>
     <string name="direction">Напрямок</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">Коментарі API (приватний)</string>
     <string name="disable_mitm">Запобігти зануренню (\"Прак\")</string>
     <string name="general">Загальні налаштування</string>
     <string name="show_system_bars">Показати статус: &amp; Панель навігації</string>
@@ -803,13 +803,14 @@
     <string name="log_in">увійти в</string>
     <string name="or_join">або приєднайтеся</string>
     <string name="audio_tracks">Аудіотреки</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Вимкнено</string>
     <string name="invalid_track">\[!?\] Неприпустимий</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Невідомий</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Колір верхнього фону</string>
     <string name="bottom_background_color">Колір тла внизу</string>
     <string name="countdown_text_color">Колір тексту зворотнього відліку</string>
@@ -960,6 +961,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Ви</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -968,4 +971,7 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Приховано</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>

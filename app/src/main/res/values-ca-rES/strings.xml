@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="ca">
-    <string name="slogan">La millor aplicació d\'Anime i Manga per a Android.</string>
+    <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">Inicia la sessió</string>
     <string name="logout">Tanca la sessió</string>
     <string name="conversion_title">Benvingut/da de nou!</string>
@@ -301,7 +301,7 @@
     <string name="layout">Disseny</string>
     <string name="spaced_pages">Pàgines Espaiades</string>
     <string name="direction">Direcció</string>
-    <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api">API de Comentaris (Privada)</string>
     <string name="disable_mitm">Prevenir Injecció (\"Bromes\")</string>
     <string name="general">General</string>
     <string name="show_system_bars">Mostrar Barres d\'Estat i de Navegació</string>
@@ -797,13 +797,14 @@
     <string name="log_in">inicia la sessió</string>
     <string name="or_join">o uneix-te</string>
     <string name="audio_tracks">Pistes d\'àudio</string>
-    <string name="disabled_track">\[⛔\] Disable Subtitles</string>
+    <string name="disabled_track">\[💬\] Desactivat</string>
     <string name="invalid_track">\[⁉️\] Invàlid</string>
-    <string name="unknown_track">\[%1$s\] Unknown Language</string>
-    <string name="load_subtitle">\[👀\] Load User Subtitle</string>
+    <string name="unknown_track">\[%1$s\] Desconegut</string>
+    <string name="load_subtitle">\[👀\] Load Subtitle File</string>
     <string name="subtitle_url">Enter URL or Import File</string>
     <string name="import_file">Import file</string>
     <string name="duplicate_sub">Subtitle already loaded</string>
+    <string name="remove_subtitle">Remove subtitle track?</string>
     <string name="top_background_color">Color de fons superior</string>
     <string name="bottom_background_color">Color de fons inferior</string>
     <string name="countdown_text_color">Color del text del compte enrere</string>
@@ -954,6 +955,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
+    <string name="randome_anime">Random Anime</string>
+    <string name="randome_manga">Random Manga</string>
     <string name="you">Tu</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="app_died">APP DIED</string>
@@ -962,4 +965,7 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Ocult</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="all">All</string>
+    <string name="activity">Activity</string>
+    <string name="threads">Threads</string>
 </resources>
