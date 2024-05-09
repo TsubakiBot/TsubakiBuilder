@@ -50,15 +50,29 @@
             android:textSize="18sp"
             tools:text="Follow" />
 
-        <ImageView
-            android:id="@+id/followFilterButton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/followFilterView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:contentDescription="@string/menu"
-            android:src="@drawable/ic_round_filter_alt_24"
-            app:tint="?attr/colorOnBackground" />
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/nav_bg_inv"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/followFilterButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:alpha="0.33"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:scaleX="-1"
+                app:srcCompat="@drawable/ic_round_filter_alt_24"
+                app:tint="?attr/colorPrimary" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -153,6 +167,7 @@
         android:layout_weight="0"
         android:background="?attr/colorSurface"
         android:padding="0dp"
+        android:visibility="gone"
         app:abb_animationInterpolator="@anim/over_shoot"
         app:abb_indicatorAppearance="round"
         app:abb_indicatorLocation="top"
@@ -164,7 +179,6 @@
         app:itemRippleColor="#00000000"
         app:itemTextAppearanceActive="@style/NavBarText"
         app:itemTextAppearanceInactive="@style/NavBarText"
-        app:itemTextColor="@color/tab_layout_icon"
-        android:visibility="gone"/>
+        app:itemTextColor="@color/tab_layout_icon"/>
 
 </LinearLayout>

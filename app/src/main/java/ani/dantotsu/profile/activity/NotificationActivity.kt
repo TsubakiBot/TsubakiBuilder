@@ -72,6 +72,7 @@ class NotificationActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         binding.listProgressBar.visibility = ViewGroup.VISIBLE
+        binding.followFilterView.visibility = View.VISIBLE
         binding.followFilterButton.setOnClickListener {
             val dialogView = CustomDialogLayoutBinding.inflate(layoutInflater)
             dialogView.dialogHeading.visibility = View.GONE
