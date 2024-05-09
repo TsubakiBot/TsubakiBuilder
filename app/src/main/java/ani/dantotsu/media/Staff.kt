@@ -9,7 +9,7 @@ data class Staff(
     val language: String?,
     val image: String?,
     var description: String? = null,
-    var primaryOccupations: List<String>?,
+    var occupations: List<String>?,
     var gender: String? = null,
     var dateOfBirth: FuzzyDate? = null,
     var dateOfDeath: FuzzyDate? = null,
@@ -18,7 +18,7 @@ data class Staff(
     var endYear: Int? = null,
     var homeTown: String? = null,
     var bloodType: String? = null,
-    var isFav: Boolean
+    var isFav: Boolean? = false
 ) : Serializable
 
 // languageV2 - apanese, English, Korean, Italian, Spanish, Portuguese, French, German,

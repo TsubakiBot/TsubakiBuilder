@@ -513,7 +513,6 @@ class HomeFragment : Fragment() {
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
             }
-
         }
 
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())

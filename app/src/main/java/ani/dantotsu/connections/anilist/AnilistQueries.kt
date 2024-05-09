@@ -957,7 +957,7 @@ class AnilistQueries {
     suspend fun searchCharacter(
     id: Int? = null,
     search: String? = null
-    ) {
+    ): ArrayList<Character> {
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
   Page(page: 1, perPage: 10) {
@@ -1010,7 +1010,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
                 it.image?.large,
                 it.image?.medium,
                 "",
-                false,
+                it.isFavourite!!,
                 it.description,
                 it.age,
                 it.gender,
@@ -1018,13 +1018,13 @@ query (${"$"}id: Int, ${"$"}search: String) {
             )
             responseArray.add(character)
         }
-        return
+        return responseArray
     }
 
     suspend fun searchStaff(
     id: Int? = null,
     search: String? = null
-    ) {
+    ): ArrayList<Staff> {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
@@ -1078,17 +1078,35 @@ query (${"$"}id: Int, ${"$"}search: String) {
             }"""
 
         val response = executeQuery<Query.Employee>(query, variables, true)?.data
+        Logger.log(response.toString())
         val responseArray = arrayListOf<Staff>()
         response?.staff?.forEach {
-
+            val employee = Staff(
+                it.id,
+                it.name?.userPreferred,
+                it.languageV2,
+                it.image?.large,
+                it.description,
+                it.primaryOccupations,
+                it.gender,
+                it.dateOfBirth,
+                it.dateOfDeath,
+                it.age,
+                it.yearsActive?.getOrNull(0),
+                it.yearsActive?.getOrNull(1),
+                it.homeTown,
+                it.bloodType,
+                it.isFavourite
+            )
+            responseArray.add(employee)
         }
-        return
+        return responseArray
     }
 
     suspend fun searchStudio(
         id: Int? = null,
         search: String? = null
-    ) {
+    ): ArrayList<Atelier> {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
@@ -1148,8 +1166,9 @@ query (${"$"}id: Int, ${"$"}search: String) {
                 it.isAnimationStudio!!,
                 it.isFavourite!!
             )
+            responseArray.add(studio)
         }
-        return
+        return responseArray
     }
 
     suspend fun search(
