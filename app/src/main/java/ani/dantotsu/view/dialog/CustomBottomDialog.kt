@@ -57,7 +57,7 @@ open class CustomBottomDialog : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.bottomSheerCustomTitle.text = title
+        binding.bottomSheetCustomTitle.text = title
         viewList.forEach {
             binding.bottomDialogCustomContainer.addView(it)
         }

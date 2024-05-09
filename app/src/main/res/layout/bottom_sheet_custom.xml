@@ -20,7 +20,7 @@
             android:gravity="center"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="-4dp"
+            android:layout_marginBottom="-8dp"
             android:button="@null"
             android:buttonTint="?attr/colorPrimary"
             android:drawablePadding="4dp"
@@ -30,7 +30,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/bottomSheerCustomTitle"
+            android:id="@+id/bottomSheetCustomTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
