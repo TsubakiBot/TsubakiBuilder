@@ -177,7 +177,6 @@
     <string name="ui_settings">Ustawienia interfejsu użytkownika</string>
     <string name="system">System</string>
     <string name="about">O programie</string>
-    <string name="desc">"    Dantotsu jest wytwarzany z popiołów Saikou i opiera się na uproszczonych, a zarazem nowoczesnych elegancji. Jest to klient z anilią, który umożliwia również pobieranie strumienia Anime za pośrednictwem rozszerzeń &amp; Manga.\nDantotsu dosłownie oznacza \"najlepsze z najlepszych\" w japanesie. Cóż, chcielibyśmy powiedzieć, że jest to najlepsza aplikacja open source dla anime i manga na Androida, co by powiedziałeś?"</string>
     <string name="devs">Współtwórcy</string>
     <string name="disclaimer">Zastrzeżenie</string>
     <string name="full_disclaimer">         - Dantotsu sam w sobie dostarcza tylko tracker anime i manga i nie zapewnia żadnych możliwości przesyłania anime lub manga ani pobierania danych.

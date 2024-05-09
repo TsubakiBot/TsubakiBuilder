@@ -177,7 +177,6 @@
     <string name="ui_settings">UI 设置</string>
     <string name="system">系统</string>
     <string name="about">关于</string>
-    <string name="desc">"    Dantotsu 是从 Saikou 的残骸中精心制作而成，基于简约而又先进的优雅。它是一个仅限于 Anilist 的客户端，还允许您通过扩展和漫画来流式传输 - 下载动画。\nDantotsu 在日语中的意思是“最好的”，我们想说这是 Android 上最好的开源动画和漫画应用程序，您会说什么呢？"</string>
     <string name="devs">开发者/帮助者</string>
     <string name="disclaimer">免责声明</string>
     <string name="full_disclaimer">         - Dantotsu 本身仅提供动画和漫画跟踪器，并不提供任何动画或漫画的流式传输或下载能力。

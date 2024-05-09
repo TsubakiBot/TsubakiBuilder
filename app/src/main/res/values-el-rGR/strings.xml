@@ -177,7 +177,6 @@
     <string name="ui_settings">Ρύθμισης Διεπαφής χρήστη</string>
     <string name="system">Σύστημα</string>
     <string name="about">Σχετικά με</string>
-    <string name="desc">"    Το Dantotsu είναι φτιαγμένο από τις στάχτες του Saikou και βασίζεται στην απλοϊκή αλλά τελευταίας τεχνολογίας κομψότητα. Είναι ένα client μόνο για Anilist, ο οποίος σας επιτρέπει επίσης να κατεβάζετε Anime μέσω ροής μέσω επεκτάσεων &amp; Manga.\nDantotsu κυριολεκτικά σημαίνει \"το καλύτερο από τα καλύτερα\" στα ιαπωνικά. Λοιπόν, θα θέλαμε να πούμε ότι αυτή είναι η καλύτερη εφαρμογή ανοιχτού κώδικα για anime και manga στο Android, τι θα έλεγες;"</string>
     <string name="devs">Προγραμματιστές/Βοηθοί</string>
     <string name="disclaimer">Αποποίηση ευθυνών</string>
     <string name="full_disclaimer">         - Το Dantotsu από μόνο του παρέχει μόνο anime και manga tracker και δεν παρέχει δυνατότητες ροής ή λήψης anime ή manga.

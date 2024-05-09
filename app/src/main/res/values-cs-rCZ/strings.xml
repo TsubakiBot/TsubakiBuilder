@@ -177,7 +177,6 @@
     <string name="ui_settings">Nastavení uživatelského rozhraní</string>
     <string name="system">Systém</string>
     <string name="about">O aplikaci</string>
-    <string name="desc">"    Dantotsu se vyrábí z popela Saiku a je založen na zjednodušující, ale nejmodernější eleganci. Je to Anilist pouze klient, který vám také umožní stream-download Anime prostřednictvím rozšíření &amp; Manga.\nDantotsu doslova znamená \"nejlepší z nejlepších\" v japanech. No, rádi bychom řekli, že je to nejlepší open source aplikace pro anime a manga na Android, co byste řekli?"</string>
     <string name="devs">Přispěvatelé</string>
     <string name="disclaimer">Odmítnutí odpovědnosti</string>
     <string name="full_disclaimer">         - Dantotsu sám poskytuje pouze anime a manga tracker a neposkytuje žádné anime nebo manga streamování nebo stahování.

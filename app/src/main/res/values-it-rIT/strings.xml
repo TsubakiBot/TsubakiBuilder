@@ -177,7 +177,6 @@
     <string name="ui_settings">Impostazioni UI</string>
     <string name="system">Sistema</string>
     <string name="about">Informazioni</string>
-    <string name="desc">"    Dantotsu nasce dalle ceneri di Saikou e si basa su un'eleganza semplicistica ma all'avanguardia. È un client solo per Anilist, che consente anche di scaricare Anime in streaming tramite estensioni &amp; Manga.\nDantotsu significa letteralmente \"il meglio del meglio\" in giapponese. Noi vorremmo dire che questa è la migliore applicazione open source per anime e manga su Android, voi che ne dite?"</string>
     <string name="devs">Sviluppatori/Aiutanti</string>
     <string name="disclaimer">Dichiarazione di Responsabilità</string>
     <string name="full_disclaimer">         - Dantotsu by itself only provides an anime and manga tracker and does not provide any anime or manga streaming or downloading capabilities.

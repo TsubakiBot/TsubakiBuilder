@@ -177,7 +177,6 @@
     <string name="ui_settings">UI の設定</string>
     <string name="system">システム</string>
     <string name="about">About</string>
-    <string name="desc">"    Dantotsuは「最高の最高」を意味し、簡素ながら最新のエレガンスを備えたSaikouの残骸から作られました。これはAnilist専用のクライアントであり、拡張機能やマンガを介したアニメのストリーミングとダウンロードも可能です。\nDantotsuは日本語で「最高の最高」という意味です。まあ、これはAndroidのアニメとマンガのための最高のオープンソースアプリだと言いたいですが、あなたはどう思いますか？"</string>
     <string name="devs">貢献者</string>
     <string name="disclaimer">免責事項</string>
     <string name="full_disclaimer">         - Dantotsu自体はアニメとマンガの追跡のみを提供し、アニメまたはマンガのストリーミングまたはダウンロード機能を提供しません。

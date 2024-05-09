@@ -177,7 +177,6 @@
     <string name="ui_settings">Cài Đặt Giao Diện Người Dùng</string>
     <string name="system">Hệ Thống</string>
     <string name="about">Về Ứng Dụng</string>
-    <string name="desc">"Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cũng cho phép bạn xem-tải xuống Anime thông qua các tiện ích &amp; Manga.\nDantotsu có nghĩa là \"tốt nhất trong tốt nhất\" trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, bạn nghĩ sao?"</string>
     <string name="devs">Người Đóng Góp</string>
     <string name="disclaimer">Miễn Trừ Trách Nhiệm</string>
     <string name="full_disclaimer">         - Dantotsu chỉ cung cấp một công cụ theo dõi anime và manga và không cung cấp khả năng xem hoặc tải xuống bất kỳ anime hoặc manga nào.

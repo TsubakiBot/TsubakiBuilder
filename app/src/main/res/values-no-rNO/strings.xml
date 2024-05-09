@@ -177,7 +177,6 @@
     <string name="ui_settings">UI innstillinger</string>
     <string name="system">Systemadministrasjon</string>
     <string name="about">Om</string>
-    <string name="desc">"    Dantotsu er lagd av Saikou fra asken og basert på en enestående elegans som likevel er enkel og oppslukt. Det er en Anilist bare klient, som også lar deg krage Anime gjennom utvidelser &amp; Manga.\nDantotsu betyr bokstavelig talt \"det beste av best av\" på japansk. Vel, vi ønsker å si at dette er den beste åpen kildekode-appen for anime og manga på Android, hva vil du si?"</string>
     <string name="devs">Bidragsytere</string>
     <string name="disclaimer">Ansvarsfraksjon</string>
     <string name="full_disclaimer">         - Dantotsu gir alene bare en anime og manga-tracker og leverer ikke noen anime eller manga strømme- eller nedlastingsevner.

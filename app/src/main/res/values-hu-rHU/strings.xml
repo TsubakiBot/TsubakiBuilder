@@ -177,7 +177,6 @@
     <string name="ui_settings">Felhasználói Felület Beállításai</string>
     <string name="system">Rendszer</string>
     <string name="about">Névjegy</string>
-    <string name="desc">"    A Dantotsu a Saikou hamvain épült fel, és egyszerű, mégis csúcstechnológiás elegancián alapul. Ez kizárólag Anilist ügyfelek számára készült, amely lehetővé teszi az animek és mangák streamelését és letöltését kiegészítőkön keresztül.\nDantotsu jelentése japánul \"a legjobbak legjobbja\". Nos, azt mondanánk, hogy ez a legjobb nyílt forráskódú alkalmazás az animek és mangák számára Androidon, te mit mondanál?"</string>
     <string name="devs">Hozzájárulók</string>
     <string name="disclaimer">Figyelemfelhívás</string>
     <string name="full_disclaimer">         - A Dantotsu csak egy anime és manga nyomkövetőt biztosít, és nem kínál semmilyen anime vagy manga streamelési vagy letöltési lehetőséget.

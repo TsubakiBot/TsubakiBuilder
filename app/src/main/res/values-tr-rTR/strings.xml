@@ -177,7 +177,6 @@
     <string name="ui_settings">UI Ayarları</string>
     <string name="system">Sistem</string>
     <string name="about">Hakkında</string>
-    <string name="desc">"Dantotsu, Saikou'un küllerinden oluşturulmuş ve basit ancak son derece şık bir zarafete dayanmaktadır. Sadece Anilist istemcisi olan Dantotsu, aynı zamanda uzantılar ve Manga aracılığıyla Anime akışı ve indirme imkanı sunar.\nDantotsu, Japonca'da \"en iyisi\" anlamına gelir. Peki, bu Android'de anime ve manga için en iyi açık kaynaklı uygulama olduğunu söylesek, siz ne dersiniz?"</string>
     <string name="devs">Katkı Sağlayanlar</string>
     <string name="disclaimer">Reddiye</string>
     <string name="full_disclaimer">         - Dantotsu yalnızca bir anime ve manga izleyici sağlar ve herhangi bir anime veya manga akışı veya indirme yeteneği sağlamaz.
