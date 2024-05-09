@@ -99,6 +99,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (PrefManager.getCustomVal("requires_update_refresh", false)) {
+            PrefManager.removeCustomVal("requires_update_refresh")
+            startMainActivity(this)
+            return
+        }
+
         TaskScheduler.scheduleSingleWork(this)
 
         val action = intent.action

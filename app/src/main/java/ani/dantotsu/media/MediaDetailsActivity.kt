@@ -561,13 +561,13 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onUserInteraction() {
         super.onUserInteraction()
-        binding.mediaCover.isInvisible = false
-        binding.mediaTitleCollapse.isInvisible = false
-        binding.mediaStatus.isInvisible = false
         if (isUserLeaveHint) {
             isUserLeaveHint = false
             return
         }
+        binding.mediaCover.isInvisible = false
+        binding.mediaTitleCollapse.isInvisible = false
+        binding.mediaStatus.isInvisible = false
         setInterfaceTimeout()
     }
 
