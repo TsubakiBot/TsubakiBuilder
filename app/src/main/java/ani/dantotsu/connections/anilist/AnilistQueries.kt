@@ -422,33 +422,33 @@ class AnilistQueries {
         val toShow: List<Boolean> =
             PrefManager.getVal(PrefName.HomeLayout) // anime continue, anime fav, anime planned, manga continue, manga fav, manga planned, recommendations
         var query = """{"""
-        if (toShow.getOrNull(0) == true) query += """currentAnime: ${
+        query += """currentAnime: ${
             continueMediaQuery(
                 "ANIME",
                 "CURRENT"
             )
         }, repeatingAnime: ${continueMediaQuery("ANIME", "REPEATING")}"""
-        if (toShow.getOrNull(1) == true) query += """favoriteAnime: ${favMediaQuery(true, 1)}"""
-        if (toShow.getOrNull(2) == true) query += """plannedAnime: ${
+        query += """favoriteAnime: ${favMediaQuery(true, 1)}"""
+        query += """plannedAnime: ${
             continueMediaQuery(
                 "ANIME",
                 "PLANNING"
             )
         }"""
-        if (toShow.getOrNull(3) == true) query += """currentManga: ${
+        query += """currentManga: ${
             continueMediaQuery(
                 "MANGA",
                 "CURRENT"
             )
         }, repeatingManga: ${continueMediaQuery("MANGA", "REPEATING")}"""
-        if (toShow.getOrNull(4) == true) query += """favoriteManga: ${favMediaQuery(false, 1)}"""
-        if (toShow.getOrNull(5) == true) query += """plannedManga: ${
+        query += """favoriteManga: ${favMediaQuery(false, 1)}"""
+        query += """plannedManga: ${
             continueMediaQuery(
                 "MANGA",
                 "PLANNING"
             )
         }"""
-        if (toShow.getOrNull(6) == true) query += """recommendationQuery: ${recommendationQuery()}, recommendationPlannedQueryAnime: ${
+        query += """recommendationQuery: ${recommendationQuery()}, recommendationPlannedQueryAnime: ${
             recommendationPlannedQuery(
                 "ANIME"
             )
@@ -561,62 +561,55 @@ class AnilistQueries {
             returnMap["favorite$type"] = returnArray
         }
 
-        if (toShow.getOrNull(0) == true) {
-            current("Anime")
+        current("Anime")
+
+        favorite("Anime")
+
+        planned("Anime")
+
+        current("Manga")
+
+        favorite("Manga")
+
+        planned("Manga")
+
+        val subMap = mutableMapOf<Int, Media>()
+        response?.data?.recommendationQuery?.apply {
+            recommendations?.onEach {
+                val json = it.mediaRecommendation
+                if (json != null) {
+                    val m = Media(json)
+                    m.relation = json.type?.toString()
+                    subMap[m.id] = m
+                }
+            }
         }
-        if (toShow.getOrNull(1) == true) {
-            favorite("Anime")
-        }
-        if (toShow.getOrNull(2) == true) {
-            planned("Anime")
-        }
-        if (toShow.getOrNull(3) == true) {
-            current("Manga")
-        }
-        if (toShow.getOrNull(4) == true) {
-            favorite("Manga")
-        }
-        if (toShow.getOrNull(5) == true) {
-            planned("Manga")
-        }
-        if (toShow.getOrNull(6) == true) {
-            val subMap = mutableMapOf<Int, Media>()
-            response?.data?.recommendationQuery?.apply {
-                recommendations?.onEach {
-                    val json = it.mediaRecommendation
-                    if (json != null) {
-                        val m = Media(json)
-                        m.relation = json.type?.toString()
+        response?.data?.recommendationPlannedQueryAnime?.apply {
+            lists?.forEach { li ->
+                li.entries?.forEach {
+                    val m = Media(it)
+                    if (m.status == "RELEASING" || m.status == "FINISHED") {
+                        m.relation = it.media?.type?.toString()
                         subMap[m.id] = m
                     }
                 }
             }
-            response?.data?.recommendationPlannedQueryAnime?.apply {
-                lists?.forEach { li ->
-                    li.entries?.forEach {
-                        val m = Media(it)
-                        if (m.status == "RELEASING" || m.status == "FINISHED") {
-                            m.relation = it.media?.type?.toString()
-                            subMap[m.id] = m
-                        }
-                    }
-                }
-            }
-            response?.data?.recommendationPlannedQueryManga?.apply {
-                lists?.forEach { li ->
-                    li.entries?.forEach {
-                        val m = Media(it)
-                        if (m.status == "RELEASING" || m.status == "FINISHED") {
-                            m.relation = it.media?.type?.toString()
-                            subMap[m.id] = m
-                        }
-                    }
-                }
-            }
-            val list = ArrayList(subMap.values.toList())
-            list.sortByDescending { it.meanScore }
-            returnMap["recommendations"] = list
         }
+        response?.data?.recommendationPlannedQueryManga?.apply {
+            lists?.forEach { li ->
+                li.entries?.forEach {
+                    val m = Media(it)
+                    if (m.status == "RELEASING" || m.status == "FINISHED") {
+                        m.relation = it.media?.type?.toString()
+                        subMap[m.id] = m
+                    }
+                }
+            }
+        }
+        val subList = ArrayList(subMap.values.toList())
+        subList.sortByDescending { it.meanScore }
+        returnMap["recommendations"] = subList
+
         if (toShow.getOrNull(7) == true) {
             val list = mutableListOf<User>()
             val threeDaysAgo = Calendar.getInstance().apply {
@@ -655,13 +648,7 @@ class AnilistQueries {
                 returnMap["status"] = ArrayList(list)
             }
         }
-        if (!returnMap.containsKey("currentAnime")) current("Anime")
-        if (!returnMap.containsKey("favoriteAnime")) favorite("Anime")
-        if (!returnMap.containsKey("plannedAnime")) planned("Anime")
         returnMap["hiddenAnime"] = removedMedia.filter { it.anime != null }.distinctBy { it.id } as ArrayList<Media>
-        if (!returnMap.containsKey("currentManga")) current("Manga")
-        if (!returnMap.containsKey("favoriteManga")) favorite("Manga")
-        if (!returnMap.containsKey("plannedManga")) planned("Manga")
         returnMap["hiddenManga"] = removedMedia.filter { it.manga != null }.distinctBy { it.id } as ArrayList<Media>
         return returnMap
     }

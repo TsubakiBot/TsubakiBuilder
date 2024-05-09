@@ -108,35 +108,27 @@ class NotificationActivity : AppCompatActivity() {
                 bottomMargin = navBarHeight
             }
             binding.notificationNavBar.selectTabAt(0)
-            binding.notificationNavBar.onTabSelected = {
-                when (it.id) {
-                    R.id.notificationsAll -> filterByType(NotificationCategory.UNDEFINED)
-                    R.id.notificationsUser -> filterByType(NotificationCategory.SOCIAL)
-                    R.id.notificationsMedia -> filterByType(NotificationCategory.MEDIA)
-                    R.id.notificationsActivity -> filterByType(NotificationCategory.ACTIVITY)
-                    R.id.notificationsThreads -> filterByType(NotificationCategory.THREADS)
-                }
-            }
+            binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
         } else {
             binding.notificationNavBar.visibility = View.GONE
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun filterByType(category: NotificationCategory) {
-        val filters: List<String>? = when(category) {
-            NotificationCategory.SOCIAL -> listOf(
+    fun filterByType(id: Int?) {
+        val filters: List<String>? = when (id) {
+            R.id.notificationsUser -> listOf(
                 NotificationType.FOLLOWING.value,
                 NotificationType.COMMENT_REPLY.value
             )
-            NotificationCategory.MEDIA -> listOf(
+            R.id.notificationsMedia -> listOf(
                 NotificationType.AIRING.value,
                 NotificationType.RELATED_MEDIA_ADDITION.value,
                 NotificationType.MEDIA_DATA_CHANGE.value,
                 NotificationType.MEDIA_MERGE.value,
                 NotificationType.MEDIA_DELETION.value
             )
-            NotificationCategory.ACTIVITY -> listOf(
+            R.id.notificationsActivity -> listOf(
                 NotificationType.ACTIVITY_MESSAGE.value,
                 NotificationType.ACTIVITY_REPLY.value,
                 NotificationType.ACTIVITY_MENTION.value,
@@ -144,15 +136,14 @@ class NotificationActivity : AppCompatActivity() {
                 NotificationType.ACTIVITY_REPLY_LIKE.value,
                 NotificationType.ACTIVITY_REPLY_SUBSCRIBED.value
             )
-            NotificationCategory.THREADS -> listOf(
+            R.id.notificationsThreads -> listOf(
                 NotificationType.THREAD_COMMENT_MENTION.value,
                 NotificationType.THREAD_SUBSCRIBED.value,
                 NotificationType.THREAD_COMMENT_REPLY.value,
                 NotificationType.THREAD_LIKE.value,
                 NotificationType.THREAD_COMMENT_LIKE.value
             )
-
-            NotificationCategory.UNDEFINED -> null
+            else -> null
         }
 
         val newNotifications = filters?.let { list ->
@@ -216,13 +207,7 @@ class NotificationActivity : AppCompatActivity() {
                 currentPage = res?.data?.page?.pageInfo?.currentPage?.plus(1) ?: 1
                 hasNextPage = res?.data?.page?.pageInfo?.hasNextPage ?: false
                 if (Version.isNougat) {
-                    when (binding.notificationNavBar.selectedTab?.id) {
-                        R.id.notificationsAll -> filterByType(NotificationCategory.UNDEFINED)
-                        R.id.notificationsUser -> filterByType(NotificationCategory.SOCIAL)
-                        R.id.notificationsMedia -> filterByType(NotificationCategory.MEDIA)
-                        R.id.notificationsActivity -> filterByType(NotificationCategory.ACTIVITY)
-                        R.id.notificationsThreads -> filterByType(NotificationCategory.THREADS)
-                    }
+                    filterByType(binding.notificationNavBar.selectedTab?.id)
                 }
                 binding.followSwipeRefresh.isRefreshing = false
                 onFinish()
