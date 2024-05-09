@@ -32,7 +32,6 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.home.status.UserStatusAdapter
-import ani.dantotsu.isOnline
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
@@ -57,9 +56,7 @@ import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.io.Serializable
 import kotlin.math.max
@@ -488,8 +485,16 @@ class HomeFragment : Fragment() {
                     return media
                 }
 
-                var randomAnime = getRandomMedia(MediaType.ANIME)
-                var randomManga = getRandomMedia(MediaType.MANGA)
+                var randomAnime = getRandomMedia(MediaType.ANIME).also {
+                    binding.homeRandomAnime.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+                    binding.homeRandomAnime.visibility = View.VISIBLE
+                }
+                var randomManga = getRandomMedia(MediaType.MANGA).also {
+                    binding.homeRandomManga.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+                    binding.homeRandomManga.visibility = View.VISIBLE
+                }
 
                 fun onRandomClick(type: MediaType) {
                     val media = if (type == MediaType.MANGA) randomManga else randomAnime
@@ -507,12 +512,6 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
-                binding.homeRandomAnime.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
-                binding.homeRandomAnime.visibility = View.VISIBLE
-                binding.homeRandomManga.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
-                binding.homeRandomManga.visibility = View.VISIBLE
             }
 
         }
