@@ -466,13 +466,13 @@ class HomeFragment : Fragment() {
         }
 
         model.getRecommendation().observe(viewLifecycleOwner) {
-            val online = isOnline(requireContext()) && !it.isNullOrEmpty()
-            binding.homeRandomContainer.isVisible = online
-            if (online) {
-                binding.homeRandomAnime.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
-                binding.homeRandomManga.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
+            if (it.isNullOrEmpty()) {
+                binding.homeRandomContainer.visibility = View.GONE
+                binding.homeRandomAnime.visibility = View.GONE
+                binding.homeRandomManga.visibility = View.GONE
+            } else {
+                binding.homeRandomContainer.visibility = View.VISIBLE
+
                 fun getRandomMedia(type: MediaType): Media {
                     var media: Media?
                     do {
@@ -507,7 +507,14 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
+                binding.homeRandomAnime.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeRandomAnime.visibility = View.VISIBLE
+                binding.homeRandomManga.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeRandomManga.visibility = View.VISIBLE
             }
+
         }
 
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
