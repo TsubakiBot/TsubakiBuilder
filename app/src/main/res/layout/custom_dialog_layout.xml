@@ -7,43 +7,47 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/dialogHeading"
-        android:layout_width="265dp"
-        android:layout_height="48dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center|start"
-        android:singleLine="true"
-        android:text="@string/scanlators"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="16sp" />
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/checkboxContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
+        <TextView
+            android:id="@+id/dialogHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center|start"
+            android:singleLine="true"
+            android:text="@string/scanlators"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/toggleButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="5dp"
+            android:layout_gravity="center|end"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0"
             android:background="@null"
             android:src="@drawable/untick_all_boxes"
             app:tint="?attr/colorPrimary"
             tools:ignore="ContentDescription" />
-    </FrameLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/checkboxContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </LinearLayout>

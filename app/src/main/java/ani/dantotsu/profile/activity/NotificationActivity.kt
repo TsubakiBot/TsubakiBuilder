@@ -75,7 +75,7 @@ class NotificationActivity : AppCompatActivity() {
         binding.followFilterView.visibility = View.VISIBLE
         binding.followFilterButton.setOnClickListener {
             val dialogView = CustomDialogLayoutBinding.inflate(layoutInflater)
-            dialogView.dialogHeading.visibility = View.GONE
+            dialogView.dialogHeading.text = getString(R.string.filter)
             fun getToggleImageResource(container: ViewGroup): Int {
                 var allChecked = true
                 var allUnchecked = true
@@ -117,7 +117,6 @@ class NotificationActivity : AppCompatActivity() {
                 dialogView.toggleButton.setImageResource(getToggleImageResource(dialogView.checkboxContainer))
             }
             val alertD = AlertDialog.Builder(this, R.style.MyPopup)
-            alertD.setTitle(R.string.filter)
             alertD.setView(dialogView.root)
             alertD.setPositiveButton(R.string.ok) { _, _ ->
                 PrefManager.setVal(PrefName.NotificationFilters, filters.toSet())
