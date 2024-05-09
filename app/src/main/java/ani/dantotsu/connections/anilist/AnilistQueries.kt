@@ -462,9 +462,13 @@ class AnilistQueries {
             val subMap = mutableMapOf<Int, Media>()
             val returnArray = arrayListOf<Media>()
             val current =
-                if (type == "Anime") response?.data?.currentAnime else response?.data?.currentManga
+                if (type == MediaType.ANIME.asText())
+                    response?.data?.currentAnime
+                else response?.data?.currentManga
             val repeating =
-                if (type == "Anime") response?.data?.repeatingAnime else response?.data?.repeatingManga
+                if (type == MediaType.ANIME.asText())
+                    response?.data?.repeatingAnime
+                else response?.data?.repeatingManga
             current?.lists?.forEach { li ->
                 li.entries?.reversed()?.forEach {
                     val m = Media(it)
@@ -488,7 +492,7 @@ class AnilistQueries {
                     }
                 }
             }
-            if (type != "Anime") {
+            if (type != MediaType.ANIME.asText()) {
                 returnArray.addAll(subMap.values)
                 returnMap["current$type"] = returnArray
                 return
@@ -514,7 +518,9 @@ class AnilistQueries {
             val subMap = mutableMapOf<Int, Media>()
             val returnArray = arrayListOf<Media>()
             val current =
-                if (type == "Anime") response?.data?.plannedAnime else response?.data?.plannedManga
+                if (type == MediaType.ANIME.asText())
+                    response?.data?.plannedAnime
+                else response?.data?.plannedManga
             current?.lists?.forEach { li ->
                 li.entries?.reversed()?.forEach {
                     val m = Media(it)
@@ -561,17 +567,13 @@ class AnilistQueries {
             returnMap["favorite$type"] = returnArray
         }
 
-        current("Anime")
+        current(MediaType.ANIME.asText())
+        favorite(MediaType.ANIME.asText())
+        planned(MediaType.ANIME.asText())
 
-        favorite("Anime")
-
-        planned("Anime")
-
-        current("Manga")
-
-        favorite("Manga")
-
-        planned("Manga")
+        current(MediaType.MANGA.asText())
+        favorite(MediaType.MANGA.asText())
+        planned(MediaType.MANGA.asText())
 
         val subMap = mutableMapOf<Int, Media>()
         response?.data?.recommendationQuery?.apply {

@@ -529,7 +529,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-
         val array = arrayOf(
             "AnimeContinue",
             "AnimeFav",

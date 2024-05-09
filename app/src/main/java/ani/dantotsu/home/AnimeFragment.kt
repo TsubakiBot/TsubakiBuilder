@@ -25,14 +25,12 @@ import ani.dantotsu.bottomBar
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistAnimeViewModel
 import ani.dantotsu.connections.anilist.SearchResults
-import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.FragmentAnimeBinding
 import ani.dantotsu.loadFragment
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.serverDownDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
