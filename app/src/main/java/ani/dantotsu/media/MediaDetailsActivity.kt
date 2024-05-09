@@ -387,7 +387,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         val hasComments = PrefManager.getVal<Boolean>(PrefName.CommentsOptIn)
         selected = media.selected!!.window
-        if (hasComments && selected == 2) selected = 1
+        if (!hasComments && selected == 2) selected = 1
         binding.mediaTitle.translationX = -screenWidth
 
         val infoTab = navBar.createTab(R.drawable.ic_round_info_24, R.string.info, R.id.info)

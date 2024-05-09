@@ -207,12 +207,12 @@
     <string name="devs">Contributors</string>
     <string name="disclaimer">Disclaimer</string>
     <string name="full_disclaimer">
-         - Himitsu is only a fork of Dantotsu, which by itself only provides an anime and manga tracker and does not provide any anime or manga streaming or downloading capabilities.
-        \n\n - Himitsu or any of its developer/staff don\'t host any of the content found inside Himitsu. Any and all images and anime/manga information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
-        \n\n - Furthermore, all of the anime/manga links found in Himitsu are taken from various 3rd party plugins and have no affiliation with Himitsu or its staff.
-        \n\n - Himitsu or it\'s owners aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
-        \n\n - By using Himitsu, you comply to the fact that the developer of the app is not responsible for any of the contents found in the app. You also agree to the fact that you may not use Himitsu to download or stream any copyrighted content.
-        \n\n - If the internet infringement issues are involved, please contact the source website. The developer does not assume any legal responsibility.
+         - Himitsu is a fork of Dantotsu. Dantotsu, by itself, provides an anime and manga tracker and does not provide any anime or manga streaming or downloading content.
+        \n\n - Himitsu and any Himitsu contributors do not host any of the content found inside Himitsu. Any and all images or information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
+        \n\n - Furthermore, all of the anime/manga links found in Himitsu are provided by various 3rd party plugins supplied by the user and have no affiliation with Himitsu or its staff.
+        \n\n - Himitsu and it\'s contributors aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
+        \n\n - By using Himitsu, you confirm that the developer of Himitsu is not responsible for any of the contents found in the app or Dantotsu. You also agree to not use Himitsu to download or stream any copyrighted content.
+        \n\n - If any internet infringement issues are involved, please contact the Dantotsu website. Himitsu and its contributors do not assume any legal responsibility.
     </string>
     <string name="version_current">Version %1$s</string>
     <string-array name="tips">
@@ -633,7 +633,7 @@
     <string name="female">Female</string>
 
     <string name="question_1">What is Himitsu?</string>
-    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou and Himitsu forked Dantotsu. It is (mostly) an Anilist only client, which also supports extensions. \n>Himitsu (秘密; Him-itsu) means "secret" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
+    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou, but then Himitsu forked Dantotsu and began improving upon it. It is (mostly) an Anilist only client, which also supports extensions. \n>Himitsu (秘密; Him-itsu) means "secret" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
 
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
@@ -685,7 +685,6 @@
 
     <string name="question_17">Some useful tips and tricks</string>
     <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Himitsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
-
 
     <string name="subscribed_notification">Subscribed! Receiving notifications, when new episodes are released on %1$s.</string>
 
