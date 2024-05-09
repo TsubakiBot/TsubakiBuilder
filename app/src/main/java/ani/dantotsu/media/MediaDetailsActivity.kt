@@ -24,6 +24,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.core.text.color
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
@@ -490,6 +491,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     binding.mediaBanner.resume()
                     binding.youTubeBanner.visibility = View.GONE
                     binding.mediaMute.visibility = View.GONE
+                    setInterfaceTimeout()
                 }
             }
 
@@ -497,6 +499,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 binding.mediaBanner.resume()
                 binding.youTubeBanner.visibility = View.GONE
                 binding.mediaMute.visibility = View.GONE
+                setInterfaceTimeout()
             }
         }
         youTubePlayerView.initialize(
@@ -507,7 +510,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     private fun fadeInterface() {
         binding.mediaCover.animate()
-            .setDuration(300)
+            .setDuration(500)
             .alpha(0.0f)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
@@ -517,7 +520,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
             })
         binding.mediaTitleCollapse.animate()
-            .setDuration(300)
+            .setDuration(500)
             .alpha(0.0f)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
@@ -527,7 +530,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
             })
         binding.mediaStatus.animate()
-            .setDuration(300)
+            .setDuration(500)
             .alpha(0.0f)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
@@ -541,6 +544,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     private val timeoutHandler = Handler(Looper.getMainLooper())
     private fun setInterfaceTimeout() {
         timeoutHandler.removeCallbacksAndMessages(null)
+        if (binding.youTubeBanner.isGone) {
+            binding.mediaCover.isInvisible = false
+            binding.mediaTitleCollapse.isInvisible = false
+            binding.mediaStatus.isInvisible = false
+            return
+        }
         timeoutHandler.postDelayed({ fadeInterface() }, (5000).toLong())
     }
 
