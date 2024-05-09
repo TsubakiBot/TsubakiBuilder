@@ -485,16 +485,8 @@ class HomeFragment : Fragment() {
                     return media
                 }
 
-                var randomAnime = getRandomMedia(MediaType.ANIME).also {
-                    binding.homeRandomAnime.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
-                    binding.homeRandomAnime.visibility = View.VISIBLE
-                }
-                var randomManga = getRandomMedia(MediaType.MANGA).also {
-                    binding.homeRandomManga.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
-                    binding.homeRandomManga.visibility = View.VISIBLE
-                }
+                var randomAnime = getRandomMedia(MediaType.ANIME)
+                var randomManga = getRandomMedia(MediaType.MANGA)
 
                 fun onRandomClick(type: MediaType) {
                     val media = if (type == MediaType.MANGA) randomManga else randomAnime
@@ -512,6 +504,13 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
+
+                binding.homeRandomAnime.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeRandomAnime.visibility = View.VISIBLE
+                binding.homeRandomManga.layoutAnimation =
+                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeRandomManga.visibility = View.VISIBLE
             }
         }
 
