@@ -16,6 +16,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
+import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +29,8 @@ import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.connections.anilist.api.NotificationType.Companion.fromFormattedString
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityFollowBinding
+import ani.dantotsu.databinding.CustomDialogLayoutBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.navBarHeight
@@ -76,9 +80,8 @@ class NotificationActivity : AppCompatActivity() {
         }
         binding.listProgressBar.visibility = ViewGroup.VISIBLE
         binding.followFilterButton.setOnClickListener {
-            val dialogView = LayoutInflater.from(currContext()).inflate(R.layout.custom_dialog_layout, null)
-            val checkboxContainer = dialogView.findViewById<LinearLayout>(R.id.checkboxContainer)
-            val tickAllButton = dialogView.findViewById<ImageButton>(R.id.toggleButton)
+            val dialogView = CustomDialogLayoutBinding.inflate(layoutInflater)
+            dialogView.dialogHeading.visibility = View.GONE
             fun getToggleImageResource(container: ViewGroup): Int {
                 var allChecked = true
                 var allUnchecked = true
@@ -107,39 +110,26 @@ class NotificationActivity : AppCompatActivity() {
                     } else {
                         filters.add(notificationType.value.fromFormattedString())
                     }
-                    tickAllButton.setImageResource(getToggleImageResource(checkboxContainer))
+                    dialogView.toggleButton.setImageResource(getToggleImageResource(dialogView.checkboxContainer))
                 }
-                checkboxContainer.addView(checkBox)
+                dialogView.checkboxContainer.addView(checkBox)
             }
-            tickAllButton.setImageResource(getToggleImageResource(checkboxContainer))
-            tickAllButton.setOnClickListener {
-                for (i in 0 until checkboxContainer.childCount) {
-                    val checkBox = checkboxContainer.getChildAt(i) as CheckBox
+            dialogView.toggleButton.setImageResource(getToggleImageResource(dialogView.checkboxContainer))
+            dialogView.toggleButton.setOnClickListener {
+                dialogView.checkboxContainer.children.forEach {
+                    val checkBox = it as CheckBox
                     checkBox.isChecked = !checkBox.isChecked
                 }
 
-                tickAllButton.setImageResource(getToggleImageResource(checkboxContainer))
+                dialogView.toggleButton.setImageResource(getToggleImageResource(dialogView.checkboxContainer))
             }
             val alertD = AlertDialog.Builder(this, R.style.MyPopup)
-            alertD.setTitle("Filter")
-            alertD.setView(dialogView)
-            alertD.setPositiveButton("OK") { _, _ ->
-                currentPage = 1
-                hasNextPage = true
-                adapter.clear()
-                adapter.addAll(notificationList.filter { notification ->
-                    !filters.contains(notification.notificationType)
-                }.map {
-                    NotificationItem(
-                        it,
-                        ::onNotificationClick
-                    )
-                })
-                loadPage(-1) {
-                    binding.followRefresh.visibility = ViewGroup.GONE
-                }
+            alertD.setTitle(R.string.filter)
+            alertD.setView(dialogView.root)
+            alertD.setPositiveButton(R.string.ok) { _, _ ->
+                filterByType(binding.notificationNavBar.selectedTab?.id)
             }
-            alertD.setNegativeButton("Cancel") { _, _ -> }
+            alertD.setNegativeButton(R.string.cancel) { _, _ -> }
             val dialog = alertD.show()
             dialog.window?.setDimAmount(0.8f)
         }
@@ -224,7 +214,9 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         val newNotifications = filters?.let { list ->
-            notificationList.filter { list.contains(it.notificationType) }
+            notificationList.filter {
+                list.contains(it.notificationType) && !filters.contains(it.notificationType)
+            }
         } ?: notificationList
 
         adapter.clear()
