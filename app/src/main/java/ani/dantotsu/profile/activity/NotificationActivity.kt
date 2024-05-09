@@ -3,21 +3,15 @@ package ani.dantotsu.profile.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
@@ -30,7 +24,6 @@ import ani.dantotsu.connections.anilist.api.NotificationType.Companion.fromForma
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityFollowBinding
 import ani.dantotsu.databinding.CustomDialogLayoutBinding
-import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.navBarHeight
@@ -41,7 +34,6 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
-import ani.himitsu.os.Version
 import ani.himitsu.update.MatagiUpdater
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
@@ -52,7 +44,7 @@ class NotificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFollowBinding
     private var adapter: GroupieAdapter = GroupieAdapter()
     private var notificationList: List<Notification> = emptyList()
-    val filters = ArrayList<String>()
+    val filters = arrayListOf<String>()
     private var currentPage: Int = 1
     private var hasNextPage: Boolean = true
 
@@ -120,7 +112,6 @@ class NotificationActivity : AppCompatActivity() {
                     val checkBox = it as CheckBox
                     checkBox.isChecked = !checkBox.isChecked
                 }
-
                 dialogView.toggleButton.setImageResource(getToggleImageResource(dialogView.checkboxContainer))
             }
             val alertD = AlertDialog.Builder(this, R.style.MyPopup)
@@ -169,21 +160,24 @@ class NotificationActivity : AppCompatActivity() {
             }
         }
 
-        if (Version.isNougat) {
-            binding.notificationNavBar.visibility = View.VISIBLE
-            binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = navBarHeight
-            }
-            binding.notificationNavBar.selectTabAt(0)
-            binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
-        } else {
-            binding.notificationNavBar.visibility = View.GONE
+        binding.notificationNavBar.visibility = View.VISIBLE
+        binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = navBarHeight
         }
+        binding.notificationNavBar.selectTabAt(0)
+        binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    private fun getUncategorized(): List<String> {
+        val newList = arrayListOf<String>()
+        NotificationType.entries.filter { !filters.contains(it.value) }.forEach {
+            newList.add(it.value)
+        }
+        return newList
+    }
+
     fun filterByType(id: Int?) {
-        val filters: List<String>? = when (id) {
+        val newNotifications = when (id) {
             R.id.notificationsUser -> listOf(
                 NotificationType.FOLLOWING.value,
                 NotificationType.COMMENT_REPLY.value
@@ -211,13 +205,12 @@ class NotificationActivity : AppCompatActivity() {
                 NotificationType.THREAD_COMMENT_LIKE.value
             )
             else -> null
-        }
-
-        val newNotifications = filters?.let { list ->
-            notificationList.filter {
-                list.contains(it.notificationType) && !filters.contains(it.notificationType)
+        }.let { list ->
+            val filter = list?.minus(filters) ?: getUncategorized()
+            notificationList.filter { notification ->
+                filter.contains(notification.notificationType)
             }
-        } ?: notificationList
+        }
 
         adapter.clear()
         adapter.addAll(newNotifications.map {
@@ -266,19 +259,9 @@ class NotificationActivity : AppCompatActivity() {
                 }
 
                 notificationList += newNotifications
-                adapter.addAll(newNotifications.filter { notification ->
-                    !filters.contains(notification.notificationType)
-                }.map {
-                    NotificationItem(
-                        it,
-                        ::onNotificationClick
-                    )
-                })
                 currentPage = res?.data?.page?.pageInfo?.currentPage?.plus(1) ?: 1
                 hasNextPage = res?.data?.page?.pageInfo?.hasNextPage ?: false
-                if (Version.isNougat) {
-                    filterByType(binding.notificationNavBar.selectedTab?.id)
-                }
+                filterByType(binding.notificationNavBar.selectedTab?.id)
                 binding.followSwipeRefresh.isRefreshing = false
                 onFinish()
             }
@@ -337,10 +320,6 @@ class NotificationActivity : AppCompatActivity() {
     companion object {
         enum class NotificationClickType {
             USER, MEDIA, ACTIVITY, COMMENT, UNDEFINED
-        }
-
-        enum class NotificationCategory {
-            SOCIAL, MEDIA, ACTIVITY, THREADS, UNDEFINED
         }
     }
 }
