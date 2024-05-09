@@ -196,7 +196,7 @@
                         android:id="@+id/homeListContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="24dp"
                         android:clipToPadding="false"
                         android:paddingHorizontal="24dp">
 
@@ -319,7 +319,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 android:clipToPadding="false"
                 android:visibility="gone"
                 tools:visibility="visible" >
