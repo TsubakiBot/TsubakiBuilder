@@ -164,7 +164,6 @@ class TorrentServerService : Service() {
                 }
                 echo = Injekt.get<TorrentAddonManager>().extension?.extension?.echo()
             }
-            Logger.log("TorrentServerService: Server started: $echo")
             return true
         }
 

@@ -211,9 +211,6 @@ class CommentsFragment : Fragment() {
                                         binding.commentBottomRefresh.visibility = View.GONE
                                     }
                                 }
-                            } else {
-                                //snackString("No more comments") fix spam?
-                                Logger.log("No more comments")
                             }
                         }
                     }

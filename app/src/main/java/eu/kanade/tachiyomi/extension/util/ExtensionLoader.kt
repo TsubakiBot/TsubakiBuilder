@@ -176,7 +176,7 @@ internal object ExtensionLoader {
             return AnimeLoadResult.Error
         }
         if (!isPackageAnExtension(MediaType.ANIME, pkgInfo)) {
-            Logger.log("Tried to load a package that wasn't a extension ($pkgName)")
+            Logger.log("Tried to load a package that wasn't an extension ($pkgName)")
             return AnimeLoadResult.Error
         }
         return loadAnimeExtension(context, pkgName, pkgInfo)
@@ -191,7 +191,7 @@ internal object ExtensionLoader {
             return MangaLoadResult.Error
         }
         if (!isPackageAnExtension(MediaType.MANGA, pkgInfo)) {
-            Logger.log("Tried to load a package that wasn't a extension ($pkgName)")
+            Logger.log("Tried to load a package that wasn't an extension ($pkgName)")
             return MangaLoadResult.Error
         }
         return loadMangaExtension(context, pkgName, pkgInfo)
@@ -206,8 +206,8 @@ internal object ExtensionLoader {
             return NovelLoadResult.Error(error)
         }
         if (!isPackageAnExtension(MediaType.NOVEL, pkgInfo)) {
-            Logger.log("Tried to load a package that wasn't a extension ($pkgName)")
-            return NovelLoadResult.Error(Exception("Tried to load a package that wasn't a extension ($pkgName)"))
+            Logger.log("Tried to load a package that wasn't an extension ($pkgName)")
+            return NovelLoadResult.Error(Exception("Tried to load a package that wasn't an extension ($pkgName)"))
         }
         return loadNovelExtension(context, pkgName, pkgInfo)
     }

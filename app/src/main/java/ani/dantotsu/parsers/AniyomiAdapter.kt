@@ -191,7 +191,7 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
             }
             return sortedEpisodes.map { sEpisodeToEpisode(it) }
         } catch (e: Exception) {
-            Logger.log("Exception: $e")
+            Logger.log(e)
         }
         return emptyList()
     }
@@ -226,7 +226,7 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
             val videos = source.getVideoList(sEpisode)
             videos.map { videoToVideoServer(it) }
         } catch (e: Exception) {
-            Logger.log("Exception occurred: ${e.message}")
+            Logger.log(e)
             emptyList()
         }
     }
@@ -246,17 +246,14 @@ class DynamicAnimeParser(extension: AnimeExtension.Installed) : AnimeParser() {
             ?: return emptyList())
         return try {
             val res = source.getSearchAnime(1, query, source.getFilterList())
-            Logger.log("query: $query")
             convertAnimesPageToShowResponse(res)
         } catch (e: CloudflareBypassException) {
-            Logger.log("Exception in search: $e")
             Logger.log(e)
             withContext(Dispatchers.Main) {
                 snackString("Failed to bypass Cloudflare")
             }
             emptyList()
         } catch (e: Exception) {
-            Logger.log("General exception in search: $e")
             Logger.log(e)
             emptyList()
         }
@@ -343,12 +340,10 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
             val res = source.getChapterList(sManga)
             val reversedRes = res.reversed()
             val chapterList = reversedRes.map { sChapterToMangaChapter(it) }
-            Logger.log("chapterList size: ${chapterList.size}")
-            Logger.log("chapterList: ${chapterList[1].title}")
-            Logger.log("chapterList: ${chapterList[1].description}")
+            Logger.log("chapterList title: ${chapterList[1].title}, description: ${chapterList[1].description}, size: ${chapterList.size}")
             chapterList
         } catch (e: Exception) {
-            Logger.log("loadChapters Exception: $e")
+            Logger.log(e)
             emptyList()
         }
     }
@@ -381,7 +376,7 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
                 deferreds.awaitAll()
 
             } catch (e: Exception) {
-                Logger.log("loadImages Exception: $e")
+                Logger.log(e)
                 snackString("Failed to load images: $e")
                 emptyList()
             }
@@ -415,7 +410,7 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
 
                 deferreds.awaitAll()
             } catch (e: Exception) {
-                Logger.log("loadImages Exception: $e")
+                Logger.log(e)
                 snackString("Failed to load images: $e")
                 emptyList()
             }
@@ -435,13 +430,13 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
             Logger.log("res observable: $res")
             convertMangasPageToShowResponse(res)
         } catch (e: CloudflareBypassException) {
-            Logger.log("Exception in search: $e")
+            Logger.log(e)
             withContext(Dispatchers.Main) {
                 snackString("Failed to bypass Cloudflare")
             }
             emptyList()
         } catch (e: Exception) {
-            Logger.log("General exception in search: $e")
+            Logger.log(e)
             emptyList()
         }
     }

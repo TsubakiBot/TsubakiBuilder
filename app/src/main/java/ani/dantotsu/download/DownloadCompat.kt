@@ -258,8 +258,8 @@ object DownloadCompat {
                 val matchResult = imageNumberRegex.find(image.url.url)
                 matchResult?.groups?.get(1)?.value?.toIntOrNull() ?: Int.MAX_VALUE
             }
-            for (image in images) {
-                Logger.log("imageNumber: ${image.url.url}")
+            images.forEach {
+                Logger.log("imageNumber: ${it.url.url}")
             }
             return images
         }

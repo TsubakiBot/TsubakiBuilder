@@ -86,6 +86,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
@@ -909,9 +910,7 @@ fun saveImage(image: Bitmap, path: String, imageFileName: String): File? {
 }
 
 private fun scanFile(path: String, context: Context) {
-    MediaScannerConnection.scanFile(context, arrayOf(path), null) { p, _ ->
-        Logger.log("Finished scanning $p")
-    }
+    MediaScannerConnection.scanFile(context, arrayOf(path), null) { p, _ -> }
 }
 
 class MediaPageTransformer : ViewPager2.PageTransformer {
@@ -954,7 +953,7 @@ fun countDown(media: Media, view: ViewGroup) {
         val v = ItemCountDownBinding.inflate(LayoutInflater.from(view.context), view, false)
         view.addView(v.root, 0)
         v.mediaCountdownText.text =
-            currActivity()?.getString(
+            getString(
                 R.string.episode_release_countdown,
                 media.anime.nextAiringEpisode!!
             )

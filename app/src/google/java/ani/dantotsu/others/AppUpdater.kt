@@ -58,7 +58,6 @@ object AppUpdater {
                 res to res.substringAfter("# ").substringBefore("\n")
             }
 
-            Logger.log("Git Version : $version")
             val dontShow = PrefManager.getCustomVal("dont_ask_for_update_$version", false)
             if (compareVersion(version) && !dontShow && !activity.isDestroyed) activity.runOnUiThread {
                 CustomBottomDialog.newInstance().apply {
