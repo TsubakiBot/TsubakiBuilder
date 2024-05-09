@@ -385,7 +385,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             anime = false
         }
 
+        val hasComments = PrefManager.getVal<Boolean>(PrefName.CommentsOptIn)
         selected = media.selected!!.window
+        if (hasComments && selected == 2) selected = 1
         binding.mediaTitle.translationX = -screenWidth
 
         val infoTab = navBar.createTab(R.drawable.ic_round_info_24, R.string.info, R.id.info)
@@ -398,7 +400,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
         navBar.addTab(infoTab)
         navBar.addTab(watchTab)
-        if (PrefManager.getVal(PrefName.CommentsOptIn)) {
+        if (hasComments) {
             val commentTab =
                 navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
             navBar.addTab(commentTab)
@@ -408,11 +410,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             model.continueMedia = PrefManager.getVal(PrefName.ContinueMedia)
             selected = 1
         }
-        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null) selected = 2
+        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 2
         if (viewPager.currentItem != selected) viewPager.post {
             viewPager.setCurrentItem(selected, false)
         }
-        binding.commentInputLayout.isVisible = selected == 2
+        binding.commentInputLayout.isVisible = (hasComments && selected == 2)
         navBar.selectTabAt(selected)
         navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -422,7 +424,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 newTab: AnimatedBottomBar.Tab
             ) {
                 selected = newIndex
-                binding.commentInputLayout.isVisible = selected == 2
+                binding.commentInputLayout.isVisible = (hasComments && selected == 2)
                 viewPager.setCurrentItem(selected, true)
                 val sel = model.loadSelected(media, isDownload)
                 sel.window = selected
