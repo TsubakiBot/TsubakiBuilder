@@ -183,6 +183,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     SearchStyle(Pref(Location.Irrelevant, Int::class, 0)),
     HasUpdatedPrefs(Pref(Location.Irrelevant, Boolean::class, false)),
     LangSort(Pref(Location.Irrelevant, String::class, "all")),
+    NotificationFilters(Pref(Location.Irrelevant, Set::class, setOf<String>())),
     GenresList(Pref(Location.Irrelevant, Set::class, setOf<String>())),
     TagsListIsAdult(Pref(Location.Irrelevant, Set::class, setOf<String>())),
     TagsListNonAdult(Pref(Location.Irrelevant, Set::class, setOf<String>())),

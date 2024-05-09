@@ -44,7 +44,7 @@ class NotificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFollowBinding
     private var adapter: GroupieAdapter = GroupieAdapter()
     private var notificationList: List<Notification> = emptyList()
-    val filters = arrayListOf<String>()
+    private val filters = arrayListOf<String>()
     private var currentPage: Int = 1
     private var hasNextPage: Boolean = true
 
@@ -53,6 +53,7 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+        filters.addAll(PrefManager.getVal<Set<String>>(PrefName.NotificationFilters))
         binding = ActivityFollowBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.listTitle.text = getString(R.string.notifications)
@@ -118,6 +119,7 @@ class NotificationActivity : AppCompatActivity() {
             alertD.setTitle(R.string.filter)
             alertD.setView(dialogView.root)
             alertD.setPositiveButton(R.string.ok) { _, _ ->
+                PrefManager.setVal(PrefName.NotificationFilters, filters.toSet())
                 filterByType(binding.notificationNavBar.selectedTab?.id)
             }
             alertD.setNegativeButton(R.string.cancel) { _, _ -> }
