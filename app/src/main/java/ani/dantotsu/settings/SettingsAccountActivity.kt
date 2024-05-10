@@ -16,7 +16,6 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
-import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivitySettingsAccountsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage

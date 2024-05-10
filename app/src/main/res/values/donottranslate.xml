@@ -9,7 +9,7 @@
 
     <string name="git_issue_title">[Logcat]: Himitsu #%1$s</string>
 
-    <string name="dantotsu" >https://dantotsu.app/</string>
+    <string name="dantotsu">https://repodevil.netlify.app/</string>
     <string name="discord">https://discord.gg/vnrhgrt</string>
     <string name="github">https://github.com/%1$s</string>
     <string name="telegram" tools:ignore="Typos">https://t.me/+gzBCQExtLQo1YTNh </string>
