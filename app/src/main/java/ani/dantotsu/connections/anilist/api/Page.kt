@@ -43,6 +43,8 @@ data class Page(
     @SerialName("recommendations") var recommendations: List<Recommendation>?,
 
     @SerialName("likes") var likes: List<User>?,
+
+    @SerialName("reviews") var reviews: List<Review>?,
 )
 
 @Serializable

@@ -12,6 +12,7 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.NotificationResponse
 import ani.dantotsu.connections.anilist.api.Page
 import ani.dantotsu.connections.anilist.api.Query
+import ani.dantotsu.connections.anilist.api.Review
 import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline
@@ -1001,7 +1002,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
             ${if (search != null) ""","search":"$search"""" else ""}
             }"""
 
-        val response = executeQuery<Query.Characters>(query, variables, true)?.data
+        val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Character>()
         response?.characters?.forEach {
             val character = Character(
@@ -1077,7 +1078,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
             ${if (search != null) ""","search":"$search"""" else ""}
             }"""
 
-        val response = executeQuery<Query.Employee>(query, variables, true)?.data
+        val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         Logger.log(response.toString())
         val responseArray = arrayListOf<Staff>()
         response?.staff?.forEach {
@@ -1157,7 +1158,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
             ${if (search != null) ""","search":"$search"""" else ""}
             }"""
 
-        val response = executeQuery<Query.Studios>(query, variables, true)?.data
+        val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Atelier>()
         response?.studios?.forEach {
             val studio = Atelier(
@@ -1328,6 +1329,27 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
             )
         }
         return null
+    }
+
+    suspend fun getReviews() {
+        val query = """query { Page(page: 1, perPage: 10) { pageInfo { total perPage currentPage lastPage hasNextPage } reviews { id userId mediaId mediaType summary body rating score createdAt updatedAt } } }"""
+        val response = executeQuery<Query.Page>(query)?.data?.page
+        val responseArray = arrayListOf<ani.dantotsu.media.Review>()
+        response?.reviews?.forEach {
+            val review = ani.dantotsu.media.Review(
+                it.id,
+                it.userId,
+                it.mediaId,
+                it.createdAt,
+                it.updatedAt,
+                it.mediaType,
+                it.summary,
+                it.body,
+                it.rating,
+                it.score
+
+            )
+        }
     }
 
     private val onListAnime =
