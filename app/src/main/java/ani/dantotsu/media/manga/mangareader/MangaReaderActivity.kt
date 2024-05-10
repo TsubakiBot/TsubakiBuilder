@@ -173,6 +173,7 @@ class MangaReaderActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         setSystemBarVisibility()
+        applySettings()
         super.onConfigurationChanged(newConfig)
     }
 
@@ -283,9 +284,8 @@ class MangaReaderActivity : AppCompatActivity() {
         else model.getMedia().value ?: return
         model.setMedia(media)
 
-        if (PrefManager.getVal(PrefName.AutoDetectWebtoon) && media.countryOfOrigin != "JP") applyWebtoon(
-            defaultSettings
-        )
+        if (PrefManager.getVal(PrefName.AutoDetectWebtoon) && media.countryOfOrigin != "JP")
+            applyWebtoon(defaultSettings)
         defaultSettings = loadReaderSettings("${media.id}_current_settings") ?: defaultSettings
 
         chapters = media.manga?.chapters ?: return

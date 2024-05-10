@@ -30,7 +30,7 @@
             android:id="@+id/toggleButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="center|end"
+            android:layout_gravity="bottom|end"
             android:layout_marginStart="8dp"
             android:layout_weight="0"
             android:background="@null"
