@@ -1,9 +1,10 @@
 package ani.dantotsu.media
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,18 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
-import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.settings.saving.PrefManager
-import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import eu.kanade.tachiyomi.util.system.getThemeColor
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.Serializable
 
 class ReviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGenreBinding
@@ -53,15 +52,15 @@ class ReviewActivity : AppCompatActivity() {
 
         val type = intent.getStringExtra("type")
         if (type != null) {
-            binding.listTitle.text = getString(R.string.type_reviews, type)
-            val adapter = ReviewAdapter(type, true)
+            val name ="${type.substring(0, 1)}${type.substring(1).lowercase()}"
+            binding.listTitle.text = getString(R.string.type_reviews, name)
 
             model.getReviews().observe(this) {
                 if (it != null) {
                     MainScope().launch {
                         binding.mediaInfoGenresProgressBar.visibility = View.GONE
                     }
-                    adapter.reviews = it.filter { review -> review.mediaType == type }
+                    val adapter = ReviewAdapter(this, it.filter { review -> review.mediaType == type })
                     binding.mediaInfoGenresRecyclerView.adapter = adapter
                     binding.mediaInfoGenresRecyclerView.layoutManager = LinearLayoutManager(this)
                 }
@@ -76,6 +75,27 @@ class ReviewActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    fun openReview(review: Review) {
+        CustomBottomDialog.newInstance().apply {
+            title = "${review.score} - ${review.media?.mainName()}"
+            addView(TextView(this@ReviewActivity).apply {
+                text = review.body
+            })
+            setPositiveButton(getString(R.string.open)) {
+                ContextCompat.startActivity(
+                    this@ReviewActivity,
+                    Intent(this@ReviewActivity, MediaDetailsActivity::class.java)
+                        .putExtra("media", review.media as Serializable), null
+                )
+                dismiss()
+            }
+            setNegativeButton(getString(R.string.close)) {
+                dismiss()
+            }
+            show(this@ReviewActivity.supportFragmentManager, "dialog")
         }
     }
 }

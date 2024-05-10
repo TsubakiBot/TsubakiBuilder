@@ -1331,8 +1331,70 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
     }
 
     suspend fun getReviews(): ArrayList<ani.dantotsu.media.Review> {
-        val query = """query { Page(page: 1, perPage: 30) { pageInfo { total perPage currentPage lastPage hasNextPage } reviews { id userId mediaId mediaType summary body rating score createdAt updatedAt } } }"""
-        val response = executeQuery<Query.Page>(query)?.data?.page
+        val query = """ {
+  Page(page: 1, perPage: 30) {
+    pageInfo {
+      total
+      perPage
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    reviews {
+      id
+      userId
+      mediaId
+      mediaType
+      summary
+      body
+      rating
+      score
+      createdAt
+      updatedAt
+      user {
+        id
+        name
+        avatar {
+          large
+          medium
+        }
+        bannerImage
+      }
+      media {
+        id
+        idMal
+        status
+        chapters
+        episodes
+        nextAiringEpisode {
+          episode
+        }
+        isAdult
+        type
+        meanScore
+        isFavourite
+        format
+        bannerImage
+        countryOfOrigin
+        coverImage {
+          large
+        }
+        title {
+          english
+          romaji
+          userPreferred
+        }
+        mediaListEntry {
+          progress
+          private
+          score(format: POINT_100)
+          status
+        }
+      }
+    }
+  }
+}""".replace("\n", " ").replace("""  """, "")
+        val response = executeQuery<Query.Page>(query, force = true)?.data?.page
         val responseArray = arrayListOf<ani.dantotsu.media.Review>()
         response?.reviews?.forEach {
             val review = ani.dantotsu.media.Review(
@@ -1345,7 +1407,16 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                 it.summary,
                 it.body,
                 it.rating,
-                it.score
+                it.score,
+                it.user?.let { user ->
+                    User(
+                        user.id,
+                        user.name ?: "Unknown",
+                        user.avatar?.large ?: user.avatar?.medium,
+                        user.bannerImage
+                    )
+                },
+                it.media?.let { item -> Media(item) }
             )
             responseArray.add(review)
         }

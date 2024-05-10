@@ -126,6 +126,7 @@
             android:id="@+id/mangaReview"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:paddingTop="8dp"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="16dp"
             app:cardCornerRadius="16dp"
@@ -193,7 +194,6 @@
             android:textSize="16sp"
             android:visibility="invisible"
             tools:visibility="visible"/>
-
 
         <ImageView
             android:id="@+id/mangaTrendingMangaMore"

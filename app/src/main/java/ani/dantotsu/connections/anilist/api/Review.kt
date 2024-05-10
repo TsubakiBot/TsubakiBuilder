@@ -14,5 +14,7 @@ data class Review (
     @SerialName("summary") var summary: String?,
     @SerialName("body") var body: String?,
     @SerialName("rating") var rating: Int?,
-    @SerialName("score") var score: Int?
+    @SerialName("score") var score: Int?,
+    @SerialName("user") var user: User?,
+    @SerialName("media") var media: Media?,
 )

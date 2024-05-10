@@ -47,7 +47,6 @@ class CalendarActivity : AppCompatActivity() {
         window.navigationBarColor = primaryColor
         binding.listTabLayout.setBackgroundColor(primaryColor)
         binding.listAppBar.setBackgroundColor(primaryColor)
-        binding.listTitle.setTextColor(primaryTextColor)
         binding.listTabLayout.setTabTextColors(secondaryTextColor, primaryTextColor)
         binding.listTabLayout.setSelectedTabIndicatorColor(primaryTextColor)
         if (!(PrefManager.getVal(PrefName.ImmersiveMode) as Boolean)) {
