@@ -246,6 +246,7 @@
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTask" />
         <activity android:name=".media.GenreActivity" />
+        <activity android:name=".media.ReviewActivity" />
         <activity
             android:name=".media.MediaListViewActivity"
             android:parentActivityName=".MainActivity" />

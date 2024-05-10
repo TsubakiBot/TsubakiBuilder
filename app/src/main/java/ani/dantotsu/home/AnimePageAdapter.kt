@@ -3,7 +3,6 @@ package ani.dantotsu.home
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.util.TypedValue
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +30,7 @@ import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
+import ani.dantotsu.media.ReviewActivity
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -143,6 +142,13 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             ContextCompat.startActivity(
                 it.context,
                 Intent(it.context, CalendarActivity::class.java),
+                null
+            )
+        }
+        binding.animeReview.setOnClickListener {
+            ContextCompat.startActivity(
+                it.context,
+                Intent(it.context, ReviewActivity::class.java).putExtra("type", "ANIME"),
                 null
             )
         }

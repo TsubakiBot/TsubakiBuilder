@@ -386,6 +386,7 @@
     <string name="previous_season">Previous Season</string>
     <string name="include_media_in_list">Include List</string>
     <string name="release_calendar">Calendar</string>
+    <string name="type_reviews">%1$s Reviews</string>
     <string name="planned_anime">Planned Anime</string>
     <string name="planned_manga">Planned Manga</string>
     <string name="image_long_clicking">Long click to open image</string>

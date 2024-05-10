@@ -12,7 +12,6 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.NotificationResponse
 import ani.dantotsu.connections.anilist.api.Page
 import ani.dantotsu.connections.anilist.api.Query
-import ani.dantotsu.connections.anilist.api.Review
 import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline
@@ -961,7 +960,7 @@ class AnilistQueries {
     ): ArrayList<Character> {
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Page(page: 1, perPage: 10) {
+  Page(page: 1, perPage: 30) {
     pageInfo {
       total
       perPage
@@ -1029,7 +1028,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Page(page: 1, perPage: 10) {
+  Page(page: 1, perPage: 30) {
     pageInfo {
       total
       perPage
@@ -1111,7 +1110,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
 
         val query = """
 query (${"$"}id: Int, ${"$"}search: String) {
-  Page(page: 1, perPage: 10) {
+  Page(page: 1, perPage: 30) {
     pageInfo {
       total
       perPage
@@ -1331,8 +1330,8 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
         return null
     }
 
-    suspend fun getReviews() {
-        val query = """query { Page(page: 1, perPage: 10) { pageInfo { total perPage currentPage lastPage hasNextPage } reviews { id userId mediaId mediaType summary body rating score createdAt updatedAt } } }"""
+    suspend fun getReviews(): ArrayList<ani.dantotsu.media.Review> {
+        val query = """query { Page(page: 1, perPage: 30) { pageInfo { total perPage currentPage lastPage hasNextPage } reviews { id userId mediaId mediaType summary body rating score createdAt updatedAt } } }"""
         val response = executeQuery<Query.Page>(query)?.data?.page
         val responseArray = arrayListOf<ani.dantotsu.media.Review>()
         response?.reviews?.forEach {
@@ -1347,9 +1346,10 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                 it.body,
                 it.rating,
                 it.score
-
             )
+            responseArray.add(review)
         }
+        return responseArray
     }
 
     private val onListAnime =

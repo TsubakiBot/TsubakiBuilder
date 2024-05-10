@@ -47,4 +47,10 @@ class OtherDetailsViewModel : ViewModel() {
         }
         calendar.postValue(map)
     }
+
+    private val reviews: MutableLiveData<List<Review>> = MutableLiveData(null)
+    fun getReviews(): LiveData<List<Review>> = reviews
+    suspend fun loadReviews() {
+        if (reviews.value == null) reviews.postValue(Anilist.query.getReviews())
+    }
 }
