@@ -4,19 +4,28 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
+import ani.dantotsu.connections.anilist.api.NotificationType
+import ani.dantotsu.connections.anilist.api.NotificationType.Companion.fromFormattedString
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityGenreBinding
+import ani.dantotsu.databinding.CustomDialogLayoutBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.settings.saving.PrefManager
+import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.view.dialog.CustomBottomDialog
@@ -75,27 +84,6 @@ class ReviewActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
-    }
-
-    fun openReview(review: Review) {
-        CustomBottomDialog.newInstance().apply {
-            title = "${review.score} - ${review.media?.mainName()}"
-            addView(TextView(this@ReviewActivity).apply {
-                text = review.body
-            })
-            setPositiveButton(getString(R.string.open)) {
-                ContextCompat.startActivity(
-                    this@ReviewActivity,
-                    Intent(this@ReviewActivity, MediaDetailsActivity::class.java)
-                        .putExtra("media", review.media as Serializable), null
-                )
-                dismiss()
-            }
-            setNegativeButton(getString(R.string.close)) {
-                dismiss()
-            }
-            show(this@ReviewActivity.supportFragmentManager, "dialog")
         }
     }
 }
