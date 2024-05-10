@@ -137,10 +137,11 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 null
             )
         }
+        binding.mangaReviewText.text = getString(R.string.type_reviews, "MANGA")
         binding.mangaReview.setOnClickListener {
             ContextCompat.startActivity(
                 it.context,
-                Intent(it.context, ReviewActivity::class.java).putExtra("type", "ANIME"),
+                Intent(it.context, ReviewActivity::class.java).putExtra("type", "MANGA"),
                 null
             )
         }

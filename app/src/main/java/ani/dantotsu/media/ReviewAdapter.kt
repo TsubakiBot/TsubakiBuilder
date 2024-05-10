@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ItemGenreBinding
 import ani.dantotsu.toPx
+import kotlinx.coroutines.runBlocking
+import java.io.Serializable
 
 class ReviewAdapter(
     private val type: String,
@@ -33,14 +35,13 @@ class ReviewAdapter(
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
+                val media = runBlocking {
+                    Anilist.query.getMedia(reviews[bindingAdapterPosition].mediaId)
+                }
                 ContextCompat.startActivity(
                     itemView.context,
-                    Intent(itemView.context, SearchActivity::class.java)
-                        .putExtra("type", type)
-                        .putExtra("review", reviews[bindingAdapterPosition])
-                        .putExtra("sortBy", Anilist.sortBy[2])
-                        .putExtra("hideKeyboard", true),
-                    null
+                    Intent(itemView.context, MediaDetailsActivity::class.java)
+                        .putExtra("media", media as Serializable), null
                 )
             }
         }
