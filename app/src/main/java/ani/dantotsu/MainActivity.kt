@@ -101,7 +101,12 @@ class MainActivity : AppCompatActivity() {
 
         if (PrefManager.getCustomVal("requires_update_refresh", false)) {
             PrefManager.removeCustomVal("requires_update_refresh")
-            startMainActivity(this)
+            finishAndRemoveTask()
+            startActivity(
+                Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+            )
             return
         }
 
