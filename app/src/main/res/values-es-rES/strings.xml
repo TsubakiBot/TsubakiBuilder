@@ -407,7 +407,6 @@
     <string name="install_step">Pasó: %1$s</string>
     <string name="review">Revisar</string>
     <string name="select_source">Seleccione una fuente</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Himitsu update %1$s</string>
     <string name="install_update">¿Instalar actualización %1$s?</string>
     <string name="beta_update">Beta </string>

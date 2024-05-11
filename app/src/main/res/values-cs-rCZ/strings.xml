@@ -407,7 +407,6 @@
     <string name="install_step">Krok: %1$s</string>
     <string name="review">Přezkum</string>
     <string name="select_source">Vyberte zdroj</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Instalovat aktualizaci %1$s?</string>
     <string name="beta_update">Beta </string>

@@ -56,23 +56,71 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/notificationCoverContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
                     android:layout_marginVertical="16dp"
                     android:backgroundTint="@color/transparent"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="@color/transparent">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/reviewItemBanner"
+                        android:id="@+id/profileUserBanner"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="96dp"
                         android:scaleType="centerCrop"
                         app:shapeAppearanceOverlay="@style/roundedImageView"
                         tools:ignore="ContentDescription,ImageContrastCheck"
                         tools:srcCompat="@tools:sample/backgrounds/scenic"
                         tools:tint="@color/transparent" />
 
+                    <ImageView
+                        android:id="@+id/profileBannerGradient"
+                        android:layout_width="match_parent"
+                        android:layout_height="96dp"
+                        android:src="@drawable/linear_gradient_bg"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:id="@+id/profileUserDataContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="8dp"
+                        android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/profileUserAvatarContainer"
+                                android:layout_width="82dp"
+                                android:layout_height="82dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="@color/transparent"
+                                app:cardCornerRadius="64dp"
+                                app:strokeColor="@color/transparent">
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/profileUserAvatar"
+                                    android:layout_width="82dp"
+                                    android:layout_height="82dp"
+                                    android:layout_gravity="center"
+                                    app:srcCompat="@drawable/ic_round_add_circle_24"
+                                    tools:ignore="ContentDescription,ImageContrastCheck"
+                                    tools:tint="@color/transparent" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:id="@+id/profileUserName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="@string/username"
+                                android:textColor="?attr/colorPrimary"
+                                android:textSize="18sp" />
+
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -86,17 +134,6 @@
                     android:transitionName="mediaTitle"
                     tools:ignore="SpUsage"
                     tools:text="@string/review_type" />
-
-                <TextView
-                    android:id="@+id/reviewItemAuthor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:gravity="center"
-                    android:text="@string/review_author"
-                    android:textSize="14sp"
-                    tools:ignore="HardcodedText,SmallSp" />
 
                 <TextView
                     android:id="@+id/reviewItemText"

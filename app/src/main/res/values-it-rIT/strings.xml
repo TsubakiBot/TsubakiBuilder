@@ -407,7 +407,6 @@
     <string name="install_step">Passo: %1$s</string>
     <string name="review">Riesame</string>
     <string name="select_source">Seleziona una sorgente</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Installare l\'aggiornamento %1$s?</string>
     <string name="beta_update">Beta </string>

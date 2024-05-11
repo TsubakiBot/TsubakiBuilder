@@ -407,7 +407,6 @@
     <string name="install_step">Steg: %1$s</string>
     <string name="review">Anmeldelse</string>
     <string name="select_source">Velg en kilde</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Installere oppdateringen %1$s?</string>
     <string name="beta_update">beta </string>

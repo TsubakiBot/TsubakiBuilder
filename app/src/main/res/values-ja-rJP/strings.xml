@@ -407,7 +407,6 @@
     <string name="install_step">歩数： %1$s</string>
     <string name="review">レビュー</string>
     <string name="select_source">ソースを選択</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">アップデート %1$sをインストールしますか？</string>
     <string name="beta_update">Beta </string>

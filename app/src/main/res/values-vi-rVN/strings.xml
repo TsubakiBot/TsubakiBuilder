@@ -407,7 +407,6 @@
     <string name="install_step">Bước: %1$s</string>
     <string name="review">Đánh giá</string>
     <string name="select_source">Chọn một Nguồn</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu cập nhật %1$s</string>
     <string name="install_update">Cài đặt cập nhật %1$s?</string>
     <string name="beta_update">Beta </string>

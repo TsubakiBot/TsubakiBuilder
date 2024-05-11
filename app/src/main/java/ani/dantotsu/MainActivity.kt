@@ -118,6 +118,13 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(getString(R.string.biometric_title))
+            .setSubtitle(getString(R.string.biometric_details))
+            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .setConfirmationRequired(false)
+            .build()
+
         biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
@@ -127,22 +134,22 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.biometric_error, errString),
                         Toast.LENGTH_SHORT
                     ).show()
-                    if (when (errorCode) {
-                            BiometricPrompt.ERROR_CANCELED -> true
-                            BiometricPrompt.ERROR_HW_NOT_PRESENT -> false
-                            BiometricPrompt.ERROR_HW_UNAVAILABLE -> false
-                            BiometricPrompt.ERROR_LOCKOUT -> true
-                            BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> true
-                            BiometricPrompt.ERROR_NO_BIOMETRICS -> false
-                            BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> false
-                            BiometricPrompt.ERROR_NO_SPACE -> true
-                            BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED -> true
-                            BiometricPrompt.ERROR_TIMEOUT -> true
-                            BiometricPrompt.ERROR_UNABLE_TO_PROCESS -> true
-                            BiometricPrompt.ERROR_USER_CANCELED -> true
-                            BiometricPrompt.ERROR_VENDOR -> false
-                            else -> true
-                        }) finishAndRemoveTask()
+                    when (errorCode) {
+                        BiometricPrompt.ERROR_CANCELED -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_HW_NOT_PRESENT -> {}
+                        BiometricPrompt.ERROR_HW_UNAVAILABLE -> {}
+                        BiometricPrompt.ERROR_LOCKOUT -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_NO_BIOMETRICS -> {}
+                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> {}
+                        BiometricPrompt.ERROR_NO_SPACE -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_TIMEOUT -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
+                        BiometricPrompt.ERROR_VENDOR -> {}
+                        else -> biometricPrompt.authenticate(promptInfo)
+                    }
                 }
 
                 override fun onAuthenticationSucceeded(
@@ -165,13 +172,6 @@ class MainActivity : AppCompatActivity() {
                     finishAndRemoveTask()
                 }
             })
-
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(getString(R.string.biometric_title))
-            .setSubtitle(getString(R.string.biometric_details))
-            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
-            .setConfirmationRequired(false)
-            .build()
 
         if (PrefManager.getVal(PrefName.SecureLock)) biometricPrompt.authenticate(promptInfo)
 

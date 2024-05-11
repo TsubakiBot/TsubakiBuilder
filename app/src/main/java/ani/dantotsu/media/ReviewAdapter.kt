@@ -44,14 +44,11 @@ class ReviewAdapter(val parentActivity: ReviewActivity, val reviews: List<Review
             itemView.setOnClickListener {
             val review = reviews[bindingAdapterPosition]
                 val dialogView = ItemReviewContentBinding.inflate(parentActivity.layoutInflater)
-                review.media?.banner?.let {
-                    dialogView.reviewItemBanner.loadImage(it)
-                } ?: {
-                    dialogView.reviewItemBanner.visibility = View.GONE
-                }
                 dialogView.notificationCover.loadImage(review.media?.cover)
+                dialogView.profileUserAvatar.loadImage(review.user?.pfp)
+                dialogView.profileUserBanner.loadImage(review.user?.banner)
+                dialogView.profileUserName.text = review.user?.name
                 dialogView.reviewItemName.text = review.media?.mainName()
-                dialogView.reviewItemAuthor.text = parentActivity.getString(R.string.review_author, review.user?.name)
                 val formattedScore = "${review.score}/100 (${ActivityItemBuilder.getDateTime(review.createdAt)})"
                 dialogView.reviewItemRating.text = formattedScore
                 dialogView.reviewItemText.text = if (Version.isNougat) {

@@ -407,7 +407,6 @@
     <string name="install_step">Adım: %1$s</string>
     <string name="review">İncele</string>
     <string name="select_source">Bir Kaynak Seç</string>
-    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu %1$s güncellemesi</string>
     <string name="install_update">%1$s güncellemesini yüklemek istiyor musunuz?</string>
     <string name="beta_update">Beta </string>
