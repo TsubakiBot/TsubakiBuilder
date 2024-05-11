@@ -172,6 +172,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     VolumeButtonsNovel(Pref(Location.NovelReader, Boolean::class, false)),
 
     //Irrelevant
+    SecureLock(Pref(Location.Irrelevant, Boolean::class, false)),
     Incognito(Pref(Location.Irrelevant, Boolean::class, false)),
     OfflineMode(Pref(Location.Irrelevant, Boolean::class, false)),
     DiscordStatus(Pref(Location.Irrelevant, String::class, "online")),

@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
+import android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.lifecycleScope
@@ -184,6 +187,14 @@ class SettingsSystemActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
+                        name = getString(R.string.biometric_title),
+                        desc = getString(R.string.biometric_summary),
+                        icon = R.drawable.ic_devices_fold_24,
+                        pref = PrefName.SecureLock,
+                        isVisible = canUseBiometrics()
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
                         name = getString(R.string.use_foldable),
                         desc = getString(R.string.use_foldable_desc),
                         icon = R.drawable.ic_devices_fold_24,
@@ -239,7 +250,6 @@ class SettingsSystemActivity : AppCompatActivity() {
                             Logger.clearLog()
                             restartApp()
                         }
-
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
@@ -269,6 +279,18 @@ class SettingsSystemActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
+        }
+    }
+
+    private fun canUseBiometrics() : Boolean {
+        val biometricManager = BiometricManager.from(this)
+        return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG
+                or BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
+            BiometricManager.BIOMETRIC_SUCCESS -> true
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> false
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> false
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> true
+            else -> { false }
         }
     }
 

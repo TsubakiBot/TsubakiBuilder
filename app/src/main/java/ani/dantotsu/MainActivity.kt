@@ -19,10 +19,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateInterpolator
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnAttach
@@ -74,12 +76,16 @@ import nl.joery.animatedbottombar.AnimatedBottomBar
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.io.Serializable
+import java.util.concurrent.Executor
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var incognitoLiveData: SharedPreferenceBooleanLiveData
     private val scope = lifecycleScope
     private var load = false
+
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     @SuppressLint("InternalInsetResource", "DiscouragedApi")
     @OptIn(UnstableApi::class)
@@ -109,6 +115,46 @@ class MainActivity : AppCompatActivity() {
             )
             return
         }
+
+        biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_error, errString),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finishAndRemoveTask()
+                }
+            })
+
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(getString(R.string.biometric_title))
+            .setSubtitle(getString(R.string.biometric_details))
+            .setNegativeButtonText(getString(R.string.biometric_method))
+            .build()
+
+        if (PrefManager.getVal(PrefName.SecureLock)) biometricPrompt.authenticate(promptInfo)
 
         TaskScheduler.scheduleSingleWork(this)
 
