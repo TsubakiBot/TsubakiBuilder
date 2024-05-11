@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notificationContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <FrameLayout
-        android:id="@+id/notificationContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    android:orientation="horizontal">
 
-        <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        app:cardBackgroundColor="@color/nav_bg"
+        app:cardCornerRadius="24dp"
+        app:strokeColor="@color/transparent">
+
+        <ImageView
+            android:id="@+id/notificationCover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            app:cardBackgroundColor="@color/nav_bg"
-            app:cardCornerRadius="24dp"
-            app:strokeColor="@color/transparent">
+            android:alpha="0.44"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <ImageView
-                android:id="@+id/notificationCover"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.44"
-                android:scaleType="centerCrop"
-                tools:ignore="ContentDescription"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        <ImageView
+            android:id="@+id/notificationGradiant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/linear_gradient_nav"
+            tools:ignore="ContentDescription" />
 
-            <ImageView
-                android:id="@+id/notificationGradiant"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/linear_gradient_nav"
-                tools:ignore="ContentDescription" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/notificationTextContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
@@ -55,7 +57,7 @@
                     tools:text="@string/slogan" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/notificationCoverContainer"
+                    android:id="@+id/profileBannerContainer"
                     android:layout_width="match_parent"
                     android:layout_height="96dp"
                     android:layout_marginVertical="16dp"
@@ -67,18 +69,12 @@
                         android:id="@+id/profileUserBanner"
                         android:layout_width="match_parent"
                         android:layout_height="96dp"
+                        android:alpha="0.66"
                         android:scaleType="centerCrop"
                         app:shapeAppearanceOverlay="@style/roundedImageView"
                         tools:ignore="ContentDescription,ImageContrastCheck"
                         tools:srcCompat="@tools:sample/backgrounds/scenic"
                         tools:tint="@color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/profileBannerGradient"
-                        android:layout_width="match_parent"
-                        android:layout_height="96dp"
-                        android:src="@drawable/linear_gradient_bg"
-                        tools:ignore="ContentDescription" />
 
                     <LinearLayout
                         android:id="@+id/profileUserDataContainer"
@@ -88,38 +84,37 @@
                         android:layout_marginHorizontal="8dp"
                         android:orientation="horizontal">
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/profileUserAvatarContainer"
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/profileUserAvatarContainer"
+                            android:layout_width="82dp"
+                            android:layout_height="82dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/transparent"
+                            app:cardCornerRadius="64dp"
+                            app:strokeColor="@color/transparent">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/profileUserAvatar"
                                 android:layout_width="82dp"
                                 android:layout_height="82dp"
                                 android:layout_gravity="center"
-                                android:backgroundTint="@color/transparent"
-                                app:cardCornerRadius="64dp"
-                                app:strokeColor="@color/transparent">
+                                app:srcCompat="@drawable/ic_round_add_circle_24"
+                                tools:ignore="ContentDescription,ImageContrastCheck"
+                                tools:tint="@color/transparent" />
 
-                                <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/profileUserAvatar"
-                                    android:layout_width="82dp"
-                                    android:layout_height="82dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/ic_round_add_circle_24"
-                                    tools:ignore="ContentDescription,ImageContrastCheck"
-                                    tools:tint="@color/transparent" />
+                        </com.google.android.material.card.MaterialCardView>
 
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:id="@+id/profileUserName"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom|center"
-                                android:layout_marginBottom="3dp"
-                                android:layout_marginStart="8dp"
-                                android:fontFamily="@font/poppins_semi_bold"
-                                android:text="@string/username"
-                                android:textColor="?attr/colorPrimary"
-                                android:textSize="18sp" />
-
+                        <TextView
+                            android:id="@+id/profileUserName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="3dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="@string/username"
+                            android:textColor="?attr/colorPrimary"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -147,6 +142,6 @@
                     tools:ignore="SpUsage"
                     tools:text="@string/lorem_ipsum" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </FrameLayout>
-</ScrollView>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

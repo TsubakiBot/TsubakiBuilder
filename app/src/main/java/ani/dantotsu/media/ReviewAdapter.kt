@@ -13,6 +13,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemReviewBinding
 import ani.dantotsu.databinding.ItemReviewContentBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.himitsu.os.Version
 import java.io.Serializable
@@ -55,6 +56,13 @@ class ReviewAdapter(val parentActivity: ReviewActivity, val reviews: List<Review
                     Html.fromHtml(review.body, Html.FROM_HTML_MODE_COMPACT)
                 } else {
                     @Suppress("DEPRECATION") Html.fromHtml(review.body)
+                }
+                dialogView.profileBannerContainer.setOnClickListener {
+                    ContextCompat.startActivity(
+                        parentActivity,
+                        Intent(parentActivity, ProfileActivity::class.java)
+                            .putExtra("userId", review.userId), null
+                    )
                 }
                 val alertD = AlertDialog.Builder(parentActivity, R.style.MyPopup)
                 alertD.setView(dialogView.root)
