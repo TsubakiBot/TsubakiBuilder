@@ -54,4 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/biometricShield"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_black"
+        android:visibility="gone"/>
 </FrameLayout>

@@ -78,7 +78,6 @@ import nl.joery.animatedbottombar.AnimatedBottomBar
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.io.Serializable
-import java.util.concurrent.Executor
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -112,7 +111,9 @@ class MainActivity : AppCompatActivity() {
             finishAndRemoveTask()
             startActivity(
                 Intent(this, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_NO_HISTORY or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
             )
             return
@@ -135,19 +136,22 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     when (errorCode) {
-                        BiometricPrompt.ERROR_CANCELED -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_HW_NOT_PRESENT -> {}
-                        BiometricPrompt.ERROR_HW_UNAVAILABLE -> {}
-                        BiometricPrompt.ERROR_LOCKOUT -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_NO_BIOMETRICS -> {}
-                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> {}
-                        BiometricPrompt.ERROR_NO_SPACE -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_TIMEOUT -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS -> finishAndRemoveTask()
+
+                        BiometricPrompt.ERROR_HW_NOT_PRESENT,
+                        BiometricPrompt.ERROR_HW_UNAVAILABLE,
+                        BiometricPrompt.ERROR_NO_BIOMETRICS,
+                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
+                        BiometricPrompt.ERROR_VENDOR -> {
+                            binding.biometricShield.visibility = View.VISIBLE
+                        }
+                        BiometricPrompt.ERROR_CANCELED,
+                        BiometricPrompt.ERROR_LOCKOUT,
+                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT,
+                        BiometricPrompt.ERROR_NO_SPACE,
+                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED,
+                        BiometricPrompt.ERROR_TIMEOUT,
+                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS,
                         BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
-                        BiometricPrompt.ERROR_VENDOR -> {}
                         else -> biometricPrompt.authenticate(promptInfo)
                     }
                 }
@@ -160,6 +164,7 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.biometric_success),
                         Toast.LENGTH_SHORT
                     ).show()
+                    binding.biometricShield.visibility = View.GONE
                 }
 
                 override fun onAuthenticationFailed() {
@@ -173,7 +178,10 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        if (PrefManager.getVal(PrefName.SecureLock)) biometricPrompt.authenticate(promptInfo)
+        if (PrefManager.getVal(PrefName.SecureLock)) {
+            binding.biometricShield.visibility = View.VISIBLE
+            biometricPrompt.authenticate(promptInfo)
+        }
 
         TaskScheduler.scheduleSingleWork(this)
 
