@@ -22,6 +22,7 @@ import ani.dantotsu.R
 import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currContext
+import ani.dantotsu.databinding.ItemListContainerBinding
 import ani.dantotsu.databinding.ItemMangaPageBinding
 import ani.dantotsu.databinding.LayoutTrendingBinding
 import ani.dantotsu.loadImage
@@ -48,6 +49,7 @@ import eu.kanade.tachiyomi.util.system.getThemeColor
 class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHolder>() {
     val ready = MutableLiveData(false)
     lateinit var binding: ItemMangaPageBinding
+    private lateinit var bindingListContainer: ItemListContainerBinding
     private lateinit var trendingBinding: LayoutTrendingBinding
     private var trendHandler: Handler? = null
     private lateinit var trendRun: Runnable
@@ -116,33 +118,37 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
             trendingBinding.searchBarText.performClick()
         }
 
-        binding.mangaGenreImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-wk5qQ7zAaTGl.jpg")
-        binding.mangaTopScoreImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg")
+        bindingListContainer = ItemListContainerBinding.bind(binding.root).apply {
+            leftButtonImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-wk5qQ7zAaTGl.jpg")
+            rightButtonText.text = getString(R.string.top_score)
+            rightButtonImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg")
 
-        binding.mangaGenre.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, GenreActivity::class.java).putExtra("type", "MANGA"),
-                null
-            )
-        }
-        binding.mangaTopScore.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, SearchActivity::class.java)
-                    .putExtra("type", "MANGA")
-                    .putExtra("sortBy", Anilist.sortBy[0])
-                    .putExtra("hideKeyboard", true),
-                null
-            )
-        }
-        binding.mangaReviewText.text = getString(R.string.review_type, "MANGA")
-        binding.mangaReview.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, ReviewActivity::class.java).putExtra("type", "MANGA"),
-                null
-            )
+            leftListButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, GenreActivity::class.java).putExtra("type", "MANGA"),
+                    null
+                )
+            }
+            rightListButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, SearchActivity::class.java)
+                        .putExtra("type", "MANGA")
+                        .putExtra("sortBy", Anilist.sortBy[0])
+                        .putExtra("hideKeyboard", true),
+                    null
+                )
+            }
+            reviewButtonText.text = getString(R.string.review_type, "MANGA")
+            reviewButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, ReviewActivity::class.java).putExtra("type", "MANGA"),
+                    null
+                )
+            }
+            //reviewButtonImage.loadImage()
         }
 
         binding.mangaIncludeList.isVisible = Anilist.userid != null
@@ -151,7 +157,6 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
         binding.mangaIncludeList.setOnCheckedChangeListener { _, isChecked ->
             onIncludeListClick.invoke(isChecked)
-
             PrefManager.setVal(PrefName.PopularMangaList, isChecked)
         }
         if (ready.value == false)
@@ -191,7 +196,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         trendingBinding.trendingViewPager.layoutAnimation =
             LayoutAnimationController(setSlideIn(), 0.25f)
         trendingBinding.titleContainer.startAnimation(setSlideUp())
-        binding.mangaListContainer.layoutAnimation =
+        bindingListContainer.listContainer.layoutAnimation =
             LayoutAnimationController(setSlideIn(), 0.25f)
 
     }

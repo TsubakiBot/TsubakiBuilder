@@ -23,6 +23,7 @@ import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemAnimePageBinding
+import ani.dantotsu.databinding.ItemListContainerBinding
 import ani.dantotsu.databinding.LayoutTrendingBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.CalendarActivity
@@ -49,6 +50,7 @@ import eu.kanade.tachiyomi.util.system.getThemeColor
 class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHolder>() {
     val ready = MutableLiveData(false)
     lateinit var binding: ItemAnimePageBinding
+    private lateinit var bindingListContainer: ItemListContainerBinding
     private lateinit var trendingBinding: LayoutTrendingBinding
     private var trendHandler: Handler? = null
     private lateinit var trendRun: Runnable
@@ -128,30 +130,34 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             it.setOnLongClickListener { onSeasonLongClick.invoke(i) }
         }
 
-        binding.animeGenreImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg")
-        binding.animeCalendarImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/anime/banner/125367-hGPJLSNfprO3.jpg")
+        bindingListContainer = ItemListContainerBinding.bind(binding.root).apply {
+            leftButtonImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg")
+            rightButtonText.text = getString(R.string.release_calendar)
+            rightButtonImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/anime/banner/125367-hGPJLSNfprO3.jpg")
 
-        binding.animeGenre.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, GenreActivity::class.java).putExtra("type", "ANIME"),
-                null
-            )
-        }
-        binding.animeCalendar.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, CalendarActivity::class.java),
-                null
-            )
-        }
-        binding.animeReviewText.text = getString(R.string.review_type, "ANIME")
-        binding.animeReview.setOnClickListener {
-            ContextCompat.startActivity(
-                it.context,
-                Intent(it.context, ReviewActivity::class.java).putExtra("type", "ANIME"),
-                null
-            )
+            leftListButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, GenreActivity::class.java).putExtra("type", "ANIME"),
+                    null
+                )
+            }
+            rightListButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, CalendarActivity::class.java),
+                    null
+                )
+            }
+            reviewButtonText.text = getString(R.string.review_type, "ANIME")
+            reviewButton.setOnClickListener {
+                ContextCompat.startActivity(
+                    it.context,
+                    Intent(it.context, ReviewActivity::class.java).putExtra("type", "ANIME"),
+                    null
+                )
+            }
+            //reviewButtonImage.loadImage()
         }
 
         binding.animeIncludeList.isVisible = Anilist.userid != null
@@ -160,7 +166,6 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
 
         binding.animeIncludeList.setOnCheckedChangeListener { _, isChecked ->
             onIncludeListClick.invoke(isChecked)
-
             PrefManager.setVal(PrefName.PopularAnimeList, isChecked)
         }
         if (ready.value == false)
@@ -203,7 +208,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         trendingBinding.trendingViewPager.layoutAnimation =
             LayoutAnimationController(setSlideIn(), 0.25f)
         trendingBinding.titleContainer.startAnimation(setSlideUp())
-        binding.animeListContainer.layoutAnimation =
+        bindingListContainer.listContainer.layoutAnimation =
             LayoutAnimationController(setSlideIn(), 0.25f)
         binding.animeSeasonsCont.layoutAnimation =
             LayoutAnimationController(setSlideIn(), 0.25f)
