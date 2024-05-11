@@ -14,8 +14,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -57,9 +55,9 @@ import ani.dantotsu.toast
 import ani.dantotsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
-import ani.dantotsu.util.customAlertDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -462,8 +460,6 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                         }
                         .show()
                     alertDialog.window?.setDimAmount(0.8f)
-                } else {
-                    snackString(R.string.no_subtitles_available)
                 }
             } else {
                 binding.urlSub.visibility = View.GONE
