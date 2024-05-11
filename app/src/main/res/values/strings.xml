@@ -967,6 +967,7 @@
     <string name="notifications_desc">Customize news and updates</string>
     <string name="system_desc">Updates and useful utilities</string>
     <string name="about_desc">Learn more about Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
 
     <string name="enable">Enable</string>
 

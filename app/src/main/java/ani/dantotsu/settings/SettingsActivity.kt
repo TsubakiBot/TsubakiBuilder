@@ -21,6 +21,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.snackString
@@ -169,6 +170,16 @@ class SettingsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_admin_panel_settings_24,
                         onClick = {
                             startActivity(Intent(context, SettingsSystemActivity::class.java))
+                        },
+                        hasTransition = true
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.anilist),
+                        desc = getString(R.string.ani_setting_desc),
+                        icon = R.drawable.ic_anilist,
+                        onClick = {
+                            openLinkInBrowser("https://anilist.co/settings")
                         },
                         hasTransition = true
                     ),
