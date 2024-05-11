@@ -2,7 +2,9 @@ package ani.dantotsu
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
@@ -165,6 +167,19 @@ class App : MultiDexApplication() {
         override fun onActivityStopped(p0: Activity) {}
         override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {}
         override fun onActivityDestroyed(p0: Activity) {}
+    }
+    private fun setPackageState(componentName: ComponentName, toDisabled: Boolean) {
+        if (toDisabled) {
+            packageManager.setComponentEnabledSetting(
+                componentName,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP
+            )
+        } else {
+            packageManager.setComponentEnabledSetting(
+                componentName,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP
+            )
+        }
     }
 
     companion object {
