@@ -203,13 +203,14 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun toggleSearchView(isVisible: Boolean) {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         if (isVisible) {
             binding.searchView.visibility = View.GONE
             binding.searchViewText.text.clear()
+            imm.hideSoftInputFromWindow(binding.root.windowToken ?: return, 0)
         } else {
             binding.searchView.visibility = View.VISIBLE
             binding.searchViewText.requestFocus()
-            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(binding.searchViewText, InputMethodManager.SHOW_IMPLICIT)
         }
     }
