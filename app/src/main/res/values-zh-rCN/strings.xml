@@ -954,8 +954,8 @@
     <string name="failed_to_delete_directory">删除目录失败</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
-    <string name="randome_anime">Random Anime</string>
-    <string name="randome_manga">Random Manga</string>
+    <string name="random_anime">Random Anime</string>
+    <string name="random_manga">Random Manga</string>
     <string name="you">您</string>
     <string name="logout_confirm">您确定要注销吗？</string>
     <string name="app_died">应用程序崩溃</string>

@@ -43,12 +43,12 @@ class ReviewActivity : AppCompatActivity() {
             bottomMargin += navBarHeight
         }
 
-        binding.listTitle.setText(R.string.type_reviews)
+        binding.listTitle.setText(R.string.review_type)
 
         val type = intent.getStringExtra("type")
         if (type != null) {
             val name ="${type.substring(0, 1)}${type.substring(1).lowercase()}"
-            binding.listTitle.text = getString(R.string.type_reviews, name)
+            binding.listTitle.text = getString(R.string.review_type, name)
 
             model.getReviews().observe(this) {
                 if (it != null) {

@@ -52,7 +52,7 @@ class ReviewAdapter(val parentActivity: ReviewActivity, val reviews: List<Review
                 dialogView.notificationCover.loadImage(review.media?.cover)
                 dialogView.reviewItemName.text = review.media?.mainName()
                 dialogView.reviewItemAuthor.text = parentActivity.getString(R.string.review_author, review.user?.name)
-                val formattedScore = "${review.score} (${ActivityItemBuilder.getDateTime(review.createdAt)})"
+                val formattedScore = "${review.score}/100 (${ActivityItemBuilder.getDateTime(review.createdAt)})"
                 dialogView.reviewItemRating.text = formattedScore
                 dialogView.reviewItemText.text = if (Version.isNougat) {
                     Html.fromHtml(review.body, Html.FROM_HTML_MODE_COMPACT)

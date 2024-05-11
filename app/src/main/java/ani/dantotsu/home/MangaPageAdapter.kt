@@ -3,7 +3,6 @@ package ani.dantotsu.home
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.util.TypedValue
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
@@ -137,7 +136,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 null
             )
         }
-        binding.mangaReviewText.text = getString(R.string.type_reviews, "MANGA")
+        binding.mangaReviewText.text = getString(R.string.review_type, "MANGA")
         binding.mangaReview.setOnClickListener {
             ContextCompat.startActivity(
                 it.context,

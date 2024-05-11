@@ -145,7 +145,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
                 null
             )
         }
-        binding.animeReviewText.text = getString(R.string.type_reviews, "ANIME")
+        binding.animeReviewText.text = getString(R.string.review_type, "ANIME")
         binding.animeReview.setOnClickListener {
             ContextCompat.startActivity(
                 it.context,

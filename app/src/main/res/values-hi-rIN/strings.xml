@@ -957,8 +957,8 @@
     <string name="failed_to_delete_directory">Failed to delete directory</string>
     <string name="hidden_anime">Hidden Anime</string>
     <string name="hidden_manga">Hidden Manga</string>
-    <string name="randome_anime">Random Anime</string>
-    <string name="randome_manga">Random Manga</string>
+    <string name="random_anime">Random Anime</string>
+    <string name="random_manga">Random Manga</string>
     <string name="you">तुम</string>
     <string name="logout_confirm">क्या आप वाकई लॉगआउट करना चाहते हैं?</string>
     <string name="app_died">एप डाउन हो गया</string>

@@ -362,7 +362,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="@string/randome_anime"
+                            android:text="@string/random_anime"
                             android:textAllCaps="true"
                             android:textColor="@color/bg_white"
                             android:textSize="16sp" />
@@ -414,7 +414,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="@string/randome_manga"
+                            android:text="@string/random_manga"
                             android:textAllCaps="true"
                             android:textColor="@color/bg_white"
                             android:textSize="16sp" />

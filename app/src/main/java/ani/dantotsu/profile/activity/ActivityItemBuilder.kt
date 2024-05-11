@@ -5,6 +5,7 @@ import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -113,14 +114,11 @@ object ActivityItemBuilder {
 
     fun getDateTime(timestamp: Int): String {
 
-        val targetDate = Date(timestamp * 1000L)
+        val targetDate: Calendar = Calendar.getInstance()
+        targetDate.setTimeInMillis(timestamp * 1000L)
 
-        if (targetDate < Date(946684800000L)) { // January 1, 2000 (who want dates before that?)
-            return ""
-        }
-
-        val currentDate = Date()
-        val difference = currentDate.time - targetDate.time
+        val currentDate: Calendar = Calendar.getInstance()
+        val difference = currentDate.timeInMillis - targetDate.timeInMillis
 
         return when (val daysDifference = difference / (1000 * 60 * 60 * 24)) {
             0L -> {
@@ -136,7 +134,7 @@ object ActivityItemBuilder {
 
             1L -> "1 day ago"
             in 2..6 -> "$daysDifference days ago"
-            else -> SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(targetDate)
+            else -> SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(targetDate.time)
         }
     }
 }

@@ -66,10 +66,8 @@
                 android:id="@+id/followFilterButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:alpha="0.33"
                 android:background="?android:attr/selectableItemBackground"
                 android:padding="8dp"
-                android:scaleX="-1"
                 app:srcCompat="@drawable/ic_round_filter_alt_24"
                 app:tint="?attr/colorPrimary" />
         </androidx.cardview.widget.CardView>
@@ -87,7 +85,6 @@
                 android:id="@+id/followerList"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:alpha="0.33"
                 android:background="?android:attr/selectableItemBackground"
                 android:scaleX="-1"
                 app:srcCompat="@drawable/ic_round_view_list_24"
@@ -108,7 +105,6 @@
                 android:id="@+id/followerGrid"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:alpha="0.33"
                 android:background="?android:attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_round_grid_view_24"
                 app:tint="?attr/colorPrimary"

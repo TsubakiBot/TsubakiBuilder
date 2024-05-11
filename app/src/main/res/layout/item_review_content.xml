@@ -8,7 +8,7 @@
         android:id="@+id/notificationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
                 android:id="@+id/notificationCover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.66"
+                android:alpha="0.44"
                 android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -76,17 +76,6 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
-                    android:id="@+id/reviewItemAuthor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:gravity="center"
-                    android:text="@string/review_author"
-                    android:textSize="14sp"
-                    tools:ignore="HardcodedText,SmallSp" />
-
-                <TextView
                     android:id="@+id/reviewItemRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,7 +85,18 @@
                     android:textSize="16dp"
                     android:transitionName="mediaTitle"
                     tools:ignore="SpUsage"
-                    tools:text="@string/slogan" />
+                    tools:text="@string/review_type" />
+
+                <TextView
+                    android:id="@+id/reviewItemAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:gravity="center"
+                    android:text="@string/review_author"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText,SmallSp" />
 
                 <TextView
                     android:id="@+id/reviewItemText"
