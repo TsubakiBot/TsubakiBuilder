@@ -1346,7 +1346,7 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
       mediaId
       mediaType
       summary
-      body
+      body(asHtml: true)
       rating
       score
       createdAt
