@@ -14,6 +14,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
@@ -27,6 +30,7 @@ import ani.dantotsu.TorrManager.getPlayLink
 import ani.dantotsu.addons.download.DownloadAddonManager
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
+import ani.dantotsu.currContext
 import ani.dantotsu.databinding.BottomSheetSelectorBinding
 import ani.dantotsu.databinding.ItemStreamBinding
 import ani.dantotsu.databinding.ItemUrlBinding
@@ -45,6 +49,7 @@ import ani.dantotsu.parsers.Video
 import ani.dantotsu.parsers.VideoExtractor
 import ani.dantotsu.parsers.VideoType
 import ani.dantotsu.setSafeOnClickListener
+import ani.dantotsu.settings.SettingsAddonActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -54,6 +59,7 @@ import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
+import ani.dantotsu.util.customAlertDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -426,7 +432,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     val subtitleNames = subtitles.map { it.language }
                     var subtitleToDownload: Subtitle? = null
                     val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
-                        .setTitle(getString(R.string.download_subtitle))
+                        .setTitle(R.string.download_subtitle)
                         .setSingleChoiceItems(
                             subtitleNames.toTypedArray(),
                             -1
@@ -456,6 +462,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                         }
                         .show()
                     alertDialog.window?.setDimAmount(0.8f)
+                } else {
+                    snackString(R.string.no_subtitles_available)
                 }
             } else {
                 binding.urlSub.visibility = View.GONE
@@ -474,10 +482,27 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                 } else {
                     val downloadAddonManager: DownloadAddonManager = Injekt.get()
                     if (!downloadAddonManager.isAvailable()){
-                        toast(getString(R.string.download_extension_not_available))
+                        val context = currContext() ?: requireContext()
+                        context.customAlertDialog().apply {
+                            setTitle(R.string.download_addon_not_installed)
+                            setMessage(R.string.would_you_like_to_install)
+                            setPosButton(R.string.yes) {
+                                ContextCompat.startActivity(
+                                    context,
+                                    Intent(context, SettingsAddonActivity::class.java),
+                                    null
+                                )
+                            }
+                            setNegButton(R.string.no) {
+                                return@setNegButton
+                            }
+                            show()
+                        }
+                        dismiss()
                         return@setSafeOnClickListener
                     }
-                    val episode = media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!
+                    val episode =
+                        media!!.anime!!.episodes!![media!!.anime!!.selectedEpisode!!]!!
                     val selectedVideo =
                         if (extractor.videos.size > episode.selectedVideo) extractor.videos[episode.selectedVideo] else null
                     val subtitleNames = subtitles.map { it.language }
