@@ -24,6 +24,8 @@ import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
@@ -125,6 +127,22 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.biometric_error, errString),
                         Toast.LENGTH_SHORT
                     ).show()
+                    if (when (errorCode) {
+                            BiometricPrompt.ERROR_CANCELED -> true
+                            BiometricPrompt.ERROR_HW_NOT_PRESENT -> false
+                            BiometricPrompt.ERROR_HW_UNAVAILABLE -> false
+                            BiometricPrompt.ERROR_LOCKOUT -> true
+                            BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> true
+                            BiometricPrompt.ERROR_NO_BIOMETRICS -> false
+                            BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> false
+                            BiometricPrompt.ERROR_NO_SPACE -> true
+                            BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED -> true
+                            BiometricPrompt.ERROR_TIMEOUT -> true
+                            BiometricPrompt.ERROR_UNABLE_TO_PROCESS -> true
+                            BiometricPrompt.ERROR_USER_CANCELED -> true
+                            BiometricPrompt.ERROR_VENDOR -> false
+                            else -> true
+                        }) finishAndRemoveTask()
                 }
 
                 override fun onAuthenticationSucceeded(
@@ -151,7 +169,8 @@ class MainActivity : AppCompatActivity() {
         promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle(getString(R.string.biometric_title))
             .setSubtitle(getString(R.string.biometric_details))
-            .setNegativeButtonText(getString(R.string.biometric_method))
+            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .setConfirmationRequired(false)
             .build()
 
         if (PrefManager.getVal(PrefName.SecureLock)) biometricPrompt.authenticate(promptInfo)

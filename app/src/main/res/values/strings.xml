@@ -1107,9 +1107,8 @@
     <string name="threads">Threads</string>
 
     <string name="biometric_title">Biometric Verification</string>
-    <string name="biometric_summary">Require fingerprint to access HImitsu</string>
+    <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
-    <string name="biometric_method">Alternate methods</string>
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
