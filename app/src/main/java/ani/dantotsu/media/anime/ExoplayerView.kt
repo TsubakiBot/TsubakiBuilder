@@ -1059,7 +1059,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             epChanging = !it
         }
 
-
         //Anime Title
         animeTitle.text = media.userPreferredName
 
@@ -1162,7 +1161,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                             "dantotsu" -> mutableListOf(
                                 RPC.Link(getString(R.string.view_anime), media.shareLink ?: ""),
-                                RPC.Link("Watch on Dantotsu", getString(R.string.dantotsu))
+                                RPC.Link(getString(R.string.watch_on_dantotsu), getString(R.string.dantotsu))
                             )
 
                             "anilist" -> {
@@ -1170,7 +1169,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                 val anilistLink = "https://anilist.co/user/$userId/"
                                 mutableListOf(
                                     RPC.Link(getString(R.string.view_anime), media.shareLink ?: ""),
-                                    RPC.Link("View My AniList", anilistLink)
+                                    RPC.Link(getString(R.string.view_my_anilist), anilistLink)
                                 )
                             }
 
@@ -1649,6 +1648,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }.show()
             dialog.window?.setDimAmount(0.8f)
         } else buildExoplayer()
+
+        torrent?.active_peers?.let {
+            if (it < 2) toast(R.string.peer_count_low)
+        }
     }
 
     private fun buildExoplayer() {
