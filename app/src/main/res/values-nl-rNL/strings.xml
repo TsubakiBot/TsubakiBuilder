@@ -153,6 +153,7 @@
     <string name="server_disabled">TorrServer is uitgeschakeld!</string>
     <string name="server_enabled">TorrServer starten</string>
     <string name="enable_server_temp">Wilt u TorrServer tijdelijk inschakelen (uitgeschakeld bij het sluiten van app)?</string>
+    <string name="peer_count_low">Low peer count detected!</string>
     <string name="anilist_settings">Anilist Instellingen</string>
     <string name="extension_settings">Extensies</string>
     <string name="downloads">downloads</string>
@@ -179,12 +180,12 @@
     <string name="about">Informatie</string>
     <string name="devs">Developers/Helpers</string>
     <string name="disclaimer">Disclaimer</string>
-    <string name="full_disclaimer">         - Dantotsu by itself only provides an anime and manga tracker and does not provide any anime or manga streaming or downloading capabilities.
-        \n\n - Dantotsu or any of its developer/staff don\'t host any of the content found inside Dantotsu. Any and all images and anime/manga information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
-        \n\n - Furthermore, all of the anime/manga links found in Dantotsu are taken from various 3rd party plugins and have no affiliation with Dantotsu or its staff.
-        \n\n - Dantotsu or it\'s owners aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
-        \n\n - By using Dantotsu, you comply to the fact that the developer of the app is not responsible for any of the contents found in the app. You also agree to the fact that you may not use Dantotsu to download or stream any copyrighted content.
-        \n\n - If the internet infringement issues are involved, please contact the source website. The developer does not assume any legal responsibility.
+    <string name="full_disclaimer">         - Himitsu is a fork of Dantotsu. Dantotsu, by itself, provides an anime and manga tracker and does not provide any anime or manga streaming or downloading content.
+        \n\n - Himitsu and any Himitsu contributors do not host any of the content found inside Himitsu. Any and all images or information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
+        \n\n - Furthermore, all of the anime/manga links found in Himitsu are provided by various 3rd party plugins supplied by the user and have no affiliation with Himitsu or its staff.
+        \n\n - Himitsu and it\'s contributors aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
+        \n\n - By using Himitsu, you confirm that the developer of Himitsu is not responsible for any of the contents found in the app or Dantotsu. You also agree to not use Himitsu to download or stream any copyrighted content.
+        \n\n - If any internet infringement issues are involved, please contact the Dantotsu website. Himitsu and its contributors do not assume any legal responsibility.
     </string>
     <string name="version_current">Versie %1$s</string>
     <string-array name="tips">
@@ -348,6 +349,7 @@
     <string name="previous_season">Vorige Seizoen</string>
     <string name="include_media_in_list">Lijst opnemen</string>
     <string name="release_calendar">Kalender</string>
+    <string name="review_type">%1$s Reviews</string>
     <string name="planned_anime">Geplande Anime</string>
     <string name="planned_manga">Geplande Manga</string>
     <string name="image_long_clicking">Open image by Long Clicking</string>
@@ -366,7 +368,7 @@
     <string name="login_with_anilist">Login with Anilist!</string>
     <string name="anilist">Anilist</string>
     <string name="account_help">Hoe werkt dit?</string>
-    <string name="full_account_help">        Dantotsu is an Anilist Based App, so for syncing with your MAL Account, It needs an Anilist account to be logged in.
+    <string name="full_account_help">        Himitsu is an Anilist Based App, so for syncing with your MAL Account, It needs an Anilist account to be logged in.
         \nOnce logged in with both Anilist and MAL accounts, the app will automatically update your MAL account whenever:
         \n- Add a new Media
         \n- Edit a Media
@@ -389,7 +391,7 @@
     <string name="checking_subscriptions">Notification for Checking Subscriptions</string>
     <string name="subscriptions_checking_time_s">Abonnementen Update Frequentie: %1$s</string>
     <string name="subscriptions_checking_time">Abonnementen Update Frequentie</string>
-    <string name="subscriptions_info">Amount of time for Dantotsu to periodically check for new Episodes/Chapters\n(Less time will cause more battery consumption)</string>
+    <string name="subscriptions_info">Amount of time for Himitsu to check for new episodes / chapters\n(Less time consumes more battery)</string>
     <string name="do_not_update">Niet bijwerken</string>
     <string name="loading_chap_number">Hoofdstuk %1$s laden</string>
     <string name="sort_by_release_date">Sorteren op publicatiedatum</string>
@@ -405,15 +407,16 @@
     <string name="install_step">Stap: %1$s</string>
     <string name="review">Beoordelen</string>
     <string name="select_source">Selecteer een bron</string>
+    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Installeer update %1$s?</string>
     <string name="beta_update">Bèta </string>
     <string name="update_available">Update beschikbaar</string>
     <string name="discord_nothing_button">Alleen de eerste knop weergeven</string>
-    <string name="discord_dantotsu_button">Toon dantosu op de tweede knop</string>
+    <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Toon in plaats daarvan je AniList profiel</string>
     <string name="discord_rich_presence">Discord Rich Presence</string>
-    <string name="stream_on_dantotsu">Stream op Dantotsu</string>
+    <string name="stream_on_dantotsu">Stream on Himitsu</string>
     <string name="view_my_anilist">Bekijk Mijn AniList</string>
     <string name="jobless_message">VERDOMME! JE BENT ECHT WERKLOOS\nJE BENT AAN HET EINDE GEKOMEN</string>
     <string name="file_manager_not_found">Kon geen bestandsmanager vinden om de SD-kaart te openen</string>
@@ -515,9 +518,9 @@
     <string name="type_other">ANDERE</string>
     <string name="type_source">ZUID</string>
     <string name="type_contains">DOORGAAN</string>
-    <string name="read_on_dantotsu">Lees op Dantotsu</string>
-    <string name="watch_on_dantotsu">Bekijk op Dantotsu</string>
-    <string name="view_profile_in_dantotsu">Profiel van Dantotsu bekijken</string>
+    <string name="read_on_dantotsu">Read on Himitsu</string>
+    <string name="watch_on_dantotsu">Watch on Himitsu</string>
+    <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">Doorgaan: Aflevering %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - vuller</string>
     <string name="continue_chapter">Doorgaan: %1$s\n%2$s</string>
@@ -573,26 +576,26 @@
     <string name="gender">"\n__Geslacht:__ "</string>
     <string name="male">Mannelijk</string>
     <string name="female">Vrouwelijk</string>
-    <string name="question_1">Wat is Dantotsu?</string>
-    <string name="answer_1">Dantotsu is vervaardigd uit de as van Saikou en gebaseerd op simplistische maar geavanceerde eleganties. Het is een alleen Anilist client, waarmee je ook &amp; kunt streamen als Anime / Manga door extensies kunt downloaden. \n&gt;Dantotsu (ρρ; Dan-totsu) betekent letterlijk het beste in het Japans. Nou, we willen zeggen dat dit de beste opensource-app is voor anime en manga op Android, maar Hé, probeer het zelf uit &amp; rechter!</string>
-    <string name="question_2">Wat zijn sommige kenmerken van Dantotsu?</string>
-    <string name="answer_2">Sommige vermelde functies van Dantotsu zijn\n\n- Makkelijk en functioneel naar beide, bekijk anime en lees manga en licht romans, Ad Free.\n- Een volledig open source app met een leuke UI &amp; Animaties\n- Plugin van derden ondersteunen \n- Synchroniseer anime en manga real-time met AniList. Categoriseer anime en manga op basis van je huidige status. (Powered by AniList)\n- Vind alle series op basis van een volledig en regelmatig bijgewerkte lijst van alle trends, populaire en lopende anime gebaseerd op scores.\n- Bekijk uitgebreide details over anime-series, films en manga titels. Het geeft ook de mogelijkheid om af te tellen tot de volgende aflevering van luchtanime. (Aangedreven door AniList &amp; MyAnimeList)</string>
+    <string name="question_1">What is Himitsu?</string>
+    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou, but then Himitsu forked Dantotsu and began improving upon it. It is (mostly) an Anilist only client, which also supports extensions. \n&gt;Himitsu (秘密; Him-itsu) means \"secret\" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
+    <string name="question_2">What are some features of Himitsu?</string>
+    <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Wat is het verschil tussen Stable, Beta &amp; Alpha versies?</string>
     <string name="answer_3">Deze fork biedt geen afzonderlijke tracks. De versie die je van de [repository]downloadt (https://github.com/RepoDevil/Himitsu) is dezelfde [AbandonedCart](https://github. De optie/AbandonedCart) is actief. Als je bugs vindt en al heeft geüpdatet naar de nieuwste versie, stuur dan gerust een [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
-    <string name="question_4">Is Dantotsu beschikbaar voor PC?</string>
-    <string name="answer_4">Momenteel geen (zowel Windows als Linux). Er is geen schatting wanneer het beschikbaar zal zijn. Maar u kunt elke Android emulator downloaden en Dantotsu op starten. Voor Windows 11 gebruikers kunnen ze het Windows Subsysteem voor Android (WSA) gebruiken om Dantotsu in Windows uit te voeren.</string>
-    <string name="question_5">Is Dantotsu beschikbaar voor iOS?</string>
-    <string name="answer_5">Nee, het beste wat we kunnen doen is Dantosu snijden op een appel.</string>
+    <string name="question_4">Is Himitsu available for PC?</string>
+    <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
+    <string name="question_5">Is Himitsu available for iOS?</string>
+    <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
     <string name="question_6">Waarom worden mijn statistieken niet bijgewerkt?</string>
     <string name="answer_6">Dit komt omdat het elke 48 uur automatisch bijwerkt (door Anilist). Als je echt je statistieken wilt bijwerken, kun je je statistieken forceren om naar deze [link]te gaan (https://anilist.co/settings/lists).</string>
     <string name="question_7">Hoe Anime downloaden?</string>
-    <string name="answer_7">Er zijn momenteel twee manieren om te downloaden. De ene is intern en de andere is extern. Als je intern downloadt, kan het worden bekeken in de app, maar alleen de app kan die aflevering openen, je kunt het niet verplaatsen of delen. De andere optie is om externe download te gebruiken. Hiervoor moet een downloadmanager downloaden en een aparte videospeler worden bekeken. Externe downloads kunnen worden gedeeld, maar je kunt het niet bekijken in de Dantotsu app.\n\n• Om intern te downloaden:\n\n1. Tik op de downloadknop.\n2. Kies de server en de videokwaliteit.\n3. Winstgeving.\n\n•Om extern te downloaden:\n\n 1. Download 1DM of ADM van Google Play Store.
-        \n2. Voer de app in, geef opslagtoegang en stel uw voorkeuren in (downloadsnelheid, pad downloaden (optioneel))
-        \n\n. Ga nu naar \`Dantotsu &gt; Instellingen &gt; Common &gt; Download Managers\` en kies de downloadmanager die je net hebt ingesteld.
-        \n4. Ga naar de gewenste aflevering en druk op het downloadpictogram van elke server. Er kan een popup zijn om je voorkeuren opnieuw in te stellen, druk gewoon op \"Download\" en het zal worden opgeslagen in het gekozen pad.
+    <string name="answer_7">There are two methods of downloading currently. One is internal and the other is external. If you download internally, then it can be viewed within the app but only the app can open that episode, you cannot move it or share it. The other option is to use external downloading. It requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view it within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
+        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
+        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
 
-        \n\nLet op: directe downloads zijn ook mogelijk zonder een manager, maar het wordt niet aanbevolen.
-\n\nNerd Note: intern gedownloade afleveringen worden opgeslagen in \`Android/data/ani. antotsu.*/files/Anime_Downloads\`\nJe kunt deze bestanden niet afspelen omdat ze in \`.exo\` formaat zijn, gesplitst in honderden stuks en zijn gecodeerd.</string>
+        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
+\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
     <string name="question_9">Hoe kunt u NSFW-inhoud inschakelen?</string>
     <string name="answer_9">Je kunt NSFW-inhoud inschakelen door 18+ inhoud van deze [link]in te schakelen (https://anilist.co/settings/media). Je moet ook NSFW extensies inschakelen in \`Instellingen &gt; Extensies &gt; NSFW extensies\` </string>
     <string name="question_10">Hoe mijn MAL/Kitsu lijsten importeren naar Anilist?</string>
@@ -600,17 +603,17 @@
     <string name="question_11">Hoe mijn Anilist/Kitsu lijsten importeren naar MAL?</string>
     <string name="answer_11">Hier is hoe je het doet,\n\nExporteer:\n\n1. Ga naar deze [link](https://malscraper. zurewebsites.net/). \n2. Geef je Anilist gebruikersnaam/Kitsu ID in het vak \'Gebruikersnaam/Kitsu GebruikersID\'. \n3. Selecteer lijsttype en schakel \'update_on_import\' in. \n4. Download het bestand; het zal in .xml-formaat zijn. Zorg ervoor dat zowel Anime als Manga lijsten worden gedownload.\n\nImporteren:\n1. Om het te importeren in uw MAL account, ga naar deze [link](https://myanimelist. et/import.php) en kies \'MyAnimeList Import\' als importtype. \n2. Druk op \'Select File\' en selecteer het gedownloade anime/manga lijst XML bestand. \n3. Druk op \'Gegevens importeren\'. \nGefeliciteerd, je hebt zojuist de geselecteerde lijst geïmporteerd naar je MAL account.</string>
     <string name="question_12">Waarom kan ik een specifieke anime/manga titel niet vinden?</string>
-    <string name="answer_12">Laten we zeggen dat je op zoek bent naar Castlevania in Dantotsu. Maar Anilist heeft het niet, dus Dantotsu ook niet.\nEen oplossing voor het bovenstaande probleem is als volgt:\n1) Ga naar een willekeurige anime die niet in je lijst staat.\n2) Ga naar de sectie horloge.\n3) Selecteer een willekeurige bron en druk op \'Verkeerde titel\'.\n4) Zoek nu naar Castlevania (de anime die u zoekt) en selecteer het.\n5) ENJOY!\n\nAls je het anime niet meer kan vinden via deze stappen, dan heb je pech gehad. Zelfs die bron heeft het niet. Probeer een andere bron.</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
     <string name="question_13">Hoe verwijder je bronnen die een volledig verkeerde titel selecteren?</string>
-    <string name="answer_13">Dantotsu zelf host niets anders dan afhankelijk van andere bronnen. Bij het tonen van de afleveringen, kiest het het 1ste resultaat van de bron na het zoeken naar de titel. Dantotsu heeft geen manier om te detecteren of dat al dan niet legt, dus hiervoor hebben we de \'Verkeerde Titel?\' net onder de bronnaam (boven de layouts). Je kunt het juiste resultaat/titel kiezen door erop te drukken en geniet van de afleveringen.</string>
+    <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Hoe lees ik gekleurde mangelen?</string>
-    <string name="answer_14">Ben je op zoek naar gekleurde manga? Sorry om het te breken maar een zeer kleine hoeveelheid mangas heeft een gekleurde versie gekleurd. De versies met een gekleurde versie zijn ook beschikbaar in Dantotsu. Laten we zeggen dat je de gekleurde versie van kettingzagen wil lezen. Volg vervolgens de onderstaande stappen Module,\n\n1) Ga naar Chainsaw Man\n2) Druk op \'Lezen\'\n3) Selecteer een werkbron\n4) Klik op \'Verkeerde Titel\'\n5) Selecteer de gekleurde versieketen\n6) Geniet van\n\nNoot: Veel bronnen hebben niet de gekleurde versie beschikbaar, zelfs niet als deze ergens op het internet beschikbaar is. Probeer dus een andere bron. Als geen van de bronnen het heeft, dan bestaat een gekleurde versie van de gewenste manga gewoon niet.</string>
+    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
     <string name="question_15">Handdruk mislukt? Waarom worden er geen tijdstempels geladen?</string>
     <string name="answer_15">Je kunt dit probleem oplossen door \'Proxy\' in te schakelen vanuit \n\`Instellingen &gt; Anime &gt; Speler Instellingen &gt; Tijdstempels &gt; Proxy\`.\nAls de tijdstempels nog steeds niet worden geladen, maar de handshake mislukt pop-up is opgelost, dan heeft de aflevering die je bekijkt nog geen tijdstempels.</string>
     <string name="question_16">Kan je niets vinden in een bron?</string>
     <string name="answer_16">Enkele basisfixes zouden zijn: \n\n• Update de extensies als er aanpassingen zijn. \n• Open Web View en wacht tot het geladen is. Ga terug nadat het laden voltooid is. (Als webweergave fout 404 of iets dergelijks weergeeft, De kans is dat uw bron offline is)\n• Gebruik een andere DNS vanuit uw instellingen, bij voorkeur Libre. \n• Probeer een betrouwbare VPN. (Je zal stap 1 na dit moeten herhalen) \n\nAls geen van de bovenstaande stappen werkt, gebruik dan een andere bron of neem deel aan onze [discord](https://discord. g/invite/4HPZ5nAWM) voor hulp.</string>
     <string name="question_17">Enkele nuttige tips en trucs</string>
-    <string name="answer_17">Hier zie je enkele tips en trucs waar je wel of niet van op de hoogte bent - \n \n \n - Door op het Dantosu logo te drukken in de instellingen u kunt handmatig controleren of er nieuwe updates zijn. \n \n - Het indrukken van een foutmelding/tag/synoniem of titel zal het kopiëren. \n \n - Je kunt een aflevering openen met andere apps door een willekeurige server ingedrukt te houden voor die aflevering. Dit helpt bij het streamen van de aflevering met andere videospelers of download de aflevering met download managers. \n \n - Je kunt aangepaste lijsten instellen met behulp van deze [link](https://anilist.co/settings/lists). (je moet ingelogd zijn) \n \n - Als je aflevering / hoofdstuk niet automatisch vordert nadat je klaar bent met kijken / lezen, druk dan op de statusbalk(plannen/herhalen/knipperen knop) van dat anime/manga. De volgende keer dat je een hoofdstuk start/een aflevering afrondt, stummt je bij een popup. Druk op ja daar. </string>
+    <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Himitsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
     <string name="subscribed_notification">Geabonneerd! Ontvang meldingen wanneer nieuwe afleveringen zijn uitgebracht op %1$s.</string>
     <string name="unsubscribed_notification">Afgemeld, u ontvangt geen meldingen.</string>
     <string name="episode_plural">Afleveringen</string>
@@ -633,7 +636,7 @@
     <string name="discord_logout_success">Uitgelogd</string>
     <string name="discord_try_again">Probeer opnieuw in te loggen</string>
     <string name="error_loading_discord_user_data">Fout bij het laden van Discord gebruikersgegevens</string>
-    <string name="discord_warning"><![CDATA[Door in te loggen, toont je discord nu wat je bekijkt en leest op Dantotsu\n\nals je in onzichtbare modus bent, inloggen zorgt ervoor dat je online bent, wanneer je Dantoto opent.\n\nDit breekt de Discord TOS. \nAlhoewel Discord nog nooit iemand heeft verbannen voor het gebruik van Custom Rich Presence(wat Dantotsu gebruikt), ben je nog steeds gewaarschuwd.\n\nDantotsu is niet verantwoordelijk voor iets dat met uw account gebeurt.]]></string>
+    <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">Waarschuwing</string>
     <string name="view_anime">Bekijk Anime</string>
     <string name="view_manga">Manga bekijken</string>
@@ -970,7 +973,16 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Verborgen</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="download_addon_not_installed">Download Add-on not installed</string>
+    <string name="would_you_like_to_install">Would you like to install it?</string>
+    <string name="torrent_addon_not_available">Torrent Add-on not available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="biometric_title">Biometric Verification</string>
+    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_details">Biometric authentication is required</string>
+    <string name="biometric_error">Biometric Error: %1$s</string>
+    <string name="biometric_success">Welcome back!</string>
+    <string name="biometric_failed">Biometric Verification Failed!</string>
 </resources>

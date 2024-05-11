@@ -153,6 +153,7 @@
     <string name="server_disabled">TorrServer in disabled!</string>
     <string name="server_enabled">Starting TorrServer</string>
     <string name="enable_server_temp">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
+    <string name="peer_count_low">Low peer count detected!</string>
     <string name="anilist_settings">Anilist চেটিংছ</string>
     <string name="extension_settings">এক্সটেনচনসমূহ</string>
     <string name="downloads">ডাউনলোডছ</string>
@@ -179,12 +180,12 @@
     <string name="about">বিষয়ে</string>
     <string name="devs">ডেভেলপাৰ/সহায়কসমূহ</string>
     <string name="disclaimer">বিবেচনা</string>
-    <string name="full_disclaimer">         - Dantotsu অত্যন্ত অনুসৰি কৰিছে এনিমে আৰু মাঙ্গা ট্ৰেকাৰ দিয়া আৰু কোনো এনিমে বা মাঙ্গাৰ স্ট্ৰিমিং বা ডাউনল\'ডিংৰ সুবিধা দিয়া নাই।
-        \n\n - Dantotsu বা তাহৰ ডেভেলপাৰ/ক\'ৰ্মকৰ্তাৰ কোনো বাস্তৱিক নিহিত ক\'ৰা বস্তু অনুসৰি বাস্তু দেৱাওঁক নকৰে। অ্যাপত থকা সকলো চিত্ৰ আৰু এনিমে/মাঙ্গাৰ তথ্য বিভিন্ন পাবলিক API (AniList, MyAnimeList, Kitsu) লৈ ল\'বা হৈছে।
-        \n\n - অধিকবোৰ একাৰে 3ৰ্ড পাৰ্টি প্লাগইনৰ পৰা লব্ধ এনিমে/মাঙ্গাৰ লিংকসমূহ ডান্টোসু বা তাহৰ ক\'ৰ্মকৰ্তাৰ কোনো সম্পৰ্ক নাই আৰু সংস্থানৰ সাথে সম্পৰ্ক নাই।
-        \n\n - Dantotsu বা তাহৰ মালিকানাৰ কোনোবোৰ এইখনেই বাস্তুৰ অসদাচৰণ বা মালৈমালৰ বিতৰণৰ দায়ৰে নহয় আৰু এটাৰ বাহিৰে বাস্তুৰ কেৱলমতি সাহিত্য কোনো দায়ৰে নাই।
-        \n\n - Dantotsu ব্যৱহাৰ কৰি আপুনি অনুস্বাৰিক হৈ যে, অ্যাপটোৰ ডেভেলপাৰ অৰ্থাৎ অ্যাপটোৰ সকলো বাস্তুৰ বাবে দায়ী নহয়। আপুনি এইটোলৈ সম্মতি কৰিব পৰা যে আপুনি কোনো কপিৰাইটেড বাস্তু ডাউনল\'ড বা স্ট্ৰিম কৰিব নাপাৰিব।
-        \n\n - ইন্টাৰনেট অধিকাৰ লঙ্ঘনৰ কেইটা ঘটে, তলিকাৰ ওপৰ যোগাযোগ কৰক। ডেভেলপাৰ কোনো কানূনী দায়ৰে ধাৰণ নহয়।
+    <string name="full_disclaimer">         - Himitsu is a fork of Dantotsu. Dantotsu, by itself, provides an anime and manga tracker and does not provide any anime or manga streaming or downloading content.
+        \n\n - Himitsu and any Himitsu contributors do not host any of the content found inside Himitsu. Any and all images or information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
+        \n\n - Furthermore, all of the anime/manga links found in Himitsu are provided by various 3rd party plugins supplied by the user and have no affiliation with Himitsu or its staff.
+        \n\n - Himitsu and it\'s contributors aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
+        \n\n - By using Himitsu, you confirm that the developer of Himitsu is not responsible for any of the contents found in the app or Dantotsu. You also agree to not use Himitsu to download or stream any copyrighted content.
+        \n\n - If any internet infringement issues are involved, please contact the Dantotsu website. Himitsu and its contributors do not assume any legal responsibility.
     </string>
     <string name="version_current">সংস্কৰণ %1$s</string>
     <string-array name="tips">
@@ -348,6 +349,7 @@
     <string name="previous_season">পূৰ্বৱৰ্তী ছিজন</string>
     <string name="include_media_in_list">তালিকাত সংবিধান অন্তৰ্ভুক্ত কৰক</string>
     <string name="release_calendar">কেলেণ্ডাৰ</string>
+    <string name="review_type">%1$s Reviews</string>
     <string name="planned_anime">পূৰ্বধাৰিত অনুষ্ঠান</string>
     <string name="planned_manga">পূৰ্বধাৰিত কলা</string>
     <string name="image_long_clicking">দীৰ্ঘ টিপি কৰিবলৈ ছবি খোলক</string>
@@ -366,20 +368,20 @@
     <string name="login_with_anilist">অনিলিস্টৰ সৈতে লগিন কৰক!</string>
     <string name="anilist">অনিলিস্ট</string>
     <string name="account_help">এইটো কেনেকৈ কাম কৰে?</string>
-    <string name="full_account_help">        ডান্তোত্সু হ\'ল এটা অনিলিস্ট ভিত্তিক অ্যাপ, সুতো আপুনি আপোনাৰ MAL একাউণ্ট সুইংক কৰিবলৈ, এটা অনিলিস্ট একাউণ্টত লগ ইন কৰা প্ৰয়জন।
-        \nএকেবাৰ অনিলিস্ট আৰু MAL একাউণ্ট দুবাৰ লগ ইন কৰাৰ পাছত, এপ্পটো স্বয়ংক্ৰিয়ভাৱে আপোনাৰ MAL একাউণ্ট আপডেট কৰিব যেনে:
-        \n- নতুন সংবিধান যোগ কৰা
-        \n- সংবিধান সম্পাদনা কৰা
-        \n- সংবিধান মচা দিয়া
+    <string name="full_account_help">        Himitsu is an Anilist Based App, so for syncing with your MAL Account, It needs an Anilist account to be logged in.
+        \nOnce logged in with both Anilist and MAL accounts, the app will automatically update your MAL account whenever:
+        \n- Add a new Media
+        \n- Edit a Media
+        \n- Delete a Media
 
-        \n\nমন্তব্য: অ্যাপটো অনিলিস্টৰ পৰা পুৰণিয়া সংবিধানসমূহ নহয় সিংক কৰিবনে বুলি, সেয়াকৈ সিংক কৰিব প্ৰয়াজন।
-        \n- _সহজ মেথড_ বাবে __FAQ__ চেক কৰক
+        \n\nNote: The app will not sync old Media\'s from Anilist to MAL, It\'s recommended to sync them.
+        \n- Check __FAQs__ for _Easy Method_
 
-        \n\n_ইণ্টাৰমিডিয়েটস্_ বাবে:
-        \n- [কিভাবে অনিলিস্ট তথ্য এমএলত সিংক কৰিব](https://anilist.co/forum/thread/2654)
-        \n- [কিভাবে এমএল তথ্য অনিলিস্টত সিংক কৰিব](https://anilist.co/forum/thread/3393)
+        \n\nAnd for _Intermediates_ :
+        \n- [How to sync Anilist data with MAL](https://anilist.co/forum/thread/2654)
+        \n- [How to sync MAL data with Anilist](https://anilist.co/forum/thread/3393)
 
-        \n\n_আপুনি অনিলিস্ট আৰু MAL দুটা একাউণ্ট সিংক কৰিবলৈ প্ৰয়াজন নহয়।_
+        \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
     <string name="notification_for_checking_subscriptions">চেক কৰী আছো জাননীসমূহ</string>
     <string name="use_alarm_manager">নিশ্চিত বিজ্ঞপ্তিসমূহৰ বাবে অ্যালাৰ্ম মেনেজাৰ ব্যৱহাৰ কৰক</string>
@@ -389,7 +391,7 @@
     <string name="checking_subscriptions">সাবস্ক্ৰিপশন পৰীক্ষাৰ বিজ্ঞপ্তি</string>
     <string name="subscriptions_checking_time_s">সাবস্ক্ৰিপশন আপডেট পৰ্যায়ত: %1$s</string>
     <string name="subscriptions_checking_time">সাবস্ক্ৰিপশন আপডেট পৰ্যায়ত</string>
-    <string name="subscriptions_info">ডান্তোত্সুয়ে নতুন এপিসোড/চাপ্টাৰ প্ৰতিক্ষা কৰিবলৈ আপ্ডেট কৰিবলৈ কতোয় সময়ৰ প্ৰয়োজন।\n(কম সময় বেটাৰি অধিক ব্যৱহাৰ কৰিব)\n</string>
+    <string name="subscriptions_info">Amount of time for Himitsu to check for new episodes / chapters\n(Less time consumes more battery)</string>
     <string name="do_not_update">আপডেট নকৰিব</string>
     <string name="loading_chap_number">অধ্যায় %1$s লোড কৰা হৈছে</string>
     <string name="sort_by_release_date">মুক্তিৰ তাৰিখে অনুসৰি সাজোৱাওক</string>
@@ -405,15 +407,16 @@
     <string name="install_step">পদক্ষেপ %1$s</string>
     <string name="review">সমীক্ষা</string>
     <string name="select_source">Select a Source</string>
+    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Install update %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Update Available</string>
     <string name="discord_nothing_button">কেৱল প্ৰথম বুটামটো প্ৰদৰ্শন কৰক</string>
-    <string name="discord_dantotsu_button">দ্বিতীয় বুটামত ডান্টোটচু প্ৰদৰ্শন কৰক</string>
+    <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">তাৰ পৰিৱৰ্তে আপোনাৰ এনিলিষ্ট প্ৰ\'ফাইল প্ৰদৰ্শন কৰক</string>
     <string name="discord_rich_presence">ডিসকৰ্ড সমৃদ্ধ উপস্থিতি</string>
-    <string name="stream_on_dantotsu">ডেনটোটচুত স্ট্ৰিম কৰক</string>
+    <string name="stream_on_dantotsu">Stream on Himitsu</string>
     <string name="view_my_anilist">মোৰ এনিলিষ্ট চাও</string>
     <string name="jobless_message">ওহ বিচাৰিছো নেকি! তুমি সত্যিই কাৰি নেই\nতুমি সমাপ্তি পোৱা হ\'ল</string>
     <string name="file_manager_not_found">SD কাৰ্ড খোলিবলৈ কোনো ফাইল মেনেজাৰ পোৱা নহয়</string>
@@ -515,9 +518,9 @@
     <string name="type_other">অন্যান্য</string>
     <string name="type_source">উৎস</string>
     <string name="type_contains">অন্তৰ্ভুক্ত</string>
-    <string name="read_on_dantotsu">Dantotsuত পঢ়িব</string>
-    <string name="watch_on_dantotsu">Dantotsuত চাওক</string>
-    <string name="view_profile_in_dantotsu">Dantotsuত প্ৰফাইল চাওক</string>
+    <string name="read_on_dantotsu">Read on Himitsu</string>
+    <string name="watch_on_dantotsu">Watch on Himitsu</string>
+    <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">চালিব : প্ৰকৰণ </string>
     <string name="filler_tag">- ফিলাৰ</string>
     <string name="continue_chapter">চালিব : </string>
@@ -573,23 +576,26 @@
     <string name="gender">"\n\"__লিংগ:__ \""</string>
     <string name="male">পুৰুষ</string>
     <string name="female">মহিলা</string>
-    <string name="question_1">Dantotsu কি?</string>
-    <string name="answer_1">Dantotsu হ\'ল Saikouৰ অশেষ দহনৰ মূলক নিৰ্মিত আৰু প্ৰবণতাৰ দৃষ্টিতে মনোহৰ অনুষ্ঠিত। এই এটা Anilist অনলি ক্লাইণ্ট, যি সহায়ক বাহ্যিক প্লাগ-ইনৰ মাধ্যমে এনিমে / মাংগা চাওক আৰু ডাউনল\'ড কৰা যায়। Dantotsu (দান-তোত্সু; Dan-totsu) শাব্দিকভাৱে জাপানী ভাষাত \'সেৱাৰ সেৱা\' অৰ্থাত \'সেৱাৰ সেৱা\' যাকে আমি মনত প্ৰকাশ কৰিব বিচাৰে। বাস্তৱিকতে, এই এটা অণু আৰ্কিপেলাগোৰ অন্ধ আৰু মাংগাৰ উপৰ উদ্ভুত বৃহৎ উন্নত হয় আৰু এই সফ্টওয়াৰ সম্পূৰ্ণভাবে মুক্ত হয়। মন নিজৰ কৰক আৰু মূল্যাঙ্কন কৰক!</string>
-    <string name="question_2">Dantotsuৰ কিছু বৈশিষ্ট্য কি?</string>
-    <string name="answer_2">Dantotsuৰ কিছু উল্লেখযোগ্য বৈশিষ্ট্য হোৱা যেতে পাৰে\n\n- এনিমে আৰু মাংগা পঢ়ি আৰু চাওকৰ সহজ আৰু কাৰ্যতত্ত্বিক পদ্ধতি, Ad Free।\n- এটা সম্পূৰ্ণ ওপেন সোৰ্চ এপ্লিকেচন যেনে এটা মনোহৰ UI &amp; Animations সম্পন্ন।\n- ৩ৰ্ড পাৰ্টি প্লাগ-ইন সমৰ্থন\n- এনিমে আৰু মাংগা আনিলিস্টৰ সঙ্গে সময়ৰ সঙ্গে সমন্বয় কৰিব। আপোনাৰ বৰ্তমান অবস্থানৰ উপৰ এনিমে আৰু মাংগা সৰ্ট কৰক। (আনিলিস্টৰ প্ৰচেষ্টিত)\n- স্কৰ্ অনুযায়ী সকলো ট্ৰেণ্ডিং, জনপ্ৰিয় আৰু অধ্যাপক এনিমে তালিকাত সৎপকৰণ হোৱা সকলো সোৱা চাওক।\n- এনিমে প্ৰদৰ্শনৰ সুবিধা বিস্তৃত তথ্য প্ৰদান কৰে যেতে সাহায্য কৰে এনিমে প্ৰদৰ্শন, চলচ্চিত্ৰ আৰু মাংগা শিৰোনামসমূহৰ বিষয়ে বিস্তৃত তথ্য প্ৰদান কৰে। এটা অনিলিস্ট আৰু MyAnimeListৰ প্ৰচেষ্টিত।</string>
+    <string name="question_1">What is Himitsu?</string>
+    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou, but then Himitsu forked Dantotsu and began improving upon it. It is (mostly) an Anilist only client, which also supports extensions. \n&gt;Himitsu (秘密; Him-itsu) means \"secret\" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
+    <string name="question_2">What are some features of Himitsu?</string>
+    <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Stable, Beta &amp; Alpha সংস্কৰণৰ মাজত পাৰ্থক্যসমূহ কি?</string>
     <string name="answer_3">এটা Stable release হৈছে যেটা যেতিয়াই সম্ভাব সেইটো যতি মোতৰা পৰীক্ষা কৰা হৈছে আৰু সেইটো এতিয়ালৈকে নিৰাপদ।\n\nএটা Beta release হৈছে যেটা নতুন বৈশিষ্ট্য পৰীক্ষা কৰিব বা হট ফিক্স প্ৰদান কৰিব বাবে নতুন সংস্কৰণ।\n\nএটা অ্যালফা সংস্কৰণ এটা বেটা সংস্কৰণক সমান হৈছে তথাপিও বহু ত্ৰুটি আছে আৰু আপুনি এটা কেৱল আমাৰ [ডিস্কৰ্ড](https://discord.gg/invite/4HPZ5nAWwM) চোৱাৰ উপৰ পোৱা যাব। এইবাৰ অন্যান্য বেশ্য আপডেট আৰু বেশ্য কৰিব সম্ভাবনা বেছি আছে।</string>
-    <string name="question_4">Dantotsu কি PCৰ বাবে উপলব্ধ আছে?</string>
-    <string name="answer_4">বৰ্তমানে নহয় (Windows আৰু Linuxসহ)। ইয়াৰ কটো অনুমান নাই যেতিয়াকৈ উপলব্ধ হব পাৰে। কিন্তু আপুনি কোনো এণ্ড্ৰোইড এমুলেটৰ ডাউনল\'ড কৰি Dantotsu চলাও পাৰিব। Windows 11 ইউজাৰসকলে তাদেৰ Windows লৈ ডাউনলোড কৰিবলৈ Windows Subsystem for Android (WSA) ব্যৱহাৰ কৰিব পাৰে।</string>
-    <string name="question_5">Dantotsu iOSৰ বাবে উপলব্ধ আছে?</string>
-    <string name="answer_5">নহৰণ, সেৱাৰ সেৱা কৰিব বা এটা আপেলত কাটি কৰিব পাৰিব।</string>
+    <string name="question_4">Is Himitsu available for PC?</string>
+    <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
+    <string name="question_5">Is Himitsu available for iOS?</string>
+    <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
     <string name="question_6">আমাৰ প্ৰগ্ৰেছ কেনে আপডেট হৈ নাই?</string>
     <string name="answer_6">এই কাৰণে যে, এটা 48 ঘণ্টাৰ প্ৰতিটোকুতে আপডেট কৰা হয় (দ্বাৰা Anilist)। আপুনি যদি আপোনাৰ প্ৰগ্ৰেছ আপডেট কৰিব লাগে, তেন্তে আপুনি এই [লিংকলৈ যাওক](https://anilist.co/settings/lists) লিংকলৈ যাব পাৰি।</string>
     <string name="question_7">কিভাবে এনিমে ডাউনল\'ড কৰিব?</string>
-    <string name="answer_7">বৰ্তমানে ডাউনল\'ড কৰাৰ দুটা উপায় আছে। এটা আংতৰিক আৰু অন্যত্ৰিক। যদি আপুনি আংতৰিকভাৱে ডাউনল\'ড কৰিব, তেন্তে এটা অ্যাপত ভিউ কৰিব পৰে কিন্তু কেৱল এই অ্যাপটো ওপেন কৰিব পাৰে, আপুনি তাৰ সৰ্বত প্ৰয়োজন আছে নেই নাকৰিব পাৰিব। অন্যত্ৰিক বিকল্প হৈছে বাহ্যিক ডাউনল\'ড কৰা। এইটো ডাউনল\'ড মেনেজাৰ ব্যৱহাৰ কৰিব প্ৰয়োজন আৰু এটা পৃথক ভিডিঅ\' প্লেয়াৰ ব্যৱহাৰ কৰিব পাৰি। বাহ্যিক ডাউনল\'ড কৰা ব্যতিত্ৱপূৰ্ণ সংক্ষেপ ব্যৱহাৰ কৰিব পাৰিব কিন্তু আপুনি এই Dantotsu অ্যাপটো অতিৰিক্ত চালাই নেই পাৰিব।\n\n• আংতৰিক ডাউনল\'ড কৰিবলৈ:\n\n1. ডাউনল\'ড বুটামটো টিপক।\n2. চৰ্ভাৰ আৰু ভিডিঅ\'ৰ মান নিৰ্বাচন কৰক।\n3. লাভ কৰক।\n\n• বাহ্যিক ডাউনল\'ড কৰিবলৈ:\n\n1. Google Play Storeৰ পৰা 1DM অথবা ADM ডাউনল\'ড কৰক।\n2. অ্যাপলৈ প্ৰৱেশ কৰক, ভাৰবহন প্ৰৱেশ আৰু আপোনাৰ পৰমেচ্যানসমূহ নিৰ্ধাৰণ কৰক (ডাউনল\'ডিং গতি, ডাউনল\'ড প্ৰদষ্টৰৰ পথ ইত্যাদি(ঐচ্ছিক))\n3. এতিয়ালৈ যাওক  \`Dantotsu &gt; Settings &gt; Common &gt; Download Managers\` আৰু আপোনাৰ ডাউনল\'ড প্ৰদষ্টৰটো নিৰ্বাচন কৰক যেই আপুনি সেট আপ কৰিছিল।\n4. আপোনাৰ পৰমেচ্যানসমূহ নিৰ্ধাৰণ কৰা চাপৰ যিমানলৈ গৈ হোৱা সময়তে যদি কোনো প্ৰোপ্‌মপ থকা থাকে তাহলে প্ৰথমেই \"ডাউনল\'ড\" বুটামটো টিপক আৰু ইতি উত্তৰিত পথলৈ সংৰক্ষিত হব।
-    লক্ষ্য: প্ৰত্যক্ষ ডাউনল\'ডসমূহ ব্যবহাৰ কৰা সমৰ্থিত যিনি প্ৰদত্ত নহয় কিন্তু সুপাৰিশ কৰা হৈছে।
-    \n\nনোট: ডাইৰেক্ট ডাউনলোডসমূহ এটা মেনেজাৰ বিনাৰ সহ।
-    \n\nNerd নোট: অন্তৰ্নিৰভাৱে ডাউনলোড কৰা এপিসমূহ আছে \`Android/data/ani.dantotsu.*/files/Anime_Downloads\` অংশত সংৰক্ষিত হৈছে। আপুনি তাক খেলিব নোৱাৰে যিহেৰা এই ফাইলসমূহ \`.exo\` ফৰ্মেটত অসংখ্য খন ভাগ হৈছে আৰু এটা এনক্ৰিপ্ট কৰা হৈছে।</string>
+    <string name="answer_7">There are two methods of downloading currently. One is internal and the other is external. If you download internally, then it can be viewed within the app but only the app can open that episode, you cannot move it or share it. The other option is to use external downloading. It requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view it within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
+        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
+        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
+
+        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
+\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
     <string name="question_9">কিভাবে 18+ বিষয়বস্তু সক্ৰিয় কৰিব?</string>
     <string name="answer_9">আপুনি 18+ বিষয়বস্তু সক্ৰিয় কৰিবলৈ এই [লিংকলৈ যাওক](https://anilist.co/settings/media) লিংকলৈ যাওক আৰু \`Settings &gt; Extensions &gt; NSFW extensions\`ত NSFW এক্সটেনচনসমূহ সক্ৰিয় কৰিব প্ৰয়োজন।</string>
     <string name="question_10">আমাৰ এমএল / কিচ্চু তালিকা আনিলিস্টলৈ কিভাবে আনিব?</string>
@@ -597,17 +603,17 @@
     <string name="question_11">আমাৰ আনিলিস্ট / কিচ্চু তালিকা এমএললৈ কিভাবে আনিব?</string>
     <string name="answer_11">ইয়াৰ কিছু পদ্ধতি হৈছে,\n\nএক্সপ\'ৰ্ট:\n\n1. এই [লিংকলৈ যাওক](https://malscraper.azurewebsites.net/) লিংকলৈ যাওক।\n2. \'Username/Kitsu User ID\' বাক্সলৈ আপোনাৰ Anilist ইউজাৰ নাম/Kitsu ID দিব আৰু এক্সপ\'ৰ্ট টাইপ নিৰ্বাচন কৰক আৰু \'update_on_import\' সক্ৰিয় কৰক।\n3. ফাইলটো ডাউনল\'ড কৰক; ই এটা .xml ফ\'ৰ্মেটত থাকিব। যাত আপুনি এনিমে আৰু মাংগা তালিকা দুটা ডাউনল\'ড কৰিব।\n\nআয়ন্টা:\n\n1. আপনাৰ MAL একাউন্টলৈ এইটো আমল কৰিবলৈ, এই [লিংকলৈ যাওক](https://myanimelist.net/import.php) লিংকলৈ যাওক আৰু আমল কৰিব \"MyAnimeList Import\" সম্প্ৰদায় নিৰ্বাচন কৰক।\n2. \'Choose File\' ত চাপ কৰক আৰু ডাউনল\'ড কৰা এনিমে / মাংগা তালিকা XML ফাইলটো নিৰ্বাচন কৰক।\n3. \'Import Data\' ত চাপ কৰক।\nঅভিনন্দন, আপুনি আপোনাৰ নিৰ্বাচিত তালিকা আপোনাৰ MAL একাউন্টলৈ আমল কৰিব পৰিশ্ৰম কৰিলে।</string>
     <string name="question_12">মোৰ সন্নিবেশ স্পষ্ট সন্ধান কৰিব নোৱা এনিমে / মাংগা শিৰোনাম কেনে পোৱা নাই?</string>
-    <string name="answer_12">মনে চলে আপোনাৰ চহৰৰ Dantotsuত কাস্টলেভানিয়া খুজে আছে। কিন্তু Anilistত এটা নাই, তাই Dantotsuত ও নাই।\nউপৰৰ সমস্যাত সমাধান নিম্নলিখিতমূলক।\n1) আপুনি নিজৰ তালিকাৰ যোগাযোগকৰক যেতি যেনে তাৰিখ থকা এটা এনিমে / মাংগা যি নাই।\n2) দেখানি অনুমোদন কৰাৰ পাছতে আপোনাৰ পোৱা এনিমে / মাংগা বাছনি কৰক।\n3) ইয়াত ক্লিক কৰক।\n4) আৰম্ভ কৰক!\n\nযদি আপুনি উপৰৰ পদ্ধতিসমূহতেও এনিমে পোৱা নাই তেন্তে তাৰ ভাগ্যবান নহয়। সম্ভাব্যতঃ এই উৎসটো ও তাৰ নাই। আৰু এটা আৰেকটা উৎসত ও তাৰ নাই। সম্ভাব্যতঃ এই উৎসটো আৰু এটা নাই।</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
     <string name="question_13">পুৰোটা ভুল শিৰোনাম বাছনি কৰি উৎস নিৰ্বাচন কৰা যায়?</string>
-    <string name="answer_13">দান্তোত্সু নিজৰে কোনো সৃষ্টিকৰ্তা নহয় তাৰ একেতিয়া অন্য উৎসৰ উপৰ নিৰ্ভৰ কৰিয়া। এপিস\'টো দেখুৱাওক সময়ে, ই এটা নাম নিহিত কৰে উৎসৰ পোৱা প্ৰথম ফলাফলটো বাছনি কৰি। দান্তোত্সুত কোনো উপায় নাই যেনে তাৰ জন্য জাচ কৰে কিন্তু দেখাওক, এই \'ভুল শিৰোনাম?\' সৈতে সৈতে উপৰৰ পাতটোত দেখা যায়। আপুনি শিকলে এটা সঠিক ফলাফল / শিৰোনাম নিৰ্বাচন কৰি আৰম্ভ কৰিব আৰু তেওঁৰ এপিস\'সমূহ উপভোগ কৰিব পাৰিব।</string>
+    <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">আকাৰে মাংগা পঢ়িব কিভাবে?</string>
-    <string name="answer_14">আপুনি ৰংময় মাংগাৰ খোজনি কৰিছে নেকি? আপুনি শত্ৰু মাংগা বুলি নিভিলে তাৰিখিত মাত সত্যি ক্ষেত্ৰেত অনেকগুণীয় ছাৰ মাংগা আছে। যিসব মাংগাৰ ক্ষেত্ৰে ৰংমুখী সংস্কৰণ উপলব্ধ হয়, তাৰ একেতিয়া দান্তোত্সুত উপলব্ধ আছে। বিশেষ দিক্ষণ অনুসৰণ কৰক ↓\n\n1) Chainsaw Manৰ দিকে যাওক\n2) \'Read\' এ টিপক\n3) যেকোনো কাৰ্যক্ৰমক নিৰ্বাচন কৰক\n4) \'ভুল শিৰোনাম\' এ টিপক\n5) ৰঙময় সংস্কৰণ chainsaw man নিৰ্বাচন কৰক\n6) উপভোগ কৰক\n\nনোট: অনেক উৎসসমূহত ৰংমুখী সংস্কৰণ উপলব্ধ নাই যদিও এইটো ইতি আছে। আপুনি যে মাংগাৰ ক্ষেত্ৰে আছে সেয়া বাধাৱৰ্ত নাই। যদি কেনোনো উৎসসমূহত যদি এটা উপলব্ধ নাই, তাহলে আপোনাৰ বাধাৱৰ্ত মাংগা সহজভাৱে উপলব্ধ নাই।</string>
+    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
     <string name="question_15">স্বাক্ষীক ব্যৰ্থ? যেনো কেৱল সময় পদাত নাই?</string>
     <string name="answer_15">আপুনি এই সমস্যাৰ সমাধান কৰিব পাৰেনে যদি আপুনি \'Proxy\' সক্ৰিয় কৰে যাওঁক\`Settings &gt; Anime &gt; Player Settings &gt; Timestamps &gt; Proxy\` প্ৰয়োগ কৰি। যদি সময়সূচীসমূহত যেতিয়াই পদাত নাই কিন্তু হ্যাণ্ডশেক ব্যৰ্থ মেসেজ ঠিক হৈ যায়, তলত উল্লেখিত এপিস\'টো আপুনি সহজে উপভোগ কৰিব পাৰিব নাই।</string>
     <string name="question_16">এটা উৎসত কিছু বিষয় পাওঁ নাই?</string>
     <string name="answer_16">কিছু মৌলিক সমাধান হল:\n\n• আপোনাৰ এক্সটেনচনসমূহ যদি আছে তা আপডেট কৰক।\n• ওয়েব ভিউ খোলক আৰু সেইটো লোড হৈ যাওক। লোডিং সমাপ্ত হ\'লে, পিছনে যাওক। (যদি ওয়েব ভিউ 404 অথবা অন্যান্য কিবা তেওঁলোকে নাই দেখা দিয়ে, তবে আপোনাৰ উৎসটো নেতৃত্ব হাৰাইছে)\n• আপোনাৰ সেটিংসত এখনো এটা বিভিন্ন DNS ব্যৱহাৰ কৰক, প্ৰথমে Libre।\n• এটা নিৰ্ভৰযোগ্য VPN প্ৰয়োজন আছে। (এটা প্ৰাথমিকভাৱে সেটআপ কৰাৰ পৰে আপুনি এটা পুনঃস্থাপন কৰিব লাগে)\n\nযদি উপৰৰ কোনো এক পদ্ধতিৰ কাৰ্য্যক্ৰমটো কাম কৰে নাই তাৰ পৰিবৰ্তে এটা বিভিন্ন উৎস ব্যৱহাৰ অথবা সাহায্য পাবালৈ আমাৰ [ডিস্কৰ্ড](https://discord.gg/invite/4HPZ5nAWwM)লৈ যাওক।</string>
     <string name="question_17">কিছু কামৰু উপকৰণ আৰু প্ৰযুক্তিসমূহ</string>
-    <string name="answer_17">নিম্নলিখিতটো কিছু উপকৰণ আৰু প্ৰযুক্তি আপোনালোকে জানিব নেপাৰে বা জানিব পাৰে -\n\n\n\n- ছেটিংছত Dantotsu লোগ\'ত ধৰি দিয়া লগ\'ত নতুন উপডেটস চেক কৰিব পাৰিব।\n\n- এখনি ভুল বাৰ্তা/টেগ/স্যিননিম বা শিৰোনামটো ধৰি দিলে ই তাৰ অনুলিপি কৰিব।\n\n- আপুনি কোনো সাৰ্ভাৰ ধৰি দিয়া এপিস\'ড সৈতে অন্য এপ্‌ছ খোলি পাৰে। ইয়াতে সহায় হয় অন্য ভিডিঅ\' প্লেয়াৰসমূহ বা ডাউনলোড মেনেজাৰসমূহত এপিস\'ড ডাউনলোড কৰিব।\n\n- আপুনি এই [লিংক](https://anilist.co/settings/lists)-ত কাষটম তালিকা সজোগ কৰিব পাৰিব। (আপুনি ছাইন ইন কৰিব লাগিব)\n\n- যদি আপোনাৰ এপিস\'ড/চাপ্টাৰটো স্বয়ংক্ৰিয়ভাৱে অগ্ৰগতি কৰিব নাই আৰু যেনে তাৰ পাছত চাপ্টাৰ/এপিস\'ড চালিব, তেনেতে ষ্টেটাছ বাৰেত ধৰি দিবলে। এটা পাছত আপোনাৰ পাৰ্পপ দিয়া থাকিব আৰু এই পাপআপটোত \"হয়\" ধৰি দিবলে।</string>
+    <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Himitsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
     <string name="subscribed_notification">সাবস্ক্ৰাইব কৰা! যখনো নতুন এপিস\'ডসমূহ মুক্তি পাব Dantotsu-ত %1$s তে।</string>
     <string name="unsubscribed_notification">সাবস্ক্ৰাইব কৰা হৈছে, আপুনি যেনেই কোনো নতুন প্ৰকাশ পাবনা।</string>
     <string name="episode_plural">এপিস\'ডসমূহ</string>
@@ -630,7 +636,7 @@
     <string name="discord_logout_success">সফলভাৱে লগ আউট হৈছে</string>
     <string name="discord_try_again">আৰুত লগ ইন কৰক</string>
     <string name="error_loading_discord_user_data">Discord ইউজাৰৰ তথ্য ল\'ড হোৱাৰ সময়ত ত্ৰুটি হৈছে</string>
-    <string name="discord_warning"><![CDATA[লগ ইন কৰিলে, আপুনিৰ ডিসকৰ্ডে দেখা দিয়া হব যে আপুনি যি সময় Dantotsuত সময় পাঠহা আৰু পঢ়ি থাকি।\n\nযদিহোৱা আপুনি অদৃশ্য মোডত আছিলে, লগইন কৰিলে আপুনি অনলাইন হোৱা যাব, যখন আপুনি Dantotsu খোলি।\n\nএই ডিসকৰ্ড টছ ভিয়াভি (যা Dantotsu ব্যবহাৰ কৰে) ব্যৱহাৰ কৰা ডিসকৰ্ডৰ চৰ্ত্তব্য ভঙ্গ কৰে।\nযেনে ডিসকৰ্ড কখনওকেই কাহিলে কাহিলে কাহিব ব্যৱহাৰ কৰাৰ বাবে, তথাপিও আপুনি চেতনা দিয়া হৈছিলে।\n\nDantotsu আপোনাৰ একাউন্টত হোৱা সকলোৱে দায়ী নহয়।]]></string>
+    <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">সাবদ্ধৰণা</string>
     <string name="view_anime">View Anime</string>
     <string name="view_manga">View Manga</string>
@@ -967,7 +973,16 @@
     <string name="share_as_file">ফাইলৰ হিচাপে শ্বেয়াৰ কৰক</string>
     <string name="hidden">লুকুৱা</string>
     <string name="no_hidden_items">কুনু লোকুৱা বস্তু নাই</string>
+    <string name="download_addon_not_installed">Download Add-on not installed</string>
+    <string name="would_you_like_to_install">Would you like to install it?</string>
+    <string name="torrent_addon_not_available">Torrent Add-on not available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="biometric_title">Biometric Verification</string>
+    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_details">Biometric authentication is required</string>
+    <string name="biometric_error">Biometric Error: %1$s</string>
+    <string name="biometric_success">Welcome back!</string>
+    <string name="biometric_failed">Biometric Verification Failed!</string>
 </resources>

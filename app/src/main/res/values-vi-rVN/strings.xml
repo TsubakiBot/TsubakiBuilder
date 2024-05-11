@@ -153,6 +153,7 @@
     <string name="server_disabled">TorrServer đã bị vô hiệu hóa!</string>
     <string name="server_enabled">Đang bắt đầu TorrServer</string>
     <string name="enable_server_temp">Bạn có muốn tạm thời kích hoạt TorrServer (vô hiệu hóa khi đóng ứng dụng)?</string>
+    <string name="peer_count_low">Low peer count detected!</string>
     <string name="anilist_settings">Cài đặt Anilist</string>
     <string name="extension_settings">Tiện ích mở rộng</string>
     <string name="downloads">Tải xuống</string>
@@ -179,12 +180,12 @@
     <string name="about">Về Ứng Dụng</string>
     <string name="devs">Người Đóng Góp</string>
     <string name="disclaimer">Miễn Trừ Trách Nhiệm</string>
-    <string name="full_disclaimer">         - Dantotsu chỉ cung cấp một công cụ theo dõi anime và manga và không cung cấp khả năng xem hoặc tải xuống bất kỳ anime hoặc manga nào.
-        \n\n - Dantotsu hoặc bất kỳ nhà phát triển/nhân viên nào của nó đều không lưu trữ bất kỳ nội dung nào được tìm thấy bên trong Dantotsu. Bất kỳ hình ảnh và thông tin anime/manga nào được tìm thấy trong ứng dụng đều được lấy từ các API công cộng khác nhau (AniList, MyAnimeList, Kitsu).
-        \n\n - Hơn nữa, tất cả các liên kết anime/manga được tìm thấy trong Dantotsu đều được lấy từ các tiện ích bên thứ ba khác nhau và không có liên kết nào với Dantotsu hoặc nhân viên của nó.
-        \n\n - Dantotsu hoặc chủ sở hữu của nó không chịu trách nhiệm về bất kỳ việc sử dụng sai mục đích nào của bất kỳ nội dung nào được tìm thấy bên trong hoặc bên ngoài ứng dụng và không thể chịu trách nhiệm về việc phân phối bất kỳ nội dung nào được tìm thấy trong ứng dụng.
-        \n\n - Bằng cách sử dụng Dantotsu, bạn đồng ý với việc nhà phát triển ứng dụng không chịu trách nhiệm về bất kỳ nội dung nào được tìm thấy trong ứng dụng. Bạn cũng đồng ý với việc bạn không thể sử dụng Dantotsu để tải xuống hoặc xem bất kỳ nội dung bản quyền nào.
-        \n\n - Nếu có vấn đề về vi phạm internet, vui lòng liên hệ với trang web nguồn. Nhà phát triển không chịu trách nhiệm pháp lý nào.
+    <string name="full_disclaimer">         - Himitsu is a fork of Dantotsu. Dantotsu, by itself, provides an anime and manga tracker and does not provide any anime or manga streaming or downloading content.
+        \n\n - Himitsu and any Himitsu contributors do not host any of the content found inside Himitsu. Any and all images or information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
+        \n\n - Furthermore, all of the anime/manga links found in Himitsu are provided by various 3rd party plugins supplied by the user and have no affiliation with Himitsu or its staff.
+        \n\n - Himitsu and it\'s contributors aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
+        \n\n - By using Himitsu, you confirm that the developer of Himitsu is not responsible for any of the contents found in the app or Dantotsu. You also agree to not use Himitsu to download or stream any copyrighted content.
+        \n\n - If any internet infringement issues are involved, please contact the Dantotsu website. Himitsu and its contributors do not assume any legal responsibility.
     </string>
     <string name="version_current">Phiên Bản %1$s</string>
     <string-array name="tips">
@@ -348,6 +349,7 @@
     <string name="previous_season">Mùa trước</string>
     <string name="include_media_in_list">Bao gồm danh sách</string>
     <string name="release_calendar">Lịch</string>
+    <string name="review_type">%1$s Reviews</string>
     <string name="planned_anime">Anime Đã lên kế hoạch</string>
     <string name="planned_manga">Manga Đã lên kế hoạch</string>
     <string name="image_long_clicking">Nhấn và giữ để mở hình ảnh</string>
@@ -366,20 +368,20 @@
     <string name="login_with_anilist">Đăng nhập bằng Anilist</string>
     <string name="anilist">Anilist</string>
     <string name="account_help">Làm thế nào để hoạt động này\?</string>
-    <string name="full_account_help">        Dantotsu là ứng dụng Dựa trên Anilist, vì vậy để đồng bộ hóa với Tài khoản MAL của bạn, nó cần phải đăng nhập bằng một tài khoản Anilist.
-        \nKhi đã đăng nhập với cả hai tài khoản Anilist và MAL, ứng dụng sẽ tự động cập nhật tài khoản MAL của bạn mỗi khi:
-        \n- Thêm phương tiện mới
-        \n- Chỉnh sửa phương tiện
-        \n- Xóa phương tiện
+    <string name="full_account_help">        Himitsu is an Anilist Based App, so for syncing with your MAL Account, It needs an Anilist account to be logged in.
+        \nOnce logged in with both Anilist and MAL accounts, the app will automatically update your MAL account whenever:
+        \n- Add a new Media
+        \n- Edit a Media
+        \n- Delete a Media
 
-        \n\nLưu ý: Ứng dụng sẽ không đồng bộ hóa các phương tiện cũ từ Anilist sang MAL, Đề nghị đồng bộ hóa chúng.
-        \n- Kiểm tra __Câu hỏi thường gặp__ để _Phương pháp Dễ dàng_
+        \n\nNote: The app will not sync old Media\'s from Anilist to MAL, It\'s recommended to sync them.
+        \n- Check __FAQs__ for _Easy Method_
 
-        \n\nVà đối với _Trung cấp_ :
-        \n- [Làm thế nào để đồng bộ dữ liệu Anilist với MAL](https://anilist.co/forum/thread/2654)
-        \n- [Làm thế nào để đồng bộ dữ liệu MAL với Anilist](https://anilist.co/forum/thread/3393)
+        \n\nAnd for _Intermediates_ :
+        \n- [How to sync Anilist data with MAL](https://anilist.co/forum/thread/2654)
+        \n- [How to sync MAL data with Anilist](https://anilist.co/forum/thread/3393)
 
-        \n\n_Không cần phải đồng bộ hóa cả hai tài khoản MAL và Anilist._
+        \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
     <string name="notification_for_checking_subscriptions">Hiển thị thông báo để kiểm tra đăng ký</string>
     <string name="use_alarm_manager">Sử dụng Quản lý báo thức</string>
@@ -389,7 +391,7 @@
     <string name="checking_subscriptions">Kiểm tra Thông báo Đăng ký</string>
     <string name="subscriptions_checking_time_s">Tần suất Cập nhật Đăng ký: %1$s</string>
     <string name="subscriptions_checking_time">Tần suất Cập nhật Đăng ký</string>
-    <string name="subscriptions_info">Thời gian cho Dantotsu kiểm tra tập mới / chương mới\n(Thời gian ít hơn tiêu tốn nhiều pin hơn)</string>
+    <string name="subscriptions_info">Amount of time for Himitsu to check for new episodes / chapters\n(Less time consumes more battery)</string>
     <string name="do_not_update">Không Cập nhật</string>
     <string name="loading_chap_number">Đang Tải Chương %1$s</string>
     <string name="sort_by_release_date">Sắp xếp theo Ngày phát hành</string>
@@ -405,15 +407,16 @@
     <string name="install_step">Bước: %1$s</string>
     <string name="review">Đánh giá</string>
     <string name="select_source">Chọn một Nguồn</string>
+    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu cập nhật %1$s</string>
     <string name="install_update">Cài đặt cập nhật %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Cập nhật Có sẵn</string>
     <string name="discord_nothing_button">Chỉ hiển thị nút đầu tiên</string>
-    <string name="discord_dantotsu_button">Hiển thị dantotsu trong nút thứ hai</string>
+    <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Hiển thị hồ sơ AniList của bạn thay vì</string>
     <string name="discord_rich_presence">Hiển thị Trạng thái Phong phú Discord</string>
-    <string name="stream_on_dantotsu">Phát trực tiếp trên Dantotsu</string>
+    <string name="stream_on_dantotsu">Stream on Himitsu</string>
     <string name="view_my_anilist">Xem My AniList</string>
     <string name="jobless_message">ĐỒ CHƠI! BẠN THỰC SỰ LÀ THẤT NGHIỆP\nBẠN ĐÃ ĐẾN CUỐI CÙNG</string>
     <string name="file_manager_not_found">Không thể tìm thấy Trình quản lý Tập tin để mở thẻ SD</string>
@@ -515,9 +518,9 @@
     <string name="type_other">KHÁC</string>
     <string name="type_source">NGUỒN</string>
     <string name="type_contains">CHỨA</string>
-    <string name="read_on_dantotsu">Đọc trên Dantotsu</string>
-    <string name="watch_on_dantotsu">Xem trên Dantotsu</string>
-    <string name="view_profile_in_dantotsu">Xem Hồ Sơ trên Dantotsu</string>
+    <string name="read_on_dantotsu">Read on Himitsu</string>
+    <string name="watch_on_dantotsu">Watch on Himitsu</string>
+    <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">Tiếp tục : Tập %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Độc chiếm</string>
     <string name="continue_chapter">Tiếp tục : %1$s\n%2$s</string>
@@ -573,26 +576,26 @@
     <string name="gender">"\n__Giới tính:__ "</string>
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
-    <string name="question_1">Dantotsu là gì?</string>
-    <string name="answer_1">Dantotsu được tạo ra từ tro của Saikou và dựa trên sự đơn giản nhưng tinh tế hiện đại. Đây là một ứng dụng chỉ dành cho Anilist, cho phép bạn xem &amp; tải Anime / Manga thông qua các tiện ích mở rộng. \n&gt;Dantotsu (断トツ; Dan-totsu) có nghĩa là tốt nhất trong tiếng Nhật. Chúng tôi muốn nói rằng đây là ứng dụng mã nguồn mở tốt nhất cho anime và manga trên Android, nhưng hãy tự thử &amp; đánh giá!</string>
-    <string name="question_2">Những tính năng nổi bật của Dantotsu là gì?</string>
-    <string name="answer_2">Một số tính năng đáng chú ý của Dantotsu bao gồm\n\n- Cách dễ dàng và chức năng để xem anime và đọc manga và light novels, không có quảng cáo.\n- Một ứng dụng mã nguồn mở hoàn toàn với giao diện người dùng đẹp &amp; hiệu ứng\n- Hỗ trợ plugin từ bên thứ ba \n- Đồng bộ anime và manga theo thời gian thực với AniList. Dễ dàng phân loại anime và manga dựa trên trạng thái hiện tại của bạn. (Được hỗ trợ bởi AniList)\n- Tìm tất cả các chương trình sử dụng danh sách được cập nhật kỹ lưỡng và thường xuyên của tất cả các anime đang hot, phổ biến và đang phát sóng dựa trên điểm số.\n- Xem thông tin chi tiết về chương trình anime, phim và tiêu đề manga. Nó cũng có khả năng đếm ngược đến tập phim tiếp theo của anime đang phát sóng. (Được hỗ trợ bởi AniList &amp; MyAnimeList)</string>
+    <string name="question_1">What is Himitsu?</string>
+    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou, but then Himitsu forked Dantotsu and began improving upon it. It is (mostly) an Anilist only client, which also supports extensions. \n&gt;Himitsu (秘密; Him-itsu) means \"secret\" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
+    <string name="question_2">What are some features of Himitsu?</string>
+    <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Sự khác biệt giữa các phiên bản Stable, Beta &amp; Alpha là gì?</string>
     <string name="answer_3">Nhánh này không cung cấp các phiên bản riêng lẻ. Phiên bản bạn tải xuống từ [kho lưu trữ](https://github.com/RepoDevil/Himitsu) là phiên bản mà [AbandonedCart](https://github.com/AbandonedCart) đang chạy. Nếu bạn gặp lỗi và đã cập nhật lên phiên bản mới nhất, hãy tự do gửi một [vấn đề](https://github.com/RepoDevil/Himitsu/issues)</string>
-    <string name="question_4">Dantotsu có sẵn cho PC không?</string>
-    <string name="answer_4">Hiện tại không (cho cả Windows và Linux). Không có ước lượng nào khi nó sẽ sẵn có. Nhưng bạn có thể tải bất kỳ trình giả lập Android nào và chạy Dantotsu trên đó. Đối với người dùng Windows 11, họ có thể sử dụng Windows Subsystem for Android (WSA) để chạy Dantotsu trên Windows.</string>
-    <string name="question_5">Dantotsu có sẵn cho iOS không?</string>
-    <string name="answer_5">Không, điều tốt nhất chúng tôi có thể là khắc Dantotsu lên một quả táo.</string>
+    <string name="question_4">Is Himitsu available for PC?</string>
+    <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
+    <string name="question_5">Is Himitsu available for iOS?</string>
+    <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
     <string name="question_6">Tại sao thống kê của tôi không cập nhật?</string>
     <string name="answer_6">Điều này là do nó cập nhật mỗi 48 giờ một cách tự động (bởi Anilist). Nếu bạn thực sự cần cập nhật thống kê của mình, bạn có thể buộc cập nhật thống kê của mình sau khi đến [liên kết này](https://anilist.co/settings/lists).</string>
     <string name="question_7">Làm thế nào để tải Anime?</string>
-    <string name="answer_7">Hiện có hai phương pháp tải xuống. Một là nội bộ và một là bên ngoài. Nếu bạn tải xuống nội bộ, thì nó có thể được xem trong ứng dụng nhưng chỉ ứng dụng mới có thể mở tập đó, bạn không thể di chuyển hoặc chia sẻ nó. Lựa chọn khác là sử dụng chức năng tải xuống bên ngoài. Nó yêu cầu một trình quản lý tải xuống để tải xuống và một trình phát video riêng để xem. Tải xuống bên ngoài có thể được chia sẻ nhưng bạn không thể xem nó trong ứng dụng Dantotsu.\n\n•Để tải nội bộ:\n\n1. Chạm vào nút tải xuống.\n2. Chọn máy chủ và chất lượng video.\n3. Lời lãi.\n\n•Để tải xuống bên ngoài:\n\n 1. Tải 1DM hoặc ADM từ Cửa hàng Play của Google.
-        \n2. Mở ứng dụng, cấp quyền truy cập bộ nhớ và thiết lập các tùy chọn của bạn (tốc độ tải xuống, đường dẫn tải xuống vv (tùy chọn))
-        \n3. Bây giờ đi đến \`Dantotsu &gt; Cài đặt &gt; Chung &gt; Trình quản lý Tải xuống\` và chọn trình quản lý tải xuống bạn vừa thiết lập.
-        \n4. Đi đến tập phim mong muốn và nhấn vào biểu tượng tải xuống của bất kỳ máy chủ nào. Có thể xuất hiện một cửa sổ bật lên để thiết lập tùy chọn của bạn một lần nữa, chỉ cần nhấn vào \"Tải xuống\" và nó sẽ được lưu trữ tại đường dẫn chỉ định.
+    <string name="answer_7">There are two methods of downloading currently. One is internal and the other is external. If you download internally, then it can be viewed within the app but only the app can open that episode, you cannot move it or share it. The other option is to use external downloading. It requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view it within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
+        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
+        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
 
-        \n\nLưu ý: Tải xuống trực tiếp cũng có thể được thực hiện mà không cần một trình quản lý nhưng không được khuyến khích.
-\n\nGhi chú Nerd: Các tập phim được tải nội bộ được lưu trữ trong \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nBạn không thể phát các tập tin đó vì chúng ở định dạng \`.exo\`, chia thành hàng trăm mảnh và được mã hóa.</string>
+        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
+\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
     <string name="question_9">Làm thế nào để kích hoạt nội dung NSFW?</string>
     <string name="answer_9">Bạn có thể kích hoạt nội dung NSFW bằng cách bật nội dung 18+ từ [liên kết này](https://anilist.co/settings/media). Bạn cũng phải bật các tiện ích NSFW trong \`Cài đặt &gt; Tiện ích &gt; Tiện ích NSFW\` </string>
     <string name="question_10">Làm thế nào để nhập danh sách MAL/Kitsu của tôi vào Anilist?</string>
@@ -600,17 +603,17 @@
     <string name="question_11">Làm thế nào để nhập danh sách Anilist/Kitsu của tôi vào MAL?</string>
     <string name="answer_11">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net/). \n2. Nhập tên người dùng Anilist/Kitsu của bạn vào ô \'Tên người dùng/Kitsu ID\' . \n3. Chọn loại danh sách và bật \'cập nhật khi nhập\'. \n4. Tải tệp xuống; nó sẽ ở định dạng .xml. Hãy chắc chắn tải cả danh sách Anime và Manga.\n\nNhập:\n1. Để nhập nó vào tài khoản MAL của bạn, hãy đến [liên kết này](https://myanimelist.net/import.php) và chọn \'Nhập MyAnimeList\' làm loại nhập. \n2. Nhấn vào \'Chọn Tệp\' và chọn tệp XML danh sách anime/manga đã tải xuống. \n3. Nhấn vào \'Nhập Dữ Liệu\'. \nChúc mừng, bạn vừa nhập danh sách đã chọn vào tài khoản MAL của bạn.</string>
     <string name="question_12">Tại sao tôi không thể tìm thấy một tiêu đề anime/manga cụ thể?</string>
-    <string name="answer_12">Hãy nói rằng bạn đang tìm Castlevania trong Dantotsu. Nhưng Anilist không có nó, vì vậy Dantotsu cũng không có.\nMột giải pháp cho vấn đề trên như sau:\n1) Đi đến bất kỳ anime nào không có trong danh sách của bạn.\n2) Đi đến phần xem.\n3) Chọn bất kỳ nguồn nào và nhấn vào \'Tiêu đề sai?\'.\n4) Bây giờ tìm kiếm Castlevania (Anime bạn đang tìm kiếm) và chọn nó.\n5) THƯỞNG THỨC!\n\nNếu bạn không thể tìm thấy anime ngay cả qua các bước này, thì đó là xui xẻo đối với bạn, bạn ạ. Ngay cả nguồn đó cũng không có. Hãy thử một nguồn khác.</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
     <string name="question_13">Làm thế nào để sửa chọn nguồn hiển thị một tiêu đề hoàn toàn sai lầm?</string>
-    <string name="answer_13">Dantotsu chính nó không lưu trữ gì mà phụ thuộc vào các nguồn khác. Khi hiển thị các tập phim, nó chọn kết quả đầu tiên được nguồn đưa ra sau khi tìm kiếm tiêu đề. Dantotsu không cách nào phát hiện xem đó có hợp lệ hay không. Vì vậy, để giải quyết vấn đề này, chúng tôi có \'Tiêu đề sai?\' ngay dưới tên nguồn (trên bố cục). Bạn có thể chọn kết quả/tiêu đề chính xác bằng cách nhấn vào đó và thưởng thức các tập phim.</string>
+    <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Làm thế nào để đọc manga màu?</string>
-    <string name="answer_14">Bạn đang tìm kiếm manga màu? Xin lỗi vì phải nói nhưng một lượng rất nhỏ manga có phiên bản màu. Những manga có phiên bản màu cũng có sẵn trong Dantotsu. Hãy nói rằng bạn muốn đọc phiên bản màu của chainsaw man. Sau đây là các bước ↓\n\n1) Đi đến Chainsaw Man\n2) Nhấn vào \'Đọc\'\n3) Chọn bất kỳ nguồn hoạt động nào\n4) Nhấn vào \'Tiêu đề sai\'\n5) Chọn phiên bản màu của chainsaw man\n6) Thưởng thức\n\nGhi chú: Nhiều nguồn không có phiên bản màu có sẵn ngay cả khi nó có ở nơi nào đó trên internet. Vì vậy hãy thử một nguồn khác. Nếu không có nguồn nào có, thì phiên bản màu của manga mong muốn của bạn đơn giản không tồn tại.</string>
+    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
     <string name="question_15">Handshake thất bại? Tại sao không có thời gian đánh dấu nào được tải?</string>
     <string name="answer_15">Bạn có thể khắc phục vấn đề này bằng cách kích hoạt \'Proxy\' từ \n\`Cài Đặt &gt; Anime &gt; Cài Đặt Trình Phát &gt; Dấu Thời Gian &gt; Proxy\`.\nNếu dấu thời gian vẫn không tải nhưng cửa sổ thông báo lỗi đã được sửa, thì tập phim bạn đang xem chỉ đơn giản không có dấu thời gian cho nó.</string>
     <string name="question_16">Không thể tìm thấy thông tin trong nguồn?</string>
     <string name="answer_16">Một số cách khắc phục cơ bản sẽ là: \n\n• Cập nhật các tiện ích mở rộng nếu có. \n• Mở Xem Web và đợi cho nó tải. Sau khi tải hoàn tất, quay lại. (Nếu Xem Web hiển thị lỗi 404 hoặc một cái gì đó tương tự, có khả năng nguồn của bạn đang tắt)\n• Sử dụng một DNS khác từ cài đặt của bạn, ưu tiên, Libre. \n• Thử một VPN đáng tin cậy. (Bạn sẽ phải lặp lại bước 1 sau điều này) \n\nNếu không có bước nào ở trên hoạt động thì hãy sử dụng một nguồn khác hoặc tham gia vào [discord](https://discord.gg/invite/4HPZ5nAWwM) của chúng tôi để được trợ giúp.</string>
     <string name="question_17">Một số mẹo và thủ thuật hữu ích</string>
-    <string name="answer_17">Dưới đây là một số mẹo và thủ thuật bạn có thể biết hoặc không - \n \n \n - Bằng cách giữ logo Dantotsu trong cài đặt, bạn có thể kiểm tra xem có bất kỳ cập nhật mới nào thủ công hay không. \n \n - Giữ một thông báo lỗi/thẻ/synonym hoặc tiêu đề sẽ sao chép nó. \n \n - Bạn có thể mở một tập phim với các ứng dụng khác bằng cách giữ bất kỳ máy chủ nào cho tập đó. Điều này giúp trong việc phát tập phim bằng các trình phát video khác hoặc tải tập phim bằng các trình quản lý tải về. \n \n - Bạn có thể thiết lập danh sách tùy chỉnh bằng cách sử dụng [liên kết này](https://anilist.co/settings/lists). (bạn cần đăng nhập) \n \n - Nếu tập phim/chương của bạn không tiến triển tự động sau khi bạn xem/xem xong nó, sau đó giữ thanh trạng thái (lập kế hoạch/lặp lại/nút xem) của anime/manga đó. Lần tiếp theo bạn bắt đầu một chương/kết thúc một tập phim, bạn sẽ gặp phải một cửa sổ thông báo. Nhấn \'có\' ở đó.</string>
+    <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Himitsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
     <string name="subscribed_notification">Đã đăng ký! Nhận thông báo, khi tập mới được phát hành trên %1$s.</string>
     <string name="unsubscribed_notification">Đã hủy đăng ký, bạn sẽ không nhận bất kỳ thông báo nào.</string>
     <string name="episode_plural">Tập</string>
@@ -633,7 +636,7 @@
     <string name="discord_logout_success">Đã Đăng Xuất Thành Công</string>
     <string name="discord_try_again">Hãy Thử Đăng Nhập Lại</string>
     <string name="error_loading_discord_user_data">Lỗi Tải Dữ Liệu Người Dùng Discord</string>
-    <string name="discord_warning"><![CDATA[Bằng cách đăng nhập, discord của bạn sẽ hiển thị những gì bạn đang xem & đọc trên Dantotsu\n\nNếu bạn đang ở chế độ ẩn, đăng nhập sẽ làm cho bạn trực tuyến, khi bạn mở Dantotsu.\n\nĐiều này vi phạm Điều Khoản Dịch Vụ của Discord. \nMặc dù Discord chưa bao giờ cấm ai vì sử dụng Custom Rich Presence (Dantotsu sử dụng), nhưng bạn vẫn đã được cảnh báo.\n\nDantotsu không chịu trách nhiệm về bất cứ điều gì xảy ra với tài khoản của bạn.]]></string>
+    <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">Cảnh Báo</string>
     <string name="view_anime">Xem Anime</string>
     <string name="view_manga">Xem Manga</string>
@@ -970,7 +973,16 @@
     <string name="share_as_file">Chia sẻ dưới dạng tệp</string>
     <string name="hidden">Ẩn</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="download_addon_not_installed">Download Add-on not installed</string>
+    <string name="would_you_like_to_install">Would you like to install it?</string>
+    <string name="torrent_addon_not_available">Torrent Add-on not available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="biometric_title">Biometric Verification</string>
+    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_details">Biometric authentication is required</string>
+    <string name="biometric_error">Biometric Error: %1$s</string>
+    <string name="biometric_success">Welcome back!</string>
+    <string name="biometric_failed">Biometric Verification Failed!</string>
 </resources>

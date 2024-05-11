@@ -153,6 +153,7 @@
     <string name="server_disabled">TorrServer desabilitado!</string>
     <string name="server_enabled">Iniciando TorrServer</string>
     <string name="enable_server_temp">Você gostaria de ativar temporariamente o TorrServer (desativado quando o aplicativo é fechado)?</string>
+    <string name="peer_count_low">Low peer count detected!</string>
     <string name="anilist_settings">Configurações Anilistas</string>
     <string name="extension_settings">Extensões</string>
     <string name="downloads">Downloads</string>
@@ -179,12 +180,12 @@
     <string name="about">SOBRE</string>
     <string name="devs">Colaboradores</string>
     <string name="disclaimer">Renúncia</string>
-    <string name="full_disclaimer">         - Dantotsu por si só só fornece um rastreador de anime e mangá e não fornece capacidades de streaming ou download de anime ou mangá.
-        \n\n - Dantotsu ou qualquer um de seus desenvolvedores/funcionários não hospedam nenhum dos conteúdos encontrados dentro do Dantotsu. Todas as imagens e informações de anime/mangá encontradas no aplicativo são retiradas de várias APIs públicas (AniList, MyAnimeList, Kitsu).
-        \n\n - Além disso, todos os links de anime/mangá encontrados no Dantotsu são retirados de vários plugins de terceiros e não têm afiliação com o Dantotsu ou seus funcionários.
-        \n\n - Dantotsu ou seus proprietários não são responsáveis por qualquer uso indevido de qualquer um dos conteúdos encontrados dentro ou fora do aplicativo e não podem ser responsabilizados pela distribuição de qualquer um dos conteúdos encontrados dentro do aplicativo.
-        \n\n - Ao usar o Dantotsu, você concorda com o fato de que o desenvolvedor do aplicativo não é responsável por nenhum dos conteúdos encontrados no aplicativo. Você também concorda com o fato de que não pode usar o Dantotsu para baixar ou transmitir qualquer conteúdo protegido por direitos autorais.
-        \n\n - Se houver problemas de violação de direitos autorais, entre em contato com o site de origem. O desenvolvedor não assume nenhuma responsabilidade legal.
+    <string name="full_disclaimer">         - Himitsu is a fork of Dantotsu. Dantotsu, by itself, provides an anime and manga tracker and does not provide any anime or manga streaming or downloading content.
+        \n\n - Himitsu and any Himitsu contributors do not host any of the content found inside Himitsu. Any and all images or information found in the app are taken from various public APIs (AniList, MyAnimeList, Kitsu).
+        \n\n - Furthermore, all of the anime/manga links found in Himitsu are provided by various 3rd party plugins supplied by the user and have no affiliation with Himitsu or its staff.
+        \n\n - Himitsu and it\'s contributors aren\'t liable for any misuse of any of the contents found inside or outside of the app and cannot be held accountable for the distribution of any of the contents found inside the app.
+        \n\n - By using Himitsu, you confirm that the developer of Himitsu is not responsible for any of the contents found in the app or Dantotsu. You also agree to not use Himitsu to download or stream any copyrighted content.
+        \n\n - If any internet infringement issues are involved, please contact the Dantotsu website. Himitsu and its contributors do not assume any legal responsibility.
     </string>
     <string name="version_current">Versão %1$s</string>
     <string-array name="tips">
@@ -348,6 +349,7 @@
     <string name="previous_season">Temporada Anterior</string>
     <string name="include_media_in_list">Incluir Lista</string>
     <string name="release_calendar">calendário</string>
+    <string name="review_type">%1$s Reviews</string>
     <string name="planned_anime">Anime planejado</string>
     <string name="planned_manga">Manga Planejada</string>
     <string name="image_long_clicking">Toque longo para abrir a imagem</string>
@@ -366,20 +368,20 @@
     <string name="login_with_anilist">Fazer login com Anilist</string>
     <string name="anilist">Anilista</string>
     <string name="account_help">Como isso funciona?</string>
-    <string name="full_account_help">        Dantotsu é um App com base anilista, então para sincronizar com sua conta MAL, precisa de uma conta Anilist para entrar no sistema.
-        \nUma vez logado com contas Anilista e MAL, o aplicativo irá atualizar automaticamente sua conta MÁL quando:
-        \n- Adicionar um novo mídia
-        \n- Editar uma mídia
-        \n- Excluir uma mídia
+    <string name="full_account_help">        Himitsu is an Anilist Based App, so for syncing with your MAL Account, It needs an Anilist account to be logged in.
+        \nOnce logged in with both Anilist and MAL accounts, the app will automatically update your MAL account whenever:
+        \n- Add a new Media
+        \n- Edit a Media
+        \n- Delete a Media
 
-        \n\nNota: O aplicativo não irá sincronizar a mídia antiga de Anilist a MAL, É recomendado sincronizá-los.
-        \n- Verifique __FAQs__ por _Método Fácil_
+        \n\nNote: The app will not sync old Media\'s from Anilist to MAL, It\'s recommended to sync them.
+        \n- Check __FAQs__ for _Easy Method_
 
-        \n\nE por _Intermediários_ :
-        \n- [Como sincronizar dados Anilistas com MAL](https://anilist. o/forum/thread/2654)
-        \n- [Como sincronizar dados MAL com Anilist](https://anilist. o/forum/thread/3393)
+        \n\nAnd for _Intermediates_ :
+        \n- [How to sync Anilist data with MAL](https://anilist.co/forum/thread/2654)
+        \n- [How to sync MAL data with Anilist](https://anilist.co/forum/thread/3393)
 
-        \n\n_Não é necessário sincronizar contas MAL e Anilista.
+        \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
     <string name="notification_for_checking_subscriptions">Mostrar notificação para verificar as assinaturas</string>
     <string name="use_alarm_manager">Usar Gerenciador de Alarme</string>
@@ -389,7 +391,7 @@
     <string name="checking_subscriptions">Notificações de Assinatura Verificação</string>
     <string name="subscriptions_checking_time_s">Frequência da atualização das assinaturas : %1$s</string>
     <string name="subscriptions_checking_time">Frequência de atualização das assinaturas</string>
-    <string name="subscriptions_info">Quantidade de tempo para Dantotsu verificar se há novos episódios/capítulos\n(Menos tempo consome mais bateria)</string>
+    <string name="subscriptions_info">Amount of time for Himitsu to check for new episodes / chapters\n(Less time consumes more battery)</string>
     <string name="do_not_update">Não atualizar</string>
     <string name="loading_chap_number">Carregando Capítulo %1$s</string>
     <string name="sort_by_release_date">Classificar por Data de Liberação</string>
@@ -405,15 +407,16 @@
     <string name="install_step">Passo: %1$s</string>
     <string name="review">Avaliar</string>
     <string name="select_source">Selecione uma fonte</string>
+    <string name="review_author">Reviewed by %1$s</string>
     <string name="update_notice">Dantotsu update %1$s</string>
     <string name="install_update">Instalar atualização %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Atualização disponível</string>
     <string name="discord_nothing_button">Exibir apenas o primeiro botão</string>
-    <string name="discord_dantotsu_button">Exibir o dantotsu no segundo botão</string>
+    <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Em vez disso, mostre seu perfil AniList</string>
     <string name="discord_rich_presence">Rich Presence do Discord</string>
-    <string name="stream_on_dantotsu">Streaming em Dantotsu</string>
+    <string name="stream_on_dantotsu">Stream on Himitsu</string>
     <string name="view_my_anilist">Visualizar Minha AniList</string>
     <string name="jobless_message">CAVALO! VOCÊ REALMENTE ESTÁ DESEMPREGADO\nVOCÊ CHEGOU AO FIM</string>
     <string name="file_manager_not_found">Não foi possível encontrar um Gerenciador de Arquivos para abrir o cartão SD</string>
@@ -515,9 +518,9 @@
     <string name="type_other">Outro</string>
     <string name="type_source">FONTE</string>
     <string name="type_contains">CONTAÇÕES</string>
-    <string name="read_on_dantotsu">Leia em Dantotsu</string>
-    <string name="watch_on_dantotsu">Assista em Dantotsu</string>
-    <string name="view_profile_in_dantotsu">Ver Perfil em Dantotsu</string>
+    <string name="read_on_dantotsu">Read on Himitsu</string>
+    <string name="watch_on_dantotsu">Watch on Himitsu</string>
+    <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">Continuar : Episódio %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Preenchimento</string>
     <string name="continue_chapter">Continuar : %1$s\n%2$s</string>
@@ -573,26 +576,26 @@
     <string name="gender">"\n__Sexo:__ "</string>
     <string name="male">Masculino</string>
     <string name="female">Feminino</string>
-    <string name="question_1">O que é Dantotsu?</string>
-    <string name="answer_1">Dantotsu é criado a partir das cinzas de Saikou e baseado na elegancia simplista, mas ainda mais moderna. É um cliente exclusivo de Anilista, que também permite que você assine &amp; baixe Anime / Manga através de extensões. \n&gt;Dantotsu (➲ ; Dan-totsu) significa literalmente o melhor dos melhores em japonês. Bem, gostaríamos de dizer que este é o melhor aplicativo de código aberto para anime e manga no Android, mas olha, experimente você mesmo &amp; juiz!</string>
-    <string name="question_2">Quais são algumas das características do Dantotsu?</string>
-    <string name="answer_2">Alguns recursos mencionáveis de Dantotsu são\n\n- Forma fácil e funcional para ambos, assistir anime ler manga e romances leves, Ad Free.\n- Um app de código aberto com uma boa UI &amp; Animations\n- Suporte a plugins de terceiros \n- Sincronize anime e manga em tempo real com AniList. Categorize facilmente anime e manga com base no seu status atual. (Desenvolvido por AniList)\n- Encontre todas as séries usando lista completa e frequentemente atualizada de todas os animes em tendência, populares e contínuos com base em pontuações.\n- Veja extensos detalhes sobre animes, filmes e títulos de manga. Ele também mostra capacidade de contagem regressiva para o próximo episódio do anime da ventilação. (Desenvolvido por AniList &amp; MyAnimeList)</string>
+    <string name="question_1">What is Himitsu?</string>
+    <string name="answer_1">Dantotsu merged components of Aniyomi into the core code of Saikou, but then Himitsu forked Dantotsu and began improving upon it. It is (mostly) an Anilist only client, which also supports extensions. \n&gt;Himitsu (秘密; Him-itsu) means \"secret\" in Japanese. Shhh. It\'s a secret so good that even the name is banned.</string>
+    <string name="question_2">What are some features of Himitsu?</string>
+    <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Qual a diferença entre versões Estável, Beta &amp; Alfa?</string>
     <string name="answer_3">Este fork não fornece trilhas separadas. A versão que você baixa do [repository](https://github.com/RepoDevil/Himitsu) é a mesma [AbandonedCart](https://github. om/AbandonedCart) está rodando. Se você encontrar bugs e já atualizou para a última versão, sinta-se à vontade para enviar um [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
-    <string name="question_4">O Dantotsu está disponível para PC?</string>
-    <string name="answer_4">Atualmente não (para Windows e Linux). Não há nenhuma estimativa quando estará disponível. Mas você pode baixar qualquer emulador Android e executar Dantotsu nele. Para usuários do Windows 11, eles podem usar o Subsistema Windows para Android (WSA) para executar o Dantotsu no Windows.</string>
-    <string name="question_5">O Dantotsu está disponível para iOS?</string>
-    <string name="answer_5">Não, o melhor que podemos fazer é esculpir Dantotsu numa maçã.</string>
+    <string name="question_4">Is Himitsu available for PC?</string>
+    <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
+    <string name="question_5">Is Himitsu available for iOS?</string>
+    <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
     <string name="question_6">Por que minhas estatísticas não estão atualizando?</string>
     <string name="answer_6">Isso é porque ele atualiza a cada 48 horas automaticamente (por Anilist). Se você realmente precisar atualizar suas estatísticas, você pode forçar a atualização de suas estatísticas depois de ir para este [link](https://anilist.co/settings/lists).</string>
     <string name="question_7">Como baixar o Anime?</string>
-    <string name="answer_7">Existem dois métodos de download atualmente. Um é interno e o outro é externo. Se você baixar internamente, então pode ser visualizado dentro do aplicativo, mas apenas o aplicativo pode abrir esse episódio, você não pode movê-lo ou compartilhá-lo. A outra opção é usar o download externo. Isso requer um gerenciador de downloads para baixar e um player de vídeo separado para assistir. Os downloads externos podem ser compartilhados, mas você não pode visualizá-los dentro do aplicativo Dantotsu.\n\n•Para baixar internamente:\n\n1. Toque no botão de download.\n2. Escolha o servidor e a qualidade do vídeo.\n3. Lucro.\n\n•Para baixar externamente:\n\n 1. Baixe 1DM ou ADM na Google Play Store.
-        \n2. Entre no aplicativo, dê acesso ao armazenamento e defina suas preferências (velocidade de download, caminho de download etc (opcional))
-        \n3. Agora vá para \`Dantotsu &gt; Configurações &gt; Comum &gt; Gerenciadores de Download\` e escolha o gerenciador de download que você acabou de configurar.
-        \n4. Vá para o episódio desejado e pressione o ícone de download de qualquer servidor. Pode haver um pop-up para definir suas preferências novamente, basta pressionar em \"Download\" e ele será salvo no caminho direcionado.
+    <string name="answer_7">There are two methods of downloading currently. One is internal and the other is external. If you download internally, then it can be viewed within the app but only the app can open that episode, you cannot move it or share it. The other option is to use external downloading. It requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view it within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
+        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
+        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
 
-        \n\nNota: Downloads diretos também são possíveis sem um gerenciador, mas não é recomendado.
-\n\nNota de Nerd: Os episódios baixados internamente são armazenados em \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nVocê não pode reproduzir esses arquivos, pois eles estão no formato \`.exo\`, divididos em centenas de peças e estão criptografados.</string>
+        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
+\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
     <string name="question_9">Como habilitar o conteúdo NSFW?</string>
     <string name="answer_9">Você pode habilitar o conteúdo NSFW ativando mais de 18 conteúdos deste [link](https://anilist.co/settings/media). Você também precisa habilitar extensões NSFW em \`Configurações &gt; Extensões &gt; extensões NSFW\` </string>
     <string name="question_10">Como importar minhas listas MAL/Kitsu para Anilist?</string>
@@ -600,17 +603,17 @@
     <string name="question_11">Como importar minhas listas Anilist/Kitsu para o MAL?</string>
     <string name="answer_11">Aqui está como você faz,\n\nExportar:\n\n1. Vá para este [link](https://malscraper.azurewebsites.net/). \n2. Informe seu nome de usuário Anilist/Kitsu ID na caixa \'Nome de Usuário/ID de Usuário Kitsu\'. \n3. Selecione o tipo de lista e ative \'update_on_import\'. \n4. Baixe o arquivo; ele estará em formato .xml. Certifique-se de baixar tanto as listas de Anime quanto de Manga.\n\nImportar:\n1. Para importá-lo em sua conta do MAL, vá para este [link](https://myanimelist.net/import.php) e escolha \'Importação do MyAnimeList\' como tipo de importação. \n2. Pressione em \'Escolher Arquivo\'e selecione o arquivo XML da lista de anime/mangá baixado. \n3. Pressione em \'Importar Dados\'. \nParabéns, você acabou de importar a lista selecionada para sua conta do MAL.</string>
     <string name="question_12">Por que não consigo encontrar um anime/título de manga específico?</string>
-    <string name="answer_12">Digamos que esteja procurando Castlevania em Dantotsu. Mas Anilista não a tem, então Dantotsu também não.\nUma solução para o problema acima é a seguinte:\n1) Vá para qualquer anime que não esteja na sua lista.\n2) Vá para a seção de relógio.\n3) Selecione qualquer fonte e pressione \'Título errado?\'.\n4) Agora pesquise pela Castlevania (O anime que você está procurando) e selecione-o.\n5) ENTRUIR!\n\nSe você não consegue encontrar o anime mesmo com estas etapas, então isso é má sorte para você, botão. Mesmo essa fonte não tem. Tente uma fonte diferente.</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
     <string name="question_13">Como corrigir fontes selecionando um título completamente errado?</string>
-    <string name="answer_13">Dantotsu em si não hospeda nada, exceto depende de outras fontes. Ao mostrar os episódios, ele escolhe o primeiro resultado dado pela fonte após pesquisar pelo título. Dantotsu não tem como detectar se é ou não legal. Por isso, temos o \'Título errado?\' logo abaixo do nome fonte (layouts acima). Você pode escolher o resultado/título correto pressionando-o e curtindo seus episódios.</string>
+    <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Como ler mangás coloridas?</string>
-    <string name="answer_14">Você está em busca de manga colorida? Desculpe por quebrá-lo para você, mas uma quantidade extremamente pequena de mangas tem uma versão colorida. Aqueles que têm uma versão colorida também estão disponíveis no Dantotsu. Digamos que queira ler a versão colorida do homem de motosserve. Em seguida, siga os passos abaixo,\n\n1) Vá para o Chainsaw Man\n2) Pressione \'Ler\'\n3) Selecione qualquer fonte funcional\n4) Pressione \'Título errado\'\n5) Selecione o chainsaw de versão colorido\n6) Aproveite\n\nNota: Muitas fontes não possuem a versão colorida disponível, mesmo que esteja disponível em algum lugar na internet. Então tente uma fonte diferente. Se nenhuma das fontes a tiver, então uma versão colorida do seu manga desejado simplesmente não existe.</string>
+    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
     <string name="question_15">Falha na mãozinha? Por que não está carregando timestamps ?</string>
     <string name="answer_15">Você pode corrigir este problema habilitando \'Proxy\' de \n\`Settings &gt; Anime &gt; Player Settings &gt; Timestamps &gt; Proxy\`.\nSe o timestamps ainda não estão carregando, mas o handshake failed popup é corrigido, então o episódio que você está assistindo ainda não tem data e para isso.</string>
     <string name="question_16">Não consegue encontrar nada de origem?</string>
     <string name="answer_16">Algumas correções básicas seriam: \n\n• Atualize suas extensões se houver. \n• Abra a Web View e espere que ela carregue. Depois de concluir o carregamento, volte. (Se a Web View mostrar erro 404 ou algo parecido, probabilidade de sua fonte estar abaixada)\n• Use um DNS diferente de suas configurações, de preferência, Libre. \n• Tente uma VPN confiável. (Você terá que repetir a etapa 1 depois disso) \n\nSe nenhuma das etapas acima funcionar, então use uma fonte diferente ou junte-se ao nosso [discord](https://discord. g/convite/4HPZ5nAWwM) para obter ajuda.</string>
     <string name="question_17">Algumas dicas e truques úteis</string>
-    <string name="answer_17">O seguinte apresenta algumas dicas e truques que você pode ou não saber sobre - \n \n \n - Pressionando o logotipo Dantotsu nas configurações você pode verificar se há novas atualizações manualmente. \n \n - Segure pressionando uma mensagem/tag/sinônimo de erro ou título vai copiá-la. \n \n - Você pode abrir um episódio com outros aplicativos pressionando qualquer servidor para aquele episódio. Isso ajuda a transmitir o episódio usando outros player de vídeo ou a transferir o episódio usando gerentes de download. \n \n - Você pode configurar listas personalizadas usando este [link](https://anilist.co/settings/lists). (você precisa iniciar a sessão) \n \n - Se seu episódio/capítulo não estiver sendo processado automaticamente após terminar de assistir/ler o documento, em seguida, segure a barra de status (planejando/repetindo/observando) desse anime/manga. Na próxima vez que você começar um capítulo/terminar um episódio, você vai tropeçar em um popup. Pressione sim lá. </string>
+    <string name="answer_17">The following presents some tips and tricks you may or may not know about - \n \n \n - By hold pressing the Himitsu logo in settings, you can check if there are any new updates manually. \n \n - Hold pressing an error message/tag/synonym or title will copy it. \n \n - You can open an episode with other apps by hold pressing any server for that episode. This helps in streaming the episode using other video players or download the episode using download managers. \n \n - You can set up custom lists using this [link](https://anilist.co/settings/lists). (you need to be signed in) \n \n - If your episode/chapter is not being progressed automatically after you finish watching/reading it, then hold press the status bar(planning/repeating/watching button) of that anime/manga. The next time you start a chapter/finish an episode, you will stumble upon a popup. Press yes there. </string>
     <string name="subscribed_notification">Inscrito! Recebendo notificações, quando novos episódios são liberados em %1$s.</string>
     <string name="unsubscribed_notification">Sem assinatura, você não receberá nenhuma notificação.</string>
     <string name="episode_plural">Episódios</string>
@@ -633,7 +636,7 @@
     <string name="discord_logout_success">Sessão encerrada com sucesso</string>
     <string name="discord_try_again">Tente logar novamente</string>
     <string name="error_loading_discord_user_data">Erro ao carregar dados de usuário do Discord</string>
-    <string name="discord_warning"><![CDATA[Ao fazer login, seu discord agora mostrará o que você está assistindo e lendo no Dantotsu\n\nSe você estiver no modo invisível, fazer login fará com que você fique online, quando abrir o Dantotsu.\n\nIsso viola os Termos de Serviço do Discord. \nEmbora o Discord nunca tenha banido ninguém por usar o Custom Rich Presence (o que o Dantotsu usa), você ainda foi avisado.\n\nO Dantotsu não é responsável por qualquer coisa que aconteça com sua conta.]]></string>
+    <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">ATENÇÃO</string>
     <string name="view_anime">Ver anime</string>
     <string name="view_manga">Ver Manga</string>
@@ -970,7 +973,16 @@
     <string name="share_as_file">Share as file</string>
     <string name="hidden">Oculto</string>
     <string name="no_hidden_items">No Hidden Items</string>
+    <string name="download_addon_not_installed">Download Add-on not installed</string>
+    <string name="would_you_like_to_install">Would you like to install it?</string>
+    <string name="torrent_addon_not_available">Torrent Add-on not available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="biometric_title">Biometric Verification</string>
+    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_details">Biometric authentication is required</string>
+    <string name="biometric_error">Biometric Error: %1$s</string>
+    <string name="biometric_success">Welcome back!</string>
+    <string name="biometric_failed">Biometric Verification Failed!</string>
 </resources>
