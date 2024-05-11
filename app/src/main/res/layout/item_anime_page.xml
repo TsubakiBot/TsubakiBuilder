@@ -18,14 +18,14 @@
         android:layout_gravity="center_horizontal"
         android:clipToPadding="false"
         android:fillViewport="true"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
+        android:paddingHorizontal="2dp"
         android:scrollbarSize="0dp">
 
         <LinearLayout
             android:id="@+id/animeSeasonsCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:orientation="horizontal">
 
             <com.google.android.material.chip.Chip

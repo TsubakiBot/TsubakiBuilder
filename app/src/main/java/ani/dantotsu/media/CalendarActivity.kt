@@ -64,6 +64,10 @@ class CalendarActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
+        binding.listBackButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         binding.listTitle.setText(R.string.release_calendar)
         binding.listSort.visibility = View.GONE
         binding.random.visibility = View.GONE
