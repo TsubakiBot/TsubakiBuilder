@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
-import ani.dantotsu.databinding.ActivityUserInterfaceSettingsBinding
+import ani.dantotsu.databinding.ActivitySettingsUserInterfaceBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
@@ -18,14 +18,14 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 
 class UserInterfaceSettingsActivity : AppCompatActivity() {
-    lateinit var binding: ActivityUserInterfaceSettingsBinding
+    lateinit var binding: ActivitySettingsUserInterfaceBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
 
-        binding = ActivityUserInterfaceSettingsBinding.inflate(layoutInflater)
+        binding = ActivitySettingsUserInterfaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
