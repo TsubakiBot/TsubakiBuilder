@@ -955,11 +955,10 @@ class AnilistQueries {
     }
 
     suspend fun searchCharacter(
-    id: Int? = null,
     search: String? = null
     ): ArrayList<Character> {
         val query = """
-query (${"$"}id: Int, ${"$"}search: String) {
+query (${"$"}search: String) {
   Page(page: 1, perPage: 30) {
     pageInfo {
       total
@@ -968,7 +967,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
       lastPage
       hasNextPage
     }
-    characters(${"$"}id, search: ${"$"}search) {
+    characters(search: ${"$"}search) {
       id
       name {
         first
@@ -996,9 +995,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-        val variables = """{${id?.let { "\"id\":\"$it\""}}${
-            if (id != null && search != null)"," else ""
-        }${search?.let {"\"search\":\"$search\""}}}"""
+        val variables = "{${search?.let {"\"search\":\"$search\""}}}"
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Character>()
@@ -1021,12 +1018,11 @@ query (${"$"}id: Int, ${"$"}search: String) {
     }
 
     suspend fun searchStaff(
-    id: Int? = null,
     search: String? = null
     ): ArrayList<Staff> {
 
         val query = """
-query (${"$"}id: Int, ${"$"}search: String) {
+query (${"$"}search: String) {
   Page(page: 1, perPage: 30) {
     pageInfo {
       total
@@ -1035,7 +1031,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
       lastPage
       hasNextPage
     }
-    staff(${"$"}id, search: ${"$"}search) {
+    staff(search: ${"$"}search) {
       id
       name {
         first
@@ -1071,9 +1067,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-        val variables = """{${id?.let { "\"id\":\"$it\""}}${
-            if (id != null && search != null)"," else ""
-        }${search?.let {"\"search\":\"$search\""}}}"""
+        val variables = "{${search?.let {"\"search\":\"$search\""}}}"
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         Logger.log(response.toString())
@@ -1102,12 +1096,11 @@ query (${"$"}id: Int, ${"$"}search: String) {
     }
 
     suspend fun searchStudio(
-        id: Int? = null,
         search: String? = null
     ): ArrayList<Atelier> {
 
         val query = """
-query (${"$"}id: Int, ${"$"}search: String) {
+query (${"$"}search: String) {
   Page(page: 1, perPage: 30) {
     pageInfo {
       total
@@ -1116,7 +1109,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
       lastPage
       hasNextPage
     }
-    studios(${"$"}id, search: ${"$"}search) {
+    studios(search: ${"$"}search) {
       id
       name
       isAnimationStudio
@@ -1149,9 +1142,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-        val variables = """{${id?.let { "\"id\":\"$it\""}}${
-            if (id != null && search != null)"," else ""
-        }${search?.let {"\"search\":\"$search\""}}}"""
+        val variables = "{${search?.let {"\"search\":\"$search\""}}}"
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Atelier>()
