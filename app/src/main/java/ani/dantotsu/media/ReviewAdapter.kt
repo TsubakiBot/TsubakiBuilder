@@ -153,13 +153,13 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, var reviews: List<R
                         )
                     }
                 }
+                dialogView.reviewBodyContent.setBackgroundColor(
+                    ContextCompat.getColor(parentActivity, android.R.color.transparent)
+                )
                 dialogView.profileUserName.text = review.user?.name
                 dialogView.reviewItemName.text = review.media?.mainName()
                 val formattedScore = "${review.score}/100 • ${ActivityItemBuilder.getDateTime(review.createdAt)}"
                 dialogView.reviewItemRating.text = formattedScore
-                dialogView.reviewBodyContent.setBackgroundColor(
-                    ContextCompat.getColor(parentActivity, android.R.color.transparent)
-                )
                 dialogView.profileBannerContainer.setOnClickListener {
                     ContextCompat.startActivity(
                         parentActivity,

@@ -1,5 +1,6 @@
 package ani.dantotsu.media
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
@@ -65,10 +67,17 @@ class ReviewViewActivity : AppCompatActivity() {
         binding.reviewBodyContent.setBackgroundColor(
             ContextCompat.getColor(this, android.R.color.transparent)
         )
-        binding.reviewItemName.text = review.media?.title?.userPreferred
         binding.profileUserName.text = review.user?.name
+        binding.reviewItemName.text = review.media?.title?.userPreferred
         val formattedScore = "${review.score}/100 • ${ActivityItemBuilder.getDateTime(review.createdAt)}"
         binding.reviewItemRating.text = formattedScore
+        binding.profileBannerContainer.setOnClickListener {
+            ContextCompat.startActivity(
+                this,
+                Intent(this, ProfileActivity::class.java)
+                    .putExtra("userId", review.userId), null
+            )
+        }
         userVote(review.userRating)
         enableVote()
         binding.voteCount.text = review.rating.toString()
