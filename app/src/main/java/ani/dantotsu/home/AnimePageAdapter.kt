@@ -31,7 +31,7 @@ import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
-import ani.dantotsu.media.ReviewActivity
+import ani.dantotsu.media.ReviewPopupActivity
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -153,7 +153,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             reviewButton.setOnClickListener {
                 ContextCompat.startActivity(
                     it.context,
-                    Intent(it.context, ReviewActivity::class.java).putExtra("type", "ANIME"),
+                    Intent(it.context, ReviewPopupActivity::class.java).putExtra("type", "ANIME"),
                     null
                 )
             }

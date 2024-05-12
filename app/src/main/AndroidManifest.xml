@@ -227,6 +227,12 @@
             android:name=".others.imagesearch.ImageSearchActivity"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".media.ReviewActivity"
+            android:parentActivityName=".media.MediaDetailsActivity" />
+        <activity
+            android:name=".media.ReviewViewActivity"
+            android:parentActivityName=".media.ReviewActivity" />
+        <activity
             android:name=".media.SearchActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".media.StudioActivity" />
@@ -246,7 +252,7 @@
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTask" />
         <activity android:name=".media.GenreActivity" />
-        <activity android:name=".media.ReviewActivity" />
+        <activity android:name=".media.ReviewPopupActivity" />
         <activity
             android:name=".media.MediaListViewActivity"
             android:parentActivityName=".MainActivity" />

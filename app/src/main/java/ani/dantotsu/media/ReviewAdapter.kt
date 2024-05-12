@@ -18,7 +18,7 @@ import ani.himitsu.os.Version
 import java.io.Serializable
 
 
-class ReviewAdapter(val parentActivity: ReviewActivity, val reviews: List<Review>)
+class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<Review>)
     : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val binding = ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)

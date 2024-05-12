@@ -323,6 +323,24 @@ class MediaInfoFragment : Fragment() {
 
                         parent.addView(root)
                     }
+
+                    ItemTitleSearchBinding.inflate(
+                        LayoutInflater.from(context),
+                        parent,
+                        false
+                    ).apply {
+
+                        titleSearchImage.loadImage(media.banner ?: media.cover)
+                        titleSearchText.text =
+                            getString(R.string.review_type, media.mainName())
+                        titleSearchCard.setSafeOnClickListener {
+                            val query = Intent(requireContext(), ReviewActivity::class.java)
+                                .putExtra("mediaId", media.id)
+                            ContextCompat.startActivity(requireContext(), query, null)
+                        }
+
+                        parent.addView(root)
+                    }
                 }
 
 

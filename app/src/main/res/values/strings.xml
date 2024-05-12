@@ -454,6 +454,7 @@
     <string name="beta_update">Beta </string>
     <string name="update_available">Update Available</string>
 
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Display only the first button</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Display your AniList profile instead</string>
@@ -1113,4 +1114,6 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
 </resources>
