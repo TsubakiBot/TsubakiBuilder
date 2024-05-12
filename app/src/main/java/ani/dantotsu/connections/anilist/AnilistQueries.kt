@@ -996,10 +996,9 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-        val variables = """{
-            ${if (id != null) ""","id":"$id"""" else ""}
-            ${if (search != null) ""","search":"$search"""" else ""}
-            }"""
+        val variables = """{${id?.let { "\"id\":\"$it\""}}${
+            if (id != null && search != null)"," else ""
+        }${search?.let {"\"search\":\"$search\""}}}"""
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Character>()
@@ -1008,7 +1007,7 @@ query (${"$"}id: Int, ${"$"}search: String) {
                 it.id,
                 it.name?.userPreferred,
                 it.image?.large,
-                it.image?.medium,
+                null,
                 "",
                 it.isFavourite!!,
                 it.description,
@@ -1072,10 +1071,9 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-        val variables = """{
-            ${if (id != null) ""","id":"$id"""" else ""}
-            ${if (search != null) ""","search":"$search"""" else ""}
-            }"""
+        val variables = """{${id?.let { "\"id\":\"$it\""}}${
+            if (id != null && search != null)"," else ""
+        }${search?.let {"\"search\":\"$search\""}}}"""
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         Logger.log(response.toString())
@@ -1151,11 +1149,9 @@ query (${"$"}id: Int, ${"$"}search: String) {
   }
 }
         """.replace("\n", " ").replace("""  """, "")
-
-        val variables = """{
-            ${if (id != null) ""","id":"$id"""" else ""}
-            ${if (search != null) ""","search":"$search"""" else ""}
-            }"""
+        val variables = """{${id?.let { "\"id\":\"$it\""}}${
+            if (id != null && search != null)"," else ""
+        }${search?.let {"\"search\":\"$search\""}}}"""
 
         val response = executeQuery<Query.Page>(query, variables, true)?.data?.page
         val responseArray = arrayListOf<Atelier>()

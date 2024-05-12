@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="24dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="16dp">
+    android:layout_marginVertical="8dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mediaInfoPrequel"
@@ -22,7 +21,8 @@
         app:layout_constraintEnd_toStartOf="@+id/mediaInfoSequel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="256dp">
+        app:layout_constraintWidth_max="256dp"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/mediaInfoPrequelImage"
@@ -77,7 +77,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/mediaInfoPrequel"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="256dp">
+        app:layout_constraintWidth_max="256dp"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/mediaInfoSequelImage"

@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
                         BiometricPrompt.ERROR_NO_BIOMETRICS,
                         BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
                         BiometricPrompt.ERROR_VENDOR -> {
-                            binding.biometricShield.visibility = View.VISIBLE
+                            binding.biometricShield.visibility = View.GONE
                         }
                         BiometricPrompt.ERROR_CANCELED,
                         BiometricPrompt.ERROR_LOCKOUT,
