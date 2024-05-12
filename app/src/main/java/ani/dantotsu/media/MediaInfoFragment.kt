@@ -226,6 +226,19 @@ class MediaInfoFragment : Fragment() {
                             .setDuration(400).start()
                     }
                 }
+
+                binding.reviewLayoutItem.apply {
+                    titleSearchImage.loadImage(media.banner ?: media.cover)
+                    titleSearchText.text =
+                        getString(R.string.review_type, media.mainName())
+                    titleSearchCard.setSafeOnClickListener {
+                        val query = Intent(requireContext(), ReviewActivity::class.java)
+                            .putExtra("mediaId", media.id)
+                            .putExtra("title", media.mainName())
+                        ContextCompat.startActivity(requireContext(), query, null)
+                    }
+                }
+
                 displayTimer(media, binding.mediaInfoContainer)
                 val parent = _binding?.mediaInfoContainer!!
                 val screenWidth = resources.displayMetrics.widthPixels
@@ -309,7 +322,6 @@ class MediaInfoFragment : Fragment() {
                         parent,
                         false
                     ).apply {
-
                         titleSearchImage.loadImage(media.banner ?: media.cover)
                         titleSearchText.text =
                             getString(R.string.search_title, media.mainName())
@@ -320,24 +332,9 @@ class MediaInfoFragment : Fragment() {
                                 .putExtra("hideKeyboard", true)
                             ContextCompat.startActivity(requireContext(), query, null)
                         }
-
                         parent.addView(root)
-                    }
-
-                    ItemTitleSearchBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        titleSearchText.text =
-                            getString(R.string.review_type, media.mainName())
-                        titleSearchCard.setSafeOnClickListener {
-                            val query = Intent(requireContext(), ReviewActivity::class.java)
-                                .putExtra("mediaId", media.id)
-                                .putExtra("title", media.mainName())
-                            ContextCompat.startActivity(requireContext(), query, null)
-                        }
-                        parent.addView(root)
+                    }.root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        bottomMargin += 8.toPx
                     }
                 }
 
