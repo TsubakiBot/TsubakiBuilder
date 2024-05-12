@@ -52,7 +52,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-
             <TextView
                 android:id="@+id/characterTitle"
                 android:layout_width="0dp"
