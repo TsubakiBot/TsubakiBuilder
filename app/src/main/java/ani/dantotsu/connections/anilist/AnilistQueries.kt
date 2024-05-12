@@ -1335,6 +1335,8 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
       summary
       body(asHtml: true)
       rating
+      ratingAmount
+      userRating
       score
       createdAt
       updatedAt
@@ -1394,6 +1396,8 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                 it.summary,
                 it.body,
                 it.rating,
+                it.ratingAmount,
+                it.userRating,
                 it.score,
                 it.user?.let { user ->
                     User(

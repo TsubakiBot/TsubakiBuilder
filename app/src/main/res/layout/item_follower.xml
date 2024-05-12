@@ -19,6 +19,7 @@
             android:id="@+id/profileBannerImage"
             android:layout_width="match_parent"
             android:layout_height="89dp"
+            android:alpha="0.88"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -29,7 +30,6 @@
             android:layout_height="match_parent"
             app:srcCompat="@drawable/linear_gradient_nav"
             tools:ignore="ContentDescription" />
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/profileUserAvatarContainer"

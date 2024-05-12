@@ -7,14 +7,21 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ItemReviewBinding
 import ani.dantotsu.databinding.ItemReviewContentBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
+import ani.dantotsu.toast
 import ani.himitsu.os.Version
+import eu.kanade.tachiyomi.util.system.getThemeColor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.Serializable
 
 
@@ -23,6 +30,86 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val binding = ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ReviewViewHolder(binding)
+    }
+
+    private fun userVote(binding: ItemReviewContentBinding, type: String?) {
+        val selectedColor = parentActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
+        val unselectedColor = parentActivity.getThemeColor(androidx.appcompat.R.attr.colorControlNormal)
+        when (type) {
+            "NO_VOTE" -> {
+                binding.upvote.setColorFilter(unselectedColor)
+                binding.downvote.setColorFilter(unselectedColor)
+            }
+
+            "UP_VOTE" -> {
+                binding.upvote.setColorFilter(selectedColor)
+                binding.downvote.setColorFilter(unselectedColor)
+            }
+
+            "DOWN_VOTE" -> {
+                binding.upvote.setColorFilter(unselectedColor)
+                binding.downvote.setColorFilter(selectedColor)
+            }
+        }
+    }
+
+    private fun rateReview(binding: ItemReviewContentBinding, review: Review, rating: String ) {
+        disableVote(binding)
+        parentActivity.lifecycleScope.launch {
+            val result = Anilist.mutation.rateReview(review.id, rating)
+            if (result != null) {
+                withContext(Dispatchers.Main) {
+                    val res = result.data.rateReview
+                    review.rating = res.rating
+                    review.ratingAmount = res.ratingAmount
+                    review.userRating = res.userRating
+                    userVote(binding, review.userRating)
+                    binding.voteCount.text = review.rating.toString()
+                    binding.voteText.text = parentActivity.getString(
+                        R.string.vote_out_of_total,
+                        review.rating.toString(),
+                        review.ratingAmount.toString()
+                    )
+                    userVote(binding, review.userRating)
+                    enableVote(binding, review)
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    toast(
+                        parentActivity.getString(R.string.error_message, "response is null")
+                    )
+                    enableVote(binding, review)
+                }
+            }
+        }
+    }
+
+    private fun disableVote(binding: ItemReviewContentBinding) {
+        binding.upvote.setOnClickListener(null)
+        binding.downvote.setOnClickListener(null)
+        binding.upvote.isEnabled = false
+        binding.downvote.isEnabled = false
+    }
+
+    private fun enableVote(binding: ItemReviewContentBinding, review: Review) {
+        binding.upvote.setOnClickListener {
+            if (review.userRating == "UP_VOTE") {
+                rateReview(binding, review, "NO_VOTE")
+            } else {
+                rateReview(binding, review, "UP_VOTE")
+            }
+            disableVote(binding)
+        }
+        binding.downvote.setOnClickListener {
+            if (review.userRating == "DOWN_VOTE") {
+                rateReview(binding, review, "NO_VOTE")
+            } else {
+                rateReview(binding, review, "DOWN_VOTE")
+            }
+            disableVote(binding)
+        }
+        binding.upvote.isEnabled = true
+        binding.downvote.isEnabled = true
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
@@ -63,17 +150,26 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
                             .putExtra("userId", review.userId), null
                     )
                 }
+                userVote(dialogView, review.userRating)
+                enableVote(dialogView, review)
+                dialogView.voteCount.text = review.rating.toString()
+                dialogView.voteText.text = parentActivity.getString(
+                    R.string.vote_out_of_total,
+                    review.rating.toString(),
+                    review.ratingAmount.toString()
+                )
                 val alertD = AlertDialog.Builder(parentActivity, R.style.MyPopup)
                 alertD.setView(dialogView.root)
-                alertD.setPositiveButton(R.string.view) { _, _ ->
+                alertD.setPositiveButton(review.media?.mainName()
+                    ?: parentActivity.getString(R.string.media)) { _, _ ->
                     ContextCompat.startActivity(
                         parentActivity,
                         Intent(parentActivity, MediaDetailsActivity::class.java)
                             .putExtra("media", review.media as Serializable), null
                     )
                 }
-                alertD.setNegativeButton(R.string.close) { _, _ -> }
                 val dialog = alertD.show()
+                dialogView.reviewClose.setOnClickListener { dialog.dismiss() }
                 dialog.window?.setDimAmount(0.8f)
                 val lp = WindowManager.LayoutParams()
                 lp.copyFrom(dialog.window?.attributes)
