@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ActivitySettingsNotificationsBinding
 import ani.dantotsu.initActivity
@@ -18,12 +19,17 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
+import ani.dantotsu.notifications.subscription.SubscriptionHelper.Companion.saveSubscription
 import ani.dantotsu.notifications.subscription.SubscriptionNotificationWorker
 import ani.dantotsu.openSettings
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SettingsNotificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsNotificationsBinding
@@ -72,6 +78,15 @@ class SettingsNotificationActivity : AppCompatActivity() {
 
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.subscribe_lists),
+                        desc = getString(R.string.subscribe_lists_desc),
+                        icon = R.drawable.ic_round_notifications_active_24,
+                        onClick = {
+                            subscribeCurrentLists()
+                        }
+                    ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(
@@ -261,6 +276,20 @@ class SettingsNotificationActivity : AppCompatActivity() {
             settingsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
+            }
+        }
+    }
+
+    private fun subscribeCurrentLists() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val current = Anilist.query.initResumable(null)
+            if (current.isEmpty()) {
+                snackString(R.string.no_current_items)
+            } else {
+                current.forEach {
+                    saveSubscription(it, true)
+                }
+                snackString(R.string.current_subscribed)
             }
         }
     }
