@@ -38,6 +38,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.view.dialog.ImageViewDialog
+import ani.dantotsu.util.MarkdownCreatorActivity
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -139,6 +140,15 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                             when (item.itemId) {
                                 R.id.action_view_on_anilist -> {
                                     openLinkInBrowser("https://anilist.co/user/${user.name}")
+                                    true
+                                }
+                                R.id.action_create_new_activity -> {
+                                    ContextCompat.startActivity(
+                                        context,
+                                        Intent(context, MarkdownCreatorActivity::class.java)
+                                            .putExtra("type", "activity"),
+                                        null
+                                    )
                                     true
                                 }
                                 else -> false
