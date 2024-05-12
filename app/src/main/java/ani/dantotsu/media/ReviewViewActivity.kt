@@ -1,11 +1,7 @@
 package ani.dantotsu.media
 
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
@@ -48,6 +44,7 @@ class ReviewViewActivity : AppCompatActivity() {
         review = intent.getSerializableExtraCompat<Query.Review>("review")!!
         binding.userName.text = review.user?.name
         binding.userAvatar.loadImage(review.user?.avatar?.medium)
+        binding.notificationCover.loadImage(review.media?.coverImage?.large)
         binding.userTime.text = ActivityItemBuilder.getDateTime(review.createdAt)
         binding.profileUserBio.settings.loadWithOverviewMode = true
         binding.profileUserBio.settings.useWideViewPort = true
@@ -64,30 +61,8 @@ class ReviewViewActivity : AppCompatActivity() {
             null
         )
         binding.profileUserBio.setBackgroundColor(
-            ContextCompat.getColor(
-                this,
-                android.R.color.transparent
-            )
+            ContextCompat.getColor(this, android.R.color.transparent)
         )
-        binding.profileUserBio.setLayerType(View.LAYER_TYPE_HARDWARE, null)
-        binding.profileUserBio.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-                binding.profileUserBio.setBackgroundColor(
-                    ContextCompat.getColor(
-                        this@ReviewViewActivity,
-                        android.R.color.transparent
-                    )
-                )
-            }
-
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                return true
-            }
-        }
         userVote(review.userRating)
         enableVote()
         binding.voteCount.text = review.rating.toString()

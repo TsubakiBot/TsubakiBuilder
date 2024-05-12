@@ -359,6 +359,8 @@ class Query {
         val updatedAt: Int?,
         @SerialName("user")
         val user: ani.dantotsu.connections.anilist.api.User?,
+        @SerialName("media")
+        var media: ani.dantotsu.connections.anilist.api.Media?,
     ) : java.io.Serializable
 
     @Serializable
