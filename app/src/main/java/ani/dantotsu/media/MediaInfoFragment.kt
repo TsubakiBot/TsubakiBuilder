@@ -329,20 +329,17 @@ class MediaInfoFragment : Fragment() {
                         parent,
                         false
                     ).apply {
-
-                        titleSearchImage.loadImage(media.banner ?: media.cover)
                         titleSearchText.text =
                             getString(R.string.review_type, media.mainName())
                         titleSearchCard.setSafeOnClickListener {
                             val query = Intent(requireContext(), ReviewActivity::class.java)
                                 .putExtra("mediaId", media.id)
+                                .putExtra("title", media.mainName())
                             ContextCompat.startActivity(requireContext(), query, null)
                         }
-
                         parent.addView(root)
                     }
                 }
-
 
                 if (!media.characters.isNullOrEmpty() && !offline) {
                     ItemTitleRecyclerBinding.inflate(

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
+import android.text.TextUtils
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -66,7 +67,8 @@ class ReviewActivity : AppCompatActivity() {
             )
         }
         binding.followFilterButton.visibility = View.GONE
-        binding.listTitle.text = getString(R.string.reviews)
+        binding.listTitle.text = getString(R.string.review_type, intent.getStringExtra("title"))
+        binding.listTitle.ellipsize = TextUtils.TruncateAt.START
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager = LinearLayoutManager(
             this,
