@@ -180,6 +180,9 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         binding.searchByImage.setOnClickListener {
             activity.startActivity(Intent(activity, ImageSearchActivity::class.java))
         }
+        binding.searchByPPT.setOnClickListener {
+            activity.searchPPT(activity.result.search)
+        }
         fun searchTitle() {
             activity.result.apply {
                 search =

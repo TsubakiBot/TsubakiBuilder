@@ -94,6 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
             android:padding="8dp"
             app:boxStrokeColor="@color/text_input_layout_stroke_color"
             app:cardBackgroundColor="@color/nav_bg"
@@ -110,6 +111,33 @@
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/image"
+                android:textColor="?attr/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_round_search_24"
+                app:drawableTint="?attr/colorPrimary" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchByPPT"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            app:boxStrokeColor="@color/text_input_layout_stroke_color"
+            app:cardBackgroundColor="@color/nav_bg"
+            app:cardCornerRadius="16dp"
+            app:contentPadding="4dp"
+            app:contentPaddingLeft="8dp"
+            app:contentPaddingRight="8dp"
+            tools:ignore="ContentDescription,TextContrastCheck">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ppt"
                 android:textColor="?attr/colorPrimary"
                 app:drawableStartCompat="@drawable/ic_round_search_24"
                 app:drawableTint="?attr/colorPrimary" />

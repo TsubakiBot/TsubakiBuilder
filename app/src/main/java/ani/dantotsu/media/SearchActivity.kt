@@ -26,6 +26,8 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
+import ani.himitsu.extension.ReverseSearchDialogFragment
+import ani.himitsu.media.PPTSearchDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -187,6 +189,13 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    fun searchPPT(query: String?) {
+        query?.let {
+            PPTSearchDialogFragment(it).show(
+                supportFragmentManager, null
+            )
+        }
+    }
     fun emptyMediaAdapter() {
         searchTimer.cancel()
         searchTimer.purge()

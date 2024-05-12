@@ -375,6 +375,8 @@ class AnilistSearch : ViewModel() {
             r.season
         )
     )
+
+    val allResults = MutableLiveData<List<Any>?>(null)
 }
 
 class GenresViewModel : ViewModel() {
