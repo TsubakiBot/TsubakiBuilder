@@ -10,7 +10,7 @@
    <a href="https://discord.gg/vnrhgrt"><img src="https://invidget.switchblade.xyz/vnrhgrt"></a>
 </p>
 
-# **Himitsu** 💦
+# **Himitsu** ㊙️
 
 > **Himitsu (秘密; Him-itsu)** means "secret" in Japanese. *Shhh*
 
