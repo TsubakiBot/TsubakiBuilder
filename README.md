@@ -5,9 +5,10 @@
    <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
    <a href="https://github.com/RepoDevil/Himitsu/releases"><img src="https://img.shields.io/github/actions/workflow/status/RepoDevil/Himitsu/android.yml?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
    <a href="https://www.codefactor.io/repository/github/RepoDevil/Himitsu"><img src="https://www.codefactor.io/repository/github/RepoDevil/Himitsu/badge?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge" alt="CodeFactor" /></a>
-   <a href="https://discord.gg/vnrhgrt"><img src="https://img.shields.io/discord/464998866639650839.svg?style=for-the-badge&logo=discord&colorB=7289DA"></a>
 </p>
-<br />
+<p align="center">
+   <a href="https://discord.gg/vnrhgrt"><img src="https://invidget.switchblade.xyz/vnrhgrt"></a>
+</p>
 
 # **Himitsu** 💦
 
@@ -24,9 +25,12 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) client. Himitsu aims to i
 - Load custom subtitles from your device
 - Reverse search: Search inside extensions
 - Random Anime / Manga suggestion generator
-- Limited support for [LNReader plugins](https://github.com/LNReader/lnreader-plugins)
-- Continue reading / watching / anything widgets
+- Biometric lock: Privacy for your collection
+- Read recent reviews as they are published
 - Dynamic launcher icon shortcuts (c/o [Neko](https://github.com/nekomangaorg/Neko))
+- Continue reading / watching / anything widgets
+- Limited support for [LNReader plugins](https://github.com/LNReader/lnreader-plugins)
+- Search *all* of AniList, not just titles & images
 - Change themes and other UI setting instantly
 - Predictions for upcoming manga chapters
 - Individual hide lists for Anime and Manga
@@ -39,7 +43,7 @@ Dantotsu is (mostly) an [Anilist](https://anilist.co/) client. Himitsu aims to i
 - Improved loading speed throughout the app
 
 ### Upstream Contributions
-<details open><summary>Click the arrow to toggle the list</summary>
+<details><summary>Click the arrow to toggle the list</summary>
 <br />
 
 - Custom AnimatedBottomBar library
