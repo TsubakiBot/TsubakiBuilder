@@ -40,6 +40,8 @@
     <color name="light_blue_900">#FF01579B</color>
     <color name="tags">#5E057E</color>
 
+    <color name="anilist_banner">#242538</color>
+
     <!-- theme 1 -->
     <color name="seed_1">#00658e</color>
     <color name="md_theme_light_1_primary">#00658E</color>

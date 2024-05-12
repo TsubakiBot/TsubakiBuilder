@@ -333,6 +333,8 @@ class Query {
     data class Review(
         @SerialName("id")
         val id: Int,
+        @SerialName("userId")
+        val userId: Int,
         @SerialName("mediaId")
         val mediaId: Int,
         @SerialName("mediaType")
@@ -356,7 +358,7 @@ class Query {
         @SerialName("createdAt")
         val createdAt: Int,
         @SerialName("updatedAt")
-        val updatedAt: Int?,
+        val updatedAt: Int,
         @SerialName("user")
         val user: ani.dantotsu.connections.anilist.api.User?,
         @SerialName("media")

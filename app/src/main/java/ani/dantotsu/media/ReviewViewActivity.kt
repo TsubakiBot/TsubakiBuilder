@@ -42,27 +42,31 @@ class ReviewViewActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         review = intent.getSerializableExtraCompat<Query.Review>("review")!!
-        binding.userName.text = review.user?.name
-        binding.userAvatar.loadImage(review.user?.avatar?.medium)
-        binding.notificationCover.loadImage(review.media?.coverImage?.large)
-        binding.userTime.text = ActivityItemBuilder.getDateTime(review.createdAt)
-        binding.profileUserBio.settings.loadWithOverviewMode = true
-        binding.profileUserBio.settings.useWideViewPort = true
-        binding.profileUserBio.setInitialScale(1)
-        val styledHtml = AniMarkdown.getFullAniHTML(
+        binding.reviewMediaCover.loadImage(review.media?.coverImage?.large)
+        binding.profileUserBanner.loadImage(review.user?.bannerImage)
+        binding.profileUserAvatar.loadImage(review.user?.avatar?.medium)
+        binding.reviewBodyContent.settings.loadWithOverviewMode = true
+        binding.reviewBodyContent.settings.useWideViewPort = true
+        binding.reviewBodyContent.setInitialScale(1)
+        AniMarkdown.getFullAniHTML(
             review.body,
             ContextCompat.getColor(this, R.color.bg_opp)
-        )
-        binding.profileUserBio.loadDataWithBaseURL(
-            null,
-            styledHtml,
-            "text/html",
-            "utf-8",
-            null
-        )
-        binding.profileUserBio.setBackgroundColor(
+        ).let { styledHtml ->
+            binding.reviewBodyContent.loadDataWithBaseURL(
+                null,
+                styledHtml,
+                "text/html",
+                "utf-8",
+                null
+            )
+        }
+        binding.reviewBodyContent.setBackgroundColor(
             ContextCompat.getColor(this, android.R.color.transparent)
         )
+        binding.reviewItemName.text = review.media?.title?.userPreferred
+        binding.profileUserName.text = review.user?.name
+        val formattedScore = "${review.score}/100 • ${ActivityItemBuilder.getDateTime(review.createdAt)}"
+        binding.reviewItemRating.text = formattedScore
         userVote(review.userRating)
         enableVote()
         binding.voteCount.text = review.rating.toString()
@@ -103,16 +107,17 @@ class ReviewViewActivity : AppCompatActivity() {
                     val res = result.data.rateReview
                     review.rating = res.rating
                     review.ratingAmount = res.ratingAmount
-                    review.userRating = res.userRating
-                    userVote(review.userRating)
-                    binding.voteCount.text = review.rating.toString()
-                    binding.voteText.text = getString(
-                        R.string.vote_out_of_total,
-                        review.rating.toString(),
-                        review.ratingAmount.toString()
-                    )
-                    userVote(review.userRating)
-                    enableVote()
+                    review.userRating = res.userRating.also {
+                        userVote(it)
+                        binding.voteCount.text = review.rating.toString()
+                        binding.voteText.text = getString(
+                            R.string.vote_out_of_total,
+                            review.rating.toString(),
+                            review.ratingAmount.toString()
+                        )
+                        userVote(it)
+                        enableVote()
+                    }
                 }
             } else {
                 withContext(Dispatchers.Main) {

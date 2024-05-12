@@ -1,7 +1,6 @@
 package ani.dantotsu.media
 
 import android.content.Intent
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -11,19 +10,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.databinding.ActivityReviewViewBinding
 import ani.dantotsu.databinding.ItemReviewBinding
-import ani.dantotsu.databinding.ItemReviewContentBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.toast
-import ani.himitsu.os.Version
+import ani.dantotsu.util.AniMarkdown
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.Serializable
-
 
 class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<Review>)
     : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
@@ -32,7 +30,7 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
         return ReviewViewHolder(binding)
     }
 
-    private fun userVote(binding: ItemReviewContentBinding, type: String?) {
+    private fun userVote(binding: ActivityReviewViewBinding, type: String?) {
         val selectedColor = parentActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
         val unselectedColor = parentActivity.getThemeColor(androidx.appcompat.R.attr.colorControlNormal)
         when (type) {
@@ -53,7 +51,7 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
         }
     }
 
-    private fun rateReview(binding: ItemReviewContentBinding, review: Review, rating: String ) {
+    private fun rateReview(binding: ActivityReviewViewBinding, review: Review, rating: String ) {
         disableVote(binding)
         parentActivity.lifecycleScope.launch {
             val result = Anilist.mutation.rateReview(review.id, rating)
@@ -84,14 +82,14 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
         }
     }
 
-    private fun disableVote(binding: ItemReviewContentBinding) {
+    private fun disableVote(binding: ActivityReviewViewBinding) {
         binding.upvote.setOnClickListener(null)
         binding.downvote.setOnClickListener(null)
         binding.upvote.isEnabled = false
         binding.downvote.isEnabled = false
     }
 
-    private fun enableVote(binding: ItemReviewContentBinding, review: Review) {
+    private fun enableVote(binding: ActivityReviewViewBinding, review: Review) {
         binding.upvote.setOnClickListener {
             if (review.userRating == "UP_VOTE") {
                 rateReview(binding, review, "NO_VOTE")
@@ -130,19 +128,34 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
         init {
             itemView.setOnClickListener {
             val review = reviews[bindingAdapterPosition]
-                val dialogView = ItemReviewContentBinding.inflate(parentActivity.layoutInflater)
-                dialogView.notificationCover.loadImage(review.media?.cover)
-                dialogView.profileUserAvatar.loadImage(review.user?.pfp)
+                val dialogView = ActivityReviewViewBinding.inflate(parentActivity.layoutInflater)
+                dialogView.reviewMediaCover.loadImage(review.media?.cover)
                 dialogView.profileUserBanner.loadImage(review.user?.banner)
+                dialogView.profileUserAvatar.loadImage(review.user?.pfp)
+                dialogView.reviewBodyContent.settings.loadWithOverviewMode = true
+                dialogView.reviewBodyContent.settings.useWideViewPort = true
+                dialogView.reviewBodyContent.setInitialScale(1)
+                review.body?.let {
+                    AniMarkdown.getFullAniHTML(
+                        it,
+                        ContextCompat.getColor(parentActivity, R.color.bg_opp)
+                    ).let { styledHtml ->
+                        dialogView.reviewBodyContent.loadDataWithBaseURL(
+                            null,
+                            styledHtml,
+                            "text/html",
+                            "utf-8",
+                            null
+                        )
+                    }
+                }
                 dialogView.profileUserName.text = review.user?.name
                 dialogView.reviewItemName.text = review.media?.mainName()
-                val formattedScore = "${review.score}/100 (${ActivityItemBuilder.getDateTime(review.createdAt)})"
+                val formattedScore = "${review.score}/100 • ${ActivityItemBuilder.getDateTime(review.createdAt)}"
                 dialogView.reviewItemRating.text = formattedScore
-                dialogView.reviewItemText.text = if (Version.isNougat) {
-                    Html.fromHtml(review.body, Html.FROM_HTML_MODE_COMPACT)
-                } else {
-                    @Suppress("DEPRECATION") Html.fromHtml(review.body)
-                }
+                dialogView.reviewBodyContent.setBackgroundColor(
+                    ContextCompat.getColor(parentActivity, android.R.color.transparent)
+                )
                 dialogView.profileBannerContainer.setOnClickListener {
                     ContextCompat.startActivity(
                         parentActivity,

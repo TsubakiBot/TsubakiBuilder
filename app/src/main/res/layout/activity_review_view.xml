@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/notificationCover"
+        android:id="@+id/reviewMediaCover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.44"
@@ -26,7 +26,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp">
+        android:layout_margin="12dp">
 
         <LinearLayout
             android:id="@+id/reviewContainer"
@@ -34,101 +34,132 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/userContainer"
+        <LinearLayout
+            android:id="@+id/notificationTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/reviewClose"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:translationZ="2dp"
+                app:cardBackgroundColor="@color/nav_bg"
+                app:cardCornerRadius="16dp">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_round_close_24"
+                    tools:ignore="ContentDescription" />
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profileBannerContainer"
                 android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginVertical="16dp"
+                android:backgroundTint="@color/transparent"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/transparent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profileUserBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/anilist_banner"
+                    app:shapeAppearanceOverlay="@style/roundedImageView"
+                    tools:ignore="ContentDescription,ImageContrastCheck"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    tools:tint="@color/transparent" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/linear_gradient_nav"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:id="@+id/profileUserDataContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profileUserAvatarContainer"
+                        android:layout_width="82dp"
+                        android:layout_height="82dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/transparent"
+                        app:cardCornerRadius="64dp"
+                        app:strokeColor="@color/transparent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/profileUserAvatar"
+                            android:layout_width="82dp"
+                            android:layout_height="82dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_round_add_circle_24"
+                            tools:ignore="ContentDescription,ImageContrastCheck"
+                            tools:tint="@color/transparent" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/profileUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/username"
+                        android:textColor="?attr/colorPrimary"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/reviewItemName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:transitionName="mediaTitle"
+                tools:ignore="SpUsage"
+                tools:text="@string/slogan" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/userAvatarContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center_vertical"
-                    android:layout_margin="12dp"
-                    android:backgroundTint="@color/transparent"
-                    app:cardCornerRadius="64dp"
-                    app:strokeColor="@color/transparent">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/userAvatar"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/ic_round_add_circle_24"
-                        tools:ignore="ContentDescription,ImageContrastCheck"
-                        tools:tint="@color/bg_black_50" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/userName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="4dp"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/poppins_bold"
-                    android:paddingTop="1dp"
-                    android:paddingBottom="0dp"
-                    android:singleLine="true"
-                    android:text="Username"
-                    android:textColor="@color/bg_opp"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="4dp"
-                    android:alpha="0.6"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:text="•"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/userTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    android:alpha="0.6"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:text="Time"
-                    android:textSize="14sp"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/reviewClose"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="end"
-                    android:layout_margin="16dp"
-                    android:translationZ="2dp"
-                    app:cardBackgroundColor="@color/nav_bg"
-                    app:cardCornerRadius="16dp">
-
-                    <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_round_close_24"
-                        tools:ignore="ContentDescription" />
-                </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/reviewItemRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:transitionName="mediaTitle"
+                tools:ignore="SpUsage"
+                tools:text="@string/review_type" />
             </LinearLayout>
 
             <WebView
-                android:id="@+id/profileUserBio"
+                android:id="@+id/reviewBodyContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/transparent"
                 android:ellipsize="end"
                 android:nestedScrollingEnabled="true"
-                android:backgroundTint="@color/transparent"
                 android:padding="16dp"
                 android:textAlignment="textStart"
                 tools:text="@string/slogan" />
@@ -138,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="32dp"
+                android:layout_marginVertical="24dp"
                 android:background="@drawable/surface_rounded_bg"
                 android:orientation="vertical">
 

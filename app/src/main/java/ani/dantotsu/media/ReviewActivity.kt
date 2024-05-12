@@ -156,7 +156,8 @@ class ReviewActivity : AppCompatActivity() {
     private fun onUserClick(userId: Int) {
         val review = reviews.find { it.id == userId }
         if (review != null) {
-            startActivity(Intent(this, ReviewViewActivity::class.java).putExtra("review", review))
+            startActivity(Intent(this, ReviewViewActivity::class.java)
+                .putExtra("review", review))
         }
     }
 }
