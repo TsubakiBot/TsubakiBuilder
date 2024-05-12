@@ -859,6 +859,7 @@
     <string name="notifications_desc">Muokkaa uutisia ja päivityksiä</string>
     <string name="system_desc">Päivitykset ja hyödylliset apuohjelmat</string>
     <string name="about_desc">Lue lisää Himitsusta</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Aktivoi</string>
     <string name="default_novel_settings">Novel Oletusasetukset</string>
     <string name="line_height">Rivin Korkeus</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Latausta ei löytynyt</string>
     <string name="image">Kuva</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Laajennuksen asennus epäonnistui konfliktin vuoksi</string>
     <string name="no_video_selected">Videota Ei Valittu</string>
     <string name="download_extension_not_available">Latauslaajennus ei ole käytettävissä</string>

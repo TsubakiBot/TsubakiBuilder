@@ -859,6 +859,7 @@
     <string name="notifications_desc">Tilpas nyheder og opdateringer</string>
     <string name="system_desc">Opdateringer og nyttige værktøjer</string>
     <string name="about_desc">Lær mere om Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Aktiver</string>
     <string name="default_novel_settings">Standard Nye Indstillinger</string>
     <string name="line_height">Linje Højde</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Download tilføjelsen blev ikke fundet</string>
     <string name="image">Billede</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Kunne ikke installere udvidelse på grund af konflikt</string>
     <string name="no_video_selected">Ingen Video Valgt</string>
     <string name="download_extension_not_available">Downloadudvidelse ikke tilgængelig</string>

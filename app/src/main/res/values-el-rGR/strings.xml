@@ -859,6 +859,7 @@
     <string name="notifications_desc">Προσαρμόστε τα νέα και τις ενημερώσεις σας</string>
     <string name="system_desc">Ενημερώσεις και χρήσιμα βοηθητικά προγράμματα</string>
     <string name="about_desc">Μάθετε περισσότερα για το Dantotsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Ενεργοποίηση</string>
     <string name="default_novel_settings">Προεπιλεγμένες Ρυθμίσεις Novel</string>
     <string name="line_height">Ύψος Γραμμής</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Εγκαταστήστε το Addon</string>
     <string name="download_addon_not_found">Δεν βρέθηκε το πρόσθετο λήψης</string>
     <string name="image">Εικόνα</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Η εγκατάσταση της επέκτασης απέτυχε λόγω διένεξης</string>
     <string name="no_video_selected">Δεν Επιλέχθηκε Βίντεο</string>
     <string name="download_extension_not_available">Η επέκταση λήψης δεν είναι διαθέσιμη</string>

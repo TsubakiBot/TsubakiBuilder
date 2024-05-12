@@ -859,6 +859,7 @@
     <string name="notifications_desc">अपने समाचार और अपडेट को कस्टमाइज़ करें</string>
     <string name="system_desc">Updates and useful utilities</string>
     <string name="about_desc">Dantotsu के बारे में और अधिक जानें</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Enable</string>
     <string name="default_novel_settings">Default Novel Settings</string>
     <string name="line_height">Line Height</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">एड-ऑन इंस्टॉल करें</string>
     <string name="download_addon_not_found">एड-ऑन नहीं मिला</string>
     <string name="image">इमेज</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">टकराव के कारण एक्सटेंशन को स्थापित करने में विफल</string>
     <string name="no_video_selected">No Video Selected</string>
     <string name="download_extension_not_available">Download Extension not available</string>

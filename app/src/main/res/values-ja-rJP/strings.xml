@@ -859,6 +859,7 @@
     <string name="notifications_desc">ニュースと更新を編集する</string>
     <string name="system_desc">アップデートと有用なユーティリティ</string>
     <string name="about_desc">秘密についてもっと知る</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">有効にする</string>
     <string name="default_novel_settings">既定のノベル設定</string>
     <string name="line_height">行の高さ</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">ダウンロードアドオンが見つかりません</string>
     <string name="image">画像</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">競合のため拡張機能のインストールに失敗しました</string>
     <string name="no_video_selected">ビデオが選択されていません</string>
     <string name="download_extension_not_available">ダウンロードエクステンションは利用できません</string>

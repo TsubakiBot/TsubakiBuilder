@@ -859,6 +859,7 @@
     <string name="notifications_desc">Personalizați știri și actualizări</string>
     <string name="system_desc">Actualizări și utilități</string>
     <string name="about_desc">Aflaţi mai multe despre Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Activare</string>
     <string name="default_novel_settings">Setări implicite pentru începători</string>
     <string name="line_height">Înălțime linie</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Descărcarea suplimentului nu a fost găsită</string>
     <string name="image">Imagine</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Nu s-a reușit instalarea extensiei din cauza conflictului</string>
     <string name="no_video_selected">Niciun videoclip selectat</string>
     <string name="download_extension_not_available">Extensia de descărcare nu este disponibilă</string>

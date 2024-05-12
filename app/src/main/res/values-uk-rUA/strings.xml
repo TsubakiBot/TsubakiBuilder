@@ -859,6 +859,7 @@
     <string name="notifications_desc">Налаштування новин та оновлень</string>
     <string name="system_desc">Оновлення та корисні утиліти</string>
     <string name="about_desc">Дізнатися більше про Хімітсу</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Увімкнено</string>
     <string name="default_novel_settings">Типові параметри листопада</string>
     <string name="line_height">Висота лінії</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Додаток для завантаження не знайдено</string>
     <string name="image">Зображення</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Не вдалося встановити розширення через конфлікт</string>
     <string name="no_video_selected">Відео не вибране</string>
     <string name="download_extension_not_available">Завантажити розширення недоступне</string>

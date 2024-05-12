@@ -859,6 +859,7 @@
     <string name="notifications_desc">Настройка новостей и обновлений</string>
     <string name="system_desc">Обновления и полезные утилиты</string>
     <string name="about_desc">Узнайте больше о Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Включить</string>
     <string name="default_novel_settings">Настройки романа по умолчанию</string>
     <string name="line_height">Высота линии</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Дополнение для загрузки не найдено</string>
     <string name="image">Изображение</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Не удалось установить расширение из-за конфликта</string>
     <string name="no_video_selected">Видео не выбрано</string>
     <string name="download_extension_not_available">Скачать расширение не доступно</string>

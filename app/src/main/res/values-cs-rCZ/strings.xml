@@ -859,6 +859,7 @@
     <string name="notifications_desc">Přizpůsobit novinky a aktualizace</string>
     <string name="system_desc">Aktualizace a užitečné nástroje</string>
     <string name="about_desc">Další informace o Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Povolit</string>
     <string name="default_novel_settings">Výchozí nastavení Novelu</string>
     <string name="line_height">Výška řádku</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Doplněk ke stažení nebyl nalezen</string>
     <string name="image">Obrázek</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Nepodařilo se nainstalovat rozšíření z důvodu konfliktu</string>
     <string name="no_video_selected">Nevybráno žádné video</string>
     <string name="download_extension_not_available">Stáhnout rozšíření není k dispozici</string>

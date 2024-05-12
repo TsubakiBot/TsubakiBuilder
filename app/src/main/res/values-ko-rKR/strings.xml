@@ -859,6 +859,7 @@
     <string name="notifications_desc">Customise your news and updates</string>
     <string name="system_desc">업데이트 및 유용한 유틸리티</string>
     <string name="about_desc">Learn more about Dantotsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">활성화</string>
     <string name="default_novel_settings">기본 소설 설정</string>
     <string name="line_height">줄 높이</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">애드온 설치</string>
     <string name="download_addon_not_found">다운로드 애드온을 찾을 수 없음</string>
     <string name="image">이미지</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">충돌로 인해 확장 프로그램 설치 실패</string>
     <string name="no_video_selected">선택된 비디오 없음</string>
     <string name="download_extension_not_available">확장 프로그램 다운로드를 사용할 수 없습니다</string>

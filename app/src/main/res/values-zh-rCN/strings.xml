@@ -859,6 +859,7 @@
     <string name="notifications_desc">自定义新闻和更新</string>
     <string name="system_desc">最新情况和有用的实用工具</string>
     <string name="about_desc">了解更多关于 Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">启用</string>
     <string name="default_novel_settings">默认新建设置</string>
     <string name="line_height">行高度</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">找不到下载插件</string>
     <string name="image">图片</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">由于冲突无法安装扩展</string>
     <string name="no_video_selected">未选择视频</string>
     <string name="download_extension_not_available">下载扩展名不可用</string>

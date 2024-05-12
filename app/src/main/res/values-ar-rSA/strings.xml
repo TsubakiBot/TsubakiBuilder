@@ -859,6 +859,7 @@
     <string name="notifications_desc">Customise your news and updates</string>
     <string name="system_desc">التحديثات والمنافع المفيدة</string>
     <string name="about_desc">أعرف المزيد عن Dantotsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">تمكين</string>
     <string name="default_novel_settings">إعدادات جديدة افتراضية</string>
     <string name="line_height">ارتفاع الخط</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">تثبيت Addon</string>
     <string name="download_addon_not_found">تحميل Addon لا يوجد</string>
     <string name="image">صورة</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">فشل تثبيت التمديد بسبب التعارض</string>
     <string name="no_video_selected">لم يتم تحديد فيديو</string>
     <string name="download_extension_not_available">ملحق التحميل غير متوفر</string>

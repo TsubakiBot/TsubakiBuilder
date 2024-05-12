@@ -859,6 +859,7 @@
     <string name="notifications_desc">Testreszabott hírek és frissítések</string>
     <string name="system_desc">Frissítések és hasznos segédprogramok</string>
     <string name="about_desc">Tudj meg többet a Himitsu-ról</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Engedélyezés</string>
     <string name="default_novel_settings">Alapértelmezett Regény Beállítások</string>
     <string name="line_height">Sor Magasság</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Kiegészítő Telepítése</string>
     <string name="download_addon_not_found">Letöltési kiegészítő nem található</string>
     <string name="image">Kép</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Nem sikerült a kiterjesztés telepítése konfliktus miatt</string>
     <string name="no_video_selected">Nincs kiválasztott videó</string>
     <string name="download_extension_not_available">Letöltési kiterjesztés nem elérhető</string>

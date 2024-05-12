@@ -859,6 +859,7 @@
     <string name="notifications_desc">Tùy chỉnh tin tức và cập nhật</string>
     <string name="system_desc">Cập nhật và tiện ích hữu ích</string>
     <string name="about_desc">Tìm hiểu thêm về Himitsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Kích hoạt</string>
     <string name="default_novel_settings">Cài đặt Mặc định Tiểu thuyết</string>
     <string name="line_height">Độ cao dòng</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Cài đặt Tiện ích mở rộng</string>
     <string name="download_addon_not_found">Không tìm thấy tiện ích tải xuống</string>
     <string name="image">Hình ảnh</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Không thể cài đặt tiện ích mở rộng do xung đột</string>
     <string name="no_video_selected">Không có Video được chọn</string>
     <string name="download_extension_not_available">Tiện ích mở rộng Tải xuống không khả dụng</string>

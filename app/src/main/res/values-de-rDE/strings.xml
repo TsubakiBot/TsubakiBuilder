@@ -859,6 +859,7 @@
     <string name="notifications_desc">Passen Sie Ihre Nachrichten und Updates an</string>
     <string name="system_desc">Updates und nützliche Hilfsprogramme</string>
     <string name="about_desc">Erfahren Sie mehr über Dantotsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Aktivieren</string>
     <string name="default_novel_settings">Standard Novel Einstellungen</string>
     <string name="line_height">Zeilenhöhe</string>
@@ -931,6 +932,8 @@
     <string name="install_addon">Addon installieren</string>
     <string name="download_addon_not_found">Addon nicht gefunden</string>
     <string name="image">Bild</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Erweiterung konnte wegen Konflikt nicht installiert werden</string>
     <string name="no_video_selected">Kein Video ausgewählt</string>
     <string name="download_extension_not_available">Download-Erweiterung nicht verfügbar</string>

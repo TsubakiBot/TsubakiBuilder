@@ -861,6 +861,7 @@ Genre : "</string>
     <string name="notifications_desc">Personnalisez vos actualités et mises à jour</string>
     <string name="system_desc">Mises à jour et utilitaires utiles</string>
     <string name="about_desc">En savoir plus sur Dantotsu</string>
+    <string name="ani_setting_desc">Open AniList settings in browser</string>
     <string name="enable">Activer</string>
     <string name="default_novel_settings">Paramètres du roman par défaut</string>
     <string name="line_height">Hauteur de la ligne</string>
@@ -933,6 +934,8 @@ Genre : "</string>
     <string name="install_addon">Installer l\'add-on</string>
     <string name="download_addon_not_found">Add-on pour le téléchargement pas trouvé</string>
     <string name="image">Image</string>
+    <string name="ppt">P/P/T</string>
+    <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Échec de l\'installation de l\'extension à cause d\'un conflit</string>
     <string name="no_video_selected">Aucune vidéo sélectionnée</string>
     <string name="download_extension_not_available">Télécharger l\'extension non disponible</string>
