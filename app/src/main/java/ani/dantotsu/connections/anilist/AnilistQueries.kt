@@ -409,7 +409,7 @@ class AnilistQueries {
     }
 
     private fun recommendationQuery(): String {
-        return """ Page(page: 1, perPage:30) { pageInfo { total currentPage hasNextPage } recommendations(sort: RATING_DESC, onList: true) { rating userRating mediaRecommendation { id idMal isAdult mediaListEntry { progress private score(format:POINT_100) status } chapters isFavourite format episodes nextAiringEpisode {episode} popularity meanScore isFavourite format title {english romaji userPreferred } type status(version: 2) bannerImage coverImage { large } } } } """
+        return """ Page(page: 1, perPage:25) { pageInfo { total currentPage hasNextPage } recommendations(sort: RATING_DESC, onList: true) { rating userRating mediaRecommendation { id idMal isAdult mediaListEntry { progress private score(format:POINT_100) status } chapters isFavourite format episodes nextAiringEpisode {episode} popularity meanScore isFavourite format title {english romaji userPreferred } type status(version: 2) bannerImage coverImage { large } } } } """
     }
 
     private fun recommendationPlannedQuery(type: String): String {
@@ -959,7 +959,7 @@ class AnilistQueries {
     ): ArrayList<Character> {
         val query = """
 query (${"$"}search: String) {
-  Page(page: 1, perPage: 30) {
+  Page(page: 1, perPage: 25) {
     pageInfo {
       total
       perPage
@@ -1023,7 +1023,7 @@ query (${"$"}search: String) {
 
         val query = """
 query (${"$"}search: String) {
-  Page(page: 1, perPage: 30) {
+  Page(page: 1, perPage: 25) {
     pageInfo {
       total
       perPage
@@ -1101,7 +1101,7 @@ query (${"$"}search: String) {
 
         val query = """
 query (${"$"}search: String) {
-  Page(page: 1, perPage: 30) {
+  Page(page: 1, perPage: 25) {
     pageInfo {
       total
       perPage
@@ -1890,7 +1890,7 @@ Page(page:$page,perPage:50) {
 
     suspend fun getReviews(mediaId: Int, page: Int = 1, sort: String = "UPDATED_AT_DESC"): Query.ReviewsResponse? {
         return executeQuery<Query.ReviewsResponse>(
-            """{Page(page:$page,perPage:10){pageInfo{currentPage,hasNextPage,total}reviews(mediaId:$mediaId,sort:$sort){id,userId,mediaId,mediaType,summary,body(asHtml:true)rating,ratingAmount,userRating,score,private,siteUrl,createdAt,updatedAt,user{id,name,bannerImage avatar{medium,large}},media{id,coverImage{large},title{english,romaji,userPreferred}}}}}""",
+            """{Page(page:$page,perPage:25){pageInfo{currentPage,hasNextPage,total}reviews(mediaId:$mediaId,sort:$sort){id,userId,mediaId,mediaType,summary,body(asHtml:true)rating,ratingAmount,userRating,score,private,siteUrl,createdAt,updatedAt,user{id,name,bannerImage avatar{medium,large}},media{id,coverImage{large},title{english,romaji,userPreferred}}}}}""",
             force = true
         )
     }

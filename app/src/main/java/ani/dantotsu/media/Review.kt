@@ -1,7 +1,6 @@
 package ani.dantotsu.media
 
 import ani.dantotsu.profile.User
-import kotlinx.serialization.SerialName
 import java.io.Serializable
 
 data class Review (

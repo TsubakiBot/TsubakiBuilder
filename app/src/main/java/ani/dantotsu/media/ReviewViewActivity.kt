@@ -10,6 +10,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityReviewViewBinding
+import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
@@ -38,6 +39,7 @@ class ReviewViewActivity : AppCompatActivity() {
             topMargin += statusBarHeight
             bottomMargin += navBarHeight
         }
+        hideSystemBarsExtendView()
         binding.reviewClose.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }

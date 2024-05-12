@@ -23,11 +23,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.Serializable
 
-class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<Review>)
+class ReviewAdapter(val parentActivity: ReviewPopupActivity, var reviews: List<Review>)
     : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val binding = ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ReviewViewHolder(binding)
+    }
+
+    fun appendReviews(additional: List<Review>) {
+        reviews = reviews.plus(additional)
     }
 
     private fun userVote(binding: ActivityReviewViewBinding, type: String?) {
@@ -127,7 +131,7 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, val reviews: List<R
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
-            val review = reviews[bindingAdapterPosition]
+                val review = reviews[bindingAdapterPosition]
                 val dialogView = ActivityReviewViewBinding.inflate(parentActivity.layoutInflater)
                 dialogView.reviewMediaCover.loadImage(review.media?.cover)
                 dialogView.profileUserBanner.loadImage(review.user?.banner)

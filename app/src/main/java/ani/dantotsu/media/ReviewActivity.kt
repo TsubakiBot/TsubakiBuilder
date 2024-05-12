@@ -3,7 +3,6 @@ package ani.dantotsu.media
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
 import android.text.TextUtils
 import android.view.MotionEvent
 import android.view.View
@@ -20,7 +19,6 @@ import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityFollowBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.profile.FollowerItem
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.MarkdownCreatorActivity
@@ -78,15 +76,22 @@ class ReviewActivity : AppCompatActivity() {
         binding.listProgressBar.visibility = View.VISIBLE
         binding.listBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
+        binding.followSwipeRefresh.setOnRefreshListener {
+            reviews.clear()
+            fillList(reviews)
+            binding.followSwipeRefresh.isRefreshing = false
+        }
+
         lifecycleScope.launch(Dispatchers.IO) {
             val response = Anilist.query.getReviews(mediaId)
             withContext(Dispatchers.Main) {
                 binding.listProgressBar.visibility = View.GONE
                 binding.listRecyclerView.setOnTouchListener { _, event ->
                     if (event?.action == MotionEvent.ACTION_UP) {
-                        if (hasNextPage && !binding.listRecyclerView.canScrollVertically(1) && !binding.followRefresh.isVisible
-                            && binding.listRecyclerView.adapter!!.itemCount != 0 &&
-                            (binding.listRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() == (binding.listRecyclerView.adapter!!.itemCount - 1)
+                        if (hasNextPage && !binding.listRecyclerView.canScrollVertically(1)
+                            && !binding.followRefresh.isVisible
+                            && binding.listRecyclerView.adapter!!.itemCount != 0
+                            && (binding.listRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() == (binding.listRecyclerView.adapter!!.itemCount - 1)
                         ) {
                             binding.followRefresh.visibility = ViewGroup.VISIBLE
                             loadPage(++currentPage) {
@@ -100,7 +105,7 @@ class ReviewActivity : AppCompatActivity() {
                 hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
                 response?.data?.page?.reviews?.let {
                     reviews.addAll(it)
-                    fillList()
+                    fillList(it)
                 }
             }
         }
@@ -114,48 +119,24 @@ class ReviewActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 response?.data?.page?.reviews?.let {
                     reviews.addAll(it)
-                    fillList()
+                    fillList(it)
                 }
                 callback()
             }
         }
     }
 
-    private fun fillList() {
-        adapter.clear()
-        reviews.forEach {
-            val username = it.user?.name ?: "Unknown"
-            val name = SpannableString(username + " - " + it.score)
-            //change the size of the score
-            name.setSpan(
-                android.text.style.RelativeSizeSpan(0.9f),
-                0,
-                name.length,
-                android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            //give the text an underline
-            name.setSpan(
-                android.text.style.UnderlineSpan(),
-                username.length + 3,
-                name.length,
-                android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            adapter.add(
-                FollowerItem(
-                    it.id,
-                    name,
-                    it.user?.avatar?.medium,
-                    it.user?.bannerImage,
-                    it.summary,
-                    this::onUserClick
-                )
-            )
-        }
+    private fun fillList(reviews: List<Query.Review>) {
+        reviews.forEach { adapter.add(ReviewItem(it, this::onUserClick)) }
+    }
+
+    override fun onDestroy() {
+        reviews.clear()
+        super.onDestroy()
     }
 
     private fun onUserClick(userId: Int) {
-        val review = reviews.find { it.id == userId }
-        if (review != null) {
+        reviews.find { it.id == userId }?.let { review ->
             startActivity(Intent(this, ReviewViewActivity::class.java)
                 .putExtra("review", review))
         }

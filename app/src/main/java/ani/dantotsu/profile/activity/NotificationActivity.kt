@@ -218,7 +218,7 @@ class NotificationActivity : AppCompatActivity() {
             R.id.notificationsThreads -> threads
             else -> null
         }.let { list ->
-            val filter = list?.minus(filters) ?: getUncategorized()
+            val filter = list?.minus(filters.toSet()) ?: getUncategorized()
             notificationList.filter { notification ->
                 filter.contains(notification.notificationType)
             }
