@@ -14,7 +14,6 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityReviewViewBinding
-import ani.dantotsu.getThemeColor
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
@@ -23,6 +22,8 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.AniMarkdown
+import eu.kanade.tachiyomi.util.system.getSerializableExtraCompat
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,14 +37,15 @@ class ReviewViewActivity : AppCompatActivity() {
         ThemeManager(this).applyTheme()
         initActivity(this)
         binding = ActivityReviewViewBinding.inflate(layoutInflater)
-        binding.userContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = statusBarHeight
-        }
-        binding.reviewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        setContentView(binding.root)
+        binding.reviewContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin += statusBarHeight
             bottomMargin += navBarHeight
         }
-        setContentView(binding.root)
-        review = intent.getSerializableExtra("review") as Query.Review
+        binding.reviewClose.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+        review = intent.getSerializableExtraCompat<Query.Review>("review")!!
         binding.userName.text = review.user?.name
         binding.userAvatar.loadImage(review.user?.avatar?.medium)
         binding.userTime.text = ActivityItemBuilder.getDateTime(review.createdAt)
