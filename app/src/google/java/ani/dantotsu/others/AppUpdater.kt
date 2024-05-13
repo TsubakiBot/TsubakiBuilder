@@ -25,9 +25,8 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
-import ani.dantotsu.util.Logger
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -59,48 +58,49 @@ object AppUpdater {
             }
 
             val dontShow = PrefManager.getCustomVal("dont_ask_for_update_$version", false)
-            if (compareVersion(version) && !dontShow && !activity.isDestroyed) activity.runOnUiThread {
-                CustomBottomDialog.newInstance().apply {
-                    setTitleText(
-                        "${if (BuildConfig.DEBUG) getString(R.string.beta_update) else ""}${getString(R.string.update_available)}"
-                    )
-                    addView(
-                        TextView(activity).apply {
-                            val markWon = buildMarkwon(activity, false)
-                            markWon.setMarkdown(this, md)
-                        }
-                    )
+            if (compareVersion(version) && !dontShow && !activity.isDestroyed)
+                activity.runOnUiThread {
+                    CustomBottomDialog.newInstance().apply {
+                        setTitleText(
+                            "${if (BuildConfig.DEBUG) getString(R.string.beta_update) else ""}${getString(R.string.update_available)}"
+                        )
+                        addView(
+                            TextView(activity).apply {
+                                val markWon = buildMarkwon(activity, false)
+                                markWon.setMarkdown(this, md)
+                            }
+                        )
 
-                    setCheck(
-                        getString(R.string.dont_show_again, version),
-                        false
-                    ) { isChecked ->
-                        if (isChecked) {
-                            PrefManager.setCustomVal("dont_ask_for_update_$version", true)
-                        }
-                    }
-                    setPositiveButton(getString(R.string.lets_go)) {
-                        MainScope().launch(Dispatchers.IO) {
-                            try {
-                                client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
-                                    .parsed<GithubResponse>().assets?.find {
-                                        it.browserDownloadURL.endsWith("apk")
-                                    }?.browserDownloadURL.apply {
-                                        if (this != null) activity.downloadUpdate(version, this)
-                                        else openLinkInBrowser("https://github.com/$repo/releases/tag/$version")
-                                    }
-                            } catch (e: Exception) {
-                                logError(e)
+                        setCheck(
+                            getString(R.string.dont_show_again, version),
+                            false
+                        ) { isChecked ->
+                            if (isChecked) {
+                                PrefManager.setCustomVal("dont_ask_for_update_$version", true)
                             }
                         }
-                        dismiss()
+                        setPositiveButton(getString(R.string.lets_go)) {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                try {
+                                    client.get("https://api.github.com/repos/$repo/releases/tags/v$version")
+                                        .parsed<GithubResponse>().assets?.find {
+                                            it.browserDownloadURL.endsWith("apk")
+                                        }?.browserDownloadURL.apply {
+                                            if (this != null) activity.downloadUpdate(version, this)
+                                            else openLinkInBrowser("https://github.com/$repo/releases/tag/$version")
+                                        }
+                                } catch (e: Exception) {
+                                    logError(e)
+                                }
+                            }
+                            dismiss()
+                        }
+                        setNegativeButton(getString(R.string.cope)) {
+                            dismiss()
+                        }
+                        show(activity.supportFragmentManager, "dialog")
                     }
-                    setNegativeButton(getString(R.string.cope)) {
-                        dismiss()
-                    }
-                    show(activity.supportFragmentManager, "dialog")
                 }
-            }
             else {
                 if (post) snackString(R.string.no_update_found)
             }

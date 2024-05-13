@@ -47,7 +47,6 @@ import eu.kanade.tachiyomi.util.system.WebViewUtil
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
-
 class MangaReadAdapter(
     private val media: Media,
     private val fragment: MangaReadFragment,
@@ -58,6 +57,8 @@ class MangaReadAdapter(
     val hiddenScanlators = mutableListOf<String>()
     var scanlatorSelectionListener: ScanlatorSelectionListener? = null
     var options = listOf<String>()
+
+    val uiScope = MainScope()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val bind = ItemAnimeWatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -98,7 +99,7 @@ class MangaReadAdapter(
             binding.animeSource.setText(mangaReadSources.names[source])
             mangaReadSources[source].apply {
                 binding.animeSourceTitle.text = showUserText
-                showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
+                showUserTextListener = { uiScope.launch { binding.animeSourceTitle.text = it } }
             }
         }
         media.selected?.scanlators?.let {
@@ -115,7 +116,7 @@ class MangaReadAdapter(
         binding.animeSource.setOnItemClickListener { _, _, i, _ ->
             fragment.onSourceChange(i).apply {
                 binding.animeSourceTitle.text = showUserText
-                showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
+                showUserTextListener = { uiScope.launch { binding.animeSourceTitle.text = it } }
                 source = i
                 setLanguageList(0, i)
             }
@@ -133,7 +134,7 @@ class MangaReadAdapter(
                 fragment.onSourceChange(media.selected!!.sourceIndex).apply {
                     binding.animeSourceTitle.text = showUserText
                     showUserTextListener =
-                        { MainScope().launch { binding.animeSourceTitle.text = it } }
+                        { uiScope.launch { binding.animeSourceTitle.text = it } }
                     setLanguageList(i, source)
                 }
                 subscribeButton(false)
@@ -508,7 +509,7 @@ class MangaReadAdapter(
                         fragment.onSourceChange(nextIndex).apply {
                             binding.animeSourceTitle.text = showUserText
                             showUserTextListener =
-                                { MainScope().launch { binding.animeSourceTitle.text = it } }
+                                { uiScope.launch { binding.animeSourceTitle.text = it } }
                             setLanguageList(0, nextIndex)
                         }
                         subscribeButton(false)

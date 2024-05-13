@@ -68,9 +68,10 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?android:attr/selectableItemBackground"
-                android:padding="8dp"
+                android:padding="10dp"
                 app:srcCompat="@drawable/ic_round_filter_alt_24"
-                app:tint="?attr/colorPrimary" />
+                app:tint="?attr/colorPrimary"
+                android:contentDescription="@string/filter" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView

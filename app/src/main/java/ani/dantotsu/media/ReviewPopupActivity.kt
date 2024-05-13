@@ -51,7 +51,9 @@ class ReviewPopupActivity : AppCompatActivity() {
             binding.listTitle.text = getString(R.string.review_type, name)
 
             model.getReviews().observe(this) {
-                if (it != null) {
+                if (it.isNullOrEmpty()) {
+                    binding.emptyRecyclerText.visibility = View.VISIBLE
+                } else {
                     MainScope().launch {
                         binding.mediaInfoGenresProgressBar.visibility = View.GONE
                     }

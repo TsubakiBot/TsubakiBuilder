@@ -61,6 +61,8 @@ class AnimeWatchAdapter(
     var subscribe: MediaDetailsActivity.PopImageButton? = null
     private var _binding: ItemAnimeWatchBinding? = null
 
+    val uiScope = MainScope()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val bind = ItemAnimeWatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(bind)
@@ -121,7 +123,7 @@ class AnimeWatchAdapter(
             watchSources[source].apply {
                 this.selectDub = media.selected!!.preferDub
                 binding.animeSourceTitle.text = showUserText
-                showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
+                showUserTextListener = { uiScope.launch { binding.animeSourceTitle.text = it } }
                 binding.animeSourceDubbedCont.isVisible = isDubAvailableSeparately()
             }
         }
@@ -137,7 +139,7 @@ class AnimeWatchAdapter(
         binding.animeSource.setOnItemClickListener { _, _, i, _ ->
             fragment.onSourceChange(i).apply {
                 binding.animeSourceTitle.text = showUserText
-                showUserTextListener = { MainScope().launch { binding.animeSourceTitle.text = it } }
+                showUserTextListener = { uiScope.launch { binding.animeSourceTitle.text = it } }
                 changing = true
                 binding.animeSourceDubbed.isChecked = selectDub
                 changing = false
@@ -157,7 +159,7 @@ class AnimeWatchAdapter(
                 fragment.onSourceChange(media.selected!!.sourceIndex).apply {
                     binding.animeSourceTitle.text = showUserText
                     showUserTextListener =
-                        { MainScope().launch { binding.animeSourceTitle.text = it } }
+                        { uiScope.launch { binding.animeSourceTitle.text = it } }
                     changing = true
                     binding.animeSourceDubbed.isChecked = selectDub
                     changing = false
@@ -483,7 +485,7 @@ class AnimeWatchAdapter(
                         fragment.onSourceChange(nextIndex).apply {
                             binding.animeSourceTitle.text = showUserText
                             showUserTextListener =
-                                { MainScope().launch { binding.animeSourceTitle.text = it } }
+                                { uiScope.launch { binding.animeSourceTitle.text = it } }
                             binding.animeSourceDubbed.isChecked = selectDub
                             binding.animeSourceDubbedCont.isVisible = isDubAvailableSeparately()
                             setLanguageList(0, nextIndex)

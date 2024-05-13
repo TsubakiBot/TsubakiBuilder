@@ -57,4 +57,16 @@
         android:layout_height="48dp"
         android:layout_margin="32dp" />
 
+    <TextView
+        android:id="@+id/emptyRecyclerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/source_not_found"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="20sp" />
+
 </LinearLayout>

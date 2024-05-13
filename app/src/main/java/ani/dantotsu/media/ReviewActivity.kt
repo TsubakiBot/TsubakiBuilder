@@ -101,12 +101,12 @@ class ReviewActivity : AppCompatActivity() {
                     }
                     false
                 }
-                currentPage = response?.data?.page?.pageInfo?.currentPage ?: 1
-                hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
-                response?.data?.page?.reviews?.let {
-                    reviews.addAll(it)
-                    appendList(it)
-                }
+            }
+            currentPage = response?.data?.page?.pageInfo?.currentPage ?: 1
+            hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
+            response?.data?.page?.reviews?.let {
+                reviews.addAll(it)
+                appendList(it)
             }
         }
     }
@@ -116,18 +116,20 @@ class ReviewActivity : AppCompatActivity() {
             val response = Anilist.query.getReviews(mediaId, page)
             currentPage = response?.data?.page?.pageInfo?.currentPage ?: 1
             hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
+            response?.data?.page?.reviews?.let {
+                reviews.addAll(it)
+                appendList(it)
+            }
             withContext(Dispatchers.Main) {
-                response?.data?.page?.reviews?.let {
-                    reviews.addAll(it)
-                    appendList(it)
-                }
                 callback()
             }
         }
     }
 
     private fun appendList(reviews: List<Query.Review>) {
-        reviews.forEach { adapter.add(ReviewItem(it, this::onUserClick)) }
+        lifecycleScope.launch(Dispatchers.Main) {
+            reviews.forEach { adapter.add(ReviewItem(it, ::onUserClick)) }
+        }
     }
 
     private fun onUserClick(userId: Int) {
