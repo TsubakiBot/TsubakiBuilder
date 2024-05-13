@@ -5,14 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.LayoutAnimationController
 import android.widget.AbsListView
-import android.widget.AutoCompleteTextView
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,6 +25,7 @@ import ani.dantotsu.R
 import ani.dantotsu.bottomBar
 import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
+import ani.dantotsu.databinding.FragmentOfflinePageBinding
 import ani.dantotsu.download.DownloadCompat
 import ani.dantotsu.download.DownloadCompat.loadOfflineMangaModelCompat
 import ani.dantotsu.download.DownloadedType
@@ -46,13 +45,11 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
 import com.anggrayudi.storage.file.openInputStream
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.GsonBuilder
 import com.google.gson.InstanceCreator
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SChapterImpl
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -74,35 +71,29 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_offline_page, container, false)
+    ): View {
+        val view = FragmentOfflinePageBinding.inflate(inflater, container, false)
 
-        val textInputLayout = view.findViewById<TextInputLayout>(R.id.offlineMangaSearchBar)
-        textInputLayout.hint = "Manga"
-        val currentColor = textInputLayout.boxBackgroundColor
+        view.offlineMangaSearchBar.hint = "Manga"
+        val currentColor = view.offlineMangaSearchBar.boxBackgroundColor
         val semiTransparentColor = (currentColor and 0x00FFFFFF) or 0xA8000000.toInt()
-        textInputLayout.boxBackgroundColor = semiTransparentColor
-        val materialCardView = view.findViewById<MaterialCardView>(R.id.offlineMangaAvatarContainer)
-        materialCardView.setCardBackgroundColor(semiTransparentColor)
-        val typedValue = TypedValue()
-        requireContext().theme?.resolveAttribute(android.R.attr.windowBackground, typedValue, true)
-        val color = typedValue.data
+        view.offlineMangaSearchBar.boxBackgroundColor = semiTransparentColor
+        view.offlineMangaAvatarContainer.setCardBackgroundColor(semiTransparentColor)
+        val color = requireContext().getThemeColor(android.R.attr.windowBackground)
 
-        val animeUserAvatar = view.findViewById<ShapeableImageView>(R.id.offlineMangaUserAvatar)
-        animeUserAvatar.setSafeOnClickListener {
+        view.offlineMangaUserAvatar.setSafeOnClickListener {
             val dialogFragment =
                 SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.OfflineMANGA)
             dialogFragment.show((it.context as AppCompatActivity).supportFragmentManager, "dialog")
         }
         if (!(PrefManager.getVal(PrefName.ImmersiveMode) as Boolean)) {
-            view.rootView.fitsSystemWindows = true
+            view.root.fitsSystemWindows = true
         }
 
-        textInputLayout.boxBackgroundColor = (color and 0x00FFFFFF) or 0x28000000
-        materialCardView.setCardBackgroundColor((color and 0x00FFFFFF) or 0x28000000)
+        view.offlineMangaSearchBar.boxBackgroundColor = (color and 0x00FFFFFF) or 0x28000000
+        view.offlineMangaAvatarContainer.setCardBackgroundColor((color and 0x00FFFFFF) or 0x28000000)
 
-        val searchView = view.findViewById<AutoCompleteTextView>(R.id.animeSearchBarText)
-        searchView.addTextChangedListener(object : TextWatcher {
+        view.animeSearchBarText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -114,12 +105,10 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             }
         })
         var style: Int = PrefManager.getVal(PrefName.OfflineView)
-        val layoutList = view.findViewById<ImageView>(R.id.downloadedList)
-        val layoutcompact = view.findViewById<ImageView>(R.id.downloadedGrid)
         var selected = when (style) {
-            0 -> layoutList
-            1 -> layoutcompact
-            else -> layoutList
+            0 -> view.downloadedList
+            1 -> view.downloadedGrid
+            else -> view.downloadedList
         }
         selected.alpha = 1f
 
@@ -129,31 +118,31 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
             selected.alpha = 1f
         }
 
-        layoutList.setOnClickListener {
+        view.downloadedList.setOnClickListener {
             selected(it as ImageView)
             style = 0
             PrefManager.setVal(PrefName.OfflineView, style)
             gridView.visibility = View.GONE
-            gridView = view.findViewById(R.id.gridView)
+            gridView = view.gridView
             adapter.notifyNewGrid()
             grid()
 
         }
 
-        layoutcompact.setOnClickListener {
+        view.downloadedGrid.setOnClickListener {
             selected(it as ImageView)
             style = 1
             PrefManager.setVal(PrefName.OfflineView, style)
             gridView.visibility = View.GONE
-            gridView = view.findViewById(R.id.gridView1)
+            gridView = view.gridView1
             adapter.notifyNewGrid()
             grid()
         }
         gridView =
-            if (style == 0) view.findViewById(R.id.gridView) else view.findViewById(R.id.gridView1)
-        total = view.findViewById(R.id.total)
+            if (style == 0) view.gridView else view.gridView1
+        total = view.total
         grid()
-        return view
+        return view.root
     }
 
     private fun grid() {

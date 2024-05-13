@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import ani.dantotsu.R
+import ani.dantotsu.cardView
+import ani.dantotsu.imageView
+import ani.dantotsu.linearLayout
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.textView
 
 
 class OfflineAnimeAdapter(
@@ -46,24 +46,23 @@ class OfflineAnimeAdapter(
         }
 
         val item = getItem(position) as OfflineAnimeModel
-        val imageView = view.findViewById<ImageView>(R.id.itemCompactImage)
-        val titleTextView = view.findViewById<TextView>(R.id.itemCompactTitle)
-        val itemScore = view.findViewById<TextView>(R.id.itemCompactScore)
-        val ongoing = view.findViewById<CardView>(R.id.itemCompactOngoing)
-        val totalEpisodes = view.findViewById<TextView>(R.id.itemCompactTotal)
-        val typeImage = view.findViewById<ImageView>(R.id.itemCompactTypeImage)
-        val type = view.findViewById<TextView>(R.id.itemCompactRelation)
-        val typeView = view.findViewById<LinearLayout>(R.id.itemCompactType)
+        val imageView = view.imageView(R.id.itemCompactImage)
+        val titleTextView = view.textView(R.id.itemCompactTitle)
+        val itemScore = view.textView(R.id.itemCompactScore)
+        val ongoing = view.cardView(R.id.itemCompactOngoing)
+        val totalEpisodes = view.textView(R.id.itemCompactTotal)
+        val typeImage = view.imageView(R.id.itemCompactTypeImage)
+        val type = view.textView(R.id.itemCompactRelation)
+        val typeView = view.linearLayout(R.id.itemCompactType)
 
         if (style == 0) {
-            val bannerView = view.findViewById<ImageView>(R.id.itemCompactBanner) // for large view
-            val episodes = view.findViewById<TextView>(R.id.itemTotalLabel)
+            val bannerView = view.imageView(R.id.itemCompactBanner) // for large view
+            val episodes = view.textView(R.id.itemTotalLabel)
             episodes.text = context.getString(R.string.episodes)
             bannerView.setImageURI(item.banner ?: item.image)
             totalEpisodes.text = item.totalEpisodeList
         } else if (style == 1) {
-            val watchedEpisodes =
-                view.findViewById<TextView>(R.id.itemCompactUserProgress) // for compact view
+            val watchedEpisodes = view.textView(R.id.itemCompactUserProgress) // for compact view
             watchedEpisodes.text = item.watchedEpisode
             totalEpisodes.text = context.getString(R.string.total_divider, item.totalEpisode)
         }
