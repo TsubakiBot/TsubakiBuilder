@@ -49,6 +49,7 @@ class NotificationItem(
             binding.notificationCover.visibility = View.GONE
             binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.VISIBLE
+            binding.notificationTitle.visibility = View.GONE
             if (commentNotification) {
                 binding.notificationCoverUser.setImageResource(R.drawable.ic_dantotsu_round)
                 binding.notificationCoverUser.scaleX = 1.4f
@@ -64,6 +65,7 @@ class NotificationItem(
             binding.notificationCover.visibility = View.VISIBLE
             binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.GONE
+            binding.notificationTitle.visibility = View.VISIBLE
             binding.notificationCover.loadImage(notification.media?.coverImage?.large)
             binding.notificationTitle.text = notification.media?.title?.userPreferred
             binding.notificationBannerImage.layoutParams.height = defaultHeight

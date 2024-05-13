@@ -136,9 +136,12 @@ class NotificationActivity : AppCompatActivity() {
                 binding.listProgressBar.visibility = ViewGroup.GONE
                 binding.listRecyclerView.setOnTouchListener { _, event ->
                     if (event?.action == MotionEvent.ACTION_UP) {
-                        if (hasNextPage && !binding.listRecyclerView.canScrollVertically(1) && !binding.followRefresh.isVisible
-                            && binding.listRecyclerView.adapter!!.itemCount != 0 &&
-                            (binding.listRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() == (binding.listRecyclerView.adapter!!.itemCount - 1)
+                        if (hasNextPage
+                            && !binding.listRecyclerView.canScrollVertically(1)
+                            && !binding.followRefresh.isVisible
+                            && adapter.itemCount != 0
+                            && (binding.listRecyclerView.layoutManager as LinearLayoutManager)
+                                .findLastVisibleItemPosition() == (adapter.itemCount - 1)
                         ) {
                             binding.followRefresh.visibility = ViewGroup.VISIBLE
                             loadPage(-1) {
