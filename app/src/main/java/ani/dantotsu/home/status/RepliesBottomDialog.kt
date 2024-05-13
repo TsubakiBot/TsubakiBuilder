@@ -9,13 +9,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.BottomSheetDialogFragment
+import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.ActivityReply
 import ani.dantotsu.databinding.BottomSheetRecyclerBinding
 import ani.dantotsu.profile.activity.ActivityReplyItem
 import ani.dantotsu.snackString
 import ani.dantotsu.util.MarkdownCreatorActivity
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -65,11 +66,10 @@ class RepliesBottomDialog : BottomSheetDialogFragment() {
                     replies.addAll(response.data.page.activityReplies)
                     adapter.update(replies.map { ActivityReplyItem(it, requireActivity()) { _, _ -> } })
                 } else {
-                    snackString("Failed to load replies")
+                    snackString(R.string.load_replies_failed)
                 }
             }
         }
-
     }
 
     private fun loading(load: Boolean) {
