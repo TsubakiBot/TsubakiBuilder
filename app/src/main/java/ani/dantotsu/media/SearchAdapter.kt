@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
@@ -180,10 +181,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         binding.searchByImage.setOnClickListener {
             activity.startActivity(Intent(activity, ImageSearchActivity::class.java))
         }
-        binding.searchByPPT.setOnClickListener {
-            activity.searchPPT(activity.result.search)
-        }
-        fun searchTitle() {
+        fun searchTitle(withPPT: Boolean) {
             activity.result.apply {
                 search =
                     if (binding.searchBarText.text.toString() != "") binding.searchBarText.text.toString() else null
@@ -194,6 +192,8 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
                 openLinkInBrowser("https://www.youtube.com/watch?v=GgJrEOo0QoA")
             }
             activity.search()
+            binding.searchByPPT.isVisible = withPPT
+            if (withPPT) activity.searchPPT(activity.result.search)
         }
 
         textWatcher = object : TextWatcher {
@@ -212,7 +212,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
                     }
                 } else {
                     setHistoryVisibility(false)
-                    searchTitle()
+                    searchTitle(false)
                 }
             }
         }
@@ -221,7 +221,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                    searchTitle()
+                    searchTitle(true)
                     binding.searchBarText.clearFocus()
                     imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
                     true
@@ -230,7 +230,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
                 else -> false
             }
         }
-        binding.searchBar.setEndIconOnClickListener { searchTitle() }
+        binding.searchBar.setEndIconOnClickListener { searchTitle(true) }
 
         binding.searchResultGrid.setOnClickListener {
             it.alpha = 1f
@@ -252,7 +252,7 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
             binding.searchAdultCheck.isChecked = adult
             binding.searchAdultCheck.setOnCheckedChangeListener { _, b ->
                 adult = b
-                searchTitle()
+                searchTitle(false)
             }
         } else binding.searchAdultCheck.visibility = View.GONE
         binding.searchList.apply {
@@ -276,13 +276,13 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
                 setOnTouchListener { _, event ->
                     (event.actionMasked == MotionEvent.ACTION_DOWN).also {
                         if (it) checkedState = (checkedState + 1) % 3
-                        searchTitle()
+                        searchTitle(false)
                     }
                 }
             } else visibility = View.GONE
         }
 
-        search = Runnable { searchTitle() }
+        search = Runnable { searchTitle(true) }
         requestFocus = Runnable {
             binding.searchBarText.requestFocus()
         }

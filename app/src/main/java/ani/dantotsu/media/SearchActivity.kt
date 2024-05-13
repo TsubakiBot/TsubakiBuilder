@@ -26,10 +26,10 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
-import ani.himitsu.extension.ReverseSearchDialogFragment
-import ani.himitsu.media.PPTSearchDialogFragment
+import ani.himitsu.media.PPTSearchAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Timer
 import java.util.TimerTask
 
@@ -42,6 +42,7 @@ class SearchActivity : AppCompatActivity() {
     private var screenWidth: Float = 0f
 
     private lateinit var mediaAdaptor: MediaAdaptor
+    private lateinit var pptAdapter: PPTSearchAdapter
     private lateinit var progressAdapter: ProgressAdapter
     private lateinit var concatAdapter: ConcatAdapter
     private lateinit var headerAdaptor: SearchAdapter
@@ -100,6 +101,7 @@ class SearchActivity : AppCompatActivity() {
         ).apply {
             extension = intent.getStringExtra("extension")
         }
+        pptAdapter = PPTSearchAdapter(model, scope)
         headerAdaptor = SearchAdapter(this, model.searchResults.type)
 
         val gridSize = (screenWidth / 120.toPx).toInt()
@@ -117,7 +119,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        concatAdapter = ConcatAdapter(headerAdaptor, mediaAdaptor, progressAdapter)
+        concatAdapter = ConcatAdapter(headerAdaptor, mediaAdaptor, pptAdapter, progressAdapter)
 
         binding.searchRecyclerView.layoutManager = gridLayoutManager
         binding.searchRecyclerView.adapter = concatAdapter
@@ -190,10 +192,22 @@ class SearchActivity : AppCompatActivity() {
     }
 
     fun searchPPT(query: String?) {
-        query?.let {
-            PPTSearchDialogFragment(it).show(
-                supportFragmentManager, null
-            )
+        val allResults = ArrayList<Any>()
+        scope.launch {
+            withContext(Dispatchers.IO) {
+                allResults.addAll(Anilist.query.searchCharacter(query))
+                allResults.addAll(Anilist.query.searchStudio(query))
+                allResults.addAll(Anilist.query.searchStaff(query))
+                withContext(scope.coroutineContext) {
+                    model.allResults.postValue(allResults)
+                }
+            }
+        }
+
+        model.allResults.observe(this) { collections ->
+            collections?.let {
+                pptAdapter.setContent(it)
+            }
         }
     }
     fun emptyMediaAdapter() {
@@ -201,6 +215,7 @@ class SearchActivity : AppCompatActivity() {
         searchTimer.purge()
         mediaAdaptor.notifyItemRangeRemoved(0, model.searchResults.results.size)
         model.searchResults.results.clear()
+        pptAdapter.clearAdapter()
         progressAdapter.bar?.visibility = View.GONE
     }
 
@@ -213,6 +228,7 @@ class SearchActivity : AppCompatActivity() {
         binding.searchRecyclerView.post {
             mediaAdaptor.notifyItemRangeRemoved(0, size)
         }
+        pptAdapter.clearAdapter()
 
         progressAdapter.bar?.visibility = View.VISIBLE
 

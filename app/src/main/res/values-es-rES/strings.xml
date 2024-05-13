@@ -932,7 +932,6 @@
     <string name="install_addon">Instalar complemento</string>
     <string name="download_addon_not_found">No se encuentra el complemento de descarga</string>
     <string name="image">Imagen</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">No se pudo instalar la extensión debido a un conflicto</string>
     <string name="no_video_selected">Ningún vídeo seleccionado</string>

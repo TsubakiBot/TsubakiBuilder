@@ -932,7 +932,6 @@
     <string name="install_addon">एड-ऑन इंस्टॉल करें</string>
     <string name="download_addon_not_found">एड-ऑन नहीं मिला</string>
     <string name="image">इमेज</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">टकराव के कारण एक्सटेंशन को स्थापित करने में विफल</string>
     <string name="no_video_selected">No Video Selected</string>

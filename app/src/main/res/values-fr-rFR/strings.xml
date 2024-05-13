@@ -934,7 +934,6 @@ Genre : "</string>
     <string name="install_addon">Installer l\'add-on</string>
     <string name="download_addon_not_found">Add-on pour le téléchargement pas trouvé</string>
     <string name="image">Image</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Échec de l\'installation de l\'extension à cause d\'un conflit</string>
     <string name="no_video_selected">Aucune vidéo sélectionnée</string>

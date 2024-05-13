@@ -449,6 +449,7 @@ class MediaInfoFragment : Fragment() {
                         adapter.pos = ArrayList(genreModel.genres!!.keys)
                         if (genreModel.done) genreModel.doneListener?.invoke()
                     }
+                    bind.mediaInfoGenresRecyclerView.updatePadding(left = 20.toPx)
                     bind.mediaInfoGenresRecyclerView.adapter = adapter
                     bind.mediaInfoGenresRecyclerView.layoutManager =
                         GridLayoutManager(requireActivity(), (screenWidth / 156.toPx))

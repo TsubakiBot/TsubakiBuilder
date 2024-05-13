@@ -129,6 +129,7 @@
             app:contentPadding="4dp"
             app:contentPaddingLeft="8dp"
             app:contentPaddingRight="8dp"
+            android:visibility="gone"
             tools:ignore="ContentDescription,TextContrastCheck">
 
             <TextView

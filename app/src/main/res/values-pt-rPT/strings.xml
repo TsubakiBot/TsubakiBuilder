@@ -932,7 +932,6 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Extensão de download não encontrada</string>
     <string name="image">Imagem:</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Falha ao instalar a extensão devido a conflitos</string>
     <string name="no_video_selected">Nenhum vídeo selecionado</string>

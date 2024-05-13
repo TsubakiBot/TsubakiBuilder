@@ -932,7 +932,6 @@
     <string name="install_addon">Kiegészítő Telepítése</string>
     <string name="download_addon_not_found">Letöltési kiegészítő nem található</string>
     <string name="image">Kép</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Nem sikerült a kiterjesztés telepítése konfliktus miatt</string>
     <string name="no_video_selected">Nincs kiválasztott videó</string>

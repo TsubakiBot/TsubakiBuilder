@@ -932,7 +932,6 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">找不到下载插件</string>
     <string name="image">图片</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">由于冲突无法安装扩展</string>
     <string name="no_video_selected">未选择视频</string>

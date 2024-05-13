@@ -349,7 +349,7 @@ class AnilistSearch : ViewModel() {
             r.excludedTags,
             r.startYear,
             r.seasonYear,
-            r.season,
+            r.season
         )
     )
 
@@ -376,7 +376,7 @@ class AnilistSearch : ViewModel() {
         )
     )
 
-    val allResults = MutableLiveData<List<Any>?>(null)
+    val allResults = MutableLiveData<ArrayList<Any>?>(null)
 }
 
 class GenresViewModel : ViewModel() {

@@ -932,7 +932,6 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Ladda ner addon hittades inte</string>
     <string name="image">Bild</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Det gick inte att installera tillägg på grund av konflikt</string>
     <string name="no_video_selected">Ingen video vald</string>

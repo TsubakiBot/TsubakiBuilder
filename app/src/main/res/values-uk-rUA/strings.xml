@@ -932,7 +932,6 @@
     <string name="install_addon">Install Addon</string>
     <string name="download_addon_not_found">Додаток для завантаження не знайдено</string>
     <string name="image">Зображення</string>
-    <string name="ppt">P/P/T</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Не вдалося встановити розширення через конфлікт</string>
     <string name="no_video_selected">Відео не вибране</string>
