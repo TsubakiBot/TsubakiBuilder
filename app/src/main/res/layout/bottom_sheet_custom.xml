@@ -20,7 +20,7 @@
             android:gravity="center"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="-8dp"
+            android:layout_marginBottom="-6dp"
             android:button="@null"
             android:buttonTint="?attr/colorPrimary"
             android:drawablePadding="4dp"
