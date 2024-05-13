@@ -29,6 +29,7 @@ class MarkdownCreatorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
+
         binding = ActivityMarkdownCreatorBinding.inflate(layoutInflater)
         binding.markdownCreatorToolbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin = statusBarHeight

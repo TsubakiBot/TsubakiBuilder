@@ -169,6 +169,10 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
+        model.allResults.observe(this) { collections ->
+            collections?.let { pptAdapter.setContent(it) } ?: pptAdapter.clear()
+        }
+
         progressAdapter.ready.observe(this) {
             if (it == true) {
                 if (!notSet) {
@@ -203,19 +207,13 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         }
-
-        model.allResults.observe(this) { collections ->
-            collections?.let {
-                pptAdapter.setContent(it)
-            }
-        }
     }
     fun emptyMediaAdapter() {
         searchTimer.cancel()
         searchTimer.purge()
         mediaAdaptor.notifyItemRangeRemoved(0, model.searchResults.results.size)
         model.searchResults.results.clear()
-        pptAdapter.clearAdapter()
+        pptAdapter.clear()
         progressAdapter.bar?.visibility = View.GONE
     }
 
@@ -228,7 +226,7 @@ class SearchActivity : AppCompatActivity() {
         binding.searchRecyclerView.post {
             mediaAdaptor.notifyItemRangeRemoved(0, size)
         }
-        pptAdapter.clearAdapter()
+        pptAdapter.clear()
 
         progressAdapter.bar?.visibility = View.VISIBLE
 
