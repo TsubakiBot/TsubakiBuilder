@@ -49,14 +49,14 @@ class ReviewPopupActivity : AppCompatActivity() {
         if (type != null) {
             val name ="${type.substring(0, 1)}${type.substring(1).lowercase()}"
             binding.listTitle.text = getString(R.string.review_type, name)
+            binding.emptyRecyclerText.text = getString(R.string.reviews_empty, name)
 
             model.getReviews().observe(this) {
                 if (it.isNullOrEmpty()) {
                     binding.emptyRecyclerText.visibility = View.VISIBLE
                 } else {
-                    MainScope().launch {
-                        binding.mediaInfoGenresProgressBar.visibility = View.GONE
-                    }
+                    binding.emptyRecyclerText.visibility = View.GONE
+                    binding.mediaInfoGenresProgressBar.visibility = View.GONE
                     val adapter = ReviewAdapter(this, it.filter { review -> review.mediaType == type })
                     binding.mediaInfoGenresRecyclerView.adapter = adapter
                     binding.mediaInfoGenresRecyclerView.layoutManager = LinearLayoutManager(this)

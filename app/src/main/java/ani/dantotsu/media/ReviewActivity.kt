@@ -65,8 +65,10 @@ class ReviewActivity : AppCompatActivity() {
             )
         }
         binding.followFilterButton.visibility = View.GONE
-        binding.listTitle.text = getString(R.string.review_type, intent.getStringExtra("title"))
+        val mediaTitle = intent.getStringExtra("title")
         binding.listTitle.ellipsize = TextUtils.TruncateAt.START
+        binding.listTitle.text = getString(R.string.review_type, mediaTitle)
+        binding.emptyRecyclerText.text = getString(R.string.reviews_empty, mediaTitle)
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager = LinearLayoutManager(
             this,
@@ -108,6 +110,7 @@ class ReviewActivity : AppCompatActivity() {
                 reviews.addAll(it)
                 appendList(it)
             }
+            binding.emptyRecyclerText.isVisible = reviews.isEmpty()
         }
     }
 
@@ -121,6 +124,7 @@ class ReviewActivity : AppCompatActivity() {
                 appendList(it)
             }
             withContext(Dispatchers.Main) {
+                binding.emptyRecyclerText.isVisible = reviews.isEmpty()
                 callback()
             }
         }

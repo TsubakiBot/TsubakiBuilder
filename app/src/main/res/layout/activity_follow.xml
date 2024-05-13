@@ -155,6 +155,19 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="32dp"
             android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/emptyRecyclerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/source_not_found"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="20sp" />
+
     </FrameLayout>
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
