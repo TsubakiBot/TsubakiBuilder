@@ -65,6 +65,7 @@ class NotificationItem(
             binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.GONE
             binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+            binding.notificationTitle.text = notification.media?.title?.userPreferred
             binding.notificationBannerImage.layoutParams.height = defaultHeight
             binding.notificationGradiant.layoutParams.height = defaultHeight
             (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
