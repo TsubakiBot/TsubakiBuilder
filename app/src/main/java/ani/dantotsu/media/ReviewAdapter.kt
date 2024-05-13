@@ -72,7 +72,6 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, var reviews: List<R
                         review.rating.toString(),
                         review.ratingAmount.toString()
                     )
-                    userVote(binding, review.userRating)
                     enableVote(binding, review)
                 }
             } else {

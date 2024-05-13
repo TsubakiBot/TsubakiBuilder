@@ -76,7 +76,7 @@ class AnilistMutations {
 
 
     suspend fun rateReview(reviewId: Int, rating: String): Query.RateReviewResponse? {
-        val query = "mutation{RateReview(reviewId:$reviewId,rating:$rating){id mediaId mediaType summary body(asHtml:true)rating ratingAmount userRating score private siteUrl createdAt updatedAt user{id name bannerImage avatar{medium large}}}}"
+        val query = "mutation{RateReview(reviewId:$reviewId,rating:$rating){id userId mediaId mediaType summary body(asHtml:true)rating ratingAmount userRating score private siteUrl createdAt updatedAt user{id name bannerImage avatar{medium large}}}}"
         return executeQuery<Query.RateReviewResponse>(query)
     }
 

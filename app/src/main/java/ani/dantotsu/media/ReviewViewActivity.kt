@@ -126,7 +126,6 @@ class ReviewViewActivity : AppCompatActivity() {
                             review.rating.toString(),
                             review.ratingAmount.toString()
                         )
-                        userVote(it)
                         enableVote()
                     }
                 }
