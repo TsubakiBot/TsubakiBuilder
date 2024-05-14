@@ -31,6 +31,8 @@ import ani.dantotsu.bottomBar
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.FragmentHomeBinding
+import ani.dantotsu.databinding.HomeListContainerBinding
+import ani.dantotsu.databinding.ItemProfileAppBarBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
@@ -66,12 +68,14 @@ import kotlin.random.Random
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var homeListContainerBinding: HomeListContainerBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        homeListContainerBinding = HomeListContainerBinding.bind(binding.root)
         return binding.root
     }
 
@@ -100,31 +104,34 @@ class HomeFragment : Fragment() {
                 binding.homeNotificationCount.isVisible = count > 0
                 binding.homeNotificationCount.text = count.toString()
 
-                binding.homeAnimeList.setOnClickListener {
-                    ContextCompat.startActivity(
-                        requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                            .putExtra("anime", true)
-                            .putExtra("userId", Anilist.userid)
-                            .putExtra("username", Anilist.username), null
-                    )
+                homeListContainerBinding.apply {
+                    homeAnimeList.setOnClickListener {
+                        ContextCompat.startActivity(
+                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                .putExtra("anime", true)
+                                .putExtra("userId", Anilist.userid)
+                                .putExtra("username", Anilist.username), null
+                        )
+                    }
+                    homeMangaList.setOnClickListener {
+                        ContextCompat.startActivity(
+                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                .putExtra("anime", false)
+                                .putExtra("userId", Anilist.userid)
+                                .putExtra("username", Anilist.username), null
+                        )
+                    }
+                    binding.homeUserAvatarContainer.startAnimation(setSlideUp())
+                    binding.homeUserDataContainer.visibility = View.VISIBLE
+                    binding.homeUserDataContainer.layoutAnimation =
+                        LayoutAnimationController(setSlideUp(), 0.25f)
+                    homeAnimeList.visibility = View.VISIBLE
+                    homeMangaList.visibility = View.VISIBLE
+                    homeRandomAnime.visibility = View.VISIBLE
+                    homeRandomManga.visibility = View.VISIBLE
+                    homeListContainer.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
                 }
-                binding.homeMangaList.setOnClickListener {
-                    ContextCompat.startActivity(
-                        requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                            .putExtra("anime", false)
-                            .putExtra("userId", Anilist.userid)
-                            .putExtra("username", Anilist.username), null
-                    )
-                }
-                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
-                binding.homeUserDataContainer.visibility = View.VISIBLE
-                binding.homeUserDataContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideUp(), 0.25f)
-                binding.homeAnimeList.visibility = View.VISIBLE
-                binding.homeMangaList.visibility = View.VISIBLE
-                binding.homeRandomAnime.visibility = View.VISIBLE
-                binding.homeRandomManga.visibility = View.VISIBLE
-                binding.homeListContainer.layoutAnimation = LayoutAnimationController(setSlideIn(), 0.25f)
             }
             else {
                 snackString(R.string.please_reload)
@@ -204,8 +211,8 @@ class HomeFragment : Fragment() {
         //List Images
         model.getListImages().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                binding.homeAnimeListImage.loadImage(it[0] ?: "https://bit.ly/31bsIHq")
-                binding.homeMangaListImage.loadImage(it[1] ?: "https://bit.ly/2ZGfcuG")
+                homeListContainerBinding.homeAnimeListImage.loadImage(it[0] ?: "https://bit.ly/31bsIHq")
+                homeListContainerBinding.homeMangaListImage.loadImage(it[1] ?: "https://bit.ly/2ZGfcuG")
             }
         }
 
@@ -481,10 +488,10 @@ class HomeFragment : Fragment() {
 
         model.getRecommendation().observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty()) {
-                binding.homeRandomAnime.setOnClickListener {
+                homeListContainerBinding.homeRandomAnime.setOnClickListener {
                     snackString(R.string.no_recommendations)
                 }
-                binding.homeRandomManga.setOnClickListener {
+                homeListContainerBinding.homeRandomManga.setOnClickListener {
                     snackString(R.string.no_recommendations)
                 }
             } else {
@@ -497,8 +504,8 @@ class HomeFragment : Fragment() {
                         }
                     } while (media == null)
                     val imageView = if (type == MediaType.MANGA)
-                        binding.homeRandomMangaImage
-                    else binding.homeRandomAnimeImage
+                        homeListContainerBinding.homeRandomMangaImage
+                    else homeListContainerBinding.homeRandomAnimeImage
                     imageView.loadImage(media.banner ?: media.cover)
                     return media
                 }
@@ -514,11 +521,11 @@ class HomeFragment : Fragment() {
                             .putExtra("media", media as Serializable), null
                     )
                 }
-                binding.homeRandomAnime.setOnClickListener {
+                homeListContainerBinding.homeRandomAnime.setOnClickListener {
                     onRandomClick(MediaType.ANIME)
                     randomAnime = getRandomMedia(MediaType.ANIME)
                 }
-                binding.homeRandomManga.setOnClickListener {
+                homeListContainerBinding.homeRandomManga.setOnClickListener {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
