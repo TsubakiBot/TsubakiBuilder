@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Piilota tilapalkki listalle</string>
     <string name="immersive_mode_info">Sovelluksen uudelleenkäynnistys vaaditaan, jotta sovellus voidaan ottaa käyttöön.</string>
     <string name="home_layout_show">Näytä tai piilota asettelut kotiin</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Jatka Katselua</item>
         <item>Suosikki Anime</item>
         <item>Suunniteltu Anime</item>

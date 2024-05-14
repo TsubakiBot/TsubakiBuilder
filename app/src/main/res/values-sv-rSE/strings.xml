@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Dölj statusfältet för listan</string>
     <string name="immersive_mode_info">Kräver omstart av appen för att fullt tillämpas.</string>
     <string name="home_layout_show">Visa/Dölj layouter i hemmet</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Fortsätt titta på</item>
         <item>Favorit Anime</item>
         <item>Planerad Anime</item>

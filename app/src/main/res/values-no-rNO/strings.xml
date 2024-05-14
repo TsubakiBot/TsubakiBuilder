@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Skjul statuslinjen for liste</string>
     <string name="immersive_mode_info">Krever at appen startes på nytt for å brukes fullstendig.</string>
     <string name="home_layout_show">Vis/Skjul oppsett på startsiden</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Fortsett å se</item>
         <item>Favoritt Anime</item>
         <item>Planlagt Anime</item>

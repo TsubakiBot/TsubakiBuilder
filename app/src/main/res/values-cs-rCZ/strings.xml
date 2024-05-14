@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Skrýt stavovou lištu pro seznam</string>
     <string name="immersive_mode_info">Pro úplné použití vyžaduje restart aplikace.</string>
     <string name="home_layout_show">Zobrazit/skrýt rozložení na domovské stránce</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Pokračovat ve sledování</item>
         <item>Oblíbená Anime</item>
         <item>Plánované Anime</item>

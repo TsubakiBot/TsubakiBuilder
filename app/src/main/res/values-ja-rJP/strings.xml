@@ -272,7 +272,8 @@
     <string name="immersive_modelist">リストのステータスバーを隠す</string>
     <string name="immersive_mode_info">完全に適用するにはアプリの再起動が必要です。</string>
     <string name="home_layout_show">ホームのレイアウトの表示/非表示</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>視聴を続ける</item>
         <item>好きなアニメーション</item>
         <item>予定されているアニメーション</item>

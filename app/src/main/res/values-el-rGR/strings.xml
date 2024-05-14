@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Απόκρυψη της γραμμής κατάστασης για τη λίστα</string>
     <string name="immersive_mode_info">Απαιτείται επανεκκίνηση της εφαρμογής για πλήρη εφαρμογή.</string>
     <string name="home_layout_show">Εμφάνιση/Απόκρυψη Διατάξεων στο Σπίτι</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Συνέχισε να βλέπεις</item>
         <item>Αγαπημένα Anime</item>
         <item>Σχεδιασμένα Anime</item>

@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Ocultar barra de status para lista</string>
     <string name="immersive_mode_info">Requer reinicialização do aplicativo para aplicar por completo.</string>
     <string name="home_layout_show">Mostrar/ocultar Layouts na Tela Inicial</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continuar assistindo</item>
         <item>Anime favorito</item>
         <item>Anime planejado</item>

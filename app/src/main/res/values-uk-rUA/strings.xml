@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Сховати стрічку статусу для списку</string>
     <string name="immersive_mode_info">Для повного застосування необхідне перезавантаження програми.</string>
     <string name="home_layout_show">Показати/приховати розкладки на головній</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Продовжити перегляд</item>
         <item>Вибраний аніме</item>
         <item>Планування аніме</item>

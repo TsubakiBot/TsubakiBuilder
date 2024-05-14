@@ -270,6 +270,22 @@ class HomeFragment : Fragment() {
         // Recycler Views
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[0],
+            model.getSubscriptions(),
+            binding.homeSubscribedItemContainer,
+            binding.homeSubscribedRecyclerView,
+            binding.homeSubscribedProgressBar,
+            binding.homeSubscribedEmpty,
+            binding.homeSubscribedItem,
+            binding.homeSubscribedMore,
+            getString(R.string.subscriptions)
+        )
+        binding.homeSubscribedBrowseButton.setOnClickListener {
+            bottomBar.selectTabAt(0)
+        }
+
+        // Recycler Views
+        initRecyclerView(
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[1],
             model.getAnimeContinue(),
             binding.homeContinueWatchingContainer,
             binding.homeWatchingRecyclerView,
@@ -284,7 +300,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[1],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[2],
             model.getAnimeFav(),
             binding.homeFavAnimeContainer,
             binding.homeFavAnimeRecyclerView,
@@ -296,7 +312,7 @@ class HomeFragment : Fragment() {
         )
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[2],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[3],
             model.getAnimePlanned(),
             binding.homePlannedAnimeContainer,
             binding.homePlannedAnimeRecyclerView,
@@ -311,7 +327,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[3],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[4],
             model.getMangaContinue(),
             binding.homeContinueReadingContainer,
             binding.homeReadingRecyclerView,
@@ -326,7 +342,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[4],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[5],
             model.getMangaFav(),
             binding.homeFavMangaContainer,
             binding.homeFavMangaRecyclerView,
@@ -338,7 +354,7 @@ class HomeFragment : Fragment() {
         )
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[5],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[6],
             model.getMangaPlanned(),
             binding.homePlannedMangaContainer,
             binding.homePlannedMangaRecyclerView,
@@ -353,7 +369,7 @@ class HomeFragment : Fragment() {
         }
 
         initRecyclerView(
-            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[6],
+            PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7],
             model.getRecommendation(),
             binding.homeRecommendedContainer,
             binding.homeRecommendedRecyclerView,
@@ -368,7 +384,7 @@ class HomeFragment : Fragment() {
         binding.homeUserStatusProgressBar.visibility = View.VISIBLE
         binding.homeUserStatusRecyclerView.visibility = View.GONE
         model.getUserStatus().observe(viewLifecycleOwner) {
-            if (!PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7]) {
+            if (!PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[8]) {
                 binding.homeUserStatusContainer.visibility = View.GONE
                 return@observe
             }
@@ -520,6 +536,7 @@ class HomeFragment : Fragment() {
         }
 
         val array = arrayOf(
+            "Subscribed",
             "AnimeContinue",
             "AnimeFav",
             "AnimePlanned",
@@ -531,6 +548,7 @@ class HomeFragment : Fragment() {
         )
 
         val containers = arrayOf(
+            binding.homeSubscribedItemContainer,
             binding.homeContinueWatchingContainer,
             binding.homeFavAnimeContainer,
             binding.homePlannedAnimeContainer,

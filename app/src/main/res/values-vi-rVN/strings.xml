@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Ẩn Thanh trạng thái cho danh sách</string>
     <string name="immersive_mode_info">Yêu cầu khởi động lại ứng dụng để áp dụng hoàn toàn.</string>
     <string name="home_layout_show">Hiển thị/Ẩn Bố cục trên Màn hình chính</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Tiếp tục xem</item>
         <item>Anime Yêu thích</item>
         <item>Anime Đã lên kế hoạch</item>

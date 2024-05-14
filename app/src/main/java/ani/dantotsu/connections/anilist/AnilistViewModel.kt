@@ -10,6 +10,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.media.Media
+import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.profile.User
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -41,6 +42,11 @@ class AnilistHomeViewModel : ViewModel() {
 
     fun getListImages(): LiveData<ArrayList<String?>> = listImages
     suspend fun setListImages() = listImages.postValue(Anilist.query.getBannerImages())
+
+    private val subscribedItems: MutableLiveData<ArrayList<Media>> =
+        MutableLiveData<ArrayList<Media>>(null)
+
+    fun getSubscriptions(): LiveData<ArrayList<Media>> = subscribedItems
 
     private val animeContinue: MutableLiveData<ArrayList<Media>> =
         MutableLiveData<ArrayList<Media>>(null)
@@ -92,7 +98,6 @@ class AnilistHomeViewModel : ViewModel() {
 
     fun getHiddenManga(): LiveData<ArrayList<Media>> = hiddenManga
 
-
     @Suppress("UNCHECKED_CAST")
     suspend fun initHomePage() {
         val res = Anilist.query.initHomePage()
@@ -106,6 +111,12 @@ class AnilistHomeViewModel : ViewModel() {
         res["status"]?.let { userStatus.postValue(it as ArrayList<User>?) }
         res["hiddenAnime"]?.let { hiddenAnime.postValue(it as ArrayList<Media>?) }
         res["hiddenManga"]?.let { hiddenManga.postValue(it as ArrayList<Media>?) }
+
+        val subscribed = arrayListOf<Media>()
+        SubscriptionHelper.getSubscriptions().values.forEach {
+            Anilist.query.getMedia(it.id)?.let { media -> subscribed.add(media) }
+        }
+        subscribedItems.postValue(subscribed)
     }
 
     suspend fun loadMain(context: FragmentActivity) {

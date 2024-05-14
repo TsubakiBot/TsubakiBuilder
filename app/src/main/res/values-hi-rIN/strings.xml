@@ -272,7 +272,8 @@
     <string name="immersive_modelist">सूची के लिए स्थिति पट्टी छिपाएं</string>
     <string name="immersive_mode_info">पूरी तरह से लागू करने के लिए एप्लिकेशन को पुनः आरंभ करना आवश्यक है।</string>
     <string name="home_layout_show">होम पर लेआउट दिखाएं/छिपाएं</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>देखते रहना जारी रखें</item>
         <item>पसंदीदा एनिमे</item>
         <item>योजित एनिमे</item>

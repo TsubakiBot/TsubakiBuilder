@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Amagar la Barra d\'Estat per a la llista</string>
     <string name="immersive_mode_info">Requereix reiniciar l\'aplicació per aplicar-ho completament.</string>
     <string name="home_layout_show">Mostrar/Amagar dissenys a la pàgina d\'inici</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continua mirant</item>
         <item>Anime Favorit</item>
         <item>Anime Planificat</item>

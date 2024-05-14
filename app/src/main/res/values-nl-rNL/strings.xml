@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Verberg statusbalk voor lijst</string>
     <string name="immersive_mode_info">Vereist herstart van de app om volledig toe te passen.</string>
     <string name="home_layout_show">Toon/Verberg lay-outs op de startpagina</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Kijken voortzetten</item>
         <item>Favoriete Anime</item>
         <item>Geplande Anime</item>

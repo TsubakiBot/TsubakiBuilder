@@ -272,7 +272,8 @@
     <string name="immersive_modelist">اخفي شريط الحالة للقائمة</string>
     <string name="immersive_mode_info">يتطلب إعادة تشغيل التطبيق لتطبيق الإعداد بالكامل.</string>
     <string name="home_layout_show">اظهار\اخفاء العناصر في الصفحة الرئيسة</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>اكمل المشاهدة</item>
         <item>الانمي المفضل</item>
         <item>الانمي المخطط مشاهدته</item>

@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Ukryj pasek statusu dla listy</string>
     <string name="immersive_mode_info">Wymaga ponownego uruchomienia aplikacji, aby w pełni zastosować.</string>
     <string name="home_layout_show">Pokaż/Ukryj układy na stronie głównej</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Kontynuuj oglądanie</item>
         <item>Ulubione Anime</item>
         <item>Planowana Anime</item>

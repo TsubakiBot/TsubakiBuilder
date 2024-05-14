@@ -272,7 +272,8 @@
     <string name="immersive_modelist">목록에 대한 상태 바 숨기기</string>
     <string name="immersive_mode_info">완전히 적용하려면 앱을 다시 시작해야 합니다.</string>
     <string name="home_layout_show">홈에서 레이아웃 표시/숨기기</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>계속 시청</item>
         <item>좋아하는 애니메이션</item>
         <item>계획된 애니메이션</item>

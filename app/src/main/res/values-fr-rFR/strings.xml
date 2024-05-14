@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Masquer la barre d\'état pour la liste</string>
     <string name="immersive_mode_info">Nécessite un redémarrage de l\'application pour être entièrement appliqué.</string>
     <string name="home_layout_show">Afficher/Masquer les mises en page sur l\'accueil</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continuer à regarder</item>
         <item>Anime favoris</item>
         <item>Anime prévus</item>

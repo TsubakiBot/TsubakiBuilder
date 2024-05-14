@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Versteek Statusbalk vir lys</string>
     <string name="immersive_mode_info">Vereis dat die toep herlaai word om volledig toe te pas.</string>
     <string name="home_layout_show">Wys/Versteek uitlegte op Tuis</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Gaan Voort met Kyk</item>
         <item>Gunsteling-anime</item>
         <item>Beplande anime</item>

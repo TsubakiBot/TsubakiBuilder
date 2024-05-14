@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Nascondi la barra di stato per l\'elenco</string>
     <string name="immersive_mode_info">Richiede il riavvio dell\'app per applicarla completamente.</string>
     <string name="home_layout_show">Mostra/Nascondi layout su Home</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continua a Guardare</item>
         <item>Anime Preferito</item>
         <item>Anima Pianificata</item>

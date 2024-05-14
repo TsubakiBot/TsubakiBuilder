@@ -7,14 +7,17 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ActivitySettingsNotificationsBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.media.Media
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
@@ -22,6 +25,7 @@ import ani.dantotsu.notifications.comment.CommentNotificationWorker
 import ani.dantotsu.notifications.subscription.SubscriptionHelper.Companion.saveSubscription
 import ani.dantotsu.notifications.subscription.SubscriptionNotificationWorker
 import ani.dantotsu.openSettings
+import ani.dantotsu.profile.User
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -280,14 +284,25 @@ class SettingsNotificationActivity : AppCompatActivity() {
         }
     }
 
+    val model: AnilistHomeViewModel by viewModels()
+
     private fun subscribeCurrentLists() {
         CoroutineScope(Dispatchers.IO).launch {
-            val current = Anilist.query.initResumable(null)
-            if (current.isEmpty()) {
+            val userList = arrayListOf<Any>()
+            Anilist.query.initHomePage().let { list ->
+                list["currentAnime"]?.let { userList.addAll(it) }
+                list["plannedAnime"]?.let { userList.addAll(it) }
+                list["currentManga"]?.let { userList.addAll(it) }
+                list["plannedManga"]?.let { userList.addAll(it) }
+                // list["hiddenAnime"]?.let { userList.addAll(it) }
+                // list["hiddenManga"]?.let { userList.addAll(it) }
+            }
+
+            if (userList.isEmpty()) {
                 snackString(R.string.no_current_items)
             } else {
-                current.forEach {
-                    saveSubscription(it, true)
+                userList.forEach {
+                    saveSubscription(it as Media, true)
                 }
                 snackString(R.string.current_subscribed)
             }

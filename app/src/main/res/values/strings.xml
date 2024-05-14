@@ -306,7 +306,8 @@
     <string name="immersive_modelist">Hide Status Bar for list</string>
     <string name="immersive_mode_info">Requires App restart to fully apply.</string>
     <string name="home_layout_show">Show/Hide Layouts on Home</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continue Watching</item>
         <item>Favourite Anime</item>
         <item>Planned Anime</item>
@@ -437,6 +438,7 @@
     <string name="crop_borders">Crop Borders</string>
     <string name="note">NOTE</string>
 
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

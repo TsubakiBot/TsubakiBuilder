@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Állapotsáv elrejtése a listához</string>
     <string name="immersive_mode_info">Az alkalmazás teljes újraindítása szükséges a teljes alkalmazáshoz.</string>
     <string name="home_layout_show">Elrendezések megjelenítése/elrejtése a Kezdőképernyőn</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>További megtekintés</item>
         <item>Kedvenc Anime</item>
         <item>Tervezett Anime</item>

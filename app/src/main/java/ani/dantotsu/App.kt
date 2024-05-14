@@ -68,6 +68,9 @@ class App : MultiDexApplication() {
         Injekt.importModule(AppModule(this))
         Injekt.importModule(PreferenceModule(this))
 
+        val layouts = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)
+        if (layouts.size == 8) PrefManager.setVal(PrefName.HomeLayout, listOf(false).plus(layouts))
+
         val useMaterialYou: Boolean = PrefManager.getVal(PrefName.UseMaterialYou)
         if (useMaterialYou) {
             DynamicColors.applyToActivitiesIfAvailable(this)

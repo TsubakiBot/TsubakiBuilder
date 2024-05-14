@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Statusleiste für Liste ausblenden</string>
     <string name="immersive_mode_info">Erfordert einen Neustart der App, um vollständig angewendet zu werden.</string>
     <string name="home_layout_show">Layouts auf Startseite anzeigen/ausblenden</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Weiterschauen</item>
         <item>Lieblingsanime</item>
         <item>Geplante Anime</item>

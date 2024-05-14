@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Liste için Durum Çubuğunu Gizle</string>
     <string name="immersive_mode_info">Tam olarak uygulanması için Uygulamanın yeniden başlatılmasını gerektirir.</string>
     <string name="home_layout_show">Ana Sayfada Düzenleri Göster/Gizle</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>İzlemeye Devam Et</item>
         <item>Favori Anime</item>
         <item>Planlanmış Anime</item>

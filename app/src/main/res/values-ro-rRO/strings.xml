@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Ascunde bara de stare pentru listă</string>
     <string name="immersive_mode_info">Necesită repornirea aplicației pentru a aplica pe deplin.</string>
     <string name="home_layout_show">Arată/Ascunde Schemele de Acasă</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Continuă urmărirea</item>
         <item>Anime preferate</item>
         <item>Anime planificate</item>

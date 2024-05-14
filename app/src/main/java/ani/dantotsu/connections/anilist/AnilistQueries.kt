@@ -454,7 +454,7 @@ class AnilistQueries {
                 "ANIME"
             )
         }, recommendationPlannedQueryManga: ${recommendationPlannedQuery("MANGA")}"""
-        if (toShow.getOrNull(7) == true) query += "Page1:${status(1)}Page2:${status(2)}"
+        if (toShow.getOrNull(8) == true) query += "Page1:${status(1)}Page2:${status(2)}"
         query += """}""".trimEnd(',')
 
         val response = executeQuery<Query.HomePageMedia>(query, show = true)
@@ -613,7 +613,7 @@ class AnilistQueries {
         subList.sortByDescending { it.meanScore }
         returnMap["recommendations"] = subList
 
-        if (toShow.getOrNull(7) == true) {
+        if (toShow.getOrNull(8) == true) {
             val list = mutableListOf<User>()
             val threeDaysAgo = Calendar.getInstance().apply {
                 add(Calendar.DAY_OF_MONTH, -3)

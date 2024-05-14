@@ -272,7 +272,8 @@
     <string name="immersive_modelist">Скрыть строку состояния в списке</string>
     <string name="immersive_mode_info">Требуется перезапуск приложения для полного применения.</string>
     <string name="home_layout_show">Показать/скрыть на главной</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>Продолжить просмотр</item>
         <item>Любимое аниме</item>
         <item>Запланированное аниме</item>

@@ -272,7 +272,8 @@
     <string name="immersive_modelist">তালিকাৰ বাবে স্থানিৰ অবস্থাৰ গুপ্তভাবে লুকুৱাওক</string>
     <string name="immersive_mode_info">সম্পূৰ্ণভাৱে প্ৰয়োজনীয় অনুলাম লাগে অনুলাম পূনঃ আৰম্ভ কৰিবলৈ।</string>
     <string name="home_layout_show">হোমত লে’আ’উটসমূহ দেখুৱাওক/লুকুৱাওক</string>
-    <string-array name="home_layouts">
+     <string-array name="home_layouts">
+        <item>Subscriptions</item>
         <item>অনুষ্ঠান পূৰ্বতন থকা</item>
         <item>প্ৰিয়া অনুষ্ঠান</item>
         <item>প্ৰয়োজিত অনুষ্ঠান</item>

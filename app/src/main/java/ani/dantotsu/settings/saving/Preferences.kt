@@ -75,7 +75,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
         Pref(
             Location.UI,
             List::class,
-            listOf(true, false, false, true, false, false, true, true)
+            listOf(false, true, false, false, true, false, false, true, true)
         )
     ),
     BannerAnimations(Pref(Location.UI, Boolean::class, true)),
