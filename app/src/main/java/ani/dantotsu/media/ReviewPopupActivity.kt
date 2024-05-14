@@ -52,12 +52,12 @@ class ReviewPopupActivity : AppCompatActivity() {
             binding.emptyRecyclerText.text = getString(R.string.reviews_empty, name)
 
             model.getReviews().observe(this) {
-                if (it.isNullOrEmpty()) {
+                if (it?.get(type).isNullOrEmpty()) {
                     binding.emptyRecyclerText.visibility = View.VISIBLE
                 } else {
                     binding.emptyRecyclerText.visibility = View.GONE
                     binding.mediaInfoGenresProgressBar.visibility = View.GONE
-                    val adapter = ReviewAdapter(this, it.filter { review -> review.mediaType == type })
+                    val adapter = ReviewAdapter(this, it!![type]!!)
                     binding.mediaInfoGenresRecyclerView.adapter = adapter
                     binding.mediaInfoGenresRecyclerView.layoutManager = LinearLayoutManager(this)
                 }
@@ -67,7 +67,7 @@ class ReviewPopupActivity : AppCompatActivity() {
             live.observe(this) {
                 if (it) {
                     scope.launch {
-                        withContext(Dispatchers.IO) { model.loadReviews() }
+                        withContext(Dispatchers.IO) { model.loadReviews(type) }
                         live.postValue(false)
                     }
                 }

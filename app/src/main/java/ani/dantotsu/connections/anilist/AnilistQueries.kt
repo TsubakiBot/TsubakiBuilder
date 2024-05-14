@@ -1318,7 +1318,7 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
         return null
     }
 
-    suspend fun getReviews(): ArrayList<ani.dantotsu.media.Review> {
+    suspend fun getReviews(type: String): ArrayList<ani.dantotsu.media.Review> {
         val query = """ {
   Page(page: 1, perPage: 50) {
     pageInfo {
@@ -1328,7 +1328,7 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
       lastPage
       hasNextPage
     }
-    reviews(sort: CREATED_AT_DESC) {
+    reviews(mediaType: $type, sort: CREATED_AT_DESC) {
       id
       userId
       mediaId

@@ -48,9 +48,13 @@ class OtherDetailsViewModel : ViewModel() {
         calendar.postValue(map)
     }
 
-    private val reviews: MutableLiveData<ArrayList<Review>> = MutableLiveData(null)
-    fun getReviews(): LiveData<ArrayList<Review>> = reviews
-    suspend fun loadReviews() {
-        if (reviews.value == null) reviews.postValue(Anilist.query.getReviews())
+    private val reviews: MutableLiveData<MutableMap<String, ArrayList<Review>>?> = MutableLiveData(null)
+    fun getReviews(): LiveData<MutableMap<String, ArrayList<Review>>?> = reviews
+    suspend fun loadReviews(type: String) {
+        if (reviews.value?.getOrDefault(type, null) == null) {
+            val map = reviews.value ?: mutableMapOf()
+            map.getOrPut(type) { Anilist.query.getReviews(type) }
+            reviews.postValue(map)
+        }
     }
 }
