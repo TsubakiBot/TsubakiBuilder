@@ -162,10 +162,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
         if (bannerAnimations) {
-            val adi = AccelerateDecelerateInterpolator()
             val generator = RandomTransitionGenerator(
                 (10000 + 15000 * ((PrefManager.getVal(PrefName.AnimationSpeed) as Float))).toLong(),
-                adi
+                AccelerateDecelerateInterpolator()
             )
             binding.mediaBanner.setTransitionGenerator(generator)
         }

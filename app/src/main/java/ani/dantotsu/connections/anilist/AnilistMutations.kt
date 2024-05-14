@@ -1,5 +1,6 @@
 package ani.dantotsu.connections.anilist
 
+import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query
@@ -85,8 +86,7 @@ class AnilistMutations {
         val query = "mutation{SaveTextActivity(text:$encodedText){siteUrl}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
-        return errors?.toString()
-            ?: (currContext()?.getString(ani.dantotsu.R.string.success) ?: "Success")
+        return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 
     suspend fun postReview(summary: String, body: String, mediaId: Int, score: Int): String {
@@ -95,8 +95,7 @@ class AnilistMutations {
         val query = "mutation{SaveReview(mediaId:$mediaId,summary:$encodedSummary,body:$encodedBody,score:$score){siteUrl}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
-        return errors?.toString()
-            ?: (currContext()?.getString(ani.dantotsu.R.string.success) ?: "Success")
+        return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 
     suspend fun postReply(activityId: Int, text: String): String {
@@ -104,7 +103,6 @@ class AnilistMutations {
         val query = "mutation{SaveActivityReply(activityId:$activityId,text:$encodedText){id}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
-        return errors?.toString()
-            ?: (currContext()?.getString(ani.dantotsu.R.string.success) ?: "Success")
+        return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 }
