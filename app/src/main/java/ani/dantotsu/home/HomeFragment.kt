@@ -54,6 +54,7 @@ import ani.dantotsu.settings.saving.PrefManager.asLiveBool
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
+import ani.dantotsu.toPx
 import ani.himitsu.launcher.ResumableShortcuts
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widgets.resumable.ResumableWidget
@@ -106,6 +107,8 @@ class HomeFragment : Fragment() {
                 binding.homeNotificationCount.text = count.toString()
 
                 homeListContainerBinding.apply {
+                    if (resources.displayMetrics.widthPixels > 540.toPx)
+                        homeListContainer.layoutParams.width = 540.toPx
                     homeAnimeList.setOnClickListener {
                         ContextCompat.startActivity(
                             requireActivity(), Intent(requireActivity(), ListActivity::class.java)
