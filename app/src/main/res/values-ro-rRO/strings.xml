@@ -94,8 +94,8 @@
     <string name="format">Format</string>
     <string name="status_title">Status</string>
     <string name="total_eps">Total episoade</string>
-    <string name="episodes"> Episod</string>
-    <string name="chapters"> Capitol (capitole)</string>
+    <string name="episodes">" Episod"</string>
+    <string name="chapters">" Capitol (capitole)"</string>
     <string name="total_chaps">Total capitole</string>
     <string name="ep_duration">Durata medie</string>
     <string name="min">" min."</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Culoare fundal subtitrare</string>
     <string name="sub_window_color_select">Culoare fereastră subtitrare</string>
     <string name="sub_window_color_info">"Fereastra de subtitrare este partea stanga si dreapta de la ele. (unde fundalul nu este)"</string>
-    <string name="sub_color_info"><b>Notă:</b> Modificarea de mai sus afectează doar subtitrările Soft-!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Transparență subtitrare</string>
     <string name="sub_text_example">Exemplu de subsol</string>
     <string name="sub_font_select">Font subtitrare</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sortează după data lansării</string>
     <string name="crop_borders">Tăiați granițele</string>
     <string name="note">NOTĂ</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gestionare Repo-uri Extensii</string>
     <string name="installing_extension">Instalare extensie</string>
     <string name="installation_failed">Instalare esuata: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Instalează actualizarea %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Actualizare disponibilă</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Afişează doar primul buton</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Afișează în schimb profilul AniList</string>
@@ -887,7 +892,6 @@
     <string name="count">CONT</string>
     <string name="open">Deschideți</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Răspuns</string>
     <string name="time">Timp</string>
     <string name="player_settings_desc">Toate setările legate de jucător</string>
     <string name="purge_anime_downloads_desc">Ștergeți toate descărcările de pe ecran</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Răspuns</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

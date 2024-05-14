@@ -94,8 +94,8 @@
     <string name="format">Μορφή</string>
     <string name="status_title">Κατάσταση</string>
     <string name="total_eps">Σύνολο επεισοδίων</string>
-    <string name="episodes"> Επεισόδι(ο/α)</string>
-    <string name="chapters"> Κεφάλαι(ο/α)</string>
+    <string name="episodes">" Επεισόδι(ο/α)"</string>
+    <string name="chapters">" Κεφάλαι(ο/α)"</string>
     <string name="total_chaps">Σύνολο Κεφαλαίων</string>
     <string name="ep_duration">Μέση Διάρκεια</string>
     <string name="min">" λεπτά"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Χρώμα φόντου υπότιτλων</string>
     <string name="sub_window_color_select">Χρώμα παραθύρου υπότιτλων</string>
     <string name="sub_window_color_info">"Το παράθυρο υποτίτλων είναι το τμήμα αριστερά και δεξιά από αυτούς. (όπου δεν είναι το φόντο)"</string>
-    <string name="sub_color_info"><b>Σημείωση:</b> Η αλλαγή των παραπάνω ρυθμίσεων επηρεάζει μόνο τους Soft-Subtitles!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Διαφάνεια υπότιτλων</string>
     <string name="sub_text_example">Παράδειγμα Υπότιτλου</string>
     <string name="sub_font_select">Γραμματοσειρά υπότιτλων</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Ταξινόμηση κατά Ημερομηνία κυκλοφορίας</string>
     <string name="crop_borders">Περίγραμμα Περικοπής</string>
     <string name="note">Σημείωση</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Διαχείριση αποθεμάτων επέκτασης</string>
     <string name="installing_extension">Εγκατάσταση επέκτασης</string>
     <string name="installation_failed">Η εγκατάσταση απέτυχε: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Εγκατάσταση ενημέρωσης %1$s?</string>
     <string name="beta_update">Βήτα </string>
     <string name="update_available">Διαθέσιμη Ενημέρωση</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Εμφάνισε μόνο το πρώτο κουμπί</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Εμφανίστε το προφίλ σας στο AniList</string>
@@ -887,7 +892,6 @@
     <string name="count">ΑΝΤΙΓΡΑΦΟ</string>
     <string name="open">Άνοιγμα</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Απάντηση</string>
     <string name="time">Ώρα</string>
     <string name="player_settings_desc">Όλες οι ρυθμίσεις που σχετίζονται με τη συσκευή αναπαραγωγής</string>
     <string name="purge_anime_downloads_desc">Διαγραφή όλων των ληφθέντων Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Απάντηση</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

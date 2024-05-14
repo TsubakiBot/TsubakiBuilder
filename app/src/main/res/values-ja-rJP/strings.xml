@@ -94,8 +94,8 @@
     <string name="format">書式</string>
     <string name="status_title">ステータス</string>
     <string name="total_eps">総エピソード数</string>
-    <string name="episodes"> エピソード</string>
-    <string name="chapters"> 章</string>
+    <string name="episodes">" エピソード"</string>
+    <string name="chapters">" 章"</string>
     <string name="total_chaps">合計章</string>
     <string name="ep_duration">平均期間</string>
     <string name="min">" 分"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">字幕背景色</string>
     <string name="sub_window_color_select">字幕ウィンドウの色</string>
     <string name="sub_window_color_info">"字幕ウィンドウは、それらから左右の部分です(背景がない場合)"</string>
-    <string name="sub_color_info"><b>注意:</b> 上記の設定を変更すると、ソフト字幕にのみ影響します!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">字幕の透明度</string>
     <string name="sub_text_example">Sub の例</string>
     <string name="sub_font_select">字幕フォント</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">公開日時でソート</string>
     <string name="crop_borders">枠線をトリミングする</string>
     <string name="note">ノート</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">エクステンションリポジトリの管理</string>
     <string name="installing_extension">エクステンションのインストール</string>
     <string name="installation_failed">インストール失敗: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">アップデート %1$sをインストールしますか？</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">アップデートがあります</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">最初のボタンのみ表示</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">AniListプロファイルを代わりに表示する</string>
@@ -887,7 +892,6 @@
     <string name="count">カウント</string>
     <string name="open">開く</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">返信</string>
     <string name="time">時刻</string>
     <string name="player_settings_desc">すべてのプレイヤー関連の設定</string>
     <string name="purge_anime_downloads_desc">ダウンロードしたすべてのアニメを削除</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">返信</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

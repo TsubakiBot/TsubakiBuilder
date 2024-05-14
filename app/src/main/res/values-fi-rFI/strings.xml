@@ -94,8 +94,8 @@
     <string name="format">Muoto</string>
     <string name="status_title">Tila</string>
     <string name="total_eps">Jaksot Yhteensä</string>
-    <string name="episodes"> Jaksot(t)</string>
-    <string name="chapters"> Luku(t)</string>
+    <string name="episodes">" Jaksot(t)"</string>
+    <string name="chapters">" Luku(t)"</string>
     <string name="total_chaps">Lukuja Yhteensä</string>
     <string name="ep_duration">Kesto Kesto</string>
     <string name="min">" min"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Tekstityksen Taustaväri</string>
     <string name="sub_window_color_select">Tekstityksen Ikkunan Väri</string>
     <string name="sub_window_color_info">"Tekstitysikkuna on vasemmalla ja oikealla oleva osa (jossa tausta ei ole)"</string>
-    <string name="sub_color_info"><b>Huomautus:</b> Edellä olevien asetusten muuttaminen vaikuttaa vain Soft-Tekstityksiin!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Tekstityksen Läpinäkyvyys</string>
     <string name="sub_text_example">Esimerkki Sub</string>
     <string name="sub_font_select">Tekstityksen Kirjasin</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Järjestä julkaisupäivän mukaan</string>
     <string name="crop_borders">Rajaa Reunat</string>
     <string name="note">HUOMAUTUS</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Hallitse Lisäosien Repoja</string>
     <string name="installing_extension">Asennetaan lisäosaa</string>
     <string name="installation_failed">Asennus epäonnistui: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Asenna päivitys %1$s?</string>
     <string name="beta_update">Beeta </string>
     <string name="update_available">Päivitys Saatavilla</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Näytä vain ensimmäinen painike</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Näytä AniList-profiilisi sen sijaan</string>
@@ -887,7 +892,6 @@
     <string name="count">MAA</string>
     <string name="open">Avaa</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Vastaa</string>
     <string name="time">Aika</string>
     <string name="player_settings_desc">Kaikki soittimeen liittyvät asetukset</string>
     <string name="purge_anime_downloads_desc">Poista kaikki ladatut Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Vastaa</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

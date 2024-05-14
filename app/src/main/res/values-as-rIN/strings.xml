@@ -94,8 +94,8 @@
     <string name="format">বিন্যাস</string>
     <string name="status_title">ষ্টেটাছ</string>
     <string name="total_eps">মুঠ এপিষদছ</string>
-    <string name="episodes">খণ্ড(বোৰ)</string>
-    <string name="chapters">অধ্যায়(বোৰ)</string>
+    <string name="episodes">"খণ্ড(বোৰ)"</string>
+    <string name="chapters">"অধ্যায়(বোৰ)"</string>
     <string name="total_chaps">মুঠ চাপ্তেৰ</string>
     <string name="ep_duration">গড় সময়কাল</string>
     <string name="min">" মিনিট"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">উপশিৰোণৰ পিচা ৰং</string>
     <string name="sub_window_color_select">উপশিৰোণৰ পিচা ৰং</string>
     <string name="sub_window_color_info">"উপশিৰোণৰ পিচা তালৰ আৰু তলৰ দিশত (যেখন প্ৰস্তুত সন্ধান নহয়)।"</string>
-    <string name="sub_color_info"><b>মন্তব্য:</b> উপৰৰ উল্লেখিত সেটিংস প্ৰত্যুৎপন্ন উপশিৰোণসমূহত প্ৰভাব ডালে নিবে।</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">উপশীৰ্ষক স্বচ্ছতা </string>
     <string name="sub_text_example">উদাহৰণ উপশীৰ্ষক</string>
     <string name="sub_font_select">উপশিৰোণৰ ফন্ট</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">মুক্তিৰ তাৰিখে অনুসৰি সাজোৱাওক</string>
     <string name="crop_borders">সীমা কেটিৱলৈ</string>
     <string name="note">নোট</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">সম্প্ৰসাৰণ ৰেপোসমূহ ব্যৱস্থিত কৰক</string>
     <string name="installing_extension">সম্প্ৰসাৰণ স্থাপন কৰা হৈছে</string>
     <string name="installation_failed">স্থাপন ব্যৰ্থ: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Install update %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Update Available</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">কেৱল প্ৰথম বুটামটো প্ৰদৰ্শন কৰক</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">তাৰ পৰিৱৰ্তে আপোনাৰ এনিলিষ্ট প্ৰ\'ফাইল প্ৰদৰ্শন কৰক</string>
@@ -887,7 +892,6 @@
     <string name="count">COUNT</string>
     <string name="open">Open</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Reply</string>
     <string name="time">Time</string>
     <string name="player_settings_desc">সকলো প্লেয়াৰ সম্পৰ্কীয় ছেটিংছ</string>
     <string name="purge_anime_downloads_desc">সকলো ডাউনলোড কৰা এনিম ডিলিট কৰক</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Reply</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

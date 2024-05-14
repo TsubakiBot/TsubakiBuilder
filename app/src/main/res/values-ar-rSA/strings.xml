@@ -94,8 +94,8 @@
     <string name="format">المحتوي</string>
     <string name="status_title">الحالة</string>
     <string name="total_eps">مجموع الحلقات</string>
-    <string name="episodes"> الحلقة (الحلَقات)</string>
-    <string name="chapters"> الفصل (الفصول)</string>
+    <string name="episodes">" الحلقة (الحلَقات)"</string>
+    <string name="chapters">" الفصل (الفصول)"</string>
     <string name="total_chaps">مجموع الفصول</string>
     <string name="ep_duration">متوسط ​​مدة الحلقة</string>
     <string name="min">" دقيقة"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">لون خلفية التَّرْجَمَةً</string>
     <string name="sub_window_color_select">لون نافذة الترجمة</string>
     <string name="sub_window_color_info">"نافذة التَّرْجَمَةً هي الجزء الأيسر والأيمن منها. (حيث لا تكون الخلفية)"</string>
-    <string name="sub_color_info"><b>ملحوظة:</b> تغيير الإعدادات أعلاه يؤثر فقط على التَّرْجَمَةً الخارجية!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">شفافية التَّرْجَمَةً</string>
     <string name="sub_text_example">مثال للترجمة</string>
     <string name="sub_font_select">خط الترجمة</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">ترتيب حسب تاريخ الإصدار</string>
     <string name="crop_borders">قص حدود الصور</string>
     <string name="note">ملوحظة</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">إدارة مستودعات الملحق</string>
     <string name="installing_extension">تثبيت الإضافة</string>
     <string name="installation_failed">فشل تثبيت: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">تثبيت تحديث %1$s؟</string>
     <string name="beta_update">بيتا </string>
     <string name="update_available">تحديث متوفر</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">عرض الزر الأول فقط</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">عرض ملفك الشخصي AniList بدلاً من ذلك</string>
@@ -887,7 +892,6 @@
     <string name="count">بلد</string>
     <string name="open">فتح</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">الرد</string>
     <string name="time">الوقت</string>
     <string name="player_settings_desc">جميع الإعدادات ذات الصلة باللاعب</string>
     <string name="purge_anime_downloads_desc">حذف جميع الأنمي المحمّلة</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">الرد</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

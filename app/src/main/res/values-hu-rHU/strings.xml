@@ -94,8 +94,8 @@
     <string name="format">Formátum</string>
     <string name="status_title">Állapot</string>
     <string name="total_eps">Összes Epizód</string>
-    <string name="episodes"> Epizód</string>
-    <string name="chapters"> Fejezet</string>
+    <string name="episodes">" Epizód"</string>
+    <string name="chapters">" Fejezet"</string>
     <string name="total_chaps">Összes Fejezet</string>
     <string name="ep_duration">Átlagos Időtartam</string>
     <string name="min">" perc"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Felirat háttérszíne</string>
     <string name="sub_window_color_select">Felirat ablakszíne</string>
     <string name="sub_window_color_info">"A felirat ablaka a bal és jobb oldalon található. (ahol a háttér nincs)"</string>
-    <string name="sub_color_info"><b>Megjegyzés:</b> A fenti beállítások csak a Puha-Feliratokra vannak hatással!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Felirat átlátszósága</string>
     <string name="sub_text_example">Példa felirat</string>
     <string name="sub_font_select">Felirat betűtípusa</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Rendezés kiadási dátum szerint</string>
     <string name="crop_borders">Keretek vágása</string>
     <string name="note">MEGJEGYZÉS</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Bővítmények kezelése</string>
     <string name="installing_extension">Bővítmény telepítése</string>
     <string name="installation_failed">A telepítés sikertelen: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Telepítse a frissítést %1$s?</string>
     <string name="beta_update">Béta </string>
     <string name="update_available">Frissítés elérhető</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Csak az első gomb megjelenítése</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Az AniList profiljának megjelenítése helyett</string>
@@ -887,7 +892,6 @@
     <string name="count">SZÁMLÁLÁS</string>
     <string name="open">Megnyitás</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Válasz</string>
     <string name="time">Idő</string>
     <string name="player_settings_desc">Minden játékossal kapcsolatos beállítás</string>
     <string name="purge_anime_downloads_desc">Az összes letöltött Anime törlése</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Válasz</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

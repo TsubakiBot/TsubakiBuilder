@@ -94,8 +94,8 @@
     <string name="format">Định Dạng</string>
     <string name="status_title">Trạng Thái</string>
     <string name="total_eps">Tổng Số Tập</string>
-    <string name="episodes"> Tập</string>
-    <string name="chapters"> Chương</string>
+    <string name="episodes">" Tập"</string>
+    <string name="chapters">" Chương"</string>
     <string name="total_chaps">Tổng Số Chương</string>
     <string name="ep_duration">Thời Lượng Trung Bình</string>
     <string name="min">" phút"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Màu Nền Phụ Đề</string>
     <string name="sub_window_color_select">Màu Cửa Sổ Phụ Đề</string>
     <string name="sub_window_color_info">"Cửa sổ phụ đề là phần bên trái và phải của chúng. (nơi nền không phải)"</string>
-    <string name="sub_color_info"><b>Lưu ý:</b> Thay đổi cài đặt trên chỉ ảnh hưởng đến Phụ Đề Mềm!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Độ Mờ Phụ Đề</string>
     <string name="sub_text_example">Ví dụ Phụ Đề</string>
     <string name="sub_font_select">Font Phụ Đề</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sắp xếp theo Ngày phát hành</string>
     <string name="crop_borders">Cắt Biên</string>
     <string name="note">Ghi chú</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Quản lý Kho mở rộng</string>
     <string name="installing_extension">Đang cài đặt tiện ích mở rộng</string>
     <string name="installation_failed">Cài đặt thất bại: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Cài đặt cập nhật %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Cập nhật Có sẵn</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Chỉ hiển thị nút đầu tiên</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Hiển thị hồ sơ AniList của bạn thay vì</string>
@@ -887,7 +892,6 @@
     <string name="count">SỐ LƯỢNG</string>
     <string name="open">Mở</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Trả lời</string>
     <string name="time">Thời gian</string>
     <string name="player_settings_desc">Tất cả các thiết lập liên quan đến người chơi</string>
     <string name="purge_anime_downloads_desc">Xóa tất cả Anime đã tải về</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Trả lời</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

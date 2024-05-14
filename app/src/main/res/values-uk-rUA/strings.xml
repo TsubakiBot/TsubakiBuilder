@@ -94,8 +94,8 @@
     <string name="format">Форматувати</string>
     <string name="status_title">Статус</string>
     <string name="total_eps">Кількість серій</string>
-    <string name="episodes"> Епізод(и)</string>
-    <string name="chapters"> Глава(и)</string>
+    <string name="episodes">" Епізод(и)"</string>
+    <string name="chapters">" Глава(и)"</string>
     <string name="total_chaps">Розділи Всього</string>
     <string name="ep_duration">Середня тривалість</string>
     <string name="min">" хв"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Колір фону субтитрів</string>
     <string name="sub_window_color_select">Колір вікна субтитрів</string>
     <string name="sub_window_color_info">"Вікно субтитрів є частиною та зліва від них. (фон відсутній)"</string>
-    <string name="sub_color_info"><b>Примітка.</b> Зміна вище параметрів впливає тільки на програмні субтитри!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Прозорість субтитрів</string>
     <string name="sub_text_example">Зразок нижньої частини</string>
     <string name="sub_font_select">Шрифт субтитрів</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Впорядкувати за датою випуску</string>
     <string name="crop_borders">Обрізати кордон</string>
     <string name="note">ПРИМІТКА</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Управління репутаціями розширень</string>
     <string name="installing_extension">Встановлення розширення</string>
     <string name="installation_failed">Помилка встановлення: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Встановити оновлення %1$s?</string>
     <string name="beta_update">Бета </string>
     <string name="update_available">Доступне оновлення</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Показувати лише першу кнопку</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Замість цього показувати ваш профіль AniList</string>
@@ -887,7 +892,6 @@
     <string name="count">КОУНТ</string>
     <string name="open">Відкриті</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Відповідь</string>
     <string name="time">Час</string>
     <string name="player_settings_desc">Всі налаштування пов\'язані з гравцем</string>
     <string name="purge_anime_downloads_desc">Видалити всі завантажені аніме</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Відповідь</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

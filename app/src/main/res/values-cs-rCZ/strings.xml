@@ -94,8 +94,8 @@
     <string name="format">Formát</string>
     <string name="status_title">Stav</string>
     <string name="total_eps">Epizody celkem</string>
-    <string name="episodes"> Epizody</string>
-    <string name="chapters"> Kapitola (kapitoly)</string>
+    <string name="episodes">" Epizody"</string>
+    <string name="chapters">" Kapitola (kapitoly)"</string>
     <string name="total_chaps">Kapitoly celkem</string>
     <string name="ep_duration">Průměrná doba trvání</string>
     <string name="min">" minuty"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Barva pozadí titulků</string>
     <string name="sub_window_color_select">Barva okna titulků</string>
     <string name="sub_window_color_info">"Okno titulků je část vlevo a vpravo od nich (kde je pozadí n't)"</string>
-    <string name="sub_color_info"><b>Poznámka:</b> Změna výše uvedeného nastavení ovlivňuje pouze Soft-Subtitles!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Průhlednost titulků</string>
     <string name="sub_text_example">Příklad podb</string>
     <string name="sub_font_select">Písmo titulků</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Seřadit podle data vydání</string>
     <string name="crop_borders">Oříznout hranice</string>
     <string name="note">POZNÁMKA</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Správa repozitářů rozšíření</string>
     <string name="installing_extension">Instalace rozšíření</string>
     <string name="installation_failed">Instalace se nezdařila: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Instalovat aktualizaci %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Dostupná aktualizace</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Zobrazit pouze první tlačítko</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Místo toho zobrazit váš AniList profil</string>
@@ -887,7 +892,6 @@
     <string name="count">ÚŘAD</string>
     <string name="open">Otevřít</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Odpověď</string>
     <string name="time">Čas</string>
     <string name="player_settings_desc">Nastavení týkající se všech hráčů</string>
     <string name="purge_anime_downloads_desc">Odstranit všechny stažené Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Odpověď</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

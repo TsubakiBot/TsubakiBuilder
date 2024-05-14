@@ -94,8 +94,8 @@
     <string name="format">Formater</string>
     <string name="status_title">Statut</string>
     <string name="total_eps">Épisodes totaux</string>
-    <string name="episodes"> Épisode(s)</string>
-    <string name="chapters">Chapitre(s)</string>
+    <string name="episodes">" Épisode(s)"</string>
+    <string name="chapters">"Chapitre(s)"</string>
     <string name="total_chaps">Chapitres totaux</string>
     <string name="ep_duration">Durée moyenne</string>
     <string name="min">" min"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Couleur de fond des sous-titres</string>
     <string name="sub_window_color_select">Couleur de la fenêtre des sous-titres</string>
     <string name="sub_window_color_info">"La fenêtre des sous-titres est la partie gauche et droite d'eux. (où l'arrière-plan n'est pas)"</string>
-    <string name="sub_color_info"><b>Note :</b> Modifier les paramètres ci-dessus n\'affecte que les sous-titres souples !</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Transparence des sous-titres</string>
     <string name="sub_text_example">Exemple de sous-titre</string>
     <string name="sub_font_select">Police des sous-titres</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Trier par date de sortie</string>
     <string name="crop_borders">Recadrer les bordures</string>
     <string name="note">REMARQUE</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gérer les Dépôts d\'Extensions</string>
     <string name="installing_extension">Installation des extensions</string>
     <string name="installation_failed">Échec de l\'installation: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Installer la mise à jour %1$s?</string>
     <string name="beta_update">Bêta </string>
     <string name="update_available">Mise à jour disponible</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Afficher uniquement le premier bouton</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Afficher votre profil AniList à la place</string>
@@ -889,7 +894,6 @@ Genre : "</string>
     <string name="count">COMPTE</string>
     <string name="open">Ouvert</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Répondre</string>
     <string name="time">Date et heure</string>
     <string name="player_settings_desc">Tous les paramètres liés au lecteur vidéo</string>
     <string name="purge_anime_downloads_desc">Supprimer tous les anime téléchargés</string>
@@ -988,4 +992,15 @@ Genre : "</string>
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Répondre</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

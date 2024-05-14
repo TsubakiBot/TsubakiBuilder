@@ -94,8 +94,8 @@
     <string name="format">Formatér</string>
     <string name="status_title">Status:</string>
     <string name="total_eps">Totalt antall episoder</string>
-    <string name="episodes"> Episode(r)</string>
-    <string name="chapters"> Kapittel</string>
+    <string name="episodes">" Episode(r)"</string>
+    <string name="chapters">" Kapittel"</string>
     <string name="total_chaps">Totalt kapitler</string>
     <string name="ep_duration">Gjennomsnittlig varighet</string>
     <string name="min">" min."</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Bakgrunnsfarge til undertekst</string>
     <string name="sub_window_color_select">Farge på undertekst vindu</string>
     <string name="sub_window_color_info">"Undertekstvinduet er delen til venstre og høyre fra dem. (der bakgrunnen er n't)"</string>
-    <string name="sub_color_info"><b>Merk:</b> Endring av ovenstående innstillinger påvirker bare Soft-Undertekster!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Gjennomsiktighet på undertekst</string>
     <string name="sub_text_example">Eksempel undergruppe</string>
     <string name="sub_font_select">Undertekst Font</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sorter etter utgivelsesdato</string>
     <string name="crop_borders">Beskjær kantlinjer</string>
     <string name="note">MERKNAD</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Administrere utvidelses repos</string>
     <string name="installing_extension">Installerer utvidelse</string>
     <string name="installation_failed">Installasjonen mislyktes: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Installere oppdateringen %1$s?</string>
     <string name="beta_update">beta </string>
     <string name="update_available">Oppdatering tilgjengelig</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Vis bare den første knappen</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Vis AniList profilen din i stedet</string>
@@ -887,7 +892,6 @@
     <string name="count">KONTO</string>
     <string name="open">Åpne</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Svar</string>
     <string name="time">Tid</string>
     <string name="player_settings_desc">Alle spiller relaterte innstillinger</string>
     <string name="purge_anime_downloads_desc">Slett alle nedlastede Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Svar</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

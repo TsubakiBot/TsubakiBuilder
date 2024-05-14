@@ -94,8 +94,8 @@
     <string name="format">포맷</string>
     <string name="status_title">상태</string>
     <string name="total_eps">전체 에피소드</string>
-    <string name="episodes"> 에피소드</string>
-    <string name="chapters"> 챕터</string>
+    <string name="episodes">" 에피소드"</string>
+    <string name="chapters">" 챕터"</string>
     <string name="total_chaps">전체 챕터</string>
     <string name="ep_duration">평균 지속 시간</string>
     <string name="min">" 분"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">자막 배경색</string>
     <string name="sub_window_color_select">자막 창 색상</string>
     <string name="sub_window_color_info">"자막 창은 그들의 왼쪽과 오른쪽 부분입니다. (배경이 아닌 곳)"</string>
-    <string name="sub_color_info"><b>참고:</b> 위의 설정을 변경하면 소프트 자막에만 영향을 미칩니다!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">자막 투명도</string>
     <string name="sub_text_example">예시 자막</string>
     <string name="sub_font_select">자막 글꼴</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">출시일별 정렬</string>
     <string name="crop_borders">테두리 자르기</string>
     <string name="note">참고</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">확장 프로그램 저장소 관리</string>
     <string name="installing_extension">확장 프로그램 설치 중</string>
     <string name="installation_failed">설치 실패: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">%1$s 업데이트 설치하시겠습니까?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">업데이트 가능</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">첫 번째 버튼만 표시</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">대신 AniList 프로필 표시</string>
@@ -887,7 +892,6 @@
     <string name="count">수</string>
     <string name="open">열다</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">회신</string>
     <string name="time">시간</string>
     <string name="player_settings_desc">모든 플레이어 관련 설정</string>
     <string name="purge_anime_downloads_desc">다운로드된 모든 애니메이션 삭제</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">회신</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

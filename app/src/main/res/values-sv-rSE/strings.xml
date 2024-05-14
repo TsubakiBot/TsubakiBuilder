@@ -94,8 +94,8 @@
     <string name="format">Formatera</string>
     <string name="status_title">Status</string>
     <string name="total_eps">Totalt avsnitt</string>
-    <string name="episodes"> Avsnitt</string>
-    <string name="chapters"> Kapitel</string>
+    <string name="episodes">" Avsnitt"</string>
+    <string name="chapters">" Kapitel"</string>
     <string name="total_chaps">Totalt kapitel</string>
     <string name="ep_duration">Genomsnittlig varaktighet</string>
     <string name="min">" min"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Undertextens bakgrundsfärg</string>
     <string name="sub_window_color_select">Fönsterfärg för undertext</string>
     <string name="sub_window_color_info">"Undertextfönstret är delen vänster och höger från dem. (där bakgrunden inte är)"</string>
-    <string name="sub_color_info"><b>Obs:</b> Ändra ovanstående inställningar påverkar endast Soft-Undertexter!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Textremsa Genomskinlighet</string>
     <string name="sub_text_example">Exempel under</string>
     <string name="sub_font_select">Teckensnitt för undertext</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sortera efter Frigivningsdatum</string>
     <string name="crop_borders">Beskär gränser</string>
     <string name="note">OBS</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Hantera förlängningsrepos</string>
     <string name="installing_extension">Installerar tillägg</string>
     <string name="installation_failed">Installationen misslyckades: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Installera uppdatering %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Uppdatering tillgänglig</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Visa endast den första knappen</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Visa din AniList profil istället</string>
@@ -887,7 +892,6 @@
     <string name="count">KONTO</string>
     <string name="open">Öppna</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Svara</string>
     <string name="time">Tid</string>
     <string name="player_settings_desc">Alla spelarrelaterade inställningar</string>
     <string name="purge_anime_downloads_desc">Ta bort alla nedladdade Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Svara</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

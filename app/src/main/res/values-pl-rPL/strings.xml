@@ -94,8 +94,8 @@
     <string name="format">Formatowanie</string>
     <string name="status_title">Status</string>
     <string name="total_eps">Całkowite odcinki</string>
-    <string name="episodes"> Odcinek(y)</string>
-    <string name="chapters"> Rozdział(-y)</string>
+    <string name="episodes">" Odcinek(y)"</string>
+    <string name="chapters">" Rozdział(-y)"</string>
     <string name="total_chaps">Rozdział ogółem</string>
     <string name="ep_duration">Średni czas trwania</string>
     <string name="min">" min."</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Kolor tła napisów</string>
     <string name="sub_window_color_select">Kolor okna napisów</string>
     <string name="sub_window_color_info">"Okno napisów jest częścią po lewej i prawej stronie (gdzie tło nie jest)"</string>
-    <string name="sub_color_info"><b>Uwaga:</b> Zmiana powyżej ustawień dotyczy tylko Soft-Subtitles!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Przezroczystość napisów</string>
     <string name="sub_text_example">Przykład pod-</string>
     <string name="sub_font_select">Czcionka napisów</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sortuj według daty wydania</string>
     <string name="crop_borders">Granice przycinania</string>
     <string name="note">UWAGA</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Zarządzaj repozytoriami rozszerzeń</string>
     <string name="installing_extension">Instalacja rozszerzenia</string>
     <string name="installation_failed">Instalacja nie powiodła się: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Zainstalować aktualizację %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Dostępna aktualizacja</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Wyświetl tylko pierwszy przycisk</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Wyświetlaj swój profil AniList</string>
@@ -887,7 +892,6 @@
     <string name="count">KONTEKST</string>
     <string name="open">Otwórz</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Odpowiedz</string>
     <string name="time">Czas</string>
     <string name="player_settings_desc">Ustawienia wszystkich graczy</string>
     <string name="purge_anime_downloads_desc">Usuń wszystkie pobrane anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Odpowiedz</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

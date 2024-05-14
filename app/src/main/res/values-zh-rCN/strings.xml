@@ -94,8 +94,8 @@
     <string name="format">格式</string>
     <string name="status_title">状态</string>
     <string name="total_eps">总集数</string>
-    <string name="episodes"> Episode(s)</string>
-    <string name="chapters"> 章 次</string>
+    <string name="episodes">" Episode(s)"</string>
+    <string name="chapters">" 章 次"</string>
     <string name="total_chaps">总章节数</string>
     <string name="ep_duration">平均持续时间</string>
     <string name="min">" 分钟"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">字幕背景颜色</string>
     <string name="sub_window_color_select">字幕窗口颜色</string>
     <string name="sub_window_color_info">"字幕窗口是左右两侧的部分。（其中背景不是）"</string>
-    <string name="sub_color_info"><b>注意：</b>更改上述设置仅影响软字幕！</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">字幕透明度</string>
     <string name="sub_text_example">示例子项</string>
     <string name="sub_font_select">字幕字体</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">按发布日期排序</string>
     <string name="crop_borders">裁剪边框</string>
     <string name="note">注意</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">管理扩展仓库</string>
     <string name="installing_extension">安装扩展</string>
     <string name="installation_failed">安装失败: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">安装更新 %1$s 吗？</string>
     <string name="beta_update">测试版 </string>
     <string name="update_available">可用更新</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">只显示第一个按钮</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">只显示您的 AniList 配置文件</string>
@@ -887,7 +892,6 @@
     <string name="count">币种</string>
     <string name="open">打开</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">答复</string>
     <string name="time">时间</string>
     <string name="player_settings_desc">所有与玩家相关的设置</string>
     <string name="purge_anime_downloads_desc">删除所有已下载的 Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">答复</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

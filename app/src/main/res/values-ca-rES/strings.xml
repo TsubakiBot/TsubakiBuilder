@@ -94,8 +94,8 @@
     <string name="format">Format</string>
     <string name="status_title">Estat</string>
     <string name="total_eps">Episodis totals</string>
-    <string name="episodes"> Episodi(s)</string>
-    <string name="chapters"> Capítol(s)</string>
+    <string name="episodes">" Episodi(s)"</string>
+    <string name="chapters">" Capítol(s)"</string>
     <string name="total_chaps">Total de capítols</string>
     <string name="ep_duration">Durada mitjana</string>
     <string name="min">" min"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Color de Fons dels Subtítols</string>
     <string name="sub_window_color_select">Color de la Finestra dels Subtítols</string>
     <string name="sub_window_color_info">"La finestra dels subtítols és la part esquerra i dreta d'ells. (on no hi ha fons)"</string>
-    <string name="sub_color_info"><b>Nota:</b> Canviar la configuració anterior només afecta els Subtítols Soft!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Transparència dels Subtítols</string>
     <string name="sub_text_example">Exemple de Subtítol</string>
     <string name="sub_font_select">Tipus de Lletra dels Subtítols</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Ordena per Data de Llançament</string>
     <string name="crop_borders">Retalla Marges</string>
     <string name="note">NOTA</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gestiona Repositoris d\'Extensió</string>
     <string name="installing_extension">Instal·lant extensió</string>
     <string name="installation_failed">La instal·lació ha fallat: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Instal·lar actualització %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Actualització Disponible</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Mostra només el primer botó</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Mostra el teu perfil d\'AniList en lloc</string>
@@ -887,7 +892,6 @@
     <string name="count">COMPTAR</string>
     <string name="open">Obert</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Respondre</string>
     <string name="time">Temps</string>
     <string name="player_settings_desc">Tots els paràmetres relacionats amb el jugador</string>
     <string name="purge_anime_downloads_desc">Eliminar tots els animes descarregats</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Respondre</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>

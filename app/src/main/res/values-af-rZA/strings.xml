@@ -94,8 +94,8 @@
     <string name="format">Formaat</string>
     <string name="status_title">Status</string>
     <string name="total_eps">Totale Episodes</string>
-    <string name="episodes"> Episode(s)</string>
-    <string name="chapters"> Hoofstuk(ke)</string>
+    <string name="episodes">" Episode(s)"</string>
+    <string name="chapters">" Hoofstuk(ke)"</string>
     <string name="total_chaps">Totale Hoofstukke</string>
     <string name="ep_duration">Gemiddelde Duur</string>
     <string name="min">" min"</string>
@@ -228,7 +228,7 @@
     <string name="sub_background_color_select">Ondertitel Agtergrond Kleur</string>
     <string name="sub_window_color_select">Ondertitel Venster Kleur</string>
     <string name="sub_window_color_info">"Die ondertitel venster is die deel links en regs van hulle. (waar die agtergrond nie is nie)"</string>
-    <string name="sub_color_info"><b>Nota:</b> Verandering van bogenoemde instellings beïnvloed slegs Sagte-Ondertitels!</string>
+    <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Ondertitel Deursigtigheid</string>
     <string name="sub_text_example">Voorbeeld Ondertitel</string>
     <string name="sub_font_select">Ondertitel Lettertipe</string>
@@ -397,6 +397,10 @@
     <string name="sort_by_release_date">Sorteer volgens Vrylatingsdatum</string>
     <string name="crop_borders">Sny Randtegnies Af</string>
     <string name="note">NOTA</string>
+    <string name="subscribe_lists">Subscribe All Current</string>
+    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="no_current_items">Current media list empty!</string>
+    <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Bestuur Uitbreiding Repos</string>
     <string name="installing_extension">Installeer uitbreiding</string>
     <string name="installation_failed">Installering het misluk: %1$s</string>
@@ -411,6 +415,7 @@
     <string name="install_update">Installeer opdatering %1$s?</string>
     <string name="beta_update">Beta </string>
     <string name="update_available">Opdatering Beskikbaar</string>
+    <string name="reviews">Reviews</string>
     <string name="discord_nothing_button">Vertoon slegs die eerste knoppie</string>
     <string name="discord_dantotsu_button">Display Himitsu in the second button</string>
     <string name="discord_anilist_button">Vertoon eerder jou AniList-profiel</string>
@@ -887,7 +892,6 @@
     <string name="count">TEL</string>
     <string name="open">Maak oop</string>
     <string name="hentai">HENTAI?????</string>
-    <string name="reply">Antwoord</string>
     <string name="time">Tyd</string>
     <string name="player_settings_desc">Al die speler verwante instellings</string>
     <string name="purge_anime_downloads_desc">Verwyder alle afgelaaide Anime</string>
@@ -986,4 +990,15 @@
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
     <string name="biometric_failed">Biometric Verification Failed!</string>
+    <string name="reviews_empty">No %1$s Reviews</string>
+    <string name="vote_out_of_total">(%1$s out of %2$s liked this review)</string>
+    <string name="create_new_activity">Create New Activity</string>
+    <string name="create_new_review">Create New Review</string>
+    <string name="create_new_reply">Create New Reply</string>
+    <string name="create">Create</string>
+    <string name="preview">Preview</string>
+    <string name="cannot_be_empty">Text cannot be empty</string>
+    <string name="reply">Antwoord</string>
+    <string name="replies">Replies</string>
+    <string name="load_replies_failed">Failed to load replies</string>
 </resources>
