@@ -2,6 +2,7 @@ package ani.dantotsu.home
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.drawable.Animatable
 import android.os.Build
 import android.os.Bundle
@@ -155,7 +156,12 @@ class HomeFragment : Fragment() {
         }
 
         binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = navBarHeight
+            rightMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                navBarHeight
+            else 0
+            bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                0
+            else navBarHeight
         }
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
@@ -618,5 +624,17 @@ class HomeFragment : Fragment() {
             binding.homeNotificationCount.text = count.toString()
         }
         super.onResume()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            rightMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                navBarHeight
+            else 0
+            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                0
+            else navBarHeight
+        }
     }
 }
