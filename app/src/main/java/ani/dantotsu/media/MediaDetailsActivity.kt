@@ -338,7 +338,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         model.getMedia().observe(this) {
             if (it != null) {
                 media = it
-                if (PrefManager.getVal(PrefName.YouTubeBanners)) getTrailerBanner(media.trailer)
+                if (PrefManager.getVal(PrefName.YouTubeBanners)) {
+                    media.trailer?.let { preview -> getTrailerBanner(preview) }
+                }
                 scope.launch {
                     if (media.isFav != favButton?.clicked) favButton?.clicked()
                 }
@@ -453,8 +455,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         binding.youTubeBanner.scaleY = videoScale
     }
 
-    private fun getTrailerBanner(trailer: String?) {
-        if (trailer == null) return
+    private fun getTrailerBanner(trailer: String) {
         updateVideoScale()
         if (tubePlayer != null) return
         val youTubePlayerView: YouTubePlayerView = binding.youTubeBanner

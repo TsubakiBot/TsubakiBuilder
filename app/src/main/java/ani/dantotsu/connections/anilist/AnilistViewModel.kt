@@ -113,8 +113,10 @@ class AnilistHomeViewModel : ViewModel() {
         res["hiddenManga"]?.let { hiddenManga.postValue(it as ArrayList<Media>?) }
 
         val subscribed = arrayListOf<Media>()
-        SubscriptionHelper.getSubscriptions().values.forEach {
-            Anilist.query.getMedia(it.id)?.let { media -> subscribed.add(media) }
+        SubscriptionHelper.getSubscriptions().values.forEach { media ->
+            subscribed.add(
+                res.values.flatten().first { (it as Media).id == media.id} as Media
+            )
         }
         subscribedItems.postValue(subscribed)
     }
