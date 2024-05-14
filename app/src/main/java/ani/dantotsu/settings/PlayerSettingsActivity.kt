@@ -437,10 +437,10 @@ class PlayerSettingsActivity : AppCompatActivity() {
             dialog.window?.setDimAmount(0.8f)
         }
 
-        binding.videoSubAlpha.value = PrefManager.getVal(PrefName.SubAlpha)
+        binding.videoSubAlpha.value = 1f - PrefManager.getVal<Float>(PrefName.SubAlpha)
         binding.videoSubAlpha.addOnChangeListener(OnChangeListener { _, value, fromUser ->
             if (fromUser) {
-                PrefManager.setVal(PrefName.SubAlpha, value)
+                PrefManager.setVal(PrefName.SubAlpha, 1f - value)
                 updateSubPreview()
             }
         })
