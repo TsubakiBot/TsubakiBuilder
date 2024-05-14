@@ -106,19 +106,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (PrefManager.getCustomVal("requires_update_refresh", false)) {
-            PrefManager.removeCustomVal("requires_update_refresh")
-            finishAndRemoveTask()
-            startActivity(
-                Intent(this, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                            Intent.FLAG_ACTIVITY_NO_HISTORY or
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-            )
-            return
-        }
-
         promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle(getString(R.string.biometric_title))
             .setSubtitle(getString(R.string.biometric_details))
@@ -181,6 +168,11 @@ class MainActivity : AppCompatActivity() {
         if (PrefManager.getVal(PrefName.SecureLock)) {
             binding.biometricShield.visibility = View.VISIBLE
             biometricPrompt.authenticate(promptInfo)
+        }
+
+        if (PrefManager.getCustomVal("requires_update_refresh", false)) {
+            PrefManager.removeCustomVal("requires_update_refresh")
+            showSystemBarsRetractView()
         }
 
         TaskScheduler.scheduleSingleWork(this)
