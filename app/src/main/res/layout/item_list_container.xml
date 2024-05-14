@@ -20,8 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintSpacer"
         app:layout_constraintEnd_toStartOf="@+id/rightListButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="256dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/leftButtonImage"
@@ -72,8 +71,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintSpacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/leftListButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="256dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/rightButtonImage"

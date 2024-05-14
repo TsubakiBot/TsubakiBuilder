@@ -107,8 +107,7 @@ class HomeFragment : Fragment() {
                 binding.homeNotificationCount.text = count.toString()
 
                 homeListContainerBinding.apply {
-                    if (resources.displayMetrics.widthPixels > 540.toPx)
-                        homeListContainer.layoutParams.width = 540.toPx
+                    portraitScaleLandStretch(resources.configuration)
                     homeAnimeList.setOnClickListener {
                         ContextCompat.startActivity(
                             requireActivity(), Intent(requireActivity(), ListActivity::class.java)
@@ -629,6 +628,16 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
+    private fun portraitScaleLandStretch(configuration: Configuration) {
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            if (resources.displayMetrics.widthPixels > 520.toPx)
+                homeListContainerBinding.homeListContainer.layoutParams.width = 520.toPx
+        } else {
+            homeListContainerBinding.homeListContainer.layoutParams.width =
+                LinearLayout.LayoutParams.MATCH_PARENT
+        }
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -639,5 +648,6 @@ class HomeFragment : Fragment() {
                 0
             else navBarHeight
         }
+        portraitScaleLandStretch(newConfig)
     }
 }
