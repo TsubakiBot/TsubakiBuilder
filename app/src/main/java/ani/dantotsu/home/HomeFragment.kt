@@ -122,8 +122,9 @@ class HomeFragment : Fragment() {
                     LayoutAnimationController(setSlideUp(), 0.25f)
                 binding.homeAnimeList.visibility = View.VISIBLE
                 binding.homeMangaList.visibility = View.VISIBLE
-                binding.homeListContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
+                binding.homeRandomAnime.visibility = View.VISIBLE
+                binding.homeRandomManga.visibility = View.VISIBLE
+                binding.homeListContainer.layoutAnimation = LayoutAnimationController(setSlideIn(), 0.25f)
             }
             else {
                 snackString(R.string.please_reload)
@@ -480,7 +481,12 @@ class HomeFragment : Fragment() {
 
         model.getRecommendation().observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty()) {
-                binding.homeRandomContainer.visibility = View.GONE
+                binding.homeRandomAnime.setOnClickListener {
+                    snackString(R.string.no_recommendations)
+                }
+                binding.homeRandomManga.setOnClickListener {
+                    snackString(R.string.no_recommendations)
+                }
             } else {
                 fun getRandomMedia(type: MediaType): Media {
                     var media: Media?
@@ -516,10 +522,6 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
                 }
-
-                binding.homeRandomContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideIn(), 0.25f)
-                binding.homeRandomContainer.visibility = View.VISIBLE
             }
         }
 

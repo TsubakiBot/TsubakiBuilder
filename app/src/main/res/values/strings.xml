@@ -345,7 +345,7 @@
     <string name="direction">Direction</string>
 
     <string name="comments_api">Comments API (Dantotsu)</string>
-
+    <string name="no_recommendations">No suggestions available!</string>
     <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
 
     <string name="general">General</string>
