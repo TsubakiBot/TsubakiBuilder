@@ -169,6 +169,9 @@ class HomeFragment : Fragment() {
             setOnClickListener {
                 binding.homeUserAvatarContainer.performClick()
             }
+            setOnLongClickListener {
+                binding.homeUserAvatarContainer.performLongClick()
+            }
         }
         binding.homeUserAvatarContainer.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
