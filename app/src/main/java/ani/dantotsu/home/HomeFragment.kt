@@ -152,6 +152,7 @@ class HomeFragment : Fragment() {
         }
         binding.avatarFabulous.apply {
             (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+            setDefaultFabulousPosition(false)
             loadSavedPosition(resources.configuration)
             setOnMoveListener(object : FABulous.OnViewMovedListener {
                 override fun onActionMove(x: Float, y: Float) {
@@ -658,6 +659,27 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun FABulous.setDefaultFabulousPosition(reset: Boolean) {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            val x = if (reset || PrefManager.getVal<Float>(PrefName.FabulousVertX) == -1f)
+                resources.displayMetrics.widthPixels - 98.toPx.toFloat()
+            else this.x
+            val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousVertY) == -1f)
+                20.toPx.toFloat()
+            else this.y
+            animate().x(x).y(y).setDuration(0).start()
+        } else {
+            val x = if (reset || PrefManager.getVal<Float>(PrefName.FabulousHorzX) == -1f)
+                resources.displayMetrics.widthPixels - 98.toPx.toFloat() - navBarHeight
+            else this.x
+            val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousHorzY) == -1f)
+                20.toPx.toFloat()
+            else this.y
+            animate().x(x).y(y).setDuration(0).start()
+        }
+
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -668,6 +690,7 @@ class HomeFragment : Fragment() {
                 0
             else navBarHeight
         }
+        binding.avatarFabulous.setDefaultFabulousPosition(false)
         portraitScaleLandStretch(newConfig)
     }
 }
