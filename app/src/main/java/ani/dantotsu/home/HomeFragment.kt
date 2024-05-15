@@ -43,6 +43,7 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
+import ani.dantotsu.navBarHeight
 import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -109,7 +110,8 @@ class HomeFragment : Fragment() {
                 banner.blurImage(Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
                 val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                // binding.homeNotificationCount.isVisible = count > 0
+                binding.homeNotificationCount.isVisible =
+                    !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
                 binding.homeNotificationCount.text = count.toString()
                 binding.avatarFabulous.setBadgeDrawable(count)
 
@@ -648,7 +650,8 @@ class HomeFragment : Fragment() {
         if (!model.loaded) Refresh.activity[1]!!.postValue(true)
         if (_binding != null) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            // binding.homeNotificationCount.isVisible = count > 0
+            binding.homeNotificationCount.isVisible =
+                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
             binding.homeNotificationCount.text = count.toString()
             binding.avatarFabulous.setBadgeDrawable(count)
         }
@@ -657,9 +660,9 @@ class HomeFragment : Fragment() {
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
         val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            -((180.toPx / (resources.displayMetrics.widthPixels - 32.toPx)) + 45).toFloat()
+            -(((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * 45).toFloat()
         } else {
-            -((140.toPx / (resources.displayMetrics.widthPixels - 48.toPx)) + 15).toFloat()
+            -(((resources.displayMetrics.widthPixels - 48.toPx - navBarHeight) / 100.toPx) * 15).toFloat()
         }
         homeListContainerBinding.homeAnimeList.rotation = angle
         homeListContainerBinding.homeMangaList.rotation = angle

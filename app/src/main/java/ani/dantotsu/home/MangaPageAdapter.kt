@@ -88,7 +88,8 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
         updateAvatar()
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        // trendingBinding.notificationCount.isVisible = count > 0
+        trendingBinding.notificationCount.isVisible =
+            !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
         trendingBinding.notificationCount.text = count.toString()
 
         trendingBinding.searchBar.hint = "MANGA"
@@ -322,7 +323,8 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
     fun updateNotificationCount(): Int? {
         if (this::binding.isInitialized) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            // trendingBinding.notificationCount.isVisible = count > 0
+            trendingBinding.notificationCount.isVisible =
+                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
             trendingBinding.notificationCount.text = count.toString()
             return count
         }

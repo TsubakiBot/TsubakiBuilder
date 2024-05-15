@@ -118,7 +118,8 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         }
 
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        // trendingBinding.notificationCount.isVisible = count > 0
+        trendingBinding.notificationCount.isVisible =
+            !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
         trendingBinding.notificationCount.text = count.toString()
 
         listOf(
@@ -316,7 +317,8 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
     fun updateNotificationCount(): Int? {
         if (this::binding.isInitialized) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            // trendingBinding.notificationCount.isVisible = count > 0
+            trendingBinding.notificationCount.isVisible =
+                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
             trendingBinding.notificationCount.text = count.toString()
             return count
         }
