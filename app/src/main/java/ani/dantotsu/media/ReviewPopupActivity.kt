@@ -14,7 +14,7 @@ import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.padBottomOrRight
+import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +38,7 @@ class ReviewPopupActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.genreContainer.padBottomOrRight(resources.configuration)
+        binding.genreContainer.withFlexibleMargin(resources.configuration)
             .updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
         }
@@ -77,6 +77,6 @@ class ReviewPopupActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.genreContainer.padBottomOrRight(newConfig)
+        binding.genreContainer.withFlexibleMargin(newConfig)
     }
 }

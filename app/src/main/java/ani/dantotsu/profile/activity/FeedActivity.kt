@@ -12,7 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.padBottomOrRight
+import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.updateLayoutParams
@@ -33,7 +33,7 @@ class FeedActivity : AppCompatActivity() {
         navBar = binding.feedNavBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
-        binding.feedViewPager.padBottomOrRight(resources.configuration)
+        binding.feedViewPager.withFlexibleMargin(resources.configuration)
             .updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
         }
@@ -67,7 +67,7 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.feedViewPager.padBottomOrRight(newConfig)
+        binding.feedViewPager.withFlexibleMargin(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }

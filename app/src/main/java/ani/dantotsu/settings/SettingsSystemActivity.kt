@@ -18,8 +18,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
+import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
@@ -37,6 +39,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
 import ani.himitsu.update.MatagiUpdater
+import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -229,6 +232,23 @@ class SettingsSystemActivity : AppCompatActivity() {
                             }
                         },
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.disable_mitm),
+                        desc = getString(R.string.disable_mitm_desc),
+                        icon = R.drawable.ic_round_coronavirus_24,
+                        pref = PrefName.DisableMitM,
+                        switch = { isChecked, _ ->
+                            if (isChecked) {
+                                PrefManager.removeVal(PrefName.ImageUrl)
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        Glide.get(App.instance).clearDiskCache()
+                                    }
+                                    Glide.get(App.instance).clearMemory()
+                            }
+                            Refresh.all()
+                        }
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

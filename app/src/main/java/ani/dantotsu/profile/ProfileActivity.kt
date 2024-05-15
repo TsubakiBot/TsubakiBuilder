@@ -27,7 +27,7 @@ import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.padBottomOrRight
+import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.profile.activity.FeedFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -81,7 +81,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
             }
 
             withContext(Dispatchers.Main) {
-                binding.profileViewPager.padBottomOrRight(resources.configuration)
+                binding.profileViewPager.withFlexibleMargin(resources.configuration)
                 binding.profileViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle, user)
                 binding.profileViewPager.setOffscreenPageLimit(3)
@@ -281,7 +281,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.profileViewPager.padBottomOrRight(newConfig)
+        binding.profileViewPager.withFlexibleMargin(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }

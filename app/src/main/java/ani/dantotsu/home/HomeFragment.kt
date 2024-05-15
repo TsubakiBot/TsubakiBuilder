@@ -43,8 +43,7 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
-import ani.dantotsu.navBarHeight
-import ani.dantotsu.padBottomOrRight
+import ani.dantotsu.withBottomMargin
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -169,7 +168,6 @@ class HomeFragment : Fragment() {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
             if (isVisible) {
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                withVolatileNavBar = true
                 setDefaultPosition()
                 loadSavedPosition(resources.configuration)
                 setOnMoveListener(object : FABulous.OnViewMovedListener {
@@ -192,7 +190,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.homeTopContainer.padBottomOrRight(resources.configuration)
+        binding.homeTopContainer.withBottomMargin(resources.configuration)
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
@@ -660,9 +658,9 @@ class HomeFragment : Fragment() {
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
         val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            -(((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * 45).toFloat()
+            (((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * -45).toFloat()
         } else {
-            -(((resources.displayMetrics.widthPixels - 48.toPx - navBarHeight) / 100.toPx) * 15).toFloat()
+            (((resources.displayMetrics.widthPixels - 48.toPx) / 100.toPx) * -15).toFloat()
         }
         homeListContainerBinding.homeAnimeList.rotation = angle
         homeListContainerBinding.homeMangaList.rotation = angle
@@ -672,7 +670,7 @@ class HomeFragment : Fragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.homeTopContainer.padBottomOrRight(newConfig)
+        binding.homeTopContainer.withBottomMargin(newConfig)
         portraitScaleLandStretch(newConfig)
     }
 }

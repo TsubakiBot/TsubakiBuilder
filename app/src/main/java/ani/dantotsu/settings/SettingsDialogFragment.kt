@@ -120,22 +120,6 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             incognitoNotification(requireContext())
         }
 
-        binding.hidePreventInjection.isChecked = PrefManager.getVal(PrefName.DisableMitM)
-        binding.hidePreventInjection.setOnCheckedChangeListener { _, isChecked ->
-            PrefManager.setVal(PrefName.DisableMitM, isChecked)
-            if (isChecked) {
-                PrefManager.removeVal(PrefName.ImageUrl)
-                activity?.let {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        Glide.get(it).clearDiskCache()
-                    }
-                    Glide.get(it).clearMemory()
-                }
-            }
-            Refresh.all()
-            requireActivity().recreate()
-        }
-
         binding.settingsResetFabulous.setSafeOnClickListener {
             PrefManager.setVal(PrefName.FabulousVertX, -1)
             PrefManager.setVal(PrefName.FabulousVertY, -1)
@@ -165,7 +149,6 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.hidePreventInjection.isVisible = binding.hidePreventInjection.isGone
             binding.settingsResetFabulous.isVisible = binding.settingsResetFabulous.isGone
             true
         }

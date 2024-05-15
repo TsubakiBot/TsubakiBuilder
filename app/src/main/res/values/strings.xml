@@ -348,7 +348,8 @@
 
     <string name="comments_api">Comments API (Dantotsu)</string>
     <string name="no_recommendations">No suggestions available!</string>
-    <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
 
     <string name="general">General</string>
     <string name="show_system_bars">Show Status &amp; Navigation Bars</string>
