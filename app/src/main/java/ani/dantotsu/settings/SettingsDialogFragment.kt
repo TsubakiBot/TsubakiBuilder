@@ -136,6 +136,14 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             requireActivity().recreate()
         }
 
+        binding.settingsResetFabulous.setSafeOnClickListener {
+            PrefManager.setVal(PrefName.FabulousVertX, -1)
+            PrefManager.setVal(PrefName.FabulousVertY, -1)
+            PrefManager.setVal(PrefName.FabulousHorzX, -1)
+            PrefManager.setVal(PrefName.FabulousHorzY, -1)
+            requireActivity().recreate()
+        }
+
         binding.settingsExtensionSettings.setSafeOnClickListener {
             startActivity(Intent(activity, ExtensionsActivity::class.java))
             dismiss()
@@ -158,6 +166,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             binding.hidePreventInjection.isVisible = binding.hidePreventInjection.isGone
+            binding.settingsResetFabulous.isVisible = binding.settingsResetFabulous.isGone
             true
         }
 

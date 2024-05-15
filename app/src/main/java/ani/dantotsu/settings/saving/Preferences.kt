@@ -90,10 +90,10 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     MangaListSortOrder(Pref(Location.UI, String::class, "score")),
     CommentSortOrder(Pref(Location.UI, String::class, "newest")),
     FollowerLayout(Pref(Location.UI, Int::class, 0)),
-    FabulousVertX(Pref(Location.UI, Float::class, -1f)),
-    FabulousHorzX(Pref(Location.UI, Float::class, -1f)),
-    FabulousVertY(Pref(Location.UI, Float::class, -1f)),
-    FabulousHorzY(Pref(Location.UI, Float::class, -1f)),
+    FabulousVertX(Pref(Location.UI, Float::class, -1)),
+    FabulousHorzX(Pref(Location.UI, Float::class, -1)),
+    FabulousVertY(Pref(Location.UI, Float::class, -1)),
+    FabulousHorzY(Pref(Location.UI, Float::class, -1)),
 
     //Player
     DefaultSpeed(Pref(Location.Player, Int::class, 5)),

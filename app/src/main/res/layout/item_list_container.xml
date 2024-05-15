@@ -33,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.75"
+            android:alpha="0.6"
             android:background="@color/bg_black" />
 
         <LinearLayout
@@ -84,7 +84,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.75"
+            android:alpha="0.6"
             android:background="@color/bg_black" />
 
         <LinearLayout
@@ -144,7 +144,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.75"
+            android:alpha="0.6"
             android:background="@color/bg_black" />
 
         <LinearLayout
