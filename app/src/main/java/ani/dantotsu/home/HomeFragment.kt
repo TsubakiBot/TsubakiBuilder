@@ -167,7 +167,8 @@ class HomeFragment : Fragment() {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
             if (isVisible) {
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                setDefaultPosition(false)
+                withVolatileNavBar = true
+                setDefaultPosition()
                 loadSavedPosition(resources.configuration)
                 setOnMoveListener(object : FABulous.OnViewMovedListener {
                     override fun onActionMove(x: Float, y: Float) {
@@ -189,7 +190,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.homeContainer.padBottomOrRight(resources.configuration)
+        binding.homeTopContainer.padBottomOrRight(resources.configuration)
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
@@ -647,8 +648,9 @@ class HomeFragment : Fragment() {
         if (!model.loaded) Refresh.activity[1]!!.postValue(true)
         if (_binding != null) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            binding.homeNotificationCount.isVisible = count > 0
+            // binding.homeNotificationCount.isVisible = count > 0
             binding.homeNotificationCount.text = count.toString()
+            binding.avatarFabulous.setBadgeDrawable(count)
         }
         super.onResume()
     }
@@ -667,7 +669,7 @@ class HomeFragment : Fragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.homeContainer.padBottomOrRight(newConfig)
+        binding.homeTopContainer.padBottomOrRight(newConfig)
         portraitScaleLandStretch(newConfig)
     }
 }

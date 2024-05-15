@@ -39,6 +39,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
@@ -213,7 +214,7 @@ class AnimeFragment : Fragment() {
             if (isVisible) {
                 loadImage(Anilist.avatar, 52.toPx)
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                setDefaultPosition(false)
+                setDefaultPosition()
                 loadSavedPosition(resources.configuration)
                 setOnMoveListener(object : FABulous.OnViewMovedListener {
                     override fun onActionMove(x: Float, y: Float) {
@@ -237,6 +238,9 @@ class AnimeFragment : Fragment() {
 
         animePageAdapter.ready.observe(viewLifecycleOwner) { i ->
             if (i) {
+                binding.avatarFabulous.setBadgeDrawable(
+                    Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+                )
                 model.getUpdated().observe(viewLifecycleOwner) {
                     if (it != null) {
                         animePageAdapter.updateRecent(MediaAdaptor(0, it, requireActivity()), it)

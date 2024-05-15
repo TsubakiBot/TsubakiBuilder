@@ -118,7 +118,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         }
 
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        trendingBinding.notificationCount.isVisible = count > 0
+        // trendingBinding.notificationCount.isVisible = count > 0
         trendingBinding.notificationCount.text = count.toString()
 
         listOf(

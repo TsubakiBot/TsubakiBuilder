@@ -88,8 +88,9 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
         updateAvatar()
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        trendingBinding.notificationCount.isVisible = count > 0
+        // trendingBinding.notificationCount.isVisible = count > 0
         trendingBinding.notificationCount.text = count.toString()
+
         trendingBinding.searchBar.hint = "MANGA"
         trendingBinding.searchBarText.setOnClickListener {
             ContextCompat.startActivity(
