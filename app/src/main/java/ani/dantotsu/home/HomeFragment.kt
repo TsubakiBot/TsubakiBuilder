@@ -152,16 +152,21 @@ class HomeFragment : Fragment() {
         }
         binding.avatarFabulous.apply {
             (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-            loadSavedPosition()
+            loadSavedPosition(resources.configuration)
             setOnMoveListener(object : FABulous.OnViewMovedListener {
                 override fun onActionMove(x: Float, y: Float) {
-                    PrefManager.setVal(PrefName.FabulousX, x)
-                    PrefManager.setVal(PrefName.FabulousY, y)
+                    if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                        PrefManager.setVal(PrefName.FabulousVertX, x)
+                        PrefManager.setVal(PrefName.FabulousVertY, y)
+                    } else {
+                        PrefManager.setVal(PrefName.FabulousHorzX, x)
+                        PrefManager.setVal(PrefName.FabulousHorzY, y)
+                    }
                 }
             })
-        }
-        binding.avatarFabulous.setOnClickListener {
-            binding.homeUserAvatarContainer.performClick()
+            setOnClickListener {
+                binding.homeUserAvatarContainer.performClick()
+            }
         }
         binding.homeUserAvatarContainer.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
