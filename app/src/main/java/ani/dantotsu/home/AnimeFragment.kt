@@ -3,6 +3,7 @@ package ani.dantotsu.home
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
 import androidx.core.view.updatePaddingRelative
 import androidx.fragment.app.Fragment
@@ -27,15 +29,19 @@ import ani.dantotsu.connections.anilist.AnilistAnimeViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.FragmentAnimeBinding
 import ani.dantotsu.loadFragment
+import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.himitsu.widget.FABulous
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -202,6 +208,34 @@ class AnimeFragment : Fragment() {
                 super.onScrolled(v, dx, dy)
             }
         })
+
+        binding.avatarFabulous.apply {
+            isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
+            if (isVisible) {
+                loadImage(Anilist.avatar, 52.toPx)
+                (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+                setDefaultPosition(false)
+                loadSavedPosition(resources.configuration)
+                setOnMoveListener(object : FABulous.OnViewMovedListener {
+                    override fun onActionMove(x: Float, y: Float) {
+                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                            PrefManager.setVal(PrefName.FabulousVertX, x)
+                            PrefManager.setVal(PrefName.FabulousVertY, y)
+                        } else {
+                            PrefManager.setVal(PrefName.FabulousHorzX, x)
+                            PrefManager.setVal(PrefName.FabulousHorzY, y)
+                        }
+                    }
+                })
+                setOnClickListener {
+                    animePageAdapter.trendingBinding.userAvatar.performClick()
+                }
+                setOnLongClickListener {
+                    animePageAdapter.trendingBinding.userAvatar.performLongClick()
+                }
+            }
+        }
+
         animePageAdapter.ready.observe(viewLifecycleOwner) { i ->
             if (i) {
                 model.getUpdated().observe(viewLifecycleOwner) {

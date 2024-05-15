@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -151,28 +152,6 @@ class HomeFragment : Fragment() {
                 "dialog"
             )
         }
-        binding.avatarFabulous.apply {
-            (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-            setDefaultFabulousPosition(false)
-            loadSavedPosition(resources.configuration)
-            setOnMoveListener(object : FABulous.OnViewMovedListener {
-                override fun onActionMove(x: Float, y: Float) {
-                    if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                        PrefManager.setVal(PrefName.FabulousVertX, x)
-                        PrefManager.setVal(PrefName.FabulousVertY, y)
-                    } else {
-                        PrefManager.setVal(PrefName.FabulousHorzX, x)
-                        PrefManager.setVal(PrefName.FabulousHorzY, y)
-                    }
-                }
-            })
-            setOnClickListener {
-                binding.homeUserAvatarContainer.performClick()
-            }
-            setOnLongClickListener {
-                binding.homeUserAvatarContainer.performLongClick()
-            }
-        }
         binding.homeUserAvatarContainer.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             ContextCompat.startActivity(
@@ -180,6 +159,31 @@ class HomeFragment : Fragment() {
                     .putExtra("userId", Anilist.userid), null
             )
             false
+        }
+        binding.avatarFabulous.apply {
+            isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
+            if (isVisible) {
+                (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+                setDefaultPosition(false)
+                loadSavedPosition(resources.configuration)
+                setOnMoveListener(object : FABulous.OnViewMovedListener {
+                    override fun onActionMove(x: Float, y: Float) {
+                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                            PrefManager.setVal(PrefName.FabulousVertX, x)
+                            PrefManager.setVal(PrefName.FabulousVertY, y)
+                        } else {
+                            PrefManager.setVal(PrefName.FabulousHorzX, x)
+                            PrefManager.setVal(PrefName.FabulousHorzY, y)
+                        }
+                    }
+                })
+                setOnClickListener {
+                    binding.homeUserAvatarContainer.performClick()
+                }
+                setOnLongClickListener {
+                    binding.homeUserAvatarContainer.performLongClick()
+                }
+            }
         }
 
         binding.homeContainer.padBottomOrRight(resources.configuration)
@@ -656,31 +660,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun FABulous.setDefaultFabulousPosition(reset: Boolean) {
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            val x = if (reset || PrefManager.getVal<Float>(PrefName.FabulousVertX) == -1f)
-                resources.displayMetrics.widthPixels - 98.toPx.toFloat()
-            else this.x
-            val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousVertY) == -1f)
-                20.toPx.toFloat() + statusBarHeight
-            else this.y
-            animate().x(x).y(y).setDuration(0).start()
-        } else {
-            val x = if (reset || PrefManager.getVal<Float>(PrefName.FabulousHorzX) == -1f)
-                resources.displayMetrics.widthPixels - 98.toPx.toFloat() - navBarHeight
-            else this.x
-            val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousHorzY) == -1f)
-                20.toPx.toFloat() + statusBarHeight
-            else this.y
-            animate().x(x).y(y).setDuration(0).start()
-        }
-
-    }
-
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.homeContainer.padBottomOrRight(newConfig)
-        binding.avatarFabulous.setDefaultFabulousPosition(false)
         portraitScaleLandStretch(newConfig)
     }
 }

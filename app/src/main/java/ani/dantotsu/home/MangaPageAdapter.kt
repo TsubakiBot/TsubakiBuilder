@@ -50,7 +50,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
     val ready = MutableLiveData(false)
     lateinit var binding: ItemMangaPageBinding
     private lateinit var bindingListContainer: ItemListContainerBinding
-    private lateinit var trendingBinding: LayoutTrendingBinding
+    lateinit var trendingBinding: LayoutTrendingBinding
     private var trendHandler: Handler? = null
     private lateinit var trendRun: Runnable
     var trendingViewPager: ViewPager2? = null
@@ -313,7 +313,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
     fun updateAvatar() {
         if (Anilist.avatar != null && ready.value == true) {
-            trendingBinding.userAvatar.loadImage(Anilist.avatar)
+            trendingBinding.userAvatar.loadImage(Anilist.avatar, 52.toPx)
             trendingBinding.userAvatar.imageTintList = null
         }
     }

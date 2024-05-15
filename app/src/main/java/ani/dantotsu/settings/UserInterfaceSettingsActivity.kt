@@ -74,7 +74,18 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         icon = R.drawable.ic_round_art_track_24,
                         pref = PrefName.SmallView
                     ),
-
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.floating_avatar),
+                        icon = R.drawable.ic_round_attractions_24,
+                        pref = PrefName.FloatingAvatar,
+                        onLongClick = {
+                            PrefManager.setVal(PrefName.FabulousVertX, -1)
+                            PrefManager.setVal(PrefName.FabulousVertY, -1)
+                            PrefManager.setVal(PrefName.FabulousHorzX, -1)
+                            PrefManager.setVal(PrefName.FabulousHorzY, -1)
+                        }
+                    ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.home_layout_show),

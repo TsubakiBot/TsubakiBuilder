@@ -43,4 +43,24 @@
             tools:ignore="ContentDescription" />
     </androidx.cardview.widget.CardView>
 
+    <ani.himitsu.widget.FABulous
+        android:id="@+id/avatarFabulous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.75"
+        android:backgroundTint="@color/transparent"
+        android:clickable="true"
+        android:contentDescription="@string/avatar"
+        android:focusable="true"
+        android:src="@drawable/ic_round_settings_24"
+        android:tint="@color/transparent"
+        app:backgroundTint="@color/transparent"
+        app:fabSize="mini"
+        app:layout_anchor="@+id/homeWrapper"
+        app:layout_anchorGravity="bottom|end"
+        app:maxImageSize="52dp"
+        app:tint="@color/transparent"
+        app:useCompatPadding="true"
+        tools:ignore="RelativeOverlap" />
+
 </FrameLayout>
