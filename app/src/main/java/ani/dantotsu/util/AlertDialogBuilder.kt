@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.View
 import ani.dantotsu.R
-import rx.functions.Cancellable
 
 @Suppress("unused")
 class AlertDialogBuilder(private val context: Context) {

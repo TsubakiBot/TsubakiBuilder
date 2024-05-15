@@ -1,7 +1,6 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
-import android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater

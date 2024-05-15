@@ -1,5 +1,6 @@
 package ani.dantotsu.media
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,10 @@ import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
+import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -38,9 +38,9 @@ class ReviewPopupActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.genreContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        binding.genreContainer.padBottomOrRight(resources.configuration)
+            .updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
-            bottomMargin += navBarHeight
         }
 
         binding.listTitle.setText(R.string.review_type)
@@ -73,5 +73,10 @@ class ReviewPopupActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.genreContainer.padBottomOrRight(newConfig)
     }
 }

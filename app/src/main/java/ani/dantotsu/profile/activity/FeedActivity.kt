@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -13,7 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
+import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.updateLayoutParams
@@ -34,13 +33,8 @@ class FeedActivity : AppCompatActivity() {
         navBar = binding.feedNavBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
-        binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            rightMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                navBarHeight
-            else 0
-            bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                0
-            else navBarHeight
+        binding.feedViewPager.padBottomOrRight(resources.configuration)
+            .updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
         }
         val personalTab = navBar.createTab(R.drawable.ic_round_person_32, getString(R.string.follow))
@@ -73,16 +67,7 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val params: ViewGroup.MarginLayoutParams =
-            binding.feedViewPager.layoutParams as ViewGroup.MarginLayoutParams
-        params.updateMargins(
-            right = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                navBarHeight
-            else 0,
-            bottom = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                0
-            else navBarHeight
-        )
+        binding.feedViewPager.padBottomOrRight(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }

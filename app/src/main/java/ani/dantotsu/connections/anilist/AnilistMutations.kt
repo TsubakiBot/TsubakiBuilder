@@ -4,9 +4,7 @@ import ani.dantotsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query
-import ani.dantotsu.currContext
 import com.google.gson.Gson
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 
 class AnilistMutations {

@@ -33,7 +33,6 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
-import ani.dantotsu.util.Logger
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import io.noties.markwon.editor.MarkwonEditor

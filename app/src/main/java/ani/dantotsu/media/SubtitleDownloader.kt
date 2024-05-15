@@ -1,14 +1,12 @@
 package ani.dantotsu.media
 
 import android.content.Context
-import androidx.core.util.toAndroidPair
 import androidx.media3.common.MimeTypes
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.parsers.SubtitleType
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import com.anggrayudi.storage.file.openOutputStream
 import eu.kanade.tachiyomi.network.NetworkHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

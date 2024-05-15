@@ -43,6 +43,7 @@ import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -178,14 +179,7 @@ class HomeFragment : Fragment() {
             false
         }
 
-        binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            rightMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                navBarHeight
-            else 0
-            bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                0
-            else navBarHeight
-        }
+        binding.homeContainer.padBottomOrRight(resources.configuration)
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
@@ -682,14 +676,7 @@ class HomeFragment : Fragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.homeContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            rightMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                navBarHeight
-            else 0
-            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                0
-            else navBarHeight
-        }
+        binding.homeContainer.padBottomOrRight(newConfig)
         binding.avatarFabulous.setDefaultFabulousPosition(false)
         portraitScaleLandStretch(newConfig)
     }

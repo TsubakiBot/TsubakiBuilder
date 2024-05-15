@@ -1,6 +1,5 @@
 package ani.dantotsu.media.manga
 
-import android.app.AlertDialog
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View

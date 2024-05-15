@@ -26,8 +26,8 @@ import ani.dantotsu.databinding.ItemProfileAppBarBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.profile.activity.FeedFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -37,8 +37,8 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
-import ani.dantotsu.view.dialog.ImageViewDialog
 import ani.dantotsu.util.MarkdownCreatorActivity
+import ani.dantotsu.view.dialog.ImageViewDialog
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -81,9 +81,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
             }
 
             withContext(Dispatchers.Main) {
-                binding.profileViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    bottomMargin = navBarHeight
-                }
+                binding.profileViewPager.padBottomOrRight(resources.configuration)
                 binding.profileViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle, user)
                 binding.profileViewPager.setOffscreenPageLimit(3)
@@ -283,6 +281,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        binding.profileViewPager.padBottomOrRight(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }

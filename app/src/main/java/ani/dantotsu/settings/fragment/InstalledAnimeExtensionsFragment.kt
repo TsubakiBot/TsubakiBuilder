@@ -45,7 +45,6 @@ import rx.android.schedulers.AndroidSchedulers
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.util.Collections
-import java.util.Locale
 
 
 class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
