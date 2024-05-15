@@ -1076,10 +1076,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         fun change(index: Int) {
             if (isInitialized) {
                 changingServer = false
-                PrefManager.setCustomVal(
-                    "${media.id}_${episodeArr[currentEpisodeIndex]}",
-                    exoPlayer.currentPosition
-                )
+                PrefManager.setCustomVal(getEpisodeNumber(), exoPlayer.currentPosition)
                 exoPlayer.seekTo(0)
                 val prev = episodeArr[currentEpisodeIndex]
                 isTimeStampsLoaded = false
@@ -1253,10 +1250,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         //Settings
         exoSettings.setOnClickListener {
-            PrefManager.setCustomVal(
-                "${media.id}_${media.anime!!.selectedEpisode}",
-                exoPlayer.currentPosition
-            )
+            PrefManager.setCustomVal(getEpisodeNumber(), exoPlayer.currentPosition)
             val intent = Intent(this, PlayerSettingsActivity::class.java).apply {
                 putExtra("subtitle", subtitle)
             }
@@ -1736,9 +1730,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         changingServer = true
 
         media.selected!!.server = null
-        PrefManager.setCustomVal(
-            "${media.id}_${media.anime!!.selectedEpisode}", exoPlayer.currentPosition
-        )
+        PrefManager.setCustomVal(getEpisodeNumber(), exoPlayer.currentPosition)
         model.saveSelected(media.id, media.selected!!)
         model.onEpisodeClick(
             media, episode.number, this.supportFragmentManager,
@@ -1755,7 +1747,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
             if (exoPlayer.currentPosition > 5000) {
                 PrefManager.setCustomVal(
-                    "${media.id}_${media.anime!!.selectedEpisode}",
+                    getEpisodeNumber(),
                     exoPlayer.currentPosition
                 )
             }
@@ -2073,9 +2065,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 ).minus(uriString)
                 PrefManager.setCustomVal(subtitlePref, subs)
                 userSubtitles.remove(userSubtitles.find { it.uri == Uri.parse(uriString) })
-                if (isInitialized) {
+                if (exoPlayer.currentPosition > 5000) {
                     PrefManager.setCustomVal(
-                        "${media.id}_${episode.number}",
+                        getEpisodeNumber(),
                         exoPlayer.currentPosition
                     )
                 }
@@ -2272,6 +2264,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun playerTeardown() {
+        if (isInitialized) {
+            PrefManager.setCustomVal(getEpisodeNumber(), exoPlayer.currentPosition)
+        }
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -2297,6 +2293,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     override fun onDestroy() {
         playerTeardown()
         super.onDestroy()
+    }
+
+    private fun getEpisodeNumber(): String {
+        return if (this::episode.isInitialized) {
+            "${media.id}_${episode.number}"
+        } else {
+            media.anime?.let { "${media.id}_${it.selectedEpisode}" }
+                ?: "${media.id}_${episodeArr[currentEpisodeIndex]}"
+        }
     }
 
     // Enter PiP Mode
@@ -2331,9 +2336,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             orientationListener?.enable()
         }
         if (lifecycle.currentState == Lifecycle.State.CREATED && !isInPictureInPictureMode) {
-            if (isInitialized) {
-                PrefManager.setCustomVal("${media.id}_${episode.number}", exoPlayer.currentPosition)
-            }
             playerTeardown()
         } else {
             if (wasPlaying) exoPlayer.play()
