@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -43,7 +42,6 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -651,13 +649,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
-        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            if (resources.displayMetrics.widthPixels > 520.toPx)
-                homeListContainerBinding.homeListContainer.layoutParams.width = 520.toPx
+        val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            -((180.toPx / (resources.displayMetrics.widthPixels - 32.toPx)) + 45).toFloat()
         } else {
-            homeListContainerBinding.homeListContainer.layoutParams.width =
-                LinearLayout.LayoutParams.MATCH_PARENT
+            -((140.toPx / (resources.displayMetrics.widthPixels - 48.toPx)) + 15).toFloat()
         }
+        homeListContainerBinding.homeAnimeList.rotation = angle
+        homeListContainerBinding.homeMangaList.rotation = angle
+        homeListContainerBinding.homeRandomAnime.rotation = angle
+        homeListContainerBinding.homeRandomManga.rotation = angle
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
