@@ -1,11 +1,9 @@
 package ani.dantotsu.connections.anilist
 
 import android.content.Context
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
@@ -16,7 +14,6 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.tryWithSuspend
-import ani.himitsu.update.MatagiUpdater
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -121,13 +118,10 @@ class AnilistHomeViewModel : ViewModel() {
         subscribedItems.postValue(subscribed)
     }
 
-    suspend fun loadMain(context: FragmentActivity) {
+    suspend fun loadMain() {
         Anilist.getSavedToken()
         MAL.getSavedToken()
         Discord.getSavedToken()
-        if (!BuildConfig.FLAVOR.contains("fdroid")) {
-            if (PrefManager.getVal(PrefName.CheckUpdate)) MatagiUpdater.check(context)
-        }
         val ret = Anilist.query.getGenresAndTags()
         withContext(Dispatchers.Main) {
             genres.value = ret

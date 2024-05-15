@@ -64,6 +64,7 @@ import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
+import ani.himitsu.update.MatagiUpdater
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -443,7 +444,7 @@ class MainActivity : AppCompatActivity() {
                 //Load Data
                 if (!load) {
                     scope.launch(Dispatchers.IO) {
-                        model.loadMain(this@MainActivity)
+                        model.loadMain()
                         val id = intent.extras?.getInt("mediaId", 0)
                         val isMAL = intent.extras?.getBoolean("mal") ?: false
                         val cont = intent.extras?.getBoolean("continue") ?: false
@@ -478,6 +479,13 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     load = true
+                }
+
+                scope.launch(Dispatchers.IO) {
+                    if (!BuildConfig.FLAVOR.contains("fdroid")) {
+                        if (PrefManager.getVal(PrefName.CheckUpdate))
+                            MatagiUpdater.check(this@MainActivity)
+                    }
                 }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

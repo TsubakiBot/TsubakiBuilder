@@ -665,7 +665,7 @@ class HomeFragment : Fragment() {
                 resources.displayMetrics.widthPixels - 98.toPx.toFloat()
             else this.x
             val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousVertY) == -1f)
-                20.toPx.toFloat()
+                20.toPx.toFloat() + statusBarHeight
             else this.y
             animate().x(x).y(y).setDuration(0).start()
         } else {
@@ -673,7 +673,7 @@ class HomeFragment : Fragment() {
                 resources.displayMetrics.widthPixels - 98.toPx.toFloat() - navBarHeight
             else this.x
             val y = if (reset || PrefManager.getVal<Float>(PrefName.FabulousHorzY) == -1f)
-                20.toPx.toFloat()
+                20.toPx.toFloat() + statusBarHeight
             else this.y
             animate().x(x).y(y).setDuration(0).start()
         }
