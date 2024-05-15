@@ -3,7 +3,6 @@ package ani.dantotsu
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
-import android.view.View
 import android.widget.ImageView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

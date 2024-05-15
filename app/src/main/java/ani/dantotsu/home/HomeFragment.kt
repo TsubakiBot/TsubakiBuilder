@@ -33,7 +33,6 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.databinding.HomeListContainerBinding
-import ani.dantotsu.databinding.ItemProfileAppBarBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
@@ -57,7 +56,9 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.himitsu.launcher.ResumableShortcuts
 import ani.himitsu.update.MatagiUpdater
+import ani.himitsu.widget.FABulous
 import ani.himitsu.widgets.resumable.ResumableWidget
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -95,7 +96,8 @@ class HomeFragment : Fragment() {
                 binding.homeUserName.text = Anilist.username
                 binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
                 binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
-                binding.homeUserAvatar.loadImage(Anilist.avatar)
+                binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
+                binding.avatarFabulous.loadImage(Anilist.avatar, 52.toPx)
                 val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
                     binding.homeUserBg
                 else
@@ -147,6 +149,19 @@ class HomeFragment : Fragment() {
                 (it.context as androidx.appcompat.app.AppCompatActivity).supportFragmentManager,
                 "dialog"
             )
+        }
+        binding.avatarFabulous.apply {
+            (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+            loadSavedPosition()
+            setOnMoveListener(object : FABulous.OnViewMovedListener {
+                override fun onActionMove(x: Float, y: Float) {
+                    PrefManager.setVal(PrefName.FabulousX, x)
+                    PrefManager.setVal(PrefName.FabulousY, y)
+                }
+            })
+        }
+        binding.avatarFabulous.setOnClickListener {
+            binding.homeUserAvatarContainer.performClick()
         }
         binding.homeUserAvatarContainer.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
