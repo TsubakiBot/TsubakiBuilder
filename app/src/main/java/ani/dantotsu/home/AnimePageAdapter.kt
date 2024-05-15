@@ -313,12 +313,14 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         }
     }
 
-    fun updateNotificationCount() {
+    fun updateNotificationCount(): Int? {
         if (this::binding.isInitialized) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            trendingBinding.notificationCount.isVisible = count > 0
+            // trendingBinding.notificationCount.isVisible = count > 0
             trendingBinding.notificationCount.text = count.toString()
+            return count
         }
+        return null
     }
 
     inner class AnimePageViewHolder(val binding: ItemAnimePageBinding) :

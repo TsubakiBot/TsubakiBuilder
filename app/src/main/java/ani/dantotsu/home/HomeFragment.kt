@@ -14,6 +14,7 @@ import android.view.animation.LayoutAnimationController
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -54,10 +55,12 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.dantotsu.toRoundImage
 import ani.himitsu.launcher.ResumableShortcuts
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import ani.himitsu.widgets.resumable.ResumableWidget
+import com.google.android.material.badge.ExperimentalBadgeUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -89,6 +92,7 @@ class HomeFragment : Fragment() {
 
     val model: AnilistHomeViewModel by activityViewModels()
 
+    @OptIn(ExperimentalBadgeUtils::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val scope = lifecycleScope
         fun load() {
@@ -97,7 +101,7 @@ class HomeFragment : Fragment() {
                 binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
                 binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
                 binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
-                binding.avatarFabulous.loadImage(Anilist.avatar, 52.toPx)
+                binding.avatarFabulous.toRoundImage(Anilist.avatar, 52.toPx)
                 val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
                     binding.homeUserBg
                 else
@@ -105,8 +109,9 @@ class HomeFragment : Fragment() {
                 banner.blurImage(Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
                 val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                binding.homeNotificationCount.isVisible = count > 0
+                // binding.homeNotificationCount.isVisible = count > 0
                 binding.homeNotificationCount.text = count.toString()
+                binding.avatarFabulous.setBadgeDrawable(count)
 
                 homeListContainerBinding.apply {
                     portraitScaleLandStretch(resources.configuration)

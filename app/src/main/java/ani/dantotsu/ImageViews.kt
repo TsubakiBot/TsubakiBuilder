@@ -2,15 +2,21 @@ package ani.dantotsu
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
+import androidx.core.view.drawToBitmap
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.util.BitmapUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import jp.wasabeef.glide.transformations.BlurTransformation
 import java.io.File
 
@@ -24,6 +30,18 @@ fun ImageView.loadImage(url: String?, size: Int = 0) {
 fun geUrlOrTrolled(url: String?): String {
     return if (PrefManager.getVal(PrefName.DisableMitM)) url ?: "" else
         PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { url ?: "" }
+}
+
+fun ImageView.toRoundImage(url: String?, size: Int) {
+    Glide.with(this.context).asBitmap().load(url).override(size)
+        .into(object : CustomTarget<Bitmap>(){
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                this@toRoundImage.setImageBitmap(BitmapUtil.circular(resource))
+            }
+            override fun onLoadCleared(placeholder: Drawable?) {
+
+            }
+        })
 }
 
 fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {

@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Shader
 import androidx.collection.LruCache
+import ani.dantotsu.toPx
 import ani.himitsu.io.Memory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -16,14 +17,26 @@ import java.net.URL
 import kotlin.math.min
 
 object BitmapUtil {
-    private fun roundCorners(bitmap: Bitmap, cornerRadius: Float = 20f): Bitmap {
+    private fun roundCorners(bitmap: Bitmap, cornerRadius: Int = 16): Bitmap {
         val output = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(output)
         val paint = Paint()
         paint.isAntiAlias = true
         paint.shader = BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
         val rect = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
-        canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
+        canvas.drawRoundRect(rect, cornerRadius.toPx.toFloat(), cornerRadius.toPx.toFloat(), paint)
+
+        return output
+    }
+
+    fun circular(bitmap: Bitmap): Bitmap {
+        val output = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
+        val paint = Paint()
+        paint.isAntiAlias = true
+        paint.shader = BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+        val rect = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
+        canvas.drawCircle(rect.centerX(), rect.centerY(), bitmap.width.toFloat() / 2, paint)
 
         return output
     }

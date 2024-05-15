@@ -34,7 +34,6 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -334,7 +333,9 @@ class AnimeFragment : Fragment() {
             binding.root.requestLayout()
         }
         if (this::animePageAdapter.isInitialized && _binding != null) {
-            animePageAdapter.updateNotificationCount()
+            animePageAdapter.updateNotificationCount()?.let {
+                binding.avatarFabulous.setBadgeDrawable(it)
+            }
         }
         super.onResume()
     }

@@ -31,7 +31,6 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.navBarHeight
-import ani.dantotsu.padBottomOrRight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -320,7 +319,9 @@ class MangaFragment : Fragment() {
             binding.root.requestLayout()
         }
         if (this::mangaPageAdapter.isInitialized && _binding != null) {
-            mangaPageAdapter.updateNotificationCount()
+            mangaPageAdapter.updateNotificationCount()?.let {
+                binding.avatarFabulous.setBadgeDrawable(it)
+            }
         }
         super.onResume()
     }
