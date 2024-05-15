@@ -36,6 +36,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.dantotsu.toRoundImage
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -170,7 +171,7 @@ class MangaFragment : Fragment() {
         binding.avatarFabulous.apply {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
             if (isVisible) {
-                loadImage(Anilist.avatar, 52.toPx)
+                toRoundImage(Anilist.avatar, 52.toPx)
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
                 setDefaultPosition()
                 loadSavedPosition(resources.configuration)
