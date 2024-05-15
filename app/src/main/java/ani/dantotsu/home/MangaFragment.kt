@@ -41,6 +41,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 class MangaFragment : Fragment() {
     private var _binding: FragmentAnimeBinding? = null
@@ -171,6 +172,7 @@ class MangaFragment : Fragment() {
                 model.getPopularManga().observe(viewLifecycleOwner) {
                     if (it != null) {
                         mangaPageAdapter.updateTrendingManga(MediaAdaptor(0, it, requireActivity()), it)
+                        mangaPageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
                     }
                 }
                 model.getPopularManhwa().observe(viewLifecycleOwner) {

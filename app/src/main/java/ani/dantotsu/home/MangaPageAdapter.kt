@@ -201,6 +201,10 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
 
     }
 
+    fun setReviewImageFromTrending(media: Media) {
+        bindingListContainer.reviewButtonImage.loadImage(media.cover)
+    }
+
     fun updateTrendingManga(adaptor: MediaAdaptor, media: MutableList<Media>) {
         binding.apply {
             init(

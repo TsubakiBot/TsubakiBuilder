@@ -182,6 +182,10 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         trendingViewPager!!.updateLayoutParams { height += statusBarHeight }
     }
 
+    fun setReviewImageFromTrending(media: Media) {
+        bindingListContainer.reviewButtonImage.loadImage(media.cover)
+    }
+
     fun updateTrending(adaptor: MediaAdaptor) {
         trendingBinding.trendingProgressBar.visibility = View.GONE
         trendingBinding.trendingViewPager.adapter = adaptor

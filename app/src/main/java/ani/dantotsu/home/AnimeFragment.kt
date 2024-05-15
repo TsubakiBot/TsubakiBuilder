@@ -42,6 +42,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.random.Random
 
 
 class AnimeFragment : Fragment() {
@@ -236,6 +237,7 @@ class AnimeFragment : Fragment() {
                                 )
                             )
                             animePageAdapter.updateAvatar()
+                            animePageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
                         }
                     }
                 }
