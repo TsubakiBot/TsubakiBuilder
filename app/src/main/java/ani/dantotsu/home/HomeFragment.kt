@@ -658,9 +658,9 @@ class HomeFragment : Fragment() {
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
         val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            (((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * -45).toFloat()
+            (((resources.displayMetrics.widthPixels - 32.toPx) / 200.toPx) + -45).toFloat()
         } else {
-            (((resources.displayMetrics.widthPixels - 48.toPx) / 100.toPx) * -15).toFloat()
+            (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
         }
         homeListContainerBinding.homeAnimeList.rotation = angle
         homeListContainerBinding.homeMangaList.rotation = angle

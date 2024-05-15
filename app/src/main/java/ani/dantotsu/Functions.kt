@@ -168,7 +168,7 @@ val Number.dpToColumns: Int
             with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     val bounds: Rect = currentWindowMetrics.bounds
-                    ((bounds.width() / (resources.configuration.densityDpi / 160)) + 0.5) / this@dpToColumns.toInt()
+                    bounds.width().toDp / this@dpToColumns.toInt()
                 } else @Suppress("deprecation") {
                     defaultDisplay.getRealMetrics(metrics)
                     metrics.widthPixels.toDp / this@dpToColumns.toInt()
