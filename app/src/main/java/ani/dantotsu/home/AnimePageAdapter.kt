@@ -42,6 +42,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.dantotsu.withRightMargin
 import ani.himitsu.update.MatagiUpdater
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
@@ -71,8 +72,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         val currentColor = textInputLayout.boxBackgroundColor
         val semiTransparentColor = (currentColor and 0x00FFFFFF) or 0xA8000000.toInt()
         textInputLayout.boxBackgroundColor = semiTransparentColor
-        val materialCardView =
-            holder.itemView.findViewById<MaterialCardView>(R.id.userAvatarContainer)
+        val materialCardView = holder.itemView.findViewById<MaterialCardView>(R.id.userAvatarContainer)
         materialCardView.setCardBackgroundColor(semiTransparentColor)
         val color = currContext().getThemeColor(android.R.attr.windowBackground)
 
@@ -86,6 +86,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
                 bottomMargin = (-108f).toPx
             }
         }
+        trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
 
         updateAvatar()
 

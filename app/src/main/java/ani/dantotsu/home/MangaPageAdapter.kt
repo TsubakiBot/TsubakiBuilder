@@ -41,6 +41,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import ani.dantotsu.withRightMargin
 import ani.himitsu.update.MatagiUpdater
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
@@ -85,6 +86,8 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 bottomMargin = (-108f).toPx
             }
         }
+
+        trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
 
         updateAvatar()
         val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate

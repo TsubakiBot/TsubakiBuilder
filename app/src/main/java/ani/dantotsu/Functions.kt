@@ -218,9 +218,13 @@ fun initActivity(a: Activity) {
     }
     if (immersiveMode) {
         if (navBarHeight == 0) {
-            ViewCompat.getRootWindowInsets(window.decorView.findViewById(android.R.id.content))
+            ViewCompat.getRootWindowInsets(window.decorView)
                 ?.apply {
-                    navBarHeight = this.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                    navBarHeight = if (a.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                        this.getInsets(WindowInsetsCompat.Type.navigationBars()).right
+                    else
+                        this.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) navBarHeight += 48.toPx
                 }
         }
@@ -240,10 +244,12 @@ fun initActivity(a: Activity) {
     } else
         if (statusBarHeight == 0) {
             val windowInsets =
-                ViewCompat.getRootWindowInsets(window.decorView.findViewById(android.R.id.content))
+                ViewCompat.getRootWindowInsets(window.decorView)
             if (windowInsets != null) {
                 statusBarHeight = windowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-                navBarHeight =
+                navBarHeight = if (a.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                    windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars()).right
+                else
                     windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) navBarHeight += 48.toPx
             }

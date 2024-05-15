@@ -43,7 +43,6 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
-import ani.dantotsu.withBottomMargin
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -56,6 +55,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
+import ani.dantotsu.withFlexibleMargin
 import ani.himitsu.launcher.ResumableShortcuts
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
@@ -190,7 +190,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.homeTopContainer.withBottomMargin(resources.configuration)
+        binding.homeTopContainer.withFlexibleMargin(resources.configuration)
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
@@ -659,8 +659,10 @@ class HomeFragment : Fragment() {
     private fun portraitScaleLandStretch(configuration: Configuration) {
         val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             (((resources.displayMetrics.widthPixels - 32.toPx) / 200.toPx) + -45).toFloat()
+            // (((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * -45).toFloat()
         } else {
             (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
+            // (((resources.displayMetrics.widthPixels - 48.toPx) / 100.toPx) * -15).toFloat()
         }
         homeListContainerBinding.homeAnimeList.rotation = angle
         homeListContainerBinding.homeMangaList.rotation = angle
@@ -670,7 +672,7 @@ class HomeFragment : Fragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.homeTopContainer.withBottomMargin(newConfig)
+        binding.homeTopContainer.withFlexibleMargin(newConfig)
         portraitScaleLandStretch(newConfig)
     }
 }
