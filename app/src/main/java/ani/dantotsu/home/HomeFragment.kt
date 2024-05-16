@@ -8,6 +8,8 @@ import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
 import android.os.Debug
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
@@ -176,14 +178,27 @@ class HomeFragment : Fragment() {
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
                 setDefaultPosition()
                 loadSavedPosition(resources.configuration)
+
+                val handler = Handler(Looper.getMainLooper())
+                val mRunnable = Runnable {
+                    if (isOverlapping(binding.homeUserAvatarContainer)) {
+                        setDefaultPosition(true)
+                    }
+                }
+
                 setOnMoveListener(object : FABulous.OnViewMovedListener {
                     override fun onActionMove(x: Float, y: Float) {
-                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            PrefManager.setVal(PrefName.FabulousVertX, x)
-                            PrefManager.setVal(PrefName.FabulousVertY, y)
+                        handler.removeCallbacksAndMessages(mRunnable)
+                        if (isOverlapping(binding.homeUserAvatarContainer)) {
+                            handler.postDelayed(mRunnable, 1000)
                         } else {
-                            PrefManager.setVal(PrefName.FabulousHorzX, x)
-                            PrefManager.setVal(PrefName.FabulousHorzY, y)
+                            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                                PrefManager.setVal(PrefName.FabulousVertX, x)
+                                PrefManager.setVal(PrefName.FabulousVertY, y)
+                            } else {
+                                PrefManager.setVal(PrefName.FabulousHorzX, x)
+                                PrefManager.setVal(PrefName.FabulousHorzY, y)
+                            }
                         }
                         setActiveNotificationCount()
                     }
@@ -193,8 +208,7 @@ class HomeFragment : Fragment() {
                     if (isOverlapping(binding.homeUserAvatarContainer)) {
                         binding.homeUserAvatarContainer.performLongClick()
                     } else {
-                        setDefaultPosition(true)
-                        true
+                        false
                     }
                 }
             }

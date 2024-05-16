@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -225,14 +227,27 @@ class AnimeFragment : Fragment() {
                                 Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
                             )
                         }
+
+                        val handler = Handler(Looper.getMainLooper())
+                        val mRunnable = Runnable {
+                            if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                                setDefaultPosition(true)
+                            }
+                        }
+
                         setOnMoveListener(object : FABulous.OnViewMovedListener {
                             override fun onActionMove(x: Float, y: Float) {
-                                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                                    PrefManager.setVal(PrefName.FabulousVertX, x)
-                                    PrefManager.setVal(PrefName.FabulousVertY, y)
+                                handler.removeCallbacksAndMessages(mRunnable)
+                                if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                                    handler.postDelayed(mRunnable, 1000)
                                 } else {
-                                    PrefManager.setVal(PrefName.FabulousHorzX, x)
-                                    PrefManager.setVal(PrefName.FabulousHorzY, y)
+                                    if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                                        PrefManager.setVal(PrefName.FabulousVertX, x)
+                                        PrefManager.setVal(PrefName.FabulousVertY, y)
+                                    } else {
+                                        PrefManager.setVal(PrefName.FabulousHorzX, x)
+                                        PrefManager.setVal(PrefName.FabulousHorzY, y)
+                                    }
                                 }
                                 setActiveNotificationCount()
                             }
@@ -246,8 +261,7 @@ class AnimeFragment : Fragment() {
                             if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
                                 animePageAdapter.trendingBinding.userAvatar.performLongClick()
                             } else {
-                                setDefaultPosition(true)
-                                true
+                                false
                             }
                         }
                     }
