@@ -190,6 +190,13 @@ class MangaFragment : Fragment() {
                         val mRunnable = Runnable {
                             if (isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
                                 setDefaultPosition(true)
+                                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                                    PrefManager.setVal(PrefName.FabulousVertX, x)
+                                    PrefManager.setVal(PrefName.FabulousVertY, y)
+                                } else {
+                                    PrefManager.setVal(PrefName.FabulousHorzX, x)
+                                    PrefManager.setVal(PrefName.FabulousHorzY, y)
+                                }
                             }
                         }
 

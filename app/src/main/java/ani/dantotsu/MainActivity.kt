@@ -449,10 +449,9 @@ class MainActivity : AppCompatActivity() {
                                 ), null)
                             }
                             1 -> {
-                                if (supportFragmentManager.findFragmentByTag("settings")?.isVisible == true) return
                                 SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME).show(
                                     supportFragmentManager,
-                                    "settings"
+                                    "dialog"
                                 )
                             }
                             2 -> {
