@@ -54,7 +54,7 @@ object SubtitleDownloader {
             SubtitleType.UNKNOWN
         }
     }
-    
+
     suspend fun downloadSubtitle(
         context: Context,
         url: String,
