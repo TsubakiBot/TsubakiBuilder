@@ -154,7 +154,7 @@
     <string name="server_enabled">Begin TorrServer</string>
     <string name="enable_server_temp">Wil jy dalk Tydelik TorrServer aktiveer (uitgeschakel met app-sluiting)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reposition Avatar</string>
+    <string name="reset_fabulous">Reset Avatar</string>
     <string name="anilist_settings">Anilis Instellings</string>
     <string name="extension_settings">Uitbreidings</string>
     <string name="downloads">Aflaaie</string>

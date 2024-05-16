@@ -154,7 +154,7 @@
     <string name="server_enabled">TorrServer indítása</string>
     <string name="enable_server_temp">Szeretné ideiglenesen engedélyezni a TorrServert (alkalmazás bezárásakor kikapcsolva)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reposition Avatar</string>
+    <string name="reset_fabulous">Reset Avatar</string>
     <string name="anilist_settings">Anilist Beállítások</string>
     <string name="extension_settings">Kiterjesztések</string>
     <string name="downloads">Letöltések</string>

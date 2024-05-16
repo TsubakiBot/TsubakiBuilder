@@ -187,10 +187,10 @@ class MangaFragment : Fragment() {
                     }
                 })
                 setOnClickListener {
-                    mangaPageAdapter.trendingBinding.userAvatar.performClick()
+
                 }
                 setOnLongClickListener {
-                    mangaPageAdapter.trendingBinding.userAvatar.performLongClick()
+                    true
                 }
             }
         }

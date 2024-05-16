@@ -154,7 +154,7 @@
     <string name="server_enabled">Starting TorrServer</string>
     <string name="enable_server_temp">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reposition Avatar</string>
+    <string name="reset_fabulous">Reset Avatar</string>
     <string name="anilist_settings">Anilist Settings</string>
     <string name="extension_settings">הרחבות</string>
     <string name="downloads">Downloads</string>

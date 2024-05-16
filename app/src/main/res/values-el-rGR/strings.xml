@@ -154,7 +154,7 @@
     <string name="server_enabled">Έναρξη TorrServer</string>
     <string name="enable_server_temp">Θέλετε να ενεργοποιήσετε προσωρινά το TorrServer (απενεργοποιημένο κατά το κλείσιμο της εφαρμογής)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reposition Avatar</string>
+    <string name="reset_fabulous">Reset Avatar</string>
     <string name="anilist_settings">Ρύθμισης Anilist</string>
     <string name="extension_settings">Επέκτασης</string>
     <string name="downloads">Λήψης</string>

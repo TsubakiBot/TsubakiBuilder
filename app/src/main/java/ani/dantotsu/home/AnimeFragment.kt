@@ -229,10 +229,10 @@ class AnimeFragment : Fragment() {
                     }
                 })
                 setOnClickListener {
-                    animePageAdapter.trendingBinding.userAvatar.performClick()
+
                 }
                 setOnLongClickListener {
-                    animePageAdapter.trendingBinding.userAvatar.performLongClick()
+                    true
                 }
             }
         }

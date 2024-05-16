@@ -4,10 +4,14 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
+import android.os.Debug
+import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LayoutAnimationController
@@ -15,7 +19,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.OptIn
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -26,6 +32,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.blurImage
@@ -55,8 +62,12 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
+import ani.dantotsu.util.BitmapUtil
+import ani.dantotsu.util.BitmapUtil.toSquare
+import ani.dantotsu.util.Logger
 import ani.dantotsu.withFlexibleMargin
 import ani.himitsu.launcher.ResumableShortcuts
+import ani.himitsu.os.Version
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import ani.himitsu.widgets.resumable.ResumableWidget
@@ -110,7 +121,7 @@ class HomeFragment : Fragment() {
                 binding.homeUserDataProgressBar.visibility = View.GONE
                 val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
                 binding.homeNotificationCount.isVisible =
-                    !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
+                    !binding.avatarFabulous.isVisible && count > 0
                 binding.homeNotificationCount.text = count.toString()
                 binding.avatarFabulous.setBadgeDrawable(count)
 
@@ -179,11 +190,12 @@ class HomeFragment : Fragment() {
                         }
                     }
                 })
-                setOnClickListener {
-                    binding.homeUserAvatarContainer.performClick()
-                }
                 setOnLongClickListener {
-                    binding.homeUserAvatarContainer.performLongClick()
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    hide()
+                    val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+                    binding.homeNotificationCount.isVisible = count > 0
+                    true
                 }
             }
         }
@@ -564,6 +576,53 @@ class HomeFragment : Fragment() {
             }
         }
 
+        model.getSubscriptions().observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty()) return@observe
+            val popup = if (Version.isLollipopMR)
+                PopupMenu(requireContext(), binding.avatarFabulous, Gravity.END, 0, R.style.MyPopup)
+            else
+                PopupMenu(requireContext(), binding.avatarFabulous)
+            try {
+                for (field in popup.javaClass.declaredFields) {
+                    if ("mPopup" == field.name) {
+                        field.isAccessible = true
+                        field[popup]?.let {
+                            val setForceIcons = Class.forName(it.javaClass.name)
+                                .getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                            setForceIcons.invoke(it, true)
+                        }
+                        break
+                    }
+                }
+            } catch (e: Exception) { Logger.log(e) }
+            model.getSubscriptions().value?.forEach {
+                val item = popup.menu.add(it.mainName())
+                item.setIcon(it.cover?.let { cover ->
+                    BitmapUtil.downloadImageAsBitmap(cover)?.let { bitmap ->
+                        if (Version.isOreo) {
+                            bitmap.toSquare().toDrawable(resources)
+                        } else {
+                            bitmap.toDrawable(resources)
+                        }
+                    }
+                })
+                item.setIntent(Intent(context, MainActivity::class.java).apply {
+                    action = "ani.dantotsu.shortcut.${it.id}"
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    putExtra("fromWidget", true)
+                    putExtra("mediaId", it.id)
+                    putExtra("continue", true)
+                })
+            }
+
+            binding.avatarFabulous.setOnClickListener {
+                popup.show()
+                popup.setOnMenuItemClickListener {
+                    true
+                }
+            }
+        }
+
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
 
         model.empty.observe(viewLifecycleOwner)
@@ -647,7 +706,7 @@ class HomeFragment : Fragment() {
         if (_binding != null) {
             val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
             binding.homeNotificationCount.isVisible =
-                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
+                !binding.avatarFabulous.isVisible && count > 0
             binding.homeNotificationCount.text = count.toString()
             binding.avatarFabulous.setBadgeDrawable(count)
         }
