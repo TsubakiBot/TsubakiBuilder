@@ -27,9 +27,7 @@ import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.anime.AnimeDownloaderService.AnimeDownloadTask.Companion.getTaskName
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
-import ani.dantotsu.media.SubtitleDownloader
 import ani.dantotsu.media.anime.AnimeWatchFragment
-import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.snackString
@@ -226,8 +224,9 @@ class AnimeDownloaderService : Service() {
                 ) ?: throw Exception("Failed to create output directory")
 
                 outputDir.findFile("${task.getTaskName()}.mkv")?.delete()
-                val outputFile = outputDir.createFile("video/x-matroska", "${task.getTaskName()}.mkv")
-                    ?: throw Exception("Failed to create output file")
+                val outputFile =
+                    outputDir.createFile("video/x-matroska", "${task.getTaskName()}.mkv")
+                        ?: throw Exception("Failed to create output file")
 
                 var percent = 0
                 var totalLength = 0.0
@@ -235,33 +234,30 @@ class AnimeDownloaderService : Service() {
                     this@AnimeDownloaderService,
                     outputFile.uri
                 )
-                val headersStringBuilder = StringBuilder()
-                task.video.file.headers.forEach {
-                    headersStringBuilder.append("\"${it.key}: ${it.value}\"\'\r\n\'")
+                if (!task.video.file.headers.containsKey("User-Agent")
+                    && !task.video.file.headers.containsKey("user-agent")
+                ) {
+                    val newHeaders = task.video.file.headers.toMutableMap()
+                    newHeaders["User-Agent"] = defaultHeaders["User-Agent"]!!
+                    task.video.file.headers = newHeaders
                 }
-                if (!task.video.file.headers.containsKey("User-Agent")) { //headers should never be empty now
-                    headersStringBuilder.append("\"").append("User-Agent: ")
-                        .append(defaultHeaders["User-Agent"]).append("\"\'\r\n\'")
-                }
-                val probeRequest =
-                    "-headers $headersStringBuilder -i \"${task.video.file.url}\" -show_entries format=duration -v quiet -of csv=\"p=0\""
+
                 ffExtension.executeFFProbe(
-                    probeRequest
+                    task.video.file.url,
+                    task.video.file.headers
                 ) {
                     if (it.toDoubleOrNull() != null) {
                         totalLength = it.toDouble()
                     }
                 }
-
-                val headers = headersStringBuilder.toString()
-                var request = "-headers $headers "
-                request += "-i \"${task.video.file.url}\" -c copy -map 0:v -map 0:a -map 0:s?" +
-                        " -f matroska -timeout 600 -reconnect 1" +
-                        " -reconnect_streamed 1 -allowed_extensions ALL " +
-                        "-tls_verify 0 $path -v trace"
-                Logger.log("Request: $request")
-                val sessionId  =
-                    ffExtension.executeFFMpeg(request) {
+                val ffTask =
+                    ffExtension.executeFFMpeg(
+                        task.video.file.url,
+                        path,
+                        task.video.file.headers,
+                        task.subtitle,
+                        task.audio,
+                    ) {
                         // CALLED WHEN SESSION GENERATES STATISTICS
                         val timeInMilliseconds = it
                         if (timeInMilliseconds > 0 && totalLength > 0) {
@@ -269,26 +265,15 @@ class AnimeDownloaderService : Service() {
                         }
                         Logger.log("Statistics: $it")
                     }
-                task.sessionId = sessionId
+                task.sessionId = ffTask
                 currentTasks.find { it.getTaskName() == task.getTaskName() }?.sessionId =
-                    sessionId
+                    ffTask
 
                 saveMediaInfo(task)
-                task.subtitle?.let {
-                    SubtitleDownloader.downloadSubtitle(
-                        this@AnimeDownloaderService,
-                        it.file.url,
-                        DownloadedType(
-                            task.title,
-                            task.episode,
-                            MediaType.ANIME,
-                        )
-                    )
-                }
 
                 // periodically check if the download is complete
-                while (ffExtension.getState(sessionId ) != "COMPLETED") {
-                    if (ffExtension.getState(sessionId ) == "FAILED") {
+                while (ffExtension.getState(ffTask) != "COMPLETED") {
+                    if (ffExtension.getState(ffTask) == "FAILED") {
                         Logger.log("Download failed")
                         builder.setContentText(
                             "${
@@ -300,7 +285,6 @@ class AnimeDownloaderService : Service() {
                         )
                         notificationManager.notify(NOTIFICATION_ID, builder.build())
                         toast("${getTaskName(task.title, task.episode)} Download failed")
-                        Logger.log("Download failed: ${ffExtension.getStackTrace(sessionId )}")
                         downloadsManager.removeDownload(
                             DownloadedType(
                                 task.title,
@@ -335,8 +319,8 @@ class AnimeDownloaderService : Service() {
                     }
                     kotlinx.coroutines.delay(2000)
                 }
-                if (ffExtension.getState(sessionId ) == "COMPLETED") {
-                    if (ffExtension.hadError(sessionId )) {
+                if (ffExtension.getState(ffTask) == "COMPLETED") {
+                    if (ffExtension.hadError(ffTask)) {
                         Logger.log("Download failed")
                         builder.setContentText(
                             "${
@@ -397,7 +381,7 @@ class AnimeDownloaderService : Service() {
 
             }
         } catch (e: Exception) {
-            if (e.message?.contains("Coroutine was cancelled") == false) { // wut
+            if (e.message?.contains("Coroutine was cancelled") == false) {  //wut
                 Logger.log("Exception while downloading file: ${e.message}")
                 snackString("Exception while downloading file: ${e.message}")
                 Logger.log(e)
@@ -557,7 +541,8 @@ class AnimeDownloaderService : Service() {
         val title: String,
         val episode: String,
         val video: Video,
-        val subtitle: Subtitle? = null,
+        val subtitle: List<Pair<String, String>> = emptyList(),
+        val audio: List<Pair<String, String>> = emptyList(),
         val sourceMedia: Media? = null,
         val episodeImage: String? = null,
         val retries: Int = 2,

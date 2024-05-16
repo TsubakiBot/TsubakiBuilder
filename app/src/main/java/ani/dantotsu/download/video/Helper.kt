@@ -48,7 +48,8 @@ object Helper {
         title: String,
         episode: String,
         video: Video,
-        subtitle: Subtitle? = null,
+        subtitle: List<Pair<String, String>> = emptyList(),
+        audio: List<Pair<String, String>> = emptyList(),
         sourceMedia: Media? = null,
         episodeImage: String? = null
     ) {
@@ -67,6 +68,7 @@ object Helper {
             episode,
             video,
             subtitle,
+            audio,
             sourceMedia,
             episodeImage
         )
@@ -173,6 +175,12 @@ object Helper {
                             }
                             Download.STATE_DOWNLOADING -> {
                                 Logger.log("Download Downloading")
+                            }
+                            Download.STATE_REMOVING -> {
+                                Logger.log("Download Removing")
+                            }
+                            Download.STATE_RESTARTING -> {
+                                Logger.log("Download Restarting")
                             }
                         }
                     }
