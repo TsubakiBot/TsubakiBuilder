@@ -53,7 +53,6 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.getSerialized
-import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -65,6 +64,7 @@ import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
+import ani.dantotsu.withFlexibleMargin
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
@@ -387,7 +387,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
         val hasComments = PrefManager.getVal<Boolean>(PrefName.CommentsOptIn)
         selected = media.selected!!.window
-        if (!hasComments && selected == 2) selected = 1
+        if (!hasComments && selected == 3) selected = 0
         binding.mediaTitle.translationX = -screenWidth
 
         val infoTab = navBar.createTab(R.drawable.ic_round_info_24, R.string.info, R.id.info)
@@ -398,8 +398,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         } else {
             navBar.createTab(R.drawable.ic_round_import_contacts_24, R.string.read, R.id.read)
         }
+        val reviewsTab = navBar.createTab(R.drawable.ic_round_rate_review_24, R.string.reviews, R.id.reviews)
         navBar.addTab(infoTab)
         navBar.addTab(watchTab)
+        navBar.addTab(reviewsTab)
         if (hasComments) {
             val commentTab =
                 navBar.createTab(R.drawable.ic_round_comment_24, R.string.comments, R.id.comment)
@@ -410,11 +412,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             model.continueMedia = PrefManager.getVal(PrefName.ContinueMedia)
             selected = 1
         }
-        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 2
+        if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 3
         if (viewPager.currentItem != selected) viewPager.post {
             viewPager.setCurrentItem(selected, false)
         }
-        binding.commentInputLayout.isVisible = (hasComments && selected == 2)
+        binding.commentInputLayout.isVisible = (hasComments && selected == 3)
         navBar.selectTabAt(selected)
         navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -424,7 +426,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 newTab: AnimatedBottomBar.Tab
             ) {
                 selected = newIndex
-                binding.commentInputLayout.isVisible = (hasComments && selected == 2)
+                binding.commentInputLayout.isVisible = (hasComments && selected == 3)
                 viewPager.setCurrentItem(selected, true)
                 val sel = model.loadSelected(media, isDownload)
                 sel.window = selected
@@ -617,7 +619,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
     ) :
         FragmentStateAdapter(fragmentManager, lifecycle) {
 
-        override fun getItemCount(): Int = 3
+        override fun getItemCount(): Int = 4
 
         override fun createFragment(position: Int): Fragment = when (position) {
             0 -> MediaInfoFragment()
@@ -634,6 +636,15 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             }
 
             2 -> {
+                val fragment = ReviewFragment()
+                val bundle = Bundle()
+                bundle.putInt("mediaId", media.id)
+                bundle.putString("title", media.mainName())
+                fragment.arguments = bundle
+                fragment
+            }
+
+            3 -> {
                 val fragment = CommentsFragment()
                 val bundle = Bundle()
                 bundle.putInt("mediaId", media.id)

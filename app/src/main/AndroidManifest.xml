@@ -229,11 +229,8 @@
         <activity
             android:name=".util.MarkdownCreatorActivity"/>
         <activity
-            android:name=".media.ReviewActivity"
-            android:parentActivityName=".media.MediaDetailsActivity" />
-        <activity
             android:name=".media.ReviewViewActivity"
-            android:parentActivityName=".media.ReviewActivity" />
+            android:parentActivityName=".media.MediaDetailsActivity" />
         <activity
             android:name=".media.SearchActivity"
             android:parentActivityName=".MainActivity" />

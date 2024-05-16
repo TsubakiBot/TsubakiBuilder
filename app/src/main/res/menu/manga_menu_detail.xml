@@ -13,6 +13,12 @@
         android:title="@string/read" />
 
     <item
+        android:id="@+id/reviews"
+        android:enabled="true"
+        android:icon="@drawable/ic_round_rate_review_24"
+        android:title="@string/reviews" />
+
+    <item
         android:id="@+id/comment"
         android:enabled="true"
         android:icon="@drawable/ic_round_comment_24"
