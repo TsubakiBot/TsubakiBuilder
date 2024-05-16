@@ -1134,6 +1134,5 @@
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
     <string name="open_rules">Open Rules</string>
-    <string name="i_understand">I understand</string>
     <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
 </resources>

@@ -4,16 +4,13 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
-import android.os.Debug
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LayoutAnimationController
@@ -53,7 +50,6 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
-import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
