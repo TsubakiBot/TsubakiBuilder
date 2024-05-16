@@ -80,7 +80,7 @@ class AnilistMutations {
     }
 
     suspend fun postActivity(text:String): String {
-        val encodedText = Gson().toJson(text)
+        val encodedText = text.stringSanitizer()
         val query = "mutation{SaveTextActivity(text:$encodedText){siteUrl}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
@@ -88,8 +88,8 @@ class AnilistMutations {
     }
 
     suspend fun postReview(summary: String, body: String, mediaId: Int, score: Int): String {
-        val encodedSummary = Gson().toJson(summary)
-        val encodedBody = Gson().toJson(body)
+        val encodedSummary = summary.stringSanitizer()
+        val encodedBody = body.stringSanitizer()
         val query = "mutation{SaveReview(mediaId:$mediaId,summary:$encodedSummary,body:$encodedBody,score:$score){siteUrl}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
@@ -97,10 +97,26 @@ class AnilistMutations {
     }
 
     suspend fun postReply(activityId: Int, text: String): String {
-        val encodedText = Gson().toJson(text)
+        val encodedText = text.stringSanitizer()
         val query = "mutation{SaveActivityReply(activityId:$activityId,text:$encodedText){id}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
         return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
+    }
+
+    private fun String.stringSanitizer(): String {
+        val sb = StringBuilder()
+        var i = 0
+        while (i < this.length) {
+            val codePoint = this.codePointAt(i)
+            if (codePoint > 0xFFFF) {
+                sb.append("&#").append(codePoint).append(";")
+                i += 2
+            } else {
+                sb.append(this[i])
+                i++
+            }
+        }
+        return Gson().toJson(sb.toString())
     }
 }
