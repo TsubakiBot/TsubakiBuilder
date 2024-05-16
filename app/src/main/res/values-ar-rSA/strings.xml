@@ -154,7 +154,7 @@
     <string name="server_enabled">بدء تشغيل تورسيرفر</string>
     <string name="enable_server_temp">هل ترغب في تمكين TorrServer مؤقتاً (معطل عند إغلاق التطبيق)؟</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Floating Avatar</string>
+    <string name="reset_fabulous">Reposition Avatar</string>
     <string name="anilist_settings">إعدادات Anilist</string>
     <string name="extension_settings">الإضافات</string>
     <string name="downloads">التحميلات</string>

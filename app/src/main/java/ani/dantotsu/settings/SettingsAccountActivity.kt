@@ -204,7 +204,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                     settingsImageSwitcher.setOnLongClickListener {
                         it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                         DiscordDialogFragment().show(supportFragmentManager, "dialog")
-                        true
+                        false
                     }
                 } else {
                     settingsImageSwitcher.visibility = View.GONE

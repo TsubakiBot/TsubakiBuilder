@@ -104,7 +104,7 @@ class ActivityItem(
                 userList(userList)
                 show(fragActivity.supportFragmentManager, "dialog")
             }
-            true
+            false
         }
         binding.activityLikeCount.text = (activity.likeCount ?: 0).toString()
         binding.activityLikeContainer.setOnClickListener {

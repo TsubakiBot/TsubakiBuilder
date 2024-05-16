@@ -131,7 +131,7 @@ class CommentItem(
             }
             commentText.setOnLongClickListener {
                 copyToClipboard(comment.content)
-                true
+                false
             }
 
             commentEdit.setOnClickListener {

@@ -77,7 +77,7 @@ class ImageViewDialog : BottomSheetDialogFragment() {
         binding.bottomImageReload.setOnLongClickListener {
             openLinkInBrowser(image.url)
             if (image2 != null) openLinkInBrowser(image2.url)
-            true
+            false
         }
         val context = requireContext()
 

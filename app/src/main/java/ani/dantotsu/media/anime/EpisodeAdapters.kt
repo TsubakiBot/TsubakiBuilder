@@ -132,7 +132,7 @@ class EpisodeAdapter(
                         binding.itemEpisodeViewed.visibility = View.GONE
                         binding.itemEpisodeCont.setOnLongClickListener {
                             updateProgress(media, ep.number)
-                            true
+                            false
                         }
                     }
                 } else {
@@ -176,7 +176,7 @@ class EpisodeAdapter(
                         binding.itemEpisodeViewed.visibility = View.GONE
                         binding.itemEpisodeCont.setOnLongClickListener {
                             updateProgress(media, ep.number)
-                            true
+                            false
                         }
                     }
                 } else {
@@ -204,7 +204,7 @@ class EpisodeAdapter(
                         binding.itemEpisodeViewedCover.visibility = View.GONE
                         binding.itemEpisodeCont.setOnLongClickListener {
                             updateProgress(media, ep.number)
-                            true
+                            false
                         }
                     }
                 }

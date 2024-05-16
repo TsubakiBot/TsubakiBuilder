@@ -1,5 +1,6 @@
 package ani.dantotsu.media
 
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -42,9 +43,10 @@ abstract class SourceAdapter(
             }
             var a = true
             itemView.setOnLongClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 a = !a
                 binding.itemCompactTitle.isSingleLine = a
-                true
+                false
             }
         }
     }

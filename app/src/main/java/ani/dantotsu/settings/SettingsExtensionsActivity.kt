@@ -112,7 +112,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         view.repositoryItem.setOnLongClickListener {
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             copyToClipboard(item, true)
-                            true
+                            false
                         }
                     }
                     repoInventory.isVisible = repoInventory.childCount > 0

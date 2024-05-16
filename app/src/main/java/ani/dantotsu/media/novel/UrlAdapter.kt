@@ -58,7 +58,7 @@ class UrlAdapter(
             itemView.setOnLongClickListener {
                 val file = urls[bindingAdapterPosition]
                 copyToClipboard(file.url, true)
-                true
+                false
             }
         }
     }

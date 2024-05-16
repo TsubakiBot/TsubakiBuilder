@@ -48,7 +48,7 @@ class ActivityReplyItem(
                 userList(userList)
                 show(fragActivity.supportFragmentManager, "dialog")
             }
-            true
+            false
         }
         binding.activityLikeContainer.setOnClickListener {
             val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())

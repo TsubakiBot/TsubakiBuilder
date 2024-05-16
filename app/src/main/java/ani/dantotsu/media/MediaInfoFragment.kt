@@ -264,7 +264,7 @@ class MediaInfoFragment : Fragment() {
                         chip.text = synonyms[position]
                         chip.setOnLongClickListener {
                             copyToClipboard(synonyms[position])
-                            true
+                            false
                         }
                         bind.itemChipGroup.addView(chip)
                     }
@@ -499,7 +499,10 @@ class MediaInfoFragment : Fragment() {
                                 null
                             )
                         }
-                        chip.setOnLongClickListener { copyToClipboard(media.tags[position]);true }
+                        chip.setOnLongClickListener {
+                            copyToClipboard(media.tags[position])
+                            false
+                        }
                         bind.itemChipGroup.addView(chip)
                     }
                     parent.addView(bind.root)

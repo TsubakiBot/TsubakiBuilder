@@ -220,12 +220,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
         binding.mediaTitle.setOnLongClickListener {
             copyToClipboard(media.userPreferredName)
-            true
+            false
         }
         binding.mediaTitleCollapse.text = media.userPreferredName
         binding.mediaTitleCollapse.setOnLongClickListener {
             copyToClipboard(media.userPreferredName)
-            true
+            false
         }
         binding.mediaStatus.text = media.status ?: ""
 
@@ -328,7 +328,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     true,
                 )
                 snackString(getString(R.string.auto_update_reset))
-                true
+                false
             }
         }
         progress()
@@ -351,7 +351,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
                 binding.mediaNotify.setOnLongClickListener {
                     openLinkInBrowser(media.shareLink)
-                    true
+                    false
                 }
                 binding.mediaCover.setOnClickListener {
                     openLinkInBrowser(media.shareLink)

@@ -154,7 +154,7 @@
     <string name="server_enabled">Запуск TorrServer</string>
     <string name="enable_server_temp">Вы хотите временно включить TorrServer (отключен при закрытии приложения)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Floating Avatar</string>
+    <string name="reset_fabulous">Reposition Avatar</string>
     <string name="anilist_settings">Настройки Anilist</string>
     <string name="extension_settings">Расширения</string>
     <string name="downloads">Загрузки</string>

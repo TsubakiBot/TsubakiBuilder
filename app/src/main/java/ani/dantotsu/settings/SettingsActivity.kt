@@ -206,7 +206,7 @@ class SettingsActivity : AppCompatActivity() {
                     lifecycleScope.launch(Dispatchers.IO) {
                         MatagiUpdater.check(this@SettingsActivity, true)
                     }
-                    true
+                    false
                 }
             }
 

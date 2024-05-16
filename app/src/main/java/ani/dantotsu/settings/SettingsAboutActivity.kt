@@ -2,6 +2,7 @@ package ani.dantotsu.settings
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -122,9 +123,10 @@ class SettingsAboutActivity : AppCompatActivity() {
                 text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
 
                 setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     copyToClipboard(SettingsActivity.getDeviceInfo(), false)
                     toast(getString(R.string.copied_device_info))
-                    return@setOnLongClickListener true
+                    return@setOnLongClickListener false
                 }
             }
         }

@@ -154,7 +154,7 @@
     <string name="server_enabled">Startar TorrServer</string>
     <string name="enable_server_temp">Vill du tillfälligt aktivera TorrServer (inaktiverat på appen nära)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Floating Avatar</string>
+    <string name="reset_fabulous">Reposition Avatar</string>
     <string name="anilist_settings">Anilist inställningar</string>
     <string name="extension_settings">Tillägg</string>
     <string name="downloads">Nedladdningar</string>

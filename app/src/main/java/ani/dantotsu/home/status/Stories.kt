@@ -458,7 +458,7 @@ class Stories @JvmOverloads constructor(
                 userList(userList)
                 show(context.supportFragmentManager, "dialog")
             }
-            true
+            false
         }
         binding.androidStoriesLoadingView.visibility = View.GONE
         timer.start()

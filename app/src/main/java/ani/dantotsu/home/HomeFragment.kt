@@ -149,9 +149,7 @@ class HomeFragment : Fragment() {
             }
         }
         binding.homeUserAvatarContainer.setSafeOnClickListener {
-            val dialogFragment =
-                SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME)
-            dialogFragment.show(
+            SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME).show(
                 (it.context as androidx.appcompat.app.AppCompatActivity).supportFragmentManager,
                 "dialog"
             )
@@ -466,7 +464,7 @@ class HomeFragment : Fragment() {
                 anchorView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     snackString(getString(R.string.no_hidden_items))
-                    true
+                    false
                 }
             } else {
                 recyclerView.adapter = MediaAdaptor(0, items, requireActivity())
@@ -479,7 +477,7 @@ class HomeFragment : Fragment() {
                 anchorView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     container.visibility = View.VISIBLE
-                    true
+                    false
                 }
                 moreButton.setSafeOnClickListener { _ ->
                     ContextCompat.startActivity(
@@ -493,7 +491,7 @@ class HomeFragment : Fragment() {
                 titleView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     container.visibility = View.GONE
-                    true
+                    false
                 }
             }
         }
