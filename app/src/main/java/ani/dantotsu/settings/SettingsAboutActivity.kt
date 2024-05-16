@@ -126,7 +126,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     copyToClipboard(SettingsActivity.getDeviceInfo(), false)
                     toast(getString(R.string.copied_device_info))
-                    return@setOnLongClickListener false
+                    return@setOnLongClickListener true
                 }
             }
         }

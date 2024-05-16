@@ -493,7 +493,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Requires Time Stamps to be Enabled</string>
     <string name="hide_skip_button">Make the skip time stamp button disappear after 5 seconds</string>
-    <string name="copied_to_clipboard">Copied to Clipboard</string>
     <string name="first_episode">This is the 1st Episode!</string>
     <string name="reset_auto_update">Long click \"List Editor\" button to reset Auto Update</string>
     <string name="autoplay_cancelled">Autoplay cancelled, no interaction for more than 1 Hour.</string>

@@ -300,7 +300,7 @@ class ExtensionsActivity : AppCompatActivity() {
                 view.repositoryItem.setOnLongClickListener {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     copyToClipboard(item, true)
-                    false
+                    true
                 }
             }
         }

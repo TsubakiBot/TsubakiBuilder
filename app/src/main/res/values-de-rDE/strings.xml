@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">OP / ED automatisch überspringen</string>
     <string name="requires_time_stamps_to_be_enabled">Erfordert, dass Zeitmarken aktiviert sind</string>
     <string name="hide_skip_button">Die Schaltfläche zum Überspringen des Zeitstempels sollte nach 5 Sekunden verschwinden</string>
-    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="first_episode">Dies ist die 1. Episode!</string>
     <string name="reset_auto_update">Sie können die Schaltfläche \"Listeneditor\" lange drücken, um den Auto-Update zurückzusetzen</string>
     <string name="autoplay_cancelled">Autoplay abgebrochen, keine Interaktion seit mehr als einer Stunde.</string>

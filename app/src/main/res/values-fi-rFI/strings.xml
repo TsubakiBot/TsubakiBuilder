@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Edellyttää aikaleimoja jotka on otettava käyttöön</string>
     <string name="hide_skip_button">Tee leimasinappi poistettavaksi 5 sekunnin kuluttua</string>
-    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
     <string name="first_episode">Tämä on ensimmäinen isodi!</string>
     <string name="reset_auto_update">Paina pitkään \"Listan muokkaus\" -painiketta nollataksesi automaattisen päivityksen</string>
     <string name="autoplay_cancelled">Automaattinen toisto peruutettu, ei vuorovaikutusta yli 1 tunti.</string>

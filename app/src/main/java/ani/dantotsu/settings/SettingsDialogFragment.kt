@@ -153,7 +153,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             if (PrefManager.getVal(PrefName.FloatingAvatar)) {
                 binding.settingsResetFabulous.isVisible = binding.settingsResetFabulous.isGone
             }
-            false
+            true
         }
 
         binding.settingsDownloads.isChecked = PrefManager.getVal(PrefName.OfflineMode)
@@ -214,7 +214,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.settingsExtensionSettings.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             binding.searchView.isVisible = binding.searchView.isGone
-            false
+            true
         }
 
         fun search(query: String) {

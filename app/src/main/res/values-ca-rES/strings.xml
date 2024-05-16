@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Salta automàticament OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Es requereix que els marcadors de temps estiguin habilitats</string>
     <string name="hide_skip_button">Fes desaparèixer el botó de salta marcador de temps després de 5 segons</string>
-    <string name="copied_to_clipboard">Copiat al porta-retalls</string>
     <string name="first_episode">Aquest és el 1r episodi!</string>
     <string name="reset_auto_update">Pulsa llargament el botó \"Editor de llista\" per restablir l\'actualització automàtica</string>
     <string name="autoplay_cancelled">Reproducció automàtica cancel·lada, cap interacció durant més de 1 hora.</string>

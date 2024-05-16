@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -227,6 +228,19 @@ class MediaInfoFragment : Fragment() {
                     }
                 }
 
+                binding.searchLayoutItem.apply {
+                    titleSearchImage.loadImage(media.banner ?: media.cover)
+                    titleSearchText.text =
+                        getString(R.string.search_title, media.mainName())
+                    titleSearchCard.setSafeOnClickListener {
+                        val query = Intent(requireContext(), SearchActivity::class.java)
+                            .putExtra("type", "ANIME")
+                            .putExtra("query", media.mainName())
+                            .putExtra("hideKeyboard", true)
+                        ContextCompat.startActivity(requireContext(), query, null)
+                    }
+                }
+
                 displayTimer(media, binding.mediaInfoContainer)
                 val parent = _binding?.mediaInfoContainer!!
                 val screenWidth = resources.displayMetrics.widthPixels
@@ -251,8 +265,9 @@ class MediaInfoFragment : Fragment() {
                         ).root
                         chip.text = synonyms[position]
                         chip.setOnLongClickListener {
+                            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             copyToClipboard(synonyms[position])
-                            false
+                            true
                         }
                         bind.itemChipGroup.addView(chip)
                     }
@@ -303,26 +318,6 @@ class MediaInfoFragment : Fragment() {
                             }
                         }
                         parent.addView(root)
-                    }
-
-                    ItemTitleSearchBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    ).apply {
-                        titleSearchImage.loadImage(media.banner ?: media.cover)
-                        titleSearchText.text =
-                            getString(R.string.search_title, media.mainName())
-                        titleSearchCard.setSafeOnClickListener {
-                            val query = Intent(requireContext(), SearchActivity::class.java)
-                                .putExtra("type", "ANIME")
-                                .putExtra("query", media.mainName())
-                                .putExtra("hideKeyboard", true)
-                            ContextCompat.startActivity(requireContext(), query, null)
-                        }
-                        parent.addView(root)
-                    }.root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                        bottomMargin += 8.toPx
                     }
                 }
 
@@ -488,8 +483,9 @@ class MediaInfoFragment : Fragment() {
                             )
                         }
                         chip.setOnLongClickListener {
+                            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             copyToClipboard(media.tags[position])
-                            false
+                            true
                         }
                         bind.itemChipGroup.addView(chip)
                     }

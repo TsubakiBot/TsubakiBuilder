@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">자동으로 오프닝/엔딩 건너뛰기</string>
     <string name="requires_time_stamps_to_be_enabled">시간 스탬프 활성화 필요</string>
     <string name="hide_skip_button">5초 후에 스킵 타임 스탬프 버튼 사라지게 하기</string>
-    <string name="copied_to_clipboard">클립보드에 복사됨</string>
     <string name="first_episode">이것은 1화입니다!</string>
     <string name="reset_auto_update">자동 업데이트를 재설정하려면 목록 편집 버튼을 길게 누르세요</string>
     <string name="autoplay_cancelled">자동 재생이 취소되었습니다. 1시간 이상 상호 작용이 없습니다.</string>

@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">تخطي تلقائي OP/ED</string>
     <string name="requires_time_stamps_to_be_enabled">يتطلب علامات الوقت ليتم تمكينه</string>
     <string name="hide_skip_button">جعل زر تخطي الوقت يختفي بعد 5 ثوان</string>
-    <string name="copied_to_clipboard">نسخ إلى الحافظة</string>
     <string name="first_episode">هذه هي الحلقة الأولي!</string>
     <string name="reset_auto_update">انقر مطولاً على زر \"قائمة المحرر\" لإعادة تعيين التحديث التلقائي</string>
     <string name="autoplay_cancelled">تم إلغاء التشغيل التلقائي، لا يوجد تفاعل لأكثر من ساعة واحدة.</string>

@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">অট’ নেপাৰি ওপেনিং / এণ্ডিং এডাল</string>
     <string name="requires_time_stamps_to_be_enabled">সময় চিহ্নসমূহ সক্ৰিয় কৰিবলৈ প্ৰয়োজনীয়</string>
     <string name="hide_skip_button">স্কিপ টাইম ষ্টাম্প বুটামটো 5 ছেকেণ্ডৰ পিছত নাইকিয়া কৰক</string>
-    <string name="copied_to_clipboard">ক্লিপব\'ৰ্ডলৈ কপি কৰা হৈছে</string>
     <string name="first_episode">এটা প্ৰথম এপিষদছৰ এপিস\'ড হ\'ল!</string>
     <string name="reset_auto_update">আপুনি অটো আপডেট পুনৰ নিৰ্ধাৰণ কৰিবলৈ লং ক্লিক কৰিব পাৰে লিস্ট এডিটৰ বুটামটো</string>
     <string name="autoplay_cancelled">অটোপ্লে বাতিল কৰা হৈছে, ১ ঘণ্টাত অধিক কোনো কাৰ্য্যকৰি নাই।</string>

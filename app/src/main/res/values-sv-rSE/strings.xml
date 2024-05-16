@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Kräver tidsstämplar för att aktiveras</string>
     <string name="hide_skip_button">Gör så att knappen för att hoppa över tidsstämpel försvinner efter 5 sekunder</string>
-    <string name="copied_to_clipboard">Kopierad till urklipp</string>
     <string name="first_episode">Detta är första avsnittet!</string>
     <string name="reset_auto_update">Långklicka på knappen \"Lista redigerare\" för att återställa automatisk uppdatering</string>
     <string name="autoplay_cancelled">Autoplay avbruten, ingen interaktion för mer än 1 timme.</string>

@@ -80,7 +80,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.setOnLongClickListener {
                     settings.onLongClick?.invoke()
-                    false
+                    true
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 b.settingsIconRight.isVisible = settings.hasTransition
@@ -106,7 +106,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.setOnLongClickListener {
                     settings.onLongClick?.invoke()
-                    false
+                    true
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 settings.attachToSwitch?.invoke(b)
@@ -131,7 +131,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.setOnLongClickListener {
                     settings.onLongClick?.invoke()
-                    false
+                    true
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 settings.attachToSlider?.invoke(b)

@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
                 requireContext(), Intent(requireContext(), ProfileActivity::class.java)
                     .putExtra("userId", Anilist.userid), null
             )
-            false
+            true
         }
         binding.avatarFabulous.apply {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
@@ -464,7 +464,7 @@ class HomeFragment : Fragment() {
                 anchorView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     snackString(getString(R.string.no_hidden_items))
-                    false
+                    true
                 }
             } else {
                 recyclerView.adapter = MediaAdaptor(0, items, requireActivity())
@@ -477,7 +477,7 @@ class HomeFragment : Fragment() {
                 anchorView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     container.visibility = View.VISIBLE
-                    false
+                    true
                 }
                 moreButton.setSafeOnClickListener { _ ->
                     ContextCompat.startActivity(
@@ -491,7 +491,7 @@ class HomeFragment : Fragment() {
                 titleView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     container.visibility = View.GONE
-                    false
+                    true
                 }
             }
         }
@@ -656,11 +656,9 @@ class HomeFragment : Fragment() {
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
         val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            (((resources.displayMetrics.widthPixels - 32.toPx) / 200.toPx) + -45).toFloat()
-            // (((resources.displayMetrics.widthPixels - 32.toPx) / 140.toPx) * -45).toFloat()
+            (((resources.displayMetrics.widthPixels - 32.toPx) / 190.toPx) + -45).toFloat()
         } else {
             (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
-            // (((resources.displayMetrics.widthPixels - 48.toPx) / 100.toPx) * -15).toFloat()
         }
         homeListContainerBinding.homeAnimeList.rotation = angle
         homeListContainerBinding.homeMangaList.rotation = angle

@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Outomatiese Oorslaan OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Vereis dat Tydmerke geaktiveer moet word</string>
     <string name="hide_skip_button">Laat die oorslaan tydmerkknoppie verdwyn na 5 sekondes</string>
-    <string name="copied_to_clipboard">Gekopieer na Klembord</string>
     <string name="first_episode">Dit is die 1ste Aflewering!</string>
     <string name="reset_auto_update">Lange druk op \"Lysredigeerder\" knoppie om Outomatiese Opdatering te herstel</string>
     <string name="autoplay_cancelled">Autoplay gekanselleer, geen interaksie vir meer as 1 Uur nie.</string>

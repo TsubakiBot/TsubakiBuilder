@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Automatikus Átugrás OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Az Időbélyegek Engedélyezve kell legyenek</string>
     <string name="hide_skip_button">A Szegmens Átugrás Gomb eltűntetése 5 másodperc után</string>
-    <string name="copied_to_clipboard">Másolva a Vágólapra</string>
     <string name="first_episode">Ez az 1. Epizód!</string>
     <string name="reset_auto_update">Hosszú kattintás az \"Lista Szerkesztő\" gombra az Automatikus Frissítés visszaállításához</string>
     <string name="autoplay_cancelled">Az Autoplay megszakadt, több mint 1 órája nem történt interakció.</string>

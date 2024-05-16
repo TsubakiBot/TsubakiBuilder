@@ -3,6 +3,7 @@ package ani.dantotsu.media.comments
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.PopupMenu
 import androidx.core.content.ContextCompat
@@ -130,8 +131,9 @@ class CommentItem(
                 )
             }
             commentText.setOnLongClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 copyToClipboard(comment.content)
-                false
+                true
             }
 
             commentEdit.setOnClickListener {

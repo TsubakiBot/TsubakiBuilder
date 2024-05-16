@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Tự động Bỏ qua OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Yêu cầu Bật Đánh dấu Thời gian</string>
     <string name="hide_skip_button">Làm cho nút bỏ qua thời gian biến mất sau 5 giây</string>
-    <string name="copied_to_clipboard">Đã sao chép vào Clipboard</string>
     <string name="first_episode">Đây là Tập 1!</string>
     <string name="reset_auto_update">Nhấn và giữ nút \"Trình chỉnh sửa Danh sách\" để đặt lại Cập nhật Tự động</string>
     <string name="autoplay_cancelled">Tự động phát bị hủy, không tương tác trong hơn 1 Giờ.</string>

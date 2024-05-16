@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Necesită timbre de timp pentru a fi activate</string>
     <string name="hide_skip_button">Faceți ca butonul de omitere a timpului de timbru să dispară după 5 secunde</string>
-    <string name="copied_to_clipboard">Copiat în clipboard</string>
     <string name="first_episode">Acesta este Episodul 1!</string>
     <string name="reset_auto_update">Apăsați lung pe butonul \"Lista Editor\" pentru a reseta actualizarea automată</string>
     <string name="autoplay_cancelled">Autoplay anulat, nici o interacţiune pentru mai mult de o oră.</string>

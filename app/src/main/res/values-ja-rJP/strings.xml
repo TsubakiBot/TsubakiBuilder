@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">有効にするにはタイムスタンプが必要です</string>
     <string name="hide_skip_button">スキップタイムスタンプボタンを5秒後に消えるようにする</string>
-    <string name="copied_to_clipboard">クリップボードにコピーしました</string>
     <string name="first_episode">これが第1回エピソードです!</string>
     <string name="reset_auto_update">「リストエディタ」ボタンを長押しして自動更新をリセットします</string>
     <string name="autoplay_cancelled">自動再生がキャンセルされました。1 時間以上の操作はありません。</string>

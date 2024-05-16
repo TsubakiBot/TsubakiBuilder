@@ -41,7 +41,7 @@ class UserStatusAdapter(private val user: ArrayList<User>) :
                     ).putExtra("userId", user[bindingAdapterPosition].id),
                     null
                 )
-                false
+                true
             }
         }
     }

@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">自动跳过OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">需要启用时间戳</string>
     <string name="hide_skip_button">5秒后跳过时间标记按钮消失。</string>
-    <string name="copied_to_clipboard">已复制到剪贴板</string>
     <string name="first_episode">这是第1集！</string>
     <string name="reset_auto_update">您可以长按列表编辑器按钮以重置自动更新</string>
     <string name="autoplay_cancelled">自动播放已取消，超过1小时没有交互。</string>

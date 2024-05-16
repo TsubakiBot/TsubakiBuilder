@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Krever tidsstempler for å bli aktivert</string>
     <string name="hide_skip_button">Gjør at «Hopp over tidsstempel»-knappen forsvinner etter 5 sekunder</string>
-    <string name="copied_to_clipboard">Kopiert til utklippstavlen</string>
     <string name="first_episode">Dette er den første Episoen!</string>
     <string name="reset_auto_update">Langt klikk \"List Editor\"-knappen for å nullstille Auto Oppdatering</string>
     <string name="autoplay_cancelled">Kjøring kanselert, ingen samhandling for mer enn 1 Hour.</string>

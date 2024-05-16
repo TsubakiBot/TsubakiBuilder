@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Richiede che i timbri siano abilitati</string>
     <string name="hide_skip_button">Fai sparire il pulsante timbro di salto dopo 5 secondi</string>
-    <string name="copied_to_clipboard">Copiato negli appunti</string>
     <string name="first_episode">Questo è il primo episodio!</string>
     <string name="reset_auto_update">Clicca a lungo sul pulsante \"Editor elenco\" per resettare l\'aggiornamento automatico</string>
     <string name="autoplay_cancelled">Autoplay annullato, nessuna interazione per più di 1 Ora.</string>

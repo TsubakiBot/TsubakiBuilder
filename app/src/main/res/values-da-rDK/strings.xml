@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Kræver tidsfrimærker for at være aktiveret</string>
     <string name="hide_skip_button">Få springe tidsstempel knappen til at forsvinde efter 5 sekunder</string>
-    <string name="copied_to_clipboard">Kopieret til udklipsholder</string>
     <string name="first_episode">Dette er den 1. Episode!</string>
     <string name="reset_auto_update">Langt klik på knappen \"List Editor\" for at nulstille automatisk opdatering</string>
     <string name="autoplay_cancelled">Autoplay annulleret, ingen interaktion for mere end 1 Hour.</string>

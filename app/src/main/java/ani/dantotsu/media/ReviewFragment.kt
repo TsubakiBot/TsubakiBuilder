@@ -57,9 +57,7 @@ class ReviewFragment : Fragment() {
         }
 
         mediaId = arguments?.getInt("mediaId", -1) ?: -1
-        if (mediaId == -1) {
-            return
-        }
+        if (mediaId == -1) return
 
         binding.listBack.visibility = View.GONE
         binding.followerGrid.visibility = View.GONE

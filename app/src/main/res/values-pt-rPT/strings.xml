@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Requer carimbos de Tempo para ser habilitado</string>
     <string name="hide_skip_button">Fazer o botão de saltar data e hora desaparecer após 5 segundos</string>
-    <string name="copied_to_clipboard">Copiado para o Clipboard</string>
     <string name="first_episode">Este é o primeiro episódio!</string>
     <string name="reset_auto_update">Toque longo no botão \"Editor de lista\" para reiniciar atualização automática</string>
     <string name="autoplay_cancelled">Reprodução automática cancelada, nenhuma interação para mais de 1 hora.</string>

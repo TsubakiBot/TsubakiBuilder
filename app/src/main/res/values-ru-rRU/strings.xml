@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Автоматически пропускать опенинг/эндинг</string>
     <string name="requires_time_stamps_to_be_enabled">Требует включения временных меток</string>
     <string name="hide_skip_button">Снять отметку времени пропуска через 5 секунд</string>
-    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="first_episode">Это первый эпизод!</string>
     <string name="reset_auto_update">Длительное нажатие на кнопку редактирования списка для сброса автоматического обновления</string>
     <string name="autoplay_cancelled">Автовоспроизведение отменено, не было взаимодействия более 1 часа.</string>

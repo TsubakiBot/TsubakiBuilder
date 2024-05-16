@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Otomatik OP / ED Atlama</string>
     <string name="requires_time_stamps_to_be_enabled">Zaman Damgalarının Etkinleştirilmesi Gerekiyor</string>
     <string name="hide_skip_button">Atla düğmesini 5 saniye sonra kaybet</string>
-    <string name="copied_to_clipboard">Panoya Kopyalandı</string>
     <string name="first_episode">Bu 1. Bölüm!</string>
     <string name="reset_auto_update">Otomatik Güncellemeyi sıfırlamak için \"Liste Düzenleyici\" düğmesine uzun basın</string>
     <string name="autoplay_cancelled">Otomatik oynatma iptal edildi, 1 saatten fazla etkileşim yok.</string>

@@ -9,6 +9,7 @@ import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
@@ -203,10 +204,11 @@ class SettingsActivity : AppCompatActivity() {
 
             if (!BuildConfig.FLAVOR.contains("fdroid")) {
                 binding.settingsLogo.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     lifecycleScope.launch(Dispatchers.IO) {
                         MatagiUpdater.check(this@SettingsActivity, true)
                     }
-                    false
+                    true
                 }
             }
 

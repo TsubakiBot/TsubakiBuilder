@@ -56,9 +56,9 @@ class UrlAdapter(
                 }
             }
             itemView.setOnLongClickListener {
-                val file = urls[bindingAdapterPosition]
-                copyToClipboard(file.url, true)
-                false
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                copyToClipboard(urls[bindingAdapterPosition].url, true)
+                true
             }
         }
     }

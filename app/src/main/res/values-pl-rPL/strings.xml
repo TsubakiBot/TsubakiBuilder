@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Wymaga znaczników czasu do włączenia</string>
     <string name="hide_skip_button">Przycisk odcisku znacznika czasu zniknie po 5 sekundach</string>
-    <string name="copied_to_clipboard">Skopiowano do schowka</string>
     <string name="first_episode">To jest pierwszy odcinek!</string>
     <string name="reset_auto_update">Przytrzymaj przycisk \"Edytor listy\", aby zresetować aktualizację automatyczną</string>
     <string name="autoplay_cancelled">Automatyczne odtwarzanie, brak interakcji dla więcej niż 1 domu.</string>

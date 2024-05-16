@@ -116,7 +116,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
                 Intent(view.context, ProfileActivity::class.java)
                     .putExtra("userId", Anilist.userid), null
             )
-            false
+            true
         }
 
         trendingBinding.searchBar.setEndIconOnClickListener {

@@ -319,7 +319,7 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             }
             holder.closeTextView.setOnLongClickListener {
                 onUninstallClicked(extension, true)
-                false
+                true
             }
 
             holder.searchImageView.setOnClickListener {

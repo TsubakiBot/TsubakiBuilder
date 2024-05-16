@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Vyžaduje časová razítka pro povolení</string>
     <string name="hide_skip_button">Zmizí po 5 sekundách tlačítko přeskočit časové razítko</string>
-    <string name="copied_to_clipboard">Zkopírováno do schránky</string>
     <string name="first_episode">To je první epizoda!</string>
     <string name="reset_auto_update">Dlouhým klepnutím na tlačítko \"Editor seznamů\" obnovíte automatické aktualizace</string>
     <string name="autoplay_cancelled">Automatické přehrávání zrušeno, žádná interakce netrvá déle než 1 hodinu.</string>

@@ -92,7 +92,7 @@ class CharacterDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChang
         }
         binding.characterShare.setOnLongClickListener {
             openLinkInBrowser(link)
-            false
+            true
         }
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {

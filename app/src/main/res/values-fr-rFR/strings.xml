@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Passer automatiquement les OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Nécessite l\'activation des horodatages</string>
     <string name="hide_skip_button">Faire disparaître le bouton de saut d\'horodatage après 5 secondes</string>
-    <string name="copied_to_clipboard">Copié dans le presse-papiers</string>
     <string name="first_episode">C\'est le 1er épisode !</string>
     <string name="reset_auto_update">Vous pouvez longuement cliquer sur le bouton d\'édition de liste pour réinitialiser la mise à jour automatique</string>
     <string name="autoplay_cancelled">Lecture automatique annulée, aucune interaction pendant plus d\'une heure.</string>

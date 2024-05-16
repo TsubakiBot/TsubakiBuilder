@@ -632,7 +632,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                     copyToClipboard(video.file.url, true)
                     dismiss()
                     startActivity(Intent.createChooser(intent, "Open Video in :"))
-                    false
+                    true
                 }
             }
         }

@@ -12,6 +12,7 @@ import android.os.Looper
 import android.text.SpannableStringBuilder
 import android.util.TypedValue
 import android.view.GestureDetector
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -219,13 +220,15 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             binding.mediaTitle.text = media.userPreferredName
         }
         binding.mediaTitle.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             copyToClipboard(media.userPreferredName)
-            false
+            true
         }
         binding.mediaTitleCollapse.text = media.userPreferredName
         binding.mediaTitleCollapse.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             copyToClipboard(media.userPreferredName)
-            false
+            true
         }
         binding.mediaStatus.text = media.status ?: ""
 
@@ -328,7 +331,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     true,
                 )
                 snackString(getString(R.string.auto_update_reset))
-                false
+                true
             }
         }
         progress()
@@ -351,7 +354,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
                 binding.mediaNotify.setOnLongClickListener {
                     openLinkInBrowser(media.shareLink)
-                    false
+                    true
                 }
                 binding.mediaCover.setOnClickListener {
                     openLinkInBrowser(media.shareLink)

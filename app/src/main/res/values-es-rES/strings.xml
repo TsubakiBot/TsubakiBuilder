@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Saltar automáticamente OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Requiere que se habiliten las marcas de tiempo</string>
     <string name="hide_skip_button">Hacer que el botón de salto de marca de tiempo desaparezca después de 5 segundos</string>
-    <string name="copied_to_clipboard">Copiado al portapapeles</string>
     <string name="first_episode">¡Este es el 1er episodio!</string>
     <string name="reset_auto_update">Clic largo en el  \"Editor de lista\" para restablecer la actualización automática</string>
     <string name="autoplay_cancelled">La reproducción automática se canceló, sin interacción durante más de 1 hora.</string>

@@ -282,7 +282,7 @@ class MangaChapterAdapter(
                                 media,
                                 MediaNameAdapter.findChapterNumber(ep.number).toString()
                             )
-                            false
+                            true
                         }
                     }
                 }
@@ -329,7 +329,7 @@ class MangaChapterAdapter(
                                 media,
                                 MediaNameAdapter.findChapterNumber(ep.number).toString()
                             )
-                            false
+                            true
                         }
                     }
                 } else {

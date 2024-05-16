@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Vereist tijd om in te schakelen</string>
     <string name="hide_skip_button">Laat de tijdstempel knop na 5 seconden verdwijnen</string>
-    <string name="copied_to_clipboard">Gekopieerd naar klembord</string>
     <string name="first_episode">Dit is de eerste aflevering!</string>
     <string name="reset_auto_update">Lang klikken op de \"Lijst Bewerker\" knop om automatisch bijwerken te resetten</string>
     <string name="autoplay_cancelled">Autoplay geannuleerd, geen interactie voor meer dan 1 Hour.</string>

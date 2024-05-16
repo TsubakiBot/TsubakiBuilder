@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Απαιτείται η ενεργοποίηση των χρονοσήμων</string>
     <string name="hide_skip_button">Εξαφανίζει το κουμπί χρονικής σφραγίδας παράλειψης μετά από 5 δευτερόλεπτα</string>
-    <string name="copied_to_clipboard">Αντιγράφηκε στο Πρόχειρο</string>
     <string name="first_episode">Αυτό είναι το 1ο επεισόδιο!</string>
     <string name="reset_auto_update">Κάντε παρατεταμένο κλικ στο κουμπί \"Επεξεργαστής λίστας\" για επαναφορά της αυτόματης ενημέρωσης</string>
     <string name="autoplay_cancelled">Η αυτόματη αναπαραγωγή ακυρώθηκε, καμία αλληλεπίδραση για περισσότερο από 1 ώρα.</string>

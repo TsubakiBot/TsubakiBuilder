@@ -46,7 +46,7 @@ abstract class SourceAdapter(
                 it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 a = !a
                 binding.itemCompactTitle.isSingleLine = a
-                false
+                true
             }
         }
     }

@@ -449,7 +449,6 @@
     <string name="auto_skip_op_ed">Auto Skip OP / ED</string>
     <string name="requires_time_stamps_to_be_enabled">Вимагає увімкнених позначок часу</string>
     <string name="hide_skip_button">Кнопка пропуску позначки зникне через 5 секунд</string>
-    <string name="copied_to_clipboard">Скопійовано до буфера обміну</string>
     <string name="first_episode">Це перший епізод!</string>
     <string name="reset_auto_update">Довгий тап на кнопку \"Редактор списку\", щоб скинути автооновлення</string>
     <string name="autoplay_cancelled">Автовідтворення скасовано, взаємодії не з більш, ніж 1 хурка.</string>
