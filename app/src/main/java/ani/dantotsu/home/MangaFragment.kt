@@ -204,7 +204,7 @@ class MangaFragment : Fragment() {
                             if (isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
                                 mangaPageAdapter.trendingBinding.userAvatar.performLongClick()
                             } else {
-                                hide()
+                                setDefaultPosition(true)
                                 true
                             }
                         }

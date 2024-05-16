@@ -154,7 +154,7 @@
     <string name="server_enabled">Запуск TorrServer</string>
     <string name="enable_server_temp">Бажаєте тимчасово ввімкнути TorrServer (вимкнуто через закриття додатка)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Avatar</string>
+    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Налаштування Anilist</string>
     <string name="extension_settings">Розширення</string>
     <string name="downloads">Завантажень</string>

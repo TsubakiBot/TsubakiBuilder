@@ -193,7 +193,7 @@ class HomeFragment : Fragment() {
                     if (isOverlapping(binding.homeUserAvatarContainer)) {
                         binding.homeUserAvatarContainer.performLongClick()
                     } else {
-                        hide()
+                        setDefaultPosition(true)
                         true
                     }
                 }

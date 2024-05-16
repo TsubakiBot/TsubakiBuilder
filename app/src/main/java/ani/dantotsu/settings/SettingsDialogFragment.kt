@@ -120,13 +120,8 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             incognitoNotification(requireContext())
         }
 
-        binding.settingsResetFabulous.setSafeOnClickListener {
-            PrefManager.setVal(PrefName.FabulousVertX, -1)
-            PrefManager.setVal(PrefName.FabulousVertY, -1)
-            PrefManager.setVal(PrefName.FabulousHorzX, -1)
-            PrefManager.setVal(PrefName.FabulousHorzY, -1)
+        binding.settingsHiddenOption.setSafeOnClickListener {
             dismiss()
-            requireActivity().recreate()
         }
 
         binding.settingsExtensionSettings.setSafeOnClickListener {
@@ -151,7 +146,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             if (PrefManager.getVal(PrefName.FloatingAvatar)) {
-                binding.settingsResetFabulous.isVisible = binding.settingsResetFabulous.isGone
+                binding.settingsHiddenOption.isVisible = binding.settingsHiddenOption.isGone
             }
             true
         }

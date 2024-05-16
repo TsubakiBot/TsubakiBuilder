@@ -246,7 +246,7 @@ class AnimeFragment : Fragment() {
                             if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
                                 animePageAdapter.trendingBinding.userAvatar.performLongClick()
                             } else {
-                                hide()
+                                setDefaultPosition(true)
                                 true
                             }
                         }

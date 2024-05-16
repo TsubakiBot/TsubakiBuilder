@@ -154,7 +154,7 @@
     <string name="server_enabled">Spouštění TorrServer</string>
     <string name="enable_server_temp">Chcete dočasně povolit TorrServer (zakázáno při uzavření aplikace)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Avatar</string>
+    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Nastavení Anilistu</string>
     <string name="extension_settings">Rozšíření</string>
     <string name="downloads">Stahování</string>

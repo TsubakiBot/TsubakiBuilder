@@ -154,7 +154,7 @@
     <string name="server_enabled">TorrServer 시작 중</string>
     <string name="enable_server_temp">일시적으로 TorrServer를 활성화 하시겠습니까 (앱 종료 시 비활성화됨)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="reset_fabulous">Reset Avatar</string>
+    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Anilist 설정</string>
     <string name="extension_settings">확장</string>
     <string name="downloads">다운로드</string>
