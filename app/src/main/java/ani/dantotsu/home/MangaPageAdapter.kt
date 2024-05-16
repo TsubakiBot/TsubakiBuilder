@@ -33,6 +33,7 @@ import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.ReviewPopupActivity
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.profile.ProfileActivity
+import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
@@ -47,7 +48,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import eu.kanade.tachiyomi.util.system.getThemeColor
 
-class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHolder>() {
+class MangaPageAdapter(val parent: MangaFragment): RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHolder>() {
     val ready = MutableLiveData(false)
     lateinit var binding: ItemMangaPageBinding
     private lateinit var bindingListContainer: ItemListContainerBinding
@@ -90,10 +91,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
 
         updateAvatar()
-        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        trendingBinding.notificationCount.isVisible =
-            !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
-        trendingBinding.notificationCount.text = count.toString()
+        parent.setActiveNotificationCount()
 
         trendingBinding.searchBar.hint = "MANGA"
         trendingBinding.searchBarText.setOnClickListener {
@@ -112,9 +110,7 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
         trendingBinding.userAvatar.setOnLongClickListener { view ->
             view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             ContextCompat.startActivity(
-                view.context,
-                Intent(view.context, ProfileActivity::class.java)
-                    .putExtra("userId", Anilist.userid), null
+                view.context, Intent(view.context, NotificationActivity::class.java), null
             )
             true
         }
@@ -321,17 +317,6 @@ class MangaPageAdapter : RecyclerView.Adapter<MangaPageAdapter.MangaPageViewHold
             trendingBinding.userAvatar.loadImage(Anilist.avatar, 52.toPx)
             trendingBinding.userAvatar.imageTintList = null
         }
-    }
-
-    fun updateNotificationCount(): Int? {
-        if (this::binding.isInitialized) {
-            val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            trendingBinding.notificationCount.isVisible =
-                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
-            trendingBinding.notificationCount.text = count.toString()
-            return count
-        }
-        return null
     }
 
     inner class MangaPageViewHolder(val binding: ItemMangaPageBinding) :

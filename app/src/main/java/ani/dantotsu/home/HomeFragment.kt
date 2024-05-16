@@ -42,6 +42,7 @@ import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.databinding.HomeListContainerBinding
 import ani.dantotsu.home.status.UserStatusAdapter
+import ani.dantotsu.isOverlapping
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
@@ -51,6 +52,7 @@ import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.profile.ProfileActivity
+import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
@@ -119,11 +121,7 @@ class HomeFragment : Fragment() {
                     binding.homeUserBgNoKen
                 banner.blurImage(Anilist.bg)
                 binding.homeUserDataProgressBar.visibility = View.GONE
-                val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                binding.homeNotificationCount.isVisible =
-                    !binding.avatarFabulous.isVisible && count > 0
-                binding.homeNotificationCount.text = count.toString()
-                binding.avatarFabulous.setBadgeDrawable(count)
+                setActiveNotificationCount()
 
                 homeListContainerBinding.apply {
                     portraitScaleLandStretch(resources.configuration)
@@ -168,8 +166,7 @@ class HomeFragment : Fragment() {
         binding.homeUserAvatarContainer.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             ContextCompat.startActivity(
-                requireContext(), Intent(requireContext(), ProfileActivity::class.java)
-                    .putExtra("userId", Anilist.userid), null
+                requireContext(), Intent(requireContext(), NotificationActivity::class.java), null
             )
             true
         }
@@ -188,14 +185,17 @@ class HomeFragment : Fragment() {
                             PrefManager.setVal(PrefName.FabulousHorzX, x)
                             PrefManager.setVal(PrefName.FabulousHorzY, y)
                         }
+                        setActiveNotificationCount()
                     }
                 })
                 setOnLongClickListener {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    hide()
-                    val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                    binding.homeNotificationCount.isVisible = count > 0
-                    true
+                    if (isOverlapping(binding.homeUserAvatarContainer)) {
+                        binding.homeUserAvatarContainer.performLongClick()
+                    } else {
+                        hide()
+                        true
+                    }
                 }
             }
         }
@@ -616,9 +616,14 @@ class HomeFragment : Fragment() {
             }
 
             binding.avatarFabulous.setOnClickListener {
-                popup.show()
-                popup.setOnMenuItemClickListener {
-                    true
+                if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
+                    binding.homeUserAvatarContainer.performClick()
+                } else {
+                    popup.show()
+                    popup.setOnMenuItemClickListener { item ->
+                        item.intent?.let { intent -> startActivity(intent) }
+                        true
+                    }
                 }
             }
         }
@@ -701,14 +706,22 @@ class HomeFragment : Fragment() {
         }
     }
 
+    fun setActiveNotificationCount() {
+        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+        if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
+            binding.homeNotificationCount.isVisible = false
+            binding.avatarFabulous.setBadgeDrawable(count)
+        } else {
+            binding.homeNotificationCount.text = count.toString()
+            binding.homeNotificationCount.isVisible = count > 0
+            binding.avatarFabulous.setBadgeDrawable(null)
+        }
+    }
+
     override fun onResume() {
         if (!model.loaded) Refresh.activity[1]!!.postValue(true)
         if (_binding != null) {
-            val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            binding.homeNotificationCount.isVisible =
-                !binding.avatarFabulous.isVisible && count > 0
-            binding.homeNotificationCount.text = count.toString()
-            binding.avatarFabulous.setBadgeDrawable(count)
+            setActiveNotificationCount()
         }
         super.onResume()
     }

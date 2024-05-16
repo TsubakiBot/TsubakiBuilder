@@ -34,6 +34,7 @@ import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.ReviewPopupActivity
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.profile.ProfileActivity
+import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
@@ -48,7 +49,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import eu.kanade.tachiyomi.util.system.getThemeColor
 
-class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHolder>() {
+class AnimePageAdapter(val parent: AnimeFragment) : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHolder>() {
     val ready = MutableLiveData(false)
     lateinit var binding: ItemAnimePageBinding
     private lateinit var bindingListContainer: ItemListContainerBinding
@@ -89,6 +90,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
 
         updateAvatar()
+        parent.setActiveNotificationCount()
 
         trendingBinding.searchBar.hint = "ANIME"
         trendingBinding.searchBarText.setOnClickListener {
@@ -107,9 +109,7 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         trendingBinding.userAvatar.setOnLongClickListener { view ->
             view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             ContextCompat.startActivity(
-                view.context,
-                Intent(view.context, ProfileActivity::class.java)
-                    .putExtra("userId", Anilist.userid), null
+                view.context, Intent(view.context, NotificationActivity::class.java), null
             )
             true
         }
@@ -117,11 +117,6 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
         trendingBinding.searchBar.setEndIconOnClickListener {
             trendingBinding.searchBar.performClick()
         }
-
-        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-        trendingBinding.notificationCount.isVisible =
-            !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
-        trendingBinding.notificationCount.text = count.toString()
 
         listOf(
             binding.animePreviousSeason,
@@ -313,17 +308,6 @@ class AnimePageAdapter : RecyclerView.Adapter<AnimePageAdapter.AnimePageViewHold
             trendingBinding.userAvatar.loadImage(Anilist.avatar, 52.toPx)
             trendingBinding.userAvatar.imageTintList = null
         }
-    }
-
-    fun updateNotificationCount(): Int? {
-        if (this::binding.isInitialized) {
-            val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-            trendingBinding.notificationCount.isVisible =
-                !PrefManager.getVal<Boolean>(PrefName.FloatingAvatar) && count > 0
-            trendingBinding.notificationCount.text = count.toString()
-            return count
-        }
-        return null
     }
 
     inner class AnimePageViewHolder(val binding: ItemAnimePageBinding) :

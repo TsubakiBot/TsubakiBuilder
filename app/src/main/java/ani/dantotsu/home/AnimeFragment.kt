@@ -28,6 +28,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistAnimeViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.FragmentAnimeBinding
+import ani.dantotsu.isOverlapping
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaAdaptor
@@ -102,7 +103,7 @@ class AnimeFragment : Fragment() {
         // TODO: Investigate hardcoded values
         binding.animePageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160.toPx)
 
-        animePageAdapter = AnimePageAdapter()
+        animePageAdapter = AnimePageAdapter(this)
 
         var loading = true
         if (model.notSet) {
@@ -210,38 +211,47 @@ class AnimeFragment : Fragment() {
             }
         })
 
-        binding.avatarFabulous.apply {
-            isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
-            if (isVisible) {
-                toRoundImage(Anilist.avatar, 52.toPx)
-                (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                setDefaultPosition()
-                loadSavedPosition(resources.configuration)
-                setOnMoveListener(object : FABulous.OnViewMovedListener {
-                    override fun onActionMove(x: Float, y: Float) {
-                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            PrefManager.setVal(PrefName.FabulousVertX, x)
-                            PrefManager.setVal(PrefName.FabulousVertY, y)
-                        } else {
-                            PrefManager.setVal(PrefName.FabulousHorzX, x)
-                            PrefManager.setVal(PrefName.FabulousHorzY, y)
-                        }
-                    }
-                })
-                setOnClickListener {
-
-                }
-                setOnLongClickListener {
-                    true
-                }
-            }
-        }
-
         animePageAdapter.ready.observe(viewLifecycleOwner) { i ->
             if (i) {
-                binding.avatarFabulous.setBadgeDrawable(
-                    Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                )
+                binding.avatarFabulous.apply {
+                    isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
+                    if (isVisible) {
+                        toRoundImage(Anilist.avatar, 52.toPx)
+                        (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+                        setDefaultPosition()
+                        loadSavedPosition(resources.configuration)
+                        if (binding.avatarFabulous.isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                            setBadgeDrawable(
+                                Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+                            )
+                        }
+                        setOnMoveListener(object : FABulous.OnViewMovedListener {
+                            override fun onActionMove(x: Float, y: Float) {
+                                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                                    PrefManager.setVal(PrefName.FabulousVertX, x)
+                                    PrefManager.setVal(PrefName.FabulousVertY, y)
+                                } else {
+                                    PrefManager.setVal(PrefName.FabulousHorzX, x)
+                                    PrefManager.setVal(PrefName.FabulousHorzY, y)
+                                }
+                                setActiveNotificationCount()
+                            }
+                        })
+                        setOnClickListener {
+                            if (binding.avatarFabulous.isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                                animePageAdapter.trendingBinding.userAvatar.performClick()
+                            }
+                        }
+                        setOnLongClickListener {
+                            if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                                animePageAdapter.trendingBinding.userAvatar.performLongClick()
+                            } else {
+                                hide()
+                                true
+                            }
+                        }
+                    }
+                }
                 model.getUpdated().observe(viewLifecycleOwner) {
                     if (it != null) {
                         animePageAdapter.updateRecent(MediaAdaptor(0, it, requireActivity()), it)
@@ -331,6 +341,18 @@ class AnimeFragment : Fragment() {
         }
     }
 
+    fun setActiveNotificationCount() {
+        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+        if (binding.avatarFabulous.isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+            animePageAdapter.trendingBinding.notificationCount.isVisible = false
+            binding.avatarFabulous.setBadgeDrawable(count)
+        } else {
+            animePageAdapter.trendingBinding.notificationCount.text = count.toString()
+            animePageAdapter.trendingBinding.notificationCount.isVisible = count > 0
+            binding.avatarFabulous.setBadgeDrawable(null)
+        }
+    }
+
     override fun onResume() {
         if (!model.loaded) Refresh.activity[this.hashCode()]!!.postValue(true)
         if (animePageAdapter.trendingViewPager != null) {
@@ -338,9 +360,7 @@ class AnimeFragment : Fragment() {
             binding.root.requestLayout()
         }
         if (this::animePageAdapter.isInitialized && _binding != null) {
-            animePageAdapter.updateNotificationCount()?.let {
-                binding.avatarFabulous.setBadgeDrawable(it)
-            }
+            setActiveNotificationCount()
         }
         super.onResume()
     }

@@ -26,6 +26,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistMangaViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.FragmentAnimeBinding
+import ani.dantotsu.isOverlapping
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaAdaptor
@@ -97,7 +98,7 @@ class MangaFragment : Fragment() {
         // TODO: Investigate hardcoded values
         binding.animePageRecyclerView.updatePaddingRelative(bottom = navBarHeight + 160.toPx)
 
-        mangaPageAdapter = MangaPageAdapter()
+        mangaPageAdapter = MangaPageAdapter(this)
         var loading = true
         if (model.notSet) {
             model.notSet = false
@@ -168,38 +169,47 @@ class MangaFragment : Fragment() {
             }
         })
 
-        binding.avatarFabulous.apply {
-            isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
-            if (isVisible) {
-                toRoundImage(Anilist.avatar, 52.toPx)
-                (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                setDefaultPosition()
-                loadSavedPosition(resources.configuration)
-                setOnMoveListener(object : FABulous.OnViewMovedListener {
-                    override fun onActionMove(x: Float, y: Float) {
-                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            PrefManager.setVal(PrefName.FabulousVertX, x)
-                            PrefManager.setVal(PrefName.FabulousVertY, y)
-                        } else {
-                            PrefManager.setVal(PrefName.FabulousHorzX, x)
-                            PrefManager.setVal(PrefName.FabulousHorzY, y)
-                        }
-                    }
-                })
-                setOnClickListener {
-
-                }
-                setOnLongClickListener {
-                    true
-                }
-            }
-        }
-
         mangaPageAdapter.ready.observe(viewLifecycleOwner) { i ->
             if (i == true) {
-                binding.avatarFabulous.setBadgeDrawable(
-                    Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
-                )
+                binding.avatarFabulous.apply {
+                    isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
+                    if (isVisible) {
+                        toRoundImage(Anilist.avatar, 52.toPx)
+                        (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
+                        setDefaultPosition()
+                        loadSavedPosition(resources.configuration)
+                        if (binding.avatarFabulous.isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
+                            setBadgeDrawable(
+                                Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+                            )
+                        }
+                        setOnMoveListener(object : FABulous.OnViewMovedListener {
+                            override fun onActionMove(x: Float, y: Float) {
+                                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                                    PrefManager.setVal(PrefName.FabulousVertX, x)
+                                    PrefManager.setVal(PrefName.FabulousVertY, y)
+                                } else {
+                                    PrefManager.setVal(PrefName.FabulousHorzX, x)
+                                    PrefManager.setVal(PrefName.FabulousHorzY, y)
+                                }
+                                setActiveNotificationCount()
+                            }
+                        })
+                        setOnClickListener {
+                            if (binding.avatarFabulous.isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
+                                mangaPageAdapter.trendingBinding.userAvatar.performClick()
+                            }
+                        }
+                        setOnLongClickListener {
+                            if (isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
+                                mangaPageAdapter.trendingBinding.userAvatar.performLongClick()
+                            } else {
+                                hide()
+                                true
+                            }
+                        }
+                    }
+                }
                 model.getPopularNovel().observe(viewLifecycleOwner) {
                     if (it != null) {
                         mangaPageAdapter.updateNovel(MediaAdaptor(0, it, requireActivity()), it)
@@ -316,6 +326,18 @@ class MangaFragment : Fragment() {
         }
     }
 
+    fun setActiveNotificationCount() {
+        val count = Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
+        if (binding.avatarFabulous.isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
+            mangaPageAdapter.trendingBinding.notificationCount.isVisible = false
+            binding.avatarFabulous.setBadgeDrawable(count)
+        } else {
+            mangaPageAdapter.trendingBinding.notificationCount.isVisible = count > 0
+            mangaPageAdapter.trendingBinding.notificationCount.text = count.toString()
+            binding.avatarFabulous.setBadgeDrawable(null)
+        }
+    }
+
     override fun onResume() {
         if (!model.loaded) Refresh.activity[this.hashCode()]!!.postValue(true)
         //make sure mangaPageAdapter is initialized
@@ -324,9 +346,7 @@ class MangaFragment : Fragment() {
             binding.root.requestLayout()
         }
         if (this::mangaPageAdapter.isInitialized && _binding != null) {
-            mangaPageAdapter.updateNotificationCount()?.let {
-                binding.avatarFabulous.setBadgeDrawable(it)
-            }
+            setActiveNotificationCount()
         }
         super.onResume()
     }
