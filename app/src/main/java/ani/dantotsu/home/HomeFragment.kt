@@ -586,18 +586,18 @@ class HomeFragment : Fragment() {
                 for (field in popup.javaClass.declaredFields) {
                     if ("mPopup" == field.name) {
                         field.isAccessible = true
-                        field[popup]?.let {
-                            val setForceIcons = Class.forName(it.javaClass.name)
+                        field[popup]?.let { type ->
+                            val setForceIcons = Class.forName(type.javaClass.name)
                                 .getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
-                            setForceIcons.invoke(it, true)
+                            setForceIcons.invoke(type, true)
                         }
                         break
                     }
                 }
             } catch (e: Exception) { Logger.log(e) }
-            model.getSubscriptions().value?.forEach {
-                val item = popup.menu.add(it.mainName())
-                item.setIcon(it.cover?.let { cover ->
+            model.getSubscriptions().value?.forEach { media ->
+                val item = popup.menu.add(media.mainName())
+                item.setIcon(media.cover?.let { cover ->
                     BitmapUtil.downloadImageAsBitmap(cover)?.let { bitmap ->
                         if (Version.isOreo) {
                             bitmap.toSquare().toDrawable(resources)
@@ -607,10 +607,10 @@ class HomeFragment : Fragment() {
                     }
                 })
                 item.setIntent(Intent(context, MainActivity::class.java).apply {
-                    action = "ani.dantotsu.shortcut.${it.id}"
+                    action = "ani.dantotsu.shortcut.${media.id}"
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     putExtra("fromWidget", true)
-                    putExtra("mediaId", it.id)
+                    putExtra("mediaId", media.id)
                     putExtra("continue", true)
                 })
             }
