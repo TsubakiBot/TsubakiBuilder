@@ -15,7 +15,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateInterpolator
@@ -51,6 +50,7 @@ import ani.dantotsu.home.LoginFragment
 import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.media.MediaDetailsActivity
+import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
@@ -91,6 +91,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
+    private var hasConfirmedSession = false
+    private var hasCompletedLoading = -1
+
     @SuppressLint("InternalInsetResource", "DiscouragedApi")
     @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,7 +129,6 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     when (errorCode) {
-
                         BiometricPrompt.ERROR_HW_NOT_PRESENT,
                         BiometricPrompt.ERROR_HW_UNAVAILABLE,
                         BiometricPrompt.ERROR_NO_BIOMETRICS,
@@ -154,6 +156,7 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.biometric_success),
                         Toast.LENGTH_SHORT
                     ).show()
+                    hasConfirmedSession = true
                     binding.biometricShield.visibility = View.GONE
                 }
 
@@ -168,7 +171,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        if (PrefManager.getVal(PrefName.SecureLock)) {
+        if (!hasConfirmedSession && PrefManager.getVal(PrefName.SecureLock)) {
             binding.biometricShield.visibility = View.VISIBLE
             biometricPrompt.authenticate(promptInfo)
         }
@@ -284,7 +287,7 @@ class MainActivity : AppCompatActivity() {
 
         var doubleBackToExitPressedOnce = false
         onBackPressedDispatcher.addCallback(this) {
-            if (binding.viewpager.currentItem != 1) {
+            if (binding.includedNavbar.navbar.selectedIndex != 1) {
                 binding.includedNavbar.navbar.selectTabAt(1)
             } else {
                 if (doubleBackToExitPressedOnce) {
@@ -424,8 +427,8 @@ class MainActivity : AppCompatActivity() {
                 mainViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle)
                 mainViewPager.setPageTransformer(ZoomOutPageTransformer())
-                navbar.setOnTabSelectListener(object :
-                    AnimatedBottomBar.OnTabSelectListener {
+                navbar.setupWithViewPager2(mainViewPager)
+                navbar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
                     override fun onTabSelected(
                         lastIndex: Int,
                         lastTab: AnimatedBottomBar.Tab?,
@@ -434,14 +437,34 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         navbar.animate().translationZ(12f).setDuration(200).start()
                         selectedOption = newIndex
-                        mainViewPager.setCurrentItem(newIndex, false)
+                        hasCompletedLoading += 1
+                    }
+                    override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
+                        if (hasCompletedLoading < 1) return
+                        when (index) {
+                            0 -> {
+                                ContextCompat.startActivity(this@MainActivity, Intent(
+                                    this@MainActivity,
+                                    SearchActivity::class.java).putExtra("type", "ANIME"
+                                ), null)
+                            }
+                            1 -> {
+                                SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME).show(
+                                    supportFragmentManager,
+                                    "settings"
+                                )
+                            }
+                            2 -> {
+                                ContextCompat.startActivity(this@MainActivity, Intent(
+                                    this@MainActivity,
+                                    SearchActivity::class.java).putExtra("type", "MANGA"
+                                ), null)
+                            }
+                        }
                     }
                 })
-                if (mainViewPager.currentItem != selectedOption) {
+                if (navbar.selectedIndex != selectedOption) {
                     navbar.selectTabAt(selectedOption)
-                    mainViewPager.post {
-                        mainViewPager.setCurrentItem(selectedOption, false)
-                    }
                 }
                 //Load Data
                 if (!load) {
@@ -527,6 +550,12 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        hasConfirmedSession = false
+        hasCompletedLoading = -1
     }
 
     override fun onDestroy() {

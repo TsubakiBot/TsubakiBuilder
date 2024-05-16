@@ -46,20 +46,10 @@ class FeedActivity : AppCompatActivity() {
         val activityId = intent.getIntExtra("activityId", -1)
         binding.feedViewPager.adapter =
             ViewPagerAdapter(supportFragmentManager, lifecycle, activityId)
-        binding.feedViewPager.setCurrentItem(selected, false)
         binding.feedViewPager.isUserInputEnabled = false
+        navBar.setupWithViewPager2( binding.feedViewPager)
         navBar.selectTabAt(selected)
-        navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
-            override fun onTabSelected(
-                lastIndex: Int,
-                lastTab: AnimatedBottomBar.Tab?,
-                newIndex: Int,
-                newTab: AnimatedBottomBar.Tab
-            ) {
-                selected = newIndex
-                binding.feedViewPager.setCurrentItem(selected, true)
-            }
-        })
+        navBar.onTabSelected = { selected = navBar.selectedIndex }
         binding.listBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }

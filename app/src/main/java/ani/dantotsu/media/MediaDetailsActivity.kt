@@ -416,9 +416,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             selected = 1
         }
         if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 3
-        if (viewPager.currentItem != selected) viewPager.post {
-            viewPager.setCurrentItem(selected, false)
-        }
+        navBar.setupWithViewPager2(viewPager)
         binding.commentInputLayout.isVisible = (hasComments && selected == 3)
         navBar.selectTabAt(selected)
         navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
@@ -430,7 +428,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             ) {
                 selected = newIndex
                 binding.commentInputLayout.isVisible = (hasComments && selected == 3)
-                viewPager.setCurrentItem(selected, true)
                 val sel = model.loadSelected(media, isDownload)
                 sel.window = selected
                 model.saveSelected(media.id, sel)
