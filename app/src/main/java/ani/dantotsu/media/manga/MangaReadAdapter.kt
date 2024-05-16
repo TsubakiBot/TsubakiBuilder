@@ -2,6 +2,7 @@ package ani.dantotsu.media.manga
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
 import ani.dantotsu.media.anime.handleProgress
+import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.webview.CookieCatcher
@@ -41,6 +43,11 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.sinceWhen
 import ani.dantotsu.toast
 import com.google.android.material.chip.Chip
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.util.system.WebViewUtil
@@ -86,6 +93,9 @@ class MangaReadAdapter(
             )
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
+
+        //Youtube
+        if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
 
         binding.animeSourceNameContainer.isGone = offline
         binding.animeSourceSettings.isGone = offline
@@ -362,6 +372,43 @@ class MangaReadAdapter(
         }
         //Chapter Handling
         handleChapters()
+    }
+
+    override fun onViewDetachedFromWindow(holder: MangaReadAdapter.ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.binding.youtubePlayerView.release()
+    }
+
+    private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
+        if (media.anime?.youtube == null) return
+        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
+        fragment.lifecycle.addObserver(youTubePlayerView)
+        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                binding.animeSourceYT.visibility = View.GONE
+                binding.youtubePlayerView.visibility = View.VISIBLE
+                Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+                    youTubePlayer.loadVideo(it, 0f)
+                }
+            }
+            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                binding.youtubePlayerView.visibility = View.GONE
+                binding.animeSourceYT.visibility = View.VISIBLE
+            }
+        }
+        Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
+            youTubePlayerView.initialize(youTubePlayerListener)
+        } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
+            youTubePlayerView.initialize(
+                youTubePlayerListener,
+                IFramePlayerOptions.Builder()
+                    .controls(1).listType("playlist").list(it).build()
+            )
+        }
+        binding.animeSourceYT.visibility = View.VISIBLE
+        binding.animeSourceYT.setOnClickListener {
+            openLinkInYouTube(media.anime.youtube)
+        }
     }
 
     fun subscribeButton(enabled: Boolean) {

@@ -81,8 +81,6 @@ class AnimeWatchAdapter(
                 null
             )
         }
-        //Youtube
-        if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
 
         binding.animeSourceDubbed.isChecked = media.selected!!.preferDub
         binding.animeSourceDubbedText.text =
@@ -108,6 +106,9 @@ class AnimeWatchAdapter(
             )
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
+
+        //Youtube
+        if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
 
         binding.animeSourceNameContainer.isGone = offline
         binding.animeSourceSettings.isGone = offline
