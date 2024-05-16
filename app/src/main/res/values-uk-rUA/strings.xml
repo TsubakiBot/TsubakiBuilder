@@ -154,6 +154,7 @@
     <string name="server_enabled">Запуск TorrServer</string>
     <string name="enable_server_temp">Бажаєте тимчасово ввімкнути TorrServer (вимкнуто через закриття додатка)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Налаштування Anilist</string>
     <string name="extension_settings">Розширення</string>
     <string name="downloads">Завантажень</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Сховати стрічку статусу для списку</string>
     <string name="immersive_mode_info">Для повного застосування необхідне перезавантаження програми.</string>
     <string name="home_layout_show">Показати/приховати розкладки на головній</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Продовжити перегляд</item>
-        <item>Вибраний аніме</item>
-        <item>Планування аніме</item>
-        <item>Читати далі</item>
-        <item>Улюблена манга</item>
-        <item>Планова манга</item>
-        <item>Рекомендовані</item>
-        <item>Соціальні стрічки</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">За промовчанням Початкова Вкладка</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Вид у актуальних повідомленнях</string>
     <string name="trailer_banners">Використовуйте трейлер як банер</string>
     <string name="animations">Анімація</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Розділені сторінки</string>
     <string name="direction">Напрямок</string>
     <string name="comments_api">Коментарі API (приватний)</string>
-    <string name="disable_mitm">Запобігти зануренню (\"Прак\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Загальні налаштування</string>
     <string name="show_system_bars">Показати статус: &amp; Панель навігації</string>
     <string name="auto_detect_webtoon">Автоматично визначати Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Впорядкувати за датою випуску</string>
     <string name="crop_borders">Обрізати кордон</string>
     <string name="note">ПРИМІТКА</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

@@ -154,6 +154,7 @@
     <string name="server_enabled">Starting TorrServer</string>
     <string name="enable_server_temp">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist চেটিংছ</string>
     <string name="extension_settings">এক্সটেনচনসমূহ</string>
     <string name="downloads">ডাউনলোডছ</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">তালিকাৰ বাবে স্থানিৰ অবস্থাৰ গুপ্তভাবে লুকুৱাওক</string>
     <string name="immersive_mode_info">সম্পূৰ্ণভাৱে প্ৰয়োজনীয় অনুলাম লাগে অনুলাম পূনঃ আৰম্ভ কৰিবলৈ।</string>
     <string name="home_layout_show">হোমত লে’আ’উটসমূহ দেখুৱাওক/লুকুৱাওক</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>অনুষ্ঠান পূৰ্বতন থকা</item>
-        <item>প্ৰিয়া অনুষ্ঠান</item>
-        <item>প্ৰয়োজিত অনুষ্ঠান</item>
-        <item>পূৰ্বতন পঢ়িবলৈ</item>
-        <item>প্ৰিয়া কলা</item>
-        <item>প্ৰয়োজিত কলা</item>
-        <item>অনুমোদিত</item>
-        <item>সামাজিক ফীড</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">ডিফ’ল্ট আৰম্ভ কৰা টেব</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">সৰ্বাধিক সাধাৰণ অনুষ্ঠানত ছোট দৃশ্য</string>
     <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">এনিমেছনসমূহ</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">স্থানসমূহ পৃষ্ঠা</string>
     <string name="direction">দিশ</string>
     <string name="comments_api">Comments API (Private)</string>
-    <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">সাধাৰণ</string>
     <string name="show_system_bars">ষ্টেটাছ আৰু পৱথৰ বাৰ দেখুৱাওক</string>
     <string name="auto_detect_webtoon">অট’ নেপাৰি ওয়েবটুন পাচনা কৰক</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">মুক্তিৰ তাৰিখে অনুসৰি সাজোৱাওক</string>
     <string name="crop_borders">সীমা কেটিৱলৈ</string>
     <string name="note">নোট</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

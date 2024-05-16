@@ -154,6 +154,7 @@
     <string name="server_enabled">Begin TorrServer</string>
     <string name="enable_server_temp">Wil jy dalk Tydelik TorrServer aktiveer (uitgeschakel met app-sluiting)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilis Instellings</string>
     <string name="extension_settings">Uitbreidings</string>
     <string name="downloads">Aflaaie</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Versteek Statusbalk vir lys</string>
     <string name="immersive_mode_info">Vereis dat die toep herlaai word om volledig toe te pas.</string>
     <string name="home_layout_show">Wys/Versteek uitlegte op Tuis</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Gaan Voort met Kyk</item>
-        <item>Gunsteling-anime</item>
-        <item>Beplande anime</item>
-        <item>Gaan Voort met Lees</item>
-        <item>Gunsteling-manga</item>
-        <item>Beplande manga</item>
-        <item>Aanbevole</item>
-        <item>Sosiale Feeds</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standaard Aanvangsblad</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Klein aansig in Tendensvertonings</string>
     <string name="trailer_banners">Gebruik Trailer as Banier</string>
     <string name="animations">Animasies</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Gespatieerde Bladsye</string>
     <string name="direction">Rigting</string>
     <string name="comments_api">Opmerkings API (Privaat)</string>
-    <string name="disable_mitm">Voorkom Inspruiting (\"Grappe\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Algemeen</string>
     <string name="show_system_bars">Wys Status &amp; Navigasiebalk</string>
     <string name="auto_detect_webtoon">Outomatiese Webtoon Opmerking</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sorteer volgens Vrylatingsdatum</string>
     <string name="crop_borders">Sny Randtegnies Af</string>
     <string name="note">NOTA</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

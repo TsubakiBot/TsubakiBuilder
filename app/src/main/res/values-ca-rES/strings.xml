@@ -154,6 +154,7 @@
     <string name="server_enabled">Iniciant TorrServer</string>
     <string name="enable_server_temp">Voleu activar temporalment TorrServer (desactivat en tancar l\'aplicació)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Configuració d\'Anilist</string>
     <string name="extension_settings">Extensions</string>
     <string name="downloads">Descàrregues</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Amagar la Barra d\'Estat per a la llista</string>
     <string name="immersive_mode_info">Requereix reiniciar l\'aplicació per aplicar-ho completament.</string>
     <string name="home_layout_show">Mostrar/Amagar dissenys a la pàgina d\'inici</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Continua mirant</item>
-        <item>Anime Favorit</item>
-        <item>Anime Planificat</item>
-        <item>Continua llegint</item>
-        <item>Manga Favorit</item>
-        <item>Manga Planificat</item>
-        <item>Recomanat</item>
-        <item>Alimentacions Socials</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Vista Petita en Mostrats Trending</string>
     <string name="trailer_banners">Utilitza el remolcador com a pancarta</string>
     <string name="animations">Animacions</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Pàgines Espaiades</string>
     <string name="direction">Direcció</string>
     <string name="comments_api">API de Comentaris (Privada)</string>
-    <string name="disable_mitm">Prevenir Injecció (\"Bromes\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">General</string>
     <string name="show_system_bars">Mostrar Barres d\'Estat i de Navegació</string>
     <string name="auto_detect_webtoon">Auto Detectar Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Ordena per Data de Llançament</string>
     <string name="crop_borders">Retalla Marges</string>
     <string name="note">NOTA</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

@@ -154,6 +154,7 @@
     <string name="server_enabled">Pornire TorrServer</string>
     <string name="enable_server_temp">Doriţi să activaţi temporar TorrServer (dezactivat la închiderea aplicaţiei)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Setări Anilist</string>
     <string name="extension_settings">Extensii</string>
     <string name="downloads">Descărcări</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Ascunde bara de stare pentru listă</string>
     <string name="immersive_mode_info">Necesită repornirea aplicației pentru a aplica pe deplin.</string>
     <string name="home_layout_show">Arată/Ascunde Schemele de Acasă</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Continuă urmărirea</item>
-        <item>Anime preferate</item>
-        <item>Anime planificate</item>
-        <item>Continuă lectura</item>
-        <item>Manga favorită</item>
-        <item>Manga Planificată</item>
-        <item>Recomandat</item>
-        <item>Feed-uri Sociale</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Fila de pornire implicită</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Vizualizare mică în emisiuni populare</string>
     <string name="trailer_banners">Folosiți Trailerul ca Banner</string>
     <string name="animations">Animații</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Pagini spațiate</string>
     <string name="direction">Direcție</string>
     <string name="comments_api">Comentarii API (Privat)</string>
-    <string name="disable_mitm">Previne injectarea (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Generalități</string>
     <string name="show_system_bars">Arată Stare &amp; Bare de Navigare</string>
     <string name="auto_detect_webtoon">Detectare automată Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sortează după data lansării</string>
     <string name="crop_borders">Tăiați granițele</string>
     <string name="note">NOTĂ</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

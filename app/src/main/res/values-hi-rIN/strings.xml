@@ -154,6 +154,7 @@
     <string name="server_enabled">Starting TorrServer</string>
     <string name="enable_server_temp">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist सेटिंग्स</string>
     <string name="extension_settings">एक्सटेंशन</string>
     <string name="downloads">डाउनलोड</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">सूची के लिए स्थिति पट्टी छिपाएं</string>
     <string name="immersive_mode_info">पूरी तरह से लागू करने के लिए एप्लिकेशन को पुनः आरंभ करना आवश्यक है।</string>
     <string name="home_layout_show">होम पर लेआउट दिखाएं/छिपाएं</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>देखते रहना जारी रखें</item>
-        <item>पसंदीदा एनिमे</item>
-        <item>योजित एनिमे</item>
-        <item>पढ़ना जारी रखें</item>
-        <item>पसंदीदा मंगा</item>
-        <item>योजित मंगा</item>
-        <item>सिफारिश</item>
-        <item>सामाजिक फीड</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">डिफ़ॉल्ट प्रारंभ टैब</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">ट्रेंडिंग शोज़ में छोटा दृश्य</string>
     <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">एनीमेशन</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">सपेसड पृष्ठ</string>
     <string name="direction">दिशा</string>
     <string name="comments_api">Comments API (Private)</string>
-    <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">सामान्य</string>
     <string name="show_system_bars">स्थिति और नेविगेशन बार दिखाएं</string>
     <string name="auto_detect_webtoon">ऑटो डिटेक्ट वेबटून</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">प्रकाशन तिथि के अनुसार क्रमबद्ध करें</string>
     <string name="crop_borders">बॉर्डर्स क्रॉप करें</string>
     <string name="note">ध्यान दें</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

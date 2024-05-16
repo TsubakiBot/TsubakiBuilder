@@ -154,6 +154,7 @@
     <string name="server_enabled">Käynnistetään TorrServer</string>
     <string name="enable_server_temp">Haluatko ottaa TorrServer väliaikaisesti käyttöön (pois päältä sovelluksen sulkeutuessa)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilismin Asetukset</string>
     <string name="extension_settings">Laajennukset</string>
     <string name="downloads">Lataukset</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Piilota tilapalkki listalle</string>
     <string name="immersive_mode_info">Sovelluksen uudelleenkäynnistys vaaditaan, jotta sovellus voidaan ottaa käyttöön.</string>
     <string name="home_layout_show">Näytä tai piilota asettelut kotiin</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Jatka Katselua</item>
-        <item>Suosikki Anime</item>
-        <item>Suunniteltu Anime</item>
-        <item>Jatka Lukemista</item>
-        <item>Suosikki Manga</item>
-        <item>Suunniteltu Manga</item>
-        <item>Suositeltu</item>
-        <item>Sosiaaliset syötteet</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Oletus Käynnistysvälilehti</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Pieni näkymä trendissä</string>
     <string name="trailer_banners">Käytä Traileria Bannerina</string>
     <string name="animations">Animaatiot</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Välilyönnit Sivut</string>
     <string name="direction">Suunta</string>
     <string name="comments_api">Kommentit API (Private)</string>
-    <string name="disable_mitm">Estä Injektio (\"Prank\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Yleiset</string>
     <string name="show_system_bars">Näytä Tila &amp; Navigointipalkit</string>
     <string name="auto_detect_webtoon">Tunnista Webtoon Automaattisesti</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Järjestä julkaisupäivän mukaan</string>
     <string name="crop_borders">Rajaa Reunat</string>
     <string name="note">HUOMAUTUS</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

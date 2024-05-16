@@ -154,6 +154,7 @@
     <string name="server_enabled">TorrServer 시작 중</string>
     <string name="enable_server_temp">일시적으로 TorrServer를 활성화 하시겠습니까 (앱 종료 시 비활성화됨)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist 설정</string>
     <string name="extension_settings">확장</string>
     <string name="downloads">다운로드</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">목록에 대한 상태 바 숨기기</string>
     <string name="immersive_mode_info">완전히 적용하려면 앱을 다시 시작해야 합니다.</string>
     <string name="home_layout_show">홈에서 레이아웃 표시/숨기기</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>계속 시청</item>
-        <item>좋아하는 애니메이션</item>
-        <item>계획된 애니메이션</item>
-        <item>계속 읽기</item>
-        <item>좋아하는 만화</item>
-        <item>계획된 만화</item>
-        <item>추천</item>
-        <item>소셜 피드</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">기본 시작 탭</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">인기 있는 쇼에서 작은 보기</string>
     <string name="trailer_banners">배너로 사용할 트레일러</string>
     <string name="animations">애니메이션</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">간격있는 페이지</string>
     <string name="direction">방향</string>
     <string name="comments_api">댓글 API (비공개)</string>
-    <string name="disable_mitm">주입 방지 (\"장난\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">일반</string>
     <string name="show_system_bars">상태 및 탐색 바 표시</string>
     <string name="auto_detect_webtoon">웹툰 자동 감지</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">출시일별 정렬</string>
     <string name="crop_borders">테두리 자르기</string>
     <string name="note">참고</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

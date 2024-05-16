@@ -154,6 +154,7 @@
     <string name="server_enabled">Starter TorrServer</string>
     <string name="enable_server_temp">Vil du midlertidigt aktivere TorrServer (deaktiveret ved app-lukning)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Annilist Indstillinger</string>
     <string name="extension_settings">Udvidelser</string>
     <string name="downloads">Downloads</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Skjul statuslinje for liste</string>
     <string name="immersive_mode_info">Kræver genstart af appen for fuldt ud at anvende.</string>
     <string name="home_layout_show">Vis/Skjul layout på startsiden</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Fortsæt Overvågning</item>
-        <item>Foretrukne Anime</item>
-        <item>Planlagt Anime</item>
-        <item>Fortsæt Læsning</item>
-        <item>Favorit Manga</item>
-        <item>Planlagt Manga</item>
-        <item>Anbefalet</item>
-        <item>Sociale feeds</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standard Start Faneblad</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Lille visning i aktuelle serier</string>
     <string name="trailer_banners">Brug Trailer som Banner</string>
     <string name="animations">Animationer</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Mellemrum Sider</string>
     <string name="direction">Retning</string>
     <string name="comments_api">Kommentarer API (privat)</string>
-    <string name="disable_mitm">Undgå Injektion (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Generelt</string>
     <string name="show_system_bars">Vis Status &amp; Navigationsbjælker</string>
     <string name="auto_detect_webtoon">Automatisk Detektér Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sorter efter udgivelsesdato</string>
     <string name="crop_borders">Afgrødekanter</string>
     <string name="note">BEMÆRKNING</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

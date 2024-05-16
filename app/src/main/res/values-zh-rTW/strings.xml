@@ -154,6 +154,7 @@
     <string name="server_enabled">Starting TorrServer</string>
     <string name="enable_server_temp">Would you like to temporarily enable TorrServer (disabled on app close)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist Settings</string>
     <string name="extension_settings">Extensions</string>
     <string name="downloads">Downloads</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Hide Status Bar for list</string>
     <string name="immersive_mode_info">Requires App restart to fully apply.</string>
     <string name="home_layout_show">Show/Hide Layouts on Home</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>繼續觀看</item>
+        <item>Continue Watching</item>
         <item>Favourite Anime</item>
         <item>Planned Anime</item>
-        <item>繼續閱讀</item>
+        <item>Continue Reading</item>
         <item>Favourite Manga</item>
         <item>Planned Manga</item>
-        <item>推薦</item>
+        <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Default Start Up Tab</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Small View in Trending Shows</string>
     <string name="trailer_banners">將預告片用作橫幅</string>
     <string name="animations">Animations</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Spaced Pages</string>
     <string name="direction">Direction</string>
     <string name="comments_api">Comments API (Private)</string>
-    <string name="disable_mitm">Prevent Injection (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">General</string>
     <string name="show_system_bars">Show Status &amp; Navigation Bars</string>
     <string name="auto_detect_webtoon">Auto Detect Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sort by Release Date</string>
     <string name="crop_borders">Crop Borders</string>
     <string name="note">NOTE</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

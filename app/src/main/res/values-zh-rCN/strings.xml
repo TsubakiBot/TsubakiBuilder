@@ -154,6 +154,7 @@
     <string name="server_enabled">启动 TorrServer</string>
     <string name="enable_server_temp">您想要暂时启用 TorrServer (在应用程序关闭时禁用)吗？</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist 设置</string>
     <string name="extension_settings">扩展</string>
     <string name="downloads">下载</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">在列表上隐藏状态栏</string>
     <string name="immersive_mode_info">需要完全重新启动应用程序才能应用。</string>
     <string name="home_layout_show">显示/隐藏主页布局</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>继续观看</item>
-        <item>喜欢的动画</item>
-        <item>计划中的动画</item>
-        <item>继续阅读</item>
-        <item>喜欢的漫画</item>
-        <item>计划中的漫画</item>
-        <item>推荐</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">默认启动选项卡</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">在热门节目中显示小视图</string>
     <string name="trailer_banners">将预告片用作横幅</string>
     <string name="animations">动画</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">间隔页面</string>
     <string name="direction">方向</string>
     <string name="comments_api">评论 API (私人)</string>
-    <string name="disable_mitm">防止注入(\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">常规</string>
     <string name="show_system_bars">显示状态栏和导航栏</string>
     <string name="auto_detect_webtoon">自动检测Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">按发布日期排序</string>
     <string name="crop_borders">裁剪边框</string>
     <string name="note">注意</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

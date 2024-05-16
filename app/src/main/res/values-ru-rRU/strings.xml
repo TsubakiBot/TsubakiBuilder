@@ -154,6 +154,7 @@
     <string name="server_enabled">Запуск TorrServer</string>
     <string name="enable_server_temp">Вы хотите временно включить TorrServer (отключен при закрытии приложения)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Настройки Anilist</string>
     <string name="extension_settings">Расширения</string>
     <string name="downloads">Загрузки</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Скрыть строку состояния в списке</string>
     <string name="immersive_mode_info">Требуется перезапуск приложения для полного применения.</string>
     <string name="home_layout_show">Показать/скрыть на главной</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Продолжить просмотр</item>
-        <item>Любимое аниме</item>
-        <item>Запланированное аниме</item>
-        <item>Продолжить чтение</item>
-        <item>Любимая манга</item>
-        <item>Запланированная манга</item>
-        <item>Рекомендации</item>
-        <item>Лента активности</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Вкладка при запуске по умолчанию</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Маленькая секция популярных шоу</string>
     <string name="trailer_banners">Используйте трейлер как баннер</string>
     <string name="animations">Анимации</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Разделённые страницы</string>
     <string name="direction">Направление</string>
     <string name="comments_api">API комментариев (приватный)</string>
-    <string name="disable_mitm">Предотвратить инъекцию (\"Пранке\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Общее</string>
     <string name="show_system_bars">Показать строку состояния и навигационные панели</string>
     <string name="auto_detect_webtoon">Автоопределение вебтунов</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Сортировать по дате выпуска</string>
     <string name="crop_borders">Обрезать границы</string>
     <string name="note">ПРИМЕЧАНИЕ</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

@@ -154,6 +154,7 @@
     <string name="server_enabled">Démarrage de TorrServer</string>
     <string name="enable_server_temp">Voulez-vous activer TorrServer temporairement (désactivé à la fermeture de l\'application)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Paramètres Anilist</string>
     <string name="extension_settings">Extensions</string>
     <string name="downloads">Téléchargements</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Masquer la barre d\'état pour la liste</string>
     <string name="immersive_mode_info">Nécessite un redémarrage de l\'application pour être entièrement appliqué.</string>
     <string name="home_layout_show">Afficher/Masquer les mises en page sur l\'accueil</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Continuer à regarder</item>
-        <item>Anime favoris</item>
-        <item>Anime prévus</item>
-        <item>Continuer la lecture</item>
-        <item>Manga favoris</item>
-        <item>Manga prévus</item>
-        <item>Recommandations</item>
-        <item>Flux sociaux</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Onglet de démarrage par défaut</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Petite vue dans les émissions populaires</string>
     <string name="trailer_banners">Utilisez la bande-annonce comme bannière</string>
     <string name="animations">Animations</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Pages espacées</string>
     <string name="direction">Orientation</string>
     <string name="comments_api">API de commentaires (Privé)</string>
-    <string name="disable_mitm">Empêcher l\'injection (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Général</string>
     <string name="show_system_bars">Afficher les barres d\'état et de navigation</string>
     <string name="auto_detect_webtoon">Détection automatique des webtoons</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Trier par date de sortie</string>
     <string name="crop_borders">Recadrer les bordures</string>
     <string name="note">REMARQUE</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

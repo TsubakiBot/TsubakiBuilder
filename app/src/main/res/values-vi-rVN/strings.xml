@@ -154,6 +154,7 @@
     <string name="server_enabled">Đang bắt đầu TorrServer</string>
     <string name="enable_server_temp">Bạn có muốn tạm thời kích hoạt TorrServer (vô hiệu hóa khi đóng ứng dụng)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Cài đặt Anilist</string>
     <string name="extension_settings">Tiện ích mở rộng</string>
     <string name="downloads">Tải xuống</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Ẩn Thanh trạng thái cho danh sách</string>
     <string name="immersive_mode_info">Yêu cầu khởi động lại ứng dụng để áp dụng hoàn toàn.</string>
     <string name="home_layout_show">Hiển thị/Ẩn Bố cục trên Màn hình chính</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Tiếp tục xem</item>
-        <item>Anime Yêu thích</item>
-        <item>Anime Đã lên kế hoạch</item>
-        <item>Tiếp tục đọc</item>
-        <item>Manga Yêu thích</item>
-        <item>Manga Đã lên kế hoạch</item>
-        <item>Đề xuất</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Tab Khởi đầu Mặc định</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Xem Nhỏ trong Các chương trình đang thịnh hành</string>
     <string name="trailer_banners">Sử dụng Trailer làm Banner</string>
     <string name="animations">Hoạt hình</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Trang Cách</string>
     <string name="direction">Hướng</string>
     <string name="comments_api">API Bình Luận (Riêng Tư)</string>
-    <string name="disable_mitm">Ngăn Chặn Tiêm Nhiễm (\"Trò Đùa\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Chung</string>
     <string name="show_system_bars">Hiển Thị Thanh Trạng Thái &amp; Thanh Điều Hướng</string>
     <string name="auto_detect_webtoon">Tự Động Phát Hiện Webtoon</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sắp xếp theo Ngày phát hành</string>
     <string name="crop_borders">Cắt Biên</string>
     <string name="note">Ghi chú</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

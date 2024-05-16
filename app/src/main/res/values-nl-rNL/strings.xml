@@ -154,6 +154,7 @@
     <string name="server_enabled">TorrServer starten</string>
     <string name="enable_server_temp">Wilt u TorrServer tijdelijk inschakelen (uitgeschakeld bij het sluiten van app)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">Anilist Instellingen</string>
     <string name="extension_settings">Extensies</string>
     <string name="downloads">downloads</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">Verberg statusbalk voor lijst</string>
     <string name="immersive_mode_info">Vereist herstart van de app om volledig toe te passen.</string>
     <string name="home_layout_show">Toon/Verberg lay-outs op de startpagina</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>Kijken voortzetten</item>
-        <item>Favoriete Anime</item>
-        <item>Geplande Anime</item>
-        <item>Lees verder</item>
-        <item>Favoriete Manga</item>
-        <item>Geplande Manga</item>
-        <item>Aanbevolen</item>
-        <item>Sociale Feeds</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">Standaard Start Tab</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">Kleine weergave in populaire TV-series</string>
     <string name="trailer_banners">Gebruik Trailer als Banner</string>
     <string name="animations">Animaties</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">Afgespeelde pagina\'s</string>
     <string name="direction">Richting</string>
     <string name="comments_api">Commentaar API (Private)</string>
-    <string name="disable_mitm">Voorkom Injectie (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">Algemeen</string>
     <string name="show_system_bars">Toon Status &amp; Navigatiebalken</string>
     <string name="auto_detect_webtoon">Automatisch Webtoon detecteren</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">Sorteren op publicatiedatum</string>
     <string name="crop_borders">Randen bijsnijden</string>
     <string name="note">OPMERK</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>

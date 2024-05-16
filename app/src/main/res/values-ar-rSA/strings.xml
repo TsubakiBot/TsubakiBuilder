@@ -154,6 +154,7 @@
     <string name="server_enabled">بدء تشغيل تورسيرفر</string>
     <string name="enable_server_temp">هل ترغب في تمكين TorrServer مؤقتاً (معطل عند إغلاق التطبيق)؟</string>
     <string name="peer_count_low">Low peer count detected!</string>
+    <string name="reset_fabulous">Reset Floating Avatar</string>
     <string name="anilist_settings">إعدادات Anilist</string>
     <string name="extension_settings">الإضافات</string>
     <string name="downloads">التحميلات</string>
@@ -272,18 +273,19 @@
     <string name="immersive_modelist">اخفي شريط الحالة للقائمة</string>
     <string name="immersive_mode_info">يتطلب إعادة تشغيل التطبيق لتطبيق الإعداد بالكامل.</string>
     <string name="home_layout_show">اظهار\اخفاء العناصر في الصفحة الرئيسة</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
-        <item>اكمل المشاهدة</item>
-        <item>الانمي المفضل</item>
-        <item>الانمي المخطط مشاهدته</item>
-        <item>اكمل القراءة</item>
-        <item>المانجا المفضلة</item>
-        <item>المانجا المخطط قراءتها</item>
-        <item>موصى به</item>
-        <item>تغذيات اجتماعية</item>
+        <item>Continue Watching</item>
+        <item>Favourite Anime</item>
+        <item>Planned Anime</item>
+        <item>Continue Reading</item>
+        <item>Favourite Manga</item>
+        <item>Planned Manga</item>
+        <item>Recommended</item>
+        <item>Social Feeds</item>
     </string-array>
     <string name="startUpTab">الصفحة الافتراضية عند التشغيل</string>
+    <string name="floating_avatar">Floating Avatar Button</string>
     <string name="small_view">عرض صغير في العروض الشائعة</string>
     <string name="trailer_banners">استخدم المقطورة كشعار</string>
     <string name="animations">الحركة (الانيميشن)</string>
@@ -309,7 +311,9 @@
     <string name="spaced_pages">صفحات متباعدة</string>
     <string name="direction">الاتجاه</string>
     <string name="comments_api">تعليقات API (خاص)</string>
-    <string name="disable_mitm">منع الحقن (\"Pranks\")</string>
+    <string name="no_recommendations">No suggestions available!</string>
+    <string name="disable_mitm">Prevent Injection</string>
+    <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
     <string name="general">عام</string>
     <string name="show_system_bars">اظهر الحالة &amp; أدوات التحكم</string>
     <string name="auto_detect_webtoon">الكشف التلقائي عن المانهوا</string>
@@ -398,6 +402,7 @@
     <string name="sort_by_release_date">ترتيب حسب تاريخ الإصدار</string>
     <string name="crop_borders">قص حدود الصور</string>
     <string name="note">ملوحظة</string>
+    <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
     <string name="no_current_items">Current media list empty!</string>
