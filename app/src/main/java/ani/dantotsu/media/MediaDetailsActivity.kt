@@ -128,7 +128,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         // Ui init
 
         initActivity(this)
-        binding.mediaViewPager.withFlexibleMargin(resources.configuration)
         val oldMargin = binding.mediaViewPager.marginBottom
         AndroidBug5497Workaround.assistActivity(this) {
             if (it) {
@@ -576,7 +575,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.mediaViewPager.withFlexibleMargin(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }
