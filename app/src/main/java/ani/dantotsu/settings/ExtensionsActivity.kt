@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +12,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -162,7 +165,6 @@ class ExtensionsActivity : AppCompatActivity() {
             }
         }.attach()
 
-
         searchView.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
@@ -209,160 +211,13 @@ class ExtensionsActivity : AppCompatActivity() {
         }
     }
 
-    private fun processUserInput(input: String, mediaType: MediaType) {
-        val entry = if (input.endsWith("/") || input.endsWith(".min.json"))
-            input.substring(0, input.lastIndexOf("/")) else input
-        when (mediaType) {
-            MediaType.ANIME -> {
-                val anime = PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
-                PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
-            }
-
-            MediaType.MANGA -> {
-                val manga = PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
-                PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
-            }
-
-            MediaType.NOVEL -> {
-                val novel = PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
-                PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
-            }
-        }
-
-        CoroutineScope(Dispatchers.IO).launch {
-            tryWithSuspend {
-                when (mediaType) {
-                    MediaType.ANIME -> {
-                        animeExtensionManager.findAvailableExtensions()
-                    }
-
-                    MediaType.MANGA -> {
-                        mangaExtensionManager.findAvailableExtensions()
-                    }
-
-                    MediaType.NOVEL -> {
-                        novelExtensionManager.findAvailableExtensions()
-                        novelExtensionManager.findAvailablePlugins()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun getSavedRepositories(repoInventory: ViewGroup, type: MediaType) {
-        val prefName: PrefName = when (type) {
-            MediaType.ANIME -> {
-                PrefName.AnimeExtensionRepos
-            }
-
-            MediaType.MANGA -> {
-                PrefName.MangaExtensionRepos
-            }
-
-            MediaType.NOVEL -> {
-                PrefName.NovelExtensionRepos
-            }
-        }
-        prefName.let { repoList ->
-            PrefManager.getVal<Set<String>>(repoList).forEach { item ->
-                val view = ItemRepositoryBinding.inflate(
-                    LayoutInflater.from(repoInventory.context), repoInventory, true
-                )
-                view.repositoryItem.text = item.removePrefix("https://raw.githubusercontent.com")
-                view.repositoryItem.setOnClickListener {
-                    AlertDialog.Builder(this@ExtensionsActivity, R.style.MyPopup)
-                        .setTitle(R.string.rem_repository)
-                        .setMessage(item)
-                        .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                            val repos = PrefManager.getVal<Set<String>>(prefName).minus(item)
-                            PrefManager.setVal(prefName, repos)
-                            repoInventory.removeView(view.root)
-                            CoroutineScope(Dispatchers.IO).launch {
-                                when (type) {
-                                    MediaType.ANIME -> {
-                                        animeExtensionManager.findAvailableExtensions()
-                                    }
-
-                                    MediaType.MANGA -> {
-                                        mangaExtensionManager.findAvailableExtensions()
-                                    }
-
-                                    MediaType.NOVEL -> {
-                                        novelExtensionManager.findAvailableExtensions()
-                                        novelExtensionManager.findAvailablePlugins()
-                                    }
-                                }
-                            }
-                            dialog.dismiss()
-                        }
-                        .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .create()
-                        .show()
-                }
-                view.repositoryItem.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    copyToClipboard(item, true)
-                    true
-                }
-            }
-        }
-    }
-
-    private fun processEditorAction(editText: EditText, mediaType: MediaType) {
-        editText.setOnEditorActionListener { textView, action, keyEvent ->
-            if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE ||
-                (keyEvent?.action == KeyEvent.ACTION_UP
-                        && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)
-            ) {
-                return@setOnEditorActionListener if (textView.text.isNullOrBlank()) {
-                    false
-                } else {
-                    processUserInput(textView.text.toString(), mediaType)
-                    true
-                }
-            }
-            false
-        }
-    }
+    private val onChangeSettings = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { _: ActivityResult -> }
 
     private fun generateRepositoryButton(type: MediaType) {
-        val hintResource: Int = when (type) {
-            MediaType.ANIME -> {
-                R.string.anime_add_repository
-            }
-
-            MediaType.MANGA -> {
-                R.string.manga_add_repository
-            }
-
-            MediaType.NOVEL -> {
-                R.string.novel_add_repository
-            }
-        }
         binding.openSettingsButton.setOnClickListener {
-            val dialogView = DialogRepositoriesBinding.inflate(
-                LayoutInflater.from(binding.openSettingsButton.context), null, false
-            )
-            dialogView.repositoryTextBox.hint = getString(hintResource)
-            dialogView.repoInventory.apply {
-                getSavedRepositories(this, type)
-            }
-            val alertDialog = AlertDialog.Builder(this@ExtensionsActivity, R.style.MyPopup)
-                .setTitle(R.string.edit_repositories)
-                .setView(dialogView.root)
-                .setPositiveButton(getString(R.string.add)) { _, _ ->
-                    if (!dialogView.repositoryTextBox.text.isNullOrBlank())
-                        processUserInput(dialogView.repositoryTextBox.text.toString(), type)
-                }
-                .setNegativeButton(getString(R.string.close)) { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .create()
-            processEditorAction(dialogView.repositoryTextBox, type)
-            alertDialog.show()
-            alertDialog.window?.setDimAmount(0.8f)
+            onChangeSettings.launch(Intent(this, SettingsExtensionsActivity::class.java))
         }
     }
 }

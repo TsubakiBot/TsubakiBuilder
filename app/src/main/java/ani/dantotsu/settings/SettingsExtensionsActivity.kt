@@ -63,7 +63,6 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             }
 
             fun setExtensionOutput(repoInventory: ViewGroup, type: MediaType) {
-                repoInventory.removeAllViews()
                 val prefName: PrefName = when (type) {
                     MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
                     MediaType.MANGA -> { PrefName.MangaExtensionRepos }
@@ -122,34 +121,26 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             fun processUserInput(input: String, mediaType: MediaType, view: ViewGroup) {
                 val entry = if (input.endsWith("/") || input.endsWith(".min.json"))
                     input.substring(0, input.lastIndexOf("/")) else input
-                when (mediaType) {
-                    MediaType.ANIME -> {
-                        val anime =
-                            PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos)
-                                .plus(entry)
-                        PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
-                        CoroutineScope(Dispatchers.IO).launch {
+                val prefName: PrefName = when (mediaType) {
+                    MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
+                    MediaType.MANGA -> { PrefName.MangaExtensionRepos }
+                    MediaType.NOVEL -> { PrefName.NovelExtensionRepos }
+                }
+                val media = PrefManager.getVal<Set<String>>(prefName).plus(entry)
+                PrefManager.setVal(prefName, media)
+                CoroutineScope(Dispatchers.IO).launch {
+                    when (mediaType) {
+                        MediaType.ANIME -> {
                             animeExtensionManager.findAvailableExtensions()
                         }
-                    }
 
-                    MediaType.MANGA -> {
-                        val manga =
-                            PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos)
-                                .plus(entry)
-                        PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
-                        CoroutineScope(Dispatchers.IO).launch {
+                        MediaType.MANGA -> {
                             mangaExtensionManager.findAvailableExtensions()
                         }
-                    }
 
-                    MediaType.NOVEL -> {
-                        val novel =
-                            PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos)
-                                .plus(entry)
-                        PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
-                        CoroutineScope(Dispatchers.IO).launch {
+                        MediaType.NOVEL -> {
                             novelExtensionManager.findAvailableExtensions()
+                            novelExtensionManager.findAvailablePlugins()
                         }
                     }
                 }
@@ -292,7 +283,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             }
                         },
                         attach = {
-                            setExtensionOutput(it.attachView, MediaType.MANGA)
+                            setExtensionOutput(it.attachView, MediaType.NOVEL)
                         }
                     ),
                     Settings(
