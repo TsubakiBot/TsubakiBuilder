@@ -172,7 +172,7 @@ class MangaFragment : Fragment() {
         })
 
         mangaPageAdapter.ready.observe(viewLifecycleOwner) { i ->
-            if (i == true) {
+            if (i) {
                 binding.avatarFabulous.apply {
                     isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
                     if (isVisible) {
