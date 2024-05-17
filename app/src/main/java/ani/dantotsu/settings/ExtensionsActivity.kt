@@ -213,7 +213,9 @@ class ExtensionsActivity : AppCompatActivity() {
 
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { _: ActivityResult -> }
+    ) { _: ActivityResult ->
+
+    }
 
     private fun generateRepositoryButton(type: MediaType) {
         binding.openSettingsButton.setOnClickListener {

@@ -19,6 +19,7 @@ import ani.dantotsu.profile.ChartBuilder.Companion.MediaType
 import ani.dantotsu.profile.ChartBuilder.Companion.StatType
 import ani.dantotsu.setBaseline
 import ani.dantotsu.statusBarHeight
+import ani.himitsu.os.Version
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 import com.xwray.groupie.GroupieAdapter
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
@@ -102,9 +103,13 @@ class StatsFragment :
                     }
                 }
             } else {
-                stats.removeAll(
-                    stats.filter { it?.id == Anilist.userid }.toSet()
-                )
+                if (Version.isNougat) {
+                    stats.removeIf { it?.id == Anilist.userid }
+                } else {
+                    stats.removeAll(
+                        stats.filter { it?.id == Anilist.userid }.toSet()
+                    )
+                }
                 loadStats(type == MediaType.ANIME)
             }
         }

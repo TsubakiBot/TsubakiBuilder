@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.UrlMedia
 import ani.dantotsu.hasNotificationPermission
 import ani.dantotsu.notifications.Task
@@ -21,6 +22,7 @@ import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.Logger
+import ani.himitsu.os.Version
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK_PROGRESS
 import eu.kanade.tachiyomi.data.notification.Notifications.ID_SUBSCRIPTION_CHECK_PROGRESS
@@ -235,6 +237,17 @@ class SubscriptionNotificationTask : Task {
         val newStore = notificationStore.toMutableList()
         if (newStore.size >= 100) {
             newStore.remove(newStore.minByOrNull { it.time })
+        }
+        if (Version.isNougat) {
+            newStore.removeIf {
+                it.mediaId == notification.mediaId && it.content == notification.content
+            }
+        } else {
+            newStore.removeAll(
+                newStore.filter {
+                    it.mediaId == notification.mediaId && it.content == notification.content
+                }.toSet()
+            )
         }
         newStore.add(notification)
         PrefManager.setVal(PrefName.SubscriptionNotificationStore, newStore)
