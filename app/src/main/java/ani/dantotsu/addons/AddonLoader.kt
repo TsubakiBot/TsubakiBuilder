@@ -104,7 +104,7 @@ class AddonLoader {
 
                 AddonType.DOWNLOAD -> {
                     val extension = instance as? DownloadAddonApiV2
-                        ?: throw IllegalStateException("Extension is not a DownloadAddonApiV2")
+                        ?: throw IllegalStateException("Addon is not a DownloadAddonApiV2")
                     DownloadLoadResult.Success(
                         DownloadAddon.Installed(
                             name = extName,

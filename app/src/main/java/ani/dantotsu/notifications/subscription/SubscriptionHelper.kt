@@ -63,7 +63,7 @@ class SubscriptionHelper {
                     val show = parser.loadSavedShowResponse(subscribeMedia.id)
                         ?: forceLoadShowResponse(subscribeMedia, selected, parser)
                         ?: throw Exception(
-                        currContext()?.getString(
+                        getString(
                             R.string.failed_to_load_data,
                             subscribeMedia.id
                         )
@@ -103,7 +103,7 @@ class SubscriptionHelper {
                     val show = parser.loadSavedShowResponse(subscribeMedia.id)
                         ?: forceLoadShowResponse(subscribeMedia, selected, parser)
                         ?: throw Exception(
-                        currContext()?.getString(
+                        getString(
                             R.string.failed_to_load_data,
                             subscribeMedia.id
                         )

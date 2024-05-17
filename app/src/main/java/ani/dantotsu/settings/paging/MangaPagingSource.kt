@@ -173,28 +173,6 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
         private val job = Job()
         private val scope = CoroutineScope(Dispatchers.Main + job)
 
-        init {
-            binding.closeTextView.setOnClickListener {
-                if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                getItem(bindingAdapterPosition)?.let { extension ->
-                    clickListener.onInstallClick(extension)
-                    binding.closeTextView.setImageResource(R.drawable.ic_sync)
-                    scope.launch {
-                        while (isActive) {
-                            withContext(Dispatchers.Main) {
-                                binding.closeTextView.animate()
-                                    .rotationBy(360f)
-                                    .setDuration(1000)
-                                    .setInterpolator(LinearInterpolator())
-                                    .start()
-                            }
-                            delay(1000)
-                        }
-                    }
-                }
-            }
-        }
-
         fun bind(extension: MangaExtension.Available?) {
             if (extension == null) return
             if (!skipIcons) {
@@ -207,6 +185,22 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
             binding.extensionNameTextView.text = extension.name
             val versionText = "$lang ${extension.versionName} $nsfw"
             binding.extensionVersionTextView.text = versionText
+            binding.closeTextView.setOnClickListener {
+                clickListener.onInstallClick(extension)
+                binding.closeTextView.setImageResource(R.drawable.ic_sync)
+                scope.launch {
+                    while (isActive) {
+                        withContext(Dispatchers.Main) {
+                            binding.closeTextView.animate()
+                                .rotationBy(360f)
+                                .setDuration(1000)
+                                .setInterpolator(LinearInterpolator())
+                                .start()
+                        }
+                        delay(1000)
+                    }
+                }
+            }
         }
 
         fun clear() {

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.BottomSheetDialogFragment
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetRecyclerBinding
 import ani.dantotsu.notifications.subscription.SubscriptionHelper
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import com.xwray.groupie.GroupieAdapter
 
 class SubscriptionsBottomDialog : BottomSheetDialogFragment() {

@@ -191,7 +191,8 @@ class NotificationActivity : AppCompatActivity() {
         NotificationType.RELATED_MEDIA_ADDITION.value,
         NotificationType.MEDIA_DATA_CHANGE.value,
         NotificationType.MEDIA_MERGE.value,
-        NotificationType.MEDIA_DELETION.value
+        NotificationType.MEDIA_DELETION.value,
+        NotificationType.SUBSCRIPTION.value
     )
     private val activity = listOf(
         NotificationType.ACTIVITY_MESSAGE.value,

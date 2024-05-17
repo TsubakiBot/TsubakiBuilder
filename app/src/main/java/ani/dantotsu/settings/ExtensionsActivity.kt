@@ -213,37 +213,23 @@ class ExtensionsActivity : AppCompatActivity() {
             input.substring(0, input.lastIndexOf("/")) else input
         when (mediaType) {
             MediaType.ANIME -> {
-                val anime =
-                    PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
+                val anime = PrefManager.getVal<Set<String>>(PrefName.AnimeExtensionRepos).plus(entry)
                 PrefManager.setVal(PrefName.AnimeExtensionRepos, anime)
-                CoroutineScope(Dispatchers.IO).launch {
-                    animeExtensionManager.findAvailableExtensions()
-                }
             }
 
             MediaType.MANGA -> {
-                val manga =
-                    PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
+                val manga = PrefManager.getVal<Set<String>>(PrefName.MangaExtensionRepos).plus(entry)
                 PrefManager.setVal(PrefName.MangaExtensionRepos, manga)
-                CoroutineScope(Dispatchers.IO).launch {
-                    mangaExtensionManager.findAvailableExtensions()
-                }
             }
 
             MediaType.NOVEL -> {
-                val novel =
-                    PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
+                val novel = PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).plus(entry)
                 PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
-                CoroutineScope(Dispatchers.IO).launch {
-                    novelExtensionManager.findAvailableExtensions()
-                    novelExtensionManager.findAvailablePlugins()
-                }
             }
         }
     }
 
     private fun getSavedRepositories(repoInventory: ViewGroup, type: MediaType) {
-        repoInventory.removeAllViews()
         val prefName: PrefName = when (type) {
             MediaType.ANIME -> {
                 PrefName.AnimeExtensionRepos
@@ -357,6 +343,24 @@ class ExtensionsActivity : AppCompatActivity() {
             processEditorAction(dialogView.repositoryTextBox, type)
             alertDialog.show()
             alertDialog.window?.setDimAmount(0.8f)
+            alertDialog.setOnDismissListener {
+                CoroutineScope(Dispatchers.IO).launch {
+                    when (type) {
+                        MediaType.ANIME -> {
+                            animeExtensionManager.findAvailableExtensions()
+                        }
+
+                        MediaType.MANGA -> {
+                            mangaExtensionManager.findAvailableExtensions()
+                        }
+
+                        MediaType.NOVEL -> {
+                            novelExtensionManager.findAvailableExtensions()
+                            novelExtensionManager.findAvailablePlugins()
+                        }
+                    }
+                }
+            }
         }
     }
 }
