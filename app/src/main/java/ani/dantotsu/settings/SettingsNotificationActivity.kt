@@ -22,6 +22,7 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
+import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.notifications.subscription.SubscriptionHelper.Companion.saveSubscription
 import ani.dantotsu.notifications.subscription.SubscriptionNotificationWorker
 import ani.dantotsu.openSettings
@@ -124,6 +125,19 @@ class SettingsNotificationActivity : AppCompatActivity() {
                             TaskScheduler.create(
                                 context, PrefManager.getVal(PrefName.UseAlarmManager)
                             ).scheduleAllTasks(context)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.view_subscriptions),
+                        desc = getString(R.string.view_subscriptions_desc),
+                        icon = R.drawable.ic_round_search_24,
+                        onClick = {
+                            val subscriptions = SubscriptionHelper.getSubscriptions()
+                            SubscriptionsBottomDialog.newInstance(subscriptions).show(
+                                supportFragmentManager,
+                                "subscriptions"
+                            )
                         }
                     ),
                     Settings(
