@@ -104,6 +104,7 @@
         android:layout_gravity="bottom"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_weight="0"
         android:transitionName="@string/search"
         app:boxBackgroundColor="@color/bg"
         app:boxBackgroundMode="outline"
