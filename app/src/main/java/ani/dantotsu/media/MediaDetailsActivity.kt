@@ -50,6 +50,7 @@ import ani.dantotsu.media.anime.AnimeWatchFragment
 import ani.dantotsu.media.comments.CommentsFragment
 import ani.dantotsu.media.manga.MangaReadFragment
 import ani.dantotsu.media.novel.NovelReadFragment
+import ani.dantotsu.media.reviews.ReviewFragment
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.AndroidBug5497Workaround
@@ -65,7 +66,6 @@ import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
-import ani.dantotsu.withFlexibleMargin
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants

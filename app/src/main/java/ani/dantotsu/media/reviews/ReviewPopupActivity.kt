@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.reviews
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -14,6 +14,7 @@ import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.media.OtherDetailsViewModel
 import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.media.reviews.Review
 import java.text.DateFormat
 import java.util.Date
 

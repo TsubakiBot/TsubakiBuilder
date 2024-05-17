@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.reviews
 
 import android.annotation.SuppressLint
 import android.content.Intent

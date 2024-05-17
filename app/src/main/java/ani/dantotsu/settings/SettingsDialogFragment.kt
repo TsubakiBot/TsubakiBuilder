@@ -13,7 +13,6 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
-import ani.dantotsu.Refresh
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.BottomSheetSettingsBinding
 import ani.dantotsu.download.anime.OfflineAnimeFragment
@@ -34,14 +33,10 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
-import ani.himitsu.extension.ReverseSearchDialogFragment
-import ani.himitsu.update.MatagiUpdater
-import com.bumptech.glide.Glide
+import ani.dantotsu.search.ReverseSearchDialogFragment
+import ani.dantotsu.update.MatagiUpdater
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule
 

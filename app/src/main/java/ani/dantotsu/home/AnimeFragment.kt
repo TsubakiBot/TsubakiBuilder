@@ -43,7 +43,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
-import ani.himitsu.update.MatagiUpdater
+import ani.dantotsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers

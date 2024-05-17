@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.reviews
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ActivityReviewViewBinding
 import ani.dantotsu.databinding.ItemReviewBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.toast

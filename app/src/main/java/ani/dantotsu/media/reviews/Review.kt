@@ -1,5 +1,6 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.reviews
 
+import ani.dantotsu.media.Media
 import ani.dantotsu.profile.User
 import java.io.Serializable
 

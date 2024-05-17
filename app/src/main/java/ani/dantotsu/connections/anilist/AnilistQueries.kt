@@ -24,6 +24,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.Staff
 import ani.dantotsu.media.Studio
+import ani.dantotsu.media.reviews.Review
 import ani.dantotsu.others.MalScraper
 import ani.dantotsu.profile.User
 import ani.dantotsu.settings.saving.PrefManager
@@ -1318,7 +1319,7 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
         return null
     }
 
-    suspend fun getReviews(type: String): ArrayList<ani.dantotsu.media.Review> {
+    suspend fun getReviews(type: String): ArrayList<Review> {
         val query = """ {
   Page(page: 1, perPage: 50) {
     pageInfo {
@@ -1386,9 +1387,9 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
   }
 }""".replace("\n", " ").replace("""  """, "")
         val response = executeQuery<Query.Page>(query, force = true)?.data?.page
-        val responseArray = arrayListOf<ani.dantotsu.media.Review>()
+        val responseArray = arrayListOf<Review>()
         response?.reviews?.forEach {
-            val review = ani.dantotsu.media.Review(
+            val review = Review(
                 it.id,
                 it.userId,
                 it.mediaId,
