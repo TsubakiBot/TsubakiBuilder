@@ -164,15 +164,7 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
     }
 
     override fun onBindViewHolder(holder: MangaExtensionViewHolder, position: Int) {
-        val extension = getItem(position)
-        if (extension != null) {
-            if (!skipIcons) {
-                Glide.with(holder.itemView.context)
-                    .load(extension.iconUrl)
-                    .into(holder.extensionIconImageView)
-            }
-            holder.bind(extension)
-        }
+        holder.bind(getItem(position))
     }
 
     inner class MangaExtensionViewHolder(private val binding: ItemExtensionBinding) :
@@ -204,9 +196,13 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
             }
         }
 
-        val extensionIconImageView: ImageView = binding.extensionIconImageView
-
-        fun bind(extension: MangaExtension.Available) {
+        fun bind(extension: MangaExtension.Available?) {
+            if (extension == null) return
+            if (!skipIcons) {
+                Glide.with(binding.extensionIconImageView)
+                    .load(extension.iconUrl)
+                    .into(binding.extensionIconImageView)
+            }
             val nsfw = if (extension.isNsfw) "(18+)" else ""
             val lang = LanguageMapper.mapLanguageCodeToName(extension.lang)
             binding.extensionNameTextView.text = extension.name

@@ -167,15 +167,7 @@ class NovelExtensionAdapter(
     }
 
     override fun onBindViewHolder(holder: NovelExtensionViewHolder, position: Int) {
-        val extension = getItem(position)
-        if (extension != null) {
-            if (!skipIcons) {
-                Glide.with(holder.itemView.context)
-                    .load(extension.iconUrl)
-                    .into(holder.extensionIconImageView)
-            }
-            holder.bind(extension)
-        }
+        holder.bind(getItem(position))
     }
 
     inner class NovelExtensionViewHolder(
@@ -208,8 +200,13 @@ class NovelExtensionAdapter(
             }
         }
 
-        val extensionIconImageView: ImageView = binding.extensionIconImageView
-        fun bind(extension: NovelExtension.Available) {
+        fun bind(extension: NovelExtension.Available?) {
+            if (extension == null) return
+            if (!skipIcons) {
+                Glide.with(binding.extensionIconImageView)
+                    .load(extension.iconUrl)
+                    .into(binding.extensionIconImageView)
+            }
             val nsfw = ""
             val lang = LanguageMapper.mapLanguageCodeToName("all")
             binding.extensionNameTextView.text = extension.name

@@ -69,7 +69,9 @@ class AnimeExtensionsFragment : Fragment(),
     }
 
     override fun notifyDataChanged() {
-        viewModel.invalidatePager()
+        binding.allExtensionsRecyclerView.post {
+            viewModel.invalidatePager()
+        }
     }
 
     override fun onInstallClick(pkg: AnimeExtension.Available) {

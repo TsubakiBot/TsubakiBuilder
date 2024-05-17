@@ -83,11 +83,9 @@ class ExtensionsActivity : AppCompatActivity() {
             bottomMargin = statusBarHeight + navBarHeight
         }
 
-        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-        viewPager.offscreenPageLimit = 1
+        binding.viewPager.offscreenPageLimit = 1
 
-        viewPager.adapter = object : FragmentStateAdapter(this) {
+        binding.viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 7
 
             override fun createFragment(position: Int): Fragment {
@@ -107,16 +105,16 @@ class ExtensionsActivity : AppCompatActivity() {
 
         val searchView: AutoCompleteTextView = findViewById(R.id.searchViewText)
 
-        tabLayout.addOnTabSelectedListener(
+        binding.tabLayout.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     searchView.setText("")
                     searchView.clearFocus()
-                    tabLayout.clearFocus()
+                    binding.tabLayout.clearFocus()
                     binding.languageselect.isVisible = tab.text?.contains(
                         getString(R.string.available_extensions, "")
                     ) == true
-                    viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
+                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
                     }
 
@@ -135,14 +133,14 @@ class ExtensionsActivity : AppCompatActivity() {
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
-                    viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
+                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
                     }
-                    tabLayout.clearFocus()
+                    binding.tabLayout.clearFocus()
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab) {
-                    viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
+                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
                         height = ViewGroup.LayoutParams.MATCH_PARENT
                     }
                     // Do nothing
@@ -150,7 +148,7 @@ class ExtensionsActivity : AppCompatActivity() {
             }
         )
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> getString(R.string.installed_extensions, MediaType.ANIME.asText())
                 1 -> getString(R.string.available_extensions, MediaType.ANIME.asText())
@@ -173,7 +171,7 @@ class ExtensionsActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val currentFragment =
-                    supportFragmentManager.findFragmentByTag("f${viewPager.currentItem}")
+                    supportFragmentManager.findFragmentByTag("f${binding.viewPager.currentItem}")
                 if (currentFragment is SearchQueryHandler) {
                     currentFragment.updateContentBasedOnQuery(s?.toString()?.trim())
                 }
@@ -195,7 +193,7 @@ class ExtensionsActivity : AppCompatActivity() {
                     LanguageMapper.Language.entries[i].code
                 )
                 val currentFragment =
-                    supportFragmentManager.findFragmentByTag("f${viewPager.currentItem}")
+                    supportFragmentManager.findFragmentByTag("f${binding.viewPager.currentItem}")
                 if (currentFragment is SearchQueryHandler) {
                     currentFragment.notifyDataChanged()
                 }

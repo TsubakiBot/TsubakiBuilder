@@ -69,7 +69,9 @@ class NovelExtensionsFragment : Fragment(),
     }
 
     override fun notifyDataChanged() {
-        viewModel.invalidatePager()
+        binding.allExtensionsRecyclerView.post {
+            viewModel.invalidatePager()
+        }
     }
 
     override fun onInstallClick(pkg: NovelExtension.Available) {

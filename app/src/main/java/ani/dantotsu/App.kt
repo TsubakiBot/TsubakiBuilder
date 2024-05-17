@@ -142,8 +142,8 @@ class App : MultiDexApplication() {
     private suspend fun loadNovelExtensions() = withContext(Dispatchers.IO) {
         novelExtensionManager.findAvailableExtensions()
         Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
-        novelExtensionManager.findAvailablePlugins()
         NovelSources.init(novelExtensionManager.installedExtensionsFlow)
+        novelExtensionManager.findAvailablePlugins()
     }
 
     private fun setupNotificationChannels() {
