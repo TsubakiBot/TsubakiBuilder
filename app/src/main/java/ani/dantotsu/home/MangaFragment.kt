@@ -176,6 +176,7 @@ class MangaFragment : Fragment() {
                 binding.avatarFabulous.apply {
                     isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
                     if (isVisible) {
+                        setAnchor(mangaPageAdapter.trendingBinding.userAvatar)
                         toRoundImage(Anilist.avatar, 52.toPx)
                         (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
                         setDefaultPosition()

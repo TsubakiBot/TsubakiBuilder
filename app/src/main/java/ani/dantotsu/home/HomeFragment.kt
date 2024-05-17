@@ -171,6 +171,7 @@ class HomeFragment : Fragment() {
         binding.avatarFabulous.apply {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
             if (isVisible) {
+                setAnchor(binding.homeUserAvatarContainer)
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
                 setDefaultPosition()
                 loadSavedPosition(resources.configuration)
