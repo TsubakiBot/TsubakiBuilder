@@ -118,10 +118,6 @@ class ExtensionsActivity : AppCompatActivity() {
                     binding.languageselect.isVisible = tab.text?.contains(
                         getString(R.string.available_extensions, "")
                     ) == true
-                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
-                        height = ViewGroup.LayoutParams.MATCH_PARENT
-                    }
-
                     when {
                         tab.text?.contains(MediaType.ANIME.asText()) == true -> {
                             generateRepositoryButton(MediaType.ANIME)
@@ -137,18 +133,10 @@ class ExtensionsActivity : AppCompatActivity() {
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
-                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
-                        height = ViewGroup.LayoutParams.MATCH_PARENT
-                    }
                     binding.tabLayout.clearFocus()
                 }
 
-                override fun onTabReselected(tab: TabLayout.Tab) {
-                    binding.viewPager.updateLayoutParams<ViewGroup.LayoutParams> {
-                        height = ViewGroup.LayoutParams.MATCH_PARENT
-                    }
-                    // Do nothing
-                }
+                override fun onTabReselected(tab: TabLayout.Tab) { }
             }
         )
 
