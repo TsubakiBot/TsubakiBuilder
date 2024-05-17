@@ -417,7 +417,6 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 3
         navBar.setupWithViewPager2(viewPager)
         binding.commentInputLayout.isVisible = (hasComments && selected == 3)
-        navBar.selectTabAt(selected)
         navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
                 lastIndex: Int,
@@ -432,6 +431,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 model.saveSelected(media.id, sel)
             }
         })
+        navBar.selectTabAt(selected)
 
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(true) }
         live.observe(this) {

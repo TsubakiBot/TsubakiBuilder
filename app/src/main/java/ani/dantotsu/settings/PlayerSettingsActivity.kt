@@ -26,6 +26,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.view.Xpandable
 import com.google.android.material.slider.Slider.OnChangeListener
@@ -518,7 +519,7 @@ class PlayerSettingsActivity : AppCompatActivity() {
             )
         }
         binding.subtitleTestText.run {
-            textSize = PrefManager.getVal<Int>(PrefName.FontSize).toPx
+            textSize = (PrefManager.getVal<Int>(PrefName.FontSize) * 0.5).toPx.toFloat()
             typeface = when (PrefManager.getVal<Int>(PrefName.Font)) {
                 0 -> ResourcesCompat.getFont(this.context, R.font.poppins_semi_bold)
                 1 -> ResourcesCompat.getFont(this.context, R.font.poppins_bold)
@@ -546,6 +547,42 @@ class PlayerSettingsActivity : AppCompatActivity() {
                     else -> Color.WHITE
                 }
             )
+            val typesOutline = arrayOf("Outline", "Shine", "Drop Shadow", "None")
+            when (PrefManager.getVal<Int>(PrefName.Outline)) {
+                0 -> {
+                    // Outline
+                    setStrokeWidth(1F)
+                    setStrokeColor(
+                        when (PrefManager.getVal<Int>(PrefName.SecondaryColor)) {
+                            0 -> Color.BLACK
+                            1 -> Color.DKGRAY
+                            2 -> Color.GRAY
+                            3 -> Color.LTGRAY
+                            4 -> Color.WHITE
+                            5 -> Color.RED
+                            6 -> Color.YELLOW
+                            7 -> Color.GREEN
+                            8 -> Color.CYAN
+                            9 -> Color.BLUE
+                            10 -> Color.MAGENTA
+                            11 -> Color.TRANSPARENT
+                            else -> Color.WHITE
+                        }
+                    )
+                }
+                1 -> {
+                    // Shine
+                    setStrokeWidth(0F)
+                }
+                2 -> {
+                    // Drop Shadow
+                    setStrokeWidth(0F)
+                }
+                3 -> {
+                    // None
+                    setStrokeWidth(0F)
+                }
+            }
             setBackgroundColor(
                 when (PrefManager.getVal<Int>(PrefName.SubBackground)) {
                     0 -> Color.TRANSPARENT
