@@ -180,8 +180,7 @@ class NovelExtensionAdapter(
         init {
             binding.closeTextView.setOnClickListener {
                 if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                val extension = getItem(bindingAdapterPosition)
-                if (extension != null) {
+                getItem(bindingAdapterPosition)?.let { extension ->
                     clickListener.onInstallClick(extension)
                     binding.closeTextView.setImageResource(R.drawable.ic_sync)
                     scope.launch {
