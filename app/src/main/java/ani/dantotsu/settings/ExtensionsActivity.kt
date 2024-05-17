@@ -227,6 +227,23 @@ class ExtensionsActivity : AppCompatActivity() {
                 PrefManager.setVal(PrefName.NovelExtensionRepos, novel)
             }
         }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            when (mediaType) {
+                MediaType.ANIME -> {
+                    animeExtensionManager.findAvailableExtensions()
+                }
+
+                MediaType.MANGA -> {
+                    mangaExtensionManager.findAvailableExtensions()
+                }
+
+                MediaType.NOVEL -> {
+                    novelExtensionManager.findAvailableExtensions()
+                    novelExtensionManager.findAvailablePlugins()
+                }
+            }
+        }
     }
 
     private fun getSavedRepositories(repoInventory: ViewGroup, type: MediaType) {
@@ -343,24 +360,6 @@ class ExtensionsActivity : AppCompatActivity() {
             processEditorAction(dialogView.repositoryTextBox, type)
             alertDialog.show()
             alertDialog.window?.setDimAmount(0.8f)
-            alertDialog.setOnDismissListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    when (type) {
-                        MediaType.ANIME -> {
-                            animeExtensionManager.findAvailableExtensions()
-                        }
-
-                        MediaType.MANGA -> {
-                            mangaExtensionManager.findAvailableExtensions()
-                        }
-
-                        MediaType.NOVEL -> {
-                            novelExtensionManager.findAvailableExtensions()
-                            novelExtensionManager.findAvailablePlugins()
-                        }
-                    }
-                }
-            }
         }
     }
 }
