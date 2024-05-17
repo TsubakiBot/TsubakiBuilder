@@ -40,6 +40,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.tryWithSuspend
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
@@ -229,18 +230,20 @@ class ExtensionsActivity : AppCompatActivity() {
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            when (mediaType) {
-                MediaType.ANIME -> {
-                    animeExtensionManager.findAvailableExtensions()
-                }
+            tryWithSuspend {
+                when (mediaType) {
+                    MediaType.ANIME -> {
+                        animeExtensionManager.findAvailableExtensions()
+                    }
 
-                MediaType.MANGA -> {
-                    mangaExtensionManager.findAvailableExtensions()
-                }
+                    MediaType.MANGA -> {
+                        mangaExtensionManager.findAvailableExtensions()
+                    }
 
-                MediaType.NOVEL -> {
-                    novelExtensionManager.findAvailableExtensions()
-                    novelExtensionManager.findAvailablePlugins()
+                    MediaType.NOVEL -> {
+                        novelExtensionManager.findAvailableExtensions()
+                        novelExtensionManager.findAvailablePlugins()
+                    }
                 }
             }
         }
