@@ -431,7 +431,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 model.saveSelected(media.id, sel)
             }
         })
-        // viewPager.setCurrentItem(selected, false)
+        viewPager.setCurrentItem(selected, false)
         navBar.selectTabAt(selected, false)
 
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(true) }

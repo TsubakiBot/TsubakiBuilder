@@ -95,7 +95,8 @@ class NoInternet : AppCompatActivity() {
             }
         })
         // navbar.onTabSelected = { selectedOption = navbar.selectedIndex }
-        navbar.selectTabAt(selectedOption)
+        mainViewPager.setCurrentItem(selectedOption, false)
+        navbar.selectTabAt(selectedOption, false)
 
         //supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, OfflineFragment()).commit()
 

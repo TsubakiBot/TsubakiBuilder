@@ -48,8 +48,10 @@ class FeedActivity : AppCompatActivity() {
             ViewPagerAdapter(supportFragmentManager, lifecycle, activityId)
         binding.feedViewPager.isUserInputEnabled = false
         navBar.setupWithViewPager2( binding.feedViewPager)
-        navBar.selectTabAt(selected)
         navBar.onTabSelected = { selected = navBar.selectedIndex }
+        binding.feedViewPager.setCurrentItem(selected, false)
+        navBar.selectTabAt(selected, false)
+
         binding.listBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }

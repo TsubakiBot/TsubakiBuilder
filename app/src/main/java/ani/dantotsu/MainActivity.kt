@@ -461,7 +461,8 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
                 if (navbar.selectedIndex != selectedOption) {
-                    navbar.selectTabAt(selectedOption)
+                    mainViewPager.setCurrentItem(selectedOption, false)
+                    navbar.selectTabAt(selectedOption, false)
                 }
                 //Load Data
                 if (!load) {

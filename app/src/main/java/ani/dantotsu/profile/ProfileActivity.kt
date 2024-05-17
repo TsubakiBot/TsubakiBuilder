@@ -29,6 +29,7 @@ import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.profile.activity.FeedFragment
+import ani.dantotsu.selectedOption
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -87,8 +88,9 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                 binding.profileViewPager.setOffscreenPageLimit(3)
                 navBar.visibility = View.VISIBLE
                 navBar.setupWithViewPager2(binding.profileViewPager)
-                navBar.selectTabAt(selected)
                 navBar.onTabSelected = { selected = navBar.selectedIndex }
+                binding.profileViewPager.setCurrentItem(selected, false)
+                navBar.selectTabAt(selected, false)
 
                 bindingProfileAppBar = ItemProfileAppBarBinding.bind(binding.root).apply {
                     binding.profileProgressBar.visibility = View.GONE
