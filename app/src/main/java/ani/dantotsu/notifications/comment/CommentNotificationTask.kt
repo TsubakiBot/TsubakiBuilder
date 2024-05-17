@@ -191,7 +191,7 @@ class CommentNotificationTask : Task {
             null
         ) ?: listOf()
         val newStore = notificationStore.toMutableList()
-        if (newStore.size > 10) {
+        if (newStore.size > 30) {
             newStore.remove(newStore.minByOrNull { it.time })
         }
         if (newStore.any { it.content == notification.content }) {
