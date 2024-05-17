@@ -63,6 +63,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             }
 
             fun setExtensionOutput(repoInventory: ViewGroup, type: MediaType) {
+                repoInventory.removeAllViews()
                 val prefName: PrefName = when (type) {
                     MediaType.ANIME -> { PrefName.AnimeExtensionRepos }
                     MediaType.MANGA -> { PrefName.MangaExtensionRepos }
