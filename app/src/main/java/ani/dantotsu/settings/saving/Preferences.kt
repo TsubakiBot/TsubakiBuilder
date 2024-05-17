@@ -21,6 +21,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     UseFoldable(Pref(Location.General, Boolean::class, true)),
     UseShortcuts(Pref(Location.General, Boolean::class, true)),
     SettingsPreferDub(Pref(Location.General, Boolean::class, false)),
+    SettingsExceedCap(Pref(Location.General, Boolean::class, false)),
     TorrServerPort(Pref(Location.General, String::class, "8090")),
     SubscriptionCheckingNotifications(Pref(Location.General, Boolean::class, true)),
     CheckUpdate(Pref(Location.General, Boolean::class, true)),

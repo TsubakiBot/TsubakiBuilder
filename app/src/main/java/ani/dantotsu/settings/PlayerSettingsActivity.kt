@@ -288,6 +288,11 @@ class PlayerSettingsActivity : AppCompatActivity() {
             dialog.window?.setDimAmount(0.8f)
         }
 
+        binding.exceedCap.isChecked = PrefManager.getVal(PrefName.SettingsExceedCap)
+        binding.exceedCap.setOnCheckedChangeListener { _, isChecked ->
+            PrefManager.setVal(PrefName.SettingsExceedCap, isChecked)
+        }
+
         fun toggleSubOptions(isChecked: Boolean) {
             arrayOf(
                 binding.videoSubColorPrimary,

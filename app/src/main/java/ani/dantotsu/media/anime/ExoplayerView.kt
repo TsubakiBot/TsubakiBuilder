@@ -1615,6 +1615,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         // .setOverrideForType(TrackSelectionOverride(trackSelector, TRACK_TYPE_VIDEO))
         if (PrefManager.getVal(PrefName.SettingsPreferDub))
             parameters.setPreferredAudioLanguage(Locale.getDefault().language)
+        if (PrefManager.getVal(PrefName.SettingsExceedCap))
+            parameters.setExceedRendererCapabilitiesIfNecessary(true)
         trackSelector.setParameters(parameters)
 
         if (playbackPosition != 0L && !changingServer && !PrefManager.getVal<Boolean>(PrefName.AlwaysContinue)) {
