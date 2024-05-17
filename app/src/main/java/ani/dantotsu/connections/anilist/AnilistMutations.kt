@@ -104,6 +104,7 @@ class AnilistMutations {
         return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 
+    // https://gitlab.com/gobusto/unicodifier/-/blob/master/unicodifier.html?ref_type=heads#L133-143
     private val String.sanitizeToGson : String get() {
         val sb = StringBuilder()
         var i = 0
