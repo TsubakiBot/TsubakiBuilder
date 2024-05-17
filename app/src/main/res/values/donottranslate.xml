@@ -32,6 +32,12 @@
 
     <string name="himitsu">㊙️</string>
 
+    <string name="rpc_anilist">View on AniList</string>
+    <string name="rpc_anime">View Anime</string>
+    <string name="rpc_manga">View Manga</string>
+    <string name="rpc_read">Read on Himitsu</string>
+    <string name="rpc_watch">Watch on Himitsu</string>
+
     <string name="memory_byte">Byte</string>
     <string name="memory_kilobyte">KB</string>
     <string name="memory_megabyte">MB</string>

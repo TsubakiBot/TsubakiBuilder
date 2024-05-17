@@ -91,9 +91,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    private var hasConfirmedSession = false
-    private var hasCompletedLoading = -1
-
     @SuppressLint("InternalInsetResource", "DiscouragedApi")
     @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -623,4 +620,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    companion object {
+        private var hasConfirmedSession = false
+        private var hasCompletedLoading = -1
+    }
 }

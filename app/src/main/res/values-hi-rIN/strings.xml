@@ -427,7 +427,6 @@
     <string name="discord_anilist_button">इसके बजाय अपनी एनिलिस्ट प्रोफ़ाइल प्रदर्शित करें</string>
     <string name="discord_rich_presence">डिस्कॉर्ड रिच प्रेजेंस</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
-    <string name="view_my_anilist">एनीलिस्ट पर देखें</string>
     <string name="jobless_message">अरे भाई! आप वाकई बेरोजगार हैं\nआप अंत तक पहुँच गए</string>
     <string name="file_manager_not_found">SD कार्ड खोलने के लिए कोई फ़ाइल प्रबंधक नहीं मिला</string>
     <string name="error_loading_data">डेटा लोड करने में त्रुटि %1$s</string>
@@ -527,8 +526,6 @@
     <string name="type_other">अन्य</string>
     <string name="type_source">स्रोत</string>
     <string name="type_contains">शामिल है</string>
-    <string name="read_on_dantotsu">Read on Himitsu</string>
-    <string name="watch_on_dantotsu">Watch on Himitsu</string>
     <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">जारी रखें: एपिसोड </string>
     <string name="filler_tag"> - Filler</string>
@@ -647,8 +644,6 @@
     <string name="error_loading_discord_user_data">डिस्कॉर्ड उपयोगकर्ता डेटा लोड करने में त्रुटि</string>
     <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">चेतावनी</string>
-    <string name="view_anime">View Anime</string>
-    <string name="view_manga">View Manga</string>
     <string name="force_legacy_installer">लेगसि इंस्टालर को मजबूर करें</string>
     <string name="extensions_settings">एक्सटेंशन्स</string>
     <string name="NSFWExtention">NSFW एक्सटेंशन्स</string>

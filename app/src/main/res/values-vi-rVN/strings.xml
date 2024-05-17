@@ -427,7 +427,6 @@
     <string name="discord_anilist_button">Hiển thị hồ sơ AniList của bạn thay vì</string>
     <string name="discord_rich_presence">Hiển thị Trạng thái Phong phú Discord</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
-    <string name="view_my_anilist">Xem My AniList</string>
     <string name="jobless_message">ĐỒ CHƠI! BẠN THỰC SỰ LÀ THẤT NGHIỆP\nBẠN ĐÃ ĐẾN CUỐI CÙNG</string>
     <string name="file_manager_not_found">Không thể tìm thấy Trình quản lý Tập tin để mở thẻ SD</string>
     <string name="error_loading_data">Lỗi tải dữ liệu %1$s</string>
@@ -527,8 +526,6 @@
     <string name="type_other">KHÁC</string>
     <string name="type_source">NGUỒN</string>
     <string name="type_contains">CHỨA</string>
-    <string name="read_on_dantotsu">Read on Himitsu</string>
-    <string name="watch_on_dantotsu">Watch on Himitsu</string>
     <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">Tiếp tục : Tập %1$s%2$s\n%3$s</string>
     <string name="filler_tag"> - Độc chiếm</string>
@@ -647,8 +644,6 @@
     <string name="error_loading_discord_user_data">Lỗi Tải Dữ Liệu Người Dùng Discord</string>
     <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">Cảnh Báo</string>
-    <string name="view_anime">Xem Anime</string>
-    <string name="view_manga">Xem Manga</string>
     <string name="force_legacy_installer">Bắt Buộc Cài Đặt Kế Thừa</string>
     <string name="extensions_settings">Tiện ích mở rộng</string>
     <string name="NSFWExtention">Tiện Ích NSFW</string>

@@ -428,20 +428,20 @@ class MangaReaderActivity : AppCompatActivity() {
                         val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
                         val buttons = when (discordMode) {
                             "nothing" -> mutableListOf(
-                                RPC.Link(getString(R.string.view_manga), media.shareLink ?: ""),
+                                RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
                             )
 
                             "dantotsu" -> mutableListOf(
-                                RPC.Link(getString(R.string.view_manga), media.shareLink ?: ""),
-                                RPC.Link("Read on Dantotsu", getString(R.string.dantotsu))
+                                RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
+                                RPC.Link(getString(R.string.rpc_read), getString(R.string.dantotsu))
                             )
 
                             "anilist" -> {
                                 val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
                                 val anilistLink = "https://anilist.co/user/$userId/"
                                 mutableListOf(
-                                    RPC.Link(getString(R.string.view_manga), media.shareLink ?: ""),
-                                    RPC.Link("View My AniList", anilistLink)
+                                    RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
+                                    RPC.Link(getString(R.string.rpc_anilist), anilistLink)
                                 )
                             }
 

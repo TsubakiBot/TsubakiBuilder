@@ -1153,20 +1153,20 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
                         val buttons = when (discordMode) {
                             "nothing" -> mutableListOf(
-                                RPC.Link(getString(R.string.view_anime), media.shareLink ?: ""),
+                                RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
                             )
 
                             "dantotsu" -> mutableListOf(
-                                RPC.Link(getString(R.string.view_anime), media.shareLink ?: ""),
-                                RPC.Link(getString(R.string.watch_on_dantotsu), getString(R.string.dantotsu))
+                                RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
+                                RPC.Link(getString(R.string.rpc_watch), getString(R.string.dantotsu))
                             )
 
                             "anilist" -> {
                                 val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
                                 val anilistLink = "https://anilist.co/user/$userId/"
                                 mutableListOf(
-                                    RPC.Link(getString(R.string.view_anime), media.shareLink ?: ""),
-                                    RPC.Link(getString(R.string.view_my_anilist), anilistLink)
+                                    RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
+                                    RPC.Link(getString(R.string.rpc_anilist), anilistLink)
                                 )
                             }
 

@@ -142,7 +142,7 @@
                         android:layout_gravity="center"
                         android:drawablePadding="4dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="@string/view_my_anilist"
+                        android:text="@string/rpc_anilist"
                         android:textColor="?attr/colorPrimary"
                         app:drawableTint="?attr/colorPrimary" />
                 </androidx.cardview.widget.CardView>

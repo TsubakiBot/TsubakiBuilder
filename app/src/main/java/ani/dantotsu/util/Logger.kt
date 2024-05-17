@@ -5,18 +5,22 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.content.FileProvider
+import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
+import ani.dantotsu.others.CrashActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
+import ani.dantotsu.util.Logger.getDeviceAndAppInfo
 import java.io.File
 import java.util.Date
 import java.util.concurrent.Executors
+import kotlin.system.exitProcess
 
 object Logger {
-    val disabled = PrefManager.getVal<Boolean>(PrefName.Lightspeed)
     var file: File? = null
     private val loggerExecutor = Executors.newSingleThreadExecutor()
+    val disabled get() = PrefManager.getVal<Boolean>(PrefName.Lightspeed)
 
     fun init(context: Context) {
         try {
@@ -30,6 +34,7 @@ object Logger {
             } else {
                 file?.createNewFile()
             }
+            file?.appendText("log started\n")
             file?.appendText(getDeviceAndAppInfo(context))
 
         } catch (e: Exception) {
@@ -53,28 +58,53 @@ object Logger {
         }
     }
 
+    fun log(level: Int, message: String, tag: String = "Internal Logger") {
+        if (disabled) return
+        val trace = Thread.currentThread().stackTrace[3]
+        loggerExecutor.execute {
+            if (file == null) Log.println(level, tag, message)
+            else {
+                val className = trace.className
+                val methodName = trace.methodName
+                val lineNumber = trace.lineNumber
+                file?.appendText("date/time: ${Date()} | $className.$methodName($lineNumber)\n")
+                file?.appendText("message: $message\n-\n")
+            }
+        }
+    }
+
     fun log(e: Exception) {
         if (disabled) return
         loggerExecutor.execute {
-            file?.let {
-                it.appendText("---------------------------Exception---------------------------\n")
-                it.appendText("date/time: ${Date()} |  ${e.message}\n")
-                it.appendText("trace: ${e.stackTraceToString()}\n")
+            if (file == null) e.printStackTrace() else {
+                file?.appendText("---------------------------Exception---------------------------\n")
+                file?.appendText("date/time: ${Date()} |  ${e.message}\n")
+                file?.appendText("trace: ${e.stackTraceToString()}\n")
             }
         }
-        e.printStackTrace()
     }
 
     fun log(e: Throwable) {
         if (disabled) return
         loggerExecutor.execute {
-            file?.let {
-                it.appendText("---------------------------Exception---------------------------\n")
-                it.appendText("date/time: ${Date()} |  ${e.message}\n")
-                it.appendText("trace: ${e.stackTraceToString()}\n")
+            if (file == null) e.printStackTrace() else {
+                file?.appendText("---------------------------Exception---------------------------\n")
+                file?.appendText("date/time: ${Date()} |  ${e.message}\n")
+                file?.appendText("trace: ${e.stackTraceToString()}\n")
             }
         }
-        e.printStackTrace()
+    }
+
+    fun uncaughtException(t: Thread, e: Throwable) {
+        if (disabled) return
+        loggerExecutor.execute {
+            if (file == null) e.printStackTrace() else {
+                file?.appendText("---------------------------Uncaught Exception---------------------------\n")
+                file?.appendText("thread: ${t.name}\n")
+                file?.appendText("date/time: ${Date()} |  ${e.message}\n")
+                file?.appendText("trace: ${e.stackTraceToString()}\n")
+            }
+        }
     }
 
     fun shareLog(context: Context) {
@@ -102,7 +132,7 @@ object Logger {
         file?.delete()
         file = null
     }
-    private fun getDeviceAndAppInfo(context: Context): String {
+    fun getDeviceAndAppInfo(context: Context): String {
         val pm = context.packageManager
         val pkgInfo = pm.getPackageInfo(context.packageName, 0)
         val versionName = pkgInfo.versionName
@@ -114,7 +144,6 @@ object Logger {
         }
 
         return buildString {
-            append("--------------------------------\n")
             append("Date/time: ${Date()}\n")
             append("Device: ${Build.MODEL}\n")
             append("OS version: ${Build.VERSION.RELEASE}\n")
@@ -142,5 +171,37 @@ object Logger {
             append("Is emulator: ${Build.FINGERPRINT.contains("generic")}\n")
             append("--------------------------------\n")
         }
+    }
+}
+
+class FinalExceptionHandler : Thread.UncaughtExceptionHandler {
+    private val defaultUEH = Thread.getDefaultUncaughtExceptionHandler()
+    private val MAX_STACK_TRACE_SIZE = 131071 //128 KB - 1
+
+    override fun uncaughtException(t: Thread, e: Throwable) {
+        val stackTraceString = Log.getStackTraceString(e)
+        e.printStackTrace()
+
+        App.instance.run {
+            val report = StringBuilder()
+            report.append(getDeviceAndAppInfo(this))
+            report.append("Thread: ${t.name}\n")
+            report.append("Exception: ${e.message}\n")
+            report.append("Stack trace:\n")
+            report.append(stackTraceString)
+            val reportString = report.toString()
+            Logger.uncaughtException(t, Error(reportString))
+            val intent = Intent(this, CrashActivity::class.java)
+            if (reportString.length > MAX_STACK_TRACE_SIZE) {
+                val subStr = reportString.substring(0, MAX_STACK_TRACE_SIZE)
+                intent.putExtra("stackTrace", subStr)
+            } else intent.putExtra("stackTrace", reportString)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        defaultUEH?.uncaughtException(t, e)
+        android.os.Process.killProcess(android.os.Process.myPid())
+        exitProcess(10)
     }
 }

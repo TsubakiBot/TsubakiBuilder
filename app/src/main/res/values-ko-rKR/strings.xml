@@ -427,7 +427,6 @@
     <string name="discord_anilist_button">대신 AniList 프로필 표시</string>
     <string name="discord_rich_presence">Discord 리치 프레즌스</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
-    <string name="view_my_anilist">내 AniList 보기</string>
     <string name="jobless_message">젠장! 정말로 일을 찾지 못하셨군요\n끝까지 도달했습니다</string>
     <string name="file_manager_not_found">SD 카드를 열 파일 관리자를 찾을 수 없습니다</string>
     <string name="error_loading_data">%1$s 데이터 로드 중 오류 발생</string>
@@ -527,8 +526,6 @@
     <string name="type_other">기타</string>
     <string name="type_source">소스</string>
     <string name="type_contains">포함</string>
-    <string name="read_on_dantotsu">Read on Himitsu</string>
-    <string name="watch_on_dantotsu">Watch on Himitsu</string>
     <string name="view_profile_in_dantotsu">View Profile in Himitsu</string>
     <string name="continue_episode">계속하기: 에피소드</string>
     <string name="filler_tag"> - 채우기</string>
@@ -647,8 +644,6 @@
     <string name="error_loading_discord_user_data">Discord 사용자 데이터 로드 오류</string>
     <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
     <string name="warning">경고</string>
-    <string name="view_anime">애니메이션 보기</string>
-    <string name="view_manga">만화 보기</string>
     <string name="force_legacy_installer">레거시 설치기 강제</string>
     <string name="extensions_settings">확장 기능</string>
     <string name="NSFWExtention">성인 컨텐츠 확장 기능</string>
