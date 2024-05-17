@@ -7,9 +7,15 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Shader
+import android.graphics.drawable.Drawable
 import androidx.collection.LruCache
+import androidx.core.graphics.drawable.toDrawable
 import ani.dantotsu.toPx
 import ani.himitsu.io.Memory
+import ani.himitsu.os.Version
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import java.net.HttpURLConnection

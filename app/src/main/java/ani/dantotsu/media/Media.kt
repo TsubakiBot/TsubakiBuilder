@@ -87,7 +87,7 @@ data class Media(
         name = apiMedia.title!!.english,
         nameRomaji = apiMedia.title!!.romaji,
         userPreferredName = apiMedia.title!!.userPreferred,
-        cover = apiMedia.coverImage?.large ?: apiMedia.coverImage?.medium,
+        cover = apiMedia.coverImage?.extraLarge ?: apiMedia.coverImage?.large ?: apiMedia.coverImage?.medium,
         banner = apiMedia.bannerImage,
         status = apiMedia.status.toString(),
         isFav = apiMedia.isFavourite!!,

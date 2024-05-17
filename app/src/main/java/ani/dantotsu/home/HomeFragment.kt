@@ -3,7 +3,9 @@ package ani.dantotsu.home
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -62,7 +64,6 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
-import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.BitmapUtil.toSquare
 import ani.dantotsu.util.Logger
 import ani.dantotsu.withFlexibleMargin
@@ -71,6 +72,9 @@ import ani.himitsu.os.Version
 import ani.himitsu.update.MatagiUpdater
 import ani.himitsu.widget.FABulous
 import ani.himitsu.widgets.resumable.ResumableWidget
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.badge.ExperimentalBadgeUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
@@ -168,6 +172,12 @@ class HomeFragment : Fragment() {
             )
             true
         }
+
+        binding.homeTopContainer.withFlexibleMargin(resources.configuration)
+        binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
+        binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
+        binding.homeTopContainer.updatePadding(top = statusBarHeight)
+
         binding.avatarFabulous.apply {
             isVisible = PrefManager.getVal(PrefName.FloatingAvatar)
             if (isVisible) {
@@ -217,11 +227,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-        binding.homeTopContainer.withFlexibleMargin(resources.configuration)
-        binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
-        binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
-        binding.homeTopContainer.updatePadding(top = statusBarHeight)
 
         var reached = false
         val duration = ((PrefManager.getVal(PrefName.AnimationSpeed) as Float) * 200).toLong()
@@ -613,16 +618,30 @@ class HomeFragment : Fragment() {
                     }
                 }
             } catch (e: Exception) { Logger.log(e) }
+
             model.getSubscriptions().value?.forEach { media ->
                 val item = popup.menu.add(media.mainName())
-                item.setIcon(media.cover?.let { cover ->
-                    BitmapUtil.downloadImageAsBitmap(cover)?.let { bitmap ->
-                        if (Version.isOreo) {
-                            bitmap.toSquare().toDrawable(resources)
-                        } else {
-                            bitmap.toDrawable(resources)
-                        }
+//                item.setIcon(media.cover?.let { cover ->
+//                    BitmapUtil.downloadImageAsBitmap(cover)?.let { bitmap ->
+//                        if (Version.isOreo) {
+//                            bitmap.toSquare().toDrawable(resources)
+//                        } else {
+//                            bitmap.toDrawable(resources)
+//                        }
+//                    }
+//                })
+                Glide.with(requireContext()).asBitmap().load(media.cover).into(object : CustomTarget<Bitmap?>() {
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                        item.setIcon(
+                            if (Version.isOreo) {
+                                resource.toSquare().toDrawable(resources)
+                            } else {
+                                resource.toDrawable(resources)
+                            }
+                        )
                     }
+
+                    override fun onLoadCleared(placeholder: Drawable?) { }
                 })
                 item.setIntent(Intent(context, MainActivity::class.java).apply {
                     action = "ani.dantotsu.shortcut.${media.id}"

@@ -17,7 +17,7 @@ class ReviewItem(
     override fun bind(viewBinding: ItemReviewBinding, position: Int) {
         binding = viewBinding
         binding.notificationCover.loadImage(review.user?.avatar?.medium)
-        binding.notificationBanner.loadImage(review.user?.bannerImage ?: review.media?.coverImage?.large)
+        binding.notificationBanner.loadImage(review.user?.bannerImage ?: review.media?.coverImage?.extraLarge)
         binding.reviewItemName.text = review.user?.name
         binding.reviewItemScore.text = review.score.toString()
         val formattedQuote = "\"${review.summary}\""
