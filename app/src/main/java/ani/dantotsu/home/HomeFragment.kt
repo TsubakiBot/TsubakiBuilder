@@ -600,7 +600,14 @@ class HomeFragment : Fragment() {
         }
 
         model.getSubscriptions().observe(viewLifecycleOwner) {
-            if (it.isNullOrEmpty()) return@observe
+            if (it.isNullOrEmpty()) {
+                binding.avatarFabulous.setOnClickListener {
+                    if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
+                        binding.homeUserAvatarContainer.performClick()
+                    }
+                }
+                return@observe
+            }
             val popup = if (Version.isLollipopMR)
                 PopupMenu(requireContext(), binding.avatarFabulous, Gravity.END, 0, R.style.MyPopup)
             else
@@ -621,15 +628,6 @@ class HomeFragment : Fragment() {
 
             model.getSubscriptions().value?.forEach { media ->
                 val item = popup.menu.add(media.mainName())
-//                item.setIcon(media.cover?.let { cover ->
-//                    BitmapUtil.downloadImageAsBitmap(cover)?.let { bitmap ->
-//                        if (Version.isOreo) {
-//                            bitmap.toSquare().toDrawable(resources)
-//                        } else {
-//                            bitmap.toDrawable(resources)
-//                        }
-//                    }
-//                })
                 Glide.with(requireContext()).asBitmap().load(media.cover).into(object : CustomTarget<Bitmap?>() {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
                         item.setIcon(
