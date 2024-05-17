@@ -122,7 +122,6 @@ import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.getCurrentBrightnessValue
-import ani.dantotsu.getLanguageCode
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
@@ -136,6 +135,7 @@ import ani.dantotsu.okHttpClient
 import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.AniSkip.getType
 import ani.dantotsu.others.LanguageMapper
+import ani.dantotsu.others.LanguageMapper.getLanguageCode
 import ani.dantotsu.others.ResettableTimer
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.AnimeSources
@@ -1412,57 +1412,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val ext = episode.extractors?.find { it.server.name == episode.selectedExtractor } ?: return
         extractor = ext
         video = ext.videos.getOrNull(episode.selectedVideo) ?: return
-        val subLanguages = arrayOf(
-            "Albanian",
-            "Arabic",
-            "Bosnian",
-            "Bulgarian",
-            "Chinese",
-            "Croatian",
-            "Czech",
-            "Danish",
-            "Dutch",
-            "English",
-            "Estonian",
-            "Finnish",
-            "French",
-            "Georgian",
-            "German",
-            "Greek",
-            "Hebrew",
-            "Hindi",
-            "Indonesian",
-            "Irish",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Lithuanian",
-            "Luxembourgish",
-            "Macedonian",
-            "Mongolian",
-            "Norwegian",
-            "Polish",
-            "Portuguese",
-            "Punjabi",
-            "Romanian",
-            "Russian",
-            "Serbian",
-            "Slovak",
-            "Slovenian",
-            "Spanish",
-            "Turkish",
-            "Ukrainian",
-            "Urdu",
-            "Vietnamese",
-        )
-        val lang = subLanguages[PrefManager.getVal(PrefName.SubLanguage)]
+
+        val lang = LanguageMapper.subLanguages[PrefManager.getVal(PrefName.SubLanguage)]
         subtitle = intent.getSerialized("subtitle")
             ?: when (val subLang: String? =
                 PrefManager.getNullableCustomVal("subLang_${media.id}", null, String::class.java)) {
                 null -> {
                     when (episode.selectedSubtitle) {
                         null -> null
-                        -1 -> ext.subtitles.find { it.language.contains( lang, ignoreCase = true ) || it.language.contains( getLanguageCode(lang), ignoreCase = true ) }
+                        -1 -> ext.subtitles.find { it.language.contains( lang, ignoreCase = true )
+                                || it.language.contains( getLanguageCode(lang), ignoreCase = true ) }
                         else -> ext.subtitles.getOrNull(episode.selectedSubtitle!!)
                     }
                 }
@@ -1601,7 +1560,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val audioMediaItem = mutableListOf<MediaItem>()
         audioLanguages.clear()
         ext.audioTracks.forEach { track ->
-            audioLanguages.add(LanguageMapper.mapLanguageNameToCode(track.lang) ?: track.lang)
+            audioLanguages.add(LanguageMapper.mapNativeNameToCode(track.lang) ?: track.lang)
             audioMediaItem.add(
                 MediaItem.Builder()
                     .setUri(track.url)

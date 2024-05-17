@@ -20,6 +20,7 @@ import ani.dantotsu.databinding.ActivityPlayerSettingsBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.settings.saving.PrefManager
@@ -314,54 +315,12 @@ class PlayerSettingsActivity : AppCompatActivity() {
             toggleSubOptions(isChecked)
         }
         toggleSubOptions(binding.subSwitch.isChecked)
-        val subLanguages = arrayOf(
-            "Albanian",
-            "Arabic",
-            "Bosnian",
-            "Bulgarian",
-            "Chinese",
-            "Croatian",
-            "Czech",
-            "Danish",
-            "Dutch",
-            "English",
-            "Estonian",
-            "Finnish",
-            "French",
-            "Georgian",
-            "German",
-            "Greek",
-            "Hebrew",
-            "Hindi",
-            "Indonesian",
-            "Irish",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Lithuanian",
-            "Luxembourgish",
-            "Macedonian",
-            "Mongolian",
-            "Norwegian",
-            "Polish",
-            "Portuguese",
-            "Punjabi",
-            "Romanian",
-            "Russian",
-            "Serbian",
-            "Slovak",
-            "Slovenian",
-            "Spanish",
-            "Turkish",
-            "Ukrainian",
-            "Urdu",
-            "Vietnamese",
-        )
+
         val subLanguageDialog = AlertDialog.Builder(this, R.style.MyPopup)
             .setTitle(getString(R.string.subtitle_langauge))
         binding.videoSubLanguage.setOnClickListener {
             val dialog = subLanguageDialog.setSingleChoiceItems(
-                subLanguages,
+                LanguageMapper.subLanguages,
                 PrefManager.getVal(PrefName.SubLanguage)
             ) { dialog, count ->
                 PrefManager.setVal(PrefName.SubLanguage, count)
@@ -369,6 +328,7 @@ class PlayerSettingsActivity : AppCompatActivity() {
             }.show()
             dialog.window?.setDimAmount(0.8f)
         }
+        
         val colorsPrimary =
             arrayOf(
                 "Black",

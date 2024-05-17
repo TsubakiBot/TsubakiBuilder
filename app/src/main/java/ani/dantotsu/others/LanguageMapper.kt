@@ -32,27 +32,6 @@ object LanguageMapper {
         return locale?.displayName ?: code
     }
 
-    fun mapLanguageNameToCode(name: String): String? {
-        return when (name.lowercase()) {
-            "العربية" -> Language.ARABIC.code
-            "中文, 汉语, 漢語" -> Language.CHINESE.code
-            "english" -> Language.ENGLISH.code
-            "français" -> Language.FRENCH.code
-            "bahasa indonesia" -> Language.INDONESIAN.code
-            "日本語" -> Language.JAPANESE.code
-            "조선말, 한국어" -> Language.KOREAN.code
-            "polski" -> Language.POLISH.code
-            "português" -> Language.PORTUGUESE_BRAZIL.code
-            "pусский" -> Language.RUSSIAN.code
-            "español" -> Language.SPANISH.code
-            "ไทย" -> Language.THAI.code
-            "türkçe" -> Language.TURKISH.code
-            "Українська" -> Language.UKRAINIAN.code
-            "tiếng việt" -> Language.VIETNAMESE.code
-            else -> null
-        }
-    }
-
     fun getExtensionItem(source: ConfigurableAnimeSource): String {
         return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
     }
@@ -67,16 +46,6 @@ object LanguageMapper {
 
     fun getExtensionItem(source: MangaSource): String {
         return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
-    }
-
-    fun getLanguageItem(code: String): String? {
-        return getLocalFromCode(code)?.let { locale ->
-            if (locale.language == locale.displayName) {
-                mapLanguageNameToCode(code)?.let { getLanguageItem(it) }
-            } else {
-                "[${locale.language}] ${locale.displayName}"
-            }
-        }
     }
 
     enum class Language(val code: String) {
@@ -99,6 +68,101 @@ object LanguageMapper {
         VIETNAMESE("vi"),
         CHINESE("zh"),
         CHINESE_SIMPLIFIED("zh-Hans");
+    }
+
+    fun mapNativeNameToCode(name: String): String? {
+        return when (name.lowercase()) {
+            "العربية" -> Language.ARABIC.code
+            "中文, 汉语, 漢語" -> Language.CHINESE.code
+            "english" -> Language.ENGLISH.code
+            "français" -> Language.FRENCH.code
+            "bahasa indonesia" -> Language.INDONESIAN.code
+            "日本語" -> Language.JAPANESE.code
+            "조선말, 한국어" -> Language.KOREAN.code
+            "polski" -> Language.POLISH.code
+            "português" -> Language.PORTUGUESE_BRAZIL.code
+            "pусский" -> Language.RUSSIAN.code
+            "español" -> Language.SPANISH.code
+            "ไทย" -> Language.THAI.code
+            "türkçe" -> Language.TURKISH.code
+            "Українська" -> Language.UKRAINIAN.code
+            "tiếng việt" -> Language.VIETNAMESE.code
+            else -> null
+        }
+    }
+
+
+    fun getLanguageItem(code: String): String? {
+        return getLocalFromCode(code)?.let { locale ->
+            if (locale.language == locale.displayName) {
+                mapNativeNameToCode(code)?.let { getLanguageItem(it) }
+            } else {
+                "[${locale.language}] ${locale.displayName}"
+            }
+        }
+    }
+
+    val subLanguages = arrayOf(
+        "Albanian",
+        "Arabic",
+        "Bosnian",
+        "Bulgarian",
+        "Chinese",
+        "Croatian",
+        "Czech",
+        "Danish",
+        "Dutch",
+        "English",
+        "Estonian",
+        "Finnish",
+        "French",
+        "Georgian",
+        "German",
+        "Greek",
+        "Hebrew",
+        "Hindi",
+        "Indonesian",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Korean",
+        "Lithuanian",
+        "Luxembourgish",
+        "Macedonian",
+        "Mongolian",
+        "Norwegian",
+        "Polish",
+        "Portuguese",
+        "Punjabi",
+        "Romanian",
+        "Russian",
+        "Serbian",
+        "Slovak",
+        "Slovenian",
+        "Spanish",
+        "Turkish",
+        "Ukrainian",
+        "Urdu",
+        "Vietnamese",
+    )
+
+    fun getLanguageCode(language: String): CharSequence {
+        Locale.getAvailableLocales().forEach { locale ->
+            if (locale.displayLanguage.equals(language, ignoreCase = true)) {
+                return locale.language
+
+            }
+        }
+        return "null"
+    }
+
+    fun getLanguageName(language: String): String? {
+        Locale.getAvailableLocales().forEach { locale ->
+            if (locale.language.equals(language, ignoreCase = true)) {
+                return locale.displayLanguage
+            }
+        }
+        return null
     }
 }
 
