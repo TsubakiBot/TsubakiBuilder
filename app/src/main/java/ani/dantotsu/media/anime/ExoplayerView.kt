@@ -2155,17 +2155,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
-        exoPlayer.currentTracks.groups.forEach { trackGroup ->
-            when (trackGroup.mediaTrackGroup.type) {
-                TRACK_TYPE_TEXT -> {
-                    if (PrefManager.getVal(PrefName.Subtitles)) {
-                        onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
-                    } else {
-                        onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
-                    }
+        onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
+        if (PrefManager.getVal(PrefName.Subtitles)) {
+            exoPlayer.currentTracks.groups.filter {
+                it.mediaTrackGroup.type == TRACK_TYPE_TEXT
+            } .forEach { trackGroup ->
+                if (trackGroup.isSelected) {
+                    onSetTrackGroupOverride(trackGroup, TRACK_TYPE_TEXT)
                 }
-
-                else -> {}
             }
         }
         if (isInitialized) exoPlayer.play()
