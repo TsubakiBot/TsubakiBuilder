@@ -7,6 +7,7 @@ import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ItemNotificationBinding
+import ani.dantotsu.loadCover
 import ani.dantotsu.loadImage
 import ani.dantotsu.profile.activity.NotificationActivity.Companion.NotificationClickType
 import ani.dantotsu.setAnimation
@@ -66,7 +67,7 @@ class NotificationItem(
             binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.GONE
             binding.notificationTitle.visibility = View.VISIBLE
-            binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+            binding.notificationCover.loadCover(notification.media?.coverImage)
             binding.notificationTitle.text = notification.media?.title?.userPreferred
             binding.notificationBannerImage.layoutParams.height = defaultHeight
             binding.notificationGradiant.layoutParams.height = defaultHeight
@@ -188,7 +189,7 @@ class NotificationItem(
             }
 
             NotificationType.AIRING -> {
-                binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+                binding.notificationCover.loadCover(notification.media?.coverImage)
                 image()
                 binding.notificationBannerImage.setOnClickListener {
                     clickCallback(
@@ -273,7 +274,7 @@ class NotificationItem(
             }
 
             NotificationType.RELATED_MEDIA_ADDITION -> {
-                binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+                binding.notificationCover.loadCover(notification.media?.coverImage)
                 image()
                 binding.notificationBannerImage.setOnClickListener {
                     clickCallback(
@@ -283,7 +284,7 @@ class NotificationItem(
             }
 
             NotificationType.MEDIA_DATA_CHANGE -> {
-                binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+                binding.notificationCover.loadCover(notification.media?.coverImage)
                 image()
                 binding.notificationBannerImage.setOnClickListener {
                     clickCallback(
@@ -293,7 +294,7 @@ class NotificationItem(
             }
 
             NotificationType.MEDIA_MERGE -> {
-                binding.notificationCover.loadImage(notification.media?.coverImage?.large)
+                binding.notificationCover.loadCover(notification.media?.coverImage)
                 image()
                 binding.notificationBannerImage.setOnClickListener {
                     clickCallback(
@@ -338,6 +339,7 @@ class NotificationItem(
 
             NotificationType.SUBSCRIPTION -> {
                 image(user = true, commentNotification = true)
+                binding.notificationCoverUser.loadCover(notification.media?.coverImage)
                 binding.notificationCoverUser.setOnClickListener {
                     clickCallback(
                         notification.mediaId ?: 0, null, NotificationClickType.MEDIA

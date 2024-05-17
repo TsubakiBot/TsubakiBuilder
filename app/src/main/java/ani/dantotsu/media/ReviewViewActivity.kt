@@ -13,6 +13,7 @@ import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityReviewViewBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
+import ani.dantotsu.loadCover
 import ani.dantotsu.loadImage
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.profile.ProfileActivity
@@ -46,7 +47,7 @@ class ReviewViewActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         review = intent.getSerializableExtraCompat<Query.Review>("review")!!
-        binding.reviewMediaCover.loadImage(review.media?.coverImage?.large)
+        binding.reviewMediaCover.loadCover(review.media?.coverImage)
         binding.profileUserBanner.loadImage(review.user?.bannerImage)
         binding.profileUserAvatar.loadImage(review.user?.avatar?.medium)
         binding.reviewBodyContent.settings.loadWithOverviewMode = true

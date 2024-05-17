@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import androidx.core.view.drawToBitmap
+import ani.dantotsu.connections.anilist.api.MediaCoverImage
+import ani.dantotsu.media.Media
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.BitmapUtil
@@ -19,6 +21,10 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import jp.wasabeef.glide.transformations.BlurTransformation
 import java.io.File
+
+fun ImageView.loadCover(coverImage: MediaCoverImage?) {
+    this.loadImage(coverImage?.extraLarge ?: coverImage?.large ?: coverImage?.medium)
+}
 
 fun ImageView.loadImage(url: String?, size: Int = 0) {
     if (!url.isNullOrEmpty()) {

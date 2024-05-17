@@ -1367,6 +1367,7 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
         bannerImage
         countryOfOrigin
         coverImage {
+          large
           extraLarge
         }
         title {
@@ -1891,7 +1892,7 @@ Page(page:$page,perPage:50) {
 
     suspend fun getReviews(mediaId: Int, page: Int = 1, sort: String = "UPDATED_AT_DESC"): Query.ReviewsResponse? {
         return executeQuery<Query.ReviewsResponse>(
-            """{Page(page:$page,perPage:25){pageInfo{currentPage,hasNextPage,total}reviews(mediaId:$mediaId,sort:$sort){id,userId,mediaId,mediaType,summary,body(asHtml:true)rating,ratingAmount,userRating,score,private,siteUrl,createdAt,updatedAt,user{id,name,bannerImage avatar{medium,large}},media{id,coverImage{extraLarge},title{english,romaji,userPreferred}}}}}""",
+            """{Page(page:$page,perPage:25){pageInfo{currentPage,hasNextPage,total}reviews(mediaId:$mediaId,sort:$sort){id,userId,mediaId,mediaType,summary,body(asHtml:true)rating,ratingAmount,userRating,score,private,siteUrl,createdAt,updatedAt,user{id,name,bannerImage avatar{medium,large}},media{id,coverImage{large,extraLarge},title{english,romaji,userPreferred}}}}}""",
             force = true
         )
     }

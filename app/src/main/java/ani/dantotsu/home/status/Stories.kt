@@ -22,6 +22,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Activity
 import ani.dantotsu.databinding.FragmentStatusBinding
 import ani.dantotsu.home.status.listener.StoriesCallback
+import ani.dantotsu.loadCover
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.profile.ProfileActivity
@@ -398,7 +399,7 @@ class Stories @JvmOverloads constructor(
                 else
                     binding.contentImageView
                 banner.blurImage(story.media?.bannerImage ?: story.media?.coverImage?.extraLarge)
-                binding.coverImage.loadImage(story.media?.coverImage?.extraLarge)
+                binding.coverImage.loadCover(story.media?.coverImage)
                 binding.coverImage.setOnClickListener {
                     ContextCompat.startActivity(
                         context,
