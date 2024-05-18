@@ -7,6 +7,7 @@ data class SubscriptionStore(
     val title: String,
     val content: String,
     val mediaId: Int,
+    val image: String?,
     val type: String = "SUBSCRIPTION",
     val time: Long = System.currentTimeMillis(),
 ) : java.io.Serializable {

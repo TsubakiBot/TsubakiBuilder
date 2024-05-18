@@ -35,9 +35,10 @@ class NotificationItem(
 
     private fun image(user: Boolean = false, commentNotification: Boolean = false) {
 
-        val cover = if (user) notification.user?.bannerImage
-            ?: notification.user?.avatar?.medium else notification.media?.bannerImage
-            ?: notification.media?.coverImage?.large
+        val cover = if (user)
+            notification.user?.bannerImage ?: notification.user?.avatar?.medium
+        else
+            notification.media?.bannerImage ?: notification.media?.coverImage?.large
         binding.notificationBannerImage.blurImage(cover)
 
         val defaultHeight = 153.toPx
@@ -338,8 +339,8 @@ class NotificationItem(
             }
 
             NotificationType.SUBSCRIPTION -> {
-                image(user = true, commentNotification = true)
-                binding.notificationCoverUser.loadCover(notification.media?.coverImage)
+                binding.notificationCover.loadImage(notification.user?.avatar?.large)
+                image(user = true)
                 binding.notificationCoverUser.setOnClickListener {
                     clickCallback(
                         notification.mediaId ?: 0, null, NotificationClickType.MEDIA

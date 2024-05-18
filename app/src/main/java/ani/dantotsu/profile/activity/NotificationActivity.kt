@@ -21,6 +21,8 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.connections.anilist.api.NotificationType.Companion.fromFormattedString
+import ani.dantotsu.connections.anilist.api.User
+import ani.dantotsu.connections.anilist.api.UserAvatar
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityFollowBinding
 import ani.dantotsu.databinding.CustomDialogLayoutBinding
@@ -291,8 +293,19 @@ class NotificationActivity : AppCompatActivity() {
                                 commentId = it.mediaId,
                                 mediaId = it.mediaId,
                                 notificationType = it.type,
-                                context = it.content,
+                                context = it.title + "\n" + it.content,
                                 createdAt = (it.time / 1000L).toInt(),
+                                user = User(
+                                    it.mediaId,
+                                    null,
+                                    UserAvatar(large = it.image, medium = it.image),
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                )
                             )
                             newNotifications += notification
                         }

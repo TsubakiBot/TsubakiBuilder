@@ -11,7 +11,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.UrlMedia
 import ani.dantotsu.hasNotificationPermission
 import ani.dantotsu.notifications.Task
@@ -122,7 +121,8 @@ class SubscriptionNotificationTask : Task {
                             SubscriptionStore(
                                 media.name,
                                 text.first,
-                                media.id
+                                media.id,
+                                media.image
                             )
                         )
                         PrefManager.setVal(PrefName.UnreadCommentNotifications,
