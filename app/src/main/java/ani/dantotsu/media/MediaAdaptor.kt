@@ -237,11 +237,10 @@ class MediaAdaptor(
 
     private fun getItemTotal(media: Media, divider: Char, emptyText: String): String {
         return if (media.anime != null) {
-            "${media.anime.totalEpisodes ?: emptyText}${
-                if (media.anime.nextAiringEpisode != null)
-                    " $divider ${media.anime.nextAiringEpisode}"
+            "${if (media.anime.nextAiringEpisode != null)
+                    "(${media.anime.nextAiringEpisode}) $divider "
                 else ""
-            }"
+            }${media.anime.totalEpisodes ?: emptyText}"
         } else if (media.manga != null) {
             "${media.manga.totalChapters ?: emptyText}"
         } else ""

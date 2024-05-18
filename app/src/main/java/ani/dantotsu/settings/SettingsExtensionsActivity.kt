@@ -41,16 +41,11 @@ import uy.kohesive.injekt.injectLazy
 class SettingsExtensionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsExtensionsBinding
     private val extensionInstaller = Injekt.get<BasePreferences>().extensionInstaller()
-    private val animeExtensionManager: AnimeExtensionManager by injectLazy()
-    private val mangaExtensionManager: MangaExtensionManager by injectLazy()
-    private val novelExtensionManager: NovelExtensionManager by injectLazy()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
         val context = this
-
-        val extensionScope = CoroutineScope(Dispatchers.IO)
 
         binding = ActivitySettingsExtensionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -87,22 +82,6 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                         PrefManager.getVal<Set<String>>(repoList).minus(item)
                                     PrefManager.setVal(repoList, repos)
                                     setExtensionOutput(repoInventory, type)
-                                    extensionScope.launch {
-                                        when (type) {
-                                            MediaType.ANIME -> {
-                                                animeExtensionManager.findAvailableExtensions()
-                                            }
-
-                                            MediaType.MANGA -> {
-                                                mangaExtensionManager.findAvailableExtensions()
-                                            }
-
-                                            MediaType.NOVEL -> {
-                                                novelExtensionManager.findAvailableExtensions()
-                                                novelExtensionManager.findAvailablePlugins()
-                                            }
-                                        }
-                                    }
                                     dialog.dismiss()
                                 }
                                 .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
@@ -131,22 +110,6 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                 }
                 val media = PrefManager.getVal<Set<String>>(prefName).plus(entry)
                 PrefManager.setVal(prefName, media)
-                extensionScope.launch {
-                    when (mediaType) {
-                        MediaType.ANIME -> {
-                            animeExtensionManager.findAvailableExtensions()
-                        }
-
-                        MediaType.MANGA -> {
-                            mangaExtensionManager.findAvailableExtensions()
-                        }
-
-                        MediaType.NOVEL -> {
-                            novelExtensionManager.findAvailableExtensions()
-                            novelExtensionManager.findAvailablePlugins()
-                        }
-                    }
-                }
                 setExtensionOutput(view, mediaType)
             }
 
@@ -360,6 +323,19 @@ class SettingsExtensionsActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     override fun finish() {
         super.finish()
+        CoroutineScope(Dispatchers.IO).launch {
+            val animeExtensionManager: AnimeExtensionManager by injectLazy()
+            animeExtensionManager.findAvailableExtensions()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val mangaExtensionManager: MangaExtensionManager by injectLazy()
+            mangaExtensionManager.findAvailableExtensions()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val novelExtensionManager: NovelExtensionManager by injectLazy()
+            novelExtensionManager.findAvailableExtensions()
+            novelExtensionManager.findAvailablePlugins()
+        }
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

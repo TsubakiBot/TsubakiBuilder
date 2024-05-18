@@ -768,7 +768,7 @@ class HomeFragment : Fragment() {
                     height = 190.toPx
                     marginStart = 16.toPx
                     marginEnd = 16.toPx
-                    bottomMargin = 2.toPx
+                    bottomMargin = (0.5).toPx
                 } else {
                     height = 140.toPx
                     marginStart = 24.toPx

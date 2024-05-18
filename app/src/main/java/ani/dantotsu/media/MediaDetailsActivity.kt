@@ -290,11 +290,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     )
                 }
                 if (media.anime != null) {
-                    bold { color(white) { append("${media.anime!!.totalEpisodes ?: "??"}") } }
                     if (media.anime!!.nextAiringEpisode != null) {
+                        bold { color(white) { append("(${media.anime!!.nextAiringEpisode})") } }
                         append(" / ")
-                        bold { color(white) { append("${media.anime!!.nextAiringEpisode}") } }
                     }
+                    bold { color(white) { append("${media.anime!!.totalEpisodes ?: "??"}") } }
                 } else if (media.manga != null) {
                     bold { color(white) { append("${media.manga!!.totalChapters ?: "??"}") } }
                 }

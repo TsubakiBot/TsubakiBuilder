@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.drawable.Animatable
 import android.os.Build.BRAND
 import android.os.Build.DEVICE
@@ -31,6 +32,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.update.MatagiUpdater
+import ani.dantotsu.withFlexibleMargin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -55,8 +57,9 @@ class SettingsActivity : AppCompatActivity() {
 
             settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
-                bottomMargin = navBarHeight
             }
+
+            settingsContainer.withFlexibleMargin(resources.configuration)
 
             onBackPressedDispatcher.addCallback(this@SettingsActivity) {
                 startMainActivity(this@SettingsActivity)
@@ -251,5 +254,10 @@ class SettingsActivity : AppCompatActivity() {
             return System.getProperty("os.arch") ?: System.getProperty("os.product.cpu.abi")
             ?: "Unknown Architecture"
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.settingsContainer.withFlexibleMargin(newConfig)
     }
 }
