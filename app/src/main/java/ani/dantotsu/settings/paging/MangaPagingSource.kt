@@ -171,7 +171,7 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
         RecyclerView.ViewHolder(binding.root) {
 
         private val job = Job()
-        private val scope = CoroutineScope(Dispatchers.Main + job)
+        private val scope = CoroutineScope(Dispatchers.IO + job)
 
         fun bind(extension: MangaExtension.Available?) {
             if (extension == null) return

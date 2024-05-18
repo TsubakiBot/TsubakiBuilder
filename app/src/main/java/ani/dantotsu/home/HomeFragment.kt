@@ -44,6 +44,7 @@ import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.databinding.HomeListContainerBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.isOverlapping
+import ani.dantotsu.launcher.ResumableShortcuts
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
@@ -64,14 +65,13 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
+import ani.dantotsu.update.MatagiUpdater
 import ani.dantotsu.util.BitmapUtil.toSquare
 import ani.dantotsu.util.Logger
-import ani.dantotsu.withFlexibleMargin
-import ani.dantotsu.launcher.ResumableShortcuts
-import ani.himitsu.os.Version
-import ani.dantotsu.update.MatagiUpdater
-import ani.himitsu.widget.FABulous
 import ani.dantotsu.widgets.resumable.ResumableWidget
+import ani.dantotsu.withFlexibleMargin
+import ani.himitsu.os.Version
+import ani.himitsu.widget.FABulous
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -762,15 +762,80 @@ class HomeFragment : Fragment() {
     }
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
-        val angle = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+        homeListContainerBinding.homeListContainer.run {
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                if (portrait) {
+                    height = 190.toPx
+                    marginStart = 16.toPx
+                    marginEnd = 16.toPx
+                    bottomMargin = 0
+                } else {
+                    height = 140.toPx
+                    marginStart = 24.toPx
+                    marginEnd = 24.toPx
+                    bottomMargin = 24.toPx
+                }
+            }
+        }
+
+        val angle = if (portrait) {
             (((resources.displayMetrics.widthPixels - 32.toPx) / 190.toPx) + -45).toFloat()
         } else {
             (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
         }
-        homeListContainerBinding.homeAnimeList.rotation = angle
-        homeListContainerBinding.homeMangaList.rotation = angle
-        homeListContainerBinding.homeRandomAnime.rotation = angle
-        homeListContainerBinding.homeRandomManga.rotation = angle
+
+        homeListContainerBinding.homeAnimeList.run {
+            rotation = angle
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                if (portrait) {
+                    marginStart = 0
+                    marginEnd = (-72).toPx
+                } else {
+                    marginStart = 4.toPx
+                    marginEnd = (-16).toPx
+                }
+            }
+        }
+
+        homeListContainerBinding.homeMangaList.run {
+            rotation = angle
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                if (portrait) {
+                    marginStart = (-24).toPx
+                    marginEnd = (-48).toPx
+                } else {
+                    marginStart = (-6).toPx
+                    marginEnd = (-12).toPx
+                }
+            }
+        }
+
+        homeListContainerBinding.homeRandomAnime.run {
+            rotation = angle
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                if (portrait) {
+                    marginStart = (-48).toPx
+                    marginEnd = (-24).toPx
+                } else {
+                    marginStart = (-12).toPx
+                    marginEnd = (-6).toPx
+                }
+            }
+        }
+
+        homeListContainerBinding.homeRandomManga.run {
+            rotation = angle
+            updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                if (portrait) {
+                    marginStart = (-72).toPx
+                    marginEnd = 0
+                } else {
+                    marginStart = (-16).toPx
+                    marginEnd = 4.toPx
+                }
+            }
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

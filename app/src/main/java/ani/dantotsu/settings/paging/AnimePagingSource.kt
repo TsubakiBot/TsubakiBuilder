@@ -173,7 +173,7 @@ class AnimeExtensionAdapter(private val clickListener: OnAnimeInstallClickListen
         RecyclerView.ViewHolder(binding.root) {
 
         private val job = Job()
-        private val scope = CoroutineScope(Dispatchers.Main + job)
+        private val scope = CoroutineScope(Dispatchers.IO + job)
 
         fun bind(extension: AnimeExtension.Available?) {
             if (extension == null) return
@@ -212,7 +212,6 @@ class AnimeExtensionAdapter(private val clickListener: OnAnimeInstallClickListen
 
     override fun onViewRecycled(holder: AnimeExtensionViewHolder) {
         super.onViewRecycled(holder)
-        holder.clear()
     }
 }
 

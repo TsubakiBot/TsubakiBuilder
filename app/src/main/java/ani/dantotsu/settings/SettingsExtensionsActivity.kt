@@ -50,6 +50,8 @@ class SettingsExtensionsActivity : AppCompatActivity() {
         initActivity(this)
         val context = this
 
+        val extensionScope = CoroutineScope(Dispatchers.IO)
+
         binding = ActivitySettingsExtensionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -85,7 +87,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                                         PrefManager.getVal<Set<String>>(repoList).minus(item)
                                     PrefManager.setVal(repoList, repos)
                                     setExtensionOutput(repoInventory, type)
-                                    CoroutineScope(Dispatchers.IO).launch {
+                                    extensionScope.launch {
                                         when (type) {
                                             MediaType.ANIME -> {
                                                 animeExtensionManager.findAvailableExtensions()
@@ -129,7 +131,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                 }
                 val media = PrefManager.getVal<Set<String>>(prefName).plus(entry)
                 PrefManager.setVal(prefName, media)
-                CoroutineScope(Dispatchers.IO).launch {
+                extensionScope.launch {
                     when (mediaType) {
                         MediaType.ANIME -> {
                             animeExtensionManager.findAvailableExtensions()

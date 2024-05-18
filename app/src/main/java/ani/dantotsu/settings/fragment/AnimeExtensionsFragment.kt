@@ -30,6 +30,7 @@ class AnimeExtensionsFragment : Fragment(),
     private var _binding: FragmentExtensionsBinding? = null
     private val binding get() = _binding!!
 
+    private val animeExtensionManager: AnimeExtensionManager = Injekt.get()
     private val viewModel: AnimeExtensionsViewModel by viewModels {
         AnimeExtensionsViewModelFactory(animeExtensionManager)
     }
@@ -37,8 +38,6 @@ class AnimeExtensionsFragment : Fragment(),
     private val adapter by lazy {
         AnimeExtensionAdapter(this)
     }
-
-    private val animeExtensionManager: AnimeExtensionManager = Injekt.get()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,8 +49,7 @@ class AnimeExtensionsFragment : Fragment(),
         binding.allExtensionsRecyclerView.isNestedScrollingEnabled = false
         binding.allExtensionsRecyclerView.adapter = adapter
         binding.allExtensionsRecyclerView.layoutManager = LinearLayoutManager(context)
-        (binding.allExtensionsRecyclerView.layoutManager as LinearLayoutManager).isItemPrefetchEnabled =
-            true
+        binding.allExtensionsRecyclerView
 
         lifecycleScope.launch {
             viewModel.pagerFlow.collectLatest {
@@ -60,7 +58,6 @@ class AnimeExtensionsFragment : Fragment(),
         }
 
         viewModel.invalidatePager() // Force a refresh of the pager
-
         return binding.root
     }
 

@@ -21,7 +21,6 @@ import ani.dantotsu.others.webview.PluginBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.SearchQueryHandler
-import ani.dantotsu.settings.paging.NovelPluginsAdapter
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import com.bumptech.glide.Glide
@@ -67,6 +66,7 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
                 pluginsAdapter.updateData(plugins)
             }
         }
+
         return binding.root
     }
 

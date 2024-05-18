@@ -3,7 +3,6 @@ package ani.dantotsu.settings.paging
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
-import android.widget.ImageView
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -175,7 +174,7 @@ class NovelExtensionAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val job = Job()
-        private val scope = CoroutineScope(Dispatchers.Main + job)
+        private val scope = CoroutineScope(Dispatchers.IO + job)
 
         fun bind(extension: NovelExtension.Available?) {
             if (extension == null) return
@@ -301,97 +300,6 @@ class NovelPluginPagingSource(
     override fun getRefreshKey(state: PagingState<Int, NovelExtension.Plugin>): Int? {
         return null
     }
-}
-
-class NovelPluginsAdapter(
-    private val clickListener: OnNovelViewClickListener) :
-    PagingDataAdapter<NovelExtension.Plugin, NovelPluginsAdapter.NovelPluginViewHolder>(
-        DIFF_CALLBACK
-    ) {
-
-    private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<NovelExtension.Plugin>() {
-            override fun areItemsTheSame(
-                oldItem: NovelExtension.Plugin,
-                newItem: NovelExtension.Plugin
-            ): Boolean {
-                return oldItem.pkgName == newItem.pkgName
-            }
-
-            override fun areContentsTheSame(
-                oldItem: NovelExtension.Plugin,
-                newItem: NovelExtension.Plugin
-            ): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NovelPluginViewHolder {
-        val binding = ItemExtensionBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        ).apply {
-            extensionPinImageView.isGone = true
-            searchImageView.isGone = true
-            settingsImageView.isGone = true
-            closeTextView.setImageResource(R.drawable.ic_globe_24)
-        }
-        return NovelPluginViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: NovelPluginViewHolder, position: Int) {
-        val extension = getItem(position)
-        if (extension != null) {
-            if (!skipIcons) {
-                Glide.with(holder.itemView.context)
-                    .load(extension.iconUrl)
-                    .into(holder.extensionIconImageView)
-            }
-            holder.bind(extension)
-        }
-    }
-
-    inner class NovelPluginViewHolder(
-        private val binding: ItemExtensionBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        private val job = Job()
-        private val scope = CoroutineScope(Dispatchers.Main + job)
-
-        init {
-            binding.closeTextView.setOnClickListener {
-                if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                val extension = getItem(bindingAdapterPosition)
-                if (extension != null) {
-                    clickListener.onViewClick(extension)
-                }
-            }
-        }
-
-        val extensionIconImageView: ImageView = binding.extensionIconImageView
-        fun bind(extension: NovelExtension.Plugin) {
-            val nsfw = ""
-            val lang = LanguageMapper.mapLanguageCodeToName(extension.lang)
-            binding.extensionNameTextView.text = extension.name
-            val text = "$lang ${extension.versionName} $nsfw"
-            binding.extensionVersionTextView.text = text
-        }
-
-        fun clear() {
-            job.cancel() // Cancel the coroutine when the view is recycled
-        }
-    }
-
-    override fun onViewRecycled(holder: NovelPluginViewHolder) {
-        super.onViewRecycled(holder)
-        holder.clear()
-    }
-}
-
-interface OnNovelViewClickListener {
-    fun onViewClick(plugin: NovelExtension.Plugin)
 }
 
 interface OnNovelInstallClickListener {
