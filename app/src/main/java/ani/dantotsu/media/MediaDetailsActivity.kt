@@ -263,16 +263,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         fun total() {
             val text = SpannableStringBuilder().apply {
                 val white = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorOnBackground)
-                val upcoming = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
+                val primary = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
+                val secondary = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorSecondary)
                 if (media.userStatus != null) {
                     append(if (media.anime != null) getString(R.string.watched_num) else getString(R.string.read_num))
-                    val typedValue = TypedValue()
-                    theme.resolveAttribute(
-                        com.google.android.material.R.attr.colorSecondary,
-                        typedValue,
-                        true
-                    )
-                    bold { color(typedValue.data) { append("${media.userProgress}") } }
+                    bold { color(secondary) { append("${media.userProgress}") } }
                     append(
                         if (media.anime != null) getString(R.string.items_out_of) else getString(
                             R.string.items_out_of
@@ -287,7 +282,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
                 if (media.anime != null) {
                     if (media.anime!!.nextAiringEpisode != null) {
-                        bold { color(upcoming) { append("(${media.anime!!.nextAiringEpisode})") } }
+                        bold { color(primary) { append("${media.anime!!.nextAiringEpisode}") } }
                         append(" / ")
                     }
                     bold { color(white) { append("${media.anime!!.totalEpisodes ?: "??"}") } }
