@@ -76,13 +76,12 @@ class MangaExtensionsViewModel(
                 prefetchDistance = 15
             )
         ) {
-            val mEPS = MangaExtensionPagingSource(available, installed, query)
-            currentPagingSource = mEPS
-            mEPS
+            MangaExtensionPagingSource(available, installed, query).also {
+                currentPagingSource = it
+            }
         }.flow
     }.cachedIn(viewModelScope)
 }
-
 
 class MangaExtensionPagingSource(
     private val availableExtensionsFlow: List<MangaExtension.Available>,

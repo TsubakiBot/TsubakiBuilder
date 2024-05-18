@@ -82,9 +82,12 @@ class ExtensionsActivity : AppCompatActivity() {
         binding.searchView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = statusBarHeight + navBarHeight
         }
+        binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = statusBarHeight
+            bottomMargin = navBarHeight
+        }
 
-        binding.viewPager.offscreenPageLimit = 1
-
+        binding.viewPager.offscreenPageLimit = 2
         binding.viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 7
 
@@ -103,29 +106,15 @@ class ExtensionsActivity : AppCompatActivity() {
 
         }
 
-        val searchView: AutoCompleteTextView = findViewById(R.id.searchViewText)
-
         binding.tabLayout.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
-                    searchView.setText("")
-                    searchView.clearFocus()
+                    binding.searchViewText.setText("")
+                    binding.searchViewText.clearFocus()
                     binding.tabLayout.clearFocus()
                     binding.languageselect.isVisible = tab.text?.contains(
                         getString(R.string.available_extensions, "")
                     ) == true
-                    when {
-                        tab.text?.contains(MediaType.ANIME.asText()) == true -> {
-                            generateRepositoryButton(MediaType.ANIME)
-                        }
-                        tab.text?.contains(MediaType.MANGA.asText()) == true -> {
-                            generateRepositoryButton(MediaType.MANGA)
-                        }
-                        tab.text?.contains(MediaType.NOVEL.asText()) == true -> {
-                            generateRepositoryButton(MediaType.NOVEL)
-                        }
-                        else -> {}
-                    }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -149,7 +138,7 @@ class ExtensionsActivity : AppCompatActivity() {
             }
         }.attach()
 
-        searchView.addTextChangedListener(object : TextWatcher {
+        binding.searchViewText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -165,7 +154,10 @@ class ExtensionsActivity : AppCompatActivity() {
             }
         })
 
-        initActivity(this)
+        binding.openSettingsButton.setOnClickListener {
+            onChangeSettings.launch(Intent(this, SettingsExtensionsActivity::class.java))
+        }
+
         binding.languageselect.setOnClickListener {
             val languageOptions =
                 LanguageMapper.Language.entries.map { it.name }.toTypedArray()
@@ -189,22 +181,12 @@ class ExtensionsActivity : AppCompatActivity() {
             val dialog = builder.show()
             dialog.window?.setDimAmount(0.8f)
         }
-        binding.settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = statusBarHeight
-            bottomMargin = navBarHeight
-        }
     }
 
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
 
-    }
-
-    private fun generateRepositoryButton(type: MediaType) {
-        binding.openSettingsButton.setOnClickListener {
-            onChangeSettings.launch(Intent(this, SettingsExtensionsActivity::class.java))
-        }
     }
 }
 

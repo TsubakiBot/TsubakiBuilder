@@ -449,7 +449,7 @@ class MainActivity : AppCompatActivity() {
                             }
                             1 -> {
                                 SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME).show(
-                                    supportFragmentManager,
+                                    this@MainActivity.supportFragmentManager,
                                     "dialog"
                                 )
                             }

@@ -221,8 +221,10 @@ class AnimeFragment : Fragment() {
                         setAnchor(animePageAdapter.trendingBinding.userAvatar)
                         toRoundImage(Anilist.avatar, 52.toPx)
                         (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
-                        setDefaultPosition()
+
                         loadSavedPosition(resources.configuration)
+                        setDefaultPosition(isOverlapping(animePageAdapter.trendingBinding.userAvatar))
+
                         if (binding.avatarFabulous.isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
                             setBadgeDrawable(
                                 Anilist.unreadNotificationCount + MatagiUpdater.hasUpdate
