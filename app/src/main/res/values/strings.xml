@@ -447,7 +447,7 @@
 
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add all reading / watching to subscriptions</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
 
