@@ -3,7 +3,6 @@ package ani.dantotsu.settings.paging
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
-import android.widget.ImageView
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -71,9 +70,10 @@ class MangaExtensionsViewModel(
     }.flatMapLatest { (available, installed, query) ->
         Pager(
             PagingConfig(
-                pageSize = 15,
-                initialLoadSize = 15,
-                prefetchDistance = 15
+                pageSize = 20,
+                initialLoadSize = available.size + installed.size,
+                prefetchDistance = 10,
+                enablePlaceholders = true
             )
         ) {
             MangaExtensionPagingSource(available, installed, query).also {
@@ -172,6 +172,28 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
         private val job = Job()
         private val scope = CoroutineScope(Dispatchers.IO + job)
 
+        init {
+            binding.closeTextView.setOnClickListener {
+                if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
+                getItem(bindingAdapterPosition)?.let { extension ->
+                    clickListener.onInstallClick(extension)
+                    binding.closeTextView.setImageResource(R.drawable.ic_sync)
+                    scope.launch {
+                        while (isActive) {
+                            withContext(Dispatchers.Main) {
+                                binding.closeTextView.animate()
+                                    .rotationBy(360f)
+                                    .setDuration(1000)
+                                    .setInterpolator(LinearInterpolator())
+                                    .start()
+                            }
+                            delay(1000)
+                        }
+                    }
+                }
+            }
+        }
+
         fun bind(extension: MangaExtension.Available?) {
             if (extension == null) return
             if (!skipIcons) {
@@ -184,22 +206,6 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
             binding.extensionNameTextView.text = extension.name
             val versionText = "$lang ${extension.versionName} $nsfw"
             binding.extensionVersionTextView.text = versionText
-            binding.closeTextView.setOnClickListener {
-                clickListener.onInstallClick(extension)
-                binding.closeTextView.setImageResource(R.drawable.ic_sync)
-                scope.launch {
-                    while (isActive) {
-                        withContext(Dispatchers.Main) {
-                            binding.closeTextView.animate()
-                                .rotationBy(360f)
-                                .setDuration(1000)
-                                .setInterpolator(LinearInterpolator())
-                                .start()
-                        }
-                        delay(1000)
-                    }
-                }
-            }
         }
 
         fun clear() {

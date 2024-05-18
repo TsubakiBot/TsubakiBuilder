@@ -72,9 +72,10 @@ class NovelExtensionsViewModel(
     }.flatMapLatest { (available, installed, query) ->
         Pager(
             PagingConfig(
-                pageSize = 15,
-                initialLoadSize = 15,
-                prefetchDistance = 15
+                pageSize = 20,
+                initialLoadSize = available.size + installed.size,
+                prefetchDistance = 10,
+                enablePlaceholders = true
             )
         ) {
             NovelExtensionPagingSource(available, installed, query).also {
@@ -176,6 +177,28 @@ class NovelExtensionAdapter(
         private val job = Job()
         private val scope = CoroutineScope(Dispatchers.IO + job)
 
+        init {
+            binding.closeTextView.setOnClickListener {
+                if (bindingAdapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
+                getItem(bindingAdapterPosition)?.let { extension ->
+                    clickListener.onInstallClick(extension)
+                    binding.closeTextView.setImageResource(R.drawable.ic_sync)
+                    scope.launch {
+                        while (isActive) {
+                            withContext(Dispatchers.Main) {
+                                binding.closeTextView.animate()
+                                    .rotationBy(360f)
+                                    .setDuration(1000)
+                                    .setInterpolator(LinearInterpolator())
+                                    .start()
+                            }
+                            delay(1000)
+                        }
+                    }
+                }
+            }
+        }
+
         fun bind(extension: NovelExtension.Available?) {
             if (extension == null) return
             if (!skipIcons) {
@@ -188,22 +211,6 @@ class NovelExtensionAdapter(
             binding.extensionNameTextView.text = extension.name
             val text = "$lang ${extension.versionName} $nsfw"
             binding.extensionVersionTextView.text = text
-            binding.closeTextView.setOnClickListener {
-                clickListener.onInstallClick(extension)
-                binding.closeTextView.setImageResource(R.drawable.ic_sync)
-                scope.launch {
-                    while (isActive) {
-                        withContext(Dispatchers.Main) {
-                            binding.closeTextView.animate()
-                                .rotationBy(360f)
-                                .setDuration(1000)
-                                .setInterpolator(LinearInterpolator())
-                                .start()
-                        }
-                        delay(1000)
-                    }
-                }
-            }
         }
 
         fun clear() {
@@ -214,91 +221,6 @@ class NovelExtensionAdapter(
     override fun onViewRecycled(holder: NovelExtensionViewHolder) {
         super.onViewRecycled(holder)
         holder.clear()
-    }
-}
-
-class NovelPluginssViewModelFactory(
-    private val novelExtensionManager: NovelExtensionManager
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return NovelPluginsViewModel(novelExtensionManager) as T
-    }
-}
-
-class NovelPluginsViewModel(
-    novelExtensionManager: NovelExtensionManager
-) : ViewModel() {
-    private val searchQuery = MutableStateFlow("")
-    private var currentPagingSource: NovelPluginPagingSource? = null
-
-    fun setSearchQuery(query: String) {
-        searchQuery.value = query
-    }
-
-    fun invalidatePager() {
-        currentPagingSource?.invalidate()
-
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val pagerFlow: Flow<PagingData<NovelExtension.Plugin>> = combine(
-        novelExtensionManager.availablePluginsFlow,
-        searchQuery
-    ) { available, query ->
-        Pair(available, query)
-    }.flatMapLatest { (available, query) ->
-        Pager(
-            PagingConfig(
-                pageSize = 15,
-                initialLoadSize = 15,
-                prefetchDistance = 15
-            )
-        ) {
-            val nEPS = NovelPluginPagingSource(available, query)
-            currentPagingSource = nEPS
-            nEPS
-        }.flow
-    }.cachedIn(viewModelScope)
-}
-
-
-class NovelPluginPagingSource(
-    private val availablePluginsFlow: List<NovelExtension.Plugin>,
-    private val searchQuery: String
-) : PagingSource<Int, NovelExtension.Plugin>() {
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NovelExtension.Plugin> {
-        val position = params.key ?: 0
-        val availablePlugins = availablePluginsFlow
-        val query = searchQuery
-        val filteredExtensions = if (query.isEmpty()) {
-            availablePlugins
-        } else {
-            availablePlugins.filter { it.name.contains(query, ignoreCase = true) }
-        }
-        /*val filternfsw = if(isNsfwEnabled) {  currently not implemented
-            filteredExtensions
-        } else {
-            filteredExtensions.filterNot { it.isNsfw }
-        }*/
-        return try {
-            val sublist = filteredExtensions.subList(
-                fromIndex = position,
-                toIndex = (position + params.loadSize).coerceAtMost(filteredExtensions.size)
-            )
-            LoadResult.Page(
-                data = sublist,
-                prevKey = if (position == 0) null else position - params.loadSize,
-                nextKey = if (position + params.loadSize >= filteredExtensions.size) null else position + params.loadSize
-            )
-        } catch (e: Exception) {
-            LoadResult.Error(e)
-        }
-    }
-
-    override fun getRefreshKey(state: PagingState<Int, NovelExtension.Plugin>): Int? {
-        return null
     }
 }
 

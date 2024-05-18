@@ -239,7 +239,6 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
         }
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(extensionsRecyclerView)
 
-
         lifecycleScope.launch {
             mangaExtensionManager.installedExtensionsFlow.collect { extensions ->
                 extensionsAdapter.updateData(sortToMangaSourcesList(extensions))

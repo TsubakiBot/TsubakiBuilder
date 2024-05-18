@@ -39,7 +39,6 @@ class MangaExtensionsFragment : Fragment(),
         MangaExtensionAdapter(this)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

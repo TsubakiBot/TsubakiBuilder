@@ -1,10 +1,7 @@
 package ani.dantotsu
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ComponentName
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
@@ -32,7 +29,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
 import logcat.LogcatLogger
@@ -42,13 +38,13 @@ import java.io.PrintWriter
 import java.io.StringWriter
 
 
-@SuppressLint("StaticFieldLeak")
 class App : MultiDexApplication() {
     private lateinit var animeExtensionManager: AnimeExtensionManager
     private lateinit var mangaExtensionManager: MangaExtensionManager
     private lateinit var novelExtensionManager: NovelExtensionManager
     private lateinit var torrentAddonManager: TorrentAddonManager
     private lateinit var downloadAddonManager: DownloadAddonManager
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
@@ -98,10 +94,6 @@ class App : MultiDexApplication() {
             LogcatLogger.install(AndroidLogcatLogger(LogPriority.VERBOSE))
         }
 
-        animeExtensionManager = Injekt.get()
-        mangaExtensionManager = Injekt.get()
-        novelExtensionManager = Injekt.get()
-
         CoroutineScope(Dispatchers.IO).launch { loadAnimeExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadMangaExtensions() }
         CoroutineScope(Dispatchers.IO).launch { loadNovelExtensions() }
@@ -127,19 +119,22 @@ class App : MultiDexApplication() {
         }
     }
 
-    private suspend fun loadAnimeExtensions() = withContext(Dispatchers.IO) {
+    private suspend fun loadAnimeExtensions() {
+        animeExtensionManager = Injekt.get()
         animeExtensionManager.findAvailableExtensions()
         Logger.log("Anime Extensions: ${animeExtensionManager.installedExtensionsFlow.first()}")
         AnimeSources.init(animeExtensionManager.installedExtensionsFlow)
     }
 
-    private suspend fun loadMangaExtensions() = withContext(Dispatchers.IO) {
+    private suspend fun loadMangaExtensions() {
+        mangaExtensionManager = Injekt.get()
         mangaExtensionManager.findAvailableExtensions()
         Logger.log("Manga Extensions: ${mangaExtensionManager.installedExtensionsFlow.first()}")
         MangaSources.init(mangaExtensionManager.installedExtensionsFlow)
     }
 
-    private suspend fun loadNovelExtensions() = withContext(Dispatchers.IO) {
+    private suspend fun loadNovelExtensions() {
+        novelExtensionManager = Injekt.get()
         novelExtensionManager.findAvailableExtensions()
         Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
         NovelSources.init(novelExtensionManager.installedExtensionsFlow)
@@ -170,19 +165,6 @@ class App : MultiDexApplication() {
         override fun onActivityStopped(p0: Activity) {}
         override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {}
         override fun onActivityDestroyed(p0: Activity) {}
-    }
-    private fun setPackageState(componentName: ComponentName, toDisabled: Boolean) {
-        if (toDisabled) {
-            packageManager.setComponentEnabledSetting(
-                componentName,
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP
-            )
-        } else {
-            packageManager.setComponentEnabledSetting(
-                componentName,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP
-            )
-        }
     }
 
     companion object {

@@ -49,7 +49,6 @@ class AnimeExtensionsFragment : Fragment(),
         binding.allExtensionsRecyclerView.isNestedScrollingEnabled = false
         binding.allExtensionsRecyclerView.adapter = adapter
         binding.allExtensionsRecyclerView.layoutManager = LinearLayoutManager(context)
-        binding.allExtensionsRecyclerView
 
         lifecycleScope.launch {
             viewModel.pagerFlow.collectLatest {

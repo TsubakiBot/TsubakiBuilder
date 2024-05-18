@@ -240,7 +240,6 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
         }
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(extensionsRecyclerView)
 
-
         lifecycleScope.launch {
             animeExtensionManager.installedExtensionsFlow.collect { extensions ->
                 extensionsAdapter.updateData(sortToAnimeSourcesList(extensions))

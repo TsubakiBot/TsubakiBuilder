@@ -5,13 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.HapticFeedbackConstants
-import android.view.KeyEvent
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.AutoCompleteTextView
-import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -19,19 +13,14 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
-import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityExtensionsBinding
-import ani.dantotsu.databinding.DialogRepositoriesBinding
-import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.LanguageMapper
-import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.fragment.AnimeExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledAnimeExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledMangaExtensionsFragment
@@ -43,15 +32,8 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import ani.dantotsu.tryWithSuspend
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
-import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import uy.kohesive.injekt.injectLazy
 
 class ExtensionsActivity : AppCompatActivity() {
     lateinit var binding: ActivityExtensionsBinding
@@ -87,7 +69,7 @@ class ExtensionsActivity : AppCompatActivity() {
             bottomMargin = navBarHeight
         }
 
-        binding.viewPager.offscreenPageLimit = 2
+        binding.viewPager.offscreenPageLimit = 1
         binding.viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 7
 
