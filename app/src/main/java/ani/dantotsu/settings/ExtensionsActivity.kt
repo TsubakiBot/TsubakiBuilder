@@ -21,6 +21,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.LanguageMapper
+import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.fragment.AnimeExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledAnimeExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledMangaExtensionsFragment
@@ -34,6 +35,12 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
+import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import uy.kohesive.injekt.injectLazy
 
 class ExtensionsActivity : AppCompatActivity() {
     lateinit var binding: ActivityExtensionsBinding
@@ -169,6 +176,23 @@ class ExtensionsActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
 
+    }
+
+    override fun finish() {
+        super.finish()
+        CoroutineScope(Dispatchers.IO).launch {
+            val animeExtensionManager: AnimeExtensionManager by injectLazy()
+            animeExtensionManager.findAvailableExtensions()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val mangaExtensionManager: MangaExtensionManager by injectLazy()
+            mangaExtensionManager.findAvailableExtensions()
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val novelExtensionManager: NovelExtensionManager by injectLazy()
+            novelExtensionManager.findAvailableExtensions()
+            novelExtensionManager.findAvailablePlugins()
+        }
     }
 }
 

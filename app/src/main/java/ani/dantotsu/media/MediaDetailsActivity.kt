@@ -73,6 +73,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -261,13 +262,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         @SuppressLint("ResourceType")
         fun total() {
             val text = SpannableStringBuilder().apply {
-                val mediaTypedValue = TypedValue()
-                this@MediaDetailsActivity.theme.resolveAttribute(
-                    com.google.android.material.R.attr.colorOnBackground,
-                    mediaTypedValue,
-                    true
-                )
-                val white = mediaTypedValue.data
+                val white = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorOnBackground)
+                val upcoming = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
                 if (media.userStatus != null) {
                     append(if (media.anime != null) getString(R.string.watched_num) else getString(R.string.read_num))
                     val typedValue = TypedValue()
@@ -291,7 +287,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 }
                 if (media.anime != null) {
                     if (media.anime!!.nextAiringEpisode != null) {
-                        bold { color(white) { append("(${media.anime!!.nextAiringEpisode})") } }
+                        bold { color(upcoming) { append("(${media.anime!!.nextAiringEpisode})") } }
                         append(" / ")
                     }
                     bold { color(white) { append("${media.anime!!.totalEpisodes ?: "??"}") } }

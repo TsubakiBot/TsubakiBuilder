@@ -34,7 +34,6 @@ import ani.dantotsu.databinding.ItemChipBinding
 import ani.dantotsu.databinding.ItemQuelsBinding
 import ani.dantotsu.databinding.ItemTitleChipgroupBinding
 import ani.dantotsu.databinding.ItemTitleRecyclerBinding
-import ani.dantotsu.databinding.ItemTitleSearchBinding
 import ani.dantotsu.databinding.ItemTitleTextBinding
 import ani.dantotsu.displayTimer
 import ani.dantotsu.isOnline
@@ -53,7 +52,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.Serializable
-
 
 class MediaInfoFragment : Fragment() {
     private var _binding: FragmentMediaInfoBinding? = null
