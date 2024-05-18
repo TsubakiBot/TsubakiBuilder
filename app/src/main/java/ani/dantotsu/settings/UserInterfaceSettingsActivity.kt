@@ -87,6 +87,13 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         }
                     ),
                     Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.hide_home_main),
+                        desc = getString(R.string.hide_home_main_desc),
+                        icon = R.drawable.ic_round_no_icon_24,
+                        pref = PrefName.HomeMainHide
+                    ),
+                    Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.home_layout_show),
                         icon = R.drawable.ic_round_playlist_add_24,

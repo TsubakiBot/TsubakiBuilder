@@ -23,6 +23,7 @@ import androidx.annotation.OptIn
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -125,6 +126,12 @@ class HomeFragment : Fragment() {
                 binding.homeUserDataProgressBar.visibility = View.GONE
                 setActiveNotificationCount()
 
+                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
+                binding.avatarFabulous.startAnimation(setSlideUp())
+                binding.homeUserDataContainer.visibility = View.VISIBLE
+                binding.homeUserDataContainer.layoutAnimation =
+                    LayoutAnimationController(setSlideUp(), 0.25f)
+
                 homeListContainerBinding.apply {
                     portraitScaleLandStretch(resources.configuration)
                     homeAnimeList.setOnClickListener {
@@ -143,10 +150,6 @@ class HomeFragment : Fragment() {
                                 .putExtra("username", Anilist.username), null
                         )
                     }
-                    binding.homeUserAvatarContainer.startAnimation(setSlideUp())
-                    binding.homeUserDataContainer.visibility = View.VISIBLE
-                    binding.homeUserDataContainer.layoutAnimation =
-                        LayoutAnimationController(setSlideUp(), 0.25f)
                     homeAnimeList.visibility = View.VISIBLE
                     homeMangaList.visibility = View.VISIBLE
                     homeRandomAnime.visibility = View.VISIBLE
@@ -189,16 +192,7 @@ class HomeFragment : Fragment() {
 
                 val handler = Handler(Looper.getMainLooper())
                 val mRunnable = Runnable {
-                    if (isOverlapping(binding.homeUserAvatarContainer)) {
-                        setDefaultPosition(true)
-                        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            PrefManager.setVal(PrefName.FabulousVertX, x)
-                            PrefManager.setVal(PrefName.FabulousVertY, y)
-                        } else {
-                            PrefManager.setVal(PrefName.FabulousHorzX, x)
-                            PrefManager.setVal(PrefName.FabulousHorzY, y)
-                        }
-                    }
+                    setDefaultPosition(isOverlapping(binding.homeUserAvatarContainer))
                 }
 
                 setOnMoveListener(object : FABulous.OnViewMovedListener {
@@ -763,6 +757,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun portraitScaleLandStretch(configuration: Configuration) {
+        if (PrefManager.getVal(PrefName.HomeMainHide)) {
+            homeListContainerBinding.homeListContainer.isGone = true
+            return
+        }
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
         homeListContainerBinding.homeListContainer.run {
             updateLayoutParams<ViewGroup.MarginLayoutParams> {

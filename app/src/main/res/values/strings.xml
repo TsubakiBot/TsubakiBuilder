@@ -323,6 +323,8 @@
 
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Small View in Trending Shows</string>
     <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animations</string>

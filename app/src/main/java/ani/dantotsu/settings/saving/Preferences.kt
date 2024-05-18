@@ -71,6 +71,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     BlurRadius(Pref(Location.UI, Float::class, 2f)),
     BlurSampling(Pref(Location.UI, Float::class, 2f)),
     ImmersiveMode(Pref(Location.UI, Boolean::class, false)),
+    HomeMainHide(Pref(Location.UI, Boolean::class, false)),
     SmallView(Pref(Location.UI, Boolean::class, true)),
     FloatingAvatar(Pref(Location.UI, Boolean::class, false)),
     DefaultStartUpTab(Pref(Location.UI, Int::class, 1)),
