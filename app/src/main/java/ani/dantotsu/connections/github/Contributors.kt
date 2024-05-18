@@ -31,10 +31,11 @@ class Contributors {
                         it.login,
                         it.avatarUrl,
                         when (it.login) {
-                            "rebelonion" -> "Owner & Maintainer"
-                            "sneazy-ibo" -> "Contributor & Comment Moderator"
+                            "rebelonion" -> "Dantotsu Maintainer"
+                            "AbandonedCart" -> "${getString(R.string.contributor)} ${getString(R.string.himitsu)}"
+                            "sneazy-ibo" -> "${getString(R.string.contributor)} & ${getString(R.string.comment_mod)}"
                             "WaiWhat" -> "Icon Designer"
-                            else -> "Contributor"
+                            else -> getString(R.string.contributor)
                         },
                         it.htmlUrl
                     )
@@ -58,43 +59,43 @@ class Contributors {
                     Developer(
                         "Arif Alam",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b6011177-2n994qtayiR9.jpg",
-                        "Discord & Comment Moderator",
+                        "Discord & ${getString(R.string.comment_mod)}",
                         "https://anilist.co/user/6011177"
                     ),
                     Developer(
                         "SunglassJeery",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b5804776-FEKfP5wbz2xv.png",
-                        "Head Discord & Comment Moderator",
+                        "Head Discord & ${getString(R.string.comment_mod)}",
                         "https://anilist.co/user/5804776"
                     ),
                     Developer(
                         "Excited",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b6131921-toSoGWmKbRA1.png",
-                        "Comment Moderator",
+                        getString(R.string.comment_mod),
                         "https://anilist.co/user/6131921"
                     ),
                     Developer(
                         "Gurjshan",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b6363228-rWQ3Pl3WuxzL.png",
-                        "Comment Moderator",
+                        getString(R.string.comment_mod),
                         "https://anilist.co/user/6363228"
                     ),
                     Developer(
                         "NekoMimi",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b6244220-HOpImMGMQAxW.jpg",
-                        "Comment Moderator",
+                        getString(R.string.comment_mod),
                         "https://anilist.co/user/6244220"
                     ),
                     Developer(
                         "Ziadsenior",
                         "https://s4.anilist.co/file/anilistcdn/user/avatar/large/b6049773-8cjYeUOFUguv.jpg",
-                        "Comment Moderator and Arabic Translator",
+                        "${getString(R.string.comment_mod)} & Arabic Translator",
                         "https://anilist.co/user/6049773"
                     ),
                     Developer(
                         "hastsu",
                         "https://cdn.discordapp.com/avatars/602422545077108749/20b4a6efa4314550e4ed51cdbe4fef3d.webp?size=160",
-                        "Comment Moderator and Arabic Translator",
+                        "${getString(R.string.comment_mod)} & Arabic Translator",
                         "https://anilist.co/user/6183359"
                     ),
                 )

@@ -1116,6 +1116,9 @@
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
 
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
+
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>

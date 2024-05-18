@@ -14,6 +14,8 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import ani.dantotsu.R
 import ani.dantotsu.blurImage
@@ -379,7 +381,7 @@ class Stories @JvmOverloads constructor(
             binding.textActivityContainer.isVisible = !isList
             binding.infoText.isVisible = isList
             binding.coverImage.isVisible = isList
-            binding.infoText.visibility = if (isList) View.VISIBLE else View.INVISIBLE
+            binding.infoText.isInvisible = !isList
             binding.infoText.text = ""
             binding.contentImageViewKen.isVisible = isList
             binding.contentImageView.isVisible = isList
