@@ -41,7 +41,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
-import ani.dantotsu.withRightMargin
+import ani.dantotsu.withFlexibleMargin
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import eu.kanade.tachiyomi.util.system.getThemeColor
@@ -86,7 +86,9 @@ class MangaPageAdapter(val parent: MangaFragment): RecyclerView.Adapter<MangaPag
             }
         }
 
-        trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
+        trendingBinding.trendingContainer.withFlexibleMargin(
+            holder.itemView.resources.configuration, toBottom = false
+        )
 
         updateAvatar()
         parent.setActiveNotificationCount()

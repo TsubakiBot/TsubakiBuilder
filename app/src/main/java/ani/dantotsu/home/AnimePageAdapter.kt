@@ -31,8 +31,8 @@ import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
-import ani.dantotsu.media.reviews.ReviewPopupActivity
 import ani.dantotsu.media.SearchActivity
+import ani.dantotsu.media.reviews.ReviewPopupActivity
 import ani.dantotsu.profile.activity.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -42,7 +42,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
-import ani.dantotsu.withRightMargin
+import ani.dantotsu.withFlexibleMargin
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import eu.kanade.tachiyomi.util.system.getThemeColor
@@ -85,7 +85,9 @@ class AnimePageAdapter(val parent: AnimeFragment) : RecyclerView.Adapter<AnimePa
                 bottomMargin = (-108f).toPx
             }
         }
-        trendingBinding.trendingContainer.withRightMargin(holder.itemView.resources.configuration)
+        trendingBinding.trendingContainer.withFlexibleMargin(
+            holder.itemView.resources.configuration, toBottom = false
+        )
 
         updateAvatar()
         parent.setActiveNotificationCount()
