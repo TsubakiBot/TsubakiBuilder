@@ -477,11 +477,11 @@ class MainActivity : AppCompatActivity() {
                                 Anilist.query.getMedia(id, isMAL)
                             }
                             if (media != null) {
-                                media.cameFromContinue = cont
-                                startActivity(
-                                    Intent(this@MainActivity, MediaDetailsActivity::class.java)
-                                        .putExtra("media", media as Serializable)
-                                )
+                                startActivity(Intent(
+                                    this@MainActivity, MediaDetailsActivity::class.java
+                                ).putExtra(
+                                    "media", media.apply { cameFromContinue = cont } as Serializable
+                                ))
                             } else {
                                 snackString(this@MainActivity.getString(R.string.anilist_not_found))
                             }

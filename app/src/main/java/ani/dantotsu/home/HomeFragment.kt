@@ -638,13 +638,11 @@ class HomeFragment : Fragment() {
 
                     override fun onLoadCleared(placeholder: Drawable?) { }
                 })
-                item.setIntent(Intent(context, MainActivity::class.java).apply {
-                    action = "ani.dantotsu.shortcut.${media.id}"
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    putExtra("fromWidget", true)
-                    putExtra("mediaId", media.id)
-                    putExtra("continue", true)
-                })
+                item.setIntent(Intent(
+                    requireContext(), MediaDetailsActivity::class.java
+                ).putExtra(
+                    "media", media.apply { cameFromContinue = true } as Serializable
+                ))
             }
 
             binding.avatarFabulous.setOnClickListener {
@@ -770,7 +768,7 @@ class HomeFragment : Fragment() {
                     height = 190.toPx
                     marginStart = 16.toPx
                     marginEnd = 16.toPx
-                    bottomMargin = 4.toPx
+                    bottomMargin = 2.toPx
                 } else {
                     height = 140.toPx
                     marginStart = 24.toPx
