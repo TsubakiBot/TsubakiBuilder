@@ -175,11 +175,6 @@ class MainActivity : AppCompatActivity() {
             biometricPrompt.authenticate(promptInfo)
         }
 
-        if (PrefManager.getCustomVal("requires_update_refresh", false)) {
-            PrefManager.removeCustomVal("requires_update_refresh")
-            showSystemBarsRetractView()
-        }
-
         TaskScheduler.scheduleSingleWork(this)
 
         val action = intent.action
@@ -363,7 +358,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             binding.includedNavbar.navbarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = navBarHeight
+                bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                    8.toPx
+                else
+                    navBarHeight + 24.toPx
             }
             window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
             selectedOption = if (fragment != null) {
@@ -565,10 +563,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val margin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) 8 else 32
-        val params: ViewGroup.MarginLayoutParams =
-            binding.includedNavbar.navbar.layoutParams as ViewGroup.MarginLayoutParams
-        params.updateMargins(bottom = margin.toPx)
+        binding.includedNavbar.navbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                8.toPx
+            else
+                navBarHeight + 24.toPx
+        }
     }
 
     private fun passwordAlertDialog(callback: (CharArray?) -> Unit) {

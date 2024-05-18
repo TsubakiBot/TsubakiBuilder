@@ -49,7 +49,6 @@ import java.util.Collections
 
 class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
 
-
     private var _binding: FragmentExtensionsBinding? = null
     private val binding get() = _binding!!
     private lateinit var extensionsRecyclerView: RecyclerView
