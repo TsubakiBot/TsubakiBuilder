@@ -192,7 +192,9 @@ class HomeFragment : Fragment() {
 
                 val handler = Handler(Looper.getMainLooper())
                 val mRunnable = Runnable {
-                    setDefaultPosition(isOverlapping(binding.homeUserAvatarContainer))
+                    if (isOverlapping(binding.homeUserAvatarContainer)) {
+                        setDefaultPosition(true)
+                    }
                 }
 
                 setOnMoveListener(object : FABulous.OnViewMovedListener {

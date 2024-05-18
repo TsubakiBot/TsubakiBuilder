@@ -21,7 +21,7 @@
             android:rotation="-45"
             android:visibility="invisible"
             app:boxStrokeColor="@color/text_input_layout_stroke_color"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             tools:visibility="visible">
 
             <ImageView
@@ -74,7 +74,7 @@
             android:rotation="-45"
             android:visibility="invisible"
             app:boxStrokeColor="@color/text_input_layout_stroke_color"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             tools:visibility="visible">
 
             <ImageView
@@ -127,7 +127,7 @@
             android:rotation="-45"
             android:visibility="invisible"
             app:boxStrokeColor="@color/text_input_layout_stroke_color"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             tools:visibility="visible">
 
             <ImageView
@@ -179,7 +179,7 @@
             android:rotation="-45"
             android:visibility="invisible"
             app:boxStrokeColor="@color/text_input_layout_stroke_color"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             tools:visibility="visible">
 
             <ImageView

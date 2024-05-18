@@ -233,7 +233,9 @@ class AnimeFragment : Fragment() {
 
                         val handler = Handler(Looper.getMainLooper())
                         val mRunnable = Runnable {
-                            setDefaultPosition(isOverlapping(animePageAdapter.trendingBinding.userAvatar))
+                            if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
+                                setDefaultPosition(true)
+                            }
                         }
 
                         setOnMoveListener(object : FABulous.OnViewMovedListener {
