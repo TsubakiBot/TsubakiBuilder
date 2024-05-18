@@ -23,17 +23,17 @@ class AddonLoader {
     companion object {
 
         /**
-         * Load an extension from a package name with a specific class name
+         * Load an add-on from a package name with a specific class name
          * @param context the context
-         * @param packageName the package name of the extension
-         * @param type the type of extension
-         * @return the loaded extension
-         * @throws IllegalStateException if the extension is not of the correct type
-         * @throws ClassNotFoundException if the extension class is not found
-         * @throws NoClassDefFoundError if the extension class is not found
+         * @param packageName the package name of the add-on
+         * @param type the type of add-on
+         * @return the loaded add-on
+         * @throws IllegalStateException if the add-on is not of the correct type
+         * @throws ClassNotFoundException if the add-on class is not found
+         * @throws NoClassDefFoundError if the add-on class is not found
          * @throws Exception if any other error occurs
          * @throws PackageManager.NameNotFoundException if the package is not found
-         * @throws IllegalStateException if the extension is not found
+         * @throws IllegalStateException if the add-on is not found
          */
         fun loadExtension(
             context: Context,
@@ -94,7 +94,7 @@ class AddonLoader {
                 Logger.log(e)
                 throw e
             } catch (e: Exception) {
-                Logger.log("Addon load error: $extName ($className)")
+                Logger.log("Add-on load error: $extName ($className)")
                 Logger.log(e)
                 throw e
             }

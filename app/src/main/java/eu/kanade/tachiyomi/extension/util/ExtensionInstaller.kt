@@ -18,6 +18,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.Type
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
+import ani.himitsu.os.Version
 import com.jakewharton.rxrelay.PublishRelay
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.InstallStep
@@ -173,7 +174,7 @@ class ExtensionInstaller(private val context: Context) {
                 try {
                     ContextCompat.startForegroundService(context, intent)
                 } catch (e: RuntimeException) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && e is ForegroundServiceStartNotAllowedException) {
+                    if (Version.isSnowCone && e is ForegroundServiceStartNotAllowedException) {
                         toast(context.getString(R.string.error_msg, context.getString(R.string.foreground_service_not_allowed)))
                     } else {
                         toast(context.getString(R.string.error_msg, e.message))
