@@ -78,6 +78,7 @@ object Logger {
         loggerExecutor.execute {
             if (file == null) e.printStackTrace() else {
                 file?.appendText("---------------------------Exception---------------------------\n")
+                file?.appendText("className: ${e.cause?.javaClass?.name ?: e.javaClass.name}")
                 file?.appendText("date/time: ${Date()} |  ${e.message}\n")
                 file?.appendText("trace: ${e.stackTraceToString()}\n")
             }
@@ -89,6 +90,7 @@ object Logger {
         loggerExecutor.execute {
             if (file == null) e.printStackTrace() else {
                 file?.appendText("---------------------------Exception---------------------------\n")
+                file?.appendText("className: ${e.cause?.javaClass?.name ?: e.javaClass.name}")
                 file?.appendText("date/time: ${Date()} |  ${e.message}\n")
                 file?.appendText("trace: ${e.stackTraceToString()}\n")
             }

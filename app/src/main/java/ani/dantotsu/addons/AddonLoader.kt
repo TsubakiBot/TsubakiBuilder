@@ -85,16 +85,7 @@ class AddonLoader {
                 PathClassLoader(appInfo.sourceDir, appInfo.nativeLibraryDir, context.classLoader)
             val loadedClass = try {
                 Class.forName(className, false, classLoader)
-            } catch (e: ClassNotFoundException) {
-                Logger.log("ClassNotFoundException load error: $extName ($className)")
-                Logger.log(e)
-                throw e
-            } catch (e: NoClassDefFoundError) {
-                Logger.log("NoClassDefFoundError load error: $extName ($className)")
-                Logger.log(e)
-                throw e
             } catch (e: Exception) {
-                Logger.log("Add-on load error: $extName ($className)")
                 Logger.log(e)
                 throw e
             }
