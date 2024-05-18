@@ -266,18 +266,13 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 val primary = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorPrimary)
                 val secondary = this@MediaDetailsActivity.getThemeColor(com.google.android.material.R.attr.colorSecondary)
                 if (media.userStatus != null) {
-                    append(if (media.anime != null) getString(R.string.watched_num) else getString(R.string.read_num))
+                    append(getString(if (media.anime != null) R.string.watched_num else R.string.read_num))
                     bold { color(secondary) { append("${media.userProgress}") } }
-                    append(
-                        if (media.anime != null) getString(R.string.items_out_of) else getString(
-                            R.string.items_out_of
-                        )
+                    append(getString(if (media.anime != null) R.string.items_out_of else R.string.items_out_of)
                     )
                 } else {
                     append(
-                        if (media.anime != null) getString(R.string.items_total_of) else getString(
-                            R.string.items_total_of
-                        )
+                        getString(if (media.anime != null) R.string.items_total_of else R.string.items_total_of)
                     )
                 }
                 if (media.anime != null) {
@@ -296,9 +291,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         fun progress() {
             val statuses: Array<String> = resources.getStringArray(R.array.status)
             val statusStrings =
-                if (media.manga == null) resources.getStringArray(R.array.status_anime) else resources.getStringArray(
-                    R.array.status_manga
-                )
+                resources.getStringArray(if (media.manga == null) R.array.status_anime else R.array.status_manga)
             val userStatus =
                 if (media.userStatus != null) statusStrings[statuses.indexOf(media.userStatus)] else statusStrings[0]
 
