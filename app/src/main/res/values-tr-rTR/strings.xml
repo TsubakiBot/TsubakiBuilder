@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Varsayılan Oynatma Hızı : %1$s</string>
     <string name="cursed_speeds">Lanetli Hızlar</string>
     <string name="resize_mode_button">Varsayılan Yeniden Boyutlandırma Modu</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Altyazılar</string>
     <string name="subtitle_toggle">Altyazılar</string>
     <string name="primary_sub_color_select">Altyazı Rengi</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"Altyazı penceresi, arka plandan sol ve sağdaki kısımdır. (arka plan olmayan yer)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Altyazı Şeffaflığı</string>
-    <string name="sub_text_example">Örnek Altyazı</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Altyazı Yazı Tipi</string>
     <string name="subtitle_font_size">Altyazı Boyutu</string>
     <string name="no_subs_available">Altyazı Yok</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Varsayılan Başlangıç Sekmesi</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Trend Olan Gösterilerde Küçük Görünüm</string>
     <string name="trailer_banners">Banner Olarak Römork Kullan</string>
     <string name="animations">Animasyonlar</string>
@@ -404,7 +408,7 @@
     <string name="note">NOT</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Uzantı Depolarını Yönet</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Yolunuz belirlenemedi</string>
     <string name="dir_access">İndirme Erişimi</string>
     <string name="dir_access_msg">İndirmelerinizi kaydetmek için bir dizin seçin</string>
-    <string name="download_subtitle">Altyazıyı İndir</string>
     <string name="change_download_location">İndirme Konumunu Değiştir</string>
     <string name="download_location_msg">İndirme konumunu değiştirmek istediğinizden emin misiniz?\nEski indirmelere artık erişilemeyebilir.</string>
     <string name="voice_actors">Seslendirme Sanatçıları</string>
@@ -938,7 +941,6 @@
     <string name="image">Görüntü</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Çakışma nedeniyle uzantı yüklenemedi</string>
-    <string name="no_video_selected">Seçili Video Yok</string>
     <string name="download_extension_not_available">İndirme Uzantısı mevcut değil</string>
     <string name="feed">Besleme</string>
     <string name="profile">Profil</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Altyazıyı İndir</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Yanıtla</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

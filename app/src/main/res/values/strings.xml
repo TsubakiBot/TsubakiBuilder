@@ -587,7 +587,7 @@
     <string name="episode_num">Episode %1$s</string>
     <string name="chapter">"Chapter "</string>
     <string name="chapter_num">Chapter %1$s</string>
-    <string name="just_released">- Newly released!</string>
+    <string name="just_released">- New release!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
     <string name="user_list">%1$s\'s %2$s List</string>
 

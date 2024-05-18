@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Προεπιλεγμένη ταχύτητα αναπαραγωγής: %1$s</string>
     <string name="cursed_speeds">Καταραμένες ταχύτητες</string>
     <string name="resize_mode_button">Προεπιλεγμένη λειτουργία αλλαγής μεγέθους</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Υπότιτλοι</string>
     <string name="subtitle_toggle">Υπότιτλοι</string>
     <string name="primary_sub_color_select">Χρώμα Υποτίτλων</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"Το παράθυρο υποτίτλων είναι το τμήμα αριστερά και δεξιά από αυτούς. (όπου δεν είναι το φόντο)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Διαφάνεια υπότιτλων</string>
-    <string name="sub_text_example">Παράδειγμα Υπότιτλου</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Γραμματοσειρά υπότιτλων</string>
     <string name="subtitle_font_size">Μέγεθος υπότιτλων</string>
     <string name="no_subs_available">Δεν Υπάρχουν Διαθέσιμοι Υπότιτλοι</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Προεπιλεγμένη καρτέλα εκκίνησης</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Small View σε Trending Shows</string>
     <string name="trailer_banners">Χρησιμοποιήστε το Trailer ως Πανό</string>
     <string name="animations">Εφέ</string>
@@ -404,7 +408,7 @@
     <string name="note">Σημείωση</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Διαχείριση αποθεμάτων επέκτασης</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Δεν ήταν δυνατός ο ορισμός της διαδρομής σας</string>
     <string name="dir_access">Πρόσβαση λήψεων</string>
     <string name="dir_access_msg">Επιλέξτε έναν κατάλογο για να αποθηκεύσετε τις λήψεις σας</string>
-    <string name="download_subtitle">Λήψη Υπότιτλου</string>
     <string name="change_download_location">Αλλαγή τοποθεσίας λήψης</string>
     <string name="download_location_msg">Είστε βέβαιοι ότι θέλετε να αλλάξετε τη θέση λήψης;\nΟι παλιές λήψεις ενδέχεται να μην είναι πλέον προσβάσιμες.</string>
     <string name="voice_actors">Ηθοποιοί φωνής</string>
@@ -938,7 +941,6 @@
     <string name="image">Εικόνα</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Η εγκατάσταση της επέκτασης απέτυχε λόγω διένεξης</string>
-    <string name="no_video_selected">Δεν Επιλέχθηκε Βίντεο</string>
     <string name="download_extension_not_available">Η επέκταση λήψης δεν είναι διαθέσιμη</string>
     <string name="feed">Τροφοδοσία</string>
     <string name="profile">Προφίλ</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Λήψη Υπότιτλου</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Απάντηση</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

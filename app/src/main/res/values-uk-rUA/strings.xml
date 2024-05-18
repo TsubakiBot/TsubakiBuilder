@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Швидкість відтворення за замовчуванням: %1$s</string>
     <string name="cursed_speeds">Прокляті швидкості</string>
     <string name="resize_mode_button">Типовий режим зміни розміру</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Субтитри</string>
     <string name="subtitle_toggle">Субтитри</string>
     <string name="primary_sub_color_select">Колір субтитрів</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"Вікно субтитрів є частиною та зліва від них. (фон відсутній)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Прозорість субтитрів</string>
-    <string name="sub_text_example">Зразок нижньої частини</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Шрифт субтитрів</string>
     <string name="subtitle_font_size">Розмір субтитрів</string>
     <string name="no_subs_available">Доступні субтитри відсутні</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">За промовчанням Початкова Вкладка</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Вид у актуальних повідомленнях</string>
     <string name="trailer_banners">Використовуйте трейлер як банер</string>
     <string name="animations">Анімація</string>
@@ -404,7 +408,7 @@
     <string name="note">ПРИМІТКА</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Управління репутаціями розширень</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Не вдалося встановити ваш шлях</string>
     <string name="dir_access">Доступ до завантажень</string>
     <string name="dir_access_msg">Будь ласка виберіть теку для збереження завантажень</string>
-    <string name="download_subtitle">Завантажити субтитри</string>
     <string name="change_download_location">Змінити розташування для завантажень</string>
     <string name="download_location_msg">Ви впевнені, що хочете змінити розташування завантаження?\nСтарі завантаження більше недоступні.</string>
     <string name="voice_actors">Голосові актори</string>
@@ -938,7 +941,6 @@
     <string name="image">Зображення</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Не вдалося встановити розширення через конфлікт</string>
-    <string name="no_video_selected">Відео не вибране</string>
     <string name="download_extension_not_available">Завантажити розширення недоступне</string>
     <string name="feed">Стрічка подій</string>
     <string name="profile">Анкета</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Завантажити субтитри</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Відповідь</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

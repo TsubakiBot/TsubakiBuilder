@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Default Playback Speed : %1$s</string>
     <string name="cursed_speeds">Cursed Speeds</string>
     <string name="resize_mode_button">Default Resize Mode</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Subtitles</string>
     <string name="subtitle_toggle">Титлови</string>
     <string name="primary_sub_color_select">Subtitle Color</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Small View in Trending Shows</string>
     <string name="trailer_banners">Користите трејлер као банер</string>
     <string name="animations">Animations</string>
@@ -404,7 +408,7 @@
     <string name="note">NOTE</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Manage Extension Repos</string>
@@ -534,7 +538,7 @@
     <string name="episode_num">Episode %1$s</string>
     <string name="chapter">"Поглавље "</string>
     <string name="chapter_num">Chapter %1$s</string>
-    <string name="just_released">- Newly released!</string>
+    <string name="just_released">- New release!</string>
     <string name="checking_subscriptions_title">Checking Subscriptions</string>
     <string name="user_list">%1$s\'s %2$s List</string>
     <string name="speed">Speed</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Your path could not be set</string>
     <string name="dir_access">Downloads access</string>
     <string name="dir_access_msg">Please choose a directory to save your downloads</string>
-    <string name="download_subtitle">Download Subtitle</string>
     <string name="change_download_location">Change Download Location</string>
     <string name="download_location_msg">Are you sure you want to change the download location?\nOld downloads may no longer be accessible.</string>
     <string name="voice_actors">Voice Actors</string>
@@ -938,7 +941,6 @@
     <string name="image">Image</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Failed to install extension due to conflict</string>
-    <string name="no_video_selected">No Video Selected</string>
     <string name="download_extension_not_available">Download Extension not available</string>
     <string name="feed">Feed</string>
     <string name="profile">Profile</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Download Subtitle</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Reply</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

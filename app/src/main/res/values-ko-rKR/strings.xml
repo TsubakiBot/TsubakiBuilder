@@ -221,6 +221,8 @@
     <string name="default_playback_speed">기본 재생 속도: %1$s</string>
     <string name="cursed_speeds">저주받은 속도</string>
     <string name="resize_mode_button">기본 크기 조정 모드</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">자막</string>
     <string name="subtitle_toggle">자막</string>
     <string name="primary_sub_color_select">자막 색상</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"자막 창은 그들의 왼쪽과 오른쪽 부분입니다. (배경이 아닌 곳)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">자막 투명도</string>
-    <string name="sub_text_example">예시 자막</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">자막 글꼴</string>
     <string name="subtitle_font_size">자막 크기</string>
     <string name="no_subs_available">사용 가능한 자막 없음</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">기본 시작 탭</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">인기 있는 쇼에서 작은 보기</string>
     <string name="trailer_banners">배너로 사용할 트레일러</string>
     <string name="animations">애니메이션</string>
@@ -404,7 +408,7 @@
     <string name="note">참고</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">확장 프로그램 저장소 관리</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">경로를 설정할 수 없습니다</string>
     <string name="dir_access">다운로드 액세스</string>
     <string name="dir_access_msg">다운로드를 저장할 디렉토리를 선택하십시오</string>
-    <string name="download_subtitle">자막 다운로드</string>
     <string name="change_download_location">다운로드 위치 변경</string>
     <string name="download_location_msg">다운로드 위치를 변경하시겠습니까?\n이전 다운로드에 더 이상 액세스할 수 없을 수 있습니다.</string>
     <string name="voice_actors">성우</string>
@@ -938,7 +941,6 @@
     <string name="image">이미지</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">충돌로 인해 확장 프로그램 설치 실패</string>
-    <string name="no_video_selected">선택된 비디오 없음</string>
     <string name="download_extension_not_available">확장 프로그램 다운로드를 사용할 수 없습니다</string>
     <string name="feed">피드</string>
     <string name="profile">프로필</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">자막 다운로드</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">회신</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

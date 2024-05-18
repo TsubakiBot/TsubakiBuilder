@@ -221,6 +221,8 @@
     <string name="default_playback_speed">ডিফ\'ল্ট প্ৰতিধ্বনি দ্ৰুতি: %1$s</string>
     <string name="cursed_speeds">প্ৰতিধ্বনি দ্ৰুতি</string>
     <string name="resize_mode_button">ডিফ\'ল্ট পুনঃ আকাৰ মোড</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">উপশিৰোণ</string>
     <string name="subtitle_toggle">উপশিৰোণ</string>
     <string name="primary_sub_color_select">প্ৰাথমিক উপশিৰোণৰ ৰং</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"উপশিৰোণৰ পিচা তালৰ আৰু তলৰ দিশত (যেখন প্ৰস্তুত সন্ধান নহয়)।"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">উপশীৰ্ষক স্বচ্ছতা </string>
-    <string name="sub_text_example">উদাহৰণ উপশীৰ্ষক</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">উপশিৰোণৰ ফন্ট</string>
     <string name="subtitle_font_size">উপশিৰোণৰ মাপ</string>
     <string name="no_subs_available">No Subtitles Available</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">ডিফ’ল্ট আৰম্ভ কৰা টেব</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">সৰ্বাধিক সাধাৰণ অনুষ্ঠানত ছোট দৃশ্য</string>
     <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">এনিমেছনসমূহ</string>
@@ -404,7 +408,7 @@
     <string name="note">নোট</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">সম্প্ৰসাৰণ ৰেপোসমূহ ব্যৱস্থিত কৰক</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">আপোনাৰ পথ নিৰ্ধাৰণ কৰিব পৰা নগ\'ল</string>
     <string name="dir_access">ডাউনল’ড প্ৰাপ্তি</string>
     <string name="dir_access_msg">অনুগ্ৰহ কৰি আপোনাৰ ডাউনল’ডসমূহ সংৰক্ষণ কৰিবলৈ এটা ডাইৰেকটৰি বাছনি কৰক</string>
-    <string name="download_subtitle">Download Subtitle</string>
     <string name="change_download_location">ডাউনল’ড অৱস্থান পৰিৱৰ্তন কৰক</string>
     <string name="download_location_msg">আপুনি নিশ্চিত নেকি ডাউনল’ড অৱস্থান পৰিবৰ্তন কৰিব বিচাৰে?\nপুৰণি ডাউনল’ডসমূহ আৰু অতিৰিক্ত অধিগম্য নহয় l</string>
     <string name="voice_actors">ভয়েচ অ্যাক্টৰসমূহ</string>
@@ -938,7 +941,6 @@
     <string name="image">চিত্ৰ</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">এক্সটেনছন ইনষ্টল কৰিবলৈ বিঘটনা হৈছে</string>
-    <string name="no_video_selected">No Video Selected</string>
     <string name="download_extension_not_available">Download Extension not available</string>
     <string name="feed">Feed</string>
     <string name="profile">Profile</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Download Subtitle</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Reply</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

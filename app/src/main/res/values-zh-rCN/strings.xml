@@ -221,6 +221,8 @@
     <string name="default_playback_speed">默认播放速度：%1$s</string>
     <string name="cursed_speeds">诅咒的速度</string>
     <string name="resize_mode_button">默认调整大小模式</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">字幕</string>
     <string name="subtitle_toggle">字幕</string>
     <string name="primary_sub_color_select">字幕颜色</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"字幕窗口是左右两侧的部分。（其中背景不是）"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">字幕透明度</string>
-    <string name="sub_text_example">示例子项</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">字幕字体</string>
     <string name="subtitle_font_size">字幕大小</string>
     <string name="no_subs_available">无可用字幕</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">默认启动选项卡</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">在热门节目中显示小视图</string>
     <string name="trailer_banners">将预告片用作横幅</string>
     <string name="animations">动画</string>
@@ -404,7 +408,7 @@
     <string name="note">注意</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">管理扩展仓库</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">无法设置您的路径</string>
     <string name="dir_access">下载访问权限</string>
     <string name="dir_access_msg">请选择一个目录来保存您的下载</string>
-    <string name="download_subtitle">下载字幕</string>
     <string name="change_download_location">更改下载位置</string>
     <string name="download_location_msg">您确定要更改下载位置吗？\n旧下载可能无法再访问。</string>
     <string name="voice_actors">语音演员</string>
@@ -938,7 +941,6 @@
     <string name="image">图片</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">由于冲突无法安装扩展</string>
-    <string name="no_video_selected">未选择视频</string>
     <string name="download_extension_not_available">下载扩展名不可用</string>
     <string name="feed">订阅源</string>
     <string name="profile">个人信息</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">下载字幕</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">答复</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

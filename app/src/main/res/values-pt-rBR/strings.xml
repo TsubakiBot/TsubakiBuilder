@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Velocidade padrão de reprodução: %1$s</string>
     <string name="cursed_speeds">Velocidades Amaldiçoadas</string>
     <string name="resize_mode_button">Modo padrão de redimensionamento</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Legendas</string>
     <string name="subtitle_toggle">Legendas</string>
     <string name="primary_sub_color_select">Cor da legenda</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"A janela da legenda é a parte à esquerda e à direita delas. (onde o plano de fundo não está)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Transparência da legenda</string>
-    <string name="sub_text_example">Sub de exemplo</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Fonte da legenda</string>
     <string name="subtitle_font_size">Tamanho da legenda</string>
     <string name="no_subs_available">Sem Legendas Disponíveis</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Guia inicial padrão</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Visualização pequena nos programas de alta</string>
     <string name="trailer_banners">Usar Trailer como Banner</string>
     <string name="animations">Animações</string>
@@ -404,7 +408,7 @@
     <string name="note">NOTA</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gerenciar repositórios de extensões</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Não foi possível definir seu caminho</string>
     <string name="dir_access">Acesso aos downloads</string>
     <string name="dir_access_msg">Por favor, escolha um diretório para salvar seus downloads</string>
-    <string name="download_subtitle">Baixar Legenda</string>
     <string name="change_download_location">Alterar Local do Download</string>
     <string name="download_location_msg">Tem certeza que deseja alterar o local de downloads?\ndownloads antigos não podem mais estar acessíveis.</string>
     <string name="voice_actors">Atores de Voz</string>
@@ -938,7 +941,6 @@
     <string name="image">Imagem:</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Falha ao instalar a extensão devido a conflitos</string>
-    <string name="no_video_selected">Nenhum vídeo selecionado</string>
     <string name="download_extension_not_available">Baixar extensão não disponível</string>
     <string name="feed">Alimentar</string>
     <string name="profile">Perfil</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Baixar Legenda</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Responder</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

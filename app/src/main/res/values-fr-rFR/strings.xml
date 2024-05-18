@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Vitesse de lecture par défaut : %1$s</string>
     <string name="cursed_speeds">Vitesses maudites</string>
     <string name="resize_mode_button">Mode de redimensionnement par défaut</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Sous-titres</string>
     <string name="subtitle_toggle">Sous-titres</string>
     <string name="primary_sub_color_select">Couleur des sous-titres</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"La fenêtre des sous-titres est la partie gauche et droite d'eux. (où l'arrière-plan n'est pas)"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Transparence des sous-titres</string>
-    <string name="sub_text_example">Exemple de sous-titre</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Police des sous-titres</string>
     <string name="subtitle_font_size">Taille des sous-titres</string>
     <string name="no_subs_available">Aucun sous-titre disponible</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Onglet de démarrage par défaut</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Petite vue dans les émissions populaires</string>
     <string name="trailer_banners">Utilisez la bande-annonce comme bannière</string>
     <string name="animations">Animations</string>
@@ -404,7 +408,7 @@
     <string name="note">REMARQUE</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gérer les Dépôts d\'Extensions</string>
@@ -844,7 +848,6 @@ Genre : "</string>
     <string name="dir_error">Votre chemin n\'a pas pu être défini</string>
     <string name="dir_access">Accès aux téléchargements</string>
     <string name="dir_access_msg">Veuillez choisir un dossier pour enregistrer vos téléchargements</string>
-    <string name="download_subtitle">Télécharger les sous-titres</string>
     <string name="change_download_location">Changer le dossier de téléchargement</string>
     <string name="download_location_msg">Êtes-vous sûr de vouloir modifier le dossier de téléchargement ?\nLes anciens téléchargements peuvent ne plus être accessibles.</string>
     <string name="voice_actors">Doubleurs</string>
@@ -940,7 +943,6 @@ Genre : "</string>
     <string name="image">Image</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Échec de l\'installation de l\'extension à cause d\'un conflit</string>
-    <string name="no_video_selected">Aucune vidéo sélectionnée</string>
     <string name="download_extension_not_available">Télécharger l\'extension non disponible</string>
     <string name="feed">Flux</string>
     <string name="profile">Profil</string>
@@ -983,9 +985,15 @@ Genre : "</string>
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Télécharger les sous-titres</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1003,4 +1011,12 @@ Genre : "</string>
     <string name="reply">Répondre</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>

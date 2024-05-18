@@ -221,6 +221,8 @@
     <string name="default_playback_speed">Standard Afspilningshastighed: %1$s</string>
     <string name="cursed_speeds">Forbandede Hastigheder</string>
     <string name="resize_mode_button">Standard Ændr Størrelsestilstand</string>
+    <string name="exceed_cap">Bypass Capabilities</string>
+    <string name="exceed_cap_desc">Allows overriding detected player limitations</string>
     <string name="subtitles">Undertekster</string>
     <string name="subtitle_toggle">Undertekster</string>
     <string name="primary_sub_color_select">Undertekst Farve</string>
@@ -231,7 +233,7 @@
     <string name="sub_window_color_info">"Undertekst vinduet er den del venstre og højre fra dem. (hvor baggrunden ikke er )"</string>
     <string name="sub_color_info"><b>Note:</b> Settings are only applied to \"soft\" subtitles!</string>
     <string name="sub_alpha">Undertekst Gennemsigtighed</string>
-    <string name="sub_text_example">Eksempel Under</string>
+    <string name="sub_text_example">Subtitle Preview</string>
     <string name="sub_font_select">Undertekst Skrifttype</string>
     <string name="subtitle_font_size">Undertekststørrelse</string>
     <string name="no_subs_available">Ingen Undertekster Tilgængelige</string>
@@ -286,6 +288,8 @@
     </string-array>
     <string name="startUpTab">Standard Start Faneblad</string>
     <string name="floating_avatar">Floating Avatar Button</string>
+    <string name="hide_home_main">Disable user home</string>
+    <string name="hide_home_main_desc">Removes list and random home items</string>
     <string name="small_view">Lille visning i aktuelle serier</string>
     <string name="trailer_banners">Brug Trailer som Banner</string>
     <string name="animations">Animationer</string>
@@ -404,7 +408,7 @@
     <string name="note">BEMÆRKNING</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add subscriptions for all reading / watching</string>
+    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Administrer Udvidelse Genkøbsforretninger</string>
@@ -842,7 +846,6 @@
     <string name="dir_error">Din sti kunne ikke angives</string>
     <string name="dir_access">Adgang til downloads</string>
     <string name="dir_access_msg">Vælg venligst en mappe til at gemme dine downloads</string>
-    <string name="download_subtitle">Download Undertekst</string>
     <string name="change_download_location">Skift Downloadadresse</string>
     <string name="download_location_msg">Er du sikker på, at du vil ændre download-placeringen?\nGamle downloads kan ikke længere være tilgængelige.</string>
     <string name="voice_actors">Stemmeskuespillere</string>
@@ -938,7 +941,6 @@
     <string name="image">Billede</string>
     <string name="ppt_title">Person, Place, Thing</string>
     <string name="failed_ext_install_conflict">Kunne ikke installere udvidelse på grund af konflikt</string>
-    <string name="no_video_selected">Ingen Video Valgt</string>
     <string name="download_extension_not_available">Downloadudvidelse ikke tilgængelig</string>
     <string name="feed">Feed</string>
     <string name="profile">Profil</string>
@@ -981,9 +983,15 @@
     <string name="download_addon_not_installed">Download Add-on not installed</string>
     <string name="would_you_like_to_install">Would you like to install it?</string>
     <string name="torrent_addon_not_available">Torrent Add-on not available</string>
+    <string name="download_subtitle">Download Undertekst</string>
+    <string name="download_audio_tracks">Download Audio Tracks</string>
+    <string name="no_video_selected">No video selected</string>
+    <string name="no_subtitles_available">No subtitles available</string>
     <string name="all">All</string>
     <string name="activity">Activity</string>
     <string name="threads">Threads</string>
+    <string name="contributor">Contributor</string>
+    <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
     <string name="biometric_summary">Require biometrics to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
@@ -1001,4 +1009,12 @@
     <string name="reply">Svar</string>
     <string name="replies">Replies</string>
     <string name="load_replies_failed">Failed to load replies</string>
+    <string name="open_rules">Open Rules</string>
+    <string name="post_to_anilist_warning">By posting to AniList, you agree to the rules and guidelines of AniList</string>
+    <string name="sub_download_failed">Failed to download subtitle</string>
+    <string name="view_subscriptions">View Subscriptions</string>
+    <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
+    <string name="subscription_deleted">Subscription Deleted</string>
+    <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>
