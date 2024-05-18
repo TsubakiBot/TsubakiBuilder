@@ -357,11 +357,12 @@ class MainActivity : AppCompatActivity() {
                     show()
                 }
             }
-            binding.includedNavbar.navbarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            binding.includedNavbar.navbarContainer.withFlexibleMargin(resources.configuration, toRight = false)
+            binding.includedNavbar.navbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                    8.toPx
+                    16.toPx
                 else
-                    navBarHeight + 24.toPx
+                    24.toPx
             }
             window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
             selectedOption = if (fragment != null) {
@@ -563,11 +564,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        binding.includedNavbar.navbarContainer.withFlexibleMargin(newConfig, toRight = false)
         binding.includedNavbar.navbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                8.toPx
+            bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                16.toPx
             else
-                navBarHeight + 24.toPx
+                24.toPx
         }
     }
 
