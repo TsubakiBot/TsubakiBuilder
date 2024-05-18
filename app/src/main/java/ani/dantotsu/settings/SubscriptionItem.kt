@@ -25,9 +25,8 @@ class SubscriptionItem(
             SubscriptionHelper.getAnimeParser(media.id).name
         else
             SubscriptionHelper.getMangaParser(media.id).name
-        val mediaName = media.name
-        val showName = "$mediaName ($parserName)"
-        binding.subscriptionName.text = showName
+        binding.subscriptionName.text = media.name
+        binding.subscriptionSource.text = parserName
         binding.root.setOnClickListener {
             ContextCompat.startActivity(
                 context,
