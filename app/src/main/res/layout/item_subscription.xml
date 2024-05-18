@@ -49,6 +49,7 @@
             android:id="@+id/subscriptionSource"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="italic"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/placeholder"
             android:textSize="14sp" />
