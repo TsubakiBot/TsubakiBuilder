@@ -13,7 +13,7 @@ import com.xwray.groupie.GroupieAdapter
 
 class SubscriptionsBottomDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRecyclerBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private val adapter: GroupieAdapter = GroupieAdapter()
     private var subscriptions: Map<Int, SubscriptionHelper.Companion.SubscribeMedia> = mapOf()
 

@@ -14,7 +14,7 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class NovelReaderSettingsDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetCurrentNovelReaderSettingsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
 
     override fun onCreateView(

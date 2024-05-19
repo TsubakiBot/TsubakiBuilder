@@ -30,7 +30,7 @@ import uy.kohesive.injekt.api.get
 
 class NovelPluginsFragment : Fragment(), SearchQueryHandler {
     private var _binding: FragmentExtensionsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private lateinit var pluginsRecyclerView: RecyclerView
     private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
     private val novelExtensionManager: NovelExtensionManager = Injekt.get()

@@ -57,7 +57,7 @@ import kotlin.random.Random
 
 class AnimeFragment : Fragment() {
     private var _binding: FragmentAnimeBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private lateinit var animePageAdapter: AnimePageAdapter
 
     val model: AnilistAnimeViewModel by activityViewModels()

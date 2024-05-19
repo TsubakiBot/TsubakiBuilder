@@ -11,7 +11,7 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class UsersDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetUsersBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private var userList = arrayListOf<User>()
     fun userList(user: ArrayList<User>) {

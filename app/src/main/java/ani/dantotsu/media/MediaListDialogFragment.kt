@@ -32,7 +32,7 @@ import kotlinx.coroutines.withContext
 class MediaListDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetMediaListBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     override fun onCreateView(
         inflater: LayoutInflater,

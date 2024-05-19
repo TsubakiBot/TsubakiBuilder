@@ -28,7 +28,7 @@ import uy.kohesive.injekt.api.get
 class MangaExtensionsFragment : Fragment(),
     SearchQueryHandler, OnMangaInstallClickListener {
     private var _binding: FragmentExtensionsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private val mangaExtensionManager: MangaExtensionManager = Injekt.get()
     private val viewModel: MangaExtensionsViewModel by viewModels {

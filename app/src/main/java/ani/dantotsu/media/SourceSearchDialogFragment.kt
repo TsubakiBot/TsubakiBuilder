@@ -30,7 +30,7 @@ import kotlinx.coroutines.withContext
 class SourceSearchDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetSourceSearchBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     val model: MediaDetailsViewModel by activityViewModels()
     private var searched = false
     var anime = true

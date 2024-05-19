@@ -12,7 +12,7 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class ReaderSettingsDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetCurrentReaderSettingsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     override fun onCreateView(
         inflater: LayoutInflater,

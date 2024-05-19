@@ -12,7 +12,7 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class DevelopersDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetDevelopersBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     override fun onCreateView(
         inflater: LayoutInflater,

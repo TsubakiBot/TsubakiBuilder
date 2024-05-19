@@ -9,7 +9,7 @@ import ani.dantotsu.databinding.BottomSheetCustomBinding
 
 open class CustomBottomDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetCustomBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private val viewList = mutableListOf<View>()
     fun addView(view: View) {

@@ -27,7 +27,7 @@ class TrackGroupDialogFragment(
     instance: ExoplayerView, trackGroups: ArrayList<Tracks.Group>, type: @TrackType Int
 ) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSubtitlesBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private var instance: ExoplayerView
     private var trackGroups: ArrayList<Tracks.Group>
     private var type: @TrackType Int

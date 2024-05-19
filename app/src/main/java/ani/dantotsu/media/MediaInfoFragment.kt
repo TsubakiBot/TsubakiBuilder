@@ -55,7 +55,7 @@ import java.io.Serializable
 
 class MediaInfoFragment : Fragment() {
     private var _binding: FragmentMediaInfoBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private var timer: CountDownTimer? = null
     private var loaded = false
     private var type = "ANIME"

@@ -28,7 +28,7 @@ import uy.kohesive.injekt.api.get
 class AnimeExtensionsFragment : Fragment(),
     SearchQueryHandler, OnAnimeInstallClickListener {
     private var _binding: FragmentExtensionsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private val animeExtensionManager: AnimeExtensionManager = Injekt.get()
     private val viewModel: AnimeExtensionsViewModel by viewModels {

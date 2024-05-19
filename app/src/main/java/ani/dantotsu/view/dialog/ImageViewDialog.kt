@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 class ImageViewDialog : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetImageBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private var reload = false
     private var _title: String? = null

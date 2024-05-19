@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 
 class RepliesBottomDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetRecyclerBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private val adapter: GroupieAdapter = GroupieAdapter()
     private val replies: MutableList<ActivityReply> = mutableListOf()
     private var activityId: Int = -1

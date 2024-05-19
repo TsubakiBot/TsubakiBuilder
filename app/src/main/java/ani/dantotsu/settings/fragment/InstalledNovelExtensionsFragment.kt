@@ -39,7 +39,7 @@ import java.util.Collections
 
 class InstalledNovelExtensionsFragment : Fragment(), SearchQueryHandler {
     private var _binding: FragmentExtensionsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private lateinit var extensionsRecyclerView: RecyclerView
     private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
     private val novelExtensionManager: NovelExtensionManager = Injekt.get()

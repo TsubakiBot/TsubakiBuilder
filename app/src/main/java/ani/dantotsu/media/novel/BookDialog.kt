@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class BookDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetBookBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private val viewList = mutableListOf<View>()
 
     private val viewModel by activityViewModels<MediaDetailsViewModel>()

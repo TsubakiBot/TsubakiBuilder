@@ -1,5 +1,6 @@
 package ani.dantotsu.profile.activity
 
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
@@ -16,7 +17,8 @@ import com.xwray.groupie.viewbinding.BindableItem
 
 class NotificationItem(
     private val notification: Notification,
-    val clickCallback: (Int, Int?, NotificationClickType) -> Unit
+    val clickCallback: (Int, Int?, NotificationClickType) -> Unit,
+    val longClickCallback: (notification: Notification) -> Unit
 ) : BindableItem<ItemNotificationBinding>() {
     private lateinit var binding: ItemNotificationBinding
     override fun bind(viewBinding: ItemNotificationBinding, position: Int) {
@@ -82,6 +84,18 @@ class NotificationItem(
             NotificationType.valueOf(notification.notificationType)
         binding.notificationText.text = ActivityItemBuilder.getContent(notification)
         binding.notificationDate.text = ActivityItemBuilder.getDateTime(notification.createdAt)
+
+        binding.notificationCoverUser.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            longClickCallback(notification)
+            true
+        }
+        binding.notificationBannerImage.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            longClickCallback(notification)
+            true
+        }
+
 
         when (notificationType) {
             NotificationType.ACTIVITY_MESSAGE -> {

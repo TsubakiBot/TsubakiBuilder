@@ -47,7 +47,7 @@ class MediaListDialogSmallFragment : BottomSheetDialogFragment() {
     }
 
     private var _binding: BottomSheetMediaListSmallBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -69,7 +69,7 @@ import java.text.DecimalFormat
 
 class SelectorDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSelectorBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     val model: MediaDetailsViewModel by activityViewModels()
     private var scope: CoroutineScope = lifecycleScope
     private var media: Media? = null

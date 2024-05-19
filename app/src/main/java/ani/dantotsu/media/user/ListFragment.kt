@@ -15,7 +15,7 @@ import ani.dantotsu.toPx
 
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private var pos: Int? = null
     private var calendar = false
     private var grid: Boolean? = null

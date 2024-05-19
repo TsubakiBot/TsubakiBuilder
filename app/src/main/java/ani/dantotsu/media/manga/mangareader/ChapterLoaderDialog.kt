@@ -25,7 +25,7 @@ import java.io.Serializable
 
 class ChapterLoaderDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSelectorBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     val model: MediaDetailsViewModel by activityViewModels()
 

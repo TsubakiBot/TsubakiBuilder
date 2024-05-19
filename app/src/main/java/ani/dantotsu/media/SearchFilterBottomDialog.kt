@@ -28,7 +28,7 @@ import java.util.Calendar
 
 class SearchFilterBottomDialog : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSearchFilterBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private lateinit var activity: SearchActivity
 

@@ -28,7 +28,7 @@ import uy.kohesive.injekt.api.get
 class NovelExtensionsFragment : Fragment(),
     SearchQueryHandler, OnNovelInstallClickListener {
     private var _binding: FragmentExtensionsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private val novelExtensionManager: NovelExtensionManager = Injekt.get()
     private val viewModel: NovelExtensionsViewModel by viewModels {

@@ -12,7 +12,7 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 
 class DiscordDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetDiscordRpcBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     override fun onCreateView(
         inflater: LayoutInflater,

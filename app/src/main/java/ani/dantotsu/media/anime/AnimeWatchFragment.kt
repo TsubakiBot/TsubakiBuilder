@@ -70,7 +70,7 @@ import kotlin.math.max
 
 class AnimeWatchFragment : Fragment() {
     private var _binding: FragmentAnimeWatchBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private val model: MediaDetailsViewModel by activityViewModels()
 
     private lateinit var media: Media

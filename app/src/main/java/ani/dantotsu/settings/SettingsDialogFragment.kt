@@ -42,7 +42,7 @@ import kotlin.concurrent.schedule
 
 class SettingsDialogFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetSettingsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
 
     private lateinit var pageType: PageType
     override fun onCreate(savedInstanceState: Bundle?) {

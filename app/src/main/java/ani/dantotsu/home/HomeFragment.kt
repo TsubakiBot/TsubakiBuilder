@@ -89,7 +89,7 @@ import kotlin.random.Random
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     private lateinit var homeListContainerBinding: HomeListContainerBinding
     override fun onCreateView(
         inflater: LayoutInflater,

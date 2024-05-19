@@ -27,7 +27,7 @@ import kotlinx.coroutines.withContext
 
 class ReviewFragment : Fragment() {
     private var _binding: ActivityFollowBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { _binding!! }
     val adapter = GroupieAdapter()
     private val reviews = mutableListOf<Query.Review>()
     var mediaId = 0

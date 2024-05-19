@@ -243,7 +243,8 @@ class NotificationActivity : AppCompatActivity() {
         adapter.addAll(newNotifications.map {
             NotificationItem(
                 it,
-                ::onNotificationClick
+                ::onNotificationClick,
+                ::onNotificationLongClick
             )
         })
     }
@@ -324,6 +325,40 @@ class NotificationActivity : AppCompatActivity() {
                 binding.followSwipeRefresh.isRefreshing = false
                 onFinish()
             }
+        }
+    }
+
+    private fun onNotificationLongClick(notification: Notification) {
+        var shouldRefresh = false
+        when (notification.notificationType) {
+            NotificationType.COMMENT_REPLY.value -> {
+                val notificationStore = PrefManager.getNullableVal<List<CommentStore>>(
+                    PrefName.CommentNotificationStore,
+                    null
+                ) ?: listOf()
+                PrefManager.setVal(
+                    PrefName.CommentNotificationStore,
+                    notificationStore.minus(notification)
+                )
+                shouldRefresh = true
+            }
+            NotificationType.SUBSCRIPTION.value -> {
+                val notificationStore = PrefManager.getNullableVal<List<SubscriptionStore>>(
+                    PrefName.SubscriptionNotificationStore,
+                    null
+                ) ?: listOf()
+                PrefManager.setVal(
+                    PrefName.SubscriptionNotificationStore,
+                    notificationStore.minus(notification)
+                )
+                shouldRefresh = true
+            }
+            else -> {}
+        }
+        if (shouldRefresh) {
+            notificationList -= notification
+            adapter.clear()
+            filterByType(binding.notificationNavBar.selectedTab?.id)
         }
     }
 
