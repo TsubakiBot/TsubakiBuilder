@@ -275,10 +275,11 @@
                 app:trackHeight="24dp" />
 
             <ImageView
+                android:id="@+id/exo_brightness_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                app:srcCompat="@drawable/ic_round_brightness_medium_24"
+                app:tint="?attr/colorOnPrimary"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -318,10 +319,11 @@
                 app:trackHeight="24dp" />
 
             <ImageView
+                android:id="@+id/exo_volume_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                app:srcCompat="@drawable/ic_round_volume_up_24"
+                app:tint="?attr/colorOnPrimary"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

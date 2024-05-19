@@ -46,6 +46,7 @@ import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.addCallback
@@ -221,7 +222,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var exoSkipOpEd: ImageButton
     private lateinit var exoPip: ImageButton
     private lateinit var exoBrightness: Slider
+    private lateinit var exoBrightnessIcon: ImageView
     private lateinit var exoVolume: Slider
+    private lateinit var exoVolumeIcon: ImageView
     private lateinit var exoBrightnessCont: View
     private lateinit var exoVolumeCont: View
     private lateinit var exoSkip: View
@@ -495,7 +498,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoSpeed = playerView.findViewById(androidx.media3.ui.R.id.exo_playback_speed)
         exoScreen = playerView.findViewById(R.id.exo_screen)
         exoBrightness = playerView.findViewById(R.id.exo_brightness)
+        exoBrightnessIcon = playerView.findViewById(R.id.exo_brightness_icon)
         exoVolume = playerView.findViewById(R.id.exo_volume)
+        exoVolumeIcon = playerView.findViewById(R.id.exo_volume_icon)
         exoBrightnessCont = playerView.findViewById(R.id.exo_brightness_cont)
         exoVolumeCont = playerView.findViewById(R.id.exo_volume_cont)
         exoPip = playerView.findViewById(R.id.exo_pip)
@@ -917,6 +922,20 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
 
+            fun setBrightnessIconByValue(brightness: Float) {
+                when (brightness) {
+                    in 0F..3F -> {
+                        exoBrightnessIcon.setImageResource(R.drawable.ic_brightness_low_24)
+                    }
+                    in 3.1F..7F -> {
+                        exoBrightnessIcon.setImageResource(R.drawable.ic_brightness_medium_24)
+                    }
+                    else -> {
+                        exoBrightnessIcon.setImageResource(R.drawable.ic_brightness_high_24)
+                    }
+                }
+            }
+
             //Brightness
             var brightnessTimer = Timer()
             exoBrightnessCont.visibility = View.GONE
@@ -933,13 +952,32 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 brightnessTimer.schedule(timerTask, 3000)
             }
             exoBrightness.value = (getCurrentBrightnessValue(this) * 10f)
+            setBrightnessIconByValue(exoBrightness.value)
 
             exoBrightness.addOnChangeListener { _, value, _ ->
                 val lp = window.attributes
                 lp.screenBrightness =
                     brightnessConverter((value.takeIf { !it.isNaN() } ?: 0f) / 10, false)
+                setBrightnessIconByValue(value)
                 window.attributes = lp
                 brightnessHide()
+            }
+
+            fun setAudioIconByVolume(volume: Float) {
+                when (volume) {
+                    0F -> {
+                        exoVolumeIcon.setImageResource(R.drawable.ic_volume_off_24)
+                    }
+                    in 0.1F..3F -> {
+                        exoVolumeIcon.setImageResource(R.drawable.ic_volume_low_24)
+                    }
+                    in 3.1F..7F -> {
+                        exoVolumeIcon.setImageResource(R.drawable.ic_volume_medium_24)
+                    }
+                    else -> {
+                        exoVolumeIcon.setImageResource(R.drawable.ic_volume_high_24)
+                    }
+                }
             }
 
             //Volume
@@ -948,6 +986,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
             val volumeMax = audioManager.getStreamMaxVolume(STREAM_MUSIC)
             exoVolume.value = audioManager.getStreamVolume(STREAM_MUSIC).toFloat() / volumeMax * 10
+            setAudioIconByVolume(exoVolume.value)
             fun volumeHide() {
                 volumeTimer.cancel()
                 volumeTimer.purge()
@@ -961,6 +1000,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
             exoVolume.addOnChangeListener { _, value, _ ->
                 val volume = ((value.takeIf { !it.isNaN() } ?: 0f) / 10 * volumeMax).roundToInt()
+                setAudioIconByVolume(value)
                 audioManager.setStreamVolume(STREAM_MUSIC, volume, 0)
                 volumeHide()
             }

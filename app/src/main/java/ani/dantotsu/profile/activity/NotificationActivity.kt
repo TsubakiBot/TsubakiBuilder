@@ -329,7 +329,6 @@ class NotificationActivity : AppCompatActivity() {
     }
 
     private fun onNotificationLongClick(notification: Notification) {
-        var shouldRefresh = false
         when (notification.notificationType) {
             NotificationType.COMMENT_REPLY.value -> {
                 val notificationStore = PrefManager.getNullableVal<List<CommentStore>>(
@@ -340,7 +339,6 @@ class NotificationActivity : AppCompatActivity() {
                     PrefName.CommentNotificationStore,
                     notificationStore.minus(notification)
                 )
-                shouldRefresh = true
             }
             NotificationType.SUBSCRIPTION.value -> {
                 val notificationStore = PrefManager.getNullableVal<List<SubscriptionStore>>(
@@ -351,15 +349,12 @@ class NotificationActivity : AppCompatActivity() {
                     PrefName.SubscriptionNotificationStore,
                     notificationStore.minus(notification)
                 )
-                shouldRefresh = true
             }
             else -> {}
         }
-        if (shouldRefresh) {
-            notificationList -= notification
-            adapter.clear()
-            filterByType(binding.notificationNavBar.selectedTab?.id)
-        }
+        notificationList -= notification
+        adapter.clear()
+        filterByType(binding.notificationNavBar.selectedTab?.id)
     }
 
     private fun onNotificationClick(id: Int, optional: Int?, type: NotificationClickType) {
