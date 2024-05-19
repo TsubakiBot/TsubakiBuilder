@@ -84,7 +84,7 @@ class MediaListViewActivity: AppCompatActivity() {
         binding.mediaRecyclerView.adapter = MediaAdaptor(view, mediaList, this)
         binding.mediaRecyclerView.layoutManager = GridLayoutManager(
             this,
-            if (view == 1) 1 else (screenWidth / 120f).toInt()
+            if (view == 1) 1 else (screenWidth / 120.toPx)
         )
     }
 }
