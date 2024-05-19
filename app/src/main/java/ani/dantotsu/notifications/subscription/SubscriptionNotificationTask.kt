@@ -30,6 +30,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.URL
 
 
 class SubscriptionNotificationTask : Task {
@@ -42,7 +43,6 @@ class SubscriptionNotificationTask : Task {
                 withContext(Dispatchers.IO) {
                     PrefManager.init(context)
                     currentlyPerforming = true
-                    Logger.log("SubscriptionNotificationTask: execute")
                     var timeout = 15_000L
                     do {
                         delay(1000)
@@ -71,7 +71,7 @@ class SubscriptionNotificationTask : Task {
                         )
                         //Seems like if the parent coroutine scope gets cancelled, the notification stays
                         //So adding this as a safeguard? dk if this will be useful
-                        CoroutineScope(Dispatchers.Main).launch {
+                        CoroutineScope(Dispatchers.Default).launch {
                             delay(5 * subscriptions.size * 1000L)
                             notificationManager.cancel(ID_SUBSCRIPTION_CHECK_PROGRESS)
                         }
@@ -99,22 +99,26 @@ class SubscriptionNotificationTask : Task {
                                     parser,
                                     media
                                 )
-                            if (ep != null) context.getString(R.string.episode) + "${ep.number}${
-                                if (ep.title != null) " : ${ep.title}" else ""
-                            }${
-                                if (ep.isFiller) " [Filler]" else ""
-                            } " + context.getString(R.string.just_released) to ep.thumbnail
+                            if (ep != null)
+                                context.getString(R.string.episode) + "${ep.number}${
+                                    ep.title?.let { title -> " : $title"} ?: ""
+                                }${
+                                    if (ep.isFiller) " [Filler]" else ""
+                                } " + context.getString(R.string.just_released) to ep.thumbnail
                             else null
                         } else {
                             val parser =
                                 SubscriptionHelper.getMangaParser(media.id)
                             progress(index[it.first]!!, parser.name, media.name)
-                            val ep: MangaChapter? =
+                            val chap: MangaChapter? =
                                 SubscriptionHelper.getChapter(
                                     parser,
                                     media
                                 )
-                            if (ep != null) ep.number + " " + context.getString(R.string.just_released) to null
+                            if (chap != null)
+                                "${chap.number} ${context.getString(R.string.just_released)}" to media.image?.let { image ->
+                                    FileUrl(image)
+                                }
                             else null
                         } ?: return@map
                         addSubscriptionToStore(
@@ -186,7 +190,6 @@ class SubscriptionNotificationTask : Task {
         }
 
         return builder.build()
-
     }
 
     private fun getProgressNotification(
@@ -204,8 +207,9 @@ class SubscriptionNotificationTask : Task {
 
     private fun getBitmapFromUrl(url: String): Bitmap? {
         return try {
-            val inputStream = java.net.URL(url).openStream()
-            BitmapFactory.decodeStream(inputStream)
+            URL(url).openStream().use {
+                BitmapFactory.decodeStream(it)
+            }
         } catch (e: Exception) {
             null
         }
@@ -235,19 +239,17 @@ class SubscriptionNotificationTask : Task {
             null
         ) ?: listOf()
         val newStore = notificationStore.toMutableList()
-        if (newStore.size >= 100) {
-            newStore.remove(newStore.minByOrNull { it.time })
-        }
         if (Version.isNougat) {
             newStore.removeIf {
-                it.mediaId == notification.mediaId && it.content == notification.content
+                it.mediaId == notification.mediaId  && it.content != notification.content
             }
         } else {
-            newStore.removeAll(
-                newStore.filter {
-                    it.mediaId == notification.mediaId && it.content == notification.content
-                }.toSet()
-            )
+            newStore.removeAll(newStore.filter {
+                it.mediaId == notification.mediaId  && it.content != notification.content
+            }.toSet())
+        }
+        if (newStore.size >= 100) {
+            newStore.remove(newStore.minByOrNull { it.time })
         }
         newStore.add(notification)
         PrefManager.setVal(PrefName.SubscriptionNotificationStore, newStore)

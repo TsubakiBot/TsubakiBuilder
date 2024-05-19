@@ -282,9 +282,7 @@ class NotificationActivity : AppCompatActivity() {
                         }
                     }
                     subscriptionStore.forEach {
-                        if ((it.time > furthestTime * 1000L || !hasNextPage) && notificationList.none { notification ->
-                                notification.mediaId == it.mediaId && notification.createdAt == (it.time / 1000L).toInt()
-                            }) {
+                        if ((it.time > furthestTime * 1000L || !hasNextPage)) {
                             val notification = Notification(
                                 it.type,
                                 System.currentTimeMillis().toInt(),
@@ -295,15 +293,10 @@ class NotificationActivity : AppCompatActivity() {
                                 createdAt = (it.time / 1000L).toInt(),
                                 user = User(
                                     it.mediaId,
-                                    null,
-                                    UserAvatar(large = it.image, medium = it.image),
-                                    null,
-                                    null,
-                                    null,
-                                    null,
-                                    null,
-                                    null
-                                )
+                                    it.title,
+                                    UserAvatar(it.image, it.image),
+                                    null, null, null, null, null, null
+                                ),
                             )
                             newNotifications += notification
                         }

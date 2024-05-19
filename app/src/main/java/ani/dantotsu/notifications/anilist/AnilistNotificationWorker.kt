@@ -9,11 +9,11 @@ class AnilistNotificationWorker(appContext: Context, workerParams: WorkerParamet
     CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
-        Logger.log("AnilistNotificationWorker: doWork")
         if (System.currentTimeMillis() - lastCheck < 60000) {
             Logger.log("AnilistNotificationWorker: doWork skipped")
             return Result.success()
         }
+        Logger.log("AnilistNotificationWorker: doWork")
         lastCheck = System.currentTimeMillis()
         return if (AnilistNotificationTask().execute(applicationContext)) {
             Result.success()
