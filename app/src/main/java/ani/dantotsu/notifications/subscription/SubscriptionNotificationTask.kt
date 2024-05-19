@@ -100,8 +100,9 @@ class SubscriptionNotificationTask : Task {
                                     media
                                 )
                             if (ep != null)
-                                context.getString(R.string.episode) + "${ep.number}${
-                                    ep.title?.let { title -> " : $title"} ?: ""
+                                "${
+                                    ep.title?.let { title -> "${ep.number}: $title" } 
+                                        ?: (context.getString(R.string.episode) + ep.number)
                                 }${
                                     if (ep.isFiller) " [Filler]" else ""
                                 } " + context.getString(R.string.just_released) to ep.thumbnail
@@ -154,7 +155,6 @@ class SubscriptionNotificationTask : Task {
                 }
                 return true
             } catch (e: Exception) {
-                Logger.log("SubscriptionNotificationTask: ${e.message}")
                 Logger.log(e)
                 return false
             }
