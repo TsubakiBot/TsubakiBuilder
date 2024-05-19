@@ -28,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="0dp"
             android:gravity="center_vertical"
@@ -39,13 +39,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:textColor="?attr/colorSecondary" />
+                android:textColor="?attr/colorSecondary"
+                tools:text="@string/username"/>
 
             <TextView
                 android:id="@+id/devRole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem_ipsum"
+                tools:text="@string/lorem_ipsum"
                 android:maxLines="2"
                 android:fontFamily="@font/poppins_semi_bold" />
         </LinearLayout>

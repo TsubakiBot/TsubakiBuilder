@@ -91,7 +91,7 @@ class ReviewFragment : Fragment() {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val response = Anilist.query.getReviews(mediaId)
+            val response = Anilist.query.getReviews(mediaId)?.data?.page
             withContext(Dispatchers.Main) {
                 binding.listProgressBar.visibility = View.GONE
                 binding.listRecyclerView.setOnTouchListener { _, event ->
@@ -112,9 +112,9 @@ class ReviewFragment : Fragment() {
                     false
                 }
             }
-            currentPage = response?.data?.page?.pageInfo?.currentPage ?: 1
-            hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
-            response?.data?.page?.reviews?.let {
+            currentPage = response?.pageInfo?.currentPage ?: 1
+            hasNextPage = response?.pageInfo?.hasNextPage ?: false
+            response?.reviews?.let {
                 reviews.addAll(it)
                 appendList(it)
             }
@@ -124,10 +124,10 @@ class ReviewFragment : Fragment() {
 
     private fun loadPage(page: Int, callback: () -> Unit) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val response = Anilist.query.getReviews(mediaId, page)
-            currentPage = response?.data?.page?.pageInfo?.currentPage ?: 1
-            hasNextPage = response?.data?.page?.pageInfo?.hasNextPage ?: false
-            response?.data?.page?.reviews?.let {
+            val response = Anilist.query.getReviews(mediaId, page)?.data?.page
+            currentPage = response?.pageInfo?.currentPage ?: 1
+            hasNextPage = response?.pageInfo?.hasNextPage ?: false
+            response?.reviews?.let {
                 reviews.addAll(it)
                 appendList(it)
             }
