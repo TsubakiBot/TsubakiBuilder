@@ -21,6 +21,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.OptIn
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isGone
@@ -34,7 +35,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.blurImage
@@ -86,6 +86,7 @@ import java.io.Serializable
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
+
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -156,6 +157,10 @@ class HomeFragment : Fragment() {
                     homeRandomManga.visibility = View.VISIBLE
                     homeListContainer.layoutAnimation =
                         LayoutAnimationController(setSlideIn(), 0.25f)
+
+                    homeListContainerBinding.homeListContainer.postDelayed({
+                        rotateBackToStraight(resources.configuration)
+                    }, 600)
                 }
             }
             else {
@@ -756,19 +761,75 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
-    private fun portraitScaleLandStretch(configuration: Configuration) {
-        if (PrefManager.getVal(PrefName.HomeMainHide)) {
-            homeListContainerBinding.homeListContainer.isGone = true
-            return
+    private fun rotateBackToStraight(configuration: Configuration) {
+        if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
+        val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+        homeListContainerBinding.homeListContainer.postDelayed({
+            homeListContainerBinding.homeListContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                height = 76.toPx
+                topMargin = if (portrait) 8.toPx else 0
+                bottomMargin = if (portrait) 0 else 24.toPx
+            }
+        }, 500)
+
+        val angle = if (portrait) {
+            (((resources.displayMetrics.widthPixels - 32.toPx) / 190.toPx) + -45).toFloat()
+        } else {
+            (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
         }
+
+        homeListContainerBinding.homeAnimeList.run {
+            ObjectAnimator.ofFloat(this, View.ROTATION, angle, 0f).setDuration(500).apply {
+                doOnEnd {
+                    updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        marginStart = 8.toPx
+                        marginEnd = 8.toPx
+                    }
+                }
+                start()
+            }
+        }
+
+        homeListContainerBinding.homeMangaList.run {
+            ObjectAnimator.ofFloat(this, View.ROTATION, angle, 0f).setDuration(500).apply {
+                doOnEnd {
+                    updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        marginStart = 8.toPx
+                        marginEnd = 8.toPx
+                    }
+                }
+                start()
+            }
+        }
+
+        homeListContainerBinding.homeRandomAnime.run {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 1F, 0f).setDuration(200).apply {
+                doOnEnd {
+                   isGone = true
+                }
+                start()
+            }
+        }
+
+        homeListContainerBinding.homeRandomManga.run {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 1F, 0f).setDuration(200).apply {
+                doOnEnd {
+                    isGone = true
+                }
+                start()
+            }
+        }
+    }
+
+    private fun portraitScaleLandStretch(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
         homeListContainerBinding.homeListContainer.run {
             updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 if (portrait) {
-                    height = 190.toPx
+                    height = 186.toPx
                     marginStart = 16.toPx
                     marginEnd = 16.toPx
-                    bottomMargin = (0.75).toPx
+                    bottomMargin = 0
                 } else {
                     height = 140.toPx
                     marginStart = 24.toPx
@@ -779,7 +840,7 @@ class HomeFragment : Fragment() {
         }
 
         val angle = if (portrait) {
-            (((resources.displayMetrics.widthPixels - 32.toPx) / 190.toPx) + -45).toFloat()
+            (((resources.displayMetrics.widthPixels - 32.toPx) / 186.toPx) + -45).toFloat()
         } else {
             (((resources.displayMetrics.widthPixels - 48.toPx) / 140.toPx) + -15).toFloat()
         }
@@ -840,6 +901,16 @@ class HomeFragment : Fragment() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.homeTopContainer.withFlexibleMargin(newConfig)
-        portraitScaleLandStretch(newConfig)
+        if (PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) {
+            val portrait = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT
+            homeListContainerBinding.homeListContainer.run {
+                updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    topMargin = if (portrait) 8.toPx else 0
+                    bottomMargin = if (portrait) 0 else 24.toPx
+                }
+            }
+        } else {
+            portraitScaleLandStretch(newConfig)
+        }
     }
 }

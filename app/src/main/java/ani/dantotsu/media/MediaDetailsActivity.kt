@@ -455,9 +455,9 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                     binding.mediaMuteImage.setImageDrawable(
                         ContextCompat.getDrawable(this@MediaDetailsActivity,
                             if (isVideoMuted)
-                                R.drawable.ic_round_volume_off_24
+                                R.drawable.ic_volume_off_24
                             else
-                                R.drawable.ic_round_volume_up_24
+                                R.drawable.ic_volume_high_24
                         )
                     )
                 }
