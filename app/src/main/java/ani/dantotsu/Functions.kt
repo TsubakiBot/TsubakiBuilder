@@ -95,7 +95,6 @@ import ani.dantotsu.connections.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
-import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.settings.saving.PrefManager
@@ -158,9 +157,13 @@ val Number.toPx
     ).toInt()
 
 val Number.toDp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_PX, this.toFloat(), Resources.getSystem().displayMetrics
-    )
+    get() = if (Version.isUpsideDownCake) {
+        TypedValue.deriveDimension(
+            TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
+        )
+    } else {
+        this.toFloat() / (Resources.getSystem().displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
+    }
 
 val Number.dpToColumns: Int
     get() {
@@ -169,14 +172,14 @@ val Number.dpToColumns: Int
             with(getSystemService(Context.WINDOW_SERVICE) as WindowManager) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     val bounds: Rect = currentWindowMetrics.bounds
-                    bounds.width().toDp / this@dpToColumns.toInt()
+                    bounds.width() / this@dpToColumns.toPx
                 } else @Suppress("deprecation") {
                     defaultDisplay.getRealMetrics(metrics)
-                    metrics.widthPixels.toDp / this@dpToColumns.toInt()
+                    metrics.widthPixels / this@dpToColumns.toPx
                 }
             }
         }
-        return columns.toInt()
+        return columns
     }
 
 lateinit var bottomBar: AnimatedBottomBar
@@ -917,7 +920,7 @@ fun saveImage(image: Bitmap, path: String, imageFileName: String): File? {
 }
 
 private fun scanFile(path: String, context: Context) {
-    MediaScannerConnection.scanFile(context, arrayOf(path), null) { p, _ -> }
+    MediaScannerConnection.scanFile(context, arrayOf(path), null) { _, _ -> }
 }
 
 class MediaPageTransformer : ViewPager2.PageTransformer {

@@ -53,7 +53,7 @@ class MediaListViewActivity: AppCompatActivity() {
         window.statusBarColor = surfaceColor
         window.navigationBarColor = surfaceColor
         binding.listAppBar.setBackgroundColor(surfaceColor)
-        val screenWidth = resources.displayMetrics.run { widthPixels / density }
+        val screenWidth = resources.displayMetrics.widthPixels
         val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()
         val view = PrefManager.getCustomVal("mediaView", 0)
         var mediaView: View = when (view) {
@@ -70,7 +70,7 @@ class MediaListViewActivity: AppCompatActivity() {
             binding.mediaRecyclerView.adapter = MediaAdaptor(mode, mediaList, this)
             binding.mediaRecyclerView.layoutManager = GridLayoutManager(
                 this,
-                if (mode == 1) 1 else (screenWidth / 120.toPx).toInt()
+                if (mode == 1) 1 else (screenWidth / 120.toPx)
             )
         }
         binding.mediaList.setOnClickListener {
