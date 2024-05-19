@@ -134,7 +134,7 @@ class HomeFragment : Fragment() {
                     LayoutAnimationController(setSlideUp(), 0.25f)
 
                 homeListContainerBinding.apply {
-                    rotateBladesWithScale(resources.configuration)
+                    rotateButtonsToBlades(resources.configuration)
                     homeAnimeList.setOnClickListener {
                         ContextCompat.startActivity(
                             requireActivity(), Intent(requireActivity(), ListActivity::class.java)
@@ -594,9 +594,21 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.ANIME)
                     randomAnime = getRandomMedia(MediaType.ANIME)
                 }
+                homeListContainerBinding.homeAnimeList.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    onRandomClick(MediaType.ANIME)
+                    randomAnime = getRandomMedia(MediaType.ANIME)
+                    true
+                }
                 homeListContainerBinding.homeRandomManga.setOnClickListener {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
+                }
+                homeListContainerBinding.homeMangaList.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    onRandomClick(MediaType.MANGA)
+                    randomManga = getRandomMedia(MediaType.MANGA)
+                    true
                 }
             }
         }
@@ -771,32 +783,20 @@ class HomeFragment : Fragment() {
                 topMargin = if (portrait) 8.toPx else 0
                 bottomMargin = if (portrait) 0 else 24.toPx
             }
-        }, 1000)
+        }, 750)
 
         homeListContainerBinding.homeRandomAnime.run {
+            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).start()
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).apply {
-                doOnEnd {
-                    ObjectAnimator.ofFloat(
-                        homeListContainerBinding.homeRandomAnime, View.ALPHA, 1F, 0f
-                    ).setDuration(300).apply {
-                        doOnEnd { isGone = true }
-                        start()
-                    }
-                }
+                doOnEnd { isGone = true }
                 start()
             }
         }
 
         homeListContainerBinding.homeRandomManga.run {
+            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).start()
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).apply {
-                doOnEnd {
-                    ObjectAnimator.ofFloat(
-                        homeListContainerBinding.homeRandomManga, View.ALPHA, 1F, 0f
-                    ).setDuration(300).apply {
-                        doOnEnd { isGone = true }
-                        start()
-                    }
-                }
+                doOnEnd { isGone = true }
                 start()
             }
         }
@@ -826,7 +826,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun rotateBladesWithScale(configuration: Configuration) {
+    private fun rotateButtonsToBlades(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
         homeListContainerBinding.homeListContainer.run {
             updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -919,7 +919,7 @@ class HomeFragment : Fragment() {
                 }
             }
         } else {
-            rotateBladesWithScale(newConfig)
+            rotateButtonsToBlades(newConfig)
         }
     }
 }
