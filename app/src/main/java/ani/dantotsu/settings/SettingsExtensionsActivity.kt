@@ -1,6 +1,7 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +23,7 @@ import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -250,6 +253,20 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.NOVEL)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.extension_test),
+                        desc = getString(R.string.extension_test_desc),
+                        icon = R.drawable.ic_round_search_sources_24,
+                        isActivity = true,
+                        onClick = {
+                            ContextCompat.startActivity(
+                                context,
+                                Intent(context, ParserTestActivity::class.java),
+                                null
+                            )
                         }
                     ),
                     Settings(

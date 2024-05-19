@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
@@ -76,8 +77,19 @@ class ExtensionsActivity : AppCompatActivity() {
             bottomMargin = navBarHeight
         }
 
-        binding.viewPager.offscreenPageLimit = 1
-        binding.viewPager.adapter = object : FragmentStateAdapter(this) {
+        binding.testButton.setOnClickListener {
+            ContextCompat.startActivity(
+                this,
+                Intent(this, ParserTestActivity::class.java),
+                null
+            )
+        }
+
+        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+        viewPager.offscreenPageLimit = 1
+
+        viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 7
 
             override fun createFragment(position: Int): Fragment {
