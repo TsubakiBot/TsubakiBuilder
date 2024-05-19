@@ -186,7 +186,10 @@ class NotificationActivity : AppCompatActivity() {
 
     private val user = listOf(
         NotificationType.FOLLOWING.value,
-        NotificationType.COMMENT_REPLY.value
+        NotificationType.ACTIVITY_LIKE.value,
+        NotificationType.ACTIVITY_REPLY_LIKE.value,
+        NotificationType.THREAD_LIKE.value,
+        NotificationType.THREAD_COMMENT_LIKE.value
     )
     private val media = listOf(
         NotificationType.AIRING.value,
@@ -196,20 +199,15 @@ class NotificationActivity : AppCompatActivity() {
         NotificationType.MEDIA_DELETION.value,
         NotificationType.SUBSCRIPTION.value
     )
-    private val activity = listOf(
+    private val posts = listOf(
         NotificationType.ACTIVITY_MESSAGE.value,
         NotificationType.ACTIVITY_REPLY.value,
         NotificationType.ACTIVITY_MENTION.value,
-        NotificationType.ACTIVITY_LIKE.value,
-        NotificationType.ACTIVITY_REPLY_LIKE.value,
-        NotificationType.ACTIVITY_REPLY_SUBSCRIBED.value
-    )
-    private val threads = listOf(
+        NotificationType.ACTIVITY_REPLY_SUBSCRIBED.value,
+        NotificationType.COMMENT_REPLY.value,
         NotificationType.THREAD_COMMENT_MENTION.value,
         NotificationType.THREAD_SUBSCRIBED.value,
-        NotificationType.THREAD_COMMENT_REPLY.value,
-        NotificationType.THREAD_LIKE.value,
-        NotificationType.THREAD_COMMENT_LIKE.value
+        NotificationType.THREAD_COMMENT_REPLY.value
     )
 
     private fun getUncategorized(): List<String> {
@@ -229,8 +227,7 @@ class NotificationActivity : AppCompatActivity() {
         val newNotifications = when (id) {
             R.id.notificationsUser -> user
             R.id.notificationsMedia -> media
-            R.id.notificationsActivity -> activity
-            R.id.notificationsThreads -> threads
+            R.id.notificationsPosts -> posts
             else -> null
         }.let { list ->
             val filter = list?.minus(filters.toSet()) ?: getUncategorized()
@@ -317,8 +314,7 @@ class NotificationActivity : AppCompatActivity() {
                 notificationList += newNotifications
                 enableTabByContent(R.id.notificationsUser, user)
                 enableTabByContent(R.id.notificationsMedia, media)
-                enableTabByContent(R.id.notificationsActivity, activity)
-                enableTabByContent(R.id.notificationsThreads, threads)
+                enableTabByContent(R.id.notificationsPosts, posts)
                 currentPage = res?.data?.page?.pageInfo?.currentPage?.plus(1) ?: 1
                 hasNextPage = res?.data?.page?.pageInfo?.hasNextPage ?: false
                 filterByType(binding.notificationNavBar.selectedTab?.id)
