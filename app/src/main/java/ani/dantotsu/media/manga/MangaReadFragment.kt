@@ -119,8 +119,6 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
             ContextCompat.RECEIVER_EXPORTED
         )
 
-        binding.animeSourceRecycler.updatePadding(bottom = binding.animeSourceRecycler.paddingBottom + navBarHeight)
-
         var maxGridSize = 100.dpToColumns
         maxGridSize = max(4, maxGridSize - (maxGridSize % 2))
 

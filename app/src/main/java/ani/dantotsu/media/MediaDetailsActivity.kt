@@ -54,6 +54,7 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.getSerialized
+import ani.dantotsu.setBaseline
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -170,9 +171,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             binding.mediaBanner.setTransitionGenerator(generator)
         }
         val banner = if (bannerAnimations) binding.mediaBanner else binding.mediaBannerNoKen
-        val viewPager = binding.mediaViewPager
-        viewPager.isUserInputEnabled = false
-        viewPager.setPageTransformer(ZoomOutPageTransformer())
+        binding.mediaViewPager.isUserInputEnabled = false
+        binding.mediaViewPager.setPageTransformer(ZoomOutPageTransformer())
 
         val isDownload = intent.getBooleanExtra("download", false)
         media.selected = model.loadSelected(media, isDownload)
@@ -352,7 +352,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         if (media.anime != null) {
             if (PrefManager.getVal(PrefName.TorrServerEnabled))
                 torrServerStart()
-            viewPager.adapter = ViewPagerAdapter(
+            binding.mediaViewPager.adapter = ViewPagerAdapter(
                 supportFragmentManager,
                 lifecycle,
                 SupportedMedia.ANIME,
@@ -361,7 +361,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 extension
             )
         } else if (media.manga != null) {
-            viewPager.adapter = ViewPagerAdapter(
+            binding.mediaViewPager.adapter = ViewPagerAdapter(
                 supportFragmentManager,
                 lifecycle,
                 if (media.format == "NOVEL") SupportedMedia.NOVEL else SupportedMedia.MANGA,
@@ -400,7 +400,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             selected = 1
         }
         if (intent.getStringExtra("FRAGMENT_TO_LOAD") != null && hasComments) selected = 3
-        navBar.setupWithViewPager2(viewPager)
+        navBar.setupWithViewPager2(binding.mediaViewPager)
         binding.commentInputLayout.isVisible = (hasComments && selected == 3)
         navBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -416,8 +416,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 model.saveSelected(media.id, sel)
             }
         })
-        viewPager.setCurrentItem(selected, false)
+        binding.mediaViewPager.setCurrentItem(selected, false)
         navBar.selectTabAt(selected, false)
+
+        binding.mediaViewPager.setBaseline(navBar, if (hasComments) binding.commentInputLayout else null)
 
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(true) }
         live.observe(this) {

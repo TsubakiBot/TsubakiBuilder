@@ -84,10 +84,6 @@ class MediaInfoFragment : Fragment() {
             PrefManager.getVal(PrefName.OfflineMode) || !isOnline(requireContext())
         binding.mediaInfoProgressBar.isGone = loaded
         binding.mediaInfoContainer.isVisible = loaded
-        // TODO: Investigate hardcoded values
-        binding.mediaInfoContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin += 128.toPx + navBarHeight
-        }
 
         model.scrolledToTop.observe(viewLifecycleOwner) {
             if (it) binding.mediaInfoScroll.scrollTo(0, 0)

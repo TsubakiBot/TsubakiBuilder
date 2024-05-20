@@ -338,7 +338,11 @@ fun ViewGroup.setBaseline(navBar: AnimatedBottomBar) {
  *
  * When nesting multiple scrolling views, only call this method on the inner most scrolling view.
  */
-fun ViewGroup.setBaseline(navBar: AnimatedBottomBar, overlayView: View) {
+fun ViewGroup.setBaseline(navBar: AnimatedBottomBar, overlayView: View?) {
+    if (overlayView == null){
+        this.setBaseline(navBar)
+        return
+    }
     navBar.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     overlayView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     clipToPadding = false

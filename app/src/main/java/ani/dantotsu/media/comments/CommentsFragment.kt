@@ -105,8 +105,6 @@ class CommentsFragment : Fragment() {
         binding.commentsList.adapter = adapter
         binding.commentsList.layoutManager = LinearLayoutManager(activity)
 
-        binding.commentsList.setBaseline(activity.navBar, activity.binding.commentInputLayout)
-
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
             if (CommentsAPI.authToken != null) {
                 lifecycleScope.launch {
