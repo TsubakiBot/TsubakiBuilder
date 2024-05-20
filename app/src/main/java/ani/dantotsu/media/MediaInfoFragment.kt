@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -597,6 +598,8 @@ class MediaInfoFragment : Fragment() {
                         parent.addView(root)
                     }
                 }
+                val lastView = parent.children.last()
+                lastView.updatePadding(bottom = lastView.paddingBottom + 16.toPx)
             }
         }
 
