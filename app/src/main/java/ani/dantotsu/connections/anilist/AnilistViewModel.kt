@@ -431,12 +431,10 @@ class ProfileViewModel : ViewModel() {
             }
         }
         animeFav.postValue(ArrayList(animeList ?: arrayListOf()))
-
     }
 
     fun refresh() {
         mangaFav.postValue(mangaFav.value)
         animeFav.postValue(animeFav.value)
-
     }
 }

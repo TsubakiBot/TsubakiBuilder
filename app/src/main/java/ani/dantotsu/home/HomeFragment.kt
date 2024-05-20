@@ -332,12 +332,12 @@ class HomeFragment : Fragment() {
                         recyclerView.visibility = View.VISIBLE
                         recyclerView.layoutAnimation =
                             LayoutAnimationController(setSlideIn(), 0.25f)
+                        more.visibility = View.VISIBLE
+                        more.startAnimation(setSlideUp())
                     } else {
                         empty.visibility = View.VISIBLE
                     }
-                    more.visibility = View.VISIBLE
                     title.visibility = View.VISIBLE
-                    more.startAnimation(setSlideUp())
                     title.startAnimation(setSlideUp())
                     progress.visibility = View.GONE
                 }
