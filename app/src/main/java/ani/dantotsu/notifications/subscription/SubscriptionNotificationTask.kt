@@ -100,11 +100,15 @@ class SubscriptionNotificationTask : Task {
                                     media
                                 )
                             if (ep != null)
-                                context.getString(R.string.episode) + "${ep.number}${
-                                    ep.title?.let { title -> " : $title"} ?: ""
+                                ("${
+                                    if (ep.title != ep.number && ep.title != null) {
+                                        ep.title
+                                    } else {
+                                        (context.getString(R.string.episode) + ep.number)
+                                    }
                                 }${
                                     if (ep.isFiller) " [Filler]" else ""
-                                } " + context.getString(R.string.just_released) to ep.thumbnail
+                                } ") + context.getString(R.string.just_released) to ep.thumbnail
                             else null
                         } else {
                             val parser =

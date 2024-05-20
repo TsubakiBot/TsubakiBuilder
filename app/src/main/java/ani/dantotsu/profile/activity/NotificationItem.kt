@@ -35,8 +35,9 @@ class NotificationItem(
         return ItemNotificationBinding.bind(view)
     }
 
-    private fun image(user: Boolean = false, commentNotification: Boolean = false) {
-
+    private fun image(
+        user: Boolean = false, commentNotification: Boolean = false, subscription : Boolean = false
+    ) {
         val cover = if (user)
             notification.user?.bannerImage ?: notification.user?.avatar?.medium
         else
@@ -51,7 +52,6 @@ class NotificationItem(
 
         if (user) {
             binding.notificationCover.visibility = View.GONE
-            binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.VISIBLE
             binding.notificationTitle.visibility = View.GONE
             if (commentNotification) {
@@ -65,9 +65,20 @@ class NotificationItem(
             binding.notificationGradiant.layoutParams.height = userHeight
             (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
                 userHeight
+        } else if (subscription) {
+            binding.notificationCover.visibility = View.VISIBLE
+            binding.notificationCoverUserContainer.visibility = View.GONE
+            binding.notificationTitle.visibility = View.VISIBLE
+            binding.notificationCover.layoutParams.height = 120.toPx
+            binding.notificationCover.layoutParams.width = 81.toPx
+            binding.notificationCover.loadImage(notification.user?.avatar?.large)
+            binding.notificationTitle.text = notification.media?.title?.userPreferred
+            binding.notificationBannerImage.layoutParams.height = userHeight
+            binding.notificationGradiant.layoutParams.height = userHeight
+            (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
+                textMarginStart
         } else {
             binding.notificationCover.visibility = View.VISIBLE
-            binding.notificationCoverUser.visibility = View.VISIBLE
             binding.notificationCoverUserContainer.visibility = View.GONE
             binding.notificationTitle.visibility = View.VISIBLE
             binding.notificationCover.loadCover(notification.media?.coverImage)
@@ -353,9 +364,8 @@ class NotificationItem(
             }
 
             NotificationType.SUBSCRIPTION -> {
-                binding.notificationCover.loadImage(notification.user?.avatar?.large)
-                image(user = true)
-                binding.notificationCoverUser.setOnClickListener {
+                image(subscription = true)
+                binding.notificationCover.setOnClickListener {
                     clickCallback(
                         notification.mediaId ?: 0, null, NotificationClickType.MEDIA
                     )

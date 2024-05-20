@@ -21,8 +21,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/subscriptionCover"
-            android:layout_width="54dp"
-            android:layout_height="80dp"
+            android:layout_width="81dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription,ImageContrastCheck"
