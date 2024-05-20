@@ -165,6 +165,7 @@ class SettingsAccountActivity : AppCompatActivity() {
                         "online" -> R.drawable.discord_status_online
                         "idle" -> R.drawable.discord_status_idle
                         "dnd" -> R.drawable.discord_status_dnd
+                        "invisible" -> R.drawable.discord_status_invisible
                         else -> R.drawable.discord_status_online
                     }
                     settingsImageSwitcher.setImageResource(initialStatus)
@@ -185,13 +186,13 @@ class SettingsAccountActivity : AppCompatActivity() {
                             }
 
                             R.drawable.discord_status_dnd -> {
-                                status = "online"
-                                R.drawable.discord_status_online
-                            }
-
-                            R.drawable.discord_status_dnd -> {
                                 status = "invisible"
                                 R.drawable.discord_status_invisible
+                            }
+
+                            R.drawable.discord_status_invisible -> {
+                                status = "online"
+                                R.drawable.discord_status_online
                             }
 
                             else -> R.drawable.discord_status_online
