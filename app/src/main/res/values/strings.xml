@@ -859,7 +859,7 @@
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
 
     <string name="delete_fail_reason">Failed to delete because of… %1$s</string>
-
+    <string name="delete_fail">Failed to delete</string>
     <string name="hide_replies">Hide replies</string>
     <string name="view_reply">View reply</string>
     <string name="view_replies">View replies</string>
@@ -1165,5 +1165,7 @@
     <string name="video_search_test">Video Search Test: %1$s</string>
     <string name="image_search_test">Image Search Test: %1$s</string>
     <string name="book_search_test">Book Search Test: %1$s</string>
+    <string name="failed_to_fix">Failed to fix</string>
+    <string name="running_fixes">Running Fixes…</string>
     <string name="subtitle_langauge">Subtitle Langauge</string>
 </resources>
