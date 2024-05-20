@@ -371,14 +371,14 @@ class AnimeFragment : Fragment() {
     }
 
     override fun onResume() {
-        if (!model.loaded) Refresh.activity[this.hashCode()]!!.postValue(true)
-        if (animePageAdapter.trendingViewPager != null) {
-            binding.root.requestApplyInsets()
-            binding.root.requestLayout()
-        }
-        if (this::animePageAdapter.isInitialized && _binding != null) {
-            setActiveNotificationCount()
-        }
         super.onResume()
+        if (!model.loaded) Refresh.activity[this.hashCode()]!!.postValue(true)
+        if (this::animePageAdapter.isInitialized && _binding != null) {
+            if (animePageAdapter.trendingViewPager != null) {
+                binding.root.requestApplyInsets()
+                binding.root.requestLayout()
+                setActiveNotificationCount()
+            }
+        }
     }
 }

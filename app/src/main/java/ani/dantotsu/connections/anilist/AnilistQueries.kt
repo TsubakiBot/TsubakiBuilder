@@ -83,8 +83,9 @@ class AnilistQueries {
     fun mediaDetails(media: Media): Media {
         media.cameFromContinue = false
 
+        // reviews(perPage:10, sort:CREATED_AT_DESC){nodes{id mediaId mediaType summary body(asHtml:true) rating ratingAmount userRating score private siteUrl createdAt updatedAt user{id name bannerImage avatar{medium large}}}}
         val query =
-            """{Media(id:${media.id}){id favourites popularity episodes chapters mediaListEntry{id status score(format:POINT_100)progress private notes repeat customLists updatedAt startedAt{year month day}completedAt{year month day}}reviews(perPage:3, sort:SCORE_DESC){nodes{id mediaId mediaType summary body(asHtml:true) rating ratingAmount userRating score private siteUrl createdAt updatedAt user{id name bannerImage avatar{medium large}}}}isFavourite siteUrl idMal nextAiringEpisode{episode airingAt}source countryOfOrigin format duration season seasonYear startDate{year month day}endDate{year month day}genres studios(isMain:true){nodes{id name siteUrl}}description trailer{site id}synonyms tags{name rank isMediaSpoiler}characters(sort:[ROLE,FAVOURITES_DESC],perPage:25,page:1){edges{role voiceActors { id name { first middle last full native userPreferred } image { large medium } languageV2 } node{id image{medium}name{userPreferred}isFavourite}}}relations{edges{relationType(version:2)node{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}popularity meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{role node{id image{large medium}name{userPreferred}}}}recommendations(sort:RATING_DESC){nodes{mediaRecommendation{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}externalLinks{url site}}Page(page:1){pageInfo{total perPage currentPage lastPage hasNextPage}mediaList(isFollowing:true,sort:[STATUS],mediaId:${media.id}){id status score(format: POINT_100) progress progressVolumes user{id name avatar{large medium}}}}}"""
+            """{Media(id:${media.id}){id favourites popularity episodes chapters mediaListEntry{id status score(format:POINT_100)progress private notes repeat customLists updatedAt startedAt{year month day}completedAt{year month day}}isFavourite siteUrl idMal nextAiringEpisode{episode airingAt}source countryOfOrigin format duration season seasonYear startDate{year month day}endDate{year month day}genres studios(isMain:true){nodes{id name siteUrl}}description trailer{site id}synonyms tags{name rank isMediaSpoiler}characters(sort:[ROLE,FAVOURITES_DESC],perPage:25,page:1){edges{role voiceActors { id name { first middle last full native userPreferred } image { large medium } languageV2 } node{id image{medium}name{userPreferred}isFavourite}}}relations{edges{relationType(version:2)node{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}popularity meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{role node{id image{large medium}name{userPreferred}}}}recommendations(sort:RATING_DESC){nodes{mediaRecommendation{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}externalLinks{url site}}Page(page:1){pageInfo{total perPage currentPage lastPage hasNextPage}mediaList(isFollowing:true,sort:[STATUS],mediaId:${media.id}){id status score(format: POINT_100) progress progressVolumes user{id name avatar{large medium}}}}}"""
         runBlocking {
             val anilist = async {
                 var response = executeQuery<Query.Media>(query, force = true)
@@ -216,9 +217,27 @@ class AnilistQueries {
                                 }
                             }
                         }
-                        if (fetchedMedia.reviews?.nodes != null){
-                            media.review = fetchedMedia.reviews!!.nodes as ArrayList<Query.Review>
-                        }
+//                        fetchedMedia.reviews?.nodes?.let {
+//                            media.review = arrayListOf()
+//                            it.forEach { review ->
+//                                media.review?.add(Review(
+//                                    review.id,
+//                                    review.userId,
+//                                    review.mediaId,
+//                                    review.mediaType,
+//                                    review.summary,
+//                                    review.body,
+//                                    review.rating,
+//                                    review.ratingAmount,
+//                                    review.userRating,
+//                                    review.score,
+//                                    review.createdAt,
+//                                    review.updatedAt,
+//                                    review.user,
+//                                    null
+//                                ))
+//                            }
+//                        }
                         if (user?.mediaList?.isNotEmpty() == true) {
                             media.users = user.mediaList?.mapNotNull {
                                 it.user?.let { user ->
@@ -614,7 +633,7 @@ class AnilistQueries {
             }
         }
         val subList = ArrayList(subMap.values.toList())
-        subList.sortByDescending { it.meanScore }
+        if (subList.isNotEmpty()) subList.sortByDescending { it.meanScore }
         returnMap["recommendations"] = subList
 
         if (toShow.getOrNull(8) == true) {
@@ -1396,8 +1415,6 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                 it.id,
                 it.userId,
                 it.mediaId,
-                it.createdAt,
-                it.updatedAt,
                 it.mediaType,
                 it.summary,
                 it.body,
@@ -1405,6 +1422,8 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                 it.ratingAmount,
                 it.userRating,
                 it.score,
+                it.createdAt,
+                it.updatedAt,
                 it.user?.let { user ->
                     User(
                         user.id,
@@ -1894,7 +1913,7 @@ Page(page:$page,perPage:50) {
         return author
     }
 
-    suspend fun getReviews(mediaId: Int, page: Int = 1, sort: String = "SCORE_DESC"): Query.ReviewsResponse? {
+    suspend fun getReviews(mediaId: Int, page: Int = 1, sort: String = "CREATED_AT_DESC"): Query.ReviewsResponse? {
         return executeQuery<Query.ReviewsResponse>(
             """{Page(page:$page,perPage:25){pageInfo{currentPage,hasNextPage,total}reviews(mediaId:$mediaId,sort:$sort){id,userId,mediaId,mediaType,summary,body(asHtml:true)rating,ratingAmount,userRating,score,private,siteUrl,createdAt,updatedAt,user{id,name,bannerImage avatar{medium,large}},media{id,coverImage{large,extraLarge},title{english,romaji,userPreferred}}}}}""",
             force = true

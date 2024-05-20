@@ -21,6 +21,7 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.util.MarkdownCreatorActivity
 import com.xwray.groupie.GroupieAdapter
+import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -58,6 +59,8 @@ class ReviewFragment : Fragment() {
 
         mediaId = arguments?.getInt("mediaId", -1) ?: -1
         if (mediaId == -1) return
+
+        arguments?.getSerializableCompat<Review>("reviews")
 
         binding.listBack.visibility = View.GONE
         binding.followerGrid.visibility = View.GONE

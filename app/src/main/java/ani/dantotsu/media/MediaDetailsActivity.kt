@@ -80,6 +80,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import java.io.Serializable
 import kotlin.math.abs
 import kotlin.math.min
 
@@ -623,6 +624,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 val bundle = Bundle()
                 bundle.putInt("mediaId", media.id)
                 bundle.putString("title", media.mainName())
+                media.review?.let { bundle.putSerializable("reviews",it as Serializable) }
                 fragment.arguments = bundle
                 fragment
             }

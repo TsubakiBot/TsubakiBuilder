@@ -535,5 +535,5 @@ data class MediaListGroup(
 
 @Serializable
 data class ReviewConnection(
-    @SerialName("nodes") var nodes: List<Query.Review>?,
+    @SerialName("nodes") var nodes: List<Review>?,
 )

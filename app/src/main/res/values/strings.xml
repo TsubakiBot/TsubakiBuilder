@@ -324,7 +324,7 @@
     <string name="startUpTab">Default Start Up Tab</string>
     <string name="floating_avatar">Floating Avatar Button</string>
     <string name="hide_home_main">Acute OCD Home</string>
-    <string name="hide_home_main_desc">Remove home blades and random</string>
+    <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
     <string name="small_view">Small View in Trending Shows</string>
     <string name="trailer_banners">Use Trailer as Banner</string>
     <string name="animations">Animations</string>

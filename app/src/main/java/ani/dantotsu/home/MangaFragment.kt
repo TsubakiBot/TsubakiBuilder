@@ -356,15 +356,15 @@ class MangaFragment : Fragment() {
     }
 
     override fun onResume() {
+        super.onResume()
         if (!model.loaded) Refresh.activity[this.hashCode()]!!.postValue(true)
         //make sure mangaPageAdapter is initialized
-        if (mangaPageAdapter.trendingViewPager != null) {
-            binding.root.requestApplyInsets()
-            binding.root.requestLayout()
-        }
         if (this::mangaPageAdapter.isInitialized && _binding != null) {
-            setActiveNotificationCount()
+            if (mangaPageAdapter.trendingViewPager != null) {
+                binding.root.requestApplyInsets()
+                binding.root.requestLayout()
+                setActiveNotificationCount()
+            }
         }
-        super.onResume()
     }
 }

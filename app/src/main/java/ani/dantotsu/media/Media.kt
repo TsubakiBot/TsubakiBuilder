@@ -5,9 +5,9 @@ import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.MediaEdge
 import ani.dantotsu.connections.anilist.api.MediaList
 import ani.dantotsu.connections.anilist.api.MediaType
-import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.media.anime.Anime
 import ani.dantotsu.media.manga.Manga
+import ani.dantotsu.media.reviews.Review
 import ani.dantotsu.profile.User
 import java.io.Serializable
 import ani.dantotsu.connections.anilist.api.Media as ApiMedia
@@ -63,7 +63,7 @@ data class Media(
     var timeUntilAiring: Long? = null,
 
     var characters: ArrayList<Character>? = null,
-    var review: ArrayList<Query.Review>? = null,
+    var review: ArrayList<Review>? = null,
     var staff: ArrayList<Author>? = null,
     var prequel: Media? = null,
     var sequel: Media? = null,
