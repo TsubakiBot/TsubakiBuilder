@@ -438,8 +438,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         } else {
             (screenWidth - navBarHeight) / ((288.toPx / 720) * 1280)
         }.toFloat()
-        binding.youTubeBanner.scaleX = min(videoScale, 3.4028235E38F)
-        binding.youTubeBanner.scaleY = min(videoScale, 3.4028235E38F)
+        binding.youTubeBanner.scaleX = min(videoScale, Float.MAX_VALUE)
+        binding.youTubeBanner.scaleY = min(videoScale, Float.MAX_VALUE)
     }
 
     private fun getTrailerBanner(trailer: String) {
