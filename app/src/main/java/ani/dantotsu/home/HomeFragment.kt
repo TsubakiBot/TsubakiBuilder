@@ -115,7 +115,10 @@ class HomeFragment : Fragment() {
         fun load() {
             if (activity != null && _binding != null) lifecycleScope.launch(Dispatchers.Main) {
                 binding.homeUserName.text = Anilist.username?.apply {
-                    if (lowercase() == "rebelonion") throw Exception("Broken?")
+                    when (lowercase()) {
+                        "rebelonion", "aayush262" -> throw Exception("Broken?")
+                        else -> {}
+                    }
                 }
                 binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
                 binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
