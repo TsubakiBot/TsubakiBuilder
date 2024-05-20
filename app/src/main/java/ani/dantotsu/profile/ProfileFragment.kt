@@ -1,5 +1,6 @@
 package ani.dantotsu.profile
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,7 +56,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity = requireActivity() as ProfileActivity
 
-        binding.root.setBaseline(activity.navBar)
+        binding.root.setBaseline(activity.navBar, resources.configuration)
 
         user = arguments?.getSerializableCompat<Query.UserProfile>("user") as Query.UserProfile
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -141,9 +142,14 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         if (this::binding.isInitialized) {
-            binding.root.requestLayout()
-            binding.root.setBaseline(activity.navBar)
+            // binding.root.requestLayout()
+            binding.root.setBaseline(activity.navBar, resources.configuration)
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.root.setBaseline(activity.navBar, newConfig)
     }
 
     private fun setFavPeople() {

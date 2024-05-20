@@ -1,5 +1,6 @@
 package ani.dantotsu.profile
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,7 +55,7 @@ class StatsFragment :
 
         user = arguments?.getSerializableCompat<Query.UserProfile>("user") as Query.UserProfile
 
-        binding.statisticList.setBaseline(activity.navBar)
+        binding.statisticList.setBaseline(activity.navBar, resources.configuration)
 
         binding.statisticList.adapter = adapter
         binding.statisticList.recycledViewPool.setMaxRecycledViews(0, 0)
@@ -126,8 +127,8 @@ class StatsFragment :
         super.onResume()
         if (this::binding.isInitialized) {
             binding.statisticList.visibility = View.VISIBLE
-            binding.statisticList.setBaseline(activity.navBar)
-            binding.root.requestLayout()
+            // binding.root.requestLayout()
+            binding.statisticList.setBaseline(activity.navBar, resources.configuration)
             if (!loadedFirstTime) {
                 activity.lifecycleScope.launch {
                     stats.clear()
@@ -765,6 +766,11 @@ class StatsFragment :
             "POINT_3" -> score * 33
             else -> score
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.statisticList.setBaseline(activity.navBar, newConfig)
     }
 
     companion object {

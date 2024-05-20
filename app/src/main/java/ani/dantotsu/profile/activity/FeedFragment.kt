@@ -2,6 +2,7 @@ package ani.dantotsu.profile.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -59,7 +60,7 @@ class FeedFragment : Fragment() {
         } else {
             (activity as FeedActivity).navBar
         }
-        binding.listRecyclerView.setBaseline(navBar)
+        binding.listRecyclerView.setBaseline(navBar, resources.configuration)
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -70,13 +71,13 @@ class FeedFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         if (this::binding.isInitialized) {
-            binding.root.requestLayout()
+            // binding.root.requestLayout()
             val navBar = if (userId != null) {
                 (activity as ProfileActivity).navBar
             } else {
                 (activity as FeedActivity).navBar
             }
-            binding.listRecyclerView.setBaseline(navBar)
+            binding.listRecyclerView.setBaseline(navBar, resources.configuration)
             if (!loadedFirstTime) {
                 activity.lifecycleScope.launch(Dispatchers.IO) {
                     val nulledId = if (activityId == -1) null else activityId
@@ -170,6 +171,16 @@ class FeedFragment : Fragment() {
                 )
             }
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val navBar = if (userId != null) {
+            (activity as ProfileActivity).navBar
+        } else {
+            (activity as FeedActivity).navBar
+        }
+        binding.listRecyclerView.setBaseline(navBar, newConfig)
     }
 
     companion object {

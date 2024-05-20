@@ -419,7 +419,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         binding.mediaViewPager.setCurrentItem(selected, false)
         navBar.selectTabAt(selected, false)
 
-        binding.mediaViewPager.setBaseline(navBar, if (hasComments) binding.commentInputLayout else null)
+        binding.mediaViewPager.setBaseline(
+            navBar,
+            resources.configuration,
+            if (hasComments) binding.commentInputLayout else null
+        )
 
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(true) }
         live.observe(this) {
@@ -563,9 +567,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        navBar.apply {
-            updateMargins(newConfig.orientation)
-        }
+        navBar.apply { updateMargins(newConfig.orientation) }
+        binding.mediaViewPager.setBaseline(
+            navBar, newConfig,
+            if (PrefManager.getVal(PrefName.CommentsOptIn)) binding.commentInputLayout else null
+        )
         updateVideoScale()
     }
 
