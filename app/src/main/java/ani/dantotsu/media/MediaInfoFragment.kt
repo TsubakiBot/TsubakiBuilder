@@ -44,6 +44,7 @@ import ani.dantotsu.profile.User
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import com.xwray.groupie.GroupieAdapter
 import ani.dantotsu.toPx
 import ani.dantotsu.utf8
 import io.noties.markwon.Markwon
@@ -79,7 +80,8 @@ class MediaInfoFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: MediaDetailsViewModel by activityViewModels()
-        val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode) || !isOnline(requireContext())
+        val offline: Boolean =
+            PrefManager.getVal(PrefName.OfflineMode) || !isOnline(requireContext())
         binding.mediaInfoProgressBar.isGone = loaded
         binding.mediaInfoContainer.isVisible = loaded
         // TODO: Investigate hardcoded values
@@ -270,6 +272,43 @@ class MediaInfoFragment : Fragment() {
                     }
                     parent.addView(bind.root)
                 }
+
+//                if (!media.review.isNullOrEmpty()) {
+//                    ItemTitleRecyclerBinding.inflate(
+//                        LayoutInflater.from(context),
+//                        parent,
+//                        false
+//                    ).apply {
+//                        fun onUserClick(userId: Int) {
+//                            val review = media.review!!.find { i -> i.id == userId }
+//                            if (review != null) {
+//                                startActivity(
+//                                    Intent(requireContext(), ReviewViewActivity::class.java)
+//                                        .putExtra("review", review)
+//                                )
+//                            }
+//                        }
+//                        val adapter = GroupieAdapter()
+//                        media.review!!.forEach {
+//                            adapter.add(ReviewAdapter(it, ::onUserClick))
+//                        }
+//                        itemTitle.setText(R.string.reviews)
+//                        itemRecycler.adapter = adapter
+//                        itemRecycler.layoutManager = LinearLayoutManager(
+//                            requireContext(),
+//                            LinearLayoutManager.VERTICAL,
+//                            false
+//                        )
+//                        itemMore.visibility = View.VISIBLE
+//                        itemMore.setSafeOnClickListener {
+//                            startActivity(
+//                                Intent(requireContext(), ReviewActivity::class.java)
+//                                    .putExtra("mediaId", media.id)
+//                            )
+//                        }
+//                        parent.addView(root)
+//                    }
+//                }
 
                 if ((media.sequel != null || media.prequel != null) && !offline) {
                     ItemQuelsBinding.inflate(
