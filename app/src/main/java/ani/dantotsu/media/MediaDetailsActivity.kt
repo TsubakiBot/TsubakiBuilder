@@ -639,7 +639,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 val bundle = Bundle()
                 bundle.putInt("mediaId", media.id)
                 bundle.putString("title", media.mainName())
-                media.review?.let { bundle.putSerializable("reviews",it as Serializable) }
+                media.review?.let { bundle.putSerializable("reviews", it as Serializable) }
                 fragment.arguments = bundle
                 fragment
             }

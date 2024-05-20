@@ -50,17 +50,15 @@ class ReviewFragment : Fragment() {
 
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.listToolbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = statusBarHeight
-        }
-        binding.listFrameLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = navBarHeight
-        }
-
+        
         mediaId = arguments?.getInt("mediaId", -1) ?: -1
         if (mediaId == -1) return
 
-        arguments?.getSerializableCompat<Review>("reviews")
+        try {
+            arguments?.getSerializableCompat<Review>("reviews")
+        } catch (ignored: Exception) {
+
+        }
 
         binding.listBack.visibility = View.GONE
         binding.followerGrid.visibility = View.GONE
