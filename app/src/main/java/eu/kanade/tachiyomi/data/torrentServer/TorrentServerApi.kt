@@ -39,8 +39,8 @@ object TorrentServerApi {
     fun addTorrent(
         link: String,
         title: String,
-        poster: String,
-        data: String,
+        poster: String = "",
+        data: String = "",
         save: Boolean,
     ): Torrent {
         val req =
@@ -54,10 +54,7 @@ object TorrentServerApi {
             ).toString()
         val resp =
             network.client.newCall(
-                POST(
-                    "$hostUrl/torrents",
-                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
-                ),
+                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
             ).execute()
         return Json.decodeFromString(Torrent.serializer(), resp.body.string())
     }
@@ -66,10 +63,7 @@ object TorrentServerApi {
         val req = TorrentRequest("get", hash).toString()
         val resp =
             network.client.newCall(
-                POST(
-                    "$hostUrl/torrents",
-                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
-                ),
+                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
             ).execute()
         return Json.decodeFromString(Torrent.serializer(), resp.body.string())
     }
@@ -77,10 +71,7 @@ object TorrentServerApi {
     fun remTorrent(hash: String) {
         val req = TorrentRequest("rem", hash).toString()
         network.client.newCall(
-            POST(
-                "$hostUrl/torrents",
-                body = req.toRequestBody("application/json".toMediaTypeOrNull())
-            ),
+            POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
         ).execute()
     }
 
@@ -88,10 +79,7 @@ object TorrentServerApi {
         val req = TorrentRequest("list").toString()
         val resp =
             network.client.newCall(
-                POST(
-                    "$hostUrl/torrents",
-                    body = req.toRequestBody("application/json".toMediaTypeOrNull())
-                ),
+                POST("$hostUrl/torrents", body = req.toRequestBody("application/json".toMediaTypeOrNull())),
             ).execute()
         return Json.decodeFromString<List<Torrent>>(resp.body.string())
     }
@@ -101,17 +89,18 @@ object TorrentServerApi {
         title: String,
         poster: String,
         data: String,
-        save: Boolean
+        save: Boolean,
     ): Torrent {
-        val resp = Jsoup.connect("$hostUrl/torrent/upload")
-            .data("title", title)
-            .data("poster", poster)
-            .data("data", data)
-            .data("save", save.toString())
-            .data("file1", "filename", file)
-            .ignoreContentType(true)
-            .ignoreHttpErrors(true)
-            .post()
+        val resp =
+            Jsoup.connect("$hostUrl/torrent/upload")
+                .data("title", title)
+                .data("poster", poster)
+                .data("data", data)
+                .data("save", save.toString())
+                .data("file1", "filename", file)
+                .ignoreContentType(true)
+                .ignoreHttpErrors(true)
+                .post()
         return Json.decodeFromString(Torrent.serializer(), resp.body().text())
     }
 }

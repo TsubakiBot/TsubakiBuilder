@@ -15,6 +15,7 @@ import ani.dantotsu.R
 import ani.dantotsu.util.Logger
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerApi
+import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
 import eu.kanade.tachiyomi.util.system.cancelNotification
 import eu.kanade.tachiyomi.util.system.notificationBuilder
 import kotlinx.coroutines.CoroutineScope
@@ -42,7 +43,6 @@ class TorrentServerService : Service() {
                         notification(applicationContext)
                         return START_STICKY
                     }
-
                     ACTION_STOP -> {
                         stopServer()
                         return START_NOT_STICKY
@@ -57,7 +57,9 @@ class TorrentServerService : Service() {
         serviceScope.launch {
             if (TorrentServerApi.echo() == "") {
                 if (BuildConfig.DEBUG) Log.d("TorrentService", "startServer()")
-                server.Server.start(filesDir.absolutePath, "", "", "", "", false, false, false)
+                torrServer.TorrServer.startTorrentServer(filesDir.absolutePath)
+                wait(10)
+                TorrentServerUtils.setTrackersList()
             }
         }
     }
@@ -65,7 +67,7 @@ class TorrentServerService : Service() {
     private fun stopServer() {
         serviceScope.launch {
             if (BuildConfig.DEBUG) Log.d("TorrentService", "stopServer()")
-            server.Server.stop()
+            torrServer.TorrServer.stopTorrentServer()
             TorrentServerApi.shutdown()
             applicationContext.cancelNotification(Notifications.ID_TORRENT_SERVER)
             stopSelf()

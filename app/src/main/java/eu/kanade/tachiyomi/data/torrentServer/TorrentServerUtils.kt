@@ -15,7 +15,7 @@ object TorrentServerUtils {
     private val animeTrackers = preferences.trackers().get().split("\n").joinToString(",\n")
 
     fun setTrackersList() {
-        server.Server.addTrackers(animeTrackers)
+        torrServer.TorrServer.addTrackers(animeTrackers)
     }
 
     var port

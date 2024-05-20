@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-sdk tools:overrideLibrary="go.server.gojni" />
+    <uses-sdk tools:overrideLibrary="go.torrServer.gojni" />
 
     <uses-feature
         android:name="android.software.leanback"
