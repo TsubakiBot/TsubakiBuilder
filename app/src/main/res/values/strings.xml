@@ -660,6 +660,9 @@
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
 
+    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
+    <string name="answer_src">The source for Himitsu is stored in a private repository, but that does not imply it is unavailable. Quite the opposite, it is available upon request to anyone reading this message. This measure was a response to code theft and misrepresentation by Dantotsu, but is well within the license terms. I apologize for the inconcenience.</string>
+
     <string name="question_6">Why are my stats not updating?</string>
     <string name="answer_6">This is because it updates every 48 hours automatically (by Anilist). If you really need to update your stats, you can force update your stats after going to this [link](https://anilist.co/settings/lists).</string>
 
@@ -854,7 +857,7 @@
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
 
-    <string name="delete_chapter">Delete Chapter</string>
+    <string name="delete_item">Delete %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
 

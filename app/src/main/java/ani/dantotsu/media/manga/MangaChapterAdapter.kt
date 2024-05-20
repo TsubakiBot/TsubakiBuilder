@@ -225,7 +225,7 @@ class MangaChapterAdapter(
                         return@setOnClickListener
                     } else if (downloadedChapters.contains(chapterNumber)) {
                         it.context.customAlertDialog().apply {
-                            setTitle(R.string.delete_chapter)
+                            setTitle(getString(R.string.delete_item, getString(R.string.chapter)))
                             setMessage(getString(R.string.delete_content, chapterNumber))
                             setPosButton(R.string.delete) {
                                 fragment.onMangaChapterRemoveDownloadClick(chapterNumber)

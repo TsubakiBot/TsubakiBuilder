@@ -769,7 +769,7 @@
     <string name="invalid_file_type">无效的文件类型</string>
     <string name="purge_confirm">您确定要清除所有 %1$s 下载吗？</string>
     <string name="delete_content">您确定要删除 %1$s 吗？</string>
-    <string name="delete_chapter">删除章节</string>
+    <string name="delete_item">删除章节 %1$s</string>
     <string name="multi_download_chapter">多章节下载器</string>
     <string name="multi_download_chapter_count">输入要下载的章节数</string>
     <string name="delete_fail_reason">由于… %1$s 删除失败</string>

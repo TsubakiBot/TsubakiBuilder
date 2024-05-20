@@ -1581,8 +1581,6 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
             list["topRated"]?.addAll(topRated2?.media?.map { Media(it) }?.toList() ?: arrayListOf())
             list["mostFav"]?.addAll(mostFav2?.media?.map { Media(it) }?.toList() ?: arrayListOf())
         }
-
-
         return list
     }
 

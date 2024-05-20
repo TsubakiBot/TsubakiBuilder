@@ -771,7 +771,7 @@ Genre : "</string>
     <string name="invalid_file_type">Type de fichier invalide</string>
     <string name="purge_confirm">Êtes-vous sûr de vouloir supprimer tous les %1$s téléchargements?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
+    <string name="delete_item">Delete %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Échec de la suppression à cause de… %1$s</string>

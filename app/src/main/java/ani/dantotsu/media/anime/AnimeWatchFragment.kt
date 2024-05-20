@@ -19,7 +19,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.math.MathUtils
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -37,9 +36,8 @@ import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.compareName
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.anime.AnimeDownloaderService
-import ani.dantotsu.dpToColumns
 import ani.dantotsu.download.findValidName
-import ani.dantotsu.dp
+import ani.dantotsu.dpToColumns
 import ani.dantotsu.isOnline
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsActivity

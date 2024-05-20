@@ -193,9 +193,9 @@ class ExtensionTestItem(
 
     private suspend fun done() {
         if (::binding.isInitialized.not()) return
+        isRunning = false
         withContext(Dispatchers.Main) {
-            binding.extensionLoading.isVisible = false
-            isRunning = false
+            binding.extensionLoading.isVisible = isRunning
         }
     }
 

@@ -755,7 +755,7 @@ Una solución al problema anterior es la siguiente:\n
     <string name="invalid_file_type">Tipo de archivo no válido</string>
     <string name="purge_confirm">¿Estás seguro de que quieres purgar todas las descargas de %1$s?</string>
     <string name="delete_content">¿Estás seguro de que quieres eliminar %1$s?</string>
-    <string name="delete_chapter">Eliminar capítulo</string>
+    <string name="delete_item">Eliminar %1$s</string>
     <string name="multi_download_chapter">Descargador de Capítulos Múltiples</string>
     <string name="multi_download_chapter_count">Ingrese la cantidad de capítulos a descargar</string>
     <string name="delete_fail_reason">Error al borrar debido a… %1$s</string>

@@ -769,7 +769,7 @@
     <string name="invalid_file_type">Tipus de fitxer no vàlid</string>
     <string name="purge_confirm">Esteu segur que voleu purgar totes les descàrregues de %1$s?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
+    <string name="delete_item">Delete %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de… %1$s</string>

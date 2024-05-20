@@ -769,7 +769,7 @@
     <string name="invalid_file_type">Invalid file type</string>
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
     <string name="delete_content">您確定要刪除 %1$s 嗎？</string>
-    <string name="delete_chapter">刪除章節</string>
+    <string name="delete_item">刪除章節 %1$s</string>
     <string name="multi_download_chapter">多章節下載器</string>
     <string name="multi_download_chapter_count">輸入要下載的章節數量</string>
     <string name="delete_fail_reason">Failed to delete because of… %1$s</string>

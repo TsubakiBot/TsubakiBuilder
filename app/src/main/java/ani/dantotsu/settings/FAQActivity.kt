@@ -50,6 +50,11 @@ class FAQActivity : AppCompatActivity() {
                 getString(R.string.answer_5)
             ),
             Triple(
+                R.drawable.ic_admin_panel_settings_24,
+                getString(R.string.question_src),
+                getString(R.string.answer_src)
+            ),
+            Triple(
                 R.drawable.ic_anilist,
                 getString(R.string.question_6),
                 getString(R.string.answer_6)

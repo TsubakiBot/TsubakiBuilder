@@ -1,6 +1,7 @@
 package ani.dantotsu.media.anime
 
 import android.app.AlertDialog
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -320,8 +321,9 @@ class EpisodeAdapter(
                         return@setOnClickListener
                     } else if (downloadedEpisodes.contains(episodeNumber)) {
                         val builder = AlertDialog.Builder(currContext(), R.style.MyPopup)
-                        builder.setTitle("Delete Episode")
-                        builder.setMessage("Are you sure you want to delete Episode ${episodeNumber}?")
+                        builder.setTitle(context.getString(R.string.delete_item, context.getString(R.string.episode)))
+                        builder.setMessage(context.getString(R.string.delete_content,
+                            context.getString(R.string.episode_num, episodeNumber)))
                         builder.setPositiveButton(R.string.yes) { _, _ ->
                             fragment.onAnimeEpisodeRemoveDownloadClick(episodeNumber)
                         }
@@ -336,13 +338,13 @@ class EpisodeAdapter(
                 }
             }
             binding.itemDownload.setOnLongClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 if (0 <= bindingAdapterPosition && bindingAdapterPosition < arr.size) {
                     val episodeNumber = arr[bindingAdapterPosition].number
                     if (downloadedEpisodes.contains(episodeNumber)) {
                         fragment.fixDownload(episodeNumber)
                     }
                 }
-
                 true
             }
             binding.itemEpisodeDesc.setOnClickListener {

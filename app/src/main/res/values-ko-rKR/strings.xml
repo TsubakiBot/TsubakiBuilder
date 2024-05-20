@@ -769,7 +769,7 @@
     <string name="invalid_file_type">잘못된 파일 형식</string>
     <string name="purge_confirm">모든 %1$s 다운로드를 삭제하시겠습니까?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_chapter">Delete Chapter</string>
+    <string name="delete_item">Delete %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">%1$s 때문에 삭제 실패</string>
