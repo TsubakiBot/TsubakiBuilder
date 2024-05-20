@@ -73,6 +73,14 @@ class TorrentServerService : Service() {
     }
 
     private fun notification(context: Context) {
+        val startAgainIntent = PendingIntent.getService(
+            applicationContext,
+            0,
+            Intent(applicationContext, TorrentServerService::class.java).apply {
+                action = ACTION_START
+            },
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
         val exitPendingIntent =
             PendingIntent.getService(
                 applicationContext,
@@ -88,6 +96,7 @@ class TorrentServerService : Service() {
             setContentTitle(getString(R.string.torrserver))
             setAutoCancel(false)
             setOngoing(true)
+            setDeleteIntent(startAgainIntent)
             setUsesChronometer(true)
             addAction(
                 R.drawable.ic_circle_cancel,
