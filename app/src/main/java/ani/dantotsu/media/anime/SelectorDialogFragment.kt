@@ -418,11 +418,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         override fun onBindViewHolder(holder: UrlViewHolder, position: Int) {
             val binding = holder.binding
             val video = extractor.videos[position]
-            if (isDownloadMenu == true) {
-                binding.urlDownload.visibility = View.VISIBLE
-            } else {
-                binding.urlDownload.visibility = View.GONE
-            }
+            binding.urlDownload.isVisible = isDownloadMenu == true
             val subtitles = extractor.subtitles
             if (subtitles.isNotEmpty()) {
                 binding.urlSub.visibility = View.VISIBLE

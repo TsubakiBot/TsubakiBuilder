@@ -191,7 +191,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         type = SettingsView.SWITCH,
                         name = getString(R.string.biometric_title),
                         desc = getString(R.string.biometric_summary),
-                        icon = R.drawable.ic_devices_fold_24,
+                        icon = R.drawable.ic_fingerprint_24,
                         pref = PrefName.SecureLock,
                         isVisible = canUseBiometrics()
                     ),
@@ -262,7 +262,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         type = SettingsView.SWITCH,
                         name = getString(R.string.disable_debug),
                         desc = getString(R.string.rogue_warning),
-                        icon = R.drawable.ic_round_superscript_24,
+                        icon = R.drawable.ic_bug_report_24,
                         isChecked = PrefManager.getVal(PrefName.Lightspeed),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.Lightspeed, isChecked)

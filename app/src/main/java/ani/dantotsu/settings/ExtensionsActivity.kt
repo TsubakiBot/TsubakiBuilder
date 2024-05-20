@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityExtensionsBinding
@@ -22,6 +23,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.LanguageMapper
+import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.fragment.AnimeExtensionsFragment
 import ani.dantotsu.settings.fragment.InstalledAnimeExtensionsFragment

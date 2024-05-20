@@ -5,7 +5,6 @@ import ani.dantotsu.Strings.getString
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.Selected
-import ani.dantotsu.media.emptyMedia
 import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.BaseParser

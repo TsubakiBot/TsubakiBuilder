@@ -57,6 +57,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
+import java.io.Serializable
 
 class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
 
@@ -167,7 +168,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
                     ContextCompat.startActivity(
                         requireActivity(),
                         Intent(requireContext(), MediaDetailsActivity::class.java)
-                            .putExtra("media", getMedia(it))
+                            .putExtra("media", getMedia(it) as Serializable)
                             .putExtra("download", true),
                         null
                     )

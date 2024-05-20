@@ -22,6 +22,7 @@ data class Settings(
     val attach: ((ItemSettingsBinding) -> Unit)? = null,
     val attachToSwitch: ((ItemSettingsSwitchBinding) -> Unit)? = null,
     val attachToSlider: ((ItemSettingsSliderBinding) -> Unit)? = null,
+    val isActivity: Boolean = false,
     val isVisible: Boolean = true,
     val hasTransition: Boolean = false,
     var isChecked: Boolean = pref?.let {

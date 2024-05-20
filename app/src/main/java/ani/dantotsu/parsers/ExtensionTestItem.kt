@@ -5,8 +5,8 @@ import android.view.View
 import androidx.core.view.isVisible
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemExtensionTestBinding
-import ani.dantotsu.getThemeColor
 import com.xwray.groupie.viewbinding.BindableItem
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

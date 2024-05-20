@@ -100,9 +100,8 @@ class SubscriptionNotificationTask : Task {
                                     media
                                 )
                             if (ep != null)
-                                "${
-                                    ep.title?.let { title -> "${ep.number}: $title" } 
-                                        ?: (context.getString(R.string.episode) + ep.number)
+                                context.getString(R.string.episode) + "${ep.number}${
+                                    ep.title?.let { title -> " : $title"} ?: ""
                                 }${
                                     if (ep.isFiller) " [Filler]" else ""
                                 } " + context.getString(R.string.just_released) to ep.thumbnail
