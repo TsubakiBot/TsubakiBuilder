@@ -52,6 +52,7 @@ import ani.dantotsu.media.novel.NovelReadFragment
 import ani.dantotsu.media.reviews.ReviewFragment
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
+import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.setBaseline
@@ -326,6 +327,12 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
                 if (PrefManager.getVal(PrefName.YouTubeBanners)) {
                     media.trailer?.let { preview -> getTrailerBanner(preview) }
                 }
+
+                binding.animeTrailerYT.isVisible = media.trailer != null
+                binding.animeTrailerYT.setOnClickListener {
+                    openLinkInYouTube("https://www.youtube.com/watch?v=${media.trailer}")
+                }
+
                 scope.launch {
                     if (media.isFav != favButton?.clicked) favButton?.clicked()
                 }

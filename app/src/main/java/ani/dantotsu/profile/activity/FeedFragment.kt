@@ -105,9 +105,11 @@ class FeedFragment : Fragment() {
                                 if (activityList.size % AnilistQueries.ITEMS_PER_PAGE_M != 0 && !global) {
                                     //snackString("No more activities") fix spam?
                                     Logger.log("No more activities")
-                                } else if (!scrollView.canScrollVertically(1) && !binding.feedRefresh.isVisible
-                                    && binding.listRecyclerView.adapter!!.itemCount != 0 &&
-                                    (binding.listRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition() == (binding.listRecyclerView.adapter!!.itemCount - 1)
+                                } else if (!scrollView.canScrollVertically(1)
+                                    && !binding.feedRefresh.isVisible
+                                    && adapter.itemCount != 0
+                                    && (binding.listRecyclerView.layoutManager as LinearLayoutManager)
+                                        .findLastVisibleItemPosition() == (adapter.itemCount - 1)
                                 ) {
                                     page++
                                     binding.feedRefresh.visibility = ViewGroup.VISIBLE

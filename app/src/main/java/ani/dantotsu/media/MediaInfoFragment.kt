@@ -17,7 +17,6 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -39,13 +38,10 @@ import ani.dantotsu.databinding.ItemTitleTextBinding
 import ani.dantotsu.displayTimer
 import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
-import ani.dantotsu.navBarHeight
-import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.profile.User
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import com.xwray.groupie.GroupieAdapter
 import ani.dantotsu.toPx
 import ani.dantotsu.utf8
 import io.noties.markwon.Markwon
@@ -96,13 +92,6 @@ class MediaInfoFragment : Fragment() {
 
                 binding.mediaInfoProgressBar.visibility = View.GONE
                 binding.mediaInfoContainer.visibility = View.VISIBLE
-
-                if (media.trailer != null) {
-                    binding.animeTrailerYT.visibility = View.VISIBLE
-                    binding.animeTrailerYT.setOnClickListener {
-                        openLinkInYouTube("https://www.youtube.com/watch?v=${media.trailer}")
-                    }
-                }
 
                 binding.mediaInfoMeanScore.text =
                     if (media.meanScore != null) (media.meanScore / 10.0).toString() else "??"

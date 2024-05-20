@@ -234,6 +234,17 @@
                         tools:text="Watched 10 out of 10" />
 
                     <ImageView
+                        android:id="@+id/animeTrailerYT"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="-4dp"
+                        android:padding="8dp"
+                        android:tintMode="src_atop"
+                        app:srcCompat="@drawable/ic_youtube_24"
+                        app:tint="@color/yt_red"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <ImageView
                         android:id="@+id/mediaFav"
                         android:layout_width="48dp"
                         android:layout_height="48dp"

@@ -32,6 +32,7 @@
             android:id="@+id/animeSourceYT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="32dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/yt_red"
             android:fontFamily="@font/poppins_bold"
@@ -98,7 +99,6 @@
                     tools:ignore="LabelFor,TextContrastCheck,DuplicateSpeakableTextCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <ImageView
                 android:id="@+id/animeSourceSettings"
                 android:layout_width="48dp"
@@ -146,9 +146,7 @@
                     android:textSize="14sp"
                     tools:ignore="LabelFor,TextContrastCheck,DuplicateSpeakableTextCheck" />
             </com.google.android.material.textfield.TextInputLayout>
-
         </LinearLayout>
-
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -381,8 +379,6 @@
             app:cornerRadius="12dp"
             app:icon="@drawable/ic_round_help_outline"
             app:iconTint="?attr/colorOnPrimaryContainer" />
-
     </LinearLayout>
-
 </LinearLayout>
 
