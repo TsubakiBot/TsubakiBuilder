@@ -101,7 +101,7 @@ class FeedFragment : Fragment() {
 
                         binding.listRecyclerView.setOnTouchListener { _, event ->
                             if (event?.action == MotionEvent.ACTION_UP) {
-                                if (activityList.size % AnilistQueries.ITEMS_PER_PAGE != 0 && !global) {
+                                if (activityList.size % AnilistQueries.ITEMS_PER_PAGE_M != 0 && !global) {
                                     //snackString("No more activities") fix spam?
                                     Logger.log("No more activities")
                                 } else if (!scrollView.canScrollVertically(1) && !binding.feedRefresh.isVisible
