@@ -154,7 +154,6 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 current.alpha = 1f
                 PrefManager.setVal(PrefName.DarkMode, mode)
                 recreate()
-                Refresh.all()
             }
 
             settingsUiAuto.setOnClickListener {
