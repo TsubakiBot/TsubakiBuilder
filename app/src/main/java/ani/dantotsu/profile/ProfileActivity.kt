@@ -28,6 +28,7 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.profile.activity.FeedFragment
+import ani.dantotsu.setBaseline
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -38,7 +39,6 @@ import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.MarkdownCreatorActivity
 import ani.dantotsu.view.dialog.ImageViewDialog
-import ani.dantotsu.withFlexibleMargin
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -81,7 +81,6 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
             }
 
             withContext(Dispatchers.Main) {
-                binding.profileViewPager.withFlexibleMargin(resources.configuration)
                 binding.profileViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle, user)
                 binding.profileViewPager.setOffscreenPageLimit(3)
@@ -90,6 +89,11 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                 navBar.onTabSelected = { selected = navBar.selectedIndex }
                 binding.profileViewPager.setCurrentItem(selected, false)
                 navBar.selectTabAt(selected, false)
+
+                binding.profileViewPager.setBaseline(
+                    navBar,
+                    resources.configuration
+                )
 
                 bindingProfileAppBar = ItemProfileAppBarBinding.bind(binding.root).apply {
                     binding.profileProgressBar.visibility = View.GONE
@@ -272,10 +276,10 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.profileViewPager.withFlexibleMargin(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }
+        binding.profileViewPager.setBaseline(navBar, newConfig)
     }
 
     override fun onRestart() {

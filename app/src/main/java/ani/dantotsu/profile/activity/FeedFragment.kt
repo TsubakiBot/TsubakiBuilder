@@ -2,7 +2,6 @@ package ani.dantotsu.profile.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -19,7 +18,6 @@ import ani.dantotsu.connections.anilist.api.Activity
 import ani.dantotsu.databinding.FragmentFeedBinding
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.profile.ProfileActivity
-import ani.dantotsu.setBaseline
 import ani.dantotsu.util.Logger
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
@@ -55,12 +53,6 @@ class FeedFragment : Fragment() {
         if (userId == -1) userId = null
         global = arguments?.getBoolean("global", false) ?: false
 
-        val navBar = if (userId != null) {
-            (activity as ProfileActivity).navBar
-        } else {
-            (activity as FeedActivity).navBar
-        }
-        binding.listRecyclerView.setBaseline(navBar, resources.configuration)
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -77,7 +69,6 @@ class FeedFragment : Fragment() {
             } else {
                 (activity as FeedActivity).navBar
             }
-            binding.listRecyclerView.setBaseline(navBar, resources.configuration)
             if (!loadedFirstTime) {
                 activity.lifecycleScope.launch(Dispatchers.IO) {
                     val nulledId = if (activityId == -1) null else activityId
@@ -173,16 +164,6 @@ class FeedFragment : Fragment() {
                 )
             }
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        val navBar = if (userId != null) {
-            (activity as ProfileActivity).navBar
-        } else {
-            (activity as FeedActivity).navBar
-        }
-        binding.listRecyclerView.setBaseline(navBar, newConfig)
     }
 
     companion object {

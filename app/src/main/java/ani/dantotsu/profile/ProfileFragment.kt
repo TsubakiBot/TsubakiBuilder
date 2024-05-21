@@ -56,8 +56,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity = requireActivity() as ProfileActivity
 
-        binding.root.setBaseline(activity.navBar, resources.configuration)
-
         user = arguments?.getSerializableCompat<Query.UserProfile>("user") as Query.UserProfile
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             model.setData(user.id)

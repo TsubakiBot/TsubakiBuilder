@@ -1,6 +1,5 @@
 package ani.dantotsu.profile
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,6 @@ import ani.dantotsu.profile.ChartBuilder.Companion.ChartPacket
 import ani.dantotsu.profile.ChartBuilder.Companion.ChartType
 import ani.dantotsu.profile.ChartBuilder.Companion.MediaType
 import ani.dantotsu.profile.ChartBuilder.Companion.StatType
-import ani.dantotsu.setBaseline
 import ani.dantotsu.statusBarHeight
 import ani.himitsu.os.Version
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
@@ -54,8 +52,6 @@ class StatsFragment :
         activity = requireActivity() as ProfileActivity
 
         user = arguments?.getSerializableCompat<Query.UserProfile>("user") as Query.UserProfile
-
-        binding.statisticList.setBaseline(activity.navBar, resources.configuration)
 
         binding.statisticList.adapter = adapter
         binding.statisticList.recycledViewPool.setMaxRecycledViews(0, 0)
@@ -128,7 +124,6 @@ class StatsFragment :
         if (this::binding.isInitialized) {
             binding.statisticList.visibility = View.VISIBLE
             // binding.root.requestLayout()
-            binding.statisticList.setBaseline(activity.navBar, resources.configuration)
             if (!loadedFirstTime) {
                 activity.lifecycleScope.launch {
                     stats.clear()
@@ -766,11 +761,6 @@ class StatsFragment :
             "POINT_3" -> score * 33
             else -> score
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        binding.statisticList.setBaseline(activity.navBar, newConfig)
     }
 
     companion object {

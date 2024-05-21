@@ -39,6 +39,14 @@ jobs:
           repository: RepoDevil/Himitsu
           event-type: matagi
 
+      - name: Purge past workflows
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 2
+
   rinse:
     if: github.event.inputs.release
     runs-on: ubuntu-latest
@@ -136,6 +144,14 @@ jobs:
       uses: keyfactor/action-delete-prereleases@main
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Purge past workflows
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 1
+        keep_minimum_runs: 2
 
     - uses: 8bitDream/action-github-releases@v1.0.0
       with:
