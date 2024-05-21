@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.setBaseline
 import ani.dantotsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
@@ -33,8 +34,7 @@ class FeedActivity : AppCompatActivity() {
         navBar = binding.feedNavBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
-        binding.feedViewPager.withFlexibleMargin(resources.configuration)
-            .updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
         }
         val personalTab = navBar.createTab(R.drawable.ic_round_person_32, getString(R.string.follow))
@@ -51,6 +51,7 @@ class FeedActivity : AppCompatActivity() {
         navBar.onTabSelected = { selected = navBar.selectedIndex }
         binding.feedViewPager.setCurrentItem(selected, false)
         navBar.selectTabAt(selected, false)
+        binding.feedViewPager.setBaseline(navBar, resources.configuration)
 
         binding.listBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -59,10 +60,10 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.feedViewPager.withFlexibleMargin(newConfig)
         navBar.apply {
             updateMargins(newConfig.orientation)
         }
+        binding.feedViewPager.setBaseline(navBar, newConfig)
     }
 
     override fun onRestart() {
