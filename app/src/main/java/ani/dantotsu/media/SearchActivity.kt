@@ -1,6 +1,7 @@
 package ani.dantotsu.media
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,6 +28,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
 import ani.dantotsu.search.PPTSearchAdapter
+import ani.dantotsu.setBaseline
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -61,9 +63,9 @@ class SearchActivity : AppCompatActivity() {
 
         // TODO: Investigate hardcoded values
         binding.searchRecyclerView.updatePaddingRelative(
-            top = statusBarHeight,
-            bottom = navBarHeight + 80f.toPx
+            top = statusBarHeight
         )
+        binding.searchRecyclerView.setBaseline(resources.configuration)
 
         style = PrefManager.getVal(PrefName.SearchStyle)
         var listOnly: Boolean? = intent.getBooleanExtra("listOnly", false)
@@ -263,5 +265,10 @@ class SearchActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.searchRecyclerView.layoutManager?.onRestoreInstanceState(state)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.searchRecyclerView.setBaseline(newConfig)
     }
 }

@@ -41,8 +41,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins"
                     android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:paddingHorizontal="16dp"
                     android:text="@string/list_editor"
                     android:textSize="20sp"
                     android:textStyle="bold" />

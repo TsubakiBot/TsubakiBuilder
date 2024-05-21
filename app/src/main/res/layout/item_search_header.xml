@@ -86,8 +86,7 @@
         android:baselineAligned="false"
         android:clipToPadding="false"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingHorizontal="16dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/searchByImage"

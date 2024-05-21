@@ -587,8 +587,6 @@ class MediaInfoFragment : Fragment() {
                         parent.addView(root)
                     }
                 }
-                val lastView = parent.children.last()
-                lastView.updatePadding(bottom = lastView.paddingBottom + 16.toPx)
             }
         }
 

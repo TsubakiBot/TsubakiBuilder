@@ -362,7 +362,7 @@ class MangaFragment : Fragment() {
         if (this::mangaPageAdapter.isInitialized && _binding != null) {
             if (mangaPageAdapter.trendingViewPager != null) {
                 binding.root.requestApplyInsets()
-                binding.root.requestLayout()
+                // binding.root.requestLayout()
                 setActiveNotificationCount()
             }
         }

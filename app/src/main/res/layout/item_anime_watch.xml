@@ -329,8 +329,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:clipToPadding="false"
-        android:paddingStart="28dp"
-        android:paddingEnd="28dp"
+        android:paddingHorizontal="28dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup

@@ -18,8 +18,7 @@
             android:drawablePadding="16dp"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingHorizontal="16dp"
             android:text="@string/search_by_image"
             app:drawableStartCompat="@drawable/ic_round_arrow_back_ios_new_24"
             app:drawableTint="?attr/colorOnBackground" />

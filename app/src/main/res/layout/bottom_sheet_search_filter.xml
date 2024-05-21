@@ -280,9 +280,8 @@
                 android:clipToPadding="false"
                 android:fadingEdge="horizontal"
                 android:orientation="horizontal"
-                android:paddingStart="16dp"
+                android:paddingHorizontal="16dp"
                 android:paddingTop="4dp"
-                android:paddingEnd="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:spanCount="6"
                 tools:listitem="@layout/item_chip" />

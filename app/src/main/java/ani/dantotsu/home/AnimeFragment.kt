@@ -376,7 +376,7 @@ class AnimeFragment : Fragment() {
         if (this::animePageAdapter.isInitialized && _binding != null) {
             if (animePageAdapter.trendingViewPager != null) {
                 binding.root.requestApplyInsets()
-                binding.root.requestLayout()
+                // binding.root.requestLayout()
                 setActiveNotificationCount()
             }
         }
