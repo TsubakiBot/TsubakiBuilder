@@ -285,6 +285,64 @@ class HomeFragment : Fragment() {
             }
         }
 
+        fun getRandomRecommended(recommended: ArrayList<Media>?) {
+            if (recommended.isNullOrEmpty()) {
+                homeListContainerBinding.homeRandomAnime.setOnClickListener {
+                    snackString(R.string.no_recommendations)
+                }
+                homeListContainerBinding.homeRandomManga.setOnClickListener {
+                    snackString(R.string.no_recommendations)
+                }
+            } else {
+                fun getRandomMedia(type: MediaType): Media {
+                    var media: Media?
+                    do {
+                        media = recommended[Random.nextInt(recommended.size)].takeIf { item ->
+                            (type == MediaType.ANIME && item.anime != null)
+                                    || (type == MediaType.MANGA && item.manga != null)
+                        }
+                    } while (media == null)
+                    val imageView = if (type == MediaType.MANGA)
+                        homeListContainerBinding.homeRandomMangaImage
+                    else homeListContainerBinding.homeRandomAnimeImage
+                    imageView.loadImage(media.banner ?: media.cover)
+                    return media
+                }
+
+                var randomAnime = getRandomMedia(MediaType.ANIME)
+                var randomManga = getRandomMedia(MediaType.MANGA)
+
+                fun onRandomClick(type: MediaType) {
+                    val media = if (type == MediaType.MANGA) randomManga else randomAnime
+                    ContextCompat.startActivity(
+                        requireContext(),
+                        Intent(requireContext(), MediaDetailsActivity::class.java)
+                            .putExtra("media", media as Serializable), null
+                    )
+                }
+                homeListContainerBinding.homeRandomAnime.setOnClickListener {
+                    onRandomClick(MediaType.ANIME)
+                    randomAnime = getRandomMedia(MediaType.ANIME)
+                }
+                homeListContainerBinding.homeAnimeList.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    onRandomClick(MediaType.ANIME)
+                    randomAnime = getRandomMedia(MediaType.ANIME)
+                    true
+                }
+                homeListContainerBinding.homeRandomManga.setOnClickListener {
+                    onRandomClick(MediaType.MANGA)
+                    randomManga = getRandomMedia(MediaType.MANGA)
+                }
+                homeListContainerBinding.homeMangaList.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    onRandomClick(MediaType.MANGA)
+                    randomManga = getRandomMedia(MediaType.MANGA)
+                    true
+                }
+            }
+        }
+
         fun getSubscriptionPopup(subscriptions: ArrayList<Media>?) {
             if (subscriptions.isNullOrEmpty()) {
                 binding.avatarFabulous.setOnClickListener {
@@ -367,7 +425,9 @@ class HomeFragment : Fragment() {
             more.visibility = View.INVISIBLE
 
             mode.observe(viewLifecycleOwner) {
-                if (string == getString(R.string.subscriptions)) {
+                if (string == getString(R.string.recommended)) {
+                    getRandomRecommended(it)
+                } else if (string == getString(R.string.subscriptions)) {
                     getSubscriptionPopup(it)
                 }
                 if (!isEnabled) {
@@ -618,64 +678,6 @@ class HomeFragment : Fragment() {
                 binding.homeHiddenMangaRecyclerView,
                 binding.homeHiddenMangaMore
             )
-        }
-
-        model.getRecommendation().observe(viewLifecycleOwner) {
-            if (it.isNullOrEmpty()) {
-                homeListContainerBinding.homeRandomAnime.setOnClickListener {
-                    snackString(R.string.no_recommendations)
-                }
-                homeListContainerBinding.homeRandomManga.setOnClickListener {
-                    snackString(R.string.no_recommendations)
-                }
-            } else {
-                fun getRandomMedia(type: MediaType): Media {
-                    var media: Media?
-                    do {
-                        media = it[Random.nextInt(it.size)].takeIf { item ->
-                            (type == MediaType.ANIME && item.anime != null)
-                                    || (type == MediaType.MANGA && item.manga != null)
-                        }
-                    } while (media == null)
-                    val imageView = if (type == MediaType.MANGA)
-                        homeListContainerBinding.homeRandomMangaImage
-                    else homeListContainerBinding.homeRandomAnimeImage
-                    imageView.loadImage(media.banner ?: media.cover)
-                    return media
-                }
-
-                var randomAnime = getRandomMedia(MediaType.ANIME)
-                var randomManga = getRandomMedia(MediaType.MANGA)
-
-                fun onRandomClick(type: MediaType) {
-                    val media = if (type == MediaType.MANGA) randomManga else randomAnime
-                    ContextCompat.startActivity(
-                        requireContext(),
-                        Intent(requireContext(), MediaDetailsActivity::class.java)
-                            .putExtra("media", media as Serializable), null
-                    )
-                }
-                homeListContainerBinding.homeRandomAnime.setOnClickListener {
-                    onRandomClick(MediaType.ANIME)
-                    randomAnime = getRandomMedia(MediaType.ANIME)
-                }
-                homeListContainerBinding.homeAnimeList.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    onRandomClick(MediaType.ANIME)
-                    randomAnime = getRandomMedia(MediaType.ANIME)
-                    true
-                }
-                homeListContainerBinding.homeRandomManga.setOnClickListener {
-                    onRandomClick(MediaType.MANGA)
-                    randomManga = getRandomMedia(MediaType.MANGA)
-                }
-                homeListContainerBinding.homeMangaList.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    onRandomClick(MediaType.MANGA)
-                    randomManga = getRandomMedia(MediaType.MANGA)
-                    true
-                }
-            }
         }
 
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
