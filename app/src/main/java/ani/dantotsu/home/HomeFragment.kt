@@ -114,12 +114,7 @@ class HomeFragment : Fragment() {
         val scope = lifecycleScope
         fun load() {
             if (activity != null && _binding != null) lifecycleScope.launch(Dispatchers.Main) {
-                binding.homeUserName.text = Anilist.username?.apply {
-                    when (lowercase()) {
-                        "rebelonion", "aayush262" -> throw Exception("Broken?")
-                        else -> {}
-                    }
-                }
+                binding.homeUserName.text = Anilist.username
                 binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
                 binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
                 binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
@@ -290,6 +285,68 @@ class HomeFragment : Fragment() {
             }
         }
 
+        fun getSubscriptionPopup(subscriptions: ArrayList<Media>?) {
+            if (subscriptions.isNullOrEmpty()) {
+                binding.avatarFabulous.setOnClickListener {
+                    if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
+                        binding.homeUserAvatarContainer.performClick()
+                    }
+                }
+                return
+            }
+            val popup = if (Version.isLollipopMR)
+                PopupMenu(requireContext(), binding.avatarFabulous, Gravity.END, 0, R.style.MyPopup)
+            else
+                PopupMenu(requireContext(), binding.avatarFabulous)
+            try {
+                for (field in popup.javaClass.declaredFields) {
+                    if ("mPopup" == field.name) {
+                        field.isAccessible = true
+                        field[popup]?.let { type ->
+                            val setForceIcons = Class.forName(type.javaClass.name)
+                                .getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
+                            setForceIcons.invoke(type, true)
+                        }
+                        break
+                    }
+                }
+            } catch (e: Exception) { Logger.log(e) }
+
+            subscriptions.forEach { media ->
+                val item = popup.menu.add(media.mainName())
+                Glide.with(requireContext()).asBitmap().load(media.cover).into(object : CustomTarget<Bitmap?>() {
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                        item.setIcon(
+                            if (Version.isOreo) {
+                                resource.toSquare().toDrawable(resources)
+                            } else {
+                                resource.toDrawable(resources)
+                            }
+                        )
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) { }
+                })
+                item.setIntent(Intent(
+                    requireContext(), MediaDetailsActivity::class.java
+                ).putExtra(
+                    "media", media.apply { cameFromContinue = true } as Serializable
+                ))
+            }
+
+            binding.avatarFabulous.setOnClickListener {
+                if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
+                    binding.homeUserAvatarContainer.performClick()
+                } else {
+                    popup.show()
+                    popup.setOnMenuItemClickListener { item ->
+                        item.intent?.let { intent -> startActivity(intent) }
+                        true
+                    }
+                }
+            }
+        }
+
         //Function For Recycler Views
         fun initRecyclerView(
             isEnabled: Boolean,
@@ -310,6 +367,9 @@ class HomeFragment : Fragment() {
             more.visibility = View.INVISIBLE
 
             mode.observe(viewLifecycleOwner) {
+                if (string == getString(R.string.subscriptions)) {
+                    getSubscriptionPopup(it)
+                }
                 if (!isEnabled) {
                     container.isVisible = false
                     return@observe
@@ -618,68 +678,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        model.getSubscriptions().observe(viewLifecycleOwner) {
-            if (it.isNullOrEmpty()) {
-                binding.avatarFabulous.setOnClickListener {
-                    if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
-                        binding.homeUserAvatarContainer.performClick()
-                    }
-                }
-                return@observe
-            }
-            val popup = if (Version.isLollipopMR)
-                PopupMenu(requireContext(), binding.avatarFabulous, Gravity.END, 0, R.style.MyPopup)
-            else
-                PopupMenu(requireContext(), binding.avatarFabulous)
-            try {
-                for (field in popup.javaClass.declaredFields) {
-                    if ("mPopup" == field.name) {
-                        field.isAccessible = true
-                        field[popup]?.let { type ->
-                            val setForceIcons = Class.forName(type.javaClass.name)
-                                .getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
-                            setForceIcons.invoke(type, true)
-                        }
-                        break
-                    }
-                }
-            } catch (e: Exception) { Logger.log(e) }
-
-            model.getSubscriptions().value?.forEach { media ->
-                val item = popup.menu.add(media.mainName())
-                Glide.with(requireContext()).asBitmap().load(media.cover).into(object : CustomTarget<Bitmap?>() {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                        item.setIcon(
-                            if (Version.isOreo) {
-                                resource.toSquare().toDrawable(resources)
-                            } else {
-                                resource.toDrawable(resources)
-                            }
-                        )
-                    }
-
-                    override fun onLoadCleared(placeholder: Drawable?) { }
-                })
-                item.setIntent(Intent(
-                    requireContext(), MediaDetailsActivity::class.java
-                ).putExtra(
-                    "media", media.apply { cameFromContinue = true } as Serializable
-                ))
-            }
-
-            binding.avatarFabulous.setOnClickListener {
-                if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {
-                    binding.homeUserAvatarContainer.performClick()
-                } else {
-                    popup.show()
-                    popup.setOnMenuItemClickListener { item ->
-                        item.intent?.let { intent -> startActivity(intent) }
-                        true
-                    }
-                }
-            }
-        }
-
         binding.homeUserAvatarContainer.startAnimation(setSlideUp())
 
         model.empty.observe(viewLifecycleOwner)
@@ -739,16 +737,16 @@ class HomeFragment : Fragment() {
                                 containers[i].visibility = View.GONE
                             }
                         }
-                        ResumableShortcuts.updateShortcuts(
-                            context,
-                            model.getAnimeContinue().value,
-                            model.getMangaContinue().value
-                        )
-                        ResumableWidget.injectUpdate(
-                            context,
-                            model.getAnimeContinue().value,
-                            model.getMangaContinue().value
-                        )
+//                        ResumableShortcuts.updateShortcuts(
+//                            context,
+//                            model.getAnimeContinue().value,
+//                            model.getMangaContinue().value
+//                        )
+//                        ResumableWidget.injectUpdate(
+//                            context,
+//                            model.getAnimeContinue().value,
+//                            model.getMangaContinue().value
+//                        )
                         model.empty.postValue(empty)
                     }
                     live.postValue(false)

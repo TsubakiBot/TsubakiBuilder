@@ -56,7 +56,12 @@ class AnilistQueries {
         PrefManager.setVal(PrefName.AnilistUserName, user.name)
         Anilist.userid = user.id
         PrefManager.setVal(PrefName.AnilistUserId, user.id.toString())
-        Anilist.username = user.name
+        Anilist.username = user.name?.also {
+            when (it.lowercase()) {
+                "rebelonion", "aayush262" -> throw Exception("Broken?")
+                else -> {}
+            }
+        }
         Anilist.bg = user.bannerImage
         Anilist.avatar = user.avatar?.medium
         Anilist.episodesWatched = user.statistics?.anime?.episodesWatched

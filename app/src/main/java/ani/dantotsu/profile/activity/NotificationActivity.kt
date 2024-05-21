@@ -184,13 +184,6 @@ class NotificationActivity : AppCompatActivity() {
         binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
     }
 
-    private val user = listOf(
-        NotificationType.FOLLOWING.value,
-        NotificationType.ACTIVITY_LIKE.value,
-        NotificationType.ACTIVITY_REPLY_LIKE.value,
-        NotificationType.THREAD_LIKE.value,
-        NotificationType.THREAD_COMMENT_LIKE.value
-    )
     private val media = listOf(
         NotificationType.AIRING.value,
         NotificationType.RELATED_MEDIA_ADDITION.value,
@@ -209,6 +202,13 @@ class NotificationActivity : AppCompatActivity() {
         NotificationType.THREAD_SUBSCRIBED.value,
         NotificationType.THREAD_COMMENT_REPLY.value
     )
+    private val user = listOf(
+        NotificationType.FOLLOWING.value,
+        NotificationType.ACTIVITY_LIKE.value,
+        NotificationType.ACTIVITY_REPLY_LIKE.value,
+        NotificationType.THREAD_LIKE.value,
+        NotificationType.THREAD_COMMENT_LIKE.value
+    )
 
     private fun getUncategorized(): List<String> {
         val newList = arrayListOf<String>()
@@ -225,9 +225,9 @@ class NotificationActivity : AppCompatActivity() {
 
     private fun filterByType(id: Int?) {
         val newNotifications = when (id) {
-            R.id.notificationsUser -> user
             R.id.notificationsMedia -> media
             R.id.notificationsPosts -> posts
+            R.id.notificationsUser -> user
             else -> null
         }.let { list ->
             val filter = list?.minus(filters.toSet()) ?: getUncategorized()
@@ -305,9 +305,9 @@ class NotificationActivity : AppCompatActivity() {
                 }
 
                 notificationList += newNotifications
-                enableTabByContent(R.id.notificationsUser, user)
                 enableTabByContent(R.id.notificationsMedia, media)
                 enableTabByContent(R.id.notificationsPosts, posts)
+                enableTabByContent(R.id.notificationsUser, user)
                 currentPage = res?.data?.page?.pageInfo?.currentPage?.plus(1) ?: 1
                 hasNextPage = res?.data?.page?.pageInfo?.hasNextPage ?: false
                 filterByType(binding.notificationNavBar.selectedTab?.id)
