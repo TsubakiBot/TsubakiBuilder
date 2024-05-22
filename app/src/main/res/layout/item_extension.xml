@@ -65,17 +65,6 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/searchImageView"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="12dp"
-        android:layout_weight="0"
-        android:src="@drawable/ic_round_search_24"
-        app:tint="?attr/colorOnBackground"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
         android:id="@+id/settingsImageView"
         android:layout_width="24dp"
         android:layout_height="24dp"

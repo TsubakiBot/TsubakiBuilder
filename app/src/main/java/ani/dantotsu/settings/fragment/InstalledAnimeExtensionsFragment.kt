@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.NotificationCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -33,6 +36,8 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import bit.himitsu.forceShowIcons
+import bit.himitsu.os.Version
 import bit.himitsu.search.ReverseSearchDialogFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
@@ -312,16 +317,30 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             holder.closeTextView.setOnClickListener {
                 onUninstallClicked(extension, false)
             }
-            holder.settingsImageView.setOnClickListener {
-                onSettingsClicked(extension)
-            }
             holder.closeTextView.setOnLongClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 onUninstallClicked(extension, true)
                 true
             }
 
-            holder.searchImageView.setOnClickListener {
-                onSearchClicked(extension)
+            val popup = if (Version.isLollipopMR)
+                PopupMenu(holder.settingsImageView.context, holder.settingsImageView, Gravity.END, 0, R.style.MyPopup)
+            else
+                PopupMenu(holder.settingsImageView.context, holder.settingsImageView)
+            popup.menuInflater.inflate(R.menu.extension_item_menu, popup.menu)
+            popup.forceShowIcons()
+
+            holder.settingsImageView.setOnClickListener {
+                popup.show()
+                popup.setOnMenuItemClickListener { item ->
+                    if (item.itemId == R.id.settings) {
+                        onSettingsClicked(extension)
+                    }
+                    if (item.itemId == R.id.search) {
+                        onSearchClicked(extension)
+                    }
+                    true
+                }
             }
         }
 
@@ -339,7 +358,6 @@ class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
             val settingsImageView: ImageView = view.findViewById(R.id.settingsImageView)
             val extensionIconImageView: ImageView = view.findViewById(R.id.extensionIconImageView)
             val closeTextView: ImageView = view.findViewById(R.id.closeTextView)
-            val searchImageView: ImageView = view.findViewById(R.id.searchImageView)
         }
 
         companion object {

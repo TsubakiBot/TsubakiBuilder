@@ -1154,6 +1154,7 @@
     <string name="test_type">Test Type</string>
     <string name="extension_type">Extension Type</string>
     <string name="view_options">View Options</string>
+    <string name="testing">Testing</string>
     <string name="extension_test">Extension Test</string>
     <string name="extension_test_desc">Test if the extensions are working</string>
     <string name="start_test">Start Test</string>

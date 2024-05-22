@@ -70,6 +70,7 @@ import ani.dantotsu.update.MatagiUpdater
 import ani.dantotsu.util.BitmapUtil.toSquare
 import ani.dantotsu.util.Logger
 import ani.dantotsu.widgets.resumable.ResumableWidget
+import bit.himitsu.forceShowIcons
 import bit.himitsu.withFlexibleMargin
 import bit.himitsu.os.Version
 import bit.himitsu.widget.FABulous
@@ -356,19 +357,7 @@ class HomeFragment : Fragment() {
                 PopupMenu(requireContext(), binding.avatarFabulous, Gravity.END, 0, R.style.MyPopup)
             else
                 PopupMenu(requireContext(), binding.avatarFabulous)
-            try {
-                for (field in popup.javaClass.declaredFields) {
-                    if ("mPopup" == field.name) {
-                        field.isAccessible = true
-                        field[popup]?.let { type ->
-                            val setForceIcons = Class.forName(type.javaClass.name)
-                                .getMethod("setForceShowIcon", Boolean::class.javaPrimitiveType)
-                            setForceIcons.invoke(type, true)
-                        }
-                        break
-                    }
-                }
-            } catch (e: Exception) { Logger.log(e) }
+            popup.forceShowIcons()
 
             subscriptions.forEach { media ->
                 val item = popup.menu.add(media.mainName())

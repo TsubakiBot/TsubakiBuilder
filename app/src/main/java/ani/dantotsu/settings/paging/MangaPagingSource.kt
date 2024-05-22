@@ -155,7 +155,6 @@ class MangaExtensionAdapter(private val clickListener: OnMangaInstallClickListen
             LayoutInflater.from(parent.context), parent, false
         ).apply {
             extensionPinImageView.isGone = true
-            searchImageView.isGone = true
             settingsImageView.isGone = true
             closeTextView.setImageResource(R.drawable.ic_download_24)
         }

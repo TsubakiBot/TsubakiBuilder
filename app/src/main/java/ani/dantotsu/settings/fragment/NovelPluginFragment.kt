@@ -100,7 +100,6 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
                 LayoutInflater.from(parent.context), parent, false
             ).apply {
                 extensionPinImageView.isGone = true
-                searchImageView.isGone = true
                 settingsImageView.isGone = true
                 closeTextView.setImageResource(R.drawable.ic_globe_24)
             }
