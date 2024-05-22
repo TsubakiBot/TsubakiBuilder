@@ -13,7 +13,7 @@
 
 <br />
 <i>
-This project was forked from Dantotsu under the [GNU General Public License v3.0](LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Similarly, any portions of the final product provided by submodules or other integrations are not governed by the terms of any license but their own. If you have any questions or feel this project is in violation of a license, do not hesitate to contact the Discord channel above for clarification.
+This project was forked from Dantotsu under the [GNU General Public License v3.0](LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Similarly, submodules or other integrations are not governed by the terms of this license. These components are used with permission according to their individual terms and conditions. Any permission granted by this project does not waive the requirements set forth by these components. If you have any questions or feel this project is in violation of your license, please do not hesitate to contact the Discord channel above for clarification.
 </i>
 <br />
 
