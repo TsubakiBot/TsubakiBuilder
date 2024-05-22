@@ -1,6 +1,6 @@
 package ani.dantotsu.connections.anilist
 
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query

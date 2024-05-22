@@ -33,7 +33,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
-import ani.dantotsu.search.ReverseSearchDialogFragment
+import bit.himitsu.search.ReverseSearchDialogFragment
 import ani.dantotsu.update.MatagiUpdater
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor

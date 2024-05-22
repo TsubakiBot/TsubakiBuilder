@@ -2,7 +2,7 @@ package eu.kanade.tachiyomi.data.torrentServer
 
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.utf8
+import bit.himitsu.utf8
 import eu.kanade.tachiyomi.data.torrentServer.model.FileStat
 import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
 import uy.kohesive.injekt.injectLazy

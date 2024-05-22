@@ -30,7 +30,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.customAlertDialog
-import ani.himitsu.os.Version
+import bit.himitsu.os.Version
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager

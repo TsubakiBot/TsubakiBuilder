@@ -15,9 +15,10 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.OtherDetailsViewModel
-import ani.dantotsu.withFlexibleMargin
+import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import bit.himitsu.withFlexibleMargin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -29,7 +29,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import ani.dantotsu.search.ReverseSearchDialogFragment
+import bit.himitsu.search.ReverseSearchDialogFragment
 import eu.kanade.tachiyomi.data.notification.Notifications
 import kotlinx.coroutines.launch
 import rx.android.schedulers.AndroidSchedulers

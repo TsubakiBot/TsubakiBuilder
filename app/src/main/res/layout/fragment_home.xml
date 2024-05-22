@@ -1110,7 +1110,7 @@
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <ani.himitsu.widget.FABulous
+    <bit.himitsu.widget.FABulous
         android:id="@+id/avatarFabulous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -23,8 +23,8 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import ani.dantotsu.torrServerStart
-import ani.dantotsu.torrServerStop
+import bit.himitsu.torrServerStart
+import bit.himitsu.torrServerStop
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get

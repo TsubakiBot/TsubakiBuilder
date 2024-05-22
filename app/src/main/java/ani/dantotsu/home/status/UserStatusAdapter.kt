@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ItemUserStatusBinding
 import ani.dantotsu.loadImage

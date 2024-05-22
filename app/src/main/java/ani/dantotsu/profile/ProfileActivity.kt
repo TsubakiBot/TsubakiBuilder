@@ -28,7 +28,7 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.profile.activity.FeedFragment
-import ani.dantotsu.setBaseline
+import bit.himitsu.setBaseline
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString

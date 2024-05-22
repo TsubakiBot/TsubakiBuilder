@@ -5,7 +5,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.openLinkInBrowser

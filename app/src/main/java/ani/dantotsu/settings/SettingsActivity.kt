@@ -32,7 +32,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.update.MatagiUpdater
-import ani.dantotsu.withFlexibleMargin
+import bit.himitsu.withFlexibleMargin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

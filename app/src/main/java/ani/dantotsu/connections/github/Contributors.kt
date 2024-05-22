@@ -2,7 +2,7 @@ package ani.dantotsu.connections.github
 
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.settings.Developer
 import kotlinx.coroutines.Dispatchers

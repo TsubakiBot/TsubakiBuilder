@@ -18,7 +18,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.Type
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
-import ani.himitsu.os.Version
+import bit.himitsu.os.Version
 import com.jakewharton.rxrelay.PublishRelay
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.InstallStep

@@ -27,8 +27,8 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
-import ani.dantotsu.search.PPTSearchAdapter
-import ani.dantotsu.setBaseline
+import bit.himitsu.search.PPTSearchAdapter
+import bit.himitsu.setBaseline
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

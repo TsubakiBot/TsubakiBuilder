@@ -12,8 +12,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.setBaseline
-import ani.dantotsu.withFlexibleMargin
+import bit.himitsu.setBaseline
+import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.updateLayoutParams

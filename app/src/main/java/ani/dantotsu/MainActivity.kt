@@ -31,7 +31,6 @@ import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnAttach
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -60,6 +59,7 @@ import ani.dantotsu.settings.SettingsDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefManager.asLiveBool
 import ani.dantotsu.settings.saving.PrefName
+import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.settings.saving.SharedPreferenceBooleanLiveData
 import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
@@ -67,6 +67,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
 import ani.dantotsu.update.MatagiUpdater
+import bit.himitsu.torrServerKill
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText

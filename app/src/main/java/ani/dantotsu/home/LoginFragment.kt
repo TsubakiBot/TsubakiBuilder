@@ -24,7 +24,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
-import ani.himitsu.os.Version
+import bit.himitsu.os.Version
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginFragment : Fragment() {

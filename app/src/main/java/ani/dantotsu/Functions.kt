@@ -48,6 +48,8 @@ import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.GestureDetector
+import android.view.Gravity
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -65,7 +67,9 @@ import android.view.animation.TranslateAnimation
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
+import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
@@ -80,18 +84,19 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.getUserId
-import ani.dantotsu.connections.bakaupdates.MangaUpdates
+import bit.himitsu.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
@@ -104,7 +109,8 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore.Companion.genera
 import ani.dantotsu.util.CountUpTimer
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
-import ani.himitsu.os.Version
+import bit.himitsu.Strings
+import bit.himitsu.os.Version
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
@@ -114,6 +120,7 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
@@ -128,6 +135,7 @@ import io.noties.markwon.image.AsyncDrawable
 import io.noties.markwon.image.glide.GlideImagesPlugin
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -1290,4 +1298,66 @@ fun buildMarkwon(
         }))
         .build()
     return markwon
+}
+
+fun String.findBetween(a: String, b: String): String? {
+    val string = substringAfter(a, "").substringBefore(b, "")
+    return string.ifEmpty { null }
+}
+
+fun toast(string: String?) {
+    if (string != null) {
+        Logger.log(string)
+        MainScope().launch {
+            Toast.makeText(currActivity()?.application ?: return@launch, string, Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+}
+
+fun toast(res: Int) {
+    toast(getString(res))
+}
+
+fun snackString(s: String?, activity: Activity? = null, clipboard: String? = null): Snackbar? {
+    try { //I have no idea why this sometimes crashes for some people...
+        if (s != null) {
+            (activity ?: currActivity())?.apply {
+                val snackBar = Snackbar.make(
+                    window.decorView.findViewById(android.R.id.content),
+                    s,
+                    Snackbar.LENGTH_SHORT
+                )
+                runOnUiThread {
+                    snackBar.view.apply {
+                        updateLayoutParams<FrameLayout.LayoutParams> {
+                            gravity = (Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
+                            width = ViewGroup.LayoutParams.WRAP_CONTENT
+                        }
+                        translationY = -(navBarHeight.toDp + 32f)
+                        translationZ = 32f
+                        updatePadding(16f.toPx, right = 16f.toPx)
+                        setOnClickListener {
+                            snackBar.dismiss()
+                        }
+                        setOnLongClickListener {
+                            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                            copyToClipboard(clipboard ?: s, false)
+                            true
+                        }
+                    }
+                    snackBar.show()
+                }
+                return snackBar
+            }
+            Logger.log(s)
+        }
+    } catch (e: Exception) {
+        Logger.log(e)
+    }
+    return null
+}
+
+fun snackString(r: Int, activity: Activity? = null, clipboard: String? = null): Snackbar? {
+    return snackString(getString(r), activity, clipboard)
 }

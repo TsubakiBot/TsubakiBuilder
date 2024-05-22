@@ -25,7 +25,7 @@ import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.Logger
 import ani.dantotsu.widgets.WidgetSizeProvider
 import ani.dantotsu.widgets.upcoming.UpcomingWidget
-import ani.himitsu.collections.Collections.mix
+import bit.himitsu.collections.Collections.mix
 import com.google.gson.GsonBuilder
 import com.google.gson.InstanceCreator
 import eu.kanade.tachiyomi.animesource.model.SAnime

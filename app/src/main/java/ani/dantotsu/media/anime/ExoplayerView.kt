@@ -109,7 +109,7 @@ import androidx.window.layout.WindowLayoutInfo
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
-import ani.dantotsu.TorrManager.removeTorrent
+import bit.himitsu.TorrManager.removeTorrent
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal
 import ani.dantotsu.connections.anilist.Anilist

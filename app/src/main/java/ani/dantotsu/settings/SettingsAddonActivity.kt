@@ -22,9 +22,9 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import ani.dantotsu.torrServerKill
-import ani.dantotsu.torrServerStart
+import bit.himitsu.torrServerStart
 import ani.dantotsu.util.Logger
+import bit.himitsu.torrServerKill
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

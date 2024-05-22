@@ -18,7 +18,7 @@ import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.Logger
-import ani.himitsu.io.Debug
+import bit.himitsu.io.Debug
 import com.google.android.material.color.DynamicColors
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager

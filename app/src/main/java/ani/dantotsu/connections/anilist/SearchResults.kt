@@ -1,7 +1,7 @@
 package ani.dantotsu.connections.anilist
 
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.currContext
 import ani.dantotsu.media.Media
 import java.io.Serializable

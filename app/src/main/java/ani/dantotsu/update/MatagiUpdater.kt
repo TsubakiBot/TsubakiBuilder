@@ -25,7 +25,7 @@ import ani.dantotsu.App
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemAppUpdateBinding

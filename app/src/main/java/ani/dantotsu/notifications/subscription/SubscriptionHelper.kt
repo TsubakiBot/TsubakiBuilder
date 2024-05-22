@@ -1,7 +1,7 @@
 package ani.dantotsu.notifications.subscription
 
 import ani.dantotsu.R
-import ani.dantotsu.Strings.getString
+import bit.himitsu.Strings.getString
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.Selected
