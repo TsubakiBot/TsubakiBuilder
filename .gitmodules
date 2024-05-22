@@ -1,3 +1,3 @@
 [submodule "app/src/main/java/bit"]
 	path = app/src/main/java/bit
-	url = git@github.com:RepoDevil/Himitsu-Submodule.git
+	url = git@gitlab.com:RepoDevil/himitsu-submodule.git

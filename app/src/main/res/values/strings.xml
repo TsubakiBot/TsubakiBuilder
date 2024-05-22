@@ -661,8 +661,8 @@
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
 
-    <string name="question_src">Doesn\'t Himitsu being private violate the Dantotsu license?</string>
-    <string name="answer_src">The source for Himitsu is stored in a private repository, but that does not imply it is unavailable. Quite the opposite, it is available upon request to anyone reading this message. This measure was a response to code misuse and misrepresentation by Dantotsu well within the license meant to protect against such things. I apologize for the inconvenience.</string>
+    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
+    <string name="answer_src">This project was forked from Dantotsu under the GNU General Public License v3.0 and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Similarly, any portions of the final product provided by submodules or other integrations are not governed by the terms of any license but their own.</string>
 
     <string name="question_6">Why are my stats not updating?</string>
     <string name="answer_6">This is because it updates every 48 hours automatically (by Anilist). If you really need to update your stats, you can force update your stats after going to this [link](https://anilist.co/settings/lists).</string>

@@ -74,7 +74,7 @@
         <meta-data android:name="com.google.android.backup.api_key" android:value="unused" />
 
         <receiver
-            android:name=".update.UpdateReceiver"
+            android:name="bit.himitsu.update.UpdateReceiver"
             android:exported="true">
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />

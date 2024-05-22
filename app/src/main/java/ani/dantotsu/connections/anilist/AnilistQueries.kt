@@ -893,7 +893,7 @@ class AnilistQueries {
         }
         if (tags == null) {
             executeQuery<Query.MediaTagCollection>(
-                """{ MediaTagCollection { name isAdult } }""",
+                """{ MediaTagCollection { name isGeneralSpoiler isMediaSpoiler isAdult } }""",
                 force = true
             )?.data?.mediaTagCollection?.apply {
                 val adult = mutableListOf<String>()

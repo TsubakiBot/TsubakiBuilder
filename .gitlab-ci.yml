@@ -25,6 +25,9 @@ updateContainer:
   variables:
     SECURE_FILES_DOWNLOAD_PATH: './'
   before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/".insteadOf "git@gitlab.com:"
+    - git submodule sync && git submodule update --init
     - chmod +x gradlew
     - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
     - "[ ! -d app/libs ] && mkdir app/libs"

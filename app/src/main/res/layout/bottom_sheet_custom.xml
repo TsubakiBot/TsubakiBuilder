@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     android:background="@drawable/bottom_sheet_background"
     android:fillViewport="true">
 
@@ -18,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|end"
             android:gravity="center"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="-6dp"
             android:button="@null"
             android:buttonTint="?attr/colorPrimary"
@@ -59,7 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginVertical="8dp"
             android:orientation="horizontal">
 
             <Button
