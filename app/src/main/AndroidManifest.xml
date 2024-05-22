@@ -54,7 +54,7 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:banner="@mipmap/ic_banner_foreground"
+        android:banner="@mipmap/ic_banner"
         android:logo="@mipmap/ic_banner"
         android:enableOnBackInvokedCallback="true"
         android:icon="${icon_placeholder}"
