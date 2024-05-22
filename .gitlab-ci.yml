@@ -47,7 +47,9 @@ buildRelease:
 postRelease:
   extends: buildRelease
   script:
-    - curl -F "payload_json='{"content": "Himitsu Shirase ${CI_COMMIT_SHA:0:8}"}'" $DISCORD_WEBHOOK
+    - wget https://raw.githubusercontent.com/DiscordHooks/gitlab-ci-discord-webhook/master/send.sh
+    - chmod +x send.sh
+    - ./send.sh success $DISCORD_WEBHOOK
     - curl -F "app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-arm64-v8a-matagi.apk" $DISCORD_WEBHOOK
     - curl -F "app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-armeabi-v7a-matagi.apk" $DISCORD_WEBHOOK
     - curl -F "app/build/outputs/apk/google/matagi/Himitsu-${CI_COMMIT_SHA:0:8}-google-x86_64-matagi.apk" $DISCORD_WEBHOOK
