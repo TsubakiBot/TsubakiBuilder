@@ -11,18 +11,29 @@ import java.util.Locale
 
 object LanguageMapper {
     private fun getLocalFromCode(code: String): Locale? {
-        return if (code.contains("-")) {
-            val parts = code.split("-")
-            try {
-                Locale(parts[0].lowercase(), parts[1].uppercase())
-            } catch (ignored: Exception) {
-                null
+        return when {
+            code.contains("-") -> {
+                val parts = code.split("-")
+                try {
+                    Locale(parts[0].lowercase(), parts[1].uppercase())
+                } catch (ignored: Exception) {
+                    null
+                }
             }
-        } else {
-            try {
-                Locale(code.lowercase())
-            } catch (ignored: Exception) {
-                null
+            code.contains("_") -> {
+                val parts = code.split("_")
+                try {
+                    Locale(parts[0].lowercase(), parts[1].uppercase())
+                } catch (ignored: Exception) {
+                    null
+                }
+            }
+            else -> {
+                try {
+                    Locale(code.lowercase())
+                } catch (ignored: Exception) {
+                    null
+                }
             }
         }
     }
