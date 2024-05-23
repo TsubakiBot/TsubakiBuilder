@@ -1,7 +1,6 @@
 package ani.dantotsu.notifications.subscription
 
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.Selected
@@ -18,6 +17,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import bit.himitsu.Strings.getString
 import kotlinx.coroutines.withTimeoutOrNull
 
 class SubscriptionHelper {
@@ -146,7 +146,11 @@ class SubscriptionHelper {
             val id: Int,
             val name: String,
             val image: String?
-        ) : java.io.Serializable
+        ) : java.io.Serializable {
+            companion object {
+                private const val serialVersionUID = 1L
+            }
+        }
 
         private const val SUBSCRIPTIONS = "subscriptions"
 

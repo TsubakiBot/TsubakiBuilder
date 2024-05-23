@@ -50,15 +50,6 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/testButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/extension_test"
-                app:srcCompat="@drawable/ic_network_check_24"
-                app:tint="?attr/colorPrimary" />
-
-            <ImageButton
                 android:id="@+id/openSettingsButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"

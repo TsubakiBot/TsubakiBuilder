@@ -469,7 +469,7 @@ data class AuthResponse(
     val user: User
 ) : java.io.Serializable {
     companion object {
-        private const val serialVersionUID: Long = 1
+        private const val serialVersionUID = 1L
     }
 }
 
@@ -502,7 +502,7 @@ data class User(
     val warnings: Int
 ) : java.io.Serializable {
     companion object {
-        private const val serialVersionUID: Long = 1
+        private const val serialVersionUID = 1L
     }
 }
 

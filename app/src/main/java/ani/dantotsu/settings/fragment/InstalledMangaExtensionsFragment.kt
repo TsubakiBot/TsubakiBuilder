@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
@@ -17,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -31,6 +33,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.MangaSources
+import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.settings.ExtensionsActivity
 import ani.dantotsu.settings.SearchQueryHandler
 import ani.dantotsu.settings.extensionprefs.MangaSourcePreferencesFragment
@@ -334,11 +337,20 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
             holder.settingsImageView.setOnClickListener {
                 popup.show()
                 popup.setOnMenuItemClickListener { item ->
-                    if (item.itemId == R.id.settings) {
-                        onSettingsClicked(extension)
-                    }
-                    if (item.itemId == R.id.search) {
-                        onSearchClicked(extension)
+                    when (item.itemId) {
+                        R.id.settings -> {
+                            onSettingsClicked(extension)
+                        }
+                        R.id.search -> {
+                            onSearchClicked(extension)
+                        }
+                        R.id.testing -> {
+                            ContextCompat.startActivity(
+                                holder.settingsImageView.context,
+                                Intent(holder.settingsImageView.context, ParserTestActivity::class.java),
+                                null
+                            )
+                        }
                     }
                     true
                 }
