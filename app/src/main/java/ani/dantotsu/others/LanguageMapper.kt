@@ -98,7 +98,7 @@ object LanguageMapper {
             if (locale.language == locale.displayName) {
                 mapNativeNameToCode(code)?.let { getLanguageItem(it) }
             } else {
-                "[${locale.flagEmoji}] ${locale.displayName}"
+                "[${locale.flagEmoji ?: locale.language}] ${locale.displayName}"
             }
         }
     }
