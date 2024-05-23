@@ -27,10 +27,10 @@ import ani.dantotsu.media.Character
 import ani.dantotsu.media.CharacterAdapter
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
-import bit.himitsu.setBaseline
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
 import ani.dantotsu.util.AniMarkdown.Companion.getFullAniHTML
+import bit.himitsu.setBaseline
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

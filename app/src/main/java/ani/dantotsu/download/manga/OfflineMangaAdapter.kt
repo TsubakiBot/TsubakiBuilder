@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import ani.dantotsu.R
+import ani.dantotsu.settings.saving.PrefManager
+import ani.dantotsu.settings.saving.PrefName
 import bit.himitsu.cardView
 import bit.himitsu.imageView
 import bit.himitsu.linearLayout
-import ani.dantotsu.settings.saving.PrefManager
-import ani.dantotsu.settings.saving.PrefName
 import bit.himitsu.textView
 
 

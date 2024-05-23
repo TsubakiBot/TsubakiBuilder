@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ItemUserStatusBinding
 import ani.dantotsu.loadImage
@@ -14,6 +13,7 @@ import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.User
 import ani.dantotsu.setAnimation
 import ani.dantotsu.settings.saving.PrefManager
+import bit.himitsu.Strings.getString
 
 class UserStatusAdapter(private val user: ArrayList<User>) :
     RecyclerView.Adapter<UserStatusAdapter.UsersViewHolder>() {

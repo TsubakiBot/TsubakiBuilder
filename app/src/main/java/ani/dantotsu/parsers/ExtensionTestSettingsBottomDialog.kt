@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import ani.dantotsu.databinding.BottomSheetExtensionTestSettingsBinding
 import ani.dantotsu.parsers.novel.NovelExtensionManager
+import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import com.xwray.groupie.GroupieAdapter
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager

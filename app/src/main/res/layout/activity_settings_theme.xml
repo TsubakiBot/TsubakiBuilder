@@ -203,7 +203,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/psycho"
+                android:id="@+id/saikou"
                 android:theme="@style/Theme.Dantotsu.Saikou"
                 android:layout_width="128dp"
                 android:layout_height="196dp"
@@ -258,7 +258,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/mono"
+                android:id="@+id/monochrome"
                 android:theme="@style/Theme.Dantotsu.Monochrome"
                 android:layout_width="128dp"
                 android:layout_height="196dp"
@@ -291,7 +291,6 @@
                 android:freezesText="false"
                 android:inputType="none"
                 android:padding="8dp"
-                android:text="@string/watch"
                 android:textAllCaps="true"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"

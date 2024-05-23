@@ -132,16 +132,16 @@ class ThemeManager(private val context: Activity) {
             GREEN("GREEN"),
             PURPLE("PURPLE"),
             PINK("PINK"),
-            ORIAX("ORIAX"),
             SAIKOU("SAIKOU"),
             RED("RED"),
             LAVENDER("LAVENDER"),
             OCEAN("OCEAN"),
-            MONOCHROME("MONOCHROME (BETA)");
+            ORIAX("ORIAX"),
+            MONOCHROME("MONOCHROME");
 
             companion object {
                 fun fromString(value: String): Theme {
-                    return entries.find { it.theme == value } ?: PURPLE
+                    return entries.find { it.theme == value } ?: SAIKOU
                 }
             }
         }

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
-import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
@@ -130,15 +130,22 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 setHasFixedSize(true)
             }
 
-            val themeString: String = PrefManager.getVal(PrefName.Theme)
-            val themeText = themeString.substring(0, 1) + themeString.substring(1).lowercase()
-            themeSwitcher.setText(themeText)
-
+            val prefTheme: String = PrefManager.getVal(PrefName.Theme)
+            val themeText = prefTheme.substring(0, 1) + prefTheme.substring(1).lowercase()
+            binding.themeSwitcher.setText(themeText)
             themeSwitcher.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.Theme, ThemeManager.Companion.Theme.entries[i].theme)
-                //ActivityHelper.shouldRefreshMainActivity = true
                 themeSwitcher.clearFocus()
                 recreate()
+            }
+            themePicker.children.forEachIndexed { index, view ->
+                view.setOnClickListener {
+                    val theme = ThemeManager.Companion.Theme.entries[index].theme
+                    PrefManager.setVal(PrefName.Theme, theme)
+                    recreate()
+                    val themeName = theme.substring(0, 1) + theme.substring(1).lowercase()
+                    binding.themeSwitcher.setText(themeName)
+                }
             }
 
             var previous: View = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
@@ -174,18 +181,6 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        binding.themeSwitcher.setAdapter(
-            ArrayAdapter(
-                this@SettingsThemeActivity,
-                R.layout.item_dropdown,
-                ThemeManager.Companion.Theme.entries
-                    .map { it.theme.substring(0, 1) + it.theme.substring(1).lowercase() })
-        )
-    }
-
     override fun onResult(dialogTag: String, which: Int, extras: Bundle): Boolean {
         if (which == SimpleDialog.OnDialogResultListener.BUTTON_POSITIVE) {
             if (dialogTag == "colorPicker") {
@@ -195,6 +190,17 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             }
         }
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.themeSwitcher.setAdapter(ArrayAdapter(
+            this@SettingsThemeActivity,
+            R.layout.item_dropdown,
+            ThemeManager.Companion.Theme.entries.map {
+                it.theme.substring(0, 1) + it.theme.substring(1).lowercase()
+            }
+        ))
     }
 
     @Suppress("DEPRECATION")

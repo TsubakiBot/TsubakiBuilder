@@ -3,11 +3,11 @@ package ani.dantotsu.parsers
 import android.net.Uri
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.asyncMap
 import ani.dantotsu.others.MalSyncBackup
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.tryWithSuspend
+import bit.himitsu.Strings.getString
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import eu.kanade.tachiyomi.animesource.model.SEpisode
 

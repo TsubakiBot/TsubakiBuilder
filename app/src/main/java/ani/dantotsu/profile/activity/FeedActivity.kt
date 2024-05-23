@@ -12,12 +12,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
-import bit.himitsu.setBaseline
-import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
+import bit.himitsu.setBaseline
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class FeedActivity : AppCompatActivity() {

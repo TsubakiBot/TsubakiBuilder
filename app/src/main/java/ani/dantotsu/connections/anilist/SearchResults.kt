@@ -1,9 +1,9 @@
 package ani.dantotsu.connections.anilist
 
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.currContext
 import ani.dantotsu.media.Media
+import bit.himitsu.Strings.getString
 import java.io.Serializable
 
 data class SearchResults(

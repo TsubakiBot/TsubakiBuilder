@@ -109,7 +109,6 @@ import androidx.window.layout.WindowLayoutInfo
 import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
-import bit.himitsu.TorrManager.removeTorrent
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal
 import ani.dantotsu.connections.anilist.Anilist
@@ -157,6 +156,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import bit.himitsu.TorrManager.removeTorrent
 import com.anggrayudi.storage.file.extension
 import com.bumptech.glide.Glide
 import com.google.android.gms.cast.framework.CastButtonFactory

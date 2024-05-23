@@ -20,7 +20,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.blurImage
 import ani.dantotsu.databinding.ItemMediaCompactBinding
 import ani.dantotsu.databinding.ItemMediaLargeBinding
@@ -31,6 +30,7 @@ import ani.dantotsu.setAnimation
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import bit.himitsu.Strings.getString
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import java.io.Serializable
 

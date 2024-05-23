@@ -15,7 +15,6 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityGenreBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.OtherDetailsViewModel
-import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import bit.himitsu.withFlexibleMargin

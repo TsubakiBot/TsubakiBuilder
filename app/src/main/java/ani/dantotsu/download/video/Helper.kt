@@ -29,7 +29,6 @@ import ani.dantotsu.download.anime.AnimeDownloaderService
 import ani.dantotsu.download.anime.AnimeServiceDataSingleton
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaType
-import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.util.Logger

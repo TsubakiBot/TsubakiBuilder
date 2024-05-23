@@ -6,12 +6,12 @@ import android.net.Uri
 import android.util.Base64
 import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.tryWithSuspend
+import bit.himitsu.Strings.getString
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.security.SecureRandom

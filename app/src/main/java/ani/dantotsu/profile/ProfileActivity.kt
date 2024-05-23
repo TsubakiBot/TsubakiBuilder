@@ -28,7 +28,6 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.profile.activity.FeedFragment
-import bit.himitsu.setBaseline
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -39,6 +38,7 @@ import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.MarkdownCreatorActivity
 import ani.dantotsu.view.dialog.ImageViewDialog
+import bit.himitsu.setBaseline
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

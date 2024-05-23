@@ -9,7 +9,6 @@ import android.widget.NumberPicker
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemChapterListBinding
@@ -18,6 +17,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.setAnimation
 import ani.dantotsu.util.customAlertDialog
+import bit.himitsu.Strings.getString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat

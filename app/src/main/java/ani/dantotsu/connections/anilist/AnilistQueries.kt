@@ -2,7 +2,6 @@ package ani.dantotsu.connections.anilist
 
 import android.util.Base64
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.checkGenreTime
 import ani.dantotsu.checkId
 import ani.dantotsu.connections.anilist.Anilist.authorRoles
@@ -31,6 +30,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import bit.himitsu.Strings.getString
 import bit.himitsu.collections.Collections.mix
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

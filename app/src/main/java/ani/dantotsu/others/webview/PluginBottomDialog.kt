@@ -39,12 +39,12 @@ import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetWebBinding
-import bit.himitsu.lineSeparator
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
-import bit.himitsu.sanitized
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import bit.himitsu.lineSeparator
 import bit.himitsu.os.Version
+import bit.himitsu.sanitized
 import eu.kanade.tachiyomi.network.NetworkHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

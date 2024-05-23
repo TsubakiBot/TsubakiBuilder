@@ -21,7 +21,6 @@ import ani.dantotsu.connections.anilist.AnilistSearch
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.ActivitySearchBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight

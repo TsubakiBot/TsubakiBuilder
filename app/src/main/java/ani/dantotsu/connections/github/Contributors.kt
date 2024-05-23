@@ -2,9 +2,9 @@ package ani.dantotsu.connections.github
 
 import ani.dantotsu.Mapper
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.client
 import ani.dantotsu.settings.Developer
+import bit.himitsu.Strings.getString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName

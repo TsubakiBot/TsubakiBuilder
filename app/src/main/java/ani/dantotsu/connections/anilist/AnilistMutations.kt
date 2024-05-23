@@ -1,9 +1,9 @@
 package ani.dantotsu.connections.anilist
 
-import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query
+import bit.himitsu.Strings.getString
 import com.google.gson.Gson
 import kotlinx.serialization.json.JsonObject
 

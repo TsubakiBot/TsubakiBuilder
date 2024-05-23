@@ -1,9 +1,9 @@
 package ani.dantotsu.profile.activity
 
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.anilist.api.Notification
 import ani.dantotsu.connections.anilist.api.NotificationType
+import bit.himitsu.Strings.getString
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

@@ -23,8 +23,6 @@ import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
-import bit.himitsu.TorrManager
-import bit.himitsu.TorrManager.getPlayLink
 import ani.dantotsu.addons.download.DownloadAddonManager
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.currActivity
@@ -52,11 +50,13 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
-import bit.himitsu.torrServerStart
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import bit.himitsu.TorrManager
+import bit.himitsu.TorrManager.getPlayLink
+import bit.himitsu.torrServerStart
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

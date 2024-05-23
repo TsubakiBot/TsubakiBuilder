@@ -1,7 +1,6 @@
 package ani.dantotsu.settings
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.res.Resources
 import android.graphics.Color
 import android.os.Build

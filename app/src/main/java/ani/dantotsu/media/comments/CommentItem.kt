@@ -9,7 +9,6 @@ import android.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
 import ani.dantotsu.connections.comments.Comment
 import ani.dantotsu.connections.comments.CommentsAPI
 import ani.dantotsu.copyToClipboard
@@ -21,6 +20,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.util.ColorEditor.Companion.adjustColorForContrast
 import ani.dantotsu.util.ColorEditor.Companion.getContrastRatio
 import ani.dantotsu.view.dialog.ImageViewDialog
+import bit.himitsu.Strings.getString
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
