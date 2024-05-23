@@ -120,13 +120,13 @@ tasks.register('torrserver') {
     def f = new File('app/libs/server.aar')
     if (!f.exists()) {
         new URL(
-                'https://github.com/RepoDevil/TorrServer/raw/matagi/server.aar'
+                'https://github.com/RepoDevil/TorrServer/raw/kuukiyomi/server.aar'
         ).withInputStream { i -> f.withOutputStream { it << i } }
     }
     def s = new File('app/libs/server-sources.jar')
     if (!s.exists()) {
         new URL(
-                'https://github.com/RepoDevil/TorrServer/raw/matagi/server-sources.jar'
+                'https://github.com/RepoDevil/TorrServer/raw/kuukiyomi/server-sources.jar'
         ).withInputStream { i -> s.withOutputStream { it << i } }
     }
 }
@@ -208,9 +208,6 @@ dependencies {
     implementation  "io.noties.markwon:image-glide:$markwon_version"
 
     /* Groupie */
-    // ext.groupie_version = '2.10.1'
-    // implementation "com.github.lisawray.groupie:groupie:$groupie_version"
-    // implementation "com.github.lisawray.groupie:groupie-viewbinding:$groupie_version"
     implementation "com.github.chimbori:viewgenesis:3.1.1"
 
     /* String Matching */
@@ -218,7 +215,6 @@ dependencies {
 
     /* Download */
     // implementation group: 'com.arthenica', name: 'ffmpeg-kit-full-gpl', version: '6.0-2.LTS'
-    // implementation 'com.github.yausername.youtubedl-android:library:0.15.0'
 
     /* Biometrics */
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"

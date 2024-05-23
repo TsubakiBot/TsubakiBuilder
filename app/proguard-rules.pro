@@ -49,6 +49,7 @@
 }
 
 -keep,allowoptimization class ani.dantotsu.**
+-keep,allowoptimization class bit.himitsu.**
 -keep,allowoptimization class eu.kanade.**
 -keep,allowoptimization class tachiyomi.**
 
@@ -131,6 +132,14 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
+-keep,includedescriptorclasses class bit.himitsu.**$$serializer { *; }
+-keepclassmembers class bit.himitsu.** {
+    *** Companion;
+}
+-keepclasseswithmembers class bit.himitsu.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
 -keep,includedescriptorclasses class tachiyomi.**$$serializer { *; }
 -keepclassmembers class tachiyomi.** {
     *** Companion;
@@ -160,6 +169,7 @@
 # Application classes that will be serialized/deserialized over Gson
 -keep class eu.kanade.** { <fields>; }
 -keep class ani.dantotsu.** { <fields>; }
+-keep class bit.himitsu.** { <fields>; }
 -keep class tachiyomi.** { <fields>; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
