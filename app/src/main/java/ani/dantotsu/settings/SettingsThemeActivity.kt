@@ -108,8 +108,8 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
 
                             class CustomColorDialog : SimpleColorDialog() {
                                 override fun onPositiveButtonClick() {
-                                    recreate()
                                     super.onPositiveButtonClick()
+                                    recreate()
                                 }
                             }
 

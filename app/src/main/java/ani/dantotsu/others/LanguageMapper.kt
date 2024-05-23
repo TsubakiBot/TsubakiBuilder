@@ -2,6 +2,7 @@ package ani.dantotsu.others
 
 import ani.dantotsu.R
 import bit.himitsu.Strings.getString
+import bit.himitsu.flagEmoji
 import eu.kanade.tachiyomi.animesource.AnimeSource
 import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
 import eu.kanade.tachiyomi.source.ConfigurableSource
@@ -97,7 +98,7 @@ object LanguageMapper {
             if (locale.language == locale.displayName) {
                 mapNativeNameToCode(code)?.let { getLanguageItem(it) }
             } else {
-                "[${locale.language}] ${locale.displayName}"
+                "[${locale.flagEmoji}] ${locale.displayName}"
             }
         }
     }

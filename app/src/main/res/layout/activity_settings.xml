@@ -38,6 +38,15 @@
                     app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
                     app:tint="?attr/colorOnBackground"
                     tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="@string/settings"
+                    android:textSize="28sp" />
             </androidx.cardview.widget.CardView>
 
             <ImageView

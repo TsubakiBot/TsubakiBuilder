@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -53,8 +55,8 @@ android {
     buildTypes {
         matagi {
             isDefault true
-            minifyEnabled System.getenv("CI") != null
-            shrinkResources = System.getenv("CI") != null
+            minifyEnabled Os.isFamily(Os.FAMILY_UNIX)
+            shrinkResources = Os.isFamily(Os.FAMILY_UNIX)
             applicationIdSuffix ".matagi"
             versionNameSuffix "-matagi"
             manifestPlaceholders.icon_placeholder = "@mipmap/ic_launcher_alpha"
