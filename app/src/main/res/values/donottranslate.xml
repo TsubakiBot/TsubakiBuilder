@@ -3,7 +3,6 @@
     <string name="app_name">Himitsu</string>
 
     <string name="repo">RepoDevil/Himitsu</string>
-    <string name="token_repo">RepoDevil/Himitsu-Matagi</string>
 
     <string name="preference_file_key">dantotsuprefs</string>
 
