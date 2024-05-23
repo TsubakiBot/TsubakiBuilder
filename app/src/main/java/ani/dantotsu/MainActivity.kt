@@ -66,8 +66,8 @@ import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
-import ani.dantotsu.update.MatagiUpdater
 import bit.himitsu.torrServerKill
+import bit.himitsu.update.MatagiUpdater
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText

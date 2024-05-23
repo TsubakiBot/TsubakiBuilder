@@ -44,8 +44,6 @@ import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.databinding.FragmentHomeBinding
 import ani.dantotsu.databinding.HomeListContainerBinding
 import ani.dantotsu.home.status.UserStatusAdapter
-import bit.himitsu.isOverlapping
-import bit.himitsu.launcher.ResumableShortcuts
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.Media
@@ -66,14 +64,13 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
-import ani.dantotsu.update.MatagiUpdater
 import ani.dantotsu.util.BitmapUtil.toSquare
-import ani.dantotsu.util.Logger
-import ani.dantotsu.widgets.resumable.ResumableWidget
 import bit.himitsu.forceShowIcons
-import bit.himitsu.withFlexibleMargin
+import bit.himitsu.isOverlapping
 import bit.himitsu.os.Version
+import bit.himitsu.update.MatagiUpdater
 import bit.himitsu.widget.FABulous
+import bit.himitsu.withFlexibleMargin
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition

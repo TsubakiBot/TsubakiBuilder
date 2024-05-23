@@ -34,7 +34,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import bit.himitsu.search.ReverseSearchDialogFragment
-import ani.dantotsu.update.MatagiUpdater
+import bit.himitsu.update.MatagiUpdater
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import java.util.Timer

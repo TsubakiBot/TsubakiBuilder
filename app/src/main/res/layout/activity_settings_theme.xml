@@ -148,6 +148,128 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@string/theme" />
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/themePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/blue"
+                android:theme="@style/Theme.Dantotsu.Blue"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/green"
+                android:theme="@style/Theme.Dantotsu.Green"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/purple"
+                android:theme="@style/Theme.Dantotsu.Purple"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pink"
+                android:theme="@style/Theme.Dantotsu.Pink"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/psycho"
+                android:theme="@style/Theme.Dantotsu.Saikou"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/red"
+                android:theme="@style/Theme.Dantotsu.Red"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/lavender"
+                android:theme="@style/Theme.Dantotsu.Lavender"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/ocean"
+                android:theme="@style/Theme.Dantotsu.Ocean"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/oriax"
+                android:theme="@style/Theme.Dantotsu.Oriax"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mono"
+                android:theme="@style/Theme.Dantotsu.Monochrome"
+                android:layout_width="128dp"
+                android:layout_height="196dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp">
+
+                <include layout="@layout/theme_preview_card" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+        </HorizontalScrollView>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"

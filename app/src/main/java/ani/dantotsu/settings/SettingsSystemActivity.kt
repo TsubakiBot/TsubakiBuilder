@@ -38,7 +38,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
-import ani.dantotsu.update.MatagiUpdater
+import bit.himitsu.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope

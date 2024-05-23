@@ -22,7 +22,6 @@ import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.setSafeOnClickListener
@@ -31,7 +30,7 @@ import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
-import ani.dantotsu.update.MatagiUpdater
+import bit.himitsu.update.MatagiUpdater
 import bit.himitsu.withFlexibleMargin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

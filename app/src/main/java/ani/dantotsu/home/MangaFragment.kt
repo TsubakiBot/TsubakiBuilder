@@ -28,9 +28,7 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistMangaViewModel
 import ani.dantotsu.connections.anilist.SearchResults
 import ani.dantotsu.databinding.FragmentAnimeBinding
-import bit.himitsu.isOverlapping
 import ani.dantotsu.loadFragment
-import ani.dantotsu.loadImage
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.navBarHeight
@@ -40,7 +38,8 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
-import ani.dantotsu.update.MatagiUpdater
+import bit.himitsu.isOverlapping
+import bit.himitsu.update.MatagiUpdater
 import bit.himitsu.widget.FABulous
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers

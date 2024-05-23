@@ -526,13 +526,12 @@ class AnilistQueries {
                 returnMap["current$type"] = returnArray
                 return
             }
-            @Suppress("UNCHECKED_CAST")
             val list = PrefManager.getNullableCustomVal(
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            ) as List<Int>
-            if (list.isNotEmpty()) {
+            )
+            if (!list.isNullOrEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
@@ -561,13 +560,12 @@ class AnilistQueries {
                     }
                 }
             }
-            @Suppress("UNCHECKED_CAST")
             val list = PrefManager.getNullableCustomVal(
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            ) as List<Int>
-            if (list.isNotEmpty()) {
+            )
+            if (!list.isNullOrEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
@@ -737,13 +735,12 @@ class AnilistQueries {
                 returnMap[type.asText()] = returnArray
                 return
             }
-            @Suppress("UNCHECKED_CAST")
             val list = PrefManager.getNullableCustomVal(
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            ) as List<Int>
-            if (list.isNotEmpty()) {
+            )
+            if (!list.isNullOrEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
