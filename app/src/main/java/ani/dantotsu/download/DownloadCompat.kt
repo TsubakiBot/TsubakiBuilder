@@ -32,12 +32,12 @@ import kotlin.collections.set
 
 fun directory(downloadedType: DownloadedType) = File(
     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-    "Dantotsu/${downloadedType.type.asText()}/${downloadedType.titleName}"
+    "Dantotsu/${downloadedType.type.text}/${downloadedType.titleName}"
 )
 
 fun directory(type: MediaType, path: String) = File(
     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-    "Dantotsu/{$type.asText()}/$path"
+    "Dantotsu/{$type.text}/$path"
 )
 
 object DownloadCompat {
@@ -102,7 +102,7 @@ object DownloadCompat {
                 totalEpisode,
                 totalEpisodesList,
                 watchedEpisodes,
-                downloadedType.type.asText(),
+                downloadedType.type.text,
                 chapters,
                 isOngoing,
                 isUserScored,
@@ -157,7 +157,7 @@ object DownloadCompat {
                 score,
                 totalchapter,
                 readchapter,
-                downloadedType.type.asText(),
+                downloadedType.type.text,
                 chapters,
                 isOngoing,
                 isUserScored,
@@ -304,7 +304,7 @@ object DownloadCompat {
     fun removeDownloadCompat(context: Context, downloadedType: DownloadedType) {
         val directory = File(
             context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-            "Dantotsu/${downloadedType.type.asText()}/${downloadedType.titleName}/${downloadedType.chapterName}"
+            "Dantotsu/${downloadedType.type.text}/${downloadedType.titleName}/${downloadedType.chapterName}"
         )
 
         // Check if the directory exists and delete it recursively

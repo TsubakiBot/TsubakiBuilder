@@ -329,7 +329,7 @@ class OfflineMangaFragment : Fragment(), OfflineMangaSearchListener {
     }
 
     private fun loadOfflineMangaModel(downloadedType: DownloadedType): OfflineMangaModel {
-        val type = downloadedType.type.asText()
+        val type = downloadedType.type.text
         //load media.json and convert to media class with gson
         try {
             val directory = getSubDirectory(

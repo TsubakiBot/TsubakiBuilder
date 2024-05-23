@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemExtensionTestBinding
+import ani.dantotsu.media.MediaType
 import com.xwray.groupie.viewbinding.BindableItem
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
@@ -76,17 +77,17 @@ class ExtensionTestItem(
         job = Job()
         CoroutineScope(Dispatchers.IO + job!!).launch {
             when (extensionType) {
-                "anime" -> {
+                MediaType.ANIME.text.lowercase() -> {
                     val extension = extension as AnimeParser
                     runAnimeTest(extension)
                 }
 
-                "manga" -> {
+                MediaType.MANGA.text.lowercase() -> {
                     val extension = extension as MangaParser
                     runMangaTest(extension)
                 }
 
-                "novel" -> {
+                MediaType.NOVEL.text.lowercase() -> {
                     val extension = extension as NovelParser
                     runNovelTest(extension)
                 }
@@ -95,11 +96,11 @@ class ExtensionTestItem(
     }
 
     private suspend fun runAnimeTest(extension: AnimeParser) {
-        pingResult = extension.ping()
-        withContext(Dispatchers.Main) {
-            pingResult()
-        }
         if (testType == "ping") {
+            pingResult = extension.ping()
+            withContext(Dispatchers.Main) {
+                pingResult()
+            }
             done()
             return
         }
@@ -137,11 +138,11 @@ class ExtensionTestItem(
     }
 
     private suspend fun runMangaTest(extension: MangaParser) {
-        pingResult = extension.ping()
-        withContext(Dispatchers.Main) {
-            pingResult()
-        }
         if (testType == "ping") {
+            pingResult = extension.ping()
+            withContext(Dispatchers.Main) {
+                pingResult()
+            }
             done()
             return
         }
@@ -179,10 +180,10 @@ class ExtensionTestItem(
     }
 
     private suspend fun runNovelTest(extension: NovelParser) {
-        withContext(Dispatchers.Main) {
-            pingResult()
-        }
         if (testType == "ping") {
+            withContext(Dispatchers.Main) {
+                pingResult()
+            }
             done()
             return
         }
@@ -219,7 +220,7 @@ class ExtensionTestItem(
 
     private fun pingResult() {
         if (::binding.isInitialized.not()) return
-        if (extensionType == "novel") {
+        if (extensionType == MediaType.NOVEL.text.lowercase()) {
             binding.pingResultText.isVisible = true
             binding.pingResultText.text = context.getString(R.string.test_not_supported)
             binding.pingResultText.setCompoundDrawablesWithIntrinsicBounds(
@@ -298,9 +299,9 @@ class ExtensionTestItem(
         binding.episodeResultText.isVisible = true
         if (episodeResultData.size == 0) {
             val text = when(extensionType) {
-                "anime" -> context.getString(R.string.episode_search_test,
+                MediaType.ANIME.text.lowercase() -> context.getString(R.string.episode_search_test,
                     context.getString(R.string.no_results_found))
-                "manga" -> context.getString(R.string.chapter_search_test,
+                MediaType.MANGA.text.lowercase() -> context.getString(R.string.chapter_search_test,
                     context.getString(R.string.no_results_found))
                 else -> context.getString(R.string.book_search_test,
                     context.getString(R.string.no_results_found))
@@ -315,9 +316,9 @@ class ExtensionTestItem(
             return
         }
         val text = when(extensionType) {
-            "anime" -> context.getString(R.string.episode_search_test,
+            MediaType.ANIME.text.lowercase() -> context.getString(R.string.episode_search_test,
                 context.getString(R.string.results_found, episodeResultData.size.toString()))
-            "manga" -> context.getString(R.string.chapter_search_test,
+            MediaType.MANGA.text.lowercase() -> context.getString(R.string.chapter_search_test,
                 context.getString(R.string.results_found, episodeResultData.size.toString()))
             else -> context.getString(R.string.book_search_test,
                 context.getString(R.string.results_found, episodeResultData.size.toString()))
@@ -331,7 +332,7 @@ class ExtensionTestItem(
     @SuppressLint("SetTextI18n")
     private fun serverResult() {
         if (::binding.isInitialized.not()) return
-        if (extensionType == "novel") {
+        if (extensionType == MediaType.NOVEL.text.lowercase()) {
             binding.pingResultText.isVisible = true
             binding.pingResultText.text = context.getString(R.string.test_not_supported)
             binding.pingResultText.setCompoundDrawablesWithIntrinsicBounds(
@@ -349,9 +350,9 @@ class ExtensionTestItem(
         binding.serverResultText.isVisible = true
         if (serverResultData.size == 0) {
             val text = when(extensionType) {
-                "anime" -> context.getString(R.string.video_search_test,
+                MediaType.ANIME.text.lowercase() -> context.getString(R.string.video_search_test,
                     context.getString(R.string.no_results_found))
-                "manga" -> context.getString(R.string.image_search_test,
+                MediaType.MANGA.text.lowercase() -> context.getString(R.string.image_search_test,
                     context.getString(R.string.no_results_found))
                 else -> context.getString(R.string.book_search_test,
                     context.getString(R.string.no_results_found))
@@ -366,9 +367,9 @@ class ExtensionTestItem(
             return
         }
         val text = when(extensionType) {
-            "anime" -> context.getString(R.string.video_search_test,
+            MediaType.ANIME.text.lowercase() -> context.getString(R.string.video_search_test,
                 context.getString(R.string.results_found, serverResultData.size.toString()))
-            "manga" -> context.getString(R.string.image_search_test,
+            MediaType.MANGA.text.lowercase() -> context.getString(R.string.image_search_test,
                 context.getString(R.string.results_found, serverResultData.size.toString()))
             else -> context.getString(R.string.book_search_test,
                 context.getString(R.string.results_found, serverResultData.size.toString()))

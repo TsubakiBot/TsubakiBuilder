@@ -17,6 +17,8 @@ interface Type {
             }
         }
     }
+
+    val text: String get() = this.asText()
 }
 
 enum class MediaType : Type {

@@ -339,7 +339,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
      * @return OfflineAnimeModel object
      */
     private suspend fun loadOfflineAnimeModel(downloadedType: DownloadedType): OfflineAnimeModel {
-        val type = downloadedType.type.asText()
+        val type = downloadedType.type.text
         try {
             val directory = DownloadsManager.getSubDirectory(
                 context ?: currContext(), downloadedType.type,

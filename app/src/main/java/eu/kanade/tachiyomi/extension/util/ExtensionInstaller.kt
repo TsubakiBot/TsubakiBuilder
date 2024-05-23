@@ -94,7 +94,7 @@ class ExtensionInstaller(private val context: Context) {
                 Environment.DIRECTORY_DOWNLOADS,
                 downloadUri.lastPathSegment
             )
-            .setDescription(type.asText())
+            .setDescription(type.text)
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             .setAllowedOverRoaming(true)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
