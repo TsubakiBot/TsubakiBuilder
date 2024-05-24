@@ -104,7 +104,9 @@ class TrackGroupDialogFragment(
 
                     else -> {
                         binding.subtitleTitle.text = getTrackItem(language)
-                            ?: if (language.length > 2 && !language.contains("-"))
+                            ?: if (language.length > 2
+                                && !language.contains("-")
+                                && !language.contains("_"))
                                 "[${String.format("%02d", position)}] $language"
                             else
                                 getString(R.string.unknown_track, language)

@@ -60,12 +60,16 @@ object LanguageMapper {
         return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
     }
 
+    private fun findByDisplayName(locale: Locale): String? {
+        val language = locale.getDisplayName(Locale.US).substringBefore(" ")
+        return codeMap.filterValues { it == language }.keys.firstOrNull()
+    }
 
     fun getTrackItem(code: String): String? {
         return getLocalFromCode(code)?.let { locale ->
             if (locale.language == locale.displayName) {
                 mapNativeToCode(code)?.let { getTrackItem(it) }
-                    ?: codeMap.getValue(locale.getDisplayName(Locale.US))
+                    ?: findByDisplayName(locale)?.let { getTrackItem(it) }
             } else {
                 "[${locale.flagEmoji ?: locale.language}] ${locale.displayName}"
             }
@@ -74,21 +78,21 @@ object LanguageMapper {
 
     fun mapNativeToCode(name: String): String? {
         return when (name.lowercase()) {
-            "العربية" -> codeMap.getValue("Arabic")
-            "中文, 汉语, 漢語" -> codeMap.getValue("Chinese")
-            "english" -> codeMap.getValue("English")
-            "français" -> codeMap.getValue("French")
-            "bahasa indonesia" -> codeMap.getValue("Indonesian")
-            "日本語" -> codeMap.getValue("Japanese")
-            "조선말, 한국어" -> codeMap.getValue("Korean")
-            "polski" -> codeMap.getValue("Polish")
-            "português" -> codeMap.getValue("Portuguese")
-            "pусский" -> codeMap.getValue("Russian")
-            "español" -> codeMap.getValue("Spanish")
-            "ไทย" -> codeMap.getValue("Thai")
-            "türkçe" -> codeMap.getValue("Turkish")
-            "Українська" -> codeMap.getValue("Ukrainian")
-            "tiếng việt" -> codeMap.getValue("Vietnamese")
+            "العربية" -> "ar"
+            "中文, 汉语, 漢語" -> "zh"
+            "english" -> "en"
+            "français" -> "fr"
+            "bahasa indonesia" -> "id"
+            "日本語" -> "ja"
+            "조선말, 한국어" -> "ko"
+            "polski" -> "pl"
+            "português" -> "pt"
+            "pусский" -> "ru"
+            "español" -> "es"
+            "ไทย" -> "th"
+            "türkçe" -> "tr"
+            "Українська" -> "uk"
+            "tiếng việt" -> "vi"
             else -> null
         }
     }

@@ -28,6 +28,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
@@ -124,21 +125,21 @@ class Himitsu : MultiDexApplication() {
     private suspend fun loadAnimeExtensions() {
         animeExtensionManager = Injekt.get()
         animeExtensionManager.findAvailableExtensions()
-        Logger.log("Anime Extensions: ${animeExtensionManager.installedExtensionsFlow.first()}")
+        Logger.log("Anime Extensions: ${animeExtensionManager.installedExtensionsFlow.firstOrNull()}")
         AnimeSources.init(animeExtensionManager.installedExtensionsFlow)
     }
 
     private suspend fun loadMangaExtensions() {
         mangaExtensionManager = Injekt.get()
         mangaExtensionManager.findAvailableExtensions()
-        Logger.log("Manga Extensions: ${mangaExtensionManager.installedExtensionsFlow.first()}")
+        Logger.log("Manga Extensions: ${mangaExtensionManager.installedExtensionsFlow.firstOrNull()}")
         MangaSources.init(mangaExtensionManager.installedExtensionsFlow)
     }
 
     private suspend fun loadNovelExtensions() {
         novelExtensionManager = Injekt.get()
         novelExtensionManager.findAvailableExtensions()
-        Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.first()}")
+        Logger.log("Novel Extensions: ${novelExtensionManager.installedExtensionsFlow.firstOrNull()}")
         NovelSources.init(novelExtensionManager.installedExtensionsFlow)
         novelExtensionManager.findAvailablePlugins()
     }
