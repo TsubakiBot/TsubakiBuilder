@@ -115,8 +115,8 @@ class SettingsAboutActivity : AppCompatActivity() {
             loginGithub.setOnClickListener {
                 openLinkInBrowser(getString(R.string.github, getString(R.string.repo)))
             }
-            loginTelegram.setOnClickListener {
-                openLinkInBrowser(getString(R.string.telegram))
+            binding.loginHimitsu.setOnClickListener {
+                openLinkInBrowser(getString(R.string.dantotsu))
             }
 
             settingsVersion.apply {
