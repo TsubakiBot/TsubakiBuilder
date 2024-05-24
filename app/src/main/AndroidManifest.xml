@@ -52,7 +52,7 @@
     </queries>
 
     <application
-        android:name=".App"
+        android:name=".Himitsu"
         android:allowBackup="true"
         android:banner="@mipmap/ic_banner"
         android:logo="@mipmap/ic_banner"

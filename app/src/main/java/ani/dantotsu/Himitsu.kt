@@ -38,7 +38,7 @@ import java.io.PrintWriter
 import java.io.StringWriter
 
 
-class App : MultiDexApplication() {
+class Himitsu : MultiDexApplication() {
     private lateinit var animeExtensionManager: AnimeExtensionManager
     private lateinit var mangaExtensionManager: MangaExtensionManager
     private lateinit var novelExtensionManager: NovelExtensionManager
@@ -73,19 +73,21 @@ class App : MultiDexApplication() {
         }
         registerActivityLifecycleCallbacks(mFTActivityLifecycleCallbacks)
 
-        Logger.init(this)
         Thread.setDefaultUncaughtExceptionHandler { _: Thread?, error: Throwable ->
             Logger.log(error)
             val exception = StringWriter().apply {
                 error.printStackTrace(PrintWriter(this))
             }
             try {
+                Debug.clipException(this, exception.toString())
+            } catch (ignored: Exception) { }
+            try {
                 Debug.saveException(this, exception.toString())
-            } catch (ignored: Exception) {
-            }
+            } catch (ignored: Exception) { }
             android.os.Process.killProcess(android.os.Process.myPid())
             kotlin.system.exitProcess(-1)
         }
+        Logger.init(this)
 
         initializeNetwork()
 
@@ -104,14 +106,14 @@ class App : MultiDexApplication() {
             torrentAddonManager.init()
         }
         if (PrefManager.getVal(PrefName.CommentsOptIn)) {
-            CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken(this@App) }
+            CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken(this@Himitsu) }
         }
 
         GlobalScope.launch {
             val useAlarmManager = PrefManager.getVal<Boolean>(PrefName.UseAlarmManager)
-            val scheduler = TaskScheduler.create(this@App, useAlarmManager)
+            val scheduler = TaskScheduler.create(this@Himitsu, useAlarmManager)
             try {
-                scheduler.scheduleAllTasks(this@App)
+                scheduler.scheduleAllTasks(this@Himitsu)
             } catch (e: IllegalStateException) {
                 Logger.log("Failed to schedule tasks")
                 Logger.log(e)
@@ -172,7 +174,7 @@ class App : MultiDexApplication() {
          *
          * USE WITH EXTREME CAUTION!**/
         @JvmStatic
-        lateinit var instance: App
+        lateinit var instance: Himitsu
             private set
 
         fun currentContext(): Context {

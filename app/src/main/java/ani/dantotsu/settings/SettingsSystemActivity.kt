@@ -18,7 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
-import ani.dantotsu.App
+import ani.dantotsu.Himitsu
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
@@ -243,9 +243,9 @@ class SettingsSystemActivity : AppCompatActivity() {
                             if (isChecked) {
                                 PrefManager.removeVal(PrefName.ImageUrl)
                                     CoroutineScope(Dispatchers.IO).launch {
-                                        Glide.get(App.instance).clearDiskCache()
+                                        Glide.get(Himitsu.instance).clearDiskCache()
                                     }
-                                    Glide.get(App.instance).clearMemory()
+                                    Glide.get(Himitsu.instance).clearMemory()
                             }
                             Refresh.all()
                         }

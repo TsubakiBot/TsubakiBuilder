@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
-import ani.dantotsu.App
+import ani.dantotsu.Himitsu
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.comments.CommentsAPI
@@ -60,7 +60,7 @@ class SettingsAccountActivity : AppCompatActivity() {
             settingsCommentsApi.setOnCheckedChangeListener { _, isChecked ->
                 PrefManager.setVal(PrefName.CommentsOptIn, isChecked)
                 if (isChecked)
-                    CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken(App.instance) }
+                    CoroutineScope(Dispatchers.IO).launch { CommentsAPI.fetchAuthToken(Himitsu.instance) }
                 else
                     CommentsAPI.logout()
             }

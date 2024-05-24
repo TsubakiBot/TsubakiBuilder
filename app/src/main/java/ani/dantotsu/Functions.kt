@@ -109,7 +109,6 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore.Companion.genera
 import ani.dantotsu.util.CountUpTimer
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
-import bit.himitsu.Strings
 import bit.himitsu.os.Version
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -204,11 +203,11 @@ object Refresh {
 }
 
 fun currContext(): Context {
-    return App.currentContext()
+    return Himitsu.currentContext()
 }
 
 fun currActivity(): Activity? {
-    return App.currentActivity()
+    return Himitsu.currentActivity()
 }
 
 var loadMedia: Int? = null
