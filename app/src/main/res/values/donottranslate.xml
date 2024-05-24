@@ -2,7 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Himitsu</string>
 
-    <string name="repo">RepoDevil/Himitsu-Archive</string>
+    <string name="repo_gh">RepoDevil/Himitsu-Archive</string>
+    <string name="repo_gl">RepoDevil/Himitsu</string>
 
     <string name="preference_file_key">dantotsuprefs</string>
 
@@ -11,6 +12,7 @@
     <string name="dantotsu">https://repodevil.netlify.app/</string>
     <string name="discord">https://discord.gg/vnrhgrt</string>
     <string name="github">https://github.com/%1$s</string>
+    <string name="gitlab">https://gitlab.com/%1$s</string>
     <string name="coffee">https://www.buymeacoffee.com/abandonedcart</string>
 
     <string name="anilist_link">https://anilist.co/user/%1$s/</string>

@@ -112,15 +112,15 @@ class SettingsAboutActivity : AppCompatActivity() {
             loginDiscord.setOnClickListener {
                 openLinkInBrowser(getString(R.string.discord))
             }
-            loginGithub.setOnClickListener {
-                openLinkInBrowser(getString(R.string.github, getString(R.string.repo)))
+            loginGitlab.setOnClickListener {
+                openLinkInBrowser(getString(R.string.gitlab, getString(R.string.repo_gl)))
             }
             binding.loginHimitsu.setOnClickListener {
                 openLinkInBrowser(getString(R.string.dantotsu))
             }
 
             settingsVersion.apply {
-                text = getString(R.string.version_current, BuildConfig.VERSION_NAME)
+                text = getString(R.string.version_current, BuildConfig.COMMIT)
 
                 setOnLongClickListener {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)

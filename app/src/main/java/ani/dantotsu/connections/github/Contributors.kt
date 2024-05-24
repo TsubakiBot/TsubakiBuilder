@@ -18,7 +18,7 @@ class Contributors {
     fun getContributors(): Array<Developer> {
         val contributors = arrayListOf<Developer>()
         runBlocking(Dispatchers.IO) {
-            val repo = getString(R.string.repo)
+            val repo = getString(R.string.repo_gh)
             val res = client.get("https://api.github.com/repos/$repo/contributors")
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
