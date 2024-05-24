@@ -90,7 +90,7 @@ class AnilistQueries {
 
         // reviews(perPage:$ITEMS_PER_PAGE_S, sort:CREATED_AT_DESC){nodes{id mediaId mediaType summary body(asHtml:true) rating ratingAmount userRating score private siteUrl createdAt updatedAt user{id name bannerImage avatar{medium large}}}}
         val query =
-            """{Media(id:${media.id}){id favourites popularity episodes chapters mediaListEntry{id status score(format:POINT_100)progress private notes repeat customLists updatedAt startedAt{year month day}completedAt{year month day}}isFavourite siteUrl idMal nextAiringEpisode{episode airingAt}source countryOfOrigin format duration season seasonYear startDate{year month day}endDate{year month day}genres studios(isMain:true){nodes{id name siteUrl}}description trailer{site id}synonyms tags{name rank isMediaSpoiler}characters(sort:[ROLE,FAVOURITES_DESC],perPage:$ITEMS_PER_PAGE_M,page:1){edges{role voiceActors { id name { first middle last full native userPreferred } image { large medium } languageV2 } node{id image{medium}name{userPreferred}isFavourite}}}relations{edges{relationType(version:2)node{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}popularity meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{role node{id image{large medium}name{userPreferred}}}}recommendations(sort:RATING_DESC){nodes{mediaRecommendation{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}externalLinks{url site}}Page(page:1){pageInfo{total perPage currentPage lastPage hasNextPage}mediaList(isFollowing:true,sort:[STATUS],mediaId:${media.id}){id status score(format: POINT_100) progress progressVolumes user{id name avatar{large medium}}}}}"""
+            """{Media(id:${media.id}){id favourites popularity episodes chapters mediaListEntry{id status score(format:POINT_100)progress private notes repeat customLists updatedAt startedAt{year month day}completedAt{year month day}}isFavourite siteUrl idMal nextAiringEpisode{episode airingAt}source countryOfOrigin format duration season seasonYear startDate{year month day}endDate{year month day}genres studios(isMain:true){nodes{id name siteUrl}}description trailer{site id}synonyms tags{name rank isGeneralSpoiler isMediaSpoiler}characters(sort:[ROLE,FAVOURITES_DESC],perPage:$ITEMS_PER_PAGE_M,page:1){edges{role voiceActors { id name { first middle last full native userPreferred } image { large medium } languageV2 } node{id image{medium}name{userPreferred}isFavourite}}}relations{edges{relationType(version:2)node{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}popularity meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{role node{id image{large medium}name{userPreferred}}}}recommendations(sort:RATING_DESC){nodes{mediaRecommendation{id idMal mediaListEntry{progress private score(format:POINT_100)status}episodes chapters nextAiringEpisode{episode}meanScore isAdult isFavourite format title{english romaji userPreferred}type status(version:2)bannerImage coverImage{large}}}}externalLinks{url site}}Page(page:1){pageInfo{total perPage currentPage lastPage hasNextPage}mediaList(isFollowing:true,sort:[STATUS],mediaId:${media.id}){id status score(format: POINT_100) progress progressVolumes user{id name avatar{large medium}}}}}"""
         runBlocking {
             val anilist = async {
                 var response = executeQuery<Query.Media>(query, force = true)
@@ -131,8 +131,10 @@ class AnilistQueries {
                         fetchedMedia.tags?.apply {
                             media.tags = arrayListOf()
                             this.forEach { i ->
-                                if (i.isMediaSpoiler == false)
+                                if (i.isGeneralSpoiler == false && i.isMediaSpoiler == false)
                                     media.tags.add("${i.name} : ${i.rank.toString()}%")
+                                else
+                                    media.spoilers.add("${i.name} : ${i.rank.toString()}%")
                             }
                         }
 
@@ -890,7 +892,7 @@ class AnilistQueries {
         }
         if (tags == null) {
             executeQuery<Query.MediaTagCollection>(
-                """{ MediaTagCollection { name isGeneralSpoiler isMediaSpoiler isAdult } }""",
+                """{ MediaTagCollection { name isAdult } }""",
                 force = true
             )?.data?.mediaTagCollection?.apply {
                 val adult = mutableListOf<String>()

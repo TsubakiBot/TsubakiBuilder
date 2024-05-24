@@ -53,6 +53,7 @@ data class Media(
     val meanScore: Int? = null,
     var genres: ArrayList<String> = arrayListOf(),
     var tags: ArrayList<String> = arrayListOf(),
+    var spoilers: ArrayList<String> = arrayListOf(),
     var description: String? = null,
     var synonyms: ArrayList<String> = arrayListOf(),
     var trailer: String? = null,
