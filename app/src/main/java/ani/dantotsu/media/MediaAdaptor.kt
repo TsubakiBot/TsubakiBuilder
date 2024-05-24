@@ -45,6 +45,7 @@ class MediaAdaptor(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var extension: String? = null
+    var disableLongClick = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (this.viewType) {
@@ -374,6 +375,7 @@ class MediaAdaptor(
 
 
     fun longClicked(position: Int): Boolean {
+        if (disableLongClick) return false
         if ((mediaList?.size ?: 0) > position && position != -1) {
             val media = mediaList?.get(position) ?: return false
             if (activity.supportFragmentManager.findFragmentByTag("list") == null) {

@@ -424,7 +424,9 @@ class HomeFragment : Fragment() {
                 empty.visibility = View.GONE
                 if (it != null) {
                     if (it.isNotEmpty()) {
-                        recyclerView.adapter = MediaAdaptor(0, it, requireActivity())
+                        recyclerView.adapter = MediaAdaptor(0, it, requireActivity()).apply {
+                            disableLongClick = string == getString(R.string.subscriptions)
+                        }
                         recyclerView.layoutManager = LinearLayoutManager(
                             requireContext(),
                             LinearLayoutManager.HORIZONTAL,

@@ -32,7 +32,6 @@
             android:id="@+id/animeSourceYT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="32dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/yt_red"
             android:fontFamily="@font/poppins_bold"

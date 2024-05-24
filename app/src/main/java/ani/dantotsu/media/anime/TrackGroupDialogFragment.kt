@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetSubtitlesBinding
 import ani.dantotsu.databinding.ItemSubtitleTextBinding
-import ani.dantotsu.others.LanguageMapper.getLanguageItem
+import ani.dantotsu.others.LanguageMapper.getTrackItem
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
 
@@ -82,7 +82,7 @@ class TrackGroupDialogFragment(
                 when (val language = trackFormat.language) {
                     null -> {
                         binding.subtitleTitle.text = localeCode?.let {
-                            getLanguageItem(it) ?: "[${String.format("%02d", position)}] $it"
+                            getTrackItem(it) ?: "[${String.format("%02d", position)}] $it"
                         } ?: getString(R.string.unknown_track, String.format("%02d", position))
                     }
 
@@ -103,7 +103,7 @@ class TrackGroupDialogFragment(
                     }
 
                     else -> {
-                        binding.subtitleTitle.text = getLanguageItem(language)
+                        binding.subtitleTitle.text = getTrackItem(language)
                             ?: if (language.length > 2 && !language.contains("-"))
                                 "[${String.format("%02d", position)}] $language"
                             else

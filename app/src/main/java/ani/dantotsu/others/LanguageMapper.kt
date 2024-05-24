@@ -61,10 +61,10 @@ object LanguageMapper {
     }
 
 
-    fun getLanguageItem(code: String): String? {
+    fun getTrackItem(code: String): String? {
         return getLocalFromCode(code)?.let { locale ->
             if (locale.language == locale.displayName) {
-                mapNativeNameToCode(code)?.let { getLanguageItem(it) }
+                mapNativeToCode(code)?.let { getTrackItem(it) }
                     ?: codeMap.getValue(locale.getDisplayName(Locale.US))
             } else {
                 "[${locale.flagEmoji ?: locale.language}] ${locale.displayName}"
@@ -72,7 +72,7 @@ object LanguageMapper {
         }
     }
 
-    fun mapNativeNameToCode(name: String): String? {
+    fun mapNativeToCode(name: String): String? {
         return when (name.lowercase()) {
             "العربية" -> codeMap.getValue("Arabic")
             "中文, 汉语, 漢語" -> codeMap.getValue("Chinese")

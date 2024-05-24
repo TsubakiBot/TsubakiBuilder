@@ -125,13 +125,11 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         binding = ActivityMediaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         screenWidth = resources.displayMetrics.widthPixels.toFloat()
+        initActivity(this)
         navBar = binding.mediaBottomBar.apply {
             updateLayoutParams(resources.configuration.orientation)
         }
 
-        // Ui init
-
-        initActivity(this)
         val oldMargin = binding.mediaViewPager.marginBottom
         AndroidBug5497Workaround.assistActivity(this) {
             if (it) {

@@ -1452,7 +1452,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         extractor = ext
         video = ext.videos.getOrNull(episode.selectedVideo) ?: return
 
-        val lang = LanguageMapper.codeMap.keys.filterIndexed { index, _ ->
+        val languagePref = LanguageMapper.codeMap.entries.filterIndexed { index, _ ->
             index == PrefManager.getVal(PrefName.SubLanguage)
         }.first()
         subtitle = intent.getSerialized("subtitle")
@@ -1461,10 +1461,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 null -> {
                     when (episode.selectedSubtitle) {
                         null -> null
-                        -1 -> ext.subtitles.find {
-                            it.language.contains(lang, ignoreCase = true)
-                                    || LanguageMapper.codeMap.getValue(it.language).contains(lang, ignoreCase = true)
-                        }
+                        -1 -> ext.subtitles.find { it.language.contains(languagePref.key, ignoreCase = true)
+                                || it.language.contains(languagePref.value, ignoreCase = true) }
                         else -> ext.subtitles.getOrNull(episode.selectedSubtitle!!)
                     }
                 }
@@ -1603,7 +1601,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val audioMediaItem = mutableListOf<MediaItem>()
         audioLanguages.clear()
         ext.audioTracks.forEach { track ->
-            audioLanguages.add(LanguageMapper.mapNativeNameToCode(track.lang) ?: track.lang)
+            audioLanguages.add(LanguageMapper.mapNativeToCode(track.lang) ?: track.lang)
             audioMediaItem.add(
                 MediaItem.Builder()
                     .setUri(track.url)
