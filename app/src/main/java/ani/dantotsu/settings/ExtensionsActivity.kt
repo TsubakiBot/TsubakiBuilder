@@ -177,8 +177,8 @@ class ExtensionsActivity : AppCompatActivity() {
 
     }
 
-    override fun finish() {
-        super.finish()
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
         CoroutineScope(Dispatchers.IO).launch {
             val animeExtensionManager: AnimeExtensionManager by injectLazy()
             animeExtensionManager.findAvailableExtensions()
