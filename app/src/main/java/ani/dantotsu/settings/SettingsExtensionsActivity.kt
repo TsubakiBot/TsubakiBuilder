@@ -259,7 +259,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.extension_test),
                         desc = getString(R.string.extension_test_desc),
-                        icon = R.drawable.ic_round_search_sources_24,
+                        icon = R.drawable.ic_network_check_24,
                         isActivity = true,
                         onClick = {
                             ContextCompat.startActivity(

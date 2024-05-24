@@ -291,7 +291,7 @@ internal class ExtensionGithubApi {
                 it.url.endsWith("[madara].js") || it.iconUrl.contains("/madara/")
             }
             .map { extension ->
-                val lang = LanguageMapper.mapNativeNameToCode(extension.lang) ?: LanguageMapper.Language.ALL.code
+                val lang = LanguageMapper.mapNativeNameToCode(extension.lang) ?: "Multi"
                 val sources =
                     listOf(
                         ExtensionSourceJsonObject(

@@ -135,7 +135,6 @@ import ani.dantotsu.okHttpClient
 import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.AniSkip.getType
 import ani.dantotsu.others.LanguageMapper
-import ani.dantotsu.others.LanguageMapper.getLanguageCode
 import ani.dantotsu.others.ResettableTimer
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.parsers.AnimeSources
@@ -1453,15 +1452,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         extractor = ext
         video = ext.videos.getOrNull(episode.selectedVideo) ?: return
 
-        val lang = LanguageMapper.subLanguages[PrefManager.getVal(PrefName.SubLanguage)]
+        val lang = LanguageMapper.codeMap.keys.filterIndexed { index, _ ->
+            index == PrefManager.getVal(PrefName.SubLanguage)
+        }.first()
         subtitle = intent.getSerialized("subtitle")
             ?: when (val subLang: String? =
                 PrefManager.getNullableCustomVal("subLang_${media.id}", null, String::class.java)) {
                 null -> {
                     when (episode.selectedSubtitle) {
                         null -> null
-                        -1 -> ext.subtitles.find { it.language.contains( lang, ignoreCase = true )
-                                || it.language.contains( getLanguageCode(lang), ignoreCase = true ) }
+                        -1 -> ext.subtitles.find {
+                            it.language.contains(lang, ignoreCase = true)
+                                    || LanguageMapper.codeMap.getValue(it.language).contains(lang, ignoreCase = true)
+                        }
                         else -> ext.subtitles.getOrNull(episode.selectedSubtitle!!)
                     }
                 }

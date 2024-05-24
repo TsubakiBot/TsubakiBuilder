@@ -324,7 +324,7 @@ class PlayerSettingsActivity : AppCompatActivity() {
             .setTitle(getString(R.string.subtitle_langauge))
         binding.videoSubLanguage.setOnClickListener {
             val dialog = subLanguageDialog.setSingleChoiceItems(
-                LanguageMapper.subLanguages,
+                LanguageMapper.codeMap.values.toTypedArray(),
                 PrefManager.getVal(PrefName.SubLanguage)
             ) { dialog, count ->
                 PrefManager.setVal(PrefName.SubLanguage, count)

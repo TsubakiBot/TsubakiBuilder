@@ -60,121 +60,151 @@ object LanguageMapper {
         return "${mapLanguageCodeToName(source.lang)}: ${source.name}"
     }
 
-    enum class Language(val code: String) {
-        ALL("all"),
-        ARABIC("ar"),
-        GERMAN("de"),
-        ENGLISH("en"),
-        SPANISH("es"),
-        FRENCH("fr"),
-        INDONESIAN("id"),
-        ITALIAN("it"),
-        JAPANESE("ja"),
-        KOREAN("ko"),
-        POLISH("pl"),
-        PORTUGUESE_BRAZIL("pt-BR"),
-        RUSSIAN("ru"),
-        THAI("th"),
-        TURKISH("tr"),
-        UKRAINIAN("uk"),
-        VIETNAMESE("vi"),
-        CHINESE("zh"),
-        CHINESE_SIMPLIFIED("zh-Hans");
-    }
-
-    fun mapNativeNameToCode(name: String): String? {
-        return when (name.lowercase()) {
-            "العربية" -> Language.ARABIC.code
-            "中文, 汉语, 漢語" -> Language.CHINESE.code
-            "english" -> Language.ENGLISH.code
-            "français" -> Language.FRENCH.code
-            "bahasa indonesia" -> Language.INDONESIAN.code
-            "日本語" -> Language.JAPANESE.code
-            "조선말, 한국어" -> Language.KOREAN.code
-            "polski" -> Language.POLISH.code
-            "português" -> Language.PORTUGUESE_BRAZIL.code
-            "pусский" -> Language.RUSSIAN.code
-            "español" -> Language.SPANISH.code
-            "ไทย" -> Language.THAI.code
-            "türkçe" -> Language.TURKISH.code
-            "Українська" -> Language.UKRAINIAN.code
-            "tiếng việt" -> Language.VIETNAMESE.code
-            else -> null
-        }
-    }
-
 
     fun getLanguageItem(code: String): String? {
         return getLocalFromCode(code)?.let { locale ->
             if (locale.language == locale.displayName) {
                 mapNativeNameToCode(code)?.let { getLanguageItem(it) }
+                    ?: codeMap.getValue(locale.getDisplayName(Locale.US))
             } else {
                 "[${locale.flagEmoji ?: locale.language}] ${locale.displayName}"
             }
         }
     }
 
-    val subLanguages = arrayOf(
-        "Albanian",
-        "Arabic",
-        "Bosnian",
-        "Bulgarian",
-        "Chinese",
-        "Croatian",
-        "Czech",
-        "Danish",
-        "Dutch",
-        "English",
-        "Estonian",
-        "Finnish",
-        "French",
-        "Georgian",
-        "German",
-        "Greek",
-        "Hebrew",
-        "Hindi",
-        "Indonesian",
-        "Irish",
-        "Italian",
-        "Japanese",
-        "Korean",
-        "Lithuanian",
-        "Luxembourgish",
-        "Macedonian",
-        "Mongolian",
-        "Norwegian",
-        "Polish",
-        "Portuguese",
-        "Punjabi",
-        "Romanian",
-        "Russian",
-        "Serbian",
-        "Slovak",
-        "Slovenian",
-        "Spanish",
-        "Turkish",
-        "Ukrainian",
-        "Urdu",
-        "Vietnamese",
+    fun mapNativeNameToCode(name: String): String? {
+        return when (name.lowercase()) {
+            "العربية" -> codeMap.getValue("Arabic")
+            "中文, 汉语, 漢語" -> codeMap.getValue("Chinese")
+            "english" -> codeMap.getValue("English")
+            "français" -> codeMap.getValue("French")
+            "bahasa indonesia" -> codeMap.getValue("Indonesian")
+            "日本語" -> codeMap.getValue("Japanese")
+            "조선말, 한국어" -> codeMap.getValue("Korean")
+            "polski" -> codeMap.getValue("Polish")
+            "português" -> codeMap.getValue("Portuguese")
+            "pусский" -> codeMap.getValue("Russian")
+            "español" -> codeMap.getValue("Spanish")
+            "ไทย" -> codeMap.getValue("Thai")
+            "türkçe" -> codeMap.getValue("Turkish")
+            "Українська" -> codeMap.getValue("Ukrainian")
+            "tiếng việt" -> codeMap.getValue("Vietnamese")
+            else -> null
+        }
+    }
+
+    val codeMap: Map<String, String> = mapOf(
+        "all" to "Multi",
+        "af" to "Afrikaans",
+        "am" to "Amharic",
+        "ar" to "Arabic",
+        "as" to "Assamese",
+        "az" to "Azerbaijani",
+        "be" to "Belarusian",
+        "bg" to "Bulgarian",
+        "bn" to "Bengali",
+        "bs" to "Bosnian",
+        "ca" to "Catalan",
+        "ceb" to "Cebuano",
+        "cs" to "Czech",
+        "da" to "Danish",
+        "de" to "German",
+        "el" to "Greek",
+        "en" to "English",
+        "en-Us" to "English (United States)",
+        "eo" to "Esperanto",
+        "es" to "Spanish",
+        "es-419" to "Spanish (Latin America)",
+        "es-ES" to "Spanish (Spain)",
+        "et" to "Estonian",
+        "eu" to "Basque",
+        "fa" to "Persian",
+        "fi" to "Finnish",
+        "fil" to "Filipino",
+        "fo" to "Faroese",
+        "fr" to "French",
+        "ga" to "Irish",
+        "gn" to "Guarani",
+        "gu" to "Gujarati",
+        "ha" to "Hausa",
+        "he" to "Hebrew",
+        "hi" to "Hindi",
+        "hr" to "Croatian",
+        "ht" to "Haitian Creole",
+        "hu" to "Hungarian",
+        "hy" to "Armenian",
+        "id" to "Indonesian",
+        "ig" to "Igbo",
+        "is" to "Icelandic",
+        "it" to "Italian",
+        "ja" to "Japanese",
+        "jv" to "Javanese",
+        "ka" to "Georgian",
+        "kk" to "Kazakh",
+        "km" to "Khmer",
+        "kn" to "Kannada",
+        "ko" to "Korean",
+        "ku" to "Kurdish",
+        "ky" to "Kyrgyz",
+        "la" to "Latin",
+        "lb" to "Luxembourgish",
+        "lo" to "Lao",
+        "lt" to "Lithuanian",
+        "lv" to "Latvian",
+        "mg" to "Malagasy",
+        "mi" to "Maori",
+        "mk" to "Macedonian",
+        "ml" to "Malayalam",
+        "mn" to "Mongolian",
+        "mo" to "Moldovan",
+        "mr" to "Marathi",
+        "ms" to "Malay",
+        "mt" to "Maltese",
+        "my" to "Burmese",
+        "ne" to "Nepali",
+        "nl" to "Dutch",
+        "no" to "Norwegian",
+        "ny" to "Chichewa",
+        "pl" to "Polish",
+        "pt" to "Portuguese",
+        "pt-BR" to "Portuguese (Brazil)",
+        "pt-PT" to "Portuguese (Portugal)",
+        "ps" to "Pashto",
+        "ro" to "Romanian",
+        "rm" to "Romansh",
+        "ru" to "Russian",
+        "sd" to "Sindhi",
+        "sh" to "Serbo-Croatian",
+        "si" to "Sinhala",
+        "sk" to "Slovak",
+        "sl" to "Slovenian",
+        "sm" to "Samoan",
+        "sn" to "Shona",
+        "so" to "Somali",
+        "sq" to "Albanian",
+        "sr" to "Serbian",
+        "st" to "Southern Sotho",
+        "sv" to "Swedish",
+        "sw" to "Swahili",
+        "ta" to "Tamil",
+        "te" to "Telugu",
+        "tg" to "Tajik",
+        "th" to "Thai",
+        "ti" to "Tigrinya",
+        "tk" to "Turkmen",
+        "tl" to "Tagalog",
+        "to" to "Tongan",
+        "tr" to "Turkish",
+        "uk" to "Ukrainian",
+        "ur" to "Urdu",
+        "uz" to "Uzbek",
+        "vi" to "Vietnamese",
+        "yo" to "Yoruba",
+        "zh" to "Chinese",
+        "zh-Hans" to "Chinese (Simplified)",
+        "zh-Hant" to "Chinese (Traditional)",
+        "zh-Habt" to "Chinese (Hakka)",
+        "zu" to "Zulu"
     )
-
-    fun getLanguageCode(language: String): CharSequence {
-        Locale.getAvailableLocales().forEach { locale ->
-            if (locale.displayLanguage.equals(language, ignoreCase = true)) {
-                return locale.language
-
-            }
-        }
-        return "null"
-    }
-
-    fun getLanguageName(language: String): String? {
-        Locale.getAvailableLocales().forEach { locale ->
-            if (locale.language.equals(language, ignoreCase = true)) {
-                return locale.displayLanguage
-            }
-        }
-        return null
-    }
 }
 
