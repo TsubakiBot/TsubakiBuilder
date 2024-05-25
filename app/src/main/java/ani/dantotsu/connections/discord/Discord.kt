@@ -70,7 +70,7 @@ object Discord {
 
     const val application_Id = "1243752355502227517"
     const val small_Image: String =
-        "mp:external/GJEe4hKzr8w56IW6ZKQz43HFVEo8pOtA_C-dJiWwxKo/https/cdn.discordapp.com/app-icons/1243752355502227517/2acb531f4c8a9e8aacb5fc5a82f6a428.png"
+        "mp:external/Hb3tbwkuWo6-CxOCTV4QtWTFB0ibQmOfpfTm40NrOqM/https/cdn.discordapp.com/app-icons/1243752355502227517/521614c3e2484797248c45e7438fea4e.png"
     const val small_Image_AniList: String =
         "mp:external/rHOIjjChluqQtGyL_UHk6Z4oAqiVYlo_B7HSGPLSoUg/%3Fsize%3D128/https/cdn.discordapp.com/icons/210521487378087947/a_f54f910e2add364a3da3bb2f2fce0c72.webp"
 }
