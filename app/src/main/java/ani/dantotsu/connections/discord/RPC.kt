@@ -1,9 +1,11 @@
 package ani.dantotsu.connections.discord
 
+import ani.dantotsu.R
 import ani.dantotsu.connections.discord.serializers.Activity
 import ani.dantotsu.connections.discord.serializers.Presence
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import bit.himitsu.Strings.getString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -71,8 +73,14 @@ open class RPC(val token: String, val coroutineContext: CoroutineContext) {
                             assets = Activity.Assets(
                                 largeImage = data.largeImage?.url?.discordUrl(),
                                 largeText = data.largeImage?.label,
-                                smallImage = if (PrefManager.getVal(PrefName.ShowAniListIcon)) Discord.small_Image_AniList.discordUrl() else Discord.small_Image.discordUrl(),
-                                smallText = if (PrefManager.getVal(PrefName.ShowAniListIcon)) "Anilist" else "Dantotsu",
+                                smallImage = if (PrefManager.getVal(PrefName.ShowAniListIcon))
+                                    Discord.small_Image_AniList.discordUrl()
+                                else
+                                    Discord.small_Image.discordUrl(),
+                                smallText = if (PrefManager.getVal(PrefName.ShowAniListIcon))
+                                    getString(R.string.anilist)
+                                else
+                                    getString(R.string.app_name),
                             ),
                             buttons = data.buttons.map { it.label },
                             metadata = Activity.Metadata(

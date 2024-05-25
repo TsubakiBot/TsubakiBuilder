@@ -31,6 +31,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.customAlertDialog
 import bit.himitsu.os.Version
+import com.google.android.material.textfield.TextInputEditText
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
@@ -117,7 +118,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             }
 
             fun processEditorAction(
-                dialog: AlertDialog, editText: EditText, mediaType: MediaType, view: ViewGroup
+                dialog: AlertDialog, editText: TextInputEditText, mediaType: MediaType, view: ViewGroup
             ) {
                 editText.setOnEditorActionListener { textView, action, keyEvent ->
                     if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE ||

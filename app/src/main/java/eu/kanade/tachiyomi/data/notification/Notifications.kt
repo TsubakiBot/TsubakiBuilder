@@ -5,6 +5,8 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_HIGH
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
+import ani.dantotsu.R
+import bit.himitsu.Strings.getString
 import eu.kanade.tachiyomi.util.system.buildNotificationChannel
 import eu.kanade.tachiyomi.util.system.buildNotificationChannelGroup
 
@@ -131,7 +133,7 @@ object Notifications {
                     setName("Comments")
                 },
                 buildNotificationChannelGroup(GROUP_ANILIST) {
-                    setName("Anilist")
+                    setName(getString(R.string.anilist))
                 },
                 buildNotificationChannelGroup(GROUP_SUBSCRIPTION_CHECK) {
                     setName("Subscription Checks")
@@ -169,7 +171,7 @@ object Notifications {
                     setGroup(GROUP_COMMENTS)
                 },
                 buildNotificationChannel(CHANNEL_ANILIST, IMPORTANCE_DEFAULT) {
-                    setName("Anilist")
+                    setName(getString(R.string.anilist))
                     setGroup(GROUP_ANILIST)
                 },
                 buildNotificationChannel(CHANNEL_SUBSCRIPTION_CHECK, IMPORTANCE_LOW) {
