@@ -1228,7 +1228,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                                         it
                                     )
                                 },
-                                smallImage = RPC.Link("Dantotsu", Discord.small_Image),
+                                smallImage = RPC.Link(getString(R.string.app_name), Discord.small_Image),
                                 buttons = buttons
                             )
                         )

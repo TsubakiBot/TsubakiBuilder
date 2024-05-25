@@ -32,6 +32,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
 import bit.himitsu.Strings.getString
 import bit.himitsu.collections.Collections.mix
+import bit.himitsu.collections.Collections.toArrayList
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
@@ -261,7 +262,7 @@ class AnilistQueries {
                                         )
                                     } else null
                                 }
-                            }?.toCollection(arrayListOf()) ?: arrayListOf()
+                            }.toArrayList()
                         }
                         if (fetchedMedia.mediaListEntry != null) {
                             fetchedMedia.mediaListEntry?.apply {
@@ -451,7 +452,11 @@ class AnilistQueries {
         val removeList = PrefManager.getCustomVal("removeList", setOf<Int>())
         val removedMedia = ArrayList<Media>()
         val toShow: List<Boolean> =
-            PrefManager.getVal(PrefName.HomeLayout) // anime continue, anime fav, anime planned, manga continue, manga fav, manga planned, recommendations
+            PrefManager.getVal(PrefName.HomeLayout)
+        // subscriptions
+        // anime continue, anime fav, anime planned,
+        // manga continue, manga fav, manga planned,
+        // recommendations
         var query = """{"""
         query += """currentAnime: ${
             continueMediaQuery(
@@ -679,6 +684,7 @@ class AnilistQueries {
                 returnMap["status"] = ArrayList(list)
             }
         }
+
         returnMap["hiddenAnime"] = removedMedia.filter { it.anime != null }.distinctBy { it.id } as ArrayList<Media>
         returnMap["hiddenManga"] = removedMedia.filter { it.manga != null }.distinctBy { it.id } as ArrayList<Media>
         return returnMap
@@ -763,8 +769,8 @@ class AnilistQueries {
         return if (type != null) {
             returnMap[type.text] ?: arrayListOf()
         } else {
-            val anime = returnMap[MediaType.ANIME.text] ?: arrayListOf()
-            val manga = returnMap[MediaType.MANGA.text] ?: arrayListOf()
+            val anime = returnMap[MediaType.ANIME.text]
+            val manga = returnMap[MediaType.MANGA.text]
             anime.mix(manga)
         }
     }
@@ -1500,11 +1506,11 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                         } else null
                     else null
                 }
-            }?.toCollection(ArrayList()) ?: arrayListOf()
+            }.toArrayList()
 
-            list["trendingMovies"] = trendingMovies?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["topRated"] =  topRated?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["mostFav"] = mostFav?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
+            list["trendingMovies"] = trendingMovies?.media?.map { Media(it) }.toArrayList()
+            list["topRated"] =  topRated?.media?.map { Media(it) }.toArrayList()
+            list["mostFav"] = mostFav?.media?.map { Media(it) }.toArrayList()
 
             list["recentUpdates"]?.addAll(recentUpdates2?.airingSchedules?.mapNotNull { i ->
                 i.media?.let {
@@ -1521,10 +1527,10 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
                         } else null
                     else null
                 }
-            }?.toCollection(ArrayList()) ?: arrayListOf())
-            list["trendingMovies"]?.addAll(trendingMovies2?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf())
-            list["topRated"]?.addAll(topRated2?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf())
-            list["mostFav"]?.addAll(mostFav2?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf())
+            }.toArrayList())
+            list["trendingMovies"]?.addAll(trendingMovies2?.media?.map { Media(it) }.toArrayList())
+            list["topRated"]?.addAll(topRated2?.media?.map { Media(it) }.toArrayList())
+            list["mostFav"]?.addAll(mostFav2?.media?.map { Media(it) }.toArrayList())
         }
         return list
     }
@@ -1573,11 +1579,11 @@ query (${"$"}page: Int = 1, ${"$"}id: Int, ${"$"}type: MediaType, ${"$"}isAdult:
         }
 
         executeQuery<Query.MangaList>(query(), force = true)?.data?.apply {
-            list["trendingManga"] = trendingManga?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["trendingManhwa"] = trendingManhwa?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["trendingNovel"] = trendingNovel?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["topRated"] = topRated?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
-            list["mostFav"] = mostFav?.media?.map { Media(it) }?.toCollection(ArrayList()) ?: arrayListOf()
+            list["trendingManga"] = trendingManga?.media?.map { Media(it) }.toArrayList()
+            list["trendingManhwa"] = trendingManhwa?.media?.map { Media(it) }.toArrayList()
+            list["trendingNovel"] = trendingNovel?.media?.map { Media(it) }.toArrayList()
+            list["topRated"] = topRated?.media?.map { Media(it) }.toArrayList()
+            list["mostFav"] = mostFav?.media?.map { Media(it) }.toArrayList()
 
             list["trendingManga"]?.addAll(trendingManga2?.media?.map { Media(it) }?.toList() ?: arrayListOf())
             list["trendingManhwa"]?.addAll(trendingManhwa2?.media?.map { Media(it) }?.toList() ?: arrayListOf())

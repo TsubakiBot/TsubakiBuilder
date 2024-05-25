@@ -111,9 +111,11 @@ class AnilistHomeViewModel : ViewModel() {
 
         val subscribed = arrayListOf<Media>()
         SubscriptionHelper.getSubscriptions().values.forEach { media ->
-            subscribed.add(
-                res.values.flatten().first { (it as Media).id == media.id} as Media
-            )
+            try {
+                subscribed.add(
+                    res.values.flatten().first { (it as Media).id == media.id } as Media
+                )
+            } catch (ignored: Exception) { }
         }
         subscribedItems.postValue(subscribed)
     }

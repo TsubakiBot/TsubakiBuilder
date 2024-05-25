@@ -65,8 +65,10 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
 import ani.dantotsu.toRoundImage
 import ani.dantotsu.util.BitmapUtil.toSquare
+import ani.dantotsu.widgets.resumable.ResumableWidget
 import bit.himitsu.forceShowIcons
 import bit.himitsu.isOverlapping
+import bit.himitsu.launcher.ResumableShortcuts
 import bit.himitsu.os.Version
 import bit.himitsu.update.MatagiUpdater
 import bit.himitsu.widget.FABulous
@@ -727,16 +729,17 @@ class HomeFragment : Fragment() {
                                 containers[i].visibility = View.GONE
                             }
                         }
-//                        ResumableShortcuts.updateShortcuts(
-//                            context,
-//                            model.getAnimeContinue().value,
-//                            model.getMangaContinue().value
-//                        )
-//                        ResumableWidget.injectUpdate(
-//                            context,
-//                            model.getAnimeContinue().value,
-//                            model.getMangaContinue().value
-//                        )
+
+                        ResumableShortcuts.updateShortcuts(
+                            context,
+                            model.getAnimeContinue().value,
+                            model.getMangaContinue().value
+                        )
+                        ResumableWidget.injectUpdate(
+                            context,
+                            model.getAnimeContinue().value,
+                            model.getMangaContinue().value
+                        )
                         model.empty.postValue(empty)
                     }
                     live.postValue(false)

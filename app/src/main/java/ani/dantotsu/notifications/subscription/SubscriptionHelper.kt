@@ -156,21 +156,19 @@ class SubscriptionHelper {
 
         @Suppress("UNCHECKED_CAST")
         fun getSubscriptions(): Map<Int, SubscribeMedia> =
-            (PrefManager.getNullableCustomVal(
+            PrefManager.getNullableCustomVal(
                 SUBSCRIPTIONS,
-                null,
+                mapOf<Int, SubscribeMedia>(),
                 Map::class.java
-            ) as? Map<Int, SubscribeMedia>)
-                ?: mapOf<Int, SubscribeMedia>().also { PrefManager.setCustomVal(SUBSCRIPTIONS, it) }
+            ) as Map<Int, SubscribeMedia>
 
         @Suppress("UNCHECKED_CAST")
         fun deleteSubscription(id: Int, showSnack: Boolean = false) {
             val data = PrefManager.getNullableCustomVal(
                 SUBSCRIPTIONS,
-                null,
+                mutableMapOf<Int, SubscribeMedia>(),
                 Map::class.java
-            ) as? MutableMap<Int, SubscribeMedia>
-                ?: mutableMapOf()
+            ) as MutableMap<Int, SubscribeMedia>
             data.remove(id)
             PrefManager.setCustomVal(SUBSCRIPTIONS, data)
             if (showSnack) toast(R.string.subscription_deleted)
@@ -180,10 +178,9 @@ class SubscriptionHelper {
         fun saveSubscription(media: Media, subscribed: Boolean) {
             val data = PrefManager.getNullableCustomVal(
                 SUBSCRIPTIONS,
-                null,
+                mutableMapOf<Int, SubscribeMedia>(),
                 Map::class.java
-            ) as? MutableMap<Int, SubscribeMedia>
-                ?: mutableMapOf()
+            ) as MutableMap<Int, SubscribeMedia>
             if (subscribed) {
                 if (!data.containsKey(media.id)) {
                     val new = SubscribeMedia(

@@ -50,10 +50,7 @@ class AddonLoader {
             }
 
             val extPkgs = installedPkgs.filter {
-                isPackageAnExtension(
-                    packageName,
-                    it
-                )
+                isPackageAnExtension(packageName, it)
             }
 
             if (extPkgs.isEmpty()) return null
