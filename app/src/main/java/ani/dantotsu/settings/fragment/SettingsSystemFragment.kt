@@ -17,8 +17,6 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.window.layout.FoldingFeature
-import androidx.window.layout.WindowInfoTracker
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.Himitsu
 import ani.dantotsu.R

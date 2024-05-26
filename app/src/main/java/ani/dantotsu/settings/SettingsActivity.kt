@@ -36,7 +36,6 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.LauncherWrapper
 import bit.himitsu.setBaseline
-import bit.himitsu.withFlexibleMargin
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -63,7 +62,10 @@ class SettingsActivity : AppCompatActivity() {
             settingsViewPager.setBaseline(resources.configuration)
 
             onBackPressedDispatcher.addCallback(this@SettingsActivity) {
-                startMainActivity(this@SettingsActivity)
+                if (binding.settingsViewPager.currentItem != 0)
+                    setFragment(0)
+                else
+                    startMainActivity(this@SettingsActivity)
             }
 
             binding.settingsViewPager.adapter = ViewPagerAdapter(
