@@ -1,59 +1,53 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.restartApp
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
-import ani.dantotsu.util.LauncherWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SettingsCommonActivity : AppCompatActivity() {
+class SettingsCommonFragment : Fragment() {
     private lateinit var binding: ActivitySettingsCommonBinding
-    private lateinit var launcher: LauncherWrapper
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsCommonBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsCommonBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val contract = ActivityResultContracts.OpenDocumentTree()
-        launcher = LauncherWrapper(this, contract)
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
+
         val managers = resources.getStringArray(R.array.downloadManagers)
         val downloadManagerDialog =
-            AlertDialog.Builder(this, R.style.MyPopup).setTitle(R.string.download_manager)
+            AlertDialog.Builder(settings, R.style.MyPopup).setTitle(R.string.download_manager)
         var downloadManager: Int = PrefManager.getVal(PrefName.DownloadManager)
 
         binding.apply {
-            settingsCommonLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             commonSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             val exDns = listOf(
@@ -76,7 +70,7 @@ class SettingsCommonActivity : AppCompatActivity() {
             settingsExtensionDns.setText(exDns[PrefManager.getVal(PrefName.DohProvider)])
             settingsExtensionDns.setAdapter(
                 ArrayAdapter(
-                    this@SettingsCommonActivity,
+                    settings,
                     R.layout.item_dropdown,
                     exDns
                 )
@@ -84,7 +78,7 @@ class SettingsCommonActivity : AppCompatActivity() {
             settingsExtensionDns.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.DohProvider, i)
                 settingsExtensionDns.clearFocus()
-                restartApp()
+                settings.restartApp()
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -132,19 +126,19 @@ class SettingsCommonActivity : AppCompatActivity() {
                         desc = getString(R.string.change_download_location_desc),
                         icon = R.drawable.ic_round_source_24,
                         onClick = {
-                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.change_download_location)
                                 .setMessage(R.string.download_location_msg)
                                 .setPositiveButton(R.string.ok) { dialog, _ ->
                                     val oldUri = PrefManager.getVal<String>(PrefName.DownloadsDir)
-                                    launcher.registerForCallback { success ->
+                                    settings.getLauncher()?.registerForCallback { success ->
                                         if (success) {
                                             toast(getString(R.string.please_wait))
                                             val newUri =
                                                 PrefManager.getVal<String>(PrefName.DownloadsDir)
                                             lifecycleScope.launch(Dispatchers.IO) {
                                                 Injekt.get<DownloadsManager>().moveDownloadsDir(
-                                                    context, Uri.parse(oldUri), Uri.parse(newUri)
+                                                    settings, Uri.parse(oldUri), Uri.parse(newUri)
                                                 ) { finished, message ->
                                                     if (finished) {
                                                         toast(getString(R.string.success))
@@ -157,7 +151,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                                             toast(getString(R.string.error))
                                         }
                                     }
-                                    launcher.launch()
+                                    settings.getLauncher()?.launch()
                                     dialog.dismiss()
                                 }.setNeutralButton(R.string.cancel) { dialog, _ ->
                                     dialog.dismiss()
@@ -180,13 +174,13 @@ class SettingsCommonActivity : AppCompatActivity() {
                         isChecked = PrefManager.getVal(PrefName.AdultOnly),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.AdultOnly, isChecked)
-                            restartApp()
+                            settings.restartApp()
                         }
                     )
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
 
@@ -202,7 +196,7 @@ class SettingsCommonActivity : AppCompatActivity() {
                 previousStart = current
                 current.alpha = 1f
                 PrefManager.setVal(PrefName.DefaultStartUpTab, mode)
-                initActivity(this@SettingsCommonActivity)
+                initActivity(settings)
             }
 
             uiSettingsAnime.setOnClickListener {
@@ -217,11 +211,5 @@ class SettingsCommonActivity : AppCompatActivity() {
                 uiDefault(2, it)
             }
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

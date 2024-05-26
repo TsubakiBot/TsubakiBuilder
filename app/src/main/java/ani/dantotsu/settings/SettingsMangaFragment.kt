@@ -1,46 +1,43 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsMangaBinding
 import ani.dantotsu.download.DownloadsManager
-import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.customAlertDialog
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SettingsMangaActivity : AppCompatActivity() {
+class SettingsMangaFragment : Fragment() {
     private lateinit var binding: ActivitySettingsMangaBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsMangaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding = ActivitySettingsMangaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsMangaLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             mangaSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -51,7 +48,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                         desc = getString(R.string.reader_settings_desc),
                         icon = R.drawable.ic_round_reader_settings,
                         onClick = {
-                            startActivity(Intent(context, ReaderSettingsActivity::class.java))
+                            startActivity(Intent(settings, ReaderSettingsActivity::class.java))
                         },
                         hasTransition = true
                     ),
@@ -61,7 +58,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                         desc = getString(R.string.purge_manga_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
                         onClick = {
-                            context.customAlertDialog().apply {
+                            settings.customAlertDialog().apply {
                                 setTitle(R.string.purge_manga_downloads)
                                 setMessage(R.string.purge_confirm, getString(R.string.manga))
                                 setPosButton(R.string.yes, onClick = {
@@ -80,7 +77,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                         desc = getString(R.string.purge_novel_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
                         onClick = {
-                            context.customAlertDialog().apply {
+                            settings.customAlertDialog().apply {
                                 setTitle(R.string.purge_novel_downloads)
                                 setMessage(R.string.purge_confirm, getString(R.string.novels))
                                 setPosButton(R.string.yes) {
@@ -106,7 +103,7 @@ class SettingsMangaActivity : AppCompatActivity() {
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
 
@@ -131,11 +128,5 @@ class SettingsMangaActivity : AppCompatActivity() {
                 uiChp(1, it)
             }
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

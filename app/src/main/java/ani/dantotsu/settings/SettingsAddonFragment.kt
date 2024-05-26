@@ -1,11 +1,13 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
@@ -15,13 +17,9 @@ import ani.dantotsu.addons.torrent.TorrentAddonManager
 import ani.dantotsu.addons.torrent.TorrentServerService
 import ani.dantotsu.databinding.ActivitySettingsAddonsBinding
 import ani.dantotsu.databinding.ItemSettingsBinding
-import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import bit.himitsu.torrServerKill
 import bit.himitsu.torrServerStart
@@ -36,26 +34,28 @@ import tachiyomi.core.util.lang.launchIO
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SettingsAddonActivity : AppCompatActivity() {
+class SettingsAddonFragment : Fragment() {
     private lateinit var binding: ActivitySettingsAddonsBinding
     private val downloadAddonManager: DownloadAddonManager = Injekt.get()
     private val torrentAddonManager: TorrentAddonManager = Injekt.get()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsAddonsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsAddonsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsAddonsLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
+            binding.addonSettingsBack.setOnClickListener {
+                settings.backToMenu()
             }
-
-            binding.addonSettingsBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
@@ -68,8 +68,8 @@ class SettingsAddonActivity : AppCompatActivity() {
                         attach = {
                             setStatus(
                                 view = it,
-                                context = context,
-                                status = downloadAddonManager.hadError(context),
+                                context = settings,
+                                status = downloadAddonManager.hadError(settings),
                                 hasUpdate = downloadAddonManager.hasUpdate
                             )
                             var job = Job()
@@ -79,8 +79,8 @@ class SettingsAddonActivity : AppCompatActivity() {
                                 it.settingsIconRight.rotation = 0f
                                 setStatus(
                                     view = it,
-                                    context = context,
-                                    status = downloadAddonManager.hadError(context),
+                                    context = settings,
+                                    status = downloadAddonManager.hadError(settings),
                                     hasUpdate = false
                                 )
                             }
@@ -107,7 +107,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                                     snackString(getString(R.string.downloading))
                                     lifecycleScope.launchIO {
                                         AddonDownloader.update(
-                                            activity = context,
+                                            activity = settings,
                                             downloadAddonManager,
                                             repo = DownloadAddonManager.REPO,
                                             currentVersion = downloadAddonManager.getVersion() ?: ""
@@ -125,8 +125,8 @@ class SettingsAddonActivity : AppCompatActivity() {
                         attach = {
                             setStatus(
                                 view = it,
-                                context = context,
-                                status = torrentAddonManager.hadError(context),
+                                context = settings,
+                                status = torrentAddonManager.hadError(settings),
                                 hasUpdate = torrentAddonManager.hasUpdate
                             )
                             var job = Job()
@@ -136,8 +136,8 @@ class SettingsAddonActivity : AppCompatActivity() {
                                 it.settingsIconRight.rotation = 0f
                                 setStatus(
                                     view = it,
-                                    context = context,
-                                    status = torrentAddonManager.hadError(context),
+                                    context = settings,
+                                    status = torrentAddonManager.hadError(settings),
                                     hasUpdate = false
                                 )
                             }
@@ -165,7 +165,7 @@ class SettingsAddonActivity : AppCompatActivity() {
                                     snackString(getString(R.string.downloading))
                                     lifecycleScope.launchIO {
                                         AddonDownloader.update(
-                                            activity = context,
+                                            activity = settings,
                                             torrentAddonManager,
                                             repo = TorrentAddonManager.REPO,
                                             currentVersion = torrentAddonManager.getVersion() ?: "",
@@ -196,12 +196,12 @@ class SettingsAddonActivity : AppCompatActivity() {
                 )
             )
             binding.settingsRecyclerView.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         torrentAddonManager.removeListenerAction()
         downloadAddonManager.removeListenerAction()
     }

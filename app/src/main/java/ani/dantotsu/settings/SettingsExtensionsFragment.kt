@@ -1,5 +1,6 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
@@ -7,28 +8,23 @@ import android.os.Bundle
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ActivitySettingsExtensionsBinding
 import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.databinding.ItemRepositoryBinding
-import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.customAlertDialog
 import bit.himitsu.os.Version
 import com.google.android.material.textfield.TextInputEditText
@@ -42,25 +38,26 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 
-class SettingsExtensionsActivity : AppCompatActivity() {
+class SettingsExtensionsFragment : Fragment() {
     private lateinit var binding: ActivitySettingsExtensionsBinding
     private val extensionInstaller = Injekt.get<BasePreferences>().extensionInstaller()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsExtensionsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsExtensionsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsExtensionsLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             extensionSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             fun setExtensionOutput(repoInventory: ViewGroup, type: MediaType) {
@@ -78,7 +75,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         view.repositoryItem.text =
                             item.removePrefix("https://raw.githubusercontent.com")
                         view.repositoryItem.setOnClickListener {
-                            AlertDialog.Builder(this@SettingsExtensionsActivity, R.style.MyPopup)
+                            AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.rem_repository)
                                 .setMessage(item)
                                 .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
@@ -149,7 +146,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             val editText = dialogView.userAgentTextBox.apply {
                                 hint = getString(R.string.anime_add_repository)
                             }
-                            context.customAlertDialog().apply {
+                            settings.customAlertDialog().apply {
                                 setCancellable(true)
                                 setTitle(R.string.anime_add_repository)
                                 setCustomView(dialogView.root)
@@ -188,7 +185,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             val editText = dialogView.userAgentTextBox.apply {
                                 hint = getString(R.string.manga_add_repository)
                             }
-                            context.customAlertDialog().apply {
+                            settings.customAlertDialog().apply {
                                 setCancellable(true)
                                 setTitle(R.string.manga_add_repository)
                                 setCustomView(dialogView.root)
@@ -227,7 +224,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             val editText = dialogView.userAgentTextBox.apply {
                                 hint = getString(R.string.novel_add_repository)
                             }
-                            context.customAlertDialog().apply {
+                            settings.customAlertDialog().apply {
                                 setCancellable(true)
                                 setTitle(R.string.novel_add_repository)
                                 setCustomView(dialogView.root)
@@ -264,8 +261,8 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                         isActivity = true,
                         onClick = {
                             ContextCompat.startActivity(
-                                context,
-                                Intent(context, ParserTestActivity::class.java),
+                                settings,
+                                Intent(settings, ParserTestActivity::class.java),
                                 null
                             )
                         }
@@ -279,7 +276,7 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
                             val editText = dialogView.userAgentTextBox
                             editText.setText(PrefManager.getVal<String>(PrefName.DefaultUserAgent))
-                            val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val alertDialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.user_agent).setView(dialogView.root)
                                 .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
                                     PrefManager.setVal(
@@ -332,15 +329,13 @@ class SettingsExtensionsActivity : AppCompatActivity() {
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
         }
     }
 
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
+    override fun onDestroyView() {
         CoroutineScope(Dispatchers.IO).launch {
             val animeExtensionManager: AnimeExtensionManager by injectLazy()
             animeExtensionManager.findAvailableExtensions()
@@ -354,6 +349,6 @@ class SettingsExtensionsActivity : AppCompatActivity() {
             novelExtensionManager.findAvailableExtensions()
             novelExtensionManager.findAvailablePlugins()
         }
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+        super.onDestroyView()
     }
 }

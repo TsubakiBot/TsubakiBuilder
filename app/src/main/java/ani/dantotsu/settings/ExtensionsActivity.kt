@@ -145,7 +145,7 @@ class ExtensionsActivity : AppCompatActivity() {
         })
 
         binding.openSettingsButton.setOnClickListener {
-            onChangeSettings.launch(Intent(this, SettingsExtensionsActivity::class.java))
+            onChangeSettings.launch(Intent(this, SettingsExtensionsFragment::class.java))
         }
 
         binding.languageselect.setOnClickListener {

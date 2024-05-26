@@ -1,5 +1,6 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
@@ -12,19 +13,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
-import ani.dantotsu.Himitsu
 import ani.dantotsu.BuildConfig
+import ani.dantotsu.Himitsu
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
-import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.restartApp
 import ani.dantotsu.savePrefsToDownloads
 import ani.dantotsu.settings.saving.PrefManager
@@ -33,8 +32,6 @@ import ani.dantotsu.settings.saving.internal.Location
 import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.snackString
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
@@ -45,73 +42,76 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SettingsSystemActivity : AppCompatActivity() {
+class SettingsSystemFragment : Fragment() {
     private lateinit var binding: ActivitySettingsSystemBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
 
-        binding = ActivitySettingsSystemBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val openDocumentLauncher =
-            registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-                if (uri != null) {
-                    try {
-                        val jsonString = contentResolver.openInputStream(uri)?.readBytes()
-                            ?: throw Exception("Error reading file")
-                        val name = DocumentFile.fromSingleUri(this, uri)?.name ?: "settings"
-                        //.sani is encrypted, .ani is not
-                        if (name.endsWith(".sani")
-                            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            passwordAlertDialog(false) { password ->
-                                if (password != null) {
-                                    val salt = jsonString.copyOfRange(0, 16)
-                                    val encrypted = jsonString.copyOfRange(16, jsonString.size)
-                                    val decryptedJson = try {
-                                        PreferenceKeystore.decryptWithPassword(
-                                            password,
-                                            encrypted,
-                                            salt
-                                        )
-                                    } catch (e: Exception) {
-                                        toast(getString(R.string.incorrect_password))
-                                        return@passwordAlertDialog
-                                    }
-                                    if (PreferencePackager.unpack(decryptedJson))
-                                        restartApp()
-                                } else {
-                                    toast(getString(R.string.password_cannot_be_empty))
+    val openDocumentLauncher =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            val context = requireActivity() as SettingsActivity
+            if (uri != null) {
+                try {
+                    val jsonString = context.contentResolver.openInputStream(uri)?.readBytes()
+                        ?: throw Exception("Error reading file")
+                    val name = DocumentFile.fromSingleUri(context, uri)?.name ?: "settings"
+                    //.sani is encrypted, .ani is not
+                    if (name.endsWith(".sani")
+                        && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        passwordAlertDialog(false) { password ->
+                            if (password != null) {
+                                val salt = jsonString.copyOfRange(0, 16)
+                                val encrypted = jsonString.copyOfRange(16, jsonString.size)
+                                val decryptedJson = try {
+                                    PreferenceKeystore.decryptWithPassword(
+                                        password,
+                                        encrypted,
+                                        salt
+                                    )
+                                } catch (e: Exception) {
+                                    toast(getString(R.string.incorrect_password))
+                                    return@passwordAlertDialog
                                 }
+                                if (PreferencePackager.unpack(decryptedJson))
+                                    context.restartApp()
+                            } else {
+                                toast(getString(R.string.password_cannot_be_empty))
                             }
-                        } else if (name.endsWith(".ani")) {
-                            val decryptedJson = jsonString.toString(Charsets.UTF_8)
-                            if (PreferencePackager.unpack(decryptedJson))
-                                restartApp()
-                        } else {
-                            toast(getString(R.string.unknown_file_type))
                         }
-                    } catch (e: Exception) {
-                        Logger.log(e)
-                        toast(getString(R.string.error_importing_settings))
+                    } else if (name.endsWith(".ani")) {
+                        val decryptedJson = jsonString.toString(Charsets.UTF_8)
+                        if (PreferencePackager.unpack(decryptedJson))
+                            context.restartApp()
+                    } else {
+                        toast(getString(R.string.unknown_file_type))
                     }
+                } catch (e: Exception) {
+                    Logger.log(e)
+                    toast(getString(R.string.error_importing_settings))
                 }
             }
+        }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsSystemBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsSystemLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             systemSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             var hasFoldingFeature = false
             CoroutineScope(Dispatchers.IO).launch {
-                WindowInfoTracker.getOrCreate(this@SettingsSystemActivity)
-                    .windowLayoutInfo(this@SettingsSystemActivity)
+                WindowInfoTracker.getOrCreate(settings)
+                    .windowLayoutInfo(settings)
                     .collect { newLayoutInfo ->
                         hasFoldingFeature = newLayoutInfo.displayFeatures.find {
                             it is FoldingFeature
@@ -127,7 +127,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.backup_restore_desc),
                         icon = R.drawable.backup_restore,
                         onClick = {
-                            StoragePermissions.downloadsPermission(this@SettingsSystemActivity)
+                            StoragePermissions.downloadsPermission(settings as AppCompatActivity)
                             val selectedArray = mutableListOf(false)
                             var filteredLocations = Location.entries.filter { it.exportable }
                             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -137,7 +137,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                             }
                             selectedArray.addAll(List(filteredLocations.size - 1) { false })
                             val dialog =
-                                AlertDialog.Builder(this@SettingsSystemActivity, R.style.MyPopup)
+                                AlertDialog.Builder(settings, R.style.MyPopup)
                                     .setTitle(R.string.backup_restore)
                                     .setMultiChoiceItems(
                                         filteredLocations.map { it.name }.toTypedArray(),
@@ -163,7 +163,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                                                     savePrefsToDownloads(
                                                         "DantotsuSettings",
                                                         PrefManager.exportAllPrefs(selected),
-                                                        this@SettingsSystemActivity,
+                                                        settings,
                                                         password
                                                     )
                                                 } else {
@@ -174,7 +174,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                                             savePrefsToDownloads(
                                                 "DantotsuSettings",
                                                 PrefManager.exportAllPrefs(selected),
-                                                this@SettingsSystemActivity,
+                                                settings,
                                                 null
                                             )
                                         }
@@ -201,7 +201,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         },
                         onLongClick = {
                             lifecycleScope.launch(Dispatchers.IO) {
-                                MatagiUpdater.check(this@SettingsSystemActivity, true)
+                                MatagiUpdater.check(settings, true)
                             }
                         },
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
@@ -222,7 +222,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         isChecked = PrefManager.getVal(PrefName.UseShortcuts),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                            restartApp()
+                            settings.restartApp()
                         }
                     ),
                     Settings(
@@ -274,7 +274,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.LogToFile, isChecked)
                             Logger.clearLog()
-                            restartApp()
+                            settings.restartApp()
                         }
 
                     ),
@@ -284,7 +284,7 @@ class SettingsSystemActivity : AppCompatActivity() {
                         desc = getString(R.string.share_log),
                         icon = R.drawable.ic_round_share_24,
                         onClick = {
-                            Logger.shareLog(this@SettingsSystemActivity)
+                            Logger.shareLog(settings)
                         }
                     ),
                     Settings(
@@ -296,20 +296,20 @@ class SettingsSystemActivity : AppCompatActivity() {
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.Lightspeed, isChecked)
                             Logger.clearLog()
-                            restartApp()
+                            settings.restartApp()
                         }
                     )
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
         }
     }
 
     private fun canUseBiometrics() : Boolean {
-        val biometricManager = BiometricManager.from(this)
+        val biometricManager = BiometricManager.from(requireActivity())
         return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG
                 or BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
             BiometricManager.BIOMETRIC_SUCCESS -> true
@@ -324,12 +324,12 @@ class SettingsSystemActivity : AppCompatActivity() {
         val password = CharArray(16).apply { fill('0') }
 
         // Inflate the dialog layout
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_user_agent, null)
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_user_agent, null)
         val box = dialogView.findViewById<TextInputEditText>(R.id.userAgentTextBox)
         box?.hint = getString(R.string.password)
         box?.setSingleLine()
 
-        val dialog = AlertDialog.Builder(this, R.style.MyPopup)
+        val dialog = AlertDialog.Builder(context, R.style.MyPopup)
             .setTitle(getString(R.string.enter_password))
             .setView(dialogView)
             .setPositiveButton(R.string.ok, null)
@@ -371,11 +371,5 @@ class SettingsSystemActivity : AppCompatActivity() {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
             handleOkAction()
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

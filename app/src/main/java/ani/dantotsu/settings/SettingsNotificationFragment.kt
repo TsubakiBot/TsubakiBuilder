@@ -1,24 +1,24 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistHomeViewModel
 import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ActivitySettingsNotificationsBinding
-import ani.dantotsu.initActivity
 import ani.dantotsu.media.Media
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.notifications.anilist.AnilistNotificationWorker
 import ani.dantotsu.notifications.comment.CommentNotificationWorker
@@ -29,31 +29,29 @@ import ani.dantotsu.openSettings
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SettingsNotificationActivity : AppCompatActivity() {
+class SettingsNotificationFragment : Fragment() {
     private lateinit var binding: ActivitySettingsNotificationsBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsNotificationsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding = ActivitySettingsNotificationsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsNotificationsLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             notificationSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             var curTime = PrefManager.getVal<Int>(PrefName.SubscriptionNotificationInterval)
@@ -100,7 +98,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                         desc = getString(R.string.subscriptions_info),
                         icon = R.drawable.ic_round_notifications_none_24,
                         onClick = {
-                            val speedDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val speedDialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.subscriptions_checking_time)
                             val dialog =
                                 speedDialog.setSingleChoiceItems(timeNames, curTime) { dialog, i ->
@@ -116,15 +114,15 @@ class SettingsNotificationActivity : AppCompatActivity() {
                                     )
                                     dialog.dismiss()
                                     TaskScheduler.create(
-                                        context, PrefManager.getVal(PrefName.UseAlarmManager)
-                                    ).scheduleAllTasks(context)
+                                        settings, PrefManager.getVal(PrefName.UseAlarmManager)
+                                    ).scheduleAllTasks(settings)
                                 }.show()
                             dialog.window?.setDimAmount(0.8f)
                         },
                         onLongClick = {
                             TaskScheduler.create(
-                                context, PrefManager.getVal(PrefName.UseAlarmManager)
-                            ).scheduleAllTasks(context)
+                                settings, PrefManager.getVal(PrefName.UseAlarmManager)
+                            ).scheduleAllTasks(settings)
                         }
                     ),
                     Settings(
@@ -135,7 +133,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                         onClick = {
                             val subscriptions = SubscriptionHelper.getSubscriptions()
                             SubscriptionsBottomDialog.newInstance(subscriptions).show(
-                                supportFragmentManager,
+                                settings.supportFragmentManager,
                                 "subscriptions"
                             )
                         }
@@ -151,7 +149,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                                 PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes)
                                     .toMutableSet()
                             val selected = types.map { filteredTypes.contains(it) }.toBooleanArray()
-                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.anilist_notification_filters)
                                 .setMultiChoiceItems(
                                     types.toTypedArray(),
@@ -181,7 +179,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                         onClick = {
                             val selected =
                                 PrefManager.getVal<Int>(PrefName.AnilistNotificationInterval)
-                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.subscriptions_checking_time)
                                 .setSingleChoiceItems(
                                     aItems.toTypedArray(),
@@ -195,8 +193,8 @@ class SettingsNotificationActivity : AppCompatActivity() {
                                         )
                                     dialog.dismiss()
                                     TaskScheduler.create(
-                                        context, PrefManager.getVal(PrefName.UseAlarmManager)
-                                    ).scheduleAllTasks(context)
+                                        settings, PrefManager.getVal(PrefName.UseAlarmManager)
+                                    ).scheduleAllTasks(settings)
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
@@ -213,7 +211,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                         onClick = {
                             val selected =
                                 PrefManager.getVal<Int>(PrefName.CommentNotificationInterval)
-                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.subscriptions_checking_time)
                                 .setSingleChoiceItems(
                                     cItems.toTypedArray(),
@@ -227,8 +225,8 @@ class SettingsNotificationActivity : AppCompatActivity() {
                                         )
                                     dialog.dismiss()
                                     TaskScheduler.create(
-                                        context, PrefManager.getVal(PrefName.UseAlarmManager)
-                                    ).scheduleAllTasks(context)
+                                        settings, PrefManager.getVal(PrefName.UseAlarmManager)
+                                    ).scheduleAllTasks(settings)
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
@@ -247,7 +245,7 @@ class SettingsNotificationActivity : AppCompatActivity() {
                             )
                         },
                         onLongClick = {
-                            openSettings(context, null)
+                            openSettings(settings, null)
                         }
                     ),
                     Settings(
@@ -258,13 +256,13 @@ class SettingsNotificationActivity : AppCompatActivity() {
                         isChecked = PrefManager.getVal(PrefName.UseAlarmManager),
                         switch = { isChecked, view ->
                             if (isChecked) {
-                                val alertDialog = AlertDialog.Builder(context, R.style.MyPopup)
+                                val alertDialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                     .setTitle(R.string.use_alarm_manager)
                                     .setMessage(R.string.use_alarm_manager_confirm)
                                     .setPositiveButton(R.string.use) { dialog, _ ->
                                         PrefManager.setVal(PrefName.UseAlarmManager, true)
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                                            if (!(getSystemService(Context.ALARM_SERVICE) as AlarmManager).canScheduleExactAlarms()) {
+                                            if (!(settings.getSystemService(Context.ALARM_SERVICE) as AlarmManager).canScheduleExactAlarms()) {
                                                 val intent =
                                                     Intent("android.settings.REQUEST_SCHEDULE_EXACT_ALARM")
                                                 startActivity(intent)
@@ -282,16 +280,16 @@ class SettingsNotificationActivity : AppCompatActivity() {
                                 alertDialog.show()
                             } else {
                                 PrefManager.setVal(PrefName.UseAlarmManager, false)
-                                TaskScheduler.create(context, true).cancelAllTasks()
-                                TaskScheduler.create(context, false)
-                                    .scheduleAllTasks(context)
+                                TaskScheduler.create(settings, true).cancelAllTasks()
+                                TaskScheduler.create(settings, false)
+                                    .scheduleAllTasks(settings)
                             }
                         },
                     ),
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
         }
@@ -320,11 +318,5 @@ class SettingsNotificationActivity : AppCompatActivity() {
                 snackString(R.string.current_subscribed)
             }
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

@@ -1,50 +1,43 @@
 package ani.dantotsu.settings
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.activity.addCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivitySettingsThemeBinding
-import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import bit.himitsu.os.Version
 import eltos.simpledialogfragment.SimpleDialog
 import eltos.simpledialogfragment.color.SimpleColorDialog
 
-class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultListener {
+class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
     private lateinit var binding: ActivitySettingsThemeBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsThemeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsThemeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsThemeLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
-            onBackPressedDispatcher.addCallback(this@SettingsThemeActivity) {
-                startActivity(Intent(this@SettingsThemeActivity, SettingsActivity::class.java))
-                finish()
-            }
             themeSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -57,7 +50,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         isChecked = PrefManager.getVal(PrefName.UseOLED),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseOLED, isChecked)
-                            recreate()
+                            requireActivity().recreate()
                         }
                     ),
                     Settings(
@@ -69,7 +62,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
                             if (isChecked) PrefManager.setVal(PrefName.UseCustomTheme, false)
-                            recreate()
+                            requireActivity().recreate()
                         },
                         isVisible = Version.isSnowCone
                     ),
@@ -81,7 +74,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         isChecked = PrefManager.getVal(PrefName.UseSourceTheme),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
-                            recreate()
+                            requireActivity().recreate()
                         },
                         isVisible = Version.isSnowCone
                     ),
@@ -94,7 +87,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseCustomTheme, isChecked)
                             if (isChecked) PrefManager.setVal(PrefName.UseMaterialYou, false)
-                            recreate()
+                            requireActivity().recreate()
                         },
                         isVisible = Version.isSnowCone
                     ),
@@ -109,24 +102,24 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                             class CustomColorDialog : SimpleColorDialog() {
                                 override fun onPositiveButtonClick() {
                                     super.onPositiveButtonClick()
-                                    recreate()
+                                    requireActivity().recreate()
                                 }
                             }
 
                             val tag = "colorPicker"
                             CustomColorDialog().title(R.string.custom_theme)
                                 .colorPreset(originalColor)
-                                .colors(context, SimpleColorDialog.MATERIAL_COLOR_PALLET)
+                                .colors(settings, SimpleColorDialog.MATERIAL_COLOR_PALLET)
                                 .allowCustom(true).showOutline(0x46000000).gridNumColumn(5)
                                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE).neg()
-                                .show(context, tag)
+                                .show(settings, tag)
                         },
                         isVisible = Version.isSnowCone
                     )
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
 
@@ -136,13 +129,13 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
             themeSwitcher.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.Theme, ThemeManager.Companion.Theme.entries[i].theme)
                 themeSwitcher.clearFocus()
-                recreate()
+                requireActivity().recreate()
             }
             themePicker.children.forEachIndexed { index, view ->
                 view.setOnClickListener {
                     val theme = ThemeManager.Companion.Theme.entries[index].theme
                     PrefManager.setVal(PrefName.Theme, theme)
-                    recreate()
+                    requireActivity().recreate()
                     val themeName = theme.substring(0, 1) + theme.substring(1).lowercase()
                     binding.themeSwitcher.setText(themeName)
                 }
@@ -160,7 +153,7 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
                 previous = current
                 current.alpha = 1f
                 PrefManager.setVal(PrefName.DarkMode, mode)
-                recreate()
+                requireActivity().recreate()
             }
 
             settingsUiAuto.setOnClickListener {
@@ -195,17 +188,11 @@ class SettingsThemeActivity : AppCompatActivity(), SimpleDialog.OnDialogResultLi
     override fun onResume() {
         super.onResume()
         binding.themeSwitcher.setAdapter(ArrayAdapter(
-            this@SettingsThemeActivity,
+            requireContext(),
             R.layout.item_dropdown,
             ThemeManager.Companion.Theme.entries.map {
                 it.theme.substring(0, 1) + it.theme.substring(1).lowercase()
             }
         ))
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

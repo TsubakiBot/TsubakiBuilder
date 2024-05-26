@@ -1,50 +1,49 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
 import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ActivitySettingsAboutBinding
-import ani.dantotsu.initActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.pop
 import ani.dantotsu.settings.fragment.DevelopersDialogFragment
 import ani.dantotsu.settings.fragment.ForksDialogFragment
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.view.dialog.CustomBottomDialog
 import io.noties.markwon.Markwon
 import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.launch
 
-class SettingsAboutActivity : AppCompatActivity() {
+class SettingsAboutFragment : Fragment() {
     private lateinit var binding: ActivitySettingsAboutBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsAboutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsAboutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsAboutLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             aboutSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -59,13 +58,13 @@ class SettingsAboutActivity : AppCompatActivity() {
                             CustomBottomDialog.newInstance().apply {
                                 setTitleText(title)
                                 addView(
-                                    TextView(context).apply {
-                                        val markWon = Markwon.builder(context)
+                                    TextView(settings).apply {
+                                        val markWon = Markwon.builder(settings)
                                             .usePlugin(SoftBreakAddsNewLinePlugin.create()).build()
                                         markWon.setMarkdown(this, full)
                                     }
                                 )
-                            }.show(supportFragmentManager, "dialog")
+                            }.show(settings.supportFragmentManager, "dialog")
                         }
                     ),
                     Settings(
@@ -74,7 +73,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                         desc = getString(R.string.faq_desc),
                         icon = R.drawable.ic_round_help_24,
                         onClick = {
-                            startActivity(Intent(context, FAQActivity::class.java))
+                            startActivity(Intent(settings, FAQActivity::class.java))
                         },
                         hasTransition = true
                     ),
@@ -84,7 +83,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                         desc = getString(R.string.devs_desc),
                         icon = R.drawable.ic_round_accessible_forward_24,
                         onClick = {
-                            DevelopersDialogFragment().show(supportFragmentManager, "dialog")
+                            DevelopersDialogFragment().show(settings.supportFragmentManager, "dialog")
                         }
                     ),
                     Settings(
@@ -93,7 +92,7 @@ class SettingsAboutActivity : AppCompatActivity() {
                         desc = getString(R.string.forks_desc),
                         icon = R.drawable.ic_round_restaurant_24,
                         onClick = {
-                            ForksDialogFragment().show(supportFragmentManager, "dialog")
+                            ForksDialogFragment().show(settings.supportFragmentManager, "dialog")
                         }
                     ),
                     Settings(
@@ -102,23 +101,23 @@ class SettingsAboutActivity : AppCompatActivity() {
                         desc = getString(R.string.disclaimer_desc),
                         icon = R.drawable.ic_round_info_24,
                         onClick = {
-                            val text = TextView(context)
+                            val text = TextView(settings)
                             text.setText(R.string.full_disclaimer)
 
                             CustomBottomDialog.newInstance().apply {
-                                setTitleText(context.getString(R.string.disclaimer))
+                                setTitleText(settings.getString(R.string.disclaimer))
                                 addView(text)
-                                setNegativeButton(context.getString(R.string.close)) {
+                                setNegativeButton(settings.getString(R.string.close)) {
                                     dismiss()
                                 }
-                                show(supportFragmentManager, "dialog")
+                                show(settings.supportFragmentManager, "dialog")
                             }
                         }
                     ),
                 )
             )
             binding.settingsRecyclerView.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
 
             settingBuyMeCoffee.setOnClickListener {
                 lifecycleScope.launch {
@@ -151,11 +150,5 @@ class SettingsAboutActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

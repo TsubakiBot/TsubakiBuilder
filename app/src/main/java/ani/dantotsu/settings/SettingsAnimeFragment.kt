@@ -1,52 +1,50 @@
 package ani.dantotsu.settings
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsAnimeBinding
 import ani.dantotsu.download.DownloadsManager
-import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaType
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.statusBarHeight
-import ani.dantotsu.themes.ThemeManager
 import bit.himitsu.torrServerStart
 import bit.himitsu.torrServerStop
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class SettingsAnimeActivity : AppCompatActivity() {
+class SettingsAnimeFragment : Fragment() {
     private lateinit var binding: ActivitySettingsAnimeBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
-        val context = this
 
-        binding = ActivitySettingsAnimeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsAnimeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsAnimeLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
             animeSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -57,7 +55,7 @@ class SettingsAnimeActivity : AppCompatActivity() {
                         desc = getString(R.string.player_settings_desc),
                         icon = R.drawable.ic_round_video_settings_24,
                         onClick = {
-                            startActivity(Intent(context, PlayerSettingsActivity::class.java))
+                            startActivity(Intent(settings, PlayerSettingsActivity::class.java))
                         },
                         hasTransition = true
                     ),
@@ -67,7 +65,7 @@ class SettingsAnimeActivity : AppCompatActivity() {
                         desc = getString(R.string.purge_anime_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
                         onClick = {
-                            val dialog = AlertDialog.Builder(context, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.purge_anime_downloads)
                                 .setMessage(
                                     getString(
@@ -115,7 +113,7 @@ class SettingsAnimeActivity : AppCompatActivity() {
                 )
             )
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
 
@@ -177,11 +175,5 @@ class SettingsAnimeActivity : AppCompatActivity() {
                 }
             )
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

@@ -166,33 +166,6 @@
             android:name=".home.status.StatusActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".settings.SettingsAnimeActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsCommonActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsExtensionsActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsAddonActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsMangaActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsSystemActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsNotificationActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsThemeActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".settings.SettingsAboutActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".settings.ExtensionsActivity"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
