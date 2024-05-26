@@ -151,9 +151,8 @@ class SubscriptionNotificationTask : Task {
                         }
                     }
 
-                    if (progressNotification != null) notificationManager.cancel(
-                        ID_SUBSCRIPTION_CHECK_PROGRESS
-                    )
+                    if (progressNotification != null)
+                        notificationManager.cancel(ID_SUBSCRIPTION_CHECK_PROGRESS)
                     currentlyPerforming = false
                 }
                 return true

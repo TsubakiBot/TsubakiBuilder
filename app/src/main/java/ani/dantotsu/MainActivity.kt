@@ -17,6 +17,7 @@ import android.os.Looper
 import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.animation.AnticipateInterpolator
 import android.widget.TextView
 import android.widget.Toast
@@ -101,6 +102,13 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
+        if (PrefManager.getVal(PrefName.SecureLock)) {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
+        }
+
         //get FRAGMENT_CLASS_NAME from intent
         val fragment = intent.getStringExtra("FRAGMENT_CLASS_NAME")
 
@@ -158,6 +166,7 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     hasConfirmedSession = true
                     binding.biometricShield.visibility = View.GONE
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
                 }
 
                 override fun onAuthenticationFailed() {
@@ -556,6 +565,12 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         hasConfirmedSession = false
         hasCompletedLoading = -1
+        if (PrefManager.getVal(PrefName.SecureLock)) {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
+        }
     }
 
     override fun onDestroy() {

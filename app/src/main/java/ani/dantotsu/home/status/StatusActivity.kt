@@ -16,6 +16,7 @@ import ani.dantotsu.profile.User
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.toast
 
 class StatusActivity : AppCompatActivity(), StoriesCallback {
     private lateinit var activity: ArrayList<User>
@@ -33,6 +34,10 @@ class StatusActivity : AppCompatActivity(), StoriesCallback {
         setContentView(binding.root)
         activity = user
         position = intent.getIntExtra("position", -1)
+        if (position == -1 || !activity.indices.contains(position)) {
+            toast(R.string.content_not_found)
+            finish()
+        }
         binding.root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin = statusBarHeight
             bottomMargin = navBarHeight

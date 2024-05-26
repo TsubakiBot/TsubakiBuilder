@@ -1063,6 +1063,7 @@
     <string name="download_extension_not_available">Download Extension not available</string>
     <string name="feed">Feed</string>
     <string name="profile">Profile</string>
+    <string name="content_not_found">Content missing or unavailable</string>
 
     <string name="epub_download_exception">Exception while downloading .epub: %1$s</string>
     <string name="novel_download_progress">Novel Download Progress</string>
