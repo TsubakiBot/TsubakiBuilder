@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -26,6 +26,10 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
 import ani.dantotsu.restartApp
 import ani.dantotsu.savePrefsToDownloads
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.settings.saving.internal.Location
@@ -106,17 +110,6 @@ class SettingsSystemFragment : Fragment() {
         binding.apply {
             systemSettingsBack.setOnClickListener {
                 settings.backToMenu()
-            }
-
-            var hasFoldingFeature = false
-            CoroutineScope(Dispatchers.IO).launch {
-                WindowInfoTracker.getOrCreate(settings)
-                    .windowLayoutInfo(settings)
-                    .collect { newLayoutInfo ->
-                        hasFoldingFeature = newLayoutInfo.displayFeatures.find {
-                            it is FoldingFeature
-                        } != null
-                    }
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(
@@ -224,14 +217,6 @@ class SettingsSystemFragment : Fragment() {
                             PrefManager.setVal(PrefName.UseShortcuts, isChecked)
                             settings.restartApp()
                         }
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.use_foldable),
-                        desc = getString(R.string.use_foldable_desc),
-                        icon = R.drawable.ic_devices_fold_24,
-                        pref = PrefName.UseFoldable,
-                        isVisible = hasFoldingFeature
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,6 +13,11 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsMangaBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.settings.ReaderSettingsActivity
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog

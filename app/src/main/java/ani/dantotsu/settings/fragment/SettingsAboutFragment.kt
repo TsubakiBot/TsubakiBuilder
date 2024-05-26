@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -17,8 +17,13 @@ import ani.dantotsu.copyToClipboard
 import ani.dantotsu.databinding.ActivitySettingsAboutBinding
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.pop
-import ani.dantotsu.settings.fragment.DevelopersDialogFragment
-import ani.dantotsu.settings.fragment.ForksDialogFragment
+import ani.dantotsu.settings.FAQActivity
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.extension.DevelopersDialogFragment
+import ani.dantotsu.settings.extension.ForksDialogFragment
 import ani.dantotsu.toast
 import ani.dantotsu.view.dialog.CustomBottomDialog
 import io.noties.markwon.Markwon

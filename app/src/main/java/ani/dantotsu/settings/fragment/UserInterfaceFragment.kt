@@ -1,46 +1,55 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.window.layout.FoldingFeature
+import androidx.window.layout.WindowInfoTracker
 import ani.dantotsu.R
+import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.databinding.ActivitySettingsUserInterfaceBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class UserInterfaceSettingsActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySettingsUserInterfaceBinding
+class UserInterfaceFragment : Fragment() {
+    private lateinit var binding: ActivitySettingsUserInterfaceBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ThemeManager(this).applyTheme()
-        initActivity(this)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivitySettingsUserInterfaceBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding = ActivitySettingsUserInterfaceBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    @SuppressLint("SetJavaScriptEnabled")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            uiSettingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = statusBarHeight
-                bottomMargin = navBarHeight
-            }
-
-            onBackPressedDispatcher.addCallback(this@UserInterfaceSettingsActivity) {
-                startActivity(Intent(this@UserInterfaceSettingsActivity, SettingsActivity::class.java))
-                finish()
-            }
-
             uiSettingsBack.setOnClickListener {
-                onBackPressedDispatcher.onBackPressed()
+                settings.backToMenu()
             }
 
             val map = mapOf(
@@ -56,42 +65,22 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
             )
             val mapReverse = map.map { it.value to it.key }.toMap()
 
+            var hasFoldingFeature = false
+            CoroutineScope(Dispatchers.IO).launch {
+                WindowInfoTracker.getOrCreate(settings)
+                    .windowLayoutInfo(settings)
+                    .collect { newLayoutInfo ->
+                        hasFoldingFeature = newLayoutInfo.displayFeatures.find {
+                            it is FoldingFeature
+                        } != null
+                    }
+            }
+
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
                         type = SettingsView.HEADER,
                         name = getString(R.string.app)
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.immersive_mode),
-                        icon = R.drawable.ic_round_fullscreen_24,
-                        pref = PrefName.ImmersiveMode
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.small_view),
-                        icon = R.drawable.ic_round_art_track_24,
-                        pref = PrefName.SmallView
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.floating_avatar),
-                        icon = R.drawable.ic_round_attractions_24,
-                        pref = PrefName.FloatingAvatar,
-                        onLongClick = {
-                            PrefManager.setVal(PrefName.FabulousVertX, -1)
-                            PrefManager.setVal(PrefName.FabulousVertY, -1)
-                            PrefManager.setVal(PrefName.FabulousHorzX, -1)
-                            PrefManager.setVal(PrefName.FabulousHorzY, -1)
-                        }
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.hide_home_main),
-                        desc = getString(R.string.hide_home_main_desc),
-                        icon = R.drawable.ic_clean_hands_24,
-                        pref = PrefName.HomeMainHide
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -100,7 +89,7 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                         onClick = {
                             val set = PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout).toMutableList()
                             val views = resources.getStringArray(R.array.home_layouts)
-                            val dialog = AlertDialog.Builder(this@UserInterfaceSettingsActivity, R.style.MyPopup)
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(getString(R.string.home_layout_show)).apply {
                                     setMultiChoiceItems(
                                         views,
@@ -118,13 +107,52 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
-                        name = getString(R.string.trailer_banners),
-                        icon = R.drawable.ic_round_photo_size_select_actual_24,
-                        pref = PrefName.YouTubeBanners
+                        name = getString(R.string.hide_home_main),
+                        desc = getString(R.string.hide_home_main_desc),
+                        icon = R.drawable.ic_clean_hands_24,
+                        pref = PrefName.HomeMainHide
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.immersive_mode),
+                        icon = R.drawable.ic_round_fullscreen_24,
+                        pref = PrefName.ImmersiveMode
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_foldable),
+                        desc = getString(R.string.use_foldable_desc),
+                        icon = R.drawable.ic_devices_fold_24,
+                        pref = PrefName.UseFoldable,
+                        isVisible = hasFoldingFeature
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.floating_avatar),
+                        icon = R.drawable.ic_round_attractions_24,
+                        pref = PrefName.FloatingAvatar,
+                        onLongClick = {
+                            PrefManager.setVal(PrefName.FabulousVertX, -1)
+                            PrefManager.setVal(PrefName.FabulousVertY, -1)
+                            PrefManager.setVal(PrefName.FabulousHorzX, -1)
+                            PrefManager.setVal(PrefName.FabulousHorzY, -1)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.small_view),
+                        icon = R.drawable.ic_round_art_track_24,
+                        pref = PrefName.SmallView
                     ),
                     Settings(
                         type = SettingsView.HEADER,
                         name = getString(R.string.animations)
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.trailer_banners),
+                        icon = R.drawable.ic_round_photo_size_select_actual_24,
+                        pref = PrefName.YouTubeBanners
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
@@ -188,11 +216,5 @@ class UserInterfaceSettingsActivity : AppCompatActivity() {
                 setHasFixedSize(true)
             }
         }
-    }
-
-    @Suppress("DEPRECATION")
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 }

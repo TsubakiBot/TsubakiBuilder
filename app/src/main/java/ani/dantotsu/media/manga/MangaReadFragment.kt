@@ -53,7 +53,7 @@ import ani.dantotsu.parsers.HMangaSources
 import ani.dantotsu.parsers.MangaParser
 import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.setNavigationTheme
-import ani.dantotsu.settings.extensionprefs.MangaSourcePreferencesFragment
+import ani.dantotsu.settings.extension.MangaSourcePreferencesFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString

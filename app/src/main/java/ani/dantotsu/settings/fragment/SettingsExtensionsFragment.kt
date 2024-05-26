@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -23,6 +23,10 @@ import ani.dantotsu.databinding.ItemRepositoryBinding
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.parsers.novel.NovelExtensionManager
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
@@ -69,12 +73,12 @@ class SettingsExtensionsFragment : Fragment() {
                 }
                 prefName.let { repoList ->
                     PrefManager.getVal<Set<String>>(repoList).forEach { item ->
-                        val view = ItemRepositoryBinding.inflate(
+                        val repoView = ItemRepositoryBinding.inflate(
                             LayoutInflater.from(repoInventory.context), repoInventory, true
                         )
-                        view.repositoryItem.text =
+                        repoView.repositoryItem.text =
                             item.removePrefix("https://raw.githubusercontent.com")
-                        view.repositoryItem.setOnClickListener {
+                        repoView.repositoryItem.setOnClickListener {
                             AlertDialog.Builder(settings, R.style.MyPopup)
                                 .setTitle(R.string.rem_repository)
                                 .setMessage(item)
@@ -91,7 +95,7 @@ class SettingsExtensionsFragment : Fragment() {
                                 .create()
                                 .show()
                         }
-                        view.repositoryItem.setOnLongClickListener {
+                        repoView.repositoryItem.setOnLongClickListener {
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                             copyToClipboard(item, true)
                             true

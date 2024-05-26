@@ -1,4 +1,4 @@
-package ani.dantotsu.settings.extensionprefs
+package ani.dantotsu.settings.extension
 
 import android.content.Context
 import android.os.Bundle

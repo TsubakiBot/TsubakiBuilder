@@ -1,8 +1,6 @@
 package ani.dantotsu.settings
 
-import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.drawable.Animatable
 import android.os.Build.BRAND
 import android.os.Build.DEVICE
 import android.os.Build.SUPPORTED_ABIS
@@ -10,10 +8,7 @@ import android.os.Build.VERSION.CODENAME
 import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import android.view.HapticFeedbackConstants
-import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -21,33 +16,27 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.BuildConfig
-import ani.dantotsu.R
-import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.connections.discord.Discord
-import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.loadImage
-import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.openLinkInYouTube
-import ani.dantotsu.setSafeOnClickListener
-import ani.dantotsu.settings.fragment.DiscordDialogFragment
-import ani.dantotsu.settings.saving.PrefManager
-import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.snackString
+import ani.dantotsu.settings.fragment.SettingsAboutFragment
+import ani.dantotsu.settings.fragment.SettingsAddonFragment
+import ani.dantotsu.settings.fragment.SettingsAnimeFragment
+import ani.dantotsu.settings.fragment.SettingsCommonFragment
+import ani.dantotsu.settings.fragment.SettingsExtensionsFragment
+import ani.dantotsu.settings.fragment.SettingsMainFragment
+import ani.dantotsu.settings.fragment.SettingsMangaFragment
+import ani.dantotsu.settings.fragment.SettingsNotificationFragment
+import ani.dantotsu.settings.fragment.SettingsSystemFragment
+import ani.dantotsu.settings.fragment.SettingsThemeFragment
+import ani.dantotsu.settings.fragment.UserInterfaceFragment
 import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import ani.dantotsu.toast
 import ani.dantotsu.util.LauncherWrapper
-import bit.himitsu.update.MatagiUpdater
+import bit.himitsu.setBaseline
 import bit.himitsu.withFlexibleMargin
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -67,11 +56,11 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.apply {
 
-            settingsContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            settingsViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = statusBarHeight
             }
 
-            settingsContainer.withFlexibleMargin(resources.configuration)
+            settingsViewPager.setBaseline(resources.configuration)
 
             onBackPressedDispatcher.addCallback(this@SettingsActivity) {
                 startMainActivity(this@SettingsActivity)
@@ -90,29 +79,30 @@ class SettingsActivity : AppCompatActivity() {
     ) :
         FragmentStateAdapter(fragmentManager, lifecycle) {
 
-        override fun getItemCount(): Int = 10
+        override fun getItemCount(): Int = 11
 
         override fun createFragment(position: Int): Fragment = when (position) {
             0 -> SettingsMainFragment()
-            1 -> SettingsThemeFragment()
-            2 -> SettingsCommonFragment()
-            3 -> SettingsAnimeFragment()
-            4 -> SettingsMangaFragment()
-            5 -> SettingsExtensionsFragment()
-            6-> SettingsAddonFragment()
-            7 -> SettingsNotificationFragment()
-            8 -> SettingsSystemFragment()
-            9 -> SettingsAboutFragment()
-            else -> SettingsAboutFragment()
+            1 -> UserInterfaceFragment()
+            2 -> SettingsThemeFragment()
+            3 -> SettingsCommonFragment()
+            4 -> SettingsAnimeFragment()
+            5 -> SettingsMangaFragment()
+            6 -> SettingsExtensionsFragment()
+            7-> SettingsAddonFragment()
+            8 -> SettingsNotificationFragment()
+            9 -> SettingsSystemFragment()
+            10 -> SettingsAboutFragment()
+            else -> SettingsMainFragment()
         }
     }
 
     fun setFragment(index: Int) {
-        binding.settingsViewPager.currentItem = index
+        binding.settingsViewPager.setCurrentItem(index, false)
     }
 
     fun backToMenu() {
-        binding.settingsViewPager.currentItem = 0
+        binding.settingsViewPager.setCurrentItem(0, false)
     }
 
     fun getLauncher(): LauncherWrapper? {
@@ -145,6 +135,6 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.settingsContainer.withFlexibleMargin(newConfig)
+        binding.settingsViewPager.setBaseline(newConfig)
     }
 }

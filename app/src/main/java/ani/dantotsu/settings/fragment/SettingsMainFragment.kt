@@ -1,7 +1,6 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,15 +21,17 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.setSafeOnClickListener
-import ani.dantotsu.settings.fragment.DiscordDialogFragment
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.extension.DiscordDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.startMainActivity
-import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toast
 import bit.himitsu.update.MatagiUpdater
-import bit.himitsu.withFlexibleMargin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -51,11 +51,11 @@ class SettingsMainFragment : Fragment() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val context = requireActivity() as SettingsActivity
+        val settings = requireActivity() as SettingsActivity
 
         binding.apply {
             settingsBack.setOnClickListener {
-                startMainActivity(context)
+                startMainActivity(settings)
             }
 
             binding.settingsRecyclerView.adapter = SettingsAdapter(
@@ -66,13 +66,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.ui_settings_desc),
                         icon = R.drawable.ic_round_auto_awesome_24,
                         onClick = {
-                            startActivity(
-                                Intent(
-                                    context,
-                                    UserInterfaceSettingsActivity::class.java
-                                )
-                            )
-                            context.finish()
+                            settings.setFragment(1)
                         },
                         hasTransition = true
                     ),
@@ -82,7 +76,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.theme_desc),
                         icon = R.drawable.ic_palette,
                         onClick = {
-                            (context as SettingsActivity).setFragment(1)
+                            settings.setFragment(2)
                         },
                         hasTransition = true
                     ),
@@ -92,7 +86,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.common_desc),
                         icon = R.drawable.ic_lightbulb_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(2)
+                            settings.setFragment(3)
                         },
                         hasTransition = true
                     ),
@@ -102,7 +96,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.anime_desc),
                         icon = R.drawable.ic_round_movie_filter_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(3)
+                            settings.setFragment(4)
                         },
                         hasTransition = true
                     ),
@@ -112,7 +106,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.manga_desc),
                         icon = R.drawable.ic_round_import_contacts_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(4)
+                            settings.setFragment(5)
                         },
                         hasTransition = true
                     ),
@@ -122,7 +116,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.extensions_desc),
                         icon = R.drawable.ic_extension,
                         onClick = {
-                            (context as SettingsActivity).setFragment(5)
+                            settings.setFragment(6)
                         },
                         hasTransition = true
                     ),
@@ -132,7 +126,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.addons_desc),
                         icon = R.drawable.ic_round_restaurant_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(6)
+                            settings.setFragment(7)
                         },
                         hasTransition = true
                     ),
@@ -142,7 +136,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.notifications_desc),
                         icon = R.drawable.ic_round_notifications_none_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(7)
+                            settings.setFragment(8)
                         },
                         hasTransition = true
                     ),
@@ -152,7 +146,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.system_desc),
                         icon = R.drawable.ic_admin_panel_settings_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(8)
+                            settings.setFragment(9)
                         },
                         hasTransition = true
                     ),
@@ -172,7 +166,7 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.about_desc),
                         icon = R.drawable.ic_round_info_24,
                         onClick = {
-                            (context as SettingsActivity).setFragment(9)
+                            settings.setFragment(10)
                         },
                         hasTransition = true
                     )
@@ -180,7 +174,7 @@ class SettingsMainFragment : Fragment() {
             )
 
             settingsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(settings, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
             }
 
@@ -190,7 +184,7 @@ class SettingsMainFragment : Fragment() {
                         settingsAnilistLogin.setText(R.string.logout)
                         settingsAnilistLogin.setOnClickListener {
                             Anilist.removeSavedToken()
-                            context.recreate()
+                            settings.recreate()
                             reload()
                         }
                         settingsAnilistUsername.visibility = View.VISIBLE
@@ -213,7 +207,7 @@ class SettingsMainFragment : Fragment() {
                             settingsMALLogin.setText(R.string.logout)
                             settingsMALLogin.setOnClickListener {
                                 MAL.removeSavedToken()
-                                context.recreate()
+                                settings.recreate()
                                 reload()
                             }
                             settingsMALUsername.visibility = View.VISIBLE
@@ -228,7 +222,7 @@ class SettingsMainFragment : Fragment() {
                             settingsMALUsername.visibility = View.GONE
                             settingsMALLogin.setText(R.string.login)
                             settingsMALLogin.setOnClickListener {
-                                MAL.loginIntent(context)
+                                MAL.loginIntent(settings)
                             }
                         }
                     } else {
@@ -236,7 +230,7 @@ class SettingsMainFragment : Fragment() {
                         settingsAnilistUsername.visibility = View.GONE
                         settingsAnilistLogin.setText(R.string.login)
                         settingsAnilistLogin.setOnClickListener {
-                            Anilist.loginIntent(context)
+                            Anilist.loginIntent(settings)
                         }
                         settingsMALLoginRequired.visibility = View.VISIBLE
                         settingsMALLogin.visibility = View.GONE
@@ -260,8 +254,8 @@ class SettingsMainFragment : Fragment() {
                             username ?: Discord.token?.replace(Regex("."), "*")
                         settingsDiscordLogin.setText(R.string.logout)
                         settingsDiscordLogin.setOnClickListener {
-                            Discord.removeSavedToken(context)
-                            context.recreate()
+                            Discord.removeSavedToken(settings)
+                            settings.recreate()
                             reload()
                         }
 
@@ -277,7 +271,7 @@ class SettingsMainFragment : Fragment() {
                         settingsImageSwitcher.setImageResource(initialStatus)
 
                         val zoomInAnimation =
-                            AnimationUtils.loadAnimation(context, R.anim.bounce_zoom)
+                            AnimationUtils.loadAnimation(settings, R.anim.bounce_zoom)
                         settingsImageSwitcher.setOnClickListener {
                             var status = "online"
                             initialStatus = when (initialStatus) {
@@ -310,7 +304,7 @@ class SettingsMainFragment : Fragment() {
                         }
                         settingsImageSwitcher.setOnLongClickListener {
                             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                            DiscordDialogFragment().show(context.supportFragmentManager, "dialog")
+                            DiscordDialogFragment().show(settings.supportFragmentManager, "dialog")
                             true
                         }
                     } else {
@@ -319,8 +313,8 @@ class SettingsMainFragment : Fragment() {
                         settingsDiscordUsername.visibility = View.GONE
                         settingsDiscordLogin.setText(R.string.login)
                         settingsDiscordLogin.setOnClickListener {
-                            Discord.warning(context)
-                                .show(context.supportFragmentManager, "dialog")
+                            Discord.warning(settings)
+                                .show(settings.supportFragmentManager, "dialog")
                         }
                     }
                 }
@@ -331,7 +325,7 @@ class SettingsMainFragment : Fragment() {
                 binding.settingsLogo.setOnLongClickListener {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     lifecycleScope.launch(Dispatchers.IO) {
-                        MatagiUpdater.check(context, true)
+                        MatagiUpdater.check(settings, true)
                     }
                     true
                 }
@@ -348,7 +342,7 @@ class SettingsMainFragment : Fragment() {
                     openLinkInYouTube(getString(R.string.cursed_yt))
                     // PrefManager.setVal(PrefName.ImageUrl, !PrefManager.getVal(PrefName.ImageUrl, false))
                 } else {
-                    snackString(array[(Math.random() * array.size).toInt()], context)
+                    snackString(array[(Math.random() * array.size).toInt()], settings)
                 }
             }
         }

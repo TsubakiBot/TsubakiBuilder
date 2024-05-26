@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings.SettingsNotificationFragment">
+    tools:context=".settings.fragment.SettingsNotificationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

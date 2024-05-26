@@ -1,4 +1,4 @@
-package ani.dantotsu.settings
+package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -12,10 +12,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
+import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
 import ani.dantotsu.restartApp
+import ani.dantotsu.settings.Settings
+import ani.dantotsu.settings.SettingsActivity
+import ani.dantotsu.settings.SettingsAdapter
+import ani.dantotsu.settings.SettingsView
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
@@ -174,7 +179,8 @@ class SettingsCommonFragment : Fragment() {
                         isChecked = PrefManager.getVal(PrefName.AdultOnly),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.AdultOnly, isChecked)
-                            settings.restartApp()
+                            // settings.restartApp()
+                            Refresh.all()
                         }
                     )
                 )

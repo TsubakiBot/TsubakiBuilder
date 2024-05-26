@@ -45,7 +45,7 @@ import ani.dantotsu.parsers.Video
 import ani.dantotsu.parsers.VideoExtractor
 import ani.dantotsu.parsers.VideoType
 import ani.dantotsu.setSafeOnClickListener
-import ani.dantotsu.settings.SettingsAddonFragment
+import ani.dantotsu.settings.fragment.SettingsAddonFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString

@@ -1,7 +1,5 @@
-package ani.dantotsu.settings.fragment
+package ani.dantotsu.settings.extension
 
-
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.Context
@@ -32,11 +30,10 @@ import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.others.LanguageMapper
-import ani.dantotsu.parsers.MangaSources
+import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.ParserTestActivity
 import ani.dantotsu.settings.ExtensionsActivity
 import ani.dantotsu.settings.SearchQueryHandler
-import ani.dantotsu.settings.extensionprefs.MangaSourcePreferencesFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -46,23 +43,25 @@ import bit.himitsu.os.Version
 import bit.himitsu.search.ReverseSearchDialogFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
+import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
 import eu.kanade.tachiyomi.data.notification.Notifications
-import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
-import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
-import eu.kanade.tachiyomi.source.ConfigurableSource
+import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
+import eu.kanade.tachiyomi.extension.anime.model.AnimeExtension
 import kotlinx.coroutines.launch
 import rx.android.schedulers.AndroidSchedulers
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.util.Collections
 
-class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
+
+class InstalledAnimeExtensionsFragment : Fragment(), SearchQueryHandler {
+
     private var _binding: FragmentExtensionsBinding? = null
     private val binding by lazy { _binding!! }
     private lateinit var extensionsRecyclerView: RecyclerView
     private val skipIcons: Boolean = PrefManager.getVal(PrefName.SkipExtensionIcons)
-    private val mangaExtensionManager: MangaExtensionManager = Injekt.get()
-    private val extensionsAdapter = MangaExtensionsAdapter(
+    private val animeExtensionManager: AnimeExtensionManager = Injekt.get()
+    private val extensionsAdapter = AnimeExtensionsAdapter(
         { pkg ->
             val name = pkg.name
             val changeUIVisibility: (Boolean) -> Unit = { show ->
@@ -76,7 +75,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                 activity.findViewById<FrameLayout>(R.id.fragmentExtensionsContainer).isGone = show
             }
             var itemSelected = false
-            val allSettings = pkg.sources.filterIsInstance<ConfigurableSource>()
+            val allSettings = pkg.sources.filterIsInstance<ConfigurableAnimeSource>()
             if (allSettings.isNotEmpty()) {
                 var selectedSetting = allSettings[0]
                 if (allSettings.size > 1) {
@@ -91,9 +90,8 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                             selectedSetting = allSettings[selectedIndex]
                             dialog.dismiss()
 
-                            // Move the fragment transaction here
                             val fragment =
-                                MangaSourcePreferencesFragment().getInstance(selectedSetting.id) {
+                                AnimeSourcePreferencesFragment().getInstance(selectedSetting.id) {
                                     changeUIVisibility(true)
                                 }
                             parentFragmentManager.beginTransaction()
@@ -112,7 +110,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                 } else {
                     // If there's only one setting, proceed with the fragment transaction
                     val fragment =
-                        MangaSourcePreferencesFragment().getInstance(selectedSetting.id) {
+                        AnimeSourcePreferencesFragment().getInstance(selectedSetting.id) {
                             changeUIVisibility(true)
                         }
                     parentFragmentManager.beginTransaction()
@@ -120,6 +118,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                         .replace(R.id.fragmentExtensionsContainer, fragment)
                         .addToBackStack(null)
                         .commit()
+
                 }
 
                 // Hide ViewPager2 and TabLayout
@@ -129,14 +128,14 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                     .show()
             }
         },
-        { pkg: MangaExtension.Installed, forceDelete: Boolean ->
+        { pkg, forceDelete ->
             if (isAdded) {  // Check if the fragment is currently added to its activity
                 val context = requireContext()  // Store context in a variable
                 val notificationManager =
                     context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager  // Initialize NotificationManager once
 
                 if (pkg.hasUpdate && !forceDelete) {
-                    mangaExtensionManager.updateExtension(pkg)
+                    animeExtensionManager.updateExtension(pkg)
                         .observeOn(AndroidSchedulers.mainThread())  // Observe on main thread
                         .subscribe(
                             { installStep ->
@@ -168,7 +167,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                                     context,
                                     Notifications.CHANNEL_DOWNLOADER_PROGRESS
                                 )
-                                    .setSmallIcon(R.drawable.ic_check)
+                                    .setSmallIcon(R.drawable.ic_circle_check)
                                     .setContentTitle("Update complete")
                                     .setContentText("The extension has been successfully updated.")
                                     .setPriority(NotificationCompat.PRIORITY_LOW)
@@ -177,7 +176,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
                             }
                         )
                 } else {
-                    mangaExtensionManager.uninstallExtension(pkg.pkgName)
+                    animeExtensionManager.uninstallExtension(pkg.pkgName)
                     snackString("Extension uninstalled")
                 }
             }
@@ -248,19 +247,19 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(extensionsRecyclerView)
 
         lifecycleScope.launch {
-            mangaExtensionManager.installedExtensionsFlow.collect { extensions ->
-                extensionsAdapter.updateData(sortToMangaSourcesList(extensions))
+            animeExtensionManager.installedExtensionsFlow.collect { extensions ->
+                extensionsAdapter.updateData(sortToAnimeSourcesList(extensions))
             }
         }
         return binding.root
     }
 
-    private fun sortToMangaSourcesList(inpt: List<MangaExtension.Installed>): List<MangaExtension.Installed> {
+    private fun sortToAnimeSourcesList(inpt: List<AnimeExtension.Installed>): List<AnimeExtension.Installed> {
         val sourcesMap = inpt.associateBy { it.name }
-        val orderedSources = MangaSources.pinnedMangaSources.mapNotNull { name ->
+        val orderedSources = AnimeSources.pinnedAnimeSources.mapNotNull { name ->
             sourcesMap[name]
         }
-        return orderedSources + inpt.filter { !MangaSources.pinnedMangaSources.contains(it.name) }
+        return orderedSources + inpt.filter { !AnimeSources.pinnedAnimeSources.contains(it.name) }
     }
 
     override fun onDestroyView() {
@@ -270,23 +269,30 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
     override fun updateContentBasedOnQuery(query: String?) {
         extensionsAdapter.filter(
             query,
-            sortToMangaSourcesList(mangaExtensionManager.installedExtensionsFlow.value)
+            sortToAnimeSourcesList(animeExtensionManager.installedExtensionsFlow.value)
         )
     }
 
     override fun notifyDataChanged() {}
 
-    private class MangaExtensionsAdapter(
-        private val onSettingsClicked: (MangaExtension.Installed) -> Unit,
-        private val onUninstallClicked: (MangaExtension.Installed, Boolean) -> Unit,
-        private val onSearchClicked: (MangaExtension.Installed) -> Unit,
+    private class AnimeExtensionsAdapter(
+        private val onSettingsClicked: (AnimeExtension.Installed) -> Unit,
+        private val onUninstallClicked: (AnimeExtension.Installed, Boolean) -> Unit,
+        private val onSearchClicked: (AnimeExtension.Installed) -> Unit,
         val skipIcons: Boolean
-    ) : ListAdapter<MangaExtension.Installed, MangaExtensionsAdapter.ViewHolder>(
+    ) : ListAdapter<AnimeExtension.Installed, AnimeExtensionsAdapter.ViewHolder>(
         DIFF_CALLBACK_INSTALLED
     ) {
 
-        fun updateData(newExtensions: List<MangaExtension.Installed>) {
+        fun updateData(newExtensions: List<AnimeExtension.Installed>) {
             submitList(newExtensions)
+        }
+
+        fun updatePref() {
+            val map = currentList.map { it.name }
+            PrefManager.setVal(PrefName.AnimeSourcesOrder, map)
+            AnimeSources.pinnedAnimeSources = map
+            AnimeSources.performReorderAnimeSources()
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -295,16 +301,8 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
             return ViewHolder(view)
         }
 
-        fun updatePref() {
-            val map = currentList.map { it.name }.toList()
-            PrefManager.setVal(PrefName.MangaSourcesOrder, map)
-            MangaSources.pinnedMangaSources = map
-            MangaSources.performReorderMangaSources()
-        }
-
-        @SuppressLint("ClickableViewAccessibility")
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val extension = getItem(position)  // Use getItem() from ListAdapter
+            val extension = getItem(position)
             val nsfw = if (extension.isNsfw) "(18+)" else ""
             val lang = LanguageMapper.mapLanguageCodeToName(extension.lang)
             holder.extensionNameTextView.text = extension.name
@@ -357,7 +355,7 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
             }
         }
 
-        fun filter(query: String?, currentList: List<MangaExtension.Installed>) {
+        fun filter(query: String?, currentList: List<AnimeExtension.Installed>) {
             val filteredList = if (!query.isNullOrBlank()) {
                 currentList.filter { it.name.lowercase().contains(query.lowercase()) }
             } else { currentList }
@@ -375,23 +373,22 @@ class InstalledMangaExtensionsFragment : Fragment(), SearchQueryHandler {
 
         companion object {
             val DIFF_CALLBACK_INSTALLED =
-                object : DiffUtil.ItemCallback<MangaExtension.Installed>() {
+                object : DiffUtil.ItemCallback<AnimeExtension.Installed>() {
                     override fun areItemsTheSame(
-                        oldItem: MangaExtension.Installed,
-                        newItem: MangaExtension.Installed
+                        oldItem: AnimeExtension.Installed,
+                        newItem: AnimeExtension.Installed
                     ): Boolean {
                         return oldItem.pkgName == newItem.pkgName
                     }
 
                     override fun areContentsTheSame(
-                        oldItem: MangaExtension.Installed,
-                        newItem: MangaExtension.Installed
+                        oldItem: AnimeExtension.Installed,
+                        newItem: AnimeExtension.Installed
                     ): Boolean {
                         return oldItem == newItem
                     }
                 }
         }
     }
-
 
 }

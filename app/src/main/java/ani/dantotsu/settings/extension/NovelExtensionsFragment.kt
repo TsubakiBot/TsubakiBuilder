@@ -1,4 +1,4 @@
-package ani.dantotsu.settings.fragment
+package ani.dantotsu.settings.extension
 
 import android.app.NotificationManager
 import android.content.Context
@@ -11,32 +11,32 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.databinding.FragmentExtensionsBinding
+import ani.dantotsu.parsers.novel.NovelExtension
+import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.InstallerSteps
 import ani.dantotsu.settings.SearchQueryHandler
-import ani.dantotsu.settings.paging.MangaExtensionAdapter
-import ani.dantotsu.settings.paging.MangaExtensionsViewModel
-import ani.dantotsu.settings.paging.MangaExtensionsViewModelFactory
-import ani.dantotsu.settings.paging.OnMangaInstallClickListener
-import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
-import eu.kanade.tachiyomi.extension.manga.model.MangaExtension
+import ani.dantotsu.settings.paging.NovelExtensionAdapter
+import ani.dantotsu.settings.paging.NovelExtensionsViewModel
+import ani.dantotsu.settings.paging.NovelExtensionsViewModelFactory
+import ani.dantotsu.settings.paging.OnNovelInstallClickListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import rx.android.schedulers.AndroidSchedulers
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class MangaExtensionsFragment : Fragment(),
-    SearchQueryHandler, OnMangaInstallClickListener {
+class NovelExtensionsFragment : Fragment(),
+    SearchQueryHandler, OnNovelInstallClickListener {
     private var _binding: FragmentExtensionsBinding? = null
     private val binding by lazy { _binding!! }
 
-    private val mangaExtensionManager: MangaExtensionManager = Injekt.get()
-    private val viewModel: MangaExtensionsViewModel by viewModels {
-        MangaExtensionsViewModelFactory(mangaExtensionManager)
+    private val novelExtensionManager: NovelExtensionManager = Injekt.get()
+    private val viewModel: NovelExtensionsViewModel by viewModels {
+        NovelExtensionsViewModelFactory(novelExtensionManager)
     }
 
     private val adapter by lazy {
-        MangaExtensionAdapter(this)
+        NovelExtensionAdapter(this)
     }
 
     override fun onCreateView(
@@ -68,14 +68,19 @@ class MangaExtensionsFragment : Fragment(),
         viewModel.invalidatePager()
     }
 
-    override fun onInstallClick(pkg: MangaExtension.Available) {
+    override fun onInstallClick(pkg: NovelExtension.Available) {
         if (isAdded) {  // Check if the fragment is currently added to its activity
             val context = requireContext()
             val notificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val installerSteps = InstallerSteps(notificationManager, context)
+
+            if (pkg.pkgName.startsWith("plugin:")) {
+                
+                return
+            }
             // Start the installation process
-            mangaExtensionManager.installExtension(pkg)
+            novelExtensionManager.installExtension(pkg)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { installStep -> installerSteps.onInstallStep(installStep) {} },

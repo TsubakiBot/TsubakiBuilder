@@ -1,4 +1,4 @@
-package ani.dantotsu.settings.fragment
+package ani.dantotsu.settings.extension
 
 import android.os.Bundle
 import android.view.LayoutInflater
