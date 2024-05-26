@@ -352,6 +352,7 @@
     <string name="direction">Direction</string>
 
     <string name="comments_api">Comments API (Dantotsu)</string>
+    <string name="comments_api_desc">Warning: Known for trolling and abuse</string>
     <string name="no_recommendations">No suggestions available!</string>
     <string name="disable_mitm">Prevent Injection</string>
     <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
@@ -662,7 +663,7 @@
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
 
     <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this code are also license under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses. If you have any questions or feel this project is in violation of your license, please do not hesitate to contact the Discord channel above for clarification.</string>
+    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license.\nPortions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
 
     <string name="question_6">Why are my stats not updating?</string>
     <string name="answer_6">This is because it updates every 48 hours automatically (by Anilist). If you really need to update your stats, you can force update your stats after going to this [link](https://anilist.co/settings/lists).</string>
@@ -831,9 +832,9 @@
     <string name="open_website">Open Website</string>
 
     <string name="disable_debug">Disable Logging</string>
-    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
+    <string name="rogue_warning">May improve performance, but issues are ignored.</string>
     <string name="log_to_file">Log to File</string>
-    <string name="logging_warning">May cause lag. Only enable if experiencing issues.</string>
+    <string name="logging_warning">May cause lag. Only enable when necessary.</string>
     <string name="share_log">Click to share current log file</string>
     <string name="radius">Radius</string>
     <string name="sampling">Sampling</string>
@@ -1125,7 +1126,7 @@
     <string name="comment_mod">Comment Moderator</string>
 
     <string name="biometric_title">Biometric Verification</string>
-    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_summary">Require authentication to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>

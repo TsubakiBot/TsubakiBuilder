@@ -189,33 +189,6 @@ class SettingsSystemActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
-                        name = getString(R.string.biometric_title),
-                        desc = getString(R.string.biometric_summary),
-                        icon = R.drawable.ic_fingerprint_24,
-                        pref = PrefName.SecureLock,
-                        isVisible = canUseBiometrics()
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.use_foldable),
-                        desc = getString(R.string.use_foldable_desc),
-                        icon = R.drawable.ic_devices_fold_24,
-                        pref = PrefName.UseFoldable,
-                        isVisible = hasFoldingFeature
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
-                        name = getString(R.string.add_shortcuts),
-                        desc = getString(R.string.add_shortcuts_desc),
-                        icon = R.drawable.ic_app_shortcut_24,
-                        isChecked = PrefManager.getVal(PrefName.UseShortcuts),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                            restartApp()
-                        }
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
                         name = getString(R.string.check_app_updates),
                         desc = getString(R.string.check_app_updates_desc),
                         icon = R.drawable.ic_round_new_releases_24,
@@ -232,6 +205,40 @@ class SettingsSystemActivity : AppCompatActivity() {
                             }
                         },
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.biometric_title),
+                        desc = getString(R.string.biometric_summary),
+                        icon = R.drawable.ic_fingerprint_24,
+                        pref = PrefName.SecureLock,
+                        isVisible = canUseBiometrics()
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.add_shortcuts),
+                        desc = getString(R.string.add_shortcuts_desc),
+                        icon = R.drawable.ic_app_shortcut_24,
+                        isChecked = PrefManager.getVal(PrefName.UseShortcuts),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.UseShortcuts, isChecked)
+                            restartApp()
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.use_foldable),
+                        desc = getString(R.string.use_foldable_desc),
+                        icon = R.drawable.ic_devices_fold_24,
+                        pref = PrefName.UseFoldable,
+                        isVisible = hasFoldingFeature
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.comments_api),
+                        desc = getString(R.string.comments_api_desc),
+                        icon = R.drawable.ic_round_comment_24,
+                        pref = PrefName.CommentsOptIn
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
@@ -260,18 +267,6 @@ class SettingsSystemActivity : AppCompatActivity() {
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
-                        name = getString(R.string.disable_debug),
-                        desc = getString(R.string.rogue_warning),
-                        icon = R.drawable.ic_bug_report_24,
-                        isChecked = PrefManager.getVal(PrefName.Lightspeed),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(PrefName.Lightspeed, isChecked)
-                            Logger.clearLog()
-                            restartApp()
-                        }
-                    ),
-                    Settings(
-                        type = SettingsView.SWITCH,
                         name = getString(R.string.log_to_file),
                         desc = getString(R.string.logging_warning),
                         icon = R.drawable.ic_round_edit_note_24,
@@ -290,6 +285,18 @@ class SettingsSystemActivity : AppCompatActivity() {
                         icon = R.drawable.ic_round_share_24,
                         onClick = {
                             Logger.shareLog(this@SettingsSystemActivity)
+                        }
+                    ),
+                    Settings(
+                        type = SettingsView.SWITCH,
+                        name = getString(R.string.disable_debug),
+                        desc = getString(R.string.rogue_warning),
+                        icon = R.drawable.ic_bug_report_24,
+                        isChecked = PrefManager.getVal(PrefName.Lightspeed),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(PrefName.Lightspeed, isChecked)
+                            Logger.clearLog()
+                            restartApp()
                         }
                     )
                 )

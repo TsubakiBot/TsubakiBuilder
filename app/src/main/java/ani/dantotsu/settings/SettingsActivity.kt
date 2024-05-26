@@ -11,7 +11,9 @@ import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +22,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.connections.discord.Discord
+import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.loadImage
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.setSafeOnClickListener
+import ani.dantotsu.settings.fragment.DiscordDialogFragment
+import ani.dantotsu.settings.saving.PrefManager
+import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
@@ -70,16 +79,6 @@ class SettingsActivity : AppCompatActivity() {
 
             binding.settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
-                    Settings(
-                        type = SettingsView.BUTTON,
-                        name = getString(R.string.accounts),
-                        desc = getString(R.string.accounts_desc),
-                        icon = R.drawable.ic_round_person_32,
-                        onClick = {
-                            startActivity(Intent(context, SettingsAccountActivity::class.java))
-                        },
-                        hasTransition = true
-                    ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.ui_settings),
@@ -202,6 +201,149 @@ class SettingsActivity : AppCompatActivity() {
             settingsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
+            }
+
+            binding.apply {
+                fun reload() {
+                    if (Anilist.token != null) {
+                        settingsAnilistLogin.setText(R.string.logout)
+                        settingsAnilistLogin.setOnClickListener {
+                            Anilist.removeSavedToken()
+                            recreate()
+                            reload()
+                        }
+                        settingsAnilistUsername.visibility = View.VISIBLE
+                        settingsAnilistUsername.text = Anilist.username
+                        settingsAnilistAvatar.loadImage(Anilist.avatar)
+                        settingsAnilistAvatar.setOnClickListener {
+                            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                            val anilistLink = getString(
+                                R.string.anilist_link,
+                                PrefManager.getVal<String>(PrefName.AnilistUserName)
+                            )
+                            openLinkInBrowser(anilistLink)
+                        }
+
+                        settingsMALLoginRequired.visibility = View.GONE
+                        settingsMALLogin.visibility = View.VISIBLE
+                        settingsMALUsername.visibility = View.VISIBLE
+
+                        if (MAL.token != null) {
+                            settingsMALLogin.setText(R.string.logout)
+                            settingsMALLogin.setOnClickListener {
+                                MAL.removeSavedToken()
+                                recreate()
+                                reload()
+                            }
+                            settingsMALUsername.visibility = View.VISIBLE
+                            settingsMALUsername.text = MAL.username
+                            settingsMALAvatar.loadImage(MAL.avatar)
+                            settingsMALAvatar.setOnClickListener {
+                                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                                openLinkInBrowser(getString(R.string.myanilist_link, MAL.username))
+                            }
+                        } else {
+                            settingsMALAvatar.setImageResource(R.drawable.ic_round_person_32)
+                            settingsMALUsername.visibility = View.GONE
+                            settingsMALLogin.setText(R.string.login)
+                            settingsMALLogin.setOnClickListener {
+                                MAL.loginIntent(context)
+                            }
+                        }
+                    } else {
+                        settingsAnilistAvatar.setImageResource(R.drawable.ic_round_person_32)
+                        settingsAnilistUsername.visibility = View.GONE
+                        settingsAnilistLogin.setText(R.string.login)
+                        settingsAnilistLogin.setOnClickListener {
+                            Anilist.loginIntent(context)
+                        }
+                        settingsMALLoginRequired.visibility = View.VISIBLE
+                        settingsMALLogin.visibility = View.GONE
+                        settingsMALUsername.visibility = View.GONE
+                    }
+
+                    if (Discord.token != null) {
+                        val id = PrefManager.getVal(PrefName.DiscordId, null as String?)
+                        val avatar = PrefManager.getVal(PrefName.DiscordAvatar, null as String?)
+                        val username = PrefManager.getVal(PrefName.DiscordUserName, null as String?)
+                        if (id != null && avatar != null) {
+                            settingsDiscordAvatar.loadImage("https://cdn.discordapp.com/avatars/$id/$avatar.png")
+                            settingsDiscordAvatar.setOnClickListener {
+                                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                                val discordLink = getString(R.string.discord_link, id)
+                                openLinkInBrowser(discordLink)
+                            }
+                        }
+                        settingsDiscordUsername.visibility = View.VISIBLE
+                        settingsDiscordUsername.text =
+                            username ?: Discord.token?.replace(Regex("."), "*")
+                        settingsDiscordLogin.setText(R.string.logout)
+                        settingsDiscordLogin.setOnClickListener {
+                            Discord.removeSavedToken(context)
+                            recreate()
+                            reload()
+                        }
+
+                        settingsImageSwitcher.visibility = View.VISIBLE
+                        var initialStatus =
+                            when (PrefManager.getVal<String>(PrefName.DiscordStatus)) {
+                                "online" -> R.drawable.discord_status_online
+                                "idle" -> R.drawable.discord_status_idle
+                                "dnd" -> R.drawable.discord_status_dnd
+                                "invisible" -> R.drawable.discord_status_invisible
+                                else -> R.drawable.discord_status_online
+                            }
+                        settingsImageSwitcher.setImageResource(initialStatus)
+
+                        val zoomInAnimation =
+                            AnimationUtils.loadAnimation(context, R.anim.bounce_zoom)
+                        settingsImageSwitcher.setOnClickListener {
+                            var status = "online"
+                            initialStatus = when (initialStatus) {
+                                R.drawable.discord_status_online -> {
+                                    status = "idle"
+                                    R.drawable.discord_status_idle
+                                }
+
+                                R.drawable.discord_status_idle -> {
+                                    status = "dnd"
+                                    R.drawable.discord_status_dnd
+                                }
+
+                                R.drawable.discord_status_dnd -> {
+                                    status = "invisible"
+                                    R.drawable.discord_status_invisible
+                                }
+
+                                R.drawable.discord_status_invisible -> {
+                                    status = "online"
+                                    R.drawable.discord_status_online
+                                }
+
+                                else -> R.drawable.discord_status_online
+                            }
+
+                            PrefManager.setVal(PrefName.DiscordStatus, status)
+                            settingsImageSwitcher.setImageResource(initialStatus)
+                            settingsImageSwitcher.startAnimation(zoomInAnimation)
+                        }
+                        settingsImageSwitcher.setOnLongClickListener {
+                            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                            DiscordDialogFragment().show(supportFragmentManager, "dialog")
+                            true
+                        }
+                    } else {
+                        settingsImageSwitcher.visibility = View.GONE
+                        settingsDiscordAvatar.setImageResource(R.drawable.ic_round_person_32)
+                        settingsDiscordUsername.visibility = View.GONE
+                        settingsDiscordLogin.setText(R.string.login)
+                        settingsDiscordLogin.setOnClickListener {
+                            Discord.warning(context)
+                                .show(supportFragmentManager, "dialog")
+                        }
+                    }
+                }
+                reload()
             }
 
             if (!BuildConfig.FLAVOR.contains("fdroid")) {

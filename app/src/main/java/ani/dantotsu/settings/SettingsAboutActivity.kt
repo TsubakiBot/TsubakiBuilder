@@ -23,6 +23,8 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.view.dialog.CustomBottomDialog
+import io.noties.markwon.Markwon
+import io.noties.markwon.SoftBreakAddsNewLinePlugin
 import kotlinx.coroutines.launch
 
 class SettingsAboutActivity : AppCompatActivity() {
@@ -47,6 +49,25 @@ class SettingsAboutActivity : AppCompatActivity() {
 
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
+                    Settings(
+                        type = SettingsView.BUTTON,
+                        name = getString(R.string.account_help),
+                        icon = R.drawable.ic_round_help_24,
+                        onClick = {
+                            val title = getString(R.string.account_help)
+                            val full = getString(R.string.full_account_help)
+                            CustomBottomDialog.newInstance().apply {
+                                setTitleText(title)
+                                addView(
+                                    TextView(context).apply {
+                                        val markWon = Markwon.builder(context)
+                                            .usePlugin(SoftBreakAddsNewLinePlugin.create()).build()
+                                        markWon.setMarkdown(this, full)
+                                    }
+                                )
+                            }.show(supportFragmentManager, "dialog")
+                        }
+                    ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.faq),
