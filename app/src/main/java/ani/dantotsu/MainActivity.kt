@@ -53,7 +53,7 @@ import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
-import ani.dantotsu.profile.activity.NotificationActivity
+import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.settings.ExtensionsActivity
 import ani.dantotsu.settings.SettingsDialogFragment
 import ani.dantotsu.settings.saving.PrefManager

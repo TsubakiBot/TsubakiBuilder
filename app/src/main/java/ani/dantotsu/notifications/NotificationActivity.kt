@@ -1,4 +1,4 @@
-package ani.dantotsu.profile.activity
+package ani.dantotsu.notifications
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -32,6 +32,7 @@ import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.comment.CommentStore
 import ani.dantotsu.notifications.subscription.SubscriptionStore
 import ani.dantotsu.profile.ProfileActivity
+import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight

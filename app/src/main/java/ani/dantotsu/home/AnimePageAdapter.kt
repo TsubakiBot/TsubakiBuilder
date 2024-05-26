@@ -33,7 +33,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.SearchActivity
 import ani.dantotsu.media.reviews.ReviewPopupActivity
-import ani.dantotsu.profile.activity.NotificationActivity
+import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp

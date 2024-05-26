@@ -1,4 +1,4 @@
-package ani.dantotsu.profile.activity
+package ani.dantotsu.notifications
 
 import android.view.HapticFeedbackConstants
 import android.view.View
@@ -10,7 +10,8 @@ import ani.dantotsu.connections.anilist.api.NotificationType
 import ani.dantotsu.databinding.ItemNotificationBinding
 import ani.dantotsu.loadCover
 import ani.dantotsu.loadImage
-import ani.dantotsu.profile.activity.NotificationActivity.Companion.NotificationClickType
+import ani.dantotsu.notifications.NotificationActivity.Companion.NotificationClickType
+import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.setAnimation
 import ani.dantotsu.toPx
 import com.xwray.groupie.viewbinding.BindableItem

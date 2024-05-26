@@ -125,14 +125,14 @@ class SubscriptionNotificationTask : Task {
                                 }
                             else null
                         } ?: return@map
-                        addSubscriptionToStore(
+                        if (!addSubscriptionToStore(
                             SubscriptionStore(
                                 media.name,
                                 text.first,
                                 media.id,
                                 media.image
                             )
-                        )
+                        )) return@map
                         PrefManager.setVal(PrefName.UnreadCommentNotifications,
                             PrefManager.getVal<Int>(PrefName.UnreadCommentNotifications) + 1)
                         val notification = createNotification(
@@ -236,25 +236,20 @@ class SubscriptionNotificationTask : Task {
         )
     }
 
-    private fun addSubscriptionToStore(notification: SubscriptionStore) {
+    private fun addSubscriptionToStore(notification: SubscriptionStore): Boolean {
         val notificationStore = PrefManager.getNullableVal<List<SubscriptionStore>>(
             PrefName.SubscriptionNotificationStore,
             null
         ) ?: listOf()
         val newStore = notificationStore.toMutableList()
-        if (Version.isNougat) {
-            newStore.removeIf {
+        if (newStore.any {
                 it.mediaId == notification.mediaId  && it.content != notification.content
-            }
-        } else {
-            newStore.removeAll(newStore.filter {
-                it.mediaId == notification.mediaId  && it.content != notification.content
-            }.toSet())
-        }
+            }) return false
         if (newStore.size >= 100) {
             newStore.remove(newStore.minByOrNull { it.time })
         }
         newStore.add(notification)
         PrefManager.setVal(PrefName.SubscriptionNotificationStore, newStore)
+        return true
     }
 }
