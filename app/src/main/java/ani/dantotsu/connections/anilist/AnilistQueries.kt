@@ -685,8 +685,8 @@ class AnilistQueries {
             }
         }
 
-        returnMap["hiddenAnime"] = removedMedia.filter { it.anime != null }.distinctBy { it.id } as ArrayList<Media>
-        returnMap["hiddenManga"] = removedMedia.filter { it.manga != null }.distinctBy { it.id } as ArrayList<Media>
+        returnMap["hiddenAnime"] = removedMedia.filter { it.anime != null }.distinctBy { it.id }.toArrayList()
+        returnMap["hiddenManga"] = removedMedia.filter { it.manga != null }.distinctBy { it.id }.toArrayList()
         return returnMap
     }
 

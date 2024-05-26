@@ -165,8 +165,8 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     hasConfirmedSession = true
-                    binding.biometricShield.visibility = View.GONE
                     window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    binding.biometricShield.visibility = View.GONE
                 }
 
                 override fun onAuthenticationFailed() {
