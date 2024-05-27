@@ -61,19 +61,8 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:src="@drawable/ic_discord"
-                app:tint="?attr/colorOutline"
-                tools:ignore="ContentDescription" />
-
-            <ImageView
-                android:id="@+id/loginGitlab"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:padding="6dp"
-                android:src="@drawable/ic_gitlab_logo"
                 app:tint="?attr/colorOutline"
                 tools:ignore="ContentDescription" />
 
@@ -82,8 +71,17 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
-                android:padding="4dp"
                 android:src="@drawable/ic_himitsu_logo"
+                app:tint="?attr/colorOutline"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/loginGitlab"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_gitlab_logo"
                 app:tint="?attr/colorOutline"
                 tools:ignore="ContentDescription" />
 
