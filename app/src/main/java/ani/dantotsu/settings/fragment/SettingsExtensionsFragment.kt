@@ -144,7 +144,7 @@ class SettingsExtensionsFragment : Fragment() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.anime_add_repository),
                         desc = getString(R.string.anime_add_repository_desc),
-                        icon = R.drawable.ic_github,
+                        icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
                             val editText = dialogView.userAgentTextBox.apply {
@@ -183,7 +183,7 @@ class SettingsExtensionsFragment : Fragment() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.manga_add_repository),
                         desc = getString(R.string.manga_add_repository_desc),
-                        icon = R.drawable.ic_github,
+                        icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
                             val editText = dialogView.userAgentTextBox.apply {
@@ -222,7 +222,7 @@ class SettingsExtensionsFragment : Fragment() {
                         type = SettingsView.BUTTON,
                         name = getString(R.string.novel_add_repository),
                         desc = getString(R.string.novel_add_repository),
-                        icon = R.drawable.ic_github,
+                        icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
                             val editText = dialogView.userAgentTextBox.apply {
