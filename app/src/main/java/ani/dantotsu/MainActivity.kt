@@ -14,6 +14,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy
 import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
@@ -51,16 +53,15 @@ import ani.dantotsu.home.MangaFragment
 import ani.dantotsu.home.NoInternet
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.SearchActivity
+import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.notifications.TaskScheduler
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
-import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.settings.ExtensionsActivity
 import ani.dantotsu.settings.SettingsDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefManager.asLiveBool
 import ani.dantotsu.settings.saving.PrefName
-import bit.himitsu.withFlexibleMargin
 import ani.dantotsu.settings.saving.SharedPreferenceBooleanLiveData
 import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
@@ -69,6 +70,7 @@ import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
 import bit.himitsu.torrServerKill
 import bit.himitsu.update.MatagiUpdater
+import bit.himitsu.withFlexibleMargin
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -83,6 +85,7 @@ import nl.joery.animatedbottombar.AnimatedBottomBar
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.io.Serializable
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -99,7 +102,6 @@ class MainActivity : AppCompatActivity() {
     @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager(this).applyTheme()
-
         super.onCreate(savedInstanceState)
 
         if (PrefManager.getVal(PrefName.SecureLock)) {

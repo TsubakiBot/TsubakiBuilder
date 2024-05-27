@@ -682,18 +682,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val array = arrayOf(
-            "Subscribed",
-            "AnimeContinue",
-            "AnimeFav",
-            "AnimePlanned",
-            "MangaContinue",
-            "MangaFav",
-            "MangaPlanned",
-            "Recommendation",
-            "UserStatus"
-        )
-
         val containers = arrayOf(
             binding.homeSubscribedItemContainer,
             binding.homeContinueWatchingContainer,
@@ -704,7 +692,6 @@ class HomeFragment : Fragment() {
             binding.homePlannedMangaContainer,
             binding.homeRecommendedContainer,
             binding.homeUserStatusContainer,
-            binding.homeUserStatusContainer
         )
 
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }
@@ -715,14 +702,12 @@ class HomeFragment : Fragment() {
                         //Get userData First
                         loadFragment(requireActivity()) { load() }
                         model.loaded = true
-                        CoroutineScope(Dispatchers.IO).launch {
-                            model.setListImages()
-                        }
+                        model.setListImages()
                         var empty = true
                         val homeLayoutShow: List<Boolean> =
                             PrefManager.getVal(PrefName.HomeLayout)
                         model.initHomePage()
-                        (array.indices).forEach { i ->
+                        (containers.indices).forEach { i ->
                             if (homeLayoutShow.elementAt(i)) {
                                 empty = false
                             } else withContext(Dispatchers.Main) {

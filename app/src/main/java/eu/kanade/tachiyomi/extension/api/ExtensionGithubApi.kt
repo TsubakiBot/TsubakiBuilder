@@ -244,9 +244,7 @@ internal class ExtensionGithubApi {
 
             val extensions: ArrayList<NovelExtension.Available> = arrayListOf()
 
-            val repos =
-                PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos)
-                    .toMutableList().filter { it.endsWith("index.min.json") }
+            val repos = PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).toMutableList()
 
             repos.map {
                 async {
@@ -325,9 +323,7 @@ internal class ExtensionGithubApi {
 
             val plugins: ArrayList<NovelExtension.Plugin> = arrayListOf()
 
-            val repos =
-                PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos)
-                    .toMutableList().filter { it.endsWith("plugins.min.json") }
+            val repos = PrefManager.getVal<Set<String>>(PrefName.NovelExtensionRepos).toMutableList()
 
             repos.forEach {
                     try {

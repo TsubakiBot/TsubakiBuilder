@@ -55,7 +55,6 @@ class SubscriptionHelper {
             parser: AnimeParser,
             subscribeMedia: SubscribeMedia
         ): Episode? {
-
             val selected = loadSelected(subscribeMedia.id)
             val ep = withTimeoutOrNull(10 * 1000) {
                 tryWithSuspend {

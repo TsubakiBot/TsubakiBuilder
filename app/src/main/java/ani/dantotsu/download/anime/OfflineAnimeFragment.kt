@@ -387,13 +387,13 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 Logger.log("Error loading media.json: ${e.message}")
                 Logger.log(e)
                 OfflineAnimeModel(
-                    "unknown",
+                    downloadedType.titleName,
                     "0",
                     "??",
                     "??",
                     "??",
-                    "movie",
-                    "hmm",
+                    downloadedType.type.text,
+                    downloadedType.chapterName,
                     isOngoing = false,
                     isUserScored = false,
                     null,

@@ -11,9 +11,7 @@ interface Type {
                 "novel" -> MediaType.NOVEL
                 "torrent" -> AddonType.TORRENT
                 "download" -> AddonType.DOWNLOAD
-                else -> {
-                    null
-                }
+                else -> { null }
             }
         }
     }

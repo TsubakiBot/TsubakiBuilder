@@ -121,7 +121,7 @@ class AnimeDownloaderService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         snackString("Download started")
-        val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+        val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
         serviceScope.launch {
             mutex.withLock {
                 if (!isCurrentlyProcessing) {
@@ -135,7 +135,7 @@ class AnimeDownloaderService : Service() {
     }
 
     private fun processQueue() {
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             while (AnimeServiceDataSingleton.downloadQueue.isNotEmpty()) {
                 val task = AnimeServiceDataSingleton.downloadQueue.poll()
                 if (task != null) {
@@ -169,7 +169,7 @@ class AnimeDownloaderService : Service() {
             ffExtension!!.cancelDownload(it)
         }
         currentTasks.removeAll { it.getTaskName() == taskName }
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             mutex.withLock {
                 downloadJobs[taskName]?.cancel()
                 downloadJobs.remove(taskName)
@@ -199,7 +199,7 @@ class AnimeDownloaderService : Service() {
     }
 
     @androidx.annotation.OptIn(UnstableApi::class)
-    suspend fun download(task: AnimeDownloadTask) = withContext(Dispatchers.Main) {
+    suspend fun download(task: AnimeDownloadTask) = withContext(Dispatchers.IO) {
         try {
             val notifi = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 ContextCompat.checkSelfPermission(
@@ -283,8 +283,10 @@ class AnimeDownloaderService : Service() {
                             )
                         } Download failed"
                     )
-                    notificationManager.notify(NOTIFICATION_ID, builder.build())
-                    toast("${getTaskName(task.title, task.episode)} Download failed")
+                    withContext(Dispatchers.Main) {
+                        notificationManager.notify(NOTIFICATION_ID, builder.build())
+                        toast("${getTaskName(task.title, task.episode)} Download failed")
+                    }
                     downloadsManager.removeDownload(
                         DownloadedType(
                             task.title,
@@ -315,7 +317,9 @@ class AnimeDownloaderService : Service() {
                     percent.coerceAtMost(99)
                 )
                 if (notifi) {
-                    notificationManager.notify(NOTIFICATION_ID, builder.build())
+                    withContext(Dispatchers.Main) {
+                        notificationManager.notify(NOTIFICATION_ID, builder.build())
+                    }
                 }
                 kotlinx.coroutines.delay(2000)
             }
@@ -330,8 +334,10 @@ class AnimeDownloaderService : Service() {
                             )
                         } Download failed"
                     )
-                    notificationManager.notify(NOTIFICATION_ID, builder.build())
-                    snackString("${getTaskName(task.title, task.episode)} Download failed")
+                    withContext(Dispatchers.Main) {
+                        notificationManager.notify(NOTIFICATION_ID, builder.build())
+                        snackString("${getTaskName(task.title, task.episode)} Download failed")
+                    }
                     downloadsManager.removeDownload(
                         DownloadedType(
                             task.title,
@@ -361,8 +367,10 @@ class AnimeDownloaderService : Service() {
                         )
                     } Download completed"
                 )
-                notificationManager.notify(NOTIFICATION_ID, builder.build())
-                snackString("${getTaskName(task.title, task.episode)} Download completed")
+                withContext(Dispatchers.Main) {
+                    notificationManager.notify(NOTIFICATION_ID, builder.build())
+                    snackString("${getTaskName(task.title, task.episode)} Download completed")
+                }
                 PrefManager.getAnimeDownloadPreferences().edit().putString(
                     task.getTaskName(),
                     task.video.file.url

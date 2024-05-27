@@ -494,15 +494,15 @@ class AnilistQueries {
 
         val response = executeQuery<Query.HomePageMedia>(query, show = true)
         val returnMap = mutableMapOf<String, ArrayList<*>>()
-        fun current(type: String) {
+        fun current(type: MediaType) {
             val subMap = mutableMapOf<Int, Media>()
             val returnArray = arrayListOf<Media>()
             val current =
-                if (type == MediaType.ANIME.text)
+                if (type == MediaType.ANIME)
                     response?.data?.currentAnime
                 else response?.data?.currentManga
             val repeating =
-                if (type == MediaType.ANIME.text)
+                if (type == MediaType.ANIME)
                     response?.data?.repeatingAnime
                 else response?.data?.repeatingManga
             current?.lists?.forEach { li ->
@@ -528,17 +528,17 @@ class AnilistQueries {
                     }
                 }
             }
-            if (type != MediaType.ANIME.text) {
+            if (type != MediaType.ANIME) {
                 returnArray.addAll(subMap.values)
-                returnMap["current$type"] = returnArray
+                returnMap["current${type.text}"] = returnArray
                 return
             }
             val list = PrefManager.getNullableCustomVal(
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            )
-            if (!list.isNullOrEmpty()) {
+            ) ?: listOf<Int>()
+            if (list.isNotEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
@@ -546,14 +546,14 @@ class AnilistQueries {
                     if (it.value !in returnArray) returnArray.add(it.value)
                 }
             } else returnArray.addAll(subMap.values)
-            returnMap["current$type"] = returnArray
+            returnMap["current${type.text}"] = returnArray
         }
 
-        fun planned(type: String) {
+        fun planned(type: MediaType) {
             val subMap = mutableMapOf<Int, Media>()
             val returnArray = arrayListOf<Media>()
             val current =
-                if (type == MediaType.ANIME.text)
+                if (type == MediaType.ANIME)
                     response?.data?.plannedAnime
                 else response?.data?.plannedManga
             current?.lists?.forEach { li ->
@@ -571,8 +571,8 @@ class AnilistQueries {
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            )
-            if (!list.isNullOrEmpty()) {
+            ) ?: listOf<Int>()
+            if (list.isNotEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
@@ -583,10 +583,10 @@ class AnilistQueries {
             returnMap["planned$type"] = returnArray
         }
 
-        fun favorite(type: String) {
+        fun favorite(type: MediaType) {
             val favourites =
-                if (type == "Anime") response?.data?.favoriteAnime?.favourites else response?.data?.favoriteManga?.favourites
-            val apiMediaList = if (type == "Anime") favourites?.anime else favourites?.manga
+                if (type == MediaType.ANIME) response?.data?.favoriteAnime?.favourites else response?.data?.favoriteManga?.favourites
+            val apiMediaList = if (type == MediaType.ANIME) favourites?.anime else favourites?.manga
             val returnArray = arrayListOf<Media>()
             apiMediaList?.edges?.forEach {
                 it.node?.let { i ->
@@ -601,13 +601,13 @@ class AnilistQueries {
             returnMap["favorite$type"] = returnArray
         }
 
-        current(MediaType.ANIME.text)
-        favorite(MediaType.ANIME.text)
-        planned(MediaType.ANIME.text)
+        current(MediaType.ANIME)
+        favorite(MediaType.ANIME)
+        planned(MediaType.ANIME)
 
-        current(MediaType.MANGA.text)
-        favorite(MediaType.MANGA.text)
-        planned(MediaType.MANGA.text)
+        current(MediaType.MANGA)
+        favorite(MediaType.MANGA)
+        planned(MediaType.MANGA)
 
         val subMap = mutableMapOf<Int, Media>()
         response?.data?.recommendationQuery?.apply {
@@ -747,8 +747,8 @@ class AnilistQueries {
                 "continueAnimeList",
                 listOf<Int>(),
                 List::class.java
-            )
-            if (!list.isNullOrEmpty()) {
+            )  ?: listOf<Int>()
+            if (list.isNotEmpty()) {
                 list.reversed().forEach {
                     if (subMap.containsKey(it)) returnArray.add(subMap[it]!!)
                 }
@@ -760,10 +760,10 @@ class AnilistQueries {
 
         }
 
-        if (type == null || type == MediaType.ANIME) {
+        if (type != null) {
+            current(type)
+        } else {
             current(MediaType.ANIME)
-        }
-        if (type == null || type == MediaType.MANGA) {
             current(MediaType.MANGA)
         }
         return if (type != null) {
