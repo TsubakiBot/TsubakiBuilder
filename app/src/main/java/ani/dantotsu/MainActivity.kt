@@ -527,7 +527,7 @@ class MainActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     if (!(PrefManager.getVal(PrefName.AllowOpeningLinks) as Boolean)) {
                         CustomBottomDialog.newInstance().apply {
-                            title = "Allow Dantotsu to automatically open Anilist & MAL Links?"
+                            title = getString(R.string.auto_open_links)
                             val md = "Open settings & click +Add Links & select Anilist & Mal urls"
                             addView(TextView(this@MainActivity).apply {
                                 val markWon =
@@ -596,15 +596,15 @@ class MainActivity : AppCompatActivity() {
 
         // Inflate the dialog layout
         val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-        dialogView.userAgentTextBox.hint = "Password"
+        dialogView.userAgentTextBox.hint = getString(R.string.password)
         dialogView.subtitle.visibility = View.VISIBLE
         dialogView.subtitle.text = getString(R.string.enter_password_to_decrypt_file)
 
         val dialog = AlertDialog.Builder(this, R.style.MyPopup)
-            .setTitle("Enter Password")
+            .setTitle(R.string.enter_password)
             .setView(dialogView.root)
-            .setPositiveButton("OK", null)
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setPositiveButton(R.string.ok, null)
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
                 password.fill('0')
                 dialog.dismiss()
                 callback(null)

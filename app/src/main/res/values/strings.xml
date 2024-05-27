@@ -1176,4 +1176,5 @@
     <string name="running_fixes">Running Fixes…</string>
     <string name="test_search">Test Search</string>
     <string name="subtitle_langauge">Subtitle Langauge</string>
+    <string name="auto_open_links">Allow Himitsu to automatically open Anilist &amp; MAL Links?</string>
 </resources>
