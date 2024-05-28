@@ -758,14 +758,6 @@ class HomeFragment : Fragment() {
         if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-//        homeListContainerBinding.homeListContainer.postDelayed({
-//            homeListContainerBinding.homeListContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-//                height = 76.toPx
-//                topMargin = if (portrait) 8.toPx else 0
-//                bottomMargin = if (portrait) 0 else 24.toPx
-//            }
-//        }, 750)
-
         homeListContainerBinding.homeListContainer.run {
             ValueAnimator.ofInt(measuredHeight, 76.toPx).apply {
                 addUpdateListener { valueAnimator ->
@@ -773,10 +765,24 @@ class HomeFragment : Fragment() {
                     layoutParams.height = (valueAnimator.getAnimatedValue() as Int)
                     setLayoutParams(layoutParams)
                 }
-                doOnEnd {
+            }.setDuration(750).start()
+            ValueAnimator.ofInt(
+                (layoutParams as ViewGroup.MarginLayoutParams).topMargin,
+                if (portrait) 8.toPx else 0
+            ).apply {
+                addUpdateListener { valueAnimator ->
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                        topMargin = if (portrait) 8.toPx else 0
-                        bottomMargin = if (portrait) 0 else 24.toPx
+                        topMargin = (valueAnimator.getAnimatedValue() as Int)
+                    }
+                }
+            }.setDuration(750).start()
+            ValueAnimator.ofInt(
+                (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin,
+                if (portrait) 0 else 24.toPx
+            ).apply {
+                addUpdateListener { valueAnimator ->
+                    updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        bottomMargin = (valueAnimator.getAnimatedValue() as Int)
                     }
                 }
             }.setDuration(750).start()
