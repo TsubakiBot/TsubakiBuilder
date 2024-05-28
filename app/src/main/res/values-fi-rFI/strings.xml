@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Siirtyy seuraavalle palvelimelle, jos sisältöä ei löydy</string>
     <string name="recentlyListOnly_desc">Näytä vain luettelosi kohteet viimeisessä välilehdessä</string>
     <string name="adult_only_content_desc">Näytä vain aikuisen sisältö tutkimussivulla</string>
-    <string name="anime_add_repository_desc">Lisää Anime laajennuksen repot kokoelmaan</string>
-    <string name="manga_add_repository_desc">Lisää Manga lisäosien varastot kokoelmaan</string>
     <string name="user_agent_desc">Vaihda oletuskäyttäjän agenttia</string>
     <string name="force_legacy_installer_desc">Käytä aikeita pyytääksesi paketin asennusta</string>
     <string name="skip_loading_extension_icons_desc">Älä lataa lisäosien kuvakkeita managerissa</string>

@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Flytter til neste server hvis innholdet ikke blir funnet</string>
     <string name="recentlyListOnly_desc">Vis bare dine listeelementer i den nylige fanen</string>
     <string name="adult_only_content_desc">Vis kun voksent innhold på utforske siden</string>
-    <string name="anime_add_repository_desc">Legg til anime utvidelses kodelagre for samling</string>
-    <string name="manga_add_repository_desc">Legg til manga utvidelse kodelagre for samling</string>
     <string name="user_agent_desc">Endre din standardagent</string>
     <string name="force_legacy_installer_desc">Bruk hensikt til å be om pakkeinstallasjon</string>
     <string name="skip_loading_extension_icons_desc">Ikke last utvidelses ikoner i administreringen</string>

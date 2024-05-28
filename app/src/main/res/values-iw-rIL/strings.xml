@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Moves to the next server if content is not found</string>
     <string name="recentlyListOnly_desc">Show only your list items in the recent tab</string>
     <string name="adult_only_content_desc">Show only adult content in the explore page</string>
-    <string name="anime_add_repository_desc">Add Anime extension repositories to collection</string>
-    <string name="manga_add_repository_desc">Add Manga extension repositories to collection</string>
     <string name="user_agent_desc">Change your default user agent</string>
     <string name="force_legacy_installer_desc">Use intents to request package install</string>
     <string name="skip_loading_extension_icons_desc">Don\'t load extension icons in manager</string>

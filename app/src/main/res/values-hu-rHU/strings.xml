@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Ugrás a következő szerverre, ha a tartalom nem található</string>
     <string name="recentlyListOnly_desc">Csak a listaelemeket jelenítse meg a legutóbbi fülön</string>
     <string name="adult_only_content_desc">Csak felnőtt tartalmak jelenjenek meg az felfedező oldalon</string>
-    <string name="anime_add_repository_desc">Adjon hozzá Anime kiterjesztési tárolókat a gyűjteményhez</string>
-    <string name="manga_add_repository_desc">Adjon hozzá Manga kiterjesztési tárolókat a gyűjteményhez</string>
     <string name="user_agent_desc">Változtassa meg az alapértelmezett felhasználói ügynökét</string>
     <string name="force_legacy_installer_desc">Használja az intenteket a csomagtelepítés kéréséhez</string>
     <string name="skip_loading_extension_icons_desc">Ne töltse be a kiterjesztés ikonjait az üzemeltetőben</string>

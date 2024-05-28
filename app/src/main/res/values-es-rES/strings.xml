@@ -895,8 +895,6 @@ Una solución al problema anterior es la siguiente:\n
     <string name="search_source_list_desc">Seleccione automáticamente el siguiente servidor si el servidor anterior no tiene los medios</string>
     <string name="recentlyListOnly_desc">Muestra solo los elementos de tu lista en la pestaña reciente</string>
     <string name="adult_only_content_desc">Mostrar solo contenido para adultos en la página de exploración</string>
-    <string name="anime_add_repository_desc">Agregue extensiones de anime de varias fuentes</string>
-    <string name="manga_add_repository_desc">Agregue extensiones de manga de varias fuentes</string>
     <string name="user_agent_desc">Cambia tu agente de usuario predeterminado</string>
     <string name="force_legacy_installer_desc">Utilice el instalador heredado para instalar extensiones (para teléfonos Android más antiguos)</string>
     <string name="skip_loading_extension_icons_desc">No cargue íconos de extensiones en la página de extensiones</string>

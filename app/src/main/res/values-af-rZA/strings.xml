@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Beweeg na die volgende bediener as inhoud nie gevind word nie</string>
     <string name="recentlyListOnly_desc">Wys slegs jou lysitems in die onlangse lêer</string>
     <string name="adult_only_content_desc">Wys slegs volwasse inhoud in die verkenbladsy</string>
-    <string name="anime_add_repository_desc">Voeg Anime-uitbreidingsbewaarplekke by tot versameling</string>
-    <string name="manga_add_repository_desc">Voeg Manga-uitbreidingsbewaarplekke by tot versameling</string>
     <string name="user_agent_desc">Verander jou verstek gebruikersagent</string>
     <string name="force_legacy_installer_desc">Gebruik bedoelings om pakketinstallasie aan te vra</string>
     <string name="skip_loading_extension_icons_desc">Moet nie uitbreidingsikone in bestuurder laai nie</string>

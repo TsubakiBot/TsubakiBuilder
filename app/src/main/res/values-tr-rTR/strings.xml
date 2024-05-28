@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">İçerik bulunamadığında bir sonraki sunucuya geçer</string>
     <string name="recentlyListOnly_desc">Son sekmesinde yalnızca listenizdeki öğeleri göster</string>
     <string name="adult_only_content_desc">Keşfet sayfasında yalnızca yetişkin içeriği göster</string>
-    <string name="anime_add_repository_desc">Anime uzantı depolarını koleksiyona ekle</string>
-    <string name="manga_add_repository_desc">Manga uzantı depolarını koleksiyona ekle</string>
     <string name="user_agent_desc">Varsayılan kullanıcı ajanınızı değiştirin</string>
     <string name="force_legacy_installer_desc">Paket yüklemesi istemek için niyetleri kullanın</string>
     <string name="skip_loading_extension_icons_desc">Yöneticide uzantı simgelerini yükleme</string>

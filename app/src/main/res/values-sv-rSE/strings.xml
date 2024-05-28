@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Flyttar till nästa server om innehållet inte hittas</string>
     <string name="recentlyListOnly_desc">Visa endast dina listobjekt i den senaste fliken</string>
     <string name="adult_only_content_desc">Visa endast vuxet innehåll i utforskarsidan</string>
-    <string name="anime_add_repository_desc">Lägg till Anime förlängningsarkiv till samling</string>
-    <string name="manga_add_repository_desc">Lägg till Manga förlängningsarkiv till samling</string>
     <string name="user_agent_desc">Ändra din standard användaragent</string>
     <string name="force_legacy_installer_desc">Använd intentioner för att begära paketinstallation</string>
     <string name="skip_loading_extension_icons_desc">Ladda inte tilläggsikoner i hanteraren</string>

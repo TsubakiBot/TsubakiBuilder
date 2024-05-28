@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Přesune na další server, pokud není obsah nalezen</string>
     <string name="recentlyListOnly_desc">Zobrazit pouze seznam položek v panelu nedávných</string>
     <string name="adult_only_content_desc">Zobrazit pouze obsah pro dospělé v průzkumné stránce</string>
-    <string name="anime_add_repository_desc">Přidat Anime rozšíření repozitáře do kolekce</string>
-    <string name="manga_add_repository_desc">Přidat repozitáře rozšíření Manga do sbírky</string>
     <string name="user_agent_desc">Změnit výchozí uživatelský agent</string>
     <string name="force_legacy_installer_desc">Použít záměry k žádosti o instalaci balíčku</string>
     <string name="skip_loading_extension_icons_desc">Nezobrazovat ikony rozšíření ve správci</string>

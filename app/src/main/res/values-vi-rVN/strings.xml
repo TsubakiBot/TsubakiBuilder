@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Chuyển sang máy chủ tiếp theo nếu không tìm thấy nội dung</string>
     <string name="recentlyListOnly_desc">Chỉ hiển thị các mục trong danh sách của bạn trên tab gần đây</string>
     <string name="adult_only_content_desc">Chỉ hiển thị nội dung dành cho người lớn trên trang khám phá</string>
-    <string name="anime_add_repository_desc">Thêm các kho lưu trữ tiện ích mở rộng Anime vào bộ sưu tập</string>
-    <string name="manga_add_repository_desc">Thêm các kho lưu trữ tiện ích mở rộng Manga vào bộ sưu tập</string>
     <string name="user_agent_desc">Thay đổi user agent mặc định của bạn</string>
     <string name="force_legacy_installer_desc">Sử dụng intents để yêu cầu cài đặt gói</string>
     <string name="skip_loading_extension_icons_desc">Không tải biểu tượng tiện ích mở rộng trong trình quản lý</string>

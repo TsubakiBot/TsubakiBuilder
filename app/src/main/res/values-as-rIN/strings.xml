@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">আগৰ চাৰ্ভাৰৰ মিডিয়া নাথাকিলে নতুন চাৰ্ভাৰ স্বয়ং-নিৰ্বাচন কৰক</string>
     <string name="recentlyListOnly_desc">শেহতীয়া টেবত কেৱল আপোনাৰ তালিকাৰ আইটেমসমূহ দেখুৱাওক</string>
     <string name="adult_only_content_desc">এক্সপলৰ পেজত মাত্ৰ এদালট কণ্টেনত হে দেখুৱাওক</string>
-    <string name="anime_add_repository_desc">বিভিন্ন চৌছৰ পৰা এনিমে এক্সটেনচন যোগ কৰক</string>
-    <string name="manga_add_repository_desc">বিভিন্ন চৌছৰ পৰা মাংগা এক্সটেনচন যোগ কৰক</string>
     <string name="user_agent_desc">আপোনাৰ ডিফল্ট ব্যৱহাৰকাৰী এজেণ্ট সলনি কৰক</string>
     <string name="force_legacy_installer_desc">পুৰাতন এণ্ড্ৰয়ড ফোনসমূহৰ বাবে পুৰাতন ইণ্স্টলাৰ ব্যৱহাৰ কৰক (এক্সটেনছন ইণ্স্টল কৰিবলৈ)</string>
     <string name="skip_loading_extension_icons_desc">এক্সটেনছনৰ পৃষ্ঠাৰ উপৰত চিত্ৰসমূহ ল\'ড নকৰিব</string>

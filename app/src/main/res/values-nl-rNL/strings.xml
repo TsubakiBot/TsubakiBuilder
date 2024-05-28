@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Verplaatst naar de volgende server als content niet gevonden is</string>
     <string name="recentlyListOnly_desc">Toon alleen uw lijstitems op het recente tabblad</string>
     <string name="adult_only_content_desc">Alleen inhoud van volwassenen op de verkenningspagina tonen</string>
-    <string name="anime_add_repository_desc">Anime extensie repositories toevoegen om te verzamelen</string>
-    <string name="manga_add_repository_desc">Voeg Manga extensie repositories toe aan collectie</string>
     <string name="user_agent_desc">Wijzig je standaard gebruikersagent</string>
     <string name="force_legacy_installer_desc">Gebruik intents om pakketinstallatie aan te vragen</string>
     <string name="skip_loading_extension_icons_desc">Extensiepictogrammen niet laden in manager</string>

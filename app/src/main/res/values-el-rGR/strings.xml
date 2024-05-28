@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Επιλέξτε αυτόματα τον επόμενο διακομιστή εάν ο προηγούμενος διακομιστής δεν έχει τα μέσα</string>
     <string name="recentlyListOnly_desc">Εμφάνιση μόνο των στοιχείων της λίστας σας στην πρόσφατη καρτέλα</string>
     <string name="adult_only_content_desc">Εμφάνιση μόνο περιεχομένου για ενηλίκους στη σελίδα εξερεύνησης</string>
-    <string name="anime_add_repository_desc">Προσθέστε επεκτάσεις Anime από διάφορες πηγές</string>
-    <string name="manga_add_repository_desc">Προσθέστε επεκτάσεις Manga από διάφορες πηγές</string>
     <string name="user_agent_desc">Αλλάξτε τον προεπιλεγμένο παράγοντα χρήστη</string>
     <string name="force_legacy_installer_desc">Χρησιμοποιήστε το πρόγραμμα εγκατάστασης παλαιού τύπου για να εγκαταστήσετε επεκτάσεις (Για παλαιότερα τηλέφωνα Android)</string>
     <string name="skip_loading_extension_icons_desc">Μην φορτώνετε εικονίδια επεκτάσεων στη σελίδα επέκτασης</string>

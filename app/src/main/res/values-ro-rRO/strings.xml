@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Se mută la următorul server dacă conținutul nu este găsit</string>
     <string name="recentlyListOnly_desc">Arată doar elementele din listă în fila recentă</string>
     <string name="adult_only_content_desc">Arată doar conținutul pentru adulți în pagina de explorare</string>
-    <string name="anime_add_repository_desc">Adaugă depozite de extensii Anime la colecție</string>
-    <string name="manga_add_repository_desc">Adaugă depozite de extensii Manga la colecție</string>
     <string name="user_agent_desc">Schimbă agentul implicit al utilizatorului</string>
     <string name="force_legacy_installer_desc">Utilizați intențiile pentru a solicita instalarea pachetului</string>
     <string name="skip_loading_extension_icons_desc">Nu încărca pictogramele extensiei în manager</string>

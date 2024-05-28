@@ -911,8 +911,6 @@ Genre : "</string>
     <string name="search_source_list_desc">Sélectionne automatiquement le serveur suivant si le serveur précédent n\'a pas le média</string>
     <string name="recentlyListOnly_desc">Afficher uniquement les éléments de votre liste dans l\'onglet récent</string>
     <string name="adult_only_content_desc">Afficher uniquement le contenu pour adultes dans la page de découverte</string>
-    <string name="anime_add_repository_desc">Ajoutez des extensions pour les Anime à partir de diverses sources</string>
-    <string name="manga_add_repository_desc">Ajoutez des extensions pour les manga à partir de diverses sources</string>
     <string name="user_agent_desc">Changez votre agent utilisateur par défaut</string>
     <string name="force_legacy_installer_desc">Utilisez l\'ancien programme d\'installation pour installer des extensions (pour les anciens appareils Android)</string>
     <string name="skip_loading_extension_icons_desc">Ne pas charger les icônes d\'extensions sur la page d\'extension</string>

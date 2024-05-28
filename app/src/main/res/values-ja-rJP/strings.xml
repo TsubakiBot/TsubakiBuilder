@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">コンテンツが見つからない場合は、次のサーバーに移動</string>
     <string name="recentlyListOnly_desc">最近のタブにリスト項目のみ表示する</string>
     <string name="adult_only_content_desc">探索ページに大人のコンテンツのみを表示する</string>
-    <string name="anime_add_repository_desc">Anime 拡張リポジトリをコレクションに追加</string>
-    <string name="manga_add_repository_desc">コレクションにマンガ拡張リポジトリを追加</string>
     <string name="user_agent_desc">デフォルトのユーザーエージェントを変更する</string>
     <string name="force_legacy_installer_desc">パッケージのインストールをリクエストするためにインテントを使用する</string>
     <string name="skip_loading_extension_icons_desc">マネージャーに拡張機能アイコンを読み込まないでください</string>

@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Переміститися на наступний сервер, якщо вміст не знайдено</string>
     <string name="recentlyListOnly_desc">Показувати лише елементи списку в останній вкладці</string>
     <string name="adult_only_content_desc">Показувати лише матеріали для дорослих на сторінці вивчення</string>
-    <string name="anime_add_repository_desc">Додати репозиторії розширень Anime до колекції</string>
-    <string name="manga_add_repository_desc">Додати репозиторії розширення Manga до колекції</string>
     <string name="user_agent_desc">Змінити агент користувача за замовчуванням</string>
     <string name="force_legacy_installer_desc">Використовувати наміри для запиту на встановлення пакунка</string>
     <string name="skip_loading_extension_icons_desc">Не завантажувати піктограми розширень в менеджері</string>

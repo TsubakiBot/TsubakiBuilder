@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Move para o próximo servidor, se o conteúdo não for encontrado</string>
     <string name="recentlyListOnly_desc">Mostrar apenas os itens da sua lista na aba recente</string>
     <string name="adult_only_content_desc">Mostrar apenas conteúdo adulto na página de exploração</string>
-    <string name="anime_add_repository_desc">Adicionar repositórios de extensões Anime à coleção</string>
-    <string name="manga_add_repository_desc">Adicionar repositórios de extensões Manga à coleção</string>
     <string name="user_agent_desc">Alterar o seu agente de usuário padrão</string>
     <string name="force_legacy_installer_desc">Usar intenções para solicitar a instalação do pacote</string>
     <string name="skip_loading_extension_icons_desc">Não carregar ícones de extensão no Gerenciador</string>

@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">未找到内容时移动到下一个服务器</string>
     <string name="recentlyListOnly_desc">在最近的标签中只显示您的列表项</string>
     <string name="adult_only_content_desc">在探索页面只显示成人内容</string>
-    <string name="anime_add_repository_desc">添加Anime扩展仓库到收藏</string>
-    <string name="manga_add_repository_desc">将 Manga 扩展仓库添加到收藏</string>
     <string name="user_agent_desc">更改您的默认用户代理</string>
     <string name="force_legacy_installer_desc">使用打算请求安装软件包</string>
     <string name="skip_loading_extension_icons_desc">不要在管理器中加载扩展图标</string>

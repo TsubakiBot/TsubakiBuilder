@@ -909,8 +909,6 @@
     <string name="search_source_list_desc">Auto-select the next server if the previous server doesn\'t have the media</string>
     <string name="recentlyListOnly_desc">Mostra solo gli elementi della lista nella scheda recente</string>
     <string name="adult_only_content_desc">Mostra solo contenuti per adulti nella pagina di esplorazione</string>
-    <string name="anime_add_repository_desc">Add Anime Extensions from various sources</string>
-    <string name="manga_add_repository_desc">Add Manga Extensions from various sources</string>
     <string name="user_agent_desc">Cambia il tuo user agent predefinito</string>
     <string name="force_legacy_installer_desc">Use the legacy installer to install extensions (For older android phones)</string>
     <string name="skip_loading_extension_icons_desc">Don\'t load icons of extensions on the extension page</string>
