@@ -18,22 +18,20 @@ class Contributors {
     fun getContributors(): Array<Developer> {
         val contributors = arrayListOf<Developer>()
         runBlocking(Dispatchers.IO) {
-            val repo = getString(R.string.repo_gh)
-            val res = client.get("https://api.github.com/repos/$repo/contributors")
+            val res = client.get("https://api.github.com/repos/rebelonion/Dantotsu/contributors")
                 .parsed<JsonArray>().map {
                     Mapper.json.decodeFromJsonElement<GithubResponse>(it)
                 }
-            val owner = res.first { it.login == "rebelonion" }
-            Collections.swap(res, res.indexOf(owner), 0)
+            Collections.swap(res, res.indexOf(res.first { it.login == "AbandonedCart" }), 0)
+            Collections.swap(res, res.indexOf(res.first { it.login == "rebelonion" }), 1)
             res.filter { it.login != "SunglassJerry" }.forEach {
                 contributors.add(
                     Developer(
                         it.login,
                         it.avatarUrl,
                         when (it.login) {
-                            "rebelonion" -> "Dantotsu Maintainer"
-                            "AbandonedCart" -> "${getString(R.string.contributor)} ${getString(R.string.himitsu)}"
-                            "sneazy-ibo" -> "${getString(R.string.contributor)} & ${getString(R.string.comment_mod)}"
+                            "rebelonion" -> getString(R.string.dev_maintainer, "Dantotsu")
+                            "AbandonedCart" ->  "${getString(R.string.himitsu)} ${getString(R.string.dev_maintainer, "Himitsu")}"
                             "WaiWhat" -> "Icon Designer"
                             else -> getString(R.string.contributor)
                         },
@@ -41,6 +39,16 @@ class Contributors {
                     )
                 )
             }
+            contributors.addAll(1,
+                arrayOf(
+                    Developer(
+                        "MoonPic",
+                        "https://gitlab.com/uploads/-/system/user/avatar/21385212/avatar.png",
+                        "${getString(R.string.himitsu)} Website Maintainer",
+                        "hhttps://github.com/moonpic"
+                    )
+                ).toList()
+            )
 
             contributors.addAll(
                 arrayOf(

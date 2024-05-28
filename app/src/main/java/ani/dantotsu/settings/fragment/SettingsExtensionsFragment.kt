@@ -143,7 +143,7 @@ class SettingsExtensionsFragment : Fragment() {
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.anime_add_repository),
-                        desc = getString(R.string.anime_add_repository_desc),
+                        desc = getString(R.string.add_repository_desc, MediaType.ANIME.text),
                         icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -177,12 +177,13 @@ class SettingsExtensionsFragment : Fragment() {
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.ANIME)
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.manga_add_repository),
-                        desc = getString(R.string.manga_add_repository_desc),
+                        desc = getString(R.string.add_repository_desc, MediaType.MANGA.text),
                         icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -216,12 +217,13 @@ class SettingsExtensionsFragment : Fragment() {
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.MANGA)
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
                         name = getString(R.string.novel_add_repository),
-                        desc = getString(R.string.novel_add_repository),
+                        desc = getString(R.string.add_repository_desc, MediaType.NOVEL.text),
                         icon = R.drawable.ic_github_mark,
                         onClick = {
                             val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
@@ -255,7 +257,8 @@ class SettingsExtensionsFragment : Fragment() {
                         },
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.NOVEL)
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -298,7 +301,8 @@ class SettingsExtensionsFragment : Fragment() {
 
                             alertDialog.show()
                             alertDialog.window?.setDimAmount(0.8f)
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

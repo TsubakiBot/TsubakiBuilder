@@ -70,7 +70,8 @@ class SettingsAboutFragment : Fragment() {
                                     }
                                 )
                             }.show(settings.supportFragmentManager, "dialog")
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -89,7 +90,8 @@ class SettingsAboutFragment : Fragment() {
                         icon = R.drawable.ic_round_accessible_forward_24,
                         onClick = {
                             DevelopersDialogFragment().show(settings.supportFragmentManager, "dialog")
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -98,7 +100,8 @@ class SettingsAboutFragment : Fragment() {
                         icon = R.drawable.ic_round_restaurant_24,
                         onClick = {
                             ForksDialogFragment().show(settings.supportFragmentManager, "dialog")
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -117,7 +120,8 @@ class SettingsAboutFragment : Fragment() {
                                 }
                                 show(settings.supportFragmentManager, "dialog")
                             }
-                        }
+                        },
+                        isActivity = true
                     ),
                 )
             )

@@ -87,8 +87,8 @@ class SettingsAnimeFragment : Fragment() {
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
-                        }
-
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

@@ -123,7 +123,8 @@ class SettingsCommonFragment : Fragment() {
                                 dialog.dismiss()
                             }.show()
                             dialog.window?.setDimAmount(0.8f)
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -163,7 +164,8 @@ class SettingsCommonFragment : Fragment() {
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.SWITCH,

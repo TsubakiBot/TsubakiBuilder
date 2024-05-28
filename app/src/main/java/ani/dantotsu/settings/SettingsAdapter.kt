@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemSettingsBinding
 import ani.dantotsu.databinding.ItemSettingsHeaderBinding
 import ani.dantotsu.databinding.ItemSettingsSliderBinding
@@ -84,6 +85,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 }
                 b.settingsLayout.isVisible = settings.isVisible
                 b.settingsIconRight.isVisible = settings.isActivity || settings.hasTransition
+                b.settingsIconRight.setImageResource(R.drawable.ic_round_delete_24)
                 b.attachView.isVisible = settings.attach != null
                 settings.attach?.invoke(b)
             }

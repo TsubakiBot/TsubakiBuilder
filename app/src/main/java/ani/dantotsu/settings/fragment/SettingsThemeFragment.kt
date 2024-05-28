@@ -118,7 +118,8 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                                 .choiceMode(SimpleColorDialog.SINGLE_CHOICE).neg()
                                 .show(settings, tag)
                         },
-                        isVisible = Version.isSnowCone
+                        isVisible = Version.isSnowCone,
+                        isActivity = true
                     )
                 )
             )

@@ -73,8 +73,8 @@ class SettingsMangaFragment : Fragment() {
                                 setNegButton(R.string.no)
                                 show()
                             }
-                        }
-
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.BUTTON,
@@ -92,7 +92,8 @@ class SettingsMangaFragment : Fragment() {
                                 setNegButton(R.string.no)
                                 show()
                             }
-                        }
+                        },
+                        isActivity = true
                     ),
                     Settings(
                         type = SettingsView.SWITCH,
