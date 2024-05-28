@@ -45,7 +45,7 @@ class Contributors {
                         "MoonPic",
                         "https://gitlab.com/uploads/-/system/user/avatar/21385212/avatar.png",
                         "${getString(R.string.himitsu)} Website Maintainer",
-                        "hhttps://github.com/moonpic"
+                        "https://github.com/moonpic"
                     )
                 ).toList()
             )
