@@ -142,7 +142,7 @@ class UserInterfaceFragment : Fragment() {
                     Settings(
                         type = ViewType.SWITCH,
                         name = getString(R.string.trailer_banners),
-                        icon = R.drawable.ic_round_photo_size_select_actual_24,
+                        icon = R.drawable.ic_video_camera_back_24,
                         pref = PrefName.YouTubeBanners
                     ),
                     Settings(

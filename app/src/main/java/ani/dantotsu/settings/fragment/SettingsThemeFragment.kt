@@ -50,7 +50,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         type = ViewType.SWITCH,
                         name = getString(R.string.oled_theme_variant),
                         desc = getString(R.string.oled_theme_variant_desc),
-                        icon = R.drawable.ic_round_brightness_4_24,
+                        icon = R.drawable.ic_invert_colors_24,
                         isChecked = PrefManager.getVal(PrefName.UseOLED),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseOLED, isChecked)
@@ -61,7 +61,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         type = ViewType.SWITCH,
                         name = getString(R.string.use_material_you),
                         desc = getString(R.string.use_material_you_desc),
-                        icon = R.drawable.ic_round_new_releases_24,
+                        icon = R.drawable.ic_wallpaper_24,
                         isChecked = PrefManager.getVal(PrefName.UseMaterialYou),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseMaterialYou, isChecked)
@@ -74,7 +74,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         type = ViewType.SWITCH,
                         name = getString(R.string.use_unique_theme_for_each_item),
                         desc = getString(R.string.use_unique_theme_for_each_item_desc),
-                        icon = R.drawable.ic_palette,
+                        icon = R.drawable.ic_colorize_24,
                         isChecked = PrefManager.getVal(PrefName.UseSourceTheme),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseSourceTheme, isChecked)
@@ -86,7 +86,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         type = ViewType.SWITCH,
                         name = getString(R.string.use_custom_theme),
                         desc = getString(R.string.use_custom_theme_desc),
-                        icon = R.drawable.ic_palette,
+                        icon = R.drawable.ic_format_color_fill_24,
                         isChecked = PrefManager.getVal(PrefName.UseCustomTheme),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseCustomTheme, isChecked)

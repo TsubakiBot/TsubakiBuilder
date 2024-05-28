@@ -87,7 +87,7 @@ class SettingsAboutFragment : Fragment() {
                         type = ViewType.BUTTON,
                         name = getString(R.string.devs),
                         desc = getString(R.string.devs_desc),
-                        icon = R.drawable.ic_round_accessible_forward_24,
+                        icon = R.drawable.ic_wheelchair_pickup_24,
                         onClick = {
                             DevelopersDialogFragment().show(settings.supportFragmentManager, "dialog")
                         },

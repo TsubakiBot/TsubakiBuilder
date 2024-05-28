@@ -125,7 +125,7 @@ class SettingsMainFragment : Fragment() {
                         type = ViewType.BUTTON,
                         name = getString(R.string.addons),
                         desc = getString(R.string.addons_desc),
-                        icon = R.drawable.ic_round_restaurant_24,
+                        icon = R.drawable.ic_sports_kabaddi_24,
                         onClick = {
                             settings.setFragment(Page.ADDON)
                         },

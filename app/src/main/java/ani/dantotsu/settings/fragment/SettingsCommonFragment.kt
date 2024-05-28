@@ -92,7 +92,7 @@ class SettingsCommonFragment : Fragment() {
                         type = ViewType.SWITCH,
                         name = getString(R.string.always_continue_content),
                         desc = getString(R.string.always_continue_content_desc),
-                        icon = R.drawable.ic_round_delete_24,
+                        icon = R.drawable.ic_insert_page_break_24,
                         pref = PrefName.ContinueMedia
                     ),
                     Settings(
