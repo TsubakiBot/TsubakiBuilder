@@ -27,6 +27,9 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
                 val behavior = BottomSheetBehavior.from(requireView().parent as View)
                 behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
+            WindowInsetsControllerCompat(
+                window, window.decorView
+            ).show(WindowInsetsCompat.Type.navigationBars())
             window.navigationBarColor = requireContext().getThemeColor(
                 com.google.android.material.R.attr.colorSurface
             )
