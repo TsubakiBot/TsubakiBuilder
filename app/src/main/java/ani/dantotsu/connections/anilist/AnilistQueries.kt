@@ -1929,18 +1929,6 @@ Page(page:$page,perPage:$ITEMS_PER_PAGE_L) {
         )
     }
 
-    suspend fun toggleFollow(id: Int): Query.ToggleFollow? {
-        return executeQuery<Query.ToggleFollow>(
-            """mutation{ToggleFollow(userId:$id){id, isFollowing, isFollower}}"""
-        )
-    }
-
-    suspend fun toggleLike(id: Int, type: String): ToggleLike? {
-        return executeQuery<ToggleLike>(
-            """mutation Like{ToggleLikeV2(id:$id,type:$type){__typename}}"""
-        )
-    }
-
     suspend fun getUserProfile(id: Int): Query.UserProfileResponse? {
         return executeQuery<Query.UserProfileResponse>(
             """{followerPage:Page{followers(userId:$id){id}pageInfo{total}}followingPage:Page{following(userId:$id){id}pageInfo{total}}user:User(id:$id){id name about(asHtml:true)avatar{medium large}bannerImage isFollowing isFollower isBlocked favourites{anime{nodes{id coverImage{extraLarge large medium color}}}manga{nodes{id coverImage{extraLarge large medium color}}}characters{nodes{id name{first middle last full native alternative userPreferred}image{large medium}isFavourite}}staff{nodes{id name{first middle last full native alternative userPreferred}image{large medium}isFavourite}}studios{nodes{id name isFavourite}}}statistics{anime{count meanScore standardDeviation minutesWatched episodesWatched chaptersRead volumesRead}manga{count meanScore standardDeviation minutesWatched episodesWatched chaptersRead volumesRead}}siteUrl}}""",

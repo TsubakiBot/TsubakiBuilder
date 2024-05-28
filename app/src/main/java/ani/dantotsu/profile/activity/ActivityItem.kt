@@ -110,7 +110,7 @@ class ActivityItem(
         binding.activityLikeContainer.setOnClickListener {
             val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
             scope.launch {
-                val res = Anilist.query.toggleLike(activity.id, "ACTIVITY")
+                val res = Anilist.mutation.toggleLike(activity.id, "ACTIVITY")
                 withContext(Dispatchers.Main) {
                     if (res != null) {
 

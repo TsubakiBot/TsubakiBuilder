@@ -53,7 +53,7 @@ class ActivityReplyItem(
         binding.activityLikeContainer.setOnClickListener {
             val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
             scope.launch {
-                val res = Anilist.query.toggleLike(reply.id, "ACTIVITY_REPLY")
+                val res = Anilist.mutation.toggleLike(reply.id, "ACTIVITY_REPLY")
                 withContext(Dispatchers.Main) {
                     if (res != null) {
                         if (reply.isLiked) {

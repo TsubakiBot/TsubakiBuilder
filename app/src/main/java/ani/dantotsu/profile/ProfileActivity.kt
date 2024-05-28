@@ -115,7 +115,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
                     followButton.setOnClickListener {
                         lifecycleScope.launch(Dispatchers.IO) {
-                            val res = Anilist.query.toggleFollow(user.id)
+                            val res = Anilist.mutation.toggleFollow(user.id)
                             if (res?.data?.toggleFollow != null) {
                                 withContext(Dispatchers.Main) {
                                     snackString(R.string.success)

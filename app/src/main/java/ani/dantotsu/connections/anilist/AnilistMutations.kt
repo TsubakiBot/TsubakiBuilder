@@ -3,35 +3,12 @@ package ani.dantotsu.connections.anilist
 import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query
+import ani.dantotsu.connections.anilist.api.ToggleLike
 import bit.himitsu.Strings.getString
 import com.google.gson.Gson
 import kotlinx.serialization.json.JsonObject
 
 class AnilistMutations {
-
-    suspend fun toggleFav(anime: Boolean = true, id: Int) {
-        val query =
-            """mutation (${"$"}animeId: Int,${"$"}mangaId:Int) { ToggleFavourite(animeId:${"$"}animeId,mangaId:${"$"}mangaId){ anime { edges { id } } manga { edges { id } } } }"""
-        val variables = if (anime) """{"animeId":"$id"}""" else """{"mangaId":"$id"}"""
-        executeQuery<JsonObject>(query, variables)
-    }
-
-    suspend fun toggleFav(type: FavType, id: Int): Boolean {
-        val filter = when (type) {
-            FavType.ANIME -> "animeId"
-            FavType.MANGA -> "mangaId"
-            FavType.CHARACTER -> "characterId"
-            FavType.STAFF -> "staffId"
-            FavType.STUDIO -> "studioId"
-        }
-        val query = """mutation{ToggleFavourite($filter:$id){anime{pageInfo{total}}}}"""
-        val result = executeQuery<JsonObject>(query)
-        return result?.get("errors") == null && result != null
-    }
-
-    enum class FavType {
-        ANIME, MANGA, CHARACTER, STAFF, STUDIO
-    }
 
     suspend fun editList(
         mediaID: Int,
@@ -87,6 +64,13 @@ class AnilistMutations {
         return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 
+    suspend fun deleteActivity(activityId: Int): Boolean {
+        val query = "mutation{DeleteActivity(id:$activityId){deleted}}"
+        val result = executeQuery<JsonObject>(query)
+        return result?.get("errors") == null
+//                && result?.get("data")
+    }
+
     suspend fun postReview(summary: String, body: String, mediaId: Int, score: Int): String {
         val encodedSummary = summary.sanitizeToGson
         val encodedBody = body.sanitizeToGson
@@ -96,12 +80,62 @@ class AnilistMutations {
         return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
     }
 
+    suspend fun deleteReview(activityId: Int): Boolean {
+        val query = "mutation{DeleteReview(id:$activityId){deleted}}"
+        val result = executeQuery<JsonObject>(query)
+        return result?.get("errors") == null
+//                && result?.get("data")
+    }
+
     suspend fun postReply(activityId: Int, text: String): String {
         val encodedText = text.sanitizeToGson
         val query = "mutation{SaveActivityReply(activityId:$activityId,text:$encodedText){id}}"
         val result = executeQuery<JsonObject>(query)
         val errors = result?.get("errors")
         return errors?.toString() ?: getString(ani.dantotsu.R.string.success)
+    }
+
+    suspend fun deleteReply(activityId: Int): Boolean {
+        val query = "mutation{DeleteActivityReply(id:$activityId){deleted}}"
+        val result = executeQuery<JsonObject>(query)
+        return result?.get("errors") == null
+//                && result?.get("data")
+    }
+
+    suspend fun toggleFav(anime: Boolean = true, id: Int) {
+        val query =
+            """mutation (${"$"}animeId: Int,${"$"}mangaId:Int) { ToggleFavourite(animeId:${"$"}animeId,mangaId:${"$"}mangaId){ anime { edges { id } } manga { edges { id } } } }"""
+        val variables = if (anime) """{"animeId":"$id"}""" else """{"mangaId":"$id"}"""
+        executeQuery<JsonObject>(query, variables)
+    }
+
+    suspend fun toggleFav(type: FavType, id: Int): Boolean {
+        val filter = when (type) {
+            FavType.ANIME -> "animeId"
+            FavType.MANGA -> "mangaId"
+            FavType.CHARACTER -> "characterId"
+            FavType.STAFF -> "staffId"
+            FavType.STUDIO -> "studioId"
+        }
+        val query = """mutation{ToggleFavourite($filter:$id){anime{pageInfo{total}}}}"""
+        val result = executeQuery<JsonObject>(query)
+        return result?.get("errors") == null && result != null
+    }
+
+    enum class FavType {
+        ANIME, MANGA, CHARACTER, STAFF, STUDIO
+    }
+
+    suspend fun toggleLike(id: Int, type: String): ToggleLike? {
+        return executeQuery<ToggleLike>(
+            """mutation Like{ToggleLikeV2(id:$id,type:$type){__typename}}"""
+        )
+    }
+
+    suspend fun toggleFollow(id: Int): Query.ToggleFollow? {
+        return executeQuery<Query.ToggleFollow>(
+            """mutation{ToggleFollow(userId:$id){id, isFollowing, isFollower}}"""
+        )
     }
 
     // https://gitlab.com/gobusto/unicodifier/-/blob/master/unicodifier.html#L133-143
