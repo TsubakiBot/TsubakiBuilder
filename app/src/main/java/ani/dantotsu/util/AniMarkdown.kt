@@ -65,36 +65,36 @@ class AniMarkdown { //istg anilist has the worst api
 
 
             val returnHtml = """
-            <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
-        <style>
-            body {
-                color: ${textColor.toCssColor()};
-                margin: 0;
-                padding: 0;
-                max-width: 100%;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
-            }
-            img {
-                max-width: 100%;
-                height: auto; /* Maintain aspect ratio */
-            }
-            video {
-                max-width: 100%;
-                height: auto; /* Maintain aspect ratio */
-            }
-            a {
-                color: ${textColor.toCssColor()};
-            }
-            /* Add responsive design elements for other content as needed */
-        </style>
-</head>
-<body>
-    $basicHtml
-</body>
-
-    """.trimIndent()
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
+            <style>
+                body {
+                    color: ${textColor.toCssColor()};
+                    margin: 0;
+                    padding: 0;
+                    max-width: 100%;
+                    overflow-x: hidden; /* Prevent horizontal scrolling */
+                }
+                img {
+                    max-width: 100%;
+                    height: auto; /* Maintain aspect ratio */
+                }
+                video {
+                    max-width: 100%;
+                    height: auto; /* Maintain aspect ratio */
+                }
+                a {
+                    color: ${textColor.toCssColor()};
+                }
+                /* Add responsive design elements for other content as needed */
+            </style>
+    </head>
+    <body>
+        $basicHtml
+    </body>
+</html>
+            """.trimIndent()
             return returnHtml
         }
     }
