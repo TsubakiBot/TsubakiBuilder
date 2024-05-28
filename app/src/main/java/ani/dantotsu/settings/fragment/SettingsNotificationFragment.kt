@@ -29,7 +29,7 @@ import ani.dantotsu.openSettings
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.SubscriptionsBottomDialog
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -86,7 +86,7 @@ class SettingsNotificationFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.subscribe_lists),
                         desc = getString(R.string.subscribe_lists_desc),
                         icon = R.drawable.ic_round_notifications_active_24,
@@ -95,7 +95,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(
                             R.string.subscriptions_checking_time_s,
                             timeNames[curTime]
@@ -131,7 +131,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.view_subscriptions),
                         desc = getString(R.string.view_subscriptions_desc),
                         icon = R.drawable.ic_round_search_24,
@@ -144,7 +144,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.anilist_notification_filters),
                         desc = getString(R.string.anilist_notification_filters_desc),
                         icon = R.drawable.ic_anilist,
@@ -174,7 +174,7 @@ class SettingsNotificationFragment : Fragment() {
 
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(
                             R.string.anilist_notifications_checking_time,
                             aItems[PrefManager.getVal(PrefName.AnilistNotificationInterval)]
@@ -206,7 +206,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(
                             R.string.comment_notification_checking_time,
                             cItems[PrefManager.getVal(PrefName.CommentNotificationInterval)]
@@ -238,7 +238,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.notification_for_checking_subscriptions),
                         desc = getString(R.string.notification_for_checking_subscriptions_desc),
                         icon = R.drawable.ic_round_smart_button_24,
@@ -254,7 +254,7 @@ class SettingsNotificationFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.use_alarm_manager_reliable),
                         desc = getString(R.string.use_alarm_manager_reliable_desc),
                         icon = R.drawable.ic_anilist,

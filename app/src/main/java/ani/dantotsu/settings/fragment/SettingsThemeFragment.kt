@@ -14,7 +14,7 @@ import ani.dantotsu.databinding.ActivitySettingsThemeBinding
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.themes.ThemeManager
@@ -47,7 +47,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.oled_theme_variant),
                         desc = getString(R.string.oled_theme_variant_desc),
                         icon = R.drawable.ic_round_brightness_4_24,
@@ -58,7 +58,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.use_material_you),
                         desc = getString(R.string.use_material_you_desc),
                         icon = R.drawable.ic_round_new_releases_24,
@@ -71,7 +71,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         isVisible = Version.isSnowCone
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.use_unique_theme_for_each_item),
                         desc = getString(R.string.use_unique_theme_for_each_item_desc),
                         icon = R.drawable.ic_palette,
@@ -83,7 +83,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         isVisible = Version.isSnowCone
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.use_custom_theme),
                         desc = getString(R.string.use_custom_theme_desc),
                         icon = R.drawable.ic_palette,
@@ -96,7 +96,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                         isVisible = Version.isSnowCone
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.color_picker),
                         desc = getString(R.string.color_picker_desc),
                         icon = R.drawable.ic_palette,

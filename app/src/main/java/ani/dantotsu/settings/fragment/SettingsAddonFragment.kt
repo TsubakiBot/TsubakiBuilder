@@ -20,7 +20,7 @@ import ani.dantotsu.databinding.ItemSettingsBinding
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -64,7 +64,7 @@ class SettingsAddonFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.anime_downloader_addon),
                         desc = getString(R.string.not_installed),
                         icon = R.drawable.ic_download_24,
@@ -121,7 +121,7 @@ class SettingsAddonFragment : Fragment() {
                             }
                         },
                     ), Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.torrent_addon),
                         desc = getString(R.string.not_installed),
                         icon = R.drawable.ic_round_magnet_24,
@@ -180,7 +180,7 @@ class SettingsAddonFragment : Fragment() {
                         },
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.enable_server),
                         desc = getString(R.string.enable_server_desc),
                         icon = R.drawable.ic_round_dns_24,

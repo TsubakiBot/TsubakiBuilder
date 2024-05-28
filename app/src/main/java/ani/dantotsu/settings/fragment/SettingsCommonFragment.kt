@@ -20,7 +20,7 @@ import ani.dantotsu.restartApp
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
@@ -89,28 +89,28 @@ class SettingsCommonFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.always_continue_content),
                         desc = getString(R.string.always_continue_content_desc),
                         icon = R.drawable.ic_round_delete_24,
                         pref = PrefName.ContinueMedia
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.search_source_list),
                         desc = getString(R.string.search_source_list_desc),
                         icon = R.drawable.ic_round_search_sources_24,
                         pref = PrefName.SearchSources
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.recentlyListOnly),
                         desc = getString(R.string.recentlyListOnly_desc),
                         icon = R.drawable.ic_round_new_releases_24,
                         pref = PrefName.RecentlyListOnly
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.download_manager_select),
                         desc = getString(R.string.download_manager_select_desc),
                         icon = R.drawable.ic_download_24,
@@ -127,7 +127,7 @@ class SettingsCommonFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.change_download_location),
                         desc = getString(R.string.change_download_location_desc),
                         icon = R.drawable.ic_round_source_24,
@@ -168,13 +168,13 @@ class SettingsCommonFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.social_in_media),
                         icon = R.drawable.ic_emoji_people_24,
                         pref = PrefName.SocialInMedia
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.adult_only_content),
                         desc = getString(R.string.adult_only_content_desc),
                         icon = R.drawable.ic_round_nsfw_24,

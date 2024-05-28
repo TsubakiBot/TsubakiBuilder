@@ -27,7 +27,7 @@ import ani.dantotsu.savePrefsToDownloads
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.settings.saving.internal.Location
@@ -113,7 +113,7 @@ class SettingsSystemFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.backup_restore),
                         desc = getString(R.string.backup_restore_desc),
                         icon = R.drawable.backup_restore,
@@ -180,7 +180,7 @@ class SettingsSystemFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.check_app_updates),
                         desc = getString(R.string.check_app_updates_desc),
                         icon = R.drawable.ic_round_new_releases_24,
@@ -199,7 +199,7 @@ class SettingsSystemFragment : Fragment() {
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.biometric_title),
                         desc = getString(R.string.biometric_summary),
                         icon = R.drawable.ic_fingerprint_24,
@@ -207,7 +207,7 @@ class SettingsSystemFragment : Fragment() {
                         isVisible = canUseBiometrics()
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.add_shortcuts),
                         desc = getString(R.string.add_shortcuts_desc),
                         icon = R.drawable.ic_app_shortcut_24,
@@ -218,14 +218,14 @@ class SettingsSystemFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.comments_api),
                         desc = getString(R.string.comments_api_desc),
                         icon = R.drawable.ic_round_comment_24,
                         pref = PrefName.CommentsOptIn
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.disable_mitm),
                         desc = getString(R.string.disable_mitm_desc),
                         icon = R.drawable.ic_round_coronavirus_24,
@@ -242,7 +242,7 @@ class SettingsSystemFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.share_username_in_logs),
                         desc = getString(R.string.share_username_in_logs_desc),
                         icon = R.drawable.ic_round_search_24,
@@ -250,7 +250,7 @@ class SettingsSystemFragment : Fragment() {
                         isVisible = !BuildConfig.FLAVOR.contains("fdroid")
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.log_to_file),
                         desc = getString(R.string.logging_warning),
                         icon = R.drawable.ic_round_edit_note_24,
@@ -263,7 +263,7 @@ class SettingsSystemFragment : Fragment() {
 
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = "",
                         desc = getString(R.string.share_log),
                         icon = R.drawable.ic_round_share_24,
@@ -272,7 +272,7 @@ class SettingsSystemFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.disable_debug),
                         desc = getString(R.string.rogue_warning),
                         icon = R.drawable.ic_bug_report_24,

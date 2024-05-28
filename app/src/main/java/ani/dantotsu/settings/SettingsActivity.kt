@@ -42,8 +42,9 @@ class SettingsActivity : AppCompatActivity() {
     lateinit var binding: ActivitySettingsBinding
     private val contract = ActivityResultContracts.OpenDocumentTree()
     private lateinit var launcher: LauncherWrapper
+    private var silentExit: Boolean = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager(this).applyTheme()
         initActivity(this)
@@ -62,16 +63,22 @@ class SettingsActivity : AppCompatActivity() {
             settingsViewPager.setBaseline(resources.configuration)
 
             onBackPressedDispatcher.addCallback(this@SettingsActivity) {
-                if (binding.settingsViewPager.currentItem != 0)
-                    setFragment(0)
-                else
-                    startMainActivity(this@SettingsActivity)
+                when {
+                    silentExit -> finish()
+                    binding.settingsViewPager.currentItem != 0 -> setFragment(Page.MAIN)
+                    else -> startMainActivity(this@SettingsActivity)
+                }
             }
 
             binding.settingsViewPager.adapter = ViewPagerAdapter(
                 supportFragmentManager,
                 lifecycle
             )
+
+            intent?.getStringExtra("fragment")?.let {
+                silentExit = true
+                setFragment(Page.valueOf(it))
+            }
         }
     }
 
@@ -84,27 +91,31 @@ class SettingsActivity : AppCompatActivity() {
         override fun getItemCount(): Int = 11
 
         override fun createFragment(position: Int): Fragment = when (position) {
-            0 -> SettingsMainFragment()
-            1 -> UserInterfaceFragment()
-            2 -> SettingsThemeFragment()
-            3 -> SettingsCommonFragment()
-            4 -> SettingsAnimeFragment()
-            5 -> SettingsMangaFragment()
-            6 -> SettingsExtensionsFragment()
-            7-> SettingsAddonFragment()
-            8 -> SettingsNotificationFragment()
-            9 -> SettingsSystemFragment()
-            10 -> SettingsAboutFragment()
+            Page.MAIN.ordinal -> SettingsMainFragment()
+            Page.UI.ordinal -> UserInterfaceFragment()
+            Page.THEME.ordinal -> SettingsThemeFragment()
+            Page.COMMON.ordinal -> SettingsCommonFragment()
+            Page.ANIME.ordinal -> SettingsAnimeFragment()
+            Page.MANGA.ordinal -> SettingsMangaFragment()
+            Page.EXTENSION.ordinal -> SettingsExtensionsFragment()
+            Page.ADDON.ordinal-> SettingsAddonFragment()
+            Page.NOTIFICATION.ordinal -> SettingsNotificationFragment()
+            Page.SYSTEM.ordinal -> SettingsSystemFragment()
+            Page.ABOUT.ordinal -> SettingsAboutFragment()
             else -> SettingsMainFragment()
         }
     }
 
-    fun setFragment(index: Int) {
-        binding.settingsViewPager.setCurrentItem(index, false)
+    fun setFragment(page: Page) {
+        binding.settingsViewPager.setCurrentItem(page.ordinal, false)
     }
 
     fun backToMenu() {
-        binding.settingsViewPager.setCurrentItem(0, false)
+        if (silentExit) {
+            finish()
+        } else {
+            binding.settingsViewPager.setCurrentItem(Page.MAIN.ordinal, false)
+        }
     }
 
     fun getLauncher(): LauncherWrapper? {

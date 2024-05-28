@@ -21,7 +21,7 @@ import ani.dantotsu.settings.PlayerSettingsActivity
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -55,7 +55,7 @@ class SettingsAnimeFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.player_settings),
                         desc = getString(R.string.player_settings_desc),
                         icon = R.drawable.ic_round_video_settings_24,
@@ -65,7 +65,7 @@ class SettingsAnimeFragment : Fragment() {
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.purge_anime_downloads),
                         desc = getString(R.string.purge_anime_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
@@ -91,21 +91,21 @@ class SettingsAnimeFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.prefer_dub),
                         desc = getString(R.string.prefer_dub_desc),
                         icon = R.drawable.ic_round_audiotrack_24,
                         pref = PrefName.SettingsPreferDub
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.show_yt),
                         desc = getString(R.string.show_yt_desc),
                         icon = R.drawable.ic_round_play_circle_24,
                         pref = PrefName.ShowYtButton
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.include_list),
                         desc = getString(R.string.include_list_anime_desc),
                         icon = R.drawable.view_list_24,

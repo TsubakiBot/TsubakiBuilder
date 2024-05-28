@@ -17,7 +17,7 @@ import ani.dantotsu.settings.ReaderSettingsActivity
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
@@ -48,7 +48,7 @@ class SettingsMangaFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.reader_settings),
                         desc = getString(R.string.reader_settings_desc),
                         icon = R.drawable.ic_round_reader_settings,
@@ -58,7 +58,7 @@ class SettingsMangaFragment : Fragment() {
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.purge_manga_downloads),
                         desc = getString(R.string.purge_manga_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
@@ -77,7 +77,7 @@ class SettingsMangaFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.purge_novel_downloads),
                         desc = getString(R.string.purge_novel_downloads_desc),
                         icon = R.drawable.ic_round_delete_24,
@@ -96,7 +96,7 @@ class SettingsMangaFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.include_list),
                         desc = getString(R.string.include_list_desc),
                         icon = R.drawable.view_list_24,

@@ -21,10 +21,11 @@ import ani.dantotsu.loadImage
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.setSafeOnClickListener
+import ani.dantotsu.settings.Page
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.extension.DiscordDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -61,97 +62,97 @@ class SettingsMainFragment : Fragment() {
             binding.settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.ui_settings),
                         desc = getString(R.string.ui_settings_desc),
                         icon = R.drawable.ic_round_auto_awesome_24,
                         onClick = {
-                            settings.setFragment(1)
+                            settings.setFragment(Page.UI)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.theme),
                         desc = getString(R.string.theme_desc),
                         icon = R.drawable.ic_palette,
                         onClick = {
-                            settings.setFragment(2)
+                            settings.setFragment(Page.THEME)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.common),
                         desc = getString(R.string.common_desc),
                         icon = R.drawable.ic_lightbulb_24,
                         onClick = {
-                            settings.setFragment(3)
+                            settings.setFragment(Page.COMMON)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.anime),
                         desc = getString(R.string.anime_desc),
                         icon = R.drawable.ic_round_movie_filter_24,
                         onClick = {
-                            settings.setFragment(4)
+                            settings.setFragment(Page.ANIME)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.manga),
                         desc = getString(R.string.manga_desc),
                         icon = R.drawable.ic_round_import_contacts_24,
                         onClick = {
-                            settings.setFragment(5)
+                            settings.setFragment(Page.MANGA)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.extensions),
                         desc = getString(R.string.extensions_desc),
                         icon = R.drawable.ic_extension,
                         onClick = {
-                            settings.setFragment(6)
+                            settings.setFragment(Page.EXTENSION)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.addons),
                         desc = getString(R.string.addons_desc),
                         icon = R.drawable.ic_round_restaurant_24,
                         onClick = {
-                            settings.setFragment(7)
+                            settings.setFragment(Page.ADDON)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.notifications),
                         desc = getString(R.string.notifications_desc),
                         icon = R.drawable.ic_round_notifications_none_24,
                         onClick = {
-                            settings.setFragment(8)
+                            settings.setFragment(Page.NOTIFICATION)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.system),
                         desc = getString(R.string.system_desc),
                         icon = R.drawable.ic_admin_panel_settings_24,
                         onClick = {
-                            settings.setFragment(9)
+                            settings.setFragment(Page.SYSTEM)
                         },
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.anilist),
                         desc = getString(R.string.ani_setting_desc),
                         icon = R.drawable.ic_anilist,
@@ -161,12 +162,12 @@ class SettingsMainFragment : Fragment() {
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.about),
                         desc = getString(R.string.about_desc),
                         icon = R.drawable.ic_round_info_24,
                         onClick = {
-                            settings.setFragment(10)
+                            settings.setFragment(Page.ABOUT)
                         },
                         hasTransition = true
                     )

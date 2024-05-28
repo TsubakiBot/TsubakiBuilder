@@ -15,7 +15,7 @@ import ani.dantotsu.databinding.ActivitySettingsUserInterfaceBinding
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import kotlinx.coroutines.CoroutineScope
@@ -70,11 +70,11 @@ class UserInterfaceFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.HEADER,
+                        type = ViewType.HEADER,
                         name = getString(R.string.app)
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.home_layout_show),
                         icon = R.drawable.ic_round_playlist_add_24,
                         onClick = {
@@ -97,20 +97,20 @@ class UserInterfaceFragment : Fragment() {
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.hide_home_main),
                         desc = getString(R.string.hide_home_main_desc),
                         icon = R.drawable.ic_clean_hands_24,
                         pref = PrefName.HomeMainHide
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.immersive_mode),
                         icon = R.drawable.ic_round_fullscreen_24,
                         pref = PrefName.ImmersiveMode
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.use_foldable),
                         desc = getString(R.string.use_foldable_desc),
                         icon = R.drawable.ic_devices_fold_24,
@@ -118,7 +118,7 @@ class UserInterfaceFragment : Fragment() {
                         isVisible = hasFoldingFeature
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.floating_avatar),
                         icon = R.drawable.ic_round_attractions_24,
                         pref = PrefName.FloatingAvatar,
@@ -130,41 +130,41 @@ class UserInterfaceFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.small_view),
                         icon = R.drawable.ic_round_art_track_24,
                         pref = PrefName.SmallView
                     ),
                     Settings(
-                        type = SettingsView.HEADER,
+                        type = ViewType.HEADER,
                         name = getString(R.string.animations)
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.trailer_banners),
                         icon = R.drawable.ic_round_photo_size_select_actual_24,
                         pref = PrefName.YouTubeBanners
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.banner_animations),
                         icon = R.drawable.ic_round_photo_size_select_actual_24,
                         pref = PrefName.BannerAnimations
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.layout_animations),
                         icon = R.drawable.ic_round_animation_24,
                         pref = PrefName.LayoutAnimations
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.trending_scroller),
                         icon = R.drawable.trail_length_short,
                         pref = PrefName.TrendingScroller
                     ),
                     Settings(
-                        type = SettingsView.SLIDER,
+                        type = ViewType.SLIDER,
                         name = getString(R.string.animation_speed),
                         icon = R.drawable.adjust,
                         stepSize = 0.25f,
@@ -176,24 +176,24 @@ class UserInterfaceFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.HEADER,
+                        type = ViewType.HEADER,
                         name = getString(R.string.blur)
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.blur_banners),
                         icon = R.drawable.blur_on,
                         pref = PrefName.BlurBanners
                     ),
                     Settings(
-                        type = SettingsView.SLIDER,
+                        type = ViewType.SLIDER,
                         name = getString(R.string.radius),
                         icon = R.drawable.adjust,
                         pref = PrefName.BlurRadius,
                         valueFrom = 1f
                     ),
                     Settings(
-                        type = SettingsView.SLIDER,
+                        type = ViewType.SLIDER,
                         name = getString(R.string.sampling),
                         icon = R.drawable.stacks,
                         pref = PrefName.BlurSampling,

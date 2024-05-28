@@ -21,7 +21,7 @@ import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.extension.DevelopersDialogFragment
 import ani.dantotsu.settings.extension.ForksDialogFragment
 import ani.dantotsu.toast
@@ -54,7 +54,7 @@ class SettingsAboutFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.account_help),
                         icon = R.drawable.ic_round_help_24,
                         onClick = {
@@ -74,7 +74,7 @@ class SettingsAboutFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.faq),
                         desc = getString(R.string.faq_desc),
                         icon = R.drawable.ic_round_help_24,
@@ -84,7 +84,7 @@ class SettingsAboutFragment : Fragment() {
                         hasTransition = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.devs),
                         desc = getString(R.string.devs_desc),
                         icon = R.drawable.ic_round_accessible_forward_24,
@@ -94,7 +94,7 @@ class SettingsAboutFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.forks),
                         desc = getString(R.string.forks_desc),
                         icon = R.drawable.ic_round_restaurant_24,
@@ -104,7 +104,7 @@ class SettingsAboutFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.disclaimer),
                         desc = getString(R.string.disclaimer_desc),
                         icon = R.drawable.ic_round_info_24,

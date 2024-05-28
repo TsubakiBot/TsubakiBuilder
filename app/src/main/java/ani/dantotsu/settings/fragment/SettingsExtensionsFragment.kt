@@ -26,7 +26,7 @@ import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.SettingsView
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
@@ -141,7 +141,7 @@ class SettingsExtensionsFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.anime_add_repository),
                         desc = getString(R.string.add_repository_desc, MediaType.ANIME.text),
                         icon = R.drawable.ic_github_mark,
@@ -181,7 +181,7 @@ class SettingsExtensionsFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.manga_add_repository),
                         desc = getString(R.string.add_repository_desc, MediaType.MANGA.text),
                         icon = R.drawable.ic_github_mark,
@@ -221,7 +221,7 @@ class SettingsExtensionsFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.novel_add_repository),
                         desc = getString(R.string.add_repository_desc, MediaType.NOVEL.text),
                         icon = R.drawable.ic_github_mark,
@@ -261,7 +261,7 @@ class SettingsExtensionsFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.extension_test),
                         desc = getString(R.string.extension_test_desc),
                         icon = R.drawable.ic_network_check_24,
@@ -275,7 +275,7 @@ class SettingsExtensionsFragment : Fragment() {
                         }
                     ),
                     Settings(
-                        type = SettingsView.BUTTON,
+                        type = ViewType.BUTTON,
                         name = getString(R.string.user_agent),
                         desc = getString(R.string.user_agent_desc),
                         icon = R.drawable.ic_round_video_settings_24,
@@ -305,7 +305,7 @@ class SettingsExtensionsFragment : Fragment() {
                         isActivity = true
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.force_legacy_installer),
                         desc = getString(R.string.force_legacy_installer_desc),
                         icon = R.drawable.ic_round_new_releases_24,
@@ -320,14 +320,14 @@ class SettingsExtensionsFragment : Fragment() {
                         isVisible = Version.isLowerThan(Build.VERSION_CODES.Q)
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.skip_loading_extension_icons),
                         desc = getString(R.string.skip_loading_extension_icons_desc),
                         icon = R.drawable.ic_round_no_icon_24,
                         pref = PrefName.SkipExtensionIcons
                     ),
                     Settings(
-                        type = SettingsView.SWITCH,
+                        type = ViewType.SWITCH,
                         name = getString(R.string.NSFWExtention),
                         desc = getString(R.string.NSFWExtention_desc),
                         icon = R.drawable.ic_round_nsfw_24,

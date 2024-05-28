@@ -8,7 +8,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 
 data class Settings(
-    val type: SettingsView,
+    val type: ViewType,
     val name: String,
     val desc: String = "",
     val icon: Int = R.drawable.ic_round_settings_24,
@@ -35,9 +35,23 @@ data class Settings(
         item -> PrefManager.getVal<Any>(item).takeIf { it is Float } as? Float
     } ?: valueFrom
 )
-enum class SettingsView {
+enum class ViewType {
     BUTTON,
     SWITCH,
     SLIDER,
     HEADER
+}
+
+enum class Page {
+    MAIN,
+    UI,
+    THEME,
+    COMMON,
+    ANIME,
+    MANGA,
+    EXTENSION,
+    ADDON,
+    NOTIFICATION,
+    SYSTEM,
+    ABOUT
 }

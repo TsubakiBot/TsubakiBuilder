@@ -27,25 +27,25 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            SettingsView.BUTTON.ordinal -> SettingsViewHolder(
+            ViewType.BUTTON.ordinal -> SettingsViewHolder(
                 ItemSettingsBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
 
-            SettingsView.SWITCH.ordinal -> SettingsSwitchViewHolder(
+            ViewType.SWITCH.ordinal -> SettingsSwitchViewHolder(
                 ItemSettingsSwitchBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
 
-            SettingsView.SLIDER.ordinal -> SettingsSliderViewHolder(
+            ViewType.SLIDER.ordinal -> SettingsSliderViewHolder(
                 ItemSettingsSliderBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
 
-            SettingsView.HEADER.ordinal -> SettingsHeaderViewHolder(
+            ViewType.HEADER.ordinal -> SettingsHeaderViewHolder(
                 ItemSettingsHeaderBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
@@ -62,7 +62,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val settings = settings[position]
         when (settings.type) {
-            SettingsView.BUTTON -> {
+            ViewType.BUTTON -> {
                 val b = (holder as SettingsViewHolder).binding
                 setAnimation(b.root.context, b.root)
 
@@ -88,7 +88,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 settings.attach?.invoke(b)
             }
 
-            SettingsView.SWITCH -> {
+            ViewType.SWITCH -> {
                 val b = (holder as SettingsSwitchViewHolder).binding
                 setAnimation(b.root.context, b.root)
 
@@ -112,7 +112,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 settings.attachToSwitch?.invoke(b)
             }
 
-            SettingsView.SLIDER -> {
+            ViewType.SLIDER -> {
                 val b = (holder as SettingsSliderViewHolder).binding
                 setAnimation(b.root.context, b.root)
 
@@ -137,7 +137,7 @@ class SettingsAdapter(private val settings: ArrayList<Settings>) :
                 settings.attachToSlider?.invoke(b)
             }
 
-            SettingsView.HEADER -> {
+            ViewType.HEADER -> {
                 val b = (holder as SettingsHeaderViewHolder).binding
                 setAnimation(b.root.context, b.root)
 
