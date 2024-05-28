@@ -1,6 +1,7 @@
 package ani.dantotsu.home
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Bitmap
@@ -78,7 +79,6 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.badge.ExperimentalBadgeUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -758,28 +758,42 @@ class HomeFragment : Fragment() {
         if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-        homeListContainerBinding.homeListContainer.postDelayed({
-            homeListContainerBinding.homeListContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                height = 76.toPx
-                topMargin = if (portrait) 8.toPx else 0
-                bottomMargin = if (portrait) 0 else 24.toPx
-            }
-        }, 750)
+//        homeListContainerBinding.homeListContainer.postDelayed({
+//            homeListContainerBinding.homeListContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+//                height = 76.toPx
+//                topMargin = if (portrait) 8.toPx else 0
+//                bottomMargin = if (portrait) 0 else 24.toPx
+//            }
+//        }, 750)
+
+        homeListContainerBinding.homeListContainer.run {
+            ValueAnimator.ofInt(measuredHeight, 76.toPx).apply {
+                addUpdateListener { valueAnimator ->
+                    val layoutParams: ViewGroup.LayoutParams = layoutParams
+                    layoutParams.height = (valueAnimator.getAnimatedValue() as Int)
+                    setLayoutParams(layoutParams)
+                }
+                doOnEnd {
+                    updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        topMargin = if (portrait) 8.toPx else 0
+                        bottomMargin = if (portrait) 0 else 24.toPx
+                    }
+                }
+            }.setDuration(750).start()
+        }
 
         homeListContainerBinding.homeRandomAnime.run {
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).start()
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).apply {
                 doOnEnd { isGone = true }
-                start()
-            }
+            }.start()
         }
 
         homeListContainerBinding.homeRandomManga.run {
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).start()
             ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(600).apply {
                 doOnEnd { isGone = true }
-                start()
-            }
+            }.start()
         }
 
         homeListContainerBinding.homeAnimeList.run {
@@ -790,8 +804,7 @@ class HomeFragment : Fragment() {
                         marginEnd = 8.toPx
                     }
                 }
-                start()
-            }
+            }. start()
         }
 
         homeListContainerBinding.homeMangaList.run {
@@ -802,8 +815,7 @@ class HomeFragment : Fragment() {
                         marginEnd = 8.toPx
                     }
                 }
-                start()
-            }
+            }.start()
         }
     }
 
