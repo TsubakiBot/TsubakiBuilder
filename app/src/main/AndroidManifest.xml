@@ -250,7 +250,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
-            <intent-filter android:label="Anilist Login for Dantotsu">
+            <intent-filter android:label="@string/anilist_login">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -258,7 +258,7 @@
 
                 <data
                     android:host="anilist"
-                    android:scheme="dantotsu" />
+                    android:scheme="himitsu" />
             </intent-filter>
         </activity>
         <activity
@@ -267,7 +267,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
-            <intent-filter android:label="Myanimelist Login for Dantotsu">
+            <intent-filter android:label="@string/mal_login">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -284,7 +284,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
-            <intent-filter android:label="Discord Login for Dantotsu">
+            <intent-filter android:label="@string/discord_login">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />

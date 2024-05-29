@@ -31,6 +31,7 @@ import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.startMainActivity
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import bit.himitsu.search.ReverseSearchDialogFragment
@@ -82,7 +83,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                     setPosButton(R.string.yes) {
                         Anilist.removeSavedToken()
                         dismiss()
-                        requireActivity().recreate()
+                        startMainActivity(requireActivity())
                     }
                     setNegButton(R.string.no)
                     show()

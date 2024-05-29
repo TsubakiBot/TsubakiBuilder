@@ -118,8 +118,7 @@ class LoginFragment : Fragment() {
                 .setNegativeButton(R.string.close) { _: DialogInterface?, _: Int ->
 
                 }.show()
-        } catch (ignored: PackageManager.NameNotFoundException) {
-        }
+        } catch (ignored: PackageManager.NameNotFoundException) { }
     }
 
     private fun passwordAlertDialog(isExporting: Boolean, callback: (CharArray?) -> Unit) {

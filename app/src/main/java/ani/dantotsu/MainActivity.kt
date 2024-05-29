@@ -419,7 +419,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(notificationIntent)
             }
         }
-        binding.includedNavbar.navbar.visibility = View.GONE
         val offlineMode: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         if (!isOnline(this)) {
             snackString(this@MainActivity.getString(R.string.no_internet))
@@ -430,7 +429,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, NoInternet::class.java))
             } else {
                 val model: AnilistHomeViewModel by viewModels()
-                bottomBar.visibility = View.VISIBLE
                 binding.mainProgressBar.visibility = View.GONE
                 val mainViewPager = binding.viewpager
                 mainViewPager.isUserInputEnabled = false
