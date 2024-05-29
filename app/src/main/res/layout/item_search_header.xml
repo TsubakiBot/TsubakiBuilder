@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="6dp"
-        android:layout_marginTop="-8dp"
+        android:layout_marginTop="-12dp"
         android:layout_marginBottom="-4dp"
         android:minHeight="16dp"
         android:orientation="horizontal">
@@ -87,6 +87,7 @@
         android:baselineAligned="false"
         android:clipToPadding="false"
         android:orientation="horizontal"
+        android:layout_marginBottom="-4dp"
         android:paddingHorizontal="16dp">
 
         <androidx.cardview.widget.CardView
