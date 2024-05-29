@@ -517,13 +517,6 @@ class MainActivity : AppCompatActivity() {
                     load = true
                 }
 
-                scope.launch(Dispatchers.IO) {
-                    if (!BuildConfig.FLAVOR.contains("fdroid")) {
-                        if (PrefManager.getVal(PrefName.CheckUpdate))
-                            MatagiUpdater.check(this@MainActivity)
-                    }
-                }
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     if (!(PrefManager.getVal(PrefName.AllowOpeningLinks) as Boolean)) {
                         CustomBottomDialog.newInstance().apply {
@@ -554,6 +547,13 @@ class MainActivity : AppCompatActivity() {
                         }.show(supportFragmentManager, "dialog")
                     }
                 }
+
+                scope.launch(Dispatchers.IO) {
+                    if (!BuildConfig.FLAVOR.contains("fdroid")) {
+                        if (PrefManager.getVal(PrefName.CheckUpdate))
+                            MatagiUpdater.check(this@MainActivity)
+                    }
+                }
             }
         }
     }
@@ -561,6 +561,12 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+        scope.launch(Dispatchers.IO) {
+            if (!BuildConfig.FLAVOR.contains("fdroid")) {
+                if (PrefManager.getVal(PrefName.CheckUpdate))
+                    MatagiUpdater.check(this@MainActivity)
+            }
+        }
     }
 
     override fun onStop() {
