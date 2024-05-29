@@ -66,7 +66,6 @@ class UserStatusAdapter(private val user: ArrayList<User>) :
         val watchedActivity = PrefManager.getCustomVal<Set<Int>>("activities", setOf())
         val booleanList = user.activity.map { watchedActivity.contains(it.id) }
         b.profileUserStatusIndicator.setParts(user.activity.size, booleanList, user.id == Anilist.userid)
-
     }
 
     override fun getItemCount(): Int = user.size
