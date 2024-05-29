@@ -193,8 +193,7 @@ class HomeFragment : Fragment() {
                 setAnchor(binding.homeUserAvatarContainer)
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
 
-                loadSavedPosition(resources.configuration)
-                setDefaultPosition(isOverlapping(binding.homeUserAvatarContainer))
+                setDefaultPosition(true)
 
                 val handler = Handler(Looper.getMainLooper())
                 val mRunnable = Runnable {
@@ -208,14 +207,6 @@ class HomeFragment : Fragment() {
                         handler.removeCallbacksAndMessages(mRunnable)
                         if (isOverlapping(binding.homeUserAvatarContainer)) {
                             handler.postDelayed(mRunnable, 1000)
-                        } else {
-                            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                                PrefManager.setVal(PrefName.FabulousVertX, x)
-                                PrefManager.setVal(PrefName.FabulousVertY, y)
-                            } else {
-                                PrefManager.setVal(PrefName.FabulousHorzX, x)
-                                PrefManager.setVal(PrefName.FabulousHorzY, y)
-                            }
                         }
                         setActiveNotificationCount()
                     }

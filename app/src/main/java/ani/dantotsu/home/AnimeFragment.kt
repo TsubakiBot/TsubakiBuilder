@@ -221,8 +221,7 @@ class AnimeFragment : Fragment() {
                         toRoundImage(Anilist.avatar, 52.toPx)
                         (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
 
-                        loadSavedPosition(resources.configuration)
-                        setDefaultPosition(isOverlapping(animePageAdapter.trendingBinding.userAvatar))
+                        setDefaultPosition(true)
 
                         if (binding.avatarFabulous.isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
                             setBadgeDrawable(
@@ -242,14 +241,6 @@ class AnimeFragment : Fragment() {
                                 handler.removeCallbacksAndMessages(mRunnable)
                                 if (isOverlapping(animePageAdapter.trendingBinding.userAvatar)) {
                                     handler.postDelayed(mRunnable, 1000)
-                                } else {
-                                    if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                                        PrefManager.setVal(PrefName.FabulousVertX, x)
-                                        PrefManager.setVal(PrefName.FabulousVertY, y)
-                                    } else {
-                                        PrefManager.setVal(PrefName.FabulousHorzX, x)
-                                        PrefManager.setVal(PrefName.FabulousHorzY, y)
-                                    }
                                 }
                                 setActiveNotificationCount()
                             }
