@@ -17,7 +17,6 @@
         android:background="@drawable/bottom_nav"
         android:elevation="8dp"
         android:padding="6dp"
-        android:visibility="gone"
         app:abb_animationDuration="300"
         app:abb_animationInterpolator="@anim/over_shoot"
         app:abb_badgeBackgroundColor="#F44336"

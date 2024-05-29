@@ -244,15 +244,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val bottomNavBar = findViewById<AnimatedBottomBar>(R.id.navbar)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            val backgroundDrawable = bottomNavBar.background as GradientDrawable
-            val currentColor = backgroundDrawable.color?.defaultColor ?: 0
-            val semiTransparentColor = (currentColor and 0x00FFFFFF) or 0xF9000000.toInt()
-            backgroundDrawable.setColor(semiTransparentColor)
-            bottomNavBar.background = backgroundDrawable
+        bottomBar = binding.includedNavbar.navbar.apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val backgroundDrawable = background as GradientDrawable
+                val currentColor = backgroundDrawable.color?.defaultColor ?: 0
+                val semiTransparentColor = (currentColor and 0x00FFFFFF) or 0xF9000000.toInt()
+                backgroundDrawable.setColor(semiTransparentColor)
+                background = backgroundDrawable
+            }
+            background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bottom_nav_gray)
         }
-        bottomNavBar.background = ContextCompat.getDrawable(this, R.drawable.bottom_nav_gray)
 
         initActivity(this)
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
@@ -418,6 +419,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(notificationIntent)
             }
         }
+        binding.includedNavbar.navbar.visibility = View.GONE
         val offlineMode: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         if (!isOnline(this)) {
             snackString(this@MainActivity.getString(R.string.no_internet))
@@ -428,24 +430,22 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, NoInternet::class.java))
             } else {
                 val model: AnilistHomeViewModel by viewModels()
-                val navbar = binding.includedNavbar.navbar
-                bottomBar = navbar
-                navbar.visibility = View.VISIBLE
+                bottomBar.visibility = View.VISIBLE
                 binding.mainProgressBar.visibility = View.GONE
                 val mainViewPager = binding.viewpager
                 mainViewPager.isUserInputEnabled = false
                 mainViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle)
                 mainViewPager.setPageTransformer(ZoomOutPageTransformer())
-                navbar.setupWithViewPager2(mainViewPager)
-                navbar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
+                bottomBar.setupWithViewPager2(mainViewPager)
+                bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
                     override fun onTabSelected(
                         lastIndex: Int,
                         lastTab: AnimatedBottomBar.Tab?,
                         newIndex: Int,
                         newTab: AnimatedBottomBar.Tab
                     ) {
-                        navbar.animate().translationZ(12f).setDuration(200).start()
+                        bottomBar.animate().translationZ(12f).setDuration(200).start()
                         selectedOption = newIndex
                         hasCompletedLoading += 1
                     }
@@ -473,9 +473,9 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 })
-                if (navbar.selectedIndex != selectedOption) {
+                if (bottomBar.selectedIndex != selectedOption) {
                     mainViewPager.setCurrentItem(selectedOption, false)
-                    navbar.selectTabAt(selectedOption, false)
+                    bottomBar.selectTabAt(selectedOption, false)
                 }
                 //Load Data
                 if (!load) {

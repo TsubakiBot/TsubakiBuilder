@@ -63,6 +63,7 @@
         app:itemRippleColor="#00000000"
         app:itemTextAppearanceActive="@style/NavBarText"
         app:itemTextAppearanceInactive="@style/NavBarText"
-        app:itemTextColor="@color/tab_layout_icon"/>
+        app:itemTextColor="@color/tab_layout_icon"
+        app:layout_insetEdge="end"/>
 
 </LinearLayout>

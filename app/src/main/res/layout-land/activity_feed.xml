@@ -9,8 +9,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/listToolbar"
@@ -74,6 +74,7 @@
         app:itemRippleColor="#00000000"
         app:itemTextAppearanceActive="@style/NavBarText"
         app:itemTextAppearanceInactive="@style/NavBarText"
-        app:itemTextColor="@color/tab_layout_icon"/>
+        app:itemTextColor="@color/tab_layout_icon"
+        app:layout_insetEdge="end"/>
 
 </LinearLayout>
