@@ -14,8 +14,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.StrictMode
-import android.os.StrictMode.VmPolicy
 import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
@@ -253,6 +251,7 @@ class MainActivity : AppCompatActivity() {
                 background = backgroundDrawable
             }
             background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bottom_nav_gray)
+            visibility = View.GONE
         }
 
         initActivity(this)
@@ -428,6 +427,7 @@ class MainActivity : AppCompatActivity() {
                 snackString(this@MainActivity.getString(R.string.no_internet))
                 startActivity(Intent(this, NoInternet::class.java))
             } else {
+                bottomBar.visibility = View.VISIBLE
                 val model: AnilistHomeViewModel by viewModels()
                 binding.mainProgressBar.visibility = View.GONE
                 val mainViewPager = binding.viewpager
@@ -567,16 +567,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        hasConfirmedSession = false
-        hasCompletedLoading = -1
+    override fun onPause() {
+        super.onPause()
         if (PrefManager.getVal(PrefName.SecureLock)) {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_SECURE,
                 WindowManager.LayoutParams.FLAG_SECURE
             )
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (hasConfirmedSession)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        hasConfirmedSession = false
+        hasCompletedLoading = -1
     }
 
     override fun onDestroy() {
@@ -643,7 +653,7 @@ class MainActivity : AppCompatActivity() {
                 1 -> return if (Anilist.token != null) HomeFragment() else LoginFragment()
                 2 -> return MangaFragment()
             }
-            return LoginFragment()
+            return if (Anilist.token != null) HomeFragment() else LoginFragment()
         }
     }
 }
