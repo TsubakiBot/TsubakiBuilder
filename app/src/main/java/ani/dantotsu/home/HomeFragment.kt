@@ -52,6 +52,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.emptyMedia
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
@@ -309,8 +310,22 @@ class HomeFragment : Fragment() {
                     return media
                 }
 
-                var randomAnime = getRandomMedia(MediaType.ANIME)
-                var randomManga = getRandomMedia(MediaType.MANGA)
+                var randomAnime = if (recommended.none { it.anime != null }) {
+                    homeListContainerBinding.homeRandomAnime.setOnClickListener {
+                        snackString(R.string.no_recommendations)
+                    }
+                    emptyMedia()
+                } else {
+                    getRandomMedia(MediaType.ANIME)
+                }
+                var randomManga = if (recommended.none { it.manga != null }) {
+                    homeListContainerBinding.homeRandomManga.setOnClickListener {
+                        snackString(R.string.no_recommendations)
+                    }
+                    emptyMedia()
+                } else {
+                    getRandomMedia(MediaType.MANGA)
+                }
 
                 fun onRandomClick(type: MediaType) {
                     val media = if (type == MediaType.MANGA) randomManga else randomAnime
@@ -344,6 +359,7 @@ class HomeFragment : Fragment() {
         }
 
         fun getSubscriptionPopup(subscriptions: ArrayList<Media>?) {
+            if (!binding.avatarFabulous.isVisible) return
             if (subscriptions.isNullOrEmpty()) {
                 binding.avatarFabulous.setOnClickListener {
                     if (binding.avatarFabulous.isOverlapping(binding.homeUserAvatarContainer)) {

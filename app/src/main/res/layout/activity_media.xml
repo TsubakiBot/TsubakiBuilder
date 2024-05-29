@@ -244,7 +244,7 @@
                         android:id="@+id/mediaFav"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:padding="8dp"
                         android:tintMode="src_atop"
                         app:srcCompat="@drawable/ic_round_favorite_border_24"
