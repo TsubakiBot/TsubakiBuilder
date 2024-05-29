@@ -792,15 +792,13 @@ class HomeFragment : Fragment() {
         }
 
         homeListContainerBinding.homeRandomAnime.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).start()
-            ObjectAnimator.ofFloat(this, View.ALPHA, 1.0f, 0f).setDuration(rotateTime - 100).apply {
+            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
                 doOnEnd { isGone = true }
             }.start()
         }
 
         homeListContainerBinding.homeRandomManga.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).start()
-            ObjectAnimator.ofFloat(this, View.ALPHA, 1.0f, 0f).setDuration(rotateTime - 100).apply {
+            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
                 doOnEnd { isGone = true }
             }.start()
         }
