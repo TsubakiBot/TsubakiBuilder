@@ -21,6 +21,7 @@
     <string name="no_internet">Sense connexió a Internet</string>
     <string name="no_internet_connection">Sense connexió a Internet\nMode sense connexió disponible</string>
     <string name="refresh">Actualitza</string>
+    <string name="go_online">Go Online</string>
     <string name="search">Cerca</string>
     <string name="extension_search">Cerca inversa de fonts</string>
     <string name="search_results">Resultats de la cerca</string>
@@ -288,8 +289,8 @@
     </string-array>
     <string name="startUpTab">Pestanya d\'Inici Predeterminada</string>
     <string name="floating_avatar">Floating Avatar Button</string>
-    <string name="hide_home_main">Disable user home</string>
-    <string name="hide_home_main_desc">Removes list and random home items</string>
+    <string name="hide_home_main">Acute OCD Home</string>
+    <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
     <string name="small_view">Vista Petita en Mostrats Trending</string>
     <string name="trailer_banners">Utilitza el remolcador com a pancarta</string>
     <string name="animations">Animacions</string>
@@ -315,6 +316,7 @@
     <string name="spaced_pages">Pàgines Espaiades</string>
     <string name="direction">Direcció</string>
     <string name="comments_api">API de Comentaris (Privada)</string>
+    <string name="comments_api_desc">Warning: Known for trolling and abuse</string>
     <string name="no_recommendations">No suggestions available!</string>
     <string name="disable_mitm">Prevent Injection</string>
     <string name="disable_mitm_desc">Disables a Dantotsu \"prank\" backdoor</string>
@@ -408,7 +410,7 @@
     <string name="note">NOTA</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add all reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current media subscribed!</string>
     <string name="manage_extension_repos">Gestiona Repositoris d\'Extensió</string>
@@ -538,7 +540,7 @@
     <string name="episode_num">Episodi %1$s</string>
     <string name="chapter">"Capítol "</string>
     <string name="chapter_num">Capítol %1$s</string>
-    <string name="just_released">- Acabat de llançar!</string>
+    <string name="just_released">- New release!</string>
     <string name="checking_subscriptions_title">Comprovant subscripcions</string>
     <string name="user_list">Llista de %1$s %2$s</string>
     <string name="speed">Velocitat</string>
@@ -596,6 +598,8 @@
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
+    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
+    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license.\nPortions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
     <string name="question_6">Per què les meves estadístiques no s\'actualitzen?</string>
     <string name="answer_6">Això és perquè s\'actualitza automàticament cada 48 hores (per Anilist). Si realment necessites actualitzar les teves estadístiques, pots forçar l\'actualització de les teves estadístiques després d\'anar a aquest [enllaç](https://anilist.co/settings/lists).</string>
     <string name="question_7">Com descarregar Anime?</string>
@@ -745,9 +749,9 @@
     <string name="set_cookies">Estableix les cookies</string>
     <string name="open_website">Obre el lloc web</string>
     <string name="disable_debug">Disable Logging</string>
-    <string name="rogue_warning">May improve performance, but cannot diagnose issues.</string>
+    <string name="rogue_warning">May improve performance, but issues are ignored.</string>
     <string name="log_to_file">Inicia la sessió al fitxer</string>
-    <string name="logging_warning">Pot causar retard. Només activa-ho si tens problemes.</string>
+    <string name="logging_warning">May cause lag. Only enable when necessary.</string>
     <string name="share_log">Feu clic per compartir el fitxer de registre actual</string>
     <string name="radius">Radi</string>
     <string name="sampling">Mostreig</string>
@@ -773,6 +777,7 @@
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de… %1$s</string>
+    <string name="delete_fail">Failed to delete</string>
     <string name="hide_replies">Amaga les respostes</string>
     <string name="view_reply">Visualitza la resposta</string>
     <string name="view_replies">Visualitza les respostes</string>
@@ -909,6 +914,7 @@
     <string name="search_source_list_desc">Passa al següent servidor si no es troba el contingut</string>
     <string name="recentlyListOnly_desc">Mostra només els teus elements de llista a la pestanya recent</string>
     <string name="adult_only_content_desc">Mostra només contingut per adults a la pàgina d\'exploració</string>
+    <string name="add_repository_desc">Add new %1$s extension repositories</string>
     <string name="user_agent_desc">Canvia el teu agent d\'usuari per defecte</string>
     <string name="force_legacy_installer_desc">Utilitza intencions per sol·licitar la instal·lació de paquets</string>
     <string name="skip_loading_extension_icons_desc">No carreguis icones d\'extensió al gestor</string>
@@ -942,6 +948,7 @@
     <string name="download_extension_not_available">L\'extensió de descàrrega no està disponible</string>
     <string name="feed">Feed</string>
     <string name="profile">Perfil</string>
+    <string name="content_not_found">Content missing or unavailable</string>
     <string name="epub_download_exception">Excepció en descarregar .epub: %1$s</string>
     <string name="novel_download_progress">Progrés de la descàrrega de novel·la</string>
     <string name="download_started">Descàrrega iniciada</string>
@@ -991,7 +998,7 @@
     <string name="contributor">Contributor</string>
     <string name="comment_mod">Comment Moderator</string>
     <string name="biometric_title">Biometric Verification</string>
-    <string name="biometric_summary">Require biometrics to access HImitsu</string>
+    <string name="biometric_summary">Require authentication to access HImitsu</string>
     <string name="biometric_details">Biometric authentication is required</string>
     <string name="biometric_error">Biometric Error: %1$s</string>
     <string name="biometric_success">Welcome back!</string>
@@ -1014,5 +1021,32 @@
     <string name="view_subscriptions_desc">View and edit all your subscriptions</string>
     <string name="subscription_deleted">Subscription Deleted</string>
     <string name="foreground_service_not_allowed">Cannot install when app is in background</string>
+    <string name="ping">Ping</string>
+    <string name="basic">Basic</string>
+    <string name="full">Full</string>
+    <string name="test_type">Test Type</string>
+    <string name="extension_type">Extension Type</string>
+    <string name="view_options">View Options</string>
+    <string name="testing">Testing</string>
+    <string name="extension_test">Extension Test</string>
+    <string name="extension_test_desc">Test if the extensions are working</string>
+    <string name="start_test">Start Test</string>
+    <string name="no_extensions_selected">No extensions selected</string>
+    <string name="ping_success">Ping successful: %1$s ms</string>
+    <string name="ping_error">Ping failed. Code: %1$s, Message: %2$s</string>
+    <string name="test_not_supported">Test not supported for this extension</string>
+    <string name="no_results_found">No results found. Extension may be broken</string>
+    <string name="results_found">%1$s results found</string>
+    <string name="title_search_test">Title Search Test: %1$s</string>
+    <string name="episode_search_test">Episode Search Test: %1$s</string>
+    <string name="chapter_search_test">Chapter Search Test: %1$s</string>
+    <string name="video_search_test">Video Search Test: %1$s</string>
+    <string name="image_search_test">Image Search Test: %1$s</string>
+    <string name="book_search_test">Book Search Test: %1$s</string>
+    <string name="failed_to_fix">Failed to fix</string>
+    <string name="running_fixes">Running Fixes…</string>
+    <string name="test_search">Test Search</string>
     <string name="subtitle_langauge">Subtitle Langauge</string>
+    <string name="auto_open_links">Allow Himitsu to automatically open Anilist &amp; MAL Links?</string>
+    <string name="dev_maintainer">%1$s Maintainer</string>
 </resources>
