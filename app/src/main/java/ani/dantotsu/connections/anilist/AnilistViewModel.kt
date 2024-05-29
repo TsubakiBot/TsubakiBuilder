@@ -29,7 +29,6 @@ suspend fun getUserId(context: Context, block: () -> Unit) {
             throw Exception()
         }
     }
-
     block.invoke()
 }
 

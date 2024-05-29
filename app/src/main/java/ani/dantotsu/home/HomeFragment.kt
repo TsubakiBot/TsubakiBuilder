@@ -716,7 +716,7 @@ class HomeFragment : Fragment() {
                 scope.launch {
                     withContext(Dispatchers.IO) {
                         //Get userData First
-                        loadFragment(requireActivity()) { load() }
+                        loadFragment(requireActivity(), ::load)
                         model.loaded = true
                         model.setListImages()
                         var empty = true

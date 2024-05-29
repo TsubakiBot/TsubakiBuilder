@@ -340,7 +340,7 @@ class AnimeFragment : Fragment() {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        loadFragment(requireActivity()) { load() }
+                        loadFragment(requireActivity(), ::load)
                         model.loaded = true
                         model.loadTrending(1)
                         model.loadAll()

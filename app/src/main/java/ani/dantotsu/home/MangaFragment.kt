@@ -325,7 +325,7 @@ class MangaFragment : Fragment() {
             if (it) {
                 scope.launch {
                     withContext(Dispatchers.IO) {
-                        loadFragment(requireActivity()) { load() }
+                        loadFragment(requireActivity(), ::load)
                         model.loaded = true
                         model.loadTrending()
                         model.loadAll()
