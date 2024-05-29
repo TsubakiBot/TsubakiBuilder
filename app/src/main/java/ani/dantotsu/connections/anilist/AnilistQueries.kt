@@ -580,7 +580,7 @@ class AnilistQueries {
                     if (it.value !in returnArray) returnArray.add(it.value)
                 }
             } else returnArray.addAll(subMap.values)
-            returnMap["planned$type"] = returnArray
+            returnMap["planned${type.text}"] = returnArray
         }
 
         fun favorite(type: MediaType) {
@@ -598,7 +598,7 @@ class AnilistQueries {
                     }
                 }
             }
-            returnMap["favorite$type"] = returnArray
+            returnMap["favorite${type.text}"] = returnArray
         }
 
         current(MediaType.ANIME)
