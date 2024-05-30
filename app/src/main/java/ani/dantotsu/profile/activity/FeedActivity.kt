@@ -1,11 +1,13 @@
 package ani.dantotsu.profile.activity
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -18,6 +20,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
+import ani.dantotsu.util.MarkdownCreatorActivity
 import bit.himitsu.os.Version
 import bit.himitsu.setBaseline
 import nl.joery.animatedbottombar.AnimatedBottomBar
@@ -63,14 +66,20 @@ class FeedActivity : AppCompatActivity() {
             PopupMenu(this, binding.activityFAB, Gravity.END, 0, R.style.MyPopup)
         else
             PopupMenu(this, binding.activityFAB)
+        popup.menuInflater.inflate(R.menu.menu_feed_post, popup.menu)
 
         binding.activityFAB.setOnClickListener {
             popup.show()
             popup.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.activity -> {}
-                    R.id.review -> {}
-                }
+                ContextCompat.startActivity(
+                    this,
+                    Intent(this, MarkdownCreatorActivity::class.java).apply {
+                        when (item.itemId) {
+                            R.id.activity -> putExtra("type", "activity")
+                            R.id.review -> putExtra("type", "review")
+                        }
+                    }, null
+                )
                 true
             }
         }

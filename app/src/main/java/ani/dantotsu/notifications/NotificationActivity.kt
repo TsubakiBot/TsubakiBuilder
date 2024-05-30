@@ -295,8 +295,9 @@ class NotificationActivity : AppCompatActivity() {
                                 user = User(
                                     it.mediaId,
                                     it.title,
-                                    UserAvatar(it.image, it.image),
-                                    null, null, null, null, null, null
+                                    UserAvatar(it.cover, it.cover),
+                                    it.banner,
+                                    null, null, null, null, null
                                 ),
                             )
                             newNotifications += notification

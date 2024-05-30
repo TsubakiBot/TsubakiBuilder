@@ -146,8 +146,9 @@
                         android:id="@+id/profileMenuButton"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:padding="4dp"
                         android:contentDescription="@string/menu"
-                        android:src="@drawable/ic_round_dots_vertical_24"
+                        android:src="@drawable/ic_anilist"
                         app:tint="@color/bg_opp" />
                 </LinearLayout>
             </FrameLayout>

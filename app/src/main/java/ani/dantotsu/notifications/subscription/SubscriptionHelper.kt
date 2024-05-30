@@ -144,7 +144,8 @@ class SubscriptionHelper {
             val isAdult: Boolean,
             val id: Int,
             val name: String,
-            val image: String?
+            val cover: String?,
+            val banner: String?
         ) : java.io.Serializable {
             companion object {
                 private const val serialVersionUID = 1L
@@ -185,7 +186,8 @@ class SubscriptionHelper {
                         media.isAdult,
                         media.id,
                         media.userPreferredName,
-                        media.cover
+                        media.cover,
+                        media.banner
                     )
                     data[media.id] = new
                 }

@@ -730,10 +730,10 @@ class HomeFragment : Fragment() {
                             if (userList.isEmpty()) {
                                 snackString(R.string.no_current_items)
                             } else {
-                                userList.forEach {
-                                    SubscriptionHelper.saveSubscription(it as Media, true)
+                                userList.forEach { media ->
+                                    SubscriptionHelper.saveSubscription(media, true)
                                 }
-                                snackString(R.string.current_subscribed)
+                                model.subscribedItems.postValue(userList)
                             }
                         }
 

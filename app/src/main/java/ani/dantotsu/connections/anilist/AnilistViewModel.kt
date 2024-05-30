@@ -39,7 +39,7 @@ class AnilistHomeViewModel : ViewModel() {
     fun getListImages(): LiveData<ArrayList<String?>> = listImages
     suspend fun setListImages() = listImages.postValue(Anilist.query.getBannerImages())
 
-    private val subscribedItems: MutableLiveData<ArrayList<Media>> =
+    val subscribedItems: MutableLiveData<ArrayList<Media>> =
         MutableLiveData<ArrayList<Media>>(null)
 
     fun getSubscriptions(): LiveData<ArrayList<Media>> = subscribedItems

@@ -120,7 +120,7 @@ class SubscriptionNotificationTask : Task {
                                     media
                                 )
                             if (chap != null)
-                                "${chap.number} ${context.getString(R.string.just_released)}" to media.image?.let { image ->
+                                "${chap.number} ${context.getString(R.string.just_released)}" to media.cover?.let { image ->
                                     FileUrl(image)
                                 }
                             else null
@@ -130,7 +130,8 @@ class SubscriptionNotificationTask : Task {
                                 media.name,
                                 text.first,
                                 media.id,
-                                media.image
+                                media.cover,
+                                media.banner
                             )
                         )) return@map
                         PrefManager.setVal(PrefName.UnreadCommentNotifications,

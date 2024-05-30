@@ -35,7 +35,7 @@ class SubscriptionItem(
                 null
             )
         }
-        binding.subscriptionCover.loadImage(media.image)
+        binding.subscriptionCover.loadImage(media.cover)
         binding.deleteSubscription.setOnClickListener {
             SubscriptionHelper.deleteSubscription(id, true)
             adapter.remove(this)

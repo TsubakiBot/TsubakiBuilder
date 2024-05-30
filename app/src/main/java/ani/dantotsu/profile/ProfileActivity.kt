@@ -127,27 +127,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                     }
                     profileAppBar.visibility = View.VISIBLE
                     profileMenuButton.setOnClickListener {
-                        val popup = PopupMenu(context, profileMenuButton)
-                        popup.menuInflater.inflate(R.menu.menu_profile, popup.menu)
-                        popup.setOnMenuItemClickListener { item ->
-                            when (item.itemId) {
-                                R.id.action_view_on_anilist -> {
-                                    openLinkInBrowser("https://anilist.co/user/${user.name}")
-                                    true
-                                }
-                                R.id.action_create_new_activity -> {
-                                    ContextCompat.startActivity(
-                                        context,
-                                        Intent(context, MarkdownCreatorActivity::class.java)
-                                            .putExtra("type", "activity"),
-                                        null
-                                    )
-                                    true
-                                }
-                                else -> false
-                            }
-                        }
-                        popup.show()
+                        openLinkInBrowser("https://anilist.co/user/${user.name}")
                     }
 
                     profileUserAvatar.loadImage(user.avatar?.medium)
