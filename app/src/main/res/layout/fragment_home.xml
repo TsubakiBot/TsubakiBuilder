@@ -297,7 +297,7 @@
                                 android:layout_width="128dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="@string/browse_anime"
+                                android:text="@string/subscribe_lists"
                                 app:cornerRadius="16dp"
                                 tools:ignore="TextContrastCheck" />
                         </LinearLayout>

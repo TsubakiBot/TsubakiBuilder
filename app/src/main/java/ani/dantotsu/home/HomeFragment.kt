@@ -55,6 +55,7 @@ import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.emptyMedia
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.notifications.NotificationActivity
+import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
@@ -478,9 +479,6 @@ class HomeFragment : Fragment() {
             binding.homeSubscribedMore,
             getString(R.string.subscriptions)
         )
-        binding.homeSubscribedBrowseButton.setOnClickListener {
-            bottomBar.selectTabAt(0)
-        }
 
         // Recycler Views
         initRecyclerView(
@@ -719,6 +717,23 @@ class HomeFragment : Fragment() {
                                 empty = false
                             } else withContext(Dispatchers.Main) {
                                 containers[i].visibility = View.GONE
+                            }
+                        }
+
+                        binding.homeSubscribedBrowseButton.setOnClickListener {
+                            val userList = arrayListOf<Media>().apply {
+                                model.getAnimeContinue().value?.let { items -> addAll(items) }
+                                model.getAnimePlanned().value?.let { items -> addAll(items) }
+                                model.getMangaContinue().value?.let { items -> addAll(items) }
+                                model.getMangaPlanned().value?.let { items -> addAll(items) }
+                            }
+                            if (userList.isEmpty()) {
+                                snackString(R.string.no_current_items)
+                            } else {
+                                userList.forEach {
+                                    SubscriptionHelper.saveSubscription(it as Media, true)
+                                }
+                                snackString(R.string.current_subscribed)
                             }
                         }
 

@@ -304,16 +304,14 @@ class SettingsNotificationFragment : Fragment() {
 
     private fun subscribeCurrentLists() {
         CoroutineScope(Dispatchers.IO).launch {
-            val userList = arrayListOf<Any>()
-            Anilist.query.initHomePage().let { list ->
-                list["currentAnime"]?.let { userList.addAll(it) }
-                list["plannedAnime"]?.let { userList.addAll(it) }
-                list["currentManga"]?.let { userList.addAll(it) }
-                list["plannedManga"]?.let { userList.addAll(it) }
-                // list["hiddenAnime"]?.let { userList.addAll(it) }
-                // list["hiddenManga"]?.let { userList.addAll(it) }
+            val userList = arrayListOf<Any>().apply {
+                Anilist.query.initHomePage().let { list ->
+                    list["currentAnime"]?.let { addAll(it) }
+                    list["plannedAnime"]?.let { addAll(it) }
+                    list["currentManga"]?.let { addAll(it) }
+                    list["plannedManga"]?.let { addAll(it) }
+                }
             }
-
             if (userList.isEmpty()) {
                 snackString(R.string.no_current_items)
             } else {

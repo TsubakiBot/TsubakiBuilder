@@ -52,6 +52,30 @@
             android:layout_marginTop="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activityFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:backgroundTint="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="@string/activity"
+            android:elevation="0dp"
+            android:focusable="true"
+            android:src="@drawable/ic_round_add_circle_24"
+            android:tint="@android:color/transparent"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="2dp"
+            app:fabSize="mini"
+            app:layout_anchor="@+id/feedViewPager"
+            app:layout_anchorGravity="bottom|end"
+            app:maxImageSize="52dp"
+            app:rippleColor="@android:color/transparent"
+            app:tint="@android:color/transparent"
+            app:useCompatPadding="true"
+            tools:ignore="RelativeOverlap" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
