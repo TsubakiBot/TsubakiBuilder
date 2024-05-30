@@ -733,7 +733,7 @@ class HomeFragment : Fragment() {
                                 userList.forEach { media ->
                                     SubscriptionHelper.saveSubscription(media, true)
                                 }
-                                model.subscribedItems.postValue(userList)
+                                model.setSubscriptions(userList)
                             }
                         }
 

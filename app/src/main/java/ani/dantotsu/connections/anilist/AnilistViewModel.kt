@@ -39,10 +39,14 @@ class AnilistHomeViewModel : ViewModel() {
     fun getListImages(): LiveData<ArrayList<String?>> = listImages
     suspend fun setListImages() = listImages.postValue(Anilist.query.getBannerImages())
 
-    val subscribedItems: MutableLiveData<ArrayList<Media>> =
+    private val subscribedItems: MutableLiveData<ArrayList<Media>> =
         MutableLiveData<ArrayList<Media>>(null)
 
     fun getSubscriptions(): LiveData<ArrayList<Media>> = subscribedItems
+
+    fun setSubscriptions(subscribed: ArrayList<Media>) {
+        subscribedItems.postValue(subscribed)
+    }
 
     private val animeContinue: MutableLiveData<ArrayList<Media>> =
         MutableLiveData<ArrayList<Media>>(null)
@@ -116,7 +120,7 @@ class AnilistHomeViewModel : ViewModel() {
                 )
             } catch (ignored: Exception) { }
         }
-        subscribedItems.postValue(subscribed)
+        setSubscriptions(subscribed)
     }
 
     suspend fun loadMain() {
