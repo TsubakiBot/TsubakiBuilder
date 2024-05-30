@@ -10,7 +10,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="144dp"
         android:layout_gravity="start|center_vertical"
         app:cardBackgroundColor="@color/nav_bg"
         app:cardCornerRadius="24dp"
@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/notificationBanner"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="144dp"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/notificationGradiant"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="144dp"
             app:srcCompat="@drawable/linear_gradient_nav"
             tools:ignore="ContentDescription" />
 
