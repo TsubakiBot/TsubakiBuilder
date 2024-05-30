@@ -5,7 +5,7 @@ import ani.dantotsu.connections.discord.serializers.Activity
 import ani.dantotsu.connections.discord.serializers.Presence
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

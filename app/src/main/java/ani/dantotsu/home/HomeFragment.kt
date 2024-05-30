@@ -193,12 +193,12 @@ class HomeFragment : Fragment() {
                 setAnchor(binding.homeUserAvatarContainer)
                 (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
 
-                setDefaultPosition(true)
+                setDefaultPosition()
 
                 val handler = Handler(Looper.getMainLooper())
                 val mRunnable = Runnable {
                     if (isOverlapping(binding.homeUserAvatarContainer)) {
-                        setDefaultPosition(true)
+                        setDefaultPosition()
                     }
                 }
 

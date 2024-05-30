@@ -4,7 +4,7 @@ import ani.dantotsu.Mapper
 import ani.dantotsu.R
 import ani.dantotsu.client
 import ani.dantotsu.settings.Developer
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName

@@ -13,7 +13,7 @@ import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.User
 import ani.dantotsu.setAnimation
 import ani.dantotsu.settings.saving.PrefManager
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 
 class UserStatusAdapter(private val user: ArrayList<User>) :
     RecyclerView.Adapter<UserStatusAdapter.UsersViewHolder>() {

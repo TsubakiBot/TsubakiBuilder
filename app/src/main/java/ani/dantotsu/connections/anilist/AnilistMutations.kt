@@ -4,7 +4,7 @@ import ani.dantotsu.connections.anilist.Anilist.executeQuery
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.connections.anilist.api.ToggleLike
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import com.google.gson.Gson
 import kotlinx.serialization.json.JsonObject
 

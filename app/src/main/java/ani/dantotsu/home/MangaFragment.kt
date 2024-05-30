@@ -2,7 +2,6 @@ package ani.dantotsu.home
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -179,7 +178,7 @@ class MangaFragment : Fragment() {
                         toRoundImage(Anilist.avatar, 52.toPx)
                         (behavior as FloatingActionButton.Behavior).isAutoHideEnabled = false
 
-                        setDefaultPosition(true)
+                        setDefaultPosition()
 
                         if (binding.avatarFabulous.isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
                             setBadgeDrawable(
@@ -190,7 +189,7 @@ class MangaFragment : Fragment() {
                         val handler = Handler(Looper.getMainLooper())
                         val mRunnable = Runnable {
                             if (isOverlapping(mangaPageAdapter.trendingBinding.userAvatar)) {
-                                setDefaultPosition(true)
+                                setDefaultPosition()
                             }
                         }
 

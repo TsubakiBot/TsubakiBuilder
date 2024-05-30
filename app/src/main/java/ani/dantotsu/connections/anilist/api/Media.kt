@@ -3,7 +3,7 @@
 package ani.dantotsu.connections.anilist.api
 
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

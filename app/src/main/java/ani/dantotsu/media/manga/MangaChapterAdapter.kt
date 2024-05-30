@@ -17,7 +17,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.setAnimation
 import ani.dantotsu.util.customAlertDialog
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat

@@ -7,7 +7,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.okHttpClient
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.util.Logger
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import eu.kanade.tachiyomi.source.model.SManga
 import me.xdrop.fuzzywuzzy.FuzzySearch

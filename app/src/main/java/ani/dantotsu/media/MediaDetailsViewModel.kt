@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ani.dantotsu.R
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.media.anime.SelectorDialogFragment

@@ -20,7 +20,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.util.ColorEditor.Companion.adjustColorForContrast
 import ani.dantotsu.util.ColorEditor.Companion.getContrastRatio
 import ani.dantotsu.view.dialog.ImageViewDialog
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem

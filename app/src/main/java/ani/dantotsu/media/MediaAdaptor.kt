@@ -30,7 +30,7 @@ import ani.dantotsu.setAnimation
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import java.io.Serializable
 

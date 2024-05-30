@@ -91,7 +91,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate

@@ -17,7 +17,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import kotlinx.coroutines.withTimeoutOrNull
 
 class SubscriptionHelper {
@@ -165,7 +165,7 @@ class SubscriptionHelper {
         fun deleteSubscription(id: Int, showSnack: Boolean = false) {
             val data = PrefManager.getNullableCustomVal(
                 SUBSCRIPTIONS,
-                mutableMapOf<Int, SubscribeMedia>(),
+                mapOf<Int, SubscribeMedia>().toMutableMap(),
                 Map::class.java
             ) as MutableMap<Int, SubscribeMedia>
             data.remove(id)
@@ -177,7 +177,7 @@ class SubscriptionHelper {
         fun saveSubscription(media: Media, subscribed: Boolean) {
             val data = PrefManager.getNullableCustomVal(
                 SUBSCRIPTIONS,
-                mutableMapOf<Int, SubscribeMedia>(),
+                mapOf<Int, SubscribeMedia>().toMutableMap(),
                 Map::class.java
             ) as MutableMap<Int, SubscribeMedia>
             if (subscribed) {

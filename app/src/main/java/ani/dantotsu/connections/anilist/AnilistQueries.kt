@@ -12,7 +12,6 @@ import ani.dantotsu.connections.anilist.api.NotificationResponse
 import ani.dantotsu.connections.anilist.api.Page
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.connections.anilist.api.ReplyResponse
-import ani.dantotsu.connections.anilist.api.ToggleLike
 import ani.dantotsu.currContext
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
@@ -30,7 +29,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import bit.himitsu.collections.Collections.mix
 import bit.himitsu.collections.Collections.toArrayList
 import kotlinx.coroutines.async

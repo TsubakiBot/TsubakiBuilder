@@ -122,12 +122,6 @@ class UserInterfaceFragment : Fragment() {
                         name = getString(R.string.floating_avatar),
                         icon = R.drawable.ic_round_attractions_24,
                         pref = PrefName.FloatingAvatar,
-                        onLongClick = {
-                            PrefManager.setVal(PrefName.FabulousVertX, -1)
-                            PrefManager.setVal(PrefName.FabulousVertY, -1)
-                            PrefManager.setVal(PrefName.FabulousHorzX, -1)
-                            PrefManager.setVal(PrefName.FabulousHorzY, -1)
-                        }
                     ),
                     Settings(
                         type = ViewType.SWITCH,

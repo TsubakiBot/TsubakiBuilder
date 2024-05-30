@@ -42,9 +42,9 @@ import ani.dantotsu.databinding.BottomSheetWebBinding
 import ani.dantotsu.others.webview.AdBlocker.createEmptyResource
 import ani.dantotsu.others.webview.AdBlocker.isAd
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
-import bit.himitsu.lineSeparator
+import bit.himitsu.nio.lineSeparator
 import bit.himitsu.os.Version
-import bit.himitsu.sanitized
+import bit.himitsu.nio.sanitized
 import eu.kanade.tachiyomi.network.NetworkHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

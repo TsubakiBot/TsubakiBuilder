@@ -13,7 +13,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
-import bit.himitsu.Strings.getString
+import bit.himitsu.nio.Strings.getString
 import java.util.Calendar
 
 object Anilist {
