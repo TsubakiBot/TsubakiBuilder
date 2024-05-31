@@ -313,21 +313,19 @@ class MangaFragment : Fragment() {
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
             if (it) {
-                scope.launch {
-                    withContext(Dispatchers.IO) {
-                        loadFragment(requireActivity()) { load() }
-                        model.loaded = true
-                        model.loadTrending()
-                        model.loadAll()
-                        model.loadPopular(
-                            "MANGA", sort = Anilist.sortBy[1], onList = PrefManager.getVal(
-                                PrefName.PopularMangaList
-                            )
+                scope.launch(Dispatchers.IO) {
+                    loadFragment(requireActivity()) { load() }
+                    model.loaded = true
+                    model.loadTrending()
+                    model.loadAll()
+                    model.loadPopular(
+                        "MANGA", sort = Anilist.sortBy[1], onList = PrefManager.getVal(
+                            PrefName.PopularMangaList
                         )
-                    }
-                    live.postValue(false)
-                    _binding?.animeRefresh?.isRefreshing = false
+                    )
                 }
+                live.postValue(false)
+                _binding?.animeRefresh?.isRefreshing = false
             }
         }
     }

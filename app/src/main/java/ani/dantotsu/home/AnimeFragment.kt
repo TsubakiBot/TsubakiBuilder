@@ -328,21 +328,19 @@ class AnimeFragment : Fragment() {
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
             if (it) {
-                scope.launch {
-                    withContext(Dispatchers.IO) {
-                        loadFragment(requireActivity()) { load() }
-                        model.loaded = true
-                        model.loadTrending(1)
-                        model.loadAll()
-                        model.loadPopular(
-                            "ANIME", sort = Anilist.sortBy[1], onList = PrefManager.getVal(
-                                PrefName.PopularAnimeList
-                            )
+                scope.launch(Dispatchers.IO) {
+                    loadFragment(requireActivity(), ::load)
+                    model.loaded = true
+                    model.loadTrending(1)
+                    model.loadAll()
+                    model.loadPopular(
+                        "ANIME", sort = Anilist.sortBy[1], onList = PrefManager.getVal(
+                            PrefName.PopularAnimeList
                         )
-                    }
-                    live.postValue(false)
-                    _binding?.animeRefresh?.isRefreshing = false
+                    )
                 }
+                live.postValue(false)
+                _binding?.animeRefresh?.isRefreshing = false
             }
         }
     }

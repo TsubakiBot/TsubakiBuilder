@@ -111,64 +111,65 @@ class HomeFragment : Fragment() {
 
     val model: AnilistHomeViewModel by activityViewModels()
 
+    fun load() {
+        if (activity != null && _binding != null) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                binding.homeUserName.text = Anilist.username
+                binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
+                binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
+                binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
+                binding.avatarFabulous.toRoundImage(Anilist.avatar, 52.toPx)
+                val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
+                    binding.homeUserBg
+                else
+                    binding.homeUserBgNoKen
+                banner.blurImage(Anilist.bg)
+                binding.homeUserDataProgressBar.visibility = View.GONE
+                setActiveNotificationCount()
+
+                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
+                binding.avatarFabulous.startAnimation(setSlideUp())
+                binding.homeUserDataContainer.visibility = View.VISIBLE
+                binding.homeUserDataContainer.layoutAnimation =
+                    LayoutAnimationController(setSlideUp(), 0.25f)
+
+                homeListContainerBinding.apply {
+                    rotateButtonsToBlades(resources.configuration)
+                    homeAnimeList.setOnClickListener {
+                        ContextCompat.startActivity(
+                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                .putExtra("anime", true)
+                                .putExtra("userId", Anilist.userid)
+                                .putExtra("username", Anilist.username), null
+                        )
+                    }
+                    homeMangaList.setOnClickListener {
+                        ContextCompat.startActivity(
+                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                .putExtra("anime", false)
+                                .putExtra("userId", Anilist.userid)
+                                .putExtra("username", Anilist.username), null
+                        )
+                    }
+                    homeAnimeList.visibility = View.VISIBLE
+                    homeMangaList.visibility = View.VISIBLE
+                    homeRandomAnime.visibility = View.VISIBLE
+                    homeRandomManga.visibility = View.VISIBLE
+                    homeListContainer.layoutAnimation =
+                        LayoutAnimationController(setSlideIn(), 0.25f)
+
+                    homeListContainerBinding.homeListContainer.postDelayed({
+                        rotateBackToStraight(resources.configuration)
+                    }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 100L)
+                }
+            }
+        } else {
+            snackString(R.string.please_reload)
+        }
+    }
+
     @OptIn(ExperimentalBadgeUtils::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        fun load() {
-            if (activity != null && _binding != null) {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    binding.homeUserName.text = Anilist.username
-                    binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
-                    binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
-                    binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
-                    binding.avatarFabulous.toRoundImage(Anilist.avatar, 52.toPx)
-                    val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
-                        binding.homeUserBg
-                    else
-                        binding.homeUserBgNoKen
-                    banner.blurImage(Anilist.bg)
-                    binding.homeUserDataProgressBar.visibility = View.GONE
-                    setActiveNotificationCount()
-
-                    binding.homeUserAvatarContainer.startAnimation(setSlideUp())
-                    binding.avatarFabulous.startAnimation(setSlideUp())
-                    binding.homeUserDataContainer.visibility = View.VISIBLE
-                    binding.homeUserDataContainer.layoutAnimation =
-                        LayoutAnimationController(setSlideUp(), 0.25f)
-
-                    homeListContainerBinding.apply {
-                        rotateButtonsToBlades(resources.configuration)
-                        homeAnimeList.setOnClickListener {
-                            ContextCompat.startActivity(
-                                requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                                    .putExtra("anime", true)
-                                    .putExtra("userId", Anilist.userid)
-                                    .putExtra("username", Anilist.username), null
-                            )
-                        }
-                        homeMangaList.setOnClickListener {
-                            ContextCompat.startActivity(
-                                requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                                    .putExtra("anime", false)
-                                    .putExtra("userId", Anilist.userid)
-                                    .putExtra("username", Anilist.username), null
-                            )
-                        }
-                        homeAnimeList.visibility = View.VISIBLE
-                        homeMangaList.visibility = View.VISIBLE
-                        homeRandomAnime.visibility = View.VISIBLE
-                        homeRandomManga.visibility = View.VISIBLE
-                        homeListContainer.layoutAnimation =
-                            LayoutAnimationController(setSlideIn(), 0.25f)
-
-                        homeListContainerBinding.homeListContainer.postDelayed({
-                            rotateBackToStraight(resources.configuration)
-                        }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 100L)
-                    }
-                }
-            } else {
-                snackString(R.string.please_reload)
-            }
-        }
         binding.homeUserAvatarContainer.setSafeOnClickListener {
             SettingsDialogFragment.newInstance(SettingsDialogFragment.Companion.PageType.HOME).show(
                 (it.context as androidx.appcompat.app.AppCompatActivity).supportFragmentManager,
@@ -264,11 +265,11 @@ class HomeFragment : Fragment() {
             Refresh.activity[1]!!.postValue(true)
         }
 
-        //UserData
+        // UserData
         binding.homeUserDataProgressBar.visibility = View.VISIBLE
         binding.homeUserDataContainer.visibility = View.GONE
         if (model.loaded) load()
-        //List Images
+        // List Images
         model.getListImages().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 homeListContainerBinding.homeAnimeListImage.loadImage(it[0] ?: "https://bit.ly/31bsIHq")
