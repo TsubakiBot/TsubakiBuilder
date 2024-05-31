@@ -39,10 +39,11 @@ class NotificationItem(
     private fun image(
         user: Boolean = false, commentNotification: Boolean = false, subscription : Boolean = false
     ) {
-        val cover = if (user)
-            notification.user?.bannerImage ?: notification.user?.avatar?.medium
-        else
-            notification.media?.bannerImage ?: notification.media?.coverImage?.large
+        val cover = when {
+            user -> notification.user?.bannerImage ?: notification.user?.avatar?.medium
+            subscription -> notification.user?.bannerImage ?: notification.user?.avatar?.large
+            else -> notification.media?.bannerImage ?: notification.media?.coverImage?.large
+        }
         binding.notificationBannerImage.blurImage(cover)
 
         val defaultHeight = 153.toPx
@@ -75,7 +76,6 @@ class NotificationItem(
             binding.notificationCover.loadImage(notification.user?.avatar?.large)
             binding.notificationTitle.text = notification.media?.title?.userPreferred
             binding.notificationBannerImage.layoutParams.height = userHeight
-            binding.notificationBannerImage.loadImage(notification.user?.bannerImage)
             binding.notificationGradiant.layoutParams.height = userHeight
             (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
                 textMarginStart
