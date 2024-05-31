@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Palvelimen automaattinen valinta epäonnistui, yritä uudelleen!</string>
     <string name="stream_selection_empty">Ei virtoja saatavilla! Kokeile toista lähdettä.</string>
     <string name="logging_in_mal">Kirjaudutaan MAL</string>
-    <string name="getting_user_data">Haetaan Käyttäjätietoja</string>
     <string name="no_next_episode">Seuraavaa jaksoa ei löytynyt!</string>
     <string name="enable_banner_animations">Kokeile ottaa käyttöön \"Banner Animations\" asetuksista</string>
     <string name="please_login_anilist">Kirjaudu sisään Anilistilla!</string>

@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Konnte den Server nicht automatisch auswählen. Bitte versuchen Sie es erneut!</string>
     <string name="stream_selection_empty">Für diesen Inhalt sind keine Streams verfügbar. Versuchen Sie es mit einer anderen Quelle.</string>
     <string name="logging_in_mal">Anmeldung bei MAL</string>
-    <string name="getting_user_data">Benutzerdaten werden abgerufen</string>
     <string name="no_next_episode">Keine nächste Episode gefunden!</string>
     <string name="enable_banner_animations">Versuchen Sie, Banneranimationen in den Einstellungen zu aktivieren</string>
     <string name="please_login_anilist">Bitte melden Sie sich bei Anilist an!</string>

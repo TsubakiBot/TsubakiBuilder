@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Не вдалося автоматично вибрати сервер, будь ласка, спробуйте ще раз!</string>
     <string name="stream_selection_empty">Немає доступних потоків! Спробуйте інше джерело.</string>
     <string name="logging_in_mal">Вхід до MAL</string>
-    <string name="getting_user_data">Отримання даних користувача</string>
     <string name="no_next_episode">Не знайдено наступної серії!</string>
     <string name="enable_banner_animations">Спробуйте ввімкнути \"Анімації банерів\" в налаштуваннях</string>
     <string name="please_login_anilist">Будь ласка, увійдіть за допомогою Anilist!</string>

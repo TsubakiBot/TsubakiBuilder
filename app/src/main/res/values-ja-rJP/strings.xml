@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">サーバーを自動的に選択できませんでした。もう一度やり直してください！</string>
     <string name="stream_selection_empty">利用可能なストリームがありません！別のソースを試してみてください。</string>
     <string name="logging_in_mal">MALにログインしています</string>
-    <string name="getting_user_data">ユーザーデータの取得</string>
     <string name="no_next_episode">次のエピソードは見つかりませんでした！</string>
     <string name="enable_banner_animations">設定で \"Banner Animations\" を有効にしてみてください</string>
     <string name="please_login_anilist">Anilistでログインしてください！</string>

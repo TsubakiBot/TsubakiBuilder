@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Nie można automatycznie wybrać serwera, spróbuj ponownie!</string>
     <string name="stream_selection_empty">Brak dostępnych strumieni! Wypróbuj inne źródło.</string>
     <string name="logging_in_mal">Logowanie do MAL</string>
-    <string name="getting_user_data">Pobieranie danych użytkownika</string>
     <string name="no_next_episode">Nie znaleziono następnego odcinka!</string>
     <string name="enable_banner_animations">Spróbuj włączyć \"Animacje banerów\" w ustawieniach</string>
     <string name="please_login_anilist">Proszę zalogować się za pomocą anilisty!</string>

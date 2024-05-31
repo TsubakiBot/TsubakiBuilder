@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Serverul nu a putut fi selectat automat, încercați din nou!</string>
     <string name="stream_selection_empty">Nu există fluxuri disponibile! Încercați altă sursă.</string>
     <string name="logging_in_mal">Logare în MAL</string>
-    <string name="getting_user_data">Obținerea datelor utilizatorului</string>
     <string name="no_next_episode">Nu s-a găsit niciun episod următor!</string>
     <string name="enable_banner_animations">Încercați să activați \"Animații banner\" în setări</string>
     <string name="please_login_anilist">Te rugăm să te autentifici cu Anilist!</string>

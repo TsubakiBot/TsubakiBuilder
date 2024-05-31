@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Sunucuyu otomatik seçemedim, Lütfen tekrar deneyin!</string>
     <string name="stream_selection_empty">Akışlar mevcut değil! Başka bir kaynağı deneyin.</string>
     <string name="logging_in_mal">MAL\'a giriş yapılıyor</string>
-    <string name="getting_user_data">Kullanıcı Verileri Alınıyor</string>
     <string name="no_next_episode">Bir sonraki bölüm bulunamadı!</string>
     <string name="enable_banner_animations">Ayarlar\'da \"Banner Animasyonları\"nı etkinleştirmeyi deneyin</string>
     <string name="please_login_anilist">Lütfen Anilist ile giriş yapın!</string>

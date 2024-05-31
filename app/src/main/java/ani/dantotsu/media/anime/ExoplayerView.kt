@@ -145,11 +145,11 @@ import ani.dantotsu.parsers.SubtitleType
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.parsers.VideoExtractor
 import ani.dantotsu.parsers.VideoType
+import ani.dantotsu.refresh
 import ani.dantotsu.settings.PlayerSettingsActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toDp
 import ani.dantotsu.toPx
@@ -1086,10 +1086,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }
 
         // Handle Media
-        if (!initialized) return startMainActivity(this)
+        if (!initialized) return refresh()
         model.setMedia(media)
         title = media.userPreferredName
-        episodes = media.anime?.episodes ?: return startMainActivity(this)
+        episodes = media.anime?.episodes ?: return refresh()
 
         videoInfo = playerView.findViewById(R.id.exo_video_info)
 

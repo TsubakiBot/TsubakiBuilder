@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">无法自动选择服务器，请重试！</string>
     <string name="stream_selection_empty">内容没有可用的流。尝试其他来源。</string>
     <string name="logging_in_mal">登录MAL中</string>
-    <string name="getting_user_data">获取用户数据</string>
     <string name="no_next_episode">找不到下一集！</string>
     <string name="enable_banner_animations">尝试从设置中启用横幅动画</string>
     <string name="please_login_anilist">请使用Anilist登录！</string>

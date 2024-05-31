@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">تعذر التحديد التلقائي للخادم، الرجاء المحاولة مرة أخرى!</string>
     <string name="stream_selection_empty">لا يوجد بث متاح! جرب مصدر آخر.</string>
     <string name="logging_in_mal">يتم تسجيل دخول ل\"MAL\"</string>
-    <string name="getting_user_data">الحصول على بيانات المستخدم</string>
     <string name="no_next_episode">لم يتم العثور على الحلقة التالية!</string>
     <string name="enable_banner_animations">حاول تمكين \"الرسوم المتحركة\" في الإعدادات</string>
     <string name="please_login_anilist">رجاء تسجيل دخول ب\"Aniilist\"!</string>

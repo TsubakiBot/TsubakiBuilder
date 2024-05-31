@@ -329,29 +329,31 @@ fun Window.setNavigationTheme(context: Context) {
     }
 }
 
-/**
- * Finish the calling activity and launch it again within the same lifecycle scope
- */
-fun Activity.reloadActivity() {
-    finish()
-    startActivity(Intent(this, this::class.java))
+fun Activity.refresh(bundle: Bundle? = null) {
+    finishAffinity()
+    startActivity(
+        Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            if (bundle != null) putExtras(bundle)
+        }
+    )
 }
 
 /**
  * Restarts the application from the launch intent and redirects to the calling activity
  */
-fun Activity.restartApp() {
+fun Activity.restart(component: ComponentName? = null) {
     val mainIntent = Intent.makeRestartActivityTask(
         packageManager.getLaunchIntentForPackage(this.packageName)!!.component
     )
-    val component =
-        ComponentName(this@restartApp.packageName, this@restartApp::class.qualifiedName!!)
+    finishAndRemoveTask()
     try {
-        startActivity(Intent().setComponent(component))
+        startActivity(Intent().apply {
+            component?.let { setComponent(it) }
+        })
     } catch (anything: Exception) {
         startActivity(mainIntent)
     }
-    finishAndRemoveTask()
 }
 
 suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatchers.Main) {
@@ -374,7 +376,7 @@ suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatch
     }
 }
 
-suspend fun loadFragment(activity: FragmentActivity, response: () -> Unit) = withContext(Dispatchers.IO) {
+suspend fun loadFragment(activity: FragmentActivity, response: () -> Unit) {
     Anilist.userid = PrefManager.getNullableVal<String>(PrefName.AnilistUserId, null)
         ?.toIntOrNull()
     try {
@@ -422,16 +424,6 @@ fun isOnline(context: Context): Boolean {
             } ?: false
         }
     } ?: false
-}
-
-fun startMainActivity(activity: Activity, bundle: Bundle? = null) {
-    activity.finishAndRemoveTask()
-    activity.startActivity(
-        Intent(activity, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            if (bundle != null) putExtras(bundle)
-        }
-    )
 }
 
 class DatePickerFragment(activity: Activity, var date: FuzzyDate = FuzzyDate().getToday()) :

@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import ani.dantotsu.loadMedia
-import ani.dantotsu.startMainActivity
+import ani.dantotsu.refresh
 import ani.dantotsu.themes.ThemeManager
 
 class UrlMedia : Activity() {
@@ -23,13 +23,12 @@ class UrlMedia : Activity() {
                 isMAL = data?.host != "anilist.co"
                 id = data?.pathSegments?.getOrNull(1)?.toIntOrNull()
             } else loadMedia = id
-            startMainActivity(
-                this,
+            refresh(
                 bundleOf("mediaId" to id, "mal" to isMAL, "continue" to continueMedia)
             )
         } else {
             val username = data.pathSegments?.getOrNull(1)
-            startMainActivity(this, bundleOf("username" to username))
+            refresh(bundleOf("username" to username))
         }
     }
 }

@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">सर्वर को ऑटो चुनने में असमर्थ, कृपया पुनः प्रयास करें!</string>
     <string name="stream_selection_empty">सामग्री के लिए कोई स्ट्रीम उपलब्ध नहीं है। कृपया किसी अन्य स्रोत का प्रयास करें।</string>
     <string name="logging_in_mal">MAL में लॉगिन हो रहा है</string>
-    <string name="getting_user_data">उपयोगकर्ता डेटा प्राप्त किया जा रहा है</string>
     <string name="no_next_episode">अगला एपिसोड नहीं मिला!</string>
     <string name="enable_banner_animations">सेटिंग्स से बैनर एनिमेशन को सक्षम करने का प्रयास करें</string>
     <string name="please_login_anilist">कृपया Anilist के साथ लॉगिन करें!</string>

@@ -19,7 +19,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.FragmentLoginBinding
 import ani.dantotsu.openLinkInBrowser
-import ani.dantotsu.restartApp
+import ani.dantotsu.restart
 import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
                                         return@passwordAlertDialog
                                     }
                                     if (PreferencePackager.unpack(decryptedJson))
-                                        activity?.restartApp()
+                                        activity?.restart()
                                 } else {
                                     toast(getString(R.string.password_cannot_be_empty))
                                 }
@@ -82,7 +82,7 @@ class LoginFragment : Fragment() {
                         } else if (name.endsWith(".ani")) {
                             val decryptedJson = jsonString.toString(Charsets.UTF_8)
                             if (PreferencePackager.unpack(decryptedJson))
-                                activity?.restartApp()
+                                activity?.restart()
                         } else {
                             toast(getString(R.string.invalid_file_type))
                         }

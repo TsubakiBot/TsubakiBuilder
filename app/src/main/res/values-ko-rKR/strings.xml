@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">서버를 자동으로 선택할 수 없습니다. 다시 시도하세요!</string>
     <string name="stream_selection_empty">콘텐츠에 사용 가능한 스트림이 없습니다. 다른 소스를 시도하세요.</string>
     <string name="logging_in_mal">MAL에 로그인 중</string>
-    <string name="getting_user_data">사용자 데이터 가져오는 중</string>
     <string name="no_next_episode">다음 에피소드를 찾을 수 없습니다!</string>
     <string name="enable_banner_animations">설정에서 배너 애니메이션을 활성화해보세요</string>
     <string name="please_login_anilist">Anilist에 로그인하세요!</string>

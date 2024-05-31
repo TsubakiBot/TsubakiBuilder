@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Impossible de sélectionner automatiquement le serveur, veuillez réessayer !</string>
     <string name="stream_selection_empty">Aucun flux disponible pour le contenu. Essayez une autre source.</string>
     <string name="logging_in_mal">Connexion à MAL en cours</string>
-    <string name="getting_user_data">Récupération des données utilisateur</string>
     <string name="no_next_episode">Aucun épisode suivant trouvé !</string>
     <string name="enable_banner_animations">Essayez d\'activer les animations de bannière depuis les paramètres</string>
     <string name="please_login_anilist">Veuillez vous connecter avec Anilist !</string>

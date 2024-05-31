@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Không thể tự động chọn máy chủ, Vui lòng thử lại!</string>
     <string name="stream_selection_empty">Không có luồng nào khả dụng! Hãy thử nguồn khác.</string>
     <string name="logging_in_mal">Đăng nhập vào MAL</string>
-    <string name="getting_user_data">Nhận dữ liệu người dùng</string>
     <string name="no_next_episode">Không tìm thấy tập tiếp theo!</string>
     <string name="enable_banner_animations">Hãy thử bật \"Hiệu ứng Banner\" trong cài đặt</string>
     <string name="please_login_anilist">Vui lòng đăng nhập bằng Anilist!</string>

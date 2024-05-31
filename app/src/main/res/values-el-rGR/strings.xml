@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Δεν ήταν δυνατή η αυτόματη επιλογή του διακομιστή. Δοκιμάστε ξανά!</string>
     <string name="stream_selection_empty">Δεν υπάρχουν διαθέσιμες ροές! Δοκιμάστε άλλη πηγή.</string>
     <string name="logging_in_mal">Σύνδεση στο MAL</string>
-    <string name="getting_user_data">Λήψη δεδομένων χρήστη</string>
     <string name="no_next_episode">Δεν βρέθηκε επόμενο επεισόδιο!</string>
     <string name="enable_banner_animations">Δοκιμάστε να ενεργοποιήσετε το \"Banner Animations\" στις ρυθμίσεις</string>
     <string name="please_login_anilist">Παρακαλούμε συνδεθείτε με το Anilist!</string>

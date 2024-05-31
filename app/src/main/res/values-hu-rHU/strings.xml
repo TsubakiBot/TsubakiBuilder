@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Nem sikerült automatikusan kiválasztani a szervert, Kérlek próbáld újra!</string>
     <string name="stream_selection_empty">Nincs elérhető stream! Próbálj más forrást.</string>
     <string name="logging_in_mal">Bejelentkezés a MAL-ba</string>
-    <string name="getting_user_data">Felhasználói adatok lekérése</string>
     <string name="no_next_episode">Nincs következő epizód!</string>
     <string name="enable_banner_animations">Próbáld engedélyezni a \"Banner Animációkat\" a beállításokban</string>
     <string name="please_login_anilist">Kérjük, jelentkezz be Anilisttel!</string>

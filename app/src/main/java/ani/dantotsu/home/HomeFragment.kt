@@ -113,59 +113,59 @@ class HomeFragment : Fragment() {
 
     @OptIn(ExperimentalBadgeUtils::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val scope = lifecycleScope
         fun load() {
-            if (activity != null && _binding != null) lifecycleScope.launch(Dispatchers.Main) {
-                binding.homeUserName.text = Anilist.username
-                binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
-                binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
-                binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
-                binding.avatarFabulous.toRoundImage(Anilist.avatar, 52.toPx)
-                val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
-                    binding.homeUserBg
-                else
-                    binding.homeUserBgNoKen
-                banner.blurImage(Anilist.bg)
-                binding.homeUserDataProgressBar.visibility = View.GONE
-                setActiveNotificationCount()
+            if (activity != null && _binding != null) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    binding.homeUserName.text = Anilist.username
+                    binding.homeUserEpisodesWatched.text = Anilist.episodesWatched.toString()
+                    binding.homeUserChaptersRead.text = Anilist.chapterRead.toString()
+                    binding.homeUserAvatar.loadImage(Anilist.avatar, 52.toPx)
+                    binding.avatarFabulous.toRoundImage(Anilist.avatar, 52.toPx)
+                    val banner = if (PrefManager.getVal(PrefName.BannerAnimations))
+                        binding.homeUserBg
+                    else
+                        binding.homeUserBgNoKen
+                    banner.blurImage(Anilist.bg)
+                    binding.homeUserDataProgressBar.visibility = View.GONE
+                    setActiveNotificationCount()
 
-                binding.homeUserAvatarContainer.startAnimation(setSlideUp())
-                binding.avatarFabulous.startAnimation(setSlideUp())
-                binding.homeUserDataContainer.visibility = View.VISIBLE
-                binding.homeUserDataContainer.layoutAnimation =
-                    LayoutAnimationController(setSlideUp(), 0.25f)
+                    binding.homeUserAvatarContainer.startAnimation(setSlideUp())
+                    binding.avatarFabulous.startAnimation(setSlideUp())
+                    binding.homeUserDataContainer.visibility = View.VISIBLE
+                    binding.homeUserDataContainer.layoutAnimation =
+                        LayoutAnimationController(setSlideUp(), 0.25f)
 
-                homeListContainerBinding.apply {
-                    rotateButtonsToBlades(resources.configuration)
-                    homeAnimeList.setOnClickListener {
-                        ContextCompat.startActivity(
-                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                                .putExtra("anime", true)
-                                .putExtra("userId", Anilist.userid)
-                                .putExtra("username", Anilist.username), null
-                        )
+                    homeListContainerBinding.apply {
+                        rotateButtonsToBlades(resources.configuration)
+                        homeAnimeList.setOnClickListener {
+                            ContextCompat.startActivity(
+                                requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                    .putExtra("anime", true)
+                                    .putExtra("userId", Anilist.userid)
+                                    .putExtra("username", Anilist.username), null
+                            )
+                        }
+                        homeMangaList.setOnClickListener {
+                            ContextCompat.startActivity(
+                                requireActivity(), Intent(requireActivity(), ListActivity::class.java)
+                                    .putExtra("anime", false)
+                                    .putExtra("userId", Anilist.userid)
+                                    .putExtra("username", Anilist.username), null
+                            )
+                        }
+                        homeAnimeList.visibility = View.VISIBLE
+                        homeMangaList.visibility = View.VISIBLE
+                        homeRandomAnime.visibility = View.VISIBLE
+                        homeRandomManga.visibility = View.VISIBLE
+                        homeListContainer.layoutAnimation =
+                            LayoutAnimationController(setSlideIn(), 0.25f)
+
+                        homeListContainerBinding.homeListContainer.postDelayed({
+                            rotateBackToStraight(resources.configuration)
+                        }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 100L)
                     }
-                    homeMangaList.setOnClickListener {
-                        ContextCompat.startActivity(
-                            requireActivity(), Intent(requireActivity(), ListActivity::class.java)
-                                .putExtra("anime", false)
-                                .putExtra("userId", Anilist.userid)
-                                .putExtra("username", Anilist.username), null
-                        )
-                    }
-                    homeAnimeList.visibility = View.VISIBLE
-                    homeMangaList.visibility = View.VISIBLE
-                    homeRandomAnime.visibility = View.VISIBLE
-                    homeRandomManga.visibility = View.VISIBLE
-                    homeListContainer.layoutAnimation =
-                        LayoutAnimationController(setSlideIn(), 0.25f)
-
-                    homeListContainerBinding.homeListContainer.postDelayed({
-                        rotateBackToStraight(resources.configuration)
-                    }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 100L)
                 }
-            }
-            else {
+            } else {
                 snackString(R.string.please_reload)
             }
         }
@@ -267,9 +267,7 @@ class HomeFragment : Fragment() {
         //UserData
         binding.homeUserDataProgressBar.visibility = View.VISIBLE
         binding.homeUserDataContainer.visibility = View.GONE
-        if (model.loaded) {
-            load()
-        }
+        if (model.loaded) load()
         //List Images
         model.getListImages().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
@@ -702,56 +700,54 @@ class HomeFragment : Fragment() {
         val live = Refresh.activity.getOrPut(1) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
             if (it) {
-                scope.launch {
-                    withContext(Dispatchers.IO) {
-                        //Get userData First
-                        loadFragment(requireActivity(), ::load)
-                        model.loaded = true
-                        model.setListImages()
-                        var empty = true
-                        val homeLayoutShow: List<Boolean> =
-                            PrefManager.getVal(PrefName.HomeLayout)
-                        model.initHomePage()
-                        (containers.indices).forEach { i ->
-                            if (homeLayoutShow.elementAt(i)) {
-                                empty = false
-                            } else withContext(Dispatchers.Main) {
-                                containers[i].visibility = View.GONE
-                            }
+                lifecycleScope.launch(Dispatchers.IO) {
+                    // Get userData First
+                    loadFragment(requireActivity()) { load() }
+                    model.loaded = true
+                    model.setListImages()
+                    var empty = true
+                    val homeLayoutShow: List<Boolean> =
+                        PrefManager.getVal(PrefName.HomeLayout)
+                    model.initHomePage()
+                    (containers.indices).forEach { i ->
+                        if (homeLayoutShow.elementAt(i)) {
+                            empty = false
+                        } else withContext(Dispatchers.Main) {
+                            containers[i].visibility = View.GONE
                         }
-
-                        binding.homeSubscribedBrowseButton.setOnClickListener {
-                            val userList = arrayListOf<Media>().apply {
-                                model.getAnimeContinue().value?.let { items -> addAll(items) }
-                                model.getAnimePlanned().value?.let { items -> addAll(items) }
-                                model.getMangaContinue().value?.let { items -> addAll(items) }
-                                model.getMangaPlanned().value?.let { items -> addAll(items) }
-                            }
-                            if (userList.isEmpty()) {
-                                snackString(R.string.no_current_items)
-                            } else {
-                                userList.forEach { media ->
-                                    SubscriptionHelper.saveSubscription(media, true)
-                                }
-                                model.setSubscriptions(userList)
-                            }
-                        }
-
-                        ResumableShortcuts.updateShortcuts(
-                            context,
-                            model.getAnimeContinue().value,
-                            model.getMangaContinue().value
-                        )
-                        ResumableWidget.injectUpdate(
-                            context,
-                            model.getAnimeContinue().value,
-                            model.getMangaContinue().value
-                        )
-                        model.empty.postValue(empty)
                     }
-                    live.postValue(false)
-                    _binding?.homeRefresh?.isRefreshing = false
+
+                    binding.homeSubscribedBrowseButton.setOnClickListener {
+                        val userList = arrayListOf<Media>().apply {
+                            model.getAnimeContinue().value?.let { items -> addAll(items) }
+                            model.getAnimePlanned().value?.let { items -> addAll(items) }
+                            model.getMangaContinue().value?.let { items -> addAll(items) }
+                            model.getMangaPlanned().value?.let { items -> addAll(items) }
+                        }
+                        if (userList.isEmpty()) {
+                            snackString(R.string.no_current_items)
+                        } else {
+                            userList.forEach { media ->
+                                SubscriptionHelper.saveSubscription(media, true)
+                            }
+                            model.setSubscriptions(userList)
+                        }
+                    }
+
+                    ResumableShortcuts.updateShortcuts(
+                        context,
+                        model.getAnimeContinue().value,
+                        model.getMangaContinue().value
+                    )
+                    ResumableWidget.injectUpdate(
+                        context,
+                        model.getAnimeContinue().value,
+                        model.getMangaContinue().value
+                    )
+                    model.empty.postValue(empty)
                 }
+                live.postValue(false)
+                _binding?.homeRefresh?.isRefreshing = false
             }
         }
     }
@@ -781,8 +777,8 @@ class HomeFragment : Fragment() {
         if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-        val adjustTime = 750L
-        val rotateTime = 600L
+        val adjustTime = 750L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+        val rotateTime = 600L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
 
         homeListContainerBinding.homeListContainer.run {
             ValueAnimator.ofInt(measuredHeight, 76.toPx).apply {

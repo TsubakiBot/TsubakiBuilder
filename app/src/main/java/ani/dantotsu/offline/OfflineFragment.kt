@@ -11,9 +11,9 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.FragmentOfflineBinding
 import ani.dantotsu.isOnline
 import ani.dantotsu.navBarHeight
+import ani.dantotsu.refresh
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 
 class OfflineFragment : Fragment() {
@@ -39,7 +39,7 @@ class OfflineFragment : Fragment() {
                 Refresh.all()
             } else {
                 if (isOnline(requireContext()) ) {
-                    startMainActivity(requireActivity())
+                    requireActivity().refresh()
                 }
             }
         }

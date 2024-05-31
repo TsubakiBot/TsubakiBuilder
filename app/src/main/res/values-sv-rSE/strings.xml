@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Kunde inte automatiskt välja servern, försök igen!</string>
     <string name="stream_selection_empty">Inga strömmar tillgängliga! Prova en annan källa.</string>
     <string name="logging_in_mal">Loggar in på MAL</string>
-    <string name="getting_user_data">Hämtar användardata</string>
     <string name="no_next_episode">Ingen nästa episod hittades!</string>
     <string name="enable_banner_animations">Försök att aktivera \"Banner Animations\" i inställningarna</string>
     <string name="please_login_anilist">Logga in med Anilist!</string>

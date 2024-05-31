@@ -440,7 +440,6 @@
     <string name="auto_select_server_error">No se pudo autoseleccionar el servidor, ¡Inténtelo de nuevo!</string>
     <string name="stream_selection_empty">No hay servidores disponibles para el contenido. Intenta otra fuente.</string>
     <string name="logging_in_mal">Iniciando sesión en MAL</string>
-    <string name="getting_user_data">Obteniendo datos de usuario</string>
     <string name="no_next_episode">¡No se encontró el siguiente episodio!</string>
     <string name="enable_banner_animations">Intenta habilitar las \"animaciones de banner\" en Configuración</string>
     <string name="please_login_anilist">¡Porfavor Inicia sesión con Anilist!</string>

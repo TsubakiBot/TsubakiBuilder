@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Couldn\'t auto select the server, Please try again!</string>
     <string name="stream_selection_empty">No streams available! Try another source.</string>
     <string name="logging_in_mal">Logging into MAL</string>
-    <string name="getting_user_data">Getting User Data</string>
     <string name="no_next_episode">No next episode found!</string>
     <string name="enable_banner_animations">Try enabling \"Banner Animations\" in settings</string>
     <string name="please_login_anilist">Please log in with Anilist!</string>

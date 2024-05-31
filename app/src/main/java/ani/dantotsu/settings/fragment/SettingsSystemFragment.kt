@@ -2,6 +2,7 @@ package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,7 +23,7 @@ import ani.dantotsu.Himitsu
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsSystemBinding
-import ani.dantotsu.restartApp
+import ani.dantotsu.restart
 import ani.dantotsu.savePrefsToDownloads
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
@@ -47,14 +48,16 @@ import kotlinx.coroutines.launch
 class SettingsSystemFragment : Fragment() {
     private lateinit var binding: ActivitySettingsSystemBinding
 
-    val openDocumentLauncher =
+
+    private val openDocumentLauncher =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-            val context = requireActivity() as SettingsActivity
+            val settings = requireActivity() as SettingsActivity
+            val component = ComponentName(settings.packageName, settings::class.qualifiedName!!)
             if (uri != null) {
                 try {
-                    val jsonString = context.contentResolver.openInputStream(uri)?.readBytes()
+                    val jsonString = settings.contentResolver.openInputStream(uri)?.readBytes()
                         ?: throw Exception("Error reading file")
-                    val name = DocumentFile.fromSingleUri(context, uri)?.name ?: "settings"
+                    val name = DocumentFile.fromSingleUri(settings, uri)?.name ?: "settings"
                     //.sani is encrypted, .ani is not
                     if (name.endsWith(".sani")
                         && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -73,7 +76,7 @@ class SettingsSystemFragment : Fragment() {
                                     return@passwordAlertDialog
                                 }
                                 if (PreferencePackager.unpack(decryptedJson))
-                                    context.restartApp()
+                                    settings.restart(component)
                             } else {
                                 toast(getString(R.string.password_cannot_be_empty))
                             }
@@ -81,7 +84,7 @@ class SettingsSystemFragment : Fragment() {
                     } else if (name.endsWith(".ani")) {
                         val decryptedJson = jsonString.toString(Charsets.UTF_8)
                         if (PreferencePackager.unpack(decryptedJson))
-                            context.restartApp()
+                            settings.restart(component)
                     } else {
                         toast(getString(R.string.unknown_file_type))
                     }
@@ -104,6 +107,7 @@ class SettingsSystemFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val settings = requireActivity() as SettingsActivity
+        val component = ComponentName(settings.packageName, settings::class.qualifiedName!!)
 
         binding.apply {
             systemSettingsBack.setOnClickListener {
@@ -214,7 +218,7 @@ class SettingsSystemFragment : Fragment() {
                         isChecked = PrefManager.getVal(PrefName.UseShortcuts),
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.UseShortcuts, isChecked)
-                            settings.restartApp()
+                            settings.restart(component)
                         }
                     ),
                     Settings(
@@ -258,7 +262,7 @@ class SettingsSystemFragment : Fragment() {
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.LogToFile, isChecked)
                             Logger.clearLog()
-                            settings.restartApp()
+                            settings.restart(component)
                         }
 
                     ),
@@ -280,7 +284,7 @@ class SettingsSystemFragment : Fragment() {
                         switch = { isChecked, _ ->
                             PrefManager.setVal(PrefName.Lightspeed, isChecked)
                             Logger.clearLog()
-                            settings.restartApp()
+                            settings.restart(component)
                         }
                     )
                 )

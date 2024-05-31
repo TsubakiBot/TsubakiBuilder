@@ -20,6 +20,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.BuildConfig
 import ani.dantotsu.databinding.ActivitySettingsBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.refresh
 import ani.dantotsu.settings.fragment.SettingsAboutFragment
 import ani.dantotsu.settings.fragment.SettingsAddonFragment
 import ani.dantotsu.settings.fragment.SettingsAnimeFragment
@@ -31,7 +32,6 @@ import ani.dantotsu.settings.fragment.SettingsNotificationFragment
 import ani.dantotsu.settings.fragment.SettingsSystemFragment
 import ani.dantotsu.settings.fragment.SettingsThemeFragment
 import ani.dantotsu.settings.fragment.UserInterfaceFragment
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.LauncherWrapper
@@ -66,7 +66,7 @@ class SettingsActivity : AppCompatActivity() {
                 when {
                     silentExit -> finish()
                     binding.settingsViewPager.currentItem != 0 -> setFragment(Page.MAIN)
-                    else -> startMainActivity(this@SettingsActivity)
+                    else -> refresh()
                 }
             }
 

@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Kon server niet automatisch selecteren, probeer het opnieuw!</string>
     <string name="stream_selection_empty">Geen streams beschikbaar! Probeer een andere bron.</string>
     <string name="logging_in_mal">Aanmelden bij MAL</string>
-    <string name="getting_user_data">Gebruikersgegevens ophalen</string>
     <string name="no_next_episode">Geen volgende aflevering gevonden!</string>
     <string name="enable_banner_animations">Probeer \"Banner Animaties\" aan te zetten in instellingen</string>
     <string name="please_login_anilist">Please Login with Anilist!</string>

@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Не удалось автоматически выбрать сервер, пожалуйста, попробуйте еще раз!</string>
     <string name="stream_selection_empty">Для контента нет видео. Попробуйте другой источник.</string>
     <string name="logging_in_mal">Вход в MAL</string>
-    <string name="getting_user_data">Получение данных пользователя</string>
     <string name="no_next_episode">Следующий эпизод не найден!</string>
     <string name="enable_banner_animations">Попробуйте включить анимации баннеров в настройках</string>
     <string name="please_login_anilist">Пожалуйста, войдите через Anilist!</string>

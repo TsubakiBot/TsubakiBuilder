@@ -2,6 +2,7 @@ package ani.dantotsu.settings.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
-import ani.dantotsu.restartApp
+import ani.dantotsu.restart
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
@@ -83,7 +84,7 @@ class SettingsCommonFragment : Fragment() {
             settingsExtensionDns.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.DohProvider, i)
                 settingsExtensionDns.clearFocus()
-                settings.restartApp()
+                settings.restart(ComponentName(settings.packageName, settings::class.qualifiedName!!))
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(

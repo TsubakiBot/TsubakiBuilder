@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Kon nie die bediener outomaties kies nie, Probeer asseblief weer!</string>
     <string name="stream_selection_empty">Geen strome beskikbaar nie! Probeer \'n ander bron.</string>
     <string name="logging_in_mal">Teken in by MAL</string>
-    <string name="getting_user_data">Kry Gebruikersdata</string>
     <string name="no_next_episode">Geen volgende episode gevind nie!</string>
     <string name="enable_banner_animations">Probeer om \"Banner Animations\" in te skakel in instellings</string>
     <string name="please_login_anilist">Maak asseblief aan met Anilist!</string>

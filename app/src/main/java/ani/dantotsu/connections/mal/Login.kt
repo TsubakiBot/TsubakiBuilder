@@ -9,10 +9,10 @@ import ani.dantotsu.client
 import ani.dantotsu.connections.mal.MAL.clientId
 import ani.dantotsu.connections.mal.MAL.saveResponse
 import ani.dantotsu.logError
+import ani.dantotsu.restart
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.tryWithSuspend
 import kotlinx.coroutines.Dispatchers
@@ -45,16 +45,13 @@ class Login : AppCompatActivity() {
                     ).parsed<MAL.ResponseToken>()
                     saveResponse(res)
                     MAL.token = res.accessToken
-                    snackString(getString(R.string.getting_user_data))
                     MAL.query.getUserData()
-                    launch(Dispatchers.Main) {
-                        startMainActivity(this@Login)
-                    }
+                    restart()
                 }
             }
         } catch (e: Exception) {
             logError(e, snackbar = false)
-            startMainActivity(this)
+            restart()
         }
     }
 

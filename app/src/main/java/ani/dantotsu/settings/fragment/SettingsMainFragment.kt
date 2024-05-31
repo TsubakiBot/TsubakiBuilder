@@ -20,6 +20,7 @@ import ani.dantotsu.databinding.ActivitySettingsMainBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
+import ani.dantotsu.refresh
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.Page
 import ani.dantotsu.settings.Settings
@@ -30,7 +31,6 @@ import ani.dantotsu.settings.extension.DiscordDialogFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
-import ani.dantotsu.startMainActivity
 import ani.dantotsu.toast
 import bit.himitsu.update.MatagiUpdater
 import kotlinx.coroutines.Dispatchers
@@ -56,7 +56,7 @@ class SettingsMainFragment : Fragment() {
 
         binding.apply {
             settingsBack.setOnClickListener {
-                startMainActivity(settings)
+                settings.refresh()
             }
 
             binding.settingsRecyclerView.adapter = SettingsAdapter(

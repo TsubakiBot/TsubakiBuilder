@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Nelze automaticky vybrat server, zkuste to prosím znovu!</string>
     <string name="stream_selection_empty">Žádné streamy nejsou k dispozici! Zkuste jiný zdroj.</string>
     <string name="logging_in_mal">Přihlášení do MAL</string>
-    <string name="getting_user_data">Získávání uživatelských dat</string>
     <string name="no_next_episode">Nebyla nalezena žádná další epizoda!</string>
     <string name="enable_banner_animations">Zkuste povolit \"Banner Animations\" v nastavení</string>
     <string name="please_login_anilist">Přihlaste se prosím pomocí Anilistu!</string>

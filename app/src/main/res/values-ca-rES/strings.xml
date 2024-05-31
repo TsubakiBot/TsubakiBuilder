@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">No s\'ha pogut seleccionar automàticament el servidor, Si us plau, intenta-ho de nou!</string>
     <string name="stream_selection_empty">No hi ha transmissió disponible! Prova una altra font.</string>
     <string name="logging_in_mal">Inici de sessió a MAL</string>
-    <string name="getting_user_data">Obtenció de dades d\'usuari</string>
     <string name="no_next_episode">No s\'ha trobat cap episodi següent!</string>
     <string name="enable_banner_animations">Proveu d\'activar les \"Animacions de banner\" a la configuració</string>
     <string name="please_login_anilist">Si us plau, inicieu la sessió amb Anilist!</string>

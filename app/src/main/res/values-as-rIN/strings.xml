@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">সাৰ্ভাৰ স্বয়ংক্ৰিয় নিৰ্বাচন কৰিবলৈ অসমৰ্থ, অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক!</string>
     <string name="stream_selection_empty">বিষয়বস্তুৰ বাবে কোনো স্ট্ৰিম উপলব্ধ নহয়। অন্য উৎস প্ৰয়াস কৰক।</string>
     <string name="logging_in_mal">MALত লগ ইন কৰা হৈছে</string>
-    <string name="getting_user_data">ইউজাৰৰ ডাটা পোৱা হৈছে</string>
     <string name="no_next_episode">পৰৱৰ্তী এপিস\'ড পোৱা নাই!</string>
     <string name="enable_banner_animations">সেটিংছত বেনাৰ এনিমেশনসমূহ সক্ৰিয় কৰিবলৈ চেষ্টা কৰক</string>
     <string name="please_login_anilist">অনিলিস্টত লগ ইন কৰক!</string>

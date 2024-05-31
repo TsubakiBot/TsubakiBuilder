@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ani.dantotsu.R
 import ani.dantotsu.connections.discord.Discord.saveToken
-import ani.dantotsu.startMainActivity
+import ani.dantotsu.restart
 import ani.dantotsu.themes.ThemeManager
 
 class Login : AppCompatActivity() {
@@ -73,10 +73,8 @@ class Login : AppCompatActivity() {
             finish()
             return
         }
-        Toast.makeText(this, getString(R.string.login_succesful), Toast.LENGTH_SHORT).show()
-        finish()
         saveToken(token)
-        startMainActivity(this@Login)
+        restart()
     }
 
 }

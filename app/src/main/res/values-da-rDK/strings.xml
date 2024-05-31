@@ -460,7 +460,6 @@
     <string name="auto_select_server_error">Kunne ikke auto vælge serveren, Prøv igen!</string>
     <string name="stream_selection_empty">Ingen tilgængelige streams! Prøv en anden kilde.</string>
     <string name="logging_in_mal">Logger ind på MAL</string>
-    <string name="getting_user_data">Henter Brugerdata</string>
     <string name="no_next_episode">Ingen næste episode fundet!</string>
     <string name="enable_banner_animations">Prøv at aktivere \"Banner Animations\" i indstillinger</string>
     <string name="please_login_anilist">Log ind med Anilist!</string>
