@@ -251,10 +251,11 @@ class MainActivity : AppCompatActivity() {
                 background = backgroundDrawable
             }
             background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bottom_nav_gray)
-            visibility = View.GONE
         }
 
         initActivity(this)
+        binding.includedNavbar.navbarContainer.withFlexibleMargin(resources.configuration, toRight = false)
+        bottomBar.visibility = View.GONE
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = statusBarHeight
         binding.incognito.layoutParams = layoutParams
@@ -293,8 +294,8 @@ class MainActivity : AppCompatActivity() {
 
         var doubleBackToExitPressedOnce = false
         onBackPressedDispatcher.addCallback(this) {
-            if (binding.includedNavbar.navbar.selectedIndex != 1) {
-                binding.includedNavbar.navbar.selectTabAt(1)
+            if (bottomBar.selectedIndex != 1) {
+                bottomBar.selectTabAt(1)
             } else {
                 if (doubleBackToExitPressedOnce) {
                     finish()
@@ -370,7 +371,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             binding.includedNavbar.navbarContainer.withFlexibleMargin(resources.configuration, toRight = false)
-            binding.includedNavbar.navbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
                     16.toPx
                 else
@@ -597,7 +598,7 @@ class MainActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.includedNavbar.navbarContainer.withFlexibleMargin(newConfig, toRight = false)
-        binding.includedNavbar.navbar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        bottomBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
                 16.toPx
             else
