@@ -81,13 +81,12 @@ class AnimePageAdapter(val parent: AnimeFragment) : RecyclerView.Adapter<AnimePa
         trendingBinding.titleContainer.updatePadding(top = statusBarHeight)
 
         if (PrefManager.getVal(PrefName.SmallView)) {
-            trendingBinding.trendingContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            trendingBinding.trendingContainer.withFlexibleMargin(
+                holder.itemView.resources.configuration, toBottom = false
+            ).updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 bottomMargin = (-108f).toPx
             }
         }
-        trendingBinding.trendingContainer.withFlexibleMargin(
-            holder.itemView.resources.configuration, toBottom = false
-        )
 
         updateAvatar()
         parent.setActiveNotificationCount()

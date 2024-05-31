@@ -273,7 +273,7 @@ class MediaAdaptor(
 
     fun randomOptionClick() {
         val media = if (!mediaList.isNullOrEmpty()) {
-            mediaList.random()
+            mediaList.randomOrNull()
         } else {
             null
         }

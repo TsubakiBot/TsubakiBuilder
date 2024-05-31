@@ -289,7 +289,7 @@ class HomeFragment : Fragment() {
                 fun getRandomMedia(type: MediaType): Media {
                     var media: Media?
                     do {
-                        media = recommended[Random.nextInt(recommended.size)].takeIf { item ->
+                        media = recommended.randomOrNull()?.takeIf { item ->
                             (type == MediaType.ANIME && item.anime != null)
                                     || (type == MediaType.MANGA && item.manga != null)
                         }

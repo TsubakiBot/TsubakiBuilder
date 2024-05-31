@@ -6,6 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/itemCompactBanner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription,ImageContrastCheck"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
+
     <ImageView
         android:id="@+id/itemCompactBannerNoKen"
         android:layout_width="match_parent"
@@ -21,14 +29,6 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical">
-
-        <com.flaviofaria.kenburnsview.KenBurnsView
-            android:id="@+id/itemCompactBanner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription,ImageContrastCheck"
-            tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -175,10 +175,7 @@
                         tools:text="/??" />
 
                 </LinearLayout>
-
             </LinearLayout>
         </FrameLayout>
-
     </LinearLayout>
-
 </FrameLayout>
