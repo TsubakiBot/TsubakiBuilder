@@ -61,232 +61,243 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/settingsAnilistLoginContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="31dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/anilist"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_anilist"
-                app:tint="?attr/colorPrimary" />
+            android:background="@drawable/surface_rounded_bg"
+            android:orientation="vertical"
+            android:paddingVertical="8dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/settingsAnilistLoginContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:minHeight="64dp"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="12dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/settingsAnilistUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-4dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:text="@string/username"
-                    android:textColor="?attr/colorSecondary"
-                    android:textSize="16sp" />
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/anilist"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_anilist"
+                    app:tint="?attr/colorPrimary" />
 
-                <TextView
-                    android:id="@+id/settingsAnilistLogin"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="-16dp"
-                    android:layout_marginTop="-16dp"
-                    android:layout_marginBottom="-16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:padding="16dp"
-                    android:text="@string/logout"
-                    android:textSize="14sp" />
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="64dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/settingsAnilistUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="@string/username"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/settingsAnilistLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="-16dp"
+                        android:layout_marginTop="-16dp"
+                        android:layout_marginBottom="-16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:padding="16dp"
+                        android:text="@string/logout"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/settingsAnilistAvatarContainer"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/nav_bg_inv"
+                    app:cardCornerRadius="26dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/settingsAnilistAvatar"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_round_person_32"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/settingsAnilistAvatarContainer"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@color/nav_bg_inv"
-                app:cardCornerRadius="26dp">
+            <LinearLayout
+                android:id="@+id/settingsMalLoginContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/settingsAnilistAvatar"
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/myanimelist"
+                    app:srcCompat="@drawable/ic_myanimelist"
+                    app:tint="?attr/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="64dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/settingsMALLoginRequired"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="@string/login_with_anilist"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/settingsMALUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="@string/username"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/settingsMALLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="-16dp"
+                        android:layout_marginTop="-16dp"
+                        android:layout_marginBottom="-16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:padding="16dp"
+                        android:text="@string/logout"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/settingsMALAvatarContainer"
                     android:layout_width="51dp"
                     android:layout_height="51dp"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_round_person_32"
-                    tools:ignore="ContentDescription,ImageContrastCheck" />
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/nav_bg_inv"
+                    app:cardCornerRadius="26dp">
 
-            </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/settingsMALAvatar"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_round_person_32"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/settingsMalLoginContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="31dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/myanimelist"
-                app:srcCompat="@drawable/ic_myanimelist"
-                app:tint="?attr/colorPrimary" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:minHeight="64dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/settingsMALLoginRequired"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-4dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:text="@string/login_with_anilist"
-                    android:textColor="?attr/colorSecondary"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/settingsMALUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-4dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:text="@string/username"
-                    android:textColor="?attr/colorSecondary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/settingsMALLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-16dp"
-                    android:layout_marginTop="-16dp"
-                    android:layout_marginBottom="-16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:padding="16dp"
-                    android:text="@string/logout"
-                    android:textSize="14sp" />
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/settingsMALAvatarContainer"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@color/nav_bg_inv"
-                app:cardCornerRadius="26dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/settingsMALAvatar"
-                    android:layout_width="51dp"
-                    android:layout_height="51dp"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_round_person_32"
-                    tools:ignore="ContentDescription,ImageContrastCheck" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/settingsDiscordLoginContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:orientation="horizontal"
-            tools:ignore="ExtraText">
-
-            <ImageView
-                android:layout_width="31dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_discord"
-                app:tint="?attr/colorPrimary"
-                tools:ignore="ContentDescription" />
-
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/settingsDiscordLoginContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:minHeight="64dp"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="12dp"
+                android:orientation="horizontal"
+                tools:ignore="ExtraText">
 
-                <TextView
-                    android:id="@+id/settingsDiscordUsername"
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_discord"
+                    app:tint="?attr/colorPrimary"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="64dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/settingsDiscordUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/username"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/settingsDiscordLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="-16dp"
+                        android:layout_marginTop="-16dp"
+                        android:layout_marginBottom="-16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:padding="16dp"
+                        android:text="@string/logout"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/settingsImageSwitcher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="-4dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@string/username"
-                    android:textColor="?attr/colorSecondary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/settingsDiscordLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-16dp"
-                    android:layout_marginTop="-16dp"
-                    android:layout_marginBottom="-16dp"
-                    android:fontFamily="@font/poppins_bold"
                     android:padding="16dp"
-                    android:text="@string/logout"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/settingsImageSwitcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:src="@drawable/discord_status_idle" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/settingsDiscordAvatarContainer"
-                android:layout_width="51dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@color/nav_bg_inv"
-                app:cardCornerRadius="26dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/settingsDiscordAvatar"
-                    android:layout_width="51dp"
-                    android:layout_height="51dp"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_round_person_32"
+                    android:src="@drawable/discord_status_idle"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
-            </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/settingsDiscordAvatarContainer"
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/nav_bg_inv"
+                    app:cardCornerRadius="26dp">
 
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/settingsDiscordAvatar"
+                        android:layout_width="51dp"
+                        android:layout_height="51dp"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_round_person_32"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
