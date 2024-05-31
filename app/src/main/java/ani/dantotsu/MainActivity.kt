@@ -254,8 +254,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         initActivity(this)
-        binding.includedNavbar.navbarContainer.withFlexibleMargin(resources.configuration, toRight = false)
-        bottomBar.visibility = View.GONE
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = statusBarHeight
         binding.incognito.layoutParams = layoutParams
@@ -428,7 +426,6 @@ class MainActivity : AppCompatActivity() {
                 snackString(this@MainActivity.getString(R.string.no_internet))
                 startActivity(Intent(this, NoInternet::class.java))
             } else {
-                bottomBar.visibility = View.VISIBLE
                 val model: AnilistHomeViewModel by viewModels()
                 binding.mainProgressBar.visibility = View.GONE
                 val mainViewPager = binding.viewpager
