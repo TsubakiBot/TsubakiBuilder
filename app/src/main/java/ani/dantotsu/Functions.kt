@@ -425,7 +425,7 @@ fun isOnline(context: Context): Boolean {
 }
 
 fun startMainActivity(activity: Activity, bundle: Bundle? = null) {
-    activity.finishAffinity()
+    activity.finishAndRemoveTask()
     activity.startActivity(
         Intent(activity, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK

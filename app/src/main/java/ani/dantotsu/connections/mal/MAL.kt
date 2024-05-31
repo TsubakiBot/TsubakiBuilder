@@ -62,7 +62,6 @@ object MAL {
         }
     }
 
-
     suspend fun getSavedToken(): Boolean {
         return tryWithSuspend(false) {
             var res: ResponseToken =

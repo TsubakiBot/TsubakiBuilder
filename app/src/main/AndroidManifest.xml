@@ -275,7 +275,7 @@
 
                 <data
                     android:host="mal"
-                    android:scheme="dantotsu" />
+                    android:scheme="himitsu" />
             </intent-filter>
         </activity>
         <activity

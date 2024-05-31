@@ -69,11 +69,11 @@ class Login : AppCompatActivity() {
 
     private fun login(token: String) {
         if (token.isEmpty() || token == "null") {
-            Toast.makeText(this, "Failed to retrieve token", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.token_retrieve_failed), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
-        Toast.makeText(this, "Logged in successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.login_succesful), Toast.LENGTH_SHORT).show()
         finish()
         saveToken(token)
         startMainActivity(this@Login)
