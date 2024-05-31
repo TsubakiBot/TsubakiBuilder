@@ -67,7 +67,6 @@ query {
   }
 }""".trimIndent()
 
-
         val result = getKitsuData(query) ?: return null
         //Logger.log("Kitsu : result=$result")
         media.idKitsu = result.data?.lookupMapping?.id
@@ -80,7 +79,7 @@ query {
                 thumb = FileUrl[ep.thumbnail?.original?.url],
             )
         }.toMap()
-        //Logger.log("Kitsu : a=$a")
+        // Logger.log("Kitsu : a=$a")
         return a
     }
 
@@ -95,7 +94,6 @@ query {
                     }
                 }
             }
-
             else -> {
                 res?.body?.string()
             }

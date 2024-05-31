@@ -134,7 +134,7 @@
 
         <activity
             android:name=".media.novel.novelreader.NovelReaderActivity"
-            android:configChanges="orientation|screenSize|layoutDirection"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -217,7 +217,7 @@
             android:name=".media.manga.mangareader.MangaReaderActivity"
             android:exported="true"
             android:label="@string/manga"
-            android:configChanges="orientation|screenSize|layoutDirection"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:launchMode="singleTask" />
         <activity android:name=".media.GenreActivity" />
         <activity android:name=".media.reviews.ReviewPopupActivity" />
@@ -238,7 +238,7 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".media.anime.ExoplayerView"
-            android:configChanges="orientation|screenSize|layoutDirection"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="true"
             android:label="@string/video"
             android:launchMode="singleTask"
@@ -246,7 +246,7 @@
             tools:targetApi="n" />
         <activity
             android:name=".connections.anilist.Login"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
@@ -263,7 +263,7 @@
         </activity>
         <activity
             android:name=".connections.mal.Login"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
@@ -280,7 +280,7 @@
         </activity>
         <activity
             android:name=".connections.discord.Login"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
@@ -298,7 +298,7 @@
         </activity>
         <activity
             android:name=".others.webview.CookieCatcher"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
@@ -316,7 +316,7 @@
         </activity>
         <activity
             android:name=".connections.anilist.UrlMedia"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask">
@@ -359,7 +359,7 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
-            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
