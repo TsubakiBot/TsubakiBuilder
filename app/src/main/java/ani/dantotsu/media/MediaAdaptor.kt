@@ -34,9 +34,8 @@ import bit.himitsu.nio.Strings.getString
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import java.io.Serializable
 
-
 class MediaAdaptor(
-    var viewType: Int,
+    var viewType: ViewType,
     private val mediaList: MutableList<Media>?,
     private val activity: FragmentActivity,
     private val matchParent: Boolean = false,
@@ -44,12 +43,15 @@ class MediaAdaptor(
     private val fav: Boolean = false,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    constructor(index: Int, mediaList: MutableList<Media>?, activity: FragmentActivity, matchParent: Boolean = false)
+            : this(ViewType.entries[index], mediaList, activity, matchParent)
+
     var extension: String? = null
     var disableLongClick = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (this.viewType) {
-            0 -> MediaViewHolder(
+            ViewType.COMPACT -> MediaViewHolder(
                 ItemMediaCompactBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -57,7 +59,7 @@ class MediaAdaptor(
                 )
             )
 
-            1 -> MediaLargeViewHolder(
+            ViewType.LARGE -> MediaLargeViewHolder(
                 ItemMediaLargeBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -65,7 +67,7 @@ class MediaAdaptor(
                 )
             )
 
-            2 -> MediaPageViewHolder(
+            ViewType.PAGE -> MediaPageViewHolder(
                 ItemMediaPageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -73,17 +75,14 @@ class MediaAdaptor(
                 )
             )
 
-            3 -> MediaPageSmallViewHolder(
+            ViewType.SMALL_PAGE -> MediaPageSmallViewHolder(
                 ItemMediaPageSmallBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
             )
-
-            else -> throw IllegalArgumentException()
         }
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -91,7 +90,7 @@ class MediaAdaptor(
         val media = mediaList?.getOrNull(position)
         if (media != null) {
             when (viewType) {
-                0 -> {
+                ViewType.COMPACT -> {
                     val b = (holder as MediaViewHolder).binding
                     setAnimation(activity, b.root)
                     b.itemCompactImage.loadImage(media.cover)
@@ -136,7 +135,7 @@ class MediaAdaptor(
                     b.itemCompactProgressContainer.visibility = if (fav) View.GONE else View.VISIBLE
                 }
 
-                1 -> {
+                ViewType.LARGE -> {
                     val b = (holder as MediaLargeViewHolder).binding
                     setAnimation(activity, b.root)
                     b.itemCompactImage.loadImage(media.cover)
@@ -161,7 +160,7 @@ class MediaAdaptor(
                     }
                 }
 
-                2 -> {
+                ViewType.PAGE -> {
                     val b = (holder as MediaPageViewHolder).binding
                     val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                     b.itemCompactImage.loadImage(media.cover)
@@ -192,7 +191,7 @@ class MediaAdaptor(
                     }
                 }
 
-                3 -> {
+                ViewType.SMALL_PAGE -> {
                     val b = (holder as MediaPageSmallViewHolder).binding
                     val bannerAnimations: Boolean = PrefManager.getVal(PrefName.BannerAnimations)
                     b.itemCompactImage.loadImage(media.cover)
@@ -268,7 +267,7 @@ class MediaAdaptor(
     override fun getItemCount() = mediaList!!.size
 
     override fun getItemViewType(position: Int): Int {
-        return viewType
+        return viewType.ordinal
     }
 
     fun randomOptionClick() {
@@ -427,5 +426,11 @@ class MediaAdaptor(
 
         return Bitmap.createScaledBitmap(source, newWidth, newHeight, true)
     }
+}
 
+enum class ViewType {
+    COMPACT,
+    LARGE,
+    PAGE,
+    SMALL_PAGE
 }

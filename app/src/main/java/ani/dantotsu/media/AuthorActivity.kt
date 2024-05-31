@@ -89,7 +89,7 @@ class AuthorActivity : AppCompatActivity() {
                     pos += (empty + medias.size + 1)
 
                     concatAdapter.addAdapter(TitleAdapter("${keys[i]} (${medias.size})"))
-                    concatAdapter.addAdapter(MediaAdaptor(0, medias, this, true))
+                    concatAdapter.addAdapter(MediaAdaptor(ViewType.COMPACT, medias, this, true))
                     concatAdapter.addAdapter(EmptyAdapter(empty))
                 }
                 binding.studioRecycler.adapter = concatAdapter

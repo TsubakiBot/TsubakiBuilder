@@ -248,7 +248,7 @@ class SearchActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun recycler() {
-        mediaAdaptor.viewType = style
+        mediaAdaptor.viewType = ViewType.entries[style]
         mediaAdaptor.notifyDataSetChanged()
     }
 

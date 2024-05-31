@@ -126,7 +126,7 @@ class CharacterDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChang
 
                 val roles = character.roles
                 if (roles != null) {
-                    val mediaAdaptor = MediaAdaptor(0, roles, this, matchParent = true)
+                    val mediaAdaptor = MediaAdaptor(ViewType.COMPACT, roles, this, matchParent = true)
                     val concatAdaptor =
                         ConcatAdapter(CharacterDetailsAdapter(character, this), mediaAdaptor)
 

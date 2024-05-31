@@ -11,6 +11,7 @@ import ani.dantotsu.databinding.FragmentListBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.OtherDetailsViewModel
+import ani.dantotsu.media.ViewType
 import ani.dantotsu.toPx
 
 class ListFragment : Fragment() {
@@ -43,7 +44,12 @@ class ListFragment : Fragment() {
 
         fun update() {
             if (grid != null && list != null) {
-                val adapter = MediaAdaptor(if (grid!!) 0 else 1, list!!, requireActivity(), true)
+                val adapter = MediaAdaptor(
+                    if (grid!!) ViewType.COMPACT else ViewType.LARGE,
+                    list!!,
+                    requireActivity(),
+                    true
+                )
                 binding.listRecyclerView.layoutManager =
                     GridLayoutManager(
                         requireContext(),

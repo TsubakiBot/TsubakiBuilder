@@ -52,6 +52,7 @@ import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.ViewType
 import ani.dantotsu.media.emptyMedia
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.notifications.NotificationActivity
@@ -87,7 +88,6 @@ import kotlinx.coroutines.withContext
 import java.io.Serializable
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
@@ -433,7 +433,7 @@ class HomeFragment : Fragment() {
                 empty.visibility = View.GONE
                 if (it != null) {
                     if (it.isNotEmpty()) {
-                        recyclerView.adapter = MediaAdaptor(0, it, requireActivity()).apply {
+                        recyclerView.adapter = MediaAdaptor(ViewType.COMPACT, it, requireActivity()).apply {
                             disableLongClick = string == getString(R.string.subscriptions)
                         }
                         recyclerView.layoutManager = LinearLayoutManager(
@@ -623,7 +623,7 @@ class HomeFragment : Fragment() {
                     true
                 }
             } else {
-                recyclerView.adapter = MediaAdaptor(0, items, requireActivity())
+                recyclerView.adapter = MediaAdaptor(ViewType.COMPACT, items, requireActivity())
                 recyclerView.layoutManager = LinearLayoutManager(
                     requireContext(),
                     LinearLayoutManager.HORIZONTAL,

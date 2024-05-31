@@ -559,7 +559,7 @@ class MediaInfoFragment : Fragment() {
                     ).apply {
                         itemTitle.setText(R.string.recommended)
                         itemRecycler.adapter =
-                            MediaAdaptor(0, media.recommendations!!, requireActivity())
+                            MediaAdaptor(ViewType.COMPACT, media.recommendations!!, requireActivity())
                         itemRecycler.layoutManager = LinearLayoutManager(
                             requireContext(),
                             LinearLayoutManager.HORIZONTAL,
@@ -577,7 +577,7 @@ class MediaInfoFragment : Fragment() {
                     ).apply {
 
                         itemRecycler.adapter =
-                            MediaAdaptor(0, media.relations!!, requireActivity())
+                            MediaAdaptor(ViewType.COMPACT, media.relations!!, requireActivity())
                         itemRecycler.layoutManager = LinearLayoutManager(
                             requireContext(),
                             LinearLayoutManager.HORIZONTAL,

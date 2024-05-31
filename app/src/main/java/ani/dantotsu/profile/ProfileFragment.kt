@@ -27,6 +27,7 @@ import ani.dantotsu.media.Character
 import ani.dantotsu.media.CharacterAdapter
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
+import ani.dantotsu.media.ViewType
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
 import ani.dantotsu.util.AniMarkdown.Companion.getFullAniHTML
@@ -190,7 +191,7 @@ class ProfileFragment : Fragment() {
             recyclerView.visibility = View.GONE
             if (it != null) {
                 if (it.isNotEmpty()) {
-                    recyclerView.adapter = MediaAdaptor(0, it, activity, fav = true)
+                    recyclerView.adapter = MediaAdaptor(ViewType.COMPACT, it, activity, fav = true)
                     recyclerView.layoutManager = LinearLayoutManager(
                         activity,
                         LinearLayoutManager.HORIZONTAL,

@@ -33,6 +33,7 @@ import ani.dantotsu.loadFragment
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ProgressAdapter
 import ani.dantotsu.media.SearchActivity
+import ani.dantotsu.media.ViewType
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -47,7 +48,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -117,7 +117,7 @@ class AnimeFragment : Fragment() {
                 sort = Anilist.sortBy[1]
             )
         }
-        val popularAdaptor = MediaAdaptor(1, model.searchResults.results, requireActivity())
+        val popularAdaptor = MediaAdaptor(ViewType.LARGE, model.searchResults.results, requireActivity())
         val progressAdaptor = ProgressAdapter(searched = model.searched)
         val adapter = ConcatAdapter(animePageAdapter, popularAdaptor, progressAdaptor)
         binding.animePageRecyclerView.adapter = adapter
@@ -260,22 +260,22 @@ class AnimeFragment : Fragment() {
                 }
                 model.getUpdated().observe(viewLifecycleOwner) {
                     if (it != null) {
-                        animePageAdapter.updateRecent(MediaAdaptor(0, it, requireActivity()), it)
+                        animePageAdapter.updateRecent(MediaAdaptor(ViewType.COMPACT, it, requireActivity()), it)
                     }
                 }
                 model.getMovies().observe(viewLifecycleOwner) {
                     if (it != null) {
-                        animePageAdapter.updateMovies(MediaAdaptor(0, it, requireActivity()), it)
+                        animePageAdapter.updateMovies(MediaAdaptor(ViewType.COMPACT, it, requireActivity()), it)
                     }
                 }
                 model.getTopRated().observe(viewLifecycleOwner) {
                     if (it != null) {
-                        animePageAdapter.updateTopRated(MediaAdaptor(0, it, requireActivity()), it)
+                        animePageAdapter.updateTopRated(MediaAdaptor(ViewType.COMPACT, it, requireActivity()), it)
                     }
                 }
                 model.getMostFav().observe(viewLifecycleOwner) {
                     if (it != null) {
-                        animePageAdapter.updateMostFav(MediaAdaptor(0, it, requireActivity()), it)
+                        animePageAdapter.updateMostFav(MediaAdaptor(ViewType.COMPACT, it, requireActivity()), it)
                     }
                 }
                 if (animePageAdapter.trendingViewPager != null) {
@@ -284,7 +284,10 @@ class AnimeFragment : Fragment() {
                         if (it != null) {
                             animePageAdapter.updateTrending(
                                 MediaAdaptor(
-                                    if (PrefManager.getVal(PrefName.SmallView)) 3 else 2,
+                                    if (PrefManager.getVal(PrefName.SmallView))
+                                        ViewType.SMALL_PAGE
+                                    else
+                                        ViewType.PAGE,
                                     it,
                                     requireActivity(),
                                     viewPager = animePageAdapter.trendingViewPager
