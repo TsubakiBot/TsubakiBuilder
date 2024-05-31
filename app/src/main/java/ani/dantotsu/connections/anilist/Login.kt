@@ -23,5 +23,6 @@ class Login : AppCompatActivity() {
             logError(e)
         }
         restart()
+        Anilist.initialized = false
     }
 }

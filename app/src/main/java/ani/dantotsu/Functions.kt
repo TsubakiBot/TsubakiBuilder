@@ -377,14 +377,11 @@ suspend fun serverDownDialog(activity: FragmentActivity?) = withContext(Dispatch
 }
 
 suspend fun loadFragment(activity: FragmentActivity, response: () -> Unit) {
-    Anilist.userid = PrefManager.getNullableVal<String>(PrefName.AnilistUserId, null)
-        ?.toIntOrNull()
+//    Anilist.userid = PrefManager.getNullableVal<String>(
+//        PrefName.AnilistUserId, null
+//    )?.toIntOrNull()
     try {
-        if (Anilist.userid == null) {
-            getUserId(activity) { response.invoke() }
-        } else {
-            getUserId(activity) { response.invoke() }
-        }
+        getUserId(activity) { response.invoke() }
     } catch (ignored: Exception) {
         serverDownDialog(activity)
     }
