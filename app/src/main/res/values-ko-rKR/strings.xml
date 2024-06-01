@@ -3,6 +3,9 @@
     <string name="slogan">A secret so good that even the name is banned.</string>
     <string name="login">로그인</string>
     <string name="logout">로그아웃</string>
+    <string name="anilist_login">AniList Login for Himitsu</string>
+    <string name="mal_login">MyAnimeList Login for Himitsu</string>
+    <string name="discord_login">Discord Login for Himitsu</string>
     <string name="conversion_title">다시 오신 것을 환영합니다!</string>
     <string name="conversion_message">이전 버전이 설치되어 있는 것으로 보입니다.\n이전 버전을 열고 백업을 수행하려면 \"백업\"을 선택하십시오. 그런 다음이 앱으로 돌아와서 \"설정 복원\"을 사용할 수 있습니다.</string>
     <string name="backup">백업</string>
@@ -501,6 +504,7 @@
     <string name="mal_login_code_not_present">Mal 로그인: 리디렉트된 URI에 코드가 없음</string>
     <string name="refresh_token_load_failed">Refresh Token: 저장된 토큰 로드 실패</string>
     <string name="refreshing_token_failed">토큰 새로 고침 실패</string>
+    <string name="token_retrieve_failed">Retrieving token failed!</string>
     <string name="episode_release_countdown">%1$d화 출시까지</string>
     <string name="chapter_number">장 %1$d</string>
     <string name="chapter_release_timeout">%1$s 사용 가능</string>
@@ -598,11 +602,11 @@
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
     <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license.\nPortions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
     <string name="question_6">왜 내 통계가 업데이트되지 않나요?</string>
     <string name="answer_6">이는 48시간마다 자동으로 업데이트되기 때문입니다 (Anilist에 의해). 통계를 업데이트하려면 진정으로 필요한 경우 [이 링크](https://anilist.co/settings/lists)로 이동하여 통계를 강제로 업데이트할 수 있습니다.</string>
     <string name="question_7">애니메이션을 다운로드하는 방법은 무엇인가요?</string>
-    <string name="answer_7">There are two methods of downloading currently. One is internal and the other is external. If you download internally, then it can be viewed within the app but only the app can open that episode, you cannot move it or share it. The other option is to use external downloading. It requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view it within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
         \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
         \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
         \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
