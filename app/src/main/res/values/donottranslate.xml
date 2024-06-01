@@ -20,7 +20,7 @@
     <string name="discord_link">https://discord.com/users/%1$s/</string>
 
     <string name="update_banner">https://repodevil.vercel.app/img/rd_banner.png</string>
-    <string name="update_icon">https://repodevil.vercel.app/img/repodevil.png</string>
+    <string name="update_icon">https://avatars.githubusercontent.com/u/157854237?v=4</string>
 
     <string name="setting_progress">✔ [%1$s] %2$d</string>
     <string name="total_divider">\u0020| %1$s</string>
