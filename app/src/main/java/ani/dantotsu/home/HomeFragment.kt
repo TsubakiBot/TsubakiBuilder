@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
 
                     homeListContainerBinding.homeListContainer.postDelayed({
                         rotateBackToStraight(resources.configuration)
-                    }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 100L)
+                    }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 150L)
                 }
             }
         } else {
@@ -617,6 +617,7 @@ class HomeFragment : Fragment() {
             moreButton: ImageView
         ) {
             if (items.isNullOrEmpty()) {
+                container.visibility = View.GONE
                 anchorView.setOnLongClickListener { view ->
                     view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                     snackString(getString(R.string.no_hidden_items))
