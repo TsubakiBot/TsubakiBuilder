@@ -58,6 +58,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.math.MathUtils.clamp
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
@@ -1799,12 +1800,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 )
             }
         }
-        if (PrefManager.getVal(PrefName.SecureLock)) {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE
-            )
-        }
     }
 
     override fun onResume() {
@@ -1815,7 +1810,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             playerView.onResume()
             playerView.useController = true
         }
-        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
     }
 
     override fun onStop() {
@@ -1827,12 +1821,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private var wasPlaying = false
     override fun onWindowFocusChanged(hasFocus: Boolean) {
+        binding.playerView.isInvisible = PrefManager.getVal(PrefName.SecureLock) && !hasFocus
         if (PrefManager.getVal(PrefName.FocusPause) && !epChanging) {
             if (isInitialized && !hasFocus) wasPlaying = exoPlayer.isPlaying
             if (hasFocus) {
+
                 if (isInitialized && wasPlaying) exoPlayer.play()
             } else {
                 if (isInitialized) exoPlayer.pause()
+
             }
         }
         super.onWindowFocusChanged(hasFocus)

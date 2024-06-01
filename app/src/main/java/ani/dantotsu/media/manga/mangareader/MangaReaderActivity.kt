@@ -31,6 +31,7 @@ import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.math.MathUtils.clamp
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -1191,18 +1192,8 @@ class MangaReaderActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onPause() {
-        super.onPause()
-        if (PrefManager.getVal(PrefName.SecureLock)) {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE
-            )
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        binding.mangaReaderFrame.isInvisible = PrefManager.getVal(PrefName.SecureLock) && !hasFocus
     }
 }

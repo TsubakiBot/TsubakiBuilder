@@ -31,6 +31,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnAttach
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
@@ -119,71 +120,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(getString(R.string.biometric_title))
-            .setSubtitle(getString(R.string.biometric_details))
-            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
-            .setConfirmationRequired(false)
-            .build()
-
-        biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_error, errString),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    when (errorCode) {
-                        BiometricPrompt.ERROR_HW_NOT_PRESENT,
-                        BiometricPrompt.ERROR_HW_UNAVAILABLE,
-                        BiometricPrompt.ERROR_NO_BIOMETRICS,
-                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
-                        BiometricPrompt.ERROR_VENDOR -> {
-                            binding.biometricShield.visibility = View.GONE
-                        }
-                        BiometricPrompt.ERROR_CANCELED,
-                        BiometricPrompt.ERROR_LOCKOUT,
-                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT,
-                        BiometricPrompt.ERROR_NO_SPACE,
-                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED,
-                        BiometricPrompt.ERROR_TIMEOUT,
-                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS,
-                        BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
-                        else -> biometricPrompt.authenticate(promptInfo)
-                    }
-                }
-
-                override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    hasConfirmedSession = true
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
-                    binding.biometricShield.visibility = View.GONE
-                }
-
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    finishAndRemoveTask()
-                }
-            })
-
-        if (!hasConfirmedSession && PrefManager.getVal(PrefName.SecureLock)) {
-            binding.biometricShield.visibility = View.VISIBLE
-            biometricPrompt.authenticate(promptInfo)
-        }
 
         TaskScheduler.scheduleSingleWork(this)
 
@@ -375,7 +311,6 @@ class MainActivity : AppCompatActivity() {
                 else
                     24.toPx
             }
-            window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
             selectedOption = if (fragment != null) {
                 when (fragment) {
                     AnimeFragment::class.java.name -> 0
@@ -543,20 +478,79 @@ class MainActivity : AppCompatActivity() {
                         }.show(supportFragmentManager, "dialog")
                     }
                 }
-
-                scope.launch(Dispatchers.IO) {
-                    if (!BuildConfig.FLAVOR.contains("fdroid")) {
-                        if (PrefManager.getVal(PrefName.CheckUpdate))
-                            MatagiUpdater.check(this@MainActivity)
-                    }
-                }
             }
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
+    override fun onStart() {
+        super.onStart()
         window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(getString(R.string.biometric_title))
+            .setSubtitle(getString(R.string.biometric_details))
+            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .setConfirmationRequired(false)
+            .build()
+
+        biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_error, errString),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    when (errorCode) {
+                        BiometricPrompt.ERROR_HW_NOT_PRESENT,
+                        BiometricPrompt.ERROR_HW_UNAVAILABLE,
+                        BiometricPrompt.ERROR_NO_BIOMETRICS,
+                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
+                        BiometricPrompt.ERROR_VENDOR -> {
+                            binding.biometricShield.visibility = View.GONE
+                        }
+                        BiometricPrompt.ERROR_CANCELED,
+                        BiometricPrompt.ERROR_LOCKOUT,
+                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT,
+                        BiometricPrompt.ERROR_NO_SPACE,
+                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED,
+                        BiometricPrompt.ERROR_TIMEOUT,
+                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS,
+                        BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
+                        else -> biometricPrompt.authenticate(promptInfo)
+                    }
+                }
+
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    hasConfirmedSession = true
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                    binding.biometricShield.visibility = View.GONE
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.biometric_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finishAndRemoveTask()
+                }
+            })
+
+        if (!hasConfirmedSession && PrefManager.getVal(PrefName.SecureLock)) {
+            binding.biometricShield.visibility = View.VISIBLE
+            biometricPrompt.authenticate(promptInfo)
+        }
+
         scope.launch(Dispatchers.IO) {
             if (!BuildConfig.FLAVOR.contains("fdroid")) {
                 if (PrefManager.getVal(PrefName.CheckUpdate))
@@ -565,30 +559,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
         if (PrefManager.getVal(PrefName.SecureLock)) {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE
-            )
+            binding.biometricShield.isGone = hasFocus && hasConfirmedSession
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (hasConfirmedSession)
-            window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
     }
 
     override fun onStop() {
         super.onStop()
-        hasConfirmedSession = false
         hasCompletedLoading = -1
     }
 
     override fun onDestroy() {
         torrServerKill()
+        hasConfirmedSession = false
         super.onDestroy()
     }
 
