@@ -1,6 +1,7 @@
 package ani.dantotsu.media.reviews
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.util.AniMarkdown
+import bit.himitsu.setBaseline
 import eu.kanade.tachiyomi.util.system.getSerializableExtraCompat
 import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
@@ -40,9 +42,9 @@ class ReviewViewActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.reviewContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
-            bottomMargin += navBarHeight
         }
         hideSystemBarsExtendView()
+        binding.reviewScroller.setBaseline(resources.configuration)
         binding.reviewClose.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
@@ -167,5 +169,10 @@ class ReviewViewActivity : AppCompatActivity() {
         }
         binding.upvote.isEnabled = true
         binding.downvote.isEnabled = true
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.reviewScroller.setBaseline(newConfig)
     }
 }
