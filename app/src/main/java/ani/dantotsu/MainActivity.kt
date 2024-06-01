@@ -566,13 +566,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        hasCompletedLoading = -1
-    }
-
     override fun onDestroy() {
         torrServerKill()
+        hasCompletedLoading = -1
         hasConfirmedSession = false
         super.onDestroy()
     }
