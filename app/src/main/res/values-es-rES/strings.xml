@@ -3,6 +3,9 @@
     <string name="slogan">Un secreto tan bueno que incluso el nombre está prohibido.</string>
     <string name="login">Acceso</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="anilist_login">AniList Login for Himitsu</string>
+    <string name="mal_login">MyAnimeList Login for Himitsu</string>
+    <string name="discord_login">Discord Login for Himitsu</string>
     <string name="conversion_title">¡Bienvenido de nuevo!</string>
     <string name="conversion_message">Parece que tiene un paquete antiguo instalado.\nPor favor, seleccione \"Copia de seguridad\" para abrir la versión anterior y realizar una copia de seguridad. Luego puede volver a esta aplicación y utilizar \"Restaurar configuración\".</string>
     <string name="backup">Respaldo</string>
@@ -481,6 +484,7 @@
     <string name="mal_login_code_not_present">Inicio de sesión en MAL: Code not present in redirected URI</string>
     <string name="refresh_token_load_failed">Refresh Token : Error al cargar el token guardado</string>
     <string name="refreshing_token_failed">Error al actualizar el token</string>
+    <string name="token_retrieve_failed">Retrieving token failed!</string>
     <string name="episode_release_countdown">El episodio %1$d se lanzará en</string>
     <string name="chapter_number">Capítulo %1$d</string>
     <string name="chapter_release_timeout">%1$s ha estado disponible desde</string>
@@ -578,17 +582,17 @@
     <string name="question_5">¿Está disponible Himitsu para iOS?</string>
     <string name="answer_5">No, lo mejor que podemos hacer es tallar Himitsu en una manzana.</string>
     <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license.\nPortions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
     <string name="question_6">¿Por qué mis estadísticas no se actualizan?</string>
     <string name="answer_6">Esto se debe a que se actualiza automáticamente cada 48 horas (por Anilist). Si realmente necesitas actualizar tus estadísticas, puedes forzar la actualización después de ir a este [enlace](https://anilist.co/settings/lists).</string>
     <string name="question_7">¿Cómo descargar anime?</string>
-    <string name="answer_7">Hay dos métodos de descarga actualmente: uno es interno y el otro es externo. Si se descarga internamente, entonces se puede ver dentro de la aplicación, pero sólo la aplicación puede abrir ese episodio, no puedes moverlo o compartirlo. La otra opción es utilizar descargas externas. Requiere un gestor de descargas para descargar y un reproductor de vídeo separado para ver. Las descargas externas pueden ser compartidas, pero no puedes verlas dentro de la aplicación Himitsu.\n\n• Para descargar internamentalmente:\n\n1. Pulse el botón de descarga.\n2. Escoger el servidor y la calidad de vídeo.\n3. ampliarlo.\n\n• Descargar externamente:\n\n 1. Descargar 1DM o ADM desde Google Play Store.
-        \n2. Introduzca la aplicación, dé acceso al almacenamiento y establezca sus preferencias (velocidad de descarga, descargando ruta etc(opcional))
-        \n3. Ahora ve a \`Himitsu &gt; Ajustes &gt; Common &gt; Download Managers\` y elige el gestor de descargas que acabas de configurar.
-        \n4. Ve a tu episodio deseado y presiona el icono de descarga de cualquier servidor. Puede haber una ventana emergente para volver a establecer tus preferencias, simplemente pulsa en \"Descargar\" y se guardará en la ruta dirigida.
+    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
+        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
+        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
+        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
 
-        \n\nNota: Las descargas directas también son posibles sin un administrador pero no es recomendable.
-\n\nNerd Nota: Los episodios descargados internamente se almacenan en \`Android/data/ani. antotal su.*/files/Anime_Downloads\`\nNo puedes reproducir esos archivos ya que están en formato \`.exo\`, divididos en cientos de piezas y están cifrados.</string>
+        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
+\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
     <string name="question_9">¿Cómo activar contenido NSFW?</string>
     <string name="answer_9">Puedes activar contenido NSFW habilitando contenido para mayores de 18 años desde este [enlace](https://anilist.co/settings/media). También debes habilitar las extensiones NSFW en \`Configuración &gt; Extensiones &gt; Extensiones NSFW\` </string>
     <string name="question_10">¿Cómo importar mi lista de MAL/Kitsu a Anilist?</string>
