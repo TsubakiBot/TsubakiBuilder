@@ -77,7 +77,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/anilist"
@@ -122,16 +122,16 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/settingsAnilistAvatarContainer"
-                    android:layout_width="51dp"
-                    android:layout_height="51dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="4dp"
                     android:backgroundTint="@color/nav_bg_inv"
                     app:cardCornerRadius="26dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/settingsAnilistAvatar"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:scaleType="center"
                         app:srcCompat="@drawable/ic_round_person_32"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
@@ -148,7 +148,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:contentDescription="@string/myanimelist"
@@ -204,16 +204,16 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/settingsMALAvatarContainer"
-                    android:layout_width="51dp"
-                    android:layout_height="51dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="4dp"
                     android:backgroundTint="@color/nav_bg_inv"
                     app:cardCornerRadius="26dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/settingsMALAvatar"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:scaleType="center"
                         app:srcCompat="@drawable/ic_round_person_32"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
@@ -231,7 +231,7 @@
                 tools:ignore="ExtraText">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_discord"
@@ -284,16 +284,16 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/settingsDiscordAvatarContainer"
-                    android:layout_width="51dp"
-                    android:layout_height="51dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="4dp"
                     android:backgroundTint="@color/nav_bg_inv"
                     app:cardCornerRadius="26dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/settingsDiscordAvatar"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:scaleType="center"
                         app:srcCompat="@drawable/ic_round_person_32"
                         tools:ignore="ContentDescription,ImageContrastCheck" />

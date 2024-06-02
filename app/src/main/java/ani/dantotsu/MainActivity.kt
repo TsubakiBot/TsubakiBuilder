@@ -559,12 +559,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (PrefManager.getVal(PrefName.SecureLock)) {
-            binding.biometricShield.isGone = hasFocus && hasConfirmedSession
-        }
-    }
+//    override fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//        if (PrefManager.getVal(PrefName.SecureLock)) {
+//            binding.biometricShield.isGone = hasFocus && hasConfirmedSession
+//        }
+//    }
 
     override fun onDestroy() {
         torrServerKill()

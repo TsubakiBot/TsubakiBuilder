@@ -158,6 +158,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
 import bit.himitsu.TorrManager.removeTorrent
+import bit.himitsu.os.Version
 import com.anggrayudi.storage.file.extension
 import com.bumptech.glide.Glide
 import com.google.android.gms.cast.framework.CastButtonFactory
@@ -1821,11 +1822,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private var wasPlaying = false
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        binding.playerView.isInvisible = PrefManager.getVal(PrefName.SecureLock) && !hasFocus
+        binding.playerView.isInvisible = PrefManager.getVal(PrefName.SecureLock)
+                && !hasFocus && (Version.isNougat && !isInPictureInPictureMode)
         if (PrefManager.getVal(PrefName.FocusPause) && !epChanging) {
             if (isInitialized && !hasFocus) wasPlaying = exoPlayer.isPlaying
             if (hasFocus) {
-
                 if (isInitialized && wasPlaying) exoPlayer.play()
             } else {
                 if (isInitialized) exoPlayer.pause()
