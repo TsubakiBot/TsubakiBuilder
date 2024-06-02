@@ -45,50 +45,48 @@ class NotificationItem(
             else -> notification.media?.bannerImage ?: notification.media?.coverImage?.large
         }
         binding.notificationBannerImage.blurImage(cover)
-
-        val defaultHeight = 153.toPx
-
         val userHeight = 90.toPx
-
-        val textMarginStart = 125.toPx
-
-        if (user) {
-            binding.notificationCover.visibility = View.GONE
-            binding.notificationCoverUserContainer.visibility = View.VISIBLE
-            binding.notificationTitle.visibility = View.GONE
-            if (commentNotification) {
-                binding.notificationCoverUser.setImageResource(R.drawable.ic_dantotsu_round)
-                binding.notificationCoverUser.scaleX = 1.4f
-                binding.notificationCoverUser.scaleY = 1.4f
-            } else {
-                binding.notificationCoverUser.loadImage(notification.user?.avatar?.large)
+        when {
+            user -> {
+                binding.notificationCover.visibility = View.GONE
+                binding.notificationCoverUserContainer.visibility = View.VISIBLE
+                binding.notificationTitle.visibility = View.GONE
+                if (commentNotification) {
+                    binding.notificationCoverUser.setImageResource(R.drawable.ic_dantotsu_round)
+                    binding.notificationCoverUser.scaleX = 1.4f
+                    binding.notificationCoverUser.scaleY = 1.4f
+                } else {
+                    binding.notificationCoverUser.loadImage(notification.user?.avatar?.large)
+                }
+                binding.notificationBannerImage.layoutParams.height = userHeight
+                binding.notificationGradiant.layoutParams.height = userHeight
+                (binding.notificationTextContainer.layoutParams
+                        as ViewGroup.MarginLayoutParams).marginStart = userHeight
             }
-            binding.notificationBannerImage.layoutParams.height = userHeight
-            binding.notificationGradiant.layoutParams.height = userHeight
-            (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
-                userHeight
-        } else if (subscription) {
-            binding.notificationCover.visibility = View.VISIBLE
-            binding.notificationCoverUserContainer.visibility = View.GONE
-            binding.notificationTitle.visibility = View.VISIBLE
-            binding.notificationCover.layoutParams.height = 120.toPx
-            binding.notificationCover.layoutParams.width = 81.toPx
-            binding.notificationCover.loadImage(notification.user?.avatar?.large)
-            binding.notificationTitle.text = notification.media?.title?.userPreferred
-            binding.notificationBannerImage.layoutParams.height = userHeight
-            binding.notificationGradiant.layoutParams.height = userHeight
-            (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
-                textMarginStart
-        } else {
-            binding.notificationCover.visibility = View.VISIBLE
-            binding.notificationCoverUserContainer.visibility = View.GONE
-            binding.notificationTitle.visibility = View.VISIBLE
-            binding.notificationCover.loadCover(notification.media?.coverImage)
-            binding.notificationTitle.text = notification.media?.title?.userPreferred
-            binding.notificationBannerImage.layoutParams.height = defaultHeight
-            binding.notificationGradiant.layoutParams.height = defaultHeight
-            (binding.notificationTextContainer.layoutParams as ViewGroup.MarginLayoutParams).marginStart =
-                textMarginStart
+            subscription -> {
+                binding.notificationCover.visibility = View.VISIBLE
+                binding.notificationCoverUserContainer.visibility = View.GONE
+                binding.notificationTitle.visibility = View.VISIBLE
+                binding.notificationCover.layoutParams.height = 120.toPx
+                binding.notificationCover.layoutParams.width = 81.toPx
+                binding.notificationCover.loadImage(notification.user?.avatar?.large)
+                binding.notificationTitle.text = notification.media?.title?.userPreferred
+                binding.notificationBannerImage.layoutParams.height = userHeight
+                binding.notificationGradiant.layoutParams.height = userHeight
+                (binding.notificationTextContainer.layoutParams
+                        as ViewGroup.MarginLayoutParams).marginStart = 118.toPx
+            }
+            else -> {
+                binding.notificationCover.visibility = View.VISIBLE
+                binding.notificationCoverUserContainer.visibility = View.GONE
+                binding.notificationTitle.visibility = View.VISIBLE
+                binding.notificationCover.loadCover(notification.media?.coverImage)
+                binding.notificationTitle.text = notification.media?.title?.userPreferred
+                binding.notificationBannerImage.layoutParams.height = 153.toPx
+                binding.notificationGradiant.layoutParams.height = 153.toPx
+                (binding.notificationTextContainer.layoutParams
+                        as ViewGroup.MarginLayoutParams).marginStart = 125.toPx
+            }
         }
     }
 
