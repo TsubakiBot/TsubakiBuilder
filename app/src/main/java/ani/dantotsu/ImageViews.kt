@@ -133,3 +133,7 @@ fun ImageView.blurImage(banner: String?) {
         setImageResource(R.drawable.linear_gradient_bg)
     }
 }
+
+fun ImageView.blurCover(coverImage: MediaCoverImage?) {
+    this.blurImage(coverImage?.extraLarge ?: coverImage?.large ?: coverImage?.medium)
+}

@@ -68,13 +68,15 @@
                 android:id="@+id/notificationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
+                android:layout_gravity="center"
+                android:layout_marginEnd="32dp"
+                android:ellipsize="middle"
                 android:fontFamily="@font/poppins_bold"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:textSize="14dp"
                 android:transitionName="mediaTitle"
                 tools:ignore="SpUsage"
-                tools:text="@string/slogan" />
+                tools:text="Himitsu Shirasae 2323432" />
 
             <TextView
                 android:id="@+id/notificationDate"

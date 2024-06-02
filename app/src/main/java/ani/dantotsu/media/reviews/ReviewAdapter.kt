@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
+import ani.dantotsu.blurCover
+import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.databinding.ActivityReviewViewBinding
 import ani.dantotsu.databinding.ItemReviewBinding
@@ -133,7 +135,7 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, var reviews: List<R
             itemView.setOnClickListener {
                 val review = reviews[bindingAdapterPosition]
                 val dialogView = ActivityReviewViewBinding.inflate(parentActivity.layoutInflater)
-                dialogView.reviewMediaCover.loadImage(review.media?.cover)
+                dialogView.reviewMediaCover.blurImage(review.media?.cover)
                 dialogView.profileUserBanner.loadImage(review.user?.banner)
                 dialogView.profileUserAvatar.loadImage(review.user?.pfp)
                 dialogView.reviewBodyContent.settings.loadWithOverviewMode = true

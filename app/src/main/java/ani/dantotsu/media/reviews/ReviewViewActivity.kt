@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import ani.dantotsu.R
+import ani.dantotsu.blurCover
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityReviewViewBinding
@@ -49,7 +50,7 @@ class ReviewViewActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         review = intent.getSerializableExtraCompat<Query.Review>("review")!!
-        binding.reviewMediaCover.loadCover(review.media?.coverImage)
+        binding.reviewMediaCover.blurCover(review.media?.coverImage)
         binding.profileUserBanner.loadImage(review.user?.bannerImage)
         binding.profileUserAvatar.loadImage(review.user?.avatar?.medium)
         binding.reviewBodyContent.settings.loadWithOverviewMode = true
