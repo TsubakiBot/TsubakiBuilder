@@ -22,17 +22,6 @@ import com.bumptech.glide.request.transition.Transition
 import jp.wasabeef.glide.transformations.BlurTransformation
 import java.io.File
 
-fun ImageView.loadCover(coverImage: MediaCoverImage?) {
-    this.loadImage(coverImage?.extraLarge ?: coverImage?.large ?: coverImage?.medium)
-}
-
-fun ImageView.loadImage(url: String?, size: Int = 0) {
-    if (!url.isNullOrEmpty()) {
-        val localFile = File(url)
-        if (localFile.exists()) loadLocalImage(localFile, size) else loadImage(FileUrl(url), size)
-    }
-}
-
 fun geUrlOrTrolled(url: String?): String {
     return if (PrefManager.getVal(PrefName.DisableMitM)) url ?: "" else
         PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { url ?: "" }
@@ -50,26 +39,17 @@ fun ImageView.toRoundImage(url: String?, size: Int) {
         })
 }
 
-fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
-    file?.url = geUrlOrTrolled(file?.url)
-    if (file?.url?.isNotEmpty() == true) {
+fun ImageView.loadLocalImage(file: File?, size: Int = 0) {
+    if (file?.exists() == true) {
         tryWith {
-            if (file.url.startsWith("content://")) {
-                Glide.with(this.context).load(Uri.parse(file.url)).transition(
-                    DrawableTransitionOptions.withCrossFade()
-                )
-                    .override(size).into(this)
-            } else {
-                val glideUrl = GlideUrl(file.url) { file.headers }
-                Glide.with(this.context).load(glideUrl).transition(DrawableTransitionOptions.withCrossFade()).override(size)
-                    .into(this)
-            }
+            Glide.with(this.context).load(file).transition(DrawableTransitionOptions.withCrossFade()).override(size)
+                .into(this)
         }
     }
 }
 
 fun ImageView.loadImage(file: FileUrl?, width: Int = 0, height: Int = 0) {
-    file?.url = PrefManager.getVal<String>(PrefName.ImageUrl).ifEmpty { file?.url ?: "" }
+    file?.url = geUrlOrTrolled(file?.url)
     if (file?.url?.isNotEmpty() == true) {
         tryWith {
             if (file.url.startsWith("content://")) {
@@ -86,14 +66,19 @@ fun ImageView.loadImage(file: FileUrl?, width: Int = 0, height: Int = 0) {
     }
 }
 
+fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
+    loadImage(file, size, size)
+}
 
-fun ImageView.loadLocalImage(file: File?, size: Int = 0) {
-    if (file?.exists() == true) {
-        tryWith {
-            Glide.with(this.context).load(file).transition(DrawableTransitionOptions.withCrossFade()).override(size)
-                .into(this)
-        }
+fun ImageView.loadImage(url: String?, size: Int = 0) {
+    if (!url.isNullOrEmpty()) {
+        val localFile = File(url)
+        if (localFile.exists()) loadLocalImage(localFile, size) else loadImage(FileUrl(url), size)
     }
+}
+
+fun ImageView.loadCover(coverImage: MediaCoverImage?) {
+    this.loadImage(coverImage?.extraLarge ?: coverImage?.large ?: coverImage?.medium)
 }
 
 fun ImageView.blurImage(banner: String?) {
