@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeItemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:id="@+id/homeItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="8dp"
+            android:text="@string/home"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/homeItemMore"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="8dp"
+            android:src="@drawable/arrow_mark"
+            android:textSize="16sp"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="250dp">
+
+        <LinearLayout
+            android:id="@+id/homeItemEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_round_heart_broken_24"
+                app:tint="?attr/colorPrimary"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.58"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="@string/empty_fav"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/homeItemBrowseButton"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/browse_anime"
+                app:cornerRadius="16dp"
+                tools:ignore="TextContrastCheck" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/homeItemProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="90dp" />
+
+        <ani.dantotsu.view.FadingEdgeRecyclerView
+            android:id="@+id/homeItemRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:requiresFadingEdge="horizontal"
+            tools:itemCount="4"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_media_compact"
+            tools:orientation="horizontal" />
+    </FrameLayout>
+</LinearLayout>

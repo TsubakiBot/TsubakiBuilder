@@ -408,7 +408,7 @@ class HomeFragment : Fragment() {
             recyclerView: RecyclerView,
             progress: View,
             empty: View,
-            title: View,
+            title: TextView,
             more: View,
             string: String
         ) {
@@ -459,6 +459,7 @@ class HomeFragment : Fragment() {
                     } else {
                         empty.visibility = View.VISIBLE
                     }
+                    title.text = string
                     title.visibility = View.VISIBLE
                     title.startAnimation(setSlideUp())
                     progress.visibility = View.GONE
@@ -470,111 +471,115 @@ class HomeFragment : Fragment() {
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[0],
             model.getSubscriptions(),
-            binding.homeSubscribedItemContainer,
-            binding.homeSubscribedRecyclerView,
-            binding.homeSubscribedProgressBar,
-            binding.homeSubscribedEmpty,
-            binding.homeSubscribedItem,
-            binding.homeSubscribedMore,
+            binding.homeSubscribedItemContainer.homeItemContainer,
+            binding.homeSubscribedItemContainer.homeItemRecyclerView,
+            binding.homeSubscribedItemContainer.homeItemProgressBar,
+            binding.homeSubscribedItemContainer.homeItemEmpty,
+            binding.homeSubscribedItemContainer.homeItemTitle,
+            binding.homeSubscribedItemContainer.homeItemMore,
             getString(R.string.subscriptions)
         )
+        binding.homeSubscribedItemContainer.homeItemBrowseButton.text = getString(R.string.subscribe_lists)
 
         // Recycler Views
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[1],
             model.getAnimeContinue(),
-            binding.homeContinueWatchingContainer,
-            binding.homeWatchingRecyclerView,
-            binding.homeWatchingProgressBar,
-            binding.homeWatchingEmpty,
-            binding.homeContinueWatch,
-            binding.homeContinueWatchMore,
+            binding.homeContinueWatchingContainer.homeItemContainer,
+            binding.homeContinueWatchingContainer.homeItemRecyclerView,
+            binding.homeContinueWatchingContainer.homeItemProgressBar,
+            binding.homeContinueWatchingContainer.homeItemEmpty,
+            binding.homeContinueWatchingContainer.homeItemTitle,
+            binding.homeContinueWatchingContainer.homeItemMore,
             getString(R.string.continue_watching)
         )
-        binding.homeWatchingBrowseButton.setOnClickListener {
+        binding.homeContinueWatchingContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
         }
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[2],
             model.getAnimeFav(),
-            binding.homeFavAnimeContainer,
-            binding.homeFavAnimeRecyclerView,
-            binding.homeFavAnimeProgressBar,
-            binding.homeFavAnimeEmpty,
-            binding.homeFavAnime,
-            binding.homeFavAnimeMore,
+            binding.homeFavAnimeContainer.homeItemContainer,
+            binding.homeFavAnimeContainer.homeItemRecyclerView,
+            binding.homeFavAnimeContainer.homeItemProgressBar,
+            binding.homeFavAnimeContainer.homeItemEmpty,
+            binding.homeFavAnimeContainer.homeItemTitle,
+            binding.homeFavAnimeContainer.homeItemMore,
             getString(R.string.fav_anime)
         )
+        binding.homeFavAnimeContainer.homeItemBrowseButton.isVisible = false
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[3],
             model.getAnimePlanned(),
-            binding.homePlannedAnimeContainer,
-            binding.homePlannedAnimeRecyclerView,
-            binding.homePlannedAnimeProgressBar,
-            binding.homePlannedAnimeEmpty,
-            binding.homePlannedAnime,
-            binding.homePlannedAnimeMore,
+            binding.homePlannedAnimeContainer.homeItemContainer,
+            binding.homePlannedAnimeContainer.homeItemRecyclerView,
+            binding.homePlannedAnimeContainer.homeItemProgressBar,
+            binding.homePlannedAnimeContainer.homeItemEmpty,
+            binding.homePlannedAnimeContainer.homeItemTitle,
+            binding.homePlannedAnimeContainer.homeItemMore,
             getString(R.string.planned_anime)
         )
-        binding.homePlannedAnimeBrowseButton.setOnClickListener {
+        binding.homePlannedAnimeContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
         }
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[4],
             model.getMangaContinue(),
-            binding.homeContinueReadingContainer,
-            binding.homeReadingRecyclerView,
-            binding.homeReadingProgressBar,
-            binding.homeReadingEmpty,
-            binding.homeContinueRead,
-            binding.homeContinueReadMore,
+            binding.homeContinueReadingContainer.homeItemContainer,
+            binding.homeContinueReadingContainer.homeItemRecyclerView,
+            binding.homeContinueReadingContainer.homeItemProgressBar,
+            binding.homeContinueReadingContainer.homeItemEmpty,
+            binding.homeContinueReadingContainer.homeItemTitle,
+            binding.homeContinueReadingContainer.homeItemMore,
             getString(R.string.continue_reading)
         )
-        binding.homeReadingBrowseButton.setOnClickListener {
+        binding.homeContinueReadingContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
         }
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[5],
             model.getMangaFav(),
-            binding.homeFavMangaContainer,
-            binding.homeFavMangaRecyclerView,
-            binding.homeFavMangaProgressBar,
-            binding.homeFavMangaEmpty,
-            binding.homeFavManga,
-            binding.homeFavMangaMore,
+            binding.homeFavMangaContainer.homeItemContainer,
+            binding.homeFavMangaContainer.homeItemRecyclerView,
+            binding.homeFavMangaContainer.homeItemProgressBar,
+            binding.homeFavMangaContainer.homeItemEmpty,
+            binding.homeFavMangaContainer.homeItemTitle,
+            binding.homeFavMangaContainer.homeItemMore,
             getString(R.string.fav_manga)
         )
+        binding.homeFavMangaContainer.homeItemBrowseButton.isVisible = false
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[6],
             model.getMangaPlanned(),
-            binding.homePlannedMangaContainer,
-            binding.homePlannedMangaRecyclerView,
-            binding.homePlannedMangaProgressBar,
-            binding.homePlannedMangaEmpty,
-            binding.homePlannedManga,
-            binding.homePlannedMangaMore,
+            binding.homePlannedMangaContainer.homeItemContainer,
+            binding.homePlannedMangaContainer.homeItemRecyclerView,
+            binding.homePlannedMangaContainer.homeItemProgressBar,
+            binding.homePlannedMangaContainer.homeItemEmpty,
+            binding.homePlannedMangaContainer.homeItemTitle,
+            binding.homePlannedMangaContainer.homeItemMore,
             getString(R.string.planned_manga)
         )
-        binding.homePlannedMangaBrowseButton.setOnClickListener {
+        binding.homePlannedMangaContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
         }
 
         initRecyclerView(
             PrefManager.getVal<List<Boolean>>(PrefName.HomeLayout)[7],
             model.getRecommendation(),
-            binding.homeRecommendedContainer,
-            binding.homeRecommendedRecyclerView,
-            binding.homeRecommendedProgressBar,
-            binding.homeRecommendedEmpty,
-            binding.homeRecommended,
-            binding.homeRecommendedMore,
+            binding.homeRecommendedContainer.homeItemContainer,
+            binding.homeRecommendedContainer.homeItemRecyclerView,
+            binding.homeRecommendedContainer.homeItemProgressBar,
+            binding.homeRecommendedContainer.homeItemEmpty,
+            binding.homeRecommendedContainer.homeItemTitle,
+            binding.homeRecommendedContainer.homeItemMore,
             getString(R.string.recommended)
         )
+        binding.homeRecommendedContainer.homeItemBrowseButton.isVisible = false
 
         binding.homeUserStatusContainer.visibility = View.VISIBLE
         binding.homeUserStatusProgressBar.visibility = View.VISIBLE
@@ -656,7 +661,7 @@ class HomeFragment : Fragment() {
         model.getHiddenAnime().observe(viewLifecycleOwner) {
             getHiddenLayout(
                 it,
-                binding.homeContinueWatch,
+                binding.homeContinueWatchingContainer.homeItemTitle,
                 binding.homeHiddenAnimeContainer,
                 binding.homeHiddenAnimeTitle,
                 binding.homeHiddenAnimeRecyclerView,
@@ -667,7 +672,7 @@ class HomeFragment : Fragment() {
         model.getHiddenManga().observe(viewLifecycleOwner) {
             getHiddenLayout(
                 it,
-                binding.homeContinueRead,
+                binding.homeContinueReadingContainer.homeItemTitle,
                 binding.homeHiddenMangaContainer,
                 binding.homeHiddenMangaTitle,
                 binding.homeHiddenMangaRecyclerView,
@@ -688,14 +693,14 @@ class HomeFragment : Fragment() {
         }
 
         val containers = arrayOf(
-            binding.homeSubscribedItemContainer,
-            binding.homeContinueWatchingContainer,
-            binding.homeFavAnimeContainer,
-            binding.homePlannedAnimeContainer,
-            binding.homeContinueReadingContainer,
-            binding.homeFavMangaContainer,
-            binding.homePlannedMangaContainer,
-            binding.homeRecommendedContainer,
+            binding.homeSubscribedItemContainer.homeItemContainer,
+            binding.homeContinueWatchingContainer.homeItemContainer,
+            binding.homeFavAnimeContainer.homeItemContainer,
+            binding.homePlannedAnimeContainer.homeItemContainer,
+            binding.homeContinueReadingContainer.homeItemContainer,
+            binding.homeFavMangaContainer.homeItemContainer,
+            binding.homePlannedMangaContainer.homeItemContainer,
+            binding.homeRecommendedContainer.homeItemContainer,
             binding.homeUserStatusContainer,
         )
 
@@ -719,7 +724,7 @@ class HomeFragment : Fragment() {
                         }
                     }
 
-                    binding.homeSubscribedBrowseButton.setOnClickListener {
+                    binding.homeSubscribedItemContainer.homeItemBrowseButton.setOnClickListener {
                         val userList = arrayListOf<Media>().apply {
                             model.getAnimeContinue().value?.let { items -> addAll(items) }
                             model.getAnimePlanned().value?.let { items -> addAll(items) }
