@@ -493,6 +493,7 @@ class HomeFragment : Fragment() {
             binding.homeContinueWatchingContainer.homeItemMore,
             getString(R.string.continue_watching)
         )
+        binding.homeContinueWatchingContainer.homeItemBrowseButton.text = getString(R.string.browse_anime)
         binding.homeContinueWatchingContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
         }
@@ -508,6 +509,7 @@ class HomeFragment : Fragment() {
             binding.homeFavAnimeContainer.homeItemMore,
             getString(R.string.fav_anime)
         )
+        binding.homeFavAnimeContainer.homeItemBrowseButton.text = getString(R.string.browse_anime)
         binding.homeFavAnimeContainer.homeItemBrowseButton.isVisible = false
 
         initRecyclerView(
@@ -521,6 +523,7 @@ class HomeFragment : Fragment() {
             binding.homePlannedAnimeContainer.homeItemMore,
             getString(R.string.planned_anime)
         )
+        binding.homePlannedAnimeContainer.homeItemBrowseButton.text = getString(R.string.browse_anime)
         binding.homePlannedAnimeContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(0)
         }
@@ -536,6 +539,7 @@ class HomeFragment : Fragment() {
             binding.homeContinueReadingContainer.homeItemMore,
             getString(R.string.continue_reading)
         )
+        binding.homeContinueReadingContainer.homeItemBrowseButton.text = getString(R.string.browse_manga)
         binding.homeContinueReadingContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
         }
@@ -551,6 +555,7 @@ class HomeFragment : Fragment() {
             binding.homeFavMangaContainer.homeItemMore,
             getString(R.string.fav_manga)
         )
+        binding.homeFavMangaContainer.homeItemBrowseButton.text = getString(R.string.browse_manga)
         binding.homeFavMangaContainer.homeItemBrowseButton.isVisible = false
 
         initRecyclerView(
@@ -564,6 +569,7 @@ class HomeFragment : Fragment() {
             binding.homePlannedMangaContainer.homeItemMore,
             getString(R.string.planned_manga)
         )
+        binding.homePlannedMangaContainer.homeItemBrowseButton.text = getString(R.string.browse_manga)
         binding.homePlannedMangaContainer.homeItemBrowseButton.setOnClickListener {
             bottomBar.selectTabAt(2)
         }
@@ -579,6 +585,7 @@ class HomeFragment : Fragment() {
             binding.homeRecommendedContainer.homeItemMore,
             getString(R.string.recommended)
         )
+        binding.homeRecommendedContainer.homeItemEmptyTitle.text = getString(R.string.no_suggestions)
         binding.homeRecommendedContainer.homeItemBrowseButton.isVisible = false
 
         binding.homeUserStatusContainer.visibility = View.VISIBLE
