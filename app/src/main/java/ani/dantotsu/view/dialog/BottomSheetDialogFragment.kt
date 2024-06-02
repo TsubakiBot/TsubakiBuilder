@@ -6,6 +6,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.FragmentManager
+import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -30,9 +31,18 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
             WindowInsetsControllerCompat(
                 window, window.decorView
             ).show(WindowInsetsCompat.Type.navigationBars())
-            window.navigationBarColor = requireContext().getThemeColor(
-                com.google.android.material.R.attr.colorSurface
-            )
+            window.setNavigationTheme(requireContext())
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        dialog?.window?.let { window ->
+            if (newConfig.orientation != Configuration.ORIENTATION_PORTRAIT) {
+                val behavior = BottomSheetBehavior.from(requireView().parent as View)
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+            window.setNavigationTheme(requireContext())
         }
     }
 

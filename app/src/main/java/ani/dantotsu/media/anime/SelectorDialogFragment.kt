@@ -44,6 +44,7 @@ import ani.dantotsu.parsers.Subtitle
 import ani.dantotsu.parsers.Video
 import ani.dantotsu.parsers.VideoExtractor
 import ani.dantotsu.parsers.VideoType
+import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.fragment.SettingsAddonFragment
 import ani.dantotsu.settings.saving.PrefManager
@@ -98,9 +99,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
         _binding = BottomSheetSelectorBinding.inflate(inflater, container, false)
         val window = dialog?.window
         window?.statusBarColor = Color.TRANSPARENT
-        window?.navigationBarColor = requireContext().getThemeColor(
-            com.google.android.material.R.attr.colorSurface
-        )
+        window?.setNavigationTheme(requireContext())
         return binding.root
     }
 

@@ -13,6 +13,7 @@ import ani.dantotsu.databinding.ActivityMediaListViewBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
 import ani.dantotsu.others.getSerialized
+import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.showSystemBarsRetractView
@@ -51,7 +52,7 @@ class MediaListViewActivity: AppCompatActivity() {
         val surfaceColor = getThemeColor(com.google.android.material.R.attr.colorSurface)
 
         window.statusBarColor = surfaceColor
-        window.navigationBarColor = surfaceColor
+        window.setNavigationTheme(this)
         binding.listAppBar.setBackgroundColor(surfaceColor)
         val screenWidth = resources.displayMetrics.widthPixels
         val mediaList = intent.getSerialized("media") as? ArrayList<Media> ?: ArrayList()

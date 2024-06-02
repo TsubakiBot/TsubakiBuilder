@@ -121,6 +121,7 @@ import com.bumptech.glide.request.target.Target
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
+import eu.kanade.tachiyomi.util.system.getThemeColor
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.MarkwonConfiguration
@@ -321,7 +322,7 @@ fun Activity.setNavigationTheme() {
 
 fun Window.setNavigationTheme(context: Context) {
     val tv = TypedValue()
-    context.theme.resolveAttribute(android.R.attr.colorBackground, tv, true)
+    context.theme.resolveAttribute(com.google.android.material.R.attr.colorSurface, tv, true)
     if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && tv.isColorType)
         || (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT)
     ) {

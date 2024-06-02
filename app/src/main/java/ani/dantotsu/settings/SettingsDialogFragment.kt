@@ -29,6 +29,7 @@ import ani.dantotsu.offline.OfflineFragment
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.FeedActivity
 import ani.dantotsu.refresh
+import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -64,9 +65,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val window = dialog?.window
         window?.statusBarColor = Color.CYAN
-        window?.navigationBarColor = requireContext().getThemeColor(
-            com.google.android.material.R.attr.colorSurface
-        )
+        window?.setNavigationTheme(requireContext())
         val notificationIcon = if (Anilist.unreadNotificationCount > 0) {
             R.drawable.ic_round_notifications_active_24
         } else {

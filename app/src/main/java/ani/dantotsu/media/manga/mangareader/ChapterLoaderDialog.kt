@@ -16,6 +16,7 @@ import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaSingleton
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.others.getSerialized
+import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.tryWith
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import eu.kanade.tachiyomi.util.system.getThemeColor
@@ -78,9 +79,7 @@ class ChapterLoaderDialog : BottomSheetDialogFragment() {
         _binding = BottomSheetSelectorBinding.inflate(inflater, container, false)
         val window = dialog?.window
         window?.statusBarColor = Color.TRANSPARENT
-        window?.navigationBarColor = requireContext().getThemeColor(
-            com.google.android.material.R.attr.colorSurface
-        )
+        window?.setNavigationTheme(requireContext())
         return binding.root
     }
 
