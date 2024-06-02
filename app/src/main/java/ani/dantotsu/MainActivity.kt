@@ -449,7 +449,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    if (!(PrefManager.getVal(PrefName.AllowOpeningLinks) as Boolean)) {
+                    if (!(PrefManager.getVal<Boolean>(PrefName.AllowOpeningLinks))) {
                         CustomBottomDialog.newInstance().apply {
                             title = getString(R.string.auto_open_links)
                             val md = "Open settings & click +Add Links & select Anilist & Mal urls"
