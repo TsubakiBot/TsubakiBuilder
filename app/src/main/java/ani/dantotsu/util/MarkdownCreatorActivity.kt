@@ -3,6 +3,7 @@ package ani.dantotsu.util
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import ani.dantotsu.R
@@ -46,6 +47,8 @@ class MarkdownCreatorActivity : AppCompatActivity() {
             finish()
             return
         }
+        binding.summaryText.isVisible = type == "review"
+        binding.scoreText.isVisible = type == "review"
         binding.markdownCreatorTitle.text = when (type) {
             "activity" -> getString(R.string.create_new_activity)
             "review" -> getString(R.string.create_new_review)
@@ -89,7 +92,7 @@ class MarkdownCreatorActivity : AppCompatActivity() {
                     launchIO {
                         val success = when (type) {
                             "activity" -> Anilist.mutation.postActivity(text)
-                            //"review" -> Anilist.mutation.postReview(text)
+                            // "review" -> Anilist.mutation.postReview(summary, text, mediaId, score)
                             "replyActivity" -> Anilist.mutation.postReply(parentId, text)
                             else -> "Error: Unknown type"
                         }

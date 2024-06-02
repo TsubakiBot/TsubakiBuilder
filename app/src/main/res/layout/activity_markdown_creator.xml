@@ -64,6 +64,45 @@
         app:layout_constraintTop_toBottomOf="@+id/markdownCreatorToolbar"
         tools:ignore="LabelFor" />
 
+    <EditText
+        android:id="@+id/summaryText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/poppins"
+        android:inputType="textMultiLine"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:text="@string/type_summary"
+        android:textColor="?attr/colorOnBackground"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintEnd_toStartOf="@+id/scoreText"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/scoreText"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins"
+        android:inputType="textMultiLine"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:text="10.0"
+        android:textColor="?attr/colorOnBackground"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/summaryText"
+        tools:ignore="HardcodedText,LabelFor"
+        tools:visibility="visible" />
+
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
