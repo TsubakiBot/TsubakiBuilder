@@ -26,7 +26,6 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
-            android:id="@+id/notificationGradiant"
             android:layout_width="match_parent"
             android:layout_height="144dp"
             app:srcCompat="@drawable/linear_gradient_nav"
