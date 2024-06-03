@@ -82,23 +82,11 @@ class NoInternet : AppCompatActivity() {
         mainViewPager.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
         mainViewPager.setPageTransformer(ZoomOutPageTransformer())
         navbar.setupWithViewPager2(mainViewPager)
-        navbar.setOnTabSelectListener(object :
-            AnimatedBottomBar.OnTabSelectListener {
-            override fun onTabSelected(
-                lastIndex: Int,
-                lastTab: AnimatedBottomBar.Tab?,
-                newIndex: Int,
-                newTab: AnimatedBottomBar.Tab
-            ) {
-                navbar.animate().translationZ(12f).setDuration(200).start()
-                selectedOption = newIndex
-            }
-        })
-        // navbar.onTabSelected = { selectedOption = navbar.selectedIndex }
+        navbar.onTabSelected = { selectedOption = navbar.selectedIndex }
         mainViewPager.setCurrentItem(selectedOption, false)
         navbar.selectTabAt(selectedOption, false)
 
-        //supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, OfflineFragment()).commit()
+        // supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id, OfflineFragment()).commit()
 
     }
 

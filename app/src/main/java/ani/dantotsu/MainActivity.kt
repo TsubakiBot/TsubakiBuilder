@@ -376,7 +376,6 @@ class MainActivity : AppCompatActivity() {
                         newIndex: Int,
                         newTab: AnimatedBottomBar.Tab
                     ) {
-                        bottomBar.animate().translationZ(12f).setDuration(200).start()
                         selectedOption = newIndex
                         hasCompletedLoading += 1
                     }
