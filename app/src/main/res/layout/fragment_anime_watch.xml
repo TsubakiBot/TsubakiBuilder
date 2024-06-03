@@ -32,8 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
+        android:paddingHorizontal="24dp"
         tools:itemCount="1"
         tools:listitem="@layout/item_anime_watch" />
 
@@ -42,13 +41,13 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
         app:cardBackgroundColor="?android:colorBackground"
         app:cardCornerRadius="24dp"
         app:contentPadding="12dp">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:rotation="90"
             app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"

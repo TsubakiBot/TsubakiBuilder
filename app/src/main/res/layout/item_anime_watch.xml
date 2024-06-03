@@ -28,11 +28,18 @@
             android:visibility="gone"
             tools:visibility="visible" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-8dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
         <Button
             android:id="@+id/animeSourceYT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/yt_red"
             android:fontFamily="@font/poppins_bold"
             android:insetTop="0dp"
@@ -44,13 +51,14 @@
             app:icon="@drawable/ic_round_play_circle_24"
             app:iconTint="@color/bg_white"
             tools:ignore="TextContrastCheck"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/animeSourceCR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/cr_orange"
             android:fontFamily="@font/poppins_bold"
             android:insetTop="0dp"
@@ -62,7 +70,10 @@
             app:icon="@drawable/ic_round_play_circle_24"
             app:iconTint="@color/bg_white"
             tools:ignore="TextContrastCheck"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/animeSourceTitle"

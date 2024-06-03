@@ -61,8 +61,8 @@ class AnimeWatchAdapter(
 ) : RecyclerView.Adapter<AnimeWatchAdapter.ViewHolder>() {
     var subscribe: MediaDetailsActivity.PopImageButton? = null
     private var _binding: ItemAnimeWatchBinding? = null
-
-    val uiScope = MainScope()
+    private var tubePlayer: YouTubePlayer? = null
+    private val uiScope = MainScope()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val bind = ItemAnimeWatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -318,15 +318,15 @@ class AnimeWatchAdapter(
     }
 
     private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
-        if (media.anime?.youtube == null) return
+        if (media.anime?.youtube == null || tubePlayer != null) return
         val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
-        fragment.lifecycle.addObserver(youTubePlayerView)
+        fragment.lifecycle.addObserver(binding.youtubePlayerView)
         val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 binding.animeSourceYT.visibility = View.GONE
                 binding.youtubePlayerView.visibility = View.VISIBLE
                 Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                    youTubePlayer.loadVideo(it, 0f)
+                    tubePlayer = youTubePlayer.apply { loadVideo(it, 0f) }
                 }
             }
             override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
