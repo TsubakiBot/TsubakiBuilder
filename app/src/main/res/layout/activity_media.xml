@@ -173,6 +173,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="-16dp"
             android:orientation="vertical">
 
             <FrameLayout
@@ -264,7 +265,6 @@
 
                 </LinearLayout>
             </FrameLayout>
-
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -301,8 +301,7 @@
                 android:id="@+id/commentReplyToContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginVertical="10dp"
                 android:orientation="horizontal"
                 android:visibility="gone"
                 tools:ignore="UseCompoundDrawables">
@@ -359,8 +358,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginHorizontal="8dp"
                     android:layout_weight="1"
                     android:autofillHints="The One Piece is real"
                     android:background="@drawable/card_outline"
