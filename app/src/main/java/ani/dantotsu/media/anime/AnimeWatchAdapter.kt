@@ -28,6 +28,7 @@ import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
+import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
@@ -107,8 +108,13 @@ class AnimeWatchAdapter(
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
 
-        //Youtube
+        // Youtube
         if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
+        // Crunchyroll
+        binding.animeSourceCR.isVisible = media.crunchySlug != null
+        media.crunchySlug?.let { url ->
+            binding.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
+        }
 
         binding.animeSourceNameContainer.isGone = offline
         binding.animeSourceSettings.isGone = offline

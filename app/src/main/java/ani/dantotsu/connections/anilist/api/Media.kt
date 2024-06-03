@@ -143,7 +143,7 @@ data class Media(
     @SerialName("externalLinks") var externalLinks: List<MediaExternalLink>?,
 
     // Data and links to legal streaming episodes on external sites
-    // @SerialName("streamingEpisodes") var streamingEpisodes: List<MediaStreamingEpisode>?,
+    @SerialName("streamingEpisodes") var streamingEpisodes: List<MediaStreamingEpisode>?,
 
     // The ranking of the media in a particular time span and format compared to other media
     // @SerialName("rankings") var rankings: List<MediaRank>?,
@@ -490,6 +490,21 @@ data class MediaExternalLink(
     // isDisabled: Boolean
     @SerialName("notes") var notes: String?,
 ) : java.io.Serializable
+
+@Serializable
+data class MediaStreamingEpisode(
+    // Title of the episode
+    @SerialName("title") var title: String?,
+
+    //  Url of episode image thumbnail
+    @SerialName("thumbnail") var thumbnail: String?,
+
+    //  The url of the episode
+    @SerialName("url") var url: String?,
+
+    // The site location of the streaming episodes
+    @SerialName("site") var site: String?
+)
 
 @Serializable
 enum class ExternalLinkType {

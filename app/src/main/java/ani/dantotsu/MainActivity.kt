@@ -475,7 +475,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                                 dismiss()
                             }
-                        }.show(supportFragmentManager, "dialog")
+                        }.show(supportFragmentManager, "links")
                     }
                 }
             }
