@@ -243,7 +243,7 @@ class OfflineAnimeFragment : Fragment(), OfflineAnimeSearchListener {
                 val first = view.getChildAt(0)
                 val visibility = first != null && first.top < 0
                 scrollTop.translationY =
-                    -(navBarHeight + bottomBar.height + bottomBar.marginBottom).toFloat()
+                    -(bottomBar.height + bottomBar.marginBottom).toFloat()
                 scrollTop.isVisible = visibility
             }
         })

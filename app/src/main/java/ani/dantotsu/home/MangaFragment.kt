@@ -268,7 +268,7 @@ class MangaFragment : Fragment() {
                     }
                 }
                 binding.animePageScrollTop.translationY =
-                    -(navBarHeight + bottomBar.height + bottomBar.marginBottom).toFloat()
+                    -(bottomBar.height + bottomBar.marginBottom).toFloat()
 
             }
         }
