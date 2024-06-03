@@ -1,5 +1,6 @@
 package ani.dantotsu.connections.anilist
 
+import StreamingEpisode
 import android.util.Base64
 import ani.dantotsu.R
 import ani.dantotsu.checkGenreTime
@@ -321,15 +322,16 @@ class AnilistQueries {
                                     "youtube" -> media.anime.youtube = i.url
                                     "crunchyroll" -> {
                                         // media.crunchySlug = i.url?.split("/")?.getOrNull(3)
-                                        media.crunchyLink = i.url
+                                        media.crunchyroll = i.url
                                     }
+                                    "hulu" -> media.hulu = i.url
                                     "vrv" -> media.vrvId = i.url?.split("/")?.getOrNull(4)
                                 }
                             }
 
                             fetchedMedia.streamingEpisodes?.forEach {
                                 media.streamingEpisodes.add(
-                                    StreamingEpsiode(
+                                    StreamingEpisode(
                                         it.title,
                                         it.thumbnail,
                                         it.url,

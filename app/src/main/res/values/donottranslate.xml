@@ -39,6 +39,7 @@
     <string name="rpc_watch">Watch on Himitsu</string>
 
     <string name="play_yt">Youtube</string>
+    <string name="play_hulu">Hulu</string>
     <string name="play_cr">Crunchyroll</string>
 
     <string name="memory_byte">Byte</string>

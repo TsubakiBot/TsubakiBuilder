@@ -109,10 +109,16 @@ class AnimeWatchAdapter(
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
 
-        if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
-        binding.streamContainer.animeSourceCR.isVisible = media.crunchyLink != null
-        media.crunchyLink?.let { url ->
-            binding.streamContainer.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
+        if (PrefManager.getVal(PrefName.ShowYtButton)) {
+            getYouTubeContent(binding)
+            binding.streamContainer.animeSourceHulu.isVisible = media.hulu != null
+            media.hulu?.let { url ->
+                binding.streamContainer.animeSourceHulu.setOnClickListener { openLinkInBrowser(url) }
+            }
+            binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
+            media.crunchyroll?.let { url ->
+                binding.streamContainer.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
+            }
         }
 
         binding.animeSourceNameContainer.isGone = offline

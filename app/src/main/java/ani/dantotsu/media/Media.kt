@@ -1,5 +1,6 @@
 package ani.dantotsu.media
 
+import StreamingEpisode
 import android.graphics.Bitmap
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.api.MediaEdge
@@ -66,7 +67,6 @@ data class Media(
     var characters: ArrayList<Character>? = null,
     var review: ArrayList<Review>? = null,
     var staff: ArrayList<Author>? = null,
-    var streamingEpisodes: ArrayList<StreamingEpisode>? = null,
     var prequel: Media? = null,
     var sequel: Media? = null,
     var relations: ArrayList<Media>? = null,
@@ -74,7 +74,9 @@ data class Media(
     var users: ArrayList<User>? = null,
     var vrvId: String? = null,
     // var crunchySlug: String? = null,
-    var crunchyLink: String? = null,
+    var crunchyroll: String? = null,
+    var hulu: String? = null,
+    var streamingEpisodes: ArrayList<StreamingEpisode> = arrayListOf(),
 
     var nameMAL: String? = null,
     var shareLink: String? = null,

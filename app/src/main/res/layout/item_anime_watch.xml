@@ -21,7 +21,7 @@
 
         <include
             android:id="@+id/streamContainer"
-            layout="@layout/item_legal_sources"
+            layout="@layout/item_stream_sources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/poppins_bold"

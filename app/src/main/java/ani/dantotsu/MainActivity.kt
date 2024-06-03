@@ -485,69 +485,74 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
 
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(getString(R.string.biometric_title))
-            .setSubtitle(getString(R.string.biometric_details))
-            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
-            .setConfirmationRequired(false)
-            .build()
+        if (PrefManager.getVal(PrefName.SecureLock)) {
+            promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle(getString(R.string.biometric_title))
+                .setSubtitle(getString(R.string.biometric_details))
+                .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+                .setConfirmationRequired(false)
+                .build()
 
-        biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_error, errString),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    when (errorCode) {
-                        BiometricPrompt.ERROR_HW_NOT_PRESENT,
-                        BiometricPrompt.ERROR_HW_UNAVAILABLE,
-                        BiometricPrompt.ERROR_NO_BIOMETRICS,
-                        BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
-                        BiometricPrompt.ERROR_VENDOR -> {
-                            binding.biometricShield.visibility = View.GONE
+            biometricPrompt = BiometricPrompt(this, ContextCompat.getMainExecutor(this),
+                object : BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.biometric_error, errString),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        when (errorCode) {
+                            BiometricPrompt.ERROR_HW_NOT_PRESENT,
+                            BiometricPrompt.ERROR_HW_UNAVAILABLE,
+                            BiometricPrompt.ERROR_NO_BIOMETRICS,
+                            BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL,
+                            BiometricPrompt.ERROR_VENDOR -> {
+                                binding.biometricShield.visibility = View.GONE
+                            }
+
+                            BiometricPrompt.ERROR_CANCELED,
+                            BiometricPrompt.ERROR_LOCKOUT,
+                            BiometricPrompt.ERROR_LOCKOUT_PERMANENT,
+                            BiometricPrompt.ERROR_NO_SPACE,
+                            BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED,
+                            BiometricPrompt.ERROR_TIMEOUT,
+                            BiometricPrompt.ERROR_UNABLE_TO_PROCESS,
+                            BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
+
+                            else -> biometricPrompt.authenticate(promptInfo)
                         }
-                        BiometricPrompt.ERROR_CANCELED,
-                        BiometricPrompt.ERROR_LOCKOUT,
-                        BiometricPrompt.ERROR_LOCKOUT_PERMANENT,
-                        BiometricPrompt.ERROR_NO_SPACE,
-                        BiometricPrompt.ERROR_SECURITY_UPDATE_REQUIRED,
-                        BiometricPrompt.ERROR_TIMEOUT,
-                        BiometricPrompt.ERROR_UNABLE_TO_PROCESS,
-                        BiometricPrompt.ERROR_USER_CANCELED -> finishAndRemoveTask()
-                        else -> biometricPrompt.authenticate(promptInfo)
                     }
-                }
 
-                override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    hasConfirmedSession = true
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
-                    binding.biometricShield.visibility = View.GONE
-                }
+                    override fun onAuthenticationSucceeded(
+                        result: BiometricPrompt.AuthenticationResult
+                    ) {
+                        super.onAuthenticationSucceeded(result)
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.biometric_success),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        hasConfirmedSession = true
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                        binding.biometricShield.visibility = View.GONE
+                    }
 
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.biometric_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    finishAndRemoveTask()
-                }
-            })
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.biometric_failed),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        finishAndRemoveTask()
+                    }
+                })
 
-        if (!hasConfirmedSession && PrefManager.getVal(PrefName.SecureLock)) {
-            binding.biometricShield.visibility = View.VISIBLE
-            biometricPrompt.authenticate(promptInfo)
+            if (!hasConfirmedSession) {
+                binding.biometricShield.visibility = View.VISIBLE
+                biometricPrompt.authenticate(promptInfo)
+            }
         }
 
         scope.launch(Dispatchers.IO) {

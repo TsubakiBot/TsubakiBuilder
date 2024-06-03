@@ -10,7 +10,7 @@
         android:id="@+id/youtube_player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         app:enableAutomaticInitialization="false"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="-8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <Button
@@ -32,6 +32,25 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="@string/play_yt"
+            android:textColor="@color/bg_white"
+            android:visibility="gone"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_round_play_circle_24"
+            app:iconTint="@color/bg_white"
+            tools:ignore="TextContrastCheck"
+            tools:visibility="visible"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/animeSourceHulu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/hulu_green"
+            android:fontFamily="@font/poppins_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/play_hulu"
             android:textColor="@color/bg_white"
             android:visibility="gone"
             app:cornerRadius="12dp"
@@ -62,4 +81,14 @@
 
     </LinearLayout>
 
+    <ani.dantotsu.view.FadingEdgeRecyclerView
+        android:id="@+id/devsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:requiresFadingEdge="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="9"
+        tools:orientation="vertical" />
 </LinearLayout>

@@ -199,7 +199,7 @@
     <string name="noSdFound">No SD card was Found.</string>
     <string name="reader_settings">Reader Settings</string>
     <string name="default_source">Default Source</string>
-    <string name="show_yt">Show Youtube Link</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">Default Episode Layout</string>
     <string name="default_chp_view">Default Chapter Layout</string>
     <string name="ui">User Interface</string>
@@ -1016,7 +1016,7 @@
     <string name="player_settings_desc">All the player related settings</string>
     <string name="purge_anime_downloads_desc">Delete all downloaded Anime</string>
     <string name="prefer_dub_desc">Select dubbed media by default</string>
-    <string name="show_yt_desc">Show YouTube links for supported media</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">Include list items in Anime explore page</string>
     <string name="ui_settings_desc">All the UI related settings</string>
     <string name="download_manager_select_desc">Default manager to download Anime</string>
