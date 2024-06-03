@@ -109,14 +109,17 @@ class AnimeWatchAdapter(
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
 
+        binding.streamContainer.root.isVisible = false
         if (PrefManager.getVal(PrefName.ShowYtButton)) {
             getYouTubeContent(binding)
             binding.streamContainer.animeSourceHulu.isVisible = media.hulu != null
             media.hulu?.let { url ->
+                binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceHulu.setOnClickListener { openLinkInBrowser(url) }
             }
             binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
             media.crunchyroll?.let { url ->
+                binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
             }
         }
@@ -325,6 +328,7 @@ class AnimeWatchAdapter(
 
     private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
         if (media.anime?.youtube == null || tubePlayer != null) return
+        binding.streamContainer.root.isVisible = true
         val youTubePlayerView: YouTubePlayerView = binding.streamContainer.youtubePlayerView
         fragment.lifecycle.addObserver(binding.streamContainer.youtubePlayerView)
         val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
