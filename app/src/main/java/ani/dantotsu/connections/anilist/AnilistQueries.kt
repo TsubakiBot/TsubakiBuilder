@@ -326,6 +326,17 @@ class AnilistQueries {
                                     "vrv" -> media.vrvId = i.url?.split("/")?.getOrNull(4)
                                 }
                             }
+
+                            fetchedMedia.streamingEpisodes?.forEach {
+                                media.streamingEpisodes.add(
+                                    StreamingEpsiode(
+                                        it.title,
+                                        it.thumbnail,
+                                        it.url,
+                                        it.site
+                                    )
+                                )
+                            }
                         } else if (media.manga != null) {
                             fetchedMedia.staff?.edges?.find { authorRoles.contains(it.role?.trim()) }?.node?.let {
                                 media.manga.author = Author(

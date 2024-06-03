@@ -66,6 +66,7 @@ data class Media(
     var characters: ArrayList<Character>? = null,
     var review: ArrayList<Review>? = null,
     var staff: ArrayList<Author>? = null,
+    var streamingEpisodes: ArrayList<StreamingEpisode>? = null,
     var prequel: Media? = null,
     var sequel: Media? = null,
     var relations: ArrayList<Media>? = null,
