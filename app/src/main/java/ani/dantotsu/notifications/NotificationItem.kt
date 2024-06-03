@@ -71,8 +71,8 @@ class NotificationItem(
                 binding.notificationCover.layoutParams.width = 81.toPx
                 binding.notificationCover.loadImage(notification.user?.avatar?.large)
                 binding.notificationTitle.text = notification.media?.title?.userPreferred
-                binding.notificationBannerImage.layoutParams.height = userHeight
-                binding.notificationGradiant.layoutParams.height = userHeight
+                binding.notificationBannerImage.layoutParams.height = 128.toPx
+                binding.notificationGradiant.layoutParams.height = 128.toPx
                 (binding.notificationTextContainer.layoutParams
                         as ViewGroup.MarginLayoutParams).marginStart = 118.toPx
             }
