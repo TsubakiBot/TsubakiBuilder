@@ -72,7 +72,8 @@ data class Media(
     var recommendations: ArrayList<Media>? = null,
     var users: ArrayList<User>? = null,
     var vrvId: String? = null,
-    var crunchySlug: String? = null,
+    // var crunchySlug: String? = null,
+    var crunchyLink: String? = null,
 
     var nameMAL: String? = null,
     var shareLink: String? = null,

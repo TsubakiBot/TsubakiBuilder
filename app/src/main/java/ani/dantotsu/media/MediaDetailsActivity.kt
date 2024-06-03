@@ -86,7 +86,6 @@ import java.io.Serializable
 import kotlin.math.abs
 import kotlin.math.min
 
-
 class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
     lateinit var launcher: LauncherWrapper
     lateinit var binding: ActivityMediaBinding

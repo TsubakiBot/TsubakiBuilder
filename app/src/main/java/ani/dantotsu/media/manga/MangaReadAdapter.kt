@@ -29,6 +29,7 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
 import ani.dantotsu.media.anime.handleProgress
+import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
@@ -64,8 +65,9 @@ class MangaReadAdapter(
     val hiddenScanlators = mutableListOf<String>()
     var scanlatorSelectionListener: ScanlatorSelectionListener? = null
     var options = listOf<String>()
+    private var tubePlayer: YouTubePlayer? = null
 
-    val uiScope = MainScope()
+    private val uiScope = MainScope()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val bind = ItemAnimeWatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -94,8 +96,11 @@ class MangaReadAdapter(
         }
         val offline = !isOnline(binding.root.context) || PrefManager.getVal(PrefName.OfflineMode)
 
-        //Youtube
         if (PrefManager.getVal(PrefName.ShowYtButton)) getYouTubeContent(binding)
+        binding.streamContainer.animeSourceCR.isVisible = media.crunchyLink != null
+        media.crunchyLink?.let { url ->
+            binding.streamContainer.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
+        }
 
         binding.animeSourceNameContainer.isGone = offline
         binding.animeSourceSettings.isGone = offline
@@ -376,24 +381,25 @@ class MangaReadAdapter(
 
     override fun onViewDetachedFromWindow(holder: MangaReadAdapter.ViewHolder) {
         super.onViewDetachedFromWindow(holder)
-        holder.binding.youtubePlayerView.release()
+        holder.binding.streamContainer.youtubePlayerView.release()
+        tubePlayer = null
     }
 
     private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
-        if (media.anime?.youtube == null) return
-        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
-        fragment.lifecycle.addObserver(youTubePlayerView)
+        if (media.anime?.youtube == null || tubePlayer != null) return
+        val youTubePlayerView: YouTubePlayerView = binding.streamContainer.youtubePlayerView
+        fragment.lifecycle.addObserver(binding.streamContainer.youtubePlayerView)
         val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                binding.animeSourceYT.visibility = View.GONE
-                binding.youtubePlayerView.visibility = View.VISIBLE
+                binding.streamContainer.animeSourceYT.visibility = View.GONE
+                binding.streamContainer.youtubePlayerView.visibility = View.VISIBLE
                 Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                    youTubePlayer.loadVideo(it, 0f)
+                    tubePlayer = youTubePlayer.apply { loadVideo(it, 0f) }
                 }
             }
             override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                binding.youtubePlayerView.visibility = View.GONE
-                binding.animeSourceYT.visibility = View.VISIBLE
+                binding.streamContainer.youtubePlayerView.visibility = View.GONE
+                binding.streamContainer.animeSourceYT.visibility = View.VISIBLE
             }
         }
         Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
@@ -405,8 +411,8 @@ class MangaReadAdapter(
                     .controls(1).listType("playlist").list(it).build()
             )
         }
-        binding.animeSourceYT.visibility = View.VISIBLE
-        binding.animeSourceYT.setOnClickListener {
+        binding.streamContainer.animeSourceYT.visibility = View.VISIBLE
+        binding.streamContainer.animeSourceYT.setOnClickListener {
             openLinkInYouTube(media.anime.youtube)
         }
     }

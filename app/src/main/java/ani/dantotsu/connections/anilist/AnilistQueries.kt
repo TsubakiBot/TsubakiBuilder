@@ -319,8 +319,10 @@ class AnilistQueries {
                             fetchedMedia.externalLinks?.forEach { i ->
                                 when (i.site.lowercase()) {
                                     "youtube" -> media.anime.youtube = i.url
-                                    "crunchyroll" -> media.crunchySlug = i.url
-                                        // i.url?.split("/")?.getOrNull(3)
+                                    "crunchyroll" -> {
+                                        // media.crunchySlug = i.url?.split("/")?.getOrNull(3)
+                                        media.crunchyLink = i.url
+                                    }
                                     "vrv" -> media.vrvId = i.url?.split("/")?.getOrNull(4)
                                 }
                             }

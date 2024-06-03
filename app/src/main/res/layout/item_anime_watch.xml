@@ -19,61 +19,11 @@
         android:orientation="vertical"
         android:padding="32dp">
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube_player_view"
+        <include
+            android:id="@+id/streamContainer"
+            layout="@layout/item_legal_sources"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:enableAutomaticInitialization="false"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="-8dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/animeSourceYT"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/yt_red"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/play_yt"
-            android:textColor="@color/bg_white"
-            android:visibility="gone"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_round_play_circle_24"
-            app:iconTint="@color/bg_white"
-            tools:ignore="TextContrastCheck"
-            tools:visibility="visible"
-            style="?android:attr/buttonBarButtonStyle" />
-
-        <Button
-            android:id="@+id/animeSourceCR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/cr_orange"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/play_cr"
-            android:textColor="@color/bg_white"
-            android:visibility="gone"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_round_play_circle_24"
-            app:iconTint="@color/bg_white"
-            tools:ignore="TextContrastCheck"
-            tools:visibility="visible"
-            style="?android:attr/buttonBarButtonStyle" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/animeSourceTitle"
