@@ -24,6 +24,14 @@
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
+        <FrameLayout
+            android:id="@+id/notificationGradiant"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:alpha="0.22"
+            android:background="@color/anilist_banner"
+            tools:ignore="ContentDescription" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/notificationCoverContainer"
             android:layout_width="wrap_content"
