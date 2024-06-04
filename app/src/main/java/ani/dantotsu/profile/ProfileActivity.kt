@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
@@ -34,9 +33,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
-import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
-import ani.dantotsu.util.MarkdownCreatorActivity
 import ani.dantotsu.view.dialog.ImageViewDialog
 import bit.himitsu.setBaseline
 import com.google.android.material.appbar.AppBarLayout
@@ -62,7 +59,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
         val context = this
         screenWidth = resources.displayMetrics.widthPixels.toFloat()
         navBar = binding.profileNavBar.apply {
-            updateLayoutParams(resources.configuration.orientation)
+            updateMargins(resources.configuration.orientation)
         }
         navBar.visibility = View.GONE
         binding.profileViewPager.isUserInputEnabled = false

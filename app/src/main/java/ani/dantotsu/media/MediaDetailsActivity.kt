@@ -62,7 +62,6 @@ import ani.dantotsu.snackString
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
-import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
@@ -126,7 +125,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         screenWidth = resources.displayMetrics.widthPixels.toFloat()
         initActivity(this)
         navBar = binding.mediaBottomBar.apply {
-            updateLayoutParams(resources.configuration.orientation)
+            updateMargins(resources.configuration.orientation)
         }
 
         val oldMargin = binding.mediaViewPager.marginBottom

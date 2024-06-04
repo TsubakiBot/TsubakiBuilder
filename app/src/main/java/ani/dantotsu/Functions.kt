@@ -269,15 +269,6 @@ fun initActivity(a: Activity) {
     if (a !is MainActivity) a.setNavigationTheme()
 }
 
-fun AnimatedBottomBar.updateLayoutParams(orientation: Int) {
-    val navBarRightMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
-    val navBarBottomMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
-    this.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-        rightMargin = navBarRightMargin
-        bottomMargin = navBarBottomMargin
-    }
-}
-
 fun AnimatedBottomBar.updateMargins(orientation: Int) {
     val rightMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
     val bottomMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight

@@ -18,7 +18,6 @@ import ani.dantotsu.databinding.ActivityFeedBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
-import ani.dantotsu.updateLayoutParams
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.MarkdownCreatorActivity
 import bit.himitsu.os.Version
@@ -37,7 +36,7 @@ class FeedActivity : AppCompatActivity() {
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navBar = binding.feedNavBar.apply {
-            updateLayoutParams(resources.configuration.orientation)
+            updateMargins(resources.configuration.orientation)
         }
         binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
