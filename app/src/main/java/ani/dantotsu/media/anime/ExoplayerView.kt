@@ -928,7 +928,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     in 0F..3F -> {
                         exoBrightnessIcon.setImageResource(R.drawable.ic_brightness_low_24)
                     }
-                    in 3.1F..7F -> {
+                    in 3.000001F..7F -> {
                         exoBrightnessIcon.setImageResource(R.drawable.ic_brightness_medium_24)
                     }
                     else -> {
@@ -969,10 +969,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                     0F -> {
                         exoVolumeIcon.setImageResource(R.drawable.ic_volume_off_24)
                     }
-                    in 0.1F..3F -> {
+                    in 0.000001F..3F -> {
                         exoVolumeIcon.setImageResource(R.drawable.ic_volume_low_24)
                     }
-                    in 3.1F..7F -> {
+                    in 3.000001F..<7F -> {
                         exoVolumeIcon.setImageResource(R.drawable.ic_volume_medium_24)
                     }
                     else -> {
