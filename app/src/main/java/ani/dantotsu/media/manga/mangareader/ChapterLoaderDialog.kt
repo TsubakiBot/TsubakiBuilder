@@ -19,7 +19,6 @@ import ani.dantotsu.others.getSerialized
 import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.tryWith
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
-import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.Serializable

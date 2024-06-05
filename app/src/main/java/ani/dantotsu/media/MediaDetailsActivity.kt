@@ -55,7 +55,6 @@ import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.others.AndroidBug5497Workaround
 import ani.dantotsu.others.getSerialized
-import bit.himitsu.setBaseline
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
@@ -65,6 +64,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.updateMargins
 import ani.dantotsu.util.LauncherWrapper
 import ani.dantotsu.view.dialog.ImageViewDialog
+import bit.himitsu.setBaseline
 import bit.himitsu.torrServerStart
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout

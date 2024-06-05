@@ -38,7 +38,6 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import bit.himitsu.search.ReverseSearchDialogFragment
 import bit.himitsu.update.MatagiUpdater
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
-import eu.kanade.tachiyomi.util.system.getThemeColor
 import java.util.Timer
 import kotlin.concurrent.schedule
 

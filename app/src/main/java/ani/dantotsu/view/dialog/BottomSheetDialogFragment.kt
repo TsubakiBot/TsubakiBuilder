@@ -11,7 +11,6 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import eu.kanade.tachiyomi.util.system.getThemeColor
 
 open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onStart() {

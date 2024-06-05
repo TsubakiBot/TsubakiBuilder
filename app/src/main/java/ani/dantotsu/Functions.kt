@@ -91,12 +91,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import bit.himitsu.nio.Strings.getString
-import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.getUserId
-import bit.himitsu.bakaupdates.MangaUpdates
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
@@ -109,6 +106,8 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore.Companion.genera
 import ani.dantotsu.util.CountUpTimer
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.dialog.CustomBottomDialog
+import bit.himitsu.bakaupdates.MangaUpdates
+import bit.himitsu.nio.Strings.getString
 import bit.himitsu.os.Version
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -121,7 +120,6 @@ import com.bumptech.glide.request.target.Target
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
-import eu.kanade.tachiyomi.util.system.getThemeColor
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.MarkwonConfiguration

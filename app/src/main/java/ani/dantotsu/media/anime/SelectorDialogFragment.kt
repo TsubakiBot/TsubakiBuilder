@@ -58,7 +58,6 @@ import ani.dantotsu.view.dialog.BottomSheetDialogFragment
 import bit.himitsu.TorrManager
 import bit.himitsu.TorrManager.getPlayLink
 import bit.himitsu.torrServerStart
-import eu.kanade.tachiyomi.util.system.getThemeColor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

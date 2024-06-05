@@ -30,9 +30,9 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
-import bit.himitsu.nio.Strings.getString
 import bit.himitsu.collections.Collections.mix
 import bit.himitsu.collections.Collections.toArrayList
+import bit.himitsu.nio.Strings.getString
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking

@@ -29,8 +29,8 @@ import ani.dantotsu.openSettings
 import ani.dantotsu.settings.Settings
 import ani.dantotsu.settings.SettingsActivity
 import ani.dantotsu.settings.SettingsAdapter
-import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.SubscriptionsBottomDialog
+import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString

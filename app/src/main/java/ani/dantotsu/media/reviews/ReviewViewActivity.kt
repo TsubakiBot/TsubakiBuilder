@@ -15,9 +15,7 @@ import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityReviewViewBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
-import ani.dantotsu.loadCover
 import ani.dantotsu.loadImage
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.profile.ProfileActivity
 import ani.dantotsu.profile.activity.ActivityItemBuilder
 import ani.dantotsu.statusBarHeight

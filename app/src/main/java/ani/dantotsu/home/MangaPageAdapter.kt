@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.MediaPageTransformer
 import ani.dantotsu.R
-import bit.himitsu.nio.Strings.getString
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemListContainerBinding
@@ -30,8 +29,8 @@ import ani.dantotsu.media.GenreActivity
 import ani.dantotsu.media.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
-import ani.dantotsu.media.reviews.ReviewPopupActivity
 import ani.dantotsu.media.SearchActivity
+import ani.dantotsu.media.reviews.ReviewPopupActivity
 import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.setSlideIn
@@ -41,6 +40,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.toPx
+import bit.himitsu.nio.Strings.getString
 import bit.himitsu.withFlexibleMargin
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout

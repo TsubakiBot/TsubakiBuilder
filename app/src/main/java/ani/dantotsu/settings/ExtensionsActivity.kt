@@ -29,7 +29,6 @@ import ani.dantotsu.settings.extension.InstalledNovelExtensionsFragment
 import ani.dantotsu.settings.extension.MangaExtensionsFragment
 import ani.dantotsu.settings.extension.NovelExtensionsFragment
 import ani.dantotsu.settings.extension.NovelPluginsFragment
-import ani.dantotsu.settings.fragment.SettingsExtensionsFragment
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
