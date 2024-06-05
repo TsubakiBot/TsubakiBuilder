@@ -80,17 +80,13 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
             withContext(Dispatchers.Main) {
                 binding.profileViewPager.adapter =
                     ViewPagerAdapter(supportFragmentManager, lifecycle, user)
-                binding.profileViewPager.setOffscreenPageLimit(3)
                 navBar.visibility = View.VISIBLE
                 navBar.setupWithViewPager2(binding.profileViewPager)
                 navBar.onTabSelected = { selected = navBar.selectedIndex }
                 binding.profileViewPager.setCurrentItem(selected, false)
                 navBar.selectTabAt(selected, false)
 
-                binding.profileViewPager.setBaseline(
-                    navBar,
-                    resources.configuration
-                )
+                binding.profileViewPager.setBaseline(navBar, resources.configuration)
 
                 bindingProfileAppBar = ItemProfileAppBarBinding.bind(binding.root).apply {
                     binding.profileProgressBar.visibility = View.GONE

@@ -14,6 +14,9 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.Animatable
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.media.AudioManager
 import android.media.AudioManager.AUDIOFOCUS_GAIN
@@ -42,7 +45,6 @@ import android.view.MotionEvent
 import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.FrameLayout
@@ -187,7 +189,7 @@ import kotlin.math.roundToInt
 
 @UnstableApi
 @SuppressLint("ClickableViewAccessibility")
-class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityListener {
+class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityListener, SensorEventListener {
 
     private val resumeWindow = "resumeWindow"
     private val resumePosition = "resumePosition"
@@ -289,6 +291,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private val isTorrent: Boolean get() = torrent != null
     private val subsEmbedded: Boolean get() = isTorrent || !hasExtSubtitles
+
+    private var sensorManager: SensorManager? = null
+    private var proximity: Sensor? = null
 
     override fun onAttachedToWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -463,6 +468,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         ThemeManager(this).applyTheme()
         binding = ActivityExoplayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        proximity = sensorManager?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
 
         //Initialize
         isCastApiAvailable = GoogleApiAvailability.getInstance()
@@ -1789,6 +1797,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     override fun onPause() {
         super.onPause()
+        sensorManager?.unregisterListener(this)
         orientationListener?.disable()
         if (isInitialized) {
             if (castPlayer?.isPlaying == false) {
@@ -1805,6 +1814,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     override fun onResume() {
         super.onResume()
+        sensorManager?.registerListener(this, proximity, SensorManager.SENSOR_DELAY_NORMAL)
         orientationListener?.enable()
         hideSystemBars()
         if (isInitialized) {
@@ -2526,6 +2536,18 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             isEnabled = enabled
         }
     }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        proximity?.let {
+            if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
+                if (event.values[0] < it.maximumRange) {
+                    playerView.keepScreenOn = exoPlayer.isPlaying
+                }
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 }
 
 class CustomCastButton : MediaRouteButton {
