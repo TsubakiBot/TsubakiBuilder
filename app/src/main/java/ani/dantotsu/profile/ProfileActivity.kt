@@ -140,8 +140,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
                     profileBannerImage.updateLayoutParams { height += statusBarHeight }
                     profileBannerImageNoKen.updateLayoutParams { height += statusBarHeight }
                     profileBannerGradient.updateLayoutParams { height += statusBarHeight }
-                    profileCloseButton.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
-                    profileMenuButton.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
+                    profileOverlayContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
                     profileButtonContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin += statusBarHeight }
 
                     profileBannerImage.setOnLongClickListener {
