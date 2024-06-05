@@ -106,7 +106,6 @@ import androidx.media3.ui.CaptionStyleCompat.EDGE_TYPE_OUTLINE
 import androidx.media3.ui.DefaultTimeBar
 import androidx.media3.ui.PlayerView
 import androidx.media3.ui.SubtitleView
-import androidx.mediarouter.app.MediaRouteButton
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
@@ -159,6 +158,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.CustomCastButton
 import bit.himitsu.TorrManager.removeTorrent
 import bit.himitsu.os.Version
 import com.anggrayudi.storage.file.extension
@@ -2539,41 +2539,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     override fun onSensorChanged(event: SensorEvent) {
         proximity?.let {
-            if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
-                if (event.values[0] < it.maximumRange) {
-                    playerView.keepScreenOn = exoPlayer.isPlaying
-                }
-            }
+            if (event.sensor.type == Sensor.TYPE_PROXIMITY && event.values[0] < it.maximumRange)
+                playerView.keepScreenOn = exoPlayer.isPlaying
         }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
-}
-
-class CustomCastButton : MediaRouteButton {
-
-    private var castCallback: (() -> Unit)? = null
-
-    fun setCastCallback(castCallback: () -> Unit) {
-        this.castCallback = castCallback
-    }
-
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
-
-    override fun performClick(): Boolean {
-        return if (PrefManager.getVal(PrefName.UseInternalCast)) {
-            super.performClick()
-        } else {
-            castCallback?.let { it() }
-            true
-        }
-    }
 }
