@@ -41,6 +41,7 @@ class FeedActivity : AppCompatActivity() {
         binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
         }
+        binding.feedViewPager.setBaseline(navBar, resources.configuration)
         val personalTab = navBar.createTab(R.drawable.ic_round_person_32, getString(R.string.follow))
         val globalTab = navBar.createTab(R.drawable.ic_globe_24, getString(R.string.global))
         navBar.addTab(personalTab)
@@ -51,11 +52,10 @@ class FeedActivity : AppCompatActivity() {
         binding.feedViewPager.adapter =
             ViewPagerAdapter(supportFragmentManager, lifecycle, activityId)
         binding.feedViewPager.isUserInputEnabled = false
-        navBar.setupWithViewPager2( binding.feedViewPager)
+        navBar.setupWithViewPager2(binding.feedViewPager)
         navBar.onTabSelected = { selected = navBar.selectedIndex }
         binding.feedViewPager.setCurrentItem(selected, false)
         navBar.selectTabAt(selected, false)
-        binding.feedViewPager.setBaseline(navBar, resources.configuration)
 
         binding.listBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

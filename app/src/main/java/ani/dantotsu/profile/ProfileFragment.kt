@@ -103,7 +103,6 @@ class ProfileFragment : Fragment() {
 
         binding.userInfoContainer.isVisible = user.about != null
 
-
         binding.statsEpisodesWatched.text = user.statistics.anime.episodesWatched.toString()
         binding.statsDaysWatched.text =
             (user.statistics.anime.minutesWatched / (24 * 60)).toString()
@@ -136,19 +135,6 @@ class ProfileFragment : Fragment() {
         }
 
         setFavPeople()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (this::binding.isInitialized) {
-            // binding.root.requestLayout()
-            binding.root.setBaseline(activity.navBar, resources.configuration)
-        }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        binding.root.setBaseline(activity.navBar, newConfig)
     }
 
     private fun setFavPeople() {

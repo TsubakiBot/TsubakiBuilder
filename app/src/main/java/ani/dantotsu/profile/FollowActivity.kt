@@ -1,6 +1,7 @@
 package ani.dantotsu.profile
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.SpannableString
 import android.view.View
@@ -21,6 +22,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
+import bit.himitsu.setBaseline
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,11 +40,9 @@ class FollowActivity : AppCompatActivity() {
         ThemeManager(this).applyTheme()
         initActivity(this)
         binding = ActivityFollowBinding.inflate(layoutInflater)
-        binding.listToolbar.updateLayoutParams<MarginLayoutParams> { topMargin = statusBarHeight }
-        binding.listFrameLayout.updateLayoutParams<MarginLayoutParams> {
-            bottomMargin = navBarHeight
-        }
         setContentView(binding.root)
+        binding.listToolbar.updateLayoutParams<MarginLayoutParams> { topMargin = statusBarHeight }
+        binding.listFrameLayout.setBaseline(resources.configuration)
         val layoutType = PrefManager.getVal<Int>(PrefName.FollowerLayout)
         selected = getSelected(layoutType)
         binding.followFilterButton.visibility = View.GONE
@@ -145,5 +145,10 @@ class FollowActivity : AppCompatActivity() {
         val intent = Intent(this, ProfileActivity::class.java)
         intent.putExtra("userId", id)
         startActivity(intent)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.listFrameLayout.setBaseline(newConfig)
     }
 }
