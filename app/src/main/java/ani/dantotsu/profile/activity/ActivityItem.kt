@@ -138,8 +138,17 @@ class ActivityItem(
             }
         }
         val context = binding.root.context
-        if (activity.text?.contains("class='youtube'") == true) {
-            getYouTubeContent(activity.text.substringAfter("id='").substringBefore("'>"))
+        val tag = when {
+            activity.text?.contains("class='youtube'") == true -> {
+                activity.text.substringAfter("class='youtube'").substringBefore(">")
+            }
+            activity.text?.contains("class=\"youtube\"") == true -> {
+                activity.text.substringAfter("class=\"youtube\"").substringBefore(">")
+            }
+            else -> null
+        }
+        tag?.let {
+            getYouTubeContent(it.substringAfter("id=").substring(1, tag.length - 1))
         }
         when (activity.typename) {
             "ListActivity" -> {
