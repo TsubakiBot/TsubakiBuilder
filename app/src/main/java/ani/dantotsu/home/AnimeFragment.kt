@@ -52,7 +52,6 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
 
-
 class AnimeFragment : Fragment() {
     private var _binding: FragmentAnimeBinding? = null
     private val binding by lazy { _binding!! }
