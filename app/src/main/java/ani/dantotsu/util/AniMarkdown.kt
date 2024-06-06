@@ -2,7 +2,7 @@ package ani.dantotsu.util
 
 import ani.dantotsu.util.ColorEditor.Companion.toCssColor
 
-class AniMarkdown { //istg anilist has the worst api
+class AniMarkdown {
     companion object {
         private fun convertNestedImageToHtml(markdown: String): String {
             val regex = """\[!\[(.*?)]\((.*?)\)]\((.*?)\)""".toRegex()
@@ -64,7 +64,7 @@ class AniMarkdown { //istg anilist has the worst api
             val basicHtml = getBasicAniHTML(html)
 
 
-            val returnHtml = """
+            return """
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
@@ -95,7 +95,6 @@ class AniMarkdown { //istg anilist has the worst api
     </body>
 </html>
             """.trimIndent()
-            return returnHtml
         }
     }
 }

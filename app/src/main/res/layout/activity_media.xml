@@ -45,6 +45,7 @@
                 android:layout_height="336dp"
                 android:visibility="gone"
                 app:enableAutomaticInitialization="false"
+                app:autoPlay="false"
                 app:layout_collapseMode="parallax"
                 tools:visibility="visible" />
 

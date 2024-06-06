@@ -1,7 +1,6 @@
 package ani.dantotsu.media.anime
 
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,11 +41,6 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import bit.himitsu.nio.Strings.getString
 import com.google.android.material.chip.Chip
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.util.system.WebViewUtil
@@ -61,7 +55,6 @@ class AnimeWatchAdapter(
 ) : RecyclerView.Adapter<AnimeWatchAdapter.ViewHolder>() {
     var subscribe: MediaDetailsActivity.PopImageButton? = null
     private var _binding: ItemAnimeWatchBinding? = null
-    private var tubePlayer: YouTubePlayer? = null
 
     private val uiScope = MainScope()
 
@@ -111,7 +104,11 @@ class AnimeWatchAdapter(
 
         binding.streamContainer.root.isVisible = false
         if (PrefManager.getVal(PrefName.ShowYtButton)) {
-            getYouTubeContent(binding)
+            binding.streamContainer.animeSourceYT.isVisible = media.anime?.youtube != null
+            media.anime?.youtube?.let { url ->
+                binding.streamContainer.root.isVisible = true
+                binding.streamContainer.animeSourceYT.setOnClickListener { openLinkInYouTube(url) }
+            }
             binding.streamContainer.animeSourceHulu.isVisible = media.hulu != null
             media.hulu?.let { url ->
                 binding.streamContainer.root.isVisible = true
@@ -318,45 +315,6 @@ class AnimeWatchAdapter(
         }
         //Episode Handling
         handleEpisodes()
-    }
-
-    override fun onViewDetachedFromWindow(holder: AnimeWatchAdapter.ViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        holder.binding.streamContainer.youtubePlayerView.release()
-        tubePlayer = null
-    }
-
-    private fun getYouTubeContent(binding: ItemAnimeWatchBinding) {
-        if (media.anime?.youtube == null || tubePlayer != null) return
-        binding.streamContainer.root.isVisible = true
-        val youTubePlayerView: YouTubePlayerView = binding.streamContainer.youtubePlayerView
-        fragment.lifecycle.addObserver(binding.streamContainer.youtubePlayerView)
-        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                binding.streamContainer.animeSourceYT.visibility = View.GONE
-                binding.streamContainer.youtubePlayerView.visibility = View.VISIBLE
-                Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-                    tubePlayer = youTubePlayer.apply { loadVideo(it, 0f) }
-                }
-            }
-            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                binding.streamContainer.youtubePlayerView.visibility = View.GONE
-                binding.streamContainer.animeSourceYT.visibility = View.VISIBLE
-            }
-        }
-        Uri.parse(media.anime.youtube).getQueryParameter("v")?.let {
-            youTubePlayerView.initialize(youTubePlayerListener)
-        } ?: Uri.parse(media.anime.youtube).getQueryParameter("list")?.let {
-            youTubePlayerView.initialize(
-                youTubePlayerListener,
-                IFramePlayerOptions.Builder()
-                    .controls(1).listType("playlist").list(it).build()
-            )
-        }
-        binding.streamContainer.animeSourceYT.visibility = View.VISIBLE
-        binding.streamContainer.animeSourceYT.setOnClickListener {
-            openLinkInYouTube(media.anime.youtube)
-        }
     }
 
     fun subscribeButton(enabled: Boolean) {

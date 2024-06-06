@@ -1,6 +1,7 @@
 package ani.dantotsu.profile.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -19,8 +20,14 @@ import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
 import ani.dantotsu.util.AniMarkdown.Companion.getBasicAniHTML
 import ani.dantotsu.util.MarkdownCreatorActivity
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.viewbinding.BindableItem
+import com.xwray.groupie.viewbinding.GroupieViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -34,6 +41,8 @@ class ActivityItem(
 ) : BindableItem<ItemActivityBinding>() {
     private lateinit var binding: ItemActivityBinding
     private lateinit var repliesAdapter: GroupieAdapter
+
+    private var tubePlayer: YouTubePlayer? = null
 
     override fun bind(viewBinding: ItemActivityBinding, position: Int) {
         binding = viewBinding
@@ -129,6 +138,9 @@ class ActivityItem(
             }
         }
         val context = binding.root.context
+        if (activity.text?.contains("class='youtube'") == true) {
+            getYouTubeContent(activity.text.substringAfter("id='").substringBefore("'>"))
+        }
         when (activity.typename) {
             "ListActivity" -> {
                 val cover = activity.media?.coverImage?.large
@@ -222,5 +234,39 @@ class ActivityItem(
 
     override fun initializeViewBinding(view: View): ItemActivityBinding {
         return ItemActivityBinding.bind(view)
+    }
+
+    override fun onViewDetachedFromWindow(viewHolder: GroupieViewHolder<ItemActivityBinding>) {
+        super.onViewDetachedFromWindow(viewHolder)
+        viewHolder.binding.youtubePlayerView.release()
+        tubePlayer = null
+    }
+
+    private fun getYouTubeContent(videoUrl: String) {
+        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
+        fragActivity.lifecycle.addObserver(binding.youtubePlayerView)
+        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                binding.youtubePlayerView.visibility = View.VISIBLE
+                Uri.parse(videoUrl).getQueryParameter("v")?.let {
+                    tubePlayer = youTubePlayer.apply {
+                        loadVideo(it, 0f)
+
+                    }
+                }
+            }
+            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                binding.youtubePlayerView.visibility = View.GONE
+            }
+        }
+        Uri.parse(videoUrl).getQueryParameter("v")?.let {
+            youTubePlayerView.initialize(youTubePlayerListener)
+        } ?: Uri.parse(videoUrl).getQueryParameter("list")?.let {
+            youTubePlayerView.initialize(
+                youTubePlayerListener,
+                IFramePlayerOptions.Builder()
+                    .controls(1).listType("playlist").list(it).build()
+            )
+        }
     }
 }

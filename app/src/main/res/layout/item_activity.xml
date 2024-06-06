@@ -111,7 +111,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -199,11 +200,21 @@
         </androidx.cardview.widget.CardView>
     </FrameLayout>
 
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:enableAutomaticInitialization="false"
+        app:autoPlay="false"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <LinearLayout
         android:id="@+id/commentRepliesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
         android:orientation="horizontal">
 
@@ -219,7 +230,7 @@
             android:id="@+id/commentTotalReplies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:alpha="0.8"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/view_replies"
@@ -230,7 +241,7 @@
             android:id="@+id/dot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:alpha="0.8"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="•"
@@ -241,7 +252,7 @@
             android:id="@+id/commentReply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:alpha="0.8"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/reply"
