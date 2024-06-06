@@ -113,7 +113,6 @@ class ActivityItem(
                 val res = Anilist.mutation.toggleLike(activity.id, "ACTIVITY")
                 withContext(Dispatchers.Main) {
                     if (res != null) {
-
                         if (activity.isLiked == true) {
                             activity.likeCount = activity.likeCount?.minus(1)
                         } else {
@@ -194,6 +193,27 @@ class ActivityItem(
                 }
             }
         }
+        binding.activityDelete.setOnClickListener {
+            val builder = androidx.appcompat.app.AlertDialog.Builder(
+                fragActivity,
+                R.style.MyPopup
+            )
+            builder.setTitle(R.string.activity_delete)
+            builder.setPositiveButton(R.string.yes) { _, _ ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    Anilist.mutation.deleteActivity(activity.id)
+                    withContext(Dispatchers.Main) {
+                        fragActivity.recreate()
+                    }
+                }
+            }
+            builder.setNegativeButton(R.string.no) { _, _ ->
+                // Do nothing
+            }
+            val dialog = builder.show()
+            dialog.window?.setDimAmount(0.8f)
+        }
+        binding.activityDelete.isVisible = activity.userId == Anilist.userid
     }
 
     override fun getLayout(): Int {

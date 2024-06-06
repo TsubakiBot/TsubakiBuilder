@@ -77,7 +77,7 @@ class FeedFragment : Fragment() {
                         res?.data?.page?.activities?.let { activities ->
                             activityList = activities
                             val filtered =
-                                activityList.filterNot {  //filter out messages that are not directed to the user
+                                activityList.filterNot {  // filter out messages that are not directed to the user
                                     it.recipient?.id != null && it.recipient.id != Anilist.userid
                                 }
                             adapter.update(filtered.map {

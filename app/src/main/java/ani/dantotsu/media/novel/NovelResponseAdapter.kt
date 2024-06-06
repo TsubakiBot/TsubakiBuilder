@@ -13,6 +13,7 @@ import ani.dantotsu.parsers.ShowResponse
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
 import ani.dantotsu.util.Logger
+import bit.himitsu.nio.Strings.getString
 
 class NovelResponseAdapter(
     val fragment: NovelReadFragment,
@@ -101,19 +102,19 @@ class NovelResponseAdapter(
                 fragment.requireContext(),
                 R.style.MyPopup
             )
-            builder.setTitle("Delete ${novel.name}?")
-            builder.setMessage("Are you sure you want to delete ${novel.name}?")
-            builder.setPositiveButton("Yes") { _, _ ->
+            builder.setTitle(getString(R.string.delete_item, novel.name))
+            builder.setMessage(getString(R.string.delete_content, novel.name))
+            builder.setPositiveButton(R.string.yes) { _, _ ->
                 downloadedCheckCallback.deleteDownload(novel)
                 deleteDownload(novel.link)
-                snackString("Deleted ${novel.name}")
+                snackString(getString(R.string.deleted_item, novel.name))
                 if (binding.itemEpisodeFiller.text.toString()
                         .contains("Download", ignoreCase = true)
                 ) {
                     binding.itemEpisodeFiller.text = ""
                 }
             }
-            builder.setNegativeButton("No") { _, _ ->
+            builder.setNegativeButton(R.string.no) { _, _ ->
                 // Do nothing
             }
             val dialog = builder.show()

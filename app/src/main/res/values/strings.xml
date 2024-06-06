@@ -856,7 +856,8 @@
     <string name="purge_confirm">Are you sure you want to purge all %1$s downloads?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
 
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
 
@@ -947,6 +948,7 @@
     <string name="ban">Ban</string>
 
     <string name="activity_label">Activity</string>
+    <string name="activity_delete">Delete Activity?</string>
 
     <string name="dir_error">Your path could not be set</string>
     <string name="dir_access">Downloads access</string>
