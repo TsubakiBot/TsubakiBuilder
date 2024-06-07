@@ -203,7 +203,8 @@
             android:parentActivityName=".media.MediaDetailsActivity" />
         <activity
             android:name=".media.SearchActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="com.google.android.gms.actions.SEARCH_ACTION" />
