@@ -1195,60 +1195,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 )
                 initPlayer()
                 preloading = false
-                val context = this
-                val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
-                val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
-                if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
-                    lifecycleScope.launch {
-                        val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
-                        val buttons = when (discordMode) {
-                            "nothing" -> mutableListOf(
-                                RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
-                            )
-
-                            "dantotsu" -> mutableListOf(
-                                RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
-                                RPC.Link(getString(R.string.rpc_watch), getString(R.string.dantotsu))
-                            )
-
-                            "anilist" -> {
-                                val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
-                                val anilistLink = "https://anilist.co/user/$userId/"
-                                mutableListOf(
-                                    RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
-                                    RPC.Link(getString(R.string.rpc_anilist), anilistLink)
-                                )
-                            }
-
-                            else -> mutableListOf()
-                        }
-                        val presence = RPC.createPresence(
-                            RPC.Companion.RPCData(
-                                applicationId = Discord.application_Id,
-                                type = RPC.Type.WATCHING,
-                                activityName = media.userPreferredName,
-                                details = ep.title?.takeIf { it.isNotEmpty() } ?: getString(
-                                    R.string.episode_num,
-                                    ep.number
-                                ),
-                                state = "Episode : ${ep.number}/${media.anime?.totalEpisodes ?: "??"}",
-                                largeImage = media.cover?.let {
-                                    RPC.Link(
-                                        media.userPreferredName,
-                                        it
-                                    )
-                                },
-                                smallImage = RPC.Link(getString(R.string.app_name), Discord.small_Image),
-                                buttons = buttons
-                            )
-                        )
-                        val intent = Intent(context, DiscordService::class.java).apply {
-                            putExtra("presence", presence)
-                        }
-                        DiscordServiceRunningSingleton.running = true
-                        startService(intent)
-                    }
-                }
+                setDiscordStatus()
                 updateProgress()
             }
         }
@@ -1433,7 +1380,71 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         //Start the recursive Fun
         if (PrefManager.getVal(PrefName.TimeStampsEnabled))
             updateTimeStamp()
+    }
 
+    private fun setDiscordStatus() {
+        val context = this
+        val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
+        val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
+        if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
+            lifecycleScope.launch {
+                val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
+                val buttons = when (discordMode) {
+                    "nothing" -> mutableListOf(
+                        RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
+                    )
+
+                    "dantotsu" -> mutableListOf(
+                        RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
+                        RPC.Link(getString(R.string.rpc_watch), getString(R.string.dantotsu))
+                    )
+
+                    "anilist" -> {
+                        val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
+                        val anilistLink = "https://anilist.co/user/$userId/"
+                        mutableListOf(
+                            RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
+                            RPC.Link(getString(R.string.rpc_anilist), anilistLink)
+                        )
+                    }
+
+                    else -> mutableListOf()
+                }
+                val presence = RPC.createPresence(
+                    RPC.Companion.RPCData(
+                        applicationId = Discord.application_Id,
+                        type = RPC.Type.WATCHING,
+                        activityName = media.userPreferredName,
+                        details = episode.title?.takeIf { it.isNotEmpty() } ?: getString(
+                            R.string.episode_num,
+                            episode.number
+                        ),
+                        state = "Episode : ${episode.number}/${media.anime?.totalEpisodes ?: "??"}",
+                        largeImage = media.cover?.let {
+                            RPC.Link(
+                                media.userPreferredName,
+                                it
+                            )
+                        },
+                        smallImage = RPC.Link(getString(R.string.app_name), Discord.small_Image),
+                        buttons = buttons
+                    )
+                )
+                val intent = Intent(context, DiscordService::class.java).apply {
+                    putExtra("presence", presence)
+                }
+                DiscordServiceRunningSingleton.running = true
+                startService(intent)
+            }
+        }
+    }
+
+    private fun stopDiscordService() {
+        if (DiscordServiceRunningSingleton.running) {
+            val stopIntent = Intent(this, DiscordService::class.java)
+            DiscordServiceRunningSingleton.running = false
+            stopService(stopIntent)
+        }
     }
 
     private fun initPlayer() {
@@ -1766,11 +1777,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoPlayer.release()
         VideoCache.release()
         mediaSession?.release()
-        if (DiscordServiceRunningSingleton.running) {
-            val stopIntent = Intent(this, DiscordService::class.java)
-            DiscordServiceRunningSingleton.running = false
-            stopService(stopIntent)
-        }
+        stopDiscordService()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -1827,7 +1834,13 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         if (castPlayer?.isPlaying == false) {
             playerView.player?.pause()
         }
+        stopDiscordService()
         super.onStop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (this::episode.isInitialized) setDiscordStatus()
     }
 
     private var wasPlaying = false
