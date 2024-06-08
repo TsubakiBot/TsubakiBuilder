@@ -159,7 +159,7 @@
                     android:text="@string/random_anime"
                     android:textAllCaps="true"
                     android:textColor="@color/bg_white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="64dp"
@@ -211,7 +211,7 @@
                     android:text="@string/random_manga"
                     android:textAllCaps="true"
                     android:textColor="@color/bg_white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="64dp"
