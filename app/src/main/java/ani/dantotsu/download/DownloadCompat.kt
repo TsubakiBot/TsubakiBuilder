@@ -286,8 +286,8 @@ object DownloadCompat {
 
     private fun determineSubtitletype(url: String): SubtitleType {
         return when {
-            url.lowercase().endsWith("ass") -> SubtitleType.ASS
-            url.lowercase().endsWith("vtt") -> SubtitleType.VTT
+            url.endsWith("ass", true) -> SubtitleType.ASS
+            url.endsWith("vtt", true) -> SubtitleType.VTT
             else -> SubtitleType.SRT
         }
     }

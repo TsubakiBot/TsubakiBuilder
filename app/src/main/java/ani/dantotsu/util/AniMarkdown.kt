@@ -63,7 +63,6 @@ class AniMarkdown {
         fun getFullAniHTML(html: String, textColor: Int): String {
             val basicHtml = getBasicAniHTML(html)
 
-
             return """
 <html>
     <head>

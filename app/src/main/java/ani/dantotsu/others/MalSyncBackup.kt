@@ -28,7 +28,7 @@ object MalSyncBackup {
             if (json.text != "404: Not Found")
                 json.parsed<MalBackUpSync>().pages?.get(name)?.forEach {
                     val page = it.value
-                    val isDub = page.title.lowercase().replace(" ", "").endsWith("(dub)")
+                    val isDub = page.title.replace(" ", "").endsWith("(dub)", true)
                     val slug = if (dub == isDub) page.identifier else null
                     if (slug != null && page.active == true && page.url != null) {
                         val url = when (name) {
