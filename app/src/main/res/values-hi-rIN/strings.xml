@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">खोजें</string>
     <string name="extension_search">Reverse Source Search</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">खोज परिणाम</string>
     <string name="sort_by">क्रमबद्ध करें द्वारा</string>
     <string name="genre">शैली</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">कोई एसडी कार्ड नहीं मिला।</string>
     <string name="reader_settings">पाठक सेटिंग्स</string>
     <string name="default_source">मूल स्रोत</string>
-    <string name="show_yt">Youtube Link</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">मूल एपिसोड लेआउट</string>
     <string name="default_chp_view">मूल अध्याय लेआउट</string>
     <string name="ui">उपयोगकर्ता इंटरफेस</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">लेआउट एनीमेशन</string>
     <string name="trending_scroller">प्रचलित स्क्रोलर</string>
     <string name="animation_speed">कुल गति</string>
-    <string name="empty_fav">लगता है आप किसी को पसंद नहीं करते, कोई शो यहाँ रखने के लिए कृपया पसंद करें।</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">पसंदीदा एनिमे</string>
     <string name="fav_manga">पसंदीदा मंगा</string>
     <string name="restart_app">क्या आप एप्लिकेशन को पुनः आरंभ करना चाहते हैं?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">योजित एनिमे</string>
     <string name="planned_manga">योजित मंगा</string>
     <string name="image_long_clicking">लॉन्ग क्लिक करके छवि खोलें</string>
-    <string name="always_continue_content">हमेशा पिछली वस्तु जारी रखें</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">अगले उपस्थित स्त्रोत मे ढूँढे</string>
     <string name="timestamp_proxy_desc">यदि आप हैंडशेक फेल प्राप्त कर रहे हैं तो उपयोगी</string>
     <string name="timestamp_proxy">टाइमस्टैंप के लिए प्रॉक्सी का उपयोग करें</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">एक्सटेंशन रेपो प्रबंधित करें</string>
     <string name="installing_extension">एक्सटेंशन स्थापित</string>
     <string name="installation_failed">स्थापना विफल हुई: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">स्थिर, बीटा और अल्फा संस्करणों में क्या अंतर है?</string>
-    <string name="answer_3">स्थिर रिलीज़ एक संस्करण है जिसे हमने जितनी संभव हो सके जाँचा है और हम इसे कितना संभल सकते हैं, उससे अधिक विश्वसनीय बनाया है।\n\nबीटा रिलीज़ एक संस्करण है जो नए सुविधाओं का परीक्षण करने के लिए बनाया गया है या गर्म फिक्स प्रदान करने के लिए।\n\nअल्फा रिलीज़ एक बीटा संस्करण की तरह है, लेकिन इसमें कई बग्स होते हैं और आपको इसे हमारे [डिस्कॉर्ड] (https://discord.gg/invite/4HPZ5nAWwM) सर्वर पर ही मिल सकता है। इसमें नियमित अपडेट्स होते हैं और टूटने का उचित अवसर होता है।\n\nयदि आप एक विश्वसनीय ऐप चाहते हैं तो स्थिर के लिए जाएं। यदि आप नवीनतम और श्रेष्ठ सुविधाओं और बग्स चाहते हैं तो अल्फा के लिए जाएं।</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">मेरे स्टैट्स क्यों अपडेट नहीं हो रहे हैं?</string>
     <string name="answer_6">यह इसलिए है क्योंकि यह हर 48 घंटे में स्वचालित रूप से अपडेट होता है (अनिलिस्ट द्वारा)। यदि आप वास्तव में अपने स्टैट्स को अपडेट करना चाहते हैं, तो आप इस [लिंक](https://anilist.co/settings/lists) पर जाकर अपने स्टैट्स को बल प्रगति कर सकते हैं।</string>
     <string name="question_7">एनिमे कैसे डाउनलोड करें?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">NSFW कंटेंट को कैसे सक्षम करें?</string>
     <string name="answer_9">आप 18+ सामग्री को इस [लिंक](https://anilist.co/settings/media) से सक्षम करके NSFW कंटेंट को सक्षम कर सकते हैं। आपको \`सेटिंग्स &gt; एक्सटेंशन &gt; NSFW एक्सटेंशन\` में भी NSFW एक्सटेंशन को सक्षम करना होगा।</string>
-    <string name="question_10">मेरी MAL/Kitsu सूची को Anilist में कैसे आयात करें?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">यहाँ इसे कैसे किया जाता है,\n\nनिर्यात:\n\n1. इस [लिंक](https://malscraper.azurewebsites.net) पर जाएं।\n2. अपना Kitsu/MAL उपयोगकर्ता नाम दें और एनिमे और मंगा सूची डाउनलोड करें। (वे XML प्रारूप में होंगे)\nध्यान दें: आपको उस ट्रैकर के उपयोगकर्ता नाम को लिखना होगा जिसे आपने चयन किया है।\n\nआयात:\n\n1. Kitsu/MAL से अपनी एनिमे और मंगा सूची को निर्यात करने के बाद, अब [यहाँ](https://anilist.co/settings/import) जाएं। \n2. ऊपरी बॉक्स में एनिमे XML फ़ाइल को चुनें/छोड़ें।\n|→निचले बॉक्स में मंगा XML फ़ाइल को चुनें/छोड़ें।</string>
-    <string name="question_11">मेरे Anilist/Kitsu सूची को MAL में कैसे आयात करें?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">यहाँ इसे कैसे किया जाता है,\n\nनिर्यात:\n\n1. इस [लिंक](https://malscraper.azurewebsites.net/) पर जाएं। \n2. अपना Anilist उपयोगकर्ता नाम/Kitsu आईडी \'उपयोगकर्ता नाम/Kitsu उपयोगकर्ता आईडी\' बॉक्स में दें। \n3. सूची प्रकार का चयन करें और \'आयात पर अपडेट करें\' सक्षम करें। \n4. फ़ाइल को डाउनलोड करें; यह .xml प्रारूप में होगा। ध्यान दें कि एनिमे और मंगा दोनों सूचियों को डाउनलोड करने के लिए सुनिश्चित करें।\n\nआयात:\n1. इसे अपने MAL खाते में आयात करने के लिए, इस [लिंक](https://myanimelist.net/import.php) पर जाएं और आयात प्रकार के रूप में \'MyAnimeList आयात\' चुनें। \n2. \'फ़ाइल का चयन करें\' पर क्लिक करें और डाउनलोड की गई एनिमे/मंगा सूची XML फ़ाइल का चयन करें। \n3. \'डेटा आयात करें\' पर क्लिक करें। \nबधाई हो, आपने अपने MAL खाते में चयनित सूची को आयात किया है।</string>
-    <string name="question_12">एक विशिष्ट एनीमे/मंगा शीर्षक क्यों नहीं मिलता है?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">स्रोत एक पूरी तरह से गलत शीर्षक का चयन क्यों करते हैं?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">रंगीन मैंगा कैसे पढ़ें?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">हैंडशेक विफल? टाइमस्टैम्प्स लोड नहीं हो रहे?</string>
-    <string name="answer_15">आप इस समस्या को सुधार सकते हैं, \'प्रॉक्सी\' को सक्षम करके \n \`सेटिंग्स &gt; एनिमे &gt; प्लेयर सेटिंग्स &gt; टाइमस्टैम्प्स &gt; प्रॉक्सी\` से। अगर टाइमस्टैम्प्स अब भी लोड नहीं हो रहे हैं, लेकिन हैंडशेक विफल हो गया है, तो आप देख रहे हैं कि एपिसोड में अभी तक उसके लिए कोई टाइमस्टैम्प नहीं है।</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">स्रोत पर कुछ नहीं मिल रहा है?</string>
     <string name="answer_16">कुछ मौलिक सुधार हो सकते हैं : \n\n• अगर कोई विस्तार है, तो अपनी एक्सटेंशन को अपडेट करें। \n• वेब व्यू को खोलें और इसे लोड होने का इंतजार करें। जब लोडिंग पूरी हो जाए, तो पिछले पेज पर जाएं। (अगर वेब व्यू में त्रुटि 404 या कुछ समान दिखाता है, तो आपका स्रोत नीचे है) \n• अपनी सेटिंग्स से एक अलग DNS का उपयोग करें, पसंदीदा, Libre। \n• विश्वसनीय VPN का प्रयोग करें। (इसके बाद आपको कदम 1 को दोहराना होगा) \n\nयदि ऊपर के कोई भी कदम काम नहीं करते हैं, तो कोई अलग स्रोत का उपयोग करें या हमारे [discord](https://discord.gg/invite/4HPZ5nAWwM) में मदद के लिए शामिल हों।</string>
     <string name="question_17">कुछ उपयोगी टिप्स और ट्रिक्स</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">Invalid file type</string>
     <string name="purge_confirm">क्या आप वाकई सभी %1$s डाउनलोड को साफ़ करना चाहते हैं?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">हटाने में विफल :… %1$s</string>
@@ -850,6 +847,7 @@
     <string name="report">रिपोर्ट</string>
     <string name="ban">प्रतिबंध</string>
     <string name="activity_label">Activity</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">आपका पथ सेट नहीं किया जा सका</string>
     <string name="dir_access">डाउनलोड पहुँच</string>
     <string name="dir_access_msg">कृपया अपने डाउनलोड को सहेजने के लिए एक निर्दिष्ट करें</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">सभी प्लेयर संबंधित सेटिंग्स</string>
     <string name="purge_anime_downloads_desc">सभी डाउनलोड किए गए एनिमे को हटाएं</string>
     <string name="prefer_dub_desc">डिफ़ॉल्ट रूप से डब मीडिया का चयन करें</string>
-    <string name="show_yt_desc">समर्थित मीडिया के लिए YouTube लिंक दिखाएं</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">एनिमे अन्वेषण पेज में सूची आइटम शामिल करें</string>
     <string name="ui_settings_desc">सभी UI संबंधित सेटिंग्स</string>
     <string name="download_manager_select_desc">डिफ़ॉल्ट प्रबंधक एनिमे डाउनलोड करने के लिए</string>
     <string name="backup_restore_desc">हर जगह आपकी पसंदीदा सेटिंग्स</string>
     <string name="change_download_location_desc">स्थान बदलें जहां सभी डाउनलोड की गई वस्तुएँ जाती हैं</string>
-    <string name="always_continue_content_desc">जहाँ छोड़ा वहां जारी रहें</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">यदि पिछला सर्वर मीडिया नहीं है तो अगला सर्वर स्वचालित रूप से चुनें</string>
     <string name="recentlyListOnly_desc">हाल के टैब में केवल आपकी सूची आइटम्स दिखाएं</string>
     <string name="adult_only_content_desc">अन्वेषण पृष्ठ में केवल वयस्क सामग्री दिखाएं</string>

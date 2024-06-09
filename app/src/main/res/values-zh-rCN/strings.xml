@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">搜索</string>
     <string name="extension_search">反向源搜索</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">搜索结果</string>
     <string name="sort_by">排序方式</string>
     <string name="genre">类型</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">未找到 SD 卡。</string>
     <string name="reader_settings">阅读器设置</string>
     <string name="default_source">默认来源</string>
-    <string name="show_yt">Youtube Link</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">默认集数布局</string>
     <string name="default_chp_view">默认章节布局</string>
     <string name="ui">用户界面</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">布局动画</string>
     <string name="trending_scroller">热门滚动</string>
     <string name="animation_speed">整体速度</string>
-    <string name="empty_fav">看起来你什么都不喜欢，\n尝试喜欢一部节目以保留在此处。</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">喜欢的动画</string>
     <string name="fav_manga">喜欢的漫画</string>
     <string name="restart_app">重新启动应用程序？</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">计划中的动画</string>
     <string name="planned_manga">计划中的漫画</string>
     <string name="image_long_clicking">长按打开图片</string>
-    <string name="always_continue_content">Always continue previous items</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">搜索下一个可用源</string>
     <string name="timestamp_proxy_desc">如果遇到握手失败，这很有用</string>
     <string name="timestamp_proxy">使用代理进行时间戳</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">管理扩展仓库</string>
     <string name="installing_extension">安装扩展</string>
     <string name="installation_failed">安装失败: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">稳定版、测试版和Alpha 版之间有什么区别？</string>
-    <string name="answer_3">稳定版是经过尽可能全面测试的版本，尽可能可靠。\n\n测试版是用于测试新功能或提供热修复的版本。\n\nAlpha 版类似于测试版，但有很多 bug，您只能在我们的 [discord](https://discord.gg/invite/4HPZ5nAWwM) 服务器上找到。它经常更新，很可能会崩溃。\n\n如果您想要可靠的应用程序，请选择稳定版。如果您想要最新和最棒的功能和 bug，请选择 Alpha 版。</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">为什么我的统计数据没有更新？</string>
     <string name="answer_6">这是因为它每 48 小时自动更新一次（由 Anilist）。如果您确实需要更新您的统计数据，您可以在此 [链接](https://anilist.co/settings/lists) 中强制更新您的统计数据。</string>
     <string name="question_7">如何下载动画？</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">如何启用 NSFW 内容？</string>
     <string name="answer_9">您可以通过从此 [链接](https://anilist.co/settings/media) 启用 18+ 内容来启用 NSFW 内容。您还必须在 \`设置 &gt; 扩展 &gt; NSFW 扩展\` 中启用 NSFW 扩展</string>
-    <string name="question_10">如何将我的 MAL/Kitsu 列表导入到 Anilist？</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">这是如何操作的，\n\n导出：\n\n1. 前往此 [链接](https://malscraper.azurewebsites.net)。\n2. 输入您的 Kitsu/MAL 用户名并下载动画和漫画列表。（它们将以 XML 格式存在）\n注意：您必须写入您选择的追踪器的用户名\n\n导入：\n\n1. 从 Kitsu/MAL 导出您的动画和漫画列表后，现在转到 [此处](https://anilist.co/settings/import) \n2. 选择/拖放上面的动画 XML 文件。\n|→选择/拖放下面的漫画 XML 文件。</string>
-    <string name="question_11">如何将我的 Anilist/Kitsu 列表导入到 MAL？</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">这是如何操作的，\n\n导出：\n\n1. 前往此 [链接](https://malscraper.azurewebsites.net/)。\n2. 在“用户名/Kitsu 用户 ID”框中输入您的 Anilist 用户名/Kitsu ID。\n3. 选择列表类型并启用 \'update_on_import\'。\n4. 下载文件；它将以 .xml 格式存在。确保下载动画和漫画列表。\n\n导入：\n1. 要将其导入到您的 MAL 帐户中，请转到此 [链接](https://myanimelist.net/import.php) 并选择 \'MyAnimeList Import\' 作为导入类型。\n2. 按下“选择文件”，并选择下载的动画/漫画列表 XML 文件。\n3. 按下“导入数据”。\n恭喜，您刚刚将所选列表导入到您的 MAL 帐户。</string>
-    <string name="question_12">为什么我找不到特定的动画/漫画标题？</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">如何修复选择完全错误标题的来源？</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">如何阅读彩色漫画？</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">握手失败？为什么时间戳不加载？</string>
-    <string name="answer_15">您可以通过从 \n\`设置 &gt; 动画 &gt; 播放器设置 &gt; 时间戳 &gt; 代理\` 中启用 \'Proxy\' 来解决此问题。\n如果时间戳仍然不加载，但是握手失败的弹出窗口已经修复，则您正在观看的剧集仅没有为其提供时间戳。</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">在来源上找不到任何内容？</string>
     <string name="answer_16">一些基本的修复方法是：\n\n• 如果有的话，请更新您的扩展。\n• 打开 Web View 并等待加载完成。加载完成后，返回。（如果 Web View 显示错误 404 或类似的错误，那么您的来源可能已关闭）\n• 使用您设置的不同 DNS，最好是 Libre。\n• 尝试可信赖的 VPN。（之后您需要重复步骤 1）\n\n如果以上步骤都不起作用，请使用其他来源或加入我们的 [discord](https://discord.gg/invite/4HPZ5nAWwM) 寻求帮助。</string>
     <string name="question_17">一些有用的技巧和诀窍</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">无效的文件类型</string>
     <string name="purge_confirm">您确定要清除所有 %1$s 下载吗？</string>
     <string name="delete_content">您确定要删除 %1$s 吗？</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">多章节下载器</string>
     <string name="multi_download_chapter_count">输入要下载的章节数</string>
     <string name="delete_fail_reason">由于… %1$s 删除失败</string>
@@ -850,6 +847,7 @@
     <string name="report">报告</string>
     <string name="ban">封禁</string>
     <string name="activity_label">活动</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">无法设置您的路径</string>
     <string name="dir_access">下载访问权限</string>
     <string name="dir_access_msg">请选择一个目录来保存您的下载</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">所有与玩家相关的设置</string>
     <string name="purge_anime_downloads_desc">删除所有已下载的 Anime</string>
     <string name="prefer_dub_desc">默认选择被指定的媒体</string>
-    <string name="show_yt_desc">显示支持媒体的 YouTube 链接</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">在 Anime 探索页面中包含列表项</string>
     <string name="ui_settings_desc">所有与界面相关的设置</string>
     <string name="download_manager_select_desc">下载动画的默认管理器</string>
     <string name="backup_restore_desc">创建并恢复选定设置的备份</string>
     <string name="change_download_location_desc">更改下载保持的位置</string>
-    <string name="always_continue_content_desc">继续你离开的项目</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">未找到内容时移动到下一个服务器</string>
     <string name="recentlyListOnly_desc">在最近的标签中只显示您的列表项</string>
     <string name="adult_only_content_desc">在探索页面只显示成人内容</string>

@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">Tìm kiếm</string>
     <string name="extension_search">Tìm kiếm Nguồn Ngược</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">Kết quả Tìm kiếm</string>
     <string name="sort_by">Sắp xếp theo</string>
     <string name="genre">Thể loại</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">Không tìm thấy thẻ SD.</string>
     <string name="reader_settings">Cài đặt Đọc giả</string>
     <string name="default_source">Nguồn Mặc Định</string>
-    <string name="show_yt">Hiển Thị Liên Kết Youtube</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">Bố Cục Tập Mặc Định</string>
     <string name="default_chp_view">Bố Cục Chương Mặc Định</string>
     <string name="ui">Giao Diện Người Dùng</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">Hoạt hình Bố cục</string>
     <string name="trending_scroller">Cuộn Thịnh hành</string>
     <string name="animation_speed">Tốc độ Tổng thể</string>
-    <string name="empty_fav">Dường như bạn không thích gì,\nHãy thử thích một chương trình để giữ nó ở đây.</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">Anime Yêu thích</string>
     <string name="fav_manga">Manga Yêu thích</string>
     <string name="restart_app">Khởi động lại ứng dụng?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">Anime Đã lên kế hoạch</string>
     <string name="planned_manga">Manga Đã lên kế hoạch</string>
     <string name="image_long_clicking">Nhấn và giữ để mở hình ảnh</string>
-    <string name="always_continue_content">Tiếp tục mở các mục đã mở trước đó</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">Tìm kiếm nguồn khả dụng tiếp theo</string>
     <string name="timestamp_proxy_desc">Hữu ích nếu bạn gặp sự cố Handshake Fails</string>
     <string name="timestamp_proxy">Sử dụng Proxy cho Timestamps</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Quản lý Kho mở rộng</string>
     <string name="installing_extension">Đang cài đặt tiện ích mở rộng</string>
     <string name="installation_failed">Cài đặt thất bại: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Sự khác biệt giữa các phiên bản Stable, Beta &amp; Alpha là gì?</string>
-    <string name="answer_3">Nhánh này không cung cấp các phiên bản riêng lẻ. Phiên bản bạn tải xuống từ [kho lưu trữ](https://github.com/RepoDevil/Himitsu) là phiên bản mà [AbandonedCart](https://github.com/AbandonedCart) đang chạy. Nếu bạn gặp lỗi và đã cập nhật lên phiên bản mới nhất, hãy tự do gửi một [vấn đề](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">Tại sao thống kê của tôi không cập nhật?</string>
     <string name="answer_6">Điều này là do nó cập nhật mỗi 48 giờ một cách tự động (bởi Anilist). Nếu bạn thực sự cần cập nhật thống kê của mình, bạn có thể buộc cập nhật thống kê của mình sau khi đến [liên kết này](https://anilist.co/settings/lists).</string>
     <string name="question_7">Làm thế nào để tải Anime?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">Làm thế nào để kích hoạt nội dung NSFW?</string>
     <string name="answer_9">Bạn có thể kích hoạt nội dung NSFW bằng cách bật nội dung 18+ từ [liên kết này](https://anilist.co/settings/media). Bạn cũng phải bật các tiện ích NSFW trong \`Cài đặt &gt; Tiện ích &gt; Tiện ích NSFW\` </string>
-    <string name="question_10">Làm thế nào để nhập danh sách MAL/Kitsu của tôi vào Anilist?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net).\n2. Nhập tên người dùng Kitsu/MAL của bạn và tải xuống cả danh sách anime và manga. (Chúng sẽ ở định dạng XML)\nGhi chú: Bạn phải viết tên người dùng của bộ theo dõi bạn đã chọn\n\nNhập:\n\n1. Sau khi xuất danh sách anime và manga từ Kitsu/MAL của bạn, hãy đến [đây](https://anilist.co/settings/import) \n2. Chọn/thả tệp XML anime vào ô phía trên.\n|→Chọn/thả tệp XML manga vào ô phía dưới.</string>
-    <string name="question_11">Làm thế nào để nhập danh sách Anilist/Kitsu của tôi vào MAL?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">Dưới đây là cách bạn làm điều đó,\n\nXuất:\n\n1. Đi đến [liên kết này](https://malscraper.azurewebsites.net/). \n2. Nhập tên người dùng Anilist/Kitsu của bạn vào ô \'Tên người dùng/Kitsu ID\' . \n3. Chọn loại danh sách và bật \'cập nhật khi nhập\'. \n4. Tải tệp xuống; nó sẽ ở định dạng .xml. Hãy chắc chắn tải cả danh sách Anime và Manga.\n\nNhập:\n1. Để nhập nó vào tài khoản MAL của bạn, hãy đến [liên kết này](https://myanimelist.net/import.php) và chọn \'Nhập MyAnimeList\' làm loại nhập. \n2. Nhấn vào \'Chọn Tệp\' và chọn tệp XML danh sách anime/manga đã tải xuống. \n3. Nhấn vào \'Nhập Dữ Liệu\'. \nChúc mừng, bạn vừa nhập danh sách đã chọn vào tài khoản MAL của bạn.</string>
-    <string name="question_12">Tại sao tôi không thể tìm thấy một tiêu đề anime/manga cụ thể?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">Làm thế nào để sửa chọn nguồn hiển thị một tiêu đề hoàn toàn sai lầm?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Làm thế nào để đọc manga màu?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">Handshake thất bại? Tại sao không có thời gian đánh dấu nào được tải?</string>
-    <string name="answer_15">Bạn có thể khắc phục vấn đề này bằng cách kích hoạt \'Proxy\' từ \n\`Cài Đặt &gt; Anime &gt; Cài Đặt Trình Phát &gt; Dấu Thời Gian &gt; Proxy\`.\nNếu dấu thời gian vẫn không tải nhưng cửa sổ thông báo lỗi đã được sửa, thì tập phim bạn đang xem chỉ đơn giản không có dấu thời gian cho nó.</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">Không thể tìm thấy thông tin trong nguồn?</string>
     <string name="answer_16">Một số cách khắc phục cơ bản sẽ là: \n\n• Cập nhật các tiện ích mở rộng nếu có. \n• Mở Xem Web và đợi cho nó tải. Sau khi tải hoàn tất, quay lại. (Nếu Xem Web hiển thị lỗi 404 hoặc một cái gì đó tương tự, có khả năng nguồn của bạn đang tắt)\n• Sử dụng một DNS khác từ cài đặt của bạn, ưu tiên, Libre. \n• Thử một VPN đáng tin cậy. (Bạn sẽ phải lặp lại bước 1 sau điều này) \n\nNếu không có bước nào ở trên hoạt động thì hãy sử dụng một nguồn khác hoặc tham gia vào [discord](https://discord.gg/invite/4HPZ5nAWwM) của chúng tôi để được trợ giúp.</string>
     <string name="question_17">Một số mẹo và thủ thuật hữu ích</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">Loại tệp không hợp lệ</string>
     <string name="purge_confirm">Bạn có chắc chắn muốn xóa tất cả %1$s tải về không?</string>
     <string name="delete_content">Bạn có chắc chắn muốn xóa %1$s không?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Trình tải nhiều chương</string>
     <string name="multi_download_chapter_count">Nhập số lượng chương để tải xuống</string>
     <string name="delete_fail_reason">Xóa không thành công vì… %1$s</string>
@@ -850,6 +847,7 @@
     <string name="report">Báo cáo</string>
     <string name="ban">Cấm</string>
     <string name="activity_label">Hoạt động</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">Đường dẫn của bạn không thể được thiết lập</string>
     <string name="dir_access">Truy cập Tải về</string>
     <string name="dir_access_msg">Vui lòng chọn một thư mục để lưu trữ tải về của bạn</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">Tất cả các thiết lập liên quan đến người chơi</string>
     <string name="purge_anime_downloads_desc">Xóa tất cả Anime đã tải về</string>
     <string name="prefer_dub_desc">Chọn phương tiện có phụ đề theo mặc định</string>
-    <string name="show_yt_desc">Hiển thị liên kết YouTube cho phương tiện được hỗ trợ</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">Bao gồm mục danh sách trong trang khám phá Anime</string>
     <string name="ui_settings_desc">Tất cả các thiết lập liên quan đến giao diện người dùng</string>
     <string name="download_manager_select_desc">Quản lý mặc định để tải về Anime</string>
     <string name="backup_restore_desc">Tạo và khôi phục sao lưu của các thiết lập đã chọn</string>
     <string name="change_download_location_desc">Thay đổi vị trí lưu trữ tải về</string>
-    <string name="always_continue_content_desc">Tiếp tục các mục mà bạn đã bỏ lại</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">Chuyển sang máy chủ tiếp theo nếu không tìm thấy nội dung</string>
     <string name="recentlyListOnly_desc">Chỉ hiển thị các mục trong danh sách của bạn trên tab gần đây</string>
     <string name="adult_only_content_desc">Chỉ hiển thị nội dung dành cho người lớn trên trang khám phá</string>

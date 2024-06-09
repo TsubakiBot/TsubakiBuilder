@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">Ara</string>
     <string name="extension_search">Ters Kaynak Arama</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">Arama Sonuçları</string>
     <string name="sort_by">Şuna Göre Sırala</string>
     <string name="genre">Tür</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">SD kart bulunamadı.</string>
     <string name="reader_settings">Okuyucu Ayarları</string>
     <string name="default_source">Varsayılan Kaynak</string>
-    <string name="show_yt">Youtube Bağlantısını Göster</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">Varsayılan Bölüm Düzeni</string>
     <string name="default_chp_view">Varsayılan Bölüm Düzeni</string>
     <string name="ui">Kullanıcı Arayüzü</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">Düzen Animasyonları</string>
     <string name="trending_scroller">Trend Olan Kaydırıcı</string>
     <string name="animation_speed">Genel Hız</string>
-    <string name="empty_fav">Hiçbir şey beğendiğin yok gibi görünüyor,\nBir gösteriyi beğenmeyi deneyin, burada tutmak için.</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">Favori Anime</string>
     <string name="fav_manga">Favori Manga</string>
     <string name="restart_app">Uygulamayı yeniden başlatmak mı?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">Planlanmış Anime</string>
     <string name="planned_manga">Planlanmış Manga</string>
     <string name="image_long_clicking">Resmi açmak için uzun süre basılı tutun</string>
-    <string name="always_continue_content">Daha önce açılan öğeleri sürekli devam ettir</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">Sonraki mevcut kaynağı arayın</string>
     <string name="timestamp_proxy_desc">Handshake Hataları alıyorsanız faydalıdır</string>
     <string name="timestamp_proxy">Zaman Damgaları İçin Proxy Kullan</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Uzantı Depolarını Yönet</string>
     <string name="installing_extension">Uzantı Yükleme</string>
     <string name="installation_failed">Yükleme başarısız oldu: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Kararlı, Beta ve Alfa sürümleri arasındaki farklar nelerdir?</string>
-    <string name="answer_3">Bu çatal ayrı parçalar sağlamaz. [Depodan](https://github.com/RepoDevil/Himitsu) indirdiğiniz sürüm, [AbandonedCart](https://github.com/AbandonedCart) tarafından çalıştırılan sürümle aynıdır. Eğer hatalar bulursanız ve zaten en son sürüme güncellediyseniz, [sorun](https://github.com/RepoDevil/Himitsu/issues) göndermekten çekinmeyin</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">Neden istatistiklerim güncellenmiyor?</string>
     <string name="answer_6">Bu, her 48 saatte bir otomatik olarak güncellenmesinden kaynaklanmaktadır (Anilist tarafından). Gerçekten istatistiklerinizi güncellemek istiyorsanız, [bu bağlantıya](https://anilist.co/settings/lists) giderek istatistiklerinizi zorla güncelleyebilirsiniz.</string>
     <string name="question_7">Anime nasıl indirilir?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">NSFW içeriği nasıl etkinleştirilir?</string>
     <string name="answer_9">NSFW içeriğini etkinleştirebilirsiniz, 18+ içeriklerini [bu bağlantıdan](https://anilist.co/settings/media) etkinleştirerek. Ayrıca NSFW uzantılarını \`Ayarlar &gt; Uzantılar &gt; NSFW uzantıları\`\'ndan etkinleştirmeniz gerekmektedir.</string>
-    <string name="question_10">MAL/Kitsu listelerimi Anilist\'e nasıl aktarabilirim?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">İşte nasıl yapılır,\n\nDışa Aktar:\n\n1. Bu [bağlantıya](https://malscraper.azurewebsites.net) gidin.\n2. Kitsu/MAL kullanıcı adınızı girin ve hem anime hem de manga listesini indirin. (XML formatında olacaklar)\nNot: Seçtiğiniz izleyici kullanıcı adını yazmanız gerekmektedir\n\nİçe Aktar:\n\n1. Kitsu/MAL\'den anime ve manga listenizi dışa aktardıktan sonra şimdi [buraya](https://anilist.co/settings/import) gidin \n2. Yukarıdaki kutuya anime XML dosyasını seçin/bırakın.\n|→Aşağıdaki kutuya manga XML dosyasını seçin/bırakın.</string>
-    <string name="question_11">Anilist/Kitsu listelerimi MAL\'e nasıl aktarabilirim?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">İşte nasıl yapılır,\n\nDışa Aktar:\n\n1. Bu [bağlantıya](https://malscraper.azurewebsites.net/) gidin. \n2. Anilist kullanıcı adınız/Kitsu Kimliğinizi \'Kullanıcı Adı/Kitsu Kullanıcı Kimliği\' kutusuna girin. \n3. Liste türünü seçin ve \'ithalatta güncelle\'yi etkinleştirin. \n4. Dosyayı indirin; .xml formatında olacaktır. Anime ve Manga listelerini indirdiğinizden emin olun.\n\nİçe Aktar:\n1. MAL hesabınıza aktarmak için, bu [bağlantıya](https://myanimelist.net/import.php) gidin ve \'MyAnimeList İçe Aktar\'ı ithalat türü olarak seçin. \n2. \'Dosya Seç\' düğmesine basın ve indirilen anime/manga listesi XML dosyasını seçin. \n3. \'Verileri İçe Aktar\'ı seçin. \nTebrikler, seçilen listeyi MAL hesabınıza başarıyla aktardınız.</string>
-    <string name="question_12">Belirli bir anime/manga başlığını neden bulamıyorum?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">Kaynaklar tamamen yanlış başlık seçerse nasıl düzeltilir?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Renkli mangalar nasıl okunur?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">El sıkışması başarısız oldu mu? Neden zaman damgaları yüklenmiyor?</string>
-    <string name="answer_15">Bu sorunu çözebilirsiniz \'Proxy\'yi etkinleştirerek \n\`Ayarlar &gt; Anime &gt; Oynatıcı Ayarları &gt; Zaman Damgaları &gt; Proxy\` sekmesinden.\nZaman damgaları hala yüklenmiyorsa ancak el sıkışma hatası popup\'ı düzeltildiyse, izlediğiniz bölümün henüz zaman damgaları olmadığını gösterir.</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">Kaynakta bir şey bulamıyor musunuz?</string>
     <string name="answer_16">Bazı temel düzeltmeler şunlar olacaktır: \n\n• Uzantılarınızı güncelleyin varsa. \n• Web Görünümünü açın ve yüklenmesini bekleyin. Yükleme tamamlandıktan sonra geri dönün. (Web Görünümü 404 hatası veya benzer bir şey gösteriyorsa, kaynağınızın kapalı olduğu olasılığı yüksektir)\n• Ayarlarınızdan farklı bir DNS kullanın, tercihen, Libre. \n• Güvenilir bir VPN kullanın. (Bunun ardından adım 1\'i tekrarlamak zorunda kalacaksınız) \n\nYukarıdaki adımların hiçbiri işe yaramazsa farklı bir kaynak kullanın veya yardım için [discord](https://discord.gg/invite/4HPZ5nAWwM) kanalımıza katılın.</string>
     <string name="question_17">Bazı kullanışlı ipuçları ve püf noktaları</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">Geçersiz dosya türü</string>
     <string name="purge_confirm">Tüm %1$s indirimi silmek istediğinizden emin misiniz?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Şu nedenle silinemedi… %1$s</string>
@@ -850,6 +847,7 @@
     <string name="report">Rapor</string>
     <string name="ban">Yasakla</string>
     <string name="activity_label">Etkinlik</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">Yolunuz belirlenemedi</string>
     <string name="dir_access">İndirme Erişimi</string>
     <string name="dir_access_msg">İndirmelerinizi kaydetmek için bir dizin seçin</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">Tüm oyuncu ile ilgili ayarlar</string>
     <string name="purge_anime_downloads_desc">İndirilen Tüm Anime\'leri Sil</string>
     <string name="prefer_dub_desc">Varsayılan olarak dublajlı medyayı seç</string>
-    <string name="show_yt_desc">Desteklenen medya için YouTube bağlantılarını göster</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">Anime keşfetme sayfasında liste öğelerini dahil et</string>
     <string name="ui_settings_desc">Tüm UI ile ilgili ayarlar</string>
     <string name="download_manager_select_desc">Anime indirmek için varsayılan yöneticiyi seç</string>
     <string name="backup_restore_desc">Seçilen ayarların yedeklerini oluştur ve geri yükle</string>
     <string name="change_download_location_desc">İndirilenlerin tutulduğu konumu değiştir</string>
-    <string name="always_continue_content_desc">Kaldığınız yerden öğeleri devam ettirin</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">İçerik bulunamadığında bir sonraki sunucuya geçer</string>
     <string name="recentlyListOnly_desc">Son sekmesinde yalnızca listenizdeki öğeleri göster</string>
     <string name="adult_only_content_desc">Keşfet sayfasında yalnızca yetişkin içeriği göster</string>

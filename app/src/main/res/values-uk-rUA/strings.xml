@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">Пошук</string>
     <string name="extension_search">Зворотній вихідний пошук</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">Результати пошуку</string>
     <string name="sort_by">Сортувати за</string>
     <string name="genre">Жанр</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">SD карта не була знайдена.</string>
     <string name="reader_settings">Параметри читання</string>
     <string name="default_source">Джерело за промовчанням</string>
-    <string name="show_yt">Показати посилання Youtube</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">Типовий макет епізоду</string>
     <string name="default_chp_view">Стандартний макет Глави</string>
     <string name="ui">Інтерфейс користувача</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">Анімація макету</string>
     <string name="trending_scroller">Популярна прокрутка</string>
     <string name="animation_speed">Загальна швидкість</string>
-    <string name="empty_fav">Схоже, вам нічого не подобається,\nСпробуйте вивести шоу, щоб залишити його тут.</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">Вибраний аніме</string>
     <string name="fav_manga">Улюблена манга</string>
     <string name="restart_app">Перезавантажити програму?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">Планування аніме</string>
     <string name="planned_manga">Планова манга</string>
     <string name="image_long_clicking">Тривале натискання відкриє зображення</string>
-    <string name="always_continue_content">Продовжити раніше відкриті елементи</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">Пошук наступного доступного джерела</string>
     <string name="timestamp_proxy_desc">Корисно, якщо ви отримуєте помилки рукостискання</string>
     <string name="timestamp_proxy">Використовувати проксі для часових міток</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Управління репутаціями розширень</string>
     <string name="installing_extension">Встановлення розширення</string>
     <string name="installation_failed">Помилка встановлення: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Яка різниця між стабільними, бета та альфа версіями?</string>
-    <string name="answer_3">У цьому форку немає окремих треків. Завантажена версія з [repository](https://github.com/RepoDevil/Himitsu) є однаковою з [AbandonedCart](https://github. om/AbandonedCart) запущено. Якщо ви знайшли помилки і вже оновилися до останньої версії, можете відправити [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">Чому моя статистика не оновлюється?</string>
     <string name="answer_6">Це тому, що він автоматично оновлюється кожні 48 годин (за допомогою Anilist). Якщо вам дійсно потрібно оновити свою статистику, ви можете примусово оновити її після переходу за цим [посиланням](https://anilist.co/settings/lists).</string>
     <string name="question_7">Як завантажити анімацію?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">Як увімкнути NSFW вміст?</string>
     <string name="answer_9">Ви можете увімкнути NSFW вміст, включивши з цього [link](https://anilist.co/settings/media). Ви також повинні увімкнути розширення NSFW в \`Налаштування &gt; Розширення &gt; NSFW розширень\` </string>
-    <string name="question_10">Як імпортувати мої списки MAL/KitSу до Anilist?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">Ось як це зробити,\n\nЕкспорт:\n\n1. Перейдіть за цим [посиланням](https://malscraper.azurewebsites.net).\n2. Вкажіть своє ім\'я користувача Kitsu/MAL та завантажте як список аніме, так і мангу. (Вони будуть у форматі XML)\nПримітка: Ви повинні вказати ім\'я користувача вибраного вами трекера\n\nІмпорт:\n\n1. Після експорту списку аніме та манги з Kitsu/MAL, перейдіть за цим [посиланням](https://anilist.co/settings/import) \n2. Виберіть/перетягніть файл XML аніме у відповідне поле вище.\n|→Виберіть/перетягніть файл XML манги у відповідне поле нижче.</string>
-    <string name="question_11">Як імпортувати мої списки Anilist/Kitsu до MAL?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">Ось як це зробити,\n\nЕкспорт:\n\n1. Перейдіть за цим [посиланням](https://malscraper.azurewebsites.net/). \n2. Вкажіть своє ім\'я користувача Anilist/Kitsu у полі \'Ім\'я користувача/Kitsu ID\'. \n3. Виберіть тип списку та увімкніть \'оновлення при імпорті\'. \n4. Завантажте файл; він буде у форматі .xml. Будьте впевнені, що завантажили як список аніме, так і манги.\n\nІмпорт:\n1. Щоб імпортувати його у свій обліковий запис MAL, перейдіть за цим [посиланням](https://myanimelist.net/import.php) та виберіть \'Імпорт з MyAnimeList\' як тип імпорту. \n2. Натисніть \'Оберіть файл\' та виберіть завантажений файл XML аніме/манги. \n3. Натисніть \'Імпортувати дані\'. \nВітаємо, ви щойно імпортували обраний список у свій обліковий запис MAL.</string>
-    <string name="question_12">Чому я не можу знайти певну назву аніме/манга?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">Як виправити джерела, обравши абсолютно неправильний заголовок?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Як читати кольорові мангази?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">Помилка рукостискання? Чому немає завантаження часів?</string>
-    <string name="answer_15">Ви можете виправити цю проблему, увімкнувши \'Проксі\' у \n\`Налаштування &gt; Аніме &gt; Налаштування плеєра &gt; Відмітки часу &gt; Проксі\`.\nЯкщо відмітки часу все ще не завантажуються, але спливає вікно з помилкою з рукостисканням виправлено, то епізод, який ви дивитеся, просто ще не має відміток часу для нього.</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">Хіба не знайдено нічого з джерела?</string>
     <string name="answer_16">Деякі базові виправлення: \n\n• Оновіть ваші розширення, якщо вони є. \n• Відкрийте Веб-вид і зачекайте, доки він завантажиться. Після завершення завантаження поверніться назад. (Якщо Веб-вид показує помилку 404 або щось подібне, ймовірно, ваше джерело не працює)\n• Використовуйте інший DNS з вашими налаштуваннями, краще, Libre. \n• Спробуйте довірчий VPN. (Вам доведеться повторити крок 1 після цього) \n\nЯкщо жоден з вищезазначених кроків не допомагає, то використовуйте інше джерело або приєднуйтесь до нашого [discord](https://discord.gg/invite/4HPZ5nAWwM) за допомогою.</string>
     <string name="question_17">Деякі корисні поради і хитрощі</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">Неприпустимий тип файлу</string>
     <string name="purge_confirm">Ви дійсно бажаєте очистити всі завантаження %1$s?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">Не вдалося видалити через… %1$s</string>
@@ -850,6 +847,7 @@
     <string name="report">Доповісти</string>
     <string name="ban">Бан</string>
     <string name="activity_label">Активність</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">Не вдалося встановити ваш шлях</string>
     <string name="dir_access">Доступ до завантажень</string>
     <string name="dir_access_msg">Будь ласка виберіть теку для збереження завантажень</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">Всі налаштування пов\'язані з гравцем</string>
     <string name="purge_anime_downloads_desc">Видалити всі завантажені аніме</string>
     <string name="prefer_dub_desc">Виберіть медіа, що отримала назву за замовчуванням</string>
-    <string name="show_yt_desc">Відображати посилання на YouTube для підтримуваних медіа</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">Внести елементи списку у програму вивчення аніме</string>
     <string name="ui_settings_desc">Всі налаштування, пов\'язані з інтерфейсом</string>
     <string name="download_manager_select_desc">Менеджер за замовчуванням для завантаження аніме</string>
     <string name="backup_restore_desc">Створити та відновити резервні копії вибраних налаштувань</string>
     <string name="change_download_location_desc">Змінювати місцезнаходження при збереженні завантажень</string>
-    <string name="always_continue_content_desc">Продовжити предмети де ви зупинилися</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">Переміститися на наступний сервер, якщо вміст не знайдено</string>
     <string name="recentlyListOnly_desc">Показувати лише елементи списку в останній вкладці</string>
     <string name="adult_only_content_desc">Показувати лише матеріали для дорослих на сторінці вивчення</string>

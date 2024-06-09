@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">Cerca</string>
     <string name="extension_search">Cerca inversa de fonts</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">Resultats de la cerca</string>
     <string name="sort_by">Ordena per</string>
     <string name="genre">Gènere</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">No s\'ha trobat cap targeta SD.</string>
     <string name="reader_settings">Configuració del lector</string>
     <string name="default_source">Font per defecte</string>
-    <string name="show_yt">Mostra l\'enllaç de Youtube</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">Disseny d\'episodi per defecte</string>
     <string name="default_chp_view">Disseny de capítol per defecte</string>
     <string name="ui">Interfície d\'usuari</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">Animacions de Disseny</string>
     <string name="trending_scroller">Explorador de Tendències</string>
     <string name="animation_speed">Velocitat Global</string>
-    <string name="empty_fav">Sembla que no t\'agrada res,\nProva a marcar un programa per mantenir-lo aquí.</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">Anime Favorit</string>
     <string name="fav_manga">Manga Favorit</string>
     <string name="restart_app">Reiniciar l\'aplicació?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">Anime Planificat</string>
     <string name="planned_manga">Manga Planificat</string>
     <string name="image_long_clicking">Fes una pulsació llarga per obrir la imatge</string>
-    <string name="always_continue_content">Continua amb els elements oberts anteriorment</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">Cerca la següent font disponible</string>
     <string name="timestamp_proxy_desc">Útil si tens problemes amb els Handshake Fails</string>
     <string name="timestamp_proxy">Utilitza un proxy per als timestamps</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Gestiona Repositoris d\'Extensió</string>
     <string name="installing_extension">Instal·lant extensió</string>
     <string name="installation_failed">La instal·lació ha fallat: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">Quina és la diferència entre les versions Estable, Beta i Alfa?</string>
-    <string name="answer_3">Aquest fork no proporciona pistes separades. La versió que descarreguis del [repositori](https://github.com/RepoDevil/Himitsu) és la mateixa que [AbandonedCart](https://github.com/AbandonedCart) està utilitzant. Si trobes errors i ja t\'has actualitzat a l\'última versió, no dubtis a enviar un [problema](https://github.com/RepoDevil/Himitsu/issues)</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">Per què les meves estadístiques no s\'actualitzen?</string>
     <string name="answer_6">Això és perquè s\'actualitza automàticament cada 48 hores (per Anilist). Si realment necessites actualitzar les teves estadístiques, pots forçar l\'actualització de les teves estadístiques després d\'anar a aquest [enllaç](https://anilist.co/settings/lists).</string>
     <string name="question_7">Com descarregar Anime?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">Com habilitar contingut NSFW?</string>
     <string name="answer_9">Pots habilitar el contingut NSFW activant els continguts 18+ des d\'aquest [enllaç](https://anilist.co/settings/media). També has d\'habilitar les extensions NSFW a \`Configuració &gt; Extensions &gt; Extensions NSFW\` </string>
-    <string name="question_10">Com importar les meves llistes de MAL/Kitsu a Anilist?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">Aquí tens com fer-ho,\n\nExporta:\n\n1. Vés a aquest [enllaç](https://malscraper.azurewebsites.net).\n2. Introdueix el teu nom d\'usuari de Kitsu/MAL i descarrega tant la llista d\'anime com de manga. (Estaran en format XML)\nNota: Has d\'escriure el nom d\'usuari del rastrejador que has seleccionat\n\nImporta:\n\n1. Després d\'exportar la teva llista d\'anime i manga de Kitsu/MAL, ara ves [aquí](https://anilist.co/settings/import) \n2. Selecciona/deixa anar el fitxer XML d\'anime a la casella de dalt.\n|→Selecciona/deixa anar el fitxer XML de manga a la casella de sota.</string>
-    <string name="question_11">Com importar les meves llistes d\'Anilist/Kitsu a MAL?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">Aquí tens com fer-ho,\n\nExporta:\n\n1. Vés a aquest [enllaç](https://malscraper.azurewebsites.net/). \n2. Introdueix el teu nom d\'usuari d\'Anilist/Kitsu a la casella \'Nom d\'usuari/ID d\'usuari Kitsu\'. \n3. Selecciona el tipus de llista i habilita \'actualitzar_en_la_importació\'. \n4. Descarrega el fitxer; estarà en format .xml. Assegura\'t de descarregar les llistes d\'anime i manga.\n\nImporta:\n1. Per importar-ho al teu compte de MAL, ves a aquest [enllaç](https://myanimelist.net/import.php) i tria \'Importació de MyAnimeList\' com a tipus d\'importació. \n2. Premeu \'Tria el fitxer\' i seleccioneu el fitxer XML de llistes d\'anime/manga descarregat. \n3. Premeu \'Importa dades\'. \nFelicitats, acabes d\'importar la llista seleccionada al teu compte de MAL.</string>
-    <string name="question_12">Per què no puc trobar un títol d\'anime/manga específic?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">Com solucionar que les fonts seleccionin un títol completament equivocat?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">Com llegir mangues en color?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">L\'apretó de mans falla? Per què no es carreguen els segells temporals?</string>
-    <string name="answer_15">Podeu solucionar aquest problema habilitant \'Proxy\' des de \n\`Configuració &gt; Anime &gt; Configuració del reproductor &gt; Marques de temps &gt; Proxy\`.\nSi les marques de temps encara no es carreguen però el missatge emergent de fallida de l\'establiment de connexió està solucionat, llavors l\'episodi que esteu veient simplement encara no té marques de temps per a ell.</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">No podeu trobar res en una font?</string>
     <string name="answer_16">Algunes correccions bàsiques serien : \n\n• Actualitzeu les vostres extensions si n\'hi ha. \n• Obriu la visualització web i espereu que es carregui. Després que s\'hagi completat la càrrega, torneu enrere. (Si la visualització web mostra error 404 o alguna cosa similar, les probabilitats són que la vostra font no estigui disponible)\n• Utilitzeu un DNS diferent de la vostra configuració, preferiblement, Libre. \n• Proveu un VPN de confiança. (Haureu de repetir el pas 1 després d\'això) \n\nSi cap dels passos anteriors funciona, llavors utilitzeu una font diferent o uniu-vos al nostre [discord](https://discord.gg/invite/4HPZ5nAWwM) per obtenir ajuda.</string>
     <string name="question_17">Alguns consells i trucs útils</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">Tipus de fitxer no vàlid</string>
     <string name="purge_confirm">Esteu segur que voleu purgar totes les descàrregues de %1$s?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">No s\'ha pogut eliminar a causa de… %1$s</string>
@@ -850,6 +847,7 @@
     <string name="report">Informar</string>
     <string name="ban">Prohibir</string>
     <string name="activity_label">Activitat</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">No s\'ha pogut establir la vostra ruta</string>
     <string name="dir_access">Accés a descàrregues</string>
     <string name="dir_access_msg">Si us plau, trieu un directori per desar les vostres descàrregues</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">Tots els paràmetres relacionats amb el jugador</string>
     <string name="purge_anime_downloads_desc">Eliminar tots els animes descarregats</string>
     <string name="prefer_dub_desc">Seleccionar mitjans doblats per defecte</string>
-    <string name="show_yt_desc">Mostrar enllaços de YouTube per als mitjans compatibles</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">Incloure elements de llista a la pàgina d\'exploració d\'anime</string>
     <string name="ui_settings_desc">Tots els paràmetres relacionats amb la interfície d\'usuari</string>
     <string name="download_manager_select_desc">Gestor per defecte per descarregar animes</string>
     <string name="backup_restore_desc">Crear i restaurar còpies de seguretat de paràmetres seleccionats</string>
     <string name="change_download_location_desc">Canviar la ubicació on es conserven les descàrregues</string>
-    <string name="always_continue_content_desc">Continua els elements on els vas deixar</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">Passa al següent servidor si no es troba el contingut</string>
     <string name="recentlyListOnly_desc">Mostra només els teus elements de llista a la pestanya recent</string>
     <string name="adult_only_content_desc">Mostra només contingut per adults a la pàgina d\'exploració</string>
