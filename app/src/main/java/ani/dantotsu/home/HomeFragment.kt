@@ -787,8 +787,7 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
-    private fun rotateBackToStraight(configuration: Configuration) {
-        if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
+    private fun onAlphaDissolved(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
         val adjustTime = 750L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
@@ -816,6 +815,7 @@ class HomeFragment : Fragment() {
                 (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin,
                 if (portrait) 0 else 24.toPx
             ).apply {
+                binding.homeTopGradient.updatePadding(bottom = 0)
                 addUpdateListener { valueAnimator ->
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         bottomMargin = (valueAnimator.getAnimatedValue() as Int)
@@ -824,20 +824,10 @@ class HomeFragment : Fragment() {
             }.setDuration(adjustTime).start()
         }
 
-        homeListContainerBinding.homeRandomAnime.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
-                doOnEnd { isGone = true }
-            }.start()
-        }
-
-        homeListContainerBinding.homeRandomManga.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
-                doOnEnd { isGone = true }
-            }.start()
-        }
-
         homeListContainerBinding.homeAnimeList.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
+            ObjectAnimator.ofFloat(
+                this, View.ROTATION, rotation, 0f
+            ).setDuration(rotateTime).apply {
                 doOnEnd {
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         marginStart = 8.toPx
@@ -848,7 +838,9 @@ class HomeFragment : Fragment() {
         }
 
         homeListContainerBinding.homeMangaList.run {
-            ObjectAnimator.ofFloat(this, View.ROTATION, rotation, 0f).setDuration(rotateTime).apply {
+            ObjectAnimator.ofFloat(
+                this, View.ROTATION, rotation, 0f
+            ).setDuration(rotateTime).apply {
                 doOnEnd {
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         marginStart = 8.toPx
@@ -857,6 +849,31 @@ class HomeFragment : Fragment() {
                 }
             }.start()
         }
+    }
+
+    private fun rotateBackToStraight(configuration: Configuration) {
+        if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
+        val alphaTime = 400L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+
+        homeListContainerBinding.homeRandomManga.run {
+            ObjectAnimator.ofFloat(
+                this, View.ALPHA, 1.0f, 0f
+            ).setDuration(alphaTime).apply {
+                doOnEnd {
+                    isGone = true
+                    homeListContainerBinding.homeRandomAnime.run {
+                        ObjectAnimator.ofFloat(
+                            this, View.ALPHA, 1.0f, 0f
+                        ).setDuration(alphaTime).apply {
+                            doOnEnd {
+                                isGone = true
+                                onAlphaDissolved(configuration)
+                            }
+                        }
+                    }.start()
+                }
+            }
+        }.start()
     }
 
     private fun rotateButtonsToBlades(configuration: Configuration) {

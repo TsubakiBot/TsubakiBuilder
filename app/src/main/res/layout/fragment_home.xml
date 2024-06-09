@@ -46,6 +46,7 @@
                         tools:src="@tools:sample/backgrounds/scenic" />
 
                     <ImageView
+                        android:id="@+id/homeTopGradient"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="-94dp"
