@@ -268,13 +268,6 @@ fun initActivity(a: Activity) {
     if (a !is MainActivity) a.setNavigationTheme()
 }
 
-fun AnimatedBottomBar.updateMargins(orientation: Int) {
-    val rightMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) navBarHeight else 0
-    val bottomMargin = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 0 else navBarHeight
-    val params: ViewGroup.MarginLayoutParams = layoutParams as ViewGroup.MarginLayoutParams
-    params.updateMargins(right = rightMargin, bottom = bottomMargin)
-}
-
 fun Activity.hideSystemBars() {
     WindowInsetsControllerCompat(window, window.decorView).let { controller ->
         controller.systemBarsBehavior =

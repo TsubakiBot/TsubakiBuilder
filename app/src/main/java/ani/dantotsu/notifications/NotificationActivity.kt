@@ -28,7 +28,6 @@ import ani.dantotsu.databinding.ActivityFollowBinding
 import ani.dantotsu.databinding.CustomDialogLayoutBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.media.MediaDetailsActivity
-import ani.dantotsu.navBarHeight
 import ani.dantotsu.notifications.comment.CommentStore
 import ani.dantotsu.notifications.subscription.SubscriptionStore
 import ani.dantotsu.profile.ProfileActivity
@@ -39,6 +38,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import bit.himitsu.update.MatagiUpdater
+import bit.himitsu.updateMargins
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -178,9 +178,7 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         binding.notificationNavBar.visibility = View.VISIBLE
-        binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = navBarHeight
-        }
+        binding.notificationNavBar.updateMargins(resources.configuration)
         binding.notificationNavBar.selectTabAt(0)
         binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
     }
@@ -390,11 +388,7 @@ class NotificationActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.notificationNavBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            bottomMargin = if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                0
-            else navBarHeight
-        }
+        binding.notificationNavBar.updateMargins(newConfig)
     }
 
     companion object {
