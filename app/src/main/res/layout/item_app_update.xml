@@ -28,7 +28,7 @@
             android:id="@+id/notificationGradiant"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:alpha="0.22"
+            android:alpha="0.33"
             android:background="@color/anilist_banner"
             tools:ignore="ContentDescription" />
 
@@ -74,6 +74,7 @@
                 android:ellipsize="middle"
                 android:fontFamily="@font/poppins_bold"
                 android:maxLines="2"
+                android:textColor="@android:color/white"
                 android:textSize="14dp"
                 android:transitionName="mediaTitle"
                 tools:ignore="SpUsage"
@@ -87,6 +88,7 @@
                 android:alpha="0.66"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="Wed,06 March 2024, 7:00PM"
+                android:textColor="@android:color/white"
                 android:textSize="10sp"
                 tools:ignore="HardcodedText,SmallSp" />
         </LinearLayout>
