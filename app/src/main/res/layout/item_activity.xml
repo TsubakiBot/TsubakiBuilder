@@ -73,8 +73,8 @@
             android:id="@+id/activityLikeContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
             android:orientation="vertical"
+            android:paddingHorizontal="12dp"
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
@@ -200,14 +200,23 @@
         </androidx.cardview.widget.CardView>
     </FrameLayout>
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtube_player_view"
+    <Button
+        android:id="@+id/videoButtonYT"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:enableAutomaticInitialization="false"
-        app:autoPlay="false"
+        android:backgroundTint="@color/yt_red"
+        android:fontFamily="@font/poppins_bold"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/play_yt"
+        android:textColor="@color/bg_white"
         android:visibility="gone"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_round_play_circle_24"
+        app:iconTint="@color/bg_white"
+        tools:ignore="TextContrastCheck"
         tools:visibility="visible" />
 
     <LinearLayout

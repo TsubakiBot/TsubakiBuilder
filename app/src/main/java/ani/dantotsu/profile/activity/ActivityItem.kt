@@ -1,7 +1,6 @@
 package ani.dantotsu.profile.activity
 
 import android.content.Intent
-import android.net.Uri
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -14,17 +13,13 @@ import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Activity
 import ani.dantotsu.databinding.ItemActivityBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.profile.User
 import ani.dantotsu.profile.UsersDialogFragment
 import ani.dantotsu.setAnimation
 import ani.dantotsu.snackString
 import ani.dantotsu.util.AniMarkdown.Companion.getBasicAniHTML
 import ani.dantotsu.util.MarkdownCreatorActivity
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.viewbinding.BindableItem
 import com.xwray.groupie.viewbinding.GroupieViewHolder
@@ -41,8 +36,6 @@ class ActivityItem(
 ) : BindableItem<ItemActivityBinding>() {
     private lateinit var binding: ItemActivityBinding
     private lateinit var repliesAdapter: GroupieAdapter
-
-    private var tubePlayer: YouTubePlayer? = null
 
     override fun bind(viewBinding: ItemActivityBinding, position: Int) {
         binding = viewBinding
@@ -137,7 +130,6 @@ class ActivityItem(
                 }
             }
         }
-        val context = binding.root.context
         val tag = when {
             activity.text?.contains("class='youtube'") == true -> {
                 activity.text.substringAfter("class='youtube'").substringBefore(">")
@@ -147,9 +139,13 @@ class ActivityItem(
             }
             else -> null
         }
-        tag?.let {
-            getYouTubeContent(it.substringAfter("id=").substring(1, tag.length - 1))
+        tag?.let { url ->
+            binding.videoButtonYT.visibility = View.VISIBLE
+            binding.videoButtonYT.setOnClickListener {
+                openLinkInYouTube(url.substringAfter("id=").substring(1, url.length - 5))
+            }
         }
+        val context = binding.root.context
         when (activity.typename) {
             "ListActivity" -> {
                 val cover = activity.media?.coverImage?.large
@@ -245,37 +241,8 @@ class ActivityItem(
         return ItemActivityBinding.bind(view)
     }
 
-    override fun onViewDetachedFromWindow(viewHolder: GroupieViewHolder<ItemActivityBinding>) {
-        super.onViewDetachedFromWindow(viewHolder)
-        viewHolder.binding.youtubePlayerView.release()
-        tubePlayer = null
-    }
-
-    private fun getYouTubeContent(videoUrl: String) {
-        val youTubePlayerView: YouTubePlayerView = binding.youtubePlayerView
-        fragActivity.lifecycle.addObserver(binding.youtubePlayerView)
-        val youTubePlayerListener = object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                binding.youtubePlayerView.visibility = View.VISIBLE
-                Uri.parse(videoUrl).getQueryParameter("v")?.let {
-                    tubePlayer = youTubePlayer.apply {
-                        loadVideo(it, 0f)
-
-                    }
-                }
-            }
-            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                binding.youtubePlayerView.visibility = View.GONE
-            }
-        }
-        Uri.parse(videoUrl).getQueryParameter("v")?.let {
-            youTubePlayerView.initialize(youTubePlayerListener)
-        } ?: Uri.parse(videoUrl).getQueryParameter("list")?.let {
-            youTubePlayerView.initialize(
-                youTubePlayerListener,
-                IFramePlayerOptions.Builder()
-                    .controls(1).listType("playlist").list(it).build()
-            )
-        }
+    override fun unbind(viewHolder: GroupieViewHolder<ItemActivityBinding>) {
+        binding.videoButtonYT.visibility = View.GONE
+        super.unbind(viewHolder)
     }
 }

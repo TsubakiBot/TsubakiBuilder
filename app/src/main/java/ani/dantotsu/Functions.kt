@@ -138,6 +138,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import tachiyomi.core.util.system.ImageUtil
 import java.io.File
 import java.io.FileOutputStream
 import java.lang.reflect.Field
@@ -1208,12 +1209,27 @@ fun buildMarkwon(
     val markwon = Markwon.builder(activity)
         .usePlugin(object : AbstractMarkwonPlugin() {
             override fun configureConfiguration(builder: MarkwonConfiguration.Builder) {
-                builder.linkResolver { _, link ->
-                    copyToClipboard(link, true)
+                builder.linkResolver { view, link ->
+                    var isImageLink = false
+                    ImageUtil.ImageType.entries.forEach {
+                        if (link.endsWith(it.extension, true)) {
+                            isImageLink = true
+                            view.setOnClickListener {
+//                                openLinkInBrowser(link)
+                            }
+                        }
+                    }
+                    if (isImageLink) return@linkResolver
+                    if (link.startsWith("https://anilist.co")) {
+                        view.setOnClickListener {
+                            openLinkInBrowser(link)
+                        }
+                    } else {
+                        copyToClipboard(link, true)
+                    }
                 }
             }
         })
-
         .usePlugin(SoftBreakAddsNewLinePlugin.create())
         .usePlugin(StrikethroughPlugin.create())
         .usePlugin(TablePlugin.create(activity))
@@ -1227,7 +1243,6 @@ fun buildMarkwon(
             }
         })
         .usePlugin(GlideImagesPlugin.create(object : GlideImagesPlugin.GlideStore {
-
             private val requestManager: RequestManager = glideContext.apply {
                 addDefaultRequestListener(object : RequestListener<Any> {
                     override fun onResourceReady(
@@ -1249,7 +1264,6 @@ fun buildMarkwon(
                         target: Target<Any>,
                         isFirstResource: Boolean
                     ): Boolean {
-                        Logger.log("Image failed to load: $model")
                         Logger.log(e as Exception)
                         return false
                     }
