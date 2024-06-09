@@ -21,7 +21,7 @@ import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.ActivityProfileBinding
-import ani.dantotsu.databinding.ItemProfileAppBarBinding
+import ani.dantotsu.databinding.ProfileAppBarBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.user.ListActivity
@@ -46,7 +46,7 @@ import kotlin.math.abs
 
 class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
     lateinit var binding: ActivityProfileBinding
-    private lateinit var bindingProfileAppBar: ItemProfileAppBarBinding
+    private lateinit var bindingProfileAppBar: ProfileAppBarBinding
     private var selected: Int = 0
     lateinit var navBar: AnimatedBottomBar
 
@@ -88,7 +88,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
 
                 binding.profileViewPager.setBaseline(navBar, resources.configuration)
 
-                bindingProfileAppBar = ItemProfileAppBarBinding.bind(binding.root).apply {
+                bindingProfileAppBar = ProfileAppBarBinding.bind(binding.root).apply {
                     binding.profileProgressBar.visibility = View.GONE
                     followButton.isGone =
                         user.id == Anilist.userid || Anilist.userid == null
