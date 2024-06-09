@@ -27,6 +27,7 @@
     <string name="go_online">Go Online</string>
     <string name="search">검색</string>
     <string name="extension_search">소스 역방향 검색</string>
+    <string name="external_search">Search Himitsu</string>
     <string name="search_results">검색 결과</string>
     <string name="sort_by">정렬 기준</string>
     <string name="genre">장르</string>
@@ -172,7 +173,7 @@
     <string name="noSdFound">SD 카드를 찾을 수 없습니다.</string>
     <string name="reader_settings">리더 설정</string>
     <string name="default_source">기본 소스</string>
-    <string name="show_yt">Youtube Link</string>
+    <string name="show_yt">Show Streaming Links</string>
     <string name="default_ep_view">기본 에피소드 레이아웃</string>
     <string name="default_chp_view">기본 챕터 레이아웃</string>
     <string name="ui">사용자 인터페이스</string>
@@ -300,7 +301,8 @@
     <string name="layout_animations">레이아웃 애니메이션</string>
     <string name="trending_scroller">인기 있는 스크롤러</string>
     <string name="animation_speed">전체 속도</string>
-    <string name="empty_fav">아무 것도 좋아하지 않는 것 같아요,\n여기에 유지하려면 쇼를 좋아하세요.</string>
+    <string name="empty_fav">Try adding something to keep it here.</string>
+    <string name="no_suggestions">We\'re still getting to know you.</string>
     <string name="fav_anime">좋아하는 애니메이션</string>
     <string name="fav_manga">좋아하는 만화</string>
     <string name="restart_app">앱을 다시 시작하시겠습니까?</string>
@@ -366,7 +368,7 @@
     <string name="planned_anime">계획된 애니메이션</string>
     <string name="planned_manga">계획된 만화</string>
     <string name="image_long_clicking">이미지를 길게 클릭하여 열기</string>
-    <string name="always_continue_content">Always continue previous items</string>
+    <string name="always_continue_content">Continue previous media</string>
     <string name="search_source_list">다음 사용 가능한 소스 검색</string>
     <string name="timestamp_proxy_desc">핸드셰이크 실패가 발생하는 경우 유용합니다</string>
     <string name="timestamp_proxy">타임 스탬프에 프록시 사용</string>
@@ -414,7 +416,7 @@
     <string name="subscribe_lists">Subscribe All Current</string>
     <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
     <string name="no_current_items">Current media list empty!</string>
-    <string name="current_subscribed">Current media subscribed!</string>
+    <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">확장 프로그램 저장소 관리</string>
     <string name="installing_extension">확장 프로그램 설치 중</string>
     <string name="installation_failed">설치 실패: %1$s</string>
@@ -595,37 +597,31 @@
     <string name="question_2">What are some features of Himitsu?</string>
     <string name="answer_2">This would be a pretty big paragraph if we listed everything Dantotsu attempts to accomplish, let alone everything Himitsu has added onto that. Your best bet would be to drop by the [Himitsu GitHub](https://github.com/RepoDevil/Himitsu) and look over the README.</string>
     <string name="question_3">안정 버전, 베타 버전 및 알파 버전의 차이는 무엇인가요?</string>
-    <string name="answer_3">안정 버전은 가능한 한 철저하게 테스트되어 가장 신뢰할 수 있는 버전입니다.\n\n베타 버전은 새로운 기능을 테스트하거나 긴급 수정을 제공하기 위한 버전입니다.\n\n알파 버전은 베타 버전과 유사하지만 많은 버그가 있으며 당사의 [디스코드](https://discord.gg/invite/4HPZ5nAWwM) 서버에서만 찾을 수 있습니다. 자주 업데이트되며 고장의 가능성이 높습니다.\n\n신뢰할 수있는 앱이 필요하면 안정 버전을 선택하십시오. 최신 및 가장 멋진 기능과 버그를 원한다면 알파 버전을 선택하십시오.</string>
+    <string name="answer_3">This fork does not provide multiple tracks. The version you download from the [repository](https://github.com/RepoDevil/Himitsu) is the same one [AbandonedCart](https://github.com/AbandonedCart) is running. If you find bugs and have already updated to the latest version, feel free to submit an [issue](https://github.com/RepoDevil/Himitsu/issues)</string>
     <string name="question_4">Is Himitsu available for PC?</string>
     <string name="answer_4">Currently no (for both Windows and Linux). There isn\'t any estimation when it will be available. But you can download any Android emulator and run Himitsu on it. For Windows 11 users, they can use the Windows Subsystem for Android (WSA) to run Himitsu in Windows.</string>
     <string name="question_5">Is Himitsu available for iOS?</string>
     <string name="answer_5">No, best we can do is carve Himitsu on an apple.</string>
-    <string name="question_src">Doesn\'t Himitsu violate the Dantotsu license?</string>
-    <string name="answer_src">This project was forked from Dantotsu under the [GNU General Public License v3.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md) and severed all ties upon a license change. As a license cannot be applied retroactively, this project is only subject to the terms of the original license. Portions of this project are licensed under the [Apache License, Version 2.0](https://gitlab.com/RepoDevil/himitsu/-/blob/himitsu/LICENSE.md#L680). Due to negligence on behalf of Dantotsu, the specific history of some code has been destroyed. This code, along with any submodules or integrations, is used with permission according to the individual license terms and conditions. Any permission granted by Himitsu does not waive the restrictions set forth by these licenses.</string>
+    <string name="question_src">Doesn\'t Himitsu violate Dantotsu licensing?</string>
+    <string name="answer_src">The short answer is no, but a detailed explanation is available in the [Himitsu README](https://github.com/RepoDevil/Himitsu?tab=readme-ov-file#himitsu-%EF%B8%8F)</string>
     <string name="question_6">왜 내 통계가 업데이트되지 않나요?</string>
     <string name="answer_6">이는 48시간마다 자동으로 업데이트되기 때문입니다 (Anilist에 의해). 통계를 업데이트하려면 진정으로 필요한 경우 [이 링크](https://anilist.co/settings/lists)로 이동하여 통계를 강제로 업데이트할 수 있습니다.</string>
     <string name="question_7">애니메이션을 다운로드하는 방법은 무엇인가요?</string>
-    <string name="answer_7">There are two methods of downloading. One is internal and the other is external. If you download internally, those items can be viewed within the app, but only the app can open that episode. You cannot move them or share them. The other option is to use external downloading. This requires a download manager to download and a separate video player to watch. External downloads can be shared but you cannot view them within the Himitsu app.\n\n•To download internally:\n\n1. Tap the download button.\n2. Pick the server and the video quality.\n3. Profit.\n\n•To download externally:\n\n 1. Download 1DM or ADM from Google Play Store.
-        \n2. Enter the app, give storage access and set your preferences (downloading speed, downloading path etc(optional))
-        \n3. Now go to \`Himitsu &gt; Settings &gt; Common &gt; Download Managers\` and choose the download manager you just set up.
-        \n4. Go to your desired episode and press on the download icon of any server. There may be a popup to set your preferences again, just press on \"Download\" and it will be saved in the directed path.
-
-        \n\nNote: Direct downloads are also possible without a manager but it\'s not recommended.
-\n\nNerd Note: Internally downloaded episodes are stored in \`Android/data/ani.dantotsu.*/files/Anime_Downloads\`\nYou cannot play those files as they are in \`.exo\` format, split into hundreds of pieces and are encrypted.</string>
+    <string name="answer_7">A third-party download Add-on is developed and distributed by Dantotsu. Compatibility is based on Dantotsu and may cease to function at any time. It can be found by accessing the \"Add-ons\" page in the app settings.</string>
     <string name="question_9">성인 콘텐츠를 활성화하는 방법은 무엇인가요?</string>
     <string name="answer_9">이를 위해 [이 링크](https://anilist.co/settings/media)에서 18+ 콘텐츠를 활성화할 수 있습니다. 또한 \`설정 &gt; 확장 &gt; 성인 콘텐츠 확장\`에서 성인 콘텐츠를 활성화해야 합니다.</string>
-    <string name="question_10">MAL/Kitsu 목록을 Anilist로 가져오는 방법은 무엇인가요?</string>
+    <string name="question_10">How to import my MAL / Kitsu lists to Anilist?</string>
     <string name="answer_10">다음은 그 방법입니다.\n\n내보내기:\n\n1. [링크](https://malscraper.azurewebsites.net)로 이동합니다.\n2. Kitsu/MAL 사용자 이름을 입력하고 애니메이션 및 만화 목록을 모두 다운로드합니다. (XML 형식으로 제공됩니다)\n참고: 선택한 추적기의 사용자 이름을 작성해야 합니다\n\n가져오기:\n\n1. Kitsu/MAL에서 애니메이션 및 만화 목록을 내보낸 후, [여기](https://anilist.co/settings/import)로 이동합니다.\n2. 위의 상자에 애니메이션 XML 파일을 선택/놓습니다.\n↓ 만화 XML 파일을 아래 상자에 선택/놓습니다.</string>
-    <string name="question_11">Anilist/Kitsu 목록을 MAL로 가져오는 방법은 무엇인가요?</string>
+    <string name="question_11">How to import my Anilist / Kitsu lists to MAL?</string>
     <string name="answer_11">다음은 그 방법입니다.\n\n내보내기:\n\n1. [링크](https://malscraper.azurewebsites.net/)로 이동합니다.\n2. \'사용자 이름/Kitsu 사용자 ID\' 상자에 Anilist 사용자 이름/Kitsu ID를 입력합니다.\n3. 목록 유형을 선택하고 \'가져온 후 업데이트\'를 활성화합니다.\n4. 파일을 다운로드하고 .xml 형식으로 제공됩니다. 애니메이션 및 만화 목록을 모두 다운로드했는지 확인합니다.\n\n가져오기:\n\n1. MAL 계정에 가져오려면 [링크](https://myanimelist.net/import.php)로 이동하고 가져오기 유형으로 \'MyAnimeList 가져오기\'를 선택합니다.\n2. \'파일 선택\'을 누르고 다운로드한 애니메이션/만화 목록 XML 파일을 선택합니다.\n3. \'데이터 가져오기\'를 누릅니다.\n축하합니다, 당신은 선택한 목록을 MAL 계정으로 가져왔습니다.</string>
-    <string name="question_12">특정 애니메이션/만화 제목을 왜 찾을 수 없을까요?</string>
-    <string name="answer_12">Let\'s say you are looking for Castlevania in Himitsu. But Anilist doesn\'t have it, so Himitsu doesn\'t either.\nA solution to the above problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime even through these steps, then that\'s bad luck for you, bud. Even that source doesn\'t have it. Try a different source.</string>
+    <string name="question_12">Why can\'t I find a specific anime / manga title?</string>
+    <string name="answer_12">Let\'s say you are looking for Castlevania, but Anilist doesn\'t have it. This means Himitsu doesn\'t, either.\nA solution to this problem is as follows:\n1) Go to any anime that\'s not in your list.\n2) Go to the watch section.\n3) Select any source and press on the \'Wrong Title?\'.\n4) Now search for Castlevania (The anime you were looking for) and select it.\n5) ENJOY!\n\nIf you can\'t find the anime through these steps, then that\'s bad luck for you, bud. Try a different source.</string>
     <string name="question_13">소스가 완전히 잘못된 제목을 선택하는 것을 수정하는 방법은 무엇인가요?</string>
     <string name="answer_13">Himitsu itself doesn\'t host anything but relies on other sources. When showing the episodes, it chooses the 1st result given by the source after searching for the title. Himitsu has no way of detecting if that\'s legit or not. So, for this, we have the \'Wrong Title?\' just below the source name(above layouts). You can choose the correct result/title by pressing on it and enjoy its episodes.</string>
     <string name="question_14">컬러 만화를 읽는 방법은 무엇인가요?</string>
-    <string name="answer_14">Are you in search of coloured manga? Sorry to break it to you but an extremely small amount of mangas have coloured version. Those which has a coloured version is also available in Himitsu. Let\'s say you want to read the coloured version of chainsaw man. Then follow the below steps ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press on \'Wrong Title\'\n5) Select the colored version chainsaw man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version available even if it\'s available somewhere on the internet. So try a different source. If none of the sources have it, then a coloured version of your desired manga simply doesn\'t exist.</string>
+    <string name="answer_14">Sorry to break it to you, but only a small amount of manga have coloured version. If a coloured version is supposed to be available, it may simply be hidden in Himitsu. Let\'s say you want to read the coloured version of Chainsaw Man. Follow the steps below ↓\n\n1) Go to Chainsaw Man\n2) Press on \'Read\'\n3) Select any working source\n4) Press \'Wrong Title\'\n5) Select the colored Chainsaw Man\n6) Enjoy\n\nNote: Many sources don\'t have the coloured version even if it\'s available somewhere else. Try a different source. If none of the sources have it, then a coloured version of your desired manga may not exist.</string>
     <string name="question_15">핸드셰이크 실패? 타임스탬프가 로드되지 않는 이유는 무엇인가요?</string>
-    <string name="answer_15">\'설정 &gt; 애니메이션 &gt; 플레이어 설정 &gt; 타임스탬프 &gt; 프록시\'에서 \'프록시\'를 활성화하여이 문제를 해결할 수 있습니다. 타임스탬프가 로드되지 않더라도 핸드셰이크가 실패한 팝업이 해결되면 시청 중인 에피소드에는 아직 타임스탬프가 없습니다.</string>
+    <string name="answer_15">You can fix this issue by enabling \'Proxy\' from \n\`Settings &gt; Anime &gt; Player Settings &gt; Segments &gt; Proxy\`.\nIf the timestamps are still not loading but the handshake failed popup is fixed, then the episode you are watching just doesn\'t have timestamps yet for it.</string>
     <string name="question_16">특정 소스에서 아무것도 찾을 수 없나요?</string>
     <string name="answer_16">일부 기본 수정 사항은 다음과 같습니다. \n\n• 확장 기능이 있는 경우 확장 기능을 업데이트하십시오. \n• 웹 뷰를 열고 로드를 기다린 후 뒤로 이동하십시오. 로드가 완료되면 되돌아갑니다. (웹 뷰가 404 오류 또는 유사한 오류를 표시하면 소스가 다운되었을 가능성이 있습니다.) \n• 설정에서 다른 DNS를 사용하십시오. 가능하면 Libre를 사용하십시오. \n• 신뢰할 수있는 VPN을 사용하십시오. (이후 단계 1을 반복해야합니다.) \n\n위의 단계 중 하나도 작동하지 않으면 다른 소스를 사용하거나 도움을 받으려면 [디스코드](https://discord.gg/invite/4HPZ5nAWwM)에 가입하십시오.</string>
     <string name="question_17">일부 유용한 팁과 트릭</string>
@@ -775,7 +771,8 @@
     <string name="invalid_file_type">잘못된 파일 형식</string>
     <string name="purge_confirm">모든 %1$s 다운로드를 삭제하시겠습니까?</string>
     <string name="delete_content">Are you sure you want to delete %1$s?</string>
-    <string name="delete_item">Delete %1$s</string>
+    <string name="delete_item">Delete %1$s?</string>
+    <string name="deleted_item">Deleted %1$s</string>
     <string name="multi_download_chapter">Multi Chapter Downloader</string>
     <string name="multi_download_chapter_count">Enter the number of chapters to download</string>
     <string name="delete_fail_reason">%1$s 때문에 삭제 실패</string>
@@ -850,6 +847,7 @@
     <string name="report">신고</string>
     <string name="ban">금지</string>
     <string name="activity_label">활동</string>
+    <string name="activity_delete">Delete Activity?</string>
     <string name="dir_error">경로를 설정할 수 없습니다</string>
     <string name="dir_access">다운로드 액세스</string>
     <string name="dir_access_msg">다운로드를 저장할 디렉토리를 선택하십시오</string>
@@ -906,13 +904,13 @@
     <string name="player_settings_desc">모든 플레이어 관련 설정</string>
     <string name="purge_anime_downloads_desc">다운로드된 모든 애니메이션 삭제</string>
     <string name="prefer_dub_desc">Select Dub media by default</string>
-    <string name="show_yt_desc">지원되는 미디어에 대한 YouTube 링크 표시</string>
+    <string name="show_yt_desc">Show streaming platform links when available</string>
     <string name="include_list_anime_desc">애니메이션 탐색 페이지에 목록 항목 포함</string>
     <string name="ui_settings_desc">모든 UI 관련 설정</string>
     <string name="download_manager_select_desc">애니메이션 다운로드를 위한 기본 관리자 선택</string>
     <string name="backup_restore_desc">Your preferred settings everywhere</string>
     <string name="change_download_location_desc">Change the location where all the downloaded stuff goes</string>
-    <string name="always_continue_content_desc">Continue where you left off</string>
+    <string name="always_continue_content_desc">Continue media where you left off</string>
     <string name="search_source_list_desc">Auto-select the next server if the previous server doesn\'t have the media</string>
     <string name="recentlyListOnly_desc">최근 탭에서 나만의 목록 항목만 표시</string>
     <string name="adult_only_content_desc">탐색 페이지에서 성인 콘텐츠만 표시</string>
