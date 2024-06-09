@@ -47,8 +47,9 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="310dp"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="-94dp"
+                        android:paddingBottom="94dp"
                         android:src="@drawable/linear_gradient_bg"
                         tools:ignore="ContentDescription" />
 
