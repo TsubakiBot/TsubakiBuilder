@@ -118,7 +118,7 @@
     <string name="popularity">Popülerlik</string>
     <string name="roles">Roller</string>
     <string name="details">Detaylar</string>
-    <string name="trailer_yt">YouTube\'da Römork İzle</string>
+    <string name="trailer_yt">Trailer on YouTube</string>
     <string name="eps">Bölümler</string>
     <string name="ep">Bölüm</string>
     <string name="chaps">Bölümler</string>
@@ -290,10 +290,20 @@
         <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
+    <string name="notification_page">Default Notification Tab</string>
+    <string name="notification_page_desc">Select the start tab for notifications</string>
+    <string-array name="notification_type">
+        <item>All</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>User</item>
+    </string-array>
     <string name="startUpTab">Varsayılan Başlangıç Sekmesi</string>
     <string name="floating_avatar">Floating Avatar Button</string>
     <string name="hide_home_main">Acute OCD Home</string>
     <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
+    <string name="random_recommended">Hide Home Random</string>
+    <string name="random_recommended_desc">Hide random recommendation items</string>
     <string name="small_view">Trend Olan Gösterilerde Küçük Görünüm</string>
     <string name="trailer_banners">Banner Olarak Römork Kullan</string>
     <string name="animations">Animasyonlar</string>
@@ -359,6 +369,7 @@
     <string name="cancel">İptal</string>
     <string name="clear">Clear</string>
     <string name="edit">Düzenle</string>
+    <string name="done">Done</string>
     <string name="this_season">Bu Sezon</string>
     <string name="next_season">Gelecek Sezon</string>
     <string name="previous_season">Önceki Sezon</string>
@@ -398,6 +409,7 @@
 
         \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
+    <string name="frequency">Frequency</string>
     <string name="notification_for_checking_subscriptions">Abonelikleri kontrol etmek için bildirim göster</string>
     <string name="use_alarm_manager">Alarm Yöneticisi Kullan</string>
     <string name="use_alarm_manager_reliable">Alarm Yöneticisini Kullan (Güvenilir Bildirimler)</string>
@@ -414,7 +426,7 @@
     <string name="note">NOT</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Uzantı Depolarını Yönet</string>

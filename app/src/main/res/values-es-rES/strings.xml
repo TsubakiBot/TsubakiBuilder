@@ -118,7 +118,7 @@
     <string name="popularity">Popularidad</string>
     <string name="roles">Roles</string>
     <string name="details">Detalles</string>
-    <string name="trailer_yt">Ver Tráiler en YouTube</string>
+    <string name="trailer_yt">Trailer on YouTube</string>
     <string name="eps">Episodios</string>
     <string name="ep">Episodio</string>
     <string name="chaps">Capítulos</string>
@@ -284,10 +284,20 @@
         <item>Recomendados</item>
         <item>Feeds sociales</item>
     </string-array>
+    <string name="notification_page">Default Notification Tab</string>
+    <string name="notification_page_desc">Select the start tab for notifications</string>
+    <string-array name="notification_type">
+        <item>All</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>User</item>
+    </string-array>
     <string name="startUpTab">Pestaña de inicio predeterminada</string>
     <string name="floating_avatar">Botón de Avatar Flotante</string>
     <string name="hide_home_main">Acute OCD Home</string>
     <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
+    <string name="random_recommended">Hide Home Random</string>
+    <string name="random_recommended_desc">Hide random recommendation items</string>
     <string name="small_view">Vista pequeña de los programas en tendencia</string>
     <string name="trailer_banners">Usar Trailer como Banner</string>
     <string name="animations">Animaciones</string>
@@ -353,6 +363,7 @@
     <string name="cancel">Cancelar</string>
     <string name="clear">Borrar</string>
     <string name="edit">Editar</string>
+    <string name="done">Done</string>
     <string name="this_season">Esta temporada</string>
     <string name="next_season">Próxima temporada</string>
     <string name="previous_season">Temporada anterior</string>
@@ -378,6 +389,7 @@
     <string name="anilist">Anilist</string>
     <string name="account_help">¿Cómo funciona esto\?</string>
     <string name="full_account_help">Himitsu es una aplicación basada en Anilist, por lo que para sincronizar con su cuenta MAL, necesita iniciar sesión en una cuenta de Anilist. \nUna vez que haya iniciado sesión con las cuentas Anilist y MAL, la aplicación actualizará automáticamente su cuenta MAL siempre que: \n- Agregar un nuevo medio \n- Editar un medio \n- Eliminar un medio \n\nNota: La aplicación no sincronizará los medios antiguos de Anilist a MAL. Se recomienda sincronizarlos. \n- Consulte las __Preguntas frecuentes__ para conocer el _Método fácil_ \n\nY para _Intermedios_ : \n- [Cómo sincronizar datos de Anilist con MAL](https://anilist.co/forum/thread/2654) \n- [Cómo sincronizar datos MAL con Anilist](https://anilist.co/forum/thread/3393) \n\n_No es necesario sincronizar las cuentas MAL y Anilist._    </string>
+    <string name="frequency">Frequency</string>
     <string name="notification_for_checking_subscriptions">Comprobando Notificación de suscripciones</string>
     <string name="use_alarm_manager">Usar Administrador de alarmas</string>
     <string name="use_alarm_manager_reliable">Utiliza el gestor de alarmas para notificaciones confiables</string>
@@ -394,7 +406,7 @@
     <string name="note">NOTA</string>
     <string name="subscriptions">Suscripciones</string>
     <string name="subscribe_lists">Suscribirse a todo lo actual</string>
-    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning</string>
     <string name="no_current_items">¡Lista actual de medios vacía!</string>
     <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Gestión de repositorios de extensiones</string>

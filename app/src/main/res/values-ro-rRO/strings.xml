@@ -118,7 +118,7 @@
     <string name="popularity">Popularitate</string>
     <string name="roles">Roluri</string>
     <string name="details">Detalii</string>
-    <string name="trailer_yt">Uitați-vă la Trailer pe YouTube</string>
+    <string name="trailer_yt">Trailer on YouTube</string>
     <string name="eps">Episoade</string>
     <string name="ep">Episod</string>
     <string name="chaps">Capitole</string>
@@ -290,10 +290,20 @@
         <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
+    <string name="notification_page">Default Notification Tab</string>
+    <string name="notification_page_desc">Select the start tab for notifications</string>
+    <string-array name="notification_type">
+        <item>All</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>User</item>
+    </string-array>
     <string name="startUpTab">Fila de pornire implicită</string>
     <string name="floating_avatar">Floating Avatar Button</string>
     <string name="hide_home_main">Acute OCD Home</string>
     <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
+    <string name="random_recommended">Hide Home Random</string>
+    <string name="random_recommended_desc">Hide random recommendation items</string>
     <string name="small_view">Vizualizare mică în emisiuni populare</string>
     <string name="trailer_banners">Folosiți Trailerul ca Banner</string>
     <string name="animations">Animații</string>
@@ -359,6 +369,7 @@
     <string name="cancel">Anulează</string>
     <string name="clear">Clear</string>
     <string name="edit">Editare</string>
+    <string name="done">Done</string>
     <string name="this_season">Acest sezon</string>
     <string name="next_season">Următorul sezon</string>
     <string name="previous_season">Sezonul anterior</string>
@@ -398,6 +409,7 @@
 
         \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
+    <string name="frequency">Frequency</string>
     <string name="notification_for_checking_subscriptions">Arată notificare pentru verificarea abonamentelor</string>
     <string name="use_alarm_manager">Utilizați Alarmă Manager</string>
     <string name="use_alarm_manager_reliable">Utilizați Alarm Manager (Reliable Notifications)</string>
@@ -414,7 +426,7 @@
     <string name="note">NOTĂ</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Gestionare Repo-uri Extensii</string>
