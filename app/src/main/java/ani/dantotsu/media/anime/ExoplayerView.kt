@@ -1042,6 +1042,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                 override fun onScrollYClick(y: Float) {
                     if (!locked && PrefManager.getVal(PrefName.Gestures)) {
+                        if (!playerView.isControllerFullyVisible) return
                         exoBrightness.value = clamp(exoBrightness.value + y / 100, 0f, 10f)
                         if (exoBrightnessCont.visibility != View.VISIBLE) {
                             exoBrightnessCont.visibility = View.VISIBLE
@@ -1074,6 +1075,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                 override fun onScrollYClick(y: Float) {
                     if (!locked && PrefManager.getVal(PrefName.Gestures)) {
+                        if (!playerView.isControllerFullyVisible) return
                         exoVolume.value = clamp(exoVolume.value + y / 100, 0f, 10f)
                         if (exoVolumeCont.visibility != View.VISIBLE) {
                             exoVolumeCont.visibility = View.VISIBLE
