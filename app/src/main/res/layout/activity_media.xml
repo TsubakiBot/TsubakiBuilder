@@ -239,7 +239,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:padding="4dp"
-                        app:srcCompat="@drawable/ic_youtube_24"
+                        app:srcCompat="@drawable/yt_icon_rgb"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
 
                     <ImageView
