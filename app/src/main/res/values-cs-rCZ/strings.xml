@@ -118,7 +118,7 @@
     <string name="popularity">Oblíbenost</string>
     <string name="roles">Role</string>
     <string name="details">Detaily</string>
-    <string name="trailer_yt">Sledujte Trailer na YouTube</string>
+    <string name="trailer_yt">Trailer on YouTube</string>
     <string name="eps">Epizody</string>
     <string name="ep">Epizoda</string>
     <string name="chaps">Kapitola</string>
@@ -290,10 +290,20 @@
         <item>Recommended</item>
         <item>Social Feeds</item>
     </string-array>
+    <string name="notification_page">Default Notification Tab</string>
+    <string name="notification_page_desc">Select the start tab for notifications</string>
+    <string-array name="notification_type">
+        <item>All</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>User</item>
+    </string-array>
     <string name="startUpTab">Výchozí panel Start Up</string>
     <string name="floating_avatar">Floating Avatar Button</string>
     <string name="hide_home_main">Acute OCD Home</string>
     <string name="hide_home_main_desc">All layouts are uniformly positioned</string>
+    <string name="random_recommended">Hide Home Random</string>
+    <string name="random_recommended_desc">Hide random recommendation items</string>
     <string name="small_view">Malé zobrazení v populárních seriálech</string>
     <string name="trailer_banners">Použijte Trailer jako Banner</string>
     <string name="animations">Animace</string>
@@ -359,6 +369,7 @@
     <string name="cancel">Zrušit</string>
     <string name="clear">Clear</string>
     <string name="edit">Upravit</string>
+    <string name="done">Done</string>
     <string name="this_season">Tato sezóna</string>
     <string name="next_season">Další sezóna</string>
     <string name="previous_season">Předchozí sezóna</string>
@@ -398,6 +409,7 @@
 
         \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
+    <string name="frequency">Frequency</string>
     <string name="notification_for_checking_subscriptions">Zobrazit oznámení pro kontrolu předplatného</string>
     <string name="use_alarm_manager">Použít správce alarmu</string>
     <string name="use_alarm_manager_reliable">Použít správce alarmu (Relable Notifications)</string>
@@ -414,7 +426,7 @@
     <string name="note">POZNÁMKA</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current lists subscribed!</string>
     <string name="manage_extension_repos">Správa repozitářů rozšíření</string>
