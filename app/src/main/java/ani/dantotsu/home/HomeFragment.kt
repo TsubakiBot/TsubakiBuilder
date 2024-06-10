@@ -189,6 +189,7 @@ class HomeFragment : Fragment() {
         binding.homeTopContainer.withFlexibleMargin(resources.configuration)
         binding.homeUserBg.updateLayoutParams { height += statusBarHeight }
         binding.homeUserBgNoKen.updateLayoutParams { height += statusBarHeight }
+        binding.homeTopGradient.updateLayoutParams { height += statusBarHeight }
         binding.homeTopContainer.updatePadding(top = statusBarHeight)
 
         binding.avatarFabulous.apply {
@@ -818,9 +819,8 @@ class HomeFragment : Fragment() {
                         bottomMargin = (valueAnimator.getAnimatedValue() as Int)
                     }
                 }
+                if (PrefManager.getVal(PrefName.HideRandoRec)) return@apply
                 doOnStart {
-                    binding.homeTopGradient.updatePadding(bottom = 0)
-                    if (PrefManager.getVal(PrefName.HideRandoRec)) return@doOnStart
                     homeListContainerBinding.homeRandomContainer.postDelayed({
                         homeListContainerBinding.homeRandomContainer.isVisible = true
                         ObjectAnimator.ofFloat(

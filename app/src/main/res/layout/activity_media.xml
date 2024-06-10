@@ -238,7 +238,7 @@
                         android:id="@+id/animeTrailerYT"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:padding="4dp"
+                        android:padding="3dp"
                         app:srcCompat="@drawable/yt_icon_rgb"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
 

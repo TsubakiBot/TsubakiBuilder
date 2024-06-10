@@ -48,9 +48,8 @@
                     <ImageView
                         android:id="@+id/homeTopGradient"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="308dp"
                         android:layout_marginTop="-94dp"
-                        android:paddingBottom="98dp"
                         android:src="@drawable/linear_gradient_bg"
                         tools:ignore="ContentDescription" />
 
