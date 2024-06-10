@@ -313,7 +313,7 @@
     <string name="immersive_modelist">Hide Status Bar for list</string>
     <string name="immersive_mode_info">Requires App restart to fully apply.</string>
     <string name="home_layout_show">Show/Hide Layouts on Home</string>
-     <string-array name="home_layouts">
+    <string-array name="home_layouts">
         <item>Subscriptions</item>
         <item>Continue Watching</item>
         <item>Favourite Anime</item>
@@ -323,6 +323,15 @@
         <item>Planned Manga</item>
         <item>Recommended</item>
         <item>Social Feeds</item>
+    </string-array>
+
+    <string name="notification_page">Default Notification Tab</string>
+    <string name="notification_page_desc">Select the start tab for notifications</string>
+    <string-array name="notification_type">
+        <item>All</item>
+        <item>Media</item>
+        <item>Social</item>
+        <item>User</item>
     </string-array>
 
     <string name="startUpTab">Default Start Up Tab</string>
@@ -396,6 +405,7 @@
     <string name="cancel">Cancel</string>
     <string name="clear">Clear</string>
     <string name="edit">Edit</string>
+    <string name="done">Done</string>
     <string name="this_season">This Season</string>
     <string name="next_season">Next Season</string>
     <string name="previous_season">Previous Season</string>
@@ -436,6 +446,7 @@
 
         \n\n_It is not required to sync both MAL and Anilist accounts._
     </string>
+    <string name="frequency">Frequency</string>
     <string name="notification_for_checking_subscriptions">Show notification for checking subscriptions</string>
     <string name="use_alarm_manager">Use Alarm Manager</string>
     <string name="use_alarm_manager_reliable">Use Alarm Manager (Reliable Notifications)</string>
@@ -453,7 +464,7 @@
 
     <string name="subscriptions">Subscriptions</string>
     <string name="subscribe_lists">Subscribe All Current</string>
-    <string name="subscribe_lists_desc">Add current reading / watching / planning to subscriptions</string>
+    <string name="subscribe_lists_desc">Add current reading / watching / planning</string>
     <string name="no_current_items">Current media list empty!</string>
     <string name="current_subscribed">Current lists subscribed!</string>
 

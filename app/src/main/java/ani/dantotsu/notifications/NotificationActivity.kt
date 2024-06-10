@@ -179,7 +179,7 @@ class NotificationActivity : AppCompatActivity() {
 
         binding.notificationNavBar.visibility = View.VISIBLE
         binding.notificationNavBar.updateMargins(resources.configuration)
-        binding.notificationNavBar.selectTabAt(0)
+        binding.notificationNavBar.selectTabAt(PrefManager.getVal(PrefName.NotificationPage))
         binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
     }
 

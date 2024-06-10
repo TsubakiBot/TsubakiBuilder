@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/notificationsAll"
+        android:icon="@drawable/ic_round_notifications_active_24"
+        android:title="@string/all" />
+    <item
         android:id="@+id/notificationsMedia"
         android:icon="@drawable/ic_round_menu_book_24"
         android:title="@string/media" />
@@ -12,8 +16,4 @@
         android:id="@+id/notificationsUser"
         android:icon="@drawable/ic_round_person_32"
         android:title="@string/user" />
-    <item
-        android:id="@+id/notificationsAll"
-        android:icon="@drawable/ic_round_notifications_active_24"
-        android:title="@string/all" />
 </menu>

@@ -88,7 +88,7 @@ class UserInterfaceFragment : Fragment() {
                                     ) { _, i, value ->
                                         set[i] = value
                                     }
-                                    setPositiveButton("Done") { _, _ ->
+                                    setPositiveButton(getString(R.string.done)) { _, _ ->
                                         PrefManager.setVal(PrefName.HomeLayout, set)
                                     }
                                 }.show()

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -86,6 +87,23 @@ class SettingsNotificationFragment : Fragment() {
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
                     Settings(
+                        type = ViewType.HEADER,
+                        name = getString(R.string.subscriptions)
+                    ),
+                    Settings(
+                        type = ViewType.BUTTON,
+                        name = getString(R.string.view_subscriptions),
+                        desc = getString(R.string.view_subscriptions_desc),
+                        icon = R.drawable.ic_round_search_24,
+                        onClick = {
+                            val subscriptions = SubscriptionHelper.getSubscriptions()
+                            SubscriptionsBottomDialog.newInstance(subscriptions).show(
+                                settings.supportFragmentManager,
+                                "subscriptions"
+                            )
+                        }
+                    ),
+                    Settings(
                         type = ViewType.BUTTON,
                         name = getString(R.string.subscribe_lists),
                         desc = getString(R.string.subscribe_lists_desc),
@@ -93,6 +111,81 @@ class SettingsNotificationFragment : Fragment() {
                         onClick = {
                             subscribeCurrentLists()
                         }
+                    ),
+                    Settings(
+                        type = ViewType.HEADER,
+                        name = getString(R.string.notifications)
+                    ),
+                    Settings(
+                        type = ViewType.BUTTON,
+                        name = getString(R.string.notification_page),
+                        desc = getString(R.string.notification_page_desc),
+                        icon = R.drawable.ic_round_sort_24,
+                        onClick = {
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
+                                .setTitle(getString(R.string.notification_page)).apply {
+                                    setSingleChoiceItems(
+                                        resources.getStringArray(R.array.notification_type),
+                                        PrefManager.getVal(PrefName.NotificationPage),
+                                        DialogInterface.OnClickListener { dialog, which ->
+                                            PrefManager.setVal(PrefName.NotificationPage, which)
+                                            dialog.dismiss()
+                                        }
+                                    )
+                                }.show()
+                            dialog.window?.setDimAmount(0.8f)
+                        },
+                        hasTransition = true
+                    ),
+                    Settings(
+                        type = ViewType.BUTTON,
+                        name = getString(R.string.anilist_notification_filters),
+                        desc = getString(R.string.anilist_notification_filters_desc),
+                        icon = R.drawable.ic_anilist,
+                        onClick = {
+                            val types = NotificationType.entries.map { it.name }
+                            val filteredTypes =
+                                PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes)
+                                    .toMutableSet()
+                            val selected = types.map { filteredTypes.contains(it) }.toBooleanArray()
+                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
+                                .setTitle(R.string.anilist_notification_filters)
+                                .setMultiChoiceItems(
+                                    types.toTypedArray(),
+                                    selected
+                                ) { _, which, isChecked ->
+                                    val type = types[which]
+                                    if (isChecked) {
+                                        filteredTypes.add(type)
+                                    } else {
+                                        filteredTypes.remove(type)
+                                    }
+                                    PrefManager.setVal(PrefName.AnilistFilteredTypes, filteredTypes)
+                                }.create()
+                            dialog.window?.setDimAmount(0.8f)
+                            dialog.show()
+                        },
+                        hasTransition = true
+                    ),
+                    Settings(
+                        type = ViewType.SWITCH,
+                        name = getString(R.string.notification_for_checking_subscriptions),
+                        desc = getString(R.string.notification_for_checking_subscriptions_desc),
+                        icon = R.drawable.ic_round_smart_button_24,
+                        isChecked = PrefManager.getVal(PrefName.SubscriptionCheckingNotifications),
+                        switch = { isChecked, _ ->
+                            PrefManager.setVal(
+                                PrefName.SubscriptionCheckingNotifications,
+                                isChecked
+                            )
+                        },
+                        onLongClick = {
+                            openSettings(settings, null)
+                        }
+                    ),
+                    Settings(
+                        type = ViewType.HEADER,
+                        name = getString(R.string.frequency)
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -129,49 +222,6 @@ class SettingsNotificationFragment : Fragment() {
                                 settings, PrefManager.getVal(PrefName.UseAlarmManager)
                             ).scheduleAllTasks(settings)
                         }
-                    ),
-                    Settings(
-                        type = ViewType.BUTTON,
-                        name = getString(R.string.view_subscriptions),
-                        desc = getString(R.string.view_subscriptions_desc),
-                        icon = R.drawable.ic_round_search_24,
-                        onClick = {
-                            val subscriptions = SubscriptionHelper.getSubscriptions()
-                            SubscriptionsBottomDialog.newInstance(subscriptions).show(
-                                settings.supportFragmentManager,
-                                "subscriptions"
-                            )
-                        }
-                    ),
-                    Settings(
-                        type = ViewType.BUTTON,
-                        name = getString(R.string.anilist_notification_filters),
-                        desc = getString(R.string.anilist_notification_filters_desc),
-                        icon = R.drawable.ic_anilist,
-                        onClick = {
-                            val types = NotificationType.entries.map { it.name }
-                            val filteredTypes =
-                                PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes)
-                                    .toMutableSet()
-                            val selected = types.map { filteredTypes.contains(it) }.toBooleanArray()
-                            val dialog = AlertDialog.Builder(settings, R.style.MyPopup)
-                                .setTitle(R.string.anilist_notification_filters)
-                                .setMultiChoiceItems(
-                                    types.toTypedArray(),
-                                    selected
-                                ) { _, which, isChecked ->
-                                    val type = types[which]
-                                    if (isChecked) {
-                                        filteredTypes.add(type)
-                                    } else {
-                                        filteredTypes.remove(type)
-                                    }
-                                    PrefManager.setVal(PrefName.AnilistFilteredTypes, filteredTypes)
-                                }.create()
-                            dialog.window?.setDimAmount(0.8f)
-                            dialog.show()
-                        }
-
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -235,22 +285,6 @@ class SettingsNotificationFragment : Fragment() {
                                 }.create()
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
-                        }
-                    ),
-                    Settings(
-                        type = ViewType.SWITCH,
-                        name = getString(R.string.notification_for_checking_subscriptions),
-                        desc = getString(R.string.notification_for_checking_subscriptions_desc),
-                        icon = R.drawable.ic_round_smart_button_24,
-                        isChecked = PrefManager.getVal(PrefName.SubscriptionCheckingNotifications),
-                        switch = { isChecked, _ ->
-                            PrefManager.setVal(
-                                PrefName.SubscriptionCheckingNotifications,
-                                isChecked
-                            )
-                        },
-                        onLongClick = {
-                            openSettings(settings, null)
                         }
                     ),
                     Settings(

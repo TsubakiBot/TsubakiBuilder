@@ -783,7 +783,7 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
-    private val alphaTime = 500L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+    private val alphaTime = 450L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
 
     private fun onAlphaDissolved(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
