@@ -820,6 +820,7 @@ class HomeFragment : Fragment() {
                 }
                 doOnStart {
                     binding.homeTopGradient.updatePadding(bottom = 0)
+                    if (PrefManager.getVal(PrefName.HideRandoRec)) return@doOnStart
                     homeListContainerBinding.homeRandomContainer.postDelayed({
                         homeListContainerBinding.homeRandomContainer.isVisible = true
                         ObjectAnimator.ofFloat(

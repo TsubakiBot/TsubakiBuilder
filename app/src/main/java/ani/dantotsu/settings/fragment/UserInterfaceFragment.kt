@@ -101,7 +101,14 @@ class UserInterfaceFragment : Fragment() {
                         name = getString(R.string.hide_home_main),
                         desc = getString(R.string.hide_home_main_desc),
                         icon = R.drawable.ic_clean_hands_24,
-                        pref = PrefName.HomeMainHide
+                        pref = PrefName.HomeMainHide,
+                    ),
+                    Settings(
+                        type = ViewType.SWITCH,
+                        name = getString(R.string.random_recommended),
+                        desc = getString(R.string.random_recommended_desc),
+                        icon = R.drawable.ic_auto_fix_high_24,
+                        pref = PrefName.HideRandoRec
                     ),
                     Settings(
                         type = ViewType.SWITCH,
