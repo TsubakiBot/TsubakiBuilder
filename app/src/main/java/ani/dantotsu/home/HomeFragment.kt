@@ -875,16 +875,16 @@ class HomeFragment : Fragment() {
             ).setDuration(alphaTime).apply {
                 doOnEnd {
                     isInvisible = true
-                    homeListContainerBinding.homeRandomAnime.run {
-                        ObjectAnimator.ofFloat(
-                            this, View.ALPHA, 1.0f, 0f
-                        ).setDuration(alphaTime).apply {
-                            doOnEnd {
-                                isInvisible = true
-                                onAlphaDissolved(configuration)
-                            }
-                        }
-                    }.start()
+                }
+            }
+        }.start()
+        homeListContainerBinding.homeRandomAnime.run {
+            ObjectAnimator.ofFloat(
+                this, View.ALPHA, 1.0f, 0f
+            ).setDuration(alphaTime).apply {
+                doOnEnd {
+                    isInvisible = true
+                    onAlphaDissolved(configuration)
                 }
             }
         }.start()
