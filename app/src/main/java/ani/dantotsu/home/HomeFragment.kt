@@ -162,7 +162,7 @@ class HomeFragment : Fragment() {
 
                     homeListContainerBinding.homeListContainer.postDelayed({
                         rotateBackToStraight(resources.configuration)
-                    }, (750 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()) + 150L)
+                    }, 900 * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong())
                 }
             }
         } else {
@@ -783,13 +783,13 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
-    val alphaTime = 400L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+    private val alphaTime = 500L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
 
     private fun onAlphaDissolved(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-        val adjustTime = 750L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
         val rotateTime = 600L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+        val adjustTime = (rotateTime + 150L) * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
 
         homeListContainerBinding.homeListContainer.run {
             ValueAnimator.ofInt(measuredHeight, 76.toPx).apply {
@@ -820,21 +820,19 @@ class HomeFragment : Fragment() {
                 }
                 doOnStart {
                     binding.homeTopGradient.updatePadding(bottom = 0)
-                    homeListContainerBinding.homeRandomContainer.run {
-                        isVisible = true
+                    homeListContainerBinding.homeRandomContainer.postDelayed({
+                        homeListContainerBinding.homeRandomContainer.isVisible = true
                         ObjectAnimator.ofFloat(
-                            this, View.ALPHA, 0f, 1.0f
-                        ).setDuration(alphaTime).apply {
-                            doOnEnd {
-                                homeListContainerBinding.homeRandomAnimeHorz.setOnClickListener {
-                                    homeListContainerBinding.homeRandomAnime.performClick()
-                                }
-                                homeListContainerBinding.homeRandomMangaHorz.setOnClickListener {
-                                    homeListContainerBinding.homeRandomManga.performClick()
-                                }
-                            }
+                            homeListContainerBinding.homeRandomContainer, View.ALPHA, 0f, 1.0f
+                        ).setDuration(alphaTime).start()
+
+                        homeListContainerBinding.homeRandomAnimeHorz.setOnClickListener {
+                            homeListContainerBinding.homeRandomAnime.performClick()
                         }
-                    }.start()
+                        homeListContainerBinding.homeRandomMangaHorz.setOnClickListener {
+                            homeListContainerBinding.homeRandomManga.performClick()
+                        }
+                    }, alphaTime)
                 }
             }.setDuration(adjustTime).start()
         }
