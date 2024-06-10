@@ -310,16 +310,17 @@ class MainActivity : AppCompatActivity() {
                 else
                     24.toPx
             }
-            selectedOption = if (fragment != null) {
-                when (fragment) {
-                    AnimeFragment::class.java.name -> 0
-                    HomeFragment::class.java.name -> 1
-                    MangaFragment::class.java.name -> 2
-                    else -> 1
-                }
-            } else {
-                PrefManager.getVal(PrefName.DefaultStartUpTab)
+        }
+
+        selectedOption = if (fragment != null) {
+            when (fragment) {
+                AnimeFragment::class.java.name -> 0
+                HomeFragment::class.java.name -> 1
+                MangaFragment::class.java.name -> 2
+                else -> 1
             }
+        } else {
+            PrefManager.getVal(PrefName.DefaultStartUpTab)
         }
 
         intent.extras?.let { extras ->
