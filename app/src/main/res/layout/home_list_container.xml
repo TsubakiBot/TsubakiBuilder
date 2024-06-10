@@ -7,9 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="186dp"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp">
+        android:orientation="horizontal">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/homeAnimeList"
@@ -64,65 +64,12 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/homeMangaList"
+            android:id="@+id/homeRandomAnime"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="-24dp"
             android:layout_marginEnd="-48dp"
-            android:layout_weight="1"
-            android:rotation="-45"
-            android:visibility="invisible"
-            app:boxStrokeColor="@color/text_input_layout_stroke_color"
-            app:cardCornerRadius="16dp"
-            tools:visibility="visible">
-
-            <ImageView
-                android:id="@+id/homeMangaListImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                tools:ignore="ContentDescription"
-                tools:src="@tools:sample/backgrounds/scenic" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.6"
-                android:background="@color/bg_black" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="-4dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/manga_list"
-                    android:textAllCaps="true"
-                    android:textColor="@color/bg_white"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="64dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/colorPrimary" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/homeRandomAnime"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="-48dp"
-            android:layout_marginEnd="-24dp"
             android:layout_weight="1"
             android:rotation="-45"
             android:visibility="invisible"
@@ -157,6 +104,59 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/random_anime"
+                    android:textAllCaps="true"
+                    android:textColor="@color/bg_white"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="64dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/colorPrimary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homeMangaList"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="-48dp"
+            android:layout_marginEnd="-24dp"
+            android:layout_weight="1"
+            android:rotation="-45"
+            android:visibility="invisible"
+            app:boxStrokeColor="@color/text_input_layout_stroke_color"
+            app:cardCornerRadius="16dp"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/homeMangaListImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="@color/bg_black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/manga_list"
                     android:textAllCaps="true"
                     android:textColor="@color/bg_white"
                     android:textSize="14sp" />
@@ -221,4 +221,121 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homeRandomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:visibility="gone"
+        tools:visibility="visible" >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homeRandomAnimeHorz"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginHorizontal="8dp"
+            app:boxStrokeColor="@color/text_input_layout_stroke_color"
+            app:cardCornerRadius="16dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/homeRandomMangaHorz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="256dp">
+
+            <ImageView
+                android:id="@+id/homeRandomAnimeImageHorz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="@color/bg_black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/random_anime"
+                    android:textAllCaps="true"
+                    android:textColor="@color/bg_white"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="64dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/colorPrimary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homeRandomMangaHorz"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginHorizontal="8dp"
+            app:boxStrokeColor="@color/text_input_layout_stroke_color"
+            app:cardCornerRadius="16dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/homeRandomAnimeHorz"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="256dp" >
+
+            <ImageView
+                android:id="@+id/homeRandomMangaImageHorz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="@color/bg_black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/random_manga"
+                    android:textAllCaps="true"
+                    android:textColor="@color/bg_white"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="64dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/colorPrimary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

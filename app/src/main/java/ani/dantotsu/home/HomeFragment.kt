@@ -23,9 +23,11 @@ import android.widget.TextView
 import androidx.annotation.OptIn
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -296,8 +298,14 @@ class HomeFragment : Fragment() {
                     } while (media == null)
                     val imageView = if (type == MediaType.MANGA)
                         homeListContainerBinding.homeRandomMangaImage
-                    else homeListContainerBinding.homeRandomAnimeImage
+                    else
+                        homeListContainerBinding.homeRandomAnimeImage
                     imageView.loadImage(media.banner ?: media.cover)
+                    val buttonImage = if (type == MediaType.MANGA)
+                        homeListContainerBinding.homeRandomMangaImageHorz
+                    else
+                        homeListContainerBinding.homeRandomAnimeImageHorz
+                    buttonImage.loadImage(media.banner ?: media.cover)
                     return media
                 }
 
@@ -330,21 +338,9 @@ class HomeFragment : Fragment() {
                     onRandomClick(MediaType.ANIME)
                     randomAnime = getRandomMedia(MediaType.ANIME)
                 }
-                homeListContainerBinding.homeAnimeList.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    onRandomClick(MediaType.ANIME)
-                    randomAnime = getRandomMedia(MediaType.ANIME)
-                    true
-                }
                 homeListContainerBinding.homeRandomManga.setOnClickListener {
                     onRandomClick(MediaType.MANGA)
                     randomManga = getRandomMedia(MediaType.MANGA)
-                }
-                homeListContainerBinding.homeMangaList.setOnLongClickListener {
-                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    onRandomClick(MediaType.MANGA)
-                    randomManga = getRandomMedia(MediaType.MANGA)
-                    true
                 }
             }
         }
@@ -787,6 +783,8 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
+    val alphaTime = 400L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
+
     private fun onAlphaDissolved(configuration: Configuration) {
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
@@ -815,11 +813,28 @@ class HomeFragment : Fragment() {
                 (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin,
                 if (portrait) 0 else 24.toPx
             ).apply {
-                binding.homeTopGradient.updatePadding(bottom = 0)
                 addUpdateListener { valueAnimator ->
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         bottomMargin = (valueAnimator.getAnimatedValue() as Int)
                     }
+                }
+                doOnStart {
+                    binding.homeTopGradient.updatePadding(bottom = 0)
+                    homeListContainerBinding.homeRandomContainer.run {
+                        isVisible = true
+                        ObjectAnimator.ofFloat(
+                            this, View.ALPHA, 0f, 1.0f
+                        ).setDuration(alphaTime).apply {
+                            doOnEnd {
+                                homeListContainerBinding.homeRandomAnimeHorz.setOnClickListener {
+                                    homeListContainerBinding.homeRandomAnime.performClick()
+                                }
+                                homeListContainerBinding.homeRandomMangaHorz.setOnClickListener {
+                                    homeListContainerBinding.homeRandomManga.performClick()
+                                }
+                            }
+                        }
+                    }.start()
                 }
             }.setDuration(adjustTime).start()
         }
@@ -829,6 +844,7 @@ class HomeFragment : Fragment() {
                 this, View.ROTATION, rotation, 0f
             ).setDuration(rotateTime).apply {
                 doOnEnd {
+                    homeListContainerBinding.homeRandomAnime.isGone = true
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         marginStart = 8.toPx
                         marginEnd = 8.toPx
@@ -842,6 +858,7 @@ class HomeFragment : Fragment() {
                 this, View.ROTATION, rotation, 0f
             ).setDuration(rotateTime).apply {
                 doOnEnd {
+                    homeListContainerBinding.homeRandomManga.isGone = true
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
                         marginStart = 8.toPx
                         marginEnd = 8.toPx
@@ -853,20 +870,19 @@ class HomeFragment : Fragment() {
 
     private fun rotateBackToStraight(configuration: Configuration) {
         if (!PrefManager.getVal<Boolean>(PrefName.HomeMainHide)) return
-        val alphaTime = 400L * PrefManager.getVal<Float>(PrefName.AnimationSpeed).toLong()
 
         homeListContainerBinding.homeRandomManga.run {
             ObjectAnimator.ofFloat(
                 this, View.ALPHA, 1.0f, 0f
             ).setDuration(alphaTime).apply {
                 doOnEnd {
-                    isGone = true
+                    isInvisible = true
                     homeListContainerBinding.homeRandomAnime.run {
                         ObjectAnimator.ofFloat(
                             this, View.ALPHA, 1.0f, 0f
                         ).setDuration(alphaTime).apply {
                             doOnEnd {
-                                isGone = true
+                                isInvisible = true
                                 onAlphaDissolved(configuration)
                             }
                         }
@@ -877,6 +893,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun rotateButtonsToBlades(configuration: Configuration) {
+        homeListContainerBinding.homeRandomContainer.isGone = true
+        homeListContainerBinding.homeRandomAnime.alpha = 1.0f
+        homeListContainerBinding.homeRandomAnime.isVisible = true
+        homeListContainerBinding.homeRandomManga.alpha = 1.0f
+        homeListContainerBinding.homeRandomManga.isVisible = true
         val portrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
         homeListContainerBinding.homeListContainer.run {
             updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -913,7 +934,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeListContainerBinding.homeMangaList.run {
+        homeListContainerBinding.homeRandomAnime.run {
             rotation = angle
             updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 if (portrait) {
@@ -926,7 +947,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeListContainerBinding.homeRandomAnime.run {
+        homeListContainerBinding.homeMangaList.run {
             alpha = 1f
             isVisible = true
             rotation = angle
