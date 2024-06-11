@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.Animatable
@@ -63,6 +64,7 @@ import androidx.core.math.MathUtils.clamp
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.core.widget.ImageViewCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -217,23 +219,15 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var exoSettings: ImageButton
     private lateinit var exoSubtitle: ImageButton
     private lateinit var exoSubtitleView: SubtitleView
-    private lateinit var exoAudioTrack: ImageButton
-    private lateinit var exoRotate: ImageButton
-    private lateinit var exoSpeed: ImageButton
-    private lateinit var exoScreen: ImageButton
     private lateinit var exoNext: ImageButton
     private lateinit var exoPrev: ImageButton
     private lateinit var exoSkipOpEd: ImageButton
-    private lateinit var exoPip: ImageButton
     private lateinit var exoBrightness: Slider
-    private lateinit var exoBrightnessIcon: ImageView
     private lateinit var exoVolume: Slider
-    private lateinit var exoVolumeIcon: ImageView
     private lateinit var exoBrightnessCont: View
     private lateinit var exoVolumeCont: View
     private lateinit var exoSkip: View
     private lateinit var skipTimeButton: View
-    private lateinit var skipTimeText: TextView
     private lateinit var timeStampText: TextView
     private lateinit var animeTitle: TextView
     private lateinit var videoInfo: TextView
@@ -501,22 +495,14 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoSource = playerView.findViewById(R.id.exo_source)
         exoSettings = playerView.findViewById(R.id.exo_settings)
         exoSubtitle = playerView.findViewById(R.id.exo_sub)
-        exoAudioTrack = playerView.findViewById(R.id.exo_audio)
         exoSubtitleView = playerView.findViewById(androidx.media3.ui.R.id.exo_subtitles)
-        exoRotate = playerView.findViewById(R.id.exo_rotate)
-        exoSpeed = playerView.findViewById(androidx.media3.ui.R.id.exo_playback_speed)
-        exoScreen = playerView.findViewById(R.id.exo_screen)
         exoBrightness = playerView.findViewById(R.id.exo_brightness)
-        exoBrightnessIcon = playerView.findViewById(R.id.exo_brightness_icon)
         exoVolume = playerView.findViewById(R.id.exo_volume)
-        exoVolumeIcon = playerView.findViewById(R.id.exo_volume_icon)
         exoBrightnessCont = playerView.findViewById(R.id.exo_brightness_cont)
         exoVolumeCont = playerView.findViewById(R.id.exo_volume_cont)
-        exoPip = playerView.findViewById(R.id.exo_pip)
         exoSkipOpEd = playerView.findViewById(R.id.exo_skip_op_ed)
         exoSkip = playerView.findViewById(R.id.exo_skip)
         skipTimeButton = playerView.findViewById(R.id.exo_skip_timestamp)
-        skipTimeText = skipTimeButton.findViewById(R.id.exo_skip_timestamp_text)
         timeStampText = playerView.findViewById(R.id.exo_time_stamp_text)
 
         animeTitle = playerView.findViewById(R.id.exo_anime_title)
@@ -534,6 +520,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         }, AUDIO_CONTENT_TYPE_MOVIE, AUDIOFOCUS_GAIN)
 
         if (System.getInt(contentResolver, System.ACCELEROMETER_ROTATION, 0) != 1) {
+            val exoRotate = playerView.findViewById<ImageButton>(R.id.exo_rotate)
             if (PrefManager.getVal(PrefName.RotationPlayer)) {
                 orientationListener =
                     object : OrientationEventListener(this, SensorManager.SENSOR_DELAY_UI) {
@@ -638,6 +625,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         // Picture-in-picture
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val exoPip = playerView.findViewById<ImageButton>(R.id.exo_pip)
             pipEnabled = packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)
                     && PrefManager.getVal(PrefName.Pip)
             if (pipEnabled) {
@@ -658,19 +646,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val lockButton = playerView.findViewById<ImageButton>(R.id.exo_unlock)
         val timeline =
             playerView.findViewById<ExtendedTimeBar>(androidx.media3.ui.R.id.exo_progress)
-        playerView.findViewById<ImageButton>(R.id.exo_lock).setOnClickListener {
-            locked = true
-            screen.visibility = View.GONE
-            container.visibility = View.GONE
-            lockButton.visibility = View.VISIBLE
-            timeline.setForceDisabled(true)
-        }
         lockButton.setOnClickListener {
-            locked = false
-            screen.visibility = View.VISIBLE
-            container.visibility = View.VISIBLE
-            it.visibility = View.GONE
-            timeline.setForceDisabled(false)
+            val button = it as ImageButton
+            locked = !locked
+            if (locked) {
+                button.setImageResource(R.drawable.ic_round_lock_24)
+                ImageViewCompat.setImageTintList(button, null)
+            } else {
+                button.setImageResource(R.drawable.ic_round_lock_open_24)
+                ImageViewCompat.setImageTintList(button, ColorStateList.valueOf(Color.WHITE))
+            }
+            screen.isVisible = !locked
+            container.isVisible = !locked
+            timeline.setForceDisabled(locked)
         }
 
         //Skip Time Button
@@ -931,6 +919,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
 
+            val exoBrightnessIcon = playerView.findViewById<ImageView>(R.id.exo_brightness_icon)
             fun setBrightnessIconByValue(brightness: Float) {
                 when (brightness) {
                     in 0F..3F -> {
@@ -972,6 +961,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 brightnessHide()
             }
 
+            val exoVolumeIcon = playerView.findViewById<ImageView>(R.id.exo_volume_icon)
             fun setAudioIconByVolume(volume: Float) {
                 when (volume) {
                     0F -> {
@@ -1042,7 +1032,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                 override fun onScrollYClick(y: Float) {
                     if (!locked && PrefManager.getVal(PrefName.Gestures)) {
-                        if (!playerView.isControllerFullyVisible) return
                         exoBrightness.value = clamp(exoBrightness.value + y / 100, 0f, 10f)
                         if (exoBrightnessCont.visibility != View.VISIBLE) {
                             exoBrightnessCont.visibility = View.VISIBLE
@@ -1075,7 +1064,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                 override fun onScrollYClick(y: Float) {
                     if (!locked && PrefManager.getVal(PrefName.Gestures)) {
-                        if (!playerView.isControllerFullyVisible) return
                         exoVolume.value = clamp(exoVolume.value + y / 100, 0f, 10f)
                         if (exoVolumeCont.visibility != View.VISIBLE) {
                             exoVolumeCont.visibility = View.VISIBLE
@@ -1211,7 +1199,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             else -> AspectRatioFrameLayout.RESIZE_MODE_FIT
         }
 
-        exoScreen.setOnClickListener {
+        playerView.findViewById<ImageButton>(R.id.exo_screen).setOnClickListener {
             if (isFullscreen < 2) isFullscreen += 1 else isFullscreen = 0
             playerView.resizeMode = when (isFullscreen) {
                 0 -> AspectRatioFrameLayout.RESIZE_MODE_FIT
@@ -1289,7 +1277,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         var speed: Float
         val speedDialog =
             AlertDialog.Builder(this, R.style.MyPopup).setTitle(getString(R.string.speed))
-        exoSpeed.setOnClickListener {
+        playerView.findViewById<ImageButton>(androidx.media3.ui.R.id.exo_playback_speed).setOnClickListener {
             val dialog = speedDialog.setSingleChoiceItems(speedsName, curSpeed) { dialog, i ->
                 if (isInitialized) {
                     PrefManager.setCustomVal("${media.id}_speed", i)
@@ -1936,6 +1924,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     //TimeStamp Updating
     private var currentTimeStamp: AniSkip.Stamp? = null
     private var skippedTimeStamps: MutableList<AniSkip.Stamp> = mutableListOf()
+    private val skipTimeText = skipTimeButton.findViewById<TextView>(R.id.exo_skip_timestamp_text)
     private fun updateTimeStamp() {
         if (isInitialized) {
             val playerCurrentTime = exoPlayer.currentPosition / 1000
@@ -2072,6 +2061,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             }
         }
         subTracks.add(loaderTrack)
+        val exoAudioTrack = playerView.findViewById<ImageButton>(R.id.exo_audio)
         exoAudioTrack.isVisible = audioTracks.size > 1
         exoAudioTrack.setOnClickListener {
             TrackGroupDialogFragment(this, audioTracks, TRACK_TYPE_AUDIO)

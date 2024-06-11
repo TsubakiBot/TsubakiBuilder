@@ -328,7 +328,7 @@
                     android:id="@+id/exo_back"
                     android:layout_width="43dp"
                     android:layout_height="match_parent"
-                    android:backgroundTint="#00FFFFFF"
+                    android:backgroundTint="@android:color/transparent"
                     android:src="@drawable/ic_round_arrow_back_ios_new_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -348,7 +348,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginBottom="-10dp"
                         android:background="@drawable/spinner_icon"
-                        android:backgroundTint="#fff"
+                        android:backgroundTint="@android:color/white"
                         android:backgroundTintMode="src_atop"
                         android:entries="@array/tips"
                         android:popupBackground="@drawable/round_corner"
@@ -379,6 +379,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="-6dp"
+                        android:layout_marginStart="6dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -386,18 +387,9 @@
                             android:id="@id/exo_playback_speed"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:backgroundTint="#00FFFFFF"
+                            android:backgroundTint="@android:color/transparent"
                             android:src="@drawable/ic_round_slow_motion_video_24"
-                            app:tint="#fff"
-                            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-                        <ImageButton
-                            android:id="@+id/exo_lock"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:backgroundTint="#00FFFFFF"
-                            app:srcCompat="@drawable/ic_round_lock_open_24"
-                            app:tint="@color/bg_white"
+                            app:tint="@android:color/white"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
                     </LinearLayout>
 
@@ -509,7 +501,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="#A8000000"
+            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
 
@@ -518,8 +510,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:backgroundTint="#00FFFFFF"
-                android:visibility="gone"
-                app:srcCompat="@drawable/ic_round_lock_24"
+                app:tint="@android:color/white"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_round_lock_open_24"
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
         </androidx.cardview.widget.CardView>
 
