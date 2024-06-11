@@ -207,6 +207,7 @@
                     android:id="@+id/homeUserStatusContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:minHeight="100dp"
                     android:visibility="gone">
 

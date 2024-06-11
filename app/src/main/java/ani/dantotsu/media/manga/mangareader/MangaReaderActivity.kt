@@ -234,9 +234,9 @@ class MangaReaderActivity : AppCompatActivity() {
     }
 
     private fun stopDiscordService() {
-        DiscordServiceSingleton.isEnabled = false
         if (DiscordService.isRunning()) {
             stopService(Intent(this, DiscordService::class.java))
+            DiscordServiceSingleton.isEnabled = false
         }
     }
 
