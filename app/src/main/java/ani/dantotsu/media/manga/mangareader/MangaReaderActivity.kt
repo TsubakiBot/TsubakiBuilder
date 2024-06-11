@@ -50,7 +50,7 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.discord.DiscordService
-import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
+import ani.dantotsu.connections.discord.DiscordServiceSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.currContext
@@ -178,13 +178,80 @@ class MangaReaderActivity : AppCompatActivity() {
         super.onConfigurationChanged(newConfig)
     }
 
+    private fun setDiscordStatus() {
+        if (DiscordService.isRunning()) return
+        val context = this
+        val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
+        val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
+        if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
+            lifecycleScope.launch {
+                val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
+                val buttons = when (discordMode) {
+                    "nothing" -> mutableListOf(
+                        RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
+                    )
+
+                    "dantotsu" -> mutableListOf(
+                        RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
+                        RPC.Link(getString(R.string.rpc_read), getString(R.string.dantotsu))
+                    )
+
+                    "anilist" -> {
+                        val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
+                        val anilistLink = "https://anilist.co/user/$userId/"
+                        mutableListOf(
+                            RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
+                            RPC.Link(getString(R.string.rpc_anilist), anilistLink)
+                        )
+                    }
+
+                    else -> mutableListOf()
+                }
+                val presence = RPC.createPresence(
+                    RPC.Companion.RPCData(
+                        applicationId = Discord.application_Id,
+                        type = RPC.Type.WATCHING,
+                        activityName = media.userPreferredName,
+                        details = chapter.title?.takeIf { it.isNotEmpty() }
+                            ?: getString(R.string.chapter_num, chapter.number),
+                        state = "${chapter.number}/${media.manga?.totalChapters ?: "??"}",
+                        largeImage = media.cover?.let { cover ->
+                            RPC.Link(
+                                media.userPreferredName,
+                                cover
+                            )
+                        },
+                        buttons = buttons
+                    )
+                )
+                val intent = Intent(context, DiscordService::class.java).apply {
+                    putExtra("presence", presence)
+                }
+                DiscordServiceSingleton.isEnabled = true
+                startService(intent)
+            }
+        }
+    }
+
+    private fun stopDiscordService() {
+        DiscordServiceSingleton.isEnabled = false
+        if (DiscordService.isRunning()) {
+            stopService(Intent(this, DiscordService::class.java))
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        stopDiscordService()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setDiscordStatus()
+    }
+
     override fun onDestroy() {
         mangaCache.clear()
-        if (DiscordServiceRunningSingleton.running) {
-            DiscordServiceRunningSingleton.running = false
-            val stopIntent = Intent(this, DiscordService::class.java)
-            stopService(stopIntent)
-        }
         super.onDestroy()
     }
 
@@ -421,57 +488,7 @@ class MangaReaderActivity : AppCompatActivity() {
                         chaptersTitleArr.getOrNull(currentChapterIndex - 1) ?: ""
                 }
                 applySettings()
-                val context = this
-                val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
-                val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
-                if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
-                    lifecycleScope.launch {
-                        val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
-                        val buttons = when (discordMode) {
-                            "nothing" -> mutableListOf(
-                                RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
-                            )
-
-                            "dantotsu" -> mutableListOf(
-                                RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
-                                RPC.Link(getString(R.string.rpc_read), getString(R.string.dantotsu))
-                            )
-
-                            "anilist" -> {
-                                val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
-                                val anilistLink = "https://anilist.co/user/$userId/"
-                                mutableListOf(
-                                    RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
-                                    RPC.Link(getString(R.string.rpc_anilist), anilistLink)
-                                )
-                            }
-
-                            else -> mutableListOf()
-                        }
-                        val presence = RPC.createPresence(
-                            RPC.Companion.RPCData(
-                                applicationId = Discord.application_Id,
-                                type = RPC.Type.WATCHING,
-                                activityName = media.userPreferredName,
-                                details = chap.title?.takeIf { it.isNotEmpty() }
-                                    ?: getString(R.string.chapter_num, chap.number),
-                                state = "${chap.number}/${media.manga?.totalChapters ?: "??"}",
-                                largeImage = media.cover?.let { cover ->
-                                    RPC.Link(
-                                        media.userPreferredName,
-                                        cover
-                                    )
-                                },
-                                buttons = buttons
-                            )
-                        )
-                        val intent = Intent(context, DiscordService::class.java).apply {
-                            putExtra("presence", presence)
-                        }
-                        DiscordServiceRunningSingleton.running = true
-                        startService(intent)
-                    }
-                }
+                setDiscordStatus()
             }
         }
 

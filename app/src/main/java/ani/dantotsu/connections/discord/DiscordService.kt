@@ -1,6 +1,8 @@
 package ani.dantotsu.connections.discord
 
 import android.Manifest
+import android.app.ActivityManager
+import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -32,6 +34,8 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 import java.io.File
 
 class DiscordService : Service() {
@@ -95,7 +99,6 @@ class DiscordService : Service() {
             DiscordWebSocketListener()
         )
         client.dispatcher.executorService.shutdown()
-        SERVICE_RUNNING = true
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -108,7 +111,7 @@ class DiscordService : Service() {
                 presenceStore = lPresence!!
             } else {
                 log("Service onStartCommand() no presence")
-                DiscordServiceRunningSingleton.running = false
+                DiscordServiceSingleton.isEnabled = false
                 //kill the client
                 client = OkHttpClient()
                 stopSelf()
@@ -120,7 +123,7 @@ class DiscordService : Service() {
     override fun onDestroy() {
         log("Service Destroyed")
         wakeLock.release()
-        if (DiscordServiceRunningSingleton.running) {
+        if (DiscordServiceSingleton.isEnabled) {
             log("Accidental Service Destruction, restarting service")
             val intent = Intent(baseContext, DiscordService::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -140,7 +143,6 @@ class DiscordService : Service() {
                 )
             }
         }
-        SERVICE_RUNNING = false
         client = OkHttpClient()
         if (this::webSocket.isInitialized) webSocket.close(1000, "Closed by user")
         super.onDestroy()
@@ -409,11 +411,22 @@ class DiscordService : Service() {
     }
 
     companion object {
-        var SERVICE_RUNNING = false
+        fun isRunning(): Boolean {
+            Injekt.get<Application>().run {
+                with(getSystemService(ACTIVITY_SERVICE) as ActivityManager) {
+                    @Suppress("DEPRECATION") // We only need our services
+                    getRunningServices(Int.MAX_VALUE).forEach {
+                        if (DiscordService::class.java.name.equals(it.service.className)) {
+                            return true
+                        }
+                    }
+                }
+            }
+            return false
+        }
     }
 }
 
-object DiscordServiceRunningSingleton {
-    var running = false
-
+object DiscordServiceSingleton {
+    var isEnabled = false
 }

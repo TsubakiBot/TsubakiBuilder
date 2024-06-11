@@ -117,7 +117,7 @@ import ani.dantotsu.circularReveal
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.discord.DiscordService
-import ani.dantotsu.connections.discord.DiscordServiceRunningSingleton
+import ani.dantotsu.connections.discord.DiscordServiceSingleton
 import ani.dantotsu.connections.discord.RPC
 import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.databinding.ActivityExoplayerBinding
@@ -1385,7 +1385,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun setDiscordStatus() {
-        if (DiscordServiceRunningSingleton.running) return
+        if (DiscordService.isRunning()) return
         val context = this
         val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
@@ -1436,16 +1436,16 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 val intent = Intent(context, DiscordService::class.java).apply {
                     putExtra("presence", presence)
                 }
-                DiscordServiceRunningSingleton.running = true
+                DiscordServiceSingleton.isEnabled = true
                 startService(intent)
             }
         }
     }
 
     private fun stopDiscordService() {
-        if (DiscordServiceRunningSingleton.running) {
+        DiscordServiceSingleton.isEnabled = false
+        if (DiscordService.isRunning()) {
             stopService(Intent(this, DiscordService::class.java))
-            DiscordServiceRunningSingleton.running = false
         }
     }
 
