@@ -38,7 +38,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
 import bit.himitsu.update.MatagiUpdater
-import bit.himitsu.updateMargins
+import bit.himitsu.withFlexibleMargin
 import com.xwray.groupie.GroupieAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -178,7 +178,7 @@ class NotificationActivity : AppCompatActivity() {
         }
 
         binding.notificationNavBar.visibility = View.VISIBLE
-        binding.notificationNavBar.updateMargins(resources.configuration)
+        binding.notificationNavBar.withFlexibleMargin(resources.configuration)
         binding.notificationNavBar.selectTabAt(PrefManager.getVal(PrefName.NotificationPage))
         binding.notificationNavBar.onTabSelected = { filterByType(it.id) }
     }
@@ -388,7 +388,7 @@ class NotificationActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.notificationNavBar.updateMargins(newConfig)
+        binding.notificationNavBar.withFlexibleMargin(newConfig)
     }
 
     companion object {

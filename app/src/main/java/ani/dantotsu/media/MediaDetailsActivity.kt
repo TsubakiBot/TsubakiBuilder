@@ -65,7 +65,7 @@ import ani.dantotsu.view.GestureSlider
 import ani.dantotsu.view.dialog.ImageViewDialog
 import bit.himitsu.setBaseline
 import bit.himitsu.torrServerStart
-import bit.himitsu.updateMargins
+import bit.himitsu.withFlexibleMargin
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.google.android.material.appbar.AppBarLayout
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
@@ -125,7 +125,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         screenWidth = resources.displayMetrics.widthPixels.toFloat()
         initActivity(this)
         navBar = binding.mediaBottomBar.apply {
-            updateMargins(resources.configuration)
+            withFlexibleMargin(resources.configuration)
         }
 
         val oldMargin = binding.mediaViewPager.marginBottom
@@ -570,7 +570,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        navBar.apply { updateMargins(newConfig) }
+        navBar.apply { withFlexibleMargin(newConfig) }
         binding.mediaViewPager.setBaseline(
             navBar, newConfig,
             if (PrefManager.getVal(PrefName.CommentsOptIn)) binding.commentInputLayout else null

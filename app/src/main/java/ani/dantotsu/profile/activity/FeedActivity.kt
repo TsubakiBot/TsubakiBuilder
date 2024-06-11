@@ -21,7 +21,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.MarkdownCreatorActivity
 import bit.himitsu.os.Version
 import bit.himitsu.setBaseline
-import bit.himitsu.updateMargins
+import bit.himitsu.withFlexibleMargin
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class FeedActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class FeedActivity : AppCompatActivity() {
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navBar = binding.feedNavBar.apply {
-            updateMargins(resources.configuration)
+            withFlexibleMargin(resources.configuration)
         }
         binding.feedViewPager.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             topMargin += statusBarHeight
@@ -87,7 +87,7 @@ class FeedActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         navBar.apply {
-            updateMargins(newConfig)
+            withFlexibleMargin(newConfig)
         }
         binding.feedViewPager.setBaseline(navBar, newConfig)
     }

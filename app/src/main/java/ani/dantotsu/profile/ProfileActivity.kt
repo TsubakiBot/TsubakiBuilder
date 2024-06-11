@@ -35,7 +35,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toast
 import ani.dantotsu.view.dialog.ImageViewDialog
 import bit.himitsu.setBaseline
-import bit.himitsu.updateMargins
+import bit.himitsu.withFlexibleMargin
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -59,7 +59,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
         val context = this
         screenWidth = resources.displayMetrics.widthPixels.toFloat()
         navBar = binding.profileNavBar.apply {
-            updateMargins(resources.configuration)
+            withFlexibleMargin(resources.configuration)
         }
         navBar.visibility = View.GONE
         binding.profileViewPager.isUserInputEnabled = false
@@ -249,7 +249,7 @@ class ProfileActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListene
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         navBar.apply {
-            updateMargins(newConfig)
+            withFlexibleMargin(newConfig)
         }
         binding.profileViewPager.setBaseline(navBar, newConfig)
     }
