@@ -1916,9 +1916,9 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     //TimeStamp Updating
     private var currentTimeStamp: AniSkip.Stamp? = null
     private var skippedTimeStamps: MutableList<AniSkip.Stamp> = mutableListOf()
-    private val skipTimeButton = playerView.findViewById<MaterialCardView>(R.id.exo_skip_timestamp)
-    private val skipTimeText = skipTimeButton.findViewById<TextView>(R.id.exo_skip_timestamp_text)
     private fun updateTimeStamp() {
+        val skipTimeButton = playerView.findViewById<MaterialCardView>(R.id.exo_skip_timestamp)
+        val skipTimeText = skipTimeButton.findViewById<TextView>(R.id.exo_skip_timestamp_text)
         if (isInitialized) {
             val playerCurrentTime = exoPlayer.currentPosition / 1000
             currentTimeStamp = model.timeStamps.value?.find { timestamp ->
