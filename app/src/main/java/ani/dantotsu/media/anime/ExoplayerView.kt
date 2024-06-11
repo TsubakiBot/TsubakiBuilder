@@ -1385,6 +1385,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     private fun setDiscordStatus() {
+        if (DiscordServiceRunningSingleton.running) return
         val context = this
         val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
@@ -1443,9 +1444,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
     private fun stopDiscordService() {
         if (DiscordServiceRunningSingleton.running) {
-            val stopIntent = Intent(this, DiscordService::class.java)
+            stopService(Intent(this, DiscordService::class.java))
             DiscordServiceRunningSingleton.running = false
-            stopService(stopIntent)
         }
     }
 
@@ -1833,11 +1833,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     override fun onStop() {
+        super.onStop()
         if (castPlayer?.isPlaying == false) {
             playerView.player?.pause()
         }
         stopDiscordService()
-        super.onStop()
     }
 
     override fun onStart() {
