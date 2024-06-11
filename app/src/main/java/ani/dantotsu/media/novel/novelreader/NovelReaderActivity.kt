@@ -26,7 +26,6 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.webkit.WebViewCompat
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.currContext
@@ -42,6 +41,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.GestureSlider
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.google.android.material.slider.Slider
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -202,7 +202,7 @@ class NovelReaderActivity : AppCompatActivity(), EbookReaderEventListener {
                 .show(supportFragmentManager, NovelReaderSettingsDialogFragment.TAG)
         }
 
-        val gestureDetector = GestureDetector(this, object : GesturesListener() {
+        val gestureDetector = GestureDetector(this, object : GestureSlider() {
             override fun onSingleClick(event: MotionEvent) {
                 handleController()
             }

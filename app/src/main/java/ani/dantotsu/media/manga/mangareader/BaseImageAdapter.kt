@@ -14,13 +14,13 @@ import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.FileUrl
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.R
 import ani.dantotsu.media.manga.MangaCache
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.settings.CurrentReaderSettings
 import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
+import ani.dantotsu.view.GestureSlider
 import com.alexvasilkov.gestures.views.GestureFrameLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -102,7 +102,7 @@ abstract class BaseImageAdapter(
                 }
             }
         } else {
-            val detector = GestureDetector(view.context, object : GesturesListener() {
+            val detector = GestureDetector(view.context, object : GestureSlider() {
                 override fun onSingleClick(event: MotionEvent) =
                     activity.handleController(event = event)
             })

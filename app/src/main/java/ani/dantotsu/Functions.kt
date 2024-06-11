@@ -36,8 +36,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Environment
-import android.os.Handler
-import android.os.Looper
 import android.os.PowerManager
 import android.os.SystemClock
 import android.provider.Settings
@@ -47,7 +45,6 @@ import android.text.Spanned
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.GestureDetector
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
@@ -83,7 +80,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -146,8 +142,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import java.util.TimeZone
-import java.util.Timer
-import java.util.TimerTask
 import kotlin.collections.set
 import kotlin.math.log2
 import kotlin.math.max
@@ -603,74 +597,6 @@ suspend fun getSize(file: FileUrl): Double? {
 
 suspend fun getSize(file: String): Double? {
     return getSize(FileUrl(file))
-}
-
-
-abstract class GesturesListener : GestureDetector.SimpleOnGestureListener() {
-    private var timer: Timer? = null //at class level;
-    private val delay: Long = 200
-
-    override fun onSingleTapUp(e: MotionEvent): Boolean {
-        processSingleClickEvent(e)
-        return super.onSingleTapUp(e)
-    }
-
-    override fun onLongPress(e: MotionEvent) {
-        processLongClickEvent(e)
-        super.onLongPress(e)
-    }
-
-    override fun onDoubleTap(e: MotionEvent): Boolean {
-        processDoubleClickEvent(e)
-        return super.onDoubleTap(e)
-    }
-
-    override fun onScroll(
-        e1: MotionEvent?,
-        e2: MotionEvent,
-        distanceX: Float,
-        distanceY: Float
-    ): Boolean {
-        onScrollYClick(distanceY)
-        onScrollXClick(distanceX)
-        return super.onScroll(e1, e2, distanceX, distanceY)
-    }
-
-    private fun processSingleClickEvent(e: MotionEvent) {
-        val handler = Handler(Looper.getMainLooper())
-        val mRunnable = Runnable {
-            onSingleClick(e)
-        }
-        timer = Timer().apply {
-            schedule(object : TimerTask() {
-                override fun run() {
-                    handler.post(mRunnable)
-                }
-            }, delay)
-        }
-    }
-
-    private fun processDoubleClickEvent(e: MotionEvent) {
-        timer?.apply {
-            cancel()
-            purge()
-        }
-        onDoubleClick(e)
-    }
-
-    private fun processLongClickEvent(e: MotionEvent) {
-        timer?.apply {
-            cancel()
-            purge()
-        }
-        onLongClick(e)
-    }
-
-    open fun onSingleClick(event: MotionEvent) {}
-    open fun onDoubleClick(event: MotionEvent) {}
-    open fun onScrollYClick(y: Float) {}
-    open fun onScrollXClick(y: Float) {}
-    open fun onLongClick(event: MotionEvent) {}
 }
 
 fun View.circularReveal(ex: Int, ey: Int, subX: Boolean, time: Long) {

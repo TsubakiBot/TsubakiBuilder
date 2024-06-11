@@ -44,7 +44,6 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
@@ -88,6 +87,7 @@ import ani.dantotsu.toDp
 import ani.dantotsu.toPx
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.GestureSlider
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.alexvasilkov.gestures.views.GestureFrameLayout
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
@@ -661,7 +661,7 @@ class MangaReaderActivity : AppCompatActivity() {
             binding.mangaReaderRecyclerContainer.controller.settings.isRotationEnabled =
                 defaultSettings.rotation
 
-            val detector = GestureDetector(this, object : GesturesListener() {
+            val detector = GestureDetector(this, object : GestureSlider() {
                 override fun onLongPress(e: MotionEvent) {
                     if (binding.mangaReaderRecycler.findChildViewUnder(e.x, e.y).let { child ->
                             child ?: return@let false

@@ -111,7 +111,6 @@ import androidx.media3.ui.SubtitleView
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.brightnessConverter
@@ -161,6 +160,7 @@ import ani.dantotsu.toast
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.CustomCastButton
+import ani.dantotsu.view.GestureSlider
 import bit.himitsu.TorrManager.removeTorrent
 import bit.himitsu.os.Version
 import com.anggrayudi.storage.file.extension
@@ -169,6 +169,7 @@ import com.google.android.gms.cast.framework.CastButtonFactory
 import com.google.android.gms.cast.framework.CastContext
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.slider.Slider
 import com.lagradost.nicehttp.ignoreAllSSLErrors
 import eu.kanade.tachiyomi.data.torrentServer.model.Torrent
@@ -227,7 +228,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private lateinit var exoBrightnessCont: View
     private lateinit var exoVolumeCont: View
     private lateinit var exoSkip: View
-    private lateinit var skipTimeButton: View
     private lateinit var timeStampText: TextView
     private lateinit var animeTitle: TextView
     private lateinit var videoInfo: TextView
@@ -502,7 +502,6 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         exoVolumeCont = playerView.findViewById(R.id.exo_volume_cont)
         exoSkipOpEd = playerView.findViewById(R.id.exo_skip_op_ed)
         exoSkip = playerView.findViewById(R.id.exo_skip)
-        skipTimeButton = playerView.findViewById(R.id.exo_skip_timestamp)
         timeStampText = playerView.findViewById(R.id.exo_time_stamp_text)
 
         animeTitle = playerView.findViewById(R.id.exo_anime_title)
@@ -727,8 +726,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val volumeRunnable = Runnable {
             if (exoVolumeCont.alpha == 1f)
                 lifecycleScope.launch {
-                    ObjectAnimator.ofFloat(exoVolumeCont, "alpha", 1f, 0f).setDuration(gestureSpeed)
-                        .start()
+                    ObjectAnimator.ofFloat(exoVolumeCont, "alpha", 1f, 0f)
+                        .setDuration(gestureSpeed).start()
                     delay(gestureSpeed)
                     exoVolumeCont.visibility = View.GONE
                     checkNotch()
@@ -751,29 +750,25 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         "alpha",
                         1f,
                         0f
-                    )
-                        .setDuration(controllerDuration).start()
+                    ).setDuration(controllerDuration).start()
                     ObjectAnimator.ofFloat(
                         playerView.findViewById(R.id.exo_bottom_cont),
                         "translationY",
                         0f,
                         128f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                     ObjectAnimator.ofFloat(
                         playerView.findViewById(R.id.exo_timeline_cont),
                         "translationY",
                         0f,
                         128f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                     ObjectAnimator.ofFloat(
                         playerView.findViewById(R.id.exo_top_cont),
                         "translationY",
                         0f,
                         -128f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                     playerView.postDelayed({ playerView.hideController() }, controllerDuration)
                 } else {
                     checkNotch()
@@ -790,22 +785,19 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         "translationY",
                         128f,
                         0f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                     ObjectAnimator.ofFloat(
                         playerView.findViewById(R.id.exo_timeline_cont),
                         "translationY",
                         128f,
                         0f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                     ObjectAnimator.ofFloat(
                         playerView.findViewById(R.id.exo_top_cont),
                         "translationY",
                         -128f,
                         0f
-                    )
-                        .apply { interpolator = overshoot;duration = controllerDuration;start() }
+                    ).apply { interpolator = overshoot;duration = controllerDuration;start() }
                 }
             }
         }
@@ -934,7 +926,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
 
-            //Brightness
+            // Brightness
             var brightnessTimer = Timer()
             exoBrightnessCont.visibility = View.GONE
 
@@ -979,7 +971,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
 
-            //Volume
+            // Volume
             var volumeTimer = Timer()
             exoVolumeCont.visibility = View.GONE
 
@@ -1020,8 +1012,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 }
             }
 
-            //FastRewind (Left Panel)
-            val fastRewindDetector = GestureDetector(this, object : GesturesListener() {
+            // FastRewind (Left Panel)
+            val fastRewindDetector = GestureDetector(this, object : GestureSlider() {
                 override fun onLongClick(event: MotionEvent) {
                     if (PrefManager.getVal(PrefName.FastForward)) fastForward()
                 }
@@ -1052,8 +1044,8 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                 true
             }
 
-            //FastForward (Right Panel)
-            val fastForwardDetector = GestureDetector(this, object : GesturesListener() {
+            // FastForward (Right Panel)
+            val fastForwardDetector = GestureDetector(this, object : GestureSlider() {
                 override fun onLongClick(event: MotionEvent) {
                     if (PrefManager.getVal(PrefName.FastForward)) fastForward()
                 }
@@ -1638,7 +1630,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
         PrefManager.getCustomVal<Set<String>>(
             "${media.id}_${episode.number}_subtitles", setOf()
-        ).forEach { userSubtitles.add(importSubtitle(Uri.parse(it), true))  }
+        ).forEach { userSubtitles.add(importSubtitle(Uri.parse(it), true)) }
         if (userSubtitles.isNotEmpty()) {
             mediaSource = MergingMediaSource(DefaultMediaSourceFactory(this).createMediaSource(
                 mediaItem.buildUpon().setSubtitleConfigurations(userSubtitles).build()
@@ -1924,6 +1916,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     //TimeStamp Updating
     private var currentTimeStamp: AniSkip.Stamp? = null
     private var skippedTimeStamps: MutableList<AniSkip.Stamp> = mutableListOf()
+    private val skipTimeButton = playerView.findViewById<MaterialCardView>(R.id.exo_skip_timestamp)
     private val skipTimeText = skipTimeButton.findViewById<TextView>(R.id.exo_skip_timestamp_text)
     private fun updateTimeStamp() {
         if (isInitialized) {

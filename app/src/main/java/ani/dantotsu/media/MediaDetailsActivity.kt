@@ -35,7 +35,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.ZoomOutPageTransformer
@@ -62,6 +61,7 @@ import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
 import ani.dantotsu.util.LauncherWrapper
+import ani.dantotsu.view.GestureSlider
 import ani.dantotsu.view.dialog.ImageViewDialog
 import bit.himitsu.setBaseline
 import bit.himitsu.torrServerStart
@@ -185,7 +185,7 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         }
 
         banner.blurImage(media.banner ?: media.cover)
-        val gestureDetector = GestureDetector(this, object : GesturesListener() {
+        val gestureDetector = GestureDetector(this, object : GestureSlider() {
             override fun onDoubleClick(event: MotionEvent) {
                 if (!(PrefManager.getVal(PrefName.BannerAnimations) as Boolean))
                     snackString(getString(R.string.enable_banner_animations))

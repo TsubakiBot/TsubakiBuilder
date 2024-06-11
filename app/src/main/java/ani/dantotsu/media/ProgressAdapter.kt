@@ -10,10 +10,10 @@ import android.widget.ProgressBar
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import ani.dantotsu.GesturesListener
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemProgressbarBinding
 import ani.dantotsu.snackString
+import ani.dantotsu.view.GestureSlider
 
 class ProgressAdapter(private val horizontal: Boolean = true, searched: Boolean) :
     RecyclerView.Adapter<ProgressAdapter.ProgressViewHolder>() {
@@ -30,7 +30,7 @@ class ProgressAdapter(private val horizontal: Boolean = true, searched: Boolean)
     override fun onBindViewHolder(holder: ProgressViewHolder, position: Int) {
         val progressBar = holder.binding.root
         bar = progressBar
-        val doubleClickDetector = GestureDetector(progressBar.context, object : GesturesListener() {
+        val doubleClickDetector = GestureDetector(progressBar.context, object : GestureSlider() {
             override fun onDoubleClick(event: MotionEvent) {
                 snackString(R.string.cant_wait)
                 ObjectAnimator.ofFloat(
