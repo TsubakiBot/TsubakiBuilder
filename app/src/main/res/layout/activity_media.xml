@@ -341,8 +341,7 @@
                 android:layout_height="wrap_content"
                 android:background="?android:colorBackground"
                 android:orientation="horizontal"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                android:paddingVertical="8dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/commentUserAvatar"

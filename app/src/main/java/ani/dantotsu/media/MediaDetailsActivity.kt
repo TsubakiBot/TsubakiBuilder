@@ -414,6 +414,10 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
             ) {
                 selected = newIndex
                 binding.commentInputLayout.isVisible = (hasComments && selected == 3)
+                binding.mediaViewPager.setBaseline(
+                    navBar, resources.configuration, if (binding.commentInputLayout.isVisible)
+                        binding.commentInputLayout else null
+                )
                 val sel = model.loadSelected(media, isDownload)
                 sel.window = selected
                 model.saveSelected(media.id, sel)
@@ -423,9 +427,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         navBar.selectTabAt(selected, false)
 
         binding.mediaViewPager.setBaseline(
-            navBar,
-            resources.configuration,
-            if (hasComments) binding.commentInputLayout else null
+            navBar, resources.configuration, if (binding.commentInputLayout.isVisible)
+                binding.commentInputLayout else null
         )
 
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(true) }
@@ -572,8 +575,8 @@ class MediaDetailsActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedLi
         super.onConfigurationChanged(newConfig)
         navBar.apply { withFlexibleMargin(newConfig) }
         binding.mediaViewPager.setBaseline(
-            navBar, newConfig,
-            if (PrefManager.getVal(PrefName.CommentsOptIn)) binding.commentInputLayout else null
+            navBar, resources.configuration, if (binding.commentInputLayout.isVisible)
+                binding.commentInputLayout else null
         )
         updateVideoScale()
     }
