@@ -660,7 +660,7 @@
     <string name="discord_logout_success">Utloggningen lyckades</string>
     <string name="discord_try_again">Försök logga in igen</string>
     <string name="error_loading_discord_user_data">Fel vid inläsning av Discords användardata</string>
-    <string name="discord_warning"><![CDATA[By logging in, your discord will now show what you are watching & reading on Himitsu\n\nIf you are on invisible mode, logging in will make you online, when you open Himitsu.\n\nThis does break the Discord TOS. \nAlthough Discord has never banned anyone for using Custom Rich Presence (used by Himitsu), You have still been warned.\n\Himitsu is not responsible for anything that happens to your account.]]></string>
+    <string name="discord_warning">By logging in, Discord will display what you are watching &amp; reading on Himitsu\n\nWhen opening Himitsu, your visibility will be determined by your Himitsu settings.\n\nThis functionality may violate the Discord TOS as it does not use the Discord GameSDK.\n\nHimitsu is not responsible for anything that happens to your account.</string>
     <string name="warning">Varning</string>
     <string name="force_legacy_installer">Tvinga äldre installerare</string>
     <string name="extensions_settings">Tillägg</string>
