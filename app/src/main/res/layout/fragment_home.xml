@@ -32,7 +32,7 @@
                     <com.flaviofaria.kenburnsview.KenBurnsView
                         android:id="@+id/homeUserBg"
                         android:layout_width="match_parent"
-                        android:layout_height="214dp"
+                        android:layout_height="216dp"
                         android:scaleType="centerCrop"
                         tools:ignore="ContentDescription"
                         tools:src="@tools:sample/backgrounds/scenic" />
@@ -40,7 +40,7 @@
                     <ImageView
                         android:id="@+id/homeUserBgNoKen"
                         android:layout_width="match_parent"
-                        android:layout_height="214dp"
+                        android:layout_height="216dp"
                         android:scaleType="centerCrop"
                         tools:ignore="ContentDescription"
                         tools:src="@tools:sample/backgrounds/scenic" />
@@ -48,7 +48,7 @@
                     <ImageView
                         android:id="@+id/homeTopGradient"
                         android:layout_width="match_parent"
-                        android:layout_height="310dp"
+                        android:layout_height="312dp"
                         android:layout_marginTop="-94dp"
                         android:src="@drawable/linear_gradient_bg"
                         tools:ignore="ContentDescription" />

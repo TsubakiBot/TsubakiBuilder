@@ -802,7 +802,7 @@ class HomeFragment : Fragment() {
             }.setDuration(adjustTime).start()
             ValueAnimator.ofInt(
                 (layoutParams as ViewGroup.MarginLayoutParams).topMargin,
-                if (portrait) 8.toPx else 0
+                if (portrait) 12.toPx else 0
             ).apply {
                 addUpdateListener { valueAnimator ->
                     updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -984,7 +984,7 @@ class HomeFragment : Fragment() {
             val portrait = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT
             homeListContainerBinding.homeListContainer.run {
                 updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    topMargin = if (portrait) 8.toPx else 0
+                    topMargin = if (portrait) 12.toPx else 0
                     bottomMargin = if (portrait) 0 else 32.toPx
                 }
             }
