@@ -1,6 +1,7 @@
 package ani.dantotsu.media.anime
 
 import android.content.Intent
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -117,7 +118,20 @@ class AnimeWatchAdapter(
             binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
             media.crunchyroll?.let { url ->
                 binding.streamContainer.root.isVisible = true
-                binding.streamContainer.animeSourceCR.setOnClickListener { openLinkInBrowser(url) }
+                binding.streamContainer.animeSourceCR.setOnClickListener {
+                    if (media.streamingEpisodes.isEmpty()) {
+                        openLinkInBrowser(url)
+                        return@setOnClickListener
+                    }
+                    binding.streamContainer.episodeRecyclerView.isVisible = true
+                    binding.streamContainer.episodeRecyclerView.adapter =
+                        StreamingAdapter(media.streamingEpisodes.reversed())
+                }
+                binding.streamContainer.animeSourceCR.setOnLongClickListener {
+                    it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                    openLinkInBrowser(url)
+                    true
+                }
             }
         }
 
