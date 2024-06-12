@@ -50,9 +50,10 @@
     <string name="memory_petabyte">PB</string>
     <string name="memory_exabyte">EB</string>
 
-    <string name="mimetype_zip" translatable="false">application/zip</string>
+    <string name="mimetype_apk">application/vnd.android.package-archive</string>
     <string name="mimetype_binary">application/octet-stream</string>
     <string name="mimetype_cea">application/cea-608</string>
+    <string name="mimetype_zip" translatable="false">application/zip</string>
 
     <string name="user_subtitle">\[💬\] %1$s</string>
 
