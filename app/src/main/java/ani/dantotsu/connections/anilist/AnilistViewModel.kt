@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ani.dantotsu.R
+import ani.dantotsu.media.cereal.SearchResults
 import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.connections.mal.MAL
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.profile.User
 import ani.dantotsu.settings.saving.PrefManager

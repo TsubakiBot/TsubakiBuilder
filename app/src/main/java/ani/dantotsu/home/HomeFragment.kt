@@ -49,13 +49,13 @@ import ani.dantotsu.databinding.HomeListContainerBinding
 import ani.dantotsu.home.status.UserStatusAdapter
 import ani.dantotsu.loadFragment
 import ani.dantotsu.loadImage
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.ViewType
-import ani.dantotsu.media.emptyMedia
+import ani.dantotsu.media.cereal.emptyMedia
 import ani.dantotsu.media.user.ListActivity
 import ani.dantotsu.notifications.NotificationActivity
 import ani.dantotsu.notifications.subscription.SubscriptionHelper

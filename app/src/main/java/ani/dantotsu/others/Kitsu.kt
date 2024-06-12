@@ -2,7 +2,7 @@ package ani.dantotsu.others
 
 import ani.dantotsu.FileUrl
 import ani.dantotsu.client
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger

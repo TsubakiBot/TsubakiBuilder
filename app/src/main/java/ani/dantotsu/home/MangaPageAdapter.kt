@@ -26,7 +26,7 @@ import ani.dantotsu.databinding.ItemMangaPageBinding
 import ani.dantotsu.databinding.LayoutTrendingBinding
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.GenreActivity
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.MediaListViewActivity
 import ani.dantotsu.media.SearchActivity

@@ -7,7 +7,7 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.BitmapUtil

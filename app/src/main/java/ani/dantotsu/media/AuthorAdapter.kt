@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemCharacterBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.cereal.Author
 import ani.dantotsu.setAnimation
 import java.io.Serializable
 

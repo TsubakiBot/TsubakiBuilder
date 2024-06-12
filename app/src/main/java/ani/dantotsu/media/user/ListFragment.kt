@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import ani.dantotsu.databinding.FragmentListBinding
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.OtherDetailsViewModel
 import ani.dantotsu.media.ViewType

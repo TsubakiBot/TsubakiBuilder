@@ -26,6 +26,8 @@ import ani.dantotsu.databinding.ItemMediaLargeBinding
 import ani.dantotsu.databinding.ItemMediaPageBinding
 import ani.dantotsu.databinding.ItemMediaPageSmallBinding
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.cereal.Media
+import ani.dantotsu.media.cereal.MediaSingleton
 import ani.dantotsu.setAnimation
 import ani.dantotsu.setSafeOnClickListener
 import ani.dantotsu.settings.saving.PrefManager

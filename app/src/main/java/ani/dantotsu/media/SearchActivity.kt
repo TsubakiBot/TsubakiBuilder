@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistSearch
-import ani.dantotsu.connections.anilist.SearchResults
+import ani.dantotsu.media.cereal.SearchResults
 import ani.dantotsu.databinding.ActivitySearchBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.settings.saving.PrefManager

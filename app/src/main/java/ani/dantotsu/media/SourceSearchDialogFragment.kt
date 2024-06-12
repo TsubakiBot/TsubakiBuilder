@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import ani.dantotsu.databinding.BottomSheetSourceSearchBinding
 import ani.dantotsu.media.anime.AnimeSourceAdapter
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.manga.MangaSourceAdapter
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.parsers.AnimeSources

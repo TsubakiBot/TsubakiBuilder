@@ -4,6 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ani.dantotsu.connections.anilist.Anilist
+import ani.dantotsu.media.cereal.Author
+import ani.dantotsu.media.cereal.Character
+import ani.dantotsu.media.cereal.Media
+import ani.dantotsu.media.cereal.Studio
 import ani.dantotsu.media.reviews.Review
 import java.text.DateFormat
 import java.util.Date

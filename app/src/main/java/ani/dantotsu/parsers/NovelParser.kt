@@ -1,7 +1,7 @@
 package ani.dantotsu.parsers
 
 import ani.dantotsu.FileUrl
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 
 abstract class NovelParser : BaseParser() {
 

@@ -87,11 +87,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import ani.dantotsu.connections.anilist.Genre
+import ani.dantotsu.media.cereal.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.ItemCountDownBinding
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
 import ani.dantotsu.others.SpoilerPlugin
 import ani.dantotsu.parsers.ShowResponse

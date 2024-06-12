@@ -13,7 +13,7 @@ import ani.dantotsu.connections.updateProgress
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ItemChapterListBinding
 import ani.dantotsu.databinding.ItemEpisodeCompactBinding
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.setAnimation
 import ani.dantotsu.util.customAlertDialog

@@ -1,7 +1,7 @@
 package ani.dantotsu.media.anime
 
-import ani.dantotsu.media.Author
-import ani.dantotsu.media.Studio
+import ani.dantotsu.media.cereal.Author
+import ani.dantotsu.media.cereal.Studio
 import java.io.Serializable
 
 data class Anime(

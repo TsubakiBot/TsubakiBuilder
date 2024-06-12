@@ -36,7 +36,7 @@ import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.compareName
 import ani.dantotsu.download.findValidName
 import ani.dantotsu.initActivity
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.setSafeOnClickListener

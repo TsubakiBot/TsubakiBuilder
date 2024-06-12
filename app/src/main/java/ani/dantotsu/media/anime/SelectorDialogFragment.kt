@@ -33,7 +33,7 @@ import ani.dantotsu.databinding.ItemUrlBinding
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.hideSystemBars
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader

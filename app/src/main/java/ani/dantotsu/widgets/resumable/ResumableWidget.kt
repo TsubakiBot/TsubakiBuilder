@@ -19,7 +19,7 @@ import androidx.core.graphics.drawable.toBitmap
 import ani.dantotsu.MainActivity
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.util.BitmapUtil
 import ani.dantotsu.util.Logger

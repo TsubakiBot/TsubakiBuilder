@@ -6,7 +6,7 @@ import android.net.Uri
 import androidx.documentfile.provider.DocumentFile
 import ani.dantotsu.download.DownloadCompat.removeDownloadCompat
 import ani.dantotsu.download.DownloadCompat.removeMediaCompat
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName

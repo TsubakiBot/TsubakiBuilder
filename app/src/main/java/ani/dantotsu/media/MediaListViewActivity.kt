@@ -12,6 +12,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityMediaListViewBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.initActivity
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.settings.saving.PrefManager

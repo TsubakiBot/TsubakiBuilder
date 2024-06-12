@@ -1,7 +1,7 @@
 package ani.dantotsu.parsers
 
 import ani.dantotsu.Lazier
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.tryWithSuspend

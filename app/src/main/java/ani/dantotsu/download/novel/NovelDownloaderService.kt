@@ -20,7 +20,7 @@ import ani.dantotsu.R
 import ani.dantotsu.download.DownloadedType
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.novel.NovelReadFragment
 import ani.dantotsu.snackString

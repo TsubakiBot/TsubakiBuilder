@@ -10,6 +10,8 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.media.anime.SelectorDialogFragment
+import ani.dantotsu.media.cereal.Media
+import ani.dantotsu.media.cereal.Selected
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.Jikan

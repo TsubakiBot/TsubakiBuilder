@@ -25,7 +25,7 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.bottomBar
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.anilist.AnilistMangaViewModel
-import ani.dantotsu.connections.anilist.SearchResults
+import ani.dantotsu.media.cereal.SearchResults
 import ani.dantotsu.databinding.FragmentAnimeBinding
 import ani.dantotsu.loadFragment
 import ani.dantotsu.media.MediaAdaptor

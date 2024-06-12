@@ -18,6 +18,7 @@ import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivityAuthorBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.media.cereal.Author
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.EmptyAdapter
 import ani.dantotsu.others.getSerialized

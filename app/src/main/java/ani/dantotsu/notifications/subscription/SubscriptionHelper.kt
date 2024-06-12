@@ -1,9 +1,9 @@
 package ani.dantotsu.notifications.subscription
 
 import ani.dantotsu.R
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaNameAdapter
-import ani.dantotsu.media.Selected
+import ani.dantotsu.media.cereal.Selected
 import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.BaseParser

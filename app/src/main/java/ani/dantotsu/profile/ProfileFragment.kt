@@ -1,6 +1,5 @@
 package ani.dantotsu.profile
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,17 +20,16 @@ import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.ProfileViewModel
 import ani.dantotsu.connections.anilist.api.Query
 import ani.dantotsu.databinding.FragmentProfileBinding
-import ani.dantotsu.media.Author
+import ani.dantotsu.media.cereal.Author
 import ani.dantotsu.media.AuthorAdapter
-import ani.dantotsu.media.Character
+import ani.dantotsu.media.cereal.Character
 import ani.dantotsu.media.CharacterAdapter
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaAdaptor
 import ani.dantotsu.media.ViewType
 import ani.dantotsu.setSlideIn
 import ani.dantotsu.setSlideUp
 import ani.dantotsu.util.AniMarkdown.Companion.getFullAniHTML
-import bit.himitsu.setBaseline
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

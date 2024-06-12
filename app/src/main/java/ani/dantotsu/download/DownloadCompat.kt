@@ -9,7 +9,7 @@ import ani.dantotsu.currActivity
 import ani.dantotsu.currContext
 import ani.dantotsu.download.anime.OfflineAnimeModel
 import ani.dantotsu.download.manga.OfflineMangaModel
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.parsers.Episode

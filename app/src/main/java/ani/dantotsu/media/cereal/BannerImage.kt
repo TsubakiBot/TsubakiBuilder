@@ -1,4 +1,4 @@
-package ani.dantotsu.connections.anilist
+package ani.dantotsu.media.cereal
 
 import java.io.Serializable
 

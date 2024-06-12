@@ -15,6 +15,7 @@ import ani.dantotsu.Refresh
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.mal.MAL
 import ani.dantotsu.databinding.BottomSheetMediaListSmallBinding
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.getSerialized
 import ani.dantotsu.settings.saving.PrefManager

@@ -57,10 +57,10 @@ import ani.dantotsu.databinding.ActivityMangaReaderBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaNameAdapter
-import ani.dantotsu.media.MediaSingleton
+import ani.dantotsu.media.cereal.MediaSingleton
 import ani.dantotsu.media.manga.MangaCache
 import ani.dantotsu.media.manga.MangaChapter
 import ani.dantotsu.parsers.HMangaSources

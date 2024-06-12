@@ -3,7 +3,7 @@ package ani.dantotsu.parsers
 import android.graphics.drawable.Drawable
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.okHttpClient
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.util.Logger

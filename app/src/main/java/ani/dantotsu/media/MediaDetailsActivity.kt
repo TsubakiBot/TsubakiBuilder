@@ -45,6 +45,9 @@ import ani.dantotsu.databinding.ActivityMediaBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
 import ani.dantotsu.media.anime.AnimeWatchFragment
+import ani.dantotsu.media.cereal.Media
+import ani.dantotsu.media.cereal.MediaSingleton
+import ani.dantotsu.media.cereal.emptyMedia
 import ani.dantotsu.media.comments.CommentsFragment
 import ani.dantotsu.media.manga.MangaReadFragment
 import ani.dantotsu.media.novel.NovelReadFragment

@@ -1,4 +1,4 @@
-package ani.dantotsu.media
+package ani.dantotsu.media.cereal
 
 import StreamingEpisode
 import android.graphics.Bitmap

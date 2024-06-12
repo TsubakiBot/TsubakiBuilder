@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemNovelHeaderBinding
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.parsers.NovelReadSources
 
 class NovelReadAdapter(

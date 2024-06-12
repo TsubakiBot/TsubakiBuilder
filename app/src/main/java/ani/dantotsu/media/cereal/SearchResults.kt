@@ -1,8 +1,8 @@
-package ani.dantotsu.connections.anilist
+package ani.dantotsu.media.cereal
 
 import ani.dantotsu.R
+import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.currContext
-import ani.dantotsu.media.Media
 import bit.himitsu.nio.Strings.getString
 import java.io.Serializable
 

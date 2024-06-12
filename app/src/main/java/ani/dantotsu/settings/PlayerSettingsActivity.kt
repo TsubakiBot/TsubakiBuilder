@@ -17,7 +17,7 @@ import androidx.core.widget.addTextChangedListener
 import ani.dantotsu.R
 import ani.dantotsu.databinding.ActivityPlayerSettingsBinding
 import ani.dantotsu.initActivity
-import ani.dantotsu.media.Media
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.getSerialized

@@ -22,6 +22,7 @@ import ani.dantotsu.connections.anilist.AnilistMutations
 import ani.dantotsu.databinding.ActivityCharacterBinding
 import ani.dantotsu.initActivity
 import ani.dantotsu.loadImage
+import ani.dantotsu.media.cereal.Character
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.getSerialized
