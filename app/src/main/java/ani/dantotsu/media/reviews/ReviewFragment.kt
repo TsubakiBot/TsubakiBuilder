@@ -57,20 +57,17 @@ class ReviewFragment : Fragment() {
 
         }
 
-        binding.listBack.visibility = View.GONE
-        binding.followerGrid.visibility = View.GONE
-        binding.followerList.visibility = View.GONE
-        binding.followFilterButton.setImageResource(R.drawable.ic_add)
-        binding.followFilterButton.setOnClickListener {
+        binding.listToolbar.visibility = View.GONE
+        binding.reviewFAB.visibility = View.VISIBLE
+        binding.reviewFAB.setOnClickListener {
             ContextCompat.startActivity(
                 requireContext(),
                 Intent(requireContext(), MarkdownCreatorActivity::class.java)
-                    .putExtra("type", "review"),
+                    .putExtra("type", "review")
+                    .putExtra("mediaId", mediaId),
                 null
             )
         }
-        binding.followFilterButton.visibility = View.GONE
-        binding.listToolbar.visibility = View.GONE
 
         val mediaTitle = arguments?.getString("title")
         binding.emptyRecyclerText.text = getString(R.string.reviews_empty, mediaTitle)

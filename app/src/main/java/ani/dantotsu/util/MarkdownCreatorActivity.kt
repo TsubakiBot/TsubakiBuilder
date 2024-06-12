@@ -25,6 +25,7 @@ class MarkdownCreatorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMarkdownCreatorBinding
     private lateinit var type: String
     private var text: String = ""
+    private var mediaId: Int = 0
     private var parentId: Int = 0
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +52,19 @@ class MarkdownCreatorActivity : AppCompatActivity() {
         binding.scoreText.isVisible = type == "review"
         binding.markdownCreatorTitle.text = when (type) {
             "activity" -> getString(R.string.create_new_activity)
-            "review" -> getString(R.string.create_new_review)
+            "review" -> {
+                mediaId = intent.getIntExtra("mediaId", -1)
+                if (mediaId == -1) {
+                    toast(R.string.error_no_media_id)
+                    finish()
+                    return
+                }
+                getString(R.string.create_new_review)
+            }
             "replyActivity" -> {
                 parentId = intent.getIntExtra("parentId", -1)
                 if (parentId == -1) {
-                    toast("Error: No parent ID")
+                    toast(R.string.error_no_parent_id)
                     finish()
                     return
                 }
@@ -92,7 +101,15 @@ class MarkdownCreatorActivity : AppCompatActivity() {
                     launchIO {
                         val success = when (type) {
                             "activity" -> Anilist.mutation.postActivity(text)
-                            // "review" -> Anilist.mutation.postReview(summary, text, mediaId, score)
+                            "review" -> {
+                                val summary = binding.summaryText.text?.toString()
+                                val score = binding.scoreText.text?.toString()?.toIntOrNull()
+                                if (summary.isNullOrBlank() || score == null) {
+                                    toast(getString(R.string.cannot_be_empty))
+                                    return@launchIO
+                                }
+                                Anilist.mutation.postReview(summary, text, mediaId, score)
+                            }
                             "replyActivity" -> Anilist.mutation.postReply(parentId, text)
                             else -> "Error: Unknown type"
                         }

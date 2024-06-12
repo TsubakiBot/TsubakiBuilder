@@ -61,26 +61,13 @@ class FeedActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        val popup = if (Version.isLollipopMR)
-            PopupMenu(this, binding.activityFAB, Gravity.END, 0, R.style.MyPopup)
-        else
-            PopupMenu(this, binding.activityFAB)
-        popup.menuInflater.inflate(R.menu.menu_feed_post, popup.menu)
-
         binding.activityFAB.setOnClickListener {
-            popup.show()
-            popup.setOnMenuItemClickListener { item ->
-                ContextCompat.startActivity(
-                    this,
-                    Intent(this, MarkdownCreatorActivity::class.java).apply {
-                        when (item.itemId) {
-                            R.id.activity -> putExtra("type", "activity")
-                            R.id.review -> putExtra("type", "review")
-                        }
-                    }, null
-                )
-                true
-            }
+            ContextCompat.startActivity(
+                this,
+                Intent(this, MarkdownCreatorActivity::class.java).apply {
+                        putExtra("type", "activity")
+                }, null
+            )
         }
     }
 

@@ -36,7 +36,6 @@
             android:textColor="?attr/colorOnBackground"
             android:textSize="18sp"
             tools:text="Activities" />
-
     </FrameLayout>
 
     <androidx.viewpager2.widget.ViewPager2
@@ -50,8 +49,8 @@
         android:id="@+id/activityFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:layout_marginBottom="35dp"
         android:contentDescription="@string/activity"
         android:focusable="true"
         android:src="@drawable/ic_round_add_circle_24"

@@ -1190,4 +1190,6 @@
     <string name="subtitle_langauge">Subtitle Langauge</string>
     <string name="auto_open_links">Allow Himitsu to automatically open Anilist &amp; MAL Links?</string>
     <string name="dev_maintainer">%1$s Maintainer</string>
+    <string name="error_no_parent_id">Error: No parent ID</string>
+    <string name="error_no_media_id">Error: No media ID</string>
 </resources>
