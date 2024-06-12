@@ -4,18 +4,23 @@ import StreamingEpisode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.updatePadding
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemEpisodeListBinding
 import ani.dantotsu.loadImage
-import ani.dantotsu.openLinkInBrowser
+import bit.himitsu.webkit.StreamBottomDialog
+import ani.dantotsu.toPx
 
-class StreamingAdapter(var streamingEpisodes: List<StreamingEpisode>)
-    : RecyclerView.Adapter<StreamingAdapter.EpisodeViewHolder>() {
+class StreamingAdapter(
+    var manager: FragmentManager, var streamingEpisodes: List<StreamingEpisode>
+) : RecyclerView.Adapter<StreamingAdapter.EpisodeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
         val binding = ItemEpisodeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         binding.itemDownload.visibility = View.GONE
         binding.itemEpisodeDesc.visibility = View.GONE
         binding.itemEpisodeViewed.visibility = View.GONE
+        binding.itemEpisodeHeading.updatePadding(right = 8.toPx)
         return EpisodeViewHolder(binding)
     }
 
@@ -27,7 +32,8 @@ class StreamingAdapter(var streamingEpisodes: List<StreamingEpisode>)
         val binding = holder.binding
         val episode = streamingEpisodes[position]
         binding.itemEpisodeImage.loadImage(episode.thumbnail)
-        val number = "${holder.absoluteAdapterPosition + 1}"
+        val number = episode.title?.removePrefix("Episode ")?.substringBefore(" -")
+            ?: "${holder.absoluteAdapterPosition + 1}"
         binding.itemEpisodeNumber.text = number
         binding.itemEpisodeTitle.text = episode.title
     }
@@ -39,7 +45,11 @@ class StreamingAdapter(var streamingEpisodes: List<StreamingEpisode>)
         init {
             itemView.setOnClickListener {
                 val episode = streamingEpisodes[bindingAdapterPosition]
-                openLinkInBrowser(episode.url)
+                episode.url?.let {
+                    StreamBottomDialog.newInstance(it).apply {
+                        show(manager, "dialog")
+                    }
+                }
             }
         }
     }

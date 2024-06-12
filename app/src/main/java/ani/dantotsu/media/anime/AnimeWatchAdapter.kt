@@ -116,8 +116,11 @@ class AnimeWatchAdapter(
                 binding.streamContainer.animeSourceHulu.setOnClickListener { openLinkInBrowser(url) }
             }
             binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
-            binding.streamContainer.episodeRecyclerView.adapter =
-                StreamingAdapter(media.streamingEpisodes.reversed())
+            if (media.streamingEpisodes.isNotEmpty()) {
+                binding.streamContainer.episodeRecyclerView.adapter = StreamingAdapter(
+                    fragment.parentFragmentManager, media.streamingEpisodes
+                )
+            }
             media.crunchyroll?.let { url ->
                 binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceCR.setOnClickListener {

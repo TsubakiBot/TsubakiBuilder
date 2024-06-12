@@ -17,7 +17,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.FragmentExtensionsBinding
 import ani.dantotsu.databinding.ItemExtensionBinding
 import ani.dantotsu.others.LanguageMapper
-import ani.dantotsu.others.webview.PluginBottomDialog
+import bit.himitsu.webkit.PluginBottomDialog
 import ani.dantotsu.parsers.novel.NovelExtension
 import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.SearchQueryHandler
