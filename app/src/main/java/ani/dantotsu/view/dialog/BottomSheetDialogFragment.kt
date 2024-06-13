@@ -17,8 +17,7 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
         super.onStart()
         dialog?.window?.let { window ->
             WindowCompat.setDecorFitsSystemWindows(window, false)
-            val immersiveMode: Boolean = PrefManager.getVal(PrefName.ImmersiveMode)
-            if (immersiveMode) {
+            if (PrefManager.getVal(PrefName.ImmersiveMode)) {
                 WindowInsetsControllerCompat(
                     window, window.decorView
                 ).hide(WindowInsetsCompat.Type.statusBars())

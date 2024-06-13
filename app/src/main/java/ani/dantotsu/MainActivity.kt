@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         initActivity(this)
-        enableEdgeToEdge()
         setContentView(binding.root)
 
         TaskScheduler.scheduleSingleWork(this)

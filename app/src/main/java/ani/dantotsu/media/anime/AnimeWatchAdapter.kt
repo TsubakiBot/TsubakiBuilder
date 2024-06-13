@@ -117,9 +117,8 @@ class AnimeWatchAdapter(
             }
             binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
             if (media.streamingEpisodes.isNotEmpty()) {
-                binding.streamContainer.episodeRecyclerView.adapter = StreamingAdapter(
-                    fragment.parentFragmentManager, media.streamingEpisodes
-                )
+                binding.streamContainer.episodeRecyclerView.adapter =
+                    StreamingAdapter(media.streamingEpisodes)
             }
             media.crunchyroll?.let { url ->
                 binding.streamContainer.root.isVisible = true

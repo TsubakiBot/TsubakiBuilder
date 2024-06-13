@@ -15,7 +15,7 @@ import bit.himitsu.ShellActivity
 import ani.dantotsu.toPx
 
 class StreamingAdapter(
-    var manager: FragmentManager, var streamingEpisodes: List<StreamingEpisode>
+    var streamingEpisodes: List<StreamingEpisode>
 ) : RecyclerView.Adapter<StreamingAdapter.EpisodeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
         val binding = ItemEpisodeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -48,9 +48,6 @@ class StreamingAdapter(
             itemView.setOnClickListener {
                 val episode = streamingEpisodes[bindingAdapterPosition]
                 episode.url?.let {
-//                    StreamBottomDialog.newInstance(it).apply {
-//                        show(manager, "dialog")
-//                    }
                     ContextCompat.startActivity(itemView.context, Intent(
                         itemView.context,
                         ShellActivity::class.java).putExtra("episodeUrl", it
