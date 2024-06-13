@@ -381,7 +381,6 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
