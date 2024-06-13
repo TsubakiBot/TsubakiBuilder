@@ -119,6 +119,8 @@ class MainActivity : AppCompatActivity() {
         } // Forced landscape for Android TV
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        initActivity(this)
+        enableEdgeToEdge()
         setContentView(binding.root)
 
         TaskScheduler.scheduleSingleWork(this)
@@ -189,8 +191,6 @@ class MainActivity : AppCompatActivity() {
             background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bottom_nav_gray)
         }
 
-        initActivity(this)
-        enableEdgeToEdge()
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = statusBarHeight
         binding.incognito.layoutParams = layoutParams
