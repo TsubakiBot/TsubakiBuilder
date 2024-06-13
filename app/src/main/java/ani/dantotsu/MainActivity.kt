@@ -22,6 +22,7 @@ import android.view.animation.AnticipateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
@@ -189,6 +190,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         initActivity(this)
+        enableEdgeToEdge()
         val layoutParams = binding.incognito.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.topMargin = statusBarHeight
         binding.incognito.layoutParams = layoutParams
@@ -483,7 +485,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        window.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
 
         if (PrefManager.getVal(PrefName.SecureLock)) {
             promptInfo = BiometricPrompt.PromptInfo.Builder()

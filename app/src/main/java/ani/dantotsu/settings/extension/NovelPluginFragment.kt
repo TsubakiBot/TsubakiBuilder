@@ -1,11 +1,13 @@
 package ani.dantotsu.settings.extension
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +25,7 @@ import ani.dantotsu.parsers.novel.NovelExtensionManager
 import ani.dantotsu.settings.SearchQueryHandler
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import bit.himitsu.ShellActivity
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 import uy.kohesive.injekt.Injekt
@@ -38,11 +41,10 @@ class NovelPluginsFragment : Fragment(), SearchQueryHandler {
         { plugin ->
             if (isAdded) {  // Check if the fragment is currently added to its activity
                 if (plugin.pkgName.startsWith("plugin:")) {
-                    parentFragmentManager.let {
-                        PluginBottomDialog.newInstance(plugin.sources[0].baseUrl).apply {
-                            show(it, "dialog")
-                        }
-                    }
+                    ContextCompat.startActivity(pluginsRecyclerView.context, Intent(
+                        pluginsRecyclerView.context,
+                        ShellActivity::class.java).putExtra("pluginUrl", plugin.sources[0].baseUrl
+                    ), null)
                 }
             }
         },

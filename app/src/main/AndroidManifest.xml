@@ -54,24 +54,25 @@
     <application
         android:name=".Himitsu"
         android:allowBackup="true"
+        android:backupAgent=".backup.AniBackupAgent"
         android:banner="@mipmap/ic_banner"
-        android:logo="@mipmap/ic_banner"
+        android:dataExtractionRules="@xml/extraction_content"
         android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/full_backup_content"
         android:icon="${icon_placeholder}"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:logo="@mipmap/ic_banner"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="${icon_placeholder_round}"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dantotsu"
         android:usesCleartextTraffic="true"
-        android:fullBackupContent="@xml/full_backup_content"
-        android:dataExtractionRules="@xml/extraction_content"
-        android:backupAgent=".backup.AniBackupAgent"
         tools:targetApi="tiramisu">
-
         <!-- No key is required, but older Android versions may attempt to load one -->
-        <meta-data android:name="com.google.android.backup.api_key" android:value="unused" />
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="unused" />
 
         <receiver
             android:name="bit.himitsu.update.UpdateReceiver"
@@ -80,7 +81,6 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".widgets.upcoming.UpcomingWidget"
             android:exported="true">
@@ -92,6 +92,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/upcoming_widget_info" />
         </receiver>
+
         <activity
             android:name=".widgets.upcoming.UpcomingWidgetConfigure"
             android:exported="true">
@@ -111,6 +112,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/resumable_widget_info" />
         </receiver>
+
         <activity
             android:name=".widgets.resumable.ResumableWidgetConfigure"
             android:exported="true">
@@ -172,10 +174,9 @@
             android:name=".widgets.statistics.ProfileStatsConfigure"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".profile.ProfileActivity"
             android:parentActivityName=".MainActivity"
@@ -195,16 +196,20 @@
         <activity
             android:name=".others.imagesearch.ImageSearchActivity"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".util.MarkdownCreatorActivity"/>
+        <activity android:name=".util.MarkdownCreatorActivity" />
         <activity android:name=".parsers.ParserTestActivity" />
         <activity
             android:name=".media.reviews.ReviewViewActivity"
             android:parentActivityName=".media.MediaDetailsActivity" />
         <activity
+            android:name="bit.himitsu.ShellActivity"
+            android:theme="@style/DialogShellTheme"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="false" />
+        <activity
             android:name=".media.SearchActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="com.google.android.gms.actions.SEARCH_ACTION" />
@@ -223,9 +228,9 @@
             android:parentActivityName=".profile.ProfileActivity" />
         <activity
             android:name=".media.manga.mangareader.MangaReaderActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="true"
             android:label="@string/manga"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:launchMode="singleTask" />
         <activity android:name=".media.GenreActivity" />
         <activity android:name=".media.reviews.ReviewPopupActivity" />
@@ -239,11 +244,12 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".media.CharacterDetailsActivity" />
         <activity android:name=".home.NoInternet" />
-        <activity android:name=".others.CrashActivity"
+        <activity
+            android:name=".others.CrashActivity"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:process=":error_process"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:process=":error_process" />
         <activity
             android:name=".media.anime.ExoplayerView"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
@@ -366,9 +372,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -457,15 +463,14 @@
             android:name="androidx.media3.exoplayer.scheduler.PlatformScheduler$PlatformSchedulerService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <service android:name="eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService"
+        <service
+            android:name="eu.kanade.tachiyomi.data.torrentServer.service.TorrentServerService"
             android:foregroundServiceType="dataSync" />
-
         <service
             android:name=".addons.torrent.TorrentServerService"
             android:exported="false"
-            android:stopWithTask="true"
-            android:foregroundServiceType="dataSync" />
+            android:foregroundServiceType="dataSync"
+            android:stopWithTask="true" />
 
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"

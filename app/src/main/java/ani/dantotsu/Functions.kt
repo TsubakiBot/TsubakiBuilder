@@ -67,7 +67,9 @@ import android.widget.DatePicker
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -244,18 +246,20 @@ fun initActivity(a: Activity) {
                 }
             }
         }
-    } else
+    } else {
         if (statusBarHeight == 0) {
             ViewCompat.getRootWindowInsets(window.decorView)?.run {
                 statusBarHeight = getInsets(WindowInsetsCompat.Type.statusBars()).top
-                navBarHeight = if (a.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-                    getInsets(WindowInsetsCompat.Type.navigationBars()).right
-                else
-                    getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                navBarHeight =
+                    if (a.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                        getInsets(WindowInsetsCompat.Type.navigationBars()).right
+                    else
+                        getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) navBarHeight += 48.toPx
             }
         }
-    if (a !is MainActivity) a.setNavigationTheme()
+        (a as AppCompatActivity).enableEdgeToEdge()
+    }
 }
 
 fun Activity.hideSystemBars() {

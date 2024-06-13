@@ -376,4 +376,11 @@
         <item name="appWidgetPadding">16dp</item>
     </style>
 
+    <style name="DialogShellTheme" parent="@style/Theme.Dantotsu.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
 </resources>

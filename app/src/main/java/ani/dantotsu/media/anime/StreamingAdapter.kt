@@ -1,15 +1,17 @@
 package ani.dantotsu.media.anime
 
 import StreamingEpisode
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.databinding.ItemEpisodeListBinding
 import ani.dantotsu.loadImage
-import bit.himitsu.webkit.StreamBottomDialog
+import bit.himitsu.ShellActivity
 import ani.dantotsu.toPx
 
 class StreamingAdapter(
@@ -46,9 +48,13 @@ class StreamingAdapter(
             itemView.setOnClickListener {
                 val episode = streamingEpisodes[bindingAdapterPosition]
                 episode.url?.let {
-                    StreamBottomDialog.newInstance(it).apply {
-                        show(manager, "dialog")
-                    }
+//                    StreamBottomDialog.newInstance(it).apply {
+//                        show(manager, "dialog")
+//                    }
+                    ContextCompat.startActivity(itemView.context, Intent(
+                        itemView.context,
+                        ShellActivity::class.java).putExtra("episodeUrl", it
+                    ), null)
                 }
             }
         }
