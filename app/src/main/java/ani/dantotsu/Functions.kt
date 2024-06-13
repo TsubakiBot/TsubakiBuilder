@@ -67,9 +67,7 @@ import android.widget.DatePicker
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -89,10 +87,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import ani.dantotsu.media.cereal.Genre
 import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.ItemCountDownBinding
+import ani.dantotsu.media.cereal.Genre
 import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.notifications.IncognitoNotificationClickReceiver
 import ani.dantotsu.others.SpoilerPlugin
@@ -258,7 +256,7 @@ fun initActivity(a: Activity) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) navBarHeight += 48.toPx
             }
         }
-        (a as AppCompatActivity).enableEdgeToEdge()
+        if (a !is MainActivity) a.setNavigationTheme()
     }
 }
 
