@@ -48,10 +48,12 @@ class StreamingAdapter(
             itemView.setOnClickListener {
                 val episode = streamingEpisodes[bindingAdapterPosition]
                 episode.url?.let {
-                    ContextCompat.startActivity(itemView.context, Intent(
+                    ContextCompat.startActivity(
                         itemView.context,
-                        ShellActivity::class.java).putExtra("episodeUrl", it
-                    ), null)
+                        Intent(itemView.context, ShellActivity::class.java)
+                            .putExtra("episodeUrl", it),
+                        null
+                    )
                 }
             }
         }

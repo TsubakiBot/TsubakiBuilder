@@ -40,6 +40,7 @@ import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
+import bit.himitsu.ShellActivity
 import bit.himitsu.nio.Strings.getString
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
@@ -113,7 +114,14 @@ class AnimeWatchAdapter(
             binding.streamContainer.animeSourceHulu.isVisible = media.hulu != null
             media.hulu?.let { url ->
                 binding.streamContainer.root.isVisible = true
-                binding.streamContainer.animeSourceHulu.setOnClickListener { openLinkInBrowser(url) }
+                binding.streamContainer.animeSourceHulu.setOnClickListener { 
+                    startActivity(
+                        fragment.requireContext(),
+                        Intent(fragment.requireContext(), ShellActivity::class.java)
+                            .putExtra("episodeUrl", url),
+                        null
+                    )
+                }
             }
             binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
             if (media.streamingEpisodes.isNotEmpty()) {
@@ -124,7 +132,12 @@ class AnimeWatchAdapter(
                 binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceCR.setOnClickListener {
                     if (media.streamingEpisodes.isEmpty()) {
-                        openLinkInBrowser(url)
+                        startActivity(
+                            fragment.requireContext(),
+                            Intent(fragment.requireContext(), ShellActivity::class.java)
+                                .putExtra("episodeUrl", url),
+                            null
+                        )
                         return@setOnClickListener
                     } else {
                         binding.streamContainer.episodeRecyclerView.isVisible =
