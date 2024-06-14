@@ -159,7 +159,7 @@ class SettingsMainFragment : Fragment() {
                         onClick = {
                             openLinkInBrowser("https://anilist.co/settings")
                         },
-                        hasTransition = true
+                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,

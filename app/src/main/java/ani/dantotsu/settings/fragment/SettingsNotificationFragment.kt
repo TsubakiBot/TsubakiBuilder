@@ -135,7 +135,7 @@ class SettingsNotificationFragment : Fragment() {
                                 }.show()
                             dialog.window?.setDimAmount(0.8f)
                         },
-                        hasTransition = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -165,7 +165,7 @@ class SettingsNotificationFragment : Fragment() {
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
                         },
-                        hasTransition = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,

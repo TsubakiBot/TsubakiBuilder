@@ -22,8 +22,9 @@ data class Settings(
     val attach: ((ItemSettingsBinding) -> Unit)? = null,
     val attachToSwitch: ((ItemSettingsSwitchBinding) -> Unit)? = null,
     val attachToSlider: ((ItemSettingsSliderBinding) -> Unit)? = null,
-    val isActivity: Boolean = false,
     val isVisible: Boolean = true,
+    val isActivity: Boolean = false,
+    val isDialog: Boolean = false,
     val hasTransition: Boolean = false,
     var isChecked: Boolean = pref?.let {
         item -> PrefManager.getVal<Any>(item).takeIf { it is Boolean } as? Boolean

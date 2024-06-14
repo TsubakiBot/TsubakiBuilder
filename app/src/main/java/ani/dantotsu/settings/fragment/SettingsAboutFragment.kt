@@ -81,7 +81,7 @@ class SettingsAboutFragment : Fragment() {
                         onClick = {
                             startActivity(Intent(settings, FAQActivity::class.java))
                         },
-                        hasTransition = true
+                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,

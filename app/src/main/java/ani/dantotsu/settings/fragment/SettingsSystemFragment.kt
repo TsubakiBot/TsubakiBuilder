@@ -181,7 +181,7 @@ class SettingsSystemFragment : Fragment() {
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,

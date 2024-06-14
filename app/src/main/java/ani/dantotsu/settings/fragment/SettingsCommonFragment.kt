@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.databinding.ActivitySettingsCommonBinding
+import ani.dantotsu.databinding.DialogUserAgentBinding
 import ani.dantotsu.download.DownloadsManager
 import ani.dantotsu.initActivity
 import ani.dantotsu.restart
@@ -32,6 +33,23 @@ import uy.kohesive.injekt.api.get
 
 class SettingsCommonFragment : Fragment() {
     private lateinit var binding: ActivitySettingsCommonBinding
+
+    private val exDns = listOf(
+        "None",
+        "Cloudflare",
+        "Google",
+        "AdGuard",
+        "Quad9",
+        "AliDNS",
+        "DNSPod",
+        "360",
+        "Quad101",
+        "Mullvad",
+        "Controld",
+        "Njalla",
+        "Shecan",
+        "Libre"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,31 +74,7 @@ class SettingsCommonFragment : Fragment() {
                 settings.backToMenu()
             }
 
-            val exDns = listOf(
-                "None",
-                "Cloudflare",
-                "Google",
-                "AdGuard",
-                "Quad9",
-                "AliDNS",
-                "DNSPod",
-                "360",
-                "Quad101",
-                "Mullvad",
-                "Controld",
-                "Njalla",
-                "Shecan",
-                "Libre"
-            )
-
             settingsExtensionDns.setText(exDns[PrefManager.getVal(PrefName.DohProvider)])
-            settingsExtensionDns.setAdapter(
-                ArrayAdapter(
-                    settings,
-                    R.layout.item_dropdown,
-                    exDns
-                )
-            )
             settingsExtensionDns.setOnItemClickListener { _, _, i, _ ->
                 PrefManager.setVal(PrefName.DohProvider, i)
                 settingsExtensionDns.clearFocus()
@@ -89,6 +83,36 @@ class SettingsCommonFragment : Fragment() {
 
             settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
+                    Settings(
+                        type = ViewType.BUTTON,
+                        name = getString(R.string.user_agent),
+                        desc = getString(R.string.user_agent_desc),
+                        icon = R.drawable.ic_round_video_settings_24,
+                        onClick = {
+                            val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
+                            val editText = dialogView.userAgentTextBox
+                            editText.setText(PrefManager.getVal<String>(PrefName.DefaultUserAgent))
+                            val alertDialog = AlertDialog.Builder(settings, R.style.MyPopup)
+                                .setTitle(R.string.user_agent).setView(dialogView.root)
+                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                                    PrefManager.setVal(
+                                        PrefName.DefaultUserAgent,
+                                        editText.text.toString()
+                                    )
+                                    dialog.dismiss()
+                                }.setNeutralButton(getString(R.string.reset)) { dialog, _ ->
+                                    PrefManager.removeVal(PrefName.DefaultUserAgent)
+                                    editText.setText("")
+                                    dialog.dismiss()
+                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                                    dialog.dismiss()
+                                }.create()
+
+                            alertDialog.show()
+                            alertDialog.window?.setDimAmount(0.8f)
+                        },
+                        isDialog = true
+                    ),
                     Settings(
                         type = ViewType.SWITCH,
                         name = getString(R.string.always_continue_content),
@@ -125,7 +149,7 @@ class SettingsCommonFragment : Fragment() {
                             }.show()
                             dialog.window?.setDimAmount(0.8f)
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -166,7 +190,7 @@ class SettingsCommonFragment : Fragment() {
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,
@@ -220,5 +244,16 @@ class SettingsCommonFragment : Fragment() {
                 uiDefault(2, it)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.settingsExtensionDns.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.item_dropdown,
+                exDns
+            )
+        )
     }
 }

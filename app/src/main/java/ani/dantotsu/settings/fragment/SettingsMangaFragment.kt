@@ -55,7 +55,7 @@ class SettingsMangaFragment : Fragment() {
                         onClick = {
                             startActivity(Intent(settings, ReaderSettingsActivity::class.java))
                         },
-                        hasTransition = true
+                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -74,7 +74,7 @@ class SettingsMangaFragment : Fragment() {
                                 show()
                             }
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -93,7 +93,7 @@ class SettingsMangaFragment : Fragment() {
                                 show()
                             }
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,

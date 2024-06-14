@@ -62,7 +62,7 @@ class SettingsAnimeFragment : Fragment() {
                         onClick = {
                             startActivity(Intent(settings, PlayerSettingsActivity::class.java))
                         },
-                        hasTransition = true
+                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -88,7 +88,7 @@ class SettingsAnimeFragment : Fragment() {
                             dialog.window?.setDimAmount(0.8f)
                             dialog.show()
                         },
-                        isActivity = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,

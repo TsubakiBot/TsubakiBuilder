@@ -119,7 +119,7 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
                                 .show(settings, tag)
                         },
                         isVisible = Version.isSnowCone,
-                        isActivity = true
+                        isDialog = true
                     )
                 )
             )

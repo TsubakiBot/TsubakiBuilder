@@ -178,7 +178,7 @@ class SettingsExtensionsFragment : Fragment() {
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.ANIME)
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -218,7 +218,7 @@ class SettingsExtensionsFragment : Fragment() {
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.MANGA)
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -258,7 +258,7 @@ class SettingsExtensionsFragment : Fragment() {
                         attach = {
                             setExtensionOutput(it.attachView, MediaType.NOVEL)
                         },
-                        isActivity = true
+                        hasTransition = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,
@@ -273,36 +273,6 @@ class SettingsExtensionsFragment : Fragment() {
                                 null
                             )
                         }
-                    ),
-                    Settings(
-                        type = ViewType.BUTTON,
-                        name = getString(R.string.user_agent),
-                        desc = getString(R.string.user_agent_desc),
-                        icon = R.drawable.ic_round_video_settings_24,
-                        onClick = {
-                            val dialogView = DialogUserAgentBinding.inflate(layoutInflater)
-                            val editText = dialogView.userAgentTextBox
-                            editText.setText(PrefManager.getVal<String>(PrefName.DefaultUserAgent))
-                            val alertDialog = AlertDialog.Builder(settings, R.style.MyPopup)
-                                .setTitle(R.string.user_agent).setView(dialogView.root)
-                                .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                                    PrefManager.setVal(
-                                        PrefName.DefaultUserAgent,
-                                        editText.text.toString()
-                                    )
-                                    dialog.dismiss()
-                                }.setNeutralButton(getString(R.string.reset)) { dialog, _ ->
-                                    PrefManager.removeVal(PrefName.DefaultUserAgent)
-                                    editText.setText("")
-                                    dialog.dismiss()
-                                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                                    dialog.dismiss()
-                                }.create()
-
-                            alertDialog.show()
-                            alertDialog.window?.setDimAmount(0.8f)
-                        },
-                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,

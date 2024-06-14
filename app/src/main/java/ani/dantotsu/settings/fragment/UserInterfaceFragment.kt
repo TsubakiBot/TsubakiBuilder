@@ -94,7 +94,7 @@ class UserInterfaceFragment : Fragment() {
                                 }.show()
                             dialog.window?.setDimAmount(0.8f)
                         },
-                        hasTransition = true
+                        isDialog = true
                     ),
                     Settings(
                         type = ViewType.SWITCH,
