@@ -37,7 +37,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
-import ani.dantotsu.ZoomOutPageTransformer
+import ani.dantotsu.view.ZoomOutPageTransformer
 import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.copyToClipboard

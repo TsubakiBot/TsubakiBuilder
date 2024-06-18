@@ -26,7 +26,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.webkit.WebViewCompat
-import ani.dantotsu.NoPaddingArrayAdapter
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.currContext
 import ani.dantotsu.databinding.ActivityMangaReaderBinding

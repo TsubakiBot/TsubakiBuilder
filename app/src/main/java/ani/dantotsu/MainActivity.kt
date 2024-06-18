@@ -65,6 +65,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.util.Logger
+import ani.dantotsu.view.ZoomOutPageTransformer
 import ani.dantotsu.view.dialog.CustomBottomDialog
 import bit.himitsu.torrServerKill
 import bit.himitsu.update.MatagiUpdater

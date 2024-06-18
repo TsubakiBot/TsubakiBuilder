@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import ani.dantotsu.NoPaddingArrayAdapter
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.databinding.BottomSheetCurrentNovelReaderSettingsBinding
 import ani.dantotsu.settings.CurrentNovelReaderSettings

@@ -10,8 +10,8 @@ import android.widget.ArrayAdapter
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import ani.dantotsu.DatePickerFragment
-import ani.dantotsu.InputFilterMinMax
+import ani.dantotsu.view.dialog.DatePickerFragment
+import ani.dantotsu.util.InputFilterMinMax
 import ani.dantotsu.R
 import ani.dantotsu.Refresh
 import ani.dantotsu.connections.anilist.Anilist

@@ -399,85 +399,6 @@ fun isOnline(context: Context): Boolean {
     } ?: false
 }
 
-class DatePickerFragment(activity: Activity, var date: FuzzyDate = FuzzyDate().getToday()) :
-    DialogFragment(),
-    DatePickerDialog.OnDateSetListener {
-    var dialog: DatePickerDialog
-
-    init {
-        val c = Calendar.getInstance()
-        val year = date.year ?: c.get(Calendar.YEAR)
-        val month = if (date.month != null) date.month!! - 1 else c.get(Calendar.MONTH)
-        val day = date.day ?: c.get(Calendar.DAY_OF_MONTH)
-        dialog = DatePickerDialog(activity, this, year, month, day)
-        dialog.setButton(
-            DialogInterface.BUTTON_NEUTRAL,
-            activity.getString(R.string.remove)
-        ) { _, which ->
-            if (which == DialogInterface.BUTTON_NEUTRAL) {
-                date = FuzzyDate()
-            }
-        }
-    }
-
-    override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        date = FuzzyDate(year, month + 1, day)
-    }
-}
-
-class InputFilterMinMax(
-    private val min: Double,
-    private val max: Double,
-    private val status: AutoCompleteTextView? = null
-) :
-    InputFilter {
-    override fun filter(
-        source: CharSequence,
-        start: Int,
-        end: Int,
-        dest: Spanned,
-        dstart: Int,
-        dend: Int
-    ): CharSequence? {
-        try {
-            val input = (dest.toString() + source.toString()).toDouble()
-            if (isInRange(min, max, input)) return null
-        } catch (nfe: NumberFormatException) {
-            Logger.log(nfe)
-        }
-        return ""
-    }
-
-    private fun isInRange(a: Double, b: Double, c: Double): Boolean {
-        val statusStrings = currContext().resources.getStringArray(R.array.status_manga)[2]
-
-        if (c == b) {
-            status?.setText(statusStrings, false)
-            status?.parent?.requestLayout()
-        }
-        return if (b > a) c in a..b else c in b..a
-    }
-}
-
-
-class ZoomOutPageTransformer :
-    ViewPager2.PageTransformer {
-    override fun transformPage(view: View, position: Float) {
-        if (position == 0.0f && PrefManager.getVal(PrefName.LayoutAnimations)) {
-            setAnimation(
-                view.context,
-                view,
-                300,
-                floatArrayOf(1.3f, 1f, 1.3f, 1f),
-                0.5f to 0f
-            )
-            ObjectAnimator.ofFloat(view, "alpha", 0f, 1.0f)
-                .setDuration((200 * (PrefManager.getVal(PrefName.AnimationSpeed) as Float)).toLong())
-                .start()
-        }
-    }
-}
-
 fun setAnimation(
     context: Context,
     viewToAnimate: View,
@@ -790,28 +711,7 @@ private fun scanFile(path: String, context: Context) {
     MediaScannerConnection.scanFile(context, arrayOf(path), null) { _, _ -> }
 }
 
-class MediaPageTransformer : ViewPager2.PageTransformer {
-    private fun parallax(view: View, position: Float) {
-        if (position > -1 && position < 1) {
-            val width = view.width.toFloat()
-            view.translationX = -(position * width * 0.8f)
-        }
-    }
 
-    override fun transformPage(view: View, position: Float) {
-
-        val bannerContainer = view.findViewById<View>(R.id.itemCompactBanner)
-        parallax(bannerContainer, position)
-    }
-}
-
-class NoGestureSubsamplingImageView(context: Context?, attr: AttributeSet?) :
-    SubsamplingScaleImageView(context, attr) {
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        return false
-    }
-}
 
 fun copyToClipboard(string: String, toast: Boolean = true) {
     val context = currContext()
@@ -984,16 +884,6 @@ fun setSlideUp() = AnimationSet(false).apply {
         animation.duration = (750 * animationSpeed).toLong()
         animation.interpolator = OvershootInterpolator(1.1f)
         addAnimation(animation)
-    }
-}
-
-open class NoPaddingArrayAdapter<T>(context: Context, layoutId: Int, items: List<T>) :
-    ArrayAdapter<T>(context, layoutId, items) {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = super.getView(position, convertView, parent)
-        view.setPadding(0, view.paddingTop, view.paddingRight, view.paddingBottom)
-        (view as TextView).setTextColor(Color.WHITE)
-        return view
     }
 }
 

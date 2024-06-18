@@ -44,7 +44,7 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.NoPaddingArrayAdapter
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.discord.Discord

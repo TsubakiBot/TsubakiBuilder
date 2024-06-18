@@ -111,7 +111,7 @@ import androidx.media3.ui.SubtitleView
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.NoPaddingArrayAdapter
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal

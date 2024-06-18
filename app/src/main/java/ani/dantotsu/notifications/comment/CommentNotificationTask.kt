@@ -35,7 +35,7 @@ class CommentNotificationTask : Task {
                 val notificationResponse = CommentsAPI.getNotifications(client)
                 var notifications = notificationResponse?.notifications?.toMutableList()
                 //if we have at least one reply notification, we need to fetch the media titles
-                var names = emptyMap<Int, MediaNameFetch.Companion.ReturnedData>()
+                var names = emptyMap<Int, MediaNameFetch.ReturnedData>()
                 if (notifications?.any { it.type == 1 || it.type == null } == true) {
                     val mediaIds =
                         notifications.filter { it.type == 1 || it.type == null }.map { it.mediaId }
