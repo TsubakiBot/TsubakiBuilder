@@ -179,8 +179,8 @@ class AnimeWatchAdapter(
         CoroutineScope(Dispatchers.IO).launch {
             watchSources.list.reversed().forEach { source ->
                 source.get.value?.autoSearch(media)?.let {
-                    sortedSources.remove(it.name)
-                    sortedSources.add(0, it.name)
+                    sortedSources.remove(source.name)
+                    sortedSources.add(0, source.name)
                 }
             }
         }
