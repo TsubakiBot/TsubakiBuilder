@@ -651,11 +651,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             locked = !locked
             if (locked) {
                 button.setImageResource(R.drawable.ic_round_lock_24)
-                ImageViewCompat.setImageTintList(button, null)
             } else {
                 button.setImageResource(R.drawable.ic_round_lock_open_24)
-                ImageViewCompat.setImageTintList(button, ColorStateList.valueOf(Color.WHITE))
             }
+            ImageViewCompat.setImageTintList(button, ColorStateList.valueOf(Color.WHITE))
             screen.isVisible = !locked
             container.isVisible = !locked
             timeline.setForceDisabled(locked)
