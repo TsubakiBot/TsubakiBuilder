@@ -30,6 +30,7 @@ import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
+import bit.himitsu.onCompletedAction
 import bit.himitsu.os.Version
 import com.google.android.material.textfield.TextInputEditText
 import eu.kanade.domain.base.BasePreferences
@@ -121,21 +122,10 @@ class SettingsExtensionsFragment : Fragment() {
             fun processEditorAction(
                 dialog: AlertDialog, editText: TextInputEditText, mediaType: MediaType, view: ViewGroup
             ) {
-                editText.setOnEditorActionListener { textView, action, keyEvent ->
-                    if (action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_DONE ||
-                        (keyEvent?.action == KeyEvent.ACTION_UP
-                                && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)
-                    ) {
-                        return@setOnEditorActionListener if (textView.text.isNullOrBlank()) {
-                            false
-                        } else {
-                            processUserInput(textView.text.toString(), mediaType, view)
-                            dialog.dismiss()
-                            true
-                        }
-                    }
-                    false
-                }
+                editText.setOnEditorActionListener(onCompletedAction {
+                    processUserInput(editText.text.toString(), mediaType, view)
+                    dialog.dismiss()
+                })
             }
 
             settingsRecyclerView.adapter = SettingsAdapter(

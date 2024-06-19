@@ -126,6 +126,7 @@ import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.getCurrentBrightnessValue
+import ani.dantotsu.marketUri
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
@@ -2464,8 +2465,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
             startActivity(shareVideo)
         } catch (ex: ActivityNotFoundException) {
             val intent = Intent(Intent.ACTION_VIEW)
-            val uriString = "market://details?id=com.instantbits.cast.webvideo"
-            intent.data = Uri.parse(uriString)
+            intent.data = marketUri("com.instantbits.cast.webvideo")
             startActivity(intent)
         }
     }

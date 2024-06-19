@@ -35,6 +35,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import bit.himitsu.onCompletedAction
 import bit.himitsu.search.ReverseSearchDialogFragment
 import bit.himitsu.update.MatagiUpdater
 import eu.kanade.tachiyomi.util.system.getSerializableCompat
@@ -217,16 +218,9 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             search(binding.searchViewText.text.toString())
         }
 
-        binding.searchViewText.setOnEditorActionListener { textView, actionId, _ ->
-            return@setOnEditorActionListener when (actionId) {
-                EditorInfo.IME_ACTION_SEARCH -> {
-                    search(textView.text.toString())
-                    true
-                }
-
-                else -> false
-            }
-        }
+        binding.searchViewText.setOnEditorActionListener(onCompletedAction {
+            search(binding.searchViewText.text.toString())
+        })
     }
 
     override fun onDestroyView() {

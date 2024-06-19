@@ -4,7 +4,6 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ActivityNotFoundException
@@ -12,13 +11,11 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.ComponentName
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.media.MediaScannerConnection
@@ -40,15 +37,11 @@ import android.os.PowerManager
 import android.os.SystemClock
 import android.provider.Settings
 import android.telephony.TelephonyManager
-import android.text.InputFilter
-import android.text.Spanned
-import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
@@ -61,9 +54,6 @@ import android.view.animation.AnimationSet
 import android.view.animation.OvershootInterpolator
 import android.view.animation.ScaleAnimation
 import android.view.animation.TranslateAnimation
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.DatePicker
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -81,13 +71,10 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
-import androidx.viewpager2.widget.ViewPager2
 import ani.dantotsu.BuildConfig.APPLICATION_ID
-import ani.dantotsu.connections.anilist.api.FuzzyDate
 import ani.dantotsu.connections.anilist.getUserId
 import ani.dantotsu.databinding.ItemCountDownBinding
 import ani.dantotsu.media.cereal.Genre
@@ -113,7 +100,6 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.data.notification.Notifications
 import io.noties.markwon.AbstractMarkwonPlugin
@@ -139,7 +125,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.lang.reflect.Field
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
 import java.util.TimeZone
 import kotlin.collections.set
@@ -567,12 +552,16 @@ fun openLinkInYouTube(link: String?) {
     }
 }
 
+fun marketUri(packageName: String) : Uri {
+    return Uri.parse("market://details?id=$packageName")
+}
+
 fun openInGooglePlay(packageName: String) {
     try {
         currContext().startActivity(
             Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("market://details?id=$packageName")
+                marketUri(packageName)
             )
         )
     } catch (e: ActivityNotFoundException) {

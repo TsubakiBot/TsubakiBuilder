@@ -24,6 +24,7 @@ import ani.dantotsu.settings.saving.internal.PreferenceKeystore
 import ani.dantotsu.settings.saving.internal.PreferencePackager
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
+import bit.himitsu.onCompletedAction
 import bit.himitsu.os.Version
 import com.google.android.material.textfield.TextInputEditText
 
@@ -152,14 +153,7 @@ class LoginFragment : Fragment() {
                 toast(getString(R.string.password_cannot_be_empty))
             }
         }
-        box?.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                handleOkAction()
-                true
-            } else {
-                false
-            }
-        }
+        box?.setOnEditorActionListener(onCompletedAction { handleOkAction() })
         val subtitleTextView = dialogView.findViewById<TextView>(R.id.subtitle)
         subtitleTextView?.visibility = View.VISIBLE
         if (!isExporting)

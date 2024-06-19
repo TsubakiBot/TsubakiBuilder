@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +28,7 @@ import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.others.imagesearch.ImageSearchActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import bit.himitsu.onCompletedAction
 import com.google.android.material.checkbox.MaterialCheckBox.STATE_CHECKED
 import com.google.android.material.checkbox.MaterialCheckBox.STATE_INDETERMINATE
 import com.google.android.material.checkbox.MaterialCheckBox.STATE_UNCHECKED
@@ -218,18 +218,11 @@ class SearchAdapter(private val activity: SearchActivity, private val type: Stri
         }
         binding.searchBarText.addTextChangedListener(textWatcher)
 
-        binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
-            return@setOnEditorActionListener when (actionId) {
-                EditorInfo.IME_ACTION_SEARCH -> {
-                    searchTitle(true)
-                    binding.searchBarText.clearFocus()
-                    imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
-                    true
-                }
-
-                else -> false
-            }
-        }
+        binding.searchBarText.setOnEditorActionListener (onCompletedAction {
+            searchTitle(true)
+            binding.searchBarText.clearFocus()
+            imm.hideSoftInputFromWindow(binding.searchBarText.windowToken, 0)
+        })
         binding.searchBar.setEndIconOnClickListener { searchTitle(true) }
 
         binding.searchResultGrid.setOnClickListener {

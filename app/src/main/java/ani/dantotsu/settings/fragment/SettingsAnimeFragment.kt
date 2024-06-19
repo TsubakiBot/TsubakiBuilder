@@ -25,6 +25,7 @@ import ani.dantotsu.settings.ViewType
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
+import bit.himitsu.onCompletedAction
 import bit.himitsu.torrServerStart
 import bit.himitsu.torrServerStop
 import eu.kanade.tachiyomi.data.torrentServer.TorrentServerUtils
@@ -158,27 +159,16 @@ class SettingsAnimeFragment : Fragment() {
             }
 
             torrentPortNumber.setText(TorrentServerUtils.port)
-            torrentPortNumber.setOnEditorActionListener(
-                TextView.OnEditorActionListener { view, actionId, event ->
-                    if (actionId == EditorInfo.IME_ACTION_DONE ||
-                        (event != null && event.action == KeyEvent.ACTION_DOWN
-                                && event.keyCode == KeyEvent.KEYCODE_ENTER)
-                    ) {
-                        if (event == null || !event.isShiftPressed) {
-                            if (view.text.toString().toInt() < 0
-                                || view.text.toString().toInt() > 65535
-                            ) {
-                                snackString(R.string.invalid_port)
-                            }
-                            torrServerStop()
-                            TorrentServerUtils.port = view.text.toString()
-                            torrServerStart()
-                            return@OnEditorActionListener true
-                        }
-                    }
-                    false
+            torrentPortNumber.setOnEditorActionListener(onCompletedAction {
+                if (torrentPortNumber.text.toString().toInt() < 0
+                    || torrentPortNumber.text.toString().toInt() > 65535
+                ) {
+                    snackString(R.string.invalid_port)
                 }
-            )
+                torrServerStop()
+                TorrentServerUtils.port = torrentPortNumber.text.toString()
+                torrServerStart()
+            })
         }
     }
 }

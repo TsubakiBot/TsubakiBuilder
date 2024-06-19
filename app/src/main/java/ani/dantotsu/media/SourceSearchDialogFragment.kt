@@ -24,6 +24,7 @@ import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.toPx
 import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import bit.himitsu.onCompletedAction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -85,16 +86,7 @@ class SourceSearchDialogFragment : BottomSheetDialogFragment() {
                 }
                 binding.searchSourceTitle.text = source.name
                 binding.searchBarText.setText(media!!.mangaName())
-                binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
-                    return@setOnEditorActionListener when (actionId) {
-                        EditorInfo.IME_ACTION_SEARCH -> {
-                            search()
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
+                binding.searchBarText.setOnEditorActionListener(onCompletedAction { search() })
                 binding.searchBar.setEndIconOnClickListener { search() }
                 if (!searched) search()
                 searched = true

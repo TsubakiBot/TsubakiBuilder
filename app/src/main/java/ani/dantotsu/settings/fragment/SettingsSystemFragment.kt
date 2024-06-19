@@ -38,6 +38,7 @@ import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import ani.dantotsu.util.StoragePermissions
+import bit.himitsu.onCompletedAction
 import bit.himitsu.update.MatagiUpdater
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
@@ -338,14 +339,7 @@ class SettingsSystemFragment : Fragment() {
                 toast(getString(R.string.password_cannot_be_empty))
             }
         }
-        box?.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                handleOkAction()
-                true
-            } else {
-                false
-            }
-        }
+        box?.setOnEditorActionListener(onCompletedAction { handleOkAction() })
         val subtitleTextView = dialogView.findViewById<TextView>(R.id.subtitle)
         subtitleTextView?.visibility = View.VISIBLE
         if (!isExporting)

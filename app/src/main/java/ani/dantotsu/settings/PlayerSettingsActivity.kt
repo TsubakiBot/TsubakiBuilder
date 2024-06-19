@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -30,6 +29,7 @@ import ani.dantotsu.themes.ThemeManager
 import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import ani.dantotsu.view.Xpandable
+import bit.himitsu.onCompletedAction
 import com.google.android.material.slider.Slider.OnChangeListener
 import kotlin.math.roundToInt
 
@@ -234,12 +234,9 @@ class PlayerSettingsActivity : AppCompatActivity() {
         }
 
         binding.exoSkipTime.setText(PrefManager.getVal<Int>(PrefName.SkipTime).toString())
-        binding.exoSkipTime.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.exoSkipTime.clearFocus()
-            }
-            false
-        }
+        binding.exoSkipTime.setOnEditorActionListener(onCompletedAction {
+            binding.exoSkipTime.clearFocus()
+        })
         binding.exoSkipTime.addTextChangedListener {
             val time = binding.exoSkipTime.text.toString().toIntOrNull()
             if (time != null) {
@@ -488,12 +485,9 @@ class PlayerSettingsActivity : AppCompatActivity() {
             dialog.window?.setDimAmount(0.8f)
         }
         binding.subtitleFontSize.setText(PrefManager.getVal<Int>(PrefName.FontSize).toString())
-        binding.subtitleFontSize.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.subtitleFontSize.clearFocus()
-            }
-            false
-        }
+        binding.subtitleFontSize.setOnEditorActionListener(onCompletedAction {
+            binding.subtitleFontSize.clearFocus()
+        })
         binding.subtitleFontSize.addTextChangedListener {
             val size = binding.subtitleFontSize.text.toString().toIntOrNull()
             if (size != null) {

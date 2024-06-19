@@ -26,7 +26,6 @@ suspend fun getUserId(context: Context, block: () -> Unit) {
                     snackString(context.getString(R.string.error_loading_mal_user_data))
             }
         } else {
-            snackString(context.getString(R.string.error_loading_anilist_user_data))
             throw Exception()
         }
     }

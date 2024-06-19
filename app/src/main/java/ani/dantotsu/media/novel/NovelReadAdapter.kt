@@ -12,6 +12,7 @@ import ani.dantotsu.R
 import ani.dantotsu.databinding.ItemNovelHeaderBinding
 import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.parsers.NovelReadSources
+import bit.himitsu.onCompletedAction
 
 class NovelReadAdapter(
     private val media: Media,
@@ -65,12 +66,7 @@ class NovelReadAdapter(
         }
 
         binding.searchBarText.setText(fragment.searchQuery)
-        binding.searchBarText.setOnEditorActionListener { _, actionId, _ ->
-            return@setOnEditorActionListener when (actionId) {
-                IME_ACTION_SEARCH -> search()
-                else -> false
-            }
-        }
+        binding.searchBarText.setOnEditorActionListener(onCompletedAction { search() })
         binding.searchBar.setEndIconOnClickListener { search() }
     }
 

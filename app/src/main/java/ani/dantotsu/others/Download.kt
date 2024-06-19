@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import ani.dantotsu.FileUrl
 import ani.dantotsu.R
 import ani.dantotsu.defaultHeaders
+import ani.dantotsu.marketUri
 import ani.dantotsu.media.anime.Episode
 import ani.dantotsu.parsers.Book
 import ani.dantotsu.settings.saving.PrefManager
@@ -127,7 +128,7 @@ object Download {
                 context,
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=idm.internet.download.manager")
+                    marketUri("idm.internet.download.manager")
                 ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
                 null
             )
@@ -152,7 +153,7 @@ object Download {
         } else {
             ContextCompat.startActivity(
                 context,
-                Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.dv.adm")).addFlags(
+                Intent(Intent.ACTION_VIEW, marketUri("com.dv.adm")).addFlags(
                     Intent.FLAG_ACTIVITY_NEW_TASK
                 ),
                 null
