@@ -72,10 +72,7 @@ data class Media(
     var relations: ArrayList<Media>? = null,
     var recommendations: ArrayList<Media>? = null,
     var users: ArrayList<User>? = null,
-    var vrvId: String? = null,
-    // var crunchySlug: String? = null,
-    var crunchyroll: String? = null,
-    var hulu: String? = null,
+    var externalLinks: ExternalLinks = ExternalLinks(),
     var streamingEpisodes: ArrayList<StreamingEpisode> = arrayListOf(),
 
     var nameMAL: String? = null,

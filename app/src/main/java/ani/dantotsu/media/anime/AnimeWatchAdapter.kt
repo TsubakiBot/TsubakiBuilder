@@ -1,6 +1,9 @@
 package ani.dantotsu.media.anime
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.net.Uri
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.core.widget.ImageViewCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import ani.dantotsu.FileUrl
@@ -39,6 +43,7 @@ import ani.dantotsu.parsers.WatchSources
 import ani.dantotsu.settings.FAQActivity
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
+import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import bit.himitsu.ShellActivity
 import bit.himitsu.nio.Strings.getString
@@ -106,13 +111,21 @@ class AnimeWatchAdapter(
 
         binding.streamContainer.root.isVisible = false
         if (PrefManager.getVal(PrefName.ShowYtButton)) {
-            binding.streamContainer.animeSourceYT.isVisible = media.anime?.youtube != null
-            media.anime?.youtube?.let { url ->
+            media.externalLinks.youtube?.let { url ->
+                binding.streamContainer.animeSourceYT.isVisible = true
+                binding.streamContainer.animeSourceYT.loadImage(getString(R.string.icon_yt), 48.toPx)
+                ImageViewCompat.setImageTintList(
+                    binding.streamContainer.animeSourceYT, null
+                )
                 binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceYT.setOnClickListener { openLinkInYouTube(url) }
             }
-            binding.streamContainer.animeSourceHulu.isVisible = media.hulu != null
-            media.hulu?.let { url ->
+            media.externalLinks.hulu?.let { url ->
+                binding.streamContainer.animeSourceHulu.isVisible = true
+                binding.streamContainer.animeSourceHulu.loadImage(getString(R.string.icon_hulu), 48.toPx)
+                ImageViewCompat.setImageTintList(
+                    binding.streamContainer.animeSourceHulu, null
+                )
                 binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceHulu.setOnClickListener { 
                     startActivity(
@@ -123,12 +136,52 @@ class AnimeWatchAdapter(
                     )
                 }
             }
-            binding.streamContainer.animeSourceCR.isVisible = media.crunchyroll != null
+            media.externalLinks.disney?.let { url ->
+                binding.streamContainer.animeSourceDisney.isVisible = true
+                binding.streamContainer.animeSourceDisney.loadImage(getString(R.string.icon_dp), 48.toPx)
+                ImageViewCompat.setImageTintList(
+                    binding.streamContainer.animeSourceDisney, null
+                )
+                binding.streamContainer.root.isVisible = true
+                binding.streamContainer.animeSourceDisney.setOnClickListener {
+                    startActivity(
+                        fragment.requireContext(),
+                        Intent(fragment.requireContext(), ShellActivity::class.java)
+                            .putExtra("episodeUrl", url),
+                        null
+                    )
+                }
+            }
+            media.externalLinks.netflix?.let { url ->
+                binding.streamContainer.animeSourceNetflix.isVisible = true
+                binding.streamContainer.animeSourceNetflix.loadImage(getString(R.string.icon_nf), 48.toPx)
+                ImageViewCompat.setImageTintList(
+                    binding.streamContainer.animeSourceNetflix, null
+                )
+                binding.streamContainer.root.isVisible = true
+                binding.streamContainer.animeSourceNetflix.setOnClickListener {
+                    startActivity(
+                        fragment.requireContext(),
+                        Intent(fragment.requireContext(), ShellActivity::class.java)
+                            .putExtra("episodeUrl", url),
+                        null
+                    )
+                }
+            }
+            media.externalLinks.crunchyroll != null
             if (media.streamingEpisodes.isNotEmpty()) {
                 binding.streamContainer.episodeRecyclerView.adapter =
                     StreamingAdapter(media.streamingEpisodes)
             }
-            media.crunchyroll?.let { url ->
+            media.externalLinks.crunchyroll?.let { url ->
+                binding.streamContainer.animeSourceCR.isVisible = true
+                binding.streamContainer.animeSourceCR.loadImage(
+                    getString(R.string.icon_cr),
+                    48.toPx
+                )
+                ImageViewCompat.setImageTintList(
+                    binding.streamContainer.animeSourceCR, null
+                )
                 binding.streamContainer.root.isVisible = true
                 binding.streamContainer.animeSourceCR.setOnClickListener {
                     if (media.streamingEpisodes.isEmpty()) {

@@ -23,8 +23,7 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
                 ).hide(WindowInsetsCompat.Type.statusBars())
             }
             if (this.resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
-                val behavior = BottomSheetBehavior.from(requireView().parent as View)
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                BottomSheetBehavior.from(requireView().parent as View).state = BottomSheetBehavior.STATE_EXPANDED
             }
             WindowInsetsControllerCompat(
                 window, window.decorView
@@ -37,8 +36,7 @@ open class BottomSheetDialogFragment : BottomSheetDialogFragment() {
         super.onConfigurationChanged(newConfig)
         dialog?.window?.let { window ->
             if (newConfig.orientation != Configuration.ORIENTATION_PORTRAIT) {
-                val behavior = BottomSheetBehavior.from(requireView().parent as View)
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                BottomSheetBehavior.from(requireView().parent as View).state = BottomSheetBehavior.STATE_EXPANDED
             }
             window.setNavigationTheme(requireContext())
         }

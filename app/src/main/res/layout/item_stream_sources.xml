@@ -9,67 +9,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-8dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/animeSourceYT"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/yt_red"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/play_yt"
-            android:textColor="@color/bg_white"
+            android:background="@color/yt_red"
+            android:contentDescription="@string/play_yt"
             android:visibility="gone"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_round_play_circle_24"
-            app:iconTint="@color/bg_white"
-            tools:ignore="TextContrastCheck"
+            app:srcCompat="@drawable/ic_round_play_circle_24"
+            app:tint="@color/yt_red"
             tools:visibility="visible" />
 
-        <Button
+        <ImageButton
             android:id="@+id/animeSourceHulu"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/hulu_green"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/play_hulu"
-            android:textColor="@color/bg_white"
+            android:background="@color/hulu_green"
+            android:contentDescription="@string/play_hulu"
             android:visibility="gone"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_round_play_circle_24"
-            app:iconTint="@color/bg_white"
-            tools:ignore="TextContrastCheck"
+            app:srcCompat="@drawable/ic_round_play_circle_24"
+            app:tint="@color/hulu_green"
             tools:visibility="visible" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/animeSourceDisney"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:background="@color/dp_teal"
+            android:contentDescription="@string/play_dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_round_play_circle_24"
+            app:tint="@color/dp_teal"
+            tools:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/animeSourceNetflix"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:background="@color/nf_red"
+            android:contentDescription="@string/play_nf"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_round_play_circle_24"
+            app:tint="@color/nf_red"
+            tools:visibility="visible" />
+
+        <ImageButton
             android:id="@+id/animeSourceCR"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/cr_orange"
-            android:fontFamily="@font/poppins_bold"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/play_cr"
-            android:textColor="@color/bg_white"
+            android:background="@color/cr_orange"
+            android:contentDescription="@string/play_cr"
             android:visibility="gone"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_round_play_circle_24"
-            app:iconTint="@color/bg_white"
-            tools:ignore="TextContrastCheck"
+            app:srcCompat="@drawable/ic_round_play_circle_24"
+            app:tint="@color/cr_orange"
             tools:visibility="visible" />
-
     </LinearLayout>
 
     <ani.dantotsu.view.FadingEdgeRecyclerView

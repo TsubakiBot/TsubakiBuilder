@@ -17,7 +17,6 @@ data class Anime(
     var mainStudio: Studio? = null,
     var author: Author? = null,
 
-    var youtube: String? = null,
     var nextAiringEpisode: Int? = null,
     var nextAiringEpisodeTime: Long? = null,
 

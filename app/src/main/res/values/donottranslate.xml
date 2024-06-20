@@ -41,8 +41,15 @@
     <string name="rpc_watch">Watch on Himitsu</string>
 
     <string name="play_yt">Youtube</string>
+    <string name="icon_yt">https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc</string>
     <string name="play_hulu">Hulu</string>
+    <string name="icon_hulu">https://play-lh.googleusercontent.com/4whGAVjZGrrlNxzheKAfBXrxggtyAb4euWLeQI8fDfVfdnFEZjE0DZTJ8DKoh64pqcIa</string>
+    <string name="play_dp">Disney Plus</string>
+    <string name="icon_dp" tools:ignore="Typos">https://play-lh.googleusercontent.com/gXHdyj_9Dbyz3uJy1EnmLHMUpU33VeD0n6kObv6tzvBveWKDFZQt7yGrnM-L4FW-5P4</string>
+    <string name="play_nf">Netflix</string>
+    <string name="icon_nf">https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI</string>
     <string name="play_cr">Crunchyroll</string>
+    <string name="icon_cr">https://play-lh.googleusercontent.com/CjzbMcLbmTswzCGauGQExkFsSHvwjKEeWLbVVJx0B-J9G6OQ-UCl2eOuGBfaIozFqow</string>
 
     <string name="memory_byte">Byte</string>
     <string name="memory_kilobyte">KB</string>
