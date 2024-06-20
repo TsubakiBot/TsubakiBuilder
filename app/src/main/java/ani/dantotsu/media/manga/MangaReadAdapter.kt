@@ -23,11 +23,11 @@ import ani.dantotsu.databinding.ItemAnimeWatchBinding
 import ani.dantotsu.databinding.ItemChipBinding
 import ani.dantotsu.isOnline
 import ani.dantotsu.loadImage
-import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
 import ani.dantotsu.media.anime.handleProgress
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.others.webview.CookieCatcher
@@ -503,25 +503,6 @@ class MangaReadAdapter(
                 binding.animeSourceProgressBar.visibility = View.GONE
 
                 val sourceFound = media.manga.chapters!!.isNotEmpty()
-                if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
-                    if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
-                        val nextIndex = media.selected!!.sourceIndex + 1
-                        binding.animeSource.setText(
-                            binding.animeSource.adapter
-                                .getItem(nextIndex).toString(), false
-                        )
-                        fragment.onSourceChange(nextIndex).apply {
-                            binding.animeSourceTitle.text = showUserText
-                            showUserTextListener =
-                                { uiScope.launch { binding.animeSourceTitle.text = it } }
-                            setLanguageList(0, nextIndex)
-                        }
-                        subscribeButton(false)
-                        // invalidate if it's the last source
-                        val invalidate = nextIndex == mangaReadSources.names.size - 1
-                        fragment.loadChapters(nextIndex, invalidate)
-                    }
-                }
                 binding.animeSourceNotFound.isGone = sourceFound
                 binding.faqbutton.isGone = sourceFound
             } else {

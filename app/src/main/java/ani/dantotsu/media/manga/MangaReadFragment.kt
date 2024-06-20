@@ -38,11 +38,11 @@ import ani.dantotsu.download.manga.MangaDownloaderService
 import ani.dantotsu.download.manga.MangaServiceDataSingleton
 import ani.dantotsu.dpToColumns
 import ani.dantotsu.isOnline
-import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.manga.mangareader.ChapterLoaderDialog
 import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.notifications.subscription.SubscriptionHelper.Companion.saveSubscription
@@ -50,6 +50,7 @@ import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.DynamicMangaParser
 import ani.dantotsu.parsers.HMangaSources
 import ani.dantotsu.parsers.MangaParser
+import ani.dantotsu.parsers.MangaReadSources
 import ani.dantotsu.parsers.MangaSources
 import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.settings.extension.MangaSourcePreferencesFragment
@@ -64,6 +65,7 @@ import eu.kanade.tachiyomi.source.ConfigurableSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -178,6 +180,14 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
 
                     if (!loaded) {
                         model.mangaReadSources = if (media.isAdult) HMangaSources else MangaSources
+
+                        if (PrefManager.getVal(PrefName.SearchSources)) {
+                            model.mangaReadSources = object: MangaReadSources() {
+                                override val list = (model.mangaReadSources as MangaReadSources).list.filter {
+                                    runBlocking { it.get.value?.autoSearch(media) != null }
+                                }
+                            }
+                        }
 
                         headerAdapter = MangaReadAdapter(it, this, model.mangaReadSources!!)
                         headerAdapter.scanlatorSelectionListener = this

@@ -41,14 +41,11 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
 import bit.himitsu.ShellActivity
-import bit.himitsu.collections.Collections.toArrayList
 import bit.himitsu.nio.Strings.getString
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.util.system.WebViewUtil
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
@@ -164,7 +161,6 @@ class AnimeWatchAdapter(
         var source =
             media.selected!!.sourceIndex.let { if (it >= watchSources.names.size) 0 else it }
         setLanguageList(media.selected!!.langIndex, source)
-
         if (watchSources.names.isNotEmpty() && source in 0 until watchSources.names.size) {
             binding.animeSource.setText(watchSources.names[source])
             watchSources[source].apply {
@@ -175,21 +171,11 @@ class AnimeWatchAdapter(
             }
         }
 
-        val sortedSources: ArrayList<String> = watchSources.names.toArrayList()
-        CoroutineScope(Dispatchers.IO).launch {
-            watchSources.list.reversed().forEach { source ->
-                source.get.value?.autoSearch(media)?.let {
-                    sortedSources.remove(source.name)
-                    sortedSources.add(0, source.name)
-                }
-            }
-        }
-
         binding.animeSource.setAdapter(
             ArrayAdapter(
                 fragment.requireContext(),
                 R.layout.item_dropdown,
-                sortedSources
+                watchSources.names
             )
         )
         binding.animeSourceTitle.isSelected = true
@@ -495,25 +481,6 @@ class AnimeWatchAdapter(
                 binding.animeSourceProgressBar.visibility = View.GONE
 
                 val sourceFound = media.anime.episodes!!.isNotEmpty()
-                if (!sourceFound && PrefManager.getVal(PrefName.SearchSources)) {
-                    if (binding.animeSource.adapter.count > media.selected!!.sourceIndex + 1) {
-                        val nextIndex = media.selected!!.sourceIndex + 1
-                        binding.animeSource.setText(
-                            binding.animeSource.adapter
-                                .getItem(nextIndex).toString(), false
-                        )
-                        fragment.onSourceChange(nextIndex).apply {
-                            binding.animeSourceTitle.text = showUserText
-                            showUserTextListener =
-                                { uiScope.launch { binding.animeSourceTitle.text = it } }
-                            binding.animeSourceDubbed.isChecked = selectDub
-                            binding.animeSourceDubbedCont.isVisible = isDubAvailableSeparately()
-                            setLanguageList(0, nextIndex)
-                        }
-                        subscribeButton(false)
-                        fragment.loadEpisodes(nextIndex, false)
-                    }
-                }
                 binding.animeSourceNotFound.isGone = sourceFound
                 binding.faqbutton.isGone = sourceFound
             } else {

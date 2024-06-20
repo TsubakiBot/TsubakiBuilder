@@ -39,17 +39,18 @@ import ani.dantotsu.download.anime.AnimeDownloaderService
 import ani.dantotsu.download.findValidName
 import ani.dantotsu.dpToColumns
 import ani.dantotsu.isOnline
-import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.MediaType
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.notifications.subscription.SubscriptionHelper
 import ani.dantotsu.notifications.subscription.SubscriptionHelper.Companion.saveSubscription
 import ani.dantotsu.others.LanguageMapper
 import ani.dantotsu.parsers.AnimeParser
 import ani.dantotsu.parsers.AnimeSources
 import ani.dantotsu.parsers.HAnimeSources
+import ani.dantotsu.parsers.WatchSources
 import ani.dantotsu.setNavigationTheme
 import ani.dantotsu.settings.extension.AnimeSourcePreferencesFragment
 import ani.dantotsu.settings.saving.PrefManager
@@ -68,6 +69,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import tachiyomi.core.util.lang.launchIO
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -182,6 +184,14 @@ class AnimeWatchFragment : Fragment() {
 
                 if (!loaded) {
                     model.watchSources = if (media.isAdult) HAnimeSources else AnimeSources
+
+                    if (PrefManager.getVal(PrefName.SearchSources)) {
+                        model.watchSources = object: WatchSources() {
+                            override val list = (model.watchSources as WatchSources).list.filter {
+                                runBlocking { it.get.value?.autoSearch(media) != null }
+                            }
+                        }
+                    }
 
                     val offlineMode =
                         model.watchSources!!.isDownloadedSource(media.selected!!.sourceIndex)
