@@ -70,8 +70,6 @@ object AnimeSources : WatchSources() {
 
 
 object HAnimeSources : WatchSources() {
-    private val aList: List<Lazier<BaseParser>> = lazyList(
-    )
-
+    private val aList: List<Lazier<BaseParser>> = lazyList()
     override val list = listOf(aList, AnimeSources.list).flatten()
 }

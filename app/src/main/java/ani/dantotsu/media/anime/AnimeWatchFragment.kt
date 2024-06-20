@@ -185,10 +185,10 @@ class AnimeWatchFragment : Fragment() {
                 if (!loaded) {
                     model.watchSources = if (media.isAdult) HAnimeSources else AnimeSources
 
-                    if (PrefManager.getVal(PrefName.SearchSources)) {
+                    if (PrefManager.getVal(PrefName.SearchSources) && !model.watchSources?.list.isNullOrEmpty()) {
                         model.watchSources = object: WatchSources() {
                             override val list = (model.watchSources as WatchSources).list.filter {
-                                runBlocking { it.get.value?.autoSearch(media) != null }
+                                runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
                             }
                         }
                     }

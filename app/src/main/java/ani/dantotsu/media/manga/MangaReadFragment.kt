@@ -181,10 +181,10 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                     if (!loaded) {
                         model.mangaReadSources = if (media.isAdult) HMangaSources else MangaSources
 
-                        if (PrefManager.getVal(PrefName.SearchSources)) {
+                        if (PrefManager.getVal(PrefName.SearchSources) && !model.mangaReadSources?.list.isNullOrEmpty()) {
                             model.mangaReadSources = object: MangaReadSources() {
                                 override val list = (model.mangaReadSources as MangaReadSources).list.filter {
-                                    runBlocking { it.get.value?.autoSearch(media) != null }
+                                    runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
                                 }
                             }
                         }
