@@ -51,7 +51,7 @@ class StreamingAdapter(
                     ContextCompat.startActivity(
                         itemView.context,
                         Intent(itemView.context, ShellActivity::class.java)
-                            .putExtra("episodeUrl", it),
+                            .putExtra("streamUrl", it),
                         null
                     )
                 }

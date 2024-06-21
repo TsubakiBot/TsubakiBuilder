@@ -147,7 +147,6 @@ class SettingsThemeFragment : Fragment(), SimpleDialog.OnDialogResultListener {
             }
 
             var previous: View = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
-                0 -> settingsUiAuto
                 1 -> settingsUiLight
                 2 -> settingsUiDark
                 else -> settingsUiAuto

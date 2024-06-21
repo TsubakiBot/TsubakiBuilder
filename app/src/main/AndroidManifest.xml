@@ -49,6 +49,9 @@
         <package android:name="idm.internet.download.manager" />
         <package android:name="idm.internet.download.manager.adm.lite" />
         <package android:name="com.dv.adm" />
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
     </queries>
 
     <application

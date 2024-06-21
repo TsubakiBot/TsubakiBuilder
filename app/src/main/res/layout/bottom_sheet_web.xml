@@ -13,14 +13,6 @@
         android:layout_margin="4dp"
         android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/userAgentSwitch"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/user_agent"
-            app:tint="?attr/colorPrimary" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addressBar"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"

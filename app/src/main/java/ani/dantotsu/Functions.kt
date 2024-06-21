@@ -59,6 +59,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_DARK
+import androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_LIGHT
+import androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_SYSTEM
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -513,6 +517,19 @@ fun View.circularReveal(ex: Int, ey: Int, subX: Boolean, time: Long) {
     ).setDuration(time).start()
 }
 
+fun openCustomTab(link: String?) {
+    link?.let {
+        val colorScheme = when (PrefManager.getVal<Int>(PrefName.DarkMode)) {
+            1 -> COLOR_SCHEME_LIGHT
+            2 -> COLOR_SCHEME_DARK
+            else -> COLOR_SCHEME_SYSTEM
+        }
+        CustomTabsIntent.Builder()
+            .setUrlBarHidingEnabled(true)
+            .setColorScheme(colorScheme)
+            .build().launchUrl(currContext(), Uri.parse(it))
+    }
+}
 fun openLinkInBrowser(link: String?) {
     link?.let {
         try {
