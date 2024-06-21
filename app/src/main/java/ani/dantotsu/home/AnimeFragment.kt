@@ -293,7 +293,7 @@ class AnimeFragment : Fragment() {
                                 )
                             )
                             animePageAdapter.updateAvatar()
-                            animePageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
+                            if (it.isNotEmpty()) animePageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
                         }
                     }
                 }
