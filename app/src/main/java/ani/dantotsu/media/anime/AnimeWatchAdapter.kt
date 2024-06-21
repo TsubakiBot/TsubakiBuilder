@@ -199,7 +199,12 @@ class AnimeWatchAdapter(
                 }
                 binding.streamContainer.animeSourceCR.setOnLongClickListener {
                     it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                    openLinkInBrowser(url)
+                    startActivity(
+                        fragment.requireContext(),
+                        Intent(fragment.requireContext(), ShellActivity::class.java)
+                            .putExtra("episodeUrl", url),
+                        null
+                    )
                     true
                 }
             }
