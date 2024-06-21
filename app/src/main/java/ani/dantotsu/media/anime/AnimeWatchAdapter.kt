@@ -1,9 +1,6 @@
 package ani.dantotsu.media.anime
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.net.Uri
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +30,6 @@ import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
 import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.openCustomTab
-import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper

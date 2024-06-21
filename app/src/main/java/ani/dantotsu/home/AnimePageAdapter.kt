@@ -116,6 +116,11 @@ class AnimePageAdapter(val parent: AnimeFragment) : RecyclerView.Adapter<AnimePa
         trendingBinding.searchBar.setEndIconOnClickListener {
             trendingBinding.searchBar.performClick()
         }
+        trendingBinding.searchBar.setEndIconOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            PrefManager.removeVal(PrefName.AnimeSearchHistory)
+            true
+        }
 
         listOf(
             binding.animePreviousSeason,

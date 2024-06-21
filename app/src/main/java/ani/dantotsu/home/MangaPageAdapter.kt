@@ -116,6 +116,11 @@ class MangaPageAdapter(val parent: MangaFragment): RecyclerView.Adapter<MangaPag
         trendingBinding.searchBar.setEndIconOnClickListener {
             trendingBinding.searchBarText.performClick()
         }
+        trendingBinding.searchBar.setEndIconOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            PrefManager.removeVal(PrefName.MangaSearchHistory)
+            true
+        }
 
         bindingListContainer = ItemListContainerBinding.bind(binding.root).apply {
             leftButtonImage.loadImage("https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-wk5qQ7zAaTGl.jpg")
