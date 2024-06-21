@@ -380,7 +380,7 @@
     <string name="planned_manga">Suunniteltu Manga</string>
     <string name="image_long_clicking">Avaa kuva pitkällä painikkeella</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Hae seuraavasta saatavilla olevasta lähteestä</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Hyödyllinen, jos saat Handshake Fails</string>
     <string name="timestamp_proxy">Käytä välityspalvelinta Timestampeille</string>
     <string name="check_app_updates">Tarkista päivitykset</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Luo ja palauta varmuuskopiot valituista asetuksista</string>
     <string name="change_download_location_desc">Muuta sijaintia, jossa lataukset pidetään</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Siirtyy seuraavalle palvelimelle, jos sisältöä ei löydy</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Näytä vain luettelosi kohteet viimeisessä välilehdessä</string>
     <string name="adult_only_content_desc">Näytä vain aikuisen sisältö tutkimussivulla</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

@@ -380,7 +380,7 @@
     <string name="planned_manga">계획된 만화</string>
     <string name="image_long_clicking">이미지를 길게 클릭하여 열기</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">다음 사용 가능한 소스 검색</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">핸드셰이크 실패가 발생하는 경우 유용합니다</string>
     <string name="timestamp_proxy">타임 스탬프에 프록시 사용</string>
     <string name="check_app_updates">앱 업데이트 항상 확인</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Your preferred settings everywhere</string>
     <string name="change_download_location_desc">Change the location where all the downloaded stuff goes</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Auto-select the next server if the previous server doesn\'t have the media</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">최근 탭에서 나만의 목록 항목만 표시</string>
     <string name="adult_only_content_desc">탐색 페이지에서 성인 콘텐츠만 표시</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

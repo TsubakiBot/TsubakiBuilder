@@ -380,7 +380,7 @@
     <string name="planned_manga">Planlanmış Manga</string>
     <string name="image_long_clicking">Resmi açmak için uzun süre basılı tutun</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Sonraki mevcut kaynağı arayın</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Handshake Hataları alıyorsanız faydalıdır</string>
     <string name="timestamp_proxy">Zaman Damgaları İçin Proxy Kullan</string>
     <string name="check_app_updates">Güncellemeleri kontrol et</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Seçilen ayarların yedeklerini oluştur ve geri yükle</string>
     <string name="change_download_location_desc">İndirilenlerin tutulduğu konumu değiştir</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">İçerik bulunamadığında bir sonraki sunucuya geçer</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Son sekmesinde yalnızca listenizdeki öğeleri göster</string>
     <string name="adult_only_content_desc">Keşfet sayfasında yalnızca yetişkin içeriği göster</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

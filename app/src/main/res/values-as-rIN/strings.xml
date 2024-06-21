@@ -380,7 +380,7 @@
     <string name="planned_manga">পূৰ্বধাৰিত কলা</string>
     <string name="image_long_clicking">দীৰ্ঘ টিপি কৰিবলৈ ছবি খোলক</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">পৰৱৰ্তী উপলব্ধ উৎস সন্ধান কৰক</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">যদি আপুনি হেণ্ডশেক ফেইল পায়</string>
     <string name="timestamp_proxy">সময় চিহ্নসমূহ সুৱিদ্ধত ব্যৱহাৰ কৰা</string>
     <string name="check_app_updates">সদা এপৰ আপডেট পৰীক্ষা কৰক</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">আপোনাৰ পছন্দৰ ছেটিংছ সকলোতে</string>
     <string name="change_download_location_desc">সকলো ডাউনলোড কৰা সামগ্ৰী য\'লৈ যায় সেই অৱস্থান সলনি কৰক</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">আগৰ চাৰ্ভাৰৰ মিডিয়া নাথাকিলে নতুন চাৰ্ভাৰ স্বয়ং-নিৰ্বাচন কৰক</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">শেহতীয়া টেবত কেৱল আপোনাৰ তালিকাৰ আইটেমসমূহ দেখুৱাওক</string>
     <string name="adult_only_content_desc">এক্সপলৰ পেজত মাত্ৰ এদালট কণ্টেনত হে দেখুৱাওক</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

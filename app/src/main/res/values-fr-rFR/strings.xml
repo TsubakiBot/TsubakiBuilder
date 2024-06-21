@@ -380,7 +380,7 @@
     <string name="planned_manga">Manga prévus</string>
     <string name="image_long_clicking">Ouvrir l\'image en cliquant longuement</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Rechercher la prochaine source disponible</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Utile si vous obtenez des échecs de poignée de main</string>
     <string name="timestamp_proxy">Utiliser un proxy pour les horodatages</string>
     <string name="check_app_updates">Toujours vérifier les mises à jour de l\'application</string>
@@ -925,7 +925,7 @@ Genre : "</string>
     <string name="backup_restore_desc">Utilisez vos paramètres préférés où vous voulez</string>
     <string name="change_download_location_desc">Changez l\'emplacement où tout ce qui est téléchargé est stocké</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Sélectionne automatiquement le serveur suivant si le serveur précédent n\'a pas le média</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Afficher uniquement les éléments de votre liste dans l\'onglet récent</string>
     <string name="adult_only_content_desc">Afficher uniquement le contenu pour adultes dans la page de découverte</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

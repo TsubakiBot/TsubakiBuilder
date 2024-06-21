@@ -380,7 +380,7 @@
     <string name="planned_manga">Tervezett Manga</string>
     <string name="image_long_clicking">Hosszú kattintás az kép megnyitásához</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Keresés a következő elérhető forrásban</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Hasznos, ha Handshake Fails üzenetet kap</string>
     <string name="timestamp_proxy">Proxy használata időbélyegekhez</string>
     <string name="check_app_updates">Frissítések keresése</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Választott beállítások biztonsági mentése és visszaállítása</string>
     <string name="change_download_location_desc">A letöltések helyének megváltoztatása</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Ugrás a következő szerverre, ha a tartalom nem található</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Csak a listaelemeket jelenítse meg a legutóbbi fülön</string>
     <string name="adult_only_content_desc">Csak felnőtt tartalmak jelenjenek meg az felfedező oldalon</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

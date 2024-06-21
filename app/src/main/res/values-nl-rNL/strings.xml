@@ -380,7 +380,7 @@
     <string name="planned_manga">Geplande Manga</string>
     <string name="image_long_clicking">Open image by Long Clicking</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Zoek volgende beschikbare bron</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Handig als je Handshake Fails krijgt</string>
     <string name="timestamp_proxy">Proxy voor tijdstempels gebruiken</string>
     <string name="check_app_updates">Check for Updates</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Maak en herstel back-ups van geselecteerde instellingen</string>
     <string name="change_download_location_desc">Wijzig de locatie waar downloads worden bewaard</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Verplaatst naar de volgende server als content niet gevonden is</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Toon alleen uw lijstitems op het recente tabblad</string>
     <string name="adult_only_content_desc">Alleen inhoud van volwassenen op de verkenningspagina tonen</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

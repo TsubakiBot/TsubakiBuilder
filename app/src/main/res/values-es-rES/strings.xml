@@ -374,7 +374,7 @@
     <string name="planned_manga">Mangas pendientes</string>
     <string name="image_long_clicking">Abrir imagen haciendo un clic largo</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Buscar la siguiente fuente disponible</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Útil si estás obteniendo fallas de conexión</string>
     <string name="timestamp_proxy">Usar proxy para marcas de tiempo</string>
     <string name="check_app_updates">Buscar actualizaciones</string>
@@ -903,7 +903,7 @@
     <string name="backup_restore_desc">Tus configuraciones preferidas en todas partes</string>
     <string name="change_download_location_desc">Cambiar la ubicación donde van todas las cosas descargadas</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Seleccione automáticamente el siguiente servidor si el servidor anterior no tiene los medios</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Muestra solo los elementos de tu lista en la pestaña reciente</string>
     <string name="adult_only_content_desc">Mostrar solo contenido para adultos en la página de exploración</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

@@ -380,7 +380,7 @@
     <string name="planned_manga">計畫中的漫畫</string>
     <string name="image_long_clicking">Long click to open image</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Search next available source</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Useful if you are getting Handshake Fails</string>
     <string name="timestamp_proxy">Use Proxy for Timestamps</string>
     <string name="check_app_updates">Check for updates</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Create and restore backups of selected settings</string>
     <string name="change_download_location_desc">Change the location where downloads are kept</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Moves to the next server if content is not found</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Show only your list items in the recent tab</string>
     <string name="adult_only_content_desc">Show only adult content in the explore page</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

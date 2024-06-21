@@ -380,7 +380,7 @@
     <string name="planned_manga">Plánovaná Manga</string>
     <string name="image_long_clicking">Dlouhým klepnutím otevřete obrázek</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Hledat další dostupný zdroj</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Užitečné, pokud se vám nedaří ručně ovládat</string>
     <string name="timestamp_proxy">Použít proxy pro časová razítka</string>
     <string name="check_app_updates">Zkontrolovat aktualizace</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Vytvořit a obnovit zálohy vybraných nastavení</string>
     <string name="change_download_location_desc">Změnit umístění, kde jsou uchována stahování</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Přesune na další server, pokud není obsah nalezen</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Zobrazit pouze seznam položek v panelu nedávných</string>
     <string name="adult_only_content_desc">Zobrazit pouze obsah pro dospělé v průzkumné stránce</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>
