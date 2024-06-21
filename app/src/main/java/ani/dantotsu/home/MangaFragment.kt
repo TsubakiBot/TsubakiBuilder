@@ -224,7 +224,7 @@ class MangaFragment : Fragment() {
                 model.getPopularManga().observe(viewLifecycleOwner) {
                     if (it != null) {
                         mangaPageAdapter.updateTrendingManga(MediaAdaptor(ViewType.COMPACT, it, requireActivity()), it)
-                        mangaPageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
+                        if (it.isNotEmpty()) mangaPageAdapter.setReviewImageFromTrending(it[Random.nextInt(it.size)])
                     }
                 }
                 model.getPopularManhwa().observe(viewLifecycleOwner) {
