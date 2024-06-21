@@ -380,7 +380,7 @@
     <string name="planned_manga">Manga Planificată</string>
     <string name="image_long_clicking">Clic lung pentru a deschide imaginea</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Caută următoarea sursă disponibilă</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Util dacă vi se face Manşonul Eşecului</string>
     <string name="timestamp_proxy">Folosește Proxy pentru marcaje de timp</string>
     <string name="check_app_updates">Verifică pentru actualizări</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Creați și restaurați copii de rezervă ale setărilor selectate</string>
     <string name="change_download_location_desc">Schimbă locul unde sunt păstrate descărcările</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Se mută la următorul server dacă conținutul nu este găsit</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Arată doar elementele din listă în fila recentă</string>
     <string name="adult_only_content_desc">Arată doar conținutul pentru adulți în pagina de explorare</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

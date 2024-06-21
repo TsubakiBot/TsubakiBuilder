@@ -380,7 +380,7 @@
     <string name="planned_manga">Beplande manga</string>
     <string name="image_long_clicking">Lang druk om beeld oop te maak</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Soek volgende beskikbare bron</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Nuttig as jy Handdruk Foute kry</string>
     <string name="timestamp_proxy">Gebruik Proksi vir Tye</string>
     <string name="check_app_updates">Kontroleer vir opdaterings</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Skep en herstel rugsteun van geselekteerde instellings</string>
     <string name="change_download_location_desc">Verander die plek waar aflaaie bewaar word</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Beweeg na die volgende bediener as inhoud nie gevind word nie</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Wys slegs jou lysitems in die onlangse lêer</string>
     <string name="adult_only_content_desc">Wys slegs volwasse inhoud in die verkenbladsy</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

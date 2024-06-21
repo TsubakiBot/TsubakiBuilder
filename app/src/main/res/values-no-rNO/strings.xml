@@ -380,7 +380,7 @@
     <string name="planned_manga">Planlagt manga</string>
     <string name="image_long_clicking">Langt klikk for å åpne bilde</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Søk i neste tilgjengelige kilde</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Nyttig hvis du får ”Handshake Feil</string>
     <string name="timestamp_proxy">Bruk Proxy for tidsstempler</string>
     <string name="check_app_updates">Se etter oppdateringer</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Opprett og gjenopprett sikkerhetskopier av de valgte innstillingene</string>
     <string name="change_download_location_desc">Endre plasseringen nedlastingen blir holdt</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Flytter til neste server hvis innholdet ikke blir funnet</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Vis bare dine listeelementer i den nylige fanen</string>
     <string name="adult_only_content_desc">Vis kun voksent innhold på utforske siden</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

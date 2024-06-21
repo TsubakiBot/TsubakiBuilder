@@ -380,7 +380,7 @@
     <string name="planned_manga">计划中的漫画</string>
     <string name="image_long_clicking">长按打开图片</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">搜索下一个可用源</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">如果遇到握手失败，这很有用</string>
     <string name="timestamp_proxy">使用代理进行时间戳</string>
     <string name="check_app_updates">始终检查应用程序更新</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">创建并恢复选定设置的备份</string>
     <string name="change_download_location_desc">更改下载保持的位置</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">未找到内容时移动到下一个服务器</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">在最近的标签中只显示您的列表项</string>
     <string name="adult_only_content_desc">在探索页面只显示成人内容</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

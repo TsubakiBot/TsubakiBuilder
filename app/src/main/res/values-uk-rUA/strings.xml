@@ -380,7 +380,7 @@
     <string name="planned_manga">Планова манга</string>
     <string name="image_long_clicking">Тривале натискання відкриє зображення</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Пошук наступного доступного джерела</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Корисно, якщо ви отримуєте помилки рукостискання</string>
     <string name="timestamp_proxy">Використовувати проксі для часових міток</string>
     <string name="check_app_updates">Перевірити наявність оновлень</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Створити та відновити резервні копії вибраних налаштувань</string>
     <string name="change_download_location_desc">Змінювати місцезнаходження при збереженні завантажень</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Переміститися на наступний сервер, якщо вміст не знайдено</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Показувати лише елементи списку в останній вкладці</string>
     <string name="adult_only_content_desc">Показувати лише матеріали для дорослих на сторінці вивчення</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

@@ -380,7 +380,7 @@
     <string name="planned_manga">योजित मंगा</string>
     <string name="image_long_clicking">लॉन्ग क्लिक करके छवि खोलें</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">अगले उपस्थित स्त्रोत मे ढूँढे</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">यदि आप हैंडशेक फेल प्राप्त कर रहे हैं तो उपयोगी</string>
     <string name="timestamp_proxy">टाइमस्टैंप के लिए प्रॉक्सी का उपयोग करें</string>
     <string name="check_app_updates">हमेशा एप्लिकेशन अपडेट की जाँच करें</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">हर जगह आपकी पसंदीदा सेटिंग्स</string>
     <string name="change_download_location_desc">स्थान बदलें जहां सभी डाउनलोड की गई वस्तुएँ जाती हैं</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">यदि पिछला सर्वर मीडिया नहीं है तो अगला सर्वर स्वचालित रूप से चुनें</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">हाल के टैब में केवल आपकी सूची आइटम्स दिखाएं</string>
     <string name="adult_only_content_desc">अन्वेषण पृष्ठ में केवल वयस्क सामग्री दिखाएं</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

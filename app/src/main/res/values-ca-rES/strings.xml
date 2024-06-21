@@ -380,7 +380,7 @@
     <string name="planned_manga">Manga Planificat</string>
     <string name="image_long_clicking">Fes una pulsació llarga per obrir la imatge</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Cerca la següent font disponible</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Útil si tens problemes amb els Handshake Fails</string>
     <string name="timestamp_proxy">Utilitza un proxy per als timestamps</string>
     <string name="check_app_updates">Comprova les actualitzacions</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Crear i restaurar còpies de seguretat de paràmetres seleccionats</string>
     <string name="change_download_location_desc">Canviar la ubicació on es conserven les descàrregues</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Passa al següent servidor si no es troba el contingut</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Mostra només els teus elements de llista a la pestanya recent</string>
     <string name="adult_only_content_desc">Mostra només contingut per adults a la pàgina d\'exploració</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

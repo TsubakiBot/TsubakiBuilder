@@ -380,7 +380,7 @@
     <string name="planned_manga">Manga Đã lên kế hoạch</string>
     <string name="image_long_clicking">Nhấn và giữ để mở hình ảnh</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">Tìm kiếm nguồn khả dụng tiếp theo</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Hữu ích nếu bạn gặp sự cố Handshake Fails</string>
     <string name="timestamp_proxy">Sử dụng Proxy cho Timestamps</string>
     <string name="check_app_updates">Kiểm tra cập nhật</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">Tạo và khôi phục sao lưu của các thiết lập đã chọn</string>
     <string name="change_download_location_desc">Thay đổi vị trí lưu trữ tải về</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">Chuyển sang máy chủ tiếp theo nếu không tìm thấy nội dung</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">Chỉ hiển thị các mục trong danh sách của bạn trên tab gần đây</string>
     <string name="adult_only_content_desc">Chỉ hiển thị nội dung dành cho người lớn trên trang khám phá</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>

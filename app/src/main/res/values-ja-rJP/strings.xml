@@ -380,7 +380,7 @@
     <string name="planned_manga">予定のマンガ</string>
     <string name="image_long_clicking">長押しで画像を開く</string>
     <string name="always_continue_content">Continue previous media</string>
-    <string name="search_source_list">次の利用可能なソースを検索</string>
+    <string name="search_source_list">Filter sources by selection</string>
     <string name="timestamp_proxy_desc">Handshake Failsを取得している場合に便利です</string>
     <string name="timestamp_proxy">タイムスタンプにプロキシを使用する</string>
     <string name="check_app_updates">アップデートを確認</string>
@@ -923,7 +923,7 @@
     <string name="backup_restore_desc">選択した設定のバックアップの作成と復元</string>
     <string name="change_download_location_desc">ダウンロードした場所を変更する</string>
     <string name="always_continue_content_desc">Continue media where you left off</string>
-    <string name="search_source_list_desc">コンテンツが見つからない場合は、次のサーバーに移動</string>
+    <string name="search_source_list_desc">Filter source list by selected item availability</string>
     <string name="recentlyListOnly_desc">最近のタブにリスト項目のみ表示する</string>
     <string name="adult_only_content_desc">探索ページに大人のコンテンツのみを表示する</string>
     <string name="add_repository_desc">Add new %1$s extension repositories</string>
