@@ -13,6 +13,7 @@ import ani.dantotsu.databinding.ItemEpisodeListBinding
 import ani.dantotsu.loadImage
 import bit.himitsu.ShellActivity
 import ani.dantotsu.toPx
+import bit.himitsu.webkit.StreamIntegration
 
 class StreamingAdapter(
     var streamingEpisodes: List<StreamingEpisode>
@@ -47,14 +48,7 @@ class StreamingAdapter(
         init {
             itemView.setOnClickListener {
                 val episode = streamingEpisodes[bindingAdapterPosition]
-                episode.url?.let {
-                    ContextCompat.startActivity(
-                        itemView.context,
-                        Intent(itemView.context, ShellActivity::class.java)
-                            .putExtra("streamUrl", it),
-                        null
-                    )
-                }
+                StreamIntegration.openStreamDialog(itemView.context, episode.url)
             }
         }
     }

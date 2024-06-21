@@ -1,7 +1,6 @@
 package ani.dantotsu.media.anime
 
 import android.content.Intent
-import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,6 @@ import ani.dantotsu.media.MediaDetailsActivity
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.SourceSearchDialogFragment
 import ani.dantotsu.media.cereal.Media
-import ani.dantotsu.openCustomTab
 import ani.dantotsu.openLinkInYouTube
 import ani.dantotsu.openSettings
 import ani.dantotsu.others.LanguageMapper
@@ -44,6 +42,8 @@ import ani.dantotsu.toPx
 import ani.dantotsu.toast
 import bit.himitsu.ShellActivity
 import bit.himitsu.nio.Strings.getString
+import bit.himitsu.webkit.StreamIntegration
+import bit.himitsu.webkit.setClickListeners
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
@@ -135,12 +135,7 @@ class AnimeWatchAdapter(
                 getStreamIcon(binding.streamContainer.animeSourceCR, R.string.icon_cr, url)
                 binding.streamContainer.animeSourceCR.setOnClickListener {
                     if (media.streamingEpisodes.isEmpty()) {
-                        startActivity(
-                            fragment.requireContext(),
-                            Intent(fragment.requireContext(), ShellActivity::class.java)
-                                .putExtra("streamUrl", url),
-                            null
-                        )
+                        StreamIntegration.openStreamDialog(fragment.requireContext(), url)
                         return@setOnClickListener
                     } else {
                         binding.streamContainer.episodeRecyclerView.isVisible =
@@ -350,19 +345,7 @@ class AnimeWatchAdapter(
         icon.isVisible = true
         icon.loadImage(getString(imageRes, 48.toPx))
         ImageViewCompat.setImageTintList(icon, null)
-        icon.setOnClickListener {
-            openCustomTab(url)
-        }
-        icon.setOnLongClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            startActivity(
-                fragment.requireContext(),
-                Intent(fragment.requireContext(), ShellActivity::class.java)
-                    .putExtra("streamUrl", url),
-                null
-            )
-            true
-        }
+        icon.setClickListeners(url)
     }
 
     fun subscribeButton(enabled: Boolean) {
