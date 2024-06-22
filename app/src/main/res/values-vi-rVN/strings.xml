@@ -578,6 +578,7 @@
     <string name="reset">Đặt lại</string>
     <string name="close">Đóng</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Không có Chương</string>
     <string name="content_18">Bật nội dung 18+ từ cài đặt Anilist của bạn</string>
     <string name="available">Có sẵn</string>
