@@ -571,11 +571,13 @@
     <string name="outline_sub_color">لون الجمل الجانبي</string>
     <string name="outline_type">نوع المخطط</string>
     <string name="subtitle_font">خط الترجمة</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="ok">أجل</string>
     <string name="reset">إعادة ضبط</string>
     <string name="close">أغلاق</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">لا يوجد فصل</string>
     <string name="content_18">تفعيل محتوي 18+ من إعدادات Anilist</string>
     <string name="available">متوفر</string>
