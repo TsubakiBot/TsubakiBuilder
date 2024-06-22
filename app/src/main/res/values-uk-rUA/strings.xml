@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Колір вкладеного обрису</string>
     <string name="outline_type">Тип обрису</string>
     <string name="subtitle_font">Шрифт субтитрів</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="ok">Гаразд</string>
     <string name="reset">Reset</string>
     <string name="close">Закрити</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Без розділу</string>
     <string name="content_18">Увімкніть 18+ контент від налаштувань анілістів</string>
     <string name="available">Доступно</string>
