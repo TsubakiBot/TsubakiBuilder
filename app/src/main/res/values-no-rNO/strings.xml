@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Omrissets underfarge</string>
     <string name="outline_type">Type omriss</string>
     <string name="subtitle_font">Undertekst Font</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Lukk</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Ingen kapittel</string>
     <string name="content_18">Slå på innhold fra dine Anilist-innstillinger</string>
     <string name="available">Tilgjengelig</string>
