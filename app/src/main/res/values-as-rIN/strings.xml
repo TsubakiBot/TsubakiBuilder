@@ -571,11 +571,13 @@
     <string name="outline_sub_color">আউটলাইন সাব ৰঙ</string>
     <string name="outline_type">আউটলাইন ধৰণ</string>
     <string name="subtitle_font">সাবটাইটেল ফন্ট</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">হয়</string>
     <string name="no">নহয়</string>
     <string name="ok">হ\'ব</string>
     <string name="reset">ৰিছেট</string>
     <string name="close">বন্ধ কৰক</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">কোনো চাপ্তেৰ নাই</string>
     <string name="content_18">আপোনাৰ Anilist ছেটিংছত ১৮+ বিষয়ৰ সমল অন কৰক</string>
     <string name="available">উপলব্ধ</string>
