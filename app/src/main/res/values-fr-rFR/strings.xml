@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Couleur du contour des sous-titres</string>
     <string name="outline_type">Type de contour</string>
     <string name="subtitle_font">Police des sous-titres</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="ok">Ok</string>
     <string name="reset">Réinitialiser</string>
     <string name="close">Fermer</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Pas de chapitre</string>
     <string name="content_18">Activer le contenu 18+ depuis vos paramètres Anilist</string>
     <string name="available">Disponible</string>
