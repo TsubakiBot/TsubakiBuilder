@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Contur culoare</string>
     <string name="outline_type">Tip contur</string>
     <string name="subtitle_font">Font subtitrare</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Da</string>
     <string name="no">Nr</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Inchide</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Niciun capitol</string>
     <string name="content_18">Porniți conținutul de 18+ din setările Anilist</string>
     <string name="available">Disponibil</string>
