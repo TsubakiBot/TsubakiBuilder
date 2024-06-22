@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Omrids Underfarve</string>
     <string name="outline_type">Omrids Type</string>
     <string name="subtitle_font">Undertekst Skrifttype</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Luk</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Intet Kapitel</string>
     <string name="content_18">Slå 18+ indhold fra dine Anilist indstillinger til</string>
     <string name="available">Tilgængelig</string>
