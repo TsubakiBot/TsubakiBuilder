@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Dış Çizgi Alt Renk</string>
     <string name="outline_type">Dış Çizgi Türü</string>
     <string name="subtitle_font">Altyazı Yazı Tipi</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="ok">Tamam</string>
     <string name="reset">Sıfırla</string>
     <string name="close">Kapat</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Bölüm Yok</string>
     <string name="content_18">Anilist ayarlarınızdan 18+ içeriği açın</string>
     <string name="available">Mevcut</string>
