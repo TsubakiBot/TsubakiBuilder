@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Konturera underfärg</string>
     <string name="outline_type">Typ av kontur</string>
     <string name="subtitle_font">Teckensnitt för undertext</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Stäng</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Inget kapitel</string>
     <string name="content_18">Aktivera 18+ innehåll från dina Anilist-inställningar</string>
     <string name="available">Tillgänglig</string>
