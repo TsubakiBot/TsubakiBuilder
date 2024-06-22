@@ -33,6 +33,7 @@ import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import bit.himitsu.update.MatagiUpdater
+import bit.himitsu.webkit.ChromeIntegration
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -157,7 +158,10 @@ class SettingsMainFragment : Fragment() {
                         desc = getString(R.string.ani_setting_desc),
                         icon = R.drawable.ic_anilist,
                         onClick = {
-                            openLinkInBrowser("https://anilist.co/settings")
+                            ChromeIntegration.openCustomTab(
+                                requireContext(),
+                                "https://anilist.co/settings"
+                            )
                         },
                         isActivity = true
                     ),

@@ -191,6 +191,8 @@ class AnimeWatchFragment : Fragment() {
                                 runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
                             }
                         }
+                        if (model.watchSources?.list.isNullOrEmpty())
+                            model.watchSources = if (media.isAdult) HAnimeSources else AnimeSources
                     }
 
                     val offlineMode =

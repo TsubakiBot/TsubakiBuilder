@@ -187,6 +187,8 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                                     runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
                                 }
                             }
+                            if (model.mangaReadSources?.list.isNullOrEmpty())
+                                model.mangaReadSources = if (media.isAdult) HMangaSources else MangaSources
                         }
 
                         headerAdapter = MangaReadAdapter(it, this, model.mangaReadSources!!)
