@@ -578,6 +578,7 @@
     <string name="reset">Zurücksetzen</string>
     <string name="close">Schließen</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Kein Kapitel</string>
     <string name="content_18">Aktivieren Sie Inhalte ab 18 Jahren in Ihren Anilist-Einstellungen</string>
     <string name="available">Verfügbar</string>
