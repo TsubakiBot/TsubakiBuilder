@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Sotto-Colore Contorno</string>
     <string name="outline_type">Tipo Di Contorno</string>
     <string name="subtitle_font">Carattere Sottotitoli</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="close">Chiudi</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Nessun Capitolo</string>
     <string name="content_18">Attiva oltre 18 contenuti dalle tue impostazioni Anilist</string>
     <string name="available">Disponibile</string>
