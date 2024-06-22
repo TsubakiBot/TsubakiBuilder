@@ -578,6 +578,7 @@
     <string name="reset">Επαναφορά</string>
     <string name="close">Κλείσε</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Κανένα Κεφάλαιο</string>
     <string name="content_18">Ενεργοποιήστε περιεχόμενο 18+ από τις ρυθμίσεις Anilist</string>
     <string name="available">Διαθέσιμος</string>
