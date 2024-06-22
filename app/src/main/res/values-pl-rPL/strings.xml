@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Zamknij</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Brak rozdziału</string>
     <string name="content_18">Włącz 18+ treści w ustawieniach animacji</string>
     <string name="available">Dostępny</string>
