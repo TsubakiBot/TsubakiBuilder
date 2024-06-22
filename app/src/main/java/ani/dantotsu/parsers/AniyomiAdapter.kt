@@ -369,16 +369,14 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
                 val reIndexedPages =
                     res.mapIndexed { index, page -> Page(index, page.url, page.imageUrl, page.uri) }
 
-                val deferreds = reIndexedPages.map { page ->
+                reIndexedPages.map { page ->
                     async(Dispatchers.IO) {
                         mangaCache.put(page.imageUrl ?: "", ImageData(page, source))
                         imageDataList += ImageData(page, source)
-                        Logger.log("put page: ${page.imageUrl}")
+                        // Logger.log("Loading ${page.imageUrl}")
                         pageToMangaImage(page)
                     }
-                }
-
-                deferreds.awaitAll()
+                }.awaitAll()
 
             } catch (e: Exception) {
                 Logger.log(e)

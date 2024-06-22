@@ -33,7 +33,7 @@ class ReviewAdapter(val parentActivity: ReviewPopupActivity, var reviews: List<R
     }
 
     fun appendReviews(additional: List<Review>) {
-        reviews = reviews.plus(additional)
+        reviews += additional
     }
 
     private fun userVote(binding: ActivityReviewViewBinding, type: String?) {
