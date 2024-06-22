@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Χρώμα περιγράμματος υποτίτλων</string>
     <string name="outline_type">Τύπος περιγράμματος</string>
     <string name="subtitle_font">Γραμματοσειρά υπότιτλων</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="ok">ΟΚ</string>
     <string name="reset">Επαναφορά</string>
     <string name="close">Κλείσε</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Κανένα Κεφάλαιο</string>
     <string name="content_18">Ενεργοποιήστε περιεχόμενο 18+ από τις ρυθμίσεις Anilist</string>
     <string name="available">Διαθέσιμος</string>
