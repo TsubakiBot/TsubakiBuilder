@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Lukk</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Ingen kapittel</string>
     <string name="content_18">Slå på innhold fra dine Anilist-innstillinger</string>
     <string name="available">Tilgjengelig</string>
