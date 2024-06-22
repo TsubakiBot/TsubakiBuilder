@@ -109,13 +109,27 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             )
         }
 
-        binding.settingsIncognito.isChecked = PrefManager.getVal(PrefName.Incognito)
-        binding.settingsIncognito.setOnCheckedChangeListener { _, isChecked ->
-            PrefManager.setVal(PrefName.Incognito, isChecked)
-            incognitoNotification(requireContext())
+        fun search(query: String) {
+            ReverseSearchDialogFragment(query).show(
+                requireActivity().supportFragmentManager, null
+            )
+            dismiss()
         }
 
+        binding.searchView.setEndIconOnClickListener {
+            search(binding.searchViewText.text.toString())
+        }
+
+        binding.searchViewText.setOnEditorActionListener(onCompletedAction {
+            search(binding.searchViewText.text.toString())
+        })
+
         binding.settingsHiddenOption.setSafeOnClickListener {
+            dismiss()
+        }
+
+        binding.settingsActivity.setSafeOnClickListener {
+            startActivity(Intent(activity, FeedActivity::class.java))
             dismiss()
         }
 
@@ -124,13 +138,14 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             dismiss()
         }
 
-        binding.settingsSettings.setSafeOnClickListener {
-            startActivity(Intent(activity, SettingsActivity::class.java))
-            dismiss()
+        binding.settingsExtensionSettings.setOnLongClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            binding.searchView.isVisible = binding.searchView.isGone
+            true
         }
 
-        binding.settingsActivity.setSafeOnClickListener {
-            startActivity(Intent(activity, FeedActivity::class.java))
+        binding.settingsSettings.setSafeOnClickListener {
+            startActivity(Intent(activity, SettingsActivity::class.java))
             dismiss()
         }
 
@@ -140,10 +155,14 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            if (PrefManager.getVal(PrefName.FloatingAvatar)) {
-                binding.settingsHiddenOption.isVisible = binding.settingsHiddenOption.isGone
-            }
+            binding.settingsHiddenOption.isVisible = binding.settingsHiddenOption.isGone
             true
+        }
+
+        binding.settingsIncognito.isChecked = PrefManager.getVal(PrefName.Incognito)
+        binding.settingsIncognito.setOnCheckedChangeListener { _, isChecked ->
+            PrefManager.setVal(PrefName.Incognito, isChecked)
+            incognitoNotification(requireContext())
         }
 
         binding.settingsDownloads.isChecked = PrefManager.getVal(PrefName.OfflineMode)
@@ -200,27 +219,6 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
                 PrefManager.setVal(PrefName.OfflineMode, isChecked)
             }
         }
-
-        binding.settingsExtensionSettings.setOnLongClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.searchView.isVisible = binding.searchView.isGone
-            true
-        }
-
-        fun search(query: String) {
-            ReverseSearchDialogFragment(query).show(
-                requireActivity().supportFragmentManager, null
-            )
-            dismiss()
-        }
-
-        binding.searchView.setEndIconOnClickListener {
-            search(binding.searchViewText.text.toString())
-        }
-
-        binding.searchViewText.setOnEditorActionListener(onCompletedAction {
-            search(binding.searchViewText.text.toString())
-        })
     }
 
     override fun onDestroyView() {
