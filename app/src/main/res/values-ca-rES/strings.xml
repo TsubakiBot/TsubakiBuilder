@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Color de contorn secundari</string>
     <string name="outline_type">Tipus de contorn</string>
     <string name="subtitle_font">Tipus de Lletra dels Subtítols</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="ok">D\'acord</string>
     <string name="reset">Restablir</string>
     <string name="close">Tancar</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Sense capítol</string>
     <string name="content_18">Activau el contingut per a adults des de la configuració del vostre Anilist</string>
     <string name="available">Disponible</string>
