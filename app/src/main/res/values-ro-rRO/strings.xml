@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Inchide</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Niciun capitol</string>
     <string name="content_18">Porniți conținutul de 18+ din setările Anilist</string>
     <string name="available">Disponibil</string>
