@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Obrys podbarvy</string>
     <string name="outline_type">Typ obrysu</string>
     <string name="subtitle_font">Písmo titulků</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="close">Zavřít</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Bez kapitoly</string>
     <string name="content_18">Zapněte 18+ obsah z nastavení Anilist</string>
     <string name="available">Dostupné</string>
