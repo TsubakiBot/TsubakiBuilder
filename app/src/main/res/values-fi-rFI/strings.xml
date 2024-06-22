@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Sulje</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Ei Lukua</string>
     <string name="content_18">Ota käyttöön 18+ sisältö Anilisti-asetuksistasi</string>
     <string name="available">Saatavilla</string>
