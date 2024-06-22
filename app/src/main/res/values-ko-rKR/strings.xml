@@ -578,6 +578,7 @@
     <string name="reset">초기화</string>
     <string name="close">닫기</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">챕터 없음</string>
     <string name="content_18">Anilist 설정에서 18+ 콘텐츠를 켜세요</string>
     <string name="available">사용 가능</string>
