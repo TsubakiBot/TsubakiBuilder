@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Ääriviivan Alaväri</string>
     <string name="outline_type">Ääriviivan Tyyppi</string>
     <string name="subtitle_font">Tekstityksen Kirjasin</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Sulje</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Ei Lukua</string>
     <string name="content_18">Ota käyttöön 18+ sisältö Anilisti-asetuksistasi</string>
     <string name="available">Saatavilla</string>
