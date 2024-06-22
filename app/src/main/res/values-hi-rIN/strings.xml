@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">बंद करें</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">कोई अध्याय नहीं</string>
     <string name="content_18">अपनी Anilist सेटिंग्स से 18+ सामग्री को चालू करें</string>
     <string name="available">उपलब्ध</string>
