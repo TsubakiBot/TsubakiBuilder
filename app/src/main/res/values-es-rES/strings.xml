@@ -551,11 +551,13 @@
     <string name="outline_sub_color">Color de contorno de subtítulo</string>
     <string name="outline_type">Tipo de contorno</string>
     <string name="subtitle_font">Fuente de subtítulos</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="ok">Okay</string>
     <string name="reset">Reiniciar</string>
     <string name="close">Cerrar</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Sin capítulo</string>
     <string name="content_18">Activa el contenido para mayores de 18 años desde la Configuración de Anilist</string>
     <string name="available">Disponible</string>
