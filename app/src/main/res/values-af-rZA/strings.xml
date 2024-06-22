@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Omtrek Subkleur</string>
     <string name="outline_type">Omtrek Tipe</string>
     <string name="subtitle_font">Ondertitel Lettertipe</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="ok">OK</string>
     <string name="reset">Herstel</string>
     <string name="close">Maak toe</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Geen Hoofstuk</string>
     <string name="content_18">Skakel 18+ inhoud aan vanaf jou Anilist-instellings</string>
     <string name="available">Beskikbaar</string>
