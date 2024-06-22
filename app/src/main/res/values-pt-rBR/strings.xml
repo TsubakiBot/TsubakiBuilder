@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Sub cor do contorno</string>
     <string name="outline_type">Tipo de Contorno</string>
     <string name="subtitle_font">Fonte da legenda</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">sim</string>
     <string name="no">Não</string>
     <string name="ok">Certo</string>
     <string name="reset">Reset</string>
     <string name="close">FECHAR</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Sem Capítulo</string>
     <string name="content_18">Ativar mais de 18 conteúdos das suas configurações Anilist</string>
     <string name="available">Disponível</string>
