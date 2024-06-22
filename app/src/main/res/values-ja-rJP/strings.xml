@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">閉じる</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">チャプターなし</string>
     <string name="content_18">Anilistの設定から18以上のコンテンツをオンにする</string>
     <string name="available">利用可能です</string>
