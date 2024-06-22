@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Körvonal Alszín</string>
     <string name="outline_type">Körvonal Típus</string>
     <string name="subtitle_font">Felirat betűtípusa</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
     <string name="ok">Rendben</string>
     <string name="reset">Visszaállítás</string>
     <string name="close">Bezárás</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Nincs Fejezet</string>
     <string name="content_18">Kapcsold be a 18+ tartalmat az Anilist beállításaiból</string>
     <string name="available">Elérhető</string>
