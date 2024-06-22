@@ -622,13 +622,14 @@
     <string name="outline_sub_color">Outline Sub Color</string>
     <string name="outline_type">Outline Type</string>
     <string name="subtitle_font">Subtitle Font</string>
-
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="close">Close</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">No Chapter</string>
     <string name="content_18">Turn on 18+ content from your Anilist settings</string>
     <string name="available">Available</string>

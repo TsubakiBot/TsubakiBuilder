@@ -85,6 +85,9 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:name="bit.himitsu.webkit.CustomTabReceiver"
+            android:exported="true" />
+        <receiver
             android:name=".widgets.upcoming.UpcomingWidget"
             android:exported="true">
             <intent-filter>
