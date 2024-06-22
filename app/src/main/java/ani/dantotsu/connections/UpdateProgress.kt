@@ -17,30 +17,32 @@ fun updateProgress(media: Media, number: String) {
     val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
     if (!incognito) {
         if (Anilist.userid != null) {
-            CoroutineScope(Dispatchers.IO).launch {
-                val a = number.toFloatOrNull()?.toInt() ?: 0
-                if (a > (media.userProgress ?: -1)) {
+            val a = number.toFloatOrNull()?.toInt() ?: 0
+            if (a > (media.userProgress ?: -1)) {
+                CoroutineScope(Dispatchers.IO).launch {
                     Anilist.mutation.editList(
                         media.id,
                         a,
                         status = if (media.userStatus == "REPEATING") media.userStatus else "CURRENT"
                     )
+                    media.userProgress = a
+                    Refresh.all()
+                }
+                CoroutineScope(Dispatchers.IO).launch {
                     MAL.query.editList(
                         media.idMAL,
                         media.anime != null,
                         a, null,
                         if (media.userStatus == "REPEATING") media.userStatus!! else "CURRENT"
                     )
-                    toast(
-                        currContext().getString(
-                            R.string.setting_progress,
-                            media.userPreferredName,
-                            a
-                        )
-                    )
                 }
-                media.userProgress = a
-                Refresh.all()
+                toast(
+                    currContext().getString(
+                        R.string.setting_progress,
+                        media.userPreferredName,
+                        a
+                    )
+                )
             }
         } else {
             toast(R.string.login_anilist_account)

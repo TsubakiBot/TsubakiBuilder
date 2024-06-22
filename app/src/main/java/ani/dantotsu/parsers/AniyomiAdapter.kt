@@ -403,15 +403,13 @@ class DynamicMangaParser(extension: MangaExtension.Installed) : MangaParser() {
                     res.mapIndexed { index, page -> Page(index, page.url, page.imageUrl, page.uri) }
 
                 val semaphore = Semaphore(5)
-                val deferreds = reIndexedPages.map { page ->
+                reIndexedPages.map { page ->
                     async(Dispatchers.IO) {
                         semaphore.withPermit {
                             ImageData(page, source)
                         }
                     }
-                }
-
-                deferreds.awaitAll()
+                }.awaitAll()
             } catch (e: Exception) {
                 Logger.log(e)
                 snackString("Failed to load images: $e")
