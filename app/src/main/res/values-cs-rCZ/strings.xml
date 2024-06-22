@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Zavřít</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Bez kapitoly</string>
     <string name="content_18">Zapněte 18+ obsah z nastavení Anilist</string>
     <string name="available">Dostupné</string>
