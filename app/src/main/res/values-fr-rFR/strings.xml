@@ -1068,4 +1068,6 @@ Genre : "</string>
     <string name="dev_maintainer">%1$s Maintainer</string>
     <string name="error_no_parent_id">Error: No parent ID</string>
     <string name="error_no_media_id">Error: No media ID</string>
+    <string name="down_to_up">Down to Up</string>
+    <string name="up_to_down">Up to Down</string>
 </resources>
