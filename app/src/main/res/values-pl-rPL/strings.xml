@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Podkolor konturu</string>
     <string name="outline_type">Typ konturu</string>
     <string name="subtitle_font">Czcionka napisów</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="close">Zamknij</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Brak rozdziału</string>
     <string name="content_18">Włącz 18+ treści w ustawieniach animacji</string>
     <string name="available">Dostępny</string>
