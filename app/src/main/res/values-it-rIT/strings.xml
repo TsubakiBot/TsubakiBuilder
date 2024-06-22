@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Chiudi</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Nessun Capitolo</string>
     <string name="content_18">Attiva oltre 18 contenuti dalle tue impostazioni Anilist</string>
     <string name="available">Disponibile</string>
