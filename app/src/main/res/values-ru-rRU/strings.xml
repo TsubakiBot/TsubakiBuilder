@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Цвет контура субтитров</string>
     <string name="outline_type">Тип контура</string>
     <string name="subtitle_font">Шрифт субтитров</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="ok">ОК</string>
     <string name="reset">Reset</string>
     <string name="close">Закрыть</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Нет глав</string>
     <string name="content_18">Включите контент 18+ в настройках Anilist</string>
     <string name="available">Доступно</string>
