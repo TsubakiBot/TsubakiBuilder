@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Omlijning Sub-Kleur</string>
     <string name="outline_type">Type omlijning</string>
     <string name="subtitle_font">Lettertype ondertiteling</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">ja</string>
     <string name="no">Neen</string>
     <string name="ok">Ok</string>
     <string name="reset">Reset</string>
     <string name="close">Afsluiten</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Geen hoofdstuk</string>
     <string name="content_18">Schakel 18+ inhoud in vanuit je Anilist instellingen</string>
     <string name="available">Beschikbaar</string>
