@@ -578,6 +578,7 @@
     <string name="reset">Restablir</string>
     <string name="close">Tancar</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Sense capítol</string>
     <string name="content_18">Activau el contingut per a adults des de la configuració del vostre Anilist</string>
     <string name="available">Disponible</string>
