@@ -571,11 +571,13 @@
     <string name="outline_sub_color">Umriss-Untertitelfarbe</string>
     <string name="outline_type">Umriss-Typ</string>
     <string name="subtitle_font">Schriftart für Untertitel</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="ok">GUT</string>
     <string name="reset">Zurücksetzen</string>
     <string name="close">Schließen</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">Kein Kapitel</string>
     <string name="content_18">Aktivieren Sie Inhalte ab 18 Jahren in Ihren Anilist-Einstellungen</string>
     <string name="available">Verfügbar</string>
