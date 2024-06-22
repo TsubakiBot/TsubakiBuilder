@@ -688,7 +688,7 @@ fun saveImage(image: Bitmap, path: String, imageFileName: String): File? {
             image.compress(Bitmap.CompressFormat.PNG, 0, it)
         }
         scanFile(imageFile.absolutePath, currContext())
-        toast(String.format(currContext().getString(R.string.saved_to_path, path)))
+        toast(String.format(getString(R.string.saved_to_path, path)))
         imageFile
     } catch (e: Exception) {
         snackString("Failed to save image: ${e.localizedMessage}")

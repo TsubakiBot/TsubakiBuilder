@@ -9,6 +9,7 @@ import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toast
+import bit.himitsu.nio.Strings.getString
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,11 +38,7 @@ fun updateProgress(media: Media, number: String) {
                     )
                 }
                 toast(
-                    currContext().getString(
-                        R.string.setting_progress,
-                        media.userPreferredName,
-                        a
-                    )
+                    getString(R.string.setting_progress, media.userPreferredName, a)
                 )
             }
         } else {
