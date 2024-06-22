@@ -578,6 +578,7 @@
     <string name="reset">إعادة ضبط</string>
     <string name="close">أغلاق</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">لا يوجد فصل</string>
     <string name="content_18">تفعيل محتوي 18+ من إعدادات Anilist</string>
     <string name="available">متوفر</string>
