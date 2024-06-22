@@ -578,6 +578,7 @@
     <string name="reset">ৰিছেট</string>
     <string name="close">বন্ধ কৰক</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">কোনো চাপ্তেৰ নাই</string>
     <string name="content_18">আপোনাৰ Anilist ছেটিংছত ১৮+ বিষয়ৰ সমল অন কৰক</string>
     <string name="available">উপলব্ধ</string>
