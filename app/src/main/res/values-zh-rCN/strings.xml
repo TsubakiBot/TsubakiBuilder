@@ -571,11 +571,13 @@
     <string name="outline_sub_color">轮廓字幕颜色</string>
     <string name="outline_type">轮廓类型</string>
     <string name="subtitle_font">字幕字体</string>
+    <string name="launch_application">Page is attempting to launch %1$s. Allow?</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="ok">好的</string>
     <string name="reset">Reset</string>
     <string name="close">关闭</string>
+    <string name="deny">Deny</string>
     <string name="no_chapter">无章节</string>
     <string name="content_18">从你的 Anilist 设置中启用 18+ 内容</string>
     <string name="available">可用</string>
