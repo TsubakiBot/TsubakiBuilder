@@ -1,17 +1,14 @@
 package ani.dantotsu.connections.mal
 
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.net.Uri
 import android.util.Base64
-import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
 import ani.dantotsu.client
-import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.tryWithSuspend
 import bit.himitsu.nio.Strings.getString
+import bit.himitsu.webkit.ChromeIntegration
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.security.SecureRandom
@@ -33,16 +30,10 @@ object MAL {
             .replace("\n", "")
 
         PrefManager.setVal(PrefName.MALCodeChallenge, codeChallenge)
-        val request =
+        ChromeIntegration.openCustomTab(
+            context,
             "https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=$clientId&code_challenge=$codeChallenge"
-        try {
-            CustomTabsIntent.Builder().build().launchUrl(
-                context,
-                Uri.parse(request)
-            )
-        } catch (e: ActivityNotFoundException) {
-            openLinkInBrowser(request)
-        }
+        )
     }
 
     private suspend fun refreshToken(): ResponseToken? {

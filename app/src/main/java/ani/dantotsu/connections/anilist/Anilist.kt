@@ -1,19 +1,16 @@
 package ani.dantotsu.connections.anilist
 
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
 import ani.dantotsu.R
 import ani.dantotsu.client
 import ani.dantotsu.connections.comments.CommentsAPI
-import ani.dantotsu.openLinkInBrowser
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.snackString
 import ani.dantotsu.toast
 import ani.dantotsu.util.Logger
 import bit.himitsu.nio.Strings.getString
+import bit.himitsu.webkit.ChromeIntegration
 import java.util.Calendar
 
 object Anilist {
@@ -127,14 +124,10 @@ object Anilist {
 
     fun loginIntent(context: Context) {
         val clientID = 19006 // 14959
-        try {
-            CustomTabsIntent.Builder().build().launchUrl(
-                context,
-                Uri.parse("https://anilist.co/api/v2/oauth/authorize?client_id=$clientID&response_type=token")
-            )
-        } catch (e: ActivityNotFoundException) {
-            openLinkInBrowser("https://anilist.co/api/v2/oauth/authorize?client_id=$clientID&response_type=token")
-        }
+        ChromeIntegration.openCustomTab(
+            context,
+            "https://anilist.co/api/v2/oauth/authorize?client_id=$clientID&response_type=token"
+        )
     }
 
     fun getSavedToken(): Boolean {

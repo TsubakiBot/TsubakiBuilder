@@ -40,10 +40,9 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.toPx
 import ani.dantotsu.toast
-import bit.himitsu.ShellActivity
 import bit.himitsu.nio.Strings.getString
-import bit.himitsu.webkit.StreamIntegration
-import bit.himitsu.webkit.setClickListeners
+import bit.himitsu.webkit.ChromeIntegration
+import bit.himitsu.webkit.setWebClickListeners
 import com.google.android.material.chip.Chip
 import eu.kanade.tachiyomi.animesource.online.AnimeHttpSource
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
@@ -135,7 +134,7 @@ class AnimeWatchAdapter(
                 getStreamIcon(binding.streamContainer.animeSourceCR, R.string.icon_cr, url)
                 binding.streamContainer.animeSourceCR.setOnClickListener {
                     if (media.streamingEpisodes.isEmpty()) {
-                        StreamIntegration.openStreamDialog(fragment.requireContext(), url)
+                        ChromeIntegration.openStreamDialog(fragment.requireContext(), url)
                         return@setOnClickListener
                     } else {
                         binding.streamContainer.episodeRecyclerView.isVisible =
@@ -345,7 +344,7 @@ class AnimeWatchAdapter(
         icon.isVisible = true
         icon.loadImage(getString(imageRes, 48.toPx))
         ImageViewCompat.setImageTintList(icon, null)
-        icon.setClickListeners(url)
+        icon.setWebClickListeners(url)
     }
 
     fun subscribeButton(enabled: Boolean) {
