@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Afsluiten</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Geen hoofdstuk</string>
     <string name="content_18">Schakel 18+ inhoud in vanuit je Anilist instellingen</string>
     <string name="available">Beschikbaar</string>
