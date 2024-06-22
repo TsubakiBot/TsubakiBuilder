@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">关闭</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">无章节</string>
     <string name="content_18">从你的 Anilist 设置中启用 18+ 内容</string>
     <string name="available">可用</string>
