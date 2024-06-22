@@ -578,6 +578,7 @@
     <string name="reset">Reset</string>
     <string name="close">Stäng</string>
     <string name="deny">Deny</string>
+    <string name="deny_all">Deny All</string>
     <string name="no_chapter">Inget kapitel</string>
     <string name="content_18">Aktivera 18+ innehåll från dina Anilist-inställningar</string>
     <string name="available">Tillgänglig</string>
