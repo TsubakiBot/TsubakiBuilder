@@ -56,12 +56,22 @@ class SettingsMainFragment : Fragment() {
         val settings = requireActivity() as SettingsActivity
 
         binding.apply {
-            settingsBack.setOnClickListener {
-                settings.refresh()
-            }
+            settingsBack.setOnClickListener { settings.refresh() }
 
             binding.settingsRecyclerView.adapter = SettingsAdapter(
                 arrayListOf(
+                    Settings(
+                        type = ViewType.BUTTON,
+                        name = getString(R.string.anilist),
+                        desc = getString(R.string.ani_setting_desc),
+                        icon = R.drawable.ic_anilist,
+                        onClick = {
+                            ChromeIntegration.openCustomTab(
+                                requireContext(), "https://anilist.co/settings"
+                            )
+                        },
+                        isActivity = true
+                    ),
                     Settings(
                         type = ViewType.BUTTON,
                         name = getString(R.string.ui_settings),
@@ -151,19 +161,6 @@ class SettingsMainFragment : Fragment() {
                             settings.setFragment(Page.SYSTEM)
                         },
                         hasTransition = true
-                    ),
-                    Settings(
-                        type = ViewType.BUTTON,
-                        name = getString(R.string.anilist),
-                        desc = getString(R.string.ani_setting_desc),
-                        icon = R.drawable.ic_anilist,
-                        onClick = {
-                            ChromeIntegration.openCustomTab(
-                                requireContext(),
-                                "https://anilist.co/settings"
-                            )
-                        },
-                        isActivity = true
                     ),
                     Settings(
                         type = ViewType.BUTTON,

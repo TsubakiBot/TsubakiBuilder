@@ -29,7 +29,7 @@ class DantotsuGlideApp : AppGlideModule() {
                 context, "img", diskCacheSizeBytes.toLong())
             )
             setDefaultRequestOptions(
-                RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             )
         }
     }
