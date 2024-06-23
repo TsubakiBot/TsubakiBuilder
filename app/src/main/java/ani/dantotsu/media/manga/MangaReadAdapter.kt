@@ -41,7 +41,6 @@ import ani.dantotsu.sinceWhen
 import ani.dantotsu.toast
 import bit.himitsu.nio.Strings.getString
 import com.google.android.material.chip.Chip
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import eu.kanade.tachiyomi.data.notification.Notifications.CHANNEL_SUBSCRIPTION_CHECK
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.util.system.WebViewUtil

@@ -242,7 +242,7 @@ class SubscriptionNotificationTask : Task {
         ) ?: listOf()
         val newStore = notificationStore.toMutableList()
         if (newStore.any {
-                it.mediaId == notification.mediaId  && it.content != notification.content
+                it.mediaId == notification.mediaId && it.content != notification.content
             }) return false
         if (newStore.size >= 100) {
             newStore.remove(newStore.minByOrNull { it.time })

@@ -59,7 +59,7 @@ fun saveImage(
                 put(MediaStore.MediaColumns.MIME_TYPE, "image/${format.name.lowercase()}")
                 put(
                     MediaStore.MediaColumns.RELATIVE_PATH,
-                    "${Environment.DIRECTORY_DOWNLOADS}/Dantotsu/Manga"
+                    "${Environment.DIRECTORY_DOWNLOADS}${File.separator}Dantotsu${File.separator}Manga"
                 )
             }
 

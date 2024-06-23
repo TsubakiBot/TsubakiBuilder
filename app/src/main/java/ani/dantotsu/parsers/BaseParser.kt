@@ -61,6 +61,31 @@ abstract class BaseParser {
      * **/
     abstract suspend fun search(query: String): List<ShowResponse>
 
+    private suspend fun closestMatch(query: String?): ShowResponse? {
+        setUserText("Searching : $query")
+        // Logger.log("Searching : $query")
+        val results = query?.let { search(it) } ?: return null
+        //log all results
+        withContext(Dispatchers.IO) {
+            results.map {
+                async {
+                    Logger.log("Result: ${it.name}")
+                }
+            }.awaitAll()
+        }
+        val sortedResults = if (results.isNotEmpty()) {
+            results.sortedByDescending {
+                FuzzySearch.ratio(
+                    it.name.lowercase(),
+                    query.lowercase()
+                )
+            }
+        } else {
+            emptyList()
+        }
+        return sortedResults.firstOrNull()
+    }
+
     /**
      * The function app uses to auto find the anime/manga using Media data provided by anilist
      *
@@ -80,68 +105,46 @@ abstract class BaseParser {
                 }
             }
         }
+
         var response: ShowResponse? = loadSavedShowResponse(mediaObj.id)
         if (response != null && this !is OfflineMangaParser && this !is OfflineAnimeParser) {
             saveShowResponse(mediaObj.id, response, true)
         } else {
-            setUserText("Searching : ${mediaObj.mainName()}")
-            // Logger.log("Searching : ${mediaObj.mainName()}")
-            val results = search(mediaObj.mainName())
-            //log all results
-            withContext(Dispatchers.IO) {
-                results.map {
-                    async {
-                        Logger.log("Result: ${it.name}")
-                    }
-                }.awaitAll()
-            }
-            val sortedResults = if (results.isNotEmpty()) {
-                results.sortedByDescending {
-                    FuzzySearch.ratio(
-                        it.name.lowercase(),
-                        mediaObj.mainName().lowercase()
-                    )
-                }
-            } else {
-                emptyList()
-            }
-            response = sortedResults.firstOrNull()
+            response = closestMatch(mediaObj.mainName())
 
             if (response == null || FuzzySearch.ratio(
                     response.name.lowercase(),
                     mediaObj.mainName().lowercase()
                 ) < 100
             ) {
-                setUserText("Searching : ${mediaObj.nameRomaji}")
-                // Logger.log("Searching : ${mediaObj.nameRomaji}")
-                val romajiResults = search(mediaObj.nameRomaji)
-                val sortedRomajiResults = if (romajiResults.isNotEmpty()) {
-                    romajiResults.sortedByDescending {
-                        FuzzySearch.ratio(
-                            it.name.lowercase(),
-                            mediaObj.nameRomaji.lowercase()
-                        )
-                    }
-                } else {
-                    emptyList()
-                }
-                val closestRomaji = sortedRomajiResults.firstOrNull()
-                Logger.log("Closest match from RomajiResults: ${closestRomaji?.name ?: "None"}")
+
+                val closestRomaji = closestMatch(mediaObj.nameRomaji)
 
                 response = if (response == null) {
-                    Logger.log("No exact match found in results. Using closest match from RomajiResults.")
+                    Logger.log("No exact match found in results. Defaulting to RomajiResults.")
                     closestRomaji
                 } else {
                     val romajiRatio = FuzzySearch.ratio(
                         closestRomaji?.name?.lowercase() ?: "",
                         mediaObj.nameRomaji.lowercase()
                     )
-                    val mainNameRatio = FuzzySearch.ratio(
+                    var mainNameRatio = FuzzySearch.ratio(
                         response.name.lowercase(),
                         mediaObj.mainName().lowercase()
                     )
-                    Logger.log("Fuzzy ratio for closest match in results: $mainNameRatio for ${response.name.lowercase()}")
-                    Logger.log("Fuzzy ratio for closest match in RomajiResults: $romajiRatio for ${closestRomaji?.name?.lowercase() ?: "None"}")
+                    if (mediaObj.nameMAL != null && mediaObj.mainName() != mediaObj.nameMAL) {
+                        val closestMal = closestMatch(mediaObj.nameMAL)
+                        val malRatio = FuzzySearch.ratio(
+                            closestMal?.name?.lowercase() ?: "",
+                            mediaObj.nameMAL!!.lowercase()
+                        )
+                        if (closestMal != null && malRatio > mainNameRatio) {
+                            mainNameRatio = malRatio
+                            response = closestMal
+                        }
+                    }
+                    Logger.log("Fuzzy ratio for closest match in results: $mainNameRatio for ${response.name}")
+                    Logger.log("Fuzzy ratio for closest match in RomajiResults: $romajiRatio for ${closestRomaji?.name ?: "None"}")
 
                     if (romajiRatio > mainNameRatio) {
                         Logger.log("RomajiResults has a closer match. Replacing response.")
