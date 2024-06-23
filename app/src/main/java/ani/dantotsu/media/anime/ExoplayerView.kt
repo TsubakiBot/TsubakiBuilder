@@ -111,7 +111,6 @@ import androidx.media3.ui.SubtitleView
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.brightnessConverter
 import ani.dantotsu.circularReveal
@@ -126,16 +125,16 @@ import ani.dantotsu.defaultHeaders
 import ani.dantotsu.download.DownloadsManager.Companion.getSubDirectory
 import ani.dantotsu.download.video.Helper
 import ani.dantotsu.getCurrentBrightnessValue
-import ani.dantotsu.marketUri
 import ani.dantotsu.hideSystemBars
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
-import ani.dantotsu.media.cereal.Media
+import ani.dantotsu.marketUri
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaNameAdapter
 import ani.dantotsu.media.MediaType
 import ani.dantotsu.media.SubtitleDownloader
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.okHttpClient
 import ani.dantotsu.others.AniSkip
 import ani.dantotsu.others.AniSkip.getType
@@ -162,6 +161,7 @@ import ani.dantotsu.tryWithSuspend
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.CustomCastButton
 import ani.dantotsu.view.GestureSlider
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import bit.himitsu.TorrManager.removeTorrent
 import bit.himitsu.os.Version
 import com.anggrayudi.storage.file.extension
@@ -2314,7 +2314,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     }
 
     @SuppressLint("UnsafeIntentLaunch")
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         finishAndRemoveTask()
         startActivity(intent)

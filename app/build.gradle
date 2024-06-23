@@ -134,9 +134,8 @@ tasks.register('torrserver') {
 build.dependsOn tasks.torrserver
 
 dependencies {
-    implementation 'androidx.activity:activity:1.8.0'
+    implementation 'androidx.activity:activity-ktx:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
 
     /* Core */
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
@@ -180,7 +179,7 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
     /* Firebase */
-    implementation platform('com.google.firebase:firebase-bom:33.1.0')
+    implementation platform('com.google.firebase:firebase-bom:33.1.1')
 
     /* YouTube */
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
