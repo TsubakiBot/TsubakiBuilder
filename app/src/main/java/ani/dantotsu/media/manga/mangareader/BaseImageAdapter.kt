@@ -184,10 +184,11 @@ abstract class BaseImageAdapter(
                                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                             } else {
                                 mangaCache.get(link.url)?.let { imageData ->
-                                    val bitmap = imageData.fetchAndProcessImage(
-                                        imageData.page,
-                                        imageData.source
-                                    )
+//                                    val bitmap = imageData.fetchAndProcessImage(
+//                                        imageData.page,
+//                                        imageData.source
+//                                    )
+                                    val bitmap = imageData.source.getImage(imageData.page).body.bytes()
                                     it.load(bitmap)
                                         .skipMemoryCache(true)
                                         .diskCacheStrategy(DiskCacheStrategy.NONE)
