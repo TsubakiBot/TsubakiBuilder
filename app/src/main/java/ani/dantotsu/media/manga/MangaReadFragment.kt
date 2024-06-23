@@ -181,7 +181,8 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                     if (!loaded) {
                         model.mangaReadSources = if (media.isAdult) HMangaSources else MangaSources
 
-                        if (PrefManager.getVal(PrefName.SearchSources) && !model.mangaReadSources?.list.isNullOrEmpty()) {
+                        if (PrefManager.getVal(PrefName.SearchSources)
+                            && !model.mangaReadSources?.list.isNullOrEmpty()) {
                             model.mangaReadSources = object: MangaReadSources() {
                                 override val list = (model.mangaReadSources as MangaReadSources).list.filter {
                                     runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
@@ -191,12 +192,15 @@ open class MangaReadFragment : Fragment(), ScanlatorSelectionListener {
                                 model.mangaReadSources = if (media.isAdult) HMangaSources else MangaSources
                         }
 
-                        headerAdapter = MangaReadAdapter(it, this, model.mangaReadSources!!)
-                        headerAdapter.scanlatorSelectionListener = this
-                        chapterAdapter =
-                            MangaChapterAdapter(
-                                style ?: PrefManager.getVal(PrefName.MangaDefaultView), media, this
-                            )
+                        headerAdapter = MangaReadAdapter(
+                            it, this@MangaReadFragment, model.mangaReadSources!!
+                        )
+                        headerAdapter.scanlatorSelectionListener = this@MangaReadFragment
+                        chapterAdapter = MangaChapterAdapter(
+                            style ?: PrefManager.getVal(PrefName.MangaDefaultView),
+                            media,
+                            this@MangaReadFragment
+                        )
 
                         for (download in downloadManager.mangaDownloadedTypes) {
                             if (media.compareName(download.titleName)) {

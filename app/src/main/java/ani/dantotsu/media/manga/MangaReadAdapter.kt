@@ -58,7 +58,6 @@ class MangaReadAdapter(
     val hiddenScanlators = mutableListOf<String>()
     var scanlatorSelectionListener: ScanlatorSelectionListener? = null
     var options = listOf<String>()
-    private var tubePlayer: YouTubePlayer? = null
 
     private val uiScope = MainScope()
 

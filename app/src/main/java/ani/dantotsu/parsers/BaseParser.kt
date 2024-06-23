@@ -10,6 +10,10 @@ import ani.dantotsu.util.Logger
 import bit.himitsu.nio.Strings.getString
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import eu.kanade.tachiyomi.source.model.SManga
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.withContext
 import me.xdrop.fuzzywuzzy.FuzzySearch
 import okhttp3.Request
 import java.io.Serializable
@@ -63,9 +67,17 @@ abstract class BaseParser {
      * Isn't necessary to override, but recommended, if you want to improve auto search results
      * **/
     open suspend fun autoSearch(mediaObj: Media): ShowResponse? {
-        (this as? DynamicMangaParser)?.let { ext ->
-            mediaObj.selected?.langIndex?.let {
-                ext.sourceLanguage = it
+        if (mediaObj.anime != null) {
+            (this as? DynamicAnimeParser)?.let { ext ->
+                mediaObj.selected?.langIndex?.let {
+                    ext.sourceLanguage = it
+                }
+            }
+        } else {
+            (this as? DynamicMangaParser)?.let { ext ->
+                mediaObj.selected?.langIndex?.let {
+                    ext.sourceLanguage = it
+                }
             }
         }
         var response: ShowResponse? = loadSavedShowResponse(mediaObj.id)
@@ -73,11 +85,15 @@ abstract class BaseParser {
             saveShowResponse(mediaObj.id, response, true)
         } else {
             setUserText("Searching : ${mediaObj.mainName()}")
-            Logger.log("Searching : ${mediaObj.mainName()}")
+            // Logger.log("Searching : ${mediaObj.mainName()}")
             val results = search(mediaObj.mainName())
             //log all results
-            results.forEach {
-                Logger.log("Result: ${it.name}")
+            withContext(Dispatchers.IO) {
+                results.map {
+                    async {
+                        Logger.log("Result: ${it.name}")
+                    }
+                }.awaitAll()
             }
             val sortedResults = if (results.isNotEmpty()) {
                 results.sortedByDescending {
@@ -97,7 +113,7 @@ abstract class BaseParser {
                 ) < 100
             ) {
                 setUserText("Searching : ${mediaObj.nameRomaji}")
-                Logger.log("Searching : ${mediaObj.nameRomaji}")
+                // Logger.log("Searching : ${mediaObj.nameRomaji}")
                 val romajiResults = search(mediaObj.nameRomaji)
                 val sortedRomajiResults = if (romajiResults.isNotEmpty()) {
                     romajiResults.sortedByDescending {

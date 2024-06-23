@@ -64,6 +64,7 @@ import com.anggrayudi.storage.file.extension
 import com.google.android.material.appbar.AppBarLayout
 import eu.kanade.tachiyomi.animesource.ConfigurableAnimeSource
 import eu.kanade.tachiyomi.extension.anime.model.AnimeExtension
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -185,7 +186,8 @@ class AnimeWatchFragment : Fragment() {
                 if (!loaded) {
                     model.watchSources = if (media.isAdult) HAnimeSources else AnimeSources
 
-                    if (PrefManager.getVal(PrefName.SearchSources) && !model.watchSources?.list.isNullOrEmpty()) {
+                    if (PrefManager.getVal(PrefName.SearchSources)
+                        && !model.watchSources?.list.isNullOrEmpty()) {
                         model.watchSources = object: WatchSources() {
                             override val list = (model.watchSources as WatchSources).list.filter {
                                 runBlocking(Dispatchers.IO) { it.get.value?.autoSearch(media) != null }
@@ -198,14 +200,15 @@ class AnimeWatchFragment : Fragment() {
                     val offlineMode =
                         model.watchSources!!.isDownloadedSource(media.selected!!.sourceIndex)
 
-                    headerAdapter = AnimeWatchAdapter(it, this, model.watchSources!!)
-                    episodeAdapter =
-                        EpisodeAdapter(
-                            style ?: PrefManager.getVal(PrefName.AnimeDefaultView),
-                            media,
-                            this,
-                            offlineMode = offlineMode
-                        )
+                    headerAdapter = AnimeWatchAdapter(
+                        it, this@AnimeWatchFragment, model.watchSources!!
+                    )
+                    episodeAdapter = EpisodeAdapter(
+                        style ?: PrefManager.getVal(PrefName.AnimeDefaultView),
+                        media,
+                        this@AnimeWatchFragment,
+                        offlineMode = offlineMode
+                    )
 
                     binding.animeSourceRecycler.adapter =
                         ConcatAdapter(headerAdapter, episodeAdapter)
