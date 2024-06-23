@@ -41,7 +41,7 @@ object BitmapUtil {
         return output
     }
 
-    private val cacheSize = (Memory.maxMemory() / 1024 / 12).toInt()
+    private val cacheSize = (Memory.maxMemory() / 1024 / 1024).toInt() // KB
     private val bitmapCache = LruCache<String, Bitmap>(cacheSize)
 
     private fun downloadBitmap(imageUrl: String): Bitmap? {

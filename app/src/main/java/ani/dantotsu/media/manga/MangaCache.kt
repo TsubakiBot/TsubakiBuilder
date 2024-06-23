@@ -32,17 +32,9 @@ data class ImageData(
                 // Fetch the image
                 val response = httpSource.getImage(page)
                 Logger.log("Response: ${response.code} - ${response.message}")
-
-                // Convert the Response to an InputStream
-                val inputStream = response.body.byteStream()
-
-                // Convert InputStream to Bitmap
-                val bitmap = BitmapFactory.decodeStream(inputStream)
-
-                inputStream.close()
-                //saveImage(bitmap, context.contentResolver, page.imageUrl!!, Bitmap.CompressFormat.JPEG, 100)
-
-                return@withContext bitmap
+                return@withContext response.body.byteStream().use {
+                    BitmapFactory.decodeStream(it)
+                }
             } catch (e: Exception) {
                 // Handle any exceptions
                 Logger.log("An error occurred: ${e.message}")
@@ -98,7 +90,7 @@ fun saveImage(
 }
 
 class MangaCache {
-    private val maxMemory = (Memory.maxMemory() / 1024 / 2).toInt()
+    private val maxMemory = (Memory.maxMemory() / 1024).toInt() // MB
     private val cache = LruCache<String, ImageData>(maxMemory)
 
     @Synchronized

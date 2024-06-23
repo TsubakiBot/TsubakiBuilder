@@ -94,7 +94,6 @@ fun ImageView.blurImage(banner: String?) {
                         else -> File(url)
                     }
                 )
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .override(400)
                 .apply(RequestOptions.bitmapTransform(BlurTransformation(radius, sampling)))
                 .into(this)
@@ -108,7 +107,6 @@ fun ImageView.blurImage(banner: String?) {
                         else -> File(url)
                     }
                 )
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .override(400)
                 .into(this)
         }
