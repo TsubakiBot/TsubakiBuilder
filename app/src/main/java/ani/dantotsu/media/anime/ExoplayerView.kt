@@ -2392,6 +2392,11 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         } else {
             orientationListener?.enable()
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            var fontSize = PrefManager.getVal<Int>(PrefName.FontSize).toFloat()
+            if (isInPictureInPictureMode) fontSize /= 3.toFloat()
+            playerView.subtitleView?.setFixedTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize)
+        }
         if (lifecycle.currentState == Lifecycle.State.CREATED && !isInPictureInPictureMode) {
             playerTeardown()
         } else {
