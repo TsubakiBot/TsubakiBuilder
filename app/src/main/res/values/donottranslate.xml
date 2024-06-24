@@ -15,7 +15,7 @@
     <string name="gitlab">https://gitlab.com/%1$s</string>
     <string name="coffee">https://www.buymeacoffee.com/abandonedcart</string>
 
-    <string name="rpc_intent">intent://%1$s/#Intent;scheme=himitsu;package=%2$s;S.browser_fallback_url=http%3A%2F%2Frepodevil.vercel.app;end</string>
+    <string name="rpc_intent">intent://%1$s#Intent;scheme=himitsu;package=%2$s;S.browser_fallback_url=https%%3A%%2F%%2Frepodevil.vercel.app;end</string>
 
     <string name="anilist_link">https://anilist.co/user/%1$s/</string>
     <string name="myanilist_link">https://myanimelist.net/profile/%1$s/</string>

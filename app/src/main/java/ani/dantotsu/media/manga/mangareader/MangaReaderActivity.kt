@@ -195,7 +195,7 @@ class MangaReaderActivity : AppCompatActivity() {
                         RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
                         RPC.Link(
                             getString(R.string.rpc_read),
-                            getString(R.string.rpc_intent, "read", packageName)
+                            getString(R.string.rpc_intent, media.shareLink?.removePrefix("https://"), packageName)
                         )
                     )
 

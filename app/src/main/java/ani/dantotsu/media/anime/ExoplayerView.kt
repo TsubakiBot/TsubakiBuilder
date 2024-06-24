@@ -1381,7 +1381,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
                         RPC.Link(
                             getString(R.string.rpc_watch),
-                            getString(R.string.rpc_intent, "watch", packageName)
+                            getString(R.string.rpc_intent, media.shareLink?.removePrefix("https://"), packageName)
                         )
                     )
 
