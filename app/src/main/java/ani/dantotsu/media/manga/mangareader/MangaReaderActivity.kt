@@ -193,7 +193,10 @@ class MangaReaderActivity : AppCompatActivity() {
 
                     "dantotsu" -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
-                        RPC.Link(getString(R.string.rpc_read), getString(R.string.dantotsu))
+                        RPC.Link(
+                            getString(R.string.rpc_read),
+                            getString(R.string.rpc_intent, "read", packageName)
+                        )
                     )
 
                     "anilist" -> {

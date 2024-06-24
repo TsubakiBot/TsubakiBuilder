@@ -1379,7 +1379,10 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
 
                     "dantotsu" -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
-                        RPC.Link(getString(R.string.rpc_watch), getString(R.string.dantotsu))
+                        RPC.Link(
+                            getString(R.string.rpc_watch),
+                            getString(R.string.rpc_intent, "watch", packageName)
+                        )
                     )
 
                     "anilist" -> {
