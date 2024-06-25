@@ -158,7 +158,6 @@
     <string name="server_enabled">Iniciando TorrServer</string>
     <string name="enable_server_temp">Você gostaria de ativar temporariamente o TorrServer (desativado quando o aplicativo é fechado)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Configurações Anilistas</string>
     <string name="extension_settings">Extensões</string>
     <string name="downloads">Downloads</string>
