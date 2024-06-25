@@ -206,6 +206,7 @@ enum class PrefName(val data: Pref) {  //TODO: Split this into multiple files
     UnreadCommentNotifications(Pref(Location.Irrelevant, Int::class, 0)),
     DownloadsDir(Pref(Location.Irrelevant, String::class, "")),
     RefreshStatus(Pref(Location.Irrelevant, Boolean::class, false)),
+    ExtensionNotice(Pref(Location.Irrelevant, Boolean::class, false)),
 
     //Protected
     DiscordToken(Pref(Location.Protected, String::class, "")),

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.statusBarHeight
 import ani.dantotsu.themes.ThemeManager
+import ani.dantotsu.view.dialog.CustomBottomDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
@@ -169,6 +171,22 @@ class ExtensionsActivity : AppCompatActivity() {
             }
             val dialog = builder.show()
             dialog.window?.setDimAmount(0.8f)
+        }
+
+        if (!PrefManager.getVal<Boolean>(PrefName.ExtensionNotice)) {
+            CustomBottomDialog.newInstance().apply {
+                title = this@ExtensionsActivity.getString(R.string.extension_notice)
+
+                addView(TextView(this@ExtensionsActivity).apply {
+                    text = this@ExtensionsActivity.getString(R.string.extension_notice_desc)
+                })
+
+                setPositiveButton(this@ExtensionsActivity.getString(R.string.close)) {
+                    PrefManager.setVal(PrefName.ExtensionNotice, true)
+                    dismiss()
+                }
+                show(this@ExtensionsActivity.supportFragmentManager, "dialog")
+            }
         }
     }
 

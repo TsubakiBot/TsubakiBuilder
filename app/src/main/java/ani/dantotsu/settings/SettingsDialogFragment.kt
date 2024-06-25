@@ -7,7 +7,6 @@ import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -160,7 +159,7 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             ContextCompat.startActivity(
                 requireContext(),
                 Intent(requireContext(), ShellActivity::class.java)
-                    .putExtra("discordUrl", getString(R.string.widgetbot)),
+                    .putExtra("discordUrl", getString(R.string.discord_bot)),
                 null
             )
             dismiss()
