@@ -6,6 +6,8 @@
     <string name="anilist_login">AniList Login for Himitsu</string>
     <string name="mal_login">MyAnimeList Login for Himitsu</string>
     <string name="discord_login">Discord Login for Himitsu</string>
+    <string name="extension_notice">Himitsu is a BYOE Service</string>
+    <string name="extension_notice_desc">Himitsu follows a \"bring your own extensions\" format. While extensions are supported, the sources must be provided by the user. However, support for many popular streaming services is included out of the box.</string>
     <string name="conversion_title">С возвращением!</string>
     <string name="conversion_message">Похоже, у вас установлен более старый пакет.\nПожалуйста, выберите \"Резервное копирование\", чтобы открыть старую версию и выполнить резервное копирование. Затем вы сможете вернуться к этому приложению и использовать \"Восстановление настроек\".</string>
     <string name="backup">Резервное копирование</string>
