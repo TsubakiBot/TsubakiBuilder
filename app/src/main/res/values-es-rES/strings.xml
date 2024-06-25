@@ -158,7 +158,6 @@
     <string name="server_enabled">Iniciando TorrServer</string>
     <string name="enable_server_temp">¿Te gustaría habilitar temporalmente TorrServer (deshabilitado al cerrar la aplicación)?</string>
     <string name="peer_count_low">¡Se detectó un bajo recuento de pares!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Ajustes de Anilist</string>
     <string name="extension_settings">Extensiones</string>
     <string name="downloads">Descargas</string>

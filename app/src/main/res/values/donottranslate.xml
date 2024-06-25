@@ -10,7 +10,9 @@
     <string name="git_issue_title">[Logcat]: Himitsu #%1$s</string>
 
     <string name="dantotsu">https://repodevil.vercel.app/</string>
-    <string name="discord">https://discord.gg/vnrhgrt</string>
+    <string name="discord_bot">Himitsu Discord</string>
+    <string name="discord_url">https://discord.gg/vnrhgrt</string>
+    <string name="widgetbot">file:///android_asset/discord.html</string>
     <string name="github">https://github.com/%1$s</string>
     <string name="gitlab">https://gitlab.com/%1$s</string>
     <string name="coffee">https://www.buymeacoffee.com/abandonedcart</string>

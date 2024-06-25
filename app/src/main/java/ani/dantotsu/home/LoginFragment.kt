@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
@@ -44,7 +43,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.loginButton.setOnClickListener { Anilist.loginIntent(requireActivity()) }
-        binding.loginDiscord.setOnClickListener { openLinkInBrowser(getString(R.string.discord)) }
+        binding.loginDiscord.setOnClickListener { openLinkInBrowser(getString(R.string.discord_url)) }
         binding.loginGitlab.setOnClickListener { openLinkInBrowser(getString(R.string.gitlab, getString(R.string.repo_gl))) }
         binding.loginHimitsu.setOnClickListener { openLinkInBrowser(getString(R.string.dantotsu)) }
 

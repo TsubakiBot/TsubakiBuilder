@@ -139,7 +139,7 @@ class SettingsAboutFragment : Fragment() {
             }
 
             loginDiscord.setOnClickListener {
-                openLinkInBrowser(getString(R.string.discord))
+                openLinkInBrowser(getString(R.string.discord_url))
             }
             loginGitlab.setOnClickListener {
                 openLinkInBrowser(getString(R.string.gitlab, getString(R.string.repo_gl)))

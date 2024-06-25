@@ -158,7 +158,6 @@
     <string name="server_enabled">Käynnistetään TorrServer</string>
     <string name="enable_server_temp">Haluatko ottaa TorrServer väliaikaisesti käyttöön (pois päältä sovelluksen sulkeutuessa)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Anilismin Asetukset</string>
     <string name="extension_settings">Laajennukset</string>
     <string name="downloads">Lataukset</string>

@@ -154,7 +154,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/settingsHiddenOption"
+                android:id="@+id/settingsDiscord"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
@@ -162,7 +162,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:paddingHorizontal="32dp"
-                android:text="@string/hidden_option"
+                android:text="@string/discord_bot"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textColor="?attr/colorOnBackground"

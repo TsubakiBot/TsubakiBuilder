@@ -158,7 +158,6 @@
     <string name="server_enabled">Đang bắt đầu TorrServer</string>
     <string name="enable_server_temp">Bạn có muốn tạm thời kích hoạt TorrServer (vô hiệu hóa khi đóng ứng dụng)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Cài đặt Anilist</string>
     <string name="extension_settings">Tiện ích mở rộng</string>
     <string name="downloads">Tải xuống</string>

@@ -158,7 +158,6 @@
     <string name="server_enabled">Uruchamianie TorrServer</string>
     <string name="enable_server_temp">Czy chcesz tymczasowo włączyć TorrServer (wyłączony przy zamknięciu aplikacji)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Ustawienia animacji</string>
     <string name="extension_settings">Rozszerzenia</string>
     <string name="downloads">Pobrania</string>

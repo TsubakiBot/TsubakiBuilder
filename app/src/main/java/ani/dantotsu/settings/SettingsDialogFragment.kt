@@ -35,6 +35,7 @@ import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import ani.dantotsu.util.customAlertDialog
 import ani.dantotsu.view.dialog.BottomSheetDialogFragment
+import bit.himitsu.ShellActivity
 import bit.himitsu.onCompletedAction
 import bit.himitsu.search.ReverseSearchDialogFragment
 import bit.himitsu.update.MatagiUpdater
@@ -124,10 +125,6 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
             search(binding.searchViewText.text.toString())
         })
 
-        binding.settingsHiddenOption.setSafeOnClickListener {
-            dismiss()
-        }
-
         binding.settingsActivity.setSafeOnClickListener {
             startActivity(Intent(activity, FeedActivity::class.java))
             dismiss()
@@ -155,8 +152,18 @@ class SettingsDialogFragment : BottomSheetDialogFragment() {
         }
         binding.settingsNotification.setOnLongClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            binding.settingsHiddenOption.isVisible = binding.settingsHiddenOption.isGone
+            binding.settingsDiscord.isVisible = binding.settingsDiscord.isGone
             true
+        }
+
+        binding.settingsDiscord.setOnClickListener {
+            ContextCompat.startActivity(
+                requireContext(),
+                Intent(requireContext(), ShellActivity::class.java)
+                    .putExtra("discordUrl", getString(R.string.widgetbot)),
+                null
+            )
+            dismiss()
         }
 
         binding.settingsIncognito.isChecked = PrefManager.getVal(PrefName.Incognito)
