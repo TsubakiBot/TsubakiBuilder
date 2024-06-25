@@ -158,7 +158,6 @@
     <string name="server_enabled">TorrServer başlatılıyor</string>
     <string name="enable_server_temp">Geçici olarak TorrServer\'ı etkinleştirmek ister misiniz (uygulama kapatıldığında devre dışı bırakılır)?</string>
     <string name="peer_count_low">Low peer count detected!</string>
-    <string name="hidden_option">Hidden Option</string>
     <string name="anilist_settings">Anilist Ayarları</string>
     <string name="extension_settings">Uzantılar</string>
     <string name="downloads">İndirmeler</string>
