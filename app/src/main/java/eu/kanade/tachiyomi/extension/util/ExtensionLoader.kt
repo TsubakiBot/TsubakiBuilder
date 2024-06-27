@@ -74,12 +74,15 @@ internal object ExtensionLoader {
     private const val officialSignatureAnime =
         "50ab1d1e3a20d204d0ad6d334c7691c632e41b98dfa132bf385695fdfa63839c"
 
-    var trustedSignaturesAnime =
-        mutableSetOf<String>() + preferences.trustedSignatures().get() + officialSignatureAnime
+    var trustedSignaturesAnime = mutableSetOf<String>() +
+            preferences.trustedSignatures().get() + officialSignatureAnime
 
     // inorichi's key
     private const val officialSignatureManga =
         "7ce04da7773d41b489f4693a366c36bcd0a11fc39b547168553c285bd7348e23"
+
+    private const val signatureSuwayomi =
+        "263228f0827ca0b66e8aad8eba50d71c0f13927fe6912520f8a05f19667283bc"
 
     //dan's key
     private const val officialSignature =
@@ -88,8 +91,9 @@ internal object ExtensionLoader {
     /**
      * List of the trusted signatures.
      */
-    var trustedSignaturesManga =
-        mutableSetOf<String>() + preferences.trustedSignatures().get() + officialSignatureManga
+    var trustedSignaturesManga = mutableSetOf<String>() +
+            preferences.trustedSignatures().get() +
+            officialSignatureManga + signatureSuwayomi
 
     /**
      * Return a list of all the installed extensions initialized concurrently.

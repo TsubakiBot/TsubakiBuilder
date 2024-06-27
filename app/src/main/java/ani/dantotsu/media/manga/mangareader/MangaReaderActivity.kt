@@ -142,6 +142,9 @@ class MangaReaderActivity : AppCompatActivity() {
         get() = defaultSettings.layout == CurrentReaderSettings.Layouts.PAGED
                 && defaultSettings.direction == CurrentReaderSettings.Directions.BOTTOM_TO_TOP
 
+    private val chapterNumber: String
+        get() = MediaNameAdapter.findChapterNumber(media.manga!!.selectedChapter!!).toString()
+
     override fun onAttachedToWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val displayCutout = window.decorView.rootWindowInsets.displayCutout
@@ -446,9 +449,8 @@ class MangaReaderActivity : AppCompatActivity() {
                 else snackString(getString(R.string.first_chapter))
             } else {
                 if (chaptersArr.size > currentChapterIndex + 1) progress {
-                    change(
-                        currentChapterIndex + 1
-                    )
+                    updateProgress(media, chapterNumber)
+                    change(currentChapterIndex + 1)
                 }
                 else snackString(getString(R.string.next_chapter_not_found))
             }
@@ -460,9 +462,8 @@ class MangaReaderActivity : AppCompatActivity() {
         binding.mangaReaderPreviousChapter.setOnClickListener {
             if (directionRLBT) {
                 if (chaptersArr.size > currentChapterIndex + 1) progress {
-                    change(
-                        currentChapterIndex + 1
-                    )
+                    updateProgress(media, chapterNumber)
+                    change(currentChapterIndex + 1)
                 }
                 else snackString(getString(R.string.next_chapter_not_found))
             } else {
@@ -1059,11 +1060,7 @@ class MangaReaderActivity : AppCompatActivity() {
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.yes)) { dialog, _ ->
                         PrefManager.setCustomVal("${media.id}_save_progress", true)
-                        updateProgress(
-                            media,
-                            MediaNameAdapter.findChapterNumber(media.manga!!.selectedChapter!!)
-                                .toString()
-                        )
+                        updateProgress(media, chapterNumber)
                         dialog.dismiss()
                         runnable.run()
                     }
@@ -1081,11 +1078,7 @@ class MangaReaderActivity : AppCompatActivity() {
                         true
                     ) && if (media.isAdult) PrefManager.getVal(PrefName.UpdateForHReader) else true
                 )
-                    updateProgress(
-                        media,
-                        MediaNameAdapter.findChapterNumber(media.manga!!.selectedChapter!!)
-                            .toString()
-                    )
+                    updateProgress(media, chapterNumber)
                 runnable.run()
             }
         } else {
