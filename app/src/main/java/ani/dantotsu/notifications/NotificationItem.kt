@@ -62,7 +62,7 @@ class NotificationItem(
                 binding.notificationBannerImage.layoutParams.height = userHeight
                 binding.notificationGradiant.layoutParams.height = userHeight
                 (binding.notificationTextContainer.layoutParams
-                        as ViewGroup.MarginLayoutParams).marginStart = userHeight
+                        as ViewGroup.MarginLayoutParams).marginStart = 96.toPx
             }
             else -> {
                 binding.notificationLogo.isVisible = !subscription
@@ -80,7 +80,7 @@ class NotificationItem(
                 binding.notificationBannerImage.layoutParams.height = 128.toPx
                 binding.notificationGradiant.layoutParams.height = 128.toPx
                 (binding.notificationTextContainer.layoutParams
-                        as ViewGroup.MarginLayoutParams).marginStart = 118.toPx
+                        as ViewGroup.MarginLayoutParams).marginStart = 108.toPx
             }
 //            else -> {
 //                binding.notificationLogo.visibility = View.VISIBLE
