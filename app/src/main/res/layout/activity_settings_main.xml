@@ -55,7 +55,7 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:layout_marginEnd="-8dp"
-            app:srcCompat="@drawable/anim_splash"
+            app:srcCompat="@drawable/himitsu_splash"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>
