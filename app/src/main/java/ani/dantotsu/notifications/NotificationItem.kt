@@ -3,6 +3,7 @@ package ani.dantotsu.notifications
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import ani.dantotsu.R
 import ani.dantotsu.blurImage
 import ani.dantotsu.connections.anilist.api.Notification
@@ -63,30 +64,38 @@ class NotificationItem(
                 (binding.notificationTextContainer.layoutParams
                         as ViewGroup.MarginLayoutParams).marginStart = userHeight
             }
-            subscription -> {
+            else -> {
+                binding.notificationLogo.isVisible = !subscription
                 binding.notificationCover.visibility = View.VISIBLE
                 binding.notificationCoverUserContainer.visibility = View.GONE
                 binding.notificationTitle.visibility = View.VISIBLE
                 binding.notificationCover.layoutParams.height = 120.toPx
                 binding.notificationCover.layoutParams.width = 81.toPx
-                binding.notificationCover.loadImage(notification.user?.avatar?.large)
+                if (subscription) {
+                    binding.notificationCover.loadImage(notification.user?.avatar?.large)
+                } else {
+                    binding.notificationCover.loadCover(notification.media?.coverImage)
+                }
                 binding.notificationTitle.text = notification.media?.title?.userPreferred
                 binding.notificationBannerImage.layoutParams.height = 128.toPx
                 binding.notificationGradiant.layoutParams.height = 128.toPx
                 (binding.notificationTextContainer.layoutParams
                         as ViewGroup.MarginLayoutParams).marginStart = 118.toPx
             }
-            else -> {
-                binding.notificationCover.visibility = View.VISIBLE
-                binding.notificationCoverUserContainer.visibility = View.GONE
-                binding.notificationTitle.visibility = View.VISIBLE
-                binding.notificationCover.loadCover(notification.media?.coverImage)
-                binding.notificationTitle.text = notification.media?.title?.userPreferred
-                binding.notificationBannerImage.layoutParams.height = 153.toPx
-                binding.notificationGradiant.layoutParams.height = 153.toPx
-                (binding.notificationTextContainer.layoutParams
-                        as ViewGroup.MarginLayoutParams).marginStart = 125.toPx
-            }
+//            else -> {
+//                binding.notificationLogo.visibility = View.VISIBLE
+//                binding.notificationCover.visibility = View.VISIBLE
+//                binding.notificationCoverUserContainer.visibility = View.GONE
+//                binding.notificationTitle.visibility = View.VISIBLE
+//                binding.notificationCover.layoutParams.height = 120.toPx
+//                binding.notificationCover.layoutParams.width = 81.toPx
+//                binding.notificationCover.loadCover(notification.media?.coverImage)
+//                binding.notificationTitle.text = notification.media?.title?.userPreferred
+//                binding.notificationBannerImage.layoutParams.height = 153.toPx
+//                binding.notificationGradiant.layoutParams.height = 153.toPx
+//                (binding.notificationTextContainer.layoutParams
+//                        as ViewGroup.MarginLayoutParams).marginStart = 125.toPx
+//            }
         }
     }
 
