@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">Vis din AniList profil i stedet</string>
     <string name="discord_rich_presence">Discord Rig Tilstedeværelse</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">DAMN! DU SKULE ER JOBLESS\nDU REACHED END</string>
     <string name="file_manager_not_found">Kunne ikke finde en filhåndtering til at åbne SD-kort</string>
     <string name="error_loading_data">Fejl under indlæsning af data %1$s</string>
