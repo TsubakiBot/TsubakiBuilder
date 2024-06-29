@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">তাৰ পৰিৱৰ্তে আপোনাৰ এনিলিষ্ট প্ৰ\'ফাইল প্ৰদৰ্শন কৰক</string>
     <string name="discord_rich_presence">ডিসকৰ্ড সমৃদ্ধ উপস্থিতি</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">ওহ বিচাৰিছো নেকি! তুমি সত্যিই কাৰি নেই\nতুমি সমাপ্তি পোৱা হ\'ল</string>
     <string name="file_manager_not_found">SD কাৰ্ড খোলিবলৈ কোনো ফাইল মেনেজাৰ পোৱা নহয়</string>
     <string name="error_loading_data">%1$s ডাটা লোড কৰাৰ সময়ত ত্ৰুটি হৈছে</string>
