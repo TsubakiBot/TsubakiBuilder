@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">Wyświetlaj swój profil AniList</string>
     <string name="discord_rich_presence">Wzbogacona obecność Discorda</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">KURCZE! NA PEWNO JESTEŚ BEZROBOTNY\nDOSZEDŁEŚ DO KOŃCA</string>
     <string name="file_manager_not_found">Nie można znaleźć Menedżera Plików do otwarcia karty SD</string>
     <string name="error_loading_data">Błąd ładowania danych %1$s</string>
