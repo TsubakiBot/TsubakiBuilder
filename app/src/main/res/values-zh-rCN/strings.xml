@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">只显示您的 AniList 配置文件</string>
     <string name="discord_rich_presence">Discord 丰富存在</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">天啊！你真的是无业游民\n你已经到达了末尾</string>
     <string name="file_manager_not_found">找不到任何文件管理器以打开SD卡</string>
     <string name="error_loading_data">加载数据出错 %1$s</string>
