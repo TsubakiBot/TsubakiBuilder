@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">Отобразить ваш профиль AniList</string>
     <string name="discord_rich_presence">Discord Rich Presence</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">ЧЁРТ! ТЫ ДЕЙСТВИТЕЛЬНО БЕЗРАБОТНЫЙ\nТЫ ДОШЁЛ ДО КОНЦА</string>
     <string name="file_manager_not_found">Не удалось найти файловый менеджер для открытия SD-карты</string>
     <string name="error_loading_data">Ошибка загрузки данных %1$s</string>
