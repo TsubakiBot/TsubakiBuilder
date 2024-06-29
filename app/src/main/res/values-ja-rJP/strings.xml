@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">AniListプロファイルを代わりに表示する</string>
     <string name="discord_rich_presence">Discord Rich Presence</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">うわー！あなたは本当にニートだね\nあなたは最後までたどり着いたよ</string>
     <string name="file_manager_not_found">SDカードを開くファイルマネージャが見つかりませんでした</string>
     <string name="error_loading_data">データ %1$sの読み込みエラー</string>
