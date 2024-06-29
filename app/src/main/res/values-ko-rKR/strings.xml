@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">대신 AniList 프로필 표시</string>
     <string name="discord_rich_presence">Discord 리치 프레즌스</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">젠장! 정말로 일을 찾지 못하셨군요\n끝까지 도달했습니다</string>
     <string name="file_manager_not_found">SD 카드를 열 파일 관리자를 찾을 수 없습니다</string>
     <string name="error_loading_data">%1$s 데이터 로드 중 오류 발생</string>
