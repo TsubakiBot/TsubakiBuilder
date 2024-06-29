@@ -44,7 +44,6 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
-import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.R
 import ani.dantotsu.connections.anilist.Anilist
 import ani.dantotsu.connections.discord.Discord
@@ -57,9 +56,9 @@ import ani.dantotsu.databinding.ActivityMangaReaderBinding
 import ani.dantotsu.hideSystemBarsExtendView
 import ani.dantotsu.isOnline
 import ani.dantotsu.logError
-import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.MediaDetailsViewModel
 import ani.dantotsu.media.MediaNameAdapter
+import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.media.cereal.MediaSingleton
 import ani.dantotsu.media.manga.MangaCache
 import ani.dantotsu.media.manga.MangaChapter
@@ -88,6 +87,7 @@ import ani.dantotsu.toPx
 import ani.dantotsu.tryWith
 import ani.dantotsu.util.Logger
 import ani.dantotsu.view.GestureSlider
+import ani.dantotsu.view.NoPaddingArrayAdapter
 import ani.dantotsu.view.dialog.ImageViewDialog
 import com.alexvasilkov.gestures.views.GestureFrameLayout
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
@@ -186,15 +186,17 @@ class MangaReaderActivity : AppCompatActivity() {
         val context = this
         val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
-        if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
+        if ((isOnline(context) && !offline) && defaultSettings.discordRPC && !incognito) {
             lifecycleScope.launch {
-                val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
+                val discordMode = PrefManager.getCustomVal(
+                    "discord_mode", Discord.MODE.HIMITSU.name
+                ).uppercase()
                 val buttons = when (discordMode) {
-                    "nothing" -> mutableListOf(
+                    Discord.MODE.NOTHING.name -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
                     )
 
-                    "dantotsu" -> mutableListOf(
+                    Discord.MODE.HIMITSU.name -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_manga), media.shareLink ?: ""),
                         RPC.Link(
                             getString(R.string.rpc_read),
@@ -202,7 +204,7 @@ class MangaReaderActivity : AppCompatActivity() {
                         )
                     )
 
-                    "anilist" -> {
+                    Discord.MODE.ANILIST.name -> {
                         val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
                         val anilistLink = "https://anilist.co/user/$userId/"
                         mutableListOf(
@@ -524,6 +526,8 @@ class MangaReaderActivity : AppCompatActivity() {
 
         saveReaderSettings("${media.id}_current_settings", defaultSettings)
         setSystemBarVisibility()
+
+        if (defaultSettings.discordRPC) setDiscordStatus() else stopDiscordService()
 
         //true colors
         SubsamplingScaleImageView.setPreferredBitmapConfig(

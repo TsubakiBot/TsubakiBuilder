@@ -1,5 +1,6 @@
 package ani.dantotsu.settings
 
+import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
 import java.io.Serializable
@@ -23,7 +24,8 @@ data class CurrentReaderSettings(
     var wrapImages: Boolean = PrefManager.getVal(PrefName.WrapImages),
     var longClickImage: Boolean = PrefManager.getVal(PrefName.LongClickImage),
     var cropBorders: Boolean = PrefManager.getVal(PrefName.CropBorders),
-    var cropBorderThreshold: Int = PrefManager.getVal(PrefName.CropBorderThreshold)
+    var cropBorderThreshold: Int = PrefManager.getVal(PrefName.CropBorderThreshold),
+    var discordRPC: Boolean = Discord.token != null
 ) : Serializable {
 
     enum class Directions {
@@ -33,7 +35,7 @@ data class CurrentReaderSettings(
         LEFT_TO_RIGHT;
 
         companion object {
-            operator fun get(value: Int) = values().firstOrNull { it.ordinal == value }
+            operator fun get(value: Int) = entries.firstOrNull { it.ordinal == value }
         }
     }
 
@@ -43,7 +45,7 @@ data class CurrentReaderSettings(
         CONTINUOUS;
 
         companion object {
-            operator fun get(value: Int) = values().firstOrNull { it.ordinal == value }
+            operator fun get(value: Int) = entries.firstOrNull { it.ordinal == value }
         }
     }
 
@@ -51,7 +53,7 @@ data class CurrentReaderSettings(
         No, Automatic, Force;
 
         companion object {
-            operator fun get(value: Int) = values().firstOrNull { it.ordinal == value }
+            operator fun get(value: Int) = entries.firstOrNull { it.ordinal == value }
         }
     }
 

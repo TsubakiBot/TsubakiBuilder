@@ -9,13 +9,18 @@ import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
+import androidx.media3.common.util.UnstableApi
 import ani.dantotsu.R
+import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.databinding.ActivityPlayerSettingsBinding
 import ani.dantotsu.initActivity
+import ani.dantotsu.media.anime.ExoplayerView
 import ani.dantotsu.media.cereal.Media
 import ani.dantotsu.navBarHeight
 import ani.dantotsu.others.LanguageMapper
@@ -40,6 +45,7 @@ class PlayerSettingsActivity : AppCompatActivity() {
     var media: Media? = null
     var subtitle: Subtitle? = null
 
+    @OptIn(UnstableApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -245,6 +251,12 @@ class PlayerSettingsActivity : AppCompatActivity() {
         }
 
         //Other
+        binding.discordRPC.isVisible = Discord.token != null
+        binding.discordRPC.isChecked = ExoplayerView.discordRPC
+        binding.discordRPC.setOnCheckedChangeListener { _, isChecked ->
+            ExoplayerView.discordRPC = isChecked
+        }
+
         binding.playerSettingsPiP.apply {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 visibility = View.VISIBLE

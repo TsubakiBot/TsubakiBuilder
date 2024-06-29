@@ -19,7 +19,6 @@ object Discord {
     var userid: String? = null
     var avatar: String? = null
 
-
     fun getSavedToken(): Boolean {
         token = PrefManager.getVal(
             PrefName.DiscordToken, null as String?
@@ -66,6 +65,12 @@ object Discord {
     private fun loginIntent(context: Context) {
         val intent = Intent(context, Login::class.java)
         context.startActivity(intent)
+    }
+
+    enum class MODE {
+        HIMITSU,
+        ANILIST,
+        NOTHING
     }
 
     const val application_Id = "1243752355502227517"

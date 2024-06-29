@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ani.dantotsu.R
+import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.databinding.BottomSheetDiscordRpcBinding
 import ani.dantotsu.settings.saving.PrefManager
 import ani.dantotsu.settings.saving.PrefName
@@ -26,10 +27,10 @@ class DiscordDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        when (PrefManager.getCustomVal("discord_mode", "dantotsu")) {
-            "nothing" -> binding.radioNothing.isChecked = true
-            "dantotsu" -> binding.radioDantotsu.isChecked = true
-            "anilist" -> binding.radioAnilist.isChecked = true
+        when (PrefManager.getCustomVal("discord_mode", Discord.MODE.HIMITSU.name)) {
+            Discord.MODE.NOTHING.name -> binding.radioNothing.isChecked = true
+            Discord.MODE.HIMITSU.name -> binding.radioDantotsu.isChecked = true
+            Discord.MODE.ANILIST.name -> binding.radioAnilist.isChecked = true
             else -> binding.radioAnilist.isChecked = true
         }
         binding.showIcon.isChecked = PrefManager.getVal(PrefName.ShowAniListIcon)
@@ -41,10 +42,10 @@ class DiscordDialogFragment : BottomSheetDialogFragment() {
 
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             val mode = when (checkedId) {
-                binding.radioNothing.id -> "nothing"
-                binding.radioDantotsu.id -> "dantotsu"
-                binding.radioAnilist.id -> "anilist"
-                else -> "dantotsu"
+                binding.radioNothing.id -> Discord.MODE.NOTHING.name
+                binding.radioDantotsu.id -> Discord.MODE.HIMITSU.name
+                binding.radioAnilist.id -> Discord.MODE.ANILIST.name
+                else -> Discord.MODE.HIMITSU.name
             }
             PrefManager.setCustomVal("discord_mode", mode)
         }

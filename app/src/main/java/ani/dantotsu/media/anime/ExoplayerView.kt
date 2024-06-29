@@ -242,6 +242,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     companion object {
         var initialized = false
         lateinit var media: Media
+        var discordRPC = Discord.token != null
         var torrent: Torrent? = null
 
         private const val DEFAULT_MIN_BUFFER_MS = 600000
@@ -1369,15 +1370,17 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
         val context = this
         val offline: Boolean = PrefManager.getVal(PrefName.OfflineMode)
         val incognito: Boolean = PrefManager.getVal(PrefName.Incognito)
-        if ((isOnline(context) && !offline) && Discord.token != null && !incognito) {
+        if ((isOnline(context) && !offline) && discordRPC && !incognito) {
             lifecycleScope.launch {
-                val discordMode = PrefManager.getCustomVal("discord_mode", "dantotsu")
+                val discordMode = PrefManager.getCustomVal(
+                    "discord_mode", Discord.MODE.HIMITSU.name
+                ).uppercase()
                 val buttons = when (discordMode) {
-                    "nothing" -> mutableListOf(
+                    Discord.MODE.NOTHING.name -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
                     )
 
-                    "dantotsu" -> mutableListOf(
+                    Discord.MODE.HIMITSU.name -> mutableListOf(
                         RPC.Link(getString(R.string.rpc_anime), media.shareLink ?: ""),
                         RPC.Link(
                             getString(R.string.rpc_watch),
@@ -1385,7 +1388,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
                         )
                     )
 
-                    "anilist" -> {
+                    Discord.MODE.ANILIST.name -> {
                         val userId = PrefManager.getVal<String>(PrefName.AnilistUserId)
                         val anilistLink = "https://anilist.co/user/$userId/"
                         mutableListOf(
@@ -2218,6 +2221,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener, SessionAvailabilityL
     private val onChangeSettings = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _: ActivityResult ->
+        if (discordRPC) setDiscordStatus() else stopDiscordService()
         onSetTrackGroupOverride(dummyTrack, TRACK_TYPE_TEXT)
         if (PrefManager.getVal(PrefName.Subtitles)) {
             exoPlayer.currentTracks.groups.filter {

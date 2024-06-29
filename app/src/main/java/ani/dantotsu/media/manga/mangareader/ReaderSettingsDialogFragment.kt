@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import ani.dantotsu.R
+import ani.dantotsu.connections.discord.Discord
 import ani.dantotsu.databinding.BottomSheetCurrentReaderSettingsBinding
 import ani.dantotsu.settings.CurrentReaderSettings
 import ani.dantotsu.settings.CurrentReaderSettings.Directions
@@ -27,6 +29,13 @@ class ReaderSettingsDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = requireActivity() as MangaReaderActivity
         val settings = activity.defaultSettings
+
+        binding.discordRPC.isVisible = Discord.token != null
+        binding.discordRPC.isChecked = settings.discordRPC
+        binding.discordRPC.setOnCheckedChangeListener { _, isChecked ->
+            settings.discordRPC = isChecked
+            activity.applySettings()
+        }
 
         binding.readerDirectionText.text =
             resources.getStringArray(R.array.manga_directions)[settings.direction.ordinal]
