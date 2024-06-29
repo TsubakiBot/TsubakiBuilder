@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">इसके बजाय अपनी एनिलिस्ट प्रोफ़ाइल प्रदर्शित करें</string>
     <string name="discord_rich_presence">डिस्कॉर्ड रिच प्रेजेंस</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">अरे भाई! आप वाकई बेरोजगार हैं\nआप अंत तक पहुँच गए</string>
     <string name="file_manager_not_found">SD कार्ड खोलने के लिए कोई फ़ाइल प्रबंधक नहीं मिला</string>
     <string name="error_loading_data">डेटा लोड करने में त्रुटि %1$s</string>
