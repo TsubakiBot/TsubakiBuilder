@@ -450,6 +450,7 @@
     <string name="discord_anilist_button">Vis AniList profilen din i stedet</string>
     <string name="discord_rich_presence">Discord Rich Presence</string>
     <string name="stream_on_dantotsu">Stream on Himitsu</string>
+    <string name="discord_rpc">Show Discord Rich Presence</string>
     <string name="jobless_message">DAMN! DU TRENGER JOBBLESS\nDU HAR SLIPP DEG SLUTT</string>
     <string name="file_manager_not_found">Kunne ikke finne en filbehandler for å åpne SD-kort</string>
     <string name="error_loading_data">Feil ved lasting av data %1$s</string>
