@@ -17,60 +17,71 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/animeSourceYT"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:background="@color/yt_red"
-            android:contentDescription="@string/play_yt"
-            android:padding="6dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/animeSourceYT"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/yt_red"
+                android:contentDescription="@string/play_yt"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
-        <ImageButton
-            android:id="@+id/animeSourceHulu"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:background="@color/hulu_green"
-            android:contentDescription="@string/play_hulu"
-            android:padding="6dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/animeSourceHulu"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/hulu_green"
+                android:contentDescription="@string/play_hulu"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
-        <ImageButton
-            android:id="@+id/animeSourceDisney"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:background="@color/dp_teal"
-            android:contentDescription="@string/play_dp"
-            android:padding="6dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/animeSourceDisney"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/dp_teal"
+                android:contentDescription="@string/play_dp"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
-        <ImageButton
-            android:id="@+id/animeSourceNetflix"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:background="@color/nf_red"
-            android:contentDescription="@string/play_nf"
-            android:padding="6dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/animeSourceNetflix"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/nf_red"
+                android:contentDescription="@string/play_nf"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
-        <ImageButton
-            android:id="@+id/animeSourceCR"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:background="@color/cr_orange"
-            android:contentDescription="@string/play_cr"
-            android:padding="6dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/animeSourceMax"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/max_blue"
+                android:contentDescription="@string/play_max"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/animeSourceCR"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:background="@color/cr_orange"
+                android:contentDescription="@string/play_cr"
+                android:padding="6dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -329,6 +329,7 @@ class AnilistQueries {
                                     "vrv" -> media.externalLinks.vrv = i.url
                                     "disney plus" -> media.externalLinks.disney = i.url
                                     "netflix" -> media.externalLinks.netflix = i.url
+                                    "max" -> media.externalLinks.max = i.url
                                     else -> Logger.log("${media.name} Link: ${i.site}")
                                 }
                             }

@@ -8,5 +8,6 @@ data class ExternalLinks(
     var hulu: String? = null,
     var vrv: String? = null,
     var disney: String? = null,
-    var netflix: String? = null
+    var netflix: String? = null,
+    var max: String? = null
 ) : Serializable

@@ -124,6 +124,10 @@ class AnimeWatchAdapter(
                 binding.streamContainer.root.isVisible = true
                 getStreamIcon(binding.streamContainer.animeSourceNetflix, R.string.icon_nf, url)
             }
+            media.externalLinks.max?.let { url ->
+                binding.streamContainer.root.isVisible = true
+                getStreamIcon(binding.streamContainer.animeSourceMax, R.string.icon_max, url)
+            }
             media.externalLinks.crunchyroll != null
             if (media.streamingEpisodes.isNotEmpty()) {
                 binding.streamContainer.episodeRecyclerView.adapter =
