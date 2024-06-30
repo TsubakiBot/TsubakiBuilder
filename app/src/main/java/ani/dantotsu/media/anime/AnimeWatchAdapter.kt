@@ -136,6 +136,7 @@ class AnimeWatchAdapter(
             media.externalLinks.crunchyroll?.let { url ->
                 binding.streamContainer.root.isVisible = true
                 getStreamIcon(binding.streamContainer.animeSourceCR, R.string.icon_cr, url)
+                binding.streamContainer.animeSourceCR.setOnClickListener(null)
                 binding.streamContainer.animeSourceCR.setOnClickListener {
                     if (media.streamingEpisodes.isEmpty()) {
                         ChromeIntegration.openStreamDialog(fragment.requireContext(), url)
@@ -348,9 +349,9 @@ class AnimeWatchAdapter(
         handleEpisodes()
     }
 
-    private fun getStreamIcon(icon: ImageButton, imageRes: Int, url: String) {
+    private fun getStreamIcon(icon: ImageButton, imageRes: Int, url: String?) {
         icon.isVisible = true
-        icon.loadImage(getString(imageRes, 48.toPx))
+        icon.loadImage(getString(imageRes), 48.toPx)
         icon.setWebClickListeners(url)
     }
 
