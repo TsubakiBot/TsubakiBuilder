@@ -347,7 +347,6 @@ class AnimeWatchAdapter(
     private fun getStreamIcon(icon: ImageButton, imageRes: Int, url: String) {
         icon.isVisible = true
         icon.loadImage(getString(imageRes, 48.toPx))
-        ImageViewCompat.setImageTintList(icon, null)
         icon.setWebClickListeners(url)
     }
 

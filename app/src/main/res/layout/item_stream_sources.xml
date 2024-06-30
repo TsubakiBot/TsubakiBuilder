@@ -6,12 +6,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/surface_rounded_bg"
-        android:orientation="horizontal">
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/animeSourceYT"
@@ -22,7 +26,6 @@
             android:contentDescription="@string/play_yt"
             android:padding="6dp"
             android:visibility="gone"
-            app:tint="@color/yt_red"
             tools:visibility="visible" />
 
         <ImageButton
@@ -34,7 +37,6 @@
             android:contentDescription="@string/play_hulu"
             android:padding="6dp"
             android:visibility="gone"
-            app:tint="@color/hulu_green"
             tools:visibility="visible" />
 
         <ImageButton
@@ -46,7 +48,6 @@
             android:contentDescription="@string/play_dp"
             android:padding="6dp"
             android:visibility="gone"
-            app:tint="@color/dp_teal"
             tools:visibility="visible" />
 
         <ImageButton
@@ -58,7 +59,6 @@
             android:contentDescription="@string/play_nf"
             android:padding="6dp"
             android:visibility="gone"
-            app:tint="@color/nf_red"
             tools:visibility="visible" />
 
         <ImageButton
@@ -70,9 +70,9 @@
             android:contentDescription="@string/play_cr"
             android:padding="6dp"
             android:visibility="gone"
-            app:tint="@color/cr_orange"
             tools:visibility="visible" />
-    </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <ani.dantotsu.view.FadingEdgeRecyclerView
         android:id="@+id/episodeRecyclerView"
