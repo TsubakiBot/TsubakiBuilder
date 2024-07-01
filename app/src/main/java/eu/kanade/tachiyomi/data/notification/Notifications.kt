@@ -194,7 +194,7 @@ object Notifications {
                     setName("Extension Updates")
                 },
                 buildNotificationChannel(CHANNEL_TORRENT_SERVER, IMPORTANCE_LOW) {
-                    setName("Torrent server") // TODO: change this
+                    setName("Internal TorrServer")
                     setShowBadge(false)
                 },
             ),

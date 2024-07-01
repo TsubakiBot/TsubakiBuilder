@@ -183,7 +183,6 @@ class SubscriptionNotificationTask : Task {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
-            .setGroup(media.name)
 
         if (thumbnail != null) {
             val bitmap = getBitmapFromUrl(thumbnail.url)

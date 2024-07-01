@@ -41,21 +41,41 @@ class AnilistNotificationTask : Task {
                         val newNotifications = unreadNotifications?.filter { it.id > lastId }
                         val filteredTypes =
                             PrefManager.getVal<Set<String>>(PrefName.AnilistFilteredTypes)
-                        newNotifications?.forEach {
-                            if (!filteredTypes.contains(it.notificationType)) {
-                                val content = ActivityItemBuilder.getContent(it)
-                                val notification = createNotification(context, content, it.id)
-                                if (ActivityCompat.checkSelfPermission(
-                                        context,
-                                        Manifest.permission.POST_NOTIFICATIONS
-                                    ) == PackageManager.PERMISSION_GRANTED
-                                ) {
-                                    NotificationManagerCompat.from(context)
-                                        .notify(
+                        val groups: ArrayList<String> = arrayListOf()
+                        NotificationManagerCompat.from(context).apply {
+                            newNotifications?.forEach {
+                                if (!filteredTypes.contains(it.notificationType)) {
+                                    val content = ActivityItemBuilder.getContent(it).also { group ->
+                                        groups.add(group)
+                                    }
+                                    val notification = createNotification(context, content, it.id)
+                                    if (ActivityCompat.checkSelfPermission(
+                                            context,
+                                            Manifest.permission.POST_NOTIFICATIONS
+                                        ) == PackageManager.PERMISSION_GRANTED
+                                    ) {
+                                        notify(
                                             Notifications.CHANNEL_ANILIST,
                                             System.currentTimeMillis().toInt(),
                                             notification
                                         )
+                                    }
+                                }
+                            }
+                            if (groups.isNotEmpty()) {
+                                groups.distinctBy { it }.forEachIndexed { index, group ->
+                                    val count = groups.count { it == group }
+                                    notify(
+                                        index,
+                                        NotificationCompat.Builder(context, Notifications.CHANNEL_ANILIST)
+                                            .setSmallIcon(R.drawable.notification_icon)
+                                            .setContentTitle("$group ($count)")
+                                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                            .setAutoCancel(true)
+                                            .setGroup(group)
+                                            .setGroupSummary(true)
+                                            .build()
+                                    )
                                 }
                             }
                         }
@@ -106,5 +126,4 @@ class AnilistNotificationTask : Task {
             .setGroup(content)
             .build()
     }
-
 }
