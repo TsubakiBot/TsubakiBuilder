@@ -87,61 +87,61 @@ class SubscriptionNotificationTask : Task {
                             )
                     }
 
-                    subscriptions.toList().map {
-                        val media = it.second
-                        val text = if (media.isAnime) {
-                            val parser =
-                                SubscriptionHelper.getAnimeParser(media.id)
-                            progress(index[it.first]!!, parser.name, media.name)
-                            val ep: Episode? =
-                                SubscriptionHelper.getEpisode(
-                                    parser,
-                                    media
-                                )
-                            if (ep != null)
-                                ("${
-                                    if (ep.title != ep.number && ep.title != null) {
-                                        ep.title
-                                    } else {
-                                        (context.getString(R.string.episode) + ep.number)
+                    if (hasNotificationPermission(context)) {
+                        subscriptions.toList().map {
+                            val media = it.second
+                            val text = if (media.isAnime) {
+                                val parser =
+                                    SubscriptionHelper.getAnimeParser(media.id)
+                                progress(index[it.first]!!, parser.name, media.name)
+                                val ep: Episode? =
+                                    SubscriptionHelper.getEpisode(
+                                        parser,
+                                        media
+                                    )
+                                if (ep != null)
+                                    ("${
+                                        if (ep.title != ep.number && ep.title != null) {
+                                            ep.title
+                                        } else {
+                                            (context.getString(R.string.episode) + ep.number)
+                                        }
+                                    }${
+                                        if (ep.isFiller) " [Filler]" else ""
+                                    } ") + context.getString(R.string.just_released) to ep.thumbnail
+                                else null
+                            } else {
+                                val parser =
+                                    SubscriptionHelper.getMangaParser(media.id)
+                                progress(index[it.first]!!, parser.name, media.name)
+                                val chap: MangaChapter? =
+                                    SubscriptionHelper.getChapter(
+                                        parser,
+                                        media
+                                    )
+                                if (chap != null)
+                                    "${chap.number} ${context.getString(R.string.just_released)}" to media.cover?.let { image ->
+                                        FileUrl(image)
                                     }
-                                }${
-                                    if (ep.isFiller) " [Filler]" else ""
-                                } ") + context.getString(R.string.just_released) to ep.thumbnail
-                            else null
-                        } else {
-                            val parser =
-                                SubscriptionHelper.getMangaParser(media.id)
-                            progress(index[it.first]!!, parser.name, media.name)
-                            val chap: MangaChapter? =
-                                SubscriptionHelper.getChapter(
-                                    parser,
-                                    media
-                                )
-                            if (chap != null)
-                                "${chap.number} ${context.getString(R.string.just_released)}" to media.cover?.let { image ->
-                                    FileUrl(image)
-                                }
-                            else null
-                        } ?: return@map
-                        if (!addSubscriptionToStore(
-                            SubscriptionStore(
-                                media.name,
+                                else null
+                            } ?: return@map
+                            if (!addSubscriptionToStore(
+                                    SubscriptionStore(
+                                        media.name,
+                                        text.first,
+                                        media.id,
+                                        media.cover,
+                                        media.banner
+                                    )
+                                )) return@map
+                            PrefManager.setVal(PrefName.UnreadCommentNotifications,
+                                PrefManager.getVal<Int>(PrefName.UnreadCommentNotifications) + 1)
+                            val notification = createNotification(
+                                context.applicationContext,
+                                media,
                                 text.first,
-                                media.id,
-                                media.cover,
-                                media.banner
+                                text.second
                             )
-                        )) return@map
-                        PrefManager.setVal(PrefName.UnreadCommentNotifications,
-                            PrefManager.getVal<Int>(PrefName.UnreadCommentNotifications) + 1)
-                        val notification = createNotification(
-                            context.applicationContext,
-                            media,
-                            text.first,
-                            text.second
-                        )
-                        if (hasNotificationPermission(context)) {
                             NotificationManagerCompat.from(context)
                                 .notify(
                                     CHANNEL_SUBSCRIPTION_CHECK,
