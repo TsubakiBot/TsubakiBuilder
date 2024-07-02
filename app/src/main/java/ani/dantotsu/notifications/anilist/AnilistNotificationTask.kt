@@ -72,7 +72,7 @@ class AnilistNotificationTask : Task {
                                     notify(
                                         index,
                                         NotificationCompat.Builder(context, Notifications.CHANNEL_ANILIST)
-                                            .setSmallIcon(R.drawable.ic_himitsu_white)
+                                            .setSmallIcon(R.drawable.ic_himitsu_logo)
                                             .setContentTitle("$group ($count)")
                                             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                             .setAutoCancel(true)
@@ -115,7 +115,7 @@ class AnilistNotificationTask : Task {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
         return NotificationCompat.Builder(context, Notifications.CHANNEL_ANILIST)
-            .setSmallIcon(R.drawable.ic_himitsu_white)
+            .setSmallIcon(R.drawable.ic_himitsu_logo)
             .setContentTitle(title)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

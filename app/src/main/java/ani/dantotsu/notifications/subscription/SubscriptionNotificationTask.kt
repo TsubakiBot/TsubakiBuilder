@@ -200,7 +200,7 @@ class SubscriptionNotificationTask : Task {
     ): NotificationCompat.Builder {
         return NotificationCompat.Builder(context, CHANNEL_SUBSCRIPTION_CHECK_PROGRESS)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setSmallIcon(R.drawable.ic_himitsu_white)
+            .setSmallIcon(R.drawable.ic_himitsu_logo)
             .setContentTitle(context.getString(R.string.checking_subscriptions_title))
             .setProgress(size, 0, false)
             .setOngoing(true)
